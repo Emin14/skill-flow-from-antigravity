@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.headerCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.createForm {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.prioritySelect {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  outline: none;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  min-height: 48px;
+}
+
+/* Mobile & iPhone 17 Pro Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    gap: var(--space-4);
+  }
+
+  .createForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .prioritySelect {
+    width: 100%;
+  }
+
+  .taskItem {
+    padding: var(--space-3);
+  }
+}

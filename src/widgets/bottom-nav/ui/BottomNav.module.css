@@ -1,0 +1,63 @@
+.bottomNav {
+  display: none;
+}
+
+/* Responsive breakpoint for Mobile / iPhone 17 Pro (402px x 874px) */
+@media (max-width: 768px) {
+  .bottomNav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(64px + env(safe-area-inset-bottom, 20px));
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    backdrop-filter: blur(16px);
+    align-items: center;
+    justify-content: space-around;
+    z-index: var(--z-index-sticky);
+    box-sizing: border-box;
+  }
+
+  .navItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--font-size-xs);
+    min-width: 56px;
+    min-height: 44px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .navItemActive {
+    color: var(--color-accent);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
+  .createFab {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-accent);
+    color: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-12px);
+    cursor: pointer;
+  }
+}
