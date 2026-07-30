@@ -1,8 +1,12 @@
 .layoutContainer {
   display: flex;
-  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100vw;
   background-color: var(--color-bg);
   color: var(--color-text-primary);
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .mainContent {
@@ -11,20 +15,30 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  min-height: 100dvh;
+  box-sizing: border-box;
   transition: margin-left var(--transition-normal);
+  overflow-x: hidden;
 }
 
 .pageContent {
   flex: 1;
   padding: var(--space-6);
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Responsive adjustment for Mobile / iPhone 17 Pro */
 @media (max-width: 768px) {
+  .layoutContainer {
+    min-height: 100dvh;
+  }
+
   .mainContent {
     margin-left: 0;
-    padding-bottom: calc(72px + env(safe-area-inset-bottom, 20px)); /* Clearance for BottomNav */
+    min-height: 100dvh;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); /* Clearance for BottomNav */
   }
 
   .pageContent {

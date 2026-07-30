@@ -1,0 +1,103 @@
+/* 
+  Green Background Constant (#27ae60 / #10b981)
+  Text: High-contrast Crisp White (#ffffff) with subtle dark text shadow
+  Subtitle: Soft Mint (#d1fae5)
+  Circle Ring: White Border (#ffffff) with Dark Fill Overlay
+*/
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 18px 24px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(39, 174, 96, 0.35);
+  transition: all var(--transition-normal);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bannerPartial {
+  background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(39, 174, 96, 0.35);
+}
+
+.circleRing {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 3.5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 800;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.circleRingPartial {
+  border: 3.5px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  white-space: normal;
+  word-break: break-word;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #d1fae5;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.subtitlePartial {
+  color: #d1fae5;
+}
+
+@media (max-width: 600px) {
+  .banner {
+    border-radius: 20px;
+    padding: 16px 18px;
+    gap: var(--space-3);
+  }
+
+  .circleRing {
+    width: 48px;
+    height: 48px;
+    font-size: 15px;
+    border-width: 3px;
+  }
+
+  .title {
+    font-size: 15.5px;
+  }
+
+  .subtitle {
+    font-size: 12.5px;
+  }
+}

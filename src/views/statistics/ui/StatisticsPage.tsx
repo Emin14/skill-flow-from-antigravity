@@ -1,15 +1,11 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
-import { Card, Typography, Progress } from '@/shared/ui';
-import { useGoalStore } from '@/entities/goal';
-import { useTopicStore } from '@/entities/topic';
+import React, { useEffect, useMemo } from 'react';
+import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
-import { useMaterialStore } from '@/entities/material';
-import { useRepeatCardStore } from '@/entities/repeat-card';
 import { useActivityStore } from '@/entities/activity';
-import { analyticsService } from '@/features/analytics';
 import { TodayActivity } from '@/widgets/today-activity/ui/TodayActivity';
+import { TASK_CATEGORIES } from '@/shared/config/categories';
 import {
   ResponsiveContainer,
   BarChart,
@@ -17,70 +13,49 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
 } from 'recharts';
 import styles from './StatisticsPage.module.css';
 
-type TopicSortKey = 'progress' | 'title' | 'materials';
-
 export const StatisticsPage: React.FC = () => {
-  const { goals, fetchGoals } = useGoalStore();
-  const { topics, fetchTopics } = useTopicStore();
   const { tasks, fetchTasks } = useTaskStore();
-  const { materials, fetchMaterials } = useMaterialStore();
-  const { cards, fetchCards } = useRepeatCardStore();
   const { logs, fetchLogs } = useActivityStore();
 
-  const [topicSort, setTopicSort] = useState<TopicSortKey>('progress');
-
   useEffect(() => {
-    fetchGoals();
-    fetchTopics();
     fetchTasks();
-    fetchMaterials();
-    fetchCards();
     fetchLogs();
-  }, [fetchGoals, fetchTopics, fetchTasks, fetchMaterials, fetchCards, fetchLogs]);
+  }, [fetchTasks, fetchLogs]);
 
-  const summary = useMemo(
-    () => analyticsService.getSummaryStats(goals, topics, tasks, materials, cards),
-    [goals, topics, tasks, materials, cards]
-  );
-
-  const goalStats = useMemo(
-    () => analyticsService.getGoalProgressStats(goals, topics, tasks, materials),
-    [goals, topics, tasks, materials]
-  );
-
-  const topicStats = useMemo(
-    () => analyticsService.getTopicProgressStats(topics, tasks, materials),
-    [topics, tasks, materials]
-  );
-
-  const fsrsStats = useMemo(
-    () => analyticsService.getFsrsStats(cards),
-    [cards]
-  );
-
-  const chartData = useMemo(
-    () => analyticsService.getDailyChartData(tasks, materials, cards),
-    [tasks, materials, cards]
-  );
-
-  const achievements = useMemo(
-    () => analyticsService.getDynamicAchievements(goals, tasks, materials, cards),
-    [goals, tasks, materials, cards]
-  );
-
-  const sortedTopicStats = useMemo(() => {
-    return [...topicStats].sort((a, b) => {
-      if (topicSort === 'progress') return b.progress - a.progress;
-      if (topicSort === 'title') return a.topic.title.localeCompare(b.topic.title);
-      if (topicSort === 'materials') return b.materialsCount - a.materialsCount;
-      return 0;
+  // Category completion statistics (only showing completed count)
+  const categoryStats = useMemo(() => {
+    return TASK_CATEGORIES.map((cat) => {
+      const completedCount = tasks.filter((t) => t.category === cat && t.status === 'Done').length;
+      return {
+        category: cat,
+        completedCount,
+      };
     });
-  }, [topicStats, topicSort]);
+  }, [tasks]);
 
+  // 7-day Task completion chart data
+  const chartData = useMemo(() => {
+    const days = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split('T')[0];
+      const dayLabel = d.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric' });
+
+      const tasksDone = tasks.filter((t) => t.status === 'Done' && t.completedAt?.startsWith(dateStr)).length;
+
+      days.push({
+        day: dayLabel,
+        'Выполнено задач': tasksDone,
+      });
+    }
+    return days;
+  }, [tasks]);
+
+  // 30-day Activity Heatmap data
   const heatmapData = useMemo(() => {
     const cells = [];
     for (let i = 29; i >= 0; i--) {
@@ -89,57 +64,80 @@ export const StatisticsPage: React.FC = () => {
       const dateStr = d.toISOString().split('T')[0];
 
       const tasksDone = tasks.filter((t) => t.status === 'Done' && t.completedAt?.startsWith(dateStr)).length;
-      const matDone = materials.filter((m) => m.isCompleted && m.completedAt?.startsWith(dateStr)).length;
-      const fsrsDone = cards.filter((c) => c.lastReviewedAt?.startsWith(dateStr)).length;
-      const total = tasksDone + matDone + fsrsDone;
 
       cells.push({
         date: dateStr,
         dayNum: d.getDate(),
-        count: total,
+        count: tasksDone,
       });
     }
     return cells;
-  }, [tasks, materials, cards]);
+  }, [tasks]);
+
+  const totalDoneTasks = useMemo(() => {
+    return tasks.filter((t) => t.status === 'Done').length;
+  }, [tasks]);
 
   return (
     <div className={styles.container}>
       {/* Header */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-        <Typography variant="h1">📊 Аналитика и Прогресс</Typography>
+        <Typography variant="h1">📊 Аналитика Задач</Typography>
         <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
-          Глубокий анализ темпов развития, регулярности и памяти
+          Статистика выполненных задач по категориям, динамика и регулярность
         </Typography>
       </Card>
 
-      {/* Summary Statistics Cards */}
-      <div className={styles.summaryGrid}>
-        <Card className={styles.statCard}>
-          <div className={styles.statValue}>{summary.totalGoals}</div>
-          <div className={styles.statLabel}>🏆 Всего целей</div>
-        </Card>
-        <Card className={styles.statCard}>
-          <div className={styles.statValue}>{summary.totalTopics}</div>
-          <div className={styles.statLabel}>🐘 Всего тем</div>
-        </Card>
-        <Card className={styles.statCard}>
-          <div className={styles.statValue}>
-            {summary.completedTasks}/{summary.totalTasks}
-          </div>
-          <div className={styles.statLabel}>✅ Выполнено задач</div>
-        </Card>
-        <Card className={styles.statCard}>
-          <div className={styles.statValue}>
-            {summary.completedMaterials}/{summary.totalMaterials}
-          </div>
-          <div className={styles.statLabel}>📚 Изучено материалов</div>
-        </Card>
-      </div>
+      {/* Category Accomplishment Statistics - 2 Items Per Row */}
+      <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
+          <Typography variant="h2">🏷 Выполнено задач по категориям</Typography>
+          <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 'bold', color: 'var(--color-success)' }}>
+            Всего: {totalDoneTasks} ✅
+          </span>
+        </div>
 
-      {/* Activity Chart */}
+        {/* Strictly 2 Columns Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: 'var(--space-3)',
+            width: '100%',
+          }}
+        >
+          {categoryStats.map(({ category, completedCount }) => (
+            <div
+              key={category}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                padding: '16px 18px',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid var(--color-border)',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <div style={{ fontSize: '12px', color: '#818cf8', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                🏷 {category}
+              </div>
+              <div style={{ fontSize: '26px', fontWeight: '800', color: '#10b981', lineHeight: '1.2' }}>
+                {completedCount}
+              </div>
+              <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
+                выполнено задач
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* 7-day Task Productivity Chart */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
         <Typography variant="h2">📈 Продуктивность за 7 дней</Typography>
-        <div style={{ width: '100%', height: 300 }}>
+        <div style={{ width: '100%', height: 260 }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
               <XAxis dataKey="day" stroke="var(--color-text-muted)" />
@@ -151,21 +149,15 @@ export const StatisticsPage: React.FC = () => {
                   borderRadius: 'var(--radius-md)',
                 }}
               />
-              <Legend />
-              <Bar dataKey="Задачи" fill="var(--color-accent)" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Материалы" fill="var(--color-success)" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Повторение" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Выполнено задач" fill="var(--color-success)" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </Card>
 
-      {/* Activity Heatmap (30 days) */}
+      {/* 30-day Activity Heatmap */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-        <Typography variant="h2">🔥 Календарь активности (последние 30 дней)</Typography>
-        <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
-          Интенсивность выполненных задач, изученных материалов и повторений
-        </Typography>
+        <Typography variant="h2">🔥 Календарь выполненных задач (30 дней)</Typography>
 
         <div className={styles.heatmapGrid}>
           {heatmapData.map((cell) => {
@@ -179,7 +171,7 @@ export const StatisticsPage: React.FC = () => {
                 : `${styles.heatmapCell} ${styles.heatmapCellHigh}`;
 
             return (
-              <div key={cell.date} className={cellClass} title={`${cell.date}: ${cell.count} действий`}>
+              <div key={cell.date} className={cellClass} title={`${cell.date}: ${cell.count} задач`}>
                 {cell.dayNum}
               </div>
             );
@@ -187,110 +179,8 @@ export const StatisticsPage: React.FC = () => {
         </div>
       </Card>
 
-      {/* Section Grid: Goal Progress & Spaced Repetition Stats */}
-      <div className={styles.sectionGrid}>
-        {/* Goal Progress Breakdown */}
-        <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-          <Typography variant="h2">🏆 Прогресс целей ({goalStats.length})</Typography>
-
-          {goalStats.length === 0 ? (
-            <div style={{ color: 'var(--color-text-muted)', padding: 'var(--space-4)', textAlign: 'center' }}>
-              🌱 У вас пока нет созданных целей.
-            </div>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-              {goalStats.map(({ goal, progress, topicsCount, materialsCount, tasksCount }) => (
-                <div key={goal.id} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-                      {goal.title}
-                    </span>
-                    <span style={{ fontWeight: 'var(--font-weight-bold)', color: 'var(--color-accent)' }}>
-                      {progress}%
-                    </span>
-                  </div>
-                  <Progress value={progress} height={6} color={goal.color} />
-                  <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-                    {topicsCount} тем • {materialsCount} материалов • {tasksCount} задач
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </Card>
-
-        {/* Spaced Repetition Analytics */}
-        <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-          <Typography variant="h2">🧠 Интервальное Повторение</Typography>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-3)' }}>
-            <div style={{ padding: 'var(--space-3)', backgroundColor: 'rgba(255, 255, 255, 0.02)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontSize: 'var(--font-size-xl)', fontWeight: 'bold' }}>{fsrsStats.totalCards}</div>
-              <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>Всего карточек</div>
-            </div>
-            <div style={{ padding: 'var(--space-3)', backgroundColor: 'rgba(255, 255, 255, 0.02)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontSize: 'var(--font-size-xl)', fontWeight: 'bold', color: 'var(--color-warning)' }}>
-                {fsrsStats.dueToday}
-              </div>
-              <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>К повторению сегодня</div>
-            </div>
-            <div style={{ padding: 'var(--space-3)', backgroundColor: 'rgba(255, 255, 255, 0.02)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontSize: 'var(--font-size-xl)', fontWeight: 'bold', color: 'var(--color-accent)' }}>
-                {fsrsStats.avgInterval} дн.
-              </div>
-              <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>Средний интервал</div>
-            </div>
-            <div style={{ padding: 'var(--space-3)', backgroundColor: 'rgba(255, 255, 255, 0.02)', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ fontSize: 'var(--font-size-xl)', fontWeight: 'bold', color: 'var(--color-success)' }}>
-                {fsrsStats.avgEaseFactor}
-              </div>
-              <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>Коэффициент прочности</div>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Moved Widget: Recent Activity Timeline */}
+      {/* Recent Activity Timeline */}
       <TodayActivity logs={logs} />
-
-      {/* Dynamic Achievements */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-        <Typography variant="h2">🏅 Достижения и Вехи</Typography>
-
-        <div className={styles.achievementsGrid}>
-          {achievements.map((ach) => (
-            <div
-              key={ach.id}
-              className={`${styles.achievementCard} ${ach.isUnlocked ? styles.achievementCardUnlocked : ''}`}
-            >
-              <span style={{ fontSize: '28px', opacity: ach.isUnlocked ? 1 : 0.4 }}>{ach.icon}</span>
-              <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <span
-                  style={{
-                    fontWeight: 'var(--font-weight-semibold)',
-                    color: ach.isUnlocked ? 'var(--color-text-primary)' : 'var(--color-text-muted)',
-                  }}
-                >
-                  {ach.title}
-                </span>
-                <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-                  {ach.description}
-                </span>
-                <span
-                  style={{
-                    fontSize: 'var(--font-size-xs)',
-                    fontWeight: 'bold',
-                    marginTop: '4px',
-                    color: ach.isUnlocked ? 'var(--color-success)' : 'var(--color-text-muted)',
-                  }}
-                >
-                  {ach.isUnlocked ? '✓ Разблокировано' : ach.progressText}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
     </div>
   );
 };

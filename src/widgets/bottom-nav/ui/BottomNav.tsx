@@ -10,16 +10,20 @@ export const BottomNav: React.FC = () => {
   const pathname = usePathname();
   const openModal = useQuickCreateModalStore((s) => s.openModal);
 
-  const navItems = [
+  const navItemsLeft = [
     { label: 'Сегодня', href: '/today', icon: '☀️' },
     { label: 'Входящие', href: '/inbox', icon: '📥' },
-    { label: 'Цели', href: '/goals', icon: '🏆' },
+  ];
+
+  const navItemsRight = [
+    { label: 'Повторить', href: '/repeats', icon: '🔄' },
     { label: 'Календарь', href: '/calendar', icon: '📅' },
+    { label: 'Статистика', href: '/statistics', icon: '📊' },
   ];
 
   return (
     <nav className={styles.bottomNav}>
-      {navItems.slice(0, 2).map((item) => {
+      {navItemsLeft.map((item) => {
         const isActive = pathname === item.href || (item.href === '/today' && pathname === '/');
         return (
           <Link
@@ -43,7 +47,7 @@ export const BottomNav: React.FC = () => {
         ➕
       </button>
 
-      {navItems.slice(2).map((item) => {
+      {navItemsRight.map((item) => {
         const isActive = pathname === item.href;
         return (
           <Link

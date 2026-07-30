@@ -10,9 +10,8 @@ type FilterType = 'all' | 'today' | 'pinned';
 
 export const InboxPage: React.FC = () => {
   const { items, isLoading, fetchItems, addItem, updateItem, togglePin, deleteItem } = useInboxStore();
-  
+
   const [quickInput, setQuickInput] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState('');
@@ -43,18 +42,11 @@ export const InboxPage: React.FC = () => {
     setEditingId(null);
   };
 
-  // Stage 5 & 6: Search & Filtering
   const todayStr = new Date().toISOString().split('T')[0];
 
   const filteredItems = items.filter((item) => {
-    // Search query filter
-    if (searchQuery.trim() && !item.text.toLowerCase().includes(searchQuery.toLowerCase())) {
-      return false;
-    }
-    // Filter tab
     if (activeFilter === 'pinned' && !item.isPinned) return false;
     if (activeFilter === 'today' && !item.createdAt.startsWith(todayStr)) return false;
-
     return true;
   });
 
@@ -69,14 +61,14 @@ export const InboxPage: React.FC = () => {
 
         <form onSubmit={handleQuickCapture} style={{ marginTop: 'var(--space-2)' }}>
           <Input
-            placeholder="Новая идея... (Нажмите Enter для мгновенного сохранения)"
+            placeholder="Новая идея..."
             value={quickInput}
             onChange={(e) => setQuickInput(e.target.value)}
           />
         </form>
       </Card>
 
-      {/* Controls Bar (Filter Tabs & Search Input) */}
+      {/* Controls Bar (Filter Tabs) */}
       <div className={styles.controlsBar}>
         <div className={styles.filterTabs}>
           <button
@@ -97,14 +89,6 @@ export const InboxPage: React.FC = () => {
           >
             📌 Закрепленные ({items.filter((i) => i.isPinned).length})
           </button>
-        </div>
-
-        <div style={{ minWidth: '220px' }}>
-          <Input
-            placeholder="🔍 Поиск по заметкам..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
         </div>
       </div>
 
@@ -156,7 +140,7 @@ export const InboxPage: React.FC = () => {
                 </div>
               )}
 
-              {/* Stage 4: Quick Actions */}
+              {/* Quick Actions */}
               <div className={styles.itemActions}>
                 <Button
                   variant="primary"
@@ -198,7 +182,7 @@ export const InboxPage: React.FC = () => {
         )}
       </div>
 
-      {/* Stage 3: Triage Modal */}
+      {/* Triage Modal */}
       {triageItem && (
         <TriageModal item={triageItem} onClose={() => setTriageItem(null)} />
       )}

@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { Button } from '@/shared/ui';
+import { useThemeStore } from '@/shared/model/useThemeStore';
 import styles from './TopBar.module.css';
 
 const pathTitles: Record<string, string> = {
@@ -11,6 +11,7 @@ const pathTitles: Record<string, string> = {
   '/inbox': 'Входящие',
   '/goals': 'Цели и Навыки',
   '/calendar': 'Календарь',
+  '/repeats': 'Повторить',
   '/statistics': 'Аналитика',
   '/settings': 'Настройки',
 };
@@ -18,15 +19,53 @@ const pathTitles: Record<string, string> = {
 export const TopBar: React.FC = () => {
   const pathname = usePathname();
   const currentTitle = pathTitles[pathname] || 'SkillFlow';
+  const isTodayPage = pathname === '/' || pathname === '/today';
+
+  const { theme, initTheme, toggleTheme } = useThemeStore();
+
+  useEffect(() => {
+    initTheme();
+  }, [initTheme]);
+
+  const todayFormatted = new Date().toLocaleDateString('ru-RU', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  });
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>{currentTitle}</h1>
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.title}>{currentTitle}</h1>
+        {isTodayPage && (
+          <span className={styles.dateSubtitle}>
+            • {todayFormatted}
+          </span>
+        )}
+      </div>
 
       <div className={styles.actions}>
-        <Button variant="secondary" size="sm">
-          <span>🔍</span> Поиск <kbd className={styles.shortcutKbd}>⌘K</kbd>
-        </Button>
+        <button
+          onClick={toggleTheme}
+          title={theme === 'dark' ? 'Переключить на светлую тему' : 'Переключить на темную тему'}
+          aria-label="Смена темы"
+          style={{
+            background: 'rgba(255, 255, 255, 0.06)',
+            border: '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-full)',
+            padding: '6px 12px',
+            color: 'var(--color-text-primary)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            fontSize: '13px',
+            fontWeight: 500,
+            transition: 'all var(--transition-fast)',
+          }}
+        >
+          {theme === 'dark' ? '🌙 Темная' : '☀️ Светлая'}
+        </button>
       </div>
     </header>
   );

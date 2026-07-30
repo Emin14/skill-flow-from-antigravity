@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
   { label: 'Входящие', href: '/inbox', icon: '📥' },
   { label: 'Цели', href: '/goals', icon: '🏆' },
   { label: 'Календарь', href: '/calendar', icon: '📅' },
+  { label: 'Повторить', href: '/repeats', icon: '🔄' },
   { label: 'Статистика', href: '/statistics', icon: '📊' },
   { label: 'Настройки', href: '/settings', icon: '⚙️' },
 ];
@@ -45,7 +46,7 @@ export const Sidebar: React.FC = () => {
         </button>
       </div>
 
-      {/* PC Create Action Button (Placed right before "Сегодня") */}
+      {/* PC Create Action Button */}
       <button
         onClick={() => openModal('Task')}
         className={`${styles.createBtn} ${isCollapsed ? styles.createBtnCollapsed : ''}`}
