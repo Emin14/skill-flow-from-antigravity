@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useQuickCreateModalStore } from '../model/quickCreateStore';
 import { useTaskStore } from '@/entities/task';
 import { useActivityStore } from '@/entities/activity';
-import { Typography, Input, Textarea, Button, Checkbox } from '@/shared/ui';
+import { Typography, Input, Textarea, Button } from '@/shared/ui';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import styles from './QuickCreateModal.module.css';
 
@@ -19,7 +19,6 @@ export const QuickCreateModal: React.FC = () => {
   const [link, setLink] = useState('');
   const [parentTaskId, setParentTaskId] = useState('');
   const [isRepeating, setIsRepeating] = useState(false);
-  const [targetRepetitions, setTargetRepetitions] = useState(8);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { tasks, fetchTasks, addTask } = useTaskStore();
@@ -56,7 +55,7 @@ export const QuickCreateModal: React.FC = () => {
         link: link.trim(),
         parentTaskId: parentTaskId || null,
         isRepeating,
-        targetRepetitions: Number(targetRepetitions) || 8,
+        targetRepetitions: 8,
       });
 
       await logActivity('task_created', `Создана задача: "${title.trim()}"`);
@@ -80,7 +79,18 @@ export const QuickCreateModal: React.FC = () => {
           <Typography variant="h2">➕ Создать задачу</Typography>
           <button
             onClick={closeModal}
-            style={{ background: 'none', border: 'none', color: 'var(--color-text-muted)', cursor: 'pointer', fontSize: '18px' }}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--color-text-muted)',
+              cursor: 'pointer',
+              fontSize: '22px',
+              width: '44px',
+              height: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
             ✕
           </button>
@@ -168,46 +178,33 @@ export const QuickCreateModal: React.FC = () => {
             </div>
           </div>
 
-          {/* Repetition Checkbox */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: 'var(--space-3) var(--space-4)',
-              borderRadius: 'var(--radius-md)',
-              backgroundColor: 'rgba(255, 255, 255, 0.02)',
-              border: '1px solid var(--color-border)',
-              flexWrap: 'wrap',
-              gap: 'var(--space-2)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-              <Checkbox checked={isRepeating} onChange={(e) => setIsRepeating(e.target.checked)} />
-              <div>
-                <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-                  🔄 Повторять задачу
-                </div>
-                <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-                  Попадет в раздел «Повторить» с трекером 8 повторений
-                </div>
-              </div>
-            </div>
-
-            {isRepeating && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-                <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>Цель:</span>
-                <input
-                  type="number"
-                  min="1"
-                  max="100"
-                  value={targetRepetitions}
-                  onChange={(e) => setTargetRepetitions(Number(e.target.value))}
-                  className={styles.selectInput}
-                  style={{ width: '60px', padding: '4px 8px', textAlign: 'center' }}
-                />
-              </div>
-            )}
+          {/* Pure Borderless Illuminated Icon Toggle Button */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+            <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>
+              Повторение:
+            </span>
+            <button
+              type="button"
+              onClick={() => setIsRepeating(!isRepeating)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: isRepeating ? '#10b981' : 'var(--color-text-muted)',
+                filter: isRepeating ? 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.85))' : 'none',
+                opacity: isRepeating ? 1 : 0.4,
+                transform: isRepeating ? 'scale(1.2)' : 'scale(1)',
+                fontSize: '22px',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '6px',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+              title={isRepeating ? 'Повторение включено' : 'Включить повторение'}
+            >
+              🔄
+            </button>
           </div>
 
           {/* Action Buttons */}

@@ -6,6 +6,8 @@ export type TaskPriority = 'P1' | 'P2' | 'P3' | 'P4';
 export interface TaskRepetitionRecord {
   date: string;
   completed: boolean;
+  pomodorosCount?: number;
+  activeMinutes?: number;
 }
 
 export interface Task {
@@ -28,6 +30,9 @@ export interface Task {
   goalId?: string | null;
   createdAt: string;
   startedAt?: string | null;
+  lastStartedAt?: string | null;
+  totalActiveSeconds?: number;
   completedAt?: string | null;
   pomodorosCount?: number;
+  seriesId?: string; // Links repeating task instances together
 }

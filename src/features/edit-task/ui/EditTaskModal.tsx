@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Task } from '@/entities/task/model/types';
 import { useTaskStore } from '@/entities/task';
-import { Typography, Input, Textarea, Button, Checkbox } from '@/shared/ui';
+import { Typography, Input, Textarea, Button } from '@/shared/ui';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import styles from './EditTaskModal.module.css';
 
@@ -11,10 +11,16 @@ interface EditTaskModalProps {
   task: Task | null;
   isOpen: boolean;
   onClose: () => void;
+  onSaveSuccess?: (taskData: Partial<Task>) => void;
 }
 
-export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose }) => {
-  const { tasks, updateTaskDetails, deleteTask } = useTaskStore();
+export const EditTaskModal: React.FC<EditTaskModalProps> = ({
+  task,
+  isOpen,
+  onClose,
+  onSaveSuccess,
+}) => {
+  const { tasks, addTask, updateTaskDetails, deleteTask } = useTaskStore();
 
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState<TaskCategory>('Задача');
@@ -23,7 +29,6 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const [link, setLink] = useState('');
   const [parentTaskId, setParentTaskId] = useState('');
   const [isRepeating, setIsRepeating] = useState(false);
-  const [targetRepetitions, setTargetRepetitions] = useState(8);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -35,7 +40,6 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
       setLink(task.link || '');
       setParentTaskId(task.parentTaskId || '');
       setIsRepeating(!!task.isRepeating);
-      setTargetRepetitions(task.targetRepetitions || 8);
     }
   }, [task, isOpen]);
 
@@ -59,7 +63,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
     setIsSubmitting(true);
     try {
-      await updateTaskDetails(task.id, {
+      const taskData: Partial<Task> = {
         title: title.trim(),
         category,
         scheduledDate,
@@ -67,8 +71,27 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         link: link.trim(),
         parentTaskId: parentTaskId || null,
         isRepeating,
-        targetRepetitions: Number(targetRepetitions) || 8,
-      });
+        targetRepetitions: 8,
+      };
+
+      if (task.id.startsWith('draft-')) {
+        // Create new task from draft
+        await addTask({
+          title: title.trim(),
+          category,
+          scheduledDate,
+          description: description.trim(),
+          link: link.trim(),
+          parentTaskId: parentTaskId || null,
+          isRepeating,
+          targetRepetitions: 8,
+        });
+      } else {
+        // Update existing task
+        await updateTaskDetails(task.id, taskData);
+      }
+
+      onSaveSuccess?.(taskData);
       onClose();
     } finally {
       setIsSubmitting(false);
@@ -76,6 +99,10 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   };
 
   const handleDelete = async () => {
+    if (task.id.startsWith('draft-')) {
+      onClose();
+      return;
+    }
     if (confirm(`Удалить задачу "${task.title}"?`)) {
       await deleteTask(task.id);
       onClose();
@@ -90,17 +117,19 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h2">✏️ Редактировать задачу</Typography>
+          <Typography variant="h2">✏️ {task.id.startsWith('draft-') ? 'Разобрать в задачу' : 'Редактировать задачу'}</Typography>
           <button
             onClick={onClose}
-            style={{ background: 'none', border: 'none', color: 'var(--color-text-muted)', cursor: 'pointer', fontSize: '18px' }}
+            className={styles.closeBtn}
+            aria-label="Закрыть"
+            title="Закрыть"
           >
             ✕
           </button>
         </div>
 
         {/* Visual Repetition Progress Box with Filled Sticks */}
-        {task.isRepeating && (
+        {task.isRepeating && !task.id.startsWith('draft-') && (
           <div
             style={{
               display: 'flex',
@@ -228,56 +257,46 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             </div>
           </div>
 
-          {/* Repetition */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: 'var(--space-3) var(--space-4)',
-              borderRadius: 'var(--radius-md)',
-              backgroundColor: 'rgba(255, 255, 255, 0.02)',
-              border: '1px solid var(--color-border)',
-              flexWrap: 'wrap',
-              gap: 'var(--space-2)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-              <Checkbox checked={isRepeating} onChange={(e) => setIsRepeating(e.target.checked)} />
-              <div>
-                <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-                  🔄 Повторять задачу
-                </div>
-              </div>
-            </div>
-
-            {isRepeating && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-                <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>Цель:</span>
-                <input
-                  type="number"
-                  min="1"
-                  max="100"
-                  value={targetRepetitions}
-                  onChange={(e) => setTargetRepetitions(Number(e.target.value))}
-                  className={styles.selectInput}
-                  style={{ width: '60px', padding: '4px 8px', textAlign: 'center' }}
-                />
-              </div>
-            )}
+          {/* Pure Borderless Illuminated Icon Toggle Button */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+            <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>
+              Повторение:
+            </span>
+            <button
+              type="button"
+              onClick={() => setIsRepeating(!isRepeating)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: isRepeating ? '#10b981' : 'var(--color-text-muted)',
+                filter: isRepeating ? 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.85))' : 'none',
+                opacity: isRepeating ? 1 : 0.4,
+                transform: isRepeating ? 'scale(1.2)' : 'scale(1)',
+                fontSize: '22px',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '6px',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+              title={isRepeating ? 'Повторение включено' : 'Включить повторение'}
+            >
+              🔄
+            </button>
           </div>
 
           {/* Actions */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'var(--space-2)' }}>
-            <Button type="button" variant="ghost" onClick={handleDelete} style={{ color: 'var(--color-error)' }}>
-              🗑 Удалить
+            <Button type="button" variant="ghost" onClick={handleDelete} style={{ color: 'var(--color-error)', minHeight: '44px' }}>
+              {task.id.startsWith('draft-') ? 'Отмена' : '🗑 Удалить'}
             </Button>
 
             <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-              <Button type="button" variant="secondary" onClick={onClose}>
+              <Button type="button" variant="secondary" onClick={onClose} style={{ minHeight: '44px' }}>
                 Отмена
               </Button>
-              <Button type="submit" variant="primary" disabled={!title.trim() || isSubmitting}>
+              <Button type="submit" variant="primary" disabled={!title.trim() || isSubmitting} style={{ minHeight: '44px' }}>
                 Сохранить
               </Button>
             </div>

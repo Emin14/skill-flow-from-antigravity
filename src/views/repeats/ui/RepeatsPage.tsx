@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
@@ -10,13 +10,40 @@ type ViewMode = '7' | '365';
 
 export const RepeatsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks } = useTaskStore();
-  const [globalViewMode, setGlobalViewMode] = useState<ViewMode>('365'); // Default to full matrix view
+  const [globalViewMode, setGlobalViewMode] = useState<ViewMode>('365');
 
   useEffect(() => {
     fetchTasks();
   }, [fetchTasks]);
 
-  const repeatingTasks = tasks.filter((t) => t.isRepeating);
+  // Group repeating tasks by seriesId or title so each repeating task series appears EXACTLY ONCE
+  const uniqueRepeatingTasks = useMemo(() => {
+    const repeatingTasks = tasks.filter((t) => t.isRepeating);
+    const seriesMap = new Map<string, Task>();
+
+    repeatingTasks.forEach((t) => {
+      const key = t.seriesId || t.title.toLowerCase().trim();
+      if (!seriesMap.has(key)) {
+        seriesMap.set(key, t);
+      } else {
+        const existing = seriesMap.get(key)!;
+        const mergedHistory = [
+          ...(existing.repetitionHistory || []),
+          ...(t.repetitionHistory || []),
+        ].filter((h, idx, self) => self.findIndex((x) => x.date === h.date) === idx);
+
+        const maxCount = Math.max(existing.repetitionsCount || 0, t.repetitionsCount || 0, mergedHistory.length);
+
+        seriesMap.set(key, {
+          ...existing,
+          repetitionsCount: maxCount,
+          repetitionHistory: mergedHistory,
+        });
+      }
+    });
+
+    return Array.from(seriesMap.values());
+  }, [tasks]);
 
   return (
     <div className={styles.container}>
@@ -28,27 +55,27 @@ export const RepeatsPage: React.FC = () => {
         </Typography>
       </Card>
 
-      {/* List of Repeating Task Matrix Cards */}
+      {/* List of Unique Repeating Task Matrix Cards */}
       {isLoading ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
             Загрузка задач...
           </Typography>
         </Card>
-      ) : repeatingTasks.length === 0 ? (
+      ) : uniqueRepeatingTasks.length === 0 ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)' }}>
             🌱 У вас пока нет задач в разделе повторения.
           </Typography>
           <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
-            Создайте новую задачу и отметьте чекбокс «Повторять».
+            Создайте новую задачу и включите иконку «Повторять».
           </Typography>
         </Card>
       ) : (
         <div className={styles.repeatsList}>
-          {repeatingTasks.map((task) => (
+          {uniqueRepeatingTasks.map((task, idx) => (
             <RepeatingMatrixCard
-              key={task.id}
+              key={`${task.id}-${idx}`}
               task={task}
               viewMode={globalViewMode}
             />
@@ -56,7 +83,7 @@ export const RepeatsPage: React.FC = () => {
         </div>
       )}
 
-      {/* Icon-Only Switcher at the bottom (Sticky near bottom navigation) */}
+      {/* Icon-Only Switcher at the bottom */}
       <div className={styles.bottomToggleWrapper}>
         <div className={styles.pillSegmentControl} role="tablist" aria-label="Режим отображения">
           {/* Icon 1: 7 days view (Grid Icon) */}
@@ -95,6 +122,13 @@ export const RepeatsPage: React.FC = () => {
   );
 };
 
+const formatDateStr = (y: number, m: number, d: number): string => {
+  const year = y;
+  const month = String(m + 1).padStart(2, '0');
+  const day = String(d).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
 const RepeatingMatrixCard: React.FC<{
   task: Task;
   viewMode: ViewMode;
@@ -102,7 +136,7 @@ const RepeatingMatrixCard: React.FC<{
   const currentCount = task.repetitionsCount || 0;
   const targetCount = task.targetRepetitions || 8;
 
-  // 7-day cells OR 24-column Matrix (168 dots fitting 100% without scroll)
+  // 7-day cells OR 24-column Matrix
   const cols = viewMode === '7' ? 1 : 24;
   const totalDays = cols * 7;
 
@@ -110,7 +144,7 @@ const RepeatingMatrixCard: React.FC<{
   for (let i = totalDays - 1; i >= 0; i--) {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    const dateStr = d.toISOString().split('T')[0];
+    const dateStr = formatDateStr(d.getFullYear(), d.getMonth(), d.getDate());
     const isDone = task.repetitionHistory?.some((h) => h.date === dateStr && h.completed);
 
     gridCells.push({
@@ -131,7 +165,7 @@ const RepeatingMatrixCard: React.FC<{
 
   return (
     <div className={styles.matrixCard}>
-      {/* Card Header (Matching Screenshot: Icon badge + Title) */}
+      {/* Card Header */}
       <div className={styles.cardHeader}>
         <div className={styles.iconBadge}>
           {getCategoryIcon(task.category)}
@@ -158,7 +192,6 @@ const RepeatingMatrixCard: React.FC<{
           ))}
         </div>
       ) : (
-        /* Matrix Grid (7 rows x 24 columns = 168 dots, 100% width, ZERO scroll) */
         <div className={styles.matrixGrid}>
           {gridCells.map((cell) => (
             <div

@@ -30,6 +30,28 @@
   box-sizing: border-box;
 }
 
+.closeBtn {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.closeBtn:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
 .formRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -57,6 +79,32 @@
   border-color: var(--color-accent);
 }
 
+/* Illuminated Repeat Toggle Button (Item 9) */
+.repeatToggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  min-height: 44px;
+}
+
+.repeatToggleBtnActive {
+  background-color: rgba(16, 185, 129, 0.12);
+  border-color: #10b981;
+  color: #10b981;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.25);
+}
+
 @media (max-width: 600px) {
   .overlay {
     padding: var(--space-3);
@@ -66,11 +114,22 @@
   .modal {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    max-height: 85vh;
-    padding: var(--space-4);
+    max-height: 88vh;
+    padding: 20px;
   }
 
   .formRow {
     grid-template-columns: 1fr;
+  }
+
+  .selectInput {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .closeBtn {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
   }
 }

@@ -8,9 +8,8 @@ export const HabitProgressBanner: React.FC = () => {
   const tasks = useTaskStore((s) => s.tasks);
   const todayStr = new Date().toISOString().split('T')[0];
 
-  const todayTasks = tasks.filter(
-    (t) => t.scheduledDate === todayStr || t.completedAt?.startsWith(todayStr)
-  );
+  // Strictly filter tasks whose scheduledDate === todayStr
+  const todayTasks = tasks.filter((t) => t.scheduledDate === todayStr);
 
   const totalCount = todayTasks.length;
   const doneCount = todayTasks.filter((t) => t.status === 'Done').length;

@@ -7,13 +7,41 @@ import { useTaskStore } from '@/entities/task';
 import { useTopicStore } from '@/entities/topic';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
+import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import styles from './CalendarPage.module.css';
 
+const formatDateStr = (y: number, m: number, d: number): string => {
+  const year = y;
+  const month = String(m + 1).padStart(2, '0');
+  const day = String(d).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const formatSelectedDateTitle = (dateStr: string) => {
+  if (!dateStr || !dateStr.includes('-')) return dateStr;
+  const parts = dateStr.split('-').map(Number);
+  const d = new Date(parts[0], parts[1] - 1, parts[2]);
+  return d.toLocaleDateString('ru-RU', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+};
+
 export const CalendarPage: React.FC = () => {
-  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
+  const todayStr = useMemo(() => {
+    const now = new Date();
+    return formatDateStr(now.getFullYear(), now.getMonth(), now.getDate());
+  }, []);
+
   const [selectedDate, setSelectedDate] = useState<string>(todayStr);
   const [currentMonthDate, setCurrentMonthDate] = useState<Date>(new Date());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [detailTask, setDetailTask] = useState<Task | null>(null);
+
+  // Swipe gesture tracking
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTask } = useTaskStore();
   const { topics, fetchTopics } = useTopicStore();
@@ -35,7 +63,25 @@ export const CalendarPage: React.FC = () => {
   const handleGoToToday = () => {
     const now = new Date();
     setCurrentMonthDate(now);
-    setSelectedDate(now.toISOString().split('T')[0]);
+    setSelectedDate(formatDateStr(now.getFullYear(), now.getMonth(), now.getDate()));
+  };
+
+  // Touch Swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+
+    if (diff > 45) {
+      handleNextMonth();
+    } else if (diff < -45) {
+      handlePrevMonth();
+    }
+    setTouchStart(null);
   };
 
   // Generate full month matrix grid
@@ -46,7 +92,6 @@ export const CalendarPage: React.FC = () => {
     const firstDayOfMonth = new Date(year, month, 1);
     const lastDayOfMonth = new Date(year, month + 1, 0);
 
-    // Get JS day index (0 = Sun, 1 = Mon ... 6 = Sat), map to Mon=0 ... Sun=6
     const jsFirstDay = firstDayOfMonth.getDay();
     const startPadding = jsFirstDay === 0 ? 6 : jsFirstDay - 1;
 
@@ -56,13 +101,12 @@ export const CalendarPage: React.FC = () => {
     for (let i = 0; i < totalCells; i++) {
       const dayOffset = i - startPadding + 1;
       const cellDate = new Date(year, month, dayOffset);
-      const dateStr = cellDate.toISOString().split('T')[0];
+      const dateStr = formatDateStr(cellDate.getFullYear(), cellDate.getMonth(), cellDate.getDate());
       const dayNum = cellDate.getDate();
       const isCurrentMonth = cellDate.getMonth() === month;
 
-      const dateTasks = tasks.filter(
-        (t) => t.scheduledDate === dateStr || t.completedAt?.startsWith(dateStr)
-      );
+      // Filter tasks assigned strictly to dateStr by scheduledDate ONLY
+      const dateTasks = tasks.filter((t) => t.scheduledDate === dateStr);
       const doneCount = dateTasks.filter((t) => t.status === 'Done').length;
 
       days.push({
@@ -77,11 +121,9 @@ export const CalendarPage: React.FC = () => {
     return days;
   }, [currentMonthDate, todayStr, tasks]);
 
-  // Tasks for selected date
+  // Tasks for selected date (Strict matching by scheduledDate ONLY)
   const selectedDayTasks = useMemo(() => {
-    return tasks.filter(
-      (t) => t.scheduledDate === selectedDate || t.completedAt?.startsWith(selectedDate)
-    );
+    return tasks.filter((t) => t.scheduledDate === selectedDate);
   }, [tasks, selectedDate]);
 
   const monthTitleStr = currentMonthDate.toLocaleDateString('ru-RU', {
@@ -89,18 +131,24 @@ export const CalendarPage: React.FC = () => {
     year: 'numeric',
   });
 
-  const selectedDateObj = new Date(selectedDate);
-  const formattedSelectedDate = selectedDateObj.toLocaleDateString('ru-RU', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
+  const formattedSelectedDate = formatSelectedDateTitle(selectedDate);
+
+  const handleTaskClick = (task: Task) => {
+    if (task.isRepeating) {
+      setDetailTask(task);
+    } else {
+      setEditingTask(task);
+    }
+  };
 
   return (
     <div className={styles.container}>
-      {/* 7-Column Calendar Grid with Full Month/Year Navigation */}
-      <div className={styles.calendarCard}>
+      {/* 7-Column Calendar Grid */}
+      <div
+        className={styles.calendarCard}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {/* Month Navigation Header */}
         <div className={styles.monthNavHeader}>
           <div className={styles.monthTitle}>
@@ -163,11 +211,11 @@ export const CalendarPage: React.FC = () => {
               >
                 <span className={styles.dayNum}>{day.dayNum}</span>
 
-                {/* Task Indicator Dot */}
+                {/* Vibrant Green Task Indicator Dot */}
                 <div className={styles.taskDots}>
                   {day.tasksCount > 0 && (
                     <div
-                      className={`${styles.dot} ${day.doneCount === day.tasksCount ? styles.dotDone : ''}`}
+                      className={`${styles.dot} ${day.doneCount > 0 ? styles.dotDone : ''}`}
                     />
                   )}
                 </div>
@@ -207,7 +255,7 @@ export const CalendarPage: React.FC = () => {
           </div>
         ) : (
           <div className={styles.taskList}>
-            {selectedDayTasks.map((task) => {
+            {selectedDayTasks.map((task, idx) => {
               const linkedTopic = task.topicId ? topics.find((t) => t.id === task.topicId) : null;
               const isDone = task.status === 'Done';
               const completedTimeStr = task.completedAt
@@ -216,11 +264,11 @@ export const CalendarPage: React.FC = () => {
 
               return (
                 <div
-                  key={task.id}
+                  key={`${task.id}-${idx}`}
                   className={styles.taskRow}
-                  onClick={() => setEditingTask(task)}
+                  onClick={() => handleTaskClick(task)}
                   style={{ cursor: 'pointer' }}
-                  title="Нажмите на карточку для редактирования"
+                  title="Нажмите на карточку"
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flex: 1, minWidth: 0 }}>
                     <div onClick={(e) => e.stopPropagation()}>
@@ -262,7 +310,7 @@ export const CalendarPage: React.FC = () => {
                       e.stopPropagation();
                       deleteTask(task.id);
                     }}
-                    style={{ color: 'var(--color-text-muted)' }}
+                    style={{ color: 'var(--color-text-muted)', minWidth: '40px', minHeight: '40px' }}
                   >
                     🗑
                   </Button>
@@ -278,6 +326,17 @@ export const CalendarPage: React.FC = () => {
         task={editingTask}
         isOpen={!!editingTask}
         onClose={() => setEditingTask(null)}
+      />
+
+      {/* Repeating Task Detail / History Modal */}
+      <RepeatingTaskDetailModal
+        task={detailTask}
+        isOpen={!!detailTask}
+        onClose={() => setDetailTask(null)}
+        onOpenEdit={() => {
+          setEditingTask(detailTask);
+          setDetailTask(null);
+        }}
       />
     </div>
   );

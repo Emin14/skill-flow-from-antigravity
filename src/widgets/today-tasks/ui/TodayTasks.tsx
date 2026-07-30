@@ -7,6 +7,7 @@ import { useTaskStore } from '@/entities/task';
 import { useTopicStore } from '@/entities/topic';
 import { Task, TaskStatus } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
+import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import styles from './TodayTasks.module.css';
 
 const getShortLink = (url: string) => {
@@ -18,20 +19,31 @@ const getShortLink = (url: string) => {
   }
 };
 
+const formatActiveDuration = (task: Task): string | null => {
+  let totalSec = task.totalActiveSeconds || 0;
+  if (task.status === 'InProgress' && task.lastStartedAt) {
+    const startedMs = new Date(task.lastStartedAt).getTime();
+    const elapsedSec = Math.max(0, Math.round((Date.now() - startedMs) / 1000));
+    totalSec += elapsedSec;
+  }
+  if (totalSec <= 0) return null;
+  const mins = Math.max(1, Math.round(totalSec / 60));
+  return `${mins} мин`;
+};
+
 export const TodayTasks: React.FC = () => {
-  const { tasks, toggleTaskStatus, updateTaskStatus, updateTaskPomodoros, deleteTask } = useTaskStore();
+  const { tasks, toggleTaskStatus, updateTaskStatus, updateTaskDetails, updateTaskPomodoros, deleteTask } = useTaskStore();
   const { topics } = useTopicStore();
 
   const [draggedTaskId, setDraggedTaskId] = useState<string | null>(null);
   const [dragOverColumn, setDragOverColumn] = useState<TaskStatus | null>(null);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [detailTask, setDetailTask] = useState<Task | null>(null);
 
   const todayStr = new Date().toISOString().split('T')[0];
 
-  // Filter today's tasks
-  const todayTasks = tasks.filter(
-    (t) => t.scheduledDate === todayStr || t.completedAt?.startsWith(todayStr)
-  );
+  // Strictly filter today's tasks by scheduledDate
+  const todayTasks = tasks.filter((t) => t.scheduledDate === todayStr);
 
   const pendingTasks = todayTasks.filter((t) => t.status === 'Todo');
   const inProgressTasks = todayTasks.filter((t) => t.status === 'InProgress');
@@ -64,6 +76,14 @@ export const TodayTasks: React.FC = () => {
     setDraggedTaskId(null);
   };
 
+  const handleTaskClick = (task: Task) => {
+    if (task.isRepeating) {
+      setDetailTask(task);
+    } else {
+      setEditingTask(task);
+    }
+  };
+
   return (
     <div className={styles.container}>
       {/* 3 Vertical Kanban Sections */}
@@ -82,9 +102,10 @@ export const TodayTasks: React.FC = () => {
           onDragStart={handleDragStart}
           onCheckboxToggle={(id) => updateTaskStatus(id, 'Done')}
           onUpdateStatus={updateTaskStatus}
+          onUpdateDetails={updateTaskDetails}
           onUpdatePomodoros={updateTaskPomodoros}
           onDeleteTask={deleteTask}
-          onEditTask={(t) => setEditingTask(t)}
+          onTaskClick={handleTaskClick}
         />
 
         {/* Column 2: В процессе */}
@@ -101,9 +122,10 @@ export const TodayTasks: React.FC = () => {
           onDragStart={handleDragStart}
           onCheckboxToggle={(id) => updateTaskStatus(id, 'Done')}
           onUpdateStatus={updateTaskStatus}
+          onUpdateDetails={updateTaskDetails}
           onUpdatePomodoros={updateTaskPomodoros}
           onDeleteTask={deleteTask}
-          onEditTask={(t) => setEditingTask(t)}
+          onTaskClick={handleTaskClick}
         />
 
         {/* Column 3: Выполнено */}
@@ -120,9 +142,10 @@ export const TodayTasks: React.FC = () => {
           onDragStart={handleDragStart}
           onCheckboxToggle={(id) => toggleTaskStatus(id)}
           onUpdateStatus={updateTaskStatus}
+          onUpdateDetails={updateTaskDetails}
           onUpdatePomodoros={updateTaskPomodoros}
           onDeleteTask={deleteTask}
-          onEditTask={(t) => setEditingTask(t)}
+          onTaskClick={handleTaskClick}
         />
       </div>
 
@@ -131,6 +154,17 @@ export const TodayTasks: React.FC = () => {
         task={editingTask}
         isOpen={!!editingTask}
         onClose={() => setEditingTask(null)}
+      />
+
+      {/* Modal for Repeating Task Detail / History */}
+      <RepeatingTaskDetailModal
+        task={detailTask}
+        isOpen={!!detailTask}
+        onClose={() => setDetailTask(null)}
+        onOpenEdit={() => {
+          setEditingTask(detailTask);
+          setDetailTask(null);
+        }}
       />
     </div>
   );
@@ -149,9 +183,10 @@ const KanbanColumn: React.FC<{
   onDragStart: (e: React.DragEvent, id: string) => void;
   onCheckboxToggle: (id: string) => void;
   onUpdateStatus: (id: string, status: TaskStatus) => void;
+  onUpdateDetails: (id: string, updates: Partial<Task>) => void;
   onUpdatePomodoros: (id: string, count: number) => void;
   onDeleteTask: (id: string) => void;
-  onEditTask: (task: Task) => void;
+  onTaskClick: (task: Task) => void;
 }> = ({
   title,
   count,
@@ -165,9 +200,10 @@ const KanbanColumn: React.FC<{
   onDragStart,
   onCheckboxToggle,
   onUpdateStatus,
+  onUpdateDetails,
   onUpdatePomodoros,
   onDeleteTask,
-  onEditTask,
+  onTaskClick,
 }) => {
   return (
     <div
@@ -192,33 +228,17 @@ const KanbanColumn: React.FC<{
             const isInProgress = task.status === 'InProgress';
             const linkedTopic = task.topicId ? topics.find((tp) => tp.id === task.topicId) : null;
 
-            let durationMinutes: number | null = null;
-            if (task.startedAt && task.completedAt) {
-              const start = new Date(task.startedAt).getTime();
-              const end = new Date(task.completedAt).getTime();
-              durationMinutes = Math.max(1, Math.round((end - start) / (1000 * 60)));
-            }
-
-            const startTimeStr = task.startedAt
-              ? new Date(task.startedAt).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
-              : null;
-
-            const completedTimeStr = task.completedAt
-              ? new Date(task.completedAt).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
-              : null;
-
+            const activeDurationStr = formatActiveDuration(task);
             const pomodoros = task.pomodorosCount || 1;
-            const repetitionsCount = task.repetitionsCount || 0;
-            const targetRepetitions = task.targetRepetitions || 8;
 
             return (
               <div
                 key={task.id}
-                onClick={() => onEditTask(task)}
+                onClick={() => onTaskClick(task)}
                 className={`${styles.taskCard} ${isInProgress ? styles.taskCardInProgress : ''} ${
                   isDone ? styles.taskCardDone : ''
                 }`}
-                title="Нажмите в любое место блока для редактирования"
+                title="Нажмите на карточку"
               >
                 {/* Header: Checkbox + Title + Drag Handle + Trash */}
                 <div className={styles.cardHeader}>
@@ -246,18 +266,18 @@ const KanbanColumn: React.FC<{
                     <Button
                       variant="ghost"
                       size="sm"
+                      className={styles.trashBtn}
                       onClick={(e) => {
                         e.stopPropagation();
                         onDeleteTask(task.id);
                       }}
-                      style={{ color: 'var(--color-text-muted)', padding: '2px 4px' }}
                     >
                       🗑
                     </Button>
                   </div>
                 </div>
 
-                {/* Category, Topic, Short Link & Repetitions Ticks Badge */}
+                {/* Category, Topic, Short Link & ONLY Illuminated Repeat Toggle Icon */}
                 <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center', flexWrap: 'wrap' }}>
                   <span style={{ fontSize: '11px', color: 'var(--color-accent)' }}>🏷 {task.category}</span>
                   {linkedTopic && (
@@ -293,46 +313,39 @@ const KanbanColumn: React.FC<{
                     </a>
                   )}
 
-                  {/* Repetition Visual Sticks Badge */}
-                  {task.isRepeating && (
-                    <div
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        border: '1px solid rgba(16, 185, 129, 0.25)',
-                        padding: '2px 6px',
-                        borderRadius: 'var(--radius-sm)',
-                      }}
-                      title={`Пройдено ${repetitionsCount} из ${targetRepetitions} повторений`}
-                    >
-                      <span style={{ fontSize: '11px', color: '#10b981', fontWeight: 600 }}>
-                        🔄 {repetitionsCount}/{targetRepetitions}
-                      </span>
-                      <div style={{ display: 'flex', gap: '2px', alignItems: 'center' }}>
-                        {Array.from({ length: Math.min(8, targetRepetitions) }).map((_, i) => (
-                          <div
-                            key={i}
-                            style={{
-                              width: '3px',
-                              height: '9px',
-                              borderRadius: '1px',
-                              backgroundColor: i < repetitionsCount ? '#10b981' : 'rgba(255, 255, 255, 0.18)',
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  {/* Illuminated Repeat Toggle Icon ONLY */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onUpdateDetails(task.id, { isRepeating: !task.isRepeating, targetRepetitions: 8 });
+                    }}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: task.isRepeating ? '#10b981' : 'var(--color-text-muted)',
+                      filter: task.isRepeating ? 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.85))' : 'none',
+                      opacity: task.isRepeating ? 1 : 0.4,
+                      transform: task.isRepeating ? 'scale(1.2)' : 'scale(1)',
+                      fontSize: '18px',
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '4px',
+                      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                      marginLeft: 'auto',
+                    }}
+                    title={task.isRepeating ? 'Повторение включено' : 'Включить повторение'}
+                  >
+                    🔄
+                  </button>
                 </div>
 
-                {/* Meta Row: Timestamps, Duration & Pomodoros Manual Adjuster */}
+                {/* Meta Row: Cumulative Active Duration ONLY & Pomodoros Adjuster */}
                 <div className={styles.metaRow}>
                   <div className={styles.timeInfo}>
-                    {startTimeStr && <span>⚡ Начато в {startTimeStr}</span>}
-                    {completedTimeStr && <span>✓ Завершено в {completedTimeStr}</span>}
-                    {durationMinutes !== null && <span>⏱ ({durationMinutes} мин)</span>}
+                    {activeDurationStr && <span>⏱ ({activeDurationStr})</span>}
                   </div>
 
                   {/* Manual Pomodoro Adjustment Control */}

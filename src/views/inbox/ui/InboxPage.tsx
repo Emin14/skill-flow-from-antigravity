@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Typography, Button, Input } from '@/shared/ui';
 import { useInboxStore, InboxItem } from '@/entities/inbox';
-import { TriageModal } from '@/features/inbox-triage';
+import { Task } from '@/entities/task/model/types';
+import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
@@ -15,13 +16,16 @@ export const InboxPage: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState('');
-  const [triageItem, setTriageItem] = useState<InboxItem | null>(null);
+
+  // Triage state: keep track of item and draft task
+  const [triagingItem, setTriagingItem] = useState<InboxItem | null>(null);
+  const [triagingTask, setTriagingTask] = useState<Task | null>(null);
 
   useEffect(() => {
     fetchItems();
   }, [fetchItems]);
 
-  // Stage 2: Quick Capture (Enter -> Save)
+  // Quick Capture (Enter -> Save)
   const handleQuickCapture = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!quickInput.trim()) return;
@@ -40,6 +44,33 @@ export const InboxPage: React.FC = () => {
       await updateItem(id, editText.trim());
     }
     setEditingId(null);
+  };
+
+  // Prepare triage draft without deleting inbox item yet
+  const handleTriage = (item: InboxItem) => {
+    setTriagingItem(item);
+    setTriagingTask({
+      id: 'draft-' + item.id,
+      title: item.text,
+      status: 'Todo',
+      priority: 'P3',
+      category: 'Задача',
+      scheduledDate: new Date().toISOString().split('T')[0],
+      createdAt: new Date().toISOString(),
+      isRepeating: false,
+      targetRepetitions: 8,
+      repetitionsCount: 0,
+      repetitionHistory: [],
+      pomodorosCount: 1,
+    });
+  };
+
+  const handleSaveSuccess = async () => {
+    if (triagingItem) {
+      await deleteItem(triagingItem.id);
+    }
+    setTriagingItem(null);
+    setTriagingTask(null);
   };
 
   const todayStr = new Date().toISOString().split('T')[0];
@@ -145,8 +176,8 @@ export const InboxPage: React.FC = () => {
                 <Button
                   variant="primary"
                   size="sm"
-                  onClick={() => setTriageItem(item)}
-                  title="Разобрать запись в Цель, Тему или Задачу"
+                  onClick={() => handleTriage(item)}
+                  title="Разобрать запись в Задачу"
                 >
                   ✔ Разобрать
                 </Button>
@@ -182,10 +213,16 @@ export const InboxPage: React.FC = () => {
         )}
       </div>
 
-      {/* Triage Modal */}
-      {triageItem && (
-        <TriageModal item={triageItem} onClose={() => setTriageItem(null)} />
-      )}
+      {/* Standard Edit Task Modal for Triage */}
+      <EditTaskModal
+        task={triagingTask}
+        isOpen={!!triagingTask}
+        onClose={() => {
+          setTriagingTask(null);
+          setTriagingItem(null);
+        }}
+        onSaveSuccess={handleSaveSuccess}
+      />
     </div>
   );
 };
