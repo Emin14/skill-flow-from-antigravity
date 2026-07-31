@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Typography, Checkbox, Button } from '@/shared/ui';
+import { Typography, Checkbox } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { useTopicStore } from '@/entities/topic';
 import { Task } from '@/entities/task/model/types';
@@ -45,7 +45,7 @@ export const CalendarPage: React.FC = () => {
 
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTask } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus } = useTaskStore();
   const { topics, fetchTopics } = useTopicStore();
 
   useEffect(() => {
@@ -146,11 +146,7 @@ export const CalendarPage: React.FC = () => {
   const formattedSelectedDate = formatSelectedDateTitle(selectedDate);
 
   const handleTaskClick = (task: Task) => {
-    if (task.isRepeating) {
-      setDetailTask(task);
-    } else {
-      setEditingTask(task);
-    }
+    setDetailTask(task);
   };
 
   return (
@@ -209,7 +205,7 @@ export const CalendarPage: React.FC = () => {
             const classNames = [
               styles.dateCell,
               !day.isCurrentMonth ? styles.dateCellOtherMonth : '',
-              day.isToday ? styles.dateCellToday : '', // Requirement 4: Today date in GREEN!
+              day.isToday ? styles.dateCellToday : '',
               isSelected ? styles.dateCellActive : '',
             ]
               .filter(Boolean)
@@ -268,7 +264,6 @@ export const CalendarPage: React.FC = () => {
             {selectedDayTasks.map((task, idx) => {
               const linkedTopic = task.topicId ? topics.find((t) => t.id === task.topicId) : null;
               const isDone = task.status === 'Done';
-              const activeRating = task.lastSmartRating;
               const completedTimeStr = task.completedAt
                 ? new Date(task.completedAt).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
                 : null;
@@ -278,8 +273,8 @@ export const CalendarPage: React.FC = () => {
                   key={`${task.id}-${idx}`}
                   className={styles.taskRow}
                   onClick={() => handleTaskClick(task)}
-                  style={{ cursor: 'pointer', flexDirection: 'column', gap: '8px', alignItems: 'stretch' }}
-                  title="Нажмите на карточку"
+                  style={{ cursor: 'pointer' }}
+                  title="Нажмите для подробной информации"
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flex: 1, minWidth: 0 }}>
@@ -315,69 +310,9 @@ export const CalendarPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        deleteTask(task.id);
-                      }}
-                      style={{ color: 'var(--color-text-muted)', minWidth: '36px', minHeight: '36px', padding: '4px' }}
-                    >
-                      🗑
-                    </Button>
-                  </div>
-
-                  {/* Rating Emoji Buttons with Soft Glowing Highlight (Requirement 3) */}
-                  <div
-                    onClick={(e) => e.stopPropagation()}
-                    style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}
-                  >
-                    <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>Сложность:</span>
-                    <button
-                      type="button"
-                      className={`${styles.calendarRatingBtn} ${activeRating === 'easy' ? styles.calendarRatingActive : ''}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        updateTaskStatus(task.id, task.status, 'easy');
-                      }}
-                      title="Легко"
-                    >
-                      😄
-                    </button>
-                    <button
-                      type="button"
-                      className={`${styles.calendarRatingBtn} ${activeRating === 'normal' ? styles.calendarRatingActive : ''}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        updateTaskStatus(task.id, task.status, 'normal');
-                      }}
-                      title="Нормально"
-                    >
-                      🙂
-                    </button>
-                    <button
-                      type="button"
-                      className={`${styles.calendarRatingBtn} ${activeRating === 'hard' ? styles.calendarRatingActive : ''}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        updateTaskStatus(task.id, task.status, 'hard');
-                      }}
-                      title="Сложно"
-                    >
-                      😣
-                    </button>
-                    <button
-                      type="button"
-                      className={`${styles.calendarRatingBtn} ${activeRating === 'again' ? styles.calendarRatingActive : ''}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        updateTaskStatus(task.id, task.status, 'again');
-                      }}
-                      title="Не помню"
-                    >
-                      ❌
-                    </button>
+                    <div style={{ fontSize: '14px', color: 'var(--color-text-muted)', userSelect: 'none' }}>
+                      ⋮⋮⋮
+                    </div>
                   </div>
                 </div>
               );

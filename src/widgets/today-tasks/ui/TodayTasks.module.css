@@ -30,7 +30,7 @@
   transition: all 0.2s ease;
 }
 
-/* Subtle, soft tinted background highlights for each Kanban board (User Request) */
+/* Subtle, soft tinted background highlights for each Kanban board */
 .stageSectionTodo {
   background: rgba(56, 189, 248, 0.035);
   border: 1px solid rgba(56, 189, 248, 0.18);
@@ -111,8 +111,8 @@
 .taskCard {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 10px 12px;
+  gap: 8px;
+  padding: 11px 14px;
   border-radius: 16px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -169,10 +169,10 @@
   cursor: pointer;
 }
 
-/* Header Row: Checkbox, Title, Badge, Drag handle top-aligned */
+/* Header Row: Checkbox, Title & Drag Handle */
 .cardHeaderRow {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
   width: 100%;
@@ -180,7 +180,7 @@
 
 .titleArea {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
   flex: 1;
   min-width: 0;
@@ -206,10 +206,9 @@
   padding: 0 4px;
   user-select: none;
   line-height: 1;
-  margin-top: 2px;
 }
 
-/* Line 2: Category & Pomodoros on the EXACT SAME LINE */
+/* Line 2: Category Badge, Date, and Compact Status Select Badge */
 .metaInlineRow {
   display: flex;
   align-items: center;
@@ -222,89 +221,42 @@
 .categoryBadge {
   color: var(--color-accent);
   background-color: rgba(96, 165, 250, 0.1);
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(96, 165, 250, 0.2);
   white-space: nowrap;
+  font-size: 11.5px;
+  font-weight: 500;
 }
 
-.pomodoroSelectorInline {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.pomoBtn {
-  background: rgba(255, 255, 255, 0.04);
+/* Modern Compact Status Selector Badge on Card */
+.statusSelectBadge {
+  background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  border-radius: 6px;
-  padding: 1px 5px;
-  font-size: 11px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.pomoBtnActive {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: rgba(239, 68, 68, 0.4);
-  color: #ef4444;
+  color: var(--color-text-secondary);
+  border-radius: 8px;
+  padding: 2px 7px;
+  font-size: 11.5px;
   font-weight: 600;
-}
-
-/* Rating Emoji Buttons Bar */
-.ratingRow {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 2px;
-}
-
-.ratingBtn {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid transparent;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
+  outline: none;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
 }
 
-/* Glowing background highlight without harsh borders */
-.ratingEmojiSelected {
-  background: rgba(14, 165, 233, 0.22) !important;
-  color: #0ea5e9 !important;
-  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35) !important;
-  transform: scale(1.15) !important;
-  border-color: transparent !important;
-}
-
-/* Status Stage Action Pills inside card */
-.statusPillGroup {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-left: auto;
-}
-
-.statusPill {
-  font-size: 10.5px;
-  padding: 2px 6px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.statusPillActive {
-  background: rgba(14, 165, 233, 0.2);
-  border-color: #0ea5e9;
+.statusSelectBadgeTodo {
+  background-color: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
   color: #38bdf8;
-  font-weight: 600;
+}
+
+.statusSelectBadgeInProgress {
+  background-color: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.statusSelectBadgeDone {
+  background-color: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #10b981;
 }
