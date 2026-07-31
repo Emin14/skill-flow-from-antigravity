@@ -2,12 +2,14 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Button, Checkbox } from '@/shared/ui';
+import { Checkbox } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { useTopicStore } from '@/entities/topic';
 import { Task, TaskStatus } from '@/entities/task/model/types';
+import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
+import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
 import styles from './TodayTasks.module.css';
 
 const getShortLink = (url: string) => {
@@ -39,6 +41,7 @@ export const TodayTasks: React.FC = () => {
   const [dragOverColumn, setDragOverColumn] = useState<TaskStatus | null>(null);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [smartTask, setSmartTask] = useState<Task | null>(null);
 
   const todayStr = new Date().toISOString().split('T')[0];
 
@@ -48,6 +51,29 @@ export const TodayTasks: React.FC = () => {
   const pendingTasks = todayTasks.filter((t) => t.status === 'Todo');
   const inProgressTasks = todayTasks.filter((t) => t.status === 'InProgress');
   const completedTasks = todayTasks.filter((t) => t.status === 'Done');
+
+  const handleCheckboxToggle = (task: Task) => {
+    if (task.status !== 'Done' && task.repetitionMode === 'smart') {
+      setSmartTask(task);
+    } else {
+      toggleTaskStatus(task.id);
+    }
+  };
+
+  const handleStatusChange = (task: Task, newStatus: TaskStatus, smartRating?: SmartRating) => {
+    if (newStatus === 'Done' && task.repetitionMode === 'smart' && task.status !== 'Done' && !smartRating) {
+      setSmartTask(task);
+    } else {
+      updateTaskStatus(task.id, newStatus, smartRating);
+    }
+  };
+
+  const handleSelectSmartRating = (rating: SmartRating) => {
+    if (smartTask) {
+      updateTaskStatus(smartTask.id, 'Done', rating);
+      setSmartTask(null);
+    }
+  };
 
   // Drag and drop handlers
   const handleDragStart = (e: React.DragEvent, taskId: string) => {
@@ -66,22 +92,33 @@ export const TodayTasks: React.FC = () => {
     setDragOverColumn(null);
   };
 
-  const handleDrop = async (e: React.DragEvent, targetStatus: TaskStatus) => {
+  const handleDropColumn = async (e: React.DragEvent, targetStatus: TaskStatus) => {
     e.preventDefault();
     setDragOverColumn(null);
     const taskId = draggedTaskId || e.dataTransfer.getData('text/plain');
     if (taskId) {
-      await updateTaskStatus(taskId, targetStatus);
+      const task = tasks.find((t) => t.id === taskId);
+      if (task) {
+        handleStatusChange(task, targetStatus);
+      }
+    }
+    setDraggedTaskId(null);
+  };
+
+  // Drag task onto another task card to make it a subtask
+  const handleDropOnTaskCard = async (e: React.DragEvent, targetTask: Task) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const draggedId = draggedTaskId || e.dataTransfer.getData('text/plain');
+    if (draggedId && draggedId !== targetTask.id) {
+      await updateTaskDetails(targetTask.id, { hasSubtasks: true });
+      await updateTaskDetails(draggedId, { parentTaskId: targetTask.id });
     }
     setDraggedTaskId(null);
   };
 
   const handleTaskClick = (task: Task) => {
-    if (task.isRepeating) {
-      setDetailTask(task);
-    } else {
-      setEditingTask(task);
-    }
+    setDetailTask(task);
   };
 
   return (
@@ -98,10 +135,11 @@ export const TodayTasks: React.FC = () => {
           isDragOver={dragOverColumn === 'Todo'}
           onDragOver={(e) => handleDragOver(e, 'Todo')}
           onDragLeave={handleDragLeave}
-          onDrop={(e) => handleDrop(e, 'Todo')}
+          onDropColumn={(e) => handleDropColumn(e, 'Todo')}
+          onDropOnTaskCard={handleDropOnTaskCard}
           onDragStart={handleDragStart}
-          onCheckboxToggle={(id) => updateTaskStatus(id, 'Done')}
-          onUpdateStatus={updateTaskStatus}
+          onCheckboxToggle={(t) => handleCheckboxToggle(t)}
+          onUpdateStatus={(t, st, rating) => handleStatusChange(t, st, rating)}
           onUpdateDetails={updateTaskDetails}
           onUpdatePomodoros={updateTaskPomodoros}
           onDeleteTask={deleteTask}
@@ -118,10 +156,11 @@ export const TodayTasks: React.FC = () => {
           isDragOver={dragOverColumn === 'InProgress'}
           onDragOver={(e) => handleDragOver(e, 'InProgress')}
           onDragLeave={handleDragLeave}
-          onDrop={(e) => handleDrop(e, 'InProgress')}
+          onDropColumn={(e) => handleDropColumn(e, 'InProgress')}
+          onDropOnTaskCard={handleDropOnTaskCard}
           onDragStart={handleDragStart}
-          onCheckboxToggle={(id) => updateTaskStatus(id, 'Done')}
-          onUpdateStatus={updateTaskStatus}
+          onCheckboxToggle={(t) => handleCheckboxToggle(t)}
+          onUpdateStatus={(t, st, rating) => handleStatusChange(t, st, rating)}
           onUpdateDetails={updateTaskDetails}
           onUpdatePomodoros={updateTaskPomodoros}
           onDeleteTask={deleteTask}
@@ -138,10 +177,11 @@ export const TodayTasks: React.FC = () => {
           isDragOver={dragOverColumn === 'Done'}
           onDragOver={(e) => handleDragOver(e, 'Done')}
           onDragLeave={handleDragLeave}
-          onDrop={(e) => handleDrop(e, 'Done')}
+          onDropColumn={(e) => handleDropColumn(e, 'Done')}
+          onDropOnTaskCard={handleDropOnTaskCard}
           onDragStart={handleDragStart}
-          onCheckboxToggle={(id) => toggleTaskStatus(id)}
-          onUpdateStatus={updateTaskStatus}
+          onCheckboxToggle={(t) => handleCheckboxToggle(t)}
+          onUpdateStatus={(t, st, rating) => handleStatusChange(t, st, rating)}
           onUpdateDetails={updateTaskDetails}
           onUpdatePomodoros={updateTaskPomodoros}
           onDeleteTask={deleteTask}
@@ -156,7 +196,7 @@ export const TodayTasks: React.FC = () => {
         onClose={() => setEditingTask(null)}
       />
 
-      {/* Modal for Repeating Task Detail / History */}
+      {/* Modal for Habit Detail / Lifetime Grid / History */}
       <RepeatingTaskDetailModal
         task={detailTask}
         isOpen={!!detailTask}
@@ -165,6 +205,14 @@ export const TodayTasks: React.FC = () => {
           setEditingTask(detailTask);
           setDetailTask(null);
         }}
+      />
+
+      {/* Modal for Smart Repetition Rating */}
+      <SmartRatingModal
+        task={smartTask}
+        isOpen={!!smartTask}
+        onClose={() => setSmartTask(null)}
+        onSelectRating={handleSelectSmartRating}
       />
     </div>
   );
@@ -179,10 +227,11 @@ const KanbanColumn: React.FC<{
   isDragOver: boolean;
   onDragOver: (e: React.DragEvent) => void;
   onDragLeave: () => void;
-  onDrop: (e: React.DragEvent) => void;
+  onDropColumn: (e: React.DragEvent) => void;
+  onDropOnTaskCard: (e: React.DragEvent, targetTask: Task) => void;
   onDragStart: (e: React.DragEvent, id: string) => void;
-  onCheckboxToggle: (id: string) => void;
-  onUpdateStatus: (id: string, status: TaskStatus) => void;
+  onCheckboxToggle: (task: Task) => void;
+  onUpdateStatus: (task: Task, status: TaskStatus, smartRating?: SmartRating) => void;
   onUpdateDetails: (id: string, updates: Partial<Task>) => void;
   onUpdatePomodoros: (id: string, count: number) => void;
   onDeleteTask: (id: string) => void;
@@ -196,11 +245,11 @@ const KanbanColumn: React.FC<{
   isDragOver,
   onDragOver,
   onDragLeave,
-  onDrop,
+  onDropColumn,
+  onDropOnTaskCard,
   onDragStart,
   onCheckboxToggle,
   onUpdateStatus,
-  onUpdateDetails,
   onUpdatePomodoros,
   onDeleteTask,
   onTaskClick,
@@ -210,7 +259,7 @@ const KanbanColumn: React.FC<{
       className={`${styles.kanbanColumn} ${isDragOver ? styles.kanbanColumnDragOver : ''}`}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
-      onDrop={onDrop}
+      onDrop={onDropColumn}
     >
       <div className={styles.columnHeader}>
         <div className={styles.columnTitle}>
@@ -223,201 +272,343 @@ const KanbanColumn: React.FC<{
         {tasks.length === 0 ? (
           <div className={styles.emptyState}>Нет задач в этом статусе</div>
         ) : (
-          tasks.map((task) => {
-            const isDone = task.status === 'Done';
-            const isInProgress = task.status === 'InProgress';
-            const linkedTopic = task.topicId ? topics.find((tp) => tp.id === task.topicId) : null;
+          tasks.map((task) => (
+            <SwipeableTaskCardItem
+              key={task.id}
+              task={task}
+              status={status}
+              topics={topics}
+              onCheckboxToggle={() => onCheckboxToggle(task)}
+              onUpdateStatus={(st, rating) => onUpdateStatus(task, st, rating)}
+              onUpdatePomodoros={onUpdatePomodoros}
+              onDeleteTask={onDeleteTask}
+              onTaskClick={onTaskClick}
+              onDragStart={onDragStart}
+              onDropOnTaskCard={(e) => onDropOnTaskCard(e, task)}
+            />
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
 
-            const activeDurationStr = formatActiveDuration(task);
-            const pomodoros = task.pomodorosCount || 1;
+/* Swipeable Task Card Component with Drag Handle ⋮⋮⋮ on top line and Drop target support */
+const SwipeableTaskCardItem: React.FC<{
+  task: Task;
+  status: TaskStatus;
+  topics: any[];
+  onCheckboxToggle: () => void;
+  onUpdateStatus: (status: TaskStatus, smartRating?: SmartRating) => void;
+  onUpdatePomodoros: (id: string, count: number) => void;
+  onDeleteTask: (id: string) => void;
+  onTaskClick: (task: Task) => void;
+  onDragStart: (e: React.DragEvent, id: string) => void;
+  onDropOnTaskCard: (e: React.DragEvent) => void;
+}> = ({
+  task,
+  status,
+  topics,
+  onCheckboxToggle,
+  onUpdateStatus,
+  onUpdatePomodoros,
+  onDeleteTask,
+  onTaskClick,
+  onDragStart,
+  onDropOnTaskCard,
+}) => {
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [swipeOffset, setSwipeOffset] = useState<number>(0);
+  const [isDragOverCard, setIsDragOverCard] = useState(false);
 
-            return (
-              <div
-                key={task.id}
-                onClick={() => onTaskClick(task)}
-                className={`${styles.taskCard} ${isInProgress ? styles.taskCardInProgress : ''} ${
-                  isDone ? styles.taskCardDone : ''
-                }`}
-                title="Нажмите на карточку"
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const currentX = e.targetTouches[0].clientX;
+    const diffX = currentX - touchStartX;
+    if (diffX < 0) {
+      setSwipeOffset(Math.max(-100, diffX));
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (swipeOffset < -60) {
+      setSwipeOffset(-80);
+    } else {
+      setSwipeOffset(0);
+    }
+    setTouchStartX(null);
+  };
+
+  const isDone = task.status === 'Done';
+  const isInProgress = task.status === 'InProgress';
+  const linkedTopic = task.topicId ? topics.find((tp) => tp.id === task.topicId) : null;
+  const activeDurationStr = formatActiveDuration(task);
+  const currentPomo = task.pomodorosCount || 1;
+  const activeRating = task.lastSmartRating;
+
+  // Fractional & whole pomodoro options
+  const pomodoroOptions = [
+    { label: '⅓', val: 0.33 },
+    { label: '½', val: 0.5 },
+    { label: '1', val: 1 },
+    { label: '2', val: 2 },
+    { label: '3', val: 3 },
+    { label: '4', val: 4 },
+    { label: '5', val: 5 },
+  ];
+
+  return (
+    <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 'var(--radius-md)' }}>
+      {/* Red Background Swipe-Left Delete Action */}
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+          onDeleteTask(task.id);
+        }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: '80px',
+          backgroundColor: '#ef4444',
+          color: '#ffffff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontWeight: 'bold',
+          fontSize: '12px',
+          cursor: 'pointer',
+          zIndex: 1,
+          borderRadius: '0 var(--radius-md) var(--radius-md) 0',
+          visibility: swipeOffset < 0 ? 'visible' : 'hidden',
+          opacity: Math.min(1, Math.abs(swipeOffset) / 40),
+        }}
+        title="Нажмите для удаления"
+      >
+        🗑 Удалить
+      </div>
+
+      {/* Swipeable Task Card */}
+      <div
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onDragOver={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsDragOverCard(true);
+        }}
+        onDragLeave={() => setIsDragOverCard(false)}
+        onDrop={(e) => {
+          setIsDragOverCard(false);
+          onDropOnTaskCard(e);
+        }}
+        onClick={() => onTaskClick(task)}
+        className={`${styles.taskCard} ${isInProgress ? styles.taskCardInProgress : ''} ${
+          isDone ? styles.taskCardDone : ''
+        }`}
+        style={{
+          transform: `translateX(${swipeOffset}px)`,
+          transition: touchStartX !== null ? 'none' : 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+          position: 'relative',
+          zIndex: 2,
+          cursor: 'pointer',
+          border: isDragOverCard ? '2px dashed #3b82f6' : undefined,
+          backgroundColor: isDragOverCard ? 'rgba(59, 130, 246, 0.1)' : undefined,
+        }}
+        title="Нажмите для открытия Lifetime Grid и истории"
+      >
+        {/* Header Row: Checkbox on top line + Title with Category BELOW title + Drag Handle ⋮⋮⋮ at far right */}
+        <div className={styles.cardHeader}>
+          <div className={styles.cardMain}>
+            <div onClick={(e) => e.stopPropagation()}>
+              <Checkbox checked={isDone} onChange={onCheckboxToggle} />
+            </div>
+
+            {/* Title Container with Category BELOW title */}
+            <div className={styles.titleContainer}>
+              <span className={`${styles.cardTitle} ${isDone ? styles.cardTitleDone : ''}`}>
+                {task.title}
+              </span>
+              <span className={styles.categoryBadgeBelow}>🏷 {task.category}</span>
+            </div>
+          </div>
+
+          {/* Drag Handle ⋮⋮⋮ raised to top header line at far right */}
+          <div
+            className={styles.dragHandle}
+            draggable
+            onDragStart={(e) => onDragStart(e, task.id)}
+            onClick={(e) => e.stopPropagation()}
+            title="Зажмите ⋮⋮⋮ для перетаскивания"
+          >
+            ⋮⋮⋮
+          </div>
+        </div>
+
+        {/* Topic & Short Link if present */}
+        {(linkedTopic || task.link) && (
+          <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center', flexWrap: 'wrap', fontSize: '11px' }}>
+            {linkedTopic && (
+              <Link
+                href={`/topics/${linkedTopic.id}`}
+                onClick={(e) => e.stopPropagation()}
+                style={{ color: 'var(--color-text-secondary)', textDecoration: 'none' }}
               >
-                {/* Header: Checkbox + Title + Drag Handle + Trash */}
-                <div className={styles.cardHeader}>
-                  <div className={styles.cardMain}>
-                    <div onClick={(e) => e.stopPropagation()}>
-                      <Checkbox checked={isDone} onChange={() => onCheckboxToggle(task.id)} />
-                    </div>
-                    <span className={`${styles.cardTitle} ${isDone ? styles.cardTitleDone : ''}`}>
-                      {task.title}
-                    </span>
-                  </div>
+                🐘 {linkedTopic.title}
+              </Link>
+            )}
+            {task.link && (
+              <a
+                href={task.link.startsWith('http') ? task.link : `https://${task.link}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  color: '#60a5fa',
+                  textDecoration: 'none',
+                  backgroundColor: 'rgba(96, 165, 250, 0.1)',
+                  padding: '1px 5px',
+                  borderRadius: 'var(--radius-sm)',
+                  border: '1px solid rgba(96, 165, 250, 0.2)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '2px',
+                }}
+                title={task.link}
+              >
+                🔗 {getShortLink(task.link)} ↗
+              </a>
+            )}
+          </div>
+        )}
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    {/* Dedicated Drag Handle */}
-                    <div
-                      className={styles.dragHandle}
-                      draggable
-                      onDragStart={(e) => onDragStart(e, task.id)}
-                      onClick={(e) => e.stopPropagation()}
-                      title="Зажмите ⋮⋮ для перетаскивания"
-                    >
-                      ⋮⋮
-                    </div>
+        {/* Meta Row: Active Duration & Fractional Pomodoro Options */}
+        <div className={styles.metaRow}>
+          <div className={styles.timeInfo}>
+            {activeDurationStr && <span>⏱ ({activeDurationStr})</span>}
+          </div>
 
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className={styles.trashBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onDeleteTask(task.id);
-                      }}
-                    >
-                      🗑
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Category, Topic, Short Link & ONLY Illuminated Repeat Toggle Icon */}
-                <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '11px', color: 'var(--color-accent)' }}>🏷 {task.category}</span>
-                  {linkedTopic && (
-                    <Link
-                      href={`/topics/${linkedTopic.id}`}
-                      onClick={(e) => e.stopPropagation()}
-                      style={{ fontSize: '11px', color: 'var(--color-text-secondary)', textDecoration: 'none' }}
-                    >
-                      🐘 {linkedTopic.title}
-                    </Link>
-                  )}
-                  {task.link && (
-                    <a
-                      href={task.link.startsWith('http') ? task.link : `https://${task.link}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      style={{
-                        fontSize: '11px',
-                        color: '#60a5fa',
-                        textDecoration: 'none',
-                        backgroundColor: 'rgba(96, 165, 250, 0.1)',
-                        padding: '2px 6px',
-                        borderRadius: 'var(--radius-sm)',
-                        border: '1px solid rgba(96, 165, 250, 0.2)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '2px',
-                      }}
-                      title={task.link}
-                    >
-                      🔗 {getShortLink(task.link)} ↗
-                    </a>
-                  )}
-
-                  {/* Illuminated Repeat Toggle Icon ONLY */}
+          {/* Fractional & Whole Pomodoro Selector Row */}
+          <div
+            className={styles.pomodoroRow}
+            onClick={(e) => e.stopPropagation()}
+            title="Выбор количества помидоров"
+          >
+            <span style={{ fontSize: '15px', marginRight: '1px' }}>🍅</span>
+            <div className={styles.pomodoroPillRow}>
+              {pomodoroOptions.map((opt) => {
+                const isSelected = Math.abs(currentPomo - opt.val) < 0.05;
+                return (
                   <button
+                    key={opt.label}
                     type="button"
+                    className={`${styles.pomoOptionBtn} ${isSelected ? styles.pomoOptionActive : ''}`}
                     onClick={(e) => {
                       e.stopPropagation();
-                      onUpdateDetails(task.id, { isRepeating: !task.isRepeating, targetRepetitions: 8 });
+                      onUpdatePomodoros(task.id, opt.val);
                     }}
-                    style={{
-                      background: 'transparent',
-                      border: 'none',
-                      color: task.isRepeating ? '#10b981' : 'var(--color-text-muted)',
-                      filter: task.isRepeating ? 'drop-shadow(0 0 8px rgba(16, 185, 129, 0.85))' : 'none',
-                      opacity: task.isRepeating ? 1 : 0.4,
-                      transform: task.isRepeating ? 'scale(1.2)' : 'scale(1)',
-                      fontSize: '18px',
-                      cursor: 'pointer',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '4px',
-                      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                      marginLeft: 'auto',
-                    }}
-                    title={task.isRepeating ? 'Повторение включено' : 'Включить повторение'}
+                    title={`${opt.label} помидора`}
                   >
-                    🔄
+                    {opt.label}
                   </button>
-                </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
-                {/* Meta Row: Cumulative Active Duration ONLY & Pomodoros Adjuster */}
-                <div className={styles.metaRow}>
-                  <div className={styles.timeInfo}>
-                    {activeDurationStr && <span>⏱ ({activeDurationStr})</span>}
-                  </div>
+        {/* Compact Quick Status Movement Buttons & Highlighted Rating Emoji Row */}
+        <div className={styles.actionBtns} onClick={(e) => e.stopPropagation()}>
+          {status !== 'Todo' && (
+            <button
+              className={styles.moveBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                onUpdateStatus('Todo');
+              }}
+            >
+              ⏳ Ожидает
+            </button>
+          )}
+          {status !== 'InProgress' && (
+            <button
+              className={styles.moveBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                onUpdateStatus('InProgress');
+              }}
+            >
+              ⚡ В процесс
+            </button>
+          )}
+          {status !== 'Done' && (
+            <button
+              className={styles.moveBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                onUpdateStatus('Done');
+              }}
+            >
+              ✅ Выполнено
+            </button>
+          )}
 
-                  {/* Manual Pomodoro Adjustment Control */}
-                  <div
-                    className={styles.pomodoroControl}
-                    onClick={(e) => e.stopPropagation()}
-                    title="Потрачено помидоров (25 мин)"
-                  >
-                    <button
-                      type="button"
-                      className={styles.pomoBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onUpdatePomodoros(task.id, pomodoros - 1);
-                      }}
-                    >
-                      -
-                    </button>
-                    <span>🍅 {pomodoros}</span>
-                    <button
-                      type="button"
-                      className={styles.pomoBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onUpdatePomodoros(task.id, pomodoros + 1);
-                      }}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-
-                {/* Quick Touch Movement Buttons */}
-                <div className={styles.actionBtns} onClick={(e) => e.stopPropagation()}>
-                  {status !== 'Todo' && (
-                    <button
-                      className={styles.moveBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onUpdateStatus(task.id, 'Todo');
-                      }}
-                    >
-                      ⏳ Ожидает
-                    </button>
-                  )}
-                  {status !== 'InProgress' && (
-                    <button
-                      className={styles.moveBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onUpdateStatus(task.id, 'InProgress');
-                      }}
-                    >
-                      ⚡ В процесс
-                    </button>
-                  )}
-                  {status !== 'Done' && (
-                    <button
-                      className={styles.moveBtn}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onUpdateStatus(task.id, 'Done');
-                      }}
-                    >
-                      ✅ Выполнено
-                    </button>
-                  )}
-                </div>
-              </div>
-            );
-          })
-        )}
+          {/* Smart Rating Emoji Buttons with Highlighted Active State */}
+          {isDone && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginLeft: 'auto' }}>
+              <button
+                type="button"
+                className={`${styles.ratingEmojiBtn} ${activeRating === 'easy' ? styles.ratingEmojiSelected : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onUpdateStatus('Done', 'easy');
+                }}
+                title="Легко"
+              >
+                😄
+              </button>
+              <button
+                type="button"
+                className={`${styles.ratingEmojiBtn} ${activeRating === 'normal' ? styles.ratingEmojiSelected : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onUpdateStatus('Done', 'normal');
+                }}
+                title="Нормально"
+              >
+                🙂
+              </button>
+              <button
+                type="button"
+                className={`${styles.ratingEmojiBtn} ${activeRating === 'hard' ? styles.ratingEmojiSelected : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onUpdateStatus('Done', 'hard');
+                }}
+                title="Сложно"
+              >
+                😣
+              </button>
+              <button
+                type="button"
+                className={`${styles.ratingEmojiBtn} ${activeRating === 'again' ? styles.ratingEmojiSelected : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onUpdateStatus('Done', 'again');
+                }}
+                title="Не помню"
+              >
+                ❌
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

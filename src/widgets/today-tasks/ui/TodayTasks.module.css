@@ -55,25 +55,27 @@
 .columnTasks {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 8px;
   min-height: 50px;
 }
 
+/* Compact Task Card */
 .taskCard {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-4);
+  gap: 5px;
+  padding: 8px 12px;
   border-radius: var(--radius-md);
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   transition: all var(--transition-fast);
   position: relative;
+  box-sizing: border-box;
 }
 
 .taskCard:hover {
   border-color: rgba(255, 255, 255, 0.15);
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: var(--color-surface-hover);
 }
 
 .taskCardInProgress {
@@ -81,7 +83,7 @@
 }
 
 .taskCardDone {
-  opacity: 0.75;
+  opacity: 0.85;
   border-left: 3.5px solid var(--color-success);
 }
 
@@ -89,13 +91,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-3);
+  gap: 8px;
+  width: 100%;
 }
 
 .cardMain {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   flex: 1;
   min-width: 0;
 }
@@ -105,6 +116,9 @@
   font-weight: var(--font-weight-medium);
   color: var(--color-text-primary);
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cardTitle:hover {
@@ -116,7 +130,19 @@
   color: var(--color-text-muted);
 }
 
-/* Touch Friendly Drag Handle & Trash (Item 7) */
+/* Category Badge BELOW Title */
+.categoryBadgeBelow {
+  font-size: 10.5px;
+  color: var(--color-accent);
+  background-color: rgba(96, 165, 250, 0.1);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+/* Enlarged Drag Handle aligned to far right */
 .dragHandle {
   cursor: grab;
   width: 36px;
@@ -124,13 +150,15 @@
   min-width: 36px;
   min-height: 36px;
   color: var(--color-text-muted);
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: bold;
   user-select: none;
   border-radius: var(--radius-sm);
   transition: background-color var(--transition-fast);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
 }
 
 .dragHandle:hover {
@@ -143,85 +171,76 @@
   color: var(--color-accent);
 }
 
-.trashBtn {
-  min-width: 40px;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: var(--color-text-muted);
-  padding: 4px;
-}
-
 .metaRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2);
+  gap: 8px;
   flex-wrap: wrap;
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
-  padding-top: var(--space-2);
-  border-top: 1px dashed rgba(255, 255, 255, 0.05);
+  padding-top: 4px;
 }
 
 .timeInfo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  flex-wrap: wrap;
+  gap: 6px;
   font-weight: 500;
+  font-size: 11px;
 }
 
-/* Touch Friendly Pomodoro Controls (Item 7) */
-.pomodoroControl {
+/* Fractional Pomodoro Selector Row */
+.pomodoroRow {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background-color: rgba(255, 255, 255, 0.04);
-  padding: 4px 8px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
+  gap: 4px;
 }
 
-.pomoBtn {
-  background: none;
-  border: none;
+.pomodoroPillRow {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.pomoOptionBtn {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  background-color: rgba(255, 255, 255, 0.03);
   color: var(--color-text-muted);
   cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.pomoOptionActive {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.3);
   font-weight: bold;
-  padding: 4px 8px;
-  font-size: 15px;
-  min-width: 32px;
-  min-height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
 }
 
-.pomoBtn:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: var(--color-text-primary);
-}
-
-/* Touch Friendly Action Buttons (Item 7) */
+/* Compact Movement Buttons & Rating Emoji Row */
 .actionBtns {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .moveBtn {
-  padding: 8px 14px;
-  min-height: 40px;
-  border-radius: 20px;
+  padding: 3px 8px;
+  min-height: 26px;
+  height: 26px;
+  border-radius: 13px;
   border: 1px solid var(--color-border);
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.03);
   color: var(--color-text-muted);
-  font-size: 12.5px;
+  font-size: 11px;
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -236,6 +255,38 @@
   border-color: var(--color-accent);
 }
 
+/* Rating Emoji Buttons on Task Card when Done */
+.ratingEmojiBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background-color: rgba(255, 255, 255, 0.04);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.ratingEmojiBtn:hover {
+  transform: scale(1.15);
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-light);
+}
+
+/* Glowing Highlight for Selected Rating Emoji */
+.ratingEmojiSelected {
+  border-color: #0ea5e9 !important;
+  background-color: rgba(14, 165, 233, 0.25) !important;
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.6) !important;
+  transform: scale(1.18) !important;
+}
+
 .emptyState {
   padding: var(--space-4);
   text-align: center;
@@ -245,11 +296,32 @@
   border-radius: var(--radius-md);
 }
 
+/* Mobile Compact Responsive Styles */
 @media (max-width: 600px) {
+  .kanbanColumn {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .taskCard {
+    padding: 6px 10px;
+    gap: 5px;
+  }
+
+  .cardTitle {
+    font-size: 14px;
+  }
+
+  .dragHandle {
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+  }
+
   .moveBtn {
-    flex: 1;
-    padding: 10px 12px;
-    font-size: 13px;
-    min-height: 42px;
+    padding: 3px 6px;
+    font-size: 10.5px;
+    min-height: 24px;
+    height: 24px;
   }
 }

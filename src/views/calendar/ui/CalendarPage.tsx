@@ -6,8 +6,10 @@ import { Typography, Checkbox, Button } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { useTopicStore } from '@/entities/topic';
 import { Task } from '@/entities/task/model/types';
+import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
+import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
 import styles from './CalendarPage.module.css';
 
 const formatDateStr = (y: number, m: number, d: number): string => {
@@ -39,11 +41,12 @@ export const CalendarPage: React.FC = () => {
   const [currentMonthDate, setCurrentMonthDate] = useState<Date>(new Date());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [smartTask, setSmartTask] = useState<Task | null>(null);
 
   // Swipe gesture tracking
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTask } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTask } = useTaskStore();
   const { topics, fetchTopics } = useTopicStore();
 
   useEffect(() => {
@@ -82,6 +85,21 @@ export const CalendarPage: React.FC = () => {
       handlePrevMonth();
     }
     setTouchStart(null);
+  };
+
+  const handleCheckboxToggle = (task: Task) => {
+    if (task.status !== 'Done' && task.repetitionMode === 'smart') {
+      setSmartTask(task);
+    } else {
+      toggleTaskStatus(task.id);
+    }
+  };
+
+  const handleSelectSmartRating = (rating: SmartRating) => {
+    if (smartTask) {
+      updateTaskStatus(smartTask.id, 'Done', rating);
+      setSmartTask(null);
+    }
   };
 
   // Generate full month matrix grid
@@ -258,6 +276,7 @@ export const CalendarPage: React.FC = () => {
             {selectedDayTasks.map((task, idx) => {
               const linkedTopic = task.topicId ? topics.find((t) => t.id === task.topicId) : null;
               const isDone = task.status === 'Done';
+              const activeRating = task.lastSmartRating;
               const completedTimeStr = task.completedAt
                 ? new Date(task.completedAt).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
                 : null;
@@ -267,53 +286,145 @@ export const CalendarPage: React.FC = () => {
                   key={`${task.id}-${idx}`}
                   className={styles.taskRow}
                   onClick={() => handleTaskClick(task)}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: 'pointer', flexDirection: 'column', gap: '8px', alignItems: 'stretch' }}
                   title="Нажмите на карточку"
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flex: 1, minWidth: 0 }}>
-                    <div onClick={(e) => e.stopPropagation()}>
-                      <Checkbox checked={isDone} onChange={() => toggleTaskStatus(task.id)} />
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
-                      <span
-                        style={{
-                          fontSize: 'var(--font-size-md)',
-                          fontWeight: 'var(--font-weight-medium)',
-                          color: isDone ? 'var(--color-text-muted)' : 'var(--color-text-primary)',
-                          textDecoration: isDone ? 'line-through' : 'none',
-                        }}
-                      >
-                        {task.title}
-                      </span>
-                      <div style={{ display: 'flex', gap: 'var(--space-3)', fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)', flexWrap: 'wrap' }}>
-                        <span style={{ color: 'var(--color-accent)' }}>🏷 {task.category}</span>
-                        {isDone && completedTimeStr && (
-                          <span style={{ color: 'var(--color-success)' }}>✓ Выполнено в {completedTimeStr}</span>
-                        )}
-                        {linkedTopic && (
-                          <Link
-                            href={`/topics/${linkedTopic.id}`}
-                            onClick={(e) => e.stopPropagation()}
-                            style={{ color: 'var(--color-text-secondary)', textDecoration: 'none' }}
-                          >
-                            🐘 {linkedTopic.title}
-                          </Link>
-                        )}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flex: 1, minWidth: 0 }}>
+                      <div onClick={(e) => e.stopPropagation()}>
+                        <Checkbox checked={isDone} onChange={() => handleCheckboxToggle(task)} />
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+                        <span
+                          style={{
+                            fontSize: 'var(--font-size-md)',
+                            fontWeight: 'var(--font-weight-medium)',
+                            color: isDone ? 'var(--color-text-muted)' : 'var(--color-text-primary)',
+                            textDecoration: isDone ? 'line-through' : 'none',
+                          }}
+                        >
+                          {task.title}
+                        </span>
+                        <div style={{ display: 'flex', gap: 'var(--space-3)', fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)', flexWrap: 'wrap' }}>
+                          <span style={{ color: 'var(--color-accent)' }}>🏷 {task.category}</span>
+                          {isDone && completedTimeStr && (
+                            <span style={{ color: 'var(--color-success)' }}>✓ Выполнено в {completedTimeStr}</span>
+                          )}
+                          {linkedTopic && (
+                            <Link
+                              href={`/topics/${linkedTopic.id}`}
+                              onClick={(e) => e.stopPropagation()}
+                              style={{ color: 'var(--color-text-secondary)', textDecoration: 'none' }}
+                            >
+                              🐘 {linkedTopic.title}
+                            </Link>
+                          )}
+                        </div>
                       </div>
                     </div>
+
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteTask(task.id);
+                      }}
+                      style={{ color: 'var(--color-text-muted)', minWidth: '36px', minHeight: '36px', padding: '4px' }}
+                    >
+                      🗑
+                    </Button>
                   </div>
 
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      deleteTask(task.id);
-                    }}
-                    style={{ color: 'var(--color-text-muted)', minWidth: '40px', minHeight: '40px' }}
-                  >
-                    🗑
-                  </Button>
+                  {/* Rating Emoji Buttons on Task Card in Calendar when Done */}
+                  {isDone && (
+                    <div
+                      onClick={(e) => e.stopPropagation()}
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}
+                    >
+                      <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>Сложность:</span>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          updateTaskStatus(task.id, 'Done', 'easy');
+                        }}
+                        style={{
+                          background: activeRating === 'easy' ? 'rgba(14, 165, 233, 0.25)' : 'rgba(255, 255, 255, 0.04)',
+                          border: activeRating === 'easy' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
+                          boxShadow: activeRating === 'easy' ? '0 0 8px rgba(14, 165, 233, 0.5)' : 'none',
+                          borderRadius: '50%',
+                          width: '26px',
+                          height: '26px',
+                          fontSize: '13px',
+                          cursor: 'pointer',
+                        }}
+                        title="Легко"
+                      >
+                        😄
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          updateTaskStatus(task.id, 'Done', 'normal');
+                        }}
+                        style={{
+                          background: activeRating === 'normal' ? 'rgba(14, 165, 233, 0.25)' : 'rgba(255, 255, 255, 0.04)',
+                          border: activeRating === 'normal' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
+                          boxShadow: activeRating === 'normal' ? '0 0 8px rgba(14, 165, 233, 0.5)' : 'none',
+                          borderRadius: '50%',
+                          width: '26px',
+                          height: '26px',
+                          fontSize: '13px',
+                          cursor: 'pointer',
+                        }}
+                        title="Нормально"
+                      >
+                        🙂
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          updateTaskStatus(task.id, 'Done', 'hard');
+                        }}
+                        style={{
+                          background: activeRating === 'hard' ? 'rgba(14, 165, 233, 0.25)' : 'rgba(255, 255, 255, 0.04)',
+                          border: activeRating === 'hard' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
+                          boxShadow: activeRating === 'hard' ? '0 0 8px rgba(14, 165, 233, 0.5)' : 'none',
+                          borderRadius: '50%',
+                          width: '26px',
+                          height: '26px',
+                          fontSize: '13px',
+                          cursor: 'pointer',
+                        }}
+                        title="Сложно"
+                      >
+                        😣
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          updateTaskStatus(task.id, 'Done', 'again');
+                        }}
+                        style={{
+                          background: activeRating === 'again' ? 'rgba(14, 165, 233, 0.25)' : 'rgba(255, 255, 255, 0.04)',
+                          border: activeRating === 'again' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
+                          boxShadow: activeRating === 'again' ? '0 0 8px rgba(14, 165, 233, 0.5)' : 'none',
+                          borderRadius: '50%',
+                          width: '26px',
+                          height: '26px',
+                          fontSize: '13px',
+                          cursor: 'pointer',
+                        }}
+                        title="Не помню"
+                      >
+                        ❌
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -337,6 +448,14 @@ export const CalendarPage: React.FC = () => {
           setEditingTask(detailTask);
           setDetailTask(null);
         }}
+      />
+
+      {/* Smart Repetition Rating Modal in Calendar */}
+      <SmartRatingModal
+        task={smartTask}
+        isOpen={!!smartTask}
+        onClose={() => setSmartTask(null)}
+        onSelectRating={handleSelectSmartRating}
       />
     </div>
   );

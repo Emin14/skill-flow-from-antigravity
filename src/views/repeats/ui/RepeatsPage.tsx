@@ -1,16 +1,13 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import styles from './RepeatsPage.module.css';
 
-type ViewMode = '7' | '365';
-
 export const RepeatsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks } = useTaskStore();
-  const [globalViewMode, setGlobalViewMode] = useState<ViewMode>('365');
 
   useEffect(() => {
     fetchTasks();
@@ -30,12 +27,14 @@ export const RepeatsPage: React.FC = () => {
         const mergedHistory = [
           ...(existing.repetitionHistory || []),
           ...(t.repetitionHistory || []),
-        ].filter((h, idx, self) => self.findIndex((x) => x.date === h.date) === idx);
+        ].filter((h, idx, self) => self.findIndex((x) => x.date === h.date) === idx)
+         .sort((a, b) => a.date.localeCompare(b.date));
 
         const maxCount = Math.max(existing.repetitionsCount || 0, t.repetitionsCount || 0, mergedHistory.length);
+        const latestInstance = t.scheduledDate > existing.scheduledDate ? t : existing;
 
         seriesMap.set(key, {
-          ...existing,
+          ...latestInstance,
           repetitionsCount: maxCount,
           repetitionHistory: mergedHistory,
         });
@@ -47,161 +46,234 @@ export const RepeatsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-        <Typography variant="h1">🔄 Повторить</Typography>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
-          Матрица привычек и повторений без скролла
+      {/* Header Card */}
+      <Card style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        <Typography variant="h2" style={{ color: 'var(--color-text-primary)' }}>
+          Трек прогресса привычек
+        </Typography>
+        <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
+          Запланированные повторения в календаре
         </Typography>
       </Card>
 
-      {/* List of Unique Repeating Task Matrix Cards */}
+      {/* List of Timeline Step Progression Cards */}
       {isLoading ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
-            Загрузка задач...
+            Загрузка повторений...
           </Typography>
         </Card>
       ) : uniqueRepeatingTasks.length === 0 ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)' }}>
-            🌱 У вас пока нет задач в разделе повторения.
+            🌱 У вас пока нет повторяющихся задач.
           </Typography>
           <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
-            Создайте новую задачу и включите иконку «Повторять».
+            Создайте задачу и выберите режим повторения.
           </Typography>
         </Card>
       ) : (
         <div className={styles.repeatsList}>
           {uniqueRepeatingTasks.map((task, idx) => (
-            <RepeatingMatrixCard
-              key={`${task.id}-${idx}`}
-              task={task}
-              viewMode={globalViewMode}
-            />
+            <TimelineRepeatCard key={`${task.id}-${idx}`} task={task} allTasks={tasks} />
           ))}
         </div>
       )}
-
-      {/* Icon-Only Switcher at the bottom */}
-      <div className={styles.bottomToggleWrapper}>
-        <div className={styles.pillSegmentControl} role="tablist" aria-label="Режим отображения">
-          {/* Icon 1: 7 days view (Grid Icon) */}
-          <button
-            title="Последние 7 дней"
-            className={`${styles.iconBtn} ${globalViewMode === '7' ? styles.iconBtnActive : ''}`}
-            onClick={() => setGlobalViewMode('7')}
-            role="tab"
-            aria-selected={globalViewMode === '7'}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="4" y="4" width="7" height="7" rx="2" />
-              <rect x="13" y="4" width="7" height="7" rx="2" />
-              <rect x="4" y="13" width="7" height="7" rx="2" />
-              <rect x="13" y="13" width="7" height="7" rx="2" />
-            </svg>
-          </button>
-
-          {/* Icon 2: Full Matrix view (List/3-bar Icon) */}
-          <button
-            title="Матричный вид (без скролла)"
-            className={`${styles.iconBtn} ${globalViewMode === '365' ? styles.iconBtnActive : ''}`}
-            onClick={() => setGlobalViewMode('365')}
-            role="tab"
-            aria-selected={globalViewMode === '365'}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="3" y="5" width="18" height="3" rx="1.5" />
-              <rect x="3" y="11" width="18" height="3" rx="1.5" />
-              <rect x="3" y="17" width="18" height="3" rx="1.5" />
-            </svg>
-          </button>
-        </div>
-      </div>
     </div>
   );
 };
 
-const formatDateStr = (y: number, m: number, d: number): string => {
-  const year = y;
-  const month = String(m + 1).padStart(2, '0');
-  const day = String(d).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+interface StepNode {
+  stepIndex: number;
+  label: string;
+  subLabel?: string;
+  isCompleted: boolean;
+  isNext: boolean;
+  isFuture: boolean;
+  isOverdue: boolean;
+}
+
+const formatDateNumeric = (dateStr?: string | null): string => {
+  if (!dateStr || !dateStr.includes('-')) return '';
+  const parts = dateStr.split('-').map(Number);
+  const day = String(parts[2]).padStart(2, '0');
+  const month = String(parts[1]).padStart(2, '0');
+  return `${day}.${month}`;
 };
 
-const RepeatingMatrixCard: React.FC<{
-  task: Task;
-  viewMode: ViewMode;
-}> = ({ task, viewMode }) => {
-  const currentCount = task.repetitionsCount || 0;
-  const targetCount = task.targetRepetitions || 8;
-
-  // 7-day cells OR 24-column Matrix
-  const cols = viewMode === '7' ? 1 : 24;
-  const totalDays = cols * 7;
-
-  const gridCells = [];
-  for (let i = totalDays - 1; i >= 0; i--) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    const dateStr = formatDateStr(d.getFullYear(), d.getMonth(), d.getDate());
-    const isDone = task.repetitionHistory?.some((h) => h.date === dateStr && h.completed);
-
-    gridCells.push({
-      date: dateStr,
-      dayNum: d.getDate(),
-      isDone,
-    });
+// Russian pluralization helper for "повтор"
+const formatRepetitionCount = (count: number): { numStr: string; textStr: string } => {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  let word = 'повторов';
+  if (mod100 >= 11 && mod100 <= 19) {
+    word = 'повторов';
+  } else if (mod10 === 1) {
+    word = 'повтор';
+  } else if (mod10 >= 2 && mod10 <= 4) {
+    word = 'повтора';
   }
+  return { numStr: String(count), textStr: word };
+};
 
-  // Get icon for task based on category
-  const getCategoryIcon = (cat?: string) => {
-    if (cat === 'Здоровье') return '🏃';
-    if (cat === 'Опыт на камеру') return '📹';
-    if (cat === 'Теория') return '📚';
-    if (cat === 'Практика Frontend') return '💻';
-    return '⭐';
-  };
+const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, allTasks }) => {
+  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
+  const history = task.repetitionHistory || [];
+  const completedCount = history.length > 0 ? history.length : (task.repetitionsCount || 0);
+
+  // Find next upcoming uncompleted duplicate task in calendar for this series
+  const seriesKey = task.seriesId || task.title.toLowerCase().trim();
+  const nextUncompletedTask = allTasks.find(
+    (t) =>
+      t.status === 'Todo' &&
+      ((t.seriesId && (t.seriesId === task.seriesId || t.seriesId === task.id)) ||
+        t.title.toLowerCase().trim() === seriesKey)
+  );
+
+  const nextDateRaw = nextUncompletedTask ? nextUncompletedTask.scheduledDate : task.nextReviewDate || null;
+
+  // Overdue check: Red circle ONLY if scheduled date is strictly yesterday or earlier!
+  const isOverdue = nextDateRaw ? nextDateRaw < todayStr : false;
+
+  const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
+
+  // Single uniform numeric format: Node #1 is start (1), Node #2 is interval (e.g. 7), Node #3 is (14)...
+  const defaultLabels = useMemo(() => {
+    if (mode === 'schedule') {
+      return ['1', '2', '3', '4', '5', '6'];
+    }
+    if (mode === 'after_completion') {
+      const days = task.afterCompletionDays || 3;
+      // Node #1 = '1', Node #2 = '7', Node #3 = '14', Node #4 = '21'...
+      return ['1', ...[1, 2, 3, 4, 5].map((n) => String(n * days))];
+    }
+    return ['1', '3', '7', '14', '30', '90'];
+  }, [mode, task.afterCompletionDays]);
+
+  const steps: StepNode[] = useMemo(() => {
+    const list: StepNode[] = [];
+    for (let i = 0; i < 6; i++) {
+      const isCompleted = i < completedCount;
+      const isNext = i === completedCount;
+      const isFuture = i > completedCount;
+
+      // For Smart repetition tasks, any future step whose date/interval is not yet known is left blank!
+      const isUnknownFuture = mode === 'smart' && isFuture;
+
+      let label = '';
+      if (!isUnknownFuture) {
+        label = defaultLabels[i] || String(i + 1);
+      }
+
+      let subLabel = '';
+      if (isCompleted && history[i]) {
+        subLabel = formatDateNumeric(history[i].date);
+      } else if (isNext && nextDateRaw) {
+        subLabel = formatDateNumeric(nextDateRaw);
+      }
+
+      list.push({
+        stepIndex: i + 1,
+        label,
+        subLabel,
+        isCompleted,
+        isNext,
+        isFuture,
+        isOverdue: isNext && isOverdue,
+      });
+    }
+    return list;
+  }, [completedCount, history, nextDateRaw, isOverdue, mode, defaultLabels]);
+
+  const { numStr, textStr } = formatRepetitionCount(completedCount);
 
   return (
-    <div className={styles.matrixCard}>
-      {/* Card Header */}
+    <div className={styles.repeatCard}>
+      {/* 2-Line Card Header */}
       <div className={styles.cardHeader}>
-        <div className={styles.iconBadge}>
-          {getCategoryIcon(task.category)}
-        </div>
-        <div className={styles.headerText}>
+        {/* Line 1: Title & Scheduled Date (Constant Date Badge Styling!) */}
+        <div className={styles.line1}>
           <span className={styles.taskTitle}>{task.title}</span>
-          <span className={styles.categoryBadge}>
-            🏷 {task.category} • {currentCount}/{targetCount} повторений
-          </span>
+
+          {nextDateRaw && (
+            <div className={styles.statusBadgeNext} title="Следующее повторение в календаре">
+              📅 {nextDateRaw}
+            </div>
+          )}
+        </div>
+
+        {/* Line 2: Category & Green Repetition Counter on 1 line */}
+        <div className={styles.line2}>
+          <span className={styles.categoryTag}>🏷 {task.category}</span>
+          <div className={styles.repetitionCounter}>
+            <span className={styles.repetitionNum}>{numStr}</span> {textStr}
+          </div>
         </div>
       </div>
 
-      {/* Grid Display */}
-      {viewMode === '7' ? (
-        <div className={styles.grid7}>
-          {gridCells.map((cell) => (
-            <div
-              key={cell.date}
-              className={`${styles.gridCell7} ${cell.isDone ? styles.gridCell7Done : ''}`}
-              title={`${cell.date}: ${cell.isDone ? 'Выполнено' : 'Пропущено'}`}
-            >
-              {cell.dayNum}
+      {/* Timeline Track: Labels Top, Connectors, Circular Nodes (●──●──○) */}
+      <div className={styles.timelineTrackContainer}>
+        <div className={styles.timelineTrack}>
+          {/* Connector Bar behind nodes */}
+          <div className={styles.connectorLine}>
+            {steps.slice(0, -1).map((step, idx) => (
+              <div
+                key={idx}
+                className={`${styles.lineSegment} ${
+                  step.isCompleted ? styles.lineSegmentCompleted : styles.lineSegmentFuture
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Milestone Step Nodes */}
+          {steps.map((step) => (
+            <div key={step.stepIndex} className={styles.timelineItem}>
+              {/* Step Label Top: Single numeric format */}
+              <span
+                className={`${styles.stepLabelTop} ${
+                  step.isCompleted
+                    ? styles.stepLabelTopActive
+                    : step.isOverdue
+                    ? styles.stepLabelTopOverdue
+                    : step.isNext
+                    ? styles.stepLabelTopNext
+                    : ''
+                }`}
+              >
+                {step.label}
+              </span>
+
+              {/* Node Circle (Red ONLY if overdue: yesterday or earlier!) */}
+              <div
+                className={`${styles.nodeCircle} ${
+                  step.isCompleted
+                    ? styles.nodeCompleted
+                    : step.isOverdue
+                    ? styles.nodeOverdue
+                    : step.isNext
+                    ? styles.nodeNext
+                    : styles.nodeFuture
+                }`}
+                title={`Шаг #${step.stepIndex}${step.label ? ` (${step.label})` : ''}: ${
+                  step.isCompleted
+                    ? 'Выполнено ✓'
+                    : step.isOverdue
+                    ? `Просрочено! Было запланировано на ${nextDateRaw}`
+                    : step.isNext
+                    ? `Запланировано на ${nextDateRaw || 'календарь'}`
+                    : 'Будущий шаг'
+                }`}
+              >
+                {step.isCompleted ? '✓' : step.isNext ? '●' : '○'}
+              </div>
+
+              {/* Sub-label Bottom: Date if available */}
+              <span className={styles.subLabelBottom}>{step.subLabel || ''}</span>
             </div>
           ))}
         </div>
-      ) : (
-        <div className={styles.matrixGrid}>
-          {gridCells.map((cell) => (
-            <div
-              key={cell.date}
-              className={`${styles.matrixDot} ${cell.isDone ? styles.matrixDotDone : ''}`}
-              title={`${cell.date}: ${cell.isDone ? 'Выполнено' : 'Пропущено'}`}
-            />
-          ))}
-        </div>
-      )}
+      </div>
     </div>
   );
 };

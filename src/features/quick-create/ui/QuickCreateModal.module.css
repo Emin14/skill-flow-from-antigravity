@@ -4,72 +4,263 @@
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
-  max-width: 100vw;
-  background-color: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
-  z-index: var(--z-index-modal);
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: var(--z-index-modal);
   padding: var(--space-4);
-  box-sizing: border-box;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .modal {
-  width: 100%;
-  max-width: 500px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: var(--shadow-xl);
   padding: var(--space-5);
-  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
-.formRow {
+.closeBtn {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 28px;
+  font-weight: 300;
+  cursor: pointer;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.closeBtn:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+/* Category & Date in 1 row even on mobile */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-3);
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .formCol {
-  flex: 1;
-  min-width: 0;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .selectInput {
   width: 100%;
-  padding: 10px 12px;
+  padding: 8px 12px;
   border-radius: var(--radius-md);
-  background-color: var(--color-surface);
   border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   outline: none;
   box-sizing: border-box;
+  height: 38px;
 }
 
-@media (max-width: 500px) {
+.selectInputCompact {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-size: 12px;
+  outline: none;
+  box-sizing: border-box;
+  height: 36px;
+  text-overflow: ellipsis;
+}
+
+.selectInput:focus,
+.selectInputCompact:focus {
+  border-color: var(--color-accent);
+}
+
+/* Compact Textarea for Description */
+.compactTextarea {
+  width: 100%;
+  min-height: 52px;
+  height: 56px;
+  max-height: 120px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Single Line Control Bar for Repeat Icons, Subtasks, Main Task & Send Button */
+.singleLineControls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 4px 0;
+  scrollbar-width: none;
+}
+
+.singleLineControls::-webkit-scrollbar {
+  display: none;
+}
+
+/* Icon Toggle Button Style */
+.iconToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.iconToggleInactive {
+  color: var(--color-text-muted);
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+.iconToggleActive {
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.5);
+  background-color: rgba(59, 130, 246, 0.12);
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5));
+  opacity: 1;
+}
+
+/* Pill Toggle Button Style (Icon + Text) */
+.pillToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.pillToggleInactive {
+  color: var(--color-text-muted);
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+.pillToggleActive {
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.5);
+  background-color: rgba(59, 130, 246, 0.12);
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5));
+  opacity: 1;
+}
+
+.subtaskToggleActive {
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.5);
+  background-color: rgba(16, 185, 129, 0.12);
+  filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.5));
+  opacity: 1;
+}
+
+/* Send / Submit Icon Button (Section 1, Item 2) */
+.sendBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.35);
+  margin-left: 2px;
+}
+
+.sendBtn:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.5);
+}
+
+.sendBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 600px) {
   .overlay {
     padding: var(--space-2);
+    align-items: flex-end;
   }
 
   .modal {
-    padding: var(--space-4);
-    border-radius: var(--radius-md);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    max-height: 90vh;
+    padding: 16px;
+    gap: 12px;
   }
 
   .formRow {
-    flex-direction: column;
-    gap: var(--space-3);
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .selectInput {
+    padding: 6px 8px;
+    font-size: 12px;
+    height: 36px;
+  }
+
+  .closeBtn {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+    font-weight: bold;
   }
 }

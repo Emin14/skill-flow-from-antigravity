@@ -8,8 +8,9 @@ import { useMaterialStore } from '@/entities/material';
 import { useRepeatCardStore } from '@/entities/repeat-card';
 import { useActivityStore } from '@/entities/activity';
 
-import { TodayTasks } from '@/widgets/today-tasks/ui/TodayTasks';
+import { DailyQuoteWidget } from '@/widgets/daily-quote/ui/DailyQuoteWidget';
 import { HabitProgressBanner } from '@/widgets/habit-progress-banner/ui/HabitProgressBanner';
+import { TodayTasks } from '@/widgets/today-tasks/ui/TodayTasks';
 import styles from './TodayPage.module.css';
 
 export const TodayPage: React.FC = () => {
@@ -31,6 +32,9 @@ export const TodayPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      {/* Daily Motivational Quote Widget (Requirement 5) */}
+      <DailyQuoteWidget />
+
       {/* Primary Top Header Dashboard Banner */}
       <HabitProgressBanner />
 

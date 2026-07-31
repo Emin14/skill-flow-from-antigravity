@@ -9,6 +9,7 @@ const pathTitles: Record<string, string> = {
   '/': 'Сегодня',
   '/today': 'Сегодня',
   '/inbox': 'Входящие',
+  '/anytime': 'В любое время',
   '/goals': 'Цели и Навыки',
   '/calendar': 'Календарь',
   '/repeats': 'Повторить',
@@ -36,12 +37,14 @@ export const TopBar: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.titleWrapper}>
-        <h1 className={styles.title}>{currentTitle}</h1>
-        {isTodayPage && (
-          <span className={styles.dateSubtitle}>
-            • {todayFormatted}
-          </span>
-        )}
+        <div className={styles.headerTitleRow}>
+          <h1 className={styles.title}>{currentTitle}</h1>
+          {isTodayPage && (
+            <span className={styles.dateSubtitle}>
+              • {todayFormatted}
+            </span>
+          )}
+        </div>
       </div>
 
       <div className={styles.actions}>
@@ -62,6 +65,7 @@ export const TopBar: React.FC = () => {
             fontSize: '13px',
             fontWeight: 500,
             transition: 'all var(--transition-fast)',
+            whiteSpace: 'nowrap',
           }}
         >
           {theme === 'dark' ? '🌙 Темная' : '☀️ Светлая'}

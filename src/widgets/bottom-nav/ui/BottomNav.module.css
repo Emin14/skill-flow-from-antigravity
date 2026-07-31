@@ -2,7 +2,7 @@
   display: none;
 }
 
-/* Responsive breakpoint for Mobile / iPhone 17 Pro (402px x 874px) */
+/* Responsive breakpoint for Mobile / iPhone 17 Pro */
 @media (max-width: 768px) {
   .bottomNav {
     display: flex;
@@ -12,13 +12,15 @@
     right: 0;
     height: calc(64px + env(safe-area-inset-bottom, 20px));
     padding-bottom: env(safe-area-inset-bottom, 20px);
-    background-color: var(--color-bg);
+    background-color: rgba(15, 17, 26, 0.95);
     border-top: 1px solid var(--color-border);
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
     align-items: center;
     justify-content: space-around;
     z-index: var(--z-index-sticky);
     box-sizing: border-box;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 
   .navItem {
@@ -29,35 +31,46 @@
     gap: 2px;
     color: var(--color-text-muted);
     text-decoration: none;
-    font-size: var(--font-size-xs);
-    min-width: 56px;
+    font-size: 10px;
+    min-width: 48px;
     min-height: 44px;
     border-radius: var(--radius-sm);
     transition: color var(--transition-fast);
   }
 
   .navItemActive {
-    color: var(--color-accent);
+    color: #60a5fa;
     font-weight: var(--font-weight-semibold);
   }
 
   .icon {
-    font-size: 20px;
+    font-size: 18px;
   }
 
+  /* Sleek, Elevated Gradient FAB Button */
   .createFab {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-full);
-    background-color: var(--color-accent);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
     color: #ffffff;
-    border: none;
+    border: 3px solid var(--color-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-12px);
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.45);
+    transform: translateY(-26px);
     cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .createFab:hover {
+    transform: translateY(-28px) scale(1.06);
+    box-shadow: 0 10px 28px rgba(14, 165, 233, 0.6);
+  }
+
+  .createFab:active {
+    transform: translateY(-24px) scale(0.95);
   }
 }

@@ -1,11 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  max-width: 900px;
-  margin: 0 auto;
+  gap: var(--space-5);
   width: 100%;
-  padding-bottom: 80px;
 }
 
 .repeatsList {
@@ -14,180 +11,245 @@
   gap: var(--space-4);
 }
 
-/* Reference Card Design matching screenshot */
-.matrixCard {
+/* Timeline Repeat Card */
+.repeatCard {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  padding: 20px 22px;
-  border-radius: 24px;
+  padding: 16px 18px;
+  border-radius: 18px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   transition: all var(--transition-fast);
-  width: 100%;
-  box-sizing: border-box;
 }
 
-.matrixCard:hover {
-  border-color: var(--color-border-hover);
-  background-color: var(--color-surface-hover);
+.repeatCard:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Card Header: Icon Badge + Title */
 .cardHeader {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.iconBadge {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%);
-  border: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.headerText {
-  display: flex;
   flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-  flex: 1;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Line 1: Title & Scheduled Date strictly on 1 line */
+.line1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
 }
 
 .taskTitle {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 15.5px;
+  font-weight: 600;
   color: var(--color-text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
 }
 
-.categoryBadge {
-  font-size: 11px;
-  color: var(--color-accent);
+/* Constant Date Badge Styling (Color NEVER changes based on circle node!) */
+.statusBadgeNext {
+  font-size: 11.5px;
   font-weight: 600;
-}
-
-/* 7-Day View Grid */
-.grid7 {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-}
-
-.gridCell7 {
-  height: 36px;
-  border-radius: 10px;
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-text-muted);
-}
-
-.gridCell7Done {
-  background-color: var(--color-success);
-  border-color: var(--color-success);
-  color: #ffffff;
-  box-shadow: 0 0 12px var(--color-success-light);
-}
-
-/* Matrix View (Matching Screenshot - Fits 100% without scroll) */
-.matrixGrid {
-  display: grid;
-  grid-template-rows: repeat(7, 1fr);
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(0, 1fr);
-  gap: 4px;
-  width: 100%;
-  overflow: hidden; /* Zero horizontal scroll */
-  box-sizing: border-box;
-}
-
-.matrixDot {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 3px;
-  background-color: var(--color-surface-hover);
-  border: 1px solid var(--color-border);
-  transition: all var(--transition-fast);
-}
-
-.matrixDotDone {
-  background-color: #5eead4; /* Soft cyan/mint matching screenshot */
-  border-color: #2dd4bf;
-  box-shadow: 0 0 8px rgba(94, 234, 212, 0.5);
-}
-
-/* Sticky Bottom Icon Switcher */
-.bottomToggleWrapper {
-  position: sticky;
-  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-  z-index: var(--z-index-dropdown);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-2);
-  pointer-events: none;
-}
-
-.pillSegmentControl {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px;
-  border-radius: 30px;
-  background-color: var(--color-surface);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-lg);
-}
-
-.iconBtn {
-  width: 46px;
-  height: 38px;
+  padding: 3px 10px;
   border-radius: 20px;
-  border: none;
-  background-color: transparent;
+  background-color: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  white-space: nowrap;
+}
+
+/* Line 2: Category & Repetition Count on 1 line */
+.line2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  font-size: 12px;
   color: var(--color-text-muted);
-  cursor: pointer;
+}
+
+.categoryTag {
+  color: var(--color-accent);
+  background-color: rgba(96, 165, 250, 0.1);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.repetitionCounter {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.repetitionNum {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Timeline Track Container */
+.timelineTrackContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 10px;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+  user-select: none;
+}
+
+.timelineTrack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  min-width: 280px;
+  padding: 0 10px;
+}
+
+.timelineItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.stepLabelTop {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+  min-height: 16px;
+  transition: color 0.2s ease;
+}
+
+.stepLabelTopActive {
+  color: #10b981;
+}
+
+.stepLabelTopNext {
+  color: #60a5fa;
+}
+
+.stepLabelTopOverdue {
+  color: #f87171;
+}
+
+/* Timeline Line Connectors - Sit behind nodes */
+.connectorLine {
+  position: absolute;
+  top: 31px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 1;
+  display: flex;
+}
+
+.lineSegment {
+  flex: 1;
+  height: 3px;
+}
+
+.lineSegmentCompleted {
+  background-color: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.lineSegmentFuture {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Timeline Circle Nodes - ALWAYS SOLID OPAQUE BACKGROUND TO PREVENT LINE BLEED */
+.nodeCircle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-fast);
+  font-size: 10px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  z-index: 5;
+  background-color: #161828; /* Solid surface background prevents green line from entering circle! */
 }
 
-.iconBtnActive {
-  background-color: var(--color-accent);
+.nodeCompleted {
+  background-color: #10b981;
+  border: 2px solid #059669;
   color: #ffffff;
-  border: none;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
 }
 
-@media (max-width: 768px) {
-  .matrixCard {
-    padding: 16px;
-    border-radius: 18px;
-  }
+/* Standard next node (Today or Future) - Blue/Cyan */
+.nodeNext {
+  background-color: #161828;
+  border: 2.5px solid #3b82f6;
+  color: #3b82f6;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  animation: pulseBlue 2s infinite ease-in-out;
+}
 
-  .bottomToggleWrapper {
-    position: fixed;
-    bottom: calc(75px + env(safe-area-inset-bottom, 0px));
-    left: 0;
-    right: 0;
+/* Overdue next node (Yesterday or earlier) - Soft Solid Red */
+.nodeOverdue {
+  background-color: #161828; /* Solid background prevents line bleed! */
+  border: 2.5px solid #ef4444;
+  color: #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+  animation: pulseSoftRed 2.5s infinite ease-in-out;
+}
+
+.nodeFuture {
+  background-color: #161828;
+  border: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.subLabelBottom {
+  font-size: 9.5px;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+  min-height: 14px;
+  white-space: nowrap;
+}
+
+@keyframes pulseBlue {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes pulseSoftRed {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
   }
 }

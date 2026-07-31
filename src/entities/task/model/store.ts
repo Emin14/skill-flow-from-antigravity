@@ -1,11 +1,12 @@
 import { create } from 'zustand';
-import { Task, TaskPriority, TaskStatus } from './types';
+import { Task, TaskPriority, TaskStatus, TaskRepetitionRecord } from './types';
 import { TaskCategory } from '@/shared/config/categories';
+import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS } from '@/shared/config/repetitionRules';
 import { taskRepository } from '@/shared/repository';
 import { useToastStore } from '@/shared/ui';
 import { v4 as uuidv4 } from 'uuid';
 
-interface AddTaskParams {
+export interface AddTaskParams {
   title: string;
   category?: TaskCategory;
   scheduledDate?: string;
@@ -13,6 +14,10 @@ interface AddTaskParams {
   link?: string;
   parentTaskId?: string | null;
   isRepeating?: boolean;
+  repetitionMode?: RepetitionMode;
+  scheduleFrequency?: ScheduleFrequency;
+  afterCompletionDays?: number;
+  hasSubtasks?: boolean;
   targetRepetitions?: number;
 }
 
@@ -23,32 +28,14 @@ interface TaskState {
 
   fetchTasks: () => Promise<void>;
   addTask: (titleOrParams: string | AddTaskParams, priorityFallback?: TaskPriority) => Promise<Task>;
-  toggleTaskStatus: (id: string) => Promise<void>;
-  updateTaskStatus: (id: string, newStatus: TaskStatus) => Promise<void>;
+  toggleTaskStatus: (id: string, smartRating?: SmartRating) => Promise<void>;
+  updateTaskStatus: (id: string, newStatus: TaskStatus, smartRating?: SmartRating) => Promise<void>;
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
   updateTaskPomodoros: (id: string, count: number) => Promise<void>;
   deleteTask: (id: string) => Promise<void>;
-  completeRepetition: (id: string) => Promise<void>;
+  completeRepetition: (id: string, smartRating?: SmartRating) => Promise<void>;
   updateTargetRepetitions: (id: string, newTarget: number) => Promise<void>;
 }
-
-// Spaced repetition intervals:
-// 1st completion -> +1 day
-// 2nd completion -> +3 days
-// 3rd completion -> +7 days
-// 4th completion -> +14 days
-// 5th completion -> +30 days
-// 6th completion -> +90 days
-// 7th and more -> +180 days
-const getRepetitionIntervalDays = (completionNumber: number): number => {
-  if (completionNumber === 1) return 1;
-  if (completionNumber === 2) return 3;
-  if (completionNumber === 3) return 7;
-  if (completionNumber === 4) return 14;
-  if (completionNumber === 5) return 30;
-  if (completionNumber === 6) return 90;
-  return 180;
-};
 
 // Timezone-safe YYYY-MM-DD date arithmetic helper
 const addDaysToDateStr = (dateStr: string, days: number): string => {
@@ -64,6 +51,101 @@ const addDaysToDateStr = (dateStr: string, days: number): string => {
   const month = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
+};
+
+// Dynamically compute base smart interval float from SURVIVING completed task instances in the store
+export const getDynamicSmartBaseInterval = (allTasks: Task[], currentTask: Task): number => {
+  const seriesKey = currentTask.seriesId || currentTask.title.toLowerCase().trim();
+
+  // Find all SURVIVING completed task instances in the store for this series
+  const seriesCompletedTasks = allTasks.filter(
+    (t) =>
+      t.id !== currentTask.id &&
+      t.status === 'Done' &&
+      ((t.seriesId && (t.seriesId === currentTask.seriesId || t.seriesId === currentTask.id)) ||
+        t.title.toLowerCase().trim() === seriesKey)
+  );
+
+  if (seriesCompletedTasks.length === 0) {
+    return 1.0;
+  }
+
+  // Sort chronologically by completion date
+  seriesCompletedTasks.sort((a, b) => {
+    const timeA = a.completedAt || a.scheduledDate;
+    const timeB = b.completedAt || b.scheduledDate;
+    return timeA.localeCompare(timeB);
+  });
+
+  let interval = 1.0;
+  for (const t of seriesCompletedTasks) {
+    const rating = t.lastSmartRating || 'normal';
+    if (rating === 'again') {
+      interval = 1.0;
+    } else if (rating === 'hard') {
+      interval *= 1.2;
+    } else if (rating === 'normal') {
+      interval *= 1.7;
+    } else if (rating === 'easy') {
+      interval *= 2.5;
+    }
+  }
+
+  return interval;
+};
+
+// Calculate next interval float and integer days to add for all repetition modes
+export const calculateNextInterval = (
+  allTasks: Task[],
+  task: Task,
+  newCount: number,
+  smartRating?: SmartRating
+): { nextIntervalFloat: number; daysToAdd: number } => {
+  const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
+
+  if (mode === 'none' && !smartRating) {
+    return { nextIntervalFloat: 0, daysToAdd: 0 };
+  }
+
+  if (mode === 'spaced' && !smartRating) {
+    const index = Math.min(Math.max(0, newCount - 1), SPACED_INTERVAL_STEPS.length - 1);
+    const days = SPACED_INTERVAL_STEPS[index] || 90;
+    return { nextIntervalFloat: days, daysToAdd: days };
+  }
+
+  if (mode === 'schedule' && !smartRating) {
+    const freq = task.scheduleFrequency || 'daily';
+    let days = 1;
+    if (freq === 'daily') days = 1;
+    else if (freq === 'weekly') days = 7;
+    else if (freq === 'monthly') days = 30;
+    else if (freq === 'yearly') days = 365;
+    return { nextIntervalFloat: days, daysToAdd: days };
+  }
+
+  if (mode === 'after_completion' && !smartRating) {
+    const days = Math.max(1, task.afterCompletionDays || 3);
+    return { nextIntervalFloat: days, daysToAdd: days };
+  }
+
+  // Default to smart repetition calculation when a rating is provided
+  const baseInterval = getDynamicSmartBaseInterval(allTasks, task);
+
+  let nextFloat = 1.0;
+  if (smartRating === 'again') {
+    nextFloat = 1.0; // Reset algorithm back to 1 day!
+  } else if (smartRating === 'hard') {
+    nextFloat = baseInterval * 1.2;
+  } else if (smartRating === 'normal') {
+    nextFloat = baseInterval * 1.7;
+  } else if (smartRating === 'easy') {
+    nextFloat = baseInterval * 2.5;
+  } else {
+    nextFloat = baseInterval * 1.7;
+  }
+
+  const daysToAdd = Math.max(1, Math.floor(nextFloat));
+  return { nextIntervalFloat: nextFloat, daysToAdd };
 };
 
 export const useTaskStore = create<TaskState>((set, get) => ({
@@ -96,12 +178,15 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         category: 'Задача',
         scheduledDate: today,
         isRepeating: false,
+        repetitionMode: 'none',
+        hasSubtasks: false,
         targetRepetitions: 8,
         repetitionsCount: 0,
         repetitionHistory: [],
         createdAt: new Date().toISOString(),
         pomodorosCount: 1,
         totalActiveSeconds: 0,
+        currentIntervalDays: 1.0,
       };
     } else {
       const {
@@ -112,8 +197,15 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         link = '',
         parentTaskId = null,
         isRepeating = false,
+        repetitionMode = 'none',
+        scheduleFrequency = 'daily',
+        afterCompletionDays = 3,
+        hasSubtasks = false,
         targetRepetitions = 8,
       } = titleOrParams;
+
+      const effectiveMode: RepetitionMode = isRepeating && repetitionMode === 'none' ? 'spaced' : repetitionMode;
+      const effectiveIsRepeating = effectiveMode !== 'none';
 
       newTask = {
         id: uuidv4(),
@@ -126,7 +218,12 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         description,
         link,
         parentTaskId,
-        isRepeating,
+        isRepeating: effectiveIsRepeating,
+        repetitionMode: effectiveMode,
+        scheduleFrequency,
+        afterCompletionDays,
+        currentIntervalDays: 1.0,
+        hasSubtasks,
         targetRepetitions,
         repetitionsCount: 0,
         repetitionHistory: [],
@@ -142,22 +239,26 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     return saved;
   },
 
-  toggleTaskStatus: async (id: string) => {
+  toggleTaskStatus: async (id: string, smartRating?: SmartRating) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
 
     const newStatus: TaskStatus = task.status === 'Done' ? 'Todo' : 'Done';
-    await get().updateTaskStatus(id, newStatus);
+    await get().updateTaskStatus(id, newStatus, smartRating);
   },
 
-  updateTaskStatus: async (id: string, newStatus: TaskStatus) => {
+  updateTaskStatus: async (id: string, newStatus: TaskStatus, smartRating?: SmartRating) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
 
+    const wasAlreadyDone = task.status === 'Done';
     const nowIso = new Date().toISOString();
     const todayStr = nowIso.split('T')[0];
     const nowMs = new Date(nowIso).getTime();
     const updates: Partial<Task> = { status: newStatus };
+    if (smartRating) {
+      updates.lastSmartRating = smartRating;
+    }
 
     // Accumulated Active Time Calculation
     let currentActiveSec = task.totalActiveSeconds || 0;
@@ -190,37 +291,157 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     try {
       await taskRepository.update(id, updates);
 
-      // Handle Task Duplication for Spaced Repetition if task.isRepeating === true
-      if (newStatus === 'Done' && task.isRepeating && task.status !== 'Done') {
+      const seriesKey = task.seriesId || task.title.toLowerCase().trim();
+
+      // IF RATING WAS SELECTED OR CHANGED ON ANY COMPLETED TASK:
+      if (newStatus === 'Done' && smartRating) {
+        // Find existing uncompleted task instance of this series to reposition
+        const uncompletedSeriesTasks = get().tasks.filter(
+          (t) =>
+            t.id !== id &&
+            t.status === 'Todo' &&
+            ((t.seriesId && (t.seriesId === task.seriesId || t.seriesId === task.id)) ||
+              t.title.toLowerCase().trim() === seriesKey)
+        );
+
+        if (uncompletedSeriesTasks.length > 0) {
+          const { nextIntervalFloat, daysToAdd } = calculateNextInterval(
+            get().tasks,
+            task,
+            task.repetitionsCount || 1,
+            smartRating
+          );
+          const baseDateStr = task.scheduledDate || todayStr;
+          const newScheduledDate = addDaysToDateStr(baseDateStr, daysToAdd);
+
+          const targetIds = new Set(uncompletedSeriesTasks.map((t) => t.id));
+
+          // Move uncompleted tasks from old date to new date in memory state
+          set((state) => ({
+            tasks: state.tasks.map((t) =>
+              targetIds.has(t.id)
+                ? {
+                    ...t,
+                    scheduledDate: newScheduledDate,
+                    currentIntervalDays: nextIntervalFloat,
+                    lastSmartRating: smartRating,
+                  }
+                : t
+            ),
+          }));
+
+          // Persist new scheduled date in repository
+          for (const targetTask of uncompletedSeriesTasks) {
+            await taskRepository.update(targetTask.id, {
+              scheduledDate: newScheduledDate,
+              currentIntervalDays: nextIntervalFloat,
+              lastSmartRating: smartRating,
+            });
+          }
+
+          if (wasAlreadyDone) {
+            useToastStore
+              .getState()
+              .showToast(
+                `Сложность выбрана: повтор перенесен на ${newScheduledDate} (+${daysToAdd} дн.)`,
+                'info'
+              );
+            return;
+          }
+        } else if (wasAlreadyDone && (task.isRepeating || smartRating)) {
+          // If no uncompleted task existed yet for this series, create one now!
+          const { nextIntervalFloat, daysToAdd } = calculateNextInterval(
+            get().tasks,
+            task,
+            (task.repetitionsCount || 1) + 1,
+            smartRating
+          );
+          const baseDateStr = task.scheduledDate || todayStr;
+          const nextScheduledDateStr = addDaysToDateStr(baseDateStr, daysToAdd);
+
+          const duplicatedTask: Task = {
+            id: uuidv4(),
+            seriesId: task.seriesId || task.id,
+            title: task.title,
+            status: 'Todo',
+            priority: task.priority || 'P3',
+            category: task.category || 'Задача',
+            scheduledDate: nextScheduledDateStr,
+            description: task.description || '',
+            link: task.link || '',
+            parentTaskId: task.parentTaskId || null,
+            isRepeating: true,
+            repetitionMode: 'smart',
+            scheduleFrequency: task.scheduleFrequency || 'daily',
+            afterCompletionDays: task.afterCompletionDays || 3,
+            currentIntervalDays: nextIntervalFloat,
+            lastSmartRating: smartRating,
+            hasSubtasks: task.hasSubtasks || false,
+            targetRepetitions: task.targetRepetitions || 8,
+            repetitionsCount: (task.repetitionsCount || 1) + 1,
+            repetitionHistory: task.repetitionHistory || [],
+            createdAt: new Date().toISOString(),
+            pomodorosCount: 1,
+            totalActiveSeconds: 0,
+          };
+
+          await taskRepository.save(duplicatedTask);
+          set((state) => ({ tasks: [duplicatedTask, ...state.tasks] }));
+          useToastStore
+            .getState()
+            .showToast(
+              `Сложность выбрана: следующее повторение создано на ${nextScheduledDateStr} (+${daysToAdd} дн.)`,
+              'success'
+            );
+          return;
+        }
+      }
+
+      // Initial Completion of Task (when not already done):
+      const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
+      if (newStatus === 'Done' && mode !== 'none' && !wasAlreadyDone) {
         const newCount = (task.repetitionsCount || 0) + 1;
-        const intervalDays = getRepetitionIntervalDays(newCount);
+        const { nextIntervalFloat, daysToAdd } = calculateNextInterval(get().tasks, task, newCount, smartRating);
 
-        // Always base future duplication date strictly on the task's initial scheduledDate
         const baseDateStr = task.scheduledDate || todayStr;
-        const nextScheduledDateStr = addDaysToDateStr(baseDateStr, intervalDays);
+        const nextScheduledDateStr = addDaysToDateStr(baseDateStr, daysToAdd);
 
-        const historyDateStr = task.scheduledDate || todayStr;
         const activeMins = Math.max(1, Math.round(currentActiveSec / 60));
-        const newHistoryRecord = {
-          date: historyDateStr,
+        const newHistoryRecord: TaskRepetitionRecord = {
+          date: baseDateStr,
           completed: true,
           pomodorosCount: task.pomodorosCount || 1,
           activeMinutes: activeMins,
+          smartRating: smartRating || 'normal',
         };
         const newHistory = [...(task.repetitionHistory || []), newHistoryRecord];
 
-        // Also update history record on current task
-        await taskRepository.update(id, { repetitionHistory: newHistory, repetitionsCount: newCount });
+        await taskRepository.update(id, {
+          repetitionHistory: newHistory,
+          repetitionsCount: newCount,
+          currentIntervalDays: nextIntervalFloat,
+          lastSmartRating: smartRating,
+        });
+
         set((state) => ({
-          tasks: state.tasks.map((t) => (t.id === id ? { ...t, repetitionHistory: newHistory, repetitionsCount: newCount } : t)),
+          tasks: state.tasks.map((t) =>
+            t.id === id
+              ? {
+                  ...t,
+                  repetitionHistory: newHistory,
+                  repetitionsCount: newCount,
+                  currentIntervalDays: nextIntervalFloat,
+                  lastSmartRating: smartRating,
+                }
+              : t
+          ),
         }));
 
-        // Create duplicated task instance for the future date with status: 'Todo' (UNCHECKED!)
         const duplicatedTask: Task = {
           id: uuidv4(),
           seriesId: task.seriesId || task.id,
           title: task.title,
-          status: 'Todo', // Unchecked!
+          status: 'Todo',
           priority: task.priority || 'P3',
           category: task.category || 'Задача',
           scheduledDate: nextScheduledDateStr,
@@ -228,6 +449,12 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           link: task.link || '',
           parentTaskId: task.parentTaskId || null,
           isRepeating: true,
+          repetitionMode: mode,
+          scheduleFrequency: task.scheduleFrequency || 'daily',
+          afterCompletionDays: task.afterCompletionDays || 3,
+          currentIntervalDays: nextIntervalFloat,
+          lastSmartRating: smartRating,
+          hasSubtasks: task.hasSubtasks || false,
           targetRepetitions: task.targetRepetitions || 8,
           repetitionsCount: newCount,
           repetitionHistory: newHistory,
@@ -241,13 +468,14 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
         await taskRepository.save(duplicatedTask);
         set((state) => ({ tasks: [duplicatedTask, ...state.tasks] }));
+
         useToastStore
           .getState()
           .showToast(
-            `Повторение #${newCount}: задача продублирована на ${nextScheduledDateStr} (+${intervalDays} дн. от ${baseDateStr})`,
+            `Повторение #${newCount}: продублировано на ${nextScheduledDateStr} (+${daysToAdd} дн.)`,
             'success'
           );
-      } else if (newStatus === 'Done') {
+      } else if (newStatus === 'Done' && !wasAlreadyDone) {
         useToastStore.getState().showToast(`Задача "${task.title}" выполнена!`, 'success');
       } else if (newStatus === 'InProgress') {
         useToastStore.getState().showToast(`Задача "${task.title}" переведена в процесс`, 'info');
@@ -264,7 +492,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
 
-    // Unified editing: if task has seriesId or isRepeating, update metadata across series
+    // Synchronize updates across repeating series
     const targetSeriesId = task.seriesId || (task.isRepeating ? task.id : null);
 
     set((state) => ({
@@ -279,6 +507,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             link: updates.link !== undefined ? updates.link : t.link,
             parentTaskId: updates.parentTaskId !== undefined ? updates.parentTaskId : t.parentTaskId,
             isRepeating: updates.isRepeating !== undefined ? updates.isRepeating : t.isRepeating,
+            repetitionMode: updates.repetitionMode !== undefined ? updates.repetitionMode : t.repetitionMode,
+            scheduleFrequency: updates.scheduleFrequency !== undefined ? updates.scheduleFrequency : t.scheduleFrequency,
+            afterCompletionDays: updates.afterCompletionDays !== undefined ? updates.afterCompletionDays : t.afterCompletionDays,
+            hasSubtasks: updates.hasSubtasks !== undefined ? updates.hasSubtasks : t.hasSubtasks,
             targetRepetitions: updates.targetRepetitions !== undefined ? updates.targetRepetitions : t.targetRepetitions,
           };
         }
@@ -298,6 +530,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             link: updates.link !== undefined ? updates.link : st.link,
             parentTaskId: updates.parentTaskId !== undefined ? updates.parentTaskId : st.parentTaskId,
             isRepeating: updates.isRepeating !== undefined ? updates.isRepeating : st.isRepeating,
+            repetitionMode: updates.repetitionMode !== undefined ? updates.repetitionMode : st.repetitionMode,
+            scheduleFrequency: updates.scheduleFrequency !== undefined ? updates.scheduleFrequency : st.scheduleFrequency,
+            afterCompletionDays: updates.afterCompletionDays !== undefined ? updates.afterCompletionDays : st.afterCompletionDays,
+            hasSubtasks: updates.hasSubtasks !== undefined ? updates.hasSubtasks : st.hasSubtasks,
             targetRepetitions: updates.targetRepetitions !== undefined ? updates.targetRepetitions : st.targetRepetitions,
           });
         }
@@ -315,7 +551,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
 
-    const safeCount = Math.max(1, count);
+    const safeCount = Math.max(0.1, count);
     set((state) => ({
       tasks: state.tasks.map((t) => (t.id === id ? { ...t, pomodorosCount: safeCount } : t)),
     }));
@@ -341,21 +577,26 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     );
   },
 
-  completeRepetition: async (id: string) => {
+  completeRepetition: async (id: string, smartRating?: SmartRating) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
 
     const baseDateStr = task.scheduledDate || new Date().toISOString().split('T')[0];
     const newCount = (task.repetitionsCount || 0) + 1;
-    const intervalDays = getRepetitionIntervalDays(newCount);
-    const nextReviewStr = addDaysToDateStr(baseDateStr, intervalDays);
+    const { nextIntervalFloat, daysToAdd } = calculateNextInterval(get().tasks, task, newCount, smartRating);
+    const nextReviewStr = addDaysToDateStr(baseDateStr, daysToAdd);
 
-    const newHistory = [...(task.repetitionHistory || []), { date: baseDateStr, completed: true }];
+    const newHistory: TaskRepetitionRecord[] = [
+      ...(task.repetitionHistory || []),
+      { date: baseDateStr, completed: true, smartRating: smartRating || 'normal' },
+    ];
 
     const updates: Partial<Task> = {
       repetitionsCount: newCount,
       lastReviewedAt: baseDateStr,
       nextReviewDate: nextReviewStr,
+      currentIntervalDays: nextIntervalFloat,
+      lastSmartRating: smartRating,
       repetitionHistory: newHistory,
     };
 
@@ -366,7 +607,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     await taskRepository.update(id, updates);
     useToastStore
       .getState()
-      .showToast(`Повторение #${newCount} засчитано! Следующее через ${intervalDays} дн. (${nextReviewStr})`, 'success');
+      .showToast(`Повторение #${newCount} засчитано! Следующее через ${daysToAdd} дн. (${nextReviewStr})`, 'success');
   },
 
   updateTargetRepetitions: async (id: string, newTarget: number) => {

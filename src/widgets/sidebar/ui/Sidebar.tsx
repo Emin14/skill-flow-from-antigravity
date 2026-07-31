@@ -15,6 +15,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Сегодня', href: '/today', icon: '☀️' },
   { label: 'Входящие', href: '/inbox', icon: '📥' },
+  { label: 'В любое время', href: '/anytime', icon: '♾️' },
   { label: 'Цели', href: '/goals', icon: '🏆' },
   { label: 'Календарь', href: '/calendar', icon: '📅' },
   { label: 'Повторить', href: '/repeats', icon: '🔄' },

@@ -58,6 +58,7 @@ export const InboxPage: React.FC = () => {
       scheduledDate: new Date().toISOString().split('T')[0],
       createdAt: new Date().toISOString(),
       isRepeating: false,
+      hasSubtasks: false,
       targetRepetitions: 8,
       repetitionsCount: 0,
       repetitionHistory: [],
@@ -173,14 +174,13 @@ export const InboxPage: React.FC = () => {
 
               {/* Quick Actions */}
               <div className={styles.itemActions}>
-                <Button
-                  variant="primary"
-                  size="sm"
+                <button
+                  className={styles.triageBtn}
                   onClick={() => handleTriage(item)}
                   title="Разобрать запись в Задачу"
                 >
                   ✔ Разобрать
-                </Button>
+                </button>
                 <Button
                   variant="ghost"
                   size="sm"
