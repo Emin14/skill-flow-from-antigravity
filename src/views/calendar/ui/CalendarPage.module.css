@@ -1,36 +1,31 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
-  max-width: 800px;
-  margin: 0 auto;
+  gap: var(--space-4);
   width: 100%;
 }
 
 .calendarCard {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-5);
-  border-radius: var(--radius-lg);
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 20px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  touch-action: pan-y;
-  user-select: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Month Navigation Header */
 .monthNavHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--color-border);
+  width: 100%;
 }
 
 .monthTitle {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  font-weight: 700;
   color: var(--color-text-primary);
   text-transform: capitalize;
 }
@@ -38,92 +33,94 @@
 .navControls {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 6px;
 }
 
 .navBtn {
-  background-color: var(--color-bg);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--color-border);
   color: var(--color-text-primary);
-  border-radius: var(--radius-md);
-  padding: 8px 14px;
-  min-height: 40px;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
   cursor: pointer;
-  transition: all var(--transition-fast);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: all 0.15s ease;
 }
 
 .navBtn:hover {
-  background-color: var(--color-surface-hover);
-  border-color: var(--color-border-hover);
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
 }
 
 .weekHeaderGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  gap: 4px;
   text-align: center;
-  margin-bottom: var(--space-1);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding-bottom: 2px;
 }
 
 .weekHeaderCell {
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-muted);
-  padding: 4px 0;
-  text-transform: uppercase;
+  padding: 2px 0;
 }
 
+/* Compact Calendar Matrix Grid */
 .calendarMatrixGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  gap: 4px;
   width: 100%;
 }
 
 .dateCell {
-  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  padding: 4px;
-  border-radius: var(--radius-md);
+  height: 38px;
+  border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--color-border);
+  border: 1px solid transparent;
   cursor: pointer;
-  transition: all var(--transition-fast);
-  box-sizing: border-box;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
 
 .dateCell:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .dateCellOtherMonth {
-  opacity: 0.35;
+  opacity: 0.3;
 }
 
+/* Today's date highlighted in vibrant GREEN (Requirement 4) */
 .dateCellToday {
-  border-color: var(--color-warning);
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border: 1.5px solid #10b981 !important;
+  color: #10b981 !important;
+  font-weight: 800 !important;
 }
 
+/* Prominent Glowing Blue Gradient Active Date Selection Highlight */
 .dateCellActive {
-  border-color: var(--color-accent);
-  background-color: var(--color-accent-light);
-  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.45) !important;
+  transform: scale(1.06);
+  border: 1.5px solid #38bdf8 !important;
+  z-index: 5;
 }
 
 .dayNum {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  font-size: 13px;
   line-height: 1;
 }
 
@@ -132,62 +129,66 @@
   align-items: center;
   justify-content: center;
   gap: 2px;
-  height: 6px;
   margin-top: 2px;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background-color: var(--color-text-muted);
+  background-color: #38bdf8;
 }
 
-/* Vibrant Green Completed Dots (Item 11) */
 .dotDone {
   background-color: #10b981;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
 }
 
 .selectedDayCard {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  padding: var(--space-4) var(--space-5);
-  border-radius: var(--radius-lg);
+  gap: 12px;
+  padding: 16px;
+  border-radius: 18px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 .taskList {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 8px;
 }
 
 .taskRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--color-border);
 }
 
-@media (max-width: 600px) {
-  .calendarCard {
-    padding: 12px;
-  }
+/* Calendar Rating Emoji Button (Requirement 3: Glowing highlight without harsh borders) */
+.calendarRatingBtn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  .navBtn {
-    padding: 6px 10px;
-    font-size: 13px;
-    min-height: 38px;
-  }
-
-  .monthTitle {
-    font-size: 15px;
-  }
+.calendarRatingActive {
+  background: rgba(14, 165, 233, 0.22) !important;
+  color: #0ea5e9 !important;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35) !important;
+  transform: scale(1.15) !important;
+  border-color: transparent !important;
 }

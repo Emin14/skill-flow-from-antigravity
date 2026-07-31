@@ -1,202 +1,120 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { Checkbox } from '@/shared/ui';
+import React, { useEffect, useState, useMemo } from 'react';
+import { Checkbox, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
-import { useTopicStore } from '@/entities/topic';
 import { Task, TaskStatus } from '@/entities/task/model/types';
-import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
-import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
 import styles from './TodayTasks.module.css';
 
-const getShortLink = (url: string) => {
-  try {
-    const parsed = new URL(url.startsWith('http') ? url : `https://${url}`);
-    return parsed.hostname.replace('www.', '');
-  } catch {
-    return 'Ссылка';
-  }
-};
-
-const formatActiveDuration = (task: Task): string | null => {
-  let totalSec = task.totalActiveSeconds || 0;
-  if (task.status === 'InProgress' && task.lastStartedAt) {
-    const startedMs = new Date(task.lastStartedAt).getTime();
-    const elapsedSec = Math.max(0, Math.round((Date.now() - startedMs) / 1000));
-    totalSec += elapsedSec;
-  }
-  if (totalSec <= 0) return null;
-  const mins = Math.max(1, Math.round(totalSec / 60));
-  return `${mins} мин`;
-};
-
 export const TodayTasks: React.FC = () => {
-  const { tasks, toggleTaskStatus, updateTaskStatus, updateTaskDetails, updateTaskPomodoros, deleteTask } = useTaskStore();
-  const { topics } = useTopicStore();
-
-  const [draggedTaskId, setDraggedTaskId] = useState<string | null>(null);
-  const [dragOverColumn, setDragOverColumn] = useState<TaskStatus | null>(null);
+  const { tasks, isLoading, fetchTasks, updateTaskStatus } = useTaskStore();
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
-  const [smartTask, setSmartTask] = useState<Task | null>(null);
 
-  const todayStr = new Date().toISOString().split('T')[0];
+  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
 
-  // Strictly filter today's tasks by scheduledDate
-  const todayTasks = tasks.filter((t) => t.scheduledDate === todayStr);
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
 
-  const pendingTasks = todayTasks.filter((t) => t.status === 'Todo');
-  const inProgressTasks = todayTasks.filter((t) => t.status === 'InProgress');
-  const completedTasks = todayTasks.filter((t) => t.status === 'Done');
+  // Tasks scheduled for today or overdue
+  const todayTasks = useMemo(() => {
+    return tasks.filter((t) => !t.scheduledDate || t.scheduledDate <= todayStr);
+  }, [tasks, todayStr]);
 
-  const handleCheckboxToggle = (task: Task) => {
-    if (task.status !== 'Done' && task.repetitionMode === 'smart') {
-      setSmartTask(task);
+  // Group tasks by Kanban Stages: Todo, InProgress, Done
+  const todoTasks = useMemo(() => todayTasks.filter((t) => t.status === 'Todo'), [todayTasks]);
+  const inProgressTasks = useMemo(() => todayTasks.filter((t) => t.status === 'InProgress'), [todayTasks]);
+  const doneTasks = useMemo(() => todayTasks.filter((t) => t.status === 'Done'), [todayTasks]);
+
+  const handleCardClick = (task: Task) => {
+    if (task.isRepeating) {
+      setDetailTask(task);
     } else {
-      toggleTaskStatus(task.id);
+      setEditingTask(task);
     }
   };
 
-  const handleStatusChange = (task: Task, newStatus: TaskStatus, smartRating?: SmartRating) => {
-    if (newStatus === 'Done' && task.repetitionMode === 'smart' && task.status !== 'Done' && !smartRating) {
-      setSmartTask(task);
-    } else {
-      updateTaskStatus(task.id, newStatus, smartRating);
-    }
-  };
-
-  const handleSelectSmartRating = (rating: SmartRating) => {
-    if (smartTask) {
-      updateTaskStatus(smartTask.id, 'Done', rating);
-      setSmartTask(null);
-    }
-  };
-
-  // Drag and drop handlers
-  const handleDragStart = (e: React.DragEvent, taskId: string) => {
-    setDraggedTaskId(taskId);
-    e.dataTransfer.setData('text/plain', taskId);
-  };
-
-  const handleDragOver = (e: React.DragEvent, status: TaskStatus) => {
+  const handleDropToStage = (e: React.DragEvent, targetStatus: TaskStatus) => {
     e.preventDefault();
-    if (dragOverColumn !== status) {
-      setDragOverColumn(status);
-    }
-  };
-
-  const handleDragLeave = () => {
-    setDragOverColumn(null);
-  };
-
-  const handleDropColumn = async (e: React.DragEvent, targetStatus: TaskStatus) => {
-    e.preventDefault();
-    setDragOverColumn(null);
-    const taskId = draggedTaskId || e.dataTransfer.getData('text/plain');
+    const taskId = e.dataTransfer.getData('text/plain');
     if (taskId) {
-      const task = tasks.find((t) => t.id === taskId);
-      if (task) {
-        handleStatusChange(task, targetStatus);
-      }
+      updateTaskStatus(taskId, targetStatus);
     }
-    setDraggedTaskId(null);
-  };
-
-  // Drag task onto another task card to make it a subtask
-  const handleDropOnTaskCard = async (e: React.DragEvent, targetTask: Task) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const draggedId = draggedTaskId || e.dataTransfer.getData('text/plain');
-    if (draggedId && draggedId !== targetTask.id) {
-      await updateTaskDetails(targetTask.id, { hasSubtasks: true });
-      await updateTaskDetails(draggedId, { parentTaskId: targetTask.id });
-    }
-    setDraggedTaskId(null);
-  };
-
-  const handleTaskClick = (task: Task) => {
-    setDetailTask(task);
   };
 
   return (
     <div className={styles.container}>
-      {/* 3 Vertical Kanban Sections */}
-      <div className={styles.kanbanSections}>
-        {/* Column 1: Ожидает */}
-        <KanbanColumn
-          title="⏳ Ожидает"
-          count={pendingTasks.length}
-          status="Todo"
-          tasks={pendingTasks}
-          topics={topics}
-          isDragOver={dragOverColumn === 'Todo'}
-          onDragOver={(e) => handleDragOver(e, 'Todo')}
-          onDragLeave={handleDragLeave}
-          onDropColumn={(e) => handleDropColumn(e, 'Todo')}
-          onDropOnTaskCard={handleDropOnTaskCard}
-          onDragStart={handleDragStart}
-          onCheckboxToggle={(t) => handleCheckboxToggle(t)}
-          onUpdateStatus={(t, st, rating) => handleStatusChange(t, st, rating)}
-          onUpdateDetails={updateTaskDetails}
-          onUpdatePomodoros={updateTaskPomodoros}
-          onDeleteTask={deleteTask}
-          onTaskClick={handleTaskClick}
-        />
-
-        {/* Column 2: В процессе */}
-        <KanbanColumn
-          title="⚡ В процессе"
-          count={inProgressTasks.length}
-          status="InProgress"
-          tasks={inProgressTasks}
-          topics={topics}
-          isDragOver={dragOverColumn === 'InProgress'}
-          onDragOver={(e) => handleDragOver(e, 'InProgress')}
-          onDragLeave={handleDragLeave}
-          onDropColumn={(e) => handleDropColumn(e, 'InProgress')}
-          onDropOnTaskCard={handleDropOnTaskCard}
-          onDragStart={handleDragStart}
-          onCheckboxToggle={(t) => handleCheckboxToggle(t)}
-          onUpdateStatus={(t, st, rating) => handleStatusChange(t, st, rating)}
-          onUpdateDetails={updateTaskDetails}
-          onUpdatePomodoros={updateTaskPomodoros}
-          onDeleteTask={deleteTask}
-          onTaskClick={handleTaskClick}
-        />
-
-        {/* Column 3: Выполнено */}
-        <KanbanColumn
-          title="✅ Выполнено"
-          count={completedTasks.length}
-          status="Done"
-          tasks={completedTasks}
-          topics={topics}
-          isDragOver={dragOverColumn === 'Done'}
-          onDragOver={(e) => handleDragOver(e, 'Done')}
-          onDragLeave={handleDragLeave}
-          onDropColumn={(e) => handleDropColumn(e, 'Done')}
-          onDropOnTaskCard={handleDropOnTaskCard}
-          onDragStart={handleDragStart}
-          onCheckboxToggle={(t) => handleCheckboxToggle(t)}
-          onUpdateStatus={(t, st, rating) => handleStatusChange(t, st, rating)}
-          onUpdateDetails={updateTaskDetails}
-          onUpdatePomodoros={updateTaskPomodoros}
-          onDeleteTask={deleteTask}
-          onTaskClick={handleTaskClick}
-        />
+      <div className={styles.sectionHeader}>
+        <Typography variant="h2">☀️ Сегодня (Канбан стадий)</Typography>
+        <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
+          Всего: {todayTasks.length} задач
+        </Typography>
       </div>
 
-      {/* Modal for Editing Selected Task */}
+      {isLoading ? (
+        <div style={{ textAlign: 'center', padding: 'var(--space-6)', color: 'var(--color-text-muted)' }}>
+          Загрузка задач...
+        </div>
+      ) : todayTasks.length === 0 ? (
+        <div
+          style={{
+            textAlign: 'center',
+            padding: 'var(--space-8)',
+            borderRadius: '16px',
+            border: '1px dashed var(--color-border)',
+            color: 'var(--color-text-muted)',
+          }}
+        >
+          🌱 Нет задач на сегодня. Создайте новую задачу!
+        </div>
+      ) : (
+        <div className={styles.kanbanStagesGrid}>
+          {/* Stage 1: 📋 К выполнению (Todo) */}
+          <KanbanStageSection
+            title="📋 К выполнению"
+            sectionClass={styles.stageSectionTodo}
+            headerClass={styles.stageHeaderTodo}
+            tasksList={todoTasks}
+            allTodayTasks={todayTasks}
+            onDropStage={(e) => handleDropToStage(e, 'Todo')}
+            onOpenCard={handleCardClick}
+          />
+
+          {/* Stage 2: ⏳ В процессе (InProgress) */}
+          <KanbanStageSection
+            title="⏳ В процессе"
+            sectionClass={styles.stageSectionInProgress}
+            headerClass={styles.stageHeaderInProgress}
+            tasksList={inProgressTasks}
+            allTodayTasks={todayTasks}
+            onDropStage={(e) => handleDropToStage(e, 'InProgress')}
+            onOpenCard={handleCardClick}
+          />
+
+          {/* Stage 3: ✅ Выполнено (Done) */}
+          <KanbanStageSection
+            title="✅ Выполнено"
+            sectionClass={styles.stageSectionDone}
+            headerClass={styles.stageHeaderDone}
+            tasksList={doneTasks}
+            allTodayTasks={todayTasks}
+            onDropStage={(e) => handleDropToStage(e, 'Done')}
+            onOpenCard={handleCardClick}
+          />
+        </div>
+      )}
+
+      {/* Edit Task Modal */}
       <EditTaskModal
         task={editingTask}
         isOpen={!!editingTask}
         onClose={() => setEditingTask(null)}
       />
 
-      {/* Modal for Habit Detail / Lifetime Grid / History */}
+      {/* Habit Detail Modal */}
       <RepeatingTaskDetailModal
         task={detailTask}
         isOpen={!!detailTask}
@@ -206,121 +124,119 @@ export const TodayTasks: React.FC = () => {
           setDetailTask(null);
         }}
       />
-
-      {/* Modal for Smart Repetition Rating */}
-      <SmartRatingModal
-        task={smartTask}
-        isOpen={!!smartTask}
-        onClose={() => setSmartTask(null)}
-        onSelectRating={handleSelectSmartRating}
-      />
     </div>
   );
 };
 
-const KanbanColumn: React.FC<{
+interface KanbanStageSectionProps {
   title: string;
-  count: number;
-  status: TaskStatus;
-  tasks: Task[];
-  topics: any[];
-  isDragOver: boolean;
-  onDragOver: (e: React.DragEvent) => void;
-  onDragLeave: () => void;
-  onDropColumn: (e: React.DragEvent) => void;
-  onDropOnTaskCard: (e: React.DragEvent, targetTask: Task) => void;
-  onDragStart: (e: React.DragEvent, id: string) => void;
-  onCheckboxToggle: (task: Task) => void;
-  onUpdateStatus: (task: Task, status: TaskStatus, smartRating?: SmartRating) => void;
-  onUpdateDetails: (id: string, updates: Partial<Task>) => void;
-  onUpdatePomodoros: (id: string, count: number) => void;
-  onDeleteTask: (id: string) => void;
-  onTaskClick: (task: Task) => void;
-}> = ({
+  sectionClass: string;
+  headerClass: string;
+  tasksList: Task[];
+  allTodayTasks: Task[];
+  onDropStage: (e: React.DragEvent) => void;
+  onOpenCard: (task: Task) => void;
+}
+
+const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   title,
-  count,
-  status,
-  tasks,
-  topics,
-  isDragOver,
-  onDragOver,
-  onDragLeave,
-  onDropColumn,
-  onDropOnTaskCard,
-  onDragStart,
-  onCheckboxToggle,
-  onUpdateStatus,
-  onUpdatePomodoros,
-  onDeleteTask,
-  onTaskClick,
+  sectionClass,
+  headerClass,
+  tasksList,
+  allTodayTasks,
+  onDropStage,
+  onOpenCard,
 }) => {
+  const [isDragOver, setIsDragOver] = useState(false);
+
+  const rootTasksInStage = useMemo(() => {
+    return tasksList.filter((t) => !t.parentTaskId);
+  }, [tasksList]);
+
+  const getSubtasksInStage = (parentId: string) => {
+    return tasksList.filter((t) => t.parentTaskId === parentId);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragOver(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    setIsDragOver(false);
+    onDropStage(e);
+  };
+
   return (
     <div
-      className={`${styles.kanbanColumn} ${isDragOver ? styles.kanbanColumnDragOver : ''}`}
-      onDragOver={onDragOver}
-      onDragLeave={onDragLeave}
-      onDrop={onDropColumn}
+      className={`${styles.stageSection} ${sectionClass} ${isDragOver ? styles.stageSectionDragOver : ''}`}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
     >
-      <div className={styles.columnHeader}>
-        <div className={styles.columnTitle}>
-          <span>{title}</span>
-          <span className={styles.badgeCount}>{count}</span>
-        </div>
+      <div className={`${styles.stageHeader} ${headerClass}`}>
+        <span>{title}</span>
+        <span className={styles.stageBadge}>{tasksList.length}</span>
       </div>
 
-      <div className={styles.columnTasks}>
-        {tasks.length === 0 ? (
-          <div className={styles.emptyState}>Нет задач в этом статусе</div>
-        ) : (
-          tasks.map((task) => (
-            <SwipeableTaskCardItem
-              key={task.id}
-              task={task}
-              status={status}
-              topics={topics}
-              onCheckboxToggle={() => onCheckboxToggle(task)}
-              onUpdateStatus={(st, rating) => onUpdateStatus(task, st, rating)}
-              onUpdatePomodoros={onUpdatePomodoros}
-              onDeleteTask={onDeleteTask}
-              onTaskClick={onTaskClick}
-              onDragStart={onDragStart}
-              onDropOnTaskCard={(e) => onDropOnTaskCard(e, task)}
-            />
-          ))
-        )}
-      </div>
+      {tasksList.length === 0 ? (
+        <div
+          style={{
+            padding: '12px',
+            textAlign: 'center',
+            fontSize: '12px',
+            color: 'var(--color-text-muted)',
+            borderRadius: '12px',
+            border: '1px dashed var(--color-border)',
+          }}
+        >
+          Перетащите сюда задачи
+        </div>
+      ) : (
+        <div className={styles.taskList}>
+          {rootTasksInStage.map((task) => (
+            <React.Fragment key={task.id}>
+              {/* Parent Task Card */}
+              <TaskCardItem task={task} onOpenCard={() => onOpenCard(task)} />
+
+              {/* Subtasks under this stage */}
+              {getSubtasksInStage(task.id).map((subtask) => (
+                <div key={subtask.id} className={styles.subtaskIndent}>
+                  <div className={styles.subtaskConnector} />
+                  <TaskCardItem task={subtask} onOpenCard={() => onOpenCard(subtask)} />
+                </div>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
-/* Swipeable Task Card Component with Drag Handle ⋮⋮⋮ on top line and Drop target support */
-const SwipeableTaskCardItem: React.FC<{
+interface TaskCardItemProps {
   task: Task;
-  status: TaskStatus;
-  topics: any[];
-  onCheckboxToggle: () => void;
-  onUpdateStatus: (status: TaskStatus, smartRating?: SmartRating) => void;
-  onUpdatePomodoros: (id: string, count: number) => void;
-  onDeleteTask: (id: string) => void;
-  onTaskClick: (task: Task) => void;
-  onDragStart: (e: React.DragEvent, id: string) => void;
-  onDropOnTaskCard: (e: React.DragEvent) => void;
-}> = ({
-  task,
-  status,
-  topics,
-  onCheckboxToggle,
-  onUpdateStatus,
-  onUpdatePomodoros,
-  onDeleteTask,
-  onTaskClick,
-  onDragStart,
-  onDropOnTaskCard,
-}) => {
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [swipeOffset, setSwipeOffset] = useState<number>(0);
-  const [isDragOverCard, setIsDragOverCard] = useState(false);
+  onOpenCard: () => void;
+}
 
+const TaskCardItem: React.FC<TaskCardItemProps> = ({ task, onOpenCard }) => {
+  const { updateTaskStatus, updateTaskPomodoros, deleteTask } = useTaskStore();
+
+  const [swipeOffset, setSwipeOffset] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isSwipedLeft, setIsSwipedLeft] = useState<boolean>(false);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+
+  const isDone = task.status === 'Done';
+  const activeRating = task.lastSmartRating;
+  const currentPomodoros = task.pomodorosCount || 1;
+
+  // Touch Swipe Handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
   };
@@ -328,286 +244,168 @@ const SwipeableTaskCardItem: React.FC<{
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchStartX === null) return;
     const currentX = e.targetTouches[0].clientX;
-    const diffX = currentX - touchStartX;
-    if (diffX < 0) {
-      setSwipeOffset(Math.max(-100, diffX));
+    const diff = touchStartX - currentX;
+
+    if (diff > 0 && diff <= 80) {
+      setSwipeOffset(-diff);
+    } else if (diff < 0 && isSwipedLeft) {
+      const remaining = -80 - diff;
+      setSwipeOffset(Math.min(0, remaining));
     }
   };
 
-  const handleTouchEnd = () => {
-    if (swipeOffset < -60) {
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+
+    if (diff > 45) {
+      setIsSwipedLeft(true);
       setSwipeOffset(-80);
     } else {
+      setIsSwipedLeft(false);
       setSwipeOffset(0);
     }
     setTouchStartX(null);
   };
 
-  const isDone = task.status === 'Done';
-  const isInProgress = task.status === 'InProgress';
-  const linkedTopic = task.topicId ? topics.find((tp) => tp.id === task.topicId) : null;
-  const activeDurationStr = formatActiveDuration(task);
-  const currentPomo = task.pomodorosCount || 1;
-  const activeRating = task.lastSmartRating;
+  // Drag and Drop
+  const handleDragStart = (e: React.DragEvent) => {
+    e.dataTransfer.setData('text/plain', task.id);
+    e.dataTransfer.effectAllowed = 'move';
+    setIsDragging(true);
+  };
 
-  // Fractional & whole pomodoro options
-  const pomodoroOptions = [
-    { label: '⅓', val: 0.33 },
-    { label: '½', val: 0.5 },
-    { label: '1', val: 1 },
-    { label: '2', val: 2 },
-    { label: '3', val: 3 },
-    { label: '4', val: 4 },
-    { label: '5', val: 5 },
-  ];
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
 
   return (
-    <div style={{ position: 'relative', overflow: 'hidden', borderRadius: 'var(--radius-md)' }}>
-      {/* Red Background Swipe-Left Delete Action */}
+    <div className={styles.taskCardWrapper}>
+      {/* Background Swipe Delete Action */}
       <div
-        onClick={(e) => {
-          e.stopPropagation();
-          onDeleteTask(task.id);
-        }}
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          width: '80px',
-          backgroundColor: '#ef4444',
-          color: '#ffffff',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontWeight: 'bold',
-          fontSize: '12px',
-          cursor: 'pointer',
-          zIndex: 1,
-          borderRadius: '0 var(--radius-md) var(--radius-md) 0',
-          visibility: swipeOffset < 0 ? 'visible' : 'hidden',
-          opacity: Math.min(1, Math.abs(swipeOffset) / 40),
-        }}
-        title="Нажмите для удаления"
+        className={styles.deleteSwipeAction}
+        onClick={() => deleteTask(task.id)}
       >
         🗑 Удалить
       </div>
 
-      {/* Swipeable Task Card */}
+      {/* Main Task Card */}
       <div
+        className={`${styles.taskCard} ${isDragging ? styles.taskCardDragging : ''}`}
+        style={{ transform: `translateX(${swipeOffset}px)` }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        onDragOver={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsDragOverCard(true);
-        }}
-        onDragLeave={() => setIsDragOverCard(false)}
-        onDrop={(e) => {
-          setIsDragOverCard(false);
-          onDropOnTaskCard(e);
-        }}
-        onClick={() => onTaskClick(task)}
-        className={`${styles.taskCard} ${isInProgress ? styles.taskCardInProgress : ''} ${
-          isDone ? styles.taskCardDone : ''
-        }`}
-        style={{
-          transform: `translateX(${swipeOffset}px)`,
-          transition: touchStartX !== null ? 'none' : 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-          position: 'relative',
-          zIndex: 2,
-          cursor: 'pointer',
-          border: isDragOverCard ? '2px dashed #3b82f6' : undefined,
-          backgroundColor: isDragOverCard ? 'rgba(59, 130, 246, 0.1)' : undefined,
-        }}
-        title="Нажмите для открытия Lifetime Grid и истории"
+        draggable
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onClick={onOpenCard}
       >
-        {/* Header Row: Checkbox on top line + Title with Category BELOW title + Drag Handle ⋮⋮⋮ at far right */}
-        <div className={styles.cardHeader}>
-          <div className={styles.cardMain}>
+        {/* Line 1: Checkbox, Title & Drag Handle */}
+        <div className={styles.cardHeaderRow}>
+          <div className={styles.titleArea}>
             <div onClick={(e) => e.stopPropagation()}>
-              <Checkbox checked={isDone} onChange={onCheckboxToggle} />
+              <Checkbox
+                checked={isDone}
+                onChange={() => updateTaskStatus(task.id, isDone ? 'Todo' : 'Done')}
+              />
             </div>
-
-            {/* Title Container with Category BELOW title */}
-            <div className={styles.titleContainer}>
-              <span className={`${styles.cardTitle} ${isDone ? styles.cardTitleDone : ''}`}>
-                {task.title}
-              </span>
-              <span className={styles.categoryBadgeBelow}>🏷 {task.category}</span>
-            </div>
+            <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
+              {task.title}
+            </span>
           </div>
 
-          {/* Drag Handle ⋮⋮⋮ raised to top header line at far right */}
+          {/* Kanban Stage Quick-Switch Action Buttons */}
+          <div className={styles.statusPillGroup} onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className={`${styles.statusPill} ${task.status === 'Todo' ? styles.statusPillActive : ''}`}
+              onClick={() => updateTaskStatus(task.id, 'Todo')}
+              title="Переместить в К выполнению"
+            >
+              К вып.
+            </button>
+            <button
+              type="button"
+              className={`${styles.statusPill} ${task.status === 'InProgress' ? styles.statusPillActive : ''}`}
+              onClick={() => updateTaskStatus(task.id, 'InProgress')}
+              title="Переместить в В процессе"
+            >
+              В процессе
+            </button>
+            <button
+              type="button"
+              className={`${styles.statusPill} ${task.status === 'Done' ? styles.statusPillActive : ''}`}
+              onClick={() => updateTaskStatus(task.id, 'Done')}
+              title="Переместить в Выполнено"
+            >
+              Готово
+            </button>
+          </div>
+
           <div
-            className={styles.dragHandle}
-            draggable
-            onDragStart={(e) => onDragStart(e, task.id)}
+            className={styles.dragHandleTop}
+            title="Перетащите карточку"
             onClick={(e) => e.stopPropagation()}
-            title="Зажмите ⋮⋮⋮ для перетаскивания"
           >
             ⋮⋮⋮
           </div>
         </div>
 
-        {/* Topic & Short Link if present */}
-        {(linkedTopic || task.link) && (
-          <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center', flexWrap: 'wrap', fontSize: '11px' }}>
-            {linkedTopic && (
-              <Link
-                href={`/topics/${linkedTopic.id}`}
-                onClick={(e) => e.stopPropagation()}
-                style={{ color: 'var(--color-text-secondary)', textDecoration: 'none' }}
-              >
-                🐘 {linkedTopic.title}
-              </Link>
-            )}
-            {task.link && (
-              <a
-                href={task.link.startsWith('http') ? task.link : `https://${task.link}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                style={{
-                  color: '#60a5fa',
-                  textDecoration: 'none',
-                  backgroundColor: 'rgba(96, 165, 250, 0.1)',
-                  padding: '1px 5px',
-                  borderRadius: 'var(--radius-sm)',
-                  border: '1px solid rgba(96, 165, 250, 0.2)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '2px',
-                }}
-                title={task.link}
-              >
-                🔗 {getShortLink(task.link)} ↗
-              </a>
-            )}
-          </div>
-        )}
+        {/* Line 2: Category Badge & Pomodoro Selector */}
+        <div className={styles.metaInlineRow}>
+          <span className={styles.categoryBadge}>🏷 {task.category}</span>
 
-        {/* Meta Row: Active Duration & Fractional Pomodoro Options */}
-        <div className={styles.metaRow}>
-          <div className={styles.timeInfo}>
-            {activeDurationStr && <span>⏱ ({activeDurationStr})</span>}
-          </div>
-
-          {/* Fractional & Whole Pomodoro Selector Row */}
-          <div
-            className={styles.pomodoroRow}
-            onClick={(e) => e.stopPropagation()}
-            title="Выбор количества помидоров"
-          >
-            <span style={{ fontSize: '15px', marginRight: '1px' }}>🍅</span>
-            <div className={styles.pomodoroPillRow}>
-              {pomodoroOptions.map((opt) => {
-                const isSelected = Math.abs(currentPomo - opt.val) < 0.05;
-                return (
-                  <button
-                    key={opt.label}
-                    type="button"
-                    className={`${styles.pomoOptionBtn} ${isSelected ? styles.pomoOptionActive : ''}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onUpdatePomodoros(task.id, opt.val);
-                    }}
-                    title={`${opt.label} помидора`}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
-            </div>
+          <div className={styles.pomodoroSelectorInline} onClick={(e) => e.stopPropagation()}>
+            <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>🍅</span>
+            {[0.33, 0.5, 1, 2, 3, 4].map((pVal) => (
+              <button
+                key={pVal}
+                type="button"
+                className={`${styles.pomoBtn} ${currentPomodoros === pVal ? styles.pomoBtnActive : ''}`}
+                onClick={() => updateTaskPomodoros(task.id, pVal)}
+              >
+                {pVal === 0.33 ? '⅓' : pVal === 0.5 ? '½' : pVal}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Compact Quick Status Movement Buttons & Highlighted Rating Emoji Row */}
-        <div className={styles.actionBtns} onClick={(e) => e.stopPropagation()}>
-          {status !== 'Todo' && (
-            <button
-              className={styles.moveBtn}
-              onClick={(e) => {
-                e.stopPropagation();
-                onUpdateStatus('Todo');
-              }}
-            >
-              ⏳ Ожидает
-            </button>
-          )}
-          {status !== 'InProgress' && (
-            <button
-              className={styles.moveBtn}
-              onClick={(e) => {
-                e.stopPropagation();
-                onUpdateStatus('InProgress');
-              }}
-            >
-              ⚡ В процесс
-            </button>
-          )}
-          {status !== 'Done' && (
-            <button
-              className={styles.moveBtn}
-              onClick={(e) => {
-                e.stopPropagation();
-                onUpdateStatus('Done');
-              }}
-            >
-              ✅ Выполнено
-            </button>
-          )}
-
-          {/* Smart Rating Emoji Buttons with Highlighted Active State */}
-          {isDone && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginLeft: 'auto' }}>
-              <button
-                type="button"
-                className={`${styles.ratingEmojiBtn} ${activeRating === 'easy' ? styles.ratingEmojiSelected : ''}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onUpdateStatus('Done', 'easy');
-                }}
-                title="Легко"
-              >
-                😄
-              </button>
-              <button
-                type="button"
-                className={`${styles.ratingEmojiBtn} ${activeRating === 'normal' ? styles.ratingEmojiSelected : ''}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onUpdateStatus('Done', 'normal');
-                }}
-                title="Нормально"
-              >
-                🙂
-              </button>
-              <button
-                type="button"
-                className={`${styles.ratingEmojiBtn} ${activeRating === 'hard' ? styles.ratingEmojiSelected : ''}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onUpdateStatus('Done', 'hard');
-                }}
-                title="Сложно"
-              >
-                😣
-              </button>
-              <button
-                type="button"
-                className={`${styles.ratingEmojiBtn} ${activeRating === 'again' ? styles.ratingEmojiSelected : ''}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onUpdateStatus('Done', 'again');
-                }}
-                title="Не помню"
-              >
-                ❌
-              </button>
-            </div>
-          )}
+        {/* Rating Emoji Buttons on ANY status */}
+        <div className={styles.ratingRow} onClick={(e) => e.stopPropagation()}>
+          <button
+            type="button"
+            className={`${styles.ratingBtn} ${activeRating === 'easy' ? styles.ratingEmojiSelected : ''}`}
+            onClick={() => updateTaskStatus(task.id, task.status, 'easy')}
+            title="Легко"
+          >
+            😄
+          </button>
+          <button
+            type="button"
+            className={`${styles.ratingBtn} ${activeRating === 'normal' ? styles.ratingEmojiSelected : ''}`}
+            onClick={() => updateTaskStatus(task.id, task.status, 'normal')}
+            title="Нормально"
+          >
+            🙂
+          </button>
+          <button
+            type="button"
+            className={`${styles.ratingBtn} ${activeRating === 'hard' ? styles.ratingEmojiSelected : ''}`}
+            onClick={() => updateTaskStatus(task.id, task.status, 'hard')}
+            title="Сложно"
+          >
+            😣
+          </button>
+          <button
+            type="button"
+            className={`${styles.ratingBtn} ${activeRating === 'again' ? styles.ratingEmojiSelected : ''}`}
+            onClick={() => updateTaskStatus(task.id, task.status, 'again')}
+            title="Не помню"
+          >
+            ❌
+          </button>
         </div>
       </div>
     </div>

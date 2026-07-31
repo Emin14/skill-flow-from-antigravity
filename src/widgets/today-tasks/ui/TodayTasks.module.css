@@ -1,327 +1,310 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-4);
   width: 100%;
 }
 
-.kanbanSections {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.kanbanColumn {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  transition: all var(--transition-fast);
-}
-
-.kanbanColumnDragOver {
-  border-color: var(--color-accent);
-  background-color: var(--color-accent-light);
-}
-
-.columnHeader {
+.sectionHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--space-1);
 }
 
-.columnTitle {
+.kanbanStagesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.stageSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+}
+
+/* Subtle, soft tinted background highlights for each Kanban board (User Request) */
+.stageSectionTodo {
+  background: rgba(56, 189, 248, 0.035);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+}
+
+.stageSectionInProgress {
+  background: rgba(245, 158, 11, 0.035);
+  border: 1px solid rgba(245, 158, 11, 0.18);
+}
+
+.stageSectionDone {
+  background: rgba(16, 185, 129, 0.035);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+}
+
+.stageSectionDragOver {
+  border-color: rgba(59, 130, 246, 0.6) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
+  transform: scale(1.01);
+}
+
+.stageHeader {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-bold);
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 700;
   color: var(--color-text-primary);
 }
 
-.badgeCount {
-  font-size: var(--font-size-xs);
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  background-color: rgba(255, 255, 255, 0.08);
-  color: var(--color-text-muted);
+.stageHeaderTodo {
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-left: 4px solid #38bdf8;
 }
 
-.columnTasks {
+.stageHeaderInProgress {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-left: 4px solid #f59e0b;
+}
+
+.stageHeaderDone {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-left: 4px solid #10b981;
+}
+
+.stageBadge {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary);
+}
+
+.taskList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  min-height: 50px;
+  gap: 10px;
+  width: 100%;
+  min-height: 20px;
 }
 
-/* Compact Task Card */
+/* Narrower, sleek task card container */
+.taskCardWrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+}
+
 .taskCard {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 16px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
+  z-index: 2;
+  width: 100%;
   box-sizing: border-box;
 }
 
-.taskCard:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  background-color: var(--color-surface-hover);
+.taskCardDragging {
+  opacity: 0.9;
+  transform: scale(1.02) translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  border-color: rgba(59, 130, 246, 0.5);
+  z-index: 10;
 }
 
-.taskCardInProgress {
-  border-left: 3.5px solid var(--color-warning);
+/* Subtask Nesting Styling */
+.subtaskIndent {
+  margin-left: 20px;
+  border-left: 2px solid rgba(59, 130, 246, 0.3);
+  padding-left: 8px;
+  position: relative;
 }
 
-.taskCardDone {
-  opacity: 0.85;
-  border-left: 3.5px solid var(--color-success);
+.subtaskConnector {
+  position: absolute;
+  left: -10px;
+  top: 18px;
+  width: 8px;
+  height: 2px;
+  background-color: rgba(59, 130, 246, 0.3);
 }
 
-.cardHeader {
+/* Swipe Delete Background Action */
+.deleteSwipeAction {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background-color: var(--color-danger);
+  color: #ffffff;
   display: flex;
   align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Header Row: Checkbox, Title, Badge, Drag handle top-aligned */
+.cardHeaderRow {
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 8px;
   width: 100%;
 }
 
-.cardMain {
+.titleArea {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   flex: 1;
   min-width: 0;
 }
 
-.titleContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
-  min-width: 0;
-}
-
-.cardTitle {
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
+.taskTitle {
+  font-size: 14.5px;
+  font-weight: 600;
   color: var(--color-text-primary);
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.35;
+  word-break: break-word;
 }
 
-.cardTitle:hover {
-  color: var(--color-accent);
-}
-
-.cardTitleDone {
+.taskTitleDone {
+  color: var(--color-text-muted);
   text-decoration: line-through;
+}
+
+.dragHandleTop {
+  font-size: 14px;
   color: var(--color-text-muted);
-}
-
-/* Category Badge BELOW Title */
-.categoryBadgeBelow {
-  font-size: 10.5px;
-  color: var(--color-accent);
-  background-color: rgba(96, 165, 250, 0.1);
-  padding: 1px 5px;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(96, 165, 250, 0.2);
-  align-self: flex-start;
-  white-space: nowrap;
-}
-
-/* Enlarged Drag Handle aligned to far right */
-.dragHandle {
   cursor: grab;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
-  color: var(--color-text-muted);
-  font-size: 22px;
-  font-weight: bold;
+  padding: 0 4px;
   user-select: none;
-  border-radius: var(--radius-sm);
-  transition: background-color var(--transition-fast);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
+  line-height: 1;
+  margin-top: 2px;
 }
 
-.dragHandle:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: var(--color-text-primary);
-}
-
-.dragHandle:active {
-  cursor: grabbing;
-  color: var(--color-accent);
-}
-
-.metaRow {
+/* Line 2: Category & Pomodoros on the EXACT SAME LINE */
+.metaInlineRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  flex-wrap: wrap;
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-  padding-top: 4px;
+  width: 100%;
+  font-size: 11.5px;
 }
 
-.timeInfo {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 500;
-  font-size: 11px;
+.categoryBadge {
+  color: var(--color-accent);
+  background-color: rgba(96, 165, 250, 0.1);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  white-space: nowrap;
 }
 
-/* Fractional Pomodoro Selector Row */
-.pomodoroRow {
+.pomodoroSelectorInline {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.pomodoroPillRow {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.pomoOptionBtn {
-  font-size: 10.5px;
-  font-weight: 600;
-  padding: 2px 5px;
-  border-radius: 4px;
+.pomoBtn {
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--color-border);
-  background-color: rgba(255, 255, 255, 0.03);
   color: var(--color-text-muted);
+  border-radius: 6px;
+  padding: 1px 5px;
+  font-size: 11px;
   cursor: pointer;
   transition: all 0.15s ease;
-  user-select: none;
 }
 
-.pomoOptionActive {
-  background-color: rgba(239, 68, 68, 0.15);
-  border-color: #ef4444;
+.pomoBtnActive {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
   color: #ef4444;
-  box-shadow: 0 0 6px rgba(239, 68, 68, 0.3);
-  font-weight: bold;
+  font-weight: 600;
 }
 
-/* Compact Movement Buttons & Rating Emoji Row */
-.actionBtns {
+/* Rating Emoji Buttons Bar */
+.ratingRow {
   display: flex;
   align-items: center;
   gap: 6px;
-  flex-wrap: wrap;
+  margin-top: 2px;
 }
 
-.moveBtn {
-  padding: 3px 8px;
-  min-height: 26px;
-  height: 26px;
-  border-radius: 13px;
-  border: 1px solid var(--color-border);
-  background-color: rgba(255, 255, 255, 0.03);
-  color: var(--color-text-muted);
-  font-size: 11px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--transition-fast);
+.ratingBtn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.moveBtn:hover {
-  background-color: var(--color-accent-light);
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-/* Rating Emoji Buttons on Task Card when Done */
-.ratingEmojiBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  min-height: 28px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background-color: rgba(255, 255, 255, 0.04);
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.15s ease;
-  padding: 0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ratingEmojiBtn:hover {
-  transform: scale(1.15);
-  border-color: var(--color-accent);
-  background-color: var(--color-accent-light);
-}
-
-/* Glowing Highlight for Selected Rating Emoji */
+/* Glowing background highlight without harsh borders */
 .ratingEmojiSelected {
-  border-color: #0ea5e9 !important;
-  background-color: rgba(14, 165, 233, 0.25) !important;
-  box-shadow: 0 0 10px rgba(14, 165, 233, 0.6) !important;
-  transform: scale(1.18) !important;
+  background: rgba(14, 165, 233, 0.22) !important;
+  color: #0ea5e9 !important;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35) !important;
+  transform: scale(1.15) !important;
+  border-color: transparent !important;
 }
 
-.emptyState {
-  padding: var(--space-4);
-  text-align: center;
-  font-size: var(--font-size-xs);
+/* Status Stage Action Pills inside card */
+.statusPillGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.statusPill {
+  font-size: 10.5px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
   color: var(--color-text-muted);
-  border: 1px dashed var(--color-border);
-  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-/* Mobile Compact Responsive Styles */
-@media (max-width: 600px) {
-  .kanbanColumn {
-    padding: 10px;
-    gap: 8px;
-  }
-
-  .taskCard {
-    padding: 6px 10px;
-    gap: 5px;
-  }
-
-  .cardTitle {
-    font-size: 14px;
-  }
-
-  .dragHandle {
-    width: 32px;
-    height: 32px;
-    font-size: 22px;
-  }
-
-  .moveBtn {
-    padding: 3px 6px;
-    font-size: 10.5px;
-    min-height: 24px;
-    height: 24px;
-  }
+.statusPillActive {
+  background: rgba(14, 165, 233, 0.2);
+  border-color: #0ea5e9;
+  color: #38bdf8;
+  font-weight: 600;
 }

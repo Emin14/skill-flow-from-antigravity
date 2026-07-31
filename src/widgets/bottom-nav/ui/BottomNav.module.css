@@ -2,7 +2,7 @@
   display: none;
 }
 
-/* Responsive breakpoint for Mobile / iPhone 17 Pro */
+/* Responsive breakpoint for Mobile / iPhone 16 & 17 Pro */
 @media (max-width: 768px) {
   .bottomNav {
     display: flex;
@@ -12,15 +12,18 @@
     right: 0;
     height: calc(64px + env(safe-area-inset-bottom, 20px));
     padding-bottom: env(safe-area-inset-bottom, 20px);
-    background-color: rgba(15, 17, 26, 0.95);
+    background-color: var(--color-surface);
     border-top: 1px solid var(--color-border);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     align-items: center;
     justify-content: space-around;
     z-index: var(--z-index-sticky);
     box-sizing: border-box;
     padding-left: 4px;
     padding-right: 4px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
   }
 
   .navItem {
@@ -35,12 +38,12 @@
     min-width: 48px;
     min-height: 44px;
     border-radius: var(--radius-sm);
-    transition: color var(--transition-fast);
+    transition: color 0.2s ease, transform 0.2s ease;
   }
 
   .navItemActive {
-    color: #60a5fa;
-    font-weight: var(--font-weight-semibold);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
   }
 
   .icon {
@@ -54,7 +57,7 @@
     border-radius: 50%;
     background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
     color: #ffffff;
-    border: 3px solid var(--color-bg);
+    border: 3px solid var(--color-surface);
     display: flex;
     align-items: center;
     justify-content: center;

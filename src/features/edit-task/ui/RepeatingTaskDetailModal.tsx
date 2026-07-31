@@ -13,21 +13,6 @@ interface RepeatingTaskDetailModalProps {
   onOpenEdit: () => void;
 }
 
-// Generate last 35 days for Lifetime Habit Grid
-const generateLifetimeGridDays = (historyDates: Set<string>) => {
-  const days = [];
-  const today = new Date();
-  for (let i = 34; i >= 0; i--) {
-    const d = new Date(today);
-    d.setDate(today.getDate() - i);
-    const dateStr = d.toISOString().split('T')[0];
-    const isCompleted = historyDates.has(dateStr);
-    const dayNum = d.getDate();
-    days.push({ dateStr, dayNum, isCompleted, isToday: i === 0 });
-  }
-  return days;
-};
-
 export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> = ({
   task,
   isOpen,
@@ -78,7 +63,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const history = masterTask.repetitionHistory || [];
 
   const historyDatesSet = new Set(history.map((h) => h.date));
-  const lifetimeGridDays = generateLifetimeGridDays(historyDatesSet);
 
   // Calculate current streak
   let streak = 0;
@@ -125,73 +109,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
         </div>
 
         {/* Category & Date Info */}
-        <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'center', justifyContent: 'space-between' }}>
           <span className={styles.categoryBadge}>🏷 {masterTask.category}</span>
-          <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
-            Создана: {new Date(masterTask.createdAt).toLocaleDateString('ru-RU')}
+          <span style={{ fontSize: '12px', color: '#60a5fa', fontWeight: 600 }}>
+            🔥 Стрик: {streak} дн.
           </span>
-        </div>
-
-        {/* Lifetime Grid Banner (Requirement 6: Lifetime Grid — прогресс за всё время существования привычки) */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
-            padding: '16px',
-            borderRadius: '16px',
-            backgroundColor: 'rgba(59, 130, 246, 0.06)',
-            border: '1px solid rgba(59, 130, 246, 0.2)',
-          }}
-        >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '13px', fontWeight: 'bold', color: '#60a5fa' }}>
-              🌐 Lifetime Grid (Прогресс привычки за все время)
-            </span>
-            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
-              🔥 Стрик: {streak} дн.
-            </span>
-          </div>
-
-          {/* 5x7 Grid Blocks representing last 35 days */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(7, 1fr)',
-              gap: '6px',
-              width: '100%',
-            }}
-          >
-            {lifetimeGridDays.map((day) => (
-              <div
-                key={day.dateStr}
-                style={{
-                  height: '28px',
-                  borderRadius: '6px',
-                  backgroundColor: day.isCompleted
-                    ? '#10b981'
-                    : day.isToday
-                    ? 'rgba(59, 130, 246, 0.2)'
-                    : 'rgba(255, 255, 255, 0.05)',
-                  border: day.isToday
-                    ? '1.5px solid #3b82f6'
-                    : day.isCompleted
-                    ? '1px solid #059669'
-                    : '1px solid var(--color-border)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '10px',
-                  fontWeight: day.isCompleted || day.isToday ? 'bold' : 'normal',
-                  color: day.isCompleted ? '#ffffff' : day.isToday ? '#60a5fa' : 'var(--color-text-muted)',
-                  boxShadow: day.isCompleted ? '0 0 6px rgba(16, 185, 129, 0.3)' : 'none',
-                }}
-                title={`${day.dateStr}: ${day.isCompleted ? 'Выполнено ✓' : 'Не выполнено'}`}
-              >
-                {day.dayNum}
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Completion Progress Bar */}

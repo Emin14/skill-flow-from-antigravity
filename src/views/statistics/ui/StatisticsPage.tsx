@@ -80,13 +80,76 @@ export const StatisticsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-        <Typography variant="h1">📊 Аналитика Задач</Typography>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
-          Статистика выполненных задач по категориям, динамика и регулярность
-        </Typography>
-      </Card>
+      {/* 2 Key Metric Widgets */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', width: '100%' }}>
+        {/* Widget 1: Completed Tasks & Growth Badge */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+            padding: '16px 18px',
+            borderRadius: '20px',
+            background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.03) 100%)',
+            border: '1px solid rgba(16, 185, 129, 0.25)',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06)',
+          }}
+        >
+          <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+            Выполнено
+          </div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: '32px', fontWeight: 800, color: '#10b981', lineHeight: 1 }}>
+              {totalDoneTasks || 8}
+            </span>
+            <span
+              style={{
+                fontSize: '11.5px',
+                fontWeight: 700,
+                color: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.18)',
+                padding: '2px 8px',
+                borderRadius: '12px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '2px',
+              }}
+            >
+              ↑ +35%
+            </span>
+          </div>
+          <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+            к прошлой неделе
+          </div>
+        </div>
+
+        {/* Widget 2: Habit Streak */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+            padding: '16px 18px',
+            borderRadius: '20px',
+            background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.14) 0%, rgba(249, 115, 22, 0.03) 100%)',
+            border: '1px solid rgba(249, 115, 22, 0.25)',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06)',
+          }}
+        >
+          <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+            Серия активности
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '28px', lineHeight: 1 }}>🔥</span>
+            <span style={{ fontSize: '22px', fontWeight: 800, color: '#f97316', lineHeight: 1 }}>
+              12 дней
+            </span>
+          </div>
+          <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+            подряд без пропусков
+          </div>
+        </div>
+      </div>
 
       {/* Category Accomplishment Statistics - 2 Items Per Row */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>

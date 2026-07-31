@@ -57,7 +57,6 @@ const addDaysToDateStr = (dateStr: string, days: number): string => {
 export const getDynamicSmartBaseInterval = (allTasks: Task[], currentTask: Task): number => {
   const seriesKey = currentTask.seriesId || currentTask.title.toLowerCase().trim();
 
-  // Find all SURVIVING completed task instances in the store for this series
   const seriesCompletedTasks = allTasks.filter(
     (t) =>
       t.id !== currentTask.id &&
@@ -70,7 +69,6 @@ export const getDynamicSmartBaseInterval = (allTasks: Task[], currentTask: Task)
     return 1.0;
   }
 
-  // Sort chronologically by completion date
   seriesCompletedTasks.sort((a, b) => {
     const timeA = a.completedAt || a.scheduledDate;
     const timeB = b.completedAt || b.scheduledDate;
@@ -128,12 +126,11 @@ export const calculateNextInterval = (
     return { nextIntervalFloat: days, daysToAdd: days };
   }
 
-  // Default to smart repetition calculation when a rating is provided
   const baseInterval = getDynamicSmartBaseInterval(allTasks, task);
 
   let nextFloat = 1.0;
   if (smartRating === 'again') {
-    nextFloat = 1.0; // Reset algorithm back to 1 day!
+    nextFloat = 1.0;
   } else if (smartRating === 'hard') {
     nextFloat = baseInterval * 1.2;
   } else if (smartRating === 'normal') {
@@ -260,7 +257,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       updates.lastSmartRating = smartRating;
     }
 
-    // Accumulated Active Time Calculation
     let currentActiveSec = task.totalActiveSeconds || 0;
     if (task.status === 'InProgress' && task.lastStartedAt) {
       const startedMs = new Date(task.lastStartedAt).getTime();
@@ -284,18 +280,31 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       updates.lastStartedAt = null;
     }
 
+    // REQUIREMENT 4: Completing a parent task automatically completes all its subtasks!
+    const subtaskIds: string[] = [];
+    if (newStatus === 'Done') {
+      const subtasks = get().tasks.filter((t) => t.parentTaskId === id && t.status !== 'Done');
+      subtasks.forEach((st) => subtaskIds.push(st.id));
+    }
+
     set((state) => ({
-      tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
+      tasks: state.tasks.map((t) => {
+        if (t.id === id) return { ...t, ...updates };
+        if (subtaskIds.includes(t.id)) return { ...t, status: 'Done', completedAt: nowIso };
+        return t;
+      }),
     }));
 
     try {
       await taskRepository.update(id, updates);
+      for (const stId of subtaskIds) {
+        await taskRepository.update(stId, { status: 'Done', completedAt: nowIso });
+      }
 
       const seriesKey = task.seriesId || task.title.toLowerCase().trim();
 
-      // IF RATING WAS SELECTED OR CHANGED ON ANY COMPLETED TASK:
-      if (newStatus === 'Done' && smartRating) {
-        // Find existing uncompleted task instance of this series to reposition
+      // IF RATING WAS SELECTED OR CHANGED ON ANY TASK (REQUIREMENT 7: Rating choice on any status!):
+      if (smartRating) {
         const uncompletedSeriesTasks = get().tasks.filter(
           (t) =>
             t.id !== id &&
@@ -316,7 +325,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
           const targetIds = new Set(uncompletedSeriesTasks.map((t) => t.id));
 
-          // Move uncompleted tasks from old date to new date in memory state
           set((state) => ({
             tasks: state.tasks.map((t) =>
               targetIds.has(t.id)
@@ -330,7 +338,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             ),
           }));
 
-          // Persist new scheduled date in repository
           for (const targetTask of uncompletedSeriesTasks) {
             await taskRepository.update(targetTask.id, {
               scheduledDate: newScheduledDate,
@@ -339,17 +346,16 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             });
           }
 
-          if (wasAlreadyDone) {
-            useToastStore
-              .getState()
-              .showToast(
-                `Сложность выбрана: повтор перенесен на ${newScheduledDate} (+${daysToAdd} дн.)`,
-                'info'
-              );
-            return;
-          }
-        } else if (wasAlreadyDone && (task.isRepeating || smartRating)) {
-          // If no uncompleted task existed yet for this series, create one now!
+          // REQUIREMENT 5: Short notification text format!
+          useToastStore
+            .getState()
+            .showToast(
+              `Следующее повторение: ${newScheduledDate} (+${daysToAdd} дн.)`,
+              'info'
+            );
+          return;
+        } else if (task.isRepeating) {
+          // Create next repetition task
           const { nextIntervalFloat, daysToAdd } = calculateNextInterval(
             get().tasks,
             task,
@@ -387,17 +393,18 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
           await taskRepository.save(duplicatedTask);
           set((state) => ({ tasks: [duplicatedTask, ...state.tasks] }));
+          // REQUIREMENT 5: Short notification text format!
           useToastStore
             .getState()
             .showToast(
-              `Сложность выбрана: следующее повторение создано на ${nextScheduledDateStr} (+${daysToAdd} дн.)`,
+              `Следующее повторение: ${nextScheduledDateStr} (+${daysToAdd} дн.)`,
               'success'
             );
           return;
         }
       }
 
-      // Initial Completion of Task (when not already done):
+      // Initial Completion of Task:
       const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
       if (newStatus === 'Done' && mode !== 'none' && !wasAlreadyDone) {
         const newCount = (task.repetitionsCount || 0) + 1;
@@ -469,10 +476,11 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         await taskRepository.save(duplicatedTask);
         set((state) => ({ tasks: [duplicatedTask, ...state.tasks] }));
 
+        // REQUIREMENT 5: Short notification format!
         useToastStore
           .getState()
           .showToast(
-            `Повторение #${newCount}: продублировано на ${nextScheduledDateStr} (+${daysToAdd} дн.)`,
+            `Следующее повторение: ${nextScheduledDateStr} (+${daysToAdd} дн.)`,
             'success'
           );
       } else if (newStatus === 'Done' && !wasAlreadyDone) {
@@ -492,7 +500,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
 
-    // Synchronize updates across repeating series
     const targetSeriesId = task.seriesId || (task.isRepeating ? task.id : null);
 
     set((state) => ({
@@ -607,7 +614,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     await taskRepository.update(id, updates);
     useToastStore
       .getState()
-      .showToast(`Повторение #${newCount} засчитано! Следующее через ${daysToAdd} дн. (${nextReviewStr})`, 'success');
+      .showToast(`Следующее повторение: ${nextReviewStr} (+${daysToAdd} дн.)`, 'success');
   },
 
   updateTargetRepetitions: async (id: string, newTarget: number) => {

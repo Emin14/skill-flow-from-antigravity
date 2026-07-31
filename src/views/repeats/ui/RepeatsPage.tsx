@@ -1,13 +1,16 @@
 'use client';
 
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import styles from './RepeatsPage.module.css';
 
+type SortOption = 'overdue' | 'alphabetical' | 'count_asc';
+
 export const RepeatsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks } = useTaskStore();
+  const [sortOption, setSortOption] = useState<SortOption>('overdue');
 
   useEffect(() => {
     fetchTasks();
@@ -44,16 +47,89 @@ export const RepeatsPage: React.FC = () => {
     return Array.from(seriesMap.values());
   }, [tasks]);
 
+  // Sorting logic according to user request
+  const sortedRepeatingTasks = useMemo(() => {
+    const list = [...uniqueRepeatingTasks];
+    if (sortOption === 'overdue') {
+      list.sort((a, b) => {
+        const dateA = a.scheduledDate || '9999-99-99';
+        const dateB = b.scheduledDate || '9999-99-99';
+        return dateA.localeCompare(dateB);
+      });
+    } else if (sortOption === 'alphabetical') {
+      list.sort((a, b) => a.title.localeCompare(b.title, 'ru'));
+    } else if (sortOption === 'count_asc') {
+      list.sort((a, b) => {
+        const countA = a.repetitionHistory?.length || a.repetitionsCount || 0;
+        const countB = b.repetitionHistory?.length || b.repetitionsCount || 0;
+        return countA - countB;
+      });
+    }
+    return list;
+  }, [uniqueRepeatingTasks, sortOption]);
+
   return (
     <div className={styles.container}>
       {/* Header Card */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      <Card style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         <Typography variant="h2" style={{ color: 'var(--color-text-primary)' }}>
           Трек прогресса привычек
         </Typography>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
-          Запланированные повторения в календаре
-        </Typography>
+
+        {/* Top Sorting Bar (User Request) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '4px' }}>
+          <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+            Сортировка:
+          </span>
+          <button
+            type="button"
+            onClick={() => setSortOption('overdue')}
+            style={{
+              background: sortOption === 'overdue' ? 'rgba(14, 165, 233, 0.2)' : 'rgba(255, 255, 255, 0.04)',
+              border: sortOption === 'overdue' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
+              color: sortOption === 'overdue' ? '#38bdf8' : 'var(--color-text-muted)',
+              borderRadius: '8px',
+              padding: '3px 9px',
+              fontSize: '11.5px',
+              cursor: 'pointer',
+              fontWeight: sortOption === 'overdue' ? 600 : 400,
+            }}
+          >
+            ⏰ Давно не повторялись
+          </button>
+          <button
+            type="button"
+            onClick={() => setSortOption('alphabetical')}
+            style={{
+              background: sortOption === 'alphabetical' ? 'rgba(14, 165, 233, 0.2)' : 'rgba(255, 255, 255, 0.04)',
+              border: sortOption === 'alphabetical' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
+              color: sortOption === 'alphabetical' ? '#38bdf8' : 'var(--color-text-muted)',
+              borderRadius: '8px',
+              padding: '3px 9px',
+              fontSize: '11.5px',
+              cursor: 'pointer',
+              fontWeight: sortOption === 'alphabetical' ? 600 : 400,
+            }}
+          >
+            🔤 По алфавиту
+          </button>
+          <button
+            type="button"
+            onClick={() => setSortOption('count_asc')}
+            style={{
+              background: sortOption === 'count_asc' ? 'rgba(14, 165, 233, 0.2)' : 'rgba(255, 255, 255, 0.04)',
+              border: sortOption === 'count_asc' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
+              color: sortOption === 'count_asc' ? '#38bdf8' : 'var(--color-text-muted)',
+              borderRadius: '8px',
+              padding: '3px 9px',
+              fontSize: '11.5px',
+              cursor: 'pointer',
+              fontWeight: sortOption === 'count_asc' ? 600 : 400,
+            }}
+          >
+            📊 Меньше повторов
+          </button>
+        </div>
       </Card>
 
       {/* List of Timeline Step Progression Cards */}
@@ -63,7 +139,7 @@ export const RepeatsPage: React.FC = () => {
             Загрузка повторений...
           </Typography>
         </Card>
-      ) : uniqueRepeatingTasks.length === 0 ? (
+      ) : sortedRepeatingTasks.length === 0 ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)' }}>
             🌱 У вас пока нет повторяющихся задач.
@@ -74,7 +150,7 @@ export const RepeatsPage: React.FC = () => {
         </Card>
       ) : (
         <div className={styles.repeatsList}>
-          {uniqueRepeatingTasks.map((task, idx) => (
+          {sortedRepeatingTasks.map((task, idx) => (
             <TimelineRepeatCard key={`${task.id}-${idx}`} task={task} allTasks={tasks} />
           ))}
         </div>
@@ -144,7 +220,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
     }
     if (mode === 'after_completion') {
       const days = task.afterCompletionDays || 3;
-      // Node #1 = '1', Node #2 = '7', Node #3 = '14', Node #4 = '21'...
       return ['1', ...[1, 2, 3, 4, 5].map((n) => String(n * days))];
     }
     return ['1', '3', '7', '14', '30', '90'];
@@ -157,7 +232,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
       const isNext = i === completedCount;
       const isFuture = i > completedCount;
 
-      // For Smart repetition tasks, any future step whose date/interval is not yet known is left blank!
       const isUnknownFuture = mode === 'smart' && isFuture;
 
       let label = '';
@@ -191,7 +265,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
     <div className={styles.repeatCard}>
       {/* 2-Line Card Header */}
       <div className={styles.cardHeader}>
-        {/* Line 1: Title & Scheduled Date (Constant Date Badge Styling!) */}
+        {/* Line 1: Title & Scheduled Date */}
         <div className={styles.line1}>
           <span className={styles.taskTitle}>{task.title}</span>
 
@@ -211,7 +285,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
         </div>
       </div>
 
-      {/* Timeline Track: Labels Top, Connectors, Circular Nodes (●──●──○) */}
+      {/* Timeline Track */}
       <div className={styles.timelineTrackContainer}>
         <div className={styles.timelineTrack}>
           {/* Connector Bar behind nodes */}
@@ -229,7 +303,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
           {/* Milestone Step Nodes */}
           {steps.map((step) => (
             <div key={step.stepIndex} className={styles.timelineItem}>
-              {/* Step Label Top: Single numeric format */}
               <span
                 className={`${styles.stepLabelTop} ${
                   step.isCompleted
@@ -244,7 +317,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
                 {step.label}
               </span>
 
-              {/* Node Circle (Red ONLY if overdue: yesterday or earlier!) */}
               <div
                 className={`${styles.nodeCircle} ${
                   step.isCompleted
@@ -268,7 +340,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
                 {step.isCompleted ? '✓' : step.isNext ? '●' : '○'}
               </div>
 
-              {/* Sub-label Bottom: Date if available */}
               <span className={styles.subLabelBottom}>{step.subLabel || ''}</span>
             </div>
           ))}

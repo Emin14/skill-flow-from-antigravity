@@ -43,7 +43,6 @@ export const CalendarPage: React.FC = () => {
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
 
-  // Swipe gesture tracking
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTask } = useTaskStore();
@@ -54,7 +53,6 @@ export const CalendarPage: React.FC = () => {
     fetchTopics();
   }, [fetchTasks, fetchTopics]);
 
-  // Month navigation handlers
   const handlePrevMonth = () => {
     setCurrentMonthDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
   };
@@ -69,7 +67,6 @@ export const CalendarPage: React.FC = () => {
     setSelectedDate(formatDateStr(now.getFullYear(), now.getMonth(), now.getDate()));
   };
 
-  // Touch Swipe handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -102,7 +99,6 @@ export const CalendarPage: React.FC = () => {
     }
   };
 
-  // Generate full month matrix grid
   const monthDays = useMemo(() => {
     const year = currentMonthDate.getFullYear();
     const month = currentMonthDate.getMonth();
@@ -123,7 +119,6 @@ export const CalendarPage: React.FC = () => {
       const dayNum = cellDate.getDate();
       const isCurrentMonth = cellDate.getMonth() === month;
 
-      // Filter tasks assigned strictly to dateStr by scheduledDate ONLY
       const dateTasks = tasks.filter((t) => t.scheduledDate === dateStr);
       const doneCount = dateTasks.filter((t) => t.status === 'Done').length;
 
@@ -139,7 +134,6 @@ export const CalendarPage: React.FC = () => {
     return days;
   }, [currentMonthDate, todayStr, tasks]);
 
-  // Tasks for selected date (Strict matching by scheduledDate ONLY)
   const selectedDayTasks = useMemo(() => {
     return tasks.filter((t) => t.scheduledDate === selectedDate);
   }, [tasks, selectedDate]);
@@ -215,7 +209,7 @@ export const CalendarPage: React.FC = () => {
             const classNames = [
               styles.dateCell,
               !day.isCurrentMonth ? styles.dateCellOtherMonth : '',
-              day.isToday ? styles.dateCellToday : '',
+              day.isToday ? styles.dateCellToday : '', // Requirement 4: Today date in GREEN!
               isSelected ? styles.dateCellActive : '',
             ]
               .filter(Boolean)
@@ -229,7 +223,6 @@ export const CalendarPage: React.FC = () => {
               >
                 <span className={styles.dayNum}>{day.dayNum}</span>
 
-                {/* Vibrant Green Task Indicator Dot */}
                 <div className={styles.taskDots}>
                   {day.tasksCount > 0 && (
                     <div
@@ -254,7 +247,6 @@ export const CalendarPage: React.FC = () => {
           </Typography>
         </div>
 
-        {/* Task List for Selected Date */}
         {isLoading ? (
           <div style={{ padding: 'var(--space-6)', textAlign: 'center', color: 'var(--color-text-muted)' }}>
             Загрузка задач...
@@ -336,95 +328,57 @@ export const CalendarPage: React.FC = () => {
                     </Button>
                   </div>
 
-                  {/* Rating Emoji Buttons on Task Card in Calendar when Done */}
-                  {isDone && (
-                    <div
-                      onClick={(e) => e.stopPropagation()}
-                      style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}
+                  {/* Rating Emoji Buttons with Soft Glowing Highlight (Requirement 3) */}
+                  <div
+                    onClick={(e) => e.stopPropagation()}
+                    style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}
+                  >
+                    <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>Сложность:</span>
+                    <button
+                      type="button"
+                      className={`${styles.calendarRatingBtn} ${activeRating === 'easy' ? styles.calendarRatingActive : ''}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        updateTaskStatus(task.id, task.status, 'easy');
+                      }}
+                      title="Легко"
                     >
-                      <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>Сложность:</span>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          updateTaskStatus(task.id, 'Done', 'easy');
-                        }}
-                        style={{
-                          background: activeRating === 'easy' ? 'rgba(14, 165, 233, 0.25)' : 'rgba(255, 255, 255, 0.04)',
-                          border: activeRating === 'easy' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
-                          boxShadow: activeRating === 'easy' ? '0 0 8px rgba(14, 165, 233, 0.5)' : 'none',
-                          borderRadius: '50%',
-                          width: '26px',
-                          height: '26px',
-                          fontSize: '13px',
-                          cursor: 'pointer',
-                        }}
-                        title="Легко"
-                      >
-                        😄
-                      </button>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          updateTaskStatus(task.id, 'Done', 'normal');
-                        }}
-                        style={{
-                          background: activeRating === 'normal' ? 'rgba(14, 165, 233, 0.25)' : 'rgba(255, 255, 255, 0.04)',
-                          border: activeRating === 'normal' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
-                          boxShadow: activeRating === 'normal' ? '0 0 8px rgba(14, 165, 233, 0.5)' : 'none',
-                          borderRadius: '50%',
-                          width: '26px',
-                          height: '26px',
-                          fontSize: '13px',
-                          cursor: 'pointer',
-                        }}
-                        title="Нормально"
-                      >
-                        🙂
-                      </button>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          updateTaskStatus(task.id, 'Done', 'hard');
-                        }}
-                        style={{
-                          background: activeRating === 'hard' ? 'rgba(14, 165, 233, 0.25)' : 'rgba(255, 255, 255, 0.04)',
-                          border: activeRating === 'hard' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
-                          boxShadow: activeRating === 'hard' ? '0 0 8px rgba(14, 165, 233, 0.5)' : 'none',
-                          borderRadius: '50%',
-                          width: '26px',
-                          height: '26px',
-                          fontSize: '13px',
-                          cursor: 'pointer',
-                        }}
-                        title="Сложно"
-                      >
-                        😣
-                      </button>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          updateTaskStatus(task.id, 'Done', 'again');
-                        }}
-                        style={{
-                          background: activeRating === 'again' ? 'rgba(14, 165, 233, 0.25)' : 'rgba(255, 255, 255, 0.04)',
-                          border: activeRating === 'again' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
-                          boxShadow: activeRating === 'again' ? '0 0 8px rgba(14, 165, 233, 0.5)' : 'none',
-                          borderRadius: '50%',
-                          width: '26px',
-                          height: '26px',
-                          fontSize: '13px',
-                          cursor: 'pointer',
-                        }}
-                        title="Не помню"
-                      >
-                        ❌
-                      </button>
-                    </div>
-                  )}
+                      😄
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.calendarRatingBtn} ${activeRating === 'normal' ? styles.calendarRatingActive : ''}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        updateTaskStatus(task.id, task.status, 'normal');
+                      }}
+                      title="Нормально"
+                    >
+                      🙂
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.calendarRatingBtn} ${activeRating === 'hard' ? styles.calendarRatingActive : ''}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        updateTaskStatus(task.id, task.status, 'hard');
+                      }}
+                      title="Сложно"
+                    >
+                      😣
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.calendarRatingBtn} ${activeRating === 'again' ? styles.calendarRatingActive : ''}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        updateTaskStatus(task.id, task.status, 'again');
+                      }}
+                      title="Не помню"
+                    >
+                      ❌
+                    </button>
+                  </div>
                 </div>
               );
             })}
@@ -432,14 +386,12 @@ export const CalendarPage: React.FC = () => {
         )}
       </div>
 
-      {/* Edit Task Modal */}
       <EditTaskModal
         task={editingTask}
         isOpen={!!editingTask}
         onClose={() => setEditingTask(null)}
       />
 
-      {/* Repeating Task Detail / History Modal */}
       <RepeatingTaskDetailModal
         task={detailTask}
         isOpen={!!detailTask}
@@ -450,7 +402,6 @@ export const CalendarPage: React.FC = () => {
         }}
       />
 
-      {/* Smart Repetition Rating Modal in Calendar */}
       <SmartRatingModal
         task={smartTask}
         isOpen={!!smartTask}
