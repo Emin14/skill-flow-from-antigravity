@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useMemo } from 'react';
 import { Checkbox } from '@/shared/ui';
-import { Task } from '@/entities/task/model/types';
+import { Task, TaskStatus } from '@/entities/task/model/types';
 import { getAllDescendantTasks } from '@/entities/task/model/store';
 import { GripVertical, Check, ExternalLink } from 'lucide-react';
 import styles from './GlassmorphicTaskCard.module.css';
