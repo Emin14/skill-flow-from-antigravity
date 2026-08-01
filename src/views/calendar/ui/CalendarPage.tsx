@@ -1,10 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useMemo } from 'react';
-import Link from 'next/link';
-import { Typography, Checkbox } from '@/shared/ui';
-import { useTaskStore } from '@/entities/task';
-import { useTopicStore } from '@/entities/topic';
+import { useTaskStore, GlassmorphicTaskCard } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
@@ -31,14 +28,12 @@ const formatSelectedDateTitle = (dateStr: string) => {
   });
 };
 
-// Filter helper: Subtask is shown separately ONLY IF its scheduledDate differs from parent's scheduledDate
 const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Task[] => {
   return allTasks.filter((t) => {
     if (t.scheduledDate !== targetDateStr) return false;
 
     if (t.parentTaskId) {
       const parentTask = allTasks.find((p) => p.id === t.parentTaskId);
-      // If parent and subtask have the SAME scheduledDate, do NOT show subtask as a separate top-level item
       if (parentTask && parentTask.scheduledDate === t.scheduledDate) {
         return false;
       }
@@ -62,13 +57,11 @@ export const CalendarPage: React.FC = () => {
 
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus } = useTaskStore();
-  const { topics, fetchTopics } = useTopicStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTask } = useTaskStore();
 
   useEffect(() => {
     fetchTasks();
-    fetchTopics();
-  }, [fetchTasks, fetchTopics]);
+  }, [fetchTasks]);
 
   const handlePrevMonth = () => {
     setCurrentMonthDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
@@ -102,7 +95,7 @@ export const CalendarPage: React.FC = () => {
   };
 
   const handleCheckboxToggle = (task: Task) => {
-    if (task.status !== 'Done' && task.repetitionMode === 'smart') {
+    if (task.status !== 'Done' && (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced')) {
       setSmartTask(task);
     } else {
       toggleTaskStatus(task.id);
@@ -216,7 +209,7 @@ export const CalendarPage: React.FC = () => {
         </div>
 
         {/* Days Grid */}
-        <div className={styles.daysGrid}>
+        <div className={styles.calendarMatrixGrid}>
           {monthDays.map((d) => {
             const isSelected = d.dateStr === selectedDate;
             const hasTasks = d.tasksCount > 0;
@@ -225,20 +218,16 @@ export const CalendarPage: React.FC = () => {
             return (
               <div
                 key={d.dateStr}
-                className={`${styles.dayCell} ${!d.isCurrentMonth ? styles.dayCellOtherMonth : ''} ${
-                  d.isToday ? styles.dayCellToday : ''
-                } ${isSelected ? styles.dayCellSelected : ''}`}
+                className={`${styles.dateCell} ${!d.isCurrentMonth ? styles.dateCellOtherMonth : ''} ${
+                  d.isToday ? styles.dateCellToday : ''
+                } ${isSelected ? styles.dateCellActive : ''}`}
                 onClick={() => setSelectedDate(d.dateStr)}
               >
-                <div className={styles.dayNumRow}>
-                  <span className={styles.dayNum}>{d.dayNum}</span>
-                </div>
+                <span className={styles.dayNum}>{d.dayNum}</span>
 
                 {hasTasks && (
-                  <div className={styles.badgeRow}>
-                    <span className={`${styles.taskBadge} ${isAllDone ? styles.taskBadgeDone : ''}`}>
-                      {d.tasksCount}
-                    </span>
+                  <div className={styles.taskDots}>
+                    <div className={`${styles.dot} ${isAllDone ? styles.dotDone : ''}`} />
                   </div>
                 )}
               </div>
@@ -260,7 +249,7 @@ export const CalendarPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Task List for Selected Date */}
+        {/* Task List for Selected Date (Unified GlassmorphicTaskCard) */}
         {isLoading ? (
           <div className={styles.emptyState}>Загрузка...</div>
         ) : selectedDayTasks.length === 0 ? (
@@ -269,38 +258,17 @@ export const CalendarPage: React.FC = () => {
           </div>
         ) : (
           <div className={styles.taskList}>
-            {selectedDayTasks.map((t) => {
-              const isDone = t.status === 'Done';
-              const isRepeating = t.isRepeating;
-              const topicObj = topics.find((top) => top.id === t.topicId);
-
-              return (
-                <div
-                  key={t.id}
-                  className={`${styles.agendaTaskCard} ${isDone ? styles.agendaTaskCardDone : ''}`}
-                  onClick={() => handleTaskClick(t)}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div onClick={(e) => { e.stopPropagation(); handleCheckboxToggle(t); }}>
-                      <Checkbox checked={isDone} onChange={() => {}} />
-                    </div>
-                    <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
-                      {t.title}
-                    </span>
-                  </div>
-
-                  <div className={styles.taskMetaRow}>
-                    <span className={styles.categoryBadge}>🏷 {t.category}</span>
-                    {topicObj && (
-                      <span className={styles.topicBadge}>📌 {topicObj.title}</span>
-                    )}
-                    {isRepeating && (
-                      <span className={styles.repeatBadge}>🔄 Повторяющаяся</span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            {selectedDayTasks.map((t) => (
+              <GlassmorphicTaskCard
+                key={t.id}
+                task={t}
+                allTasks={tasks}
+                showDragHandle={false}
+                onToggleCheckbox={() => handleCheckboxToggle(t)}
+                onDelete={() => deleteTask(t.id)}
+                onClick={() => handleTaskClick(t)}
+              />
+            ))}
           </div>
         )}
       </div>

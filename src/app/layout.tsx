@@ -1,10 +1,17 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { MainLayout } from '@/widgets/layout/ui/MainLayout';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: 'SkillFlow — Personal Growth OS',
   description: 'Современное веб-приложение для личного развития, задач и обучения',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({

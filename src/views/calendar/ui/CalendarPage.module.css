@@ -100,7 +100,7 @@
   opacity: 0.3;
 }
 
-/* Today's date highlighted in vibrant GREEN (Requirement 4) */
+/* Today's date highlighted in vibrant GREEN */
 .dateCellToday {
   background-color: rgba(16, 185, 129, 0.12) !important;
   border: 1.5px solid #10b981 !important;
@@ -154,41 +154,104 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
+.selectedDayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+}
+
+.selectedDayTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.selectedDayMeta {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
 .taskList {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.taskRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--color-border);
+.emptyState {
+  text-align: center;
+  padding: 24px;
+  color: var(--color-text-muted);
+  border-radius: 14px;
+  border: 1px dashed var(--color-border);
+  font-size: 13px;
 }
 
-/* Calendar Rating Emoji Button (Requirement 3: Glowing highlight without harsh borders) */
-.calendarRatingBtn {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid transparent;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
+/* Base Checkbox Touch Target 44px */
+.checkboxWrapper {
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.calendarRatingActive {
-  background: rgba(14, 165, 233, 0.22) !important;
-  color: #0ea5e9 !important;
-  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35) !important;
-  transform: scale(1.15) !important;
-  border-color: transparent !important;
+/* Category Color Dot */
+.catDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* CLASSIC GLASSMORPHIC PILL TASK CARD (Selected Design #1 / Glass V1) */
+.agendaTaskCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.agendaTaskCard:hover {
+  transform: translateY(-1px);
+  border-color: rgba(14, 165, 233, 0.4);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
+}
+
+.agendaTaskCardDone {
+  opacity: 0.45 !important;
+}
+
+.taskTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.taskTitleDone {
+  text-decoration: line-through;
+  color: var(--color-text-muted) !important;
+}
+
+.repeatBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }

@@ -76,7 +76,7 @@
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-size: 13.5px;
+  font-size: 16px;
   font-weight: 500;
   outline: none;
   box-sizing: border-box;
@@ -92,7 +92,7 @@
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-size: 12px;
+  font-size: 16px;
   outline: none;
   box-sizing: border-box;
   height: 42px;
@@ -196,7 +196,7 @@
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-size: 13px;
+  font-size: 16px;
   outline: none;
   box-sizing: border-box;
   resize: vertical;
@@ -255,7 +255,7 @@
 
   .selectInput {
     padding: 0 8px;
-    font-size: 12px;
+    font-size: 16px;
     height: 42px;
     line-height: 42px;
   }

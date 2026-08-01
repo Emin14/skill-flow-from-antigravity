@@ -256,6 +256,12 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
         smartRatingEmoji = getSmartRatingEmoji(rating);
         if (history[i]?.date) {
           subLabel = formatDateNumeric(history[i].date);
+        } else if (task.completedAt) {
+          subLabel = formatDateNumeric(task.completedAt.split('T')[0]);
+        } else if (task.createdAt) {
+          subLabel = formatDateNumeric(task.createdAt.split('T')[0]);
+        } else if (task.scheduledDate) {
+          subLabel = formatDateNumeric(task.scheduledDate);
         }
       } else if (isNext && nextDateRaw) {
         subLabel = formatDateNumeric(nextDateRaw);
@@ -277,6 +283,8 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
 
   const { numStr, textStr } = formatRepetitionCount(completedCount);
 
+  const createdDateStr = task.createdAt ? formatDateNumeric(task.createdAt.split('T')[0]) : '';
+
   return (
     <div className={styles.repeatCard}>
       {/* 2-Line Card Header */}
@@ -284,9 +292,9 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
         <div className={styles.line1}>
           <span className={styles.taskTitle}>{task.title}</span>
 
-          {nextDateRaw && (
-            <div className={styles.statusBadgeNext} title="Следующее повторение в календаре">
-              📅 {nextDateRaw}
+          {createdDateStr && (
+            <div className={styles.statusBadgeNext} title="Дата создания задачи">
+              📅 Создано: {createdDateStr}
             </div>
           )}
         </div>

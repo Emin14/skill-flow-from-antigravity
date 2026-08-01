@@ -37,7 +37,6 @@ const getNextWeekStr = () => {
 export const QuickCreateModal: React.FC = () => {
   const { isOpen, closeModal } = useQuickCreateModalStore();
   const { addTask, tasks } = useTaskStore();
-  const { topics, fetchTopics } = useTopicStore();
 
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState<TaskCategory>('Задача');
@@ -46,7 +45,6 @@ export const QuickCreateModal: React.FC = () => {
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
   const [parentTaskId, setParentTaskId] = useState<string | null>(null);
-  const [topicId, setTopicId] = useState<string | null>(null);
 
   // Repetition Rules state
   const [repetitionMode, setRepetitionMode] = useState<RepetitionMode>('none');
@@ -54,12 +52,20 @@ export const QuickCreateModal: React.FC = () => {
   const [afterCompletionDaysInput, setAfterCompletionDaysInput] = useState('3');
   const [hasSubtasks, setHasSubtasks] = useState(false);
 
+  // Prevent background scroll when modal is open
   useEffect(() => {
-    fetchTopics();
-    const today = getTodayStr();
-    setScheduledDate(today);
-    setDatePresetMode('today');
-  }, [fetchTopics]);
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      const today = getTodayStr();
+      setScheduledDate(today);
+      setDatePresetMode('today');
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -98,7 +104,6 @@ export const QuickCreateModal: React.FC = () => {
       description,
       link,
       parentTaskId,
-      topicId,
       isRepeating: repetitionMode !== 'none',
       repetitionMode,
       scheduleFrequency,
@@ -110,7 +115,6 @@ export const QuickCreateModal: React.FC = () => {
     setDescription('');
     setLink('');
     setParentTaskId(null);
-    setTopicId(null);
     setRepetitionMode('none');
     setHasSubtasks(false);
     closeModal();
@@ -177,7 +181,7 @@ export const QuickCreateModal: React.FC = () => {
             </div>
           </div>
 
-          {/* Custom Date Input (shown when custom is selected) */}
+          {/* Custom Date Input */}
           {datePresetMode === 'custom' && (
             <div className={styles.dateInputContainer}>
               <input
@@ -202,38 +206,6 @@ export const QuickCreateModal: React.FC = () => {
               )}
             </div>
           )}
-
-          {/* 1-Tap Quick Date Pills Row */}
-          {/* <div className={styles.quickDatePillsRow}>
-            <button
-              type="button"
-              className={`${styles.datePill} ${scheduledDate === getTodayStr() ? styles.datePillActive : ''}`}
-              onClick={() => handleDatePresetChange('today')}
-            >
-              ☀️ Сегодня
-            </button>
-            <button
-              type="button"
-              className={`${styles.datePill} ${scheduledDate === getTomorrowStr() ? styles.datePillActive : ''}`}
-              onClick={() => handleDatePresetChange('tomorrow')}
-            >
-              🌅 Завтра
-            </button>
-            <button
-              type="button"
-              className={`${styles.datePill} ${scheduledDate === getWeekendStr() ? styles.datePillActive : ''}`}
-              onClick={() => handleDatePresetChange('weekend')}
-            >
-              📅 На выходных
-            </button>
-            <button
-              type="button"
-              className={`${styles.datePill} ${scheduledDate === getNextWeekStr() ? styles.datePillActive : ''}`}
-              onClick={() => handleDatePresetChange('nextWeek')}
-            >
-              ⏩ На след. неделе
-            </button>
-          </div> */}
 
           {/* Link Input */}
           <input
@@ -266,68 +238,60 @@ export const QuickCreateModal: React.FC = () => {
             ))}
           </select>
 
-          {/* Topic Selector */}
-          <select
-            className={styles.selectInput}
-            value={topicId || ''}
-            onChange={(e) => setTopicId(e.target.value || null)}
-          >
-            <option value="">Без темы</option>
-            {topics.map((top) => (
-              <option key={top.id} value={top.id}>
-                📌 {top.title}
-              </option>
-            ))}
-          </select>
-
-          {/* Repetition Rules Configuration */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '4px' }}>
+          {/* Repetition Rules Configuration - 2-Column Row Layout */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '4px' }}>
             <Typography variant="caption" style={{ color: 'var(--color-text-muted)', fontWeight: 600 }}>
               💡 Режим повторения
             </Typography>
 
-            <select
-              className={styles.selectInput}
-              value={repetitionMode}
-              disabled={hasSubtasks}
-              onChange={(e) => setRepetitionMode(e.target.value as RepetitionMode)}
-            >
-              <option value="none">Без повторений</option>
-              <option value="spaced">Интервальное повторение (Spaced)</option>
-              <option value="schedule">По расписанию</option>
-              <option value="after_completion">Через N дней после выполнения</option>
-            </select>
+            <div className={styles.formRow}>
+              <div className={styles.formCol}>
+                <select
+                  className={styles.selectInput}
+                  value={repetitionMode}
+                  disabled={hasSubtasks}
+                  onChange={(e) => setRepetitionMode(e.target.value as RepetitionMode)}
+                >
+                  <option value="none">Без повторений</option>
+                  <option value="smart">🧠 Умное повторение</option>
+                  <option value="spaced">Интервальное повторение</option>
+                  <option value="schedule">По расписанию</option>
+                  <option value="after_completion">После выполнения</option>
+                </select>
+              </div>
+
+              <div className={styles.formCol}>
+                {repetitionMode === 'schedule' && (
+                  <select
+                    className={styles.selectInput}
+                    value={scheduleFrequency}
+                    onChange={(e) => setScheduleFrequency(e.target.value as ScheduleFrequency)}
+                  >
+                    <option value="daily">Каждый день</option>
+                    <option value="weekly">Каждую неделю</option>
+                    <option value="monthly">Каждый месяц</option>
+                    <option value="yearly">Каждый год</option>
+                  </select>
+                )}
+
+                {repetitionMode === 'after_completion' && (
+                  <div className={styles.dateInputContainer}>
+                    <input
+                      type="number"
+                      className={styles.selectInput}
+                      value={afterCompletionDaysInput}
+                      onChange={(e) => setAfterCompletionDaysInput(e.target.value)}
+                      min="1"
+                      placeholder="Дней (напр. 3)"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
 
             {hasSubtasks && (
               <div style={{ fontSize: '11px', color: '#f59e0b' }}>
                 ⚠️ Задачи с подзадачами не могут иметь режим повторения
-              </div>
-            )}
-
-            {repetitionMode === 'schedule' && (
-              <select
-                className={styles.selectInput}
-                value={scheduleFrequency}
-                onChange={(e) => setScheduleFrequency(e.target.value as ScheduleFrequency)}
-              >
-                <option value="daily">Каждый день</option>
-                <option value="weekly">Каждую неделю</option>
-                <option value="monthly">Каждый месяц</option>
-                <option value="yearly">Каждый год</option>
-              </select>
-            )}
-
-            {repetitionMode === 'after_completion' && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Через сколько дней:</span>
-                <input
-                  type="number"
-                  className={styles.selectInputCompact}
-                  value={afterCompletionDaysInput}
-                  onChange={(e) => setAfterCompletionDaysInput(e.target.value)}
-                  min="1"
-                  style={{ width: '80px' }}
-                />
               </div>
             )}
           </div>
@@ -351,3 +315,4 @@ export const QuickCreateModal: React.FC = () => {
     </div>
   );
 };
+

@@ -1,20 +1,28 @@
 'use client';
 
-import React, { useEffect, useState, useMemo, useRef } from 'react';
-import { Checkbox, Typography } from '@/shared/ui';
-import { useTaskStore } from '@/entities/task';
+import React, { useEffect, useState, useMemo } from 'react';
+import { Typography } from '@/shared/ui';
+import { useTaskStore, GlassmorphicTaskCard } from '@/entities/task';
 import { Task, TaskStatus } from '@/entities/task/model/types';
+import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
-import { SmartRating } from '@/shared/config/repetitionRules';
-import { Sun, Clock, CheckCircle2, Tag, GripVertical, PartyPopper, ChevronDown, Zap, Brain, Check } from 'lucide-react';
+import {
+  Sun,
+  Clock,
+  CheckCircle2,
+  Brain,
+  Zap,
+  PartyPopper,
+  ChevronDown,
+} from 'lucide-react';
 import styles from './TodayTasks.module.css';
 
 type ViewMode = 'all' | 'actions' | 'repeats';
 
 export const TodayTasks: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent, deleteTask } = useTaskStore();
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
@@ -58,45 +66,22 @@ export const TodayTasks: React.FC = () => {
 
   const handleDropToStage = (e: React.DragEvent, targetStatus: TaskStatus) => {
     e.preventDefault();
-    const taskId = e.dataTransfer.getData('text/plain');
-    if (taskId) {
-      updateTaskStatus(taskId, targetStatus);
+    const draggedTaskId = e.dataTransfer.getData('text/plain');
+    if (draggedTaskId) {
+      updateTaskStatus(draggedTaskId, targetStatus);
     }
   };
 
   const handleDropOnTask = (draggedTaskId: string, targetParentTask: Task) => {
-    if (draggedTaskId !== targetParentTask.id) {
-      updateTaskParent(draggedTaskId, targetParentTask.id);
-    }
+    if (draggedTaskId === targetParentTask.id) return;
+    updateTaskParent(draggedTaskId, targetParentTask.id);
   };
 
-  // Checkbox Toggle: Todo -> Done DIRECTLY (or Done -> Todo)
   const handleToggleCheckbox = (task: Task) => {
-    if (task.status !== 'Done') {
-      if (task.isRepeating) {
-        setSmartTask(task);
-      } else {
-        updateTaskStatus(task.id, 'Done');
-      }
-    } else {
-      updateTaskStatus(task.id, 'Todo');
-    }
-  };
-
-  // Right Swipe Status Progression: Todo -> InProgress -> Done -> Todo
-  const handleNextStatus = (task: Task) => {
-    let nextStatus: TaskStatus = 'Todo';
-    if (task.status === 'Todo') {
-      nextStatus = 'InProgress';
-    } else if (task.status === 'InProgress') {
-      nextStatus = 'Done';
-    } else if (task.status === 'Done') {
-      nextStatus = 'Todo';
-    }
-
-    if (nextStatus === 'Done' && task.isRepeating) {
+    if (task.status !== 'Done' && (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced')) {
       setSmartTask(task);
     } else {
+      const nextStatus = task.status === 'Done' ? 'Todo' : 'Done';
       updateTaskStatus(task.id, nextStatus);
     }
   };
@@ -200,7 +185,8 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={handleToggleCheckbox}
-            onNextStatus={handleNextStatus}
+            onDelete={(id) => deleteTask(id)}
+            onCompleteParent={(id) => updateTaskStatus(id, 'Done')}
           />
 
           {/* Stage 2: В процессе (InProgress) */}
@@ -215,7 +201,8 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={handleToggleCheckbox}
-            onNextStatus={handleNextStatus}
+            onDelete={(id) => deleteTask(id)}
+            onCompleteParent={(id) => updateTaskStatus(id, 'Done')}
           />
 
           {/* Stage 3: Выполнено (Done) */}
@@ -230,7 +217,8 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={handleToggleCheckbox}
-            onNextStatus={handleNextStatus}
+            onDelete={(id) => deleteTask(id)}
+            onCompleteParent={(id) => updateTaskStatus(id, 'Done')}
           />
         </div>
       )}
@@ -275,7 +263,8 @@ interface KanbanStageSectionProps {
   onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
   onOpenCard: (task: Task) => void;
   onToggleCheckbox: (task: Task) => void;
-  onNextStatus: (task: Task) => void;
+  onDelete: (taskId: string) => void;
+  onCompleteParent: (taskId: string) => void;
 }
 
 const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
@@ -289,14 +278,17 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   onDropOnTask,
   onOpenCard,
   onToggleCheckbox,
-  onNextStatus,
+  onDelete,
+  onCompleteParent,
 }) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
 
+  const stageTaskIds = useMemo(() => new Set(tasksList.map((t) => t.id)), [tasksList]);
+
   const rootTasksInStage = useMemo(() => {
-    return tasksList.filter((t) => !t.parentTaskId);
-  }, [tasksList]);
+    return tasksList.filter((t) => !t.parentTaskId || !stageTaskIds.has(t.parentTaskId));
+  }, [tasksList, stageTaskIds]);
 
   const renderSubtasksRecursive = (parentId: string, depthLevel = 1): React.ReactNode => {
     const children = allTasks.filter((t) => t.parentTaskId === parentId);
@@ -306,13 +298,15 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
       <React.Fragment key={subtask.id}>
         <div className={styles.subtaskIndent} style={{ marginLeft: `${depthLevel * 16}px` }}>
           <div className={styles.subtaskConnector} />
-          <TaskCardItem
+          <GlassmorphicTaskCard
             task={subtask}
             allTasks={allTasks}
-            onOpenCard={() => onOpenCard(subtask)}
-            onDropOnTask={onDropOnTask}
+            showDragHandle={true}
             onToggleCheckbox={() => onToggleCheckbox(subtask)}
-            onNextStatus={() => onNextStatus(subtask)}
+            onDelete={() => onDelete(subtask.id)}
+            onClick={() => onOpenCard(subtask)}
+            onDropOnTask={onDropOnTask}
+            onCompleteParent={() => onCompleteParent(subtask.id)}
           />
         </div>
         {renderSubtasksRecursive(subtask.id, depthLevel + 1)}
@@ -377,13 +371,15 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
             <div className={styles.taskList}>
               {rootTasksInStage.map((task) => (
                 <React.Fragment key={task.id}>
-                  <TaskCardItem
+                  <GlassmorphicTaskCard
                     task={task}
                     allTasks={allTasks}
-                    onOpenCard={() => onOpenCard(task)}
-                    onDropOnTask={onDropOnTask}
+                    showDragHandle={true}
                     onToggleCheckbox={() => onToggleCheckbox(task)}
-                    onNextStatus={() => onNextStatus(task)}
+                    onDelete={() => onDelete(task.id)}
+                    onClick={() => onOpenCard(task)}
+                    onDropOnTask={onDropOnTask}
+                    onCompleteParent={() => onCompleteParent(task.id)}
                   />
                   {renderSubtasksRecursive(task.id, 1)}
                 </React.Fragment>
@@ -392,281 +388,6 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
           )}
         </>
       )}
-    </div>
-  );
-};
-
-// SVG Progress Ring Component for Parent Container Tasks
-const SubtaskProgressRing: React.FC<{ total: number; done: number }> = ({ total, done }) => {
-  const radius = 10;
-  const strokeWidth = 2.5;
-  const normalizedRadius = radius - strokeWidth / 2;
-  const circumference = normalizedRadius * 2 * Math.PI;
-  const percent = total > 0 ? done / total : 0;
-  const strokeDashoffset = circumference - percent * circumference;
-
-  return (
-    <div className={styles.progressRingContainer} title={`Прогресс подзадач: ${done}/${total}`}>
-      <svg height={radius * 2} width={radius * 2}>
-        <circle
-          stroke="rgba(255, 255, 255, 0.12)"
-          fill="transparent"
-          strokeWidth={strokeWidth}
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
-        />
-        <circle
-          stroke="#0ea5e9"
-          fill="transparent"
-          strokeWidth={strokeWidth}
-          strokeDasharray={circumference + ' ' + circumference}
-          style={{ strokeDashoffset, transition: 'stroke-dashoffset 0.35s ease' }}
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
-        />
-      </svg>
-      <span className={styles.progressRingText}>{done}/{total}</span>
-    </div>
-  );
-};
-
-interface TaskCardItemProps {
-  task: Task;
-  allTasks: Task[];
-  onOpenCard: () => void;
-  onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
-  onToggleCheckbox: () => void;
-  onNextStatus: () => void;
-}
-
-const TaskCardItem: React.FC<TaskCardItemProps> = ({
-  task,
-  allTasks,
-  onOpenCard,
-  onDropOnTask,
-  onToggleCheckbox,
-  onNextStatus,
-}) => {
-  const { deleteTask, updateTaskStatus } = useTaskStore();
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  const [swipeOffset, setSwipeOffset] = useState<number>(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [touchStartY, setTouchStartY] = useState<number | null>(null);
-  const [isSwipedLeft, setIsSwipedLeft] = useState<boolean>(false);
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [isOverTarget, setIsOverTarget] = useState<boolean>(false);
-
-  const isDone = task.status === 'Done';
-
-  // Subtasks progress calculation for parent containers
-  const childSubtasks = useMemo(() => allTasks.filter((t) => t.parentTaskId === task.id), [allTasks, task.id]);
-  const isContainer = task.hasSubtasks || childSubtasks.length > 0;
-  const doneSubtasksCount = useMemo(() => childSubtasks.filter((t) => t.status === 'Done').length, [childSubtasks]);
-  const areAllSubtasksDone = isContainer && childSubtasks.length > 0 && doneSubtasksCount === childSubtasks.length;
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.targetTouches[0].clientX);
-    setTouchStartY(e.targetTouches[0].clientY);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (touchStartX === null || touchStartY === null) return;
-    const currentX = e.targetTouches[0].clientX;
-    const currentY = e.targetTouches[0].clientY;
-    const diffX = touchStartX - currentX;
-    const diffY = touchStartY - currentY;
-
-    if (Math.abs(diffY) > Math.abs(diffX) && !isSwipedLeft) {
-      setSwipeOffset(0);
-      return;
-    }
-
-    if (isSwipedLeft) {
-      const newOffset = Math.min(0, Math.max(-80, -80 - diffX));
-      setSwipeOffset(newOffset);
-    } else {
-      if (diffX > 0 && diffX <= 80) {
-        setSwipeOffset(-diffX);
-      } else if (diffX < 0 && diffX >= -80) {
-        setSwipeOffset(-diffX / 2);
-      }
-    }
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-
-    if (isSwipedLeft) {
-      setIsSwipedLeft(false);
-      setSwipeOffset(0);
-    } else {
-      if (diff > 45) {
-        setIsSwipedLeft(true);
-        setSwipeOffset(-80);
-      } else if (diff < -45) {
-        onNextStatus();
-        setSwipeOffset(0);
-      } else {
-        setSwipeOffset(0);
-      }
-    }
-    setTouchStartX(null);
-    setTouchStartY(null);
-  };
-
-  const handleDragStart = (e: React.DragEvent) => {
-    e.stopPropagation();
-    setIsDragging(true);
-    e.dataTransfer.setData('text/plain', task.id);
-    e.dataTransfer.effectAllowed = 'move';
-  };
-
-  const handleDragEnd = () => {
-    setIsDragging(false);
-  };
-
-  const handleTaskDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsOverTarget(true);
-  };
-
-  const handleTaskDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsOverTarget(false);
-  };
-
-  const handleTaskDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsOverTarget(false);
-    const draggedTaskId = e.dataTransfer.getData('text/plain');
-    if (draggedTaskId && draggedTaskId !== task.id) {
-      onDropOnTask(draggedTaskId, task);
-    }
-  };
-
-  const handleTouchHandleStart = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    setIsDragging(true);
-  };
-
-  const handleTouchHandleMove = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    const touch = e.touches[0];
-    const targetElem = document.elementFromPoint(touch.clientX, touch.clientY);
-    const cardWrapper = targetElem?.closest(`.${styles.taskCardWrapper}`);
-
-    document.querySelectorAll(`.${styles.taskCardWrapper}`).forEach((el) => {
-      if (el === cardWrapper && el !== wrapperRef.current) {
-        el.classList.add(styles.taskCardDropTarget);
-      } else {
-        el.classList.remove(styles.taskCardDropTarget);
-      }
-    });
-  };
-
-  const handleTouchHandleEnd = (e: React.TouchEvent) => {
-    e.stopPropagation();
-    setIsDragging(false);
-    const touch = e.changedTouches[0];
-    const targetElem = document.elementFromPoint(touch.clientX, touch.clientY);
-    const cardWrapper = targetElem?.closest(`.${styles.taskCardWrapper}`);
-
-    document.querySelectorAll(`.${styles.taskCardWrapper}`).forEach((el) => {
-      el.classList.remove(styles.taskCardDropTarget);
-    });
-
-    if (cardWrapper) {
-      const targetTaskId = cardWrapper.getAttribute('data-task-id');
-      if (targetTaskId && targetTaskId !== task.id) {
-        const targetTask = allTasks.find((t) => t.id === targetTaskId);
-        if (targetTask) {
-          onDropOnTask(task.id, targetTask);
-        }
-      }
-    }
-  };
-
-  return (
-    <div
-      ref={wrapperRef}
-      data-task-id={task.id}
-      className={`${styles.taskCardWrapper} ${
-        areAllSubtasksDone && !isDone ? styles.taskCardGlowContainer : ''
-      } ${isOverTarget ? styles.taskCardDropTarget : ''}`}
-      onDragOver={handleTaskDragOver}
-      onDragLeave={handleTaskDragLeave}
-      onDrop={handleTaskDrop}
-    >
-      <div className={styles.deleteSwipeAction} onClick={() => deleteTask(task.id)}>
-        Удалить
-      </div>
-
-      <div
-        className={`${styles.taskCard} ${isDragging ? styles.taskCardDragging : ''}`}
-        style={{ transform: `translateX(${swipeOffset}px)` }}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onClick={onOpenCard}
-      >
-        <div className={styles.cardHeaderRow}>
-          <div className={styles.titleArea}>
-            {isContainer ? (
-              <SubtaskProgressRing total={childSubtasks.length} done={doneSubtasksCount} />
-            ) : (
-              <div onClick={(e) => { e.stopPropagation(); onToggleCheckbox(); }}>
-                <Checkbox checked={isDone} onChange={() => {}} />
-              </div>
-            )}
-            <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
-              {task.title}
-            </span>
-          </div>
-
-          <div
-            className={styles.dragHandleTop}
-            draggable
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            onTouchStart={handleTouchHandleStart}
-            onTouchMove={handleTouchHandleMove}
-            onTouchEnd={handleTouchHandleEnd}
-            title="Перетащите, чтобы переместить или сделать подзадачей"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <GripVertical size={14} />
-          </div>
-        </div>
-
-        <div className={styles.metaInlineRow}>
-          <Tag size={12} color="var(--color-text-muted)" style={{ flexShrink: 0 }} />
-          <span className={styles.categoryBadgeNoBorder}>{task.category}</span>
-        </div>
-
-        {/* Prompt Button when all subtasks of container are done */}
-        {areAllSubtasksDone && !isDone && (
-          <div
-            className={styles.completeParentPromptBtn}
-            onClick={(e) => {
-              e.stopPropagation();
-              updateTaskStatus(task.id, 'Done');
-            }}
-          >
-            <span>✨ Все подзадачи готовы. Завершить "{task.title}"?</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-              <Check size={13} /> Завершить
-            </span>
-          </div>
-        )}
-      </div>
     </div>
   );
 };
