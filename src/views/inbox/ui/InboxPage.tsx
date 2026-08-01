@@ -87,7 +87,7 @@ export const InboxPage: React.FC = () => {
       {/* Header & Quick Capture Form */}
       <Card className={styles.quickCaptureCard}>
         <Typography variant="h1">📥 Входящие ({items.length})</Typography>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
+        <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
           Быстрый захват мыслей, заметок и идей. Разберите их, когда будете готовы.
         </Typography>
 
@@ -143,72 +143,18 @@ export const InboxPage: React.FC = () => {
           </Card>
         ) : (
           filteredItems.map((item) => (
-            <div
+            <InboxItemCard
               key={item.id}
-              className={`${styles.itemCard} ${item.isPinned ? styles.itemCardPinned : ''}`}
-            >
-              {editingId === item.id ? (
-                <div style={{ flex: 1, display: 'flex', gap: 'var(--space-2)' }}>
-                  <Input
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
-                    autoFocus
-                  />
-                  <Button variant="primary" size="sm" onClick={() => saveEdit(item.id)}>
-                    Сохранить
-                  </Button>
-                </div>
-              ) : (
-                <div style={{ flex: 1 }}>
-                  <div className={styles.itemText}>{item.text}</div>
-                  <div className={styles.itemMeta}>
-                    {new Date(item.createdAt).toLocaleString('ru-RU', {
-                      day: 'numeric',
-                      month: 'short',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* Quick Actions */}
-              <div className={styles.itemActions}>
-                <button
-                  className={styles.triageBtn}
-                  onClick={() => handleTriage(item)}
-                  title="Разобрать запись в Задачу"
-                >
-                  ✔ Разобрать
-                </button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => (editingId === item.id ? saveEdit(item.id) : startEdit(item))}
-                  title="Редактировать"
-                >
-                  ✎
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => togglePin(item.id)}
-                  title={item.isPinned ? 'Открепить' : 'Закрепить'}
-                  style={{ color: item.isPinned ? 'var(--color-accent)' : 'var(--color-text-muted)' }}
-                >
-                  📌
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => deleteItem(item.id)}
-                  title="Удалить"
-                  style={{ color: 'var(--color-text-muted)' }}
-                >
-                  🗑
-                </Button>
-              </div>
-            </div>
+              item={item}
+              editingId={editingId}
+              editText={editText}
+              setEditText={setEditText}
+              saveEdit={saveEdit}
+              startEdit={startEdit}
+              handleTriage={handleTriage}
+              togglePin={togglePin}
+              deleteItem={deleteItem}
+            />
           ))
         )}
       </div>
@@ -223,6 +169,137 @@ export const InboxPage: React.FC = () => {
         }}
         onSaveSuccess={handleSaveSuccess}
       />
+    </div>
+  );
+};
+
+interface InboxItemCardProps {
+  item: InboxItem;
+  editingId: string | null;
+  editText: string;
+  setEditText: (txt: string) => void;
+  saveEdit: (id: string) => void;
+  startEdit: (item: InboxItem) => void;
+  handleTriage: (item: InboxItem) => void;
+  togglePin: (id: string) => void;
+  deleteItem: (id: string) => void;
+}
+
+const InboxItemCard: React.FC<InboxItemCardProps> = ({
+  item,
+  editingId,
+  editText,
+  setEditText,
+  saveEdit,
+  startEdit,
+  handleTriage,
+  togglePin,
+  deleteItem,
+}) => {
+  const [swipeOffset, setSwipeOffset] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isSwipedLeft, setIsSwipedLeft] = useState<boolean>(false);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const currentX = e.targetTouches[0].clientX;
+    const diff = touchStartX - currentX;
+
+    if (diff > 0 && diff <= 80) {
+      setSwipeOffset(-diff);
+    } else if (diff < 0 && isSwipedLeft) {
+      const remaining = -80 - diff;
+      setSwipeOffset(Math.min(0, remaining));
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+
+    if (diff > 45) {
+      setIsSwipedLeft(true);
+      setSwipeOffset(-80);
+    } else {
+      setIsSwipedLeft(false);
+      setSwipeOffset(0);
+    }
+    setTouchStartX(null);
+  };
+
+  return (
+    <div className={styles.itemCardWrapper}>
+      {/* Background Swipe Delete Action (No trash icon!) */}
+      <div className={styles.deleteSwipeAction} onClick={() => deleteItem(item.id)}>
+        Удалить
+      </div>
+
+      {/* Main Ultra-Slim Item Card */}
+      <div
+        className={`${styles.itemCard} ${item.isPinned ? styles.itemCardPinned : ''}`}
+        style={{ transform: `translateX(${swipeOffset}px)` }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {editingId === item.id ? (
+          <div style={{ flex: 1, display: 'flex', gap: 'var(--space-2)' }}>
+            <Input
+              value={editText}
+              onChange={(e) => setEditText(e.target.value)}
+              autoFocus
+            />
+            <Button variant="primary" size="sm" onClick={() => saveEdit(item.id)}>
+              Сохранить
+            </Button>
+          </div>
+        ) : (
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div className={styles.itemText}>{item.text}</div>
+            <div className={styles.itemMeta}>
+              {new Date(item.createdAt).toLocaleString('ru-RU', {
+                day: 'numeric',
+                month: 'short',
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Quick Actions (Without Trash Icon Button) */}
+        <div className={styles.itemActions}>
+          <button
+            className={styles.triageBtn}
+            onClick={() => handleTriage(item)}
+            title="Разобрать запись в Задачу"
+          >
+            ✔ Разобрать
+          </button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => (editingId === item.id ? saveEdit(item.id) : startEdit(item))}
+            title="Редактировать"
+          >
+            ✎
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => togglePin(item.id)}
+            title={item.isPinned ? 'Открепить' : 'Закрепить'}
+            style={{ color: item.isPinned ? 'var(--color-accent)' : 'var(--color-text-muted)' }}
+          >
+            📌
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

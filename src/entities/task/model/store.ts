@@ -30,6 +30,7 @@ interface TaskState {
   addTask: (titleOrParams: string | AddTaskParams, priorityFallback?: TaskPriority) => Promise<Task>;
   toggleTaskStatus: (id: string, smartRating?: SmartRating) => Promise<void>;
   updateTaskStatus: (id: string, newStatus: TaskStatus, smartRating?: SmartRating) => Promise<void>;
+  updateTaskParent: (id: string, parentTaskId: string | null) => Promise<void>;
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
   updateTaskPomodoros: (id: string, count: number) => Promise<void>;
   deleteTask: (id: string) => Promise<void>;
@@ -280,7 +281,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       updates.lastStartedAt = null;
     }
 
-    // REQUIREMENT 4: Completing a parent task automatically completes all its subtasks!
+    // Completing a parent task automatically completes all its subtasks!
     const subtaskIds: string[] = [];
     if (newStatus === 'Done') {
       const subtasks = get().tasks.filter((t) => t.parentTaskId === id && t.status !== 'Done');
@@ -303,7 +304,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
       const seriesKey = task.seriesId || task.title.toLowerCase().trim();
 
-      // IF RATING WAS SELECTED OR CHANGED ON ANY TASK (REQUIREMENT 7: Rating choice on any status!):
       if (smartRating) {
         const uncompletedSeriesTasks = get().tasks.filter(
           (t) =>
@@ -346,7 +346,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             });
           }
 
-          // REQUIREMENT 5: Short notification text format!
           useToastStore
             .getState()
             .showToast(
@@ -393,7 +392,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
           await taskRepository.save(duplicatedTask);
           set((state) => ({ tasks: [duplicatedTask, ...state.tasks] }));
-          // REQUIREMENT 5: Short notification text format!
           useToastStore
             .getState()
             .showToast(
@@ -476,7 +474,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         await taskRepository.save(duplicatedTask);
         set((state) => ({ tasks: [duplicatedTask, ...state.tasks] }));
 
-        // REQUIREMENT 5: Short notification format!
         useToastStore
           .getState()
           .showToast(
@@ -494,6 +491,33 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         error: (e as Error).message,
       }));
     }
+  },
+
+  // Requirement 3: Convert Task A to subtask of Task B on Drag & Drop
+  updateTaskParent: async (id: string, parentTaskId: string | null) => {
+    const task = get().tasks.find((t) => t.id === id);
+    if (!task) return;
+
+    if (parentTaskId) {
+      const parentTask = get().tasks.find((t) => t.id === parentTaskId);
+      if (parentTask) {
+        // Ensure parent task has hasSubtasks = true
+        if (!parentTask.hasSubtasks) {
+          await taskRepository.update(parentTaskId, { hasSubtasks: true });
+        }
+      }
+    }
+
+    set((state) => ({
+      tasks: state.tasks.map((t) => {
+        if (t.id === id) return { ...t, parentTaskId };
+        if (parentTaskId && t.id === parentTaskId) return { ...t, hasSubtasks: true };
+        return t;
+      }),
+    }));
+
+    await taskRepository.update(id, { parentTaskId });
+    useToastStore.getState().showToast(`Подзадача привязана`, 'info');
   },
 
   updateTaskDetails: async (id: string, updates: Partial<Task>) => {

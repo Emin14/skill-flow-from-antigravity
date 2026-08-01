@@ -31,16 +31,16 @@
 }
 
 .closeBtn {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  min-height: 48px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
   border-radius: 50%;
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
   color: var(--color-text-muted);
-  font-size: 28px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
   color: var(--color-text-primary);
 }
 
-/* Category & Date in 1 row even on mobile */
+/* Category & Date in 1 row with EXACT EQUAL HEIGHT (42px) */
 .formRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -66,36 +66,73 @@
   flex-direction: column;
 }
 
+/* Category and Date inputs with EXACT EQUAL 42px HEIGHT */
 .selectInput {
   width: 100%;
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
+  padding: 0 12px;
+  border-radius: 12px;
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-size: var(--font-size-sm);
+  font-size: 13.5px;
+  font-weight: 500;
   outline: none;
   box-sizing: border-box;
-  height: 38px;
+  height: 42px;
+  line-height: 42px;
 }
 
 .selectInputCompact {
   width: 100%;
-  padding: 6px 10px;
-  border-radius: var(--radius-md);
+  padding: 0 10px;
+  border-radius: 12px;
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
   font-size: 12px;
   outline: none;
   box-sizing: border-box;
-  height: 36px;
+  height: 42px;
+  line-height: 42px;
   text-overflow: ellipsis;
 }
 
 .selectInput:focus,
 .selectInputCompact:focus {
   border-color: var(--color-accent);
+}
+
+/* Date input container with neat clear button on the right */
+.dateInputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dateClearBtn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  z-index: 5;
+}
+
+.dateClearBtn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
 }
 
 /* Compact Textarea for Description */
@@ -105,7 +142,7 @@
   height: 56px;
   max-height: 120px;
   padding: 8px 12px;
-  border-radius: var(--radius-md);
+  border-radius: 12px;
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
@@ -115,7 +152,7 @@
   resize: vertical;
 }
 
-/* Single Line Control Bar for Repeat Icons, Subtasks, Main Task & Send Button */
+/* Single Line Control Bar */
 .singleLineControls {
   display: flex;
   align-items: center;
@@ -139,7 +176,7 @@
   height: 36px;
   min-width: 36px;
   min-height: 36px;
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   background: transparent;
   border: 1px solid var(--color-border);
   cursor: pointer;
@@ -161,14 +198,14 @@
   opacity: 1;
 }
 
-/* Pill Toggle Button Style (Icon + Text) */
+/* Pill Toggle Button Style */
 .pillToggleBtn {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 6px 10px;
+  padding: 0 10px;
   height: 36px;
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   background: transparent;
   border: 1px solid var(--color-border);
   font-size: 12px;
@@ -200,7 +237,7 @@
   opacity: 1;
 }
 
-/* Send / Submit Icon Button (Section 1, Item 2) */
+/* Send / Submit Icon Button */
 .sendBtn {
   display: inline-flex;
   align-items: center;
@@ -209,7 +246,7 @@
   height: 36px;
   min-width: 36px;
   min-height: 36px;
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   background-color: var(--color-accent);
   color: #ffffff;
   border: none;
@@ -252,15 +289,9 @@
   }
 
   .selectInput {
-    padding: 6px 8px;
+    padding: 0 8px;
     font-size: 12px;
-    height: 36px;
-  }
-
-  .closeBtn {
-    width: 48px;
-    height: 48px;
-    font-size: 28px;
-    font-weight: bold;
+    height: 42px;
+    line-height: 42px;
   }
 }

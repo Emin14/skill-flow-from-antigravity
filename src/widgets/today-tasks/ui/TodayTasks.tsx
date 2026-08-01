@@ -6,12 +6,15 @@ import { useTaskStore } from '@/entities/task';
 import { Task, TaskStatus } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
+import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
+import { SmartRating } from '@/shared/config/repetitionRules';
 import styles from './TodayTasks.module.css';
 
 export const TodayTasks: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, updateTaskStatus } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent } = useTaskStore();
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [smartTask, setSmartTask] = useState<Task | null>(null);
 
   const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
 
@@ -38,6 +41,38 @@ export const TodayTasks: React.FC = () => {
     const taskId = e.dataTransfer.getData('text/plain');
     if (taskId) {
       updateTaskStatus(taskId, targetStatus);
+    }
+  };
+
+  // Convert Task A to subtask of Task B on drop
+  const handleDropOnTask = (draggedTaskId: string, targetParentTask: Task) => {
+    if (draggedTaskId !== targetParentTask.id) {
+      updateTaskParent(draggedTaskId, targetParentTask.id);
+    }
+  };
+
+  // Right Swipe Status Progression
+  const handleNextStatus = (task: Task) => {
+    let nextStatus: TaskStatus = 'Todo';
+    if (task.status === 'Todo') {
+      nextStatus = 'InProgress';
+    } else if (task.status === 'InProgress') {
+      nextStatus = 'Done';
+    } else if (task.status === 'Done') {
+      nextStatus = 'Todo';
+    }
+
+    if (nextStatus === 'Done' && task.isRepeating) {
+      setSmartTask(task);
+    } else {
+      updateTaskStatus(task.id, nextStatus);
+    }
+  };
+
+  const handleSelectSmartRating = (rating: SmartRating, pomodorosCount?: number) => {
+    if (smartTask) {
+      updateTaskStatus(smartTask.id, 'Done', rating);
+      setSmartTask(null);
     }
   };
 
@@ -75,7 +110,9 @@ export const TodayTasks: React.FC = () => {
             headerClass={styles.stageHeaderTodo}
             tasksList={todoTasks}
             onDropStage={(e) => handleDropToStage(e, 'Todo')}
+            onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
+            onNextStatus={handleNextStatus}
           />
 
           {/* Stage 2: ⏳ В процессе (InProgress) */}
@@ -85,7 +122,9 @@ export const TodayTasks: React.FC = () => {
             headerClass={styles.stageHeaderInProgress}
             tasksList={inProgressTasks}
             onDropStage={(e) => handleDropToStage(e, 'InProgress')}
+            onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
+            onNextStatus={handleNextStatus}
           />
 
           {/* Stage 3: ✅ Выполнено (Done) */}
@@ -95,7 +134,9 @@ export const TodayTasks: React.FC = () => {
             headerClass={styles.stageHeaderDone}
             tasksList={doneTasks}
             onDropStage={(e) => handleDropToStage(e, 'Done')}
+            onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
+            onNextStatus={handleNextStatus}
           />
         </div>
       )}
@@ -107,7 +148,7 @@ export const TodayTasks: React.FC = () => {
         onClose={() => setEditingTask(null)}
       />
 
-      {/* Habit / Task Detail Modal */}
+      {/* Task Detail Modal */}
       <RepeatingTaskDetailModal
         task={detailTask}
         isOpen={!!detailTask}
@@ -116,6 +157,14 @@ export const TodayTasks: React.FC = () => {
           setEditingTask(detailTask);
           setDetailTask(null);
         }}
+      />
+
+      {/* Smart Completion Rating Modal */}
+      <SmartRatingModal
+        task={smartTask}
+        isOpen={!!smartTask}
+        onClose={() => setSmartTask(null)}
+        onSelectRating={handleSelectSmartRating}
       />
     </div>
   );
@@ -127,7 +176,9 @@ interface KanbanStageSectionProps {
   headerClass: string;
   tasksList: Task[];
   onDropStage: (e: React.DragEvent) => void;
+  onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
   onOpenCard: (task: Task) => void;
+  onNextStatus: (task: Task) => void;
 }
 
 const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
@@ -136,9 +187,12 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   headerClass,
   tasksList,
   onDropStage,
+  onDropOnTask,
   onOpenCard,
+  onNextStatus,
 }) => {
   const [isDragOver, setIsDragOver] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const rootTasksInStage = useMemo(() => {
     return tasksList.filter((t) => !t.parentTaskId);
@@ -170,41 +224,66 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      <div className={`${styles.stageHeader} ${headerClass}`}>
-        <span>{title}</span>
+      {/* Collapsible Accordion Header */}
+      <div
+        className={`${styles.stageHeader} ${headerClass}`}
+        onClick={() => setIsOpen(!isOpen)}
+        title="Нажмите чтобы развернуть/свернуть список"
+      >
+        <div className={styles.headerTitleGroup}>
+          <span>{title}</span>
+          <span className={`${styles.accordionArrow} ${isOpen ? styles.accordionArrowOpen : ''}`}>
+            ▼
+          </span>
+        </div>
         <span className={styles.stageBadge}>{tasksList.length}</span>
       </div>
 
-      {tasksList.length === 0 ? (
-        <div
-          style={{
-            padding: '12px',
-            textAlign: 'center',
-            fontSize: '12px',
-            color: 'var(--color-text-muted)',
-            borderRadius: '12px',
-            border: '1px dashed var(--color-border)',
-          }}
-        >
-          Перетащите сюда задачи
-        </div>
-      ) : (
-        <div className={styles.taskList}>
-          {rootTasksInStage.map((task) => (
-            <React.Fragment key={task.id}>
-              {/* Parent Task Card */}
-              <TaskCardItem task={task} onOpenCard={() => onOpenCard(task)} />
+      {/* Accordion Content */}
+      {isOpen && (
+        <>
+          {tasksList.length === 0 ? (
+            <div
+              style={{
+                padding: '12px',
+                textAlign: 'center',
+                fontSize: '12px',
+                color: 'var(--color-text-muted)',
+                borderRadius: '12px',
+                border: '1px dashed var(--color-border)',
+              }}
+            >
+              Перетащите сюда задачи
+            </div>
+          ) : (
+            <div className={styles.taskList}>
+              {rootTasksInStage.map((task) => (
+                <React.Fragment key={task.id}>
+                  {/* Parent Task Card */}
+                  <TaskCardItem
+                    task={task}
+                    onOpenCard={() => onOpenCard(task)}
+                    onDropOnTask={onDropOnTask}
+                    onNextStatus={() => onNextStatus(task)}
+                  />
 
-              {/* Subtasks under this stage */}
-              {getSubtasksInStage(task.id).map((subtask) => (
-                <div key={subtask.id} className={styles.subtaskIndent}>
-                  <div className={styles.subtaskConnector} />
-                  <TaskCardItem task={subtask} onOpenCard={() => onOpenCard(subtask)} />
-                </div>
+                  {/* Subtasks under this stage */}
+                  {getSubtasksInStage(task.id).map((subtask) => (
+                    <div key={subtask.id} className={styles.subtaskIndent}>
+                      <div className={styles.subtaskConnector} />
+                      <TaskCardItem
+                        task={subtask}
+                        onOpenCard={() => onOpenCard(subtask)}
+                        onDropOnTask={onDropOnTask}
+                        onNextStatus={() => onNextStatus(subtask)}
+                      />
+                    </div>
+                  ))}
+                </React.Fragment>
               ))}
-            </React.Fragment>
-          ))}
-        </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
@@ -213,19 +292,27 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
 interface TaskCardItemProps {
   task: Task;
   onOpenCard: () => void;
+  onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
+  onNextStatus: () => void;
 }
 
-const TaskCardItem: React.FC<TaskCardItemProps> = ({ task, onOpenCard }) => {
-  const { updateTaskStatus, deleteTask } = useTaskStore();
+const TaskCardItem: React.FC<TaskCardItemProps> = ({
+  task,
+  onOpenCard,
+  onDropOnTask,
+  onNextStatus,
+}) => {
+  const { deleteTask } = useTaskStore();
 
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isSwipedLeft, setIsSwipedLeft] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [isOverTarget, setIsOverTarget] = useState<boolean>(false);
 
   const isDone = task.status === 'Done';
 
-  // Touch Swipe Handlers (Swipe left reveals delete, swipe right cancels!)
+  // FIX: Strict swipe logic separating delete panel dismissal from stage status progression
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
   };
@@ -235,11 +322,20 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({ task, onOpenCard }) => {
     const currentX = e.targetTouches[0].clientX;
     const diff = touchStartX - currentX;
 
-    if (diff > 0 && diff <= 80) {
-      setSwipeOffset(-diff);
-    } else if (diff < 0 && isSwipedLeft) {
-      const remaining = -80 - diff;
-      setSwipeOffset(Math.min(0, remaining));
+    if (isSwipedLeft) {
+      // Currently in swiped-left state (delete button open at -80px)
+      // Dragging right (diff < 0) pulls the card back towards 0
+      const newOffset = Math.min(0, Math.max(-80, -80 - diff));
+      setSwipeOffset(newOffset);
+    } else {
+      // Currently in normal state (0px)
+      if (diff > 0 && diff <= 80) {
+        // Swiping Left -> preview delete action
+        setSwipeOffset(-diff);
+      } else if (diff < 0 && diff >= -80) {
+        // Swiping Right -> preview status advance
+        setSwipeOffset(-diff / 2);
+      }
     }
   };
 
@@ -248,17 +344,31 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({ task, onOpenCard }) => {
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX - touchEndX;
 
-    if (diff > 45) {
-      setIsSwipedLeft(true);
-      setSwipeOffset(-80);
-    } else {
+    if (isSwipedLeft) {
+      // Card WAS swiped left (delete button was open)
+      // Any gesture closes the delete panel WITHOUT advancing status stage!
       setIsSwipedLeft(false);
       setSwipeOffset(0);
+    } else {
+      // Card WAS in normal state
+      if (diff > 45) {
+        // Swiped left -> open delete button
+        setIsSwipedLeft(true);
+        setSwipeOffset(-80);
+      } else if (diff < -45) {
+        // Swiped right -> advance status stage!
+        setIsSwipedLeft(false);
+        setSwipeOffset(0);
+        onNextStatus();
+      } else {
+        setIsSwipedLeft(false);
+        setSwipeOffset(0);
+      }
     }
     setTouchStartX(null);
   };
 
-  // Drag and Drop
+  // Full card drag motion & nesting drop target
   const handleDragStart = (e: React.DragEvent) => {
     e.dataTransfer.setData('text/plain', task.id);
     e.dataTransfer.effectAllowed = 'move';
@@ -267,21 +377,42 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({ task, onOpenCard }) => {
 
   const handleDragEnd = () => {
     setIsDragging(false);
+    setIsOverTarget(false);
+  };
+
+  const handleDragOverCard = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsOverTarget(true);
+  };
+
+  const handleDragLeaveCard = () => {
+    setIsOverTarget(false);
+  };
+
+  const handleDropOnCard = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsOverTarget(false);
+    const draggedTaskId = e.dataTransfer.getData('text/plain');
+    if (draggedTaskId && draggedTaskId !== task.id) {
+      onDropOnTask(draggedTaskId, task);
+    }
   };
 
   return (
     <div className={styles.taskCardWrapper}>
-      {/* Background Swipe Delete Action */}
+      {/* Background Swipe Delete Action: Centered text WITHOUT trash icon */}
       <div
         className={styles.deleteSwipeAction}
         onClick={() => deleteTask(task.id)}
       >
-        🗑 Удалить
+        Удалить
       </div>
 
       {/* Main Ultra-Slim Task Card */}
       <div
-        className={`${styles.taskCard} ${isDragging ? styles.taskCardDragging : ''}`}
+        className={`${styles.taskCard} ${isDragging ? styles.taskCardDragging : ''} ${isOverTarget ? styles.taskCardDropTarget : ''}`}
         style={{ transform: `translateX(${swipeOffset}px)` }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -289,16 +420,16 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({ task, onOpenCard }) => {
         draggable
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
+        onDragOver={handleDragOverCard}
+        onDragLeave={handleDragLeaveCard}
+        onDrop={handleDropOnCard}
         onClick={onOpenCard}
       >
         {/* Line 1: Checkbox, Title & Drag Handle */}
         <div className={styles.cardHeaderRow}>
           <div className={styles.titleArea}>
-            <div onClick={(e) => e.stopPropagation()}>
-              <Checkbox
-                checked={isDone}
-                onChange={() => updateTaskStatus(task.id, isDone ? 'Todo' : 'Done')}
-              />
+            <div onClick={(e) => { e.stopPropagation(); onNextStatus(); }}>
+              <Checkbox checked={isDone} onChange={() => {}} />
             </div>
             <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
               {task.title}
@@ -314,34 +445,9 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({ task, onOpenCard }) => {
           </div>
         </div>
 
-        {/* Line 2: Category, Scheduled Date, and Compact Status Select Badge */}
+        {/* Line 2: Category Badge ONLY without border outline */}
         <div className={styles.metaInlineRow}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span className={styles.categoryBadge}>🏷 {task.category}</span>
-            {task.scheduledDate && (
-              <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', fontWeight: 500 }}>
-                📅 {task.scheduledDate}
-              </span>
-            )}
-          </div>
-
-          {/* Elegant Status Select Badge */}
-          <select
-            className={`${styles.statusSelectBadge} ${
-              task.status === 'Todo'
-                ? styles.statusSelectBadgeTodo
-                : task.status === 'InProgress'
-                ? styles.statusSelectBadgeInProgress
-                : styles.statusSelectBadgeDone
-            }`}
-            value={task.status}
-            onChange={(e) => updateTaskStatus(task.id, e.target.value as TaskStatus)}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <option value="Todo">📋 К вып.</option>
-            <option value="InProgress">⏳ В процессе</option>
-            <option value="Done">✅ Готово</option>
-          </select>
+          <span className={styles.categoryBadgeNoBorder}>🏷 {task.category}</span>
         </div>
       </div>
     </div>

@@ -56,11 +56,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 12px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
 }
 
 .stageHeaderTodo {
@@ -79,6 +82,24 @@
   background: rgba(16, 185, 129, 0.08);
   border: 1px solid rgba(16, 185, 129, 0.2);
   border-left: 4px solid #10b981;
+}
+
+.headerTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accordionArrow {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.accordionArrowOpen {
+  transform: rotate(180deg);
 }
 
 .stageBadge {
@@ -111,8 +132,8 @@
 .taskCard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 11px 14px;
+  gap: 6px;
+  padding: 10px 14px;
   border-radius: 16px;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -124,12 +145,18 @@
   box-sizing: border-box;
 }
 
+/* Full Card Dragging Animation (Requirement 1) */
 .taskCardDragging {
   opacity: 0.9;
   transform: scale(1.02) translateY(-4px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
   border-color: rgba(59, 130, 246, 0.5);
   z-index: 10;
+}
+
+.taskCardDropTarget {
+  border-color: #38bdf8 !important;
+  background-color: rgba(56, 189, 248, 0.08) !important;
 }
 
 /* Subtask Nesting Styling */
@@ -149,7 +176,7 @@
   background-color: rgba(59, 130, 246, 0.3);
 }
 
-/* Swipe Delete Background Action */
+/* Swipe Delete Background Action: Centered text WITHOUT trash icon (Requirement 2) */
 .deleteSwipeAction {
   position: absolute;
   right: 0;
@@ -161,12 +188,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13.5px;
+  font-weight: 700;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
   z-index: 1;
   cursor: pointer;
+  user-select: none;
 }
 
 /* Header Row: Checkbox, Title & Drag Handle */
@@ -208,7 +236,7 @@
   line-height: 1;
 }
 
-/* Line 2: Category Badge, Date, and Compact Status Select Badge */
+/* Line 2: Category Badge ONLY without border outline (Requirement 5) */
 .metaInlineRow {
   display: flex;
   align-items: center;
@@ -218,45 +246,17 @@
   font-size: 11.5px;
 }
 
-.categoryBadge {
-  color: var(--color-accent);
-  background-color: rgba(96, 165, 250, 0.1);
-  padding: 3px 8px;
+/* Category Badge: NO border, unified color theme (Requirement 5) */
+.categoryBadgeNoBorder {
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.12);
+  padding: 3px 9px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(96, 165, 250, 0.2);
+  border: none !important;
   white-space: nowrap;
   font-size: 11.5px;
-  font-weight: 500;
-}
-
-/* Modern Compact Status Selector Badge on Card */
-.statusSelectBadge {
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-secondary);
-  border-radius: 8px;
-  padding: 2px 7px;
-  font-size: 11.5px;
   font-weight: 600;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.statusSelectBadgeTodo {
-  background-color: rgba(56, 189, 248, 0.12);
-  border-color: rgba(56, 189, 248, 0.3);
-  color: #38bdf8;
-}
-
-.statusSelectBadgeInProgress {
-  background-color: rgba(245, 158, 11, 0.12);
-  border-color: rgba(245, 158, 11, 0.3);
-  color: #f59e0b;
-}
-
-.statusSelectBadgeDone {
-  background-color: rgba(16, 185, 129, 0.12);
-  border-color: rgba(16, 185, 129, 0.3);
-  color: #10b981;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }

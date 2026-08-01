@@ -16,7 +16,6 @@ export const RepeatsPage: React.FC = () => {
     fetchTasks();
   }, [fetchTasks]);
 
-  // Group repeating tasks by seriesId or title so each repeating task series appears EXACTLY ONCE
   const uniqueRepeatingTasks = useMemo(() => {
     const repeatingTasks = tasks.filter((t) => t.isRepeating);
     const seriesMap = new Map<string, Task>();
@@ -47,7 +46,6 @@ export const RepeatsPage: React.FC = () => {
     return Array.from(seriesMap.values());
   }, [tasks]);
 
-  // Sorting logic according to user request
   const sortedRepeatingTasks = useMemo(() => {
     const list = [...uniqueRepeatingTasks];
     if (sortOption === 'overdue') {
@@ -71,12 +69,12 @@ export const RepeatsPage: React.FC = () => {
   return (
     <div className={styles.container}>
       {/* Header Card */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <Card style={{ display: 'flex', flexDirection: 'column', gap: '8px', borderRadius: '20px' }}>
         <Typography variant="h2" style={{ color: 'var(--color-text-primary)' }}>
-          Трек прогресса привычек
+          🔄 Трек прогресса привычек
         </Typography>
 
-        {/* Top Sorting Bar (User Request) */}
+        {/* Top Sorting Bar */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '4px' }}>
           <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
             Сортировка:
@@ -167,6 +165,7 @@ interface StepNode {
   isNext: boolean;
   isFuture: boolean;
   isOverdue: boolean;
+  smartRatingEmoji?: string;
 }
 
 const formatDateNumeric = (dateStr?: string | null): string => {
@@ -177,7 +176,20 @@ const formatDateNumeric = (dateStr?: string | null): string => {
   return `${day}.${month}`;
 };
 
-// Russian pluralization helper for "повтор"
+const getSmartRatingEmoji = (rating?: string): string => {
+  switch (rating) {
+    case 'easy':
+      return '😄';
+    case 'hard':
+      return '😣';
+    case 'again':
+      return '❌';
+    case 'normal':
+    default:
+      return '🙂';
+  }
+};
+
 const formatRepetitionCount = (count: number): { numStr: string; textStr: string } => {
   const mod10 = count % 10;
   const mod100 = count % 100;
@@ -197,7 +209,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
   const history = task.repetitionHistory || [];
   const completedCount = history.length > 0 ? history.length : (task.repetitionsCount || 0);
 
-  // Find next upcoming uncompleted duplicate task in calendar for this series
   const seriesKey = task.seriesId || task.title.toLowerCase().trim();
   const nextUncompletedTask = allTasks.find(
     (t) =>
@@ -207,13 +218,10 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
   );
 
   const nextDateRaw = nextUncompletedTask ? nextUncompletedTask.scheduledDate : task.nextReviewDate || null;
-
-  // Overdue check: Red circle ONLY if scheduled date is strictly yesterday or earlier!
   const isOverdue = nextDateRaw ? nextDateRaw < todayStr : false;
 
   const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
 
-  // Single uniform numeric format: Node #1 is start (1), Node #2 is interval (e.g. 7), Node #3 is (14)...
   const defaultLabels = useMemo(() => {
     if (mode === 'schedule') {
       return ['1', '2', '3', '4', '5', '6'];
@@ -240,8 +248,11 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
       }
 
       let subLabel = '';
+      let smartRatingEmoji: string | undefined = undefined;
+
       if (isCompleted && history[i]) {
         subLabel = formatDateNumeric(history[i].date);
+        smartRatingEmoji = getSmartRatingEmoji(history[i].smartRating);
       } else if (isNext && nextDateRaw) {
         subLabel = formatDateNumeric(nextDateRaw);
       }
@@ -254,6 +265,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
         isNext,
         isFuture,
         isOverdue: isNext && isOverdue,
+        smartRatingEmoji,
       });
     }
     return list;
@@ -265,7 +277,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
     <div className={styles.repeatCard}>
       {/* 2-Line Card Header */}
       <div className={styles.cardHeader}>
-        {/* Line 1: Title & Scheduled Date */}
         <div className={styles.line1}>
           <span className={styles.taskTitle}>{task.title}</span>
 
@@ -276,7 +287,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
           )}
         </div>
 
-        {/* Line 2: Category & Green Repetition Counter on 1 line */}
         <div className={styles.line2}>
           <span className={styles.categoryTag}>🏷 {task.category}</span>
           <div className={styles.repetitionCounter}>
@@ -285,7 +295,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
         </div>
       </div>
 
-      {/* Timeline Track */}
+      {/* Timeline Track with Option 5.7 Design */}
       <div className={styles.timelineTrackContainer}>
         <div className={styles.timelineTrack}>
           {/* Connector Bar behind nodes */}
@@ -300,9 +310,9 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
             ))}
           </div>
 
-          {/* Milestone Step Nodes */}
+          {/* Milestone Step Nodes with Option 5.7 badge */}
           {steps.map((step) => (
-            <div key={step.stepIndex} className={styles.timelineItem}>
+            <div key={step.stepIndex} className={styles.timelineItem} style={{ position: 'relative' }}>
               <span
                 className={`${styles.stepLabelTop} ${
                   step.isCompleted
@@ -317,16 +327,39 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
                 {step.label}
               </span>
 
+              {/* Option 5.7 Circle Node (28px x 28px with anchored top-right emoji badge) */}
               <div
-                className={`${styles.nodeCircle} ${
-                  step.isCompleted
-                    ? styles.nodeCompleted
+                style={{
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '50%',
+                  backgroundColor: step.isCompleted
+                    ? '#10b981'
                     : step.isOverdue
-                    ? styles.nodeOverdue
+                    ? '#ef4444'
                     : step.isNext
-                    ? styles.nodeNext
-                    : styles.nodeFuture
-                }`}
+                    ? 'rgba(14, 165, 233, 0.2)'
+                    : 'var(--color-surface)',
+                  border: step.isCompleted
+                    ? 'none'
+                    : step.isOverdue
+                    ? 'none'
+                    : step.isNext
+                    ? '2px solid #0ea5e9'
+                    : '1.5px solid var(--color-border)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '13px',
+                  color: '#ffffff',
+                  position: 'relative',
+                  boxShadow: step.isCompleted
+                    ? '0 0 10px rgba(16, 185, 129, 0.35)'
+                    : step.isNext
+                    ? '0 0 10px rgba(14, 165, 233, 0.35)'
+                    : 'none',
+                  transition: 'all 0.2s ease',
+                }}
                 title={`Шаг #${step.stepIndex}${step.label ? ` (${step.label})` : ''}: ${
                   step.isCompleted
                     ? 'Выполнено ✓'
@@ -338,6 +371,22 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
                 }`}
               >
                 {step.isCompleted ? '✓' : step.isNext ? '●' : '○'}
+
+                {/* Option 5.7 Anchored Top-Right Difficulty Emoji Badge */}
+                {step.isCompleted && step.smartRatingEmoji && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: '-7px',
+                      right: '-7px',
+                      fontSize: '13px',
+                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))',
+                      lineHeight: 1,
+                    }}
+                  >
+                    {step.smartRatingEmoji}
+                  </span>
+                )}
               </div>
 
               <span className={styles.subLabelBottom}>{step.subLabel || ''}</span>

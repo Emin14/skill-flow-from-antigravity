@@ -1,52 +1,42 @@
-/* 
-  Green Background Constant (#27ae60 / #10b981)
-  Text: High-contrast Crisp White (#ffffff) with subtle dark text shadow
-  Subtitle: Soft Mint (#d1fae5)
-  Circle Ring: White Border (#ffffff) with Dark Fill Overlay
-*/
-
 .banner {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  padding: 18px 24px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 24px rgba(39, 174, 96, 0.35);
+  padding: 16px 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.03) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.25);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.08);
   transition: all var(--transition-normal);
   width: 100%;
   box-sizing: border-box;
 }
 
 .bannerPartial {
-  background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 24px rgba(39, 174, 96, 0.35);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.03) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.25);
 }
 
 .circleRing {
-  width: 58px;
-  height: 58px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: 3.5px solid #ffffff;
+  border: 3px solid #10b981;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 800;
   flex-shrink: 0;
-  background-color: rgba(0, 0, 0, 0.25);
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
 }
 
 .circleRingPartial {
-  border: 3.5px solid #ffffff;
-  background-color: rgba(0, 0, 0, 0.25);
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 3px solid #10b981;
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
 }
 
 .textGroup {
@@ -58,46 +48,44 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: 16.5px;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.3;
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  color: var(--color-text-primary);
   white-space: normal;
   word-break: break-word;
 }
 
 .subtitle {
-  font-size: 14px;
-  color: #d1fae5;
-  font-weight: 500;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 13px;
+  color: #10b981;
+  font-weight: 600;
 }
 
 .subtitlePartial {
-  color: #d1fae5;
+  color: #10b981;
 }
 
 @media (max-width: 600px) {
   .banner {
-    border-radius: 20px;
-    padding: 16px 18px;
+    border-radius: 18px;
+    padding: 14px 16px;
     gap: var(--space-3);
   }
 
   .circleRing {
-    width: 48px;
-    height: 48px;
-    font-size: 12.5px;
-    border-width: 3px;
+    width: 46px;
+    height: 46px;
+    font-size: 12px;
+    border-width: 2.5px;
   }
 
   .title {
-    font-size: 15.5px;
+    font-size: 14.5px;
   }
 
   .subtitle {
-    font-size: 12.5px;
+    font-size: 12px;
   }
 }

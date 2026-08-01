@@ -122,7 +122,6 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 className={styles.selectInput}
                 value={category}
                 onChange={(e) => setCategory(e.target.value as TaskCategory)}
-                style={{ height: '38px', padding: '6px 10px', boxSizing: 'border-box' }}
               >
                 {TASK_CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
@@ -132,34 +131,27 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               </select>
             </div>
 
-            {/* Date Input with Clear / Anytime support */}
-            <div className={styles.formCol} style={{ position: 'relative' }}>
-              <input
-                type="date"
-                className={styles.selectInput}
-                value={scheduledDate}
-                onChange={(e) => setScheduledDate(e.target.value)}
-                style={{ height: '38px', padding: '6px 10px', boxSizing: 'border-box' }}
-              />
-              {scheduledDate && (
-                <button
-                  type="button"
-                  onClick={() => setScheduledDate('')}
-                  style={{
-                    position: 'absolute',
-                    right: '26px',
-                    top: '9px',
-                    background: 'transparent',
-                    border: 'none',
-                    color: 'var(--color-text-muted)',
-                    fontSize: '12px',
-                    cursor: 'pointer',
-                  }}
-                  title="Убрать дату (Любое время)"
-                >
-                  ✕
-                </button>
-              )}
+            {/* Date Input with Clear Button */}
+            <div className={styles.formCol}>
+              <div className={styles.dateInputContainer}>
+                <input
+                  type="date"
+                  className={styles.selectInput}
+                  value={scheduledDate}
+                  onChange={(e) => setScheduledDate(e.target.value)}
+                  style={{ paddingRight: scheduledDate ? '34px' : '12px' }}
+                />
+                {scheduledDate && (
+                  <button
+                    type="button"
+                    className={styles.dateClearBtn}
+                    onClick={() => setScheduledDate('')}
+                    title="Убрать дату (Любое время)"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
@@ -170,7 +162,6 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             value={link}
             onChange={(e) => setLink(e.target.value)}
             placeholder="🔗 Ссылка (https://...)"
-            style={{ height: '38px', padding: '6px 10px', boxSizing: 'border-box' }}
           />
 
           {/* Description Input */}
@@ -181,7 +172,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             placeholder="Описание задачи..."
           />
 
-          {/* Single Line 1: Repetition Mode & Frequency Dropdowns (Without "Повторить" button!) */}
+          {/* Single Line 1: Repetition Mode & Frequency Dropdowns */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'nowrap', overflowX: 'auto', width: '100%' }}>
             <select
               className={styles.selectInputCompact}
@@ -244,7 +235,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 Может иметь подзадачи
               </label>
 
-              {/* Parent Task Selector (ONLY shows tasks with hasSubtasks === true!) */}
+              {/* Parent Task Selector */}
               <select
                 className={styles.selectInputCompact}
                 value={parentTaskId || ''}

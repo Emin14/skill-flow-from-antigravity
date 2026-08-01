@@ -1,15 +1,16 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Task } from '@/entities/task/model/types';
 import { SmartRating, SMART_RATING_OPTIONS } from '@/shared/config/repetitionRules';
 import { Typography } from '@/shared/ui';
+import { useTaskStore } from '@/entities/task';
 
 interface SmartRatingModalProps {
   task: Task | null;
   isOpen: boolean;
   onClose: () => void;
-  onSelectRating: (rating: SmartRating) => void;
+  onSelectRating: (rating: SmartRating, pomodorosCount?: number) => void;
 }
 
 export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
@@ -18,7 +19,17 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
   onClose,
   onSelectRating,
 }) => {
+  const [selectedRating, setSelectedRating] = useState<SmartRating>('normal');
+  const [selectedPomodoros, setSelectedPomodoros] = useState<number>(task?.pomodorosCount || 1);
+  const { updateTaskPomodoros } = useTaskStore();
+
   if (!isOpen || !task) return null;
+
+  const handleConfirm = () => {
+    updateTaskPomodoros(task.id, selectedPomodoros);
+    onSelectRating(selectedRating, selectedPomodoros);
+    onClose();
+  };
 
   return (
     <div
@@ -43,9 +54,9 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
         style={{
           backgroundColor: 'var(--color-surface)',
           border: '1px solid var(--color-border)',
-          borderRadius: '16px',
+          borderRadius: '20px',
           width: '100%',
-          maxWidth: '380px',
+          maxWidth: '400px',
           padding: '20px',
           display: 'flex',
           flexDirection: 'column',
@@ -53,8 +64,9 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
           boxShadow: 'var(--shadow-xl)',
         }}
       >
+        {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h3">🧠 Оценка повторения</Typography>
+          <Typography variant="h3">🧠 Оценка выполнения повторения</Typography>
           <button
             type="button"
             onClick={onClose}
@@ -70,47 +82,123 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
           </button>
         </div>
 
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
-          Насколько легко вам было вспомнить: <strong>«{task.title}»</strong>?
+        {/* Task Title */}
+        <Typography variant="body" style={{ color: 'var(--color-text-primary)', fontSize: '14px', fontWeight: 600 }}>
+          «{task.title}»
         </Typography>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-          {SMART_RATING_OPTIONS.map((opt) => (
-            <button
-              key={opt.id}
-              type="button"
-              onClick={() => {
-                onSelectRating(opt.id);
-                onClose();
-              }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                padding: '14px 12px',
-                borderRadius: '12px',
-                border: '1px solid var(--color-border)',
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-accent)';
-                e.currentTarget.style.backgroundColor = 'var(--color-accent-light)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-border)';
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.03)';
-              }}
-            >
-              <span style={{ fontSize: '22px' }}>{opt.icon}</span>
-              <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--color-text-primary)' }}>
-                {opt.label}
-              </span>
-            </button>
-          ))}
+        {/* Step 1: Emojis on ONE SINGLE LINE (Requirement 7) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <span style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+            1. Насколько легко было вспомнить?
+          </span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px', width: '100%' }}>
+            {[
+              { id: 'easy', emoji: '😄', label: 'Легко', color: '#10b981' },
+              { id: 'normal', emoji: '🙂', label: 'Норм', color: '#0ea5e9' },
+              { id: 'hard', emoji: '😣', label: 'Сложно', color: '#f59e0b' },
+              { id: 'again', emoji: '❌', label: 'Забыл', color: '#ef4444' },
+            ].map((opt) => {
+              const isActive = selectedRating === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => setSelectedRating(opt.id as SmartRating)}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '4px',
+                    padding: '10px 4px',
+                    borderRadius: '12px',
+                    border: isActive ? `1.5px solid ${opt.color}` : '1px solid var(--color-border)',
+                    backgroundColor: isActive ? `${opt.color}20` : 'rgba(255, 255, 255, 0.03)',
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <span style={{ fontSize: '22px', lineHeight: 1 }}>{opt.emoji}</span>
+                  <span style={{ fontSize: '11px', fontWeight: isActive ? 700 : 500, color: isActive ? opt.color : 'var(--color-text-muted)' }}>
+                    {opt.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        {/* Step 2: Pomodoro Time Spent Selection (Requirement 7) */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <span style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+            2. Сколько времени заняло (помидоров)?
+          </span>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(6, 1fr)',
+              gap: '4px',
+              padding: '4px',
+              borderRadius: '12px',
+              background: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid var(--color-border)',
+            }}
+          >
+            {[
+              { label: '⅓', val: 0.33 },
+              { label: '½', val: 0.5 },
+              { label: '1 🍅', val: 1 },
+              { label: '2 🍅', val: 2 },
+              { label: '3 🍅', val: 3 },
+              { label: '4 🍅', val: 4 },
+            ].map((pItem) => {
+              const isActive = selectedPomodoros === pItem.val;
+              return (
+                <button
+                  key={pItem.val}
+                  type="button"
+                  onClick={() => setSelectedPomodoros(pItem.val)}
+                  style={{
+                    height: '38px',
+                    borderRadius: '9px',
+                    border: 'none',
+                    background: isActive ? 'linear-gradient(135deg, #ef4444, #dc2626)' : 'transparent',
+                    color: isActive ? '#ffffff' : 'var(--color-text-muted)',
+                    fontWeight: isActive ? 700 : 500,
+                    fontSize: '12px',
+                    cursor: 'pointer',
+                    boxShadow: isActive ? '0 4px 12px rgba(239, 68, 68, 0.35)' : 'none',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  {pItem.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Confirm Submit Button */}
+        <button
+          type="button"
+          onClick={handleConfirm}
+          style={{
+            width: '100%',
+            height: '42px',
+            borderRadius: '12px',
+            backgroundColor: '#0ea5e9',
+            color: '#ffffff',
+            border: 'none',
+            fontSize: '14px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            boxShadow: '0 4px 14px rgba(14, 165, 233, 0.35)',
+            marginTop: '4px',
+          }}
+        >
+          ✓ Подтвердить выполнение
+        </button>
       </div>
     </div>
   );
