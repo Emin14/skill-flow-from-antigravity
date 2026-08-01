@@ -31,6 +31,23 @@ const formatSelectedDateTitle = (dateStr: string) => {
   });
 };
 
+// Filter helper: Subtask is shown separately ONLY IF its scheduledDate differs from parent's scheduledDate
+const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Task[] => {
+  return allTasks.filter((t) => {
+    if (t.scheduledDate !== targetDateStr) return false;
+
+    if (t.parentTaskId) {
+      const parentTask = allTasks.find((p) => p.id === t.parentTaskId);
+      // If parent and subtask have the SAME scheduledDate, do NOT show subtask as a separate top-level item
+      if (parentTask && parentTask.scheduledDate === t.scheduledDate) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+};
+
 export const CalendarPage: React.FC = () => {
   const todayStr = useMemo(() => {
     const now = new Date();
@@ -119,7 +136,7 @@ export const CalendarPage: React.FC = () => {
       const dayNum = cellDate.getDate();
       const isCurrentMonth = cellDate.getMonth() === month;
 
-      const dateTasks = tasks.filter((t) => t.scheduledDate === dateStr);
+      const dateTasks = filterCalendarVisibleTasks(tasks, dateStr);
       const doneCount = dateTasks.filter((t) => t.status === 'Done').length;
 
       days.push({
@@ -135,7 +152,7 @@ export const CalendarPage: React.FC = () => {
   }, [currentMonthDate, todayStr, tasks]);
 
   const selectedDayTasks = useMemo(() => {
-    return tasks.filter((t) => t.scheduledDate === selectedDate);
+    return filterCalendarVisibleTasks(tasks, selectedDate);
   }, [tasks, selectedDate]);
 
   const monthTitleStr = currentMonthDate.toLocaleDateString('ru-RU', {
@@ -198,121 +215,88 @@ export const CalendarPage: React.FC = () => {
           <div className={styles.weekHeaderCell} style={{ color: 'var(--color-danger)' }}>Вс</div>
         </div>
 
-        {/* Full Month Days Matrix Grid */}
-        <div className={styles.calendarMatrixGrid}>
-          {monthDays.map((day) => {
-            const isSelected = day.dateStr === selectedDate;
-            const classNames = [
-              styles.dateCell,
-              !day.isCurrentMonth ? styles.dateCellOtherMonth : '',
-              day.isToday ? styles.dateCellToday : '',
-              isSelected ? styles.dateCellActive : '',
-            ]
-              .filter(Boolean)
-              .join(' ');
+        {/* Days Grid */}
+        <div className={styles.daysGrid}>
+          {monthDays.map((d) => {
+            const isSelected = d.dateStr === selectedDate;
+            const hasTasks = d.tasksCount > 0;
+            const isAllDone = hasTasks && d.doneCount === d.tasksCount;
 
             return (
               <div
-                key={day.dateStr}
-                className={classNames}
-                onClick={() => setSelectedDate(day.dateStr)}
+                key={d.dateStr}
+                className={`${styles.dayCell} ${!d.isCurrentMonth ? styles.dayCellOtherMonth : ''} ${
+                  d.isToday ? styles.dayCellToday : ''
+                } ${isSelected ? styles.dayCellSelected : ''}`}
+                onClick={() => setSelectedDate(d.dateStr)}
               >
-                <span className={styles.dayNum}>{day.dayNum}</span>
-
-                <div className={styles.taskDots}>
-                  {day.tasksCount > 0 && (
-                    <div
-                      className={`${styles.dot} ${day.doneCount > 0 ? styles.dotDone : ''}`}
-                    />
-                  )}
+                <div className={styles.dayNumRow}>
+                  <span className={styles.dayNum}>{d.dayNum}</span>
                 </div>
+
+                {hasTasks && (
+                  <div className={styles.badgeRow}>
+                    <span className={`${styles.taskBadge} ${isAllDone ? styles.taskBadgeDone : ''}`}>
+                      {d.tasksCount}
+                    </span>
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
       </div>
 
-      {/* Selected Date Tasks Panel */}
+      {/* Selected Day Agenda Header & Task List */}
       <div className={styles.selectedDayCard}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h2">
-            📅 {formattedSelectedDate}
-          </Typography>
-          <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
-            Задач: {selectedDayTasks.length}
-          </Typography>
+        <div className={styles.selectedDayHeader}>
+          <div className={styles.selectedDayTitle}>
+            📋 {formattedSelectedDate}
+          </div>
+          <div className={styles.selectedDayMeta}>
+            {selectedDayTasks.length === 0
+              ? 'Нет запланированных задач'
+              : `Задач: ${selectedDayTasks.length}`}
+          </div>
         </div>
 
+        {/* Task List for Selected Date */}
         {isLoading ? (
-          <div style={{ padding: 'var(--space-6)', textAlign: 'center', color: 'var(--color-text-muted)' }}>
-            Загрузка задач...
-          </div>
+          <div className={styles.emptyState}>Загрузка...</div>
         ) : selectedDayTasks.length === 0 ? (
-          <div
-            style={{
-              padding: 'var(--space-6)',
-              textAlign: 'center',
-              borderRadius: 'var(--radius-md)',
-              border: '1px dashed var(--color-border)',
-              color: 'var(--color-text-muted)',
-            }}
-          >
-            🌱 На эту дату задач нет.
+          <div className={styles.emptyState}>
+            🌱 На этот день нет запланированных задач.
           </div>
         ) : (
           <div className={styles.taskList}>
-            {selectedDayTasks.map((task, idx) => {
-              const linkedTopic = task.topicId ? topics.find((t) => t.id === task.topicId) : null;
-              const isDone = task.status === 'Done';
-              const completedTimeStr = task.completedAt
-                ? new Date(task.completedAt).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
-                : null;
+            {selectedDayTasks.map((t) => {
+              const isDone = t.status === 'Done';
+              const isRepeating = t.isRepeating;
+              const topicObj = topics.find((top) => top.id === t.topicId);
 
               return (
                 <div
-                  key={`${task.id}-${idx}`}
-                  className={styles.taskRow}
-                  onClick={() => handleTaskClick(task)}
-                  style={{ cursor: 'pointer' }}
-                  title="Нажмите для подробной информации"
+                  key={t.id}
+                  className={`${styles.agendaTaskCard} ${isDone ? styles.agendaTaskCardDone : ''}`}
+                  onClick={() => handleTaskClick(t)}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flex: 1, minWidth: 0 }}>
-                      <div onClick={(e) => e.stopPropagation()}>
-                        <Checkbox checked={isDone} onChange={() => handleCheckboxToggle(task)} />
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
-                        <span
-                          style={{
-                            fontSize: 'var(--font-size-md)',
-                            fontWeight: 'var(--font-weight-medium)',
-                            color: isDone ? 'var(--color-text-muted)' : 'var(--color-text-primary)',
-                            textDecoration: isDone ? 'line-through' : 'none',
-                          }}
-                        >
-                          {task.title}
-                        </span>
-                        <div style={{ display: 'flex', gap: 'var(--space-3)', fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)', flexWrap: 'wrap' }}>
-                          <span style={{ color: 'var(--color-accent)' }}>🏷 {task.category}</span>
-                          {isDone && completedTimeStr && (
-                            <span style={{ color: 'var(--color-success)' }}>✓ Выполнено в {completedTimeStr}</span>
-                          )}
-                          {linkedTopic && (
-                            <Link
-                              href={`/topics/${linkedTopic.id}`}
-                              onClick={(e) => e.stopPropagation()}
-                              style={{ color: 'var(--color-text-secondary)', textDecoration: 'none' }}
-                            >
-                              🐘 {linkedTopic.title}
-                            </Link>
-                          )}
-                        </div>
-                      </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div onClick={(e) => { e.stopPropagation(); handleCheckboxToggle(t); }}>
+                      <Checkbox checked={isDone} onChange={() => {}} />
                     </div>
+                    <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
+                      {t.title}
+                    </span>
+                  </div>
 
-                    <div style={{ fontSize: '14px', color: 'var(--color-text-muted)', userSelect: 'none' }}>
-                      ⋮⋮⋮
-                    </div>
+                  <div className={styles.taskMetaRow}>
+                    <span className={styles.categoryBadge}>🏷 {t.category}</span>
+                    {topicObj && (
+                      <span className={styles.topicBadge}>📌 {topicObj.title}</span>
+                    )}
+                    {isRepeating && (
+                      <span className={styles.repeatBadge}>🔄 Повторяющаяся</span>
+                    )}
                   </div>
                 </div>
               );
@@ -321,12 +305,14 @@ export const CalendarPage: React.FC = () => {
         )}
       </div>
 
+      {/* Edit Task Modal */}
       <EditTaskModal
         task={editingTask}
         isOpen={!!editingTask}
         onClose={() => setEditingTask(null)}
       />
 
+      {/* Repeating Task Detail Modal */}
       <RepeatingTaskDetailModal
         task={detailTask}
         isOpen={!!detailTask}
@@ -337,6 +323,7 @@ export const CalendarPage: React.FC = () => {
         }}
       />
 
+      {/* Smart Rating Completion Modal */}
       <SmartRatingModal
         task={smartTask}
         isOpen={!!smartTask}

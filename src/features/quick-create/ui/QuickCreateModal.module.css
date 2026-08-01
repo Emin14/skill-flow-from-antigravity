@@ -10,7 +10,8 @@
   align-items: center;
   justify-content: center;
   z-index: var(--z-index-modal);
-  padding: var(--space-4);
+  /* Safe Area Insets Compliance for iOS / Android */
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
 }
 
 .modal {
@@ -30,11 +31,12 @@
   box-sizing: border-box;
 }
 
+/* Accessible 44px x 44px Touch Target Close Button */
 .closeBtn {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--color-border);
@@ -42,7 +44,7 @@
   font-size: 20px;
   font-weight: 400;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition-fast);
@@ -70,7 +72,7 @@
 .selectInput {
   width: 100%;
   padding: 0 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
@@ -86,7 +88,7 @@
 .selectInputCompact {
   width: 100%;
   padding: 0 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
@@ -104,7 +106,50 @@
   border-color: var(--color-accent);
 }
 
-/* Date input container with comfortable clear button on the right */
+/* 1-Tap Quick Date Pills Row */
+.quickDatePillsRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 2px 0;
+  scrollbar-width: none;
+}
+
+.quickDatePillsRow::-webkit-scrollbar {
+  display: none;
+}
+
+.datePill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 36px;
+  min-height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.datePill:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.datePillActive {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: rgba(14, 165, 233, 0.4);
+  color: #0ea5e9;
+  font-weight: 600;
+}
+
+/* Date input container with 44px x 44px touch target clear button */
 .dateInputContainer {
   position: relative;
   display: flex;
@@ -114,18 +159,20 @@
 
 .dateClearBtn {
   position: absolute;
-  right: 6px;
+  right: 2px;
   top: 50%;
   transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  border: none;
   color: var(--color-text-muted);
   font-size: 16px;
   font-weight: 500;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -136,7 +183,6 @@
 .dateClearBtn:hover {
   background: rgba(239, 68, 68, 0.25);
   color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.4);
 }
 
 /* Compact Textarea for Description */
@@ -146,7 +192,7 @@
   height: 56px;
   max-height: 120px;
   padding: 8px 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
@@ -156,101 +202,16 @@
   resize: vertical;
 }
 
-/* Single Line Control Bar */
-.singleLineControls {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  width: 100%;
-  overflow-x: auto;
-  padding: 4px 0;
-  scrollbar-width: none;
-}
-
-.singleLineControls::-webkit-scrollbar {
-  display: none;
-}
-
-/* Icon Toggle Button Style */
-.iconToggleBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
-  border-radius: 10px;
-  background: transparent;
-  border: 1px solid var(--color-border);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0;
-}
-
-.iconToggleInactive {
-  color: var(--color-text-muted);
-  filter: grayscale(100%);
-  opacity: 0.5;
-}
-
-.iconToggleActive {
-  color: #3b82f6;
-  border-color: rgba(59, 130, 246, 0.5);
-  background-color: rgba(59, 130, 246, 0.12);
-  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5));
-  opacity: 1;
-}
-
-/* Pill Toggle Button Style */
-.pillToggleBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 0 10px;
-  height: 36px;
-  border-radius: 10px;
-  background: transparent;
-  border: 1px solid var(--color-border);
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-.pillToggleInactive {
-  color: var(--color-text-muted);
-  filter: grayscale(100%);
-  opacity: 0.5;
-}
-
-.pillToggleActive {
-  color: #3b82f6;
-  border-color: rgba(59, 130, 246, 0.5);
-  background-color: rgba(59, 130, 246, 0.12);
-  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5));
-  opacity: 1;
-}
-
-.subtaskToggleActive {
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.5);
-  background-color: rgba(16, 185, 129, 0.12);
-  filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.5));
-  opacity: 1;
-}
-
-/* Send / Submit Icon Button */
+/* Accessible 44px x 44px Send / Submit Icon Button */
 .sendBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-md);
   background-color: var(--color-accent);
   color: #ffffff;
   border: none;
@@ -262,7 +223,7 @@
 }
 
 .sendBtn:hover {
-  transform: translateY(-1px) scale(1.05);
+  transform: translateY(-1px) scale(1.03);
   box-shadow: 0 4px 12px rgba(96, 165, 250, 0.5);
 }
 
@@ -275,7 +236,7 @@
 
 @media (max-width: 600px) {
   .overlay {
-    padding: var(--space-2);
+    padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
     align-items: flex-end;
   }
 

@@ -16,6 +16,31 @@ interface EditTaskModalProps {
   onSaveSuccess?: () => void;
 }
 
+// Date Arithmetic Helpers for Quick Presets
+const getTodayStr = () => new Date().toISOString().split('T')[0];
+
+const getTomorrowStr = () => {
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  return d.toISOString().split('T')[0];
+};
+
+const getWeekendStr = () => {
+  const d = new Date();
+  const day = d.getDay();
+  const daysUntilSaturday = day === 6 ? 7 : (6 - day);
+  d.setDate(d.getDate() + daysUntilSaturday);
+  return d.toISOString().split('T')[0];
+};
+
+const getNextWeekStr = () => {
+  const d = new Date();
+  const day = d.getDay();
+  const daysUntilMonday = day === 1 ? 7 : ((8 - day) % 7 || 7);
+  d.setDate(d.getDate() + daysUntilMonday);
+  return d.toISOString().split('T')[0];
+};
+
 export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess }) => {
   const { updateTaskDetails, tasks } = useTaskStore();
   const { topics, fetchTopics } = useTopicStore();
@@ -23,6 +48,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState<TaskCategory>('Задача');
   const [scheduledDate, setScheduledDate] = useState('');
+  const [datePresetMode, setDatePresetMode] = useState<'today' | 'tomorrow' | 'weekend' | 'nextWeek' | 'custom' | 'anytime'>('today');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
   const [parentTaskId, setParentTaskId] = useState<string | null>(null);
@@ -42,7 +68,23 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     if (task) {
       setTitle(task.title || '');
       setCategory(task.category || 'Задача');
-      setScheduledDate(task.scheduledDate || '');
+      const dateVal = task.scheduledDate || '';
+      setScheduledDate(dateVal);
+
+      if (!dateVal) {
+        setDatePresetMode('anytime');
+      } else if (dateVal === getTodayStr()) {
+        setDatePresetMode('today');
+      } else if (dateVal === getTomorrowStr()) {
+        setDatePresetMode('tomorrow');
+      } else if (dateVal === getWeekendStr()) {
+        setDatePresetMode('weekend');
+      } else if (dateVal === getNextWeekStr()) {
+        setDatePresetMode('nextWeek');
+      } else {
+        setDatePresetMode('custom');
+      }
+
       setDescription(task.description || '');
       setLink(task.link || '');
       setParentTaskId(task.parentTaskId || null);
@@ -57,6 +99,27 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   }, [task]);
 
   if (!isOpen || !task) return null;
+
+  const handleDatePresetChange = (val: string) => {
+    if (val === 'today') {
+      setDatePresetMode('today');
+      setScheduledDate(getTodayStr());
+    } else if (val === 'tomorrow') {
+      setDatePresetMode('tomorrow');
+      setScheduledDate(getTomorrowStr());
+    } else if (val === 'weekend') {
+      setDatePresetMode('weekend');
+      setScheduledDate(getWeekendStr());
+    } else if (val === 'nextWeek') {
+      setDatePresetMode('nextWeek');
+      setScheduledDate(getNextWeekStr());
+    } else if (val === 'anytime') {
+      setDatePresetMode('anytime');
+      setScheduledDate('');
+    } else {
+      setDatePresetMode('custom');
+    }
+  };
 
   const handleSave = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -115,7 +178,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             autoFocus
           />
 
-          {/* Equal Height Category & Date Row */}
+          {/* Category & Date Preset Dropdown Row */}
           <div className={styles.formRow}>
             <div className={styles.formCol}>
               <select
@@ -131,29 +194,80 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               </select>
             </div>
 
-            {/* Date Input with Clear Button */}
+            {/* Smart Date Preset Select */}
             <div className={styles.formCol}>
-              <div className={styles.dateInputContainer}>
-                <input
-                  type="date"
-                  className={styles.selectInput}
-                  value={scheduledDate}
-                  onChange={(e) => setScheduledDate(e.target.value)}
-                  style={{ paddingRight: scheduledDate ? '34px' : '12px' }}
-                />
-                {scheduledDate && (
-                  <button
-                    type="button"
-                    className={styles.dateClearBtn}
-                    onClick={() => setScheduledDate('')}
-                    title="Убрать дату (Любое время)"
-                  >
-                    ✕
-                  </button>
-                )}
-              </div>
+              <select
+                className={styles.selectInput}
+                value={datePresetMode}
+                onChange={(e) => handleDatePresetChange(e.target.value)}
+              >
+                <option value="today">☀️ Сегодня</option>
+                <option value="tomorrow">🌅 Завтра</option>
+                <option value="weekend">📅 На выходных</option>
+                <option value="nextWeek">⏩ На следующей неделе</option>
+                <option value="anytime">🌱 Любое время</option>
+                <option value="custom">📆 Выбрать дату...</option>
+              </select>
             </div>
           </div>
+
+          {/* Custom Date Input (shown when custom is selected or if specific date is picked) */}
+          {datePresetMode === 'custom' && (
+            <div className={styles.dateInputContainer}>
+              <input
+                type="date"
+                className={styles.selectInput}
+                value={scheduledDate}
+                onChange={(e) => setScheduledDate(e.target.value)}
+                style={{ paddingRight: scheduledDate ? '34px' : '12px' }}
+              />
+              {scheduledDate && (
+                <button
+                  type="button"
+                  className={styles.dateClearBtn}
+                  onClick={() => {
+                    setScheduledDate('');
+                    setDatePresetMode('anytime');
+                  }}
+                  title="Убрать дату (Любое время)"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* 1-Tap Quick Date Pills Row */}
+          {/* <div className={styles.quickDatePillsRow}>
+            <button
+              type="button"
+              className={`${styles.datePill} ${scheduledDate === getTodayStr() ? styles.datePillActive : ''}`}
+              onClick={() => handleDatePresetChange('today')}
+            >
+              ☀️ Сегодня
+            </button>
+            <button
+              type="button"
+              className={`${styles.datePill} ${scheduledDate === getTomorrowStr() ? styles.datePillActive : ''}`}
+              onClick={() => handleDatePresetChange('tomorrow')}
+            >
+              🌅 Завтра
+            </button>
+            <button
+              type="button"
+              className={`${styles.datePill} ${scheduledDate === getWeekendStr() ? styles.datePillActive : ''}`}
+              onClick={() => handleDatePresetChange('weekend')}
+            >
+              📅 На выходных
+            </button>
+            <button
+              type="button"
+              className={`${styles.datePill} ${scheduledDate === getNextWeekStr() ? styles.datePillActive : ''}`}
+              onClick={() => handleDatePresetChange('nextWeek')}
+            >
+              ⏩ На след. неделе
+            </button>
+          </div> */}
 
           {/* Link Input */}
           <input
@@ -169,36 +283,66 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             className={styles.compactTextarea}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Описание задачи..."
+            placeholder="Заметки или описание задачи..."
           />
 
-          {/* Single Line 1: Repetition Mode & Frequency Dropdowns */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'nowrap', overflowX: 'auto', width: '100%' }}>
+          {/* Parent Task Selector */}
+          <select
+            className={styles.selectInput}
+            value={parentTaskId || ''}
+            onChange={(e) => setParentTaskId(e.target.value || null)}
+          >
+            <option value="">Без родительской задачи (Основная)</option>
+            {possibleParents.map((pt) => (
+              <option key={pt.id} value={pt.id}>
+                📁 {pt.title}
+              </option>
+            ))}
+          </select>
+
+          {/* Topic Selector */}
+          <select
+            className={styles.selectInput}
+            value={topicId || ''}
+            onChange={(e) => setTopicId(e.target.value || null)}
+          >
+            <option value="">Без темы</option>
+            {topics.map((top) => (
+              <option key={top.id} value={top.id}>
+                📌 {top.title}
+              </option>
+            ))}
+          </select>
+
+          {/* Repetition Rules Configuration */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '4px' }}>
+            <Typography variant="caption" style={{ color: 'var(--color-text-muted)', fontWeight: 600 }}>
+              💡 Режим повторения
+            </Typography>
+
             <select
-              className={styles.selectInputCompact}
+              className={styles.selectInput}
               value={repetitionMode}
+              disabled={hasSubtasks}
               onChange={(e) => setRepetitionMode(e.target.value as RepetitionMode)}
-              style={{ width: '180px', flexShrink: 0 }}
             >
-              <option value="none">Без повтора</option>
-              <option value="spaced">○ Интервальное (1, 3, 7...)</option>
-              <option value="schedule">○ По расписанию</option>
-              <option value="after_completion">○ После выполнения</option>
-              <option value="smart">○ Умное повторение</option>
+              <option value="none">Без повторений</option>
+              <option value="spaced">Интервальное повторение (Spaced)</option>
+              <option value="schedule">По расписанию</option>
+              <option value="after_completion">Через N дней после выполнения</option>
             </select>
 
-            {repetitionMode === 'smart' && (
-              <span style={{ fontSize: '11px', color: '#38bdf8', whiteSpace: 'nowrap', flexShrink: 0 }}>
-                💡 Чем легче тем меньше повторов
-              </span>
+            {hasSubtasks && (
+              <div style={{ fontSize: '11px', color: '#f59e0b' }}>
+                ⚠️ Задачи с подзадачами не могут иметь режим повторения
+              </div>
             )}
 
             {repetitionMode === 'schedule' && (
               <select
-                className={styles.selectInputCompact}
+                className={styles.selectInput}
                 value={scheduleFrequency}
                 onChange={(e) => setScheduleFrequency(e.target.value as ScheduleFrequency)}
-                style={{ width: '130px', flexShrink: 0 }}
               >
                 <option value="daily">Каждый день</option>
                 <option value="weekly">Каждую неделю</option>
@@ -208,89 +352,32 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             )}
 
             {repetitionMode === 'after_completion' && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
-                <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>через</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Через сколько дней:</span>
                 <input
-                  type="text"
+                  type="number"
                   className={styles.selectInputCompact}
                   value={afterCompletionDaysInput}
                   onChange={(e) => setAfterCompletionDaysInput(e.target.value)}
-                  style={{ width: '45px', textAlign: 'center' }}
+                  min="1"
+                  style={{ width: '80px' }}
                 />
-                <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>дн.</span>
               </div>
             )}
           </div>
 
-          {/* Line 2: Subtask Checkbox, Parent Task Dropdown, Topic Dropdown & Send Button */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', width: '100%' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', flex: 1 }}>
-              {/* Checkbox for "Может иметь подзадачи" */}
-              <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: 'var(--color-text-muted)', cursor: 'pointer', whiteSpace: 'nowrap' }}>
-                <input
-                  type="checkbox"
-                  checked={hasSubtasks}
-                  onChange={(e) => setHasSubtasks(e.target.checked)}
-                />
-                Может иметь подзадачи
-              </label>
-
-              {/* Parent Task Selector */}
-              <select
-                className={styles.selectInputCompact}
-                value={parentTaskId || ''}
-                onChange={(e) => setParentTaskId(e.target.value || null)}
-                style={{ width: '150px' }}
-              >
-                <option value="">Без родительской задачи</option>
-                {possibleParents.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.title}
-                  </option>
-                ))}
-              </select>
-
-              {topics.length > 0 && (
-                <select
-                  className={styles.selectInputCompact}
-                  value={topicId || ''}
-                  onChange={(e) => setTopicId(e.target.value || null)}
-                  style={{ width: '120px' }}
-                >
-                  <option value="">Без темы</option>
-                  {topics.map((tp) => (
-                    <option key={tp.id} value={tp.id}>
-                      🐘 {tp.title}
-                    </option>
-                  ))}
-                </select>
-              )}
-            </div>
-
-            {/* Cyan Send Button */}
+          {/* Modal Action Footer */}
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '8px' }}>
             <button
-              type="submit"
-              className={styles.sendBtn}
-              title="Сохранить изменения"
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '50%',
-                backgroundColor: '#0ea5e9',
-                border: 'none',
-                color: '#ffffff',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                flexShrink: 0,
-                boxShadow: '0 4px 12px rgba(14, 165, 233, 0.4)',
-              }}
+              type="button"
+              className={styles.closeBtn}
+              onClick={onClose}
+              style={{ width: 'auto', borderRadius: '10px', padding: '0 14px', fontSize: '13px' }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="12" y1="19" x2="12" y2="5" />
-                <polyline points="5 12 12 5 19 12" />
-              </svg>
+              Отмена
+            </button>
+            <button type="submit" className={styles.sendBtn} title="Сохранить">
+              ✓
             </button>
           </div>
         </form>

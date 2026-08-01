@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { Checkbox, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task, TaskStatus } from '@/entities/task/model/types';
@@ -8,13 +8,17 @@ import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
 import { SmartRating } from '@/shared/config/repetitionRules';
+import { Sun, Clock, CheckCircle2, Tag, GripVertical, PartyPopper, ChevronDown, Zap, Brain, Check } from 'lucide-react';
 import styles from './TodayTasks.module.css';
 
+type ViewMode = 'all' | 'actions' | 'repeats';
+
 export const TodayTasks: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent, toggleTaskStatus } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent } = useTaskStore();
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
+  const [viewMode, setViewMode] = useState<ViewMode>('all');
 
   const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
 
@@ -23,14 +27,30 @@ export const TodayTasks: React.FC = () => {
   }, [fetchTasks]);
 
   // Tasks scheduled for today or overdue
-  const todayTasks = useMemo(() => {
+  const rawTodayTasks = useMemo(() => {
     return tasks.filter((t) => !t.scheduledDate || t.scheduledDate <= todayStr);
   }, [tasks, todayStr]);
+
+  // Filter today's tasks based on active UI Tab (All / Actions / Flashcards)
+  const todayTasks = useMemo(() => {
+    if (viewMode === 'actions') {
+      return rawTodayTasks.filter((t) => !t.isRepeating);
+    }
+    if (viewMode === 'repeats') {
+      return rawTodayTasks.filter((t) => t.isRepeating);
+    }
+    return rawTodayTasks;
+  }, [rawTodayTasks, viewMode]);
 
   // Group tasks by Kanban Stages: Todo, InProgress, Done
   const todoTasks = useMemo(() => todayTasks.filter((t) => t.status === 'Todo'), [todayTasks]);
   const inProgressTasks = useMemo(() => todayTasks.filter((t) => t.status === 'InProgress'), [todayTasks]);
   const doneTasks = useMemo(() => todayTasks.filter((t) => t.status === 'Done'), [todayTasks]);
+
+  // PM FEATURE: 100% Today Tasks Celebration Condition
+  const is100PercentDone = useMemo(() => {
+    return todayTasks.length > 0 && doneTasks.length === todayTasks.length;
+  }, [todayTasks.length, doneTasks.length]);
 
   const handleCardClick = (task: Task) => {
     setDetailTask(task);
@@ -91,11 +111,64 @@ export const TodayTasks: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.sectionHeader}>
-        <Typography variant="h2">☀️ Сегодня</Typography>
-        <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
-          Всего: {todayTasks.length} задач
-        </Typography>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Sun size={22} color="#f59e0b" />
+          <Typography variant="h2">Сегодня</Typography>
+        </div>
+
+        {/* Clear Tab Switcher: All / ⚡ Actions / 🧠 Flashcards */}
+        <div className={styles.viewTabBtnBar}>
+          <button
+            className={`${styles.viewTabBtn} ${viewMode === 'all' ? styles.viewTabBtnActive : ''}`}
+            onClick={() => setViewMode('all')}
+          >
+            Все ({rawTodayTasks.length})
+          </button>
+          <button
+            className={`${styles.viewTabBtn} ${viewMode === 'actions' ? styles.viewTabBtnActive : ''}`}
+            onClick={() => setViewMode('actions')}
+          >
+            <Zap size={13} color="#f59e0b" />
+            ⚡ Действия
+          </button>
+          <button
+            className={`${styles.viewTabBtn} ${viewMode === 'repeats' ? styles.viewTabBtnActive : ''}`}
+            onClick={() => setViewMode('repeats')}
+          >
+            <Brain size={13} color="#38bdf8" />
+            🧠 Повторения
+          </button>
+        </div>
       </div>
+
+      {/* PM FEATURE: Celebratory 100% Completion Banner */}
+      {is100PercentDone && (
+        <div className={styles.celebrationBanner}>
+          <div className={styles.celebrationContent}>
+            <PartyPopper size={32} color="#10b981" />
+            <div>
+              <div className={styles.celebrationTitle}>
+                Все задачи на сегодня выполнены!
+              </div>
+              <div className={styles.celebrationSubtitle}>
+                Отличная работа! День прошёл максимально продуктивно.
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.progressBarContainer}>
+            <div className={styles.progressBarHeader}>
+              <span>Прогресс дня</span>
+              <span className={styles.progressPercent}>
+                100% ({doneTasks.length}/{todayTasks.length})
+              </span>
+            </div>
+            <div className={styles.progressBarTrack}>
+              <div className={styles.progressBarFill100} />
+            </div>
+          </div>
+        </div>
+      )}
 
       {isLoading ? (
         <div style={{ textAlign: 'center', padding: 'var(--space-6)', color: 'var(--color-text-muted)' }}>
@@ -111,13 +184,14 @@ export const TodayTasks: React.FC = () => {
             color: 'var(--color-text-muted)',
           }}
         >
-          🌱 Нет задач на сегодня. Создайте новую задачу!
+          🌱 В этой категории нет задач на сегодня.
         </div>
       ) : (
         <div className={styles.kanbanStagesGrid}>
-          {/* Stage 1: 📋 К выполнению (Todo) */}
+          {/* Stage 1: К выполнению (Todo) */}
           <KanbanStageSection
-            title="📋 К выполнению"
+            title="К выполнению"
+            icon={<Clock size={15} color="#60a5fa" />}
             sectionClass={styles.stageSectionTodo}
             headerClass={styles.stageHeaderTodo}
             tasksList={todoTasks}
@@ -129,9 +203,10 @@ export const TodayTasks: React.FC = () => {
             onNextStatus={handleNextStatus}
           />
 
-          {/* Stage 2: ⏳ В процессе (InProgress) */}
+          {/* Stage 2: В процессе (InProgress) */}
           <KanbanStageSection
-            title="⏳ В процессе"
+            title="В процессе"
+            icon={<Clock size={15} color="#f59e0b" />}
             sectionClass={styles.stageSectionInProgress}
             headerClass={styles.stageHeaderInProgress}
             tasksList={inProgressTasks}
@@ -143,9 +218,10 @@ export const TodayTasks: React.FC = () => {
             onNextStatus={handleNextStatus}
           />
 
-          {/* Stage 3: ✅ Выполнено (Done) */}
+          {/* Stage 3: Выполнено (Done) */}
           <KanbanStageSection
-            title="✅ Выполнено"
+            title="Выполнено"
+            icon={<CheckCircle2 size={15} color="#10b981" />}
             sectionClass={styles.stageSectionDone}
             headerClass={styles.stageHeaderDone}
             tasksList={doneTasks}
@@ -190,6 +266,7 @@ export const TodayTasks: React.FC = () => {
 
 interface KanbanStageSectionProps {
   title: string;
+  icon: React.ReactNode;
   sectionClass: string;
   headerClass: string;
   tasksList: Task[];
@@ -203,6 +280,7 @@ interface KanbanStageSectionProps {
 
 const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   title,
+  icon,
   sectionClass,
   headerClass,
   tasksList,
@@ -216,12 +294,10 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   const [isDragOver, setIsDragOver] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
 
-  // Top-level root tasks in this stage
   const rootTasksInStage = useMemo(() => {
     return tasksList.filter((t) => !t.parentTaskId);
   }, [tasksList]);
 
-  // REQUIREMENT 1: Recursive Subtask Rendering for Unlimited Nesting Levels!
   const renderSubtasksRecursive = (parentId: string, depthLevel = 1): React.ReactNode => {
     const children = allTasks.filter((t) => t.parentTaskId === parentId);
     if (children.length === 0) return null;
@@ -232,13 +308,13 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
           <div className={styles.subtaskConnector} />
           <TaskCardItem
             task={subtask}
+            allTasks={allTasks}
             onOpenCard={() => onOpenCard(subtask)}
             onDropOnTask={onDropOnTask}
             onToggleCheckbox={() => onToggleCheckbox(subtask)}
             onNextStatus={() => onNextStatus(subtask)}
           />
         </div>
-        {/* Recursive call for nested sub-subtasks */}
         {renderSubtasksRecursive(subtask.id, depthLevel + 1)}
       </React.Fragment>
     ));
@@ -266,22 +342,22 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      {/* Collapsible Accordion Header */}
       <div
         className={`${styles.stageHeader} ${headerClass}`}
         onClick={() => setIsOpen(!isOpen)}
         title="Нажмите чтобы развернуть/свернуть список"
       >
         <div className={styles.headerTitleGroup}>
+          {icon}
           <span>{title}</span>
-          <span className={`${styles.accordionArrow} ${isOpen ? styles.accordionArrowOpen : ''}`}>
-            ▼
-          </span>
+          <ChevronDown
+            size={14}
+            className={`${styles.accordionArrow} ${isOpen ? styles.accordionArrowOpen : ''}`}
+          />
         </div>
         <span className={styles.stageBadge}>{tasksList.length}</span>
       </div>
 
-      {/* Accordion Content */}
       {isOpen && (
         <>
           {tasksList.length === 0 ? (
@@ -301,16 +377,14 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
             <div className={styles.taskList}>
               {rootTasksInStage.map((task) => (
                 <React.Fragment key={task.id}>
-                  {/* Parent Task Card */}
                   <TaskCardItem
                     task={task}
+                    allTasks={allTasks}
                     onOpenCard={() => onOpenCard(task)}
                     onDropOnTask={onDropOnTask}
                     onToggleCheckbox={() => onToggleCheckbox(task)}
                     onNextStatus={() => onNextStatus(task)}
                   />
-
-                  {/* Recursive Multi-Level Subtasks */}
                   {renderSubtasksRecursive(task.id, 1)}
                 </React.Fragment>
               ))}
@@ -322,8 +396,45 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   );
 };
 
+// SVG Progress Ring Component for Parent Container Tasks
+const SubtaskProgressRing: React.FC<{ total: number; done: number }> = ({ total, done }) => {
+  const radius = 10;
+  const strokeWidth = 2.5;
+  const normalizedRadius = radius - strokeWidth / 2;
+  const circumference = normalizedRadius * 2 * Math.PI;
+  const percent = total > 0 ? done / total : 0;
+  const strokeDashoffset = circumference - percent * circumference;
+
+  return (
+    <div className={styles.progressRingContainer} title={`Прогресс подзадач: ${done}/${total}`}>
+      <svg height={radius * 2} width={radius * 2}>
+        <circle
+          stroke="rgba(255, 255, 255, 0.12)"
+          fill="transparent"
+          strokeWidth={strokeWidth}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+        <circle
+          stroke="#0ea5e9"
+          fill="transparent"
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference + ' ' + circumference}
+          style={{ strokeDashoffset, transition: 'stroke-dashoffset 0.35s ease' }}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+      </svg>
+      <span className={styles.progressRingText}>{done}/{total}</span>
+    </div>
+  );
+};
+
 interface TaskCardItemProps {
   task: Task;
+  allTasks: Task[];
   onOpenCard: () => void;
   onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
   onToggleCheckbox: () => void;
@@ -332,38 +443,55 @@ interface TaskCardItemProps {
 
 const TaskCardItem: React.FC<TaskCardItemProps> = ({
   task,
+  allTasks,
   onOpenCard,
   onDropOnTask,
   onToggleCheckbox,
   onNextStatus,
 }) => {
-  const { deleteTask } = useTaskStore();
+  const { deleteTask, updateTaskStatus } = useTaskStore();
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [isSwipedLeft, setIsSwipedLeft] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [isOverTarget, setIsOverTarget] = useState<boolean>(false);
 
   const isDone = task.status === 'Done';
 
+  // Subtasks progress calculation for parent containers
+  const childSubtasks = useMemo(() => allTasks.filter((t) => t.parentTaskId === task.id), [allTasks, task.id]);
+  const isContainer = task.hasSubtasks || childSubtasks.length > 0;
+  const doneSubtasksCount = useMemo(() => childSubtasks.filter((t) => t.status === 'Done').length, [childSubtasks]);
+  const areAllSubtasksDone = isContainer && childSubtasks.length > 0 && doneSubtasksCount === childSubtasks.length;
+
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
+    setTouchStartY(e.targetTouches[0].clientY);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
+    if (touchStartX === null || touchStartY === null) return;
     const currentX = e.targetTouches[0].clientX;
-    const diff = touchStartX - currentX;
+    const currentY = e.targetTouches[0].clientY;
+    const diffX = touchStartX - currentX;
+    const diffY = touchStartY - currentY;
+
+    if (Math.abs(diffY) > Math.abs(diffX) && !isSwipedLeft) {
+      setSwipeOffset(0);
+      return;
+    }
 
     if (isSwipedLeft) {
-      const newOffset = Math.min(0, Math.max(-80, -80 - diff));
+      const newOffset = Math.min(0, Math.max(-80, -80 - diffX));
       setSwipeOffset(newOffset);
     } else {
-      if (diff > 0 && diff <= 80) {
-        setSwipeOffset(-diff);
-      } else if (diff < 0 && diff >= -80) {
-        setSwipeOffset(-diff / 2);
+      if (diffX > 0 && diffX <= 80) {
+        setSwipeOffset(-diffX);
+      } else if (diffX < 0 && diffX >= -80) {
+        setSwipeOffset(-diffX / 2);
       }
     }
   };
@@ -388,9 +516,9 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
       }
     }
     setTouchStartX(null);
+    setTouchStartY(null);
   };
 
-  // Drag Handlers
   const handleDragStart = (e: React.DragEvent) => {
     e.stopPropagation();
     setIsDragging(true);
@@ -424,19 +552,63 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
     }
   };
 
+  const handleTouchHandleStart = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleTouchHandleMove = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    const touch = e.touches[0];
+    const targetElem = document.elementFromPoint(touch.clientX, touch.clientY);
+    const cardWrapper = targetElem?.closest(`.${styles.taskCardWrapper}`);
+
+    document.querySelectorAll(`.${styles.taskCardWrapper}`).forEach((el) => {
+      if (el === cardWrapper && el !== wrapperRef.current) {
+        el.classList.add(styles.taskCardDropTarget);
+      } else {
+        el.classList.remove(styles.taskCardDropTarget);
+      }
+    });
+  };
+
+  const handleTouchHandleEnd = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    setIsDragging(false);
+    const touch = e.changedTouches[0];
+    const targetElem = document.elementFromPoint(touch.clientX, touch.clientY);
+    const cardWrapper = targetElem?.closest(`.${styles.taskCardWrapper}`);
+
+    document.querySelectorAll(`.${styles.taskCardWrapper}`).forEach((el) => {
+      el.classList.remove(styles.taskCardDropTarget);
+    });
+
+    if (cardWrapper) {
+      const targetTaskId = cardWrapper.getAttribute('data-task-id');
+      if (targetTaskId && targetTaskId !== task.id) {
+        const targetTask = allTasks.find((t) => t.id === targetTaskId);
+        if (targetTask) {
+          onDropOnTask(task.id, targetTask);
+        }
+      }
+    }
+  };
+
   return (
     <div
-      className={`${styles.taskCardWrapper} ${isOverTarget ? styles.taskCardDropTarget : ''}`}
+      ref={wrapperRef}
+      data-task-id={task.id}
+      className={`${styles.taskCardWrapper} ${
+        areAllSubtasksDone && !isDone ? styles.taskCardGlowContainer : ''
+      } ${isOverTarget ? styles.taskCardDropTarget : ''}`}
       onDragOver={handleTaskDragOver}
       onDragLeave={handleTaskDragLeave}
       onDrop={handleTaskDrop}
     >
-      {/* Swipe Delete Action: Centered text WITHOUT trash icon */}
       <div className={styles.deleteSwipeAction} onClick={() => deleteTask(task.id)}>
         Удалить
       </div>
 
-      {/* Main Ultra-Slim Unified Card */}
       <div
         className={`${styles.taskCard} ${isDragging ? styles.taskCardDragging : ''}`}
         style={{ transform: `translateX(${swipeOffset}px)` }}
@@ -445,12 +617,15 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
         onTouchEnd={handleTouchEnd}
         onClick={onOpenCard}
       >
-        {/* Line 1: Checkbox, Title & Drag handle */}
         <div className={styles.cardHeaderRow}>
           <div className={styles.titleArea}>
-            <div onClick={(e) => { e.stopPropagation(); onToggleCheckbox(); }}>
-              <Checkbox checked={isDone} onChange={() => {}} />
-            </div>
+            {isContainer ? (
+              <SubtaskProgressRing total={childSubtasks.length} done={doneSubtasksCount} />
+            ) : (
+              <div onClick={(e) => { e.stopPropagation(); onToggleCheckbox(); }}>
+                <Checkbox checked={isDone} onChange={() => {}} />
+              </div>
+            )}
             <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
               {task.title}
             </span>
@@ -461,17 +636,36 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
             draggable
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
+            onTouchStart={handleTouchHandleStart}
+            onTouchMove={handleTouchHandleMove}
+            onTouchEnd={handleTouchHandleEnd}
             title="Перетащите, чтобы переместить или сделать подзадачей"
             onClick={(e) => e.stopPropagation()}
           >
-            ⋮⋮⋮
+            <GripVertical size={14} />
           </div>
         </div>
 
-        {/* Line 2: Category Badge ONLY without border outline & NO date display */}
         <div className={styles.metaInlineRow}>
-          <span className={styles.categoryBadgeNoBorder}>🏷 {task.category}</span>
+          <Tag size={12} color="var(--color-text-muted)" style={{ flexShrink: 0 }} />
+          <span className={styles.categoryBadgeNoBorder}>{task.category}</span>
         </div>
+
+        {/* Prompt Button when all subtasks of container are done */}
+        {areAllSubtasksDone && !isDone && (
+          <div
+            className={styles.completeParentPromptBtn}
+            onClick={(e) => {
+              e.stopPropagation();
+              updateTaskStatus(task.id, 'Done');
+            }}
+          >
+            <span>✨ Все подзадачи готовы. Завершить "{task.title}"?</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+              <Check size={13} /> Завершить
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

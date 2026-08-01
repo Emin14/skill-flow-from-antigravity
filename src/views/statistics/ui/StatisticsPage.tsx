@@ -5,7 +5,8 @@ import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { useActivityStore } from '@/entities/activity';
 import { TodayActivity } from '@/widgets/today-activity/ui/TodayActivity';
-import { TASK_CATEGORIES } from '@/shared/config/categories';
+import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
+import { Task } from '@/entities/task/model/types';
 import {
   ResponsiveContainer,
   BarChart,
@@ -16,6 +17,51 @@ import {
 } from 'recharts';
 import styles from './StatisticsPage.module.css';
 
+interface CompletionEvent {
+  taskId: string;
+  category: TaskCategory;
+  dateStr: string;
+}
+
+// Helper: Calculate combined completion events from active completed tasks AND repetitionHistory
+const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
+  const events: CompletionEvent[] = [];
+
+  allTasks.forEach((t) => {
+    // 1. Current completed task instance
+    if (t.status === 'Done') {
+      const dateStr = t.completedAt ? t.completedAt.split('T')[0] : t.scheduledDate;
+      if (dateStr) {
+        events.push({
+          taskId: t.id,
+          category: t.category || 'Задача',
+          dateStr,
+        });
+      }
+    }
+
+    // 2. Historical repetition records from repetitionHistory
+    if (t.repetitionHistory && t.repetitionHistory.length > 0) {
+      t.repetitionHistory.forEach((record) => {
+        if (record.date) {
+          const currentDate = t.completedAt ? t.completedAt.split('T')[0] : t.scheduledDate;
+          // Avoid double counting if current completedAt matches this record's date
+          if (t.status === 'Done' && record.date === currentDate) {
+            return;
+          }
+          events.push({
+            taskId: t.id,
+            category: t.category || 'Задача',
+            dateStr: record.date,
+          });
+        }
+      });
+    }
+  });
+
+  return events;
+};
+
 export const StatisticsPage: React.FC = () => {
   const { tasks, fetchTasks } = useTaskStore();
   const { logs, fetchLogs } = useActivityStore();
@@ -25,16 +71,20 @@ export const StatisticsPage: React.FC = () => {
     fetchLogs();
   }, [fetchTasks, fetchLogs]);
 
-  // Category completion statistics (only showing completed count)
+  // Combined completion events (active completed tasks + repetitionHistory)
+  const allCompletionEvents = useMemo(() => getCombinedCompletionEvents(tasks), [tasks]);
+  const totalDoneTasks = useMemo(() => allCompletionEvents.length, [allCompletionEvents]);
+
+  // Category completion statistics
   const categoryStats = useMemo(() => {
     return TASK_CATEGORIES.map((cat) => {
-      const completedCount = tasks.filter((t) => t.category === cat && t.status === 'Done').length;
+      const completedCount = allCompletionEvents.filter((ev) => ev.category === cat).length;
       return {
         category: cat,
         completedCount,
       };
     });
-  }, [tasks]);
+  }, [allCompletionEvents]);
 
   // 7-day Task completion chart data
   const chartData = useMemo(() => {
@@ -45,7 +95,7 @@ export const StatisticsPage: React.FC = () => {
       const dateStr = d.toISOString().split('T')[0];
       const dayLabel = d.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric' });
 
-      const tasksDone = tasks.filter((t) => t.status === 'Done' && t.completedAt?.startsWith(dateStr)).length;
+      const tasksDone = allCompletionEvents.filter((ev) => ev.dateStr === dateStr).length;
 
       days.push({
         day: dayLabel,
@@ -53,7 +103,7 @@ export const StatisticsPage: React.FC = () => {
       });
     }
     return days;
-  }, [tasks]);
+  }, [allCompletionEvents]);
 
   // 30-day Activity Heatmap data
   const heatmapData = useMemo(() => {
@@ -63,7 +113,7 @@ export const StatisticsPage: React.FC = () => {
       d.setDate(d.getDate() - i);
       const dateStr = d.toISOString().split('T')[0];
 
-      const tasksDone = tasks.filter((t) => t.status === 'Done' && t.completedAt?.startsWith(dateStr)).length;
+      const tasksDone = allCompletionEvents.filter((ev) => ev.dateStr === dateStr).length;
 
       cells.push({
         date: dateStr,
@@ -72,11 +122,7 @@ export const StatisticsPage: React.FC = () => {
       });
     }
     return cells;
-  }, [tasks]);
-
-  const totalDoneTasks = useMemo(() => {
-    return tasks.filter((t) => t.status === 'Done').length;
-  }, [tasks]);
+  }, [allCompletionEvents]);
 
   return (
     <div className={styles.container}>
@@ -100,7 +146,7 @@ export const StatisticsPage: React.FC = () => {
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
             <span style={{ fontSize: '32px', fontWeight: 800, color: '#10b981', lineHeight: 1 }}>
-              {totalDoneTasks || 8}
+              {totalDoneTasks}
             </span>
             <span
               style={{
@@ -178,63 +224,82 @@ export const StatisticsPage: React.FC = () => {
                 gap: '4px',
                 padding: '16px 18px',
                 borderRadius: '16px',
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                backgroundColor: 'var(--color-bg)',
                 border: '1px solid var(--color-border)',
-                transition: 'all 0.2s ease',
+                transition: 'all var(--transition-fast)',
               }}
             >
-              <div style={{ fontSize: '12px', color: '#818cf8', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                🏷 {category}
-              </div>
-              <div style={{ fontSize: '26px', fontWeight: '800', color: '#10b981', lineHeight: '1.2' }}>
-                {completedCount}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+                  🏷 {category}
+                </span>
+                <span style={{ fontSize: '15px', fontWeight: 800, color: '#10b981' }}>
+                  {completedCount}
+                </span>
               </div>
               <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
-                выполнено задач
+                {completedCount === 1 ? '1 выполнена' : `${completedCount} выполнено`}
               </div>
             </div>
           ))}
         </div>
       </Card>
 
-      {/* 7-day Task Productivity Chart */}
+      {/* 7-Day Completion Bar Chart */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-        <Typography variant="h2">📈 Продуктивность за 7 дней</Typography>
-        <div style={{ width: '100%', height: 260 }}>
+        <Typography variant="h2">📊 Динамика выполнения за 7 дней</Typography>
+        <div style={{ width: '100%', height: 220, marginTop: 'var(--space-2)' }}>
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData}>
-              <XAxis dataKey="day" stroke="var(--color-text-muted)" />
-              <YAxis stroke="var(--color-text-muted)" allowDecimals={false} />
+            <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <XAxis dataKey="day" stroke="var(--color-text-muted)" fontSize={11} tickLine={false} />
+              <YAxis stroke="var(--color-text-muted)" fontSize={11} tickLine={false} allowDecimals={false} />
               <Tooltip
                 contentStyle={{
                   backgroundColor: 'var(--color-surface)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-md)',
+                  borderColor: 'var(--color-border)',
+                  borderRadius: '12px',
+                  color: 'var(--color-text-primary)',
+                  fontSize: '12px',
                 }}
               />
-              <Bar dataKey="Выполнено задач" fill="var(--color-success)" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="Выполнено задач" fill="#10b981" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </Card>
 
-      {/* 30-day Activity Heatmap */}
+      {/* 30-Day Activity Heatmap */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-        <Typography variant="h2">🔥 Календарь выполненных задач (30 дней)</Typography>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography variant="h2">📅 Календарь активности (30 дней)</Typography>
+          <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
+            Интенсивность
+          </Typography>
+        </div>
 
         <div className={styles.heatmapGrid}>
           {heatmapData.map((cell) => {
-            const cellClass =
-              cell.count === 0
-                ? styles.heatmapCell
-                : cell.count <= 2
-                ? `${styles.heatmapCell} ${styles.heatmapCellLow}`
-                : cell.count <= 5
-                ? `${styles.heatmapCell} ${styles.heatmapCellMed}`
-                : `${styles.heatmapCell} ${styles.heatmapCellHigh}`;
+            let bg = 'rgba(255, 255, 255, 0.04)';
+            let borderColor = 'var(--color-border)';
+
+            if (cell.count === 1) {
+              bg = 'rgba(16, 185, 129, 0.25)';
+              borderColor = 'rgba(16, 185, 129, 0.4)';
+            } else if (cell.count === 2) {
+              bg = 'rgba(16, 185, 129, 0.5)';
+              borderColor = 'rgba(16, 185, 129, 0.7)';
+            } else if (cell.count >= 3) {
+              bg = '#10b981';
+              borderColor = '#10b981';
+            }
 
             return (
-              <div key={cell.date} className={cellClass} title={`${cell.date}: ${cell.count} задач`}>
+              <div
+                key={cell.date}
+                className={styles.heatmapCell}
+                style={{ backgroundColor: bg, borderColor }}
+                title={`${cell.date}: ${cell.count} выполнено`}
+              >
                 {cell.dayNum}
               </div>
             );
@@ -242,7 +307,7 @@ export const StatisticsPage: React.FC = () => {
         </div>
       </Card>
 
-      {/* Recent Activity Timeline */}
+      {/* Today Activity List */}
       <TodayActivity logs={logs} />
     </div>
   );

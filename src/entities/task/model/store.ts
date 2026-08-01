@@ -13,6 +13,7 @@ export interface AddTaskParams {
   description?: string;
   link?: string;
   parentTaskId?: string | null;
+  topicId?: string | null;
   isRepeating?: boolean;
   repetitionMode?: RepetitionMode;
   scheduleFrequency?: ScheduleFrequency;
@@ -51,6 +52,16 @@ const addDaysToDateStr = (dateStr: string, days: number): string => {
   const month = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
+};
+
+export const getAllDescendantTasks = (parentId: string, allTasks: Task[]): Task[] => {
+  const directChildren = allTasks.filter((t) => t.parentTaskId === parentId);
+  let descendants: Task[] = [];
+  for (const child of directChildren) {
+    descendants.push(child);
+    descendants = descendants.concat(getAllDescendantTasks(child.id, allTasks));
+  }
+  return descendants;
 };
 
 export const getDynamicSmartBaseInterval = (allTasks: Task[], currentTask: Task): number => {
@@ -191,6 +202,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         description = '',
         link = '',
         parentTaskId = null,
+        topicId = null,
         isRepeating = false,
         repetitionMode = 'none',
         scheduleFrequency = 'daily',
@@ -199,7 +211,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         targetRepetitions = 8,
       } = titleOrParams;
 
-      // RULE 2: If task has subtasks, it CANNOT be repeating!
       const effectiveHasSubtasks = hasSubtasks;
       const effectiveIsRepeating = effectiveHasSubtasks ? false : (isRepeating && repetitionMode !== 'none');
       const effectiveMode: RepetitionMode = effectiveIsRepeating ? (repetitionMode === 'none' ? 'spaced' : repetitionMode) : 'none';
@@ -215,6 +226,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         description,
         link,
         parentTaskId,
+        topicId,
         isRepeating: effectiveIsRepeating,
         repetitionMode: effectiveMode,
         scheduleFrequency,
@@ -259,7 +271,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       updates.lastSmartRating = smartRating;
     }
 
-    // REQUIREMENT 3.1: If changing rating on an UNCOMPLETED task (newStatus !== 'Done'), SILENTLY save rating without creating duplicate or toast notification!
     if (newStatus !== 'Done' && smartRating) {
       set((state) => ({
         tasks: state.tasks.map((t) =>
@@ -272,23 +283,30 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       return;
     }
 
-    // REQUIREMENT 3.2: If UNCHECKING a completed repeating task (Done -> Todo), delete any uncompleted future duplicate created for this series!
-    if (wasAlreadyDone && newStatus === 'Todo' && (task.isRepeating || task.seriesId)) {
-      const uncompletedDuplicates = get().tasks.filter(
-        (t) =>
-          t.id !== id &&
-          t.status === 'Todo' &&
-          ((t.seriesId && (t.seriesId === seriesKey || t.seriesId === task.seriesId)) ||
-            t.title.toLowerCase().trim() === task.title.toLowerCase().trim())
-      );
+    if (wasAlreadyDone && newStatus === 'Todo') {
+      if (task.isRepeating || task.seriesId) {
+        const currentHistory = task.repetitionHistory || [];
+        const newHistory = currentHistory.length > 0 ? currentHistory.slice(0, -1) : [];
+        const newCount = Math.max(0, (task.repetitionsCount || 1) - 1);
+        updates.repetitionHistory = newHistory;
+        updates.repetitionsCount = newCount;
 
-      const dupIds = uncompletedDuplicates.map((d) => d.id);
-      if (dupIds.length > 0) {
-        set((state) => ({
-          tasks: state.tasks.filter((t) => !dupIds.includes(t.id)),
-        }));
-        for (const dupId of dupIds) {
-          await taskRepository.delete(dupId);
+        const uncompletedDuplicates = get().tasks.filter(
+          (t) =>
+            t.id !== id &&
+            t.status === 'Todo' &&
+            ((t.seriesId && (t.seriesId === seriesKey || t.seriesId === task.seriesId)) ||
+              t.title.toLowerCase().trim() === task.title.toLowerCase().trim())
+        );
+
+        const dupIds = uncompletedDuplicates.map((d) => d.id);
+        if (dupIds.length > 0) {
+          set((state) => ({
+            tasks: state.tasks.filter((t) => !dupIds.includes(t.id)),
+          }));
+          for (const dupId of dupIds) {
+            await taskRepository.delete(dupId);
+          }
         }
       }
     }
@@ -296,7 +314,8 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     let currentActiveSec = task.totalActiveSeconds || 0;
     if (task.status === 'InProgress' && task.lastStartedAt) {
       const startedMs = new Date(task.lastStartedAt).getTime();
-      const elapsedSec = Math.max(0, Math.round((nowMs - startedMs) / 1000));
+      const rawElapsedSec = Math.max(0, Math.round((nowMs - startedMs) / 1000));
+      const elapsedSec = Math.min(14400, rawElapsedSec);
       currentActiveSec += elapsedSec;
       updates.totalActiveSeconds = currentActiveSec;
       updates.lastStartedAt = null;
@@ -316,28 +335,68 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       updates.lastStartedAt = null;
     }
 
-    // Completing a parent task automatically completes all its subtasks!
-    const subtaskIds: string[] = [];
-    if (newStatus === 'Done') {
-      const subtasks = get().tasks.filter((t) => t.parentTaskId === id && t.status !== 'Done');
-      subtasks.forEach((st) => subtaskIds.push(st.id));
-    }
+    const descendantTasks: Task[] = newStatus === 'Done' ? getAllDescendantTasks(id, get().tasks) : [];
+    const descendantIds = descendantTasks.map((t) => t.id);
 
     set((state) => ({
       tasks: state.tasks.map((t) => {
         if (t.id === id) return { ...t, ...updates };
-        if (subtaskIds.includes(t.id)) return { ...t, status: 'Done', completedAt: nowIso };
+        if (descendantIds.includes(t.id)) return { ...t, status: 'Done', completedAt: nowIso };
         return t;
       }),
     }));
 
     try {
       await taskRepository.update(id, updates);
-      for (const stId of subtaskIds) {
-        await taskRepository.update(stId, { status: 'Done', completedAt: nowIso });
+
+      const newDuplicatedSubtasks: Task[] = [];
+
+      for (const st of descendantTasks) {
+        if (st.status !== 'Done') {
+          await taskRepository.update(st.id, { status: 'Done', completedAt: nowIso });
+        }
+
+        if (st.isRepeating && !st.hasSubtasks) {
+          const newCount = (st.repetitionsCount || 0) + 1;
+          const { nextIntervalFloat, daysToAdd } = calculateNextInterval(get().tasks, st, newCount, st.lastSmartRating);
+          const baseDateStr = st.scheduledDate || todayStr;
+          const nextScheduledDateStr = addDaysToDateStr(baseDateStr, daysToAdd);
+
+          const duplicatedSubtask: Task = {
+            id: uuidv4(),
+            seriesId: st.seriesId || st.id,
+            title: st.title,
+            status: 'Todo',
+            priority: st.priority || 'P3',
+            category: st.category || 'Задача',
+            scheduledDate: nextScheduledDateStr,
+            description: st.description || '',
+            link: st.link || '',
+            parentTaskId: st.parentTaskId || null,
+            isRepeating: true,
+            repetitionMode: st.repetitionMode || 'spaced',
+            scheduleFrequency: st.scheduleFrequency || 'daily',
+            afterCompletionDays: st.afterCompletionDays || 3,
+            currentIntervalDays: nextIntervalFloat,
+            lastSmartRating: st.lastSmartRating,
+            hasSubtasks: false,
+            targetRepetitions: st.targetRepetitions || 8,
+            repetitionsCount: newCount,
+            repetitionHistory: st.repetitionHistory || [],
+            createdAt: new Date().toISOString(),
+            pomodorosCount: st.pomodorosCount || 1,
+            totalActiveSeconds: 0,
+          };
+
+          await taskRepository.save(duplicatedSubtask);
+          newDuplicatedSubtasks.push(duplicatedSubtask);
+        }
       }
 
-      // Initial / Repeating Task Completion Logic:
+      if (newDuplicatedSubtasks.length > 0) {
+        set((state) => ({ tasks: [...newDuplicatedSubtasks, ...state.tasks] }));
+      }
+
       const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
       if (newStatus === 'Done' && mode !== 'none' && !wasAlreadyDone) {
         const newCount = (task.repetitionsCount || 0) + 1;
@@ -426,24 +485,37 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }
   },
 
-  // RULE 2: When a task gets a subtask, it becomes NON-REPEATING and all uncompleted duplicates disappear!
   updateTaskParent: async (id: string, parentTaskId: string | null) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
+
+    // STRICT VALIDATOR: Task cannot become a subtask of its own descendant or itself
+    if (parentTaskId) {
+      if (parentTaskId === id) {
+        useToastStore.getState().showToast('Задача не может быть подзадачей самой себя', 'error');
+        return;
+      }
+      const descendants = getAllDescendantTasks(id, get().tasks);
+      const isDescendant = descendants.some((d) => d.id === parentTaskId);
+      if (isDescendant) {
+        useToastStore.getState().showToast('Нельзя сделать задачу подзадачей её собственного потомка!', 'error');
+        return;
+      }
+    }
+
+    const previousParentId = task.parentTaskId;
 
     if (parentTaskId) {
       const parentTask = get().tasks.find((t) => t.id === parentTaskId);
       if (parentTask) {
         const seriesKey = parentTask.seriesId || parentTask.id;
 
-        // If parent task was repeating, convert it to non-repeating and clean up uncompleted duplicates!
         const updates: Partial<Task> = {
           hasSubtasks: true,
           isRepeating: false,
           repetitionMode: 'none',
         };
 
-        // Delete all uncompleted future duplicates for parent task series
         const uncompletedDuplicates = get().tasks.filter(
           (t) =>
             t.id !== parentTaskId &&
@@ -480,6 +552,16 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }));
 
     await taskRepository.update(id, { parentTaskId });
+
+    if (previousParentId) {
+      const remainingSubtasks = get().tasks.filter((t) => t.parentTaskId === previousParentId);
+      if (remainingSubtasks.length === 0) {
+        set((state) => ({
+          tasks: state.tasks.map((t) => (t.id === previousParentId ? { ...t, hasSubtasks: false } : t)),
+        }));
+        await taskRepository.update(previousParentId, { hasSubtasks: false });
+      }
+    }
   },
 
   updateTaskDetails: async (id: string, updates: Partial<Task>) => {
@@ -488,13 +570,11 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
     const hasSubtasksNow = updates.hasSubtasks !== undefined ? updates.hasSubtasks : (task.hasSubtasks || get().tasks.some((t) => t.parentTaskId === id));
 
-    // RULE 2: If task has subtasks, force isRepeating = false and repetitionMode = 'none'!
     if (hasSubtasksNow) {
       updates.hasSubtasks = true;
       updates.isRepeating = false;
       updates.repetitionMode = 'none';
 
-      // Delete all uncompleted future duplicates for this series
       const seriesKey = task.seriesId || task.id;
       const uncompletedDuplicates = get().tasks.filter(
         (t) =>
@@ -528,6 +608,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             description: updates.description !== undefined ? updates.description : t.description,
             link: updates.link !== undefined ? updates.link : t.link,
             parentTaskId: updates.parentTaskId !== undefined ? updates.parentTaskId : t.parentTaskId,
+            topicId: updates.topicId !== undefined ? updates.topicId : t.topicId,
             isRepeating: updates.isRepeating !== undefined ? updates.isRepeating : t.isRepeating,
             repetitionMode: updates.repetitionMode !== undefined ? updates.repetitionMode : t.repetitionMode,
             scheduleFrequency: updates.scheduleFrequency !== undefined ? updates.scheduleFrequency : t.scheduleFrequency,
@@ -551,6 +632,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             description: updates.description !== undefined ? updates.description : st.description,
             link: updates.link !== undefined ? updates.link : st.link,
             parentTaskId: updates.parentTaskId !== undefined ? updates.parentTaskId : st.parentTaskId,
+            topicId: updates.topicId !== undefined ? updates.topicId : st.topicId,
             isRepeating: updates.isRepeating !== undefined ? updates.isRepeating : st.isRepeating,
             repetitionMode: updates.repetitionMode !== undefined ? updates.repetitionMode : st.repetitionMode,
             scheduleFrequency: updates.scheduleFrequency !== undefined ? updates.scheduleFrequency : st.scheduleFrequency,
@@ -585,15 +667,51 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const deletedTask = get().tasks.find((t) => t.id === id);
     if (!deletedTask) return;
 
-    set((state) => ({ tasks: state.tasks.filter((t) => t.id !== id) }));
-    await taskRepository.delete(id);
+    const descendantTasks = getAllDescendantTasks(id, get().tasks);
+    if (descendantTasks.length > 0) {
+      const confirmed = window.confirm(
+        `Удалить задачу "${deletedTask.title}" и ${descendantTasks.length} её подзадач?`
+      );
+      if (!confirmed) return;
+    }
+
+    const allToDelete = [deletedTask, ...descendantTasks];
+    const allDeleteIds = allToDelete.map((t) => t.id);
+    const parentTaskId = deletedTask.parentTaskId;
+
+    set((state) => {
+      let nextTasks = state.tasks.filter((t) => !allDeleteIds.includes(t.id));
+      if (parentTaskId) {
+        const remainingSubtasks = nextTasks.filter((t) => t.parentTaskId === parentTaskId);
+        if (remainingSubtasks.length === 0) {
+          nextTasks = nextTasks.map((t) => (t.id === parentTaskId ? { ...t, hasSubtasks: false } : t));
+        }
+      }
+      return { tasks: nextTasks };
+    });
+
+    for (const t of allToDelete) {
+      await taskRepository.delete(t.id);
+    }
+
+    if (parentTaskId) {
+      const remainingInRepo = get().tasks.filter((t) => t.parentTaskId === parentTaskId && !allDeleteIds.includes(t.id));
+      if (remainingInRepo.length === 0) {
+        await taskRepository.update(parentTaskId, { hasSubtasks: false });
+      }
+    }
 
     useToastStore.getState().showToast(
       `Задача "${deletedTask.title}" удалена`,
       'undo',
       async () => {
-        await taskRepository.save(deletedTask);
-        set((state) => ({ tasks: [deletedTask, ...state.tasks] }));
+        for (const t of allToDelete) {
+          await taskRepository.save(t);
+        }
+        set((state) => ({ tasks: [...allToDelete, ...state.tasks] }));
+        if (parentTaskId) {
+          await taskRepository.update(parentTaskId, { hasSubtasks: true });
+        }
         useToastStore.getState().showToast('Задача восстановлена', 'success');
       }
     );
