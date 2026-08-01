@@ -80,6 +80,7 @@
   box-sizing: border-box;
   height: 42px;
   line-height: 42px;
+  accent-color: #0ea5e9;
 }
 
 .selectInputCompact {
@@ -95,6 +96,7 @@
   height: 42px;
   line-height: 42px;
   text-overflow: ellipsis;
+  accent-color: #0ea5e9;
 }
 
 .selectInput:focus,
@@ -102,7 +104,7 @@
   border-color: var(--color-accent);
 }
 
-/* Date input container with neat clear button on the right */
+/* Date input container with comfortable clear button on the right */
 .dateInputContainer {
   position: relative;
   display: flex;
@@ -112,16 +114,17 @@
 
 .dateClearBtn {
   position: absolute;
-  right: 8px;
+  right: 6px;
   top: 50%;
   transform: translateY(-50%);
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--color-text-muted);
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,8 +134,9 @@
 }
 
 .dateClearBtn:hover {
-  background: rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.25);
   color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.4);
 }
 
 /* Compact Textarea for Description */

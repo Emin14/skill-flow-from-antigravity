@@ -38,7 +38,6 @@ interface TaskState {
   updateTargetRepetitions: (id: string, newTarget: number) => Promise<void>;
 }
 
-// Timezone-safe YYYY-MM-DD date arithmetic helper
 const addDaysToDateStr = (dateStr: string, days: number): string => {
   if (!dateStr || !dateStr.includes('-')) {
     const today = new Date();
@@ -54,7 +53,6 @@ const addDaysToDateStr = (dateStr: string, days: number): string => {
   return `${year}-${month}-${day}`;
 };
 
-// Dynamically compute base smart interval float from SURVIVING completed task instances in the store
 export const getDynamicSmartBaseInterval = (allTasks: Task[], currentTask: Task): number => {
   const seriesKey = currentTask.seriesId || currentTask.title.toLowerCase().trim();
 
@@ -93,7 +91,6 @@ export const getDynamicSmartBaseInterval = (allTasks: Task[], currentTask: Task)
   return interval;
 };
 
-// Calculate next interval float and integer days to add for all repetition modes
 export const calculateNextInterval = (
   allTasks: Task[],
   task: Task,
@@ -202,8 +199,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         targetRepetitions = 8,
       } = titleOrParams;
 
-      const effectiveMode: RepetitionMode = isRepeating && repetitionMode === 'none' ? 'spaced' : repetitionMode;
-      const effectiveIsRepeating = effectiveMode !== 'none';
+      // RULE 2: If task has subtasks, it CANNOT be repeating!
+      const effectiveHasSubtasks = hasSubtasks;
+      const effectiveIsRepeating = effectiveHasSubtasks ? false : (isRepeating && repetitionMode !== 'none');
+      const effectiveMode: RepetitionMode = effectiveIsRepeating ? (repetitionMode === 'none' ? 'spaced' : repetitionMode) : 'none';
 
       newTask = {
         id: uuidv4(),
@@ -221,7 +220,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         scheduleFrequency,
         afterCompletionDays,
         currentIntervalDays: 1.0,
-        hasSubtasks,
+        hasSubtasks: effectiveHasSubtasks,
         targetRepetitions,
         repetitionsCount: 0,
         repetitionHistory: [],
@@ -250,12 +249,48 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     if (!task) return;
 
     const wasAlreadyDone = task.status === 'Done';
+    const seriesKey = task.seriesId || task.id;
     const nowIso = new Date().toISOString();
     const todayStr = nowIso.split('T')[0];
     const nowMs = new Date(nowIso).getTime();
     const updates: Partial<Task> = { status: newStatus };
+
     if (smartRating) {
       updates.lastSmartRating = smartRating;
+    }
+
+    // REQUIREMENT 3.1: If changing rating on an UNCOMPLETED task (newStatus !== 'Done'), SILENTLY save rating without creating duplicate or toast notification!
+    if (newStatus !== 'Done' && smartRating) {
+      set((state) => ({
+        tasks: state.tasks.map((t) =>
+          t.id === id || (t.seriesId && t.seriesId === seriesKey)
+            ? { ...t, lastSmartRating: smartRating }
+            : t
+        ),
+      }));
+      await taskRepository.update(id, { lastSmartRating: smartRating });
+      return;
+    }
+
+    // REQUIREMENT 3.2: If UNCHECKING a completed repeating task (Done -> Todo), delete any uncompleted future duplicate created for this series!
+    if (wasAlreadyDone && newStatus === 'Todo' && (task.isRepeating || task.seriesId)) {
+      const uncompletedDuplicates = get().tasks.filter(
+        (t) =>
+          t.id !== id &&
+          t.status === 'Todo' &&
+          ((t.seriesId && (t.seriesId === seriesKey || t.seriesId === task.seriesId)) ||
+            t.title.toLowerCase().trim() === task.title.toLowerCase().trim())
+      );
+
+      const dupIds = uncompletedDuplicates.map((d) => d.id);
+      if (dupIds.length > 0) {
+        set((state) => ({
+          tasks: state.tasks.filter((t) => !dupIds.includes(t.id)),
+        }));
+        for (const dupId of dupIds) {
+          await taskRepository.delete(dupId);
+        }
+      }
     }
 
     let currentActiveSec = task.totalActiveSeconds || 0;
@@ -302,107 +337,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         await taskRepository.update(stId, { status: 'Done', completedAt: nowIso });
       }
 
-      const seriesKey = task.seriesId || task.title.toLowerCase().trim();
-
-      if (smartRating) {
-        const uncompletedSeriesTasks = get().tasks.filter(
-          (t) =>
-            t.id !== id &&
-            t.status === 'Todo' &&
-            ((t.seriesId && (t.seriesId === task.seriesId || t.seriesId === task.id)) ||
-              t.title.toLowerCase().trim() === seriesKey)
-        );
-
-        if (uncompletedSeriesTasks.length > 0) {
-          const { nextIntervalFloat, daysToAdd } = calculateNextInterval(
-            get().tasks,
-            task,
-            task.repetitionsCount || 1,
-            smartRating
-          );
-          const baseDateStr = task.scheduledDate || todayStr;
-          const newScheduledDate = addDaysToDateStr(baseDateStr, daysToAdd);
-
-          const targetIds = new Set(uncompletedSeriesTasks.map((t) => t.id));
-
-          set((state) => ({
-            tasks: state.tasks.map((t) =>
-              targetIds.has(t.id)
-                ? {
-                    ...t,
-                    scheduledDate: newScheduledDate,
-                    currentIntervalDays: nextIntervalFloat,
-                    lastSmartRating: smartRating,
-                  }
-                : t
-            ),
-          }));
-
-          for (const targetTask of uncompletedSeriesTasks) {
-            await taskRepository.update(targetTask.id, {
-              scheduledDate: newScheduledDate,
-              currentIntervalDays: nextIntervalFloat,
-              lastSmartRating: smartRating,
-            });
-          }
-
-          useToastStore
-            .getState()
-            .showToast(
-              `Следующее повторение: ${newScheduledDate} (+${daysToAdd} дн.)`,
-              'info'
-            );
-          return;
-        } else if (task.isRepeating) {
-          // Create next repetition task
-          const { nextIntervalFloat, daysToAdd } = calculateNextInterval(
-            get().tasks,
-            task,
-            (task.repetitionsCount || 1) + 1,
-            smartRating
-          );
-          const baseDateStr = task.scheduledDate || todayStr;
-          const nextScheduledDateStr = addDaysToDateStr(baseDateStr, daysToAdd);
-
-          const duplicatedTask: Task = {
-            id: uuidv4(),
-            seriesId: task.seriesId || task.id,
-            title: task.title,
-            status: 'Todo',
-            priority: task.priority || 'P3',
-            category: task.category || 'Задача',
-            scheduledDate: nextScheduledDateStr,
-            description: task.description || '',
-            link: task.link || '',
-            parentTaskId: task.parentTaskId || null,
-            isRepeating: true,
-            repetitionMode: 'smart',
-            scheduleFrequency: task.scheduleFrequency || 'daily',
-            afterCompletionDays: task.afterCompletionDays || 3,
-            currentIntervalDays: nextIntervalFloat,
-            lastSmartRating: smartRating,
-            hasSubtasks: task.hasSubtasks || false,
-            targetRepetitions: task.targetRepetitions || 8,
-            repetitionsCount: (task.repetitionsCount || 1) + 1,
-            repetitionHistory: task.repetitionHistory || [],
-            createdAt: new Date().toISOString(),
-            pomodorosCount: 1,
-            totalActiveSeconds: 0,
-          };
-
-          await taskRepository.save(duplicatedTask);
-          set((state) => ({ tasks: [duplicatedTask, ...state.tasks] }));
-          useToastStore
-            .getState()
-            .showToast(
-              `Следующее повторение: ${nextScheduledDateStr} (+${daysToAdd} дн.)`,
-              'success'
-            );
-          return;
-        }
-      }
-
-      // Initial Completion of Task:
+      // Initial / Repeating Task Completion Logic:
       const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
       if (newStatus === 'Done' && mode !== 'none' && !wasAlreadyDone) {
         const newCount = (task.repetitionsCount || 0) + 1;
@@ -459,7 +394,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           afterCompletionDays: task.afterCompletionDays || 3,
           currentIntervalDays: nextIntervalFloat,
           lastSmartRating: smartRating,
-          hasSubtasks: task.hasSubtasks || false,
+          hasSubtasks: false,
           targetRepetitions: task.targetRepetitions || 8,
           repetitionsCount: newCount,
           repetitionHistory: newHistory,
@@ -482,8 +417,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           );
       } else if (newStatus === 'Done' && !wasAlreadyDone) {
         useToastStore.getState().showToast(`Задача "${task.title}" выполнена!`, 'success');
-      } else if (newStatus === 'InProgress') {
-        useToastStore.getState().showToast(`Задача "${task.title}" переведена в процесс`, 'info');
       }
     } catch (e) {
       set((state) => ({
@@ -493,7 +426,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }
   },
 
-  // Requirement 3: Convert Task A to subtask of Task B on Drag & Drop
+  // RULE 2: When a task gets a subtask, it becomes NON-REPEATING and all uncompleted duplicates disappear!
   updateTaskParent: async (id: string, parentTaskId: string | null) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
@@ -501,28 +434,86 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     if (parentTaskId) {
       const parentTask = get().tasks.find((t) => t.id === parentTaskId);
       if (parentTask) {
-        // Ensure parent task has hasSubtasks = true
-        if (!parentTask.hasSubtasks) {
-          await taskRepository.update(parentTaskId, { hasSubtasks: true });
+        const seriesKey = parentTask.seriesId || parentTask.id;
+
+        // If parent task was repeating, convert it to non-repeating and clean up uncompleted duplicates!
+        const updates: Partial<Task> = {
+          hasSubtasks: true,
+          isRepeating: false,
+          repetitionMode: 'none',
+        };
+
+        // Delete all uncompleted future duplicates for parent task series
+        const uncompletedDuplicates = get().tasks.filter(
+          (t) =>
+            t.id !== parentTaskId &&
+            t.status === 'Todo' &&
+            ((t.seriesId && (t.seriesId === seriesKey || t.seriesId === parentTask.seriesId)) ||
+              t.title.toLowerCase().trim() === parentTask.title.toLowerCase().trim())
+        );
+
+        const dupIds = uncompletedDuplicates.map((d) => d.id);
+
+        set((state) => ({
+          tasks: state.tasks
+            .filter((t) => !dupIds.includes(t.id))
+            .map((t) => {
+              if (t.id === id) return { ...t, parentTaskId };
+              if (t.id === parentTaskId) return { ...t, ...updates };
+              return t;
+            }),
+        }));
+
+        await taskRepository.update(id, { parentTaskId });
+        await taskRepository.update(parentTaskId, updates);
+        for (const dupId of dupIds) {
+          await taskRepository.delete(dupId);
         }
+
+        useToastStore.getState().showToast(`Подзадача привязана к "${parentTask.title}"`, 'info');
+        return;
       }
     }
 
     set((state) => ({
-      tasks: state.tasks.map((t) => {
-        if (t.id === id) return { ...t, parentTaskId };
-        if (parentTaskId && t.id === parentTaskId) return { ...t, hasSubtasks: true };
-        return t;
-      }),
+      tasks: state.tasks.map((t) => (t.id === id ? { ...t, parentTaskId } : t)),
     }));
 
     await taskRepository.update(id, { parentTaskId });
-    useToastStore.getState().showToast(`Подзадача привязана`, 'info');
   },
 
   updateTaskDetails: async (id: string, updates: Partial<Task>) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
+
+    const hasSubtasksNow = updates.hasSubtasks !== undefined ? updates.hasSubtasks : (task.hasSubtasks || get().tasks.some((t) => t.parentTaskId === id));
+
+    // RULE 2: If task has subtasks, force isRepeating = false and repetitionMode = 'none'!
+    if (hasSubtasksNow) {
+      updates.hasSubtasks = true;
+      updates.isRepeating = false;
+      updates.repetitionMode = 'none';
+
+      // Delete all uncompleted future duplicates for this series
+      const seriesKey = task.seriesId || task.id;
+      const uncompletedDuplicates = get().tasks.filter(
+        (t) =>
+          t.id !== id &&
+          t.status === 'Todo' &&
+          ((t.seriesId && (t.seriesId === seriesKey || t.seriesId === task.seriesId)) ||
+            t.title.toLowerCase().trim() === task.title.toLowerCase().trim())
+      );
+
+      const dupIds = uncompletedDuplicates.map((d) => d.id);
+      if (dupIds.length > 0) {
+        set((state) => ({
+          tasks: state.tasks.filter((t) => !dupIds.includes(t.id)),
+        }));
+        for (const dupId of dupIds) {
+          await taskRepository.delete(dupId);
+        }
+      }
+    }
 
     const targetSeriesId = task.seriesId || (task.isRepeating ? task.id : null);
 

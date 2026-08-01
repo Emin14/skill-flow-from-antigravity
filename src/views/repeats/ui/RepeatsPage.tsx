@@ -250,9 +250,13 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
       let subLabel = '';
       let smartRatingEmoji: string | undefined = undefined;
 
-      if (isCompleted && history[i]) {
-        subLabel = formatDateNumeric(history[i].date);
-        smartRatingEmoji = getSmartRatingEmoji(history[i].smartRating);
+      if (isCompleted) {
+        // Fallback to task.lastSmartRating or 'normal' (🙂) if history record rating is missing
+        const rating = history[i]?.smartRating || task.lastSmartRating || 'normal';
+        smartRatingEmoji = getSmartRatingEmoji(rating);
+        if (history[i]?.date) {
+          subLabel = formatDateNumeric(history[i].date);
+        }
       } else if (isNext && nextDateRaw) {
         subLabel = formatDateNumeric(nextDateRaw);
       }
@@ -372,16 +376,17 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
               >
                 {step.isCompleted ? '✓' : step.isNext ? '●' : '○'}
 
-                {/* Option 5.7 Anchored Top-Right Difficulty Emoji Badge */}
+                {/* Option 5.7 Anchored Top-Right Difficulty Emoji Badge - ALWAYS SHOWN FOR COMPLETED STEPS */}
                 {step.isCompleted && step.smartRatingEmoji && (
                   <span
                     style={{
                       position: 'absolute',
-                      top: '-7px',
-                      right: '-7px',
-                      fontSize: '13px',
-                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))',
+                      top: '-8px',
+                      right: '-8px',
+                      fontSize: '14px',
+                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.7))',
                       lineHeight: 1,
+                      zIndex: 10,
                     }}
                   >
                     {step.smartRatingEmoji}

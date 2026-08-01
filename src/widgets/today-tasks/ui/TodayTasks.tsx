@@ -11,7 +11,7 @@ import { SmartRating } from '@/shared/config/repetitionRules';
 import styles from './TodayTasks.module.css';
 
 export const TodayTasks: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent, toggleTaskStatus } = useTaskStore();
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
@@ -44,14 +44,26 @@ export const TodayTasks: React.FC = () => {
     }
   };
 
-  // Convert Task A to subtask of Task B on drop
   const handleDropOnTask = (draggedTaskId: string, targetParentTask: Task) => {
     if (draggedTaskId !== targetParentTask.id) {
       updateTaskParent(draggedTaskId, targetParentTask.id);
     }
   };
 
-  // Right Swipe Status Progression
+  // Checkbox Toggle: Todo -> Done DIRECTLY (or Done -> Todo)
+  const handleToggleCheckbox = (task: Task) => {
+    if (task.status !== 'Done') {
+      if (task.isRepeating) {
+        setSmartTask(task);
+      } else {
+        updateTaskStatus(task.id, 'Done');
+      }
+    } else {
+      updateTaskStatus(task.id, 'Todo');
+    }
+  };
+
+  // Right Swipe Status Progression: Todo -> InProgress -> Done -> Todo
   const handleNextStatus = (task: Task) => {
     let nextStatus: TaskStatus = 'Todo';
     if (task.status === 'Todo') {
@@ -69,7 +81,7 @@ export const TodayTasks: React.FC = () => {
     }
   };
 
-  const handleSelectSmartRating = (rating: SmartRating, pomodorosCount?: number) => {
+  const handleSelectSmartRating = (rating: SmartRating) => {
     if (smartTask) {
       updateTaskStatus(smartTask.id, 'Done', rating);
       setSmartTask(null);
@@ -109,9 +121,11 @@ export const TodayTasks: React.FC = () => {
             sectionClass={styles.stageSectionTodo}
             headerClass={styles.stageHeaderTodo}
             tasksList={todoTasks}
+            allTasks={todayTasks}
             onDropStage={(e) => handleDropToStage(e, 'Todo')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
+            onToggleCheckbox={handleToggleCheckbox}
             onNextStatus={handleNextStatus}
           />
 
@@ -121,9 +135,11 @@ export const TodayTasks: React.FC = () => {
             sectionClass={styles.stageSectionInProgress}
             headerClass={styles.stageHeaderInProgress}
             tasksList={inProgressTasks}
+            allTasks={todayTasks}
             onDropStage={(e) => handleDropToStage(e, 'InProgress')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
+            onToggleCheckbox={handleToggleCheckbox}
             onNextStatus={handleNextStatus}
           />
 
@@ -133,9 +149,11 @@ export const TodayTasks: React.FC = () => {
             sectionClass={styles.stageSectionDone}
             headerClass={styles.stageHeaderDone}
             tasksList={doneTasks}
+            allTasks={todayTasks}
             onDropStage={(e) => handleDropToStage(e, 'Done')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
+            onToggleCheckbox={handleToggleCheckbox}
             onNextStatus={handleNextStatus}
           />
         </div>
@@ -175,9 +193,11 @@ interface KanbanStageSectionProps {
   sectionClass: string;
   headerClass: string;
   tasksList: Task[];
+  allTasks: Task[];
   onDropStage: (e: React.DragEvent) => void;
   onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
   onOpenCard: (task: Task) => void;
+  onToggleCheckbox: (task: Task) => void;
   onNextStatus: (task: Task) => void;
 }
 
@@ -186,20 +206,42 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   sectionClass,
   headerClass,
   tasksList,
+  allTasks,
   onDropStage,
   onDropOnTask,
   onOpenCard,
+  onToggleCheckbox,
   onNextStatus,
 }) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
 
+  // Top-level root tasks in this stage
   const rootTasksInStage = useMemo(() => {
     return tasksList.filter((t) => !t.parentTaskId);
   }, [tasksList]);
 
-  const getSubtasksInStage = (parentId: string) => {
-    return tasksList.filter((t) => t.parentTaskId === parentId);
+  // REQUIREMENT 1: Recursive Subtask Rendering for Unlimited Nesting Levels!
+  const renderSubtasksRecursive = (parentId: string, depthLevel = 1): React.ReactNode => {
+    const children = allTasks.filter((t) => t.parentTaskId === parentId);
+    if (children.length === 0) return null;
+
+    return children.map((subtask) => (
+      <React.Fragment key={subtask.id}>
+        <div className={styles.subtaskIndent} style={{ marginLeft: `${depthLevel * 16}px` }}>
+          <div className={styles.subtaskConnector} />
+          <TaskCardItem
+            task={subtask}
+            onOpenCard={() => onOpenCard(subtask)}
+            onDropOnTask={onDropOnTask}
+            onToggleCheckbox={() => onToggleCheckbox(subtask)}
+            onNextStatus={() => onNextStatus(subtask)}
+          />
+        </div>
+        {/* Recursive call for nested sub-subtasks */}
+        {renderSubtasksRecursive(subtask.id, depthLevel + 1)}
+      </React.Fragment>
+    ));
   };
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -264,21 +306,12 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
                     task={task}
                     onOpenCard={() => onOpenCard(task)}
                     onDropOnTask={onDropOnTask}
+                    onToggleCheckbox={() => onToggleCheckbox(task)}
                     onNextStatus={() => onNextStatus(task)}
                   />
 
-                  {/* Subtasks under this stage */}
-                  {getSubtasksInStage(task.id).map((subtask) => (
-                    <div key={subtask.id} className={styles.subtaskIndent}>
-                      <div className={styles.subtaskConnector} />
-                      <TaskCardItem
-                        task={subtask}
-                        onOpenCard={() => onOpenCard(subtask)}
-                        onDropOnTask={onDropOnTask}
-                        onNextStatus={() => onNextStatus(subtask)}
-                      />
-                    </div>
-                  ))}
+                  {/* Recursive Multi-Level Subtasks */}
+                  {renderSubtasksRecursive(task.id, 1)}
                 </React.Fragment>
               ))}
             </div>
@@ -293,6 +326,7 @@ interface TaskCardItemProps {
   task: Task;
   onOpenCard: () => void;
   onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
+  onToggleCheckbox: () => void;
   onNextStatus: () => void;
 }
 
@@ -300,6 +334,7 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
   task,
   onOpenCard,
   onDropOnTask,
+  onToggleCheckbox,
   onNextStatus,
 }) => {
   const { deleteTask } = useTaskStore();
@@ -312,7 +347,6 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
 
   const isDone = task.status === 'Done';
 
-  // FIX: Strict swipe logic separating delete panel dismissal from stage status progression
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
   };
@@ -323,17 +357,12 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
     const diff = touchStartX - currentX;
 
     if (isSwipedLeft) {
-      // Currently in swiped-left state (delete button open at -80px)
-      // Dragging right (diff < 0) pulls the card back towards 0
       const newOffset = Math.min(0, Math.max(-80, -80 - diff));
       setSwipeOffset(newOffset);
     } else {
-      // Currently in normal state (0px)
       if (diff > 0 && diff <= 80) {
-        // Swiping Left -> preview delete action
         setSwipeOffset(-diff);
       } else if (diff < 0 && diff >= -80) {
-        // Swiping Right -> preview status advance
         setSwipeOffset(-diff / 2);
       }
     }
@@ -345,52 +374,47 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
     const diff = touchStartX - touchEndX;
 
     if (isSwipedLeft) {
-      // Card WAS swiped left (delete button was open)
-      // Any gesture closes the delete panel WITHOUT advancing status stage!
       setIsSwipedLeft(false);
       setSwipeOffset(0);
     } else {
-      // Card WAS in normal state
       if (diff > 45) {
-        // Swiped left -> open delete button
         setIsSwipedLeft(true);
         setSwipeOffset(-80);
       } else if (diff < -45) {
-        // Swiped right -> advance status stage!
-        setIsSwipedLeft(false);
-        setSwipeOffset(0);
         onNextStatus();
+        setSwipeOffset(0);
       } else {
-        setIsSwipedLeft(false);
         setSwipeOffset(0);
       }
     }
     setTouchStartX(null);
   };
 
-  // Full card drag motion & nesting drop target
+  // Drag Handlers
   const handleDragStart = (e: React.DragEvent) => {
+    e.stopPropagation();
+    setIsDragging(true);
     e.dataTransfer.setData('text/plain', task.id);
     e.dataTransfer.effectAllowed = 'move';
-    setIsDragging(true);
   };
 
   const handleDragEnd = () => {
     setIsDragging(false);
-    setIsOverTarget(false);
   };
 
-  const handleDragOverCard = (e: React.DragEvent) => {
+  const handleTaskDragOver = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsOverTarget(true);
   };
 
-  const handleDragLeaveCard = () => {
+  const handleTaskDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsOverTarget(false);
   };
 
-  const handleDropOnCard = (e: React.DragEvent) => {
+  const handleTaskDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsOverTarget(false);
@@ -401,34 +425,30 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
   };
 
   return (
-    <div className={styles.taskCardWrapper}>
-      {/* Background Swipe Delete Action: Centered text WITHOUT trash icon */}
-      <div
-        className={styles.deleteSwipeAction}
-        onClick={() => deleteTask(task.id)}
-      >
+    <div
+      className={`${styles.taskCardWrapper} ${isOverTarget ? styles.taskCardDropTarget : ''}`}
+      onDragOver={handleTaskDragOver}
+      onDragLeave={handleTaskDragLeave}
+      onDrop={handleTaskDrop}
+    >
+      {/* Swipe Delete Action: Centered text WITHOUT trash icon */}
+      <div className={styles.deleteSwipeAction} onClick={() => deleteTask(task.id)}>
         Удалить
       </div>
 
-      {/* Main Ultra-Slim Task Card */}
+      {/* Main Ultra-Slim Unified Card */}
       <div
-        className={`${styles.taskCard} ${isDragging ? styles.taskCardDragging : ''} ${isOverTarget ? styles.taskCardDropTarget : ''}`}
+        className={`${styles.taskCard} ${isDragging ? styles.taskCardDragging : ''}`}
         style={{ transform: `translateX(${swipeOffset}px)` }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        draggable
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onDragOver={handleDragOverCard}
-        onDragLeave={handleDragLeaveCard}
-        onDrop={handleDropOnCard}
         onClick={onOpenCard}
       >
-        {/* Line 1: Checkbox, Title & Drag Handle */}
+        {/* Line 1: Checkbox, Title & Drag handle */}
         <div className={styles.cardHeaderRow}>
           <div className={styles.titleArea}>
-            <div onClick={(e) => { e.stopPropagation(); onNextStatus(); }}>
+            <div onClick={(e) => { e.stopPropagation(); onToggleCheckbox(); }}>
               <Checkbox checked={isDone} onChange={() => {}} />
             </div>
             <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
@@ -438,14 +458,17 @@ const TaskCardItem: React.FC<TaskCardItemProps> = ({
 
           <div
             className={styles.dragHandleTop}
-            title="Перетащите карточку"
+            draggable
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+            title="Перетащите, чтобы переместить или сделать подзадачей"
             onClick={(e) => e.stopPropagation()}
           >
             ⋮⋮⋮
           </div>
         </div>
 
-        {/* Line 2: Category Badge ONLY without border outline */}
+        {/* Line 2: Category Badge ONLY without border outline & NO date display */}
         <div className={styles.metaInlineRow}>
           <span className={styles.categoryBadgeNoBorder}>🏷 {task.category}</span>
         </div>
