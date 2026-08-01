@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Task } from '@/entities/task/model/types';
-import { SmartRating, SMART_RATING_OPTIONS } from '@/shared/config/repetitionRules';
+import { SmartRating } from '@/shared/config/repetitionRules';
 import { Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
+import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 
 interface SmartRatingModalProps {
   task: Task | null;
@@ -22,6 +23,25 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
   const [selectedRating, setSelectedRating] = useState<SmartRating>('normal');
   const [selectedPomodoros, setSelectedPomodoros] = useState<number>(task?.pomodorosCount || 1);
   const { updateTaskPomodoros } = useTaskStore();
+
+  // BUG-CRIT-06: Esc key handler & background scroll lock
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    lockBodyScroll();
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      unlockBodyScroll();
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen || !task) return null;
 
@@ -87,7 +107,7 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
           «{task.title}»
         </Typography>
 
-        {/* Step 1: Emojis on ONE SINGLE LINE (Requirement 7) */}
+        {/* Step 1: Emojis on ONE SINGLE LINE */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <span style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
             1. Насколько легко было вспомнить?
@@ -129,7 +149,7 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
           </div>
         </div>
 
-        {/* Step 2: Pomodoro Time Spent Selection (Requirement 7) */}
+        {/* Step 2: Pomodoro Time Spent Selection */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <span style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
             2. Сколько времени заняло (помидоров)?
@@ -179,26 +199,44 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
           </div>
         </div>
 
-        {/* Confirm Submit Button */}
-        <button
-          type="button"
-          onClick={handleConfirm}
-          style={{
-            width: '100%',
-            height: '42px',
-            borderRadius: '12px',
-            backgroundColor: '#0ea5e9',
-            color: '#ffffff',
-            border: 'none',
-            fontSize: '14px',
-            fontWeight: 700,
-            cursor: 'pointer',
-            boxShadow: '0 4px 14px rgba(14, 165, 233, 0.35)',
-            marginTop: '4px',
-          }}
-        >
-          ✓ Подтвердить выполнение
-        </button>
+        {/* Action Buttons: Confirm & Cancel */}
+        <div style={{ display: 'flex', gap: '8px', marginTop: '4px' }}>
+          <button
+            type="button"
+            onClick={onClose}
+            style={{
+              flex: 1,
+              height: '42px',
+              borderRadius: '12px',
+              backgroundColor: 'rgba(255, 255, 255, 0.06)',
+              color: 'var(--color-text-muted)',
+              border: '1px solid var(--color-border)',
+              fontSize: '13px',
+              fontWeight: 600,
+              cursor: 'pointer',
+            }}
+          >
+            Отмена
+          </button>
+          <button
+            type="button"
+            onClick={handleConfirm}
+            style={{
+              flex: 2,
+              height: '42px',
+              borderRadius: '12px',
+              backgroundColor: '#0ea5e9',
+              color: '#ffffff',
+              border: 'none',
+              fontSize: '14px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              boxShadow: '0 4px 14px rgba(14, 165, 233, 0.35)',
+            }}
+          >
+            ✓ Подтвердить
+          </button>
+        </div>
       </div>
     </div>
   );

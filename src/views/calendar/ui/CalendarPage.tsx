@@ -16,6 +16,11 @@ const formatDateStr = (y: number, m: number, d: number): string => {
   return `${year}-${month}-${day}`;
 };
 
+const getNowDateStr = () => {
+  const now = new Date();
+  return formatDateStr(now.getFullYear(), now.getMonth(), now.getDate());
+};
+
 const formatSelectedDateTitle = (dateStr: string) => {
   if (!dateStr || !dateStr.includes('-')) return dateStr;
   const parts = dateStr.split('-').map(Number);
@@ -29,12 +34,18 @@ const formatSelectedDateTitle = (dateStr: string) => {
 };
 
 const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Task[] => {
+  const tasksMap = new Map(allTasks.map((t) => [t.id, t]));
   return allTasks.filter((t) => {
-    if (t.scheduledDate !== targetDateStr) return false;
+    if (t.isRepeating) {
+      const hasOcc = t.occurrences?.some((o) => o.date === targetDateStr);
+      if (!hasOcc && t.scheduledDate !== targetDateStr) return false;
+    } else {
+      if (!t.scheduledDate || t.scheduledDate !== targetDateStr) return false;
+    }
 
     if (t.parentTaskId) {
-      const parentTask = allTasks.find((p) => p.id === t.parentTaskId);
-      if (parentTask && parentTask.scheduledDate === t.scheduledDate) {
+      const parentTask = tasksMap.get(t.parentTaskId);
+      if (parentTask && parentTask.scheduledDate === targetDateStr) {
         return false;
       }
     }
@@ -44,12 +55,8 @@ const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Ta
 };
 
 export const CalendarPage: React.FC = () => {
-  const todayStr = useMemo(() => {
-    const now = new Date();
-    return formatDateStr(now.getFullYear(), now.getMonth(), now.getDate());
-  }, []);
-
-  const [selectedDate, setSelectedDate] = useState<string>(todayStr);
+  const [todayStr, setTodayStr] = useState<string>(getNowDateStr());
+  const [selectedDate, setSelectedDate] = useState<string>(getNowDateStr());
   const [currentMonthDate, setCurrentMonthDate] = useState<Date>(new Date());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
@@ -59,9 +66,17 @@ export const CalendarPage: React.FC = () => {
 
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTask } = useTaskStore();
 
+  // BUG-HIGH-08: Midnight auto-update timer
   useEffect(() => {
     fetchTasks();
-  }, [fetchTasks]);
+    const interval = setInterval(() => {
+      const nowStr = getNowDateStr();
+      if (nowStr !== todayStr) {
+        setTodayStr(nowStr);
+      }
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [fetchTasks, todayStr]);
 
   const handlePrevMonth = () => {
     setCurrentMonthDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
@@ -95,19 +110,63 @@ export const CalendarPage: React.FC = () => {
   };
 
   const handleCheckboxToggle = (task: Task) => {
-    if (task.status !== 'Done' && (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced')) {
+    const occ = task.occurrences?.find((o) => o.date === selectedDate);
+    const isDone = occ ? occ.status === 'Done' : task.status === 'Done';
+
+    if (isDone) {
+      // Un-checking completed task: ALWAYS toggle directly to Todo, NEVER open rating modal!
+      toggleTaskStatus(task.id, undefined, selectedDate);
+    } else if (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
+      // Completing task: Open rating modal if smart or spaced repetition
       setSmartTask(task);
     } else {
-      toggleTaskStatus(task.id);
+      toggleTaskStatus(task.id, undefined, selectedDate);
     }
   };
 
   const handleSelectSmartRating = (rating: SmartRating) => {
     if (smartTask) {
-      updateTaskStatus(smartTask.id, 'Done', rating);
+      updateTaskStatus(smartTask.id, 'Done', rating, selectedDate);
       setSmartTask(null);
     }
   };
+
+  // BUG-CRIT-07: Optimized O(N) dateStatsMap pass over tasks
+  const dateStatsMap = useMemo(() => {
+    const map = new Map<string, { total: number; done: number }>();
+    const tasksMap = new Map(tasks.map((t) => [t.id, t]));
+
+    for (const t of tasks) {
+      if (t.isRepeating && t.occurrences && t.occurrences.length > 0) {
+        for (const occ of t.occurrences) {
+          if (t.parentTaskId) {
+            const parent = tasksMap.get(t.parentTaskId);
+            if (parent && parent.scheduledDate === occ.date) continue;
+          }
+          const existing = map.get(occ.date) || { total: 0, done: 0 };
+          existing.total += 1;
+          if (occ.status === 'Done') {
+            existing.done += 1;
+          }
+          map.set(occ.date, existing);
+        }
+      } else {
+        if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') continue;
+        if (t.parentTaskId) {
+          const parent = tasksMap.get(t.parentTaskId);
+          if (parent && parent.scheduledDate === t.scheduledDate) continue;
+        }
+
+        const existing = map.get(t.scheduledDate) || { total: 0, done: 0 };
+        existing.total += 1;
+        if (t.status === 'Done') {
+          existing.done += 1;
+        }
+        map.set(t.scheduledDate, existing);
+      }
+    }
+    return map;
+  }, [tasks]);
 
   const monthDays = useMemo(() => {
     const year = currentMonthDate.getFullYear();
@@ -129,20 +188,19 @@ export const CalendarPage: React.FC = () => {
       const dayNum = cellDate.getDate();
       const isCurrentMonth = cellDate.getMonth() === month;
 
-      const dateTasks = filterCalendarVisibleTasks(tasks, dateStr);
-      const doneCount = dateTasks.filter((t) => t.status === 'Done').length;
+      const stats = dateStatsMap.get(dateStr) || { total: 0, done: 0 };
 
       days.push({
         dateStr,
         dayNum,
         isCurrentMonth,
         isToday: dateStr === todayStr,
-        tasksCount: dateTasks.length,
-        doneCount,
+        tasksCount: stats.total,
+        doneCount: stats.done,
       });
     }
     return days;
-  }, [currentMonthDate, todayStr, tasks]);
+  }, [currentMonthDate, todayStr, dateStatsMap]);
 
   const selectedDayTasks = useMemo(() => {
     return filterCalendarVisibleTasks(tasks, selectedDate);
@@ -262,6 +320,7 @@ export const CalendarPage: React.FC = () => {
               <GlassmorphicTaskCard
                 key={t.id}
                 task={t}
+                occurrenceDate={selectedDate}
                 allTasks={tasks}
                 showDragHandle={false}
                 onToggleCheckbox={() => handleCheckboxToggle(t)}

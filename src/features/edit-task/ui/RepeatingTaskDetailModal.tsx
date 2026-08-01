@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { Task } from '@/entities/task/model/types';
 import { useTaskStore } from '@/entities/task';
+import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import styles from './EditTaskModal.module.css';
 
 interface RepeatingTaskDetailModalProps {
@@ -33,34 +34,25 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
   const masterTask = useMemo(() => {
     if (!task) return null;
-
-    const seriesKey = task.seriesId || task.title.toLowerCase().trim();
-    const seriesTasks = tasks.filter(
-      (t) => (t.seriesId && t.seriesId === task.seriesId) || t.title.toLowerCase().trim() === seriesKey
-    );
-
-    if (seriesTasks.length === 0) return task;
-
-    const allHistory = seriesTasks
-      .flatMap((t) => t.repetitionHistory || [])
-      .filter((h, idx, self) => self.findIndex((x) => x.date === h.date) === idx)
-      .sort((a, b) => a.date.localeCompare(b.date));
-
-    const maxCount = Math.max(
-      ...seriesTasks.map((t) => t.repetitionsCount || 0),
-      allHistory.length
-    );
-
-    const latestInstance = seriesTasks.reduce((prev, curr) => {
-      return (curr.repetitionsCount || 0) >= (prev.repetitionsCount || 0) ? curr : prev;
-    }, task);
-
+    const currentTaskFromStore = tasks.find((t) => t.id === task.id) || task;
+    const occurrences = currentTaskFromStore.occurrences || [];
+    const doneOccurrences = occurrences.filter((o) => o.status === 'Done');
     return {
-      ...latestInstance,
-      repetitionsCount: maxCount,
-      repetitionHistory: allHistory,
+      ...currentTaskFromStore,
+      repetitionsCount: doneOccurrences.length,
     };
   }, [task, tasks]);
+
+  useEffect(() => {
+    if (isOpen) {
+      lockBodyScroll();
+    } else {
+      unlockBodyScroll();
+    }
+    return () => {
+      unlockBodyScroll();
+    };
+  }, [isOpen]);
 
   if (!isOpen || !masterTask) return null;
 
@@ -100,10 +92,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()} style={{ gap: '14px', padding: '20px' }}>
-        {/* Top Header Row matching screenshot */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, minWidth: 0 }}>
-            {/* Rounded Blue Square Icon Box */}
+        {/* Modal Header Row 1: Icon, Title + Category column, Action buttons */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1 }}>
+            {/* Round Icon */}
             <div
               style={{
                 width: '42px',
@@ -122,20 +114,26 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               {masterTask.isRepeating ? '🔄' : '📌'}
             </div>
 
-            {/* Task Title */}
-            <h2
-              style={{
-                fontSize: '18px',
-                fontWeight: 700,
-                color: 'var(--color-text-primary)',
-                margin: 0,
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {masterTask.title}
-            </h2>
+            {/* Task Title & Category directly under Title */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0, flex: 1 }}>
+              <h2
+                style={{
+                  fontSize: '18px',
+                  fontWeight: 700,
+                  color: 'var(--color-text-primary)',
+                  margin: 0,
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {masterTask.title}
+              </h2>
+              <div style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span>🏷</span>
+                <span>{masterTask.category || 'Без категории'}</span>
+              </div>
+            </div>
           </div>
 
           {/* Action Buttons: Pencil Edit & Close */}
@@ -181,30 +179,21 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        {/* Metadata Line 2 */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', marginTop: '2px', fontSize: '13px', color: 'var(--color-text-muted)' }}>
+        {/* Modal Header Row 2: Date on Left, Streak on Right */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '10px', fontSize: '13.5px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ color: '#f59e0b' }}>🏷</span>
-            <span style={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>{masterTask.category}</span>
+            <span>🗓</span>
+            <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{formattedDate}</span>
           </div>
 
-          {masterTask.scheduledDate && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span>📅</span>
-              <span style={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>{formattedDate}</span>
-            </div>
-          )}
-
-          {masterTask.isRepeating && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: 'auto' }}>
-              <span>🔥</span>
-              <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>Стрик: {streak} дней</span>
-            </div>
-          )}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span>🔥</span>
+            <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>Стрик: {streak} дней</span>
+          </div>
         </div>
 
         {/* Horizontal Divider Line */}
-        <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '4px 0 6px 0' }} />
+        <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '10px 0 6px 0' }} />
 
         {/* Description & Link if present */}
         {(masterTask.description || masterTask.link) && (

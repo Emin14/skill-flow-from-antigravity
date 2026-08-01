@@ -178,6 +178,7 @@
 
 /* Timeline Circle Nodes - ALWAYS SOLID OPAQUE BACKGROUND TO PREVENT LINE BLEED */
 .nodeCircle {
+  position: relative;
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -189,6 +190,19 @@
   transition: all 0.2s ease;
   z-index: 5;
   background-color: #161828; /* Solid surface background prevents green line from entering circle! */
+}
+
+.smartRatingBadge {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  font-size: 11px;
+  line-height: 1;
+  background-color: #161828;
+  border-radius: 50%;
+  padding: 1px;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .nodeCompleted {

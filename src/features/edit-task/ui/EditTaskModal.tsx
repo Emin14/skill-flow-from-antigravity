@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Typography } from '@/shared/ui';
+import { Typography, Input } from '@/shared/ui';
+import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { useTopicStore } from '@/entities/topic';
 import { Task } from '@/entities/task/model/types';
@@ -45,7 +46,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const { updateTaskDetails, tasks } = useTaskStore();
 
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState<TaskCategory>('Задача');
+  const [category, setCategory] = useState<TaskCategory>('Без категории');
   const [scheduledDate, setScheduledDate] = useState('');
   const [datePresetMode, setDatePresetMode] = useState<'today' | 'tomorrow' | 'weekend' | 'nextWeek' | 'custom' | 'anytime'>('today');
   const [description, setDescription] = useState('');
@@ -61,19 +62,19 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   // Prevent background scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      lockBodyScroll();
     } else {
-      document.body.style.overflow = '';
+      unlockBodyScroll();
     }
     return () => {
-      document.body.style.overflow = '';
+      unlockBodyScroll();
     };
   }, [isOpen]);
 
   useEffect(() => {
     if (task) {
       setTitle(task.title || '');
-      setCategory(task.category || 'Задача');
+      setCategory(task.category || 'Без категории');
       const dateVal = task.scheduledDate || '';
       setScheduledDate(dateVal);
 
@@ -99,9 +100,9 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
       setRepetitionMode(mode);
       setScheduleFrequency(task.scheduleFrequency || 'daily');
       setAfterCompletionDaysInput(String(task.afterCompletionDays || 3));
-      setHasSubtasks(!!task.hasSubtasks);
+      setHasSubtasks(!!task.hasSubtasks || tasks.some((t) => t.parentTaskId === task.id));
     }
-  }, [task]);
+  }, [task, tasks]);
 
   if (!isOpen || !task) return null;
 
@@ -172,8 +173,9 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
         <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {/* Title Input */}
-          <input
+          <Input
             type="text"
+            name="task_title_field"
             className={styles.selectInput}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -242,8 +244,9 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
           )}
 
           {/* Link Input */}
-          <input
+          <Input
             type="url"
+            name="task_link_field"
             className={styles.selectInput}
             value={link}
             onChange={(e) => setLink(e.target.value)}
@@ -310,8 +313,10 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
                 {repetitionMode === 'after_completion' && (
                   <div className={styles.dateInputContainer}>
-                    <input
+                    <Input
                       type="number"
+                      name="task_interval_days"
+                      inputMode="numeric"
                       className={styles.selectInput}
                       value={afterCompletionDaysInput}
                       onChange={(e) => setAfterCompletionDaysInput(e.target.value)}

@@ -6,6 +6,7 @@ import { useGoalStore } from '@/entities/goal';
 import { useTopicStore } from '@/entities/topic';
 import { triageService } from '../model/triageService';
 import { Typography, Input, Button } from '@/shared/ui';
+import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import styles from './TriageModal.module.css';
 
 interface TriageModalProps {
@@ -26,8 +27,12 @@ export const TriageModal: React.FC<TriageModalProps> = ({ item, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
+    lockBodyScroll();
     fetchGoals();
     fetchTopics();
+    return () => {
+      unlockBodyScroll();
+    };
   }, [fetchGoals, fetchTopics]);
 
   useEffect(() => {

@@ -12,11 +12,22 @@ export interface TaskRepetitionRecord {
   smartRating?: SmartRating;
 }
 
+export interface TaskOccurrence {
+  id: string;
+  taskId: string;
+  date: string;
+  status: TaskStatus;
+  completedAt?: string | null;
+  smartRating?: SmartRating;
+  pomodorosCount?: number;
+  activeMinutes?: number;
+}
+
 export interface Task {
   id: string;
   title: string;
   status: TaskStatus;
-  priority: TaskPriority; // Legacy fallback
+  priority: TaskPriority;
   category: TaskCategory;
   description?: string;
   link?: string;
@@ -29,12 +40,13 @@ export interface Task {
   currentIntervalDays?: number;
   lastSmartRating?: SmartRating;
   spacedStepIndex?: number;
-  hasSubtasks?: boolean; // Can contain subtasks
-  targetRepetitions?: number; // default: 8
-  repetitionsCount?: number; // default: 0
+  hasSubtasks?: boolean;
+  targetRepetitions?: number;
+  repetitionsCount?: number;
   lastReviewedAt?: string | null;
   nextReviewDate?: string | null;
   repetitionHistory?: TaskRepetitionRecord[];
+  occurrences?: TaskOccurrence[];
   topicId?: string | null;
   goalId?: string | null;
   createdAt: string;
@@ -43,5 +55,4 @@ export interface Task {
   totalActiveSeconds?: number;
   completedAt?: string | null;
   pomodorosCount?: number;
-  seriesId?: string; // Links repeating task instances together
 }

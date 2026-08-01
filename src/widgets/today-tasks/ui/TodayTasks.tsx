@@ -21,22 +21,37 @@ import styles from './TodayTasks.module.css';
 
 type ViewMode = 'all' | 'actions' | 'repeats';
 
+const getTodayStr = () => new Date().toISOString().split('T')[0];
+
 export const TodayTasks: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent, deleteTask } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask } = useTaskStore();
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('all');
+  const [todayStr, setTodayStr] = useState<string>(getTodayStr());
 
-  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
-
+  // BUG-HIGH-08: Midnight auto-update timer
   useEffect(() => {
     fetchTasks();
-  }, [fetchTasks]);
+    const interval = setInterval(() => {
+      const nowStr = getTodayStr();
+      if (nowStr !== todayStr) {
+        setTodayStr(nowStr);
+      }
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [fetchTasks, todayStr]);
 
   // Tasks scheduled for today or overdue
   const rawTodayTasks = useMemo(() => {
-    return tasks.filter((t) => !t.scheduledDate || t.scheduledDate <= todayStr);
+    return tasks.filter((t) => {
+      if (t.isRepeating) {
+        return t.occurrences?.some((o) => o.date <= todayStr) || (t.scheduledDate && t.scheduledDate <= todayStr);
+      }
+      if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') return false;
+      return t.scheduledDate <= todayStr;
+    });
   }, [tasks, todayStr]);
 
   // Filter today's tasks based on active UI Tab (All / Actions / Flashcards)
@@ -50,15 +65,24 @@ export const TodayTasks: React.FC = () => {
     return rawTodayTasks;
   }, [rawTodayTasks, viewMode]);
 
+  // Helper to determine status of task for today
+  const getTaskStatusForToday = (t: Task): TaskStatus => {
+    if (t.isRepeating) {
+      const occ = t.occurrences?.find((o) => o.date === todayStr) || t.occurrences?.find((o) => o.date <= todayStr);
+      return occ ? occ.status : 'Todo';
+    }
+    return t.status;
+  };
+
   // Group tasks by Kanban Stages: Todo, InProgress, Done
-  const todoTasks = useMemo(() => todayTasks.filter((t) => t.status === 'Todo'), [todayTasks]);
-  const inProgressTasks = useMemo(() => todayTasks.filter((t) => t.status === 'InProgress'), [todayTasks]);
-  const doneTasks = useMemo(() => todayTasks.filter((t) => t.status === 'Done'), [todayTasks]);
+  const todoTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [todayTasks, todayStr]);
+  const inProgressTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [todayTasks, todayStr]);
+  const doneTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [todayTasks, todayStr]);
 
   // PM FEATURE: 100% Today Tasks Celebration Condition
   const is100PercentDone = useMemo(() => {
-    return todayTasks.length > 0 && doneTasks.length === todayTasks.length;
-  }, [todayTasks.length, doneTasks.length]);
+    return rawTodayTasks.length > 0 && rawTodayTasks.every((t) => getTaskStatusForToday(t) === 'Done');
+  }, [rawTodayTasks, todayStr]);
 
   const handleCardClick = (task: Task) => {
     setDetailTask(task);
@@ -68,7 +92,7 @@ export const TodayTasks: React.FC = () => {
     e.preventDefault();
     const draggedTaskId = e.dataTransfer.getData('text/plain');
     if (draggedTaskId) {
-      updateTaskStatus(draggedTaskId, targetStatus);
+      updateTaskStatus(draggedTaskId, targetStatus, undefined, todayStr);
     }
   };
 
@@ -77,18 +101,22 @@ export const TodayTasks: React.FC = () => {
     updateTaskParent(draggedTaskId, targetParentTask.id);
   };
 
-  const handleToggleCheckbox = (task: Task) => {
-    if (task.status !== 'Done' && (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced')) {
+  const handleToggleCheckbox = (task: Task, isCurrentlyDone?: boolean) => {
+    const isDoneNow = isCurrentlyDone !== undefined ? isCurrentlyDone : getTaskStatusForToday(task) === 'Done';
+    if (isDoneNow) {
+      // Un-checking completed task: ALWAYS toggle directly to Todo, NEVER open rating modal!
+      toggleTaskStatus(task.id, undefined, todayStr);
+    } else if (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
+      // Completing task: Open rating modal if smart or spaced repetition
       setSmartTask(task);
     } else {
-      const nextStatus = task.status === 'Done' ? 'Todo' : 'Done';
-      updateTaskStatus(task.id, nextStatus);
+      toggleTaskStatus(task.id, undefined, todayStr);
     }
   };
 
   const handleSelectSmartRating = (rating: SmartRating) => {
     if (smartTask) {
-      updateTaskStatus(smartTask.id, 'Done', rating);
+      updateTaskStatus(smartTask.id, 'Done', rating, todayStr);
       setSmartTask(null);
     }
   };
@@ -145,7 +173,7 @@ export const TodayTasks: React.FC = () => {
             <div className={styles.progressBarHeader}>
               <span>Прогресс дня</span>
               <span className={styles.progressPercent}>
-                100% ({doneTasks.length}/{todayTasks.length})
+                100% ({doneTasks.length}/{rawTodayTasks.length})
               </span>
             </div>
             <div className={styles.progressBarTrack}>
@@ -181,12 +209,13 @@ export const TodayTasks: React.FC = () => {
             headerClass={styles.stageHeaderTodo}
             tasksList={todoTasks}
             allTasks={todayTasks}
+            todayStr={todayStr}
             onDropStage={(e) => handleDropToStage(e, 'Todo')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
-            onToggleCheckbox={handleToggleCheckbox}
+            onToggleCheckbox={(t) => handleToggleCheckbox(t, false)}
             onDelete={(id) => deleteTask(id)}
-            onCompleteParent={(id) => updateTaskStatus(id, 'Done')}
+            onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
           />
 
           {/* Stage 2: В процессе (InProgress) */}
@@ -197,12 +226,13 @@ export const TodayTasks: React.FC = () => {
             headerClass={styles.stageHeaderInProgress}
             tasksList={inProgressTasks}
             allTasks={todayTasks}
+            todayStr={todayStr}
             onDropStage={(e) => handleDropToStage(e, 'InProgress')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
-            onToggleCheckbox={handleToggleCheckbox}
+            onToggleCheckbox={(t) => handleToggleCheckbox(t, false)}
             onDelete={(id) => deleteTask(id)}
-            onCompleteParent={(id) => updateTaskStatus(id, 'Done')}
+            onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
           />
 
           {/* Stage 3: Выполнено (Done) */}
@@ -213,12 +243,13 @@ export const TodayTasks: React.FC = () => {
             headerClass={styles.stageHeaderDone}
             tasksList={doneTasks}
             allTasks={todayTasks}
+            todayStr={todayStr}
             onDropStage={(e) => handleDropToStage(e, 'Done')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
-            onToggleCheckbox={handleToggleCheckbox}
+            onToggleCheckbox={(t) => handleToggleCheckbox(t, true)}
             onDelete={(id) => deleteTask(id)}
-            onCompleteParent={(id) => updateTaskStatus(id, 'Done')}
+            onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
           />
         </div>
       )}
@@ -259,6 +290,7 @@ interface KanbanStageSectionProps {
   headerClass: string;
   tasksList: Task[];
   allTasks: Task[];
+  todayStr: string;
   onDropStage: (e: React.DragEvent) => void;
   onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
   onOpenCard: (task: Task) => void;
@@ -274,6 +306,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   headerClass,
   tasksList,
   allTasks,
+  todayStr,
   onDropStage,
   onDropOnTask,
   onOpenCard,
@@ -290,16 +323,20 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
     return tasksList.filter((t) => !t.parentTaskId || !stageTaskIds.has(t.parentTaskId));
   }, [tasksList, stageTaskIds]);
 
-  const renderSubtasksRecursive = (parentId: string, depthLevel = 1): React.ReactNode => {
+  const renderSubtasksRecursive = (parentId: string, depthLevel = 1, visited = new Set<string>()): React.ReactNode => {
+    if (depthLevel > 10 || visited.has(parentId)) return null;
+    visited.add(parentId);
+
     const children = allTasks.filter((t) => t.parentTaskId === parentId);
     if (children.length === 0) return null;
 
     return children.map((subtask) => (
       <React.Fragment key={subtask.id}>
-        <div className={styles.subtaskIndent} style={{ marginLeft: `${depthLevel * 16}px` }}>
+        <div className={styles.subtaskIndent} style={{ marginLeft: `${Math.min(depthLevel, 4) * 16}px` }}>
           <div className={styles.subtaskConnector} />
           <GlassmorphicTaskCard
             task={subtask}
+            occurrenceDate={todayStr}
             allTasks={allTasks}
             showDragHandle={true}
             onToggleCheckbox={() => onToggleCheckbox(subtask)}
@@ -309,7 +346,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
             onCompleteParent={() => onCompleteParent(subtask.id)}
           />
         </div>
-        {renderSubtasksRecursive(subtask.id, depthLevel + 1)}
+        {renderSubtasksRecursive(subtask.id, depthLevel + 1, new Set(visited))}
       </React.Fragment>
     ));
   };
@@ -373,6 +410,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
                 <React.Fragment key={task.id}>
                   <GlassmorphicTaskCard
                     task={task}
+                    occurrenceDate={todayStr}
                     allTasks={allTasks}
                     showDragHandle={true}
                     onToggleCheckbox={() => onToggleCheckbox(task)}

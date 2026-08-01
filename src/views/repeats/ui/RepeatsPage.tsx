@@ -16,34 +16,9 @@ export const RepeatsPage: React.FC = () => {
     fetchTasks();
   }, [fetchTasks]);
 
+  // SINGLE TASK ARCHITECTURE: Each repeating task exists as 1 single Task record
   const uniqueRepeatingTasks = useMemo(() => {
-    const repeatingTasks = tasks.filter((t) => t.isRepeating);
-    const seriesMap = new Map<string, Task>();
-
-    repeatingTasks.forEach((t) => {
-      const key = t.seriesId || t.title.toLowerCase().trim();
-      if (!seriesMap.has(key)) {
-        seriesMap.set(key, t);
-      } else {
-        const existing = seriesMap.get(key)!;
-        const mergedHistory = [
-          ...(existing.repetitionHistory || []),
-          ...(t.repetitionHistory || []),
-        ].filter((h, idx, self) => self.findIndex((x) => x.date === h.date) === idx)
-         .sort((a, b) => a.date.localeCompare(b.date));
-
-        const maxCount = Math.max(existing.repetitionsCount || 0, t.repetitionsCount || 0, mergedHistory.length);
-        const latestInstance = t.scheduledDate > existing.scheduledDate ? t : existing;
-
-        seriesMap.set(key, {
-          ...latestInstance,
-          repetitionsCount: maxCount,
-          repetitionHistory: mergedHistory,
-        });
-      }
-    });
-
-    return Array.from(seriesMap.values());
+    return tasks.filter((t) => t.isRepeating);
   }, [tasks]);
 
   const sortedRepeatingTasks = useMemo(() => {
@@ -58,8 +33,8 @@ export const RepeatsPage: React.FC = () => {
       list.sort((a, b) => a.title.localeCompare(b.title, 'ru'));
     } else if (sortOption === 'count_asc') {
       list.sort((a, b) => {
-        const countA = a.repetitionHistory?.length || a.repetitionsCount || 0;
-        const countB = b.repetitionHistory?.length || b.repetitionsCount || 0;
+        const countA = a.occurrences?.filter((o) => o.status === 'Done').length || a.repetitionsCount || 0;
+        const countB = b.occurrences?.filter((o) => o.status === 'Done').length || b.repetitionsCount || 0;
         return countA - countB;
       });
     }
@@ -93,7 +68,7 @@ export const RepeatsPage: React.FC = () => {
               fontWeight: sortOption === 'overdue' ? 600 : 400,
             }}
           >
-            ⏰ Давно не повторялись
+            📅 Сначала ближайшие
           </button>
           <button
             type="button"
@@ -148,8 +123,8 @@ export const RepeatsPage: React.FC = () => {
         </Card>
       ) : (
         <div className={styles.repeatsList}>
-          {sortedRepeatingTasks.map((task, idx) => (
-            <TimelineRepeatCard key={`${task.id}-${idx}`} task={task} allTasks={tasks} />
+          {sortedRepeatingTasks.map((task) => (
+            <TimelineRepeatCard key={task.id} task={task} allTasks={tasks} />
           ))}
         </div>
       )}
@@ -204,20 +179,17 @@ const formatRepetitionCount = (count: number): { numStr: string; textStr: string
   return { numStr: String(count), textStr: word };
 };
 
-const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, allTasks }) => {
+const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }) => {
   const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
-  const history = task.repetitionHistory || [];
-  const completedCount = history.length > 0 ? history.length : (task.repetitionsCount || 0);
+  const occurrences = useMemo(() => {
+    return (task.occurrences || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+  }, [task.occurrences]);
 
-  const seriesKey = task.seriesId || task.title.toLowerCase().trim();
-  const nextUncompletedTask = allTasks.find(
-    (t) =>
-      t.status === 'Todo' &&
-      ((t.seriesId && (t.seriesId === task.seriesId || t.seriesId === task.id)) ||
-        t.title.toLowerCase().trim() === seriesKey)
-  );
+  const completedOccurrences = useMemo(() => occurrences.filter((o) => o.status === 'Done'), [occurrences]);
+  const completedCount = completedOccurrences.length;
 
-  const nextDateRaw = nextUncompletedTask ? nextUncompletedTask.scheduledDate : task.nextReviewDate || null;
+  const nextOcc = occurrences.find((o) => o.status !== 'Done');
+  const nextDateRaw = nextOcc ? nextOcc.date : task.scheduledDate || null;
   const isOverdue = nextDateRaw ? nextDateRaw < todayStr : false;
 
   const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
@@ -251,11 +223,11 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
       let smartRatingEmoji: string | undefined = undefined;
 
       if (isCompleted) {
-        // Fallback to task.lastSmartRating or 'normal' (🙂) if history record rating is missing
-        const rating = history[i]?.smartRating || task.lastSmartRating || 'normal';
+        const occ = completedOccurrences[i];
+        const rating = occ?.smartRating || task.lastSmartRating || 'normal';
         smartRatingEmoji = getSmartRatingEmoji(rating);
-        if (history[i]?.date) {
-          subLabel = formatDateNumeric(history[i].date);
+        if (occ?.date) {
+          subLabel = formatDateNumeric(occ.date);
         } else if (task.completedAt) {
           subLabel = formatDateNumeric(task.completedAt.split('T')[0]);
         } else if (task.createdAt) {
@@ -279,7 +251,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
       });
     }
     return list;
-  }, [completedCount, history, nextDateRaw, isOverdue, mode, defaultLabels]);
+  }, [completedCount, completedOccurrences, nextDateRaw, isOverdue, mode, defaultLabels, task]);
 
   const { numStr, textStr } = formatRepetitionCount(completedCount);
 
@@ -300,14 +272,14 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
         </div>
 
         <div className={styles.line2}>
-          <span className={styles.categoryTag}>🏷 {task.category}</span>
+          <span className={styles.categoryTag}>🏷 {task.category || 'Без категории'}</span>
           <div className={styles.repetitionCounter}>
             <span className={styles.repetitionNum}>{numStr}</span> {textStr}
           </div>
         </div>
       </div>
 
-      {/* Timeline Track with Option 5.7 Design */}
+      {/* Timeline Track */}
       <div className={styles.timelineTrackContainer}>
         <div className={styles.timelineTrack}>
           {/* Connector Bar behind nodes */}
@@ -322,87 +294,64 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task, 
             ))}
           </div>
 
-          {/* Milestone Step Nodes with Option 5.7 badge */}
+          {/* Milestone Step Nodes */}
           {steps.map((step) => (
-            <div key={step.stepIndex} className={styles.timelineItem} style={{ position: 'relative' }}>
+            <div
+              key={step.stepIndex}
+              className={`${styles.stepColumn} ${step.isNext ? styles.stepColumnNextActive : ''}`}
+            >
               <span
-                className={`${styles.stepLabelTop} ${
+                className={`${styles.stepLabel} ${
                   step.isCompleted
-                    ? styles.stepLabelTopActive
-                    : step.isOverdue
-                    ? styles.stepLabelTopOverdue
+                    ? styles.stepLabelCompleted
                     : step.isNext
-                    ? styles.stepLabelTopNext
-                    : ''
+                    ? styles.stepLabelNext
+                    : styles.stepLabelFuture
                 }`}
               >
                 {step.label}
               </span>
 
-              {/* Option 5.7 Circle Node (28px x 28px with anchored top-right emoji badge) */}
               <div
-                style={{
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '50%',
-                  backgroundColor: step.isCompleted
-                    ? '#10b981'
-                    : step.isOverdue
-                    ? '#ef4444'
-                    : step.isNext
-                    ? 'rgba(14, 165, 233, 0.2)'
-                    : 'var(--color-surface)',
-                  border: step.isCompleted
-                    ? 'none'
-                    : step.isOverdue
-                    ? 'none'
-                    : step.isNext
-                    ? '2px solid #0ea5e9'
-                    : '1.5px solid var(--color-border)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '13px',
-                  color: '#ffffff',
-                  position: 'relative',
-                  boxShadow: step.isCompleted
-                    ? '0 0 10px rgba(16, 185, 129, 0.35)'
-                    : step.isNext
-                    ? '0 0 10px rgba(14, 165, 233, 0.35)'
-                    : 'none',
-                  transition: 'all 0.2s ease',
-                }}
-                title={`Шаг #${step.stepIndex}${step.label ? ` (${step.label})` : ''}: ${
+                className={`${styles.nodeCircle} ${
                   step.isCompleted
-                    ? 'Выполнено ✓'
-                    : step.isOverdue
-                    ? `Просрочено! Было запланировано на ${nextDateRaw}`
+                    ? styles.nodeCompleted
                     : step.isNext
-                    ? `Запланировано на ${nextDateRaw || 'календарь'}`
-                    : 'Будущий шаг'
+                    ? step.isOverdue
+                      ? styles.nodeNextOverdue
+                      : styles.nodeNext
+                    : styles.nodeFuture
                 }`}
               >
-                {step.isCompleted ? '✓' : step.isNext ? '●' : '○'}
-
-                {/* Option 5.7 Anchored Top-Right Difficulty Emoji Badge - ALWAYS SHOWN FOR COMPLETED STEPS */}
-                {step.isCompleted && step.smartRatingEmoji && (
-                  <span
-                    style={{
-                      position: 'absolute',
-                      top: '-8px',
-                      right: '-8px',
-                      fontSize: '14px',
-                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.7))',
-                      lineHeight: 1,
-                      zIndex: 10,
-                    }}
-                  >
-                    {step.smartRatingEmoji}
-                  </span>
+                {step.isCompleted ? (
+                  <>
+                    <span className={styles.checkmarkIcon}>✓</span>
+                    {step.smartRatingEmoji && (
+                      <span className={styles.smartRatingBadge} title={`Оценка: ${step.smartRatingEmoji}`}>
+                        {step.smartRatingEmoji}
+                      </span>
+                    )}
+                  </>
+                ) : step.isNext ? (
+                  <span className={styles.pulseDot} />
+                ) : (
+                  <span className={styles.emptyDot} />
                 )}
               </div>
 
-              <span className={styles.subLabelBottom}>{step.subLabel || ''}</span>
+              <span
+                className={`${styles.subLabel} ${
+                  step.isCompleted
+                    ? styles.subLabelCompleted
+                    : step.isNext
+                    ? step.isOverdue
+                      ? styles.subLabelOverdue
+                      : styles.subLabelNext
+                    : styles.subLabelFuture
+                }`}
+              >
+                {step.subLabel}
+              </span>
             </div>
           ))}
         </div>

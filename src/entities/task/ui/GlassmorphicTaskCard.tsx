@@ -3,14 +3,17 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { Checkbox } from '@/shared/ui';
 import { Task } from '@/entities/task/model/types';
-import { GripVertical, Check } from 'lucide-react';
+import { getAllDescendantTasks } from '@/entities/task/model/store';
+import { GripVertical, Check, ExternalLink } from 'lucide-react';
 import styles from './GlassmorphicTaskCard.module.css';
 
 interface GlassmorphicTaskCardProps {
   task: Task;
+  occurrenceDate?: string;
   allTasks?: Task[];
   showDragHandle?: boolean;
   onToggleCheckbox?: () => void;
+  onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
   onClick?: () => void;
   onDropOnTask?: (draggedTaskId: string, targetParentTask: Task) => void;
@@ -24,8 +27,22 @@ const getCategoryColor = (cat?: string): string => {
     case 'Обучение': return '#f59e0b';
     case 'Личное': return '#ec4899';
     case 'Финансы': return '#8b5cf6';
-    default: return '#38bdf8';
+    case 'Практика Frontend': return '#06b6d4';
+    case 'Опыт на камеру': return '#a855f7';
+    case 'Теория': return '#3b82f6';
+    case 'Без категории':
+    default: return 'rgba(255, 255, 255, 0.3)';
   }
+};
+
+// BUG-MED-02: Safe URL formatter
+const formatExternalUrl = (url?: string): string | null => {
+  if (!url || !url.trim()) return null;
+  const trimmed = url.trim();
+  if (/^(https?:\/\/|mailto:)/i.test(trimmed)) {
+    return trimmed;
+  }
+  return `https://${trimmed}`;
 };
 
 const SubtaskProgressRing: React.FC<{ total: number; done: number }> = ({ total, done }) => {
@@ -65,9 +82,11 @@ const SubtaskProgressRing: React.FC<{ total: number; done: number }> = ({ total,
 
 export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   task,
+  occurrenceDate,
   allTasks = [],
   showDragHandle = true,
   onToggleCheckbox,
+  onStatusChange,
   onDelete,
   onClick,
   onDropOnTask,
@@ -78,22 +97,33 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const [isVerticalScroll, setIsVerticalScroll] = useState<boolean>(false);
   const [isSwipedLeft, setIsSwipedLeft] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [isOverTarget, setIsOverTarget] = useState<boolean>(false);
+  const [isPromptDismissed, setIsPromptDismissed] = useState<boolean>(false);
 
-  const isDone = task.status === 'Done';
+  const currentOcc = useMemo(() => {
+    if (!task.isRepeating) return null;
+    const targetDate = occurrenceDate || task.scheduledDate;
+    return task.occurrences?.find((o) => o.date === targetDate) || null;
+  }, [task, occurrenceDate]);
+
+  const isDone = currentOcc ? currentOcc.status === 'Done' : task.status === 'Done';
   const catColor = getCategoryColor(task.category);
+  const formattedLink = formatExternalUrl(task.link);
 
-  // Subtasks calculation
-  const childSubtasks = useMemo(() => allTasks.filter((t) => t.parentTaskId === task.id), [allTasks, task.id]);
-  const isContainer = task.hasSubtasks || childSubtasks.length > 0;
-  const doneSubtasksCount = useMemo(() => childSubtasks.filter((t) => t.status === 'Done').length, [childSubtasks]);
-  const areAllSubtasksDone = isContainer && childSubtasks.length > 0 && doneSubtasksCount === childSubtasks.length;
+  // BUG-HIGH-01: Multi-level subtasks progress calculation using getAllDescendantTasks
+  const descendantSubtasks = useMemo(() => getAllDescendantTasks(task.id, allTasks), [allTasks, task.id]);
+  const isContainer = task.hasSubtasks || descendantSubtasks.length > 0;
+  const doneSubtasksCount = useMemo(() => descendantSubtasks.filter((t) => t.status === 'Done').length, [descendantSubtasks]);
+  const areAllSubtasksDone = isContainer && descendantSubtasks.length > 0 && doneSubtasksCount === descendantSubtasks.length;
 
+  // BUG-HIGH-05: Mobile touch gesture angle detection
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
     setTouchStartY(e.targetTouches[0].clientY);
+    setIsVerticalScroll(false);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -103,7 +133,13 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     const diffX = touchStartX - currentX;
     const diffY = touchStartY - currentY;
 
-    if (Math.abs(diffY) > Math.abs(diffX) && !isSwipedLeft) {
+    if (!isVerticalScroll && Math.abs(diffY) > 6 && Math.abs(diffY) > Math.abs(diffX) && !isSwipedLeft) {
+      setIsVerticalScroll(true);
+      setSwipeOffset(0);
+      return;
+    }
+
+    if (isVerticalScroll) {
       setSwipeOffset(0);
       return;
     }
@@ -115,7 +151,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
       if (diffX > 0 && diffX <= 80) {
         setSwipeOffset(-diffX);
       } else if (diffX < 0 && diffX >= -80) {
-        setSwipeOffset(-diffX / 2);
+        setSwipeOffset(-diffX);
       }
     }
   };
@@ -125,20 +161,38 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX - touchEndX;
 
-    if (isSwipedLeft) {
-      setIsSwipedLeft(false);
-      setSwipeOffset(0);
-    } else {
-      if (diff > 45) {
-        setIsSwipedLeft(true);
-        setSwipeOffset(-80);
-      } else {
+    if (!isVerticalScroll) {
+      if (isSwipedLeft) {
         setIsSwipedLeft(false);
         setSwipeOffset(0);
+      } else {
+        if (diff > 45) {
+          // Swipe Left -> Delete Action Button
+          setIsSwipedLeft(true);
+          setSwipeOffset(-80);
+        } else if (diff < -45) {
+          // Swipe Right -> Advance Process Stage
+          setSwipeOffset(0);
+          const currentStatus = currentOcc ? currentOcc.status : task.status;
+          let nextStatus: TaskStatus = 'Done';
+          if (currentStatus === 'Todo') nextStatus = 'InProgress';
+          else if (currentStatus === 'InProgress') nextStatus = 'Done';
+          else if (currentStatus === 'Done') nextStatus = 'Todo';
+
+          if (onStatusChange) {
+            onStatusChange(nextStatus);
+          } else if (onToggleCheckbox) {
+            onToggleCheckbox();
+          }
+        } else {
+          setIsSwipedLeft(false);
+          setSwipeOffset(0);
+        }
       }
     }
     setTouchStartX(null);
     setTouchStartY(null);
+    setIsVerticalScroll(false);
   };
 
   const handleDragStart = (e: React.DragEvent) => {
@@ -172,6 +226,19 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     if (draggedTaskId && draggedTaskId !== task.id && onDropOnTask) {
       onDropOnTask(draggedTaskId, task);
     }
+  };
+
+  // BUG-MED-01: Cascade completion confirmation prompt for parent tasks
+  const handleCompleteParentWithPrompt = () => {
+    if (!onCompleteParent) return;
+    const uncompletedSubtasks = descendantSubtasks.filter((t) => t.status !== 'Done');
+    if (uncompletedSubtasks.length > 0) {
+      const confirmed = window.confirm(
+        `Завершить родительскую задачу "${task.title}" и ${uncompletedSubtasks.length} невыполненных подзадач?`
+      );
+      if (!confirmed) return;
+    }
+    onCompleteParent();
   };
 
   return (
@@ -208,7 +275,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
         <div className={`${styles.cardPill} ${isDone ? styles.taskDone : ''}`}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
             {isContainer ? (
-              <SubtaskProgressRing total={childSubtasks.length} done={doneSubtasksCount} />
+              <SubtaskProgressRing total={descendantSubtasks.length} done={doneSubtasksCount} />
             ) : (
               <div
                 className={styles.checkboxWrapper}
@@ -227,8 +294,20 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
               </span>
               <div className={styles.metaRow}>
                 <span className={styles.catDot} style={{ backgroundColor: catColor }} />
-                <span>{task.category}</span>
+                <span>{task.category || 'Без категории'}</span>
                 {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
+                {formattedLink && (
+                  <a
+                    href={formattedLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    style={{ display: 'inline-flex', alignItems: 'center', color: '#0ea5e9', marginLeft: '4px' }}
+                    title={`Открыть ссылку: ${formattedLink}`}
+                  >
+                    <ExternalLink size={12} />
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -247,19 +326,32 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
           )}
         </div>
 
-        {/* Prompt Button when all subtasks of container are done */}
-        {areAllSubtasksDone && !isDone && onCompleteParent && (
-          <div
-            className={styles.completeParentPromptBtn}
-            onClick={(e) => {
-              e.stopPropagation();
-              onCompleteParent();
-            }}
-          >
+        {/* Prompt Banner when all subtasks of container are done */}
+        {areAllSubtasksDone && !isDone && !isPromptDismissed && onCompleteParent && (
+          <div className={styles.completeParentPromptBtn} onClick={(e) => e.stopPropagation()}>
             <span>✨ Все подзадачи готовы. Завершить "{task.title}"?</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-              <Check size={13} /> Завершить
-            </span>
+            <div className={styles.promptActions}>
+              <button
+                type="button"
+                className={styles.promptConfirmBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onCompleteParent();
+                }}
+              >
+                <Check size={12} /> Завершить
+              </button>
+              <button
+                type="button"
+                className={styles.promptDismissBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsPromptDismissed(true);
+                }}
+              >
+                ✕ Нет
+              </button>
+            </div>
           </div>
         )}
       </div>

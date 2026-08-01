@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Typography } from '@/shared/ui';
+import { Typography, Input } from '@/shared/ui';
+import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { useTopicStore } from '@/entities/topic';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
@@ -39,7 +40,7 @@ export const QuickCreateModal: React.FC = () => {
   const { addTask, tasks } = useTaskStore();
 
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState<TaskCategory>('Задача');
+  const [category, setCategory] = useState<TaskCategory>('Без категории');
   const [scheduledDate, setScheduledDate] = useState('');
   const [datePresetMode, setDatePresetMode] = useState<'today' | 'tomorrow' | 'weekend' | 'nextWeek' | 'custom' | 'anytime'>('today');
   const [description, setDescription] = useState('');
@@ -55,15 +56,15 @@ export const QuickCreateModal: React.FC = () => {
   // Prevent background scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      lockBodyScroll();
       const today = getTodayStr();
       setScheduledDate(today);
       setDatePresetMode('today');
     } else {
-      document.body.style.overflow = '';
+      unlockBodyScroll();
     }
     return () => {
-      document.body.style.overflow = '';
+      unlockBodyScroll();
     };
   }, [isOpen]);
 
@@ -138,8 +139,9 @@ export const QuickCreateModal: React.FC = () => {
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {/* Title Input */}
-          <input
+          <Input
             type="text"
+            name="task_title_field"
             className={styles.selectInput}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -208,8 +210,9 @@ export const QuickCreateModal: React.FC = () => {
           )}
 
           {/* Link Input */}
-          <input
+          <Input
             type="url"
+            name="task_link_field"
             className={styles.selectInput}
             value={link}
             onChange={(e) => setLink(e.target.value)}
@@ -276,8 +279,10 @@ export const QuickCreateModal: React.FC = () => {
 
                 {repetitionMode === 'after_completion' && (
                   <div className={styles.dateInputContainer}>
-                    <input
+                    <Input
                       type="number"
+                      name="task_interval_days"
+                      inputMode="numeric"
                       className={styles.selectInput}
                       value={afterCompletionDaysInput}
                       onChange={(e) => setAfterCompletionDaysInput(e.target.value)}
