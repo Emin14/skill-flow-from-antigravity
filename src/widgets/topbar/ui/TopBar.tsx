@@ -71,7 +71,7 @@ export const TopBar: React.FC = () => {
             height: '34px',
           }}
         >
-          {theme === 'dark' ? '🌙 Темная' : '☀️ Светлая'}
+          {theme === 'dark' ? '🌙' : '☀️'}
         </button>
 
         <button

@@ -19,13 +19,13 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 720px;
-  height: 640px;
-  max-height: 90vh;
+  max-width: 520px;
+  height: fit-content;
+  max-height: 88vh;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-xl);
-  padding: 16px 20px;
+  padding: 14px 16px;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -99,13 +99,12 @@
 
 /* Scrollable Fixed-Height Body Canvas */
 .modalBody {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 4px;
+  /* overflow-y: auto;
+  overflow-x: hidden; */
+  padding-right: 2px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 /* Shared Input Styles */
@@ -130,9 +129,9 @@
 
 .compactTextarea {
   width: 100%;
-  min-height: 52px;
-  height: 58px;
-  padding: 8px 12px;
+  min-height: 38px;
+  height: 42px;
+  padding: 7px 12px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
@@ -273,7 +272,7 @@
 
 @media (max-width: 600px) {
   .modal {
-    height: 78vh;
+    height: 74vh;
     padding: 12px;
   }
   .splitGrid {

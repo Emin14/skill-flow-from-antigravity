@@ -244,7 +244,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '3px',
+                    gap: '1px',
                     boxShadow: isActive ? '0 4px 14px rgba(14, 165, 233, 0.45)' : 'none',
                     cursor: 'pointer',
                     transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -254,7 +254,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                     {item.num}
                   </span>
                   {item.hasTomato && (
-                    <span style={{ fontSize: '16.5px', lineHeight: 1 }}>🍅</span>
+                    <span style={{ fontSize: '18px', lineHeight: 1 }}>🍅</span>
                   )}
                 </button>
               );
