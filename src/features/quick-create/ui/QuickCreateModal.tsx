@@ -273,21 +273,15 @@ export const QuickCreateModal: React.FC = () => {
     if (dateVariant === 3) {
       return (
         <div style={{ position: 'relative' }}>
-          <button
-            type="button"
-            className={styles.selectInput}
-            onClick={() => setActivePopover(!activePopover)}
-            style={{ textAlign: 'left', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-          >
+          <button type="button" onClick={() => setActivePopover(!activePopover)} style={{ width: '100%', height: '40px', borderRadius: '12px', background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.18)', color: 'var(--color-text)', fontWeight: 500, fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 14px', cursor: 'pointer', boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
             <span>{getDateStatusLabel()}</span>
-            <span>▾</span>
+            <span style={{ opacity: 0.5, fontSize: '12px' }}>▾</span>
           </button>
           {activePopover && (
-            <div style={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 100, background: '#1e293b', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '6px', boxShadow: '0 8px 24px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <button type="button" className={styles.chipBtn} onClick={selectToday}>☀️ Сегодня</button>
-              <button type="button" className={styles.chipBtn} onClick={selectTomorrow}>🌅 Завтра</button>
-              <button type="button" className={styles.chipBtn} onClick={triggerHiddenPicker}>📆 Выбрать любую дату...</button>
-              <button type="button" className={styles.chipBtn} onClick={selectNone} style={{ color: '#ef4444' }}>✕ Без даты</button>
+            <div style={{ position: 'absolute', top: '46px', left: 0, right: 0, zIndex: 100, background: 'rgba(15,23,42,0.85)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '14px', padding: '6px', boxShadow: '0 16px 40px rgba(0,0,0,0.6)', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+              {[{ label: '☀️  Сегодня', action: selectToday }, { label: '🌅  Завтра', action: selectTomorrow }, { label: '📆  Выбрать дату...', action: triggerHiddenPicker }, { label: '✕   Без даты', action: selectNone, red: true }].map(({ label, action, red }) => (
+                <button key={label} type="button" onClick={action} style={{ background: 'transparent', border: 'none', borderRadius: '8px', color: red ? '#f87171' : 'rgba(255,255,255,0.85)', fontSize: '14px', padding: '8px 12px', cursor: 'pointer', textAlign: 'left' }}>{label}</button>
+              ))}
             </div>
           )}
         </div>
@@ -295,44 +289,38 @@ export const QuickCreateModal: React.FC = () => {
     }
 
     if (dateVariant === 4) {
+      const neonChips = [
+        { label: '☀️', full: 'Сегодня', mode: 'today' as const, action: selectToday, color: '#facc15', glow: 'rgba(250,204,21,0.4)' },
+        { label: '🌅', full: 'Завтра', mode: 'tomorrow' as const, action: selectTomorrow, color: '#fb923c', glow: 'rgba(251,146,60,0.4)' },
+        { label: '📆', full: datePresetMode === 'custom' && scheduledDate ? formatDateDisplay(scheduledDate) : 'Дата', mode: 'custom' as const, action: triggerHiddenPicker, color: '#34d399', glow: 'rgba(52,211,153,0.4)' },
+      ];
       return (
-        <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
-          <button type="button" className={`${styles.chipBtn} ${datePresetMode === 'today' ? styles.chipBtnActive : ''}`} onClick={selectToday}>☀️Сегодня</button>
-          <button type="button" className={`${styles.chipBtn} ${datePresetMode === 'tomorrow' ? styles.chipBtnActive : ''}`} onClick={selectTomorrow}>🌅Завтра</button>
-          <button type="button" className={`${styles.chipBtn} ${datePresetMode === 'custom' ? styles.chipBtnActive : ''}`} onClick={triggerHiddenPicker}>
-            {datePresetMode === 'custom' && scheduledDate ? `📆${formatDateDisplay(scheduledDate)}` : '📆Дата'}
-          </button>
-          <button type="button" className={styles.chipBtn} onClick={selectNone}>✕</button>
+        <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+          {neonChips.map(({ label, full, mode, action, color, glow }) => {
+            const isActive = datePresetMode === mode;
+            return (
+              <button key={mode} type="button" onClick={action} style={{ flex: mode === 'custom' ? 1 : 'none', height: '38px', borderRadius: '10px', padding: '0 10px', border: `1.5px solid ${isActive ? color : 'rgba(255,255,255,0.12)'}`, background: isActive ? `rgba(${color === '#facc15' ? '250,204,21' : color === '#fb923c' ? '251,146,60' : '52,211,153'},0.15)` : 'transparent', color: isActive ? color : 'rgba(255,255,255,0.55)', boxShadow: isActive ? `0 0 12px ${glow}` : 'none', fontWeight: isActive ? 700 : 400, fontSize: '13px', cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all 0.2s' }}>{label} {full}</button>
+            );
+          })}
+          <button type="button" onClick={selectNone} style={{ height: '38px', width: '34px', borderRadius: '10px', border: '1.5px solid rgba(248,113,113,0.3)', background: datePresetMode === 'none' ? 'rgba(248,113,113,0.15)' : 'transparent', color: '#f87171', cursor: 'pointer', fontSize: '14px', flexShrink: 0 }}>✕</button>
         </div>
       );
     }
 
     if (dateVariant === 5) {
       return (
-        <div style={{ display: 'flex', gap: '4px', position: 'relative' }}>
-          <button
-            type="button"
-            className={`${styles.selectInput} ${datePresetMode === 'today' ? styles.chipBtnActive : ''}`}
-            style={{ flex: 1, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
-            onClick={selectToday}
-          >
-            {getDateStatusLabel()}
-          </button>
-          <button
-            type="button"
-            className={styles.selectInput}
-            style={{ width: '40px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            onClick={() => setActivePopover(!activePopover)}
-            title="Открыть календарик"
-          >
-            📅
+        <div style={{ position: 'relative' }}>
+          <button type="button" onClick={() => setActivePopover(!activePopover)} style={{ width: '100%', height: '40px', background: 'transparent', border: 'none', borderBottom: '2px solid rgba(255,255,255,0.2)', color: 'var(--color-text)', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 4px', cursor: 'pointer' }}>
+            <span>{getDateStatusLabel()}</span>
+            <span style={{ fontSize: '10px', opacity: 0.4 }}>▾</span>
           </button>
           {activePopover && (
-            <div style={{ position: 'absolute', top: '44px', right: 0, width: '210px', zIndex: 100, background: '#1e293b', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '6px', boxShadow: '0 8px 24px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <button type="button" className={styles.chipBtn} onClick={selectToday}>☀️ Сегодня</button>
-              <button type="button" className={styles.chipBtn} onClick={selectTomorrow}>🌅 Завтра</button>
-              <button type="button" className={styles.chipBtn} onClick={triggerHiddenPicker}>📆 Выбрать дату...</button>
-              <button type="button" className={styles.chipBtn} onClick={selectNone} style={{ color: '#ef4444' }}>✕ Без даты</button>
+            <div style={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 100, background: '#1a1f2e', borderRadius: '10px', padding: '4px', boxShadow: '0 8px 32px rgba(0,0,0,0.7)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column' }}>
+              {[{ label: 'Сегодня', sub: 'сб', action: selectToday }, { label: 'Завтра', sub: 'вс', action: selectTomorrow }, { label: 'Выбрать дату', sub: '...', action: triggerHiddenPicker }, { label: 'Без даты', sub: '—', action: selectNone }].map(({ label, sub, action }) => (
+                <button key={label} type="button" onClick={action} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'transparent', border: 'none', borderRadius: '6px', color: 'var(--color-text)', fontSize: '13px', padding: '7px 10px', cursor: 'pointer' }}>
+                  <span>{label}</span><span style={{ opacity: 0.3, fontSize: '11px' }}>{sub}</span>
+                </button>
+              ))}
             </div>
           )}
         </div>
@@ -340,24 +328,22 @@ export const QuickCreateModal: React.FC = () => {
     }
 
     if (dateVariant === 6) {
+      const icons = [
+        { emoji: '☀️', label: 'Сегодня', mode: 'today' as const, action: selectToday },
+        { emoji: '🌅', label: 'Завтра', mode: 'tomorrow' as const, action: selectTomorrow },
+        { emoji: '📆', label: datePresetMode === 'custom' && scheduledDate ? formatDateDisplay(scheduledDate) : 'Дата', mode: 'custom' as const, action: triggerHiddenPicker },
+        { emoji: '✕', label: 'Нет', mode: 'none' as const, action: selectNone },
+      ];
       return (
-        <div style={{ position: 'relative' }}>
-          <button
-            type="button"
-            className={styles.selectInput}
-            onClick={() => setActivePopover(!activePopover)}
-            style={{ background: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.4)', color: '#818cf8', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-          >
-            <span>⚡ {getDateStatusLabel()}</span>
-            <span style={{ fontSize: '11px', opacity: 0.7 }}>(T) ▾</span>
-          </button>
-          {activePopover && (
-            <div style={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 100, background: '#0f172a', border: '1px solid #818cf8', borderRadius: '12px', padding: '6px', boxShadow: '0 8px 24px rgba(0,0,0,0.6)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <button type="button" className={styles.chipBtn} onClick={selectToday}>☀️ Сегодня (T)</button>
-              <button type="button" className={styles.chipBtn} onClick={selectTomorrow}>🌅 Завтра (TM)</button>
-              <button type="button" className={styles.chipBtn} onClick={triggerHiddenPicker}>📆 Выбрать дату... (C)</button>
-              <button type="button" className={styles.chipBtn} onClick={selectNone} style={{ color: '#ef4444' }}>✕ Без даты (X)</button>
-            </div>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          {icons.map(({ emoji, label, mode, action }) => {
+            const isActive = datePresetMode === mode;
+            return (
+              <button key={mode} type="button" onClick={action} title={label} style={{ flexShrink: 0, width: '40px', height: '40px', borderRadius: '50%', background: isActive ? 'rgba(99,102,241,0.25)' : 'rgba(255,255,255,0.05)', border: isActive ? '2px solid #818cf8' : '2px solid rgba(255,255,255,0.1)', fontSize: '18px', cursor: 'pointer', transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: isActive ? '0 0 10px rgba(129,140,248,0.5)' : 'none' }}>{emoji}</button>
+            );
+          })}
+          {datePresetMode === 'custom' && scheduledDate && (
+            <span style={{ fontSize: '12px', color: '#818cf8', fontWeight: 600, flex: 1 }}>{formatDateDisplay(scheduledDate)}</span>
           )}
         </div>
       );
@@ -366,21 +352,18 @@ export const QuickCreateModal: React.FC = () => {
     if (dateVariant === 7) {
       return (
         <div style={{ position: 'relative' }}>
-          <button
-            type="button"
-            className={styles.selectInput}
-            onClick={() => setActivePopover(!activePopover)}
-            style={{ borderColor: '#f97316', color: '#f97316', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-          >
-            <span>🗓 {getDateStatusLabel()}</span>
-            <span>⋮</span>
+          <button type="button" onClick={() => setActivePopover(!activePopover)} style={{ width: '100%', height: '40px', borderRadius: '12px', background: 'rgba(120,130,160,0.15)', border: '1px solid rgba(255,255,255,0.12)', color: 'var(--color-text)', fontSize: '14px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '8px', padding: '0 14px', cursor: 'pointer' }}>
+            <span style={{ fontSize: '16px' }}>🗓</span>
+            <span style={{ flex: 1, textAlign: 'left' }}>{getDateStatusLabel()}</span>
+            <span style={{ fontSize: '18px', opacity: 0.3 }}>›</span>
           </button>
           {activePopover && (
-            <div style={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 100, background: '#18181b', border: '1px solid #f97316', borderRadius: '12px', padding: '6px', boxShadow: '0 8px 24px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <button type="button" className={styles.chipBtn} onClick={selectToday}>☀️ Сегодня</button>
-              <button type="button" className={styles.chipBtn} onClick={selectTomorrow}>🌅 Завтра</button>
-              <button type="button" className={styles.chipBtn} onClick={triggerHiddenPicker}>📆 Выбрать дату...</button>
-              <button type="button" className={styles.chipBtn} onClick={selectNone} style={{ color: '#ef4444' }}>✕ Без даты</button>
+            <div style={{ position: 'absolute', top: '46px', left: 0, right: 0, zIndex: 100, background: 'rgba(28,35,55,0.95)', backdropFilter: 'blur(24px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 24px 48px rgba(0,0,0,0.7)' }}>
+              {[{ label: 'Сегодня', icon: '☀️', action: selectToday }, { label: 'Завтра', icon: '🌅', action: selectTomorrow }, { label: 'Выбрать дату...', icon: '📆', action: triggerHiddenPicker }, { label: 'Без даты', icon: '✕', action: selectNone, destructive: true }].map(({ label, icon, action, destructive }, i) => (
+                <button key={label} type="button" onClick={action} style={{ width: '100%', background: 'transparent', border: 'none', borderTop: i > 0 ? '1px solid rgba(255,255,255,0.06)' : 'none', color: destructive ? '#f87171' : 'var(--color-text)', fontSize: '15px', padding: '13px 16px', display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer', textAlign: 'left' }}>
+                  <span>{icon}</span><span>{label}</span>
+                </button>
+              ))}
             </div>
           )}
         </div>
@@ -390,22 +373,17 @@ export const QuickCreateModal: React.FC = () => {
     if (dateVariant === 8) {
       return (
         <div style={{ position: 'relative' }}>
-          <button
-            type="button"
-            className={styles.selectInput}
-            onClick={() => setActivePopover(!activePopover)}
-            style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-          >
+          <button type="button" onClick={() => setActivePopover(!activePopover)} style={{ width: '100%', height: '40px', borderRadius: '10px', background: 'linear-gradient(135deg, rgba(139,92,246,0.25), rgba(59,130,246,0.25))', border: '1px solid rgba(139,92,246,0.5)', color: '#c4b5fd', fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 14px', cursor: 'pointer', boxShadow: '0 2px 16px rgba(139,92,246,0.2)' }}>
             <span>📅 {getDateStatusLabel()}</span>
-            <span>⚙️</span>
+            <span style={{ fontSize: '11px', background: 'rgba(139,92,246,0.3)', borderRadius: '6px', padding: '2px 6px' }}>срок</span>
           </button>
           {activePopover && (
-            <div style={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 100, background: '#1e1e1e', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '12px', padding: '8px', boxShadow: '0 8px 24px rgba(0,0,0,0.6)', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <span style={{ fontSize: '11px', color: '#888' }}>Notion Calendar:</span>
-              <button type="button" className={styles.chipBtn} onClick={selectToday}>☀️ Сегодня</button>
-              <button type="button" className={styles.chipBtn} onClick={selectTomorrow}>🌅 Завтра</button>
-              <button type="button" className={styles.chipBtn} onClick={triggerHiddenPicker}>📆 Выбрать дату...</button>
-              <button type="button" className={styles.chipBtn} onClick={selectNone} style={{ color: '#ef4444' }}>✕ Без даты</button>
+            <div style={{ position: 'absolute', top: '46px', left: 0, right: 0, zIndex: 100, background: 'linear-gradient(160deg, #1e1b4b, #1e293b)', border: '1px solid rgba(139,92,246,0.4)', borderRadius: '12px', padding: '6px', boxShadow: '0 12px 40px rgba(139,92,246,0.3)', display: 'flex', flexDirection: 'column', gap: '3px' }}>
+              {[{ label: 'Сегодня', icon: '☀️', action: selectToday, color: '#a5b4fc' }, { label: 'Завтра', icon: '🌅', action: selectTomorrow, color: '#93c5fd' }, { label: 'Выбрать дату...', icon: '📆', action: triggerHiddenPicker, color: '#c4b5fd' }, { label: 'Без даты', icon: '✕', action: selectNone, color: '#f87171' }].map(({ label, icon, action, color }) => (
+                <button key={label} type="button" onClick={action} style={{ background: 'rgba(255,255,255,0.04)', border: 'none', borderRadius: '8px', color, fontSize: '13px', padding: '8px 12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', textAlign: 'left', fontWeight: 500 }}>
+                  <span>{icon}</span><span>{label}</span>
+                </button>
+              ))}
             </div>
           )}
         </div>
@@ -413,35 +391,38 @@ export const QuickCreateModal: React.FC = () => {
     }
 
     if (dateVariant === 9) {
+      const outlineChips = [
+        { label: '☀️ Сегодня', mode: 'today' as const, action: selectToday },
+        { label: '🌅 Завтра', mode: 'tomorrow' as const, action: selectTomorrow },
+        { label: datePresetMode === 'custom' && scheduledDate ? `📆 ${formatDateDisplay(scheduledDate)}` : '📆 Дата', mode: 'custom' as const, action: triggerHiddenPicker },
+        { label: '✕', mode: 'none' as const, action: selectNone },
+      ];
       return (
-        <div style={{ display: 'flex', gap: '3px', flexWrap: 'nowrap', overflowX: 'auto' }}>
-          <button type="button" className={`${styles.chipBtn} ${datePresetMode === 'today' ? styles.chipBtnActive : ''}`} onClick={selectToday}>☀️Сегодня</button>
-          <button type="button" className={`${styles.chipBtn} ${datePresetMode === 'tomorrow' ? styles.chipBtnActive : ''}`} onClick={selectTomorrow}>🌅Завтра</button>
-          <button type="button" className={`${styles.chipBtn} ${datePresetMode === 'custom' ? styles.chipBtnActive : ''}`} onClick={triggerHiddenPicker}>
-            {datePresetMode === 'custom' && scheduledDate ? `📆${formatDateDisplay(scheduledDate)}` : '📆Дата'}
-          </button>
-          <button type="button" className={styles.chipBtn} onClick={selectNone}>✕</button>
+        <div style={{ display: 'flex', gap: '5px', flexWrap: 'nowrap' }}>
+          {outlineChips.map(({ label, mode, action }) => {
+            const isActive = datePresetMode === mode;
+            return (
+              <button key={mode} type="button" onClick={action} style={{ flex: mode === 'custom' ? 1 : 'none', height: '36px', borderRadius: '18px', padding: '0 12px', border: `1.5px solid ${isActive ? 'var(--color-text)' : 'rgba(255,255,255,0.2)'}`, background: isActive ? 'var(--color-text)' : 'transparent', color: isActive ? 'var(--color-bg)' : 'rgba(255,255,255,0.65)', fontSize: '12px', fontWeight: isActive ? 700 : 400, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all 0.18s' }}>{label}</button>
+            );
+          })}
         </div>
       );
     }
 
     return (
       <div style={{ position: 'relative' }}>
-        <button
-          type="button"
-          className={styles.selectInput}
-          onClick={() => setActivePopover(!activePopover)}
-          style={{ borderRadius: '20px', background: 'linear-gradient(135deg, rgba(56,189,248,0.15) 0%, rgba(99,102,241,0.15) 100%)', border: '1px solid rgba(56,189,248,0.4)', color: '#38bdf8', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-        >
-          <span>💊 {getDateStatusLabel()}</span>
-          <span>▾</span>
+        <button type="button" onClick={() => setActivePopover(!activePopover)} style={{ width: '100%', height: '40px', borderRadius: '8px', background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.5)', color: '#fbbf24', fontSize: '13px', fontWeight: 700, fontFamily: 'monospace', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 12px', cursor: 'pointer' }}>
+          <span>▶ {getDateStatusLabel()}</span>
+          <span style={{ fontSize: '10px', opacity: 0.6, letterSpacing: '0.05em' }}>CMD+D ▾</span>
         </button>
         {activePopover && (
-          <div style={{ position: 'absolute', top: '44px', left: 0, right: 0, zIndex: 100, background: '#090d16', border: '1px solid #38bdf8', borderRadius: '16px', padding: '8px', boxShadow: '0 8px 24px rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <button type="button" className={styles.chipBtn} onClick={selectToday}>☀️ Сегодня</button>
-            <button type="button" className={styles.chipBtn} onClick={selectTomorrow}>🌅 Завтра</button>
-            <button type="button" className={styles.chipBtn} onClick={triggerHiddenPicker}>📆 Выбрать любую дату...</button>
-            <button type="button" className={styles.chipBtn} onClick={selectNone} style={{ color: '#ef4444' }}>✕ Без даты</button>
+          <div style={{ position: 'absolute', top: '46px', left: 0, right: 0, zIndex: 100, background: '#0c0a00', border: '1px solid rgba(217,119,6,0.6)', borderRadius: '8px', padding: '4px', boxShadow: '0 8px 32px rgba(217,119,6,0.2)', display: 'flex', flexDirection: 'column' }}>
+            {[{ key: 'T', label: 'Сегодня', action: selectToday }, { key: 'TM', label: 'Завтра', action: selectTomorrow }, { key: 'D', label: 'Выбрать дату...', action: triggerHiddenPicker }, { key: 'X', label: 'Без даты', action: selectNone, dim: true }].map(({ key, label, action, dim }) => (
+              <button key={key} type="button" onClick={action} style={{ background: 'transparent', border: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: dim ? 'rgba(251,191,36,0.4)' : '#fbbf24', fontFamily: 'monospace', fontSize: '13px', padding: '7px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+                <span>{label}</span>
+                <span style={{ opacity: 0.4, fontSize: '11px' }}>[{key}]</span>
+              </button>
+            ))}
           </div>
         )}
       </div>
@@ -463,7 +444,10 @@ export const QuickCreateModal: React.FC = () => {
               setDatePresetMode('custom');
             }
           }}
-          style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', width: 0, height: 0 }}
+          style={{
+            position: 'absolute', opacity: 0, pointerEvents: 'none', width: 0, height: 0,
+            colorScheme: 'dark',
+          }}
         />
 
         {/* 10 Date Picker Single-Control UX Selector Header Bar */}
