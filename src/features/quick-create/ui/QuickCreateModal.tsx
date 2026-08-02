@@ -204,53 +204,69 @@ export const QuickCreateModal: React.FC = () => {
     }
 
     if (dateVariant === 2) {
-      if (datePresetMode === 'custom') {
-        return (
-          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
-            <input
-              ref={hiddenNativeInputRef}
-              type="date"
-              value={scheduledDate || ''}
-              onChange={(e) => {
-                const val = e.target.value;
-                if (val) {
-                  setScheduledDate(val);
-                  setDatePresetMode('custom');
-                }
-              }}
-              className={styles.selectInput}
-              style={{ flex: 1 }}
-            />
-            <button
-              type="button"
-              className={styles.dateClearBtn}
-              onClick={selectNone}
-              title="Убрать дату"
-              style={{ position: 'static', transform: 'none', flexShrink: 0 }}
-            >
-              ✕
-            </button>
-          </div>
-        );
-      }
+      const customLabel = (datePresetMode === 'custom' && scheduledDate)
+        ? `📆 ${formatDateDisplay(scheduledDate)}`
+        : '📆 Выбрать дату...';
+
+      const openPicker = () => {
+        const el = hiddenNativeInputRef.current as HTMLInputElement | null;
+        if (!el) return;
+        try {
+          if (typeof (el as any).showPicker === 'function') {
+            (el as any).showPicker();
+          } else {
+            el.click();
+          }
+        } catch {
+          try { el.click(); } catch { /* iOS: silently fail, overlay handles it */ }
+        }
+      };
 
       return (
-        <select
-          className={styles.selectInput}
-          value={datePresetMode}
-          onChange={(e) => {
-            const v = e.target.value;
-            if (v === 'today') selectToday();
-            else if (v === 'tomorrow') selectTomorrow();
-            else if (v === 'none') selectNone();
-            else setDatePresetMode('custom');
-          }}
-        >
-          <option value="today">☀️ Сегодня</option>
-          <option value="tomorrow">🌅 Завтра</option>
-          <option value="custom">📆 Выбрать дату...</option>
-          <option value="none">✕ Без даты</option>
-        </select>
+        <div style={{ position: 'relative' }}>
+          <select
+            className={styles.selectInput}
+            value={datePresetMode}
+            onChange={(e) => {
+              const v = e.target.value;
+              if (v === 'today') { selectToday(); return; }
+              if (v === 'tomorrow') { selectTomorrow(); return; }
+              if (v === 'none') { selectNone(); return; }
+              setDatePresetMode('custom');
+              openPicker();
+            }}
+          >
+            <option value="today">☀️ Сегодня</option>
+            <option value="tomorrow">🌅 Завтра</option>
+            <option value="custom">{customLabel}</option>
+            <option value="none">✕ Без даты</option>
+          </select>
+
+          <input
+            ref={hiddenNativeInputRef}
+            type="date"
+            value={scheduledDate || ''}
+            onChange={(e) => {
+              if (e.target.value) {
+                setScheduledDate(e.target.value);
+                setDatePresetMode('custom');
+              }
+            }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: 'calc(100% - 36px)',
+              height: '100%',
+              opacity: 0,
+              border: 'none',
+              background: 'transparent',
+              pointerEvents: datePresetMode === 'custom' ? 'auto' : 'none',
+              cursor: 'pointer',
+              zIndex: datePresetMode === 'custom' ? 2 : -1,
+            }}
+          />
+        </div>
       );
     }
 

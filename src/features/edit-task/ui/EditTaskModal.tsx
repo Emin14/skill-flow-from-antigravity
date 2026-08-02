@@ -235,63 +235,86 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
       );
     }
 
-    // Variant 2: Single Native Dropdown — transforms to a date input on "custom"
-    // iOS Safari cannot open a date picker programmatically.
-    // Solution: the <select> handles Сегодня/Завтра/Без даты.
-    // When user picks "Выбрать дату...", the control becomes a real
-    // <input type="date"> (same height/style). iOS opens it natively on tap.
-    // After selection the control reverts to a <select> showing the chosen date.
+    // Variant 2: Single-field select with immediate calendar trigger
+    // Desktop: showPicker() called synchronously inside onChange (user-gesture context) → calendar opens immediately.
+    // iOS: transparent <input type="date"> overlays the select area (left ~80%) so a direct tap opens the native picker.
+    //      The select's dropdown arrow (right ~32px) stays accessible so the user can switch back to Сегодня/Завтра/Без даты.
     if (dateVariant === 2) {
-      // When in custom mode: show a styled date input (same size as the select)
-      // with a tiny × reset button to go back
-      if (datePresetMode === 'custom') {
-        return (
-          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
-            <input
-              ref={hiddenNativeInputRef}
-              type="date"
-              value={scheduledDate || ''}
-              onChange={(e) => {
-                const val = e.target.value;
-                if (val) {
-                  setScheduledDate(val);
-                  setDatePresetMode('custom');
-                }
-              }}
-              className={styles.selectInput}
-              style={{ flex: 1 }}
-            />
-            <button
-              type="button"
-              className={styles.dateClearBtn}
-              onClick={selectNone}
-              title="Убрать дату"
-              style={{ position: 'static', transform: 'none', flexShrink: 0 }}
-            >
-              ✕
-            </button>
-          </div>
-        );
-      }
+      const customLabel = (datePresetMode === 'custom' && scheduledDate)
+        ? `📆 ${formatDateDisplay(scheduledDate)}`
+        : '📆 Выбрать дату...';
 
-      // Default mode: single dropdown for the three quick presets
+      const openPicker = () => {
+        const el = hiddenNativeInputRef.current as HTMLInputElement | null;
+        if (!el) return;
+        try {
+          if (typeof (el as any).showPicker === 'function') {
+            (el as any).showPicker();
+          } else {
+            el.click();
+          }
+        } catch {
+          try { el.click(); } catch { /* iOS: silently fail, overlay handles it */ }
+        }
+      };
+
       return (
-        <select
-          className={styles.selectInput}
-          value={datePresetMode}
-          onChange={(e) => {
-            const v = e.target.value;
-            if (v === 'today') selectToday();
-            else if (v === 'tomorrow') selectTomorrow();
-            else if (v === 'none') selectNone();
-            else setDatePresetMode('custom'); // triggers re-render → date input appears
-          }}
-        >
-          <option value="today">☀️ Сегодня</option>
-          <option value="tomorrow">🌅 Завтра</option>
-          <option value="custom">📆 Выбрать дату...</option>
-          <option value="none">✕ Без даты</option>
-        </select>
+        <div style={{ position: 'relative' }}>
+          <select
+            className={styles.selectInput}
+            value={datePresetMode}
+            onChange={(e) => {
+              const v = e.target.value;
+              if (v === 'today') { selectToday(); return; }
+              if (v === 'tomorrow') { selectTomorrow(); return; }
+              if (v === 'none') { selectNone(); return; }
+              // 'custom': set state, then immediately try to open the calendar (desktop)
+              setDatePresetMode('custom');
+              openPicker();
+            }}
+          >
+            <option value="today">☀️ Сегодня</option>
+            <option value="tomorrow">🌅 Завтра</option>
+            <option value="custom">{customLabel}</option>
+            <option value="none">✕ Без даты</option>
+          </select>
+
+          {/*
+            Transparent <input type="date"> always positioned over the select.
+            Desktop: showPicker() above opens the calendar at the correct location.
+            iOS (custom mode): this element becomes interactable (pointerEvents auto)
+              so a direct finger tap triggers the native date picker.
+            The right 36px is left uncovered so the select's dropdown arrow
+            stays tappable → user can switch back to Сегодня/Завтра/Без даты.
+          */}
+          <input
+            ref={hiddenNativeInputRef}
+            type="date"
+            value={scheduledDate || ''}
+            onChange={(e) => {
+              if (e.target.value) {
+                setScheduledDate(e.target.value);
+                setDatePresetMode('custom');
+              }
+            }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              // Cover most of the select, leave dropdown arrow accessible
+              width: 'calc(100% - 36px)',
+              height: '100%',
+              opacity: 0,
+              border: 'none',
+              background: 'transparent',
+              // Active only in custom mode (iOS tap to open picker)
+              // In non-custom modes, pointer-events off so select works normally
+              pointerEvents: datePresetMode === 'custom' ? 'auto' : 'none',
+              cursor: 'pointer',
+              zIndex: datePresetMode === 'custom' ? 2 : -1,
+            }}
+          />
+        </div>
       );
     }
 
