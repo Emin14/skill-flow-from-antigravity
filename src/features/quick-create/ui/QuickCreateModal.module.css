@@ -7,11 +7,11 @@
   background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: var(--z-index-modal);
-  /* Safe Area Insets Compliance for iOS / Android */
-  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
 }
 
 .modal {
@@ -19,56 +19,96 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 520px;
+  max-width: 720px;
+  height: 640px;
   max-height: 90vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  box-shadow: var(--shadow-xl);
-  padding: var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  box-shadow: var(--shadow-xl);
+  padding: 16px 20px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* Accessible 44px x 44px Touch Target Close Button */
-.closeBtn {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+/* Concept Variant Selector Bar Above Modal Header (20 Items) */
+.variantBar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+  padding: 4px 6px;
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  font-size: 20px;
-  font-weight: 400;
-  cursor: pointer;
+  border-radius: 12px;
+  scrollbar-width: thin;
+  flex-shrink: 0;
+}
+
+.variantBar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.variantBar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.variantBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-fast);
-  padding: 0;
+  min-width: 30px;
+  height: 26px;
+  padding: 0 7px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
 }
 
-.closeBtn:hover {
-  background-color: var(--color-surface-hover);
+.variantBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
   color: var(--color-text-primary);
 }
 
-/* Category & Date in 1 row with EXACT EQUAL HEIGHT (42px) */
-.formRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
+.variantBtnActive {
+  background: var(--color-accent) !important;
+  color: #ffffff !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
 }
 
-.formCol {
+/* UX Concept Explanation Banner */
+.uxBanner {
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  font-size: 11.5px;
+  color: #38bdf8;
+  line-height: 1.35;
+  flex-shrink: 0;
+}
+
+/* Scrollable Fixed-Height Body Canvas */
+.modalBody {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
-/* Category and Date inputs with EXACT EQUAL 42px HEIGHT */
+/* Shared Input Styles */
 .selectInput {
   width: 100%;
   padding: 0 12px;
@@ -76,80 +116,44 @@
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   outline: none;
   box-sizing: border-box;
-  height: 42px;
-  line-height: 42px;
-  accent-color: #0ea5e9;
+  height: 38px;
+  line-height: 38px;
 }
 
-.selectInputCompact {
+.selectInput:focus {
+  border-color: var(--color-accent);
+}
+
+.compactTextarea {
   width: 100%;
-  padding: 0 10px;
+  min-height: 52px;
+  height: 58px;
+  padding: 8px 12px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-size: 16px;
+  font-size: 14px;
   outline: none;
   box-sizing: border-box;
-  height: 42px;
-  line-height: 42px;
-  text-overflow: ellipsis;
-  accent-color: #0ea5e9;
+  resize: vertical;
 }
 
-.selectInput:focus,
-.selectInputCompact:focus {
-  border-color: var(--color-accent);
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
-/* 1-Tap Quick Date Pills Row */
-.quickDatePillsRow {
+.formCol {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  overflow-x: auto;
-  padding: 2px 0;
-  scrollbar-width: none;
+  flex-direction: column;
 }
 
-.quickDatePillsRow::-webkit-scrollbar {
-  display: none;
-}
-
-.datePill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0 12px;
-  height: 36px;
-  min-height: 36px;
-  border-radius: var(--radius-sm);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.15s ease;
-}
-
-.datePill:hover {
-  background: var(--color-surface-hover);
-  color: var(--color-text-primary);
-}
-
-.datePillActive {
-  background: rgba(14, 165, 233, 0.15);
-  border-color: rgba(14, 165, 233, 0.4);
-  color: #0ea5e9;
-  font-weight: 600;
-}
-
-/* Date input container with 44px x 44px touch target clear button */
 .dateInputContainer {
   position: relative;
   display: flex;
@@ -159,104 +163,123 @@
 
 .dateClearBtn {
   position: absolute;
-  right: 2px;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: transparent;
   border: none;
   color: var(--color-text-muted);
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 13px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.15s ease;
-  z-index: 5;
 }
 
-.dateClearBtn:hover {
-  background: rgba(239, 68, 68, 0.25);
-  color: #ef4444;
-}
-
-/* Compact Textarea for Description */
-.compactTextarea {
-  width: 100%;
-  min-height: 52px;
-  height: 56px;
-  max-height: 120px;
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
+.closeBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--color-border);
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
+  color: var(--color-text-muted);
   font-size: 16px;
-  outline: none;
-  box-sizing: border-box;
-  resize: vertical;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Accessible 44px x 44px Send / Submit Icon Button */
 .sendBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
+  height: 38px;
+  padding: 0 16px;
   border-radius: var(--radius-md);
   background-color: var(--color-accent);
   color: #ffffff;
   border: none;
+  font-size: 13.5px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  padding: 0;
   box-shadow: 0 2px 8px rgba(96, 165, 250, 0.35);
-  margin-left: 2px;
 }
 
-.sendBtn:hover {
-  transform: translateY(-1px) scale(1.03);
-  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.5);
+/* 20 Interaction Helper Styles */
+.cardSection {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.sendBtn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+.splitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  height: 100%;
+}
+
+.notionPropRow {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.notionPropLabel {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chipBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chipBtn {
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chipBtnActive {
+  background: rgba(14, 165, 233, 0.2) !important;
+  border-color: #0ea5e9 !important;
+  color: #38bdf8 !important;
 }
 
 @media (max-width: 600px) {
-  .overlay {
-    padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
-    align-items: flex-end;
-  }
-
   .modal {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    max-height: 90vh;
-    padding: 16px;
-    gap: 12px;
+    height: 88vh;
+    padding: 12px;
   }
-
-  .formRow {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+  .splitGrid {
+    grid-template-columns: 1fr;
   }
-
-  .selectInput {
-    padding: 0 8px;
-    font-size: 16px;
-    height: 42px;
-    line-height: 42px;
+  .notionPropRow {
+    grid-template-columns: 100px 1fr;
   }
 }

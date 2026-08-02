@@ -16,39 +16,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       error,
       disableAutofill = true,
       className = '',
-      autoComplete = 'off',
+      autoComplete = 'one-time-code',
       autoCorrect = 'off',
       autoCapitalize = 'sentences',
       spellCheck = false,
-      onFocus,
-      onTouchStart,
       name,
       ...props
     },
     ref
   ) => {
-    // Top 1 Safari/iOS WebKit Autofill Bypass: Dynamic readOnly state
-    const [isReadOnly, setIsReadOnly] = useState<boolean>(disableAutofill);
-
-    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-      if (disableAutofill && isReadOnly) {
-        setIsReadOnly(false);
-      }
-      if (onFocus) {
-        onFocus(e);
-      }
-    };
-
-    const handleTouchStart = (e: React.TouchEvent<HTMLInputElement>) => {
-      if (disableAutofill && isReadOnly) {
-        setIsReadOnly(false);
-      }
-      if (onTouchStart) {
-        onTouchStart(e);
-      }
-    };
-
-    const safeName = name || 'app_input_field';
+    const safeName = name || 'task_field_input';
 
     return (
       <div className={styles.wrapper}>
@@ -56,17 +33,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           name={safeName}
-          readOnly={isReadOnly}
-          autoComplete={autoComplete}
+          autoComplete={disableAutofill ? 'one-time-code' : autoComplete}
           autoCorrect={autoCorrect}
           autoCapitalize={autoCapitalize}
           spellCheck={spellCheck}
-          onFocus={handleFocus}
-          onTouchStart={handleTouchStart}
-          className={`${styles.input} ${className}`}
+          data-lpignore="true"
+          data-form-type="other"
+          className={`${styles.input} ${error ? styles.inputError : ''} ${className}`}
           {...props}
         />
-        {error && <span className={styles.errorText}>{error}</span>}
+        {error && <span className={styles.error}>{error}</span>}
       </div>
     );
   }

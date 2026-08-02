@@ -307,7 +307,7 @@ export const CalendarPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Task List for Selected Date (Unified GlassmorphicTaskCard) */}
+        {/* Task List for Selected Date (Unified GlassmorphicTaskCard + Subtasks) */}
         {isLoading ? (
           <div className={styles.emptyState}>Загрузка...</div>
         ) : selectedDayTasks.length === 0 ? (
@@ -316,18 +316,47 @@ export const CalendarPage: React.FC = () => {
           </div>
         ) : (
           <div className={styles.taskList}>
-            {selectedDayTasks.map((t) => (
-              <GlassmorphicTaskCard
-                key={t.id}
-                task={t}
-                occurrenceDate={selectedDate}
-                allTasks={tasks}
-                showDragHandle={false}
-                onToggleCheckbox={() => handleCheckboxToggle(t)}
-                onDelete={() => deleteTask(t.id)}
-                onClick={() => handleTaskClick(t)}
-              />
-            ))}
+            {selectedDayTasks.map((t) => {
+              const renderSubtasksRecursive = (parentId: string, depthLevel = 1, visited = new Set<string>()): React.ReactNode => {
+                if (depthLevel > 10 || visited.has(parentId)) return null;
+                visited.add(parentId);
+
+                const children = tasks.filter((sub) => sub.parentTaskId === parentId);
+                if (children.length === 0) return null;
+
+                return children.map((subtask) => (
+                  <React.Fragment key={subtask.id}>
+                    <div style={{ marginLeft: `${Math.min(depthLevel, 4) * 16}px`, marginTop: '6px' }}>
+                      <GlassmorphicTaskCard
+                        task={subtask}
+                        occurrenceDate={selectedDate}
+                        allTasks={tasks}
+                        showDragHandle={false}
+                        onToggleCheckbox={() => handleCheckboxToggle(subtask)}
+                        onDelete={() => deleteTask(subtask.id)}
+                        onClick={() => handleTaskClick(subtask)}
+                      />
+                    </div>
+                    {renderSubtasksRecursive(subtask.id, depthLevel + 1, new Set(visited))}
+                  </React.Fragment>
+                ));
+              };
+
+              return (
+                <React.Fragment key={t.id}>
+                  <GlassmorphicTaskCard
+                    task={t}
+                    occurrenceDate={selectedDate}
+                    allTasks={tasks}
+                    showDragHandle={false}
+                    onToggleCheckbox={() => handleCheckboxToggle(t)}
+                    onDelete={() => deleteTask(t.id)}
+                    onClick={() => handleTaskClick(t)}
+                  />
+                  {renderSubtasksRecursive(t.id, 1)}
+                </React.Fragment>
+              );
+            })}
           </div>
         )}
       </div>

@@ -19,6 +19,8 @@ import {
 } from 'lucide-react';
 import styles from './TodayTasks.module.css';
 
+import { applyCategoryTextTheme, applyCardBgTheme, CARD_BG_THEMES } from '@/shared/config/categoryColors';
+
 type ViewMode = 'all' | 'actions' | 'repeats';
 
 const getTodayStr = () => new Date().toISOString().split('T')[0];
@@ -30,6 +32,21 @@ export const TodayTasks: React.FC = () => {
   const [smartTask, setSmartTask] = useState<Task | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('all');
   const [todayStr, setTodayStr] = useState<string>(getTodayStr());
+  const [selectedCardBgThemeId, setSelectedCardBgThemeId] = useState<string>('classic');
+
+  useEffect(() => {
+    const savedCatId = localStorage.getItem('skillflow_category_text_theme_id') || 'amber';
+    const savedBgId = localStorage.getItem('skillflow_card_bg_theme_id') || 'classic';
+    setSelectedCardBgThemeId(savedBgId);
+    applyCategoryTextTheme(savedCatId);
+    applyCardBgTheme(savedBgId);
+  }, []);
+
+  const handleCardBgSelect = (bgId: string) => {
+    setSelectedCardBgThemeId(bgId);
+    localStorage.setItem('skillflow_card_bg_theme_id', bgId);
+    applyCardBgTheme(bgId);
+  };
 
   // BUG-HIGH-08: Midnight auto-update timer
   useEffect(() => {
@@ -93,6 +110,7 @@ export const TodayTasks: React.FC = () => {
     const draggedTaskId = e.dataTransfer.getData('text/plain');
     if (draggedTaskId) {
       updateTaskStatus(draggedTaskId, targetStatus, undefined, todayStr);
+      updateTaskParent(draggedTaskId, null);
     }
   };
 
@@ -151,6 +169,44 @@ export const TodayTasks: React.FC = () => {
             <Brain size={13} color="#38bdf8" />
             🧠 Повторения
           </button>
+        </div>
+      </div>
+
+      {/* TEMPORARY FEATURE: Live Card Background Theme Selector Bar */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '10px 14px', borderRadius: '12px', background: 'rgba(255, 255, 255, 0.04)', border: '1px solid var(--color-border)', margin: '4px 0 12px 0' }}>
+        <div style={{ fontSize: '11.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          🎴 Живой выбор фона карточек задач (10 вариантов для просмотра):
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+          {CARD_BG_THEMES.map((opt) => {
+            const isLight = typeof window !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'light';
+            const modeData = isLight ? opt.light : opt.dark;
+            const isSelected = selectedCardBgThemeId === opt.id;
+            return (
+              <button
+                key={opt.id}
+                onClick={() => handleCardBgSelect(opt.id)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '5px 10px',
+                  borderRadius: '8px',
+                  border: isSelected ? '2px solid var(--color-accent)' : `1px solid ${modeData.borderColor}`,
+                  background: modeData.bgGradient,
+                  color: 'var(--color-text-primary)',
+                  fontSize: '11.5px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                  boxShadow: isSelected ? '0 0 10px rgba(99, 102, 241, 0.4)' : 'none',
+                }}
+              >
+                <span style={{ width: 7, height: 7, borderRadius: '50%', border: `1px solid ${modeData.borderColor}` }} />
+                {opt.name.split(' (')[0]}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -214,6 +270,7 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={(t) => handleToggleCheckbox(t, false)}
+            onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
             onDelete={(id) => deleteTask(id)}
             onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
           />
@@ -231,6 +288,7 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={(t) => handleToggleCheckbox(t, false)}
+            onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
             onDelete={(id) => deleteTask(id)}
             onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
           />
@@ -248,6 +306,7 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={(t) => handleToggleCheckbox(t, true)}
+            onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
             onDelete={(id) => deleteTask(id)}
             onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
           />
@@ -295,6 +354,7 @@ interface KanbanStageSectionProps {
   onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
   onOpenCard: (task: Task) => void;
   onToggleCheckbox: (task: Task) => void;
+  onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
   onDelete: (taskId: string) => void;
   onCompleteParent: (taskId: string) => void;
 }
@@ -311,6 +371,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   onDropOnTask,
   onOpenCard,
   onToggleCheckbox,
+  onStatusChange,
   onDelete,
   onCompleteParent,
 }) => {
@@ -340,6 +401,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
             allTasks={allTasks}
             showDragHandle={true}
             onToggleCheckbox={() => onToggleCheckbox(subtask)}
+            onStatusChange={(nextStatus) => onStatusChange(subtask.id, nextStatus)}
             onDelete={() => onDelete(subtask.id)}
             onClick={() => onOpenCard(subtask)}
             onDropOnTask={onDropOnTask}
@@ -414,6 +476,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
                     allTasks={allTasks}
                     showDragHandle={true}
                     onToggleCheckbox={() => onToggleCheckbox(task)}
+                    onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
                     onDelete={() => onDelete(task.id)}
                     onClick={() => onOpenCard(task)}
                     onDropOnTask={onDropOnTask}

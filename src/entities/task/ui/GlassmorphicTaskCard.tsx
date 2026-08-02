@@ -115,7 +115,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
 
   // BUG-HIGH-01: Multi-level subtasks progress calculation using getAllDescendantTasks
   const descendantSubtasks = useMemo(() => getAllDescendantTasks(task.id, allTasks), [allTasks, task.id]);
-  const isContainer = task.hasSubtasks || descendantSubtasks.length > 0;
+  const isContainer = descendantSubtasks.length > 0;
   const doneSubtasksCount = useMemo(() => descendantSubtasks.filter((t) => t.status === 'Done').length, [descendantSubtasks]);
   const areAllSubtasksDone = isContainer && descendantSubtasks.length > 0 && doneSubtasksCount === descendantSubtasks.length;
 
@@ -294,7 +294,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
               </span>
               <div className={styles.metaRow}>
                 <span className={styles.catDot} style={{ backgroundColor: catColor }} />
-                <span>{task.category || 'Без категории'}</span>
+                <span className={styles.categoryText}>{task.category || 'Без категории'}</span>
                 {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {formattedLink && (
                   <a

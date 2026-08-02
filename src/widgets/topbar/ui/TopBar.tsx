@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { Settings } from 'lucide-react';
 import { useThemeStore } from '@/shared/model/useThemeStore';
 import styles from './TopBar.module.css';
 
@@ -19,6 +20,7 @@ const pathTitles: Record<string, string> = {
 
 export const TopBar: React.FC = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const currentTitle = pathTitles[pathname] || 'SkillFlow';
   const isTodayPage = pathname === '/' || pathname === '/today';
 
@@ -47,7 +49,7 @@ export const TopBar: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.actions}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <button
           onClick={toggleTheme}
           title={theme === 'dark' ? 'Переключить на светлую тему' : 'Переключить на темную тему'}
@@ -66,9 +68,32 @@ export const TopBar: React.FC = () => {
             fontWeight: 500,
             transition: 'all var(--transition-fast)',
             whiteSpace: 'nowrap',
+            height: '34px',
           }}
         >
           {theme === 'dark' ? '🌙 Темная' : '☀️ Светлая'}
+        </button>
+
+        <button
+          onClick={() => router.push('/settings')}
+          title="Открыть Настройки"
+          aria-label="Настройки"
+          style={{
+            background: 'rgba(255, 255, 255, 0.06)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '50%',
+            width: '34px',
+            height: '34px',
+            color: 'var(--color-text-primary)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all var(--transition-fast)',
+            flexShrink: 0,
+          }}
+        >
+          <Settings size={17} />
         </button>
       </div>
     </header>

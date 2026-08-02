@@ -4,6 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { Card, Typography, Button, useToastStore } from '@/shared/ui';
 import styles from './SettingsPage.module.css';
 
+import {
+  CATEGORY_TEXT_THEMES,
+  CARD_BG_THEMES,
+  applyCategoryTextTheme,
+  applyCardBgTheme,
+} from '@/shared/config/categoryColors';
+
 const colorPalettes = [
   { name: 'Фиолетовый (Aura)', hex: '#6366f1' },
   { name: 'Изумрудный', hex: '#10b981' },
@@ -17,15 +24,23 @@ export const SettingsPage: React.FC = () => {
 
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [selectedColor, setSelectedColor] = useState('#6366f1');
+  const [selectedCategoryThemeId, setSelectedCategoryThemeId] = useState('amber');
+  const [selectedCardBgThemeId, setSelectedCardBgThemeId] = useState('classic');
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<'Monday' | 'Sunday'>('Monday');
   const [dateFormat, setDateFormat] = useState<'DD.MM.YYYY' | 'YYYY-MM-DD'>('DD.MM.YYYY');
 
   useEffect(() => {
     const savedTheme = (localStorage.getItem('skillflow_theme') as 'dark' | 'light') || 'dark';
     const savedColor = localStorage.getItem('skillflow_accent_color') || '#6366f1';
+    const savedCatId = localStorage.getItem('skillflow_category_text_theme_id') || 'amber';
+    const savedBgId = localStorage.getItem('skillflow_card_bg_theme_id') || 'classic';
 
     setTheme(savedTheme);
     setSelectedColor(savedColor);
+    setSelectedCategoryThemeId(savedCatId);
+    setSelectedCardBgThemeId(savedBgId);
+    applyCategoryTextTheme(savedCatId);
+    applyCardBgTheme(savedBgId);
   }, []);
 
   const handleThemeChange = (newTheme: 'dark' | 'light') => {
@@ -36,6 +51,9 @@ export const SettingsPage: React.FC = () => {
     } else {
       document.documentElement.removeAttribute('data-theme');
     }
+
+    applyCategoryTextTheme(selectedCategoryThemeId);
+    applyCardBgTheme(selectedCardBgThemeId);
     showToast(`Тема переключена на ${newTheme === 'dark' ? 'Темную' : 'Светлую'}`, 'success');
   };
 
@@ -44,6 +62,22 @@ export const SettingsPage: React.FC = () => {
     localStorage.setItem('skillflow_accent_color', hex);
     document.documentElement.style.setProperty('--color-accent', hex);
     showToast('Основной цвет интерфейса обновлен!', 'success');
+  };
+
+  const handleCategoryThemeChange = (optId: string) => {
+    setSelectedCategoryThemeId(optId);
+    localStorage.setItem('skillflow_category_text_theme_id', optId);
+    applyCategoryTextTheme(optId);
+    const opt = CATEGORY_TEXT_THEMES.find((o) => o.id === optId) || CATEGORY_TEXT_THEMES[0];
+    showToast(`Цвета текста категории и повторов изменены на: ${opt.name}`, 'info');
+  };
+
+  const handleCardBgThemeChange = (bgId: string) => {
+    setSelectedCardBgThemeId(bgId);
+    localStorage.setItem('skillflow_card_bg_theme_id', bgId);
+    applyCardBgTheme(bgId);
+    const opt = CARD_BG_THEMES.find((o) => o.id === bgId) || CARD_BG_THEMES[0];
+    showToast(`Фон карточек изменен на: ${opt.name}`, 'info');
   };
 
   // Export JSON Backup
@@ -173,6 +207,92 @@ export const SettingsPage: React.FC = () => {
                 onClick={() => handleColorChange(pal.hex)}
               />
             ))}
+          </div>
+        </div>
+
+        {/* 10 Dual Accent Color Theme Options */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingTop: '12px', borderTop: '1px solid var(--color-border)' }}>
+          <div>
+            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
+              🎨 Цвета надписей категории и повторов (10 парных тем)
+            </div>
+            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
+              Гармонично подобранные сочетания цветов текста категории и тега повтора («Неоновый янтарь» по умолчанию)
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
+            {CATEGORY_TEXT_THEMES.map((opt) => {
+              const modeData = theme === 'light' ? opt.light : opt.dark;
+              const isSelected = selectedCategoryThemeId === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  onClick={() => handleCategoryThemeChange(opt.id)}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 12px',
+                    borderRadius: '10px',
+                    border: isSelected ? `2px solid ${modeData.categoryColor}` : '1px solid var(--color-border)',
+                    background: isSelected ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.03)',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                    <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: modeData.categoryColor }} title="Категория" />
+                    <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: modeData.repeatColor }} title="Повтор" />
+                  </div>
+                  <span style={{ color: modeData.categoryColor }}>{opt.name.split(' (')[0]}</span>
+                  <span style={{ color: modeData.repeatColor, fontSize: '11px', opacity: 0.9 }}>↻</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* 10 Card Background Theme Options */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingTop: '12px', borderTop: '1px solid var(--color-border)' }}>
+          <div>
+            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
+              🎴 Фоновое оформление карточек задач (10 вариантов)
+            </div>
+            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
+              Стеклянные градиенты, свечения и контуры карточек («Классическое стекло» по умолчанию)
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
+            {CARD_BG_THEMES.map((opt) => {
+              const modeData = theme === 'light' ? opt.light : opt.dark;
+              const isSelected = selectedCardBgThemeId === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  onClick={() => handleCardBgThemeChange(opt.id)}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 12px',
+                    borderRadius: '10px',
+                    border: isSelected ? '2px solid var(--color-accent)' : `1px solid ${modeData.borderColor}`,
+                    background: modeData.bgGradient,
+                    color: 'var(--color-text-primary)',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                    boxShadow: isSelected ? '0 0 10px rgba(99, 102, 241, 0.4)' : 'none',
+                  }}
+                >
+                  <span style={{ width: 8, height: 8, borderRadius: '50%', border: `1px solid ${modeData.borderColor}` }} />
+                  {opt.name}
+                </button>
+              );
+            })}
           </div>
         </div>
       </Card>

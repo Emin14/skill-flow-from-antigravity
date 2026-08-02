@@ -418,6 +418,9 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const updates: Partial<Task> = { status: newStatus };
     if (newStatus === 'Done') {
       updates.completedAt = nowIso;
+      if (!task.scheduledDate || task.scheduledDate === '' || task.scheduledDate === 'anytime') {
+        updates.scheduledDate = todayStr;
+      }
     } else if (newStatus === 'Todo') {
       updates.completedAt = null;
     }
