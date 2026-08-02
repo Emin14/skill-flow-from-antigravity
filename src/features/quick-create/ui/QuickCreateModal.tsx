@@ -148,7 +148,27 @@ export const QuickCreateModal: React.FC = () => {
           </button>
 
           {/* iOS transparent date input overlay — active only in custom mode */}
-
+          {datePresetMode === 'custom' && !activePopover && (
+            <input
+              ref={hiddenNativeInputRef}
+              type="date"
+              value={scheduledDate || ''}
+              onChange={(e) => {
+                if (e.target.value) {
+                  setScheduledDate(e.target.value);
+                  setDatePresetMode('custom');
+                }
+              }}
+              style={{
+                position: 'absolute', top: 0, left: 0,
+                width: 'calc(100% - 36px)', height: '100%',
+                opacity: 0, cursor: 'pointer',
+                border: 'none', background: 'transparent',
+                pointerEvents: 'auto', zIndex: 2,
+                colorScheme: 'dark',
+              }}
+            />
+          )}
 
           {activePopover && (
             <div style={{ position: 'absolute', top: '46px', left: 0, right: 0, zIndex: 100, background: 'rgba(15,23,42,0.85)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '14px', padding: '6px', boxShadow: '0 16px 40px rgba(0,0,0,0.6)', display: 'flex', flexDirection: 'column', gap: '2px' }}>
@@ -164,23 +184,7 @@ export const QuickCreateModal: React.FC = () => {
   return (
     <div className={styles.overlay} onClick={closeModal}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        {/* Hidden Native Calendar Picker Trigger */}
-        <input
-          type="date"
-          ref={hiddenNativeInputRef}
-          value={scheduledDate}
-          onChange={(e) => {
-            const val = e.target.value;
-            if (val) {
-              setScheduledDate(val);
-              setDatePresetMode('custom');
-            }
-          }}
-          style={{
-            position: 'absolute', opacity: 0, pointerEvents: 'none', width: 0, height: 0,
-            colorScheme: 'dark',
-          }}
-        />
+
 
 
         {/* Modal Form Container with ZERO HEIGHT JUMPING & SINGLE DATE CONTROL */}
