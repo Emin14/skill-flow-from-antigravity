@@ -235,25 +235,61 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
       );
     }
 
-    // Variant 2: Single Native Dropdown & Direct Hidden Picker
+    // Variant 2: Single Native Dropdown — transforms to a date input on "custom"
+    // iOS Safari cannot open a date picker programmatically.
+    // Solution: the <select> handles Сегодня/Завтра/Без даты.
+    // When user picks "Выбрать дату...", the control becomes a real
+    // <input type="date"> (same height/style). iOS opens it natively on tap.
+    // After selection the control reverts to a <select> showing the chosen date.
     if (dateVariant === 2) {
+      // When in custom mode: show a styled date input (same size as the select)
+      // with a tiny × reset button to go back
+      if (datePresetMode === 'custom') {
+        return (
+          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+            <input
+              ref={hiddenNativeInputRef}
+              type="date"
+              value={scheduledDate || ''}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val) {
+                  setScheduledDate(val);
+                  setDatePresetMode('custom');
+                }
+              }}
+              className={styles.selectInput}
+              style={{ flex: 1 }}
+            />
+            <button
+              type="button"
+              className={styles.dateClearBtn}
+              onClick={selectNone}
+              title="Убрать дату"
+              style={{ position: 'static', transform: 'none', flexShrink: 0 }}
+            >
+              ✕
+            </button>
+          </div>
+        );
+      }
+
+      // Default mode: single dropdown for the three quick presets
       return (
         <select
           className={styles.selectInput}
-          value={datePresetMode === 'custom' ? 'custom' : datePresetMode}
+          value={datePresetMode}
           onChange={(e) => {
             const v = e.target.value;
             if (v === 'today') selectToday();
             else if (v === 'tomorrow') selectTomorrow();
             else if (v === 'none') selectNone();
-            else triggerHiddenPicker();
+            else setDatePresetMode('custom'); // triggers re-render → date input appears
           }}
         >
           <option value="today">☀️ Сегодня</option>
           <option value="tomorrow">🌅 Завтра</option>
-          <option value="custom">
-            {datePresetMode === 'custom' && scheduledDate ? `📆 ${formatDateDisplay(scheduledDate)}` : '📆 Выбрать дату...'}
-          </option>
+          <option value="custom">📆 Выбрать дату...</option>
           <option value="none">✕ Без даты</option>
         </select>
       );

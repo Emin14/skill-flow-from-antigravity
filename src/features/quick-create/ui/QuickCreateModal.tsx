@@ -204,23 +204,51 @@ export const QuickCreateModal: React.FC = () => {
     }
 
     if (dateVariant === 2) {
+      if (datePresetMode === 'custom') {
+        return (
+          <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+            <input
+              ref={hiddenNativeInputRef}
+              type="date"
+              value={scheduledDate || ''}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val) {
+                  setScheduledDate(val);
+                  setDatePresetMode('custom');
+                }
+              }}
+              className={styles.selectInput}
+              style={{ flex: 1 }}
+            />
+            <button
+              type="button"
+              className={styles.dateClearBtn}
+              onClick={selectNone}
+              title="Убрать дату"
+              style={{ position: 'static', transform: 'none', flexShrink: 0 }}
+            >
+              ✕
+            </button>
+          </div>
+        );
+      }
+
       return (
         <select
           className={styles.selectInput}
-          value={datePresetMode === 'custom' ? 'custom' : datePresetMode}
+          value={datePresetMode}
           onChange={(e) => {
             const v = e.target.value;
             if (v === 'today') selectToday();
             else if (v === 'tomorrow') selectTomorrow();
             else if (v === 'none') selectNone();
-            else triggerHiddenPicker();
+            else setDatePresetMode('custom');
           }}
         >
           <option value="today">☀️ Сегодня</option>
           <option value="tomorrow">🌅 Завтра</option>
-          <option value="custom">
-            {datePresetMode === 'custom' && scheduledDate ? `📆 ${formatDateDisplay(scheduledDate)}` : '📆 Выбрать дату...'}
-          </option>
+          <option value="custom">📆 Выбрать дату...</option>
           <option value="none">✕ Без даты</option>
         </select>
       );
