@@ -271,15 +271,54 @@ export const QuickCreateModal: React.FC = () => {
     }
 
     if (dateVariant === 3) {
+      const handlePickCustomDate = () => {
+        setActivePopover(false);
+        setDatePresetMode('custom');
+        const el = hiddenNativeInputRef.current as HTMLInputElement | null;
+        if (el) {
+          try {
+            if (typeof (el as any).showPicker === 'function') (el as any).showPicker();
+            else el.click();
+          } catch { try { el.click(); } catch {} }
+        }
+      };
+
       return (
         <div style={{ position: 'relative' }}>
-          <button type="button" onClick={() => setActivePopover(!activePopover)} style={{ width: '100%', height: '40px', borderRadius: '12px', background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.18)', color: 'var(--color-text)', fontWeight: 500, fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 14px', cursor: 'pointer', boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
+          <button type="button" onClick={() => {
+            if (datePresetMode === 'custom' && !activePopover) setActivePopover(true);
+            else setActivePopover(!activePopover);
+          }} style={{ width: '100%', height: '40px', borderRadius: '12px', background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.18)', color: 'var(--color-text)', fontWeight: 500, fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 14px', cursor: 'pointer', boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
             <span>{getDateStatusLabel()}</span>
             <span style={{ opacity: 0.5, fontSize: '12px' }}>▾</span>
           </button>
+
+          {/* iOS transparent date input overlay — active only in custom mode */}
+          {datePresetMode === 'custom' && !activePopover && (
+            <input
+              ref={hiddenNativeInputRef}
+              type="date"
+              value={scheduledDate || ''}
+              onChange={(e) => {
+                if (e.target.value) {
+                  setScheduledDate(e.target.value);
+                  setDatePresetMode('custom');
+                }
+              }}
+              style={{
+                position: 'absolute', top: 0, left: 0,
+                width: 'calc(100% - 36px)', height: '100%',
+                opacity: 0, cursor: 'pointer',
+                border: 'none', background: 'transparent',
+                pointerEvents: 'auto', zIndex: 2,
+                colorScheme: 'dark',
+              }}
+            />
+          )}
+
           {activePopover && (
             <div style={{ position: 'absolute', top: '46px', left: 0, right: 0, zIndex: 100, background: 'rgba(15,23,42,0.85)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '14px', padding: '6px', boxShadow: '0 16px 40px rgba(0,0,0,0.6)', display: 'flex', flexDirection: 'column', gap: '2px' }}>
-              {[{ label: '☀️  Сегодня', action: selectToday }, { label: '🌅  Завтра', action: selectTomorrow }, { label: '📆  Выбрать дату...', action: triggerHiddenPicker }, { label: '✕   Без даты', action: selectNone, red: true }].map(({ label, action, red }) => (
+              {[{ label: '☀️  Сегодня', action: selectToday }, { label: '🌅  Завтра', action: selectTomorrow }, { label: '📆  Выбрать дату...', action: handlePickCustomDate }, { label: '✕   Без даты', action: selectNone, red: true }].map(({ label, action, red }) => (
                 <button key={label} type="button" onClick={action} style={{ background: 'transparent', border: 'none', borderRadius: '8px', color: red ? '#f87171' : 'rgba(255,255,255,0.85)', fontSize: '14px', padding: '8px 12px', cursor: 'pointer', textAlign: 'left' }}>{label}</button>
               ))}
             </div>

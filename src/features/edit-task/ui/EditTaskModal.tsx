@@ -319,12 +319,37 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     }
 
     // Variant 3: Glassmorphic Pill — стеклянная плашка с blur-меню
+    // iOS fix: «Выбрать дату» закрывает попавер и переключает datePresetMode в 'custom'.
+    // После этого прозрачный <input type="date"> появляется поверх кнопки —
+    // iOS видит его при следующем касании и нативно открывает пикер.
+    // Desktop: showPicker() вызывается синхронно внутри обработчика клика.
     if (dateVariant === 3) {
+      const handlePickCustomDate = () => {
+        setActivePopover(false);
+        setDatePresetMode('custom');
+        // Desktop: try to open immediately (synchronous, inside user-gesture context)
+        const el = hiddenNativeInputRef.current as HTMLInputElement | null;
+        if (el) {
+          try {
+            if (typeof (el as any).showPicker === 'function') (el as any).showPicker();
+            else el.click();
+          } catch { try { el.click(); } catch {} }
+        }
+      };
+
       return (
         <div style={{ position: 'relative' }}>
+          {/* Glassmorphic trigger button */}
           <button
             type="button"
-            onClick={() => setActivePopover(!activePopover)}
+            onClick={() => {
+              // If we're in custom mode and popover is closed, tapping should reopen menu
+              if (datePresetMode === 'custom' && !activePopover) {
+                setActivePopover(true);
+              } else {
+                setActivePopover(!activePopover);
+              }
+            }}
             style={{
               width: '100%', height: '40px', borderRadius: '12px',
               background: 'rgba(255,255,255,0.07)',
@@ -339,6 +364,36 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             <span>{getDateStatusLabel()}</span>
             <span style={{ opacity: 0.5, fontSize: '12px' }}>▾</span>
           </button>
+
+          {/*
+            iOS transparent date input overlay.
+            Visible (interactable) only when datePresetMode === 'custom' and popover is closed.
+            Covers the left 80% of the button (leaves the ▾ arrow accessible).
+            On iOS: direct finger tap → native date picker opens.
+            On desktop: showPicker() above already handled it; this is a fallback.
+          */}
+          {datePresetMode === 'custom' && !activePopover && (
+            <input
+              ref={hiddenNativeInputRef}
+              type="date"
+              value={scheduledDate || ''}
+              onChange={(e) => {
+                if (e.target.value) {
+                  setScheduledDate(e.target.value);
+                  setDatePresetMode('custom');
+                }
+              }}
+              style={{
+                position: 'absolute', top: 0, left: 0,
+                width: 'calc(100% - 36px)', height: '100%',
+                opacity: 0, cursor: 'pointer',
+                border: 'none', background: 'transparent',
+                pointerEvents: 'auto', zIndex: 2,
+                colorScheme: 'dark',
+              }}
+            />
+          )}
+
           {activePopover && (
             <div style={{
               position: 'absolute', top: '46px', left: 0, right: 0, zIndex: 100,
@@ -349,7 +404,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             }}>
               {[{ label: '☀️  Сегодня', action: selectToday },
                 { label: '🌅  Завтра', action: selectTomorrow },
-                { label: '📆  Выбрать дату...', action: triggerHiddenPicker },
+                { label: '📆  Выбрать дату...', action: handlePickCustomDate },
                 { label: '✕   Без даты', action: selectNone, red: true },
               ].map(({ label, action, red }) => (
                 <button key={label} type="button" onClick={action} style={{
