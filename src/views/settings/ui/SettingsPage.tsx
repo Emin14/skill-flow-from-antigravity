@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Typography, Button, useToastStore } from '@/shared/ui';
 import styles from './SettingsPage.module.css';
-
 import {
   CATEGORY_TEXT_THEMES,
   CARD_BG_THEMES,
   applyCategoryTextTheme,
   applyCardBgTheme,
 } from '@/shared/config/categoryColors';
+import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 
 const colorPalettes = [
   { name: 'Фиолетовый (Aura)', hex: '#6366f1' },
@@ -30,10 +30,10 @@ export const SettingsPage: React.FC = () => {
   const [dateFormat, setDateFormat] = useState<'DD.MM.YYYY' | 'YYYY-MM-DD'>('DD.MM.YYYY');
 
   useEffect(() => {
-    const savedTheme = (localStorage.getItem('skillflow_theme') as 'dark' | 'light') || 'dark';
-    const savedColor = localStorage.getItem('skillflow_accent_color') || '#6366f1';
-    const savedCatId = localStorage.getItem('skillflow_category_text_theme_id') || 'amber';
-    const savedBgId = localStorage.getItem('skillflow_card_bg_theme_id') || 'classic';
+    const savedTheme = (localStorage.getItem(STORAGE_KEYS.THEME) as 'dark' | 'light') || 'dark';
+    const savedColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
+    const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
+    const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
 
     setTheme(savedTheme);
     setSelectedColor(savedColor);
@@ -45,7 +45,7 @@ export const SettingsPage: React.FC = () => {
 
   const handleThemeChange = (newTheme: 'dark' | 'light') => {
     setTheme(newTheme);
-    localStorage.setItem('skillflow_theme', newTheme);
+    localStorage.setItem(STORAGE_KEYS.THEME, newTheme);
     if (newTheme === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
     } else {
@@ -59,14 +59,14 @@ export const SettingsPage: React.FC = () => {
 
   const handleColorChange = (hex: string) => {
     setSelectedColor(hex);
-    localStorage.setItem('skillflow_accent_color', hex);
+    localStorage.setItem(STORAGE_KEYS.ACCENT_COLOR, hex);
     document.documentElement.style.setProperty('--color-accent', hex);
     showToast('Основной цвет интерфейса обновлен!', 'success');
   };
 
   const handleCategoryThemeChange = (optId: string) => {
     setSelectedCategoryThemeId(optId);
-    localStorage.setItem('skillflow_category_text_theme_id', optId);
+    localStorage.setItem(STORAGE_KEYS.CATEGORY_THEME_ID, optId);
     applyCategoryTextTheme(optId);
     const opt = CATEGORY_TEXT_THEMES.find((o) => o.id === optId) || CATEGORY_TEXT_THEMES[0];
     showToast(`Цвета текста категории и повторов изменены на: ${opt.name}`, 'info');
@@ -74,7 +74,7 @@ export const SettingsPage: React.FC = () => {
 
   const handleCardBgThemeChange = (bgId: string) => {
     setSelectedCardBgThemeId(bgId);
-    localStorage.setItem('skillflow_card_bg_theme_id', bgId);
+    localStorage.setItem(STORAGE_KEYS.CARD_BG_THEME_ID, bgId);
     applyCardBgTheme(bgId);
     const opt = CARD_BG_THEMES.find((o) => o.id === bgId) || CARD_BG_THEMES[0];
     showToast(`Фон карточек изменен на: ${opt.name}`, 'info');
@@ -84,13 +84,13 @@ export const SettingsPage: React.FC = () => {
   const handleExportData = () => {
     const backupData: Record<string, unknown> = {};
     const keys = [
-      'skillflow_goals',
-      'skillflow_topics',
-      'skillflow_tasks',
-      'skillflow_materials',
-      'skillflow_repeat_cards',
-      'skillflow_inbox',
-      'skillflow_activity_log',
+      STORAGE_KEYS.GOALS,
+      STORAGE_KEYS.TOPICS,
+      STORAGE_KEYS.TASKS,
+      STORAGE_KEYS.MATERIALS,
+      STORAGE_KEYS.REPEAT_CARDS,
+      STORAGE_KEYS.INBOX,
+      STORAGE_KEYS.ACTIVITY_LOG,
     ];
 
     keys.forEach((key) => {

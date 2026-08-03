@@ -34,7 +34,7 @@ interface TaskState {
   updateTaskParent: (id: string, parentTaskId: string | null) => Promise<void>;
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
   updateTaskPomodoros: (id: string, count: number) => Promise<void>;
-  deleteTask: (id: string) => Promise<void>;
+  deleteTask: (id: string, confirmed?: boolean) => Promise<void>;
   completeRepetition: (id: string, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTargetRepetitions: (id: string, newTarget: number) => Promise<void>;
 }
@@ -545,16 +545,16 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     await taskRepository.update(id, { pomodorosCount: safeCount });
   },
 
-  deleteTask: async (id: string) => {
+  deleteTask: async (id: string, confirmed?: boolean) => {
     const deletedTask = get().tasks.find((t) => t.id === id);
     if (!deletedTask) return;
 
     const descendantTasks = getAllDescendantTasks(id, get().tasks);
-    if (descendantTasks.length > 0) {
-      const confirmed = window.confirm(
-        `Удалить задачу "${deletedTask.title}" и ${descendantTasks.length} её подзадач?`
-      );
-      if (!confirmed) return;
+
+    // Если есть подзадачи и подтверждение явно не передано — прерываем.
+    // UI-слой отвечает за вызов window.confirm и передачу confirmed=true.
+    if (descendantTasks.length > 0 && confirmed !== true) {
+      return;
     }
 
     const allToDelete = [deletedTask, ...descendantTasks];

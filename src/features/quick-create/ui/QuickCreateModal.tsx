@@ -5,24 +5,10 @@ import { Input } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
-import { RepetitionMode, ScheduleFrequency } from '@/shared/config/repetitionRules';
+import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS } from '@/shared/config/repetitionRules';
+import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { useQuickCreateModalStore } from '../model/quickCreateStore';
 import styles from './QuickCreateModal.module.css';
-
-const getTodayStr = () => new Date().toISOString().split('T')[0];
-
-const getTomorrowStr = () => {
-  const d = new Date();
-  d.setDate(d.getDate() + 1);
-  return d.toISOString().split('T')[0];
-};
-
-const formatDateDisplay = (dateStr: string) => {
-  if (!dateStr) return '';
-  const parts = dateStr.split('-');
-  if (parts.length === 3) return `${parts[2]}.${parts[1]}.${parts[0]}`;
-  return dateStr;
-};
 
 // ─── Shared glassmorphic styles ───────────────────────────────────────────────
 const glassBtn: React.CSSProperties = {
@@ -60,22 +46,8 @@ const hint: React.CSSProperties = {
   userSelect: 'none',
 };
 
-const REPEAT_LABELS: Record<string, string> = {
-  none: '🔕 Без повторений',
-  smart: '🧠 Умное',
-  spaced: '📐 Интервальное',
-  schedule: '📅 По расписанию',
-  after_completion: '✅ После выполнения',
-};
 
-const FREQ_LABELS: Record<string, string> = {
-  daily: 'Каждый день',
-  weekly: 'Каждую неделю',
-  monthly: 'Каждый месяц',
-  yearly: 'Каждый год',
-};
 
-// ─── Component ────────────────────────────────────────────────────────────────
 export const QuickCreateModal: React.FC = () => {
   const { isOpen, closeModal } = useQuickCreateModalStore();
   const { addTask, tasks } = useTaskStore();

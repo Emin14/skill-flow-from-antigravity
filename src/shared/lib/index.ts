@@ -1,4 +1,3 @@
-// Utility functions placeholder
-export const formatDate = (date: Date): string => {
-  return date.toISOString().split('T')[0];
-};
+// shared/lib/index.ts — публичный API shared/lib
+export * from './dateUtils';
+export * from './fsrs/calculateNextReview';

@@ -39,3 +39,20 @@ export const SMART_RATING_OPTIONS: {
 
 // Spaced repetition interval steps: 1, 3, 7, 14, 30, 90 days
 export const SPACED_INTERVAL_STEPS = [1, 3, 7, 14, 30, 90];
+
+/** Метки режимов повторения для UI (единый источник). */
+export const REPEAT_LABELS: Record<RepetitionMode, string> = {
+  none: '🔕 Без повторений',
+  smart: '🧠 Умное',
+  spaced: '📐 Интервальное',
+  schedule: '📅 По расписанию',
+  after_completion: '✅ После выполнения',
+};
+
+/** Метки частоты расписания для UI (единый источник). */
+export const FREQ_LABELS: Record<ScheduleFrequency, string> = {
+  daily: 'Каждый день',
+  weekly: 'Каждую неделю',
+  monthly: 'Каждый месяц',
+  yearly: 'Каждый год',
+};

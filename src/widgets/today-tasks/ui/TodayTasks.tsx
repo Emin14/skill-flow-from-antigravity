@@ -8,6 +8,10 @@ import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
+import { getTodayStr } from '@/shared/lib/dateUtils';
+import { STORAGE_KEYS } from '@/shared/config/storageKeys';
+import { useTaskModals } from '@/shared/hooks/useTaskModals';
+import { useMidnightRefresh } from '@/shared/hooks/useMidnightRefresh';
 import {
   Sun,
   Clock,
@@ -18,43 +22,32 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import styles from './TodayTasks.module.css';
-
 import { applyCategoryTextTheme, applyCardBgTheme } from '@/shared/config/categoryColors';
 
 type ViewMode = 'all' | 'actions' | 'repeats';
 
-const getTodayStr = () => new Date().toISOString().split('T')[0];
 
 export const TodayTasks: React.FC = () => {
   const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask } = useTaskStore();
-  const [editingTask, setEditingTask] = useState<Task | null>(null);
-  const [detailTask, setDetailTask] = useState<Task | null>(null);
-  const [smartTask, setSmartTask] = useState<Task | null>(null);
+  const {
+    editingTask, detailTask, smartTask,
+    openEditModal, openDetailModal, openSmartModal,
+    closeEditModal, closeDetailModal, closeSmartModal,
+  } = useTaskModals();
   const [viewMode, setViewMode] = useState<ViewMode>('all');
   const [todayStr, setTodayStr] = useState<string>(getTodayStr());
 
-
   useEffect(() => {
-    const savedCatId = localStorage.getItem('skillflow_category_text_theme_id') || 'amber';
-    const savedBgId = localStorage.getItem('skillflow_card_bg_theme_id') || 'classic';
-
+    const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
+    const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
     applyCategoryTextTheme(savedCatId);
     applyCardBgTheme(savedBgId);
   }, []);
 
+  useEffect(() => { fetchTasks(); }, [fetchTasks]);
 
-
-  // BUG-HIGH-08: Midnight auto-update timer
-  useEffect(() => {
-    fetchTasks();
-    const interval = setInterval(() => {
-      const nowStr = getTodayStr();
-      if (nowStr !== todayStr) {
-        setTodayStr(nowStr);
-      }
-    }, 30000);
-    return () => clearInterval(interval);
-  }, [fetchTasks, todayStr]);
+  // Midnight auto-update: обновляет todayStr при смене суток
+  useMidnightRefresh(() => setTodayStr(getTodayStr()));
 
   // Tasks scheduled for today or overdue
   const rawTodayTasks = useMemo(() => {
@@ -98,7 +91,7 @@ export const TodayTasks: React.FC = () => {
   }, [rawTodayTasks, todayStr]);
 
   const handleCardClick = (task: Task) => {
-    setDetailTask(task);
+    openDetailModal(task);
   };
 
   const handleDropToStage = (e: React.DragEvent, targetStatus: TaskStatus) => {
@@ -118,11 +111,9 @@ export const TodayTasks: React.FC = () => {
   const handleToggleCheckbox = (task: Task, isCurrentlyDone?: boolean) => {
     const isDoneNow = isCurrentlyDone !== undefined ? isCurrentlyDone : getTaskStatusForToday(task) === 'Done';
     if (isDoneNow) {
-      // Un-checking completed task: ALWAYS toggle directly to Todo, NEVER open rating modal!
       toggleTaskStatus(task.id, undefined, todayStr);
     } else if (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
-      // Completing task: Open rating modal if smart or spaced repetition
-      setSmartTask(task);
+      openSmartModal(task);
     } else {
       toggleTaskStatus(task.id, undefined, todayStr);
     }
@@ -131,7 +122,7 @@ export const TodayTasks: React.FC = () => {
   const handleSelectSmartRating = (rating: SmartRating) => {
     if (smartTask) {
       updateTaskStatus(smartTask.id, 'Done', rating, todayStr);
-      setSmartTask(null);
+      closeSmartModal();
     }
   };
 
@@ -275,17 +266,17 @@ export const TodayTasks: React.FC = () => {
       <EditTaskModal
         task={editingTask}
         isOpen={!!editingTask}
-        onClose={() => setEditingTask(null)}
+        onClose={closeEditModal}
       />
 
       {/* Task Detail Modal */}
       <RepeatingTaskDetailModal
         task={detailTask}
         isOpen={!!detailTask}
-        onClose={() => setDetailTask(null)}
+        onClose={closeDetailModal}
         onOpenEdit={() => {
-          setEditingTask(detailTask);
-          setDetailTask(null);
+          if (detailTask) openEditModal(detailTask);
+          closeDetailModal();
         }}
       />
 
@@ -293,7 +284,7 @@ export const TodayTasks: React.FC = () => {
       <SmartRatingModal
         task={smartTask}
         isOpen={!!smartTask}
-        onClose={() => setSmartTask(null)}
+        onClose={closeSmartModal}
         onSelectRating={handleSelectSmartRating}
       />
     </div>

@@ -7,31 +7,11 @@ import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
+import { getTodayStr, formatSelectedDateTitle, formatDateStr } from '@/shared/lib/dateUtils';
 import styles from './CalendarPage.module.css';
 
-const formatDateStr = (y: number, m: number, d: number): string => {
-  const year = y;
-  const month = String(m + 1).padStart(2, '0');
-  const day = String(d).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-};
+const getNowDateStr = () => getTodayStr();
 
-const getNowDateStr = () => {
-  const now = new Date();
-  return formatDateStr(now.getFullYear(), now.getMonth(), now.getDate());
-};
-
-const formatSelectedDateTitle = (dateStr: string) => {
-  if (!dateStr || !dateStr.includes('-')) return dateStr;
-  const parts = dateStr.split('-').map(Number);
-  const d = new Date(parts[0], parts[1] - 1, parts[2]);
-  return d.toLocaleDateString('ru-RU', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
-};
 
 const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Task[] => {
   const tasksMap = new Map(allTasks.map((t) => [t.id, t]));
@@ -89,7 +69,7 @@ export const CalendarPage: React.FC = () => {
   const handleGoToToday = () => {
     const now = new Date();
     setCurrentMonthDate(now);
-    setSelectedDate(formatDateStr(now.getFullYear(), now.getMonth(), now.getDate()));
+    setSelectedDate(getTodayStr());
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
