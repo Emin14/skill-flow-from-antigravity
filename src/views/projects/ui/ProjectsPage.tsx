@@ -97,6 +97,11 @@ export const ProjectsPage: React.FC = () => {
     }
   };
 
+  const handleDropOnTask = async (draggedTaskId: string, targetTask: Task) => {
+    if (draggedTaskId === targetTask.id) return;
+    await updateTaskParent(draggedTaskId, targetTask.id);
+  };
+
   return (
     <div className={styles.container}>
       {/* Floating Filter Tabs (Point 6: Clean tabs without card box or title count) */}
@@ -117,8 +122,6 @@ export const ProjectsPage: React.FC = () => {
           </button>
         ))}
       </div>
-
-
 
       {/* Projects List */}
       {isLoading ? (
@@ -183,6 +186,7 @@ export const ProjectsPage: React.FC = () => {
                 onDragOver={(e) => handleDragOver(e, project.id)}
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, project.id)}
+                onDropOnTask={handleDropOnTask}
                 onFixDate={() => latestSubtaskDate && updateTaskDetails(project.id, { scheduledDate: latestSubtaskDate })}
                 onToggleSubtask={(st) => toggleTaskStatus(st.id, undefined, st.scheduledDate || todayStr)}
                 onDeleteSubtask={(st) => deleteTaskOccurrence(st.id, st.scheduledDate || todayStr)}
@@ -235,6 +239,7 @@ interface ProjectCardRendererProps {
   onDragOver: (e: React.DragEvent) => void;
   onDragLeave: () => void;
   onDrop: (e: React.DragEvent) => void;
+  onDropOnTask: (draggedTaskId: string, targetTask: Task) => void;
   onFixDate: () => void;
   onToggleSubtask: (t: Task) => void;
   onDeleteSubtask: (t: Task) => void;
@@ -262,6 +267,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   onDragOver,
   onDragLeave,
   onDrop,
+  onDropOnTask,
   onFixDate,
   onToggleSubtask,
   onDeleteSubtask,
@@ -405,6 +411,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
               onToggleSubtask={onToggleSubtask}
               onDeleteSubtask={onDeleteSubtask}
               onSelectSubtask={onSelectSubtask}
+              onDropOnTask={onDropOnTask}
               todayStr={todayStr}
             />
           )}
@@ -423,6 +430,7 @@ const RecursiveSubtaskList: React.FC<{
   onToggleSubtask: (t: Task) => void;
   onDeleteSubtask: (t: Task) => void;
   onSelectSubtask: (t: Task) => void;
+  onDropOnTask: (draggedTaskId: string, targetTask: Task) => void;
   todayStr: string;
   depth?: number;
 }> = ({
@@ -434,6 +442,7 @@ const RecursiveSubtaskList: React.FC<{
   onToggleSubtask,
   onDeleteSubtask,
   onSelectSubtask,
+  onDropOnTask,
   todayStr,
   depth = 0,
 }) => {
@@ -470,6 +479,18 @@ const RecursiveSubtaskList: React.FC<{
                 background: 'rgba(14, 165, 233, 0.04)',
                 padding: '12px 14px',
                 marginTop: '4px',
+              }}
+              onDragOver={(e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+              }}
+              onDrop={async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const draggedId = e.dataTransfer.getData('text/plain');
+                if (draggedId && draggedId !== child.id) {
+                  await onDropOnTask(draggedId, child);
+                }
               }}
             >
               <div
@@ -531,6 +552,7 @@ const RecursiveSubtaskList: React.FC<{
                     onToggleSubtask={onToggleSubtask}
                     onDeleteSubtask={onDeleteSubtask}
                     onSelectSubtask={onSelectSubtask}
+                    onDropOnTask={onDropOnTask}
                     todayStr={todayStr}
                     depth={depth + 1}
                   />
@@ -551,6 +573,7 @@ const RecursiveSubtaskList: React.FC<{
             onToggleCheckbox={() => onToggleSubtask(child)}
             onDelete={() => onDeleteSubtask(child)}
             onClick={() => onSelectSubtask(child)}
+            onDropOnTask={(draggedTaskId, targetTask) => onDropOnTask(draggedTaskId, targetTask)}
           />
         );
       })}
