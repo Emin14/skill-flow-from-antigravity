@@ -4,7 +4,88 @@ import { TaskCategory } from '@/shared/config/categories';
 import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS } from '@/shared/config/repetitionRules';
 import { taskRepository } from '@/shared/repository';
 import { useToastStore } from '@/shared/ui';
+import { getTodayStr } from '@/shared/lib/dateUtils';
 import { v4 as uuidv4 } from 'uuid';
+
+/**
+ * ARCHITECTURE VARIANT A: SINGLE CENTRAL NORMALIZER FOR OCCURRENCES
+ * Guarantees:
+ * 1. Unique dates (1 occurrence per date max). If duplicates exist, 'Done' status takes precedence.
+ * 2. Strict chronological sorting by date ascending (a.date.localeCompare(b.date)).
+ * 3. Non-null IDs and valid fields.
+ */
+export const normalizeOccurrences = (
+  occurrences: TaskOccurrence[] = [],
+  taskId?: string
+): TaskOccurrence[] => {
+  if (!occurrences || occurrences.length === 0) return [];
+
+  const dateMap = new Map<string, TaskOccurrence>();
+
+  for (const occ of occurrences) {
+    if (!occ || !occ.date) continue;
+    const dateStr = occ.date.trim();
+    if (!dateStr || !dateStr.includes('-')) continue;
+
+    const existing = dateMap.get(dateStr);
+
+    if (!existing) {
+      dateMap.set(dateStr, {
+        id: occ.id || uuidv4(),
+        taskId: occ.taskId || taskId || '',
+        date: dateStr,
+        status: occ.status || 'Todo',
+        completedAt: occ.completedAt || null,
+        smartRating: occ.smartRating,
+        pomodorosCount: occ.pomodorosCount,
+        activeMinutes: occ.activeMinutes,
+      });
+    } else {
+      if (occ.status === 'Done' && existing.status !== 'Done') {
+        dateMap.set(dateStr, {
+          ...existing,
+          status: 'Done',
+          completedAt: occ.completedAt || new Date().toISOString(),
+          smartRating: occ.smartRating || existing.smartRating,
+          pomodorosCount: occ.pomodorosCount || existing.pomodorosCount,
+          activeMinutes: occ.activeMinutes || existing.activeMinutes,
+        });
+      } else if (occ.status === 'Done' && existing.status === 'Done') {
+        dateMap.set(dateStr, {
+          ...existing,
+          completedAt: occ.completedAt || existing.completedAt,
+          smartRating: occ.smartRating || existing.smartRating,
+        });
+      }
+    }
+  }
+
+  const normalized = Array.from(dateMap.values());
+  // INVARIANT 2: Always sort strictly by date ascending
+  normalized.sort((a, b) => a.date.localeCompare(b.date));
+  return normalized;
+};
+
+/**
+ * Derived helper: Returns the date of the next uncompleted occurrence, or latest occurrence date
+ */
+export const getDerivedScheduledDate = (task: Task): string => {
+  const norm = normalizeOccurrences(task.occurrences, task.id);
+  if (norm.length === 0) return task.scheduledDate || getTodayStr();
+
+  const upcomingTodo = norm.find((o) => o.status === 'Todo');
+  if (upcomingTodo) return upcomingTodo.date;
+
+  return norm[norm.length - 1].date;
+};
+
+/**
+ * Derived helper: Returns exact completed count from occurrences
+ */
+export const getDerivedRepetitionsCount = (task: Task): number => {
+  const norm = normalizeOccurrences(task.occurrences, task.id);
+  return norm.filter((o) => o.status === 'Done').length;
+};
 
 export interface AddTaskParams {
   title: string;
