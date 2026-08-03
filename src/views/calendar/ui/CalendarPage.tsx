@@ -89,9 +89,19 @@ export const CalendarPage: React.FC = () => {
     setTouchStart(null);
   };
 
+  const isTaskDoneOnDate = (task: Task, dateStr: string): boolean => {
+    if (task.isRepeating) {
+      const occ = task.occurrences?.find((o) => o.date === dateStr);
+      if (occ) return occ.status === 'Done';
+      const legacyOcc = task.repetitionHistory?.find((h) => h.date === dateStr);
+      if (legacyOcc) return legacyOcc.completed;
+      return false;
+    }
+    return task.status === 'Done';
+  };
+
   const handleCheckboxToggle = (task: Task) => {
-    const occ = task.occurrences?.find((o) => o.date === selectedDate);
-    const isDone = occ ? occ.status === 'Done' : task.status === 'Done';
+    const isDone = isTaskDoneOnDate(task, selectedDate);
 
     if (isDone) {
       // Un-checking completed task: ALWAYS toggle directly to Todo, NEVER open rating modal!

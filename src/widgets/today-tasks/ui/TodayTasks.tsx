@@ -109,19 +109,21 @@ export const TodayTasks: React.FC = () => {
   };
 
   const handleToggleCheckbox = (task: Task) => {
+    const targetDate = task.scheduledDate || todayStr;
     const isDoneNow = getTaskStatusForToday(task) === 'Done';
     if (isDoneNow) {
-      toggleTaskStatus(task.id, undefined, todayStr);
+      toggleTaskStatus(task.id, undefined, targetDate);
     } else if (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
       openSmartModal(task);
     } else {
-      toggleTaskStatus(task.id, undefined, todayStr);
+      toggleTaskStatus(task.id, undefined, targetDate);
     }
   };
 
   const handleSelectSmartRating = (rating: SmartRating) => {
     if (smartTask) {
-      updateTaskStatus(smartTask.id, 'Done', rating, todayStr);
+      const targetDate = smartTask.scheduledDate || todayStr;
+      updateTaskStatus(smartTask.id, 'Done', rating, targetDate);
       closeSmartModal();
     }
   };
@@ -219,9 +221,15 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-            onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
+            onStatusChange={(taskId, nextStatus) => {
+              const t = tasks.find((x) => x.id === taskId);
+              updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
+            }}
             onDelete={(id) => deleteTask(id)}
-            onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
+            onCompleteParent={(id) => {
+              const t = tasks.find((x) => x.id === id);
+              updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
+            }}
           />
 
           {/* Stage 2: В процессе (InProgress) */}
@@ -237,9 +245,15 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-            onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
+            onStatusChange={(taskId, nextStatus) => {
+              const t = tasks.find((x) => x.id === taskId);
+              updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
+            }}
             onDelete={(id) => deleteTask(id)}
-            onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
+            onCompleteParent={(id) => {
+              const t = tasks.find((x) => x.id === id);
+              updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
+            }}
           />
 
           {/* Stage 3: Выполнено (Done) */}
@@ -255,9 +269,15 @@ export const TodayTasks: React.FC = () => {
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
             onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-            onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
+            onStatusChange={(taskId, nextStatus) => {
+              const t = tasks.find((x) => x.id === taskId);
+              updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
+            }}
             onDelete={(id) => deleteTask(id)}
-            onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
+            onCompleteParent={(id) => {
+              const t = tasks.find((x) => x.id === id);
+              updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
+            }}
           />
         </div>
       )}

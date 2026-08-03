@@ -279,7 +279,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                 <button
                   key={rating.key}
                   type="button"
-                  onClick={() => updateTaskStatus(masterTask.id, masterTask.status, rating.key as any)}
+                  onClick={() => updateTaskStatus(masterTask.id, 'Done', rating.key as any, masterTask.scheduledDate)}
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
