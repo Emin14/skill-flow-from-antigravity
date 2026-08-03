@@ -101,7 +101,7 @@ export const OverduePage: React.FC = () => {
               task={task}
               allTasks={tasks}
               showDragHandle={false}
-              onToggleCheckbox={() => toggleTaskStatus(task.id)}
+              onToggleCheckbox={() => toggleTaskStatus(task.id, undefined, task.scheduledDate)}
               onDelete={() => deleteTaskOccurrence(task.id, task.scheduledDate)}
               onClick={() => handleTaskClick(task)}
               onRescheduleToToday={() => rescheduleTaskToToday(task.id)}

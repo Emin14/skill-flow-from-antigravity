@@ -117,11 +117,11 @@ export const TodayTasks: React.FC = () => {
   };
 
   const handleToggleCheckbox = (task: Task) => {
-    const targetDate = task.scheduledDate || todayStr;
+    const targetDate = todayStr;
     const isDoneNow = getTaskStatusForToday(task) === 'Done';
     if (isDoneNow) {
       toggleTaskStatus(task.id, undefined, targetDate);
-    } else if (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
+    } else if (task.isRepeating || task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
       openSmartModal(task);
     } else {
       toggleTaskStatus(task.id, undefined, targetDate);
@@ -130,7 +130,7 @@ export const TodayTasks: React.FC = () => {
 
   const handleSelectSmartRating = (rating: SmartRating) => {
     if (smartTask) {
-      const targetDate = smartTask.scheduledDate || todayStr;
+      const targetDate = todayStr;
       updateTaskStatus(smartTask.id, 'Done', rating, targetDate);
       closeSmartModal();
     }
