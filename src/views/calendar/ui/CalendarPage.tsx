@@ -193,7 +193,13 @@ export const CalendarPage: React.FC = () => {
   }, [currentMonthDate, todayStr, dateStatsMap]);
 
   const selectedDayTasks = useMemo(() => {
-    return filterCalendarVisibleTasks(tasks, selectedDate);
+    const list = filterCalendarVisibleTasks(tasks, selectedDate);
+    return [...list].sort((a, b) => {
+      const aDone = isTaskDoneOnDate(a, selectedDate);
+      const bDone = isTaskDoneOnDate(b, selectedDate);
+      if (aDone === bDone) return 0;
+      return aDone ? 1 : -1; // Uncompleted first (false < true)
+    });
   }, [tasks, selectedDate]);
 
   const monthTitleStr = currentMonthDate.toLocaleDateString('ru-RU', {
