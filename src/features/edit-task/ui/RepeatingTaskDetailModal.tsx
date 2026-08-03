@@ -2,7 +2,7 @@
 
 import React, { useMemo, useEffect } from 'react';
 import { Task } from '@/entities/task/model/types';
-import { useTaskStore } from '@/entities/task';
+import { useTaskStore, normalizeOccurrences } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import styles from './EditTaskModal.module.css';
 
@@ -35,10 +35,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const masterTask = useMemo(() => {
     if (!task) return null;
     const currentTaskFromStore = tasks.find((t) => t.id === task.id) || task;
-    const occurrences = currentTaskFromStore.occurrences || [];
+    const occurrences = normalizeOccurrences(currentTaskFromStore.occurrences || [], currentTaskFromStore.id);
     const doneOccurrences = occurrences.filter((o) => o.status === 'Done');
     return {
       ...currentTaskFromStore,
+      occurrences,
       repetitionsCount: doneOccurrences.length,
     };
   }, [task, tasks]);
