@@ -19,6 +19,7 @@ interface GlassmorphicTaskCardProps {
   onClick?: () => void;
   onDropOnTask?: (draggedTaskId: string, targetParentTask: Task) => void;
   onCompleteParent?: () => void;
+  onRescheduleToToday?: () => void;
 }
 
 const getCategoryColor = (cat?: string): string => {
@@ -92,6 +93,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   onClick,
   onDropOnTask,
   onCompleteParent,
+  onRescheduleToToday,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -321,6 +323,19 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                     <Calendar size={9} />
                     {isOverdue ? `⚠ ${dateBadgeLabel}` : dateBadgeLabel}
                   </span>
+                )}
+                {onRescheduleToToday && (
+                  <button
+                    type="button"
+                    className={styles.rescheduleTodayChip}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onRescheduleToToday();
+                    }}
+                    title="Перенести задачу на сегодня"
+                  >
+                    ☀️ На сегодня
+                  </button>
                 )}
                 {formattedLink && (
                   <a

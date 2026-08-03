@@ -93,26 +93,16 @@ export const OverduePage: React.FC = () => {
       ) : (
         <div className={styles.taskList}>
           {overdueTasks.map((task) => (
-            <div key={task.id} className={styles.overdueCardItem}>
-              <GlassmorphicTaskCard
-                task={task}
-                allTasks={tasks}
-                showDragHandle={false}
-                onToggleCheckbox={() => toggleTaskStatus(task.id)}
-                onDelete={() => deleteTaskOccurrence(task.id, task.scheduledDate)}
-                onClick={() => handleTaskClick(task)}
-              />
-              <div className={styles.cardActionRow}>
-                <button
-                  type="button"
-                  className={`${styles.actionChip} ${styles.actionChipToday}`}
-                  onClick={() => rescheduleTaskToToday(task.id)}
-                  title="Перенести задачу на сегодня"
-                >
-                  ☀️ Перенести на сегодня
-                </button>
-              </div>
-            </div>
+            <GlassmorphicTaskCard
+              key={task.id}
+              task={task}
+              allTasks={tasks}
+              showDragHandle={false}
+              onToggleCheckbox={() => toggleTaskStatus(task.id)}
+              onDelete={() => deleteTaskOccurrence(task.id, task.scheduledDate)}
+              onClick={() => handleTaskClick(task)}
+              onRescheduleToToday={() => rescheduleTaskToToday(task.id)}
+            />
           ))}
         </div>
       )}

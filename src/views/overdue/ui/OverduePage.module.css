@@ -65,31 +65,6 @@
   gap: var(--space-3);
 }
 
-.overdueCardItem {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background-color: var(--color-surface);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 16px;
-  padding: 12px 14px;
-  transition: all var(--transition-fast);
-}
-
-.overdueCardItem:hover {
-  border-color: rgba(239, 68, 68, 0.4);
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.1);
-}
-
-.cardActionRow {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  padding-top: 6px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
 .actionChip {
   display: inline-flex;
   align-items: center;
