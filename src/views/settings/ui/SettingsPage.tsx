@@ -210,89 +210,53 @@ export const SettingsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* 10 Dual Accent Color Theme Options */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingTop: '12px', borderTop: '1px solid var(--color-border)' }}>
+        {/* Category Text Themes Select */}
+        <div className={styles.settingRow}>
           <div>
             <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              🎨 Цвета надписей категории и повторов (10 парных тем)
+              🎨 Цвета надписей категории и повторов
             </div>
             <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Гармонично подобранные сочетания цветов текста категории и тега повтора («Неоновый янтарь» по умолчанию)
+              Гармонично подобранные палитры текста категорий и повторений
             </div>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
-            {CATEGORY_TEXT_THEMES.map((opt) => {
-              const modeData = theme === 'light' ? opt.light : opt.dark;
-              const isSelected = selectedCategoryThemeId === opt.id;
-              return (
-                <button
-                  key={opt.id}
-                  onClick={() => handleCategoryThemeChange(opt.id)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '6px 12px',
-                    borderRadius: '10px',
-                    border: isSelected ? `2px solid ${modeData.categoryColor}` : '1px solid var(--color-border)',
-                    background: isSelected ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.03)',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                    <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: modeData.categoryColor }} title="Категория" />
-                    <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: modeData.repeatColor }} title="Повтор" />
-                  </div>
-                  <span style={{ color: modeData.categoryColor }}>{opt.name.split(' (')[0]}</span>
-                  <span style={{ color: modeData.repeatColor, fontSize: '11px', opacity: 0.9 }}>↻</span>
-                </button>
-              );
-            })}
+          <div style={{ minWidth: '220px' }}>
+            <select
+              className={styles.themeSelect}
+              value={selectedCategoryThemeId}
+              onChange={(e) => handleCategoryThemeChange(e.target.value)}
+            >
+              {CATEGORY_TEXT_THEMES.map((opt) => (
+                <option key={opt.id} value={opt.id} style={{ background: '#0f172a', color: '#f8fafc' }}>
+                  {opt.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
-        {/* 10 Card Background Theme Options */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingTop: '12px', borderTop: '1px solid var(--color-border)' }}>
+        {/* Card Background Themes Select */}
+        <div className={styles.settingRow}>
           <div>
             <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              🎴 Фоновое оформление карточек задач (10 вариантов)
+              🎴 Фоновое оформление карточек задач
             </div>
             <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Стеклянные градиенты, свечения и контуры карточек («Классическое стекло» по умолчанию)
+              Стеклянные градиенты, свечения и контуры карточек задач
             </div>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
-            {CARD_BG_THEMES.map((opt) => {
-              const modeData = theme === 'light' ? opt.light : opt.dark;
-              const isSelected = selectedCardBgThemeId === opt.id;
-              return (
-                <button
-                  key={opt.id}
-                  onClick={() => handleCardBgThemeChange(opt.id)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '6px 12px',
-                    borderRadius: '10px',
-                    border: isSelected ? '2px solid var(--color-accent)' : `1px solid ${modeData.borderColor}`,
-                    background: modeData.bgGradient,
-                    color: 'var(--color-text-primary)',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                    boxShadow: isSelected ? '0 0 10px rgba(99, 102, 241, 0.4)' : 'none',
-                  }}
-                >
-                  <span style={{ width: 8, height: 8, borderRadius: '50%', border: `1px solid ${modeData.borderColor}` }} />
+          <div style={{ minWidth: '220px' }}>
+            <select
+              className={styles.themeSelect}
+              value={selectedCardBgThemeId}
+              onChange={(e) => handleCardBgThemeChange(e.target.value)}
+            >
+              {CARD_BG_THEMES.map((opt) => (
+                <option key={opt.id} value={opt.id} style={{ background: '#0f172a', color: '#f8fafc' }}>
                   {opt.name}
-                </button>
-              );
-            })}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </Card>
