@@ -1,67 +1,65 @@
-/* CSS Module for 20 Overdue Header UX Concepts Showcase */
-.showcaseWrapper {
+/* CSS Module for Overdue Header UX Concept with Full Theme Support (Dark & Light) */
+
+.v7DoubleLineCard {
+  background: var(--color-surface, rgba(30, 41, 59, 0.7));
+  border: 1px solid var(--color-border, rgba(239, 68, 68, 0.3));
+  border-radius: 16px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
-  margin-bottom: 12px;
+  transition: all 0.2s ease;
 }
 
-/* Selector Bar [1] [2] ... [20] (Rendered BELOW Overdue Header Widget) */
-.selectorBarUnderWidget {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 8px 12px;
-  border-radius: 14px;
-  backdrop-filter: blur(12px);
-  margin-top: 6px;
+:global([data-theme="light"]) .v7DoubleLineCard {
+  background: #ffffff;
+  border-color: rgba(239, 68, 68, 0.2);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.05);
 }
 
-.selectorHeader {
+.titleWrapper {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-text-primary, #f8fafc);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  font-size: 11.5px;
-  color: var(--color-text-muted);
+  gap: 8px;
+}
+
+.alertIcon {
+  color: #ef4444;
+}
+
+.widgetTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-text-primary, #f8fafc);
+}
+
+:global([data-theme="light"]) .widgetTitle {
+  color: #0f172a;
+}
+
+.widgetBadge {
+  font-size: 11px;
+  color: var(--color-text-muted, #94a3b8);
   font-weight: 600;
 }
 
-.selectorGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+:global([data-theme="light"]) .widgetBadge {
+  color: #64748b;
 }
 
-.selectorBtn {
-  width: 30px;
-  height: 28px;
-  border-radius: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--color-text-muted);
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s ease;
+.dashedDivider {
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  margin: 2px 0;
 }
 
-.selectorBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-.selectorBtnActive {
-  background: linear-gradient(135deg, #0ea5e9, #6366f1);
-  color: #fff;
-  border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(14, 165, 233, 0.4);
+:global([data-theme="light"]) .dashedDivider {
+  border-top-color: rgba(0, 0, 0, 0.08);
 }
 
 /* Bulk Reschedule Action Button Base */
@@ -69,7 +67,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
+  padding: 9px 14px;
   border-radius: 12px;
   border: 1px solid rgba(16, 185, 129, 0.35);
   background: rgba(16, 185, 129, 0.12);
@@ -79,247 +77,26 @@
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .bulkActionBtn:hover {
   background: rgba(16, 185, 129, 0.22);
   border-color: #10b981;
-  color: #fff;
+  color: #ffffff;
   box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
-  transform: translateY(-1px);
 }
 
-/* ── 20 OVERDUE HEADER STYLING VARIANTS ── */
-
-/* Variant 1: Classic Card Container */
-.v1ClassicCard {
-  background: rgba(239, 68, 68, 0.05);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* Light Mode Overrides for Bulk Action Button */
+:global([data-theme="light"]) .bulkActionBtn {
+  background: rgba(5, 150, 105, 0.08);
+  border-color: rgba(5, 150, 105, 0.3);
+  color: #047857;
 }
 
-/* Variant 2: Sub-header Badge Pill Panel (Inspired by liked Variant 6!) */
-.v2BadgePillPanel {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Variant 3: Left Red Accent Bar Card */
-.v3LeftRedStrip {
-  border-left: 4px solid #ef4444;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 0 14px 14px 0;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-/* Variant 4: Apple Reminders Inset Glass Suite */
-.v4AppleGlass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Variant 5: Floating Command Spotlight Bar */
-.v5SpotlightBar {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border-radius: 14px;
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-/* Variant 6: Pill Tag Capsule Header */
-.v6PillCapsule {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 7: Double Line Card with Hairline Divider */
-.v7DoubleLineCard {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 8: Ambient Soft Red Glow Panel */
-.v8SoftGlowPanel {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(245, 158, 11, 0.1));
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Variant 9: Compact Single-Row Floating Bar */
-.v9SingleRowBar {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 6px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  height: 44px;
-}
-
-/* Variant 10: Two-Column Split Action Card */
-.v10TwoColumnSplit {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid var(--color-border);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-/* Variant 11: Minimal Bracket Box */
-.v11BracketBox {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Variant 12: Notion Callout Alert Box */
-.v12NotionCallout {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 13: Micro Header with Action Chips */
-.v13ChipsHeader {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 14: Hairline Underline Action Box */
-.v14HairlineBox {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 15: Cyberpunk Neon Alert Bar */
-.v15CyberpunkHolo {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  box-shadow: 0 0 16px rgba(239, 68, 68, 0.2);
-  border-radius: 14px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: monospace;
-}
-
-/* Variant 16: Inset Embedded Amber-Red Panel */
-.v16EmbeddedPanel {
-  border-left: 4px solid #f59e0b;
-  background: rgba(15, 23, 42, 0.7);
-  border-radius: 0 16px 16px 0;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 17: VisionOS 3D Spatial Glass Bar */
-.v17VisionOSGlass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
-  border-radius: 20px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Variant 18: Compact Floating Drawer Bar */
-.v18DrawerBar {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Variant 19: Dual-Tone Badge Banner */
-.v19DualToneBanner {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Variant 20: Master Overdue Dashboard Suite */
-.v20MasterDashboard {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+:global([data-theme="light"]) .bulkActionBtn:hover {
+  background: #059669;
+  border-color: #047857;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
 }

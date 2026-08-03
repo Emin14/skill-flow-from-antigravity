@@ -1,81 +1,70 @@
-/* CSS Module for 20 Dedicated & Stylish Inbox Header UX Concepts */
-.showcaseWrapper {
+/* CSS Module for Inbox Header UX Concept with Full Theme Support (Dark & Light) */
+
+.v6PillPanel {
+  background: var(--color-surface, rgba(30, 41, 59, 0.7));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  border-radius: 16px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 12px;
 }
 
-/* Selector Bar [1] [2] ... [20] (Rendered BELOW Quick Capture Widget) */
-.selectorBarUnderWidget {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 8px 12px;
-  border-radius: 14px;
-  backdrop-filter: blur(12px);
-  margin-top: 6px;
+:global([data-theme="light"]) .v6PillPanel {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
-.selectorHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.widgetTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-text-primary, #f8fafc);
+}
+
+:global([data-theme="light"]) .widgetTitle {
+  color: #0f172a;
+}
+
+.widgetBadge {
   font-size: 11.5px;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted, #94a3b8);
   font-weight: 600;
 }
 
-.selectorGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+:global([data-theme="light"]) .widgetBadge {
+  color: #64748b;
 }
 
-.selectorBtn {
-  width: 30px;
-  height: 28px;
-  border-radius: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--color-text-muted);
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s ease;
+.titleIcon {
+  color: #38bdf8;
 }
 
-.selectorBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+:global([data-theme="light"]) .titleIcon {
+  color: #0284c7;
 }
 
-.selectorBtnActive {
-  background: linear-gradient(135deg, #0ea5e9, #6366f1);
-  color: #fff;
-  border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(14, 165, 233, 0.4);
-}
-
-/* Base Form Input & Button Styling */
+/* Form Input Styling */
 .cleanInput {
   width: 100%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
   border-radius: 12px;
   padding: 10px 14px;
-  color: var(--color-text-primary);
+  color: var(--color-text-primary, #f8fafc);
   font-size: 13.5px;
   outline: none;
   transition: all 0.2s ease;
   box-sizing: border-box;
+}
+
+.cleanInput::placeholder {
+  color: var(--color-text-muted, #94a3b8);
+  opacity: 0.8;
 }
 
 .cleanInput:focus {
@@ -84,257 +73,18 @@
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
 }
 
-.chipBtn {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+:global([data-theme="light"]) .cleanInput {
+  background: #f8fafc;
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #0f172a;
 }
 
-.chipBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+:global([data-theme="light"]) .cleanInput::placeholder {
+  color: #94a3b8;
 }
 
-.chipBtnActive {
-  background: rgba(56, 189, 248, 0.18);
-  color: #38bdf8;
-  border-color: #38bdf8;
-}
-
-/* ── 20 DEDICATED INBOX STYLING VARIANTS ── */
-
-/* Variant 1: Classic Original Card */
-.v1ClassicCard {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--color-border);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 2: Compact Floating Header Bar */
-.v2FloatingHeaderBar {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  border-radius: 16px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-/* Variant 3: Modern Glassmorphic Glowing Box */
-.v3GlassmorphicGlow {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 4: Minimalist Left Vertical Strip */
-.v4LeftStripCard {
-  border-left: 4px solid #38bdf8;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 0 14px 14px 0;
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 5: Spotlight Search Bar Style */
-.v5SpotlightBar {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border-radius: 14px;
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Variant 6: Sub-header Badge Pill Panel */
-.v6PillPanel {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 7: Double Line Header Card with Dashed Divider */
-.v7DoubleLineCard {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 8: Apple Reminders Inset Box */
-.v8AppleInset {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 9: Dual-Tone Tag Capsule Header */
-.v9DualToneHeader {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Variant 10: Ambient Soft Glow Panel */
-.v10SoftGlowPanel {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(99, 102, 241, 0.1));
-  border: 1px solid rgba(14, 165, 233, 0.25);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 11: Single Row Compact Pill */
-.v11SingleRowPill {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 42px;
-}
-
-/* Variant 12: Bracketed Sleek Header */
-.v12BracketedHeader {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 13: Micro Header with Category Chips */
-.v13ChipsHeader {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 14: Two-Column Layout */
-.v14TwoColumn {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-/* Variant 15: Hairline Underline Box */
-.v15HairlineBox {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 16: Inset Embedded Panel */
-.v16EmbeddedPanel {
-  border-left: 3px solid #f59e0b;
-  background: rgba(15, 23, 42, 0.7);
-  border-radius: 0 16px 16px 0;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 17: Floating Pill Badge Suite */
-.v17PillSuite {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 18: Voice & Keyboard Toggle Card */
-.v18VoiceKeyToggle {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.7));
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  border-radius: 18px;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 19: Amber Accent Left Strip Card */
-.v19AmberStripCard {
-  border-left: 4px solid #f59e0b;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 0 16px 16px 0;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Variant 20: Master Dual-Row Dashboard */
-.v20MasterDashboard {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+:global([data-theme="light"]) .cleanInput:focus {
+  background: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.2);
 }

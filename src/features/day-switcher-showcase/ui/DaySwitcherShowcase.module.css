@@ -1,4 +1,4 @@
-/* CSS Module for 20 Day Switcher Showcase Concepts (No Arrows, No Calendar Icon for Swipes) */
+/* CSS Module for 20 Day Switcher Showcase Concepts with Full Theme Support (Dark & Light) */
 .showcaseContainer {
   display: flex;
   flex-direction: column;
@@ -106,7 +106,7 @@
 .todayChip {
   background: rgba(245, 158, 11, 0.2);
   border: 1px solid rgba(245, 158, 11, 0.4);
-  color: #fbbf24;
+  color: #d97706;
   font-size: 11px;
   font-weight: 700;
   padding: 3px 10px;
@@ -115,6 +115,12 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+}
+
+:global([data-theme="light"]) .todayChip {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #b45309;
 }
 
 .v1ArrowBtn {
@@ -178,10 +184,26 @@
   position: relative;
 }
 
+:global([data-theme="light"]) .swipeCardBase {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
 .swipeCardActive {
   background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(99, 102, 241, 0.3));
   border-color: #38bdf8;
   box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);
+}
+
+:global([data-theme="light"]) .swipeCardActive {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border-color: #0284c7;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+}
+
+:global([data-theme="light"]) .swipeCardActive * {
+  color: #ffffff !important;
 }
 
 .todayCardBorder {
@@ -215,10 +237,21 @@
   scroll-snap-align: center;
 }
 
+:global([data-theme="light"]) .v4DayCard {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
 .v4DayCardActive {
   background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(99, 102, 241, 0.3));
   border-color: #38bdf8;
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+}
+
+:global([data-theme="light"]) .v4DayCardActive {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border-color: #0284c7;
+  color: #ffffff !important;
 }
 
 /* Variant 6: Hero Banner */
@@ -246,6 +279,11 @@
   scroll-snap-type: x mandatory;
 }
 
+:global([data-theme="light"]) .v8GlassmorphicRibbon {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
 /* Variant 9: Circle Dot Ribbon */
 .v9DotRibbon {
   display: flex;
@@ -269,6 +307,11 @@
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
+}
+
+:global([data-theme="light"]) .v9CircleDot {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 .v9CircleDotActive {
@@ -305,11 +348,28 @@
   scroll-snap-align: center;
 }
 
+:global([data-theme="light"]) .v12Pill {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #334155;
+}
+
 .v12PillActive {
   transform: scale(1.06);
   background: linear-gradient(135deg, rgba(14, 165, 233, 0.35), rgba(99, 102, 241, 0.35));
   border-color: #38bdf8;
   box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+}
+
+:global([data-theme="light"]) .v12PillActive {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border-color: #0284c7;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+}
+
+:global([data-theme="light"]) .v12PillActive * {
+  color: #ffffff !important;
 }
 
 /* Variant 19 (Modified): Scroll Ribbon in Style 19 (Large numbers & vibrant gradient, no arrows, no calendar icon) */
@@ -338,49 +398,14 @@
   scroll-snap-align: center;
 }
 
+:global([data-theme="light"]) .v19BigCard {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
 .v19BigCardActive {
   background: linear-gradient(135deg, #06b6d4, #3b82f6);
   color: #fff;
   border-color: #38bdf8;
   box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
-}
-
-/* Additional styling for unique swipe variants (Capsules, Cupertino, Tonal, Dynamic Island, etc.) */
-.v5CapsuleCard {
-  border-radius: 20px !important;
-}
-
-.v7FloatingIslandCard {
-  border-radius: 22px !important;
-  background: rgba(15, 23, 42, 0.8) !important;
-  backdrop-filter: blur(12px);
-}
-
-.v14CupertinoCard {
-  border-radius: 14px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-}
-
-.v15TonalCard {
-  border-radius: 18px !important;
-  background: rgba(99, 102, 241, 0.12) !important;
-  border-color: rgba(99, 102, 241, 0.25) !important;
-  color: #c7d2fe;
-}
-
-.v18NeonCard {
-  border-radius: 16px !important;
-  background: rgba(15, 23, 42, 0.9) !important;
-}
-
-.v18NeonCardActive {
-  border-color: #ec4899 !important;
-  box-shadow: 0 0 16px rgba(236, 72, 153, 0.5) !important;
-  background: rgba(236, 72, 153, 0.18) !important;
-}
-
-.v20IslandCard {
-  border-radius: 24px !important;
-  background: rgba(15, 23, 42, 0.95) !important;
-  border-color: rgba(56, 189, 248, 0.4) !important;
 }

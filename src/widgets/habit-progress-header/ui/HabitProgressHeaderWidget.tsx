@@ -20,8 +20,8 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
       {/* 💡 Selected Final Variant #5: Two-Row Compact Header with Full-Width Equal Segment Track */}
       <div className={styles.v5TwoRowFullWidth}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: '15px', fontWeight: 800, color: '#fff' }}>🔄 Трек прогресса привычек</span>
-          <span style={{ fontSize: '11px', color: '#94a3b8' }}>Интервалы</span>
+          <span className={styles.widgetTitle}>🔄 Трек прогресса привычек</span>
+          <span className={styles.widgetBadge}>Интервалы</span>
         </div>
 
         <div className={styles.equalTrack}>

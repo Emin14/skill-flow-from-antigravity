@@ -23,10 +23,10 @@ export const InboxHeaderWidget: React.FC<InboxHeaderWidgetProps> = ({
       <div className={styles.v6PillPanel}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Zap size={18} color="#38bdf8" />
-            <span style={{ fontSize: '16px', fontWeight: 800, color: '#fff' }}>Входящие идеи</span>
+            <Zap size={18} className={styles.titleIcon} />
+            <span className={styles.widgetTitle}>Входящие идеи</span>
           </div>
-          <span style={{ fontSize: '11px', color: '#94a3b8' }}>{itemCount} не разобранных</span>
+          <span className={styles.widgetBadge}>{itemCount} не разобранных</span>
         </div>
 
         <form onSubmit={onSubmit}>

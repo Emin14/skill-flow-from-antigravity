@@ -27,8 +27,8 @@ export const ProjectFilterTabsWidget: React.FC<ProjectFilterTabsWidgetProps> = (
       {/* 💡 Selected Final Variant #9: Sub-Header Badge Bar with Dual Compact Rows */}
       <div className={styles.v9DualRowSubHeader}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: '14px', fontWeight: 800, color: '#fff' }}>📁 Фильтр Проектов</span>
-          <span style={{ fontSize: '11px', color: '#38bdf8', fontWeight: 800 }}>
+          <span className={styles.widgetTitle}>📁 Фильтр Проектов</span>
+          <span className={styles.widgetBadge}>
             {TABS.find((t) => t.id === activeFilter)?.label}
           </span>
         </div>
