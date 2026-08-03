@@ -197,7 +197,7 @@ export const ProjectsPage: React.FC = () => {
                 tasks={tasks}
                 openProjectIds={openProjectIds}
                 todayStr={todayStr}
-                onToggleOpen={() => toggleProjectOpen(project.id)}
+                toggleProjectOpen={toggleProjectOpen}
                 onEdit={() => setEditingTask(project)}
                 onDragOver={(e) => handleDragOver(e, project.id)}
                 onDragLeave={handleDragLeave}
@@ -250,7 +250,7 @@ interface ProjectCardRendererProps {
   tasks: Task[];
   openProjectIds: Set<string>;
   todayStr: string;
-  onToggleOpen: () => void;
+  toggleProjectOpen: (id: string) => void;
   onEdit: () => void;
   onDragOver: (e: React.DragEvent) => void;
   onDragLeave: () => void;
@@ -278,7 +278,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   tasks,
   openProjectIds,
   todayStr,
-  onToggleOpen,
+  toggleProjectOpen,
   onEdit,
   onDragOver,
   onDragLeave,
@@ -331,7 +331,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
       )}
 
       {/* Main Header Row (Strict Title Truncation - Point 3) */}
-      <div className={styles.projectCardHeader} onClick={onToggleOpen} style={variant === 6 ? { padding: '14px 18px 0 18px' } : undefined}>
+      <div className={styles.projectCardHeader} onClick={() => toggleProjectOpen(project.id)} style={variant === 6 ? { padding: '14px 18px 0 18px' } : undefined}>
         <div className={styles.projectTitleCol}>
           <div className={styles.projectTitleRow}>
             {variant !== 6 && <span style={{ fontSize: '18px', flexShrink: 0 }}>📁</span>}
@@ -422,7 +422,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
               parentId={project.id}
               tasks={tasks}
               openProjectIds={openProjectIds}
-              toggleProjectOpen={onToggleOpen}
+              toggleProjectOpen={toggleProjectOpen}
               onEdit={onEdit}
               onToggleSubtask={onToggleSubtask}
               onDeleteSubtask={onDeleteSubtask}
@@ -517,7 +517,10 @@ const RecursiveSubtaskList: React.FC<{
                   cursor: 'pointer',
                   gap: '8px',
                 }}
-                onClick={() => toggleProjectOpen(child.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleProjectOpen(child.id);
+                }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
                   <span style={{ fontSize: '16px', flexShrink: 0 }}>📁</span>
