@@ -105,17 +105,7 @@ export const CalendarPage: React.FC = () => {
   };
 
   const handleCheckboxToggle = (task: Task) => {
-    const isDone = isTaskDoneOnDate(task, selectedDate);
-
-    if (isDone) {
-      // Un-checking completed task: ALWAYS toggle directly to Todo, NEVER open rating modal!
-      toggleTaskStatus(task.id, undefined, selectedDate);
-    } else if (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
-      // Completing task: Open rating modal if smart or spaced repetition
-      setSmartTask(task);
-    } else {
-      toggleTaskStatus(task.id, undefined, selectedDate);
-    }
+    toggleTaskStatus(task.id, undefined, selectedDate);
   };
 
   const handleSelectSmartRating = (rating: SmartRating) => {
