@@ -118,14 +118,14 @@ export const ProjectsPage: React.FC = () => {
         ))}
       </div>
 
-      {/* Project Card Design Switcher (Point 5: 9 Design Concepts) */}
+      {/* Project Card Design Switcher (Point 5: 10 Radically Different Concepts) */}
       <div className={styles.variantSwitcherBar}>
         <div className={styles.switcherLabel}>
-          <span>🎨 Дизайн карточки проекта (Варианты 1-9):</span>
-          <span>Вариант {cardVariant}</span>
+          <span>🎨 Дизайн карточки проекта (Варианты 1-10):</span>
+          <span>Вариант {cardVariant} из 10</span>
         </div>
         <div className={styles.switcherButtons}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((v) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((v) => (
             <button
               key={v}
               type="button"
@@ -287,28 +287,65 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   onDeleteSubtask,
   onSelectSubtask,
 }) => {
+  // Dynamic styling per card variant
+  const getCardStyle = (): React.CSSProperties => {
+    switch (variant) {
+      case 2: // Linear Monospace Dark
+        return { background: '#090d16', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '14px', fontFamily: 'monospace' };
+      case 3: // Notion Document Block
+        return { background: 'rgba(255, 255, 255, 0.04)', borderLeft: '4px solid #38bdf8', borderRadius: '12px' };
+      case 5: // Things 3 Minimal Area
+        return { background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px' };
+      case 6: // Trello/Jira Banner Header
+        return { background: 'rgba(15, 23, 42, 0.85)', borderRadius: '18px', overflow: 'hidden', padding: 0 };
+      case 7: // Neumorphic Soft Glow
+        return { background: 'rgba(30,41,59,0.7)', boxShadow: `0 0 20px ${catColor}35`, border: `1px solid ${catColor}50`, borderRadius: '20px' };
+      case 8: // Compact Expandable Accordion Bar
+        return { background: 'rgba(30,41,59,0.6)', borderRadius: '12px', padding: '10px 14px' };
+      case 9: // Hero Percentage Metric Card
+        return { background: 'linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95))', border: '1px solid rgba(14,165,233,0.3)', borderRadius: '22px' };
+      case 10: // ClickUp Vertical Accent Strip
+        return { background: 'rgba(30,41,59,0.65)', borderLeft: `6px solid ${catColor}`, borderRadius: '16px' };
+      case 1: // Glassmorphic Standard
+      default:
+        return { background: 'rgba(30, 41, 59, 0.65)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '18px' };
+    }
+  };
+
   return (
     <div
       className={`${styles.projectCardBase} ${isDragOver ? styles.projectCardDragOver : ''}`}
-      style={variant === 7 ? { boxShadow: `0 0 16px ${catColor}25`, border: `1px solid ${catColor}40` } : undefined}
+      style={{ ...getCardStyle(), position: 'relative' }}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
     >
-      {/* Top Accent Line for Variant 1 & 6 */}
-      {(variant === 1 || variant === 6) && (
+      {/* Top Accent Bar for Variant 1 */}
+      {variant === 1 && (
         <div style={{ height: '3px', margin: '-16px -18px 8px -18px', background: `linear-gradient(90deg, ${catColor} 0%, transparent 90%)` }} />
       )}
 
-      {/* Project Card Header (Strictly Truncated Title - Point 3) */}
-      <div className={styles.projectCardHeader} onClick={onToggleOpen}>
+      {/* Full Banner Header for Variant 6 */}
+      {variant === 6 && (
+        <div style={{ padding: '14px 18px', background: `linear-gradient(135deg, ${catColor}50 0%, rgba(15,23,42,0.9) 100%)`, borderBottom: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
+            <span style={{ fontSize: '18px' }}>📂</span>
+            <h2 className={styles.projectTitle} style={{ color: '#ffffff', fontWeight: 800 }}>{project.title}</h2>
+          </div>
+          <button type="button" onClick={(e) => { e.stopPropagation(); onEdit(); }} style={{ background: 'rgba(0,0,0,0.3)', border: 'none', borderRadius: '6px', color: '#fff', padding: '4px 8px', cursor: 'pointer' }}>✏️</button>
+        </div>
+      )}
+
+      {/* Main Header Row (Strict Title Truncation - Point 3) */}
+      <div className={styles.projectCardHeader} onClick={onToggleOpen} style={variant === 6 ? { padding: '14px 18px 0 18px' } : undefined}>
         <div className={styles.projectTitleCol}>
           <div className={styles.projectTitleRow}>
-            <span style={{ fontSize: '18px', flexShrink: 0 }}>📁</span>
-            {/* Strict title truncation (Point 3) */}
-            <h2 className={styles.projectTitle} title={project.title}>
-              {project.title}
-            </h2>
+            {variant !== 6 && <span style={{ fontSize: '18px', flexShrink: 0 }}>📁</span>}
+            {variant !== 6 && (
+              <h2 className={styles.projectTitle} title={project.title}>
+                {project.title}
+              </h2>
+            )}
             {overdueBadge(overdueCount)}
           </div>
 
@@ -319,49 +356,60 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
                 Прогресс: {doneCount}/{totalCount} ({progressPercent}%)
               </span>
               <div className={styles.progressBarTrack} style={{ flex: 1 }}>
-                <div className={styles.progressBarFill} style={{ width: `${progressPercent}%` }} />
+                <div className={styles.progressBarFill} style={{ width: `${progressPercent}%`, background: variant === 7 ? `linear-gradient(90deg, ${catColor}, #10b981)` : undefined }} />
               </div>
             </div>
           )}
         </div>
 
-        {/* Action Controls & Radial Ring for Variant 4 */}
+        {/* Right side widgets per variant */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
           {variant === 4 && totalCount > 0 && (
-            <span style={{ fontSize: '12px', fontWeight: 700, color: '#10b981', background: 'rgba(16,185,129,0.15)', padding: '2px 8px', borderRadius: '10px' }}>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#10b981', background: 'rgba(16,185,129,0.15)', padding: '3px 10px', borderRadius: '12px', border: '1px solid rgba(16,185,129,0.3)' }}>
               {progressPercent}%
             </span>
           )}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onEdit();
-            }}
-            title="Редактировать проект"
-            style={{
-              background: 'rgba(255,255,255,0.08)',
-              border: '1px solid rgba(255,255,255,0.12)',
-              borderRadius: '8px',
-              color: '#fff',
-              width: '30px',
-              height: '30px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              flexShrink: 0,
-            }}
-          >
-            ✏️
-          </button>
+
+          {variant === 9 && totalCount > 0 && (
+            <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+              <span style={{ fontSize: '20px', fontWeight: 900, background: 'linear-gradient(135deg, #38bdf8, #10b981)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                {progressPercent}%
+              </span>
+            </div>
+          )}
+
+          {variant !== 6 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit();
+              }}
+              title="Редактировать проект"
+              style={{
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                borderRadius: '8px',
+                color: '#fff',
+                width: '30px',
+                height: '30px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                flexShrink: 0,
+              }}
+            >
+              ✏️
+            </button>
+          )}
           {isOpen ? <ChevronDown size={18} color="#94a3b8" /> : <ChevronRight size={18} color="#94a3b8" />}
         </div>
       </div>
 
       {/* Date Mismatch Warning Banner (Point 12) */}
       {hasDateMismatch && project.scheduledDate && latestSubtaskDate && (
-        <div className={styles.dateWarningBanner}>
+        <div className={styles.dateWarningBanner} style={variant === 6 ? { margin: '0 18px' } : undefined}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <AlertCircle size={16} color="#f59e0b" />
             <div>
@@ -379,7 +427,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
 
       {/* Collapsible Subtasks List */}
       {isOpen && (
-        <div className={styles.subtaskList}>
+        <div className={styles.subtaskList} style={variant === 6 ? { padding: '10px 18px 18px 18px' } : undefined}>
           {sortedSubtasks.length === 0 ? (
             <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', padding: '6px 0', fontStyle: 'italic' }}>
               Нет подзадач в проекте (Перетащите сюда задачи).
