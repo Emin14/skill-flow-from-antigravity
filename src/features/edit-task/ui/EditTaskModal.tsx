@@ -90,6 +90,10 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const [afterCompletionDaysInput, setAfterCompletionDaysInput] = useState('3');
   const [hasSubtasks, setHasSubtasks] = useState(false);
 
+  const [dragY, setDragY] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const startYRef = useRef(0);
+
   useEffect(() => {
     if (isOpen) lockBodyScroll();
     else unlockBodyScroll();
@@ -187,10 +191,6 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     if (onSaveSuccess) onSaveSuccess();
     onClose();
   };
-
-  const [dragY, setDragY] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const startYRef = useRef(0);
 
   const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
     const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
