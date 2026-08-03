@@ -609,175 +609,35 @@ const DateWarningBanner: React.FC<{
   const pDateStr = formatDateDisplay(projectDate);
   const sDateStr = formatDateDisplay(subtaskDate);
 
+  // Common mobile-friendly container styles for all Glassmorphic variants
+  const baseMobileGlassStyle: React.CSSProperties = {
+    margin: '8px 12px 0 12px',
+    padding: '10px 14px',
+    borderRadius: '14px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '10px',
+    flexWrap: 'wrap', // Ensures perfect mobile wrapping on narrow screens!
+  };
+
   switch (variant) {
     case 1:
-      // Variant 1: Apple Smart Alert Banner (Balanced & Readable)
+      // Variant 1: Original Modern Glass Card (Golden Glow)
       return (
         <div
           style={{
-            margin: '8px 16px 0 16px',
-            padding: '10px 14px',
-            borderRadius: '12px',
-            background: 'rgba(245, 158, 11, 0.09)',
-            border: '1px solid rgba(245, 158, 11, 0.28)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-            <span style={{ fontSize: '16px', flexShrink: 0 }}>⚠️</span>
-            <div style={{ fontSize: '12.5px', color: 'var(--color-text-primary)', lineHeight: '1.35' }}>
-              <span>Есть подзадачи позже даты проекта </span>
-              <span style={{ color: '#f59e0b', fontWeight: 600 }}>({pDateStr})</span>
-              <span style={{ opacity: 0.7 }}>. Крайний срок: </span>
-              <span style={{ color: '#38bdf8', fontWeight: 600 }}>{sDateStr}</span>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: '#f59e0b',
-              border: 'none',
-              color: '#0f172a',
-              borderRadius: '8px',
-              padding: '6px 12px',
-              fontSize: '12px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-          >
-            Сдвинуть проект на {sDateStr}
-          </button>
-        </div>
-      );
-
-    case 2:
-      // Variant 2: Linear Pro Alert Bar (Left Accent Border)
-      return (
-        <div
-          style={{
-            margin: '8px 16px 0 16px',
-            padding: '10px 14px',
-            borderRadius: '10px',
-            background: 'rgba(30, 41, 59, 0.5)',
-            borderLeft: '4px solid #f59e0b',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRight: '1px solid rgba(255, 255, 255, 0.08)',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px' }}>
-            <AlertCircle size={16} color="#f59e0b" style={{ flexShrink: 0 }} />
-            <span style={{ color: '#e2e8f0' }}>
-              Дата проекта <strong>{pDateStr}</strong> меньше даты подзадачи <strong>{sDateStr}</strong>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'rgba(245, 158, 11, 0.15)',
-              border: '1px solid rgba(245, 158, 11, 0.35)',
-              color: '#fde68a',
-              borderRadius: '6px',
-              padding: '5px 12px',
-              fontSize: '11.5px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Обновить дату проекта
-          </button>
-        </div>
-      );
-
-    case 3:
-      // Variant 3: Stripe Elegant Notice (Tag + Text + Pill Button)
-      return (
-        <div
-          style={{
-            margin: '8px 16px 0 16px',
-            padding: '8px 14px',
-            borderRadius: '12px',
-            background: 'rgba(15, 23, 42, 0.6)',
-            border: '1px solid rgba(245, 158, 11, 0.25)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
-            <span
-              style={{
-                background: 'rgba(245, 158, 11, 0.2)',
-                color: '#f59e0b',
-                padding: '2px 8px',
-                borderRadius: '10px',
-                fontSize: '11px',
-                fontWeight: 700,
-                flexShrink: 0,
-              }}
-            >
-              Внимание
-            </span>
-            <span style={{ fontSize: '12px', color: '#cbd5e1', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              Подзадача ({sDateStr}) выходит за границы проекта ({pDateStr})
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: '#38bdf8',
-              border: 'none',
-              color: '#0f172a',
-              borderRadius: '14px',
-              padding: '4px 12px',
-              fontSize: '11.5px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-          >
-            Приравнять к {sDateStr}
-          </button>
-        </div>
-      );
-
-    case 4:
-      // Variant 4: Modern Glass Card (Frosted Glow Strip)
-      return (
-        <div
-          style={{
-            margin: '8px 16px 0 16px',
-            padding: '10px 14px',
-            borderRadius: '14px',
-            background: 'rgba(30, 41, 59, 0.45)',
+            ...baseMobileGlassStyle,
+            background: 'rgba(30, 41, 59, 0.55)',
             backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(251, 191, 36, 0.3)',
-            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
+            border: '1px solid rgba(251, 191, 36, 0.35)',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
           }}
         >
-          <div style={{ fontSize: '12px', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span>💡</span>
+          <div style={{ fontSize: '12.5px', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '8px', minWidth: '180px', flex: 1 }}>
+            <span style={{ fontSize: '16px', flexShrink: 0 }}>💡</span>
             <span>
-              Проект: <strong style={{ color: '#fbbf24' }}>{pDateStr}</strong> • Последняя подзадача: <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
+              Проект: <strong style={{ color: '#fbbf24' }}>{pDateStr}</strong> • Крайняя задача: <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
             </span>
           </div>
           <button
@@ -788,7 +648,7 @@ const DateWarningBanner: React.FC<{
               border: 'none',
               color: '#fff',
               borderRadius: '8px',
-              padding: '5px 12px',
+              padding: '6px 14px',
               fontSize: '11.5px',
               fontWeight: 700,
               cursor: 'pointer',
@@ -801,66 +661,121 @@ const DateWarningBanner: React.FC<{
         </div>
       );
 
-    case 5:
-      // Variant 5: Notion Deluxe Banner (Light Amber Fill & Link Action)
+    case 2:
+      // Variant 2: Frosted Cyan-Gold Glass Pill with Date Chips
       return (
         <div
           style={{
-            margin: '8px 16px 0 16px',
-            padding: '9px 14px',
-            borderRadius: '10px',
-            background: 'rgba(251, 191, 36, 0.12)',
-            border: '1px solid rgba(251, 191, 36, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
+            ...baseMobileGlassStyle,
+            background: 'rgba(15, 23, 42, 0.65)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(56, 189, 248, 0.3)',
+            boxShadow: '0 4px 18px rgba(14, 165, 233, 0.15)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px', color: '#fef08a' }}>
-            <span>📁</span>
-            <span>Срок проекта <strong>{pDateStr}</strong> меньше даты выполнения подзадачи <strong>{sDateStr}</strong></span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', minWidth: '180px', flex: 1, flexWrap: 'wrap' }}>
+            <span style={{ color: '#f59e0b', fontSize: '15px' }}>⚡</span>
+            <span style={{ color: '#e2e8f0', fontWeight: 500 }}>Срок подзадачи превышен:</span>
+            <span style={{ background: 'rgba(245, 158, 11, 0.18)', color: '#fde047', padding: '2px 8px', borderRadius: '6px', fontWeight: 600 }}>
+              📂 {pDateStr}
+            </span>
+            <span style={{ color: '#94a3b8' }}>➔</span>
+            <span style={{ background: 'rgba(56, 189, 248, 0.18)', color: '#38bdf8', padding: '2px 8px', borderRadius: '6px', fontWeight: 600 }}>
+              📌 {sDateStr}
+            </span>
           </div>
           <button
             type="button"
             onClick={onFixDate}
             style={{
-              background: 'none',
+              background: 'linear-gradient(135deg, #38bdf8, #0284c7)',
               border: 'none',
-              color: '#fbbf24',
-              fontSize: '12px',
-              fontWeight: 700,
-              textDecoration: 'underline',
+              color: '#0f172a',
+              borderRadius: '10px',
+              padding: '6px 14px',
+              fontSize: '11.5px',
+              fontWeight: 800,
               cursor: 'pointer',
               whiteSpace: 'nowrap',
             }}
           >
-            Изменить дату проекта на {sDateStr}
+            Подтянуть дату
           </button>
         </div>
       );
 
-    case 6:
-      // Variant 6: Arc Browser Capsule Alert (Compact Pill with Delta)
+    case 3:
+      // Variant 3: Glass Strip with Left Amber Accent Bar
       return (
         <div
           style={{
-            margin: '8px 16px 0 16px',
-            padding: '8px 14px',
-            borderRadius: '20px',
-            background: 'rgba(15, 23, 42, 0.75)',
-            border: '1px solid rgba(245, 158, 11, 0.4)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '10px',
+            ...baseMobileGlassStyle,
+            background: 'rgba(30, 41, 59, 0.5)',
+            backdropFilter: 'blur(8px)',
+            borderLeft: '4px solid #f59e0b',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f59e0b', boxShadow: '0 0 8px #f59e0b' }} />
-            <span style={{ color: '#94a3b8' }}>
-              Конфликт расписания: проект <span style={{ color: '#fff', fontWeight: 600 }}>{pDateStr}</span> ➔ подзадача <span style={{ color: '#f59e0b', fontWeight: 700 }}>{sDateStr}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px', color: '#f1f5f9', minWidth: '180px', flex: 1 }}>
+            <AlertCircle size={16} color="#f59e0b" style={{ flexShrink: 0 }} />
+            <span>
+              Дата проекта <strong style={{ color: '#fbbf24' }}>{pDateStr}</strong> отстаёт от подзадачи <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
             </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'rgba(245, 158, 11, 0.18)',
+              border: '1px solid rgba(245, 158, 11, 0.4)',
+              color: '#fde68a',
+              borderRadius: '8px',
+              padding: '5px 12px',
+              fontSize: '11.5px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Выровнять до {sDateStr}
+          </button>
+        </div>
+      );
+
+    case 4:
+      // Variant 4: Soft Neumorphic Glass Card with Warm Amber Glow
+      return (
+        <div
+          style={{
+            ...baseMobileGlassStyle,
+            background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8))',
+            backdropFilter: 'blur(14px)',
+            border: '1px solid rgba(245, 158, 11, 0.3)',
+            boxShadow: '0 4px 20px rgba(245, 158, 11, 0.12)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: '180px', flex: 1 }}>
+            <div
+              style={{
+                width: '28px',
+                height: '28px',
+                borderRadius: '50%',
+                background: 'rgba(245, 158, 11, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fbbf24',
+                fontSize: '14px',
+                flexShrink: 0,
+              }}
+            >
+              ⚠️
+            </div>
+            <div style={{ fontSize: '12px', color: '#cbd5e1' }}>
+              Крайняя подзадача <strong style={{ color: '#38bdf8' }}>({sDateStr})</strong> выходит за границы проекта <strong style={{ color: '#fbbf24' }}>({pDateStr})</strong>
+            </div>
           </div>
           <button
             type="button"
@@ -869,38 +784,124 @@ const DateWarningBanner: React.FC<{
               background: '#f59e0b',
               border: 'none',
               color: '#0f172a',
-              borderRadius: '12px',
-              padding: '4px 10px',
-              fontSize: '11px',
+              borderRadius: '8px',
+              padding: '6px 14px',
+              fontSize: '11.5px',
               fontWeight: 800,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 2px 8px rgba(245, 158, 11, 0.4)',
+            }}
+          >
+            Продлить до {sDateStr}
+          </button>
+        </div>
+      );
+
+    case 5:
+      // Variant 5: Apple Dynamic Island Glass Bar
+      return (
+        <div
+          style={{
+            ...baseMobileGlassStyle,
+            borderRadius: '22px',
+            background: 'rgba(15, 23, 42, 0.75)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(251, 191, 36, 0.35)',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', minWidth: '180px', flex: 1 }}>
+            <span
+              style={{
+                background: 'rgba(245, 158, 11, 0.2)',
+                color: '#fbbf24',
+                padding: '2px 8px',
+                borderRadius: '12px',
+                fontSize: '11px',
+                fontWeight: 700,
+                flexShrink: 0,
+              }}
+            >
+              ⚠️ Срок
+            </span>
+            <span style={{ color: '#f1f5f9' }}>
+              Проект: <strong>{pDateStr}</strong> ➔ Подзадача: <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+              border: 'none',
+              color: '#ffffff',
+              borderRadius: '16px',
+              padding: '5px 14px',
+              fontSize: '11.5px',
+              fontWeight: 700,
               cursor: 'pointer',
               whiteSpace: 'nowrap',
             }}
           >
-            Авто-продление
+            Синхронизировать
+          </button>
+        </div>
+      );
+
+    case 6:
+      // Variant 6: Deep Slate Glass Ribbon with Gold Border
+      return (
+        <div
+          style={{
+            ...baseMobileGlassStyle,
+            background: 'rgba(30, 41, 59, 0.4)',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(245, 158, 11, 0.25)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#e2e8f0', minWidth: '180px', flex: 1 }}>
+            <span>📂</span>
+            <span>
+              Срок проекта <strong>{pDateStr}</strong> меньше даты подзадачи <strong>{sDateStr}</strong>
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.18)',
+              color: '#fff',
+              borderRadius: '8px',
+              padding: '5px 12px',
+              fontSize: '11.5px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Обновить дату
           </button>
         </div>
       );
 
     case 7:
-      // Variant 7: Things 3 Elegant Outline Card
+      // Variant 7: Things 3 Translucent Pill Card
       return (
         <div
           style={{
-            margin: '8px 16px 0 16px',
-            padding: '10px 14px',
-            borderRadius: '10px',
-            background: 'transparent',
-            border: '1px dashed rgba(245, 158, 11, 0.45)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
+            ...baseMobileGlassStyle,
+            background: 'rgba(15, 23, 42, 0.55)',
+            backdropFilter: 'blur(10px)',
+            border: '1px dashed rgba(245, 158, 11, 0.4)',
           }}
         >
-          <div style={{ fontSize: '12.5px', color: '#fcd34d', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span>⚠️</span>
-            <span>Срок проекта ({pDateStr}) отстаёт от подзадач ({sDateStr})</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#fcd34d', minWidth: '180px', flex: 1 }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f59e0b', flexShrink: 0 }} />
+            <span>
+              Крайняя подзадача (<strong>{sDateStr}</strong>) выходит за срок проекта (<strong>{pDateStr}</strong>)
+            </span>
           </div>
           <button
             type="button"
@@ -923,27 +924,22 @@ const DateWarningBanner: React.FC<{
       );
 
     case 8:
-      // Variant 8: GitHub Release Notice Style (Dark Slate Card)
+      // Variant 8: Linear Dark Glass Card with Monospace Date Badges
       return (
         <div
           style={{
-            margin: '8px 16px 0 16px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            background: '#0f172a',
+            ...baseMobileGlassStyle,
+            background: '#090d16',
             border: '1px solid #334155',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
+            boxShadow: '0 4px 14px rgba(0, 0, 0, 0.4)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
-            <span style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', padding: '3px 8px', borderRadius: '6px', fontWeight: 700, fontSize: '11px' }}>
-              Расхождение дат
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', minWidth: '180px', flex: 1 }}>
+            <span style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', padding: '2px 6px', borderRadius: '4px', fontSize: '10px', fontWeight: 700, fontFamily: 'monospace' }}>
+              MISMATCH
             </span>
             <span style={{ color: '#cbd5e1' }}>
-              Проект до {pDateStr}, а последняя задача на {sDateStr}
+              <code style={{ color: '#fbbf24' }}>{pDateStr}</code> ➔ <code style={{ color: '#38bdf8' }}>{sDateStr}</code>
             </span>
           </div>
           <button
@@ -956,102 +952,90 @@ const DateWarningBanner: React.FC<{
               borderRadius: '6px',
               padding: '5px 12px',
               fontSize: '11.5px',
-              fontWeight: 700,
+              fontWeight: 800,
               cursor: 'pointer',
               whiteSpace: 'nowrap',
             }}
           >
-            Синхронизировать
+            Сдвинуть проект
           </button>
         </div>
       );
 
     case 9:
-      // Variant 9: Vercel Clean Dashboard Alert
+      // Variant 9: Vercel Frosted Border Gradient Card
       return (
         <div
           style={{
-            margin: '8px 16px 0 16px',
-            padding: '9px 14px',
-            borderRadius: '10px',
-            background: '#090d16',
-            border: '1px solid rgba(245, 158, 11, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
+            ...baseMobileGlassStyle,
+            background: 'rgba(15, 23, 42, 0.65)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid transparent',
+            backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), linear-gradient(90deg, #f59e0b, #0ea5e9)',
+            backgroundOrigin: 'border-box',
+            backgroundClip: 'padding-box, border-box',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
-            <span style={{ color: '#f59e0b', fontWeight: 800 }}>[ СРОК ПРЕВЫШЕН ]</span>
-            <span style={{ color: '#94a3b8' }}>
-              {pDateStr} <span style={{ color: '#f59e0b' }}>➔</span> {sDateStr}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#e2e8f0', minWidth: '180px', flex: 1 }}>
+            <span style={{ color: '#f59e0b' }}>🔔</span>
+            <span>
+              Срок проекта <strong>{pDateStr}</strong> меньше даты подзадачи <strong>{sDateStr}</strong>
             </span>
           </div>
           <button
             type="button"
             onClick={onFixDate}
             style={{
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.16)',
-              color: '#fff',
-              borderRadius: '6px',
-              padding: '4px 12px',
-              fontSize: '11.5px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Обновить срок проекта
-          </button>
-        </div>
-      );
-
-    case 10:
-    default:
-      // Variant 10: Figma Design Dual Chip Notice
-      return (
-        <div
-          style={{
-            margin: '8px 16px 0 16px',
-            padding: '9px 14px',
-            borderRadius: '12px',
-            background: 'rgba(30, 41, 59, 0.6)',
-            border: '1px solid rgba(56, 189, 248, 0.25)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
-            <span style={{ color: '#f59e0b', fontSize: '14px' }}>⚡</span>
-            <span style={{ color: '#e2e8f0' }}>Подзадача выбивается за дату проекта: </span>
-            <span style={{ background: 'rgba(245,158,11,0.15)', color: '#fde047', padding: '2px 6px', borderRadius: '6px', fontSize: '11px', fontWeight: 600 }}>
-              📂 {pDateStr}
-            </span>
-            <span style={{ opacity: 0.5 }}>vs</span>
-            <span style={{ background: 'rgba(56,189,248,0.15)', color: '#38bdf8', padding: '2px 6px', borderRadius: '6px', fontSize: '11px', fontWeight: 600 }}>
-              📌 {sDateStr}
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: '#38bdf8',
+              background: 'linear-gradient(90deg, #f59e0b, #0ea5e9)',
               border: 'none',
               color: '#0f172a',
               borderRadius: '8px',
-              padding: '5px 12px',
+              padding: '5px 14px',
               fontSize: '11.5px',
               fontWeight: 800,
               cursor: 'pointer',
               whiteSpace: 'nowrap',
             }}
           >
-            Применить крайнюю дату
+            Авто-продление
+          </button>
+        </div>
+      );
+
+    case 10:
+    default:
+      // Variant 10: Compact Mobile Glass Chip
+      return (
+        <div
+          style={{
+            ...baseMobileGlassStyle,
+            background: 'rgba(239, 68, 68, 0.08)',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(239, 68, 68, 0.28)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#fca5a5', minWidth: '180px', flex: 1 }}>
+            <span>⚠️</span>
+            <span>
+              Подзадача на <strong>{sDateStr}</strong> выходит за дату проекта (<strong>{pDateStr}</strong>)
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#ef4444',
+              border: 'none',
+              color: '#fff',
+              borderRadius: '8px',
+              padding: '5px 12px',
+              fontSize: '11.5px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            ⚡ Сдвинуть на {sDateStr}
           </button>
         </div>
       );
