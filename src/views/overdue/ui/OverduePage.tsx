@@ -6,17 +6,16 @@ import { useTaskStore, GlassmorphicTaskCard } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
-import { getTodayStr, getTomorrowStr } from '@/shared/lib/dateUtils';
-import { AlertCircle, Calendar, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { getTodayStr } from '@/shared/lib/dateUtils';
+import { AlertCircle, Calendar, CheckCircle2 } from 'lucide-react';
 import styles from './OverduePage.module.css';
 
 export const OverduePage: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTask, updateTaskStatus } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTask, updateTaskDetails } = useTaskStore();
 
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const todayStr = useMemo(() => getTodayStr(), []);
-  const tomorrowStr = useMemo(() => getTomorrowStr(), []);
 
   useEffect(() => {
     fetchTasks();
@@ -37,17 +36,17 @@ export const OverduePage: React.FC = () => {
   }, [tasks, todayStr]);
 
   const handleRescheduleToToday = async (task: Task) => {
-    await updateTaskStatus(task.id, task.status, undefined, todayStr);
-    useTaskStore.setState((state) => ({
-      tasks: state.tasks.map((t) => (t.id === task.id ? { ...t, scheduledDate: todayStr } : t)),
-    }));
-  };
-
-  const handleRescheduleToTomorrow = async (task: Task) => {
-    await updateTaskStatus(task.id, task.status, undefined, tomorrowStr);
-    useTaskStore.setState((state) => ({
-      tasks: state.tasks.map((t) => (t.id === task.id ? { ...t, scheduledDate: tomorrowStr } : t)),
-    }));
+    if (task.isRepeating && task.occurrences) {
+      const updatedOccurrences = task.occurrences.map((o) => {
+        if (o.date < todayStr && o.status !== 'Done') {
+          return { ...o, date: todayStr };
+        }
+        return o;
+      });
+      await updateTaskDetails(task.id, { scheduledDate: todayStr, occurrences: updatedOccurrences });
+    } else {
+      await updateTaskDetails(task.id, { scheduledDate: todayStr });
+    }
   };
 
   const handleRescheduleAllToToday = async () => {
@@ -84,7 +83,7 @@ export const OverduePage: React.FC = () => {
         </div>
 
         <Typography variant="body" className={styles.subtitle}>
-          Задачи, срок выполнения которых уже прошёл. Перенесите их на сегодня/завтра или отметку о выполнении.
+          Задачи, срок выполнения которых уже прошёл. Перенесите их на сегодня или отметьте выполненными.
         </Typography>
       </Card>
 
@@ -118,24 +117,13 @@ export const OverduePage: React.FC = () => {
                 onClick={() => handleTaskClick(task)}
               />
               <div className={styles.cardActionRow}>
-                <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginRight: 'auto' }}>
-                  Быстрый перенос:
-                </span>
                 <button
                   type="button"
                   className={`${styles.actionChip} ${styles.actionChipToday}`}
                   onClick={() => handleRescheduleToToday(task)}
-                  title="Перенести на сегодня"
+                  title="Перенести задачу на сегодня"
                 >
-                  ☀️ На сегодня
-                </button>
-                <button
-                  type="button"
-                  className={`${styles.actionChip} ${styles.actionChipTomorrow}`}
-                  onClick={() => handleRescheduleToTomorrow(task)}
-                  title="Перенести на завтра"
-                >
-                  🌅 На завтра <ArrowRight size={11} />
+                  ☀️ Перенести на сегодня
                 </button>
               </div>
             </div>

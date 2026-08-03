@@ -4,7 +4,6 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 import styles from './RepeatsPage.module.css';
 
 type SortOption = 'overdue' | 'alphabetical' | 'count_asc';
@@ -182,8 +181,6 @@ const formatRepetitionCount = (count: number): { numStr: string; textStr: string
 
 const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }) => {
   const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
-  const [historyOpen, setHistoryOpen] = useState(false);
-
   const occurrences = useMemo(() => {
     return (task.occurrences || []).slice().sort((a, b) => a.date.localeCompare(b.date));
   }, [task.occurrences]);
@@ -194,7 +191,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
   const nextOcc = occurrences.find((o) => o.status !== 'Done');
   const nextDateRaw = nextOcc ? nextOcc.date : task.scheduledDate || null;
   const isOverdue = nextDateRaw ? nextDateRaw < todayStr : false;
-  const isToday = nextDateRaw === todayStr;
 
   const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
 
@@ -268,19 +264,9 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
         <div className={styles.line1}>
           <span className={styles.taskTitle}>{task.title}</span>
 
-          {/* Next repeat date badge */}
-          {nextDateRaw && (
-            <div
-              className={styles.statusBadgeNext}
-              style={{
-                color: isOverdue ? '#ef4444' : isToday ? '#f59e0b' : '#38bdf8',
-                borderColor: isOverdue ? 'rgba(239,68,68,0.4)' : isToday ? 'rgba(245,158,11,0.4)' : 'rgba(56,189,248,0.3)',
-                backgroundColor: isOverdue ? 'rgba(239,68,68,0.08)' : isToday ? 'rgba(245,158,11,0.08)' : 'rgba(56,189,248,0.08)',
-              }}
-              title="Дата следующего повторения"
-            >
-              {isOverdue ? '⚠ ' : isToday ? '⭐ ' : '🗓 '}
-              {isToday ? 'Сегодня' : formatDateNumeric(nextDateRaw)}
+          {createdDateStr && (
+            <div className={styles.statusBadgeNext} title="Дата создания задачи">
+              📅 Создано: {createdDateStr}
             </div>
           )}
         </div>
@@ -290,17 +276,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
           <div className={styles.repetitionCounter}>
             <span className={styles.repetitionNum}>{numStr}</span> {textStr}
           </div>
-          {/* History toggle button */}
-          {completedCount > 0 && (
-            <button
-              type="button"
-              className={styles.historyToggleBtn}
-              onClick={() => setHistoryOpen((p) => !p)}
-            >
-              {historyOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-              {historyOpen ? 'Скрыть' : `История (${completedCount})`}
-            </button>
-          )}
         </div>
       </div>
 
@@ -381,24 +356,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
           ))}
         </div>
       </div>
-
-      {/* Expandable History Panel */}
-      {historyOpen && completedOccurrences.length > 0 && (
-        <div className={styles.historyPanel}>
-          <div className={styles.historyTitle}>История повторений</div>
-          {completedOccurrences.map((occ, idx) => (
-            <div key={occ.id || idx} className={styles.historyRow}>
-              <span className={styles.historyIdx}>#{idx + 1}</span>
-              <span className={styles.historyDate}>
-                {occ.date ? new Date(occ.date + 'T12:00:00').toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'}
-              </span>
-              <span className={styles.historyRating}>
-                {getSmartRatingEmoji(occ.smartRating || task.lastSmartRating || 'normal')}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

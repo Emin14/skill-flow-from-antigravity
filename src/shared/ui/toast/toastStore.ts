@@ -24,7 +24,14 @@ export const useToastStore = create<ToastState>((set) => ({
     const id = uuidv4();
     const newToast: ToastItem = { id, type, message, onUndo, duration };
 
-    set((state) => ({ toasts: [...state.toasts, newToast] }));
+    set((state) => {
+      const existing = state.toasts;
+      // Maximum 2 toasts on screen simultaneously. If 3rd arrives, drop the 1st (oldest) immediately.
+      if (existing.length >= 2) {
+        return { toasts: [...existing.slice(existing.length - 1), newToast] };
+      }
+      return { toasts: [...existing, newToast] };
+    });
 
     if (duration > 0) {
       setTimeout(() => {
