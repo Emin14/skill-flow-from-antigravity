@@ -238,92 +238,88 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               placeholder="Заметки или описание..."
             />
 
-            {/* ── Parent task + Repetition mode ────────────────────── */}
-            <div className={styles.formRow}>
-
-              {/* Parent task */}
-              <div style={{ position: 'relative' }}>
-                <button type="button" style={glassBtn} onClick={() => toggle('parent')}>
-                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {getParentLabel()}
-                  </span>
-                  <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0 }}>▾</span>
-                </button>
-                {openPopover === 'parent' && (
-                  <div style={glassMenu}>
-                    <button type="button" style={glassItem(!parentTaskId)}
-                      onClick={() => { setParentTaskId(null); closeAll(); }}>
-                      📂 Основная задача
+            {/* ── Parent task ────────────────────────────────────────── */}
+            <div style={{ position: 'relative', width: '100%' }}>
+              <button type="button" style={glassBtn} onClick={() => toggle('parent')}>
+                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0, flex: 1, textAlign: 'left' }}>
+                  {getParentLabel()}
+                </span>
+                <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0, marginLeft: '8px' }}>▾</span>
+              </button>
+              {openPopover === 'parent' && (
+                <div style={glassMenu}>
+                  <button type="button" style={glassItem(!parentTaskId)}
+                    onClick={() => { setParentTaskId(null); closeAll(); }}>
+                    📂 Основная задача
+                  </button>
+                  {possibleParents.map((pt) => (
+                    <button key={pt.id} type="button" style={glassItem(parentTaskId === pt.id)}
+                      onClick={() => { setParentTaskId(pt.id); closeAll(); }}>
+                      📁 {pt.title}
                     </button>
-                    {possibleParents.map((pt) => (
-                      <button key={pt.id} type="button" style={glassItem(parentTaskId === pt.id)}
-                        onClick={() => { setParentTaskId(pt.id); closeAll(); }}>
-                        📁 {pt.title}
-                      </button>
-                    ))}
-                    {possibleParents.length === 0 && (
-                      <div style={{ padding: '7px 11px', fontSize: '12px', color: 'rgba(255,255,255,0.3)' }}>
-                        Нет доступных задач
-                      </div>
-                    )}
-                  </div>
-                )}
-                <span style={hint}>Вложить в составную задачу</span>
-              </div>
-
-              {/* Repetition mode — freq/days inline */}
-              <div style={{ position: 'relative' }}>
-                <button type="button"
-                  style={{ ...glassBtn, opacity: hasSubtasks ? 0.4 : 1, cursor: hasSubtasks ? 'not-allowed' : 'pointer' }}
-                  onClick={() => !hasSubtasks && toggle('repeat')}>
-
-                  {repetitionMode === 'after_completion' ? (
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '5px', flex: 1, minWidth: 0 }}>
-                      <span style={{ whiteSpace: 'nowrap', fontSize: '12px' }}>✅ Через</span>
-                      <input
-                        type="number" min="1"
-                        value={afterCompletionDaysInput}
-                        onChange={(e) => setAfterCompletionDaysInput(e.target.value)}
-                        onClick={(e) => e.stopPropagation()}
-                        style={{ width: '32px', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: '5px', color: 'var(--color-text)', fontSize: '12px', textAlign: 'center', padding: '1px 0', outline: 'none' }}
-                      />
-                      <span style={{ fontSize: '11px', opacity: 0.6, whiteSpace: 'nowrap' }}>дн.</span>
-                    </span>
-                  ) : repetitionMode === 'schedule' ? (
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px', flex: 1, minWidth: 0, overflow: 'hidden' }}>
-                      <span style={{ whiteSpace: 'nowrap', fontSize: '12px' }}>📅</span>
-                      <select
-                        value={scheduleFrequency}
-                        onChange={(e) => setScheduleFrequency(e.target.value as ScheduleFrequency)}
-                        onClick={(e) => e.stopPropagation()}
-                        style={{ background: 'transparent', border: 'none', color: 'var(--color-text)', fontSize: '12px', cursor: 'pointer', outline: 'none', flex: 1, minWidth: 0, appearance: 'none', WebkitAppearance: 'none' }}
-                      >
-                        <option value="daily" style={{ background: '#0f172a' }}>Каждый день</option>
-                        <option value="weekly" style={{ background: '#0f172a' }}>Каждую неделю</option>
-                        <option value="monthly" style={{ background: '#0f172a' }}>Каждый месяц</option>
-                        <option value="yearly" style={{ background: '#0f172a' }}>Каждый год</option>
-                      </select>
-                    </span>
-                  ) : (
-                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {REPEAT_LABELS[repetitionMode] ?? '🔕 Без повторений'}
-                    </span>
+                  ))}
+                  {possibleParents.length === 0 && (
+                    <div style={{ padding: '7px 11px', fontSize: '12px', color: 'rgba(255,255,255,0.3)' }}>
+                      Нет доступных задач
+                    </div>
                   )}
+                </div>
+              )}
+              <span style={hint}>Вложить в составную задачу</span>
+            </div>
 
-                  <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0 }}>▾</span>
-                </button>
-                {openPopover === 'repeat' && !hasSubtasks && (
-                  <div style={{ ...glassMenu, left: 'auto', right: 0, minWidth: '185px' }}>
-                    {Object.entries(REPEAT_LABELS).map(([val, label]) => (
-                      <button key={val} type="button" style={glassItem(repetitionMode === val)}
-                        onClick={() => { setRepetitionMode(val as RepetitionMode); closeAll(); }}>
-                        {label}
-                      </button>
-                    ))}
-                  </div>
+            {/* ── Repetition mode ───────────────────────────────────── */}
+            <div style={{ position: 'relative', width: '100%' }}>
+              <button type="button"
+                style={{ ...glassBtn, opacity: hasSubtasks ? 0.4 : 1, cursor: hasSubtasks ? 'not-allowed' : 'pointer' }}
+                onClick={() => !hasSubtasks && toggle('repeat')}>
+
+                {repetitionMode === 'after_completion' ? (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '5px', flex: 1, minWidth: 0 }}>
+                    <span style={{ whiteSpace: 'nowrap', fontSize: '12px' }}>✅ Через</span>
+                    <input
+                      type="number" min="1"
+                      value={afterCompletionDaysInput}
+                      onChange={(e) => setAfterCompletionDaysInput(e.target.value)}
+                      onClick={(e) => e.stopPropagation()}
+                      style={{ width: '32px', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: '5px', color: 'var(--color-text)', fontSize: '12px', textAlign: 'center', padding: '1px 0', outline: 'none' }}
+                    />
+                    <span style={{ fontSize: '11px', opacity: 0.6, whiteSpace: 'nowrap' }}>дн.</span>
+                  </span>
+                ) : repetitionMode === 'schedule' ? (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px', flex: 1, minWidth: 0, overflow: 'hidden' }}>
+                    <span style={{ whiteSpace: 'nowrap', fontSize: '12px' }}>📅</span>
+                    <select
+                      value={scheduleFrequency}
+                      onChange={(e) => setScheduleFrequency(e.target.value as ScheduleFrequency)}
+                      onClick={(e) => e.stopPropagation()}
+                      style={{ background: 'transparent', border: 'none', color: 'var(--color-text)', fontSize: '12px', cursor: 'pointer', outline: 'none', flex: 1, minWidth: 0, appearance: 'none', WebkitAppearance: 'none' }}
+                    >
+                      <option value="daily" style={{ background: '#0f172a' }}>Каждый день</option>
+                      <option value="weekly" style={{ background: '#0f172a' }}>Каждую неделю</option>
+                      <option value="monthly" style={{ background: '#0f172a' }}>Каждый месяц</option>
+                      <option value="yearly" style={{ background: '#0f172a' }}>Каждый год</option>
+                    </select>
+                  </span>
+                ) : (
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {REPEAT_LABELS[repetitionMode] ?? '🔕 Без повторений'}
+                  </span>
                 )}
-                <span style={hint}>Как и когда повторять</span>
-              </div>
+
+                <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0 }}>▾</span>
+              </button>
+              {openPopover === 'repeat' && !hasSubtasks && (
+                <div style={{ ...glassMenu, left: 'auto', right: 0, minWidth: '185px' }}>
+                  {Object.entries(REPEAT_LABELS).map(([val, label]) => (
+                    <button key={val} type="button" style={glassItem(repetitionMode === val)}
+                      onClick={() => { setRepetitionMode(val as RepetitionMode); closeAll(); }}>
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <span style={hint}>Как и когда повторять</span>
             </div>
 
             {hasSubtasks && (
@@ -333,13 +329,12 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             )}
           </div>
 
-          {/* ── Action Buttons ──────────────────────────────────────── */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', paddingTop: '8px' }}>
-            <button type="button" className={styles.closeBtn} onClick={onClose}
-              style={{ width: 'auto', borderRadius: '10px', padding: '0 14px', fontSize: '13px' }}>
+          {/* ── Symmetrical Action Buttons ───────────────────────── */}
+          <div className={styles.modalFooter}>
+            <button type="button" className={styles.cancelBtn} onClick={onClose}>
               Отмена
             </button>
-            <button type="submit" className={styles.sendBtn}>
+            <button type="submit" className={styles.submitBtn}>
               Сохранить ✓
             </button>
           </div>

@@ -1,17 +1,26 @@
 /**
  * shared/lib/dateUtils.ts
  * Единый источник утилит для работы с датами в формате 'YYYY-MM-DD'.
- * Все компоненты и хуки должны импортировать отсюда.
+ * Все функции расчёта используют ЛОКАЛЬНОЕ время (Local Timezone),
+ * исключая ошибки сдвига дат из-за UTC-преобразований вокруг полуночи.
  */
 
-/** Возвращает строку текущей даты в формате 'YYYY-MM-DD' */
-export const getTodayStr = (): string => new Date().toISOString().split('T')[0];
+/** Вспомогательное форматирование объекта Date в строку 'YYYY-MM-DD' по локальному времени */
+export const formatLocalDateStr = (d: Date): string => {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
 
-/** Возвращает строку завтрашней даты в формате 'YYYY-MM-DD' */
+/** Возвращает строку текущей даты в формате 'YYYY-MM-DD' по локальному времени */
+export const getTodayStr = (): string => formatLocalDateStr(new Date());
+
+/** Возвращает строку завтрашней даты в формате 'YYYY-MM-DD' по локальному времени */
 export const getTomorrowStr = (): string => {
   const d = new Date();
   d.setDate(d.getDate() + 1);
-  return d.toISOString().split('T')[0];
+  return formatLocalDateStr(d);
 };
 
 /**
@@ -27,21 +36,18 @@ export const formatDateDisplay = (dateStr: string): string => {
 
 /**
  * Добавляет указанное количество дней к строке даты 'YYYY-MM-DD'.
- * Если dateStr некорректен — считает от текущей даты.
+ * Если dateStr некорректен — считает от текущей даты по локальному времени.
  */
 export const addDaysToDateStr = (dateStr: string, days: number): string => {
   if (!dateStr || !dateStr.includes('-')) {
     const today = new Date();
     today.setDate(today.getDate() + days);
-    return today.toISOString().split('T')[0];
+    return formatLocalDateStr(today);
   }
   const parts = dateStr.split('-').map(Number);
   const d = new Date(parts[0], parts[1] - 1, parts[2]);
   d.setDate(d.getDate() + days);
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+  return formatLocalDateStr(d);
 };
 
 /**
