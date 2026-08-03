@@ -30,6 +30,7 @@ export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
   const [cardVariant, setCardVariant] = useState<number>(8);
+  const [bannerVariant, setBannerVariant] = useState<number>(1);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
 
@@ -118,6 +119,34 @@ export const ProjectsPage: React.FC = () => {
         ))}
       </div>
 
+      {/* 🎨 Interactive Warning Banner Design Switcher (10 Variants) */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', margin: '0 0 16px 0', padding: '10px 14px', background: 'rgba(255,255,255,0.03)', borderRadius: '14px', border: '1px solid var(--color-border)' }}>
+        <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          🎨 Вариант предупреждения:
+        </span>
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+          <button
+            key={num}
+            type="button"
+            style={{
+              background: bannerVariant === num ? '#f59e0b' : 'rgba(255,255,255,0.08)',
+              border: bannerVariant === num ? 'none' : '1px solid rgba(255,255,255,0.12)',
+              color: bannerVariant === num ? '#0f172a' : '#94a3b8',
+              borderRadius: '8px',
+              padding: '4px 10px',
+              fontSize: '12px',
+              fontWeight: bannerVariant === num ? 800 : 500,
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
+              boxShadow: bannerVariant === num ? '0 2px 8px rgba(245,158,11,0.35)' : 'none',
+            }}
+            onClick={() => setBannerVariant(num)}
+          >
+            {num}
+          </button>
+        ))}
+      </div>
+
 
 
       {/* Projects List */}
@@ -164,6 +193,7 @@ export const ProjectsPage: React.FC = () => {
               <ProjectCardRenderer
                 key={project.id}
                 variant={cardVariant}
+                bannerVariant={bannerVariant}
                 project={project}
                 catColor={catColor}
                 isOpen={isOpen}
@@ -216,6 +246,7 @@ export const ProjectsPage: React.FC = () => {
 
 interface ProjectCardRendererProps {
   variant: number;
+  bannerVariant: number;
   project: Task;
   catColor: string;
   isOpen: boolean;
@@ -243,6 +274,7 @@ interface ProjectCardRendererProps {
 
 const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   variant,
+  bannerVariant,
   project,
   catColor,
   isOpen,
@@ -379,22 +411,14 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         </div>
       </div>
 
-      {/* Date Mismatch Warning Banner (Point 12) */}
+      {/* Date Mismatch Warning Banner (10 Design Variants Switcher) */}
       {hasDateMismatch && project.scheduledDate && latestSubtaskDate && (
-        <div className={styles.dateWarningBanner} style={variant === 6 ? { margin: '0 18px' } : undefined}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <AlertCircle size={16} color="#f59e0b" />
-            <div>
-              <strong>⚠️ Есть подзадачи позже даты проекта.</strong>
-              <div style={{ fontSize: '11px', opacity: 0.9 }}>
-                Дата проекта: {formatDateDisplay(project.scheduledDate)} | Последняя подзадача: {formatDateDisplay(latestSubtaskDate)}
-              </div>
-            </div>
-          </div>
-          <button type="button" className={styles.dateFixBtn} onClick={onFixDate}>
-            [Изменить дату проекта]
-          </button>
-        </div>
+        <DateWarningBanner
+          variant={bannerVariant}
+          projectDate={project.scheduledDate}
+          subtaskDate={latestSubtaskDate}
+          onFixDate={onFixDate}
+        />
       )}
 
       {/* Collapsible Subtasks & Sub-Projects List (Point 2) */}
@@ -574,4 +598,453 @@ const overdueBadge = (count: number) => {
       🚨 {count} просрочено
     </span>
   );
+};
+
+const DateWarningBanner: React.FC<{
+  variant: number;
+  projectDate: string;
+  subtaskDate: string;
+  onFixDate: () => void;
+}> = ({ variant, projectDate, subtaskDate, onFixDate }) => {
+  const pDateStr = formatDateDisplay(projectDate);
+  const sDateStr = formatDateDisplay(subtaskDate);
+
+  switch (variant) {
+    case 1:
+      // Variant 1: Linear Minimalist Inline Bar
+      return (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '10px 14px',
+            margin: '8px 16px 0 16px',
+            borderRadius: '10px',
+            background: 'rgba(245, 158, 11, 0.08)',
+            borderLeft: '4px solid #f59e0b',
+            borderTop: '1px solid rgba(245, 158, 11, 0.2)',
+            borderRight: '1px solid rgba(245, 158, 11, 0.2)',
+            borderBottom: '1px solid rgba(245, 158, 11, 0.2)',
+            fontSize: '12.5px',
+            gap: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#f59e0b' }}>
+            <AlertCircle size={15} color="#f59e0b" style={{ flexShrink: 0 }} />
+            <span>
+              <strong>Рассинхрон дат:</strong> Проект ({pDateStr}) &lt; Подзадача ({sDateStr})
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'rgba(245, 158, 11, 0.18)',
+              border: '1px solid rgba(245, 158, 11, 0.4)',
+              color: '#fde68a',
+              borderRadius: '6px',
+              padding: '4px 10px',
+              fontSize: '11.5px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Обновить дату проекта →
+          </button>
+        </div>
+      );
+
+    case 2:
+      // Variant 2: Apple iOS Frosted Alert Pill
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '10px 16px',
+            borderRadius: '20px',
+            background: 'rgba(30, 41, 59, 0.65)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid rgba(251, 191, 36, 0.35)',
+            boxShadow: '0 8px 24px rgba(245, 158, 11, 0.15)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div
+              style={{
+                width: '30px',
+                height: '30px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fff',
+                fontSize: '14px',
+                flexShrink: 0,
+                boxShadow: '0 2px 8px rgba(245, 158, 11, 0.4)',
+              }}
+            >
+              ⚠️
+            </div>
+            <div>
+              <div style={{ fontSize: '13px', fontWeight: 700, color: '#fef3c7' }}>Срок проекта позади подзадачи</div>
+              <div style={{ fontSize: '11px', color: '#94a3b8' }}>
+                Проект: <span style={{ color: '#fbbf24' }}>{pDateStr}</span> • Подзадача: <span style={{ color: '#38bdf8' }}>{sDateStr}</span>
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+              border: 'none',
+              color: '#ffffff',
+              borderRadius: '16px',
+              padding: '6px 14px',
+              fontSize: '12px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              boxShadow: '0 2px 10px rgba(245, 158, 11, 0.3)',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Синхронизировать
+          </button>
+        </div>
+      );
+
+    case 3:
+      // Variant 3: Raycast Command Action Chip
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '8px 12px',
+            borderRadius: '8px',
+            background: '#0f172a',
+            border: '1px solid #334155',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            fontFamily: 'monospace',
+            fontSize: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fbbf24' }}>
+            <span style={{ background: 'rgba(251,191,36,0.15)', padding: '2px 6px', borderRadius: '4px', border: '1px solid rgba(251,191,36,0.3)', fontSize: '10px' }}>
+              WARN
+            </span>
+            <span>{pDateStr} &lt; {sDateStr}</span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#1e293b',
+              border: '1px solid #475569',
+              color: '#f8fafc',
+              borderRadius: '6px',
+              padding: '4px 10px',
+              fontSize: '11px',
+              fontFamily: 'sans-serif',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+            }}
+          >
+            <span>Fix Date</span>
+            <kbd style={{ background: '#334155', padding: '1px 5px', borderRadius: '3px', fontSize: '9px', color: '#94a3b8' }}>↵</kbd>
+          </button>
+        </div>
+      );
+
+    case 4:
+      // Variant 4: Things 3 Compact Floating Badge
+      return (
+        <div
+          style={{
+            margin: '6px 16px 0 16px',
+            padding: '6px 12px',
+            borderRadius: '8px',
+            background: 'rgba(239, 68, 68, 0.08)',
+            border: '1px dashed rgba(239, 68, 68, 0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            fontSize: '12px',
+          }}
+        >
+          <span style={{ color: '#f87171', fontWeight: 500 }}>
+            ⚠️ Подзадача вне срока проекта ({sDateStr} &gt; {pDateStr})
+          </span>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#ef4444',
+              fontWeight: 700,
+              textDecoration: 'underline',
+              fontSize: '11.5px',
+              cursor: 'pointer',
+            }}
+          >
+            Подтянуть дату
+          </button>
+        </div>
+      );
+
+    case 5:
+      // Variant 5: Glassmorphic Glow Card
+      return (
+        <div
+          style={{
+            margin: '10px 16px 0 16px',
+            padding: '12px 16px',
+            borderRadius: '14px',
+            background: 'linear-gradient(135deg, rgba(245,158,11,0.12), rgba(239,68,68,0.08))',
+            border: '1px solid rgba(245,158,11,0.25)',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fde047', fontWeight: 700, fontSize: '13px' }}>
+            <span>⚡ Автоматическая корректировка срока</span>
+          </div>
+          <div style={{ fontSize: '12px', color: '#cbd5e1', lineHeight: '1.4' }}>
+            Обнаружено расхождение: дата проекта <strong>{pDateStr}</strong> раньше последней задачи <strong>{sDateStr}</strong>.
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              alignSelf: 'flex-end',
+              background: '#f59e0b',
+              border: 'none',
+              color: '#0f172a',
+              borderRadius: '8px',
+              padding: '6px 14px',
+              fontSize: '12px',
+              fontWeight: 800,
+              cursor: 'pointer',
+              boxShadow: '0 2px 8px rgba(245,158,11,0.4)',
+            }}
+          >
+            Изменить дату на {sDateStr}
+          </button>
+        </div>
+      );
+
+    case 6:
+      // Variant 6: Vercel Tech Alert Banner with Gradient Border
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '10px 14px',
+            borderRadius: '8px',
+            background: '#090d16',
+            position: 'relative',
+            border: '1px solid transparent',
+            backgroundImage: 'linear-gradient(#090d16, #090d16), linear-gradient(90deg, #f59e0b, #ec4899)',
+            backgroundOrigin: 'border-box',
+            backgroundClip: 'padding-box, border-box',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            fontSize: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ color: '#f59e0b' }}>🚨</span>
+            <span style={{ color: '#e2e8f0' }}>
+              Конфликт сроков: <code style={{ color: '#f59e0b', background: 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: '4px' }}>{pDateStr}</code> &lt; <code style={{ color: '#ec4899', background: 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: '4px' }}>{sDateStr}</code>
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'linear-gradient(90deg, #f59e0b, #ec4899)',
+              border: 'none',
+              color: '#fff',
+              borderRadius: '6px',
+              padding: '5px 12px',
+              fontSize: '11px',
+              fontWeight: 700,
+              cursor: 'pointer',
+            }}
+          >
+            Исправить
+          </button>
+        </div>
+      );
+
+    case 7:
+      // Variant 7: Notion Hairline Alert Row
+      return (
+        <div
+          style={{
+            margin: '6px 16px 0 16px',
+            padding: '6px 0',
+            borderTop: '1px solid rgba(245,158,11,0.2)',
+            borderBottom: '1px solid rgba(245,158,11,0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            fontSize: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#fbbf24' }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block' }} />
+            <span>Дата проекта ({pDateStr}) отстаёт от подзадач ({sDateStr})</span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#38bdf8',
+              fontSize: '12px',
+              fontWeight: 600,
+              cursor: 'pointer',
+            }}
+          >
+            Обновить дату проекта
+          </button>
+        </div>
+      );
+
+    case 8:
+      // Variant 8: Craft Floating Bottom Ribbon
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '8px 14px',
+            borderRadius: '10px',
+            background: 'rgba(15, 23, 42, 0.9)',
+            border: '1px solid rgba(245, 158, 11, 0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '10px',
+          }}
+        >
+          <span style={{ fontSize: '12px', color: '#cbd5e1' }}>
+            💡 Подзадача за <strong>{sDateStr}</strong> выбивается из графика проекта (до <strong>{pDateStr}</strong>).
+          </span>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#f59e0b',
+              border: 'none',
+              color: '#000',
+              borderRadius: '6px',
+              padding: '4px 10px',
+              fontSize: '11px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Выровнять
+          </button>
+        </div>
+      );
+
+    case 9:
+      // Variant 9: Cyberpunk Neon Pulse Bar
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '10px 14px',
+            borderRadius: '8px',
+            background: 'rgba(245, 158, 11, 0.05)',
+            border: '1px solid #f59e0b',
+            boxShadow: '0 0 12px rgba(245, 158, 11, 0.25)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            fontSize: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fef08a' }}>
+            <span style={{ fontSize: '14px' }}>⚠️</span>
+            <span>CRITICAL MISMATCH: {pDateStr} &lt;&lt; {sDateStr}</span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#f59e0b',
+              border: 'none',
+              color: '#0f172a',
+              borderRadius: '4px',
+              padding: '5px 12px',
+              fontSize: '11px',
+              fontWeight: 900,
+              letterSpacing: '0.5px',
+              cursor: 'pointer',
+              boxShadow: '0 0 8px rgba(245, 158, 11, 0.6)',
+            }}
+          >
+            [OVERRIDE DATE]
+          </button>
+        </div>
+      );
+
+    case 10:
+    default:
+      // Variant 10: Compact Icon-Only Inline Chip
+      return (
+        <div
+          style={{
+            margin: '6px 16px 0 16px',
+            padding: '4px 10px',
+            borderRadius: '20px',
+            background: 'rgba(239, 68, 68, 0.12)',
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            fontSize: '11.5px',
+            color: '#fca5a5',
+            alignSelf: 'flex-start',
+          }}
+        >
+          <span>⚠️ {pDateStr} &lt; {sDateStr}</span>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#ef4444',
+              border: 'none',
+              color: '#fff',
+              borderRadius: '12px',
+              padding: '2px 8px',
+              fontSize: '10.5px',
+              fontWeight: 700,
+              cursor: 'pointer',
+            }}
+          >
+            ⚡ Исправить
+          </button>
+        </div>
+      );
+  }
 };

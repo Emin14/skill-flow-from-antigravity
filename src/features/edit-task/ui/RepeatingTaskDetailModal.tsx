@@ -222,11 +222,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         )}
 
-        {/* Modal Header Row 2: Prominent Scheduled Task Date on Left, Streak on Right (Point 3) */}
+        {/* Modal Header Row 2: Original Date style on Left, Streak on Right */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '6px', fontSize: '13.5px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '4px 10px', borderRadius: '10px', background: 'rgba(14, 165, 233, 0.12)', border: '1px solid rgba(14, 165, 233, 0.3)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span>🗓</span>
-            <span style={{ color: '#38bdf8', fontWeight: 700 }}>Дата задачи: {formattedDate}</span>
+            <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{formattedDate}</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
