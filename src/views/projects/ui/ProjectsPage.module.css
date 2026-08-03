@@ -8,25 +8,20 @@
   min-height: calc(100vh - 120px);
 }
 
-/* Floating Filter Tabs Bar (Point 6: No card box, no count title) */
+/* Floating Filter Tabs Bar (Point 1: No scroll, wraps nicely on line) */
 .filterTabsRow {
   display: flex;
   align-items: center;
   gap: 8px;
-  overflow-x: auto;
+  flex-wrap: wrap;
   padding: 4px 0 8px 0;
-  scrollbar-width: none;
-}
-
-.filterTabsRow::-webkit-scrollbar {
-  display: none;
 }
 
 .filterBtn {
   padding: 7px 14px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--color-surface, rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
   color: var(--color-text-secondary, #94a3b8);
   font-size: 12.5px;
   font-weight: 600;
@@ -42,55 +37,18 @@
   box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
 }
 
-/* Project Card Switcher Bar */
-.variantSwitcherBar {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 14px;
-  padding: 10px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.switcherLabel {
-  font-size: 12px;
-  font-weight: 600;
-  color: #38bdf8;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.switcherButtons {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 2px;
-}
-
-.switcherBtn {
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 11.5px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.15s ease;
-}
-
 .projectsList {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* Common Card Base with strict title overflow protection (Point 3) */
+/* Common Card Base with theme support (Point 2: Light/Dark mode compatible) */
 .projectCardBase {
-  background: var(--glass-bg, rgba(30, 41, 59, 0.65));
+  background: var(--glass-bg, var(--color-surface, rgba(30, 41, 59, 0.65)));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+  border: 1px solid var(--glass-border, var(--color-border, rgba(255, 255, 255, 0.1)));
   border-radius: 18px;
   padding: 16px 18px;
   display: flex;
@@ -100,6 +58,7 @@
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  box-shadow: var(--shadow-sm, 0 4px 12px rgba(0, 0, 0, 0.05));
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -168,7 +127,7 @@
 .progressBarTrack {
   height: 7px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-border, rgba(255, 255, 255, 0.08));
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -217,14 +176,14 @@
   flex-direction: column;
   gap: 8px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
 }
 
 .emptyState {
   text-align: center;
   padding: 40px 20px;
   border-radius: 18px;
-  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border: 1px dashed var(--color-border, rgba(255, 255, 255, 0.12));
   color: var(--color-text-muted, #94a3b8);
   font-size: 14px;
 }

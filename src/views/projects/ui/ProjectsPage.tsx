@@ -417,6 +417,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
                 occurrenceDate={subtask.scheduledDate || todayStr}
                 allTasks={tasks}
                 showDragHandle={true}
+                parentPathVariant={0}
                 onToggleCheckbox={() => onToggleSubtask(subtask)}
                 onDelete={() => onDeleteSubtask(subtask)}
                 onClick={() => onSelectSubtask(subtask)}

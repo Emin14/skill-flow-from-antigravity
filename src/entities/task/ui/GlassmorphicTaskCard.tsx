@@ -23,8 +23,8 @@ interface GlassmorphicTaskCardProps {
   onRescheduleToToday?: () => void;
 }
 
-const renderParentPath = (path: Task[], variant: number = 1, catColor: string) => {
-  if (!path || path.length === 0) return null;
+const renderParentPath = (path: Task[], variant: number = 4, catColor: string) => {
+  if (!path || path.length === 0 || variant === 0) return null;
   const pathStr = path.map((t) => t.title).join(' › ');
 
   switch (variant) {
