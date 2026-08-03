@@ -416,28 +416,13 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const todayStr = nowIso.split('T')[0];
     const targetDate = occurrenceDate || task.scheduledDate || todayStr;
 
-    // REPEAT ARCHITECTURE: Occurrences Management
+    // REPEAT ARCHITECTURE: Occurrences Management (Variant A)
     if (task.isRepeating) {
-      const legacyHistory: TaskOccurrence[] = (task.repetitionHistory || []).map((h) => ({
-        id: uuidv4(),
-        taskId: task.id,
-        date: h.date,
-        status: h.completed ? 'Done' : 'Todo',
-        smartRating: h.smartRating,
-        pomodorosCount: h.pomodorosCount,
-        activeMinutes: h.activeMinutes,
-      }));
+      let occs = normalizeOccurrences(task.occurrences || [], id);
 
-      const currentOccurrences: TaskOccurrence[] = [
-        ...legacyHistory,
-        ...(task.occurrences || []),
-      ].filter((o, idx, self) => self.findIndex((x) => x.date === o.date) === idx);
-
-      let occIndex = currentOccurrences.findIndex((o) => o.date === targetDate);
-
-      let updatedOccurrences = [...currentOccurrences];
-      if (occIndex === -1) {
-        const newOcc: TaskOccurrence = {
+      let targetOcc = occs.find((o) => o.date === targetDate);
+      if (!targetOcc) {
+        targetOcc = {
           id: uuidv4(),
           taskId: id,
           date: targetDate,
@@ -445,53 +430,50 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           completedAt: newStatus === 'Done' ? nowIso : null,
           smartRating,
         };
-        updatedOccurrences.push(newOcc);
+        occs.push(targetOcc);
       } else {
-        updatedOccurrences[occIndex] = {
-          ...updatedOccurrences[occIndex],
-          status: newStatus,
-          completedAt: newStatus === 'Done' ? nowIso : null,
-          smartRating: smartRating || updatedOccurrences[occIndex].smartRating,
-        };
+        occs = occs.map((o) =>
+          o.date === targetDate
+            ? {
+                ...o,
+                status: newStatus,
+                completedAt: newStatus === 'Done' ? nowIso : null,
+                smartRating: smartRating || o.smartRating,
+              }
+            : o
+        );
       }
 
-      let nextScheduledDate = task.scheduledDate;
-
       if (newStatus === 'Done') {
-        const doneCount = updatedOccurrences.filter((o) => o.status === 'Done').length;
-        const { nextIntervalFloat, daysToAdd } = calculateNextInterval(task, doneCount, smartRating);
-        nextScheduledDate = addDaysToDateStr(targetDate, daysToAdd);
+        const doneCount = occs.filter((o) => o.status === 'Done').length;
+        const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating);
 
-        const hasNextOcc = updatedOccurrences.some((o) => o.date === nextScheduledDate);
-        if (!hasNextOcc) {
-          updatedOccurrences.push({
+        const sortedDates = occs.map((o) => o.date).sort((a, b) => a.localeCompare(b));
+        const maxDate = sortedDates[sortedDates.length - 1] || targetDate;
+        const baseForNext = maxDate < targetDate ? targetDate : maxDate;
+        const nextDate = addDaysToDateStr(baseForNext, daysToAdd);
+
+        const hasNext = occs.some((o) => o.date === nextDate);
+        if (!hasNext) {
+          occs.push({
             id: uuidv4(),
             taskId: id,
-            date: nextScheduledDate,
+            date: nextDate,
             status: 'Todo',
           });
         }
-      } else if (newStatus === 'Todo') {
-        // RULE 5 (Un-checking Completion Rule):
-        // Check all occurrences after targetDate
-        const hasSubsequentDone = updatedOccurrences.some(
-          (o) => o.date > targetDate && o.status === 'Done'
-        );
-
-        if (!hasSubsequentDone) {
-          // All subsequent occurrences are uncompleted -> delete all future occurrences after targetDate
-          updatedOccurrences = updatedOccurrences.filter((o) => o.date <= targetDate);
-          nextScheduledDate = targetDate;
-        }
       }
 
-      updatedOccurrences.sort((a, b) => a.date.localeCompare(b.date));
-      const doneCount = updatedOccurrences.filter((o) => o.status === 'Done').length;
+      // INVARIANT 2 & 6: Run through central normalizer
+      const normalized = normalizeOccurrences(occs, id);
+
+      const derivedScheduledDate = getDerivedScheduledDate({ ...task, occurrences: normalized });
+      const derivedDoneCount = getDerivedRepetitionsCount({ ...task, occurrences: normalized });
 
       const updates: Partial<Task> = {
-        scheduledDate: nextScheduledDate,
-        occurrences: updatedOccurrences,
-        repetitionsCount: doneCount,
+        occurrences: normalized,
+        scheduledDate: derivedScheduledDate,
+        repetitionsCount: derivedDoneCount,
         lastSmartRating: smartRating || task.lastSmartRating,
       };
 
@@ -502,9 +484,9 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       await taskRepository.update(id, updates);
 
       if (newStatus === 'Done') {
-        useToastStore
-          .getState()
-          .showToast(`Следующее повторение: ${nextScheduledDate}`, 'success');
+        const nextOcc = normalized.find((o) => o.date > targetDate && o.status === 'Todo');
+        const toastDate = nextOcc ? nextOcc.date : derivedScheduledDate;
+        useToastStore.getState().showToast(`Следующее повторение: ${toastDate}`, 'success');
       }
       return;
     }
