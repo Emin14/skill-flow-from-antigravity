@@ -12,6 +12,7 @@ import { getTodayStr } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { useTaskModals } from '@/shared/hooks/useTaskModals';
 import { useMidnightRefresh } from '@/shared/hooks/useMidnightRefresh';
+import { DaySwitcherShowcase } from '@/features/day-switcher-showcase/ui/DaySwitcherShowcase';
 import {
   Sun,
   Clock,
@@ -24,8 +25,7 @@ import {
 import styles from './TodayTasks.module.css';
 import { applyCategoryTextTheme, applyCardBgTheme } from '@/shared/config/categoryColors';
 
-type ViewMode = 'all' | 'actions' | 'repeats';
-
+type StatusFilter = 'all' | 'Todo' | 'InProgress' | 'Done';
 
 export const TodayTasks: React.FC = () => {
   const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask, deleteTaskOccurrence } = useTaskStore();
@@ -34,7 +34,7 @@ export const TodayTasks: React.FC = () => {
     openEditModal, openDetailModal, openSmartModal,
     closeEditModal, closeDetailModal, closeSmartModal,
   } = useTaskModals();
-  const [viewMode, setViewMode] = useState<ViewMode>('all');
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [todayStr, setTodayStr] = useState<string>(getTodayStr());
 
   useEffect(() => {
@@ -64,16 +64,7 @@ export const TodayTasks: React.FC = () => {
     });
   }, [tasks, todayStr]);
 
-  // Filter today's tasks based on active UI Tab (All / Actions / Flashcards)
-  const todayTasks = useMemo(() => {
-    if (viewMode === 'actions') {
-      return rawTodayTasks.filter((t) => !t.isRepeating);
-    }
-    if (viewMode === 'repeats') {
-      return rawTodayTasks.filter((t) => t.isRepeating);
-    }
-    return rawTodayTasks;
-  }, [rawTodayTasks, viewMode]);
+  const todayTasks = rawTodayTasks;
 
   // Helper to determine status of task for today
   const getTaskStatusForToday = (t: Task): TaskStatus => {
@@ -87,7 +78,7 @@ export const TodayTasks: React.FC = () => {
     return t.status;
   };
 
-  // Group tasks by Kanban Stages: Todo, InProgress, Done based on active tab
+  // Group tasks by Kanban Stages: Todo, InProgress, Done
   const todoTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [todayTasks, todayStr]);
   const inProgressTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [todayTasks, todayStr]);
   const doneTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [todayTasks, todayStr]);
@@ -144,30 +135,48 @@ export const TodayTasks: React.FC = () => {
           <Typography variant="h2">Сегодня</Typography>
         </div>
 
-        {/* Clear Tab Switcher: All / ⚡ Actions / 🧠 Flashcards */}
+        {/* Process Status Tab Switcher with Count Above Text */}
         <div className={styles.viewTabBtnBar}>
           <button
-            className={`${styles.viewTabBtn} ${viewMode === 'all' ? styles.viewTabBtnActive : ''}`}
-            onClick={() => setViewMode('all')}
+            type="button"
+            className={`${styles.viewTabBtn} ${statusFilter === 'all' ? styles.viewTabBtnActive : ''}`}
+            onClick={() => setStatusFilter('all')}
           >
-            Все ({rawTodayTasks.length})
+            <span className={styles.tabCountBadge} style={{ color: '#38bdf8' }}>{rawTodayTasks.length}</span>
+            <span className={styles.tabLabelText}>📋 Все</span>
           </button>
           <button
-            className={`${styles.viewTabBtn} ${viewMode === 'actions' ? styles.viewTabBtnActive : ''}`}
-            onClick={() => setViewMode('actions')}
+            type="button"
+            className={`${styles.viewTabBtn} ${statusFilter === 'Todo' ? styles.viewTabBtnActive : ''}`}
+            onClick={() => setStatusFilter('Todo')}
           >
-            <Zap size={13} color="#f59e0b" />
-            ⚡ Действия
+            <span className={styles.tabCountBadge} style={{ color: '#60a5fa' }}>{todoTasks.length}</span>
+            <span className={styles.tabLabelText}>🕒 План</span>
           </button>
           <button
-            className={`${styles.viewTabBtn} ${viewMode === 'repeats' ? styles.viewTabBtnActive : ''}`}
-            onClick={() => setViewMode('repeats')}
+            type="button"
+            className={`${styles.viewTabBtn} ${statusFilter === 'InProgress' ? styles.viewTabBtnActive : ''}`}
+            onClick={() => setStatusFilter('InProgress')}
           >
-            <Brain size={13} color="#38bdf8" />
-            🧠 Повторения
+            <span className={styles.tabCountBadge} style={{ color: '#f59e0b' }}>{inProgressTasks.length}</span>
+            <span className={styles.tabLabelText}>⚡ В работе</span>
+          </button>
+          <button
+            type="button"
+            className={`${styles.viewTabBtn} ${statusFilter === 'Done' ? styles.viewTabBtnActive : ''}`}
+            onClick={() => setStatusFilter('Done')}
+          >
+            <span className={styles.tabCountBadge} style={{ color: '#10b981' }}>{doneTasks.length}</span>
+            <span className={styles.tabLabelText}>✅ Выполнено</span>
           </button>
         </div>
       </div>
+
+      {/* 20 Day Switcher UX Concepts Showcase bar */}
+      <DaySwitcherShowcase
+        selectedDate={todayStr}
+        onDateChange={setTodayStr}
+      />
 
       {/* PM FEATURE: Celebratory 100% Completion Banner */}
       {is100PercentDone && (
@@ -198,8 +207,6 @@ export const TodayTasks: React.FC = () => {
         </div>
       )}
 
-
-
       {isLoading ? (
         <div style={{ textAlign: 'center', padding: 'var(--space-6)', color: 'var(--color-text-muted)' }}>
           Загрузка задач...
@@ -214,93 +221,84 @@ export const TodayTasks: React.FC = () => {
             color: 'var(--color-text-muted)',
           }}
         >
-          🌱 В этой категории нет задач на сегодня.
+          🌱 На сегодня задач нет.
         </div>
       ) : (
-        <div className={styles.kanbanStagesGrid}>
-          {/* Stage 1: К выполнению (Todo) */}
-          <KanbanStageSection
-            title="К выполнению"
-            icon={<Clock size={15} color="#60a5fa" />}
-            sectionClass={styles.stageSectionTodo}
-            headerClass={styles.stageHeaderTodo}
-            tasksList={todoTasks}
-            allTasks={tasks}
-            todayStr={todayStr}
-            parentPathVariant={4}
-            onDropStage={(e) => handleDropToStage(e, 'Todo')}
-            onDropOnTask={handleDropOnTask}
-            onOpenCard={handleCardClick}
-            onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-            onStatusChange={(taskId, nextStatus) => {
-              const t = tasks.find((x) => x.id === taskId);
-              updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
-            }}
-            onDelete={(id) => {
-              const t = tasks.find((x) => x.id === id);
-              deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
-            }}
-            onCompleteParent={(id) => {
-              const t = tasks.find((x) => x.id === id);
-              updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
-            }}
-          />
+        <div className={styles.singleBoardContainer}>
+          {/* Stage 1: План (Todo) */}
+          {(statusFilter === 'all' || statusFilter === 'Todo') && todoTasks.length > 0 && (
+            <SingleBoardSection
+              tasksList={todoTasks}
+              allTasks={tasks}
+              todayStr={todayStr}
+              parentPathVariant={4}
+              onDropOnTask={handleDropOnTask}
+              onOpenCard={handleCardClick}
+              onToggleCheckbox={(t) => handleToggleCheckbox(t)}
+              onStatusChange={(taskId, nextStatus) => {
+                const t = tasks.find((x) => x.id === taskId);
+                updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
+              }}
+              onDelete={(id) => {
+                const t = tasks.find((x) => x.id === id);
+                deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
+              }}
+              onCompleteParent={(id) => {
+                const t = tasks.find((x) => x.id === id);
+                updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
+              }}
+            />
+          )}
 
-          {/* Stage 2: В процессе (InProgress) */}
-          <KanbanStageSection
-            title="В процессе"
-            icon={<Clock size={15} color="#f59e0b" />}
-            sectionClass={styles.stageSectionInProgress}
-            headerClass={styles.stageHeaderInProgress}
-            tasksList={inProgressTasks}
-            allTasks={tasks}
-            todayStr={todayStr}
-            parentPathVariant={4}
-            onDropStage={(e) => handleDropToStage(e, 'InProgress')}
-            onDropOnTask={handleDropOnTask}
-            onOpenCard={handleCardClick}
-            onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-            onStatusChange={(taskId, nextStatus) => {
-              const t = tasks.find((x) => x.id === taskId);
-              updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
-            }}
-            onDelete={(id) => {
-              const t = tasks.find((x) => x.id === id);
-              deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
-            }}
-            onCompleteParent={(id) => {
-              const t = tasks.find((x) => x.id === id);
-              updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
-            }}
-          />
+          {/* Stage 2: В работе (InProgress) */}
+          {(statusFilter === 'all' || statusFilter === 'InProgress') && inProgressTasks.length > 0 && (
+            <SingleBoardSection
+              tasksList={inProgressTasks}
+              allTasks={tasks}
+              todayStr={todayStr}
+              parentPathVariant={4}
+              onDropOnTask={handleDropOnTask}
+              onOpenCard={handleCardClick}
+              onToggleCheckbox={(t) => handleToggleCheckbox(t)}
+              onStatusChange={(taskId, nextStatus) => {
+                const t = tasks.find((x) => x.id === taskId);
+                updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
+              }}
+              onDelete={(id) => {
+                const t = tasks.find((x) => x.id === id);
+                deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
+              }}
+              onCompleteParent={(id) => {
+                const t = tasks.find((x) => x.id === id);
+                updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
+              }}
+            />
+          )}
 
           {/* Stage 3: Выполнено (Done) */}
-          <KanbanStageSection
-            title="Выполнено"
-            icon={<CheckCircle2 size={15} color="#10b981" />}
-            sectionClass={styles.stageSectionDone}
-            headerClass={styles.stageHeaderDone}
-            tasksList={doneTasks}
-            allTasks={tasks}
-            todayStr={todayStr}
-            parentPathVariant={4}
-            onDropStage={(e) => handleDropToStage(e, 'Done')}
-            onDropOnTask={handleDropOnTask}
-            onOpenCard={handleCardClick}
-            onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-            onStatusChange={(taskId, nextStatus) => {
-              const t = tasks.find((x) => x.id === taskId);
-              updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
-            }}
-            onDelete={(id) => {
-              const t = tasks.find((x) => x.id === id);
-              deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
-            }}
-            onCompleteParent={(id) => {
-              const t = tasks.find((x) => x.id === id);
-              updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
-            }}
-          />
+          {(statusFilter === 'all' || statusFilter === 'Done') && doneTasks.length > 0 && (
+            <SingleBoardSection
+              tasksList={doneTasks}
+              allTasks={tasks}
+              todayStr={todayStr}
+              parentPathVariant={4}
+              onDropOnTask={handleDropOnTask}
+              onOpenCard={handleCardClick}
+              onToggleCheckbox={(t) => handleToggleCheckbox(t)}
+              onStatusChange={(taskId, nextStatus) => {
+                const t = tasks.find((x) => x.id === taskId);
+                updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
+              }}
+              onDelete={(id) => {
+                const t = tasks.find((x) => x.id === id);
+                deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
+              }}
+              onCompleteParent={(id) => {
+                const t = tasks.find((x) => x.id === id);
+                updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
+              }}
+            />
+          )}
         </div>
       )}
 
@@ -333,16 +331,11 @@ export const TodayTasks: React.FC = () => {
   );
 };
 
-interface KanbanStageSectionProps {
-  title: string;
-  icon: React.ReactNode;
-  sectionClass: string;
-  headerClass: string;
+interface SingleBoardSectionProps {
   tasksList: Task[];
   allTasks: Task[];
   todayStr: string;
   parentPathVariant?: number;
-  onDropStage: (e: React.DragEvent) => void;
   onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
   onOpenCard: (task: Task) => void;
   onToggleCheckbox: (task: Task) => void;
@@ -351,16 +344,11 @@ interface KanbanStageSectionProps {
   onCompleteParent: (taskId: string) => void;
 }
 
-const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
-  title,
-  icon,
-  sectionClass,
-  headerClass,
+const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
   tasksList,
   allTasks,
   todayStr,
-  parentPathVariant,
-  onDropStage,
+  parentPathVariant = 4,
   onDropOnTask,
   onOpenCard,
   onToggleCheckbox,
@@ -368,9 +356,6 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   onDelete,
   onCompleteParent,
 }) => {
-  const [isDragOver, setIsDragOver] = useState(false);
-  const [isOpen, setIsOpen] = useState(true);
-
   const stageTaskIds = useMemo(() => new Set(tasksList.map((t) => t.id)), [tasksList]);
 
   const rootTasksInStage = useMemo(() => {
@@ -394,6 +379,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
             allTasks={allTasks}
             showDragHandle={true}
             parentPathVariant={parentPathVariant}
+            hideDateBadge={true}
             onToggleCheckbox={() => onToggleCheckbox(subtask)}
             onStatusChange={(nextStatus) => onStatusChange(subtask.id, nextStatus)}
             onDelete={() => onDelete(subtask.id)}
@@ -407,83 +393,29 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
     ));
   };
 
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-    setIsDragOver(true);
-  };
-
-  const handleDragLeave = () => {
-    setIsDragOver(false);
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    setIsDragOver(false);
-    onDropStage(e);
-  };
+  if (tasksList.length === 0) return null;
 
   return (
-    <div
-      className={`${styles.stageSection} ${sectionClass} ${isDragOver ? styles.stageSectionDragOver : ''}`}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-    >
-      <div
-        className={`${styles.stageHeader} ${headerClass}`}
-        onClick={() => setIsOpen(!isOpen)}
-        title="Нажмите чтобы развернуть/свернуть список"
-      >
-        <div className={styles.headerTitleGroup}>
-          {icon}
-          <span>{title}</span>
-          <ChevronDown
-            size={14}
-            className={`${styles.accordionArrow} ${isOpen ? styles.accordionArrowOpen : ''}`}
+    <div className={styles.taskList}>
+      {rootTasksInStage.map((task) => (
+        <React.Fragment key={task.id}>
+          <GlassmorphicTaskCard
+            task={task}
+            occurrenceDate={todayStr}
+            allTasks={allTasks}
+            showDragHandle={true}
+            parentPathVariant={parentPathVariant}
+            hideDateBadge={true}
+            onToggleCheckbox={() => onToggleCheckbox(task)}
+            onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
+            onDelete={() => onDelete(task.id)}
+            onClick={() => onOpenCard(task)}
+            onDropOnTask={onDropOnTask}
+            onCompleteParent={() => onCompleteParent(task.id)}
           />
-        </div>
-        <span className={styles.stageBadge}>{tasksList.length}</span>
-      </div>
-
-      {isOpen && (
-        <>
-          {tasksList.length === 0 ? (
-            <div
-              style={{
-                padding: '12px',
-                textAlign: 'center',
-                fontSize: '12px',
-                color: 'var(--color-text-muted)',
-                borderRadius: '12px',
-                border: '1px dashed var(--color-border)',
-              }}
-            >
-              Перетащите сюда задачи
-            </div>
-          ) : (
-            <div className={styles.taskList}>
-              {rootTasksInStage.map((task) => (
-                <React.Fragment key={task.id}>
-                  <GlassmorphicTaskCard
-                    task={task}
-                    occurrenceDate={todayStr}
-                    allTasks={allTasks}
-                    showDragHandle={true}
-                    parentPathVariant={parentPathVariant}
-                    onToggleCheckbox={() => onToggleCheckbox(task)}
-                    onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
-                    onDelete={() => onDelete(task.id)}
-                    onClick={() => onOpenCard(task)}
-                    onDropOnTask={onDropOnTask}
-                    onCompleteParent={() => onCompleteParent(task.id)}
-                  />
-                  {renderSubtasksRecursive(task.id, 1)}
-                </React.Fragment>
-              ))}
-            </div>
-          )}
-        </>
-      )}
+          {renderSubtasksRecursive(task.id, 1)}
+        </React.Fragment>
+      ))}
     </div>
   );
 };

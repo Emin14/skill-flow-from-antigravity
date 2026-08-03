@@ -285,7 +285,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
           setIsSwipedLeft(true);
           setSwipeOffset(-80);
         } else if (diff < -45) {
-          // Swipe Right -> Advance Process Stage
+          // Swipe Right -> Advance / Cycle Process Stage
           setSwipeOffset(0);
           const currentStatus = currentOcc ? currentOcc.status : task.status;
           let nextStatus: TaskStatus = 'Done';
