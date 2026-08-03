@@ -4,7 +4,8 @@ import React, { useState, useRef, useMemo } from 'react';
 import { Checkbox } from '@/shared/ui';
 import { Task, TaskStatus } from '@/entities/task/model/types';
 import { getAllDescendantTasks } from '@/entities/task/model/store';
-import { GripVertical, Check, ExternalLink } from 'lucide-react';
+import { getTodayStr } from '@/shared/lib/dateUtils';
+import { GripVertical, Check, ExternalLink, Calendar } from 'lucide-react';
 import styles from './GlassmorphicTaskCard.module.css';
 
 interface GlassmorphicTaskCardProps {
@@ -112,6 +113,18 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   const isDone = currentOcc ? currentOcc.status === 'Done' : task.status === 'Done';
   const catColor = getCategoryColor(task.category);
   const formattedLink = formatExternalUrl(task.link);
+
+  // Date badge: show scheduledDate, highlight overdue in red
+  const todayStr = getTodayStr();
+  const showDateBadge = !task.isRepeating && task.scheduledDate && task.scheduledDate !== '' && task.scheduledDate !== 'anytime' && !isDone;
+  const isOverdue = showDateBadge && task.scheduledDate! < todayStr;
+  const isToday = showDateBadge && task.scheduledDate === todayStr;
+  const dateBadgeLabel = (() => {
+    if (!task.scheduledDate) return null;
+    const parts = task.scheduledDate.split('-');
+    if (parts.length !== 3) return null;
+    return `${parts[2]}.${parts[1]}`;
+  })();
 
   // BUG-HIGH-01: Multi-level subtasks progress calculation using getAllDescendantTasks
   const descendantSubtasks = useMemo(() => getAllDescendantTasks(task.id, allTasks), [allTasks, task.id]);
@@ -296,6 +309,19 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                 <span className={styles.catDot} style={{ backgroundColor: catColor }} />
                 <span className={styles.categoryText}>{task.category || 'Без категории'}</span>
                 {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
+                {showDateBadge && dateBadgeLabel && (
+                  <span
+                    className={styles.dateBadge}
+                    style={{
+                      color: isOverdue ? '#ef4444' : isToday ? '#f59e0b' : 'var(--color-text-muted)',
+                      borderColor: isOverdue ? 'rgba(239,68,68,0.4)' : isToday ? 'rgba(245,158,11,0.4)' : 'rgba(255,255,255,0.12)',
+                      backgroundColor: isOverdue ? 'rgba(239,68,68,0.1)' : isToday ? 'rgba(245,158,11,0.1)' : 'transparent',
+                    }}
+                  >
+                    <Calendar size={9} />
+                    {isOverdue ? `⚠ ${dateBadgeLabel}` : dateBadgeLabel}
+                  </span>
+                )}
                 {formattedLink && (
                   <a
                     href={formattedLink}

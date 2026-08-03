@@ -3,14 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Typography, Button, Input } from '@/shared/ui';
 import { useInboxStore, InboxItem } from '@/entities/inbox';
+import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
+import { getTodayStr, getTomorrowStr } from '@/shared/lib/dateUtils';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
 
 export const InboxPage: React.FC = () => {
   const { items, isLoading, fetchItems, addItem, updateItem, togglePin, deleteItem } = useInboxStore();
+  const { addTask } = useTaskStore();
 
   const [quickInput, setQuickInput] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
@@ -72,6 +75,12 @@ export const InboxPage: React.FC = () => {
     }
     setTriagingItem(null);
     setTriagingTask(null);
+  };
+
+  // 1-tap: Convert inbox item to task for today/tomorrow, then delete item
+  const handleQuickSchedule = async (item: InboxItem, date: string) => {
+    await addTask({ title: item.text, scheduledDate: date });
+    await deleteItem(item.id);
   };
 
   const todayStr = new Date().toISOString().split('T')[0];
@@ -154,6 +163,7 @@ export const InboxPage: React.FC = () => {
               handleTriage={handleTriage}
               togglePin={togglePin}
               deleteItem={deleteItem}
+              handleQuickSchedule={handleQuickSchedule}
             />
           ))
         )}
@@ -183,6 +193,7 @@ interface InboxItemCardProps {
   handleTriage: (item: InboxItem) => void;
   togglePin: (id: string) => void;
   deleteItem: (id: string) => void;
+  handleQuickSchedule: (item: InboxItem, date: string) => Promise<void>;
 }
 
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
@@ -195,6 +206,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   handleTriage,
   togglePin,
   deleteItem,
+  handleQuickSchedule,
 }) => {
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
@@ -272,12 +284,27 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
           </div>
         )}
 
-        {/* Quick Actions (Without Trash Icon Button) */}
+        {/* Quick Actions */}
         <div className={styles.itemActions}>
+          {/* 1-tap triage chips */}
+          <button
+            className={styles.quickChipToday}
+            onClick={() => handleQuickSchedule(item, getTodayStr())}
+            title="Назначить на сегодня и удалить из Входящих"
+          >
+            ☀️ Сегодня
+          </button>
+          <button
+            className={styles.quickChipTomorrow}
+            onClick={() => handleQuickSchedule(item, getTomorrowStr())}
+            title="Назначить на завтра и удалить из Входящих"
+          >
+            🌅 Завтра
+          </button>
           <button
             className={styles.triageBtn}
             onClick={() => handleTriage(item)}
-            title="Разобрать запись в Задачу"
+            title="Разобрать подробно"
           >
             ✔ Разобрать
           </button>

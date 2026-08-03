@@ -124,6 +124,26 @@ export const StatisticsPage: React.FC = () => {
     return cells;
   }, [allCompletionEvents]);
 
+  // Real Streak: consecutive days with at least 1 completion event
+  const currentStreak = useMemo(() => {
+    const daysWithActivity = new Set(allCompletionEvents.map((ev) => ev.dateStr));
+    let streak = 0;
+    const today = new Date();
+    for (let i = 0; i < 365; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().split('T')[0];
+      if (daysWithActivity.has(dateStr)) {
+        streak++;
+      } else {
+        // Allow today to have 0 (don't break if today not done yet)
+        if (i === 0) continue;
+        break;
+      }
+    }
+    return streak;
+  }, [allCompletionEvents]);
+
   return (
     <div className={styles.container}>
       {/* 2 Key Metric Widgets */}
@@ -188,7 +208,7 @@ export const StatisticsPage: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '28px', lineHeight: 1 }}>🔥</span>
             <span style={{ fontSize: '22px', fontWeight: 800, color: '#f97316', lineHeight: 1 }}>
-              12 дней
+              {currentStreak} {currentStreak === 1 ? 'день' : currentStreak >= 2 && currentStreak <= 4 ? 'дня' : 'дней'}
             </span>
           </div>
           <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', marginTop: '2px' }}>

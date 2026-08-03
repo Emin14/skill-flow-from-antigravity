@@ -4,6 +4,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore, GlassmorphicTaskCard } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
+import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import styles from './AnytimePage.module.css';
@@ -13,6 +14,7 @@ export const AnytimePage: React.FC = () => {
 
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [activeCategory, setActiveCategory] = useState<TaskCategory | 'all'>('all');
 
   useEffect(() => {
     fetchTasks();
@@ -25,6 +27,18 @@ export const AnytimePage: React.FC = () => {
     );
   }, [tasks]);
 
+  // Available categories (only those with tasks)
+  const usedCategories = useMemo(() => {
+    const cats = new Set(anytimeTasks.map((t) => t.category || 'Без категории'));
+    return TASK_CATEGORIES.filter((c) => cats.has(c));
+  }, [anytimeTasks]);
+
+  // Filtered tasks by selected category
+  const filteredTasks = useMemo(() => {
+    if (activeCategory === 'all') return anytimeTasks;
+    return anytimeTasks.filter((t) => (t.category || 'Без категории') === activeCategory);
+  }, [anytimeTasks, activeCategory]);
+
   const handleTaskClick = (task: Task) => {
     setDetailTask(task);
   };
@@ -33,31 +47,87 @@ export const AnytimePage: React.FC = () => {
     <div className={styles.container}>
       {/* Header */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', borderRadius: '20px' }}>
-        <Typography variant="h1">♾️ В любое время ({anytimeTasks.length})</Typography>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+          <Typography variant="h1">♾️ В любое время</Typography>
+          <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+            {filteredTasks.length} задач{filteredTasks.length !== anytimeTasks.length ? ` из ${anytimeTasks.length}` : ''}
+          </span>
+        </div>
         <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
-          Задачи без определенной даты выполнения. Выполняйте их по мере появления времени.
+          Задачи без определённой даты. Выполняйте по мере появления времени.
         </Typography>
+
+        {/* Category Filter Pills */}
+        {usedCategories.length > 1 && (
+          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '4px' }}>
+            <button
+              type="button"
+              onClick={() => setActiveCategory('all')}
+              style={{
+                background: activeCategory === 'all' ? 'rgba(99,102,241,0.25)' : 'rgba(255,255,255,0.04)',
+                border: activeCategory === 'all' ? '1px solid rgba(99,102,241,0.6)' : '1px solid var(--color-border)',
+                color: activeCategory === 'all' ? '#a5b4fc' : 'var(--color-text-muted)',
+                borderRadius: '8px',
+                padding: '4px 10px',
+                fontSize: '12px',
+                fontWeight: activeCategory === 'all' ? 700 : 400,
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              Все ({anytimeTasks.length})
+            </button>
+            {usedCategories.map((cat) => {
+              const count = anytimeTasks.filter((t) => (t.category || 'Без категории') === cat).length;
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveCategory(cat)}
+                  style={{
+                    background: isActive ? 'rgba(99,102,241,0.2)' : 'rgba(255,255,255,0.04)',
+                    border: isActive ? '1px solid rgba(99,102,241,0.5)' : '1px solid var(--color-border)',
+                    color: isActive ? '#a5b4fc' : 'var(--color-text-muted)',
+                    borderRadius: '8px',
+                    padding: '4px 10px',
+                    fontSize: '11.5px',
+                    fontWeight: isActive ? 600 : 400,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  {cat} ({count})
+                </button>
+              );
+            })}
+          </div>
+        )}
       </Card>
 
-      {/* Unified Task List using shared GlassmorphicTaskCard */}
+      {/* Task List */}
       {isLoading ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
             Загрузка задач...
           </Typography>
         </Card>
-      ) : anytimeTasks.length === 0 ? (
+      ) : filteredTasks.length === 0 ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-2)' }}>
-            🌱 Нет задач в разделе «В любое время».
+            {activeCategory === 'all'
+              ? '🌱 Нет задач в разделе «В любое время».'
+              : `🌱 Нет задач в категории «${activeCategory}».`}
           </Typography>
           <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
-            При создании задачи очистите дату выполнения, чтобы добавить ее сюда.
+            {activeCategory === 'all'
+              ? 'При создании задачи очистите дату выполнения, чтобы добавить её сюда.'
+              : 'Попробуйте выбрать другую категорию или «Все».'}
           </Typography>
         </Card>
       ) : (
         <div className={styles.taskList}>
-          {anytimeTasks.map((task) => (
+          {filteredTasks.map((task) => (
             <GlassmorphicTaskCard
               key={task.id}
               task={task}

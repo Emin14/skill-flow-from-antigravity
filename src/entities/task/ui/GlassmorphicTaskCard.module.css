@@ -133,6 +133,20 @@
   font-weight: 600;
 }
 
+.dateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 5px;
+  border: 1px solid;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
 /* Drag Handle Top */
 .dragHandle {
   cursor: grab;
