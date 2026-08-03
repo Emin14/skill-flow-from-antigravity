@@ -423,8 +423,20 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     if (!task) return;
 
     if (task.isRepeating) {
-      const targetDate = occurrenceDate || task.scheduledDate || new Date().toISOString().split('T')[0];
       const occurrences = task.occurrences || [];
+      const todayStr = getTodayStr();
+
+      let targetDate = occurrenceDate;
+      if (!targetDate) {
+        // If no occurrenceDate provided, prefer today's occurrence if present, else derived scheduledDate
+        const occToday = occurrences.find((o) => o.date === todayStr);
+        if (occToday) {
+          targetDate = todayStr;
+        } else {
+          targetDate = task.scheduledDate || todayStr;
+        }
+      }
+
       const occ = occurrences.find((o) => o.date === targetDate);
       const isDoneNow = occ ? occ.status === 'Done' : false;
       const nextStatus: TaskStatus = isDoneNow ? 'Todo' : 'Done';
@@ -470,7 +482,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
                 ...o,
                 status: newStatus,
                 completedAt: newStatus === 'Done' ? nowIso : null,
-                smartRating: smartRating || o.smartRating,
+                smartRating: smartRating || (newStatus === 'Todo' ? undefined : o.smartRating),
               }
             : o
         );
@@ -479,11 +491,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       if (newStatus === 'Done') {
         const doneCount = occs.filter((o) => o.status === 'Done').length;
         const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating);
+        const nextDate = addDaysToDateStr(targetDate, daysToAdd);
 
-        const sortedDates = occs.map((o) => o.date).sort((a, b) => a.localeCompare(b));
-        const maxDate = sortedDates[sortedDates.length - 1] || targetDate;
-        const baseForNext = maxDate < targetDate ? targetDate : maxDate;
-        const nextDate = addDaysToDateStr(baseForNext, daysToAdd);
+        // Remove any future uncompleted occurrences that were beyond targetDate to prevent ghost skips
+        occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate || o.date === nextDate);
 
         const hasNext = occs.some((o) => o.date === nextDate);
         if (!hasNext) {
@@ -494,6 +505,11 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             status: 'Todo',
           });
         }
+      } else if (newStatus === 'Todo') {
+        // UNCOMPLETING AN OCCURRENCE:
+        // Remove future auto-generated 'Todo' occurrences that came after this targetDate
+        // because un-completing this occurrence makes targetDate the active head again.
+        occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate);
       }
 
       // INVARIANT 2 & 6: Run through central normalizer
@@ -519,6 +535,8 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         const nextOcc = normalized.find((o) => o.date > targetDate && o.status === 'Todo');
         const toastDate = nextOcc ? nextOcc.date : derivedScheduledDate;
         useToastStore.getState().showToast(`Следующее повторение: ${toastDate}`, 'success');
+      } else {
+        useToastStore.getState().showToast(`Отменено выполнение за ${targetDate}`, 'info');
       }
       return;
     }

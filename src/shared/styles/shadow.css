@@ -5,9 +5,10 @@
 
   --z-index-dropdown: 100;
   --z-index-sticky: 200;
-  --z-index-overlay: 300;
-  --z-index-modal: 400;
-  --z-index-tooltip: 500;
+  --z-index-bottom-nav: 900;
+  --z-index-overlay: 10000;
+  --z-index-modal: 100000;
+  --z-index-tooltip: 200000;
 
   --transition-fast: 0.1s ease;
   --transition-normal: 0.2s ease;
