@@ -611,93 +611,174 @@ const DateWarningBanner: React.FC<{
 
   switch (variant) {
     case 1:
-      // Variant 1: Linear Minimalist Inline Bar
+      // Variant 1: Apple Smart Alert Banner (Balanced & Readable)
       return (
         <div
           style={{
+            margin: '8px 16px 0 16px',
+            padding: '10px 14px',
+            borderRadius: '12px',
+            background: 'rgba(245, 158, 11, 0.09)',
+            border: '1px solid rgba(245, 158, 11, 0.28)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '10px 14px',
-            margin: '8px 16px 0 16px',
-            borderRadius: '10px',
-            background: 'rgba(245, 158, 11, 0.08)',
-            borderLeft: '4px solid #f59e0b',
-            borderTop: '1px solid rgba(245, 158, 11, 0.2)',
-            borderRight: '1px solid rgba(245, 158, 11, 0.2)',
-            borderBottom: '1px solid rgba(245, 158, 11, 0.2)',
-            fontSize: '12.5px',
             gap: '12px',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#f59e0b' }}>
-            <AlertCircle size={15} color="#f59e0b" style={{ flexShrink: 0 }} />
-            <span>
-              <strong>Рассинхрон дат:</strong> Проект ({pDateStr}) &lt; Подзадача ({sDateStr})
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+            <span style={{ fontSize: '16px', flexShrink: 0 }}>⚠️</span>
+            <div style={{ fontSize: '12.5px', color: 'var(--color-text-primary)', lineHeight: '1.35' }}>
+              <span>Есть подзадачи позже даты проекта </span>
+              <span style={{ color: '#f59e0b', fontWeight: 600 }}>({pDateStr})</span>
+              <span style={{ opacity: 0.7 }}>. Крайний срок: </span>
+              <span style={{ color: '#38bdf8', fontWeight: 600 }}>{sDateStr}</span>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#f59e0b',
+              border: 'none',
+              color: '#0f172a',
+              borderRadius: '8px',
+              padding: '6px 12px',
+              fontSize: '12px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+            }}
+          >
+            Сдвинуть проект на {sDateStr}
+          </button>
+        </div>
+      );
+
+    case 2:
+      // Variant 2: Linear Pro Alert Bar (Left Accent Border)
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '10px 14px',
+            borderRadius: '10px',
+            background: 'rgba(30, 41, 59, 0.5)',
+            borderLeft: '4px solid #f59e0b',
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRight: '1px solid rgba(255, 255, 255, 0.08)',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px' }}>
+            <AlertCircle size={16} color="#f59e0b" style={{ flexShrink: 0 }} />
+            <span style={{ color: '#e2e8f0' }}>
+              Дата проекта <strong>{pDateStr}</strong> меньше даты подзадачи <strong>{sDateStr}</strong>
             </span>
           </div>
           <button
             type="button"
             onClick={onFixDate}
             style={{
-              background: 'rgba(245, 158, 11, 0.18)',
-              border: '1px solid rgba(245, 158, 11, 0.4)',
+              background: 'rgba(245, 158, 11, 0.15)',
+              border: '1px solid rgba(245, 158, 11, 0.35)',
               color: '#fde68a',
               borderRadius: '6px',
-              padding: '4px 10px',
+              padding: '5px 12px',
               fontSize: '11.5px',
               fontWeight: 600,
               cursor: 'pointer',
               whiteSpace: 'nowrap',
             }}
           >
-            Обновить дату проекта →
+            Обновить дату проекта
           </button>
         </div>
       );
 
-    case 2:
-      // Variant 2: Apple iOS Frosted Alert Pill
+    case 3:
+      // Variant 3: Stripe Elegant Notice (Tag + Text + Pill Button)
       return (
         <div
           style={{
             margin: '8px 16px 0 16px',
-            padding: '10px 16px',
-            borderRadius: '20px',
-            background: 'rgba(30, 41, 59, 0.65)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(251, 191, 36, 0.35)',
-            boxShadow: '0 8px 24px rgba(245, 158, 11, 0.15)',
+            padding: '8px 14px',
+            borderRadius: '12px',
+            background: 'rgba(15, 23, 42, 0.6)',
+            border: '1px solid rgba(245, 158, 11, 0.25)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '12px',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+            <span
               style={{
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff',
-                fontSize: '14px',
+                background: 'rgba(245, 158, 11, 0.2)',
+                color: '#f59e0b',
+                padding: '2px 8px',
+                borderRadius: '10px',
+                fontSize: '11px',
+                fontWeight: 700,
                 flexShrink: 0,
-                boxShadow: '0 2px 8px rgba(245, 158, 11, 0.4)',
               }}
             >
-              ⚠️
-            </div>
-            <div>
-              <div style={{ fontSize: '13px', fontWeight: 700, color: '#fef3c7' }}>Срок проекта позади подзадачи</div>
-              <div style={{ fontSize: '11px', color: '#94a3b8' }}>
-                Проект: <span style={{ color: '#fbbf24' }}>{pDateStr}</span> • Подзадача: <span style={{ color: '#38bdf8' }}>{sDateStr}</span>
-              </div>
-            </div>
+              Внимание
+            </span>
+            <span style={{ fontSize: '12px', color: '#cbd5e1', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              Подзадача ({sDateStr}) выходит за границы проекта ({pDateStr})
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#38bdf8',
+              border: 'none',
+              color: '#0f172a',
+              borderRadius: '14px',
+              padding: '4px 12px',
+              fontSize: '11.5px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+            }}
+          >
+            Приравнять к {sDateStr}
+          </button>
+        </div>
+      );
+
+    case 4:
+      // Variant 4: Modern Glass Card (Frosted Glow Strip)
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '10px 14px',
+            borderRadius: '14px',
+            background: 'rgba(30, 41, 59, 0.45)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(251, 191, 36, 0.3)',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+          }}
+        >
+          <div style={{ fontSize: '12px', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span>💡</span>
+            <span>
+              Проект: <strong style={{ color: '#fbbf24' }}>{pDateStr}</strong> • Последняя подзадача: <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
+            </span>
           </div>
           <button
             type="button"
@@ -705,13 +786,178 @@ const DateWarningBanner: React.FC<{
             style={{
               background: 'linear-gradient(135deg, #f59e0b, #d97706)',
               border: 'none',
-              color: '#ffffff',
-              borderRadius: '16px',
-              padding: '6px 14px',
-              fontSize: '12px',
+              color: '#fff',
+              borderRadius: '8px',
+              padding: '5px 12px',
+              fontSize: '11.5px',
               fontWeight: 700,
               cursor: 'pointer',
-              boxShadow: '0 2px 10px rgba(245, 158, 11, 0.3)',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 2px 8px rgba(245, 158, 11, 0.3)',
+            }}
+          >
+            Продлить проект
+          </button>
+        </div>
+      );
+
+    case 5:
+      // Variant 5: Notion Deluxe Banner (Light Amber Fill & Link Action)
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '9px 14px',
+            borderRadius: '10px',
+            background: 'rgba(251, 191, 36, 0.12)',
+            border: '1px solid rgba(251, 191, 36, 0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px', color: '#fef08a' }}>
+            <span>📁</span>
+            <span>Срок проекта <strong>{pDateStr}</strong> меньше даты выполнения подзадачи <strong>{sDateStr}</strong></span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#fbbf24',
+              fontSize: '12px',
+              fontWeight: 700,
+              textDecoration: 'underline',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Изменить дату проекта на {sDateStr}
+          </button>
+        </div>
+      );
+
+    case 6:
+      // Variant 6: Arc Browser Capsule Alert (Compact Pill with Delta)
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '8px 14px',
+            borderRadius: '20px',
+            background: 'rgba(15, 23, 42, 0.75)',
+            border: '1px solid rgba(245, 158, 11, 0.4)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '10px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f59e0b', boxShadow: '0 0 8px #f59e0b' }} />
+            <span style={{ color: '#94a3b8' }}>
+              Конфликт расписания: проект <span style={{ color: '#fff', fontWeight: 600 }}>{pDateStr}</span> ➔ подзадача <span style={{ color: '#f59e0b', fontWeight: 700 }}>{sDateStr}</span>
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#f59e0b',
+              border: 'none',
+              color: '#0f172a',
+              borderRadius: '12px',
+              padding: '4px 10px',
+              fontSize: '11px',
+              fontWeight: 800,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Авто-продление
+          </button>
+        </div>
+      );
+
+    case 7:
+      // Variant 7: Things 3 Elegant Outline Card
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '10px 14px',
+            borderRadius: '10px',
+            background: 'transparent',
+            border: '1px dashed rgba(245, 158, 11, 0.45)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+          }}
+        >
+          <div style={{ fontSize: '12.5px', color: '#fcd34d', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span>⚠️</span>
+            <span>Срок проекта ({pDateStr}) отстаёт от подзадач ({sDateStr})</span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: 'rgba(245, 158, 11, 0.15)',
+              border: '1px solid rgba(245, 158, 11, 0.4)',
+              color: '#fbbf24',
+              borderRadius: '8px',
+              padding: '4px 12px',
+              fontSize: '11.5px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Установить {sDateStr}
+          </button>
+        </div>
+      );
+
+    case 8:
+      // Variant 8: GitHub Release Notice Style (Dark Slate Card)
+      return (
+        <div
+          style={{
+            margin: '8px 16px 0 16px',
+            padding: '10px 14px',
+            borderRadius: '8px',
+            background: '#0f172a',
+            border: '1px solid #334155',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
+            <span style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', padding: '3px 8px', borderRadius: '6px', fontWeight: 700, fontSize: '11px' }}>
+              Расхождение дат
+            </span>
+            <span style={{ color: '#cbd5e1' }}>
+              Проект до {pDateStr}, а последняя задача на {sDateStr}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onFixDate}
+            style={{
+              background: '#f59e0b',
+              border: 'none',
+              color: '#0f172a',
+              borderRadius: '6px',
+              padding: '5px 12px',
+              fontSize: '11.5px',
+              fontWeight: 700,
+              cursor: 'pointer',
               whiteSpace: 'nowrap',
             }}
           >
@@ -720,329 +966,92 @@ const DateWarningBanner: React.FC<{
         </div>
       );
 
-    case 3:
-      // Variant 3: Raycast Command Action Chip
+    case 9:
+      // Variant 9: Vercel Clean Dashboard Alert
       return (
         <div
           style={{
             margin: '8px 16px 0 16px',
-            padding: '8px 12px',
-            borderRadius: '8px',
-            background: '#0f172a',
-            border: '1px solid #334155',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            fontFamily: 'monospace',
-            fontSize: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fbbf24' }}>
-            <span style={{ background: 'rgba(251,191,36,0.15)', padding: '2px 6px', borderRadius: '4px', border: '1px solid rgba(251,191,36,0.3)', fontSize: '10px' }}>
-              WARN
-            </span>
-            <span>{pDateStr} &lt; {sDateStr}</span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: '#1e293b',
-              border: '1px solid #475569',
-              color: '#f8fafc',
-              borderRadius: '6px',
-              padding: '4px 10px',
-              fontSize: '11px',
-              fontFamily: 'sans-serif',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-            }}
-          >
-            <span>Fix Date</span>
-            <kbd style={{ background: '#334155', padding: '1px 5px', borderRadius: '3px', fontSize: '9px', color: '#94a3b8' }}>↵</kbd>
-          </button>
-        </div>
-      );
-
-    case 4:
-      // Variant 4: Things 3 Compact Floating Badge
-      return (
-        <div
-          style={{
-            margin: '6px 16px 0 16px',
-            padding: '6px 12px',
-            borderRadius: '8px',
-            background: 'rgba(239, 68, 68, 0.08)',
-            border: '1px dashed rgba(239, 68, 68, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            fontSize: '12px',
-          }}
-        >
-          <span style={{ color: '#f87171', fontWeight: 500 }}>
-            ⚠️ Подзадача вне срока проекта ({sDateStr} &gt; {pDateStr})
-          </span>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#ef4444',
-              fontWeight: 700,
-              textDecoration: 'underline',
-              fontSize: '11.5px',
-              cursor: 'pointer',
-            }}
-          >
-            Подтянуть дату
-          </button>
-        </div>
-      );
-
-    case 5:
-      // Variant 5: Glassmorphic Glow Card
-      return (
-        <div
-          style={{
-            margin: '10px 16px 0 16px',
-            padding: '12px 16px',
-            borderRadius: '14px',
-            background: 'linear-gradient(135deg, rgba(245,158,11,0.12), rgba(239,68,68,0.08))',
-            border: '1px solid rgba(245,158,11,0.25)',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fde047', fontWeight: 700, fontSize: '13px' }}>
-            <span>⚡ Автоматическая корректировка срока</span>
-          </div>
-          <div style={{ fontSize: '12px', color: '#cbd5e1', lineHeight: '1.4' }}>
-            Обнаружено расхождение: дата проекта <strong>{pDateStr}</strong> раньше последней задачи <strong>{sDateStr}</strong>.
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              alignSelf: 'flex-end',
-              background: '#f59e0b',
-              border: 'none',
-              color: '#0f172a',
-              borderRadius: '8px',
-              padding: '6px 14px',
-              fontSize: '12px',
-              fontWeight: 800,
-              cursor: 'pointer',
-              boxShadow: '0 2px 8px rgba(245,158,11,0.4)',
-            }}
-          >
-            Изменить дату на {sDateStr}
-          </button>
-        </div>
-      );
-
-    case 6:
-      // Variant 6: Vercel Tech Alert Banner with Gradient Border
-      return (
-        <div
-          style={{
-            margin: '8px 16px 0 16px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            background: '#090d16',
-            position: 'relative',
-            border: '1px solid transparent',
-            backgroundImage: 'linear-gradient(#090d16, #090d16), linear-gradient(90deg, #f59e0b, #ec4899)',
-            backgroundOrigin: 'border-box',
-            backgroundClip: 'padding-box, border-box',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            fontSize: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: '#f59e0b' }}>🚨</span>
-            <span style={{ color: '#e2e8f0' }}>
-              Конфликт сроков: <code style={{ color: '#f59e0b', background: 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: '4px' }}>{pDateStr}</code> &lt; <code style={{ color: '#ec4899', background: 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: '4px' }}>{sDateStr}</code>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'linear-gradient(90deg, #f59e0b, #ec4899)',
-              border: 'none',
-              color: '#fff',
-              borderRadius: '6px',
-              padding: '5px 12px',
-              fontSize: '11px',
-              fontWeight: 700,
-              cursor: 'pointer',
-            }}
-          >
-            Исправить
-          </button>
-        </div>
-      );
-
-    case 7:
-      // Variant 7: Notion Hairline Alert Row
-      return (
-        <div
-          style={{
-            margin: '6px 16px 0 16px',
-            padding: '6px 0',
-            borderTop: '1px solid rgba(245,158,11,0.2)',
-            borderBottom: '1px solid rgba(245,158,11,0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            fontSize: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#fbbf24' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block' }} />
-            <span>Дата проекта ({pDateStr}) отстаёт от подзадач ({sDateStr})</span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#38bdf8',
-              fontSize: '12px',
-              fontWeight: 600,
-              cursor: 'pointer',
-            }}
-          >
-            Обновить дату проекта
-          </button>
-        </div>
-      );
-
-    case 8:
-      // Variant 8: Craft Floating Bottom Ribbon
-      return (
-        <div
-          style={{
-            margin: '8px 16px 0 16px',
-            padding: '8px 14px',
+            padding: '9px 14px',
             borderRadius: '10px',
-            background: 'rgba(15, 23, 42, 0.9)',
+            background: '#090d16',
             border: '1px solid rgba(245, 158, 11, 0.3)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '10px',
+            gap: '12px',
           }}
         >
-          <span style={{ fontSize: '12px', color: '#cbd5e1' }}>
-            💡 Подзадача за <strong>{sDateStr}</strong> выбивается из графика проекта (до <strong>{pDateStr}</strong>).
-          </span>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: '#f59e0b',
-              border: 'none',
-              color: '#000',
-              borderRadius: '6px',
-              padding: '4px 10px',
-              fontSize: '11px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Выровнять
-          </button>
-        </div>
-      );
-
-    case 9:
-      // Variant 9: Cyberpunk Neon Pulse Bar
-      return (
-        <div
-          style={{
-            margin: '8px 16px 0 16px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            background: 'rgba(245, 158, 11, 0.05)',
-            border: '1px solid #f59e0b',
-            boxShadow: '0 0 12px rgba(245, 158, 11, 0.25)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            fontSize: '12px',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fef08a' }}>
-            <span style={{ fontSize: '14px' }}>⚠️</span>
-            <span>CRITICAL MISMATCH: {pDateStr} &lt;&lt; {sDateStr}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
+            <span style={{ color: '#f59e0b', fontWeight: 800 }}>[ СРОК ПРЕВЫШЕН ]</span>
+            <span style={{ color: '#94a3b8' }}>
+              {pDateStr} <span style={{ color: '#f59e0b' }}>➔</span> {sDateStr}
+            </span>
           </div>
           <button
             type="button"
             onClick={onFixDate}
             style={{
-              background: '#f59e0b',
-              border: 'none',
-              color: '#0f172a',
-              borderRadius: '4px',
-              padding: '5px 12px',
-              fontSize: '11px',
-              fontWeight: 900,
-              letterSpacing: '0.5px',
+              background: 'rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.16)',
+              color: '#fff',
+              borderRadius: '6px',
+              padding: '4px 12px',
+              fontSize: '11.5px',
+              fontWeight: 600,
               cursor: 'pointer',
-              boxShadow: '0 0 8px rgba(245, 158, 11, 0.6)',
+              whiteSpace: 'nowrap',
             }}
           >
-            [OVERRIDE DATE]
+            Обновить срок проекта
           </button>
         </div>
       );
 
     case 10:
     default:
-      // Variant 10: Compact Icon-Only Inline Chip
+      // Variant 10: Figma Design Dual Chip Notice
       return (
         <div
           style={{
-            margin: '6px 16px 0 16px',
-            padding: '4px 10px',
-            borderRadius: '20px',
-            background: 'rgba(239, 68, 68, 0.12)',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            display: 'inline-flex',
+            margin: '8px 16px 0 16px',
+            padding: '9px 14px',
+            borderRadius: '12px',
+            background: 'rgba(30, 41, 59, 0.6)',
+            border: '1px solid rgba(56, 189, 248, 0.25)',
+            display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            fontSize: '11.5px',
-            color: '#fca5a5',
-            alignSelf: 'flex-start',
+            justifyContent: 'space-between',
+            gap: '12px',
           }}
         >
-          <span>⚠️ {pDateStr} &lt; {sDateStr}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px' }}>
+            <span style={{ color: '#f59e0b', fontSize: '14px' }}>⚡</span>
+            <span style={{ color: '#e2e8f0' }}>Подзадача выбивается за дату проекта: </span>
+            <span style={{ background: 'rgba(245,158,11,0.15)', color: '#fde047', padding: '2px 6px', borderRadius: '6px', fontSize: '11px', fontWeight: 600 }}>
+              📂 {pDateStr}
+            </span>
+            <span style={{ opacity: 0.5 }}>vs</span>
+            <span style={{ background: 'rgba(56,189,248,0.15)', color: '#38bdf8', padding: '2px 6px', borderRadius: '6px', fontSize: '11px', fontWeight: 600 }}>
+              📌 {sDateStr}
+            </span>
+          </div>
           <button
             type="button"
             onClick={onFixDate}
             style={{
-              background: '#ef4444',
+              background: '#38bdf8',
               border: 'none',
-              color: '#fff',
-              borderRadius: '12px',
-              padding: '2px 8px',
-              fontSize: '10.5px',
-              fontWeight: 700,
+              color: '#0f172a',
+              borderRadius: '8px',
+              padding: '5px 12px',
+              fontSize: '11.5px',
+              fontWeight: 800,
               cursor: 'pointer',
+              whiteSpace: 'nowrap',
             }}
           >
-            ⚡ Исправить
+            Применить крайнюю дату
           </button>
         </div>
       );
