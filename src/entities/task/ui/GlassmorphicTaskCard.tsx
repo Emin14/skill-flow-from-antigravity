@@ -183,7 +183,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   occurrenceDate,
   allTasks = [],
   showDragHandle = true,
-  parentPathVariant = 1,
+  parentPathVariant = 4,
   onToggleCheckbox,
   onStatusChange,
   onDelete,

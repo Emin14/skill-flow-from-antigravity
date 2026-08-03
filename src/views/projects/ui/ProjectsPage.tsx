@@ -29,7 +29,7 @@ const getCategoryColor = (cat?: string): string => {
 export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
-  const [cardVariant, setCardVariant] = useState<number>(1);
+  const [cardVariant, setCardVariant] = useState<number>(8);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
 
@@ -118,30 +118,7 @@ export const ProjectsPage: React.FC = () => {
         ))}
       </div>
 
-      {/* Project Card Design Switcher (Point 5: 10 Radically Different Concepts) */}
-      <div className={styles.variantSwitcherBar}>
-        <div className={styles.switcherLabel}>
-          <span>🎨 Дизайн карточки проекта (Варианты 1-10):</span>
-          <span>Вариант {cardVariant} из 10</span>
-        </div>
-        <div className={styles.switcherButtons}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((v) => (
-            <button
-              key={v}
-              type="button"
-              className={styles.switcherBtn}
-              onClick={() => setCardVariant(v)}
-              style={{
-                background: cardVariant === v ? 'linear-gradient(135deg, #0ea5e9, #2563eb)' : 'rgba(255,255,255,0.08)',
-                border: cardVariant === v ? 'none' : '1px solid rgba(255,255,255,0.12)',
-                color: '#ffffff',
-              }}
-            >
-              Вариант {v}
-            </button>
-          ))}
-        </div>
-      </div>
+
 
       {/* Projects List */}
       {isLoading ? (
