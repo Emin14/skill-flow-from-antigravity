@@ -26,6 +26,7 @@ export const SettingsPage: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState('#6366f1');
   const [selectedCategoryThemeId, setSelectedCategoryThemeId] = useState('amber');
   const [selectedCardBgThemeId, setSelectedCardBgThemeId] = useState('classic');
+  const [bannerVariant, setBannerVariant] = useState('3');
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<'Monday' | 'Sunday'>('Monday');
   const [dateFormat, setDateFormat] = useState<'DD.MM.YYYY' | 'YYYY-MM-DD'>('DD.MM.YYYY');
 
@@ -34,11 +35,13 @@ export const SettingsPage: React.FC = () => {
     const savedColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
     const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
     const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
+    const savedBannerVar = localStorage.getItem(STORAGE_KEYS.HABIT_BANNER_VARIANT) || '3';
 
     setTheme(savedTheme);
     setSelectedColor(savedColor);
     setSelectedCategoryThemeId(savedCatId);
     setSelectedCardBgThemeId(savedBgId);
+    setBannerVariant(savedBannerVar);
     applyCategoryTextTheme(savedCatId);
     applyCardBgTheme(savedBgId);
   }, []);
@@ -78,6 +81,13 @@ export const SettingsPage: React.FC = () => {
     applyCardBgTheme(bgId);
     const opt = CARD_BG_THEMES.find((o) => o.id === bgId) || CARD_BG_THEMES[0];
     showToast(`Фон карточек изменен на: ${opt.name}`, 'info');
+  };
+
+  const handleBannerVariantChange = (varId: string) => {
+    setBannerVariant(varId);
+    localStorage.setItem(STORAGE_KEYS.HABIT_BANNER_VARIANT, varId);
+    window.dispatchEvent(new Event('storage'));
+    showToast(`Стиль виджета прогресса дня изменен на Вариант ${varId}`, 'info');
   };
 
   // Export JSON Backup
@@ -256,6 +266,36 @@ export const SettingsPage: React.FC = () => {
                   {opt.name}
                 </option>
               ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Habit Progress Banner Variant Select */}
+        <div className={styles.settingRow}>
+          <div>
+            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
+              📊 Стиль виджета прогресса дня
+            </div>
+            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
+              Оформление полосы выполнения задач на главной странице «Сегодня»
+            </div>
+          </div>
+          <div style={{ minWidth: '220px' }}>
+            <select
+              className={styles.themeSelect}
+              value={bannerVariant}
+              onChange={(e) => handleBannerVariantChange(e.target.value)}
+            >
+              <option value="1" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 1 — Кибер-стекло с кольцом</option>
+              <option value="2" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 2 — Голубая неоновая капсула</option>
+              <option value="3" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 3 — Пин-бейдж над треком (По умолчанию)</option>
+              <option value="4" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 4 — Метрическая панель</option>
+              <option value="5" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 5 — Янтарно-изумрудное стекло</option>
+              <option value="6" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 6 — Кольцо активности Apple Style</option>
+              <option value="7" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 7 — Геймифицированная полоса XP</option>
+              <option value="8" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 8 — Тонкая линия по нижнему краю</option>
+              <option value="9" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 9 — Компактный дашборд-ряд</option>
+              <option value="10" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 10 — Капсула с текстом внутри</option>
             </select>
           </div>
         </div>

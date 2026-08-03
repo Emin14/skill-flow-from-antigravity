@@ -15,6 +15,7 @@ export const STORAGE_KEYS = {
   INBOX: 'skillflow_inbox',
   ACTIVITY_LOG: 'skillflow_activity_log',
   REPEAT_CARDS: 'skillflow_repeat_cards',
+  HABIT_BANNER_VARIANT: 'skillflow_habit_banner_variant',
 } as const;
 
 export type StorageKey = (typeof STORAGE_KEYS)[keyof typeof STORAGE_KEYS];
