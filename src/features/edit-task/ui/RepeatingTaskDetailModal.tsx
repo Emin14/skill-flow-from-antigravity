@@ -4,6 +4,7 @@ import React, { useMemo, useEffect } from 'react';
 import { Task } from '@/entities/task/model/types';
 import { useTaskStore, normalizeOccurrences } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
+import { getTodayStr } from '@/shared/lib/dateUtils';
 import styles from './EditTaskModal.module.css';
 
 interface RepeatingTaskDetailModalProps {
@@ -79,7 +80,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     }
   }
 
-  const formattedDate = formatDateTitleRu(masterTask.scheduledDate);
+  const todayStr = getTodayStr();
+  const occForToday = masterTask.occurrences?.find((o) => o.date === todayStr);
+  const displayDateStr = occForToday ? todayStr : masterTask.scheduledDate;
+  const formattedDate = formatDateTitleRu(displayDateStr);
 
   const pomoOptions = [
     { num: '⅓', hasTomato: false, val: 0.33 },

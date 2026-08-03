@@ -110,7 +110,7 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
         {/* Step 1: Emojis on ONE SINGLE LINE */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <span style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
-            1. Насколько легко было вспомнить?
+            Насколько было легко?
           </span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px', width: '100%' }}>
             {[
@@ -152,7 +152,7 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
         {/* Step 2: Pomodoro Time Spent Selection */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <span style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
-            2. Сколько времени заняло (помидоров)?
+            Сколько времени заняло?
           </span>
           <div
             style={{
