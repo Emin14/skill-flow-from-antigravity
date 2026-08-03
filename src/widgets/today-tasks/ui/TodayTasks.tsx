@@ -38,6 +38,7 @@ export const TodayTasks: React.FC = () => {
   const [todayStr, setTodayStr] = useState<string>(getTodayStr());
 
   useEffect(() => {
+    const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
     const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
     applyCategoryTextTheme(savedCatId);
     applyCardBgTheme(savedBgId);
@@ -226,7 +227,7 @@ export const TodayTasks: React.FC = () => {
             tasksList={todoTasks}
             allTasks={tasks}
             todayStr={todayStr}
-            parentPathVariant={conceptVariant}
+            parentPathVariant={4}
             onDropStage={(e) => handleDropToStage(e, 'Todo')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
@@ -254,7 +255,7 @@ export const TodayTasks: React.FC = () => {
             tasksList={inProgressTasks}
             allTasks={tasks}
             todayStr={todayStr}
-            parentPathVariant={conceptVariant}
+            parentPathVariant={4}
             onDropStage={(e) => handleDropToStage(e, 'InProgress')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
@@ -282,7 +283,7 @@ export const TodayTasks: React.FC = () => {
             tasksList={doneTasks}
             allTasks={tasks}
             todayStr={todayStr}
-            parentPathVariant={conceptVariant}
+            parentPathVariant={4}
             onDropStage={(e) => handleDropToStage(e, 'Done')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
