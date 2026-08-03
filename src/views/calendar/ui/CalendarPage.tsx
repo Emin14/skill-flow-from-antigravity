@@ -44,7 +44,7 @@ export const CalendarPage: React.FC = () => {
 
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTask } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTask, deleteTaskOccurrence } = useTaskStore();
 
   // BUG-HIGH-08: Midnight auto-update timer
   useEffect(() => {
