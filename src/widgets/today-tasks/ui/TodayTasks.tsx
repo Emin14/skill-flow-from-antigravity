@@ -74,21 +74,25 @@ export const TodayTasks: React.FC = () => {
   // Helper to determine status of task for today
   const getTaskStatusForToday = (t: Task): TaskStatus => {
     if (t.isRepeating) {
-      const occ = t.occurrences?.find((o) => o.date === todayStr) || t.occurrences?.find((o) => o.date <= todayStr);
-      return occ ? occ.status : 'Todo';
+      const occ = t.occurrences?.find((o) => o.date === todayStr);
+      if (occ) return occ.status;
+      const legacyOcc = t.repetitionHistory?.find((h) => h.date === todayStr);
+      if (legacyOcc) return legacyOcc.completed ? 'Done' : 'Todo';
+      return 'Todo';
     }
     return t.status;
   };
 
-  // Group tasks by Kanban Stages: Todo, InProgress, Done
+  // Group tasks by Kanban Stages: Todo, InProgress, Done based on active tab
   const todoTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [todayTasks, todayStr]);
   const inProgressTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [todayTasks, todayStr]);
   const doneTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [todayTasks, todayStr]);
 
-  // PM FEATURE: 100% Today Tasks Celebration Condition
-  const is100PercentDone = useMemo(() => {
-    return rawTodayTasks.length > 0 && rawTodayTasks.every((t) => getTaskStatusForToday(t) === 'Done');
-  }, [rawTodayTasks, todayStr]);
+  // Exact math for progress bar widget
+  const totalCount = todayTasks.length;
+  const doneCount = doneTasks.length;
+  const progressPercent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
+  const is100PercentDone = totalCount > 0 && doneCount === totalCount;
 
   const handleCardClick = (task: Task) => {
     openDetailModal(task);
@@ -161,6 +165,27 @@ export const TodayTasks: React.FC = () => {
         </div>
       </div>
 
+      {/* Progress Bar Widget (Always visible when there are tasks) */}
+      {totalCount > 0 && !is100PercentDone && (
+        <div style={{
+          padding: '12px 16px',
+          borderRadius: '14px',
+          background: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid var(--color-border)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '6px'
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12.5px', color: 'var(--color-text-muted)' }}>
+            <span>Прогресс дня ({doneCount} из {totalCount} выполнено)</span>
+            <span style={{ fontWeight: 700, color: 'var(--color-accent)' }}>{progressPercent}%</span>
+          </div>
+          <div style={{ width: '100%', height: '6px', borderRadius: '3px', background: 'rgba(255, 255, 255, 0.08)', overflow: 'hidden' }}>
+            <div style={{ width: `${progressPercent}%`, height: '100%', background: 'linear-gradient(90deg, #6366f1 0%, #38bdf8 100%)', transition: 'width 0.3s ease' }} />
+          </div>
+        </div>
+      )}
+
       {/* PM FEATURE: Celebratory 100% Completion Banner */}
       {is100PercentDone && (
         <div className={styles.celebrationBanner}>
@@ -180,7 +205,7 @@ export const TodayTasks: React.FC = () => {
             <div className={styles.progressBarHeader}>
               <span>Прогресс дня</span>
               <span className={styles.progressPercent}>
-                100% ({doneTasks.length}/{rawTodayTasks.length})
+                100% ({doneCount}/{totalCount})
               </span>
             </div>
             <div className={styles.progressBarTrack}>
