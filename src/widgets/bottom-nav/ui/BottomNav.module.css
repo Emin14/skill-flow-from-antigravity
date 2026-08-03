@@ -2,88 +2,6 @@
   display: none;
 }
 
-/* Drawer Modal Overlay */
-.drawerOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(10px);
-  z-index: 999;
-  display: flex;
-  align-items: flex-end;
-  animation: fadeIn 0.2s ease;
-}
-
-.drawerSheet {
-  background: var(--color-surface, #1e293b);
-  border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
-  border-radius: 24px 24px 0 0;
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
-}
-
-:global([data-theme="light"]) .drawerSheet {
-  background: #ffffff !important;
-  border-top-color: rgba(0, 0, 0, 0.12) !important;
-  color: #0f172a !important;
-}
-
-.drawerHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--color-text-primary);
-}
-
-.drawerCloseBtn {
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  color: var(--color-text-primary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.drawerGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.drawerItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  padding: 12px 8px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 600;
-  text-align: center;
-  transition: all 0.15s ease;
-}
-
-.drawerItemActive {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(37, 99, 235, 0.2));
-  border-color: #0ea5e9;
-  color: #38bdf8;
-}
-
 /* Mobile Breakpoint for Bottom Nav (max-width: 768px) */
 @media (max-width: 768px) {
   .bottomNav {
@@ -97,51 +15,13 @@
     transition: all 0.25s ease;
   }
 
-  /* Shared FAB style base */
-  .createFabBase {
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: 3px solid var(--color-surface, #0f172a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  .createFab {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: 3px solid var(--color-surface, #0f172a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  /* VARIANT 1: Icon Only Bar (Apple Style, zero overlap) */
-  .variant_1 {
-    height: calc(60px + env(safe-area-inset-bottom, 16px));
-    padding-bottom: env(safe-area-inset-bottom, 16px);
-    background: var(--color-surface, rgba(15, 23, 42, 0.9));
-    backdrop-filter: blur(20px);
-    border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-  }
-
   .iconOnlyRow {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-around;
-    padding: 0 8px;
+    padding: 0 6px;
+    position: relative;
   }
 
   .iconItem {
@@ -149,16 +29,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
     text-decoration: none;
-    min-width: 36px;
-    height: 42px;
+    min-width: 38px;
+    height: 44px;
     position: relative;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .iconSpan {
+    font-size: 20px;
     transition: transform 0.2s ease;
   }
 
-  .iconItemActive {
-    transform: scale(1.15);
+  .iconItemActive .iconSpan {
+    transform: scale(1.18);
   }
 
   .activeDot {
@@ -170,872 +54,274 @@
     bottom: 2px;
   }
 
-  /* VARIANT 2: iOS Standard 4 Tabs + Drawer */
-  .variant_2 {
-    height: calc(62px + env(safe-area-inset-bottom, 16px));
-    padding-bottom: env(safe-area-inset-bottom, 16px);
-    background: var(--color-surface, #0f172a);
-    border-top: 1px solid var(--color-border);
+  .topIndicatorLine {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #0ea5e9, #2563eb);
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.6);
   }
 
-  .standardRow {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 4px;
-  }
-
-  .compactItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    color: var(--color-text-muted, #94a3b8);
-    text-decoration: none;
-    font-size: 10px;
-    font-weight: 500;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .activeItem {
-    color: #0ea5e9 !important;
-    font-weight: 700;
-  }
-
-  /* VARIANT 3: Arc Search Floating Island */
-  .variant_3 {
-    background: transparent;
-    padding: 0 16px calc(12px + env(safe-area-inset-bottom, 8px)) 16px;
-  }
-
-  .floatingIsland {
-    width: 100%;
-    height: 54px;
-    border-radius: 28px;
-    background: rgba(30, 41, 59, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 12px;
-  }
-
-  :global([data-theme="light"]) .floatingIsland {
-    background: rgba(255, 255, 255, 0.9) !important;
-    border-color: rgba(0, 0, 0, 0.12) !important;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
-  }
-
-  .islandItem {
-    font-size: 19px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-  }
-
-  .islandItemActive {
-    background: rgba(14, 165, 233, 0.2);
-  }
-
-  .islandFab {
-    width: 42px;
-    height: 42px;
+  /* Base FAB Style */
+  .createFab {
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
     color: #ffffff;
-    border: none;
+    border: 3px solid var(--color-surface, #0f172a);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
     cursor: pointer;
+    flex-shrink: 0;
   }
 
-  /* VARIANT 4: Scrollable Carousel */
-  .variant_4 {
+  /* ----------------------------------------------------
+     20 STYLING VARIATIONS OF VARIANT 1 (ICON-ONLY BAR)
+     ---------------------------------------------------- */
+
+  /* VARIATION 1: Apple Classic Minimal Glass */
+  .variant_1 {
     height: calc(58px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: var(--color-surface, rgba(15, 23, 42, 0.9));
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  /* VARIATION 2: Glowing Active Top Accent Line */
+  .variant_2 {
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: var(--color-surface, #0f172a);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* VARIATION 3: Floating Island Capsule (Arc Style) */
+  .variant_3 {
+    background: transparent;
+    padding: 0 14px calc(12px + env(safe-area-inset-bottom, 8px)) 14px;
+  }
+  .variant_3 .iconOnlyRow {
+    background: var(--color-surface, rgba(30, 41, 59, 0.9));
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border, rgba(255, 255, 255, 0.15));
+    border-radius: 28px;
+    height: 52px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  /* VARIATION 4: Active Pill Badge Highlight */
+  .variant_4 {
+    height: calc(60px + env(safe-area-inset-bottom, 16px));
     padding-bottom: env(safe-area-inset-bottom, 16px);
     background: var(--color-surface, #0f172a);
     border-top: 1px solid var(--color-border);
   }
-
-  .carouselContainer {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0 8px;
-    gap: 8px;
-  }
-
-  .carouselScroll {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    overflow-x: auto;
-    flex: 1;
-    scrollbar-width: none;
-  }
-
-  .carouselScroll::-webkit-scrollbar {
-    display: none;
-  }
-
-  .carouselChip {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 6px 12px;
+  .variant_4 .iconItemActive {
+    background: rgba(14, 165, 233, 0.18);
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    font-size: 11.5px;
-    font-weight: 600;
-    white-space: nowrap;
+    border: 1px solid rgba(14, 165, 233, 0.3);
   }
 
-  .carouselChipActive {
-    background: linear-gradient(135deg, #0ea5e9, #2563eb);
-    border-color: transparent;
-    color: #ffffff;
-  }
-
-  .carouselFab {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 14px rgba(14, 165, 233, 0.45);
-    cursor: pointer;
-  }
-
-  /* VARIANT 5: Things 3 Corner FAB + Pill */
+  /* VARIATION 5: Neon Cyan Border Glow */
   .variant_5 {
-    background: transparent;
-    padding: 0 16px calc(12px + env(safe-area-inset-bottom, 8px)) 16px;
-  }
-
-  .thingsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .thingsPill {
-    height: 48px;
-    border-radius: 24px;
-    background: var(--color-surface, rgba(30, 41, 59, 0.9));
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0 14px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  .thingsItem {
-    font-size: 18px;
-    text-decoration: none;
-    background: none;
-    border: none;
-    color: var(--color-text-primary);
-    cursor: pointer;
-  }
-
-  .thingsFab {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.5);
-    cursor: pointer;
-  }
-
-  /* VARIANT 6: Linear Monospace Bar */
-  .variant_6 {
-    height: calc(54px + env(safe-area-inset-bottom, 16px));
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
     padding-bottom: env(safe-area-inset-bottom, 16px);
     background: #090d16;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1.5px solid #0ea5e9;
+    box-shadow: 0 -4px 20px rgba(14, 165, 233, 0.5);
   }
 
-  .linearBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 8px;
-  }
-
-  .linearBadge {
-    font-family: monospace;
-    font-size: 11px;
-    font-weight: 700;
-    color: #94a3b8;
-    text-decoration: none;
-    padding: 4px 8px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .linearBadgeActive {
-    background: #0ea5e9;
-    color: #ffffff;
-  }
-
-  .linearFab {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 7: Telegram Segmented */
-  .variant_7 {
-    height: calc(60px + env(safe-area-inset-bottom, 16px));
+  /* VARIATION 6: Gradient Rainbow Stroke Border */
+  .variant_6 {
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
     padding-bottom: env(safe-area-inset-bottom, 16px);
-    background: var(--color-surface, #1e293b);
-    border-top: 1px solid var(--color-border);
+    background: var(--color-surface, #0f172a);
+    border-top: 2px solid transparent;
+    border-image: linear-gradient(90deg, #0ea5e9, #8b5cf6, #ec4899) 1;
   }
 
-  .telegramBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
+  /* VARIATION 7: Notion Flat Hairline Border */
+  .variant_7 {
+    height: calc(54px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: var(--color-surface, #ffffff);
+    border-top: 1px solid var(--color-border, #e2e8f0);
   }
 
-  .telegramItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    text-decoration: none;
-    font-size: 19px;
-  }
-
-  .telegramBadge {
-    position: absolute;
-    top: -4px;
-    right: -8px;
-    background: #ef4444;
-    color: #fff;
-    font-size: 9px;
-    font-weight: 800;
-    padding: 1px 5px;
-    border-radius: 8px;
-  }
-
-  .telegramLabel {
-    font-size: 10px;
-    color: var(--color-text-muted);
-  }
-
-  .telegramFab {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 8: Spotify-style */
+  /* VARIATION 8: Curved FAB Notch Profile */
   .variant_8 {
     height: calc(60px + env(safe-area-inset-bottom, 16px));
     padding-bottom: env(safe-area-inset-bottom, 16px);
     background: var(--color-surface, #0f172a);
     border-top: 1px solid var(--color-border);
   }
-
-  .spotifyBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
+  .variant_8 .createFab {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.5);
   }
 
-  .spotifyItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 10px;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    background: none;
-    border: none;
-  }
-
-  .spotifyItemActive {
-    color: #10b981 !important;
-    font-weight: 700;
-  }
-
-  .spotifyFab {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 9: Minimalist Dots */
+  /* VARIATION 9: Neumorphic Inset Soft Shadow Bar */
   .variant_9 {
-    background: transparent;
-    padding: 0 16px calc(12px + env(safe-area-inset-bottom, 8px)) 16px;
-  }
-
-  .dotsBar {
-    width: 100%;
-    height: 50px;
-    border-radius: 25px;
-    background: rgba(15, 23, 42, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 10px;
-  }
-
-  .dotItem {
-    font-size: 18px;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-  }
-
-  .dotItemActive {
-    transform: scale(1.3);
-  }
-
-  .dotFab {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 10: Notion Flat Micro */
-  .variant_10 {
-    height: calc(48px + env(safe-area-inset-bottom, 16px));
-    padding-bottom: env(safe-area-inset-bottom, 16px);
-    background: var(--color-surface, #ffffff);
-    border-top: 1px solid var(--color-border, #e2e8f0);
-  }
-
-  .notionBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .notionItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-  }
-
-  .notionItemActive {
-    color: #0ea5e9 !important;
-  }
-
-  .notionFab {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 11: Arc Capsule */
-  .variant_11 {
-    background: transparent;
-    padding: 0 20px calc(12px + env(safe-area-inset-bottom, 8px)) 20px;
-  }
-
-  .arcCapsule {
-    width: 100%;
-    height: 52px;
-    border-radius: 26px;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    border: 1px solid rgba(14, 165, 233, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.25);
-  }
-
-  .arcIcon {
-    font-size: 18px;
-    text-decoration: none;
-    background: none;
-    border: none;
-    color: #fff;
-  }
-
-  .arcFab {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 12: Craft Glass Drawer Tab */
-  .variant_12 {
-    height: calc(52px + env(safe-area-inset-bottom, 16px));
-    padding-bottom: env(safe-area-inset-bottom, 16px);
-    background: rgba(30, 41, 59, 0.95);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
-
-  .craftBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-  }
-
-  .craftContent {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    color: #f8fafc;
-  }
-
-  .craftFab {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 13: Apple Fitness Circular Badges */
-  .variant_13 {
-    background: transparent;
-    padding: 0 12px calc(12px + env(safe-area-inset-bottom, 8px)) 12px;
-  }
-
-  .fitnessBar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .fitnessBadge {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(30, 41, 59, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  .fitnessBadgeActive {
-    border-color: #10b981;
-    box-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
-  }
-
-  .fitnessFab {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 14: Instagram Icon Grid */
-  .variant_14 {
-    height: calc(56px + env(safe-area-inset-bottom, 16px));
-    padding-bottom: env(safe-area-inset-bottom, 16px);
-    background: var(--color-surface, #0f172a);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .instaBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .instaItem {
-    font-size: 20px;
-    text-decoration: none;
-    opacity: 0.6;
-  }
-
-  .instaItemActive {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-
-  .instaFab {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 15: Raycast Command Capsule */
-  .variant_15 {
-    background: transparent;
-    padding: 0 16px calc(12px + env(safe-area-inset-bottom, 8px)) 16px;
-  }
-
-  .raycastCapsule {
-    width: 100%;
-    height: 50px;
-    border-radius: 16px;
-    background: #090d16;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 12px;
-  }
-
-  .raycastItem {
-    font-size: 17px;
-    text-decoration: none;
-    opacity: 0.6;
-  }
-
-  .raycastItemActive {
-    opacity: 1;
-  }
-
-  .raycastFab {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 16: Slack Top Indicator Bar */
-  .variant_16 {
-    height: calc(58px + env(safe-area-inset-bottom, 16px));
-    padding-bottom: env(safe-area-inset-bottom, 16px);
-    background: var(--color-surface, #0f172a);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .slackBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .slackItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    padding-top: 6px;
-    text-decoration: none;
-    color: var(--color-text-muted);
-  }
-
-  .slackItemActive {
-    color: #38bdf8 !important;
-  }
-
-  .slackTopIndicator {
-    position: absolute;
-    top: -6px;
-    left: 10%;
-    right: 10%;
-    height: 3px;
-    border-radius: 2px;
-    background: #38bdf8;
-  }
-
-  .slackFab {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 17: Double Tier Stacked */
-  .variant_17 {
-    display: flex;
-    flex-direction: column;
-    background: var(--color-surface, #0f172a);
-    border-top: 1px solid var(--color-border);
-    padding-bottom: env(safe-area-inset-bottom, 12px);
-  }
-
-  .doubleTierContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .topTierRow {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 6px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    scrollbar-width: none;
-  }
-
-  .tierChip {
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .bottomTierRow {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 6px 12px;
-  }
-
-  .tierMainItem {
-    font-size: 20px;
-    text-decoration: none;
-  }
-
-  .tierFab {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 18: Neumorphic Soft Shadow */
-  .variant_18 {
     height: calc(62px + env(safe-area-inset-bottom, 16px));
     padding-bottom: env(safe-area-inset-bottom, 16px);
     background: #1e293b;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
-
-  .neumorphismBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .neuItem {
-    width: 38px;
-    height: 38px;
+  .variant_9 .iconItem {
     border-radius: 12px;
-    background: #1e293b;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), -4px -4px 10px rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    text-decoration: none;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.05);
+  }
+  .variant_9 .iconItemActive {
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.4), inset -2px -2px 6px rgba(255, 255, 255, 0.05);
   }
 
-  .neuItemActive {
-    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.4), inset -3px -3px 8px rgba(255, 255, 255, 0.05);
-  }
-
-  .neuFab {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  /* VARIANT 19: Side Floating Radial */
-  .variant_19 {
+  /* VARIATION 10: Floating Dual Capsule Segment */
+  .variant_10 {
     background: transparent;
-    padding: 0 16px calc(12px + env(safe-area-inset-bottom, 8px)) 16px;
+    padding: 0 12px calc(12px + env(safe-area-inset-bottom, 8px)) 12px;
   }
-
-  .radialBar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .radialPill {
-    height: 48px;
-    border-radius: 24px;
-    background: rgba(30, 41, 59, 0.9);
-    backdrop-filter: blur(16px);
+  .variant_10 .iconOnlyRow {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 0 18px;
+    border-radius: 20px;
+    height: 52px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.3);
   }
 
-  .radialItem {
-    font-size: 20px;
-    text-decoration: none;
+  /* VARIATION 11: Raycast Metallic Dark Chrome */
+  .variant_11 {
+    height: calc(56px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: linear-gradient(180deg, #1e293b 0%, #090d16 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  .radialFab {
-    width: 48px;
-    height: 48px;
+  /* VARIATION 12: Underline Slide Indicator Bar */
+  .variant_12 {
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: var(--color-surface, #0f172a);
+    border-top: 1px solid var(--color-border);
+  }
+  .variant_12 .activeDot {
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+    bottom: 3px;
+    background: #0ea5e9;
+  }
+
+  /* VARIATION 13: Apple Fitness Micro Ring Badges */
+  .variant_13 {
+    background: transparent;
+    padding: 0 12px calc(12px + env(safe-area-inset-bottom, 8px)) 12px;
+  }
+  .variant_13 .iconItem {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.5);
-    cursor: pointer;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .variant_13 .iconItemActive {
+    border-color: #10b981;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
   }
 
-  /* VARIANT 20: Ultra-Compact Micro Bar */
+  /* VARIATION 14: Category Glow Dots Bar */
+  .variant_14 {
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: var(--color-surface, #0f172a);
+    border-top: 1px solid var(--color-border);
+  }
+  .variant_14 .activeDot {
+    top: 2px;
+    bottom: auto;
+    width: 6px;
+    height: 6px;
+    background: #f59e0b;
+    box-shadow: 0 0 8px #f59e0b;
+  }
+
+  /* VARIATION 15: Acrylic Ultra Blur Ribbon */
+  .variant_15 {
+    height: calc(60px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* VARIATION 16: Dashed Tech Border Line */
+  .variant_16 {
+    height: calc(56px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: #090d16;
+    border-top: 1px dashed rgba(14, 165, 233, 0.5);
+  }
+
+  /* VARIATION 17: Double Parallel Top Border Strip */
+  .variant_17 {
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: var(--color-surface, #0f172a);
+    border-top: 2px solid #0ea5e9;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* VARIATION 18: macOS Dock Floating Panel */
+  .variant_18 {
+    background: transparent;
+    padding: 0 16px calc(14px + env(safe-area-inset-bottom, 8px)) 16px;
+  }
+  .variant_18 .iconOnlyRow {
+    background: rgba(30, 41, 59, 0.88);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    height: 52px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  }
+  .variant_18 .iconItemActive .iconSpan {
+    transform: scale(1.3) translateY(-2px);
+  }
+
+  /* VARIATION 19: Side Curved Wing Caps */
+  .variant_19 {
+    height: calc(58px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    background: var(--color-surface, #0f172a);
+    border-top: 1px solid var(--color-border);
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* VARIATION 20: Ultra-Compact Slim Bar (42px) */
   .variant_20 {
     height: calc(44px + env(safe-area-inset-bottom, 16px));
     padding-bottom: env(safe-area-inset-bottom, 16px);
     background: #0f172a;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
-
-  .microBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
+  .variant_20 .iconItem {
+    height: 34px;
   }
-
-  .microItem {
+  .variant_20 .iconSpan {
     font-size: 17px;
-    text-decoration: none;
-    opacity: 0.6;
   }
-
-  .microItemActive {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-
-  .microFab {
+  .variant_20 .createFab {
     width: 34px;
     height: 34px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-    color: #ffffff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
   }
 }
