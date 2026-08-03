@@ -383,7 +383,7 @@ export const QuickCreateModal: React.FC = () => {
                 background: 'rgba(255,255,255,0.03)',
                 border: '1px solid rgba(255,255,255,0.06)',
                 display: 'flex',
-                align-items: 'center',
+                alignItems: 'center',
                 fontSize: '11px',
                 color: 'rgba(255,255,255,0.65)',
                 lineHeight: '1.3',
