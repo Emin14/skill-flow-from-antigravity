@@ -291,14 +291,67 @@
   color: #38bdf8 !important;
 }
 
-@media (max-width: 560px) {
-  .modal {
-    max-height: 92vh;
-    padding: 10px 12px;
+/* Drag handle pill container for mobile bottom sheet gesture */
+.dragHandleArea {
+  width: 100%;
+  padding: 4px 0 8px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  margin-top: -2px;
+}
+
+.dragHandleBar {
+  width: 38px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.28);
+  transition: background-color 0.2s ease, width 0.2s ease;
+}
+
+.dragHandleArea:hover .dragHandleBar,
+.dragHandleArea:active .dragHandleBar {
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 46px;
+}
+
+@keyframes slideUpSheet {
+  from {
+    transform: translateY(100%);
   }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .overlay {
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    height: auto;
+    max-height: 90vh;
+    width: 100%;
+    max-width: 100vw;
+    border-radius: 22px 22px 0 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px 14px 18px 14px;
+    animation: slideUpSheet 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+  }
+
   .splitGrid {
     grid-template-columns: 1fr;
   }
+
   .notionPropRow {
     grid-template-columns: 100px 1fr;
   }

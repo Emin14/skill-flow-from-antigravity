@@ -188,11 +188,58 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     onClose();
   };
 
+  const [dragY, setDragY] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const startYRef = useRef(0);
+
+  const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    startYRef.current = clientY;
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!isDragging) return;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    const deltaY = clientY - startYRef.current;
+    if (deltaY > 0) setDragY(deltaY);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    if (dragY > 90) {
+      setDragY(0);
+      onClose();
+    } else {
+      setDragY(0);
+    }
+  };
+
   const catThemeColor = getCategoryColor(category);
 
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={styles.modal}
+        style={{
+          transform: dragY > 0 ? `translateY(${dragY}px)` : undefined,
+          transition: isDragging ? 'none' : 'transform 0.22s ease-out',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Mobile Swipe-Down Drag Handle */}
+        <div
+          className={styles.dragHandleArea}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onMouseDown={handleTouchStart}
+          onMouseMove={handleTouchMove}
+          onMouseUp={handleTouchEnd}
+        >
+          <div className={styles.dragHandleBar} />
+        </div>
 
         {/* Top Category Theme Accent Line */}
         <div
