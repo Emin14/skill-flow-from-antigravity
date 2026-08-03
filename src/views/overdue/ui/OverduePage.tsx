@@ -11,7 +11,7 @@ import { AlertCircle, Calendar, CheckCircle2 } from 'lucide-react';
 import styles from './OverduePage.module.css';
 
 export const OverduePage: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTask, updateTaskDetails } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTaskOccurrence, updateTaskDetails } = useTaskStore();
 
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
@@ -113,7 +113,7 @@ export const OverduePage: React.FC = () => {
                 allTasks={tasks}
                 showDragHandle={false}
                 onToggleCheckbox={() => toggleTaskStatus(task.id)}
-                onDelete={() => deleteTask(task.id)}
+                onDelete={() => deleteTaskOccurrence(task.id, task.scheduledDate)}
                 onClick={() => handleTaskClick(task)}
               />
               <div className={styles.cardActionRow}>

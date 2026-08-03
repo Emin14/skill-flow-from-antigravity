@@ -115,6 +115,8 @@ interface TaskState {
   updateTaskParent: (id: string, parentTaskId: string | null) => Promise<void>;
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
   updateTaskPomodoros: (id: string, count: number) => Promise<void>;
+  deleteTaskOccurrence: (id: string, dateStr: string) => Promise<void>;
+  deleteTaskSeries: (id: string, confirmed?: boolean) => Promise<void>;
   deleteTask: (id: string, confirmed?: boolean) => Promise<void>;
   completeRepetition: (id: string, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTargetRepetitions: (id: string, newTarget: number) => Promise<void>;
@@ -636,6 +638,40 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }));
 
     await taskRepository.update(id, { pomodorosCount: safeCount });
+  },
+
+  deleteTaskOccurrence: async (id: string, dateStr: string) => {
+    const task = get().tasks.find((t) => t.id === id);
+    if (!task) return;
+
+    if (!task.isRepeating) {
+      await get().deleteTask(id);
+      return;
+    }
+
+    const currentOccs = task.occurrences || [];
+    const remainingOccs = currentOccs.filter((o) => o.date !== dateStr);
+    const normOccs = normalizeOccurrences(remainingOccs, id);
+
+    const derivedDate = getDerivedScheduledDate({ ...task, occurrences: normOccs });
+    const derivedDoneCount = getDerivedRepetitionsCount({ ...task, occurrences: normOccs });
+
+    const updates: Partial<Task> = {
+      occurrences: normOccs,
+      scheduledDate: derivedDate,
+      repetitionsCount: derivedDoneCount,
+    };
+
+    set((state) => ({
+      tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
+    }));
+
+    await taskRepository.update(id, updates);
+    useToastStore.getState().showToast(`Повторение на ${dateStr} удалено`, 'info');
+  },
+
+  deleteTaskSeries: async (id: string, confirmed?: boolean) => {
+    await get().deleteTask(id, confirmed);
   },
 
   deleteTask: async (id: string, confirmed?: boolean) => {

@@ -229,7 +229,10 @@ export const TodayTasks: React.FC = () => {
               const t = tasks.find((x) => x.id === taskId);
               updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
             }}
-            onDelete={(id) => deleteTask(id)}
+            onDelete={(id) => {
+              const t = tasks.find((x) => x.id === id);
+              deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
+            }}
             onCompleteParent={(id) => {
               const t = tasks.find((x) => x.id === id);
               updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
@@ -253,7 +256,10 @@ export const TodayTasks: React.FC = () => {
               const t = tasks.find((x) => x.id === taskId);
               updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
             }}
-            onDelete={(id) => deleteTask(id)}
+            onDelete={(id) => {
+              const t = tasks.find((x) => x.id === id);
+              deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
+            }}
             onCompleteParent={(id) => {
               const t = tasks.find((x) => x.id === id);
               updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);
@@ -277,7 +283,10 @@ export const TodayTasks: React.FC = () => {
               const t = tasks.find((x) => x.id === taskId);
               updateTaskStatus(taskId, nextStatus, undefined, t?.scheduledDate || todayStr);
             }}
-            onDelete={(id) => deleteTask(id)}
+            onDelete={(id) => {
+              const t = tasks.find((x) => x.id === id);
+              deleteTaskOccurrence(id, t?.scheduledDate || todayStr);
+            }}
             onCompleteParent={(id) => {
               const t = tasks.find((x) => x.id === id);
               updateTaskStatus(id, 'Done', undefined, t?.scheduledDate || todayStr);

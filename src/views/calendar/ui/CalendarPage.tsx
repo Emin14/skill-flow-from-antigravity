@@ -323,7 +323,7 @@ export const CalendarPage: React.FC = () => {
                         allTasks={tasks}
                         showDragHandle={false}
                         onToggleCheckbox={() => handleCheckboxToggle(subtask)}
-                        onDelete={() => deleteTask(subtask.id)}
+                        onDelete={() => deleteTaskOccurrence(subtask.id, selectedDate)}
                         onClick={() => handleTaskClick(subtask)}
                       />
                     </div>
@@ -340,7 +340,7 @@ export const CalendarPage: React.FC = () => {
                     allTasks={tasks}
                     showDragHandle={false}
                     onToggleCheckbox={() => handleCheckboxToggle(t)}
-                    onDelete={() => deleteTask(t.id)}
+                    onDelete={() => deleteTaskOccurrence(t.id, selectedDate)}
                     onClick={() => handleTaskClick(t)}
                   />
                   {renderSubtasksRecursive(t.id, 1)}
