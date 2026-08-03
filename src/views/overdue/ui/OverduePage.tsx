@@ -11,7 +11,7 @@ import { AlertCircle, Calendar, CheckCircle2 } from 'lucide-react';
 import styles from './OverduePage.module.css';
 
 export const OverduePage: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTaskOccurrence, updateTaskDetails } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTaskOccurrence, rescheduleTaskToToday } = useTaskStore();
 
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
@@ -35,23 +35,9 @@ export const OverduePage: React.FC = () => {
     });
   }, [tasks, todayStr]);
 
-  const handleRescheduleToToday = async (task: Task) => {
-    if (task.isRepeating && task.occurrences) {
-      const updatedOccurrences = task.occurrences.map((o) => {
-        if (o.date < todayStr && o.status !== 'Done') {
-          return { ...o, date: todayStr };
-        }
-        return o;
-      });
-      await updateTaskDetails(task.id, { scheduledDate: todayStr, occurrences: updatedOccurrences });
-    } else {
-      await updateTaskDetails(task.id, { scheduledDate: todayStr });
-    }
-  };
-
   const handleRescheduleAllToToday = async () => {
     for (const t of overdueTasks) {
-      await handleRescheduleToToday(t);
+      await rescheduleTaskToToday(t.id);
     }
   };
 
@@ -120,7 +106,7 @@ export const OverduePage: React.FC = () => {
                 <button
                   type="button"
                   className={`${styles.actionChip} ${styles.actionChipToday}`}
-                  onClick={() => handleRescheduleToToday(task)}
+                  onClick={() => rescheduleTaskToToday(task.id)}
                   title="Перенести задачу на сегодня"
                 >
                   ☀️ Перенести на сегодня

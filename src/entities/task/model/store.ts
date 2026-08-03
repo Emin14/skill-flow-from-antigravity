@@ -118,6 +118,7 @@ interface TaskState {
   deleteTaskOccurrence: (id: string, dateStr: string) => Promise<void>;
   deleteTaskSeries: (id: string, confirmed?: boolean) => Promise<void>;
   deleteTask: (id: string, confirmed?: boolean) => Promise<void>;
+  rescheduleTaskToToday: (id: string) => Promise<void>;
   completeRepetition: (id: string, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTargetRepetitions: (id: string, newTarget: number) => Promise<void>;
 }
@@ -714,6 +715,49 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         useToastStore.getState().showToast('Задача восстановлена', 'success');
       }
     );
+  },
+
+  rescheduleTaskToToday: async (id: string) => {
+    const task = get().tasks.find((t) => t.id === id);
+    if (!task) return;
+
+    const todayStr = getTodayStr();
+
+    if (task.isRepeating) {
+      const currentOccs = task.occurrences || [];
+      const updatedOccs = currentOccs.map((o) => {
+        if (o.date < todayStr && o.status !== 'Done') {
+          return { ...o, date: todayStr };
+        }
+        return o;
+      });
+
+      const normOccs = normalizeOccurrences(updatedOccs, id);
+      const derivedDate = getDerivedScheduledDate({ ...task, occurrences: normOccs });
+      const derivedDoneCount = getDerivedRepetitionsCount({ ...task, occurrences: normOccs });
+
+      const updates: Partial<Task> = {
+        occurrences: normOccs,
+        scheduledDate: derivedDate,
+        repetitionsCount: derivedDoneCount,
+      };
+
+      set((state) => ({
+        tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
+      }));
+
+      await taskRepository.update(id, updates);
+    } else {
+      const updates: Partial<Task> = { scheduledDate: todayStr };
+
+      set((state) => ({
+        tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
+      }));
+
+      await taskRepository.update(id, updates);
+    }
+
+    useToastStore.getState().showToast(`Задача "${task.title}" перенесена на сегодня ☀️`, 'success');
   },
 
   completeRepetition: async (id: string, smartRating?: SmartRating, occurrenceDate?: string) => {
