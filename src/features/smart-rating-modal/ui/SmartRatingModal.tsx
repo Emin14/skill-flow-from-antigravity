@@ -65,7 +65,7 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 9999,
+        zIndex: 'var(--z-index-modal, 100000)' as any,
         padding: '16px',
       }}
     >

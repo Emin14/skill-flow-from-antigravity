@@ -105,7 +105,15 @@ export const CalendarPage: React.FC = () => {
   };
 
   const handleCheckboxToggle = (task: Task) => {
-    toggleTaskStatus(task.id, undefined, selectedDate);
+    const isDone = isTaskDoneOnDate(task, selectedDate);
+
+    if (isDone) {
+      toggleTaskStatus(task.id, undefined, selectedDate);
+    } else if (task.isRepeating || task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
+      setSmartTask(task);
+    } else {
+      toggleTaskStatus(task.id, undefined, selectedDate);
+    }
   };
 
   const handleSelectSmartRating = (rating: SmartRating) => {
