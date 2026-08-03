@@ -113,7 +113,7 @@
 
 .timelineTrack {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   position: relative;
   width: 100%;
@@ -121,7 +121,7 @@
   padding: 0 10px;
 }
 
-.timelineItem {
+.stepColumn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -130,21 +130,29 @@
   flex: 1;
 }
 
-.stepLabelTop {
+.stepLabel {
   font-size: 12px;
   font-weight: 700;
   color: var(--color-text-muted);
   margin-bottom: 8px;
-  min-height: 16px;
+  height: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: color 0.2s ease;
 }
 
-.stepLabelTopActive {
+.stepLabelCompleted {
   color: #10b981;
 }
 
-.stepLabelTopNext {
+.stepLabelNext {
   color: #60a5fa;
+}
+
+.stepLabelFuture {
+  color: var(--color-text-muted);
 }
 
 .stepLabelTopOverdue {
@@ -154,7 +162,7 @@
 /* Timeline Line Connectors - Sit behind nodes */
 .connectorLine {
   position: absolute;
-  top: 31px;
+  top: 35px;
   left: 0;
   right: 0;
   height: 3px;
