@@ -12,7 +12,7 @@ import styles from './ProjectsPage.module.css';
 type ProjectFilter = 'all' | 'active' | 'completed' | 'has_overdue';
 
 export const ProjectsPage: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
