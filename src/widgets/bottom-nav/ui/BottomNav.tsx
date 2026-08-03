@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useQuickCreateModalStore } from '@/features/quick-create';
-import { useFooterVariantStore } from '@/shared/model/useFooterVariantStore';
 import { Plus } from 'lucide-react';
 import styles from './BottomNav.module.css';
 
@@ -30,26 +29,13 @@ const NAV_ITEMS_RIGHT: NavItemData[] = [
 export const BottomNav: React.FC = () => {
   const pathname = usePathname();
   const openModal = useQuickCreateModalStore((s) => s.openModal);
-  const { variant } = useFooterVariantStore();
 
   const isItemActive = (href: string) => {
     return pathname === href || (href === '/today' && pathname === '/');
   };
 
-  const renderFab = (customClass?: string) => (
-    <button
-      type="button"
-      className={customClass || styles.createFab}
-      title="Быстрое создание задачи"
-      onClick={() => openModal('Task')}
-      aria-label="Быстрое создание задачи"
-    >
-      <Plus size={22} strokeWidth={2.8} />
-    </button>
-  );
-
   return (
-    <nav className={`${styles.bottomNav} ${styles[`variant_${variant}`]}`}>
+    <nav className={styles.bottomNav}>
       <div className={styles.iconOnlyRow}>
         {/* Left 3 Icons */}
         {NAV_ITEMS_LEFT.map((item) => {
@@ -61,15 +47,21 @@ export const BottomNav: React.FC = () => {
               className={`${styles.iconItem} ${active ? styles.iconItemActive : ''}`}
               title={item.label}
             >
-              {active && <div className={styles.topIndicatorLine} />}
               <span className={styles.iconSpan}>{item.icon}</span>
-              {active && <span className={styles.activeDot} />}
             </Link>
           );
         })}
 
         {/* Center Elevated FAB */}
-        {renderFab(styles[`fab_v${variant}`] || styles.createFab)}
+        <button
+          type="button"
+          className={styles.createFab}
+          title="Быстрое создание задачи"
+          onClick={() => openModal('Task')}
+          aria-label="Быстрое создание задачи"
+        >
+          <Plus size={22} strokeWidth={2.8} />
+        </button>
 
         {/* Right 4 Icons */}
         {NAV_ITEMS_RIGHT.map((item) => {
@@ -81,9 +73,7 @@ export const BottomNav: React.FC = () => {
               className={`${styles.iconItem} ${active ? styles.iconItemActive : ''}`}
               title={item.label}
             >
-              {active && <div className={styles.topIndicatorLine} />}
               <span className={styles.iconSpan}>{item.icon}</span>
-              {active && <span className={styles.activeDot} />}
             </Link>
           );
         })}
