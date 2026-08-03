@@ -20,11 +20,13 @@ export const AnytimePage: React.FC = () => {
     fetchTasks();
   }, [fetchTasks]);
 
-  // Tasks without scheduledDate or marked anytime
+  // Tasks without scheduledDate or marked anytime (EXCLUDING parent tasks with subtasks)
   const anytimeTasks = useMemo(() => {
-    return tasks.filter(
-      (t) => !t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime'
-    );
+    return tasks.filter((t) => {
+      const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
+      if (t.hasSubtasks || hasChildren) return false;
+      return !t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime';
+    });
   }, [tasks]);
 
   // Available categories (only those with tasks)

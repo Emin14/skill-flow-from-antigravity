@@ -21,10 +21,13 @@ export const OverduePage: React.FC = () => {
     fetchTasks();
   }, [fetchTasks]);
 
-  // Filter tasks whose scheduledDate is strictly less than todayStr and status !== 'Done'
+  // Filter tasks whose scheduledDate is strictly less than todayStr and status !== 'Done' (EXCLUDING parent tasks)
   const overdueTasks = useMemo(() => {
     return tasks.filter((t) => {
       if (t.status === 'Done') return false;
+      const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
+      if (t.hasSubtasks || hasChildren) return false;
+
       if (t.isRepeating) {
         const hasOverdueOcc = t.occurrences?.some((o) => o.date < todayStr && o.status !== 'Done');
         const isScheduledOverdue = t.scheduledDate && t.scheduledDate < todayStr;

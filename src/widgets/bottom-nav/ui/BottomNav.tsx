@@ -12,14 +12,14 @@ export const BottomNav: React.FC = () => {
 
   const navItemsLeft = [
     { label: 'Сегодня', href: '/today', icon: '☀️' },
-    { label: 'Просроченные', href: '/overdue', icon: '🚨' },
     { label: 'Входящие', href: '/inbox', icon: '📥' },
+    { label: 'Проекты', href: '/projects', icon: '📁' },
   ];
 
   const navItemsRight = [
+    { label: 'Просроченные', href: '/overdue', icon: '🚨' },
     { label: 'Повторить', href: '/repeats', icon: '🔄' },
     { label: 'Календарь', href: '/calendar', icon: '📅' },
-    { label: 'Статистика', href: '/statistics', icon: '📊' },
   ];
 
   return (

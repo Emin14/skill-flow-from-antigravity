@@ -3,7 +3,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { Checkbox } from '@/shared/ui';
 import { Task, TaskStatus } from '@/entities/task/model/types';
-import { getAllDescendantTasks } from '@/entities/task/model/store';
+import { getAllDescendantTasks, getTaskParentPath } from '@/entities/task/model/store';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { GripVertical, Check, ExternalLink, Calendar } from 'lucide-react';
 import styles from './GlassmorphicTaskCard.module.css';
@@ -13,6 +13,7 @@ interface GlassmorphicTaskCardProps {
   occurrenceDate?: string;
   allTasks?: Task[];
   showDragHandle?: boolean;
+  parentPathVariant?: number; // 1 to 10 concept variants
   onToggleCheckbox?: () => void;
   onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
@@ -21,6 +22,108 @@ interface GlassmorphicTaskCardProps {
   onCompleteParent?: () => void;
   onRescheduleToToday?: () => void;
 }
+
+const renderParentPath = (path: Task[], variant: number = 1, catColor: string) => {
+  if (!path || path.length === 0) return null;
+  const pathStr = path.map((t) => t.title).join(' › ');
+
+  switch (variant) {
+    case 1: // Classic Breadcrumb Trail
+      return (
+        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
+          <span>📂</span>
+          {path.map((p, idx) => (
+            <React.Fragment key={p.id}>
+              {idx > 0 && <span style={{ opacity: 0.4 }}>/</span>}
+              <span style={{ fontWeight: idx === path.length - 1 ? 600 : 400, color: idx === path.length - 1 ? '#38bdf8' : 'inherit' }}>
+                {p.title}
+              </span>
+            </React.Fragment>
+          ))}
+        </div>
+      );
+
+    case 2: // Pill Chip Badge
+      return (
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '12px', background: `${catColor}20`, border: `1px solid ${catColor}40`, fontSize: '10.5px', color: catColor, fontWeight: 600, marginBottom: '4px' }}>
+          <span>🏷️</span>
+          <span>{pathStr}</span>
+        </div>
+      );
+
+    case 3: // Left Accent Line & Tree Path
+      return (
+        <div style={{ borderLeft: `2.5px solid ${catColor}`, paddingLeft: '8px', marginBottom: '3px', fontSize: '11px', color: '#94a3b8' }}>
+          <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.5px', color: 'rgba(255,255,255,0.4)', display: 'block' }}>Проект</span>
+          <span style={{ fontWeight: 600, color: '#f1f5f9' }}>{pathStr}</span>
+        </div>
+      );
+
+    case 4: // Compact Minimal Arrow Tag
+      return (
+        <div style={{ fontSize: '11px', color: '#38bdf8', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '3px', marginBottom: '2px' }}>
+          <span>📁</span>
+          <span>{path.map((t) => t.title).join(' ➔ ')}</span>
+        </div>
+      );
+
+    case 5: // Nested Folder Hierarchy Stack Badge
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(15, 23, 42, 0.6)', padding: '3px 8px', borderRadius: '6px', fontSize: '10.5px', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '4px' }}>
+          {path.map((p, idx) => (
+            <React.Fragment key={p.id}>
+              {idx > 0 && <span style={{ opacity: 0.3, fontSize: '10px' }}>▼</span>}
+              <span style={{ display: 'flex', alignItems: 'center', gap: '2px', color: idx === path.length - 1 ? '#60a5fa' : 'rgba(255,255,255,0.7)' }}>
+                <span>📁</span> {p.title}
+              </span>
+            </React.Fragment>
+          ))}
+        </div>
+      );
+
+    case 6: // Notion-style Parent Label (Subtitle)
+      return (
+        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', fontStyle: 'italic', marginBottom: '2px' }}>
+          из {pathStr}
+        </div>
+      );
+
+    case 7: // Glassmorphic Floating Ribbon
+      return (
+        <div style={{ margin: '-10px -12px 6px -12px', padding: '4px 12px', background: 'linear-gradient(90deg, rgba(14,165,233,0.15) 0%, rgba(37,99,235,0.05) 100%)', borderBottom: '1px solid rgba(14,165,233,0.2)', borderRadius: '12px 12px 0 0', fontSize: '10.5px', color: '#38bdf8', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
+          <span>🔷</span>
+          <span>{pathStr}</span>
+        </div>
+      );
+
+    case 8: // Sub-level Tag Stack
+      return (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '4px' }}>
+          {path.map((p) => (
+            <span key={p.id} style={{ padding: '1px 6px', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', fontSize: '10px', color: '#e2e8f0' }}>
+              📁 {p.title}
+            </span>
+          ))}
+        </div>
+      );
+
+    case 9: // Outline Border Badge
+      return (
+        <div style={{ display: 'inline-block', padding: '1px 7px', borderRadius: '4px', border: `1px dashed ${catColor}`, fontSize: '10.5px', color: catColor, fontWeight: 500, marginBottom: '4px' }}>
+          ✦ {pathStr}
+        </div>
+      );
+
+    case 10: // Interactive Tree Link
+    default:
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: '#0ea5e9', fontWeight: 600, cursor: 'pointer', marginBottom: '3px' }}>
+          <span>🌿</span>
+          <span style={{ textDecoration: 'underline', textUnderlineOffset: '2px' }}>{pathStr}</span>
+        </div>
+      );
+  }
+};
 
 const getCategoryColor = (cat?: string): string => {
   switch (cat) {
@@ -87,6 +190,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   occurrenceDate,
   allTasks = [],
   showDragHandle = true,
+  parentPathVariant = 1,
   onToggleCheckbox,
   onStatusChange,
   onDelete,
@@ -256,6 +360,12 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     onCompleteParent();
   };
 
+  const parentPath = useMemo(() => {
+    if (!task.parentTaskId || !allTasks || allTasks.length === 0) return [];
+    const map = new Map(allTasks.map((t) => [t.id, t]));
+    return getTaskParentPath(task, map);
+  }, [task, allTasks]);
+
   return (
     <div
       ref={wrapperRef}
@@ -304,6 +414,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
             )}
 
             <div className={styles.titleColumn}>
+              {renderParentPath(parentPath, parentPathVariant || 1, catColor)}
               <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
                 {task.title}
               </span>

@@ -36,6 +36,7 @@ export const TodayTasks: React.FC = () => {
   } = useTaskModals();
   const [viewMode, setViewMode] = useState<ViewMode>('all');
   const [todayStr, setTodayStr] = useState<string>(getTodayStr());
+  const [conceptVariant, setConceptVariant] = useState<number>(1);
 
   useEffect(() => {
     const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
@@ -49,9 +50,13 @@ export const TodayTasks: React.FC = () => {
   // Midnight auto-update: обновляет todayStr при смене суток
   useMidnightRefresh(() => setTodayStr(getTodayStr()));
 
-  // Tasks scheduled strictly for today
+  // Tasks scheduled strictly for today (EXCLUDING parent tasks with subtasks)
   const rawTodayTasks = useMemo(() => {
     return tasks.filter((t) => {
+      // Exclude main tasks with subtasks (they belong strictly in Projects section)
+      const hasChildTasks = tasks.some((sub) => sub.parentTaskId === t.id);
+      if (t.hasSubtasks || hasChildTasks) return false;
+
       if (t.isRepeating) {
         return t.occurrences?.some((o) => o.date === todayStr) || (t.scheduledDate && t.scheduledDate === todayStr);
       }
@@ -194,6 +199,36 @@ export const TodayTasks: React.FC = () => {
         </div>
       )}
 
+      {/* Concept Variant Selector Bar */}
+      <div style={{ margin: '8px 0 16px 0', padding: '10px 14px', borderRadius: '14px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: '12px', fontWeight: 600, color: '#38bdf8' }}>🎨 Выбор дизайна пути родительской задачи:</span>
+          <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)' }}>Вариант {conceptVariant} из 10</span>
+        </div>
+        <div style={{ display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '4px' }}>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((v) => (
+            <button
+              key={v}
+              type="button"
+              onClick={() => setConceptVariant(v)}
+              style={{
+                padding: '4px 10px',
+                borderRadius: '8px',
+                background: conceptVariant === v ? 'linear-gradient(135deg, #0ea5e9, #2563eb)' : 'rgba(255,255,255,0.08)',
+                border: conceptVariant === v ? 'none' : '1px solid rgba(255,255,255,0.12)',
+                color: '#ffffff',
+                fontSize: '11.5px',
+                fontWeight: conceptVariant === v ? 700 : 500,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Вариант {v}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {isLoading ? (
         <div style={{ textAlign: 'center', padding: 'var(--space-6)', color: 'var(--color-text-muted)' }}>
           Загрузка задач...
@@ -221,6 +256,7 @@ export const TodayTasks: React.FC = () => {
             tasksList={todoTasks}
             allTasks={tasks}
             todayStr={todayStr}
+            parentPathVariant={conceptVariant}
             onDropStage={(e) => handleDropToStage(e, 'Todo')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
@@ -248,6 +284,7 @@ export const TodayTasks: React.FC = () => {
             tasksList={inProgressTasks}
             allTasks={tasks}
             todayStr={todayStr}
+            parentPathVariant={conceptVariant}
             onDropStage={(e) => handleDropToStage(e, 'InProgress')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
@@ -275,6 +312,7 @@ export const TodayTasks: React.FC = () => {
             tasksList={doneTasks}
             allTasks={tasks}
             todayStr={todayStr}
+            parentPathVariant={conceptVariant}
             onDropStage={(e) => handleDropToStage(e, 'Done')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
@@ -332,6 +370,7 @@ interface KanbanStageSectionProps {
   tasksList: Task[];
   allTasks: Task[];
   todayStr: string;
+  parentPathVariant?: number;
   onDropStage: (e: React.DragEvent) => void;
   onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
   onOpenCard: (task: Task) => void;
@@ -349,6 +388,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
   tasksList,
   allTasks,
   todayStr,
+  parentPathVariant,
   onDropStage,
   onDropOnTask,
   onOpenCard,
@@ -382,6 +422,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
             occurrenceDate={todayStr}
             allTasks={allTasks}
             showDragHandle={true}
+            parentPathVariant={parentPathVariant}
             onToggleCheckbox={() => onToggleCheckbox(subtask)}
             onStatusChange={(nextStatus) => onStatusChange(subtask.id, nextStatus)}
             onDelete={() => onDelete(subtask.id)}
@@ -457,6 +498,7 @@ const KanbanStageSection: React.FC<KanbanStageSectionProps> = ({
                     occurrenceDate={todayStr}
                     allTasks={allTasks}
                     showDragHandle={true}
+                    parentPathVariant={parentPathVariant}
                     onToggleCheckbox={() => onToggleCheckbox(task)}
                     onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
                     onDelete={() => onDelete(task.id)}

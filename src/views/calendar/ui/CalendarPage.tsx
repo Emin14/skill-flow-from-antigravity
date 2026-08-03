@@ -16,6 +16,10 @@ const getNowDateStr = () => getTodayStr();
 const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Task[] => {
   const tasksMap = new Map(allTasks.map((t) => [t.id, t]));
   return allTasks.filter((t) => {
+    // Hide parent tasks with subtasks from Calendar view (Point 1 mandate)
+    const hasChildren = allTasks.some((sub) => sub.parentTaskId === t.id);
+    if (t.hasSubtasks || hasChildren) return false;
+
     if (t.isRepeating) {
       const hasOcc = t.occurrences?.some((o) => o.date === targetDateStr);
       if (!hasOcc && t.scheduledDate !== targetDateStr) return false;

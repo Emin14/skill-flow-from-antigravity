@@ -148,6 +148,37 @@ export const getAllDescendantTasks = (parentId: string, allTasks: Task[]): Task[
   return descendants;
 };
 
+/**
+ * Cycle prevention check: Returns true if assigning proposedParentId to taskId creates a loop.
+ */
+export const wouldCreateCycle = (
+  taskId: string,
+  proposedParentId: string | null,
+  allTasks: Task[]
+): boolean => {
+  if (!proposedParentId) return false;
+  if (taskId === proposedParentId) return true;
+
+  const descendants = getAllDescendantTasks(taskId, allTasks);
+  return descendants.some((d) => d.id === proposedParentId);
+};
+
+/**
+ * Returns full path of parent tasks from root to immediate parent: [RootProject, Subproject, Parent]
+ */
+export const getTaskParentPath = (task: Task, tasksMap: Map<string, Task>): Task[] => {
+  const path: Task[] = [];
+  let curr = task.parentTaskId ? tasksMap.get(task.parentTaskId) : null;
+  const visited = new Set<string>();
+
+  while (curr && !visited.has(curr.id)) {
+    visited.add(curr.id);
+    path.unshift(curr);
+    curr = curr.parentTaskId ? tasksMap.get(curr.parentTaskId) : null;
+  }
+  return path;
+};
+
 export const getDynamicSmartBaseInterval = (task: Task): number => {
   const history = task.occurrences?.filter((o) => o.status === 'Done') || [];
   if (history.length === 0) return 1.0;
@@ -588,6 +619,11 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
 
+    if (updates.parentTaskId && wouldCreateCycle(id, updates.parentTaskId, get().tasks)) {
+      useToastStore.getState().showToast('⚠️ Циклическая привязка запрещена!', 'error');
+      return;
+    }
+
     const hasSubtasksNow = updates.hasSubtasks !== undefined ? updates.hasSubtasks : (task.hasSubtasks || get().tasks.some((t) => t.parentTaskId === id));
 
     if (hasSubtasksNow && updates.isRepeating) {
@@ -678,7 +714,14 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       if (parentTaskId) {
         const remainingSubtasks = nextTasks.filter((t) => t.parentTaskId === parentTaskId);
         if (remainingSubtasks.length === 0) {
-          nextTasks = nextTasks.map((t) => (t.id === parentTaskId ? { ...t, hasSubtasks: false } : t));
+          const parentObj = state.tasks.find((t) => t.id === parentTaskId);
+          if (parentObj && parentObj.hasSubtasks) {
+            setTimeout(() => {
+              if (window.confirm(`Проект "${parentObj.title}" больше не содержит подзадач.\nСделать его обычной задачей?`)) {
+                get().updateTaskDetails(parentTaskId, { hasSubtasks: false });
+              }
+            }, 100);
+          }
         }
       }
       return { tasks: nextTasks };
