@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Settings } from 'lucide-react';
 import { useThemeStore } from '@/shared/model/useThemeStore';
+import { useFooterVariantStore } from '@/shared/model/useFooterVariantStore';
 import styles from './TopBar.module.css';
 
 const pathTitles: Record<string, string> = {
@@ -16,6 +17,7 @@ const pathTitles: Record<string, string> = {
   '/calendar': 'Календарь',
   '/repeats': 'Повторить',
   '/statistics': 'Аналитика',
+  '/projects': 'Проекты',
   '/settings': 'Настройки',
 };
 
@@ -26,6 +28,7 @@ export const TopBar: React.FC = () => {
   const isTodayPage = pathname === '/' || pathname === '/today';
 
   const { theme, initTheme, toggleTheme } = useThemeStore();
+  const { variant: footerVariant, setVariant: setFooterVariant } = useFooterVariantStore();
 
   useEffect(() => {
     initTheme();
@@ -51,6 +54,30 @@ export const TopBar: React.FC = () => {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        {/* Mobile Footer Variant Switcher (1-20) */}
+        <select
+          value={footerVariant}
+          onChange={(e) => setFooterVariant(Number(e.target.value))}
+          title="Выбор дизайна нижнего меню (1-20)"
+          style={{
+            background: 'rgba(14, 165, 233, 0.15)',
+            border: '1px solid rgba(14, 165, 233, 0.4)',
+            borderRadius: '10px',
+            padding: '4px 8px',
+            color: '#38bdf8',
+            fontSize: '11.5px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            outline: 'none',
+            height: '34px',
+          }}
+        >
+          {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+            <option key={num} value={num} style={{ background: '#0f172a', color: '#fff' }}>
+              🎨 Футер #{num}
+            </option>
+          ))}
+        </select>
         <button
           onClick={toggleTheme}
           title={theme === 'dark' ? 'Переключить на светлую тему' : 'Переключить на темную тему'}
