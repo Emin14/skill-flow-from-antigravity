@@ -31,7 +31,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   onClose,
   onOpenEdit,
 }) => {
-  const { tasks, updateTaskPomodoros, updateTaskStatus } = useTaskStore();
+  const { tasks, updateTaskPomodoros, updateTaskStatus, deleteTaskSeries } = useTaskStore();
+  const [showDeleteConfirm, setShowDeleteConfirm] = React.useState(false);
 
   const masterTask = useMemo(() => {
     if (!task) return null;
@@ -57,6 +58,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   }, [isOpen]);
 
   if (!isOpen || !masterTask) return null;
+
+  const handleConfirmDeleteSeries = async () => {
+    if (masterTask) {
+      await deleteTaskSeries(masterTask.id, true);
+      setShowDeleteConfirm(false);
+      onClose();
+    }
+  };
 
   const currentCount = masterTask.repetitionsCount || 0;
   const targetCount = masterTask.targetRepetitions || 8;
@@ -141,7 +150,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             </div>
           </div>
 
-          {/* Action Buttons: Pencil Edit & Close */}
+          {/* Action Buttons: Pencil Edit, Delete & Close */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <button
               onClick={onOpenEdit}
@@ -162,6 +171,28 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             >
               ✏️
             </button>
+
+            <button
+              onClick={() => setShowDeleteConfirm(true)}
+              title="Удалить задачу со всеми её повторениями"
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '10px',
+                background: 'rgba(239, 68, 68, 0.12)',
+                border: '1px solid rgba(239, 68, 68, 0.25)',
+                color: '#ef4444',
+                fontSize: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              🗑️
+            </button>
+
             <button
               onClick={onClose}
               title="Закрыть"
@@ -349,6 +380,92 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                   />
                 );
               })}
+            </div>
+          </div>
+        )}
+
+        {/* Small Delete Confirmation Modal Dialog */}
+        {showDeleteConfirm && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.75)',
+              backdropFilter: 'blur(8px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10000,
+              padding: '16px',
+            }}
+            onClick={() => setShowDeleteConfirm(false)}
+          >
+            <div
+              style={{
+                background: '#1e293b',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: '16px',
+                padding: '20px',
+                width: '100%',
+                maxWidth: '360px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ fontSize: '22px' }}>⚠️</span>
+                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 600, color: '#f87171' }}>
+                  Удаление задачи
+                </h3>
+              </div>
+
+              <p style={{ margin: 0, fontSize: '13.5px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.45 }}>
+                Удалить текущую задачу со всеми её повторениями?
+              </p>
+
+              <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
+                <button
+                  type="button"
+                  onClick={() => setShowDeleteConfirm(false)}
+                  style={{
+                    flex: 1,
+                    height: '38px',
+                    borderRadius: '10px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: 'var(--color-text-secondary)',
+                    fontSize: '13.5px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                  }}
+                >
+                  Нет
+                </button>
+                <button
+                  type="button"
+                  onClick={handleConfirmDeleteSeries}
+                  style={{
+                    flex: 1,
+                    height: '38px',
+                    borderRadius: '10px',
+                    background: '#ef4444',
+                    border: 'none',
+                    color: '#ffffff',
+                    fontSize: '13.5px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 12px rgba(239, 68, 68, 0.4)',
+                  }}
+                >
+                  Да
+                </button>
+              </div>
             </div>
           </div>
         )}

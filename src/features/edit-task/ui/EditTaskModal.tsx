@@ -71,7 +71,8 @@ const getCategoryColor = (cat?: string): string => {
 };
 
 export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess }) => {
-  const { updateTaskDetails, tasks } = useTaskStore();
+  const { updateTaskDetails, deleteTaskSeries, tasks } = useTaskStore();
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   type PopoverKey = 'date' | 'category' | 'parent' | 'repeat' | 'freq' | null;
   const [openPopover, setOpenPopover] = useState<PopoverKey>(null);
@@ -216,10 +217,18 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     }
   };
 
+  const handleConfirmDeleteSeries = async () => {
+    if (task) {
+      await deleteTaskSeries(task.id, true);
+      setShowDeleteConfirm(false);
+      onClose();
+    }
+  };
+
   const catThemeColor = getCategoryColor(category);
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div className={styles.overlay} onClick={() => { closeAll(); onClose(); }}>
       <div
         className={styles.modal}
         style={{
@@ -526,8 +535,29 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
           </div>
 
-          {/* ── Symmetrical Action Buttons ───────────────────────── */}
+          {/* ── Action Buttons (Trash Delete + Cancel + Save) ───── */}
           <div className={styles.modalFooter}>
+            <button
+              type="button"
+              onClick={() => setShowDeleteConfirm(true)}
+              title="Удалить задачу и все её повторения"
+              style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: 'var(--radius-md)',
+                background: 'rgba(239, 68, 68, 0.15)',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
+                color: '#ef4444',
+                fontSize: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                flexShrink: 0,
+              }}
+            >
+              🗑️
+            </button>
             <button type="button" className={styles.cancelBtn} onClick={onClose}>
               Отмена
             </button>
@@ -536,6 +566,92 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             </button>
           </div>
         </form>
+
+        {/* Small Delete Confirmation Sub-Modal Dialog */}
+        {showDeleteConfirm && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.75)',
+              backdropFilter: 'blur(8px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10000,
+              padding: '16px',
+            }}
+            onClick={() => setShowDeleteConfirm(false)}
+          >
+            <div
+              style={{
+                background: '#1e293b',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: '16px',
+                padding: '20px',
+                width: '100%',
+                maxWidth: '360px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ fontSize: '22px' }}>⚠️</span>
+                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 600, color: '#f87171' }}>
+                  Удаление задачи
+                </h3>
+              </div>
+
+              <p style={{ margin: 0, fontSize: '13.5px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.45 }}>
+                Удалить текущую задачу со всеми её повторениями?
+              </p>
+
+              <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
+                <button
+                  type="button"
+                  onClick={() => setShowDeleteConfirm(false)}
+                  style={{
+                    flex: 1,
+                    height: '38px',
+                    borderRadius: '10px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: 'var(--color-text-secondary)',
+                    fontSize: '13.5px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                  }}
+                >
+                  Нет
+                </button>
+                <button
+                  type="button"
+                  onClick={handleConfirmDeleteSeries}
+                  style={{
+                    flex: 1,
+                    height: '38px',
+                    borderRadius: '10px',
+                    background: '#ef4444',
+                    border: 'none',
+                    color: '#ffffff',
+                    fontSize: '13.5px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 12px rgba(239, 68, 68, 0.4)',
+                  }}
+                >
+                  Да
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
