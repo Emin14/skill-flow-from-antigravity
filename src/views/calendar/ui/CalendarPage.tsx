@@ -8,6 +8,7 @@ import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
 import { getTodayStr, formatSelectedDateTitle, formatDateStr } from '@/shared/lib/dateUtils';
+import { MonthCalendarWidget, MonthCalendarSelectorBar } from '@/widgets/month-calendar/ui/MonthCalendarWidget';
 import styles from './CalendarPage.module.css';
 
 const getNowDateStr = () => getTodayStr();
@@ -42,6 +43,7 @@ export const CalendarPage: React.FC = () => {
   const [todayStr, setTodayStr] = useState<string>(getNowDateStr());
   const [selectedDate, setSelectedDate] = useState<string>(getNowDateStr());
   const [currentMonthDate, setCurrentMonthDate] = useState<Date>(new Date());
+  const [calendarVariant, setCalendarVariant] = useState<number>(1);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
@@ -217,80 +219,24 @@ export const CalendarPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* 7-Column Calendar Grid */}
-      <div
-        className={styles.calendarCard}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        {/* Month Navigation Header */}
-        <div className={styles.monthNavHeader}>
-          <div className={styles.monthTitle}>
-            📅 {monthTitleStr}
-          </div>
-          <div className={styles.navControls}>
-            <button
-              className={styles.navBtn}
-              onClick={handleGoToToday}
-              title="Перейти к сегодняшней дате"
-            >
-              Сегодня
-            </button>
-            <button
-              className={styles.navBtn}
-              onClick={handlePrevMonth}
-              title="Предыдущий месяц"
-            >
-              ◄
-            </button>
-            <button
-              className={styles.navBtn}
-              onClick={handleNextMonth}
-              title="Следующий месяц"
-            >
-              ►
-            </button>
-          </div>
-        </div>
+      {/* 1. Monthly Calendar Widget (20 Dynamic UX Concepts with Touch Swipe & Today Jump) */}
+      <MonthCalendarWidget
+        currentMonthDate={currentMonthDate}
+        selectedDate={selectedDate}
+        todayStr={todayStr}
+        monthDays={monthDays}
+        onSelectDate={setSelectedDate}
+        onPrevMonth={handlePrevMonth}
+        onNextMonth={handleNextMonth}
+        onGoToToday={handleGoToToday}
+        activeVariant={calendarVariant}
+      />
 
-        {/* Day of Week Headers */}
-        <div className={styles.weekHeaderGrid}>
-          <div className={styles.weekHeaderCell}>Пн</div>
-          <div className={styles.weekHeaderCell}>Вт</div>
-          <div className={styles.weekHeaderCell}>Ср</div>
-          <div className={styles.weekHeaderCell}>Чт</div>
-          <div className={styles.weekHeaderCell}>Пт</div>
-          <div className={styles.weekHeaderCell} style={{ color: 'var(--color-warning)' }}>Сб</div>
-          <div className={styles.weekHeaderCell} style={{ color: 'var(--color-danger)' }}>Вс</div>
-        </div>
-
-        {/* Days Grid */}
-        <div className={styles.calendarMatrixGrid}>
-          {monthDays.map((d) => {
-            const isSelected = d.dateStr === selectedDate;
-            const hasTasks = d.tasksCount > 0;
-            const isAllDone = hasTasks && d.doneCount === d.tasksCount;
-
-            return (
-              <div
-                key={d.dateStr}
-                className={`${styles.dateCell} ${!d.isCurrentMonth ? styles.dateCellOtherMonth : ''} ${
-                  d.isToday ? styles.dateCellToday : ''
-                } ${isSelected ? styles.dateCellActive : ''}`}
-                onClick={() => setSelectedDate(d.dateStr)}
-              >
-                <span className={styles.dayNum}>{d.dayNum}</span>
-
-                {hasTasks && (
-                  <div className={styles.taskDots}>
-                    <div className={`${styles.dot} ${isAllDone ? styles.dotDone : ''}`} />
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      {/* 2. Selector Bar [1] [2] ... [20] Rendered DIRECTLY UNDER Calendar Widget */}
+      <MonthCalendarSelectorBar
+        activeVariant={calendarVariant}
+        onSelectVariant={setCalendarVariant}
+      />
 
       {/* Selected Day Agenda Header & Task List */}
       <div className={styles.selectedDayCard}>

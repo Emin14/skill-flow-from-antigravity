@@ -1,0 +1,835 @@
+/* CSS Module for 20 RADICALLY DIFFERENT Month Calendar UX Concepts */
+.showcaseWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+/* Selector Bar [1] [2] ... [20] (Rendered DIRECTLY UNDER Calendar Widget) */
+.selectorBarUnderWidget {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--color-surface, rgba(30, 41, 59, 0.75));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
+  padding: 8px 12px;
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  margin-top: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+:global([data-theme="light"]) .selectorBarUnderWidget {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.selectorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--color-text-muted, #94a3b8);
+  font-weight: 600;
+}
+
+:global([data-theme="light"]) .selectorHeader {
+  color: #64748b;
+}
+
+.selectorGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.selectorBtn {
+  width: 30px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-muted, #94a3b8);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+:global([data-theme="light"]) .selectorBtn {
+  background: #f1f5f9;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #475569;
+}
+
+.selectorBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.selectorBtnActive {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1) !important;
+  color: #fff !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.4) !important;
+}
+
+/* Base Calendar Card Wrapper */
+.baseCalendarCard {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 18px;
+  padding: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+
+/* Common Month Header Layouts */
+.monthHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.monthTitleText {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-text-primary, #f8fafc);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+:global([data-theme="light"]) .monthTitleText {
+  color: #0f172a;
+}
+
+/* Nav Controls */
+.navBtnGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.todayBtn {
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid #0ea5e9;
+  color: #38bdf8;
+  border-radius: 10px;
+  padding: 5px 11px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.todayBtn:hover {
+  background: #0ea5e9;
+  color: #ffffff;
+}
+
+:global([data-theme="light"]) .todayBtn {
+  background: rgba(2, 132, 199, 0.1);
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+:global([data-theme="light"]) .todayBtn:hover {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.navArrowBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
+  color: var(--color-text-primary, #f8fafc);
+  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 11px;
+}
+
+.navArrowBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+:global([data-theme="light"]) .navArrowBtn {
+  background: #f1f5f9;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #334155;
+}
+
+:global([data-theme="light"]) .navArrowBtn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* 7-Column Week Day Labels Grid */
+.weekHeaderGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+  width: 100%;
+}
+
+.weekHeaderCell {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-text-muted, #94a3b8);
+  padding: 2px 0;
+}
+
+:global([data-theme="light"]) .weekHeaderCell {
+  color: #64748b;
+}
+
+/* 7-Column Calendar Days Matrix Grid Base */
+.calendarMatrixGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  width: 100%;
+}
+
+.dateCell {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.18s ease;
+  box-sizing: border-box;
+}
+
+.dateCellOtherMonth {
+  opacity: 0.3;
+}
+
+.dayNum {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-primary, #f8fafc);
+}
+
+:global([data-theme="light"]) .dayNum {
+  color: #0f172a;
+}
+
+/* Task Dots Indicator */
+.taskDots {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  position: absolute;
+  bottom: 4px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #38bdf8;
+}
+
+.dotDone {
+  background: #10b981;
+}
+
+/* ── 20 RADICALLY DISTINCT CALENDAR VARIANTS WITH UNIQUE CELL DESIGNS ── */
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 1: iOS 18 Cupertino Floating Glass Pills
+   ───────────────────────────────────────────────────────────── */
+.v1CupertinoGlass {
+  background: var(--color-surface, rgba(30, 41, 59, 0.7));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+:global([data-theme="light"]) .v1CupertinoGlass {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+.v1CupertinoGlass .dateCell {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+:global([data-theme="light"]) .v1CupertinoGlass .dateCell {
+  background: #f1f5f9;
+}
+.v1CupertinoGlass .dateCellToday {
+  border: 2px solid #f59e0b !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+}
+.v1CupertinoGlass .dateCellActive {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7) !important;
+  color: #fff !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 2: Notion Seamless Hairline Grid (Square Cells)
+   ───────────────────────────────────────────────────────────── */
+.v2NotionMinimal {
+  background: var(--color-surface, rgba(30, 41, 59, 0.6));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+}
+:global([data-theme="light"]) .v2NotionMinimal {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.v2NotionMinimal .calendarMatrixGrid {
+  gap: 0;
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  border-radius: 10px;
+  overflow: hidden;
+}
+.v2NotionMinimal .dateCell {
+  border-radius: 0;
+  border: 0.5px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  background: transparent;
+}
+.v2NotionMinimal .dateCellToday {
+  background: rgba(245, 158, 11, 0.2) !important;
+}
+.v2NotionMinimal .dateCellToday .dayNum {
+  color: #f59e0b !important;
+  font-weight: 900;
+}
+.v2NotionMinimal .dateCellActive {
+  background: #0ea5e9 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 3: Linear Cyber Dark Mono Matrix
+   ───────────────────────────────────────────────────────────── */
+.v3LinearCyber {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+}
+:global([data-theme="light"]) .v3LinearCyber {
+  background: #ffffff;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+.v3LinearCyber .dateCell {
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  font-family: monospace;
+}
+.v3LinearCyber .dateCellToday {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.2) !important;
+}
+.v3LinearCyber .dateCellActive {
+  background: #0ea5e9 !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 14px rgba(14, 165, 233, 0.6) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 4: Fantastical Radial Circular Dots
+   ───────────────────────────────────────────────────────────── */
+.v4FantasticalCapsule {
+  background: var(--color-surface, rgba(30, 41, 59, 0.75));
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v4FantasticalCapsule {
+  background: #ffffff;
+}
+.v4FantasticalCapsule .dateCell {
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+}
+.v4FantasticalCapsule .dateCellToday {
+  background: #f59e0b !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+.v4FantasticalCapsule .dateCellToday .dayNum {
+  color: #0f172a !important;
+  font-weight: 900;
+}
+.v4FantasticalCapsule .dateCellActive {
+  background: #0ea5e9 !important;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 5: VisionOS 3D Spatial Glass Spheres
+   ───────────────────────────────────────────────────────────── */
+.v5VisionOS3D {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+}
+:global([data-theme="light"]) .v5VisionOS3D {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+.v5VisionOS3D .dateCell {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+:global([data-theme="light"]) .v5VisionOS3D .dateCell {
+  background: #f1f5f9;
+  box-shadow: none;
+}
+.v5VisionOS3D .dateCellToday {
+  border: 2px solid #f59e0b !important;
+  background: rgba(245, 158, 11, 0.2) !important;
+}
+.v5VisionOS3D .dateCellActive {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1) !important;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 6: Apple Reminders Inset Rounded Capsules
+   ───────────────────────────────────────────────────────────── */
+.v6AppleReminders {
+  background: var(--color-surface, rgba(30, 41, 59, 0.7));
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v6AppleReminders {
+  background: #ffffff;
+}
+.v6AppleReminders .dateCell {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+:global([data-theme="light"]) .v6AppleReminders .dateCell {
+  background: #f8fafc;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+.v6AppleReminders .dateCellToday {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: #f59e0b !important;
+}
+.v6AppleReminders .dateCellActive {
+  background: #0284c7 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 7: AirCalendar Floating Island Chips (Gap 8px)
+   ───────────────────────────────────────────────────────────── */
+.v7AirCalendarCapsule {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(99, 102, 241, 0.08));
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+:global([data-theme="light"]) .v7AirCalendarCapsule {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.06), rgba(99, 102, 241, 0.04));
+  border-color: rgba(14, 165, 233, 0.25);
+}
+.v7AirCalendarCapsule .calendarMatrixGrid {
+  gap: 7px;
+}
+.v7AirCalendarCapsule .dateCell {
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+:global([data-theme="light"]) .v7AirCalendarCapsule .dateCell {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.v7AirCalendarCapsule .dateCellToday {
+  background: #f59e0b !important;
+}
+.v7AirCalendarCapsule .dateCellToday .dayNum {
+  color: #0f172a !important;
+  font-weight: 900;
+}
+.v7AirCalendarCapsule .dateCellActive {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 8: Google Material 3 Expressive Tonal Cards
+   ───────────────────────────────────────────────────────────── */
+.v8Material3Tonal {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+:global([data-theme="light"]) .v8Material3Tonal {
+  background: #f8fafc;
+  border-color: rgba(99, 102, 241, 0.2);
+}
+.v8Material3Tonal .dateCell {
+  border-radius: 16px;
+  background: rgba(99, 102, 241, 0.08);
+  border: none;
+}
+:global([data-theme="light"]) .v8Material3Tonal .dateCell {
+  background: rgba(99, 102, 241, 0.06);
+}
+.v8Material3Tonal .dateCellToday {
+  background: #f59e0b !important;
+}
+.v8Material3Tonal .dateCellToday .dayNum {
+  color: #0f172a !important;
+  font-weight: 900;
+}
+.v8Material3Tonal .dateCellActive {
+  background: #4f46e5 !important;
+  color: #fff !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 9: Headspace Mindful Organic Blobs
+   ───────────────────────────────────────────────────────────── */
+.v9HeadspaceBlobs {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.12), rgba(244, 63, 94, 0.1));
+  border: 1px solid rgba(251, 146, 60, 0.3);
+}
+:global([data-theme="light"]) .v9HeadspaceBlobs {
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.06), rgba(244, 63, 94, 0.04));
+  border-color: rgba(251, 146, 60, 0.25);
+}
+.v9HeadspaceBlobs .dateCell {
+  border-radius: 18px 6px 18px 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+:global([data-theme="light"]) .v9HeadspaceBlobs .dateCell {
+  background: #ffffff;
+}
+.v9HeadspaceBlobs .dateCellToday {
+  background: #f97316 !important;
+}
+.v9HeadspaceBlobs .dateCellToday .dayNum {
+  color: #ffffff !important;
+  font-weight: 900;
+}
+.v9HeadspaceBlobs .dateCellActive {
+  background: #ec4899 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 10: Cyberpunk Holo Phosphor Matrix
+   ───────────────────────────────────────────────────────────── */
+.v10CyberpunkHolo {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  font-family: monospace;
+}
+:global([data-theme="light"]) .v10CyberpunkHolo {
+  background: #ffffff;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+.v10CyberpunkHolo .dateCell {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+.v10CyberpunkHolo .dateCellToday {
+  background: rgba(245, 158, 11, 0.25) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+.v10CyberpunkHolo .dateCellActive {
+  background: #38bdf8 !important;
+  color: #0f172a !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 11: Minimalist Borderless Text-Only Typography
+   ───────────────────────────────────────────────────────────── */
+.v11MinimalText {
+  background: var(--color-surface, rgba(30, 41, 59, 0.65));
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v11MinimalText {
+  background: #ffffff;
+}
+.v11MinimalText .dateCell {
+  border: none;
+  background: transparent;
+}
+.v11MinimalText .dateCellToday .dayNum {
+  color: #f59e0b !important;
+  font-size: 15px;
+  font-weight: 900;
+  border-bottom: 2px solid #f59e0b;
+}
+.v11MinimalText .dateCellActive {
+  background: rgba(14, 165, 233, 0.15) !important;
+  border-radius: 10px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 12: Spotlight Floating Capsule Bar + Compact Pills
+   ───────────────────────────────────────────────────────────── */
+.v12SpotlightPills {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+:global([data-theme="light"]) .v12SpotlightPills {
+  background: #ffffff;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+.v12SpotlightPills .dateCell {
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.08);
+}
+.v12SpotlightPills .dateCellToday {
+  background: #f59e0b !important;
+}
+.v12SpotlightPills .dateCellToday .dayNum {
+  color: #0f172a !important;
+}
+.v12SpotlightPills .dateCellActive {
+  background: #0ea5e9 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 13: Dual-Tone Top Strip Cards
+   ───────────────────────────────────────────────────────────── */
+.v13DualToneStrips {
+  background: var(--color-surface, rgba(30, 41, 59, 0.7));
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v13DualToneStrips {
+  background: #ffffff;
+}
+.v13DualToneStrips .dateCell {
+  border-radius: 8px;
+  border-top: 3px solid #0ea5e9;
+  background: rgba(255, 255, 255, 0.03);
+}
+.v13DualToneStrips .dateCellToday {
+  border-top-color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+}
+.v13DualToneStrips .dateCellActive {
+  background: #0ea5e9 !important;
+  color: #fff !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 14: Dashed Wireframe Dotted Matrix
+   ───────────────────────────────────────────────────────────── */
+.v14DashedGrid {
+  background: var(--color-surface, rgba(30, 41, 59, 0.65));
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v14DashedGrid {
+  background: #ffffff;
+}
+.v14DashedGrid .dateCell {
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: transparent;
+}
+:global([data-theme="light"]) .v14DashedGrid .dateCell {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+.v14DashedGrid .dateCellToday {
+  border-color: #f59e0b !important;
+  border-style: solid !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+}
+.v14DashedGrid .dateCellActive {
+  border-style: solid !important;
+  background: #0ea5e9 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 15: Apple Journal Paper Note Grid
+   ───────────────────────────────────────────────────────────── */
+.v15AppleJournal {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+:global([data-theme="light"]) .v15AppleJournal {
+  background: #fafaf9;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.v15AppleJournal .dateCell {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+}
+:global([data-theme="light"]) .v15AppleJournal .dateCell {
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+.v15AppleJournal .dateCellToday {
+  border: 2px solid #f59e0b !important;
+}
+.v15AppleJournal .dateCellActive {
+  background: #0284c7 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 16: Micro Square Grid with Clean Status Rings
+   ───────────────────────────────────────────────────────────── */
+.v16MicroSquare {
+  background: var(--color-surface, rgba(30, 41, 59, 0.7));
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v16MicroSquare {
+  background: #ffffff;
+}
+.v16MicroSquare .dateCell {
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+}
+.v16MicroSquare .dateCellToday {
+  background: #f59e0b !important;
+}
+.v16MicroSquare .dateCellToday .dayNum {
+  color: #0f172a !important;
+}
+.v16MicroSquare .dateCellActive {
+  background: #0ea5e9 !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 17: Floating Bubble Buttons
+   ───────────────────────────────────────────────────────────── */
+.v17FloatingBubbles {
+  background: var(--color-surface, rgba(30, 41, 59, 0.75));
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v17FloatingBubbles {
+  background: #ffffff;
+}
+.v17FloatingBubbles .dateCell {
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+.v17FloatingBubbles .dateCellToday {
+  background: #f59e0b !important;
+}
+.v17FloatingBubbles .dateCellToday .dayNum {
+  color: #0f172a !important;
+}
+.v17FloatingBubbles .dateCellActive {
+  background: #0ea5e9 !important;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.4) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 18: Inset Dark Slot Grid (Arc Browser Style)
+   ───────────────────────────────────────────────────────────── */
+.v18InsetSlots {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v18InsetSlots {
+  background: #f1f5f9;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.v18InsetSlots .dateCell {
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+:global([data-theme="light"]) .v18InsetSlots .dateCell {
+  background: #ffffff;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.v18InsetSlots .dateCellToday {
+  border: 2px solid #f59e0b !important;
+}
+.v18InsetSlots .dateCellActive {
+  background: #0ea5e9 !important;
+  box-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 19: Vertical Banner Header + Big Number Pills
+   ───────────────────────────────────────────────────────────── */
+.v19BigNumbers {
+  background: var(--color-surface, rgba(30, 41, 59, 0.7));
+  border: 1px solid var(--color-border);
+}
+:global([data-theme="light"]) .v19BigNumbers {
+  background: #ffffff;
+}
+.v19BigNumbers .dateCell {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.v19BigNumbers .dateCellToday {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border: 2px solid #f59e0b !important;
+}
+.v19BigNumbers .dateCellActive {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   VARIANT 20: Master Dashboard Suite (iOS 16 Pro Optimized)
+   ───────────────────────────────────────────────────────────── */
+.v20MasterSuite {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+:global([data-theme="light"]) .v20MasterSuite {
+  background: #ffffff;
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+.v20MasterSuite .dateCell {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+:global([data-theme="light"]) .v20MasterSuite .dateCell {
+  background: #f8fafc;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+.v20MasterSuite .dateCellToday {
+  background: #f59e0b !important;
+  border-color: #f59e0b !important;
+}
+.v20MasterSuite .dateCellToday .dayNum {
+  color: #0f172a !important;
+  font-weight: 900;
+}
+.v20MasterSuite .dateCellActive {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7) !important;
+  border-color: #38bdf8 !important;
+}
