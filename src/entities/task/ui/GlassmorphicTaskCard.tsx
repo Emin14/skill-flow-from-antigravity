@@ -14,6 +14,7 @@ interface GlassmorphicTaskCardProps {
   allTasks?: Task[];
   showDragHandle?: boolean;
   parentPathVariant?: number; // 1 to 10 concept variants
+  hideDateBadge?: boolean;
   onToggleCheckbox?: () => void;
   onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
@@ -184,6 +185,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   allTasks = [],
   showDragHandle = true,
   parentPathVariant = 4,
+  hideDateBadge = false,
   onToggleCheckbox,
   onStatusChange,
   onDelete,
@@ -215,7 +217,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
 
   // Date badge: show scheduledDate, highlight overdue in red
   const todayStr = getTodayStr();
-  const showDateBadge = !task.isRepeating && task.scheduledDate && task.scheduledDate !== '' && task.scheduledDate !== 'anytime' && !isDone;
+  const showDateBadge = !hideDateBadge && !task.isRepeating && task.scheduledDate && task.scheduledDate !== '' && task.scheduledDate !== 'anytime' && !isDone;
   const isOverdue = showDateBadge && task.scheduledDate! < todayStr;
   const isToday = showDateBadge && task.scheduledDate === todayStr;
   const dateBadgeLabel = (() => {

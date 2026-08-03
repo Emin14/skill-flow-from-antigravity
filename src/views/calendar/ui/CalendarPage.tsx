@@ -332,6 +332,7 @@ export const CalendarPage: React.FC = () => {
                         occurrenceDate={selectedDate}
                         allTasks={tasks}
                         showDragHandle={false}
+                        hideDateBadge={true}
                         onToggleCheckbox={() => handleCheckboxToggle(subtask)}
                         onDelete={() => deleteTaskOccurrence(subtask.id, selectedDate)}
                         onClick={() => handleTaskClick(subtask)}
@@ -349,6 +350,7 @@ export const CalendarPage: React.FC = () => {
                     occurrenceDate={selectedDate}
                     allTasks={tasks}
                     showDragHandle={false}
+                    hideDateBadge={true}
                     onToggleCheckbox={() => handleCheckboxToggle(t)}
                     onDelete={() => deleteTaskOccurrence(t.id, selectedDate)}
                     onClick={() => handleTaskClick(t)}
