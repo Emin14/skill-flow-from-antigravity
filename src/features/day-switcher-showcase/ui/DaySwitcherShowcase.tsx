@@ -13,7 +13,6 @@ import {
   Calendar,
   Sun,
   Sparkles,
-  Layers,
 } from 'lucide-react';
 import styles from './DaySwitcherShowcase.module.css';
 
@@ -38,11 +37,61 @@ const getRelativeLabel = (dateStr: string, todayStr: string) => {
   return getDayName(dateStr);
 };
 
+/** Reusable Touch & Drag Gesture Wrapper for Swipe-based Variants */
+const SwipeGestureBox: React.FC<{
+  onSwipeLeft: () => void;
+  onSwipeRight: () => void;
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}> = ({ onSwipeLeft, onSwipeRight, children, className, style }) => {
+  const [startX, setStartX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (startX === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    if (diff > 35) onSwipeLeft();
+    else if (diff < -35) onSwipeRight();
+    setStartX(null);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setStartX(e.clientX);
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (startX === null) return;
+    const diff = startX - e.clientX;
+    if (diff > 35) onSwipeLeft();
+    else if (diff < -35) onSwipeRight();
+    setStartX(null);
+  };
+
+  return (
+    <div
+      className={className}
+      style={{ userSelect: 'none', cursor: 'grab', touchAction: 'pan-y', ...style }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
+      {children}
+    </div>
+  );
+};
+
 export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
   selectedDate,
   onDateChange,
 }) => {
   const [activeVariant, setActiveVariant] = useState<number>(3);
+  const scrollRibbonRef = React.useRef<HTMLDivElement>(null);
 
   const todayStr = getTodayStr();
   const isTodaySelected = selectedDate === todayStr;
@@ -51,11 +100,17 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
   const handleNextDay = () => onDateChange(addDaysToDateStr(selectedDate, 1));
   const handleGoToday = () => onDateChange(todayStr);
 
-  /**
-   * Universal Fail-Proof iOS WebKit Transparent Date Picker Overlay.
-   * Renders a transparent <input type="date"> positioned absolutely OVER the button.
-   * Tapping it on iOS iPhone triggers the native iOS date picker 100% reliably!
-   */
+  // Auto-center active card inside scroll ribbons when mounted or when selection changes
+  React.useEffect(() => {
+    if (scrollRibbonRef.current) {
+      const activeEl = scrollRibbonRef.current.querySelector('[data-active="true"]');
+      if (activeEl) {
+        activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+  }, [selectedDate, activeVariant]);
+
+  /** Universal Fail-Proof iOS WebKit Transparent Date Picker Overlay */
   const renderIosDatePickerOverlay = () => (
     <input
       type="date"
@@ -98,7 +153,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
 
       {/* Dynamic UX Variant Render Box */}
       <div className={styles.variantRenderBox}>
-        {/* ── VARIANT 1: Compact Arrow Stepper ─────────────────── */}
+        {/* ── VARIANT 1: Stepper ─────────────────────────────── */}
         {activeVariant === 1 && (
           <div className={styles.v1Stepper}>
             <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay} title="Предыдущий день">
@@ -128,39 +183,10 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
           </div>
         )}
 
-        {/* ── VARIANT 2: Touch Swipe Banner ───────────────────────── */}
+        {/* ── VARIANT 2: 3-Card Swipe Snap (No arrows, No calendar icon) ── */}
         {activeVariant === 2 && (
-          <div className={styles.v2SwipeBanner}>
-            <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay}>
-              <ChevronLeft size={18} />
-            </button>
-
-            <div className={styles.datePickerOverlayWrapper} style={{ textAlign: 'center' }}>
-              <div>
-                <div style={{ fontSize: '11px', color: '#38bdf8', fontWeight: 600, letterSpacing: '0.5px' }}>
-                  👈 Свайп или клик для выбора даты 👉
-                </div>
-                <div style={{ fontSize: '15px', fontWeight: 800, color: '#fff', marginTop: '2px' }}>
-                  📅 {formatSelectedDateTitle(selectedDate)}
-                </div>
-              </div>
-              {renderIosDatePickerOverlay()}
-            </div>
-
-            <button type="button" className={styles.v1ArrowBtn} onClick={handleNextDay}>
-              <ChevronRight size={18} />
-            </button>
-          </div>
-        )}
-
-        {/* ── VARIANT 3: 3-Day Visible Mobile Snap Ribbon (iPhone 16 Focus) ── */}
-        {activeVariant === 3 && (
-          <div className={styles.v3ThreeCardContainer}>
-            <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay} title="-1 день">
-              <ChevronLeft size={18} />
-            </button>
-
-            <div className={styles.v3CardRow}>
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid3}>
               {[-1, 0, 1].map((offset) => {
                 const dStr = addDaysToDateStr(selectedDate, offset);
                 const isSel = offset === 0;
@@ -168,52 +194,67 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                 return (
                   <div
                     key={dStr}
-                    className={`${styles.v3DayCard} ${isSel ? styles.v3DayCardActive : ''}`}
+                    className={`${styles.swipeCardBase} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                     onClick={() => onDateChange(dStr)}
                   >
-                    <span style={{ fontSize: '10px', color: isTod ? '#fbbf24' : 'var(--color-text-muted)', fontWeight: 700 }}>
-                      {isTod ? 'Сегодня' : getDayName(dStr)}
-                    </span>
-                    <span style={{ fontSize: '16px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>
-                      {dStr.split('-')[2]}
-                    </span>
+                    {isTod ? (
+                      <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span>
+                    ) : (
+                      <span style={{ fontSize: '10px', color: 'var(--color-text-muted)', fontWeight: 700 }}>{getDayName(dStr)}</span>
+                    )}
+                    <span style={{ fontSize: '16px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
                     <span style={{ fontSize: '9px', opacity: 0.5 }}>{dStr.split('-')[1]} мес</span>
                   </div>
                 );
               })}
             </div>
+          </SwipeGestureBox>
+        )}
 
+        {/* ── VARIANT 3: 3-Day Visible Mobile Snap Ribbon (With arrows) ── */}
+        {activeVariant === 3 && (
+          <div className={styles.swipeGrid3} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay} title="-1 день">
+              <ChevronLeft size={18} />
+            </button>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', flex: 1 }}>
+              {[-1, 0, 1].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '16px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
+            </div>
             <button type="button" className={styles.v1ArrowBtn} onClick={handleNextDay} title="+1 день">
               <ChevronRight size={18} />
             </button>
-
-            <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v1ArrowBtn} title="Календарь">
-                <Calendar size={16} color="#38bdf8" />
-              </button>
-              {renderIosDatePickerOverlay()}
-            </div>
           </div>
         )}
 
-        {/* ── VARIANT 4: Classic 7-Day Ribbon Strip ───────────────── */}
+        {/* ── VARIANT 4: Classic 7-Day Ribbon Strip (Scroll + Calendar) ── */}
         {activeVariant === 4 && (
-          <div className={styles.v4RibbonStrip}>
+          <div className={styles.v4RibbonStrip} ref={scrollRibbonRef}>
             {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
               const isSel = dStr === selectedDate;
               const isTod = dStr === todayStr;
               return (
                 <div
                   key={dStr}
-                  className={`${styles.v4DayCard} ${isSel ? styles.v4DayCardActive : ''}`}
+                  data-active={isSel}
+                  className={`${styles.v4DayCard} ${isSel ? styles.v4DayCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                   onClick={() => onDateChange(dStr)}
                 >
-                  <span style={{ fontSize: '10px', color: isTod ? '#fbbf24' : 'var(--color-text-muted)', fontWeight: 700 }}>
-                    {isTod ? 'Сегодня' : getDayName(dStr)}
-                  </span>
-                  <span style={{ fontSize: '15px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>
-                    {dStr.split('-')[2]}
-                  </span>
+                  {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                  <span style={{ fontSize: '15px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
                 </div>
               );
             })}
@@ -226,40 +267,35 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
           </div>
         )}
 
-        {/* ── VARIANT 5: Capsule Pills Ribbon ─────────────────────── */}
+        {/* ── VARIANT 5: Capsule Pills Swipe (No arrows, No calendar) ── */}
         {activeVariant === 5 && (
-          <div className={styles.v5CapsuleRibbon}>
-            {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
-              const isSel = dStr === selectedDate;
-              const isTod = dStr === todayStr;
-              return (
-                <div
-                  key={dStr}
-                  className={`${styles.v5CapsulePill} ${isSel ? styles.v5CapsulePillActive : ''}`}
-                  onClick={() => onDateChange(dStr)}
-                >
-                  <span>{isTod ? '☀️ Сегодня' : getDayName(dStr)}</span>
-                  <span>{dStr.split('-')[2]}</span>
-                </div>
-              );
-            })}
-            <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v5CapsulePill} style={{ background: 'rgba(14,165,233,0.15)', color: '#38bdf8' }}>
-                <Calendar size={14} /> Дата
-              </button>
-              {renderIosDatePickerOverlay()}
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid5}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${styles.v5CapsuleCard} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
             </div>
-          </div>
+          </SwipeGestureBox>
         )}
 
-        {/* ── VARIANT 6: Hero Date Banner ─────────────────────────── */}
+        {/* ── VARIANT 6: Hero Banner ─────────────────────────── */}
         {activeVariant === 6 && (
           <div className={styles.v6HeroBanner}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <div style={{ fontSize: '11px', color: '#38bdf8', fontWeight: 700, textTransform: 'uppercase' }}>
-                  Выбранный день
-                </div>
+                <div style={{ fontSize: '11px', color: '#38bdf8', fontWeight: 700, textTransform: 'uppercase' }}>Выбранный день</div>
                 <div style={{ fontSize: '18px', fontWeight: 900, color: '#fff', marginTop: '2px' }}>
                   📅 {formatSelectedDateTitle(selectedDate)}
                 </div>
@@ -272,63 +308,56 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
               </div>
             </div>
             <div style={{ display: 'flex', gap: '8px' }}>
-              <button type="button" className={styles.todayChip} style={{ flex: 1, justifyContent: 'center', padding: '6px' }} onClick={handlePrevDay}>
-                ◀ Назад
-              </button>
-              <button type="button" className={styles.todayChip} style={{ flex: 1, justifyContent: 'center', padding: '6px', background: isTodaySelected ? 'rgba(14,165,233,0.3)' : undefined }} onClick={handleGoToday}>
-                ☀️ В сегодня
-              </button>
-              <button type="button" className={styles.todayChip} style={{ flex: 1, justifyContent: 'center', padding: '6px' }} onClick={handleNextDay}>
-                Вперед ▶
-              </button>
+              <button type="button" className={styles.todayChip} style={{ flex: 1, justifyContent: 'center', padding: '6px' }} onClick={handlePrevDay}>◀ Назад</button>
+              <button type="button" className={styles.todayChip} style={{ flex: 1, justifyContent: 'center', padding: '6px', background: isTodaySelected ? 'rgba(14,165,233,0.3)' : undefined }} onClick={handleGoToday}>☀️ В сегодня</button>
+              <button type="button" className={styles.todayChip} style={{ flex: 1, justifyContent: 'center', padding: '6px' }} onClick={handleNextDay}>Вперед ▶</button>
             </div>
           </div>
         )}
 
-        {/* ── VARIANT 7: Floating Hub ─────────────────────────────── */}
+        {/* ── VARIANT 7: Floating Island Swipe (No arrows, No calendar) ── */}
         {activeVariant === 7 && (
-          <div className={styles.v7HubBar}>
-            <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay}>
-              <ChevronLeft size={18} />
-            </button>
-            <div className={styles.datePickerOverlayWrapper}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#38bdf8' }} />
-                <span style={{ fontSize: '13px', fontWeight: 700, color: '#fff' }}>
-                  {formatDateDisplay(selectedDate)} ({getRelativeLabel(selectedDate, todayStr)})
-                </span>
-              </div>
-              {renderIosDatePickerOverlay()}
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid5}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${styles.v7FloatingIslandCard} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
             </div>
-            <button type="button" className={styles.v1ArrowBtn} onClick={handleNextDay}>
-              <ChevronRight size={18} />
-            </button>
-          </div>
+          </SwipeGestureBox>
         )}
 
-        {/* ── VARIANT 8: Glassmorphic Frosted Ribbon ───────────────── */}
+        {/* ── VARIANT 8: Glassmorphic Frosted Ribbon (Scroll) ───────── */}
         {activeVariant === 8 && (
-          <div className={styles.v8GlassmorphicRibbon}>
+          <div className={styles.v8GlassmorphicRibbon} ref={scrollRibbonRef}>
             {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
               const isSel = dStr === selectedDate;
               const isTod = dStr === todayStr;
               return (
                 <div
                   key={dStr}
-                  className={`${styles.v8GlassCard} ${isSel ? styles.v8GlassCardActive : ''}`}
+                  data-active={isSel}
+                  className={`${styles.v4DayCard} ${isSel ? styles.v4DayCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                   onClick={() => onDateChange(dStr)}
                 >
-                  <span style={{ fontSize: '10px', color: isTod ? '#fbbf24' : '#cbd5e1', fontWeight: 700 }}>
-                    {isTod ? 'Сегодня' : getDayName(dStr)}
-                  </span>
-                  <span style={{ fontSize: '16px', fontWeight: 900, color: '#fff' }}>
-                    {dStr.split('-')[2]}
-                  </span>
+                  {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                  <span style={{ fontSize: '15px', fontWeight: 800, color: '#fff' }}>{dStr.split('-')[2]}</span>
                 </div>
               );
             })}
             <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v8GlassCard} style={{ minWidth: '42px', justifyContent: 'center' }}>
+              <button type="button" className={styles.v4DayCard} style={{ minWidth: '42px', justifyContent: 'center' }}>
                 <Calendar size={16} color="#38bdf8" />
               </button>
               {renderIosDatePickerOverlay()}
@@ -336,20 +365,21 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
           </div>
         )}
 
-        {/* ── VARIANT 9: Circle Dot Ribbon ───────────────────────── */}
+        {/* ── VARIANT 9: Circle Dot Ribbon (Scroll) ─────────────────── */}
         {activeVariant === 9 && (
-          <div className={styles.v9DotRibbon}>
+          <div className={styles.v9DotRibbon} ref={scrollRibbonRef}>
             {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
               const isSel = dStr === selectedDate;
               const isTod = dStr === todayStr;
               return (
                 <div
                   key={dStr}
-                  className={`${styles.v9CircleDot} ${isSel ? styles.v9CircleDotActive : ''}`}
+                  data-active={isSel}
+                  className={`${styles.v9CircleDot} ${isSel ? styles.v9CircleDotActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                   onClick={() => onDateChange(dStr)}
                 >
                   <span style={{ fontSize: '12px', fontWeight: 800 }}>{dStr.split('-')[2]}</span>
-                  <span style={{ fontSize: '8px', opacity: 0.8 }}>{isTod ? 'Сг' : getDayName(dStr)}</span>
+                  <span style={{ fontSize: '8px', opacity: 0.8 }}>{isTod ? '☀️' : getDayName(dStr)}</span>
                 </div>
               );
             })}
@@ -362,257 +392,208 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
           </div>
         )}
 
-        {/* ── VARIANT 10: Horizontal Timeline Track ───────────────── */}
+        {/* ── VARIANT 10: Timeline Track Swipe (No arrows, No calendar) ── */}
         {activeVariant === 10 && (
-          <div className={styles.v10Timeline}>
-            {[-3, -2, -1, 0, 1, 2, 3].map((offset) => {
-              const targetDate = addDaysToDateStr(selectedDate, offset);
-              const isActive = offset === 0;
-              return (
-                <div
-                  key={offset}
-                  onClick={() => onDateChange(targetDate)}
-                  style={{
-                    padding: '6px 12px',
-                    borderRadius: '10px',
-                    background: isActive ? 'rgba(14, 165, 233, 0.3)' : 'rgba(255, 255, 255, 0.04)',
-                    border: isActive ? '1px solid #38bdf8' : '1px solid transparent',
-                    cursor: 'pointer',
-                    fontSize: '12px',
-                    fontWeight: isActive ? 700 : 400,
-                    color: isActive ? '#38bdf8' : 'var(--color-text-muted)',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {offset === 0 ? formatDateDisplay(selectedDate) : `${offset > 0 ? '+' : ''}${offset}д`}
-                </div>
-              );
-            })}
-            <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v1ArrowBtn}>
-                <Calendar size={14} />
-              </button>
-              {renderIosDatePickerOverlay()}
-            </div>
-          </div>
-        )}
-
-        {/* ── VARIANT 11: Bottom Sheet Drawer Trigger ─────────────── */}
-        {activeVariant === 11 && (
-          <div className={styles.v11Trigger}>
-            <div className={styles.datePickerOverlayWrapper} style={{ flex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Layers size={18} color="#38bdf8" />
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '10px', color: 'var(--color-text-muted)' }}>Выбрать день в шторке</div>
-                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#fff' }}>
-                    {formatSelectedDateTitle(selectedDate)}
-                  </div>
-                </div>
-              </div>
-              {renderIosDatePickerOverlay()}
-            </div>
-            <div style={{ display: 'flex', gap: '4px' }}>
-              <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay}>◀</button>
-              <button type="button" className={styles.v1ArrowBtn} onClick={handleNextDay}>▶</button>
-            </div>
-          </div>
-        )}
-
-        {/* ── VARIANT 12: Centered 5-Day Strip ────────────────────── */}
-        {activeVariant === 12 && (
-          <div className={styles.v12Centered5DayStrip}>
-            <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay}>
-              <ChevronLeft size={16} />
-            </button>
-            {[-2, -1, 0, 1, 2].map((offset) => {
-              const dStr = addDaysToDateStr(selectedDate, offset);
-              const isSel = offset === 0;
-              return (
-                <div
-                  key={dStr}
-                  className={`${styles.v12DayPill} ${isSel ? styles.v12DayPillActive : ''}`}
-                  onClick={() => onDateChange(dStr)}
-                >
-                  <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>
-                  <span style={{ fontSize: isSel ? '16px' : '13px', fontWeight: isSel ? 800 : 600, color: isSel ? '#38bdf8' : '#fff' }}>
-                    {dStr.split('-')[2]}
-                  </span>
-                </div>
-              );
-            })}
-            <button type="button" className={styles.v1ArrowBtn} onClick={handleNextDay}>
-              <ChevronRight size={16} />
-            </button>
-            <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v1ArrowBtn}>
-                <Calendar size={14} color="#38bdf8" />
-              </button>
-              {renderIosDatePickerOverlay()}
-            </div>
-          </div>
-        )}
-
-        {/* ── VARIANT 13: Continuous Segmented Ribbon ───────────────── */}
-        {activeVariant === 13 && (
-          <div className={styles.v13SegmentedRibbon}>
-            {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
-              const isSel = dStr === selectedDate;
-              return (
-                <button
-                  key={dStr}
-                  type="button"
-                  className={`${styles.v13SegmentItem} ${isSel ? styles.v13SegmentItemActive : ''}`}
-                  onClick={() => onDateChange(dStr)}
-                >
-                  <span style={{ fontSize: '10px' }}>{getDayName(dStr)}</span>
-                  <span style={{ fontSize: '14px', fontWeight: 800 }}>{dStr.split('-')[2]}</span>
-                </button>
-              );
-            })}
-            <div className={styles.datePickerOverlayWrapper} style={{ flex: 1 }}>
-              <button type="button" className={styles.v13SegmentItem} style={{ color: '#38bdf8' }}>
-                <Calendar size={14} />
-              </button>
-              {renderIosDatePickerOverlay()}
-            </div>
-          </div>
-        )}
-
-        {/* ── VARIANT 14: iOS 17 Cupertino Ribbon ──────────────────── */}
-        {activeVariant === 14 && (
-          <div className={styles.v14CupertinoRibbon}>
-            {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
-              const isSel = dStr === selectedDate;
-              const isTod = dStr === todayStr;
-              return (
-                <div
-                  key={dStr}
-                  className={`${styles.v14CupertinoCard} ${isSel ? styles.v14CupertinoCardActive : ''}`}
-                  onClick={() => onDateChange(dStr)}
-                >
-                  <span style={{ fontSize: '10px' }}>{isTod ? 'Сегодня' : getDayName(dStr)}</span>
-                  <span style={{ fontSize: '15px' }}>{dStr.split('-')[2]}</span>
-                </div>
-              );
-            })}
-            <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v14CupertinoCard} style={{ minWidth: '42px', justifyContent: 'center' }}>
-                🍎 📅
-              </button>
-              {renderIosDatePickerOverlay()}
-            </div>
-          </div>
-        )}
-
-        {/* ── VARIANT 15: Material 3 Tonal Chips Ribbon ────────────── */}
-        {activeVariant === 15 && (
-          <div className={styles.v15MaterialRibbon}>
-            {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
-              const isSel = dStr === selectedDate;
-              const isTod = dStr === todayStr;
-              return (
-                <div
-                  key={dStr}
-                  className={`${styles.v15TonalChip} ${isSel ? styles.v15TonalChipActive : ''}`}
-                  onClick={() => onDateChange(dStr)}
-                >
-                  <span>{isTod ? '☀️ Сг' : getDayName(dStr)}</span>
-                  <span>{dStr.split('-')[2]}</span>
-                </div>
-              );
-            })}
-            <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v15TonalChip} style={{ background: 'rgba(99,102,241,0.25)', color: '#a5b4fc' }}>
-                <Calendar size={14} /> Дата
-              </button>
-              {renderIosDatePickerOverlay()}
-            </div>
-          </div>
-        )}
-
-        {/* ── VARIANT 16: Mini Month Grid Banner ─────────────────── */}
-        {activeVariant === 16 && (
-          <div className={styles.v16MiniMonth}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', fontWeight: 700, color: '#38bdf8' }}>
-              <span>🗓️ Сетка текущей недели</span>
-              <div className={styles.datePickerOverlayWrapper}>
-                <span style={{ cursor: 'pointer', color: '#38bdf8' }}>[Открыть весь месяц]</span>
-                {renderIosDatePickerOverlay()}
-              </div>
-            </div>
-            <div style={{ display: 'flex', gap: '4px', justifyContent: 'space-between' }}>
-              {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(selectedDate, i - 3)).map((dStr) => {
-                const isSel = dStr === selectedDate;
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid5}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
                 return (
-                  <button
+                  <div
                     key={dStr}
-                    type="button"
+                    className={`${styles.swipeCardBase} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                     onClick={() => onDateChange(dStr)}
-                    style={{
-                      flex: 1,
-                      padding: '6px 2px',
-                      borderRadius: '8px',
-                      background: isSel ? '#0ea5e9' : 'rgba(255,255,255,0.05)',
-                      color: isSel ? '#fff' : 'var(--color-text-muted)',
-                      border: 'none',
-                      fontSize: '11px',
-                      fontWeight: isSel ? 800 : 500,
-                      cursor: 'pointer',
-                    }}
                   >
-                    {getDayName(dStr)} {dStr.split('-')[2]}
-                  </button>
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
                 );
               })}
             </div>
-          </div>
+          </SwipeGestureBox>
         )}
 
-        {/* ── VARIANT 17: Compact Micro Pills Ribbon ─────────────── */}
-        {activeVariant === 17 && (
-          <div className={styles.v17MicroRibbon}>
-            {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
+        {/* ── VARIANT 11: 3 Big Cards Swipe Carousel (No arrows, No calendar) ── */}
+        {activeVariant === 11 && (
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid3}>
+              {[-1, 0, 1].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                    style={{ padding: '14px 8px' }}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '11px', fontWeight: 700, opacity: 0.8 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '20px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </SwipeGestureBox>
+        )}
+
+        {/* ── VARIANT 12 (MODIFIED): Scroll Ribbon (Style 12: Centered Enlarged Day, NO ARROWS, NO CALENDAR ICON) ── */}
+        {activeVariant === 12 && (
+          <div className={styles.v12ScrollRibbon} ref={scrollRibbonRef}>
+            {Array.from({ length: 9 }, (_, i) => addDaysToDateStr(todayStr, i - 4)).map((dStr) => {
               const isSel = dStr === selectedDate;
               const isTod = dStr === todayStr;
               return (
-                <button
+                <div
                   key={dStr}
-                  type="button"
-                  className={`${styles.v17MicroPill} ${isSel ? styles.v17MicroPillActive : ''}`}
+                  data-active={isSel}
+                  className={`${styles.v12Pill} ${isSel ? styles.v12PillActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                   onClick={() => onDateChange(dStr)}
                 >
-                  {isTod ? '☀️ Сегодня' : `${getDayName(dStr)} ${dStr.split('-')[2]}`}
-                </button>
+                  {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                  <span style={{ fontSize: isSel ? '17px' : '14px', fontWeight: isSel ? 900 : 600, color: isSel ? '#38bdf8' : '#fff' }}>
+                    {dStr.split('-')[2]}
+                  </span>
+                </div>
               );
             })}
-            <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v17MicroPill} style={{ background: 'rgba(14,165,233,0.2)', color: '#38bdf8' }}>
-                <Calendar size={12} /> Дата
-              </button>
-              {renderIosDatePickerOverlay()}
-            </div>
           </div>
         )}
 
-        {/* ── VARIANT 18: Glowing Neon Halo Ribbon ────────────────── */}
+        {/* ── VARIANT 13: Segmented Strip Swipe (No arrows, No calendar) ── */}
+        {activeVariant === 13 && (
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid5}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </SwipeGestureBox>
+        )}
+
+        {/* ── VARIANT 14: iOS 17 Cupertino Swipe (No arrows, No calendar) ── */}
+        {activeVariant === 14 && (
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid5}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${styles.v14CupertinoCard} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </SwipeGestureBox>
+        )}
+
+        {/* ── VARIANT 15: Material 3 Tonal Swipe (No arrows, No calendar) ── */}
+        {activeVariant === 15 && (
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid5}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${styles.v15TonalCard} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#818cf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </SwipeGestureBox>
+        )}
+
+        {/* ── VARIANT 16: Big Numbers Gradient Swipe (No arrows, No calendar) ── */}
+        {activeVariant === 16 && (
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid3}>
+              {[-1, 0, 1].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                    style={{ padding: '14px 8px' }}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '11px', fontWeight: 700, opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '22px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </SwipeGestureBox>
+        )}
+
+        {/* ── VARIANT 17: Micro Pills Swipe (No arrows, No calendar) ── */}
+        {activeVariant === 17 && (
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid5}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
+                const dStr = addDaysToDateStr(selectedDate, offset);
+                const isSel = offset === 0;
+                const isTod = dStr === todayStr;
+                return (
+                  <div
+                    key={dStr}
+                    className={`${styles.swipeCardBase} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                    onClick={() => onDateChange(dStr)}
+                    style={{ padding: '8px 4px' }}
+                  >
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </SwipeGestureBox>
+        )}
+
+        {/* ── VARIANT 18: Glowing Neon Halo Ribbon (Scroll) ─────────── */}
         {activeVariant === 18 && (
-          <div className={styles.v18NeonRibbon}>
+          <div className={styles.v18NeonRibbon} ref={scrollRibbonRef}>
             {Array.from({ length: 7 }, (_, i) => addDaysToDateStr(todayStr, i - 3)).map((dStr) => {
               const isSel = dStr === selectedDate;
               const isTod = dStr === todayStr;
               return (
                 <div
                   key={dStr}
-                  className={`${styles.v18NeonCard} ${isSel ? styles.v18NeonCardActive : ''}`}
+                  data-active={isSel}
+                  className={`${styles.v18NeonCard} ${isSel ? styles.v18NeonCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                   onClick={() => onDateChange(dStr)}
                 >
-                  <span style={{ fontSize: '10px', color: isSel ? '#f472b6' : 'var(--color-text-muted)' }}>
-                    {isTod ? 'Сг' : getDayName(dStr)}
-                  </span>
-                  <span style={{ fontSize: '15px', fontWeight: 800, color: isSel ? '#fff' : 'inherit' }}>
-                    {dStr.split('-')[2]}
-                  </span>
+                  {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                  <span style={{ fontSize: '15px', fontWeight: 800, color: isSel ? '#fff' : 'inherit' }}>{dStr.split('-')[2]}</span>
                 </div>
               );
             })}
@@ -625,71 +606,48 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
           </div>
         )}
 
-        {/* ── VARIANT 19: 3 Large Mobile Cards Carousel ────────────── */}
+        {/* ── VARIANT 19 (MODIFIED): Scroll Ribbon (Style 19: Extra Large Cards & Vibrant Gradient, NO ARROWS, NO CALENDAR ICON) ── */}
         {activeVariant === 19 && (
-          <div className={styles.v3ThreeCardContainer}>
-            <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay} title="-1 день">
-              <ChevronLeft size={18} />
-            </button>
+          <div className={styles.v19ScrollRibbon} ref={scrollRibbonRef}>
+            {Array.from({ length: 9 }, (_, i) => addDaysToDateStr(todayStr, i - 4)).map((dStr) => {
+              const isSel = dStr === selectedDate;
+              const isTod = dStr === todayStr;
+              return (
+                <div
+                  key={dStr}
+                  data-active={isSel}
+                  className={`${styles.v19BigCard} ${isSel ? styles.v19BigCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
+                  onClick={() => onDateChange(dStr)}
+                >
+                  {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.8 }}>{getDayName(dStr)}</span>}
+                  <span style={{ fontSize: '20px', fontWeight: 900 }}>{dStr.split('-')[2]}</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
 
-            <div className={styles.v19BigCardsGrid}>
-              {[-1, 0, 1].map((offset) => {
+        {/* ── VARIANT 20: Dynamic Island Glow Swipe (No arrows, No calendar) ── */}
+        {activeVariant === 20 && (
+          <SwipeGestureBox onSwipeLeft={handleNextDay} onSwipeRight={handlePrevDay}>
+            <div className={styles.swipeGrid5}>
+              {[-2, -1, 0, 1, 2].map((offset) => {
                 const dStr = addDaysToDateStr(selectedDate, offset);
                 const isSel = offset === 0;
                 const isTod = dStr === todayStr;
                 return (
                   <div
                     key={dStr}
-                    className={`${styles.v19BigCard} ${isSel ? styles.v19BigCardActive : ''}`}
+                    className={`${styles.swipeCardBase} ${styles.v20IslandCard} ${isSel ? styles.swipeCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                     onClick={() => onDateChange(dStr)}
                   >
-                    <span style={{ fontSize: '11px', fontWeight: 700, opacity: isSel ? 1 : 0.7 }}>
-                      {isTod ? '☀️ Сегодня' : getDayName(dStr)}
-                    </span>
-                    <span style={{ fontSize: '20px', fontWeight: 900 }}>
-                      {dStr.split('-')[2]}
-                    </span>
+                    {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
             </div>
-
-            <button type="button" className={styles.v1ArrowBtn} onClick={handleNextDay} title="+1 день">
-              <ChevronRight size={18} />
-            </button>
-
-            <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v1ArrowBtn} title="Календарь">
-                <Calendar size={16} color="#38bdf8" />
-              </button>
-              {renderIosDatePickerOverlay()}
-            </div>
-          </div>
-        )}
-
-        {/* ── VARIANT 20: Dynamic Island Ribbon Capsule ───────────── */}
-        {activeVariant === 20 && (
-          <div className={styles.v20DynamicIsland}>
-            <div className={styles.datePickerOverlayWrapper}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-                <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#38bdf8', boxShadow: '0 0 8px #38bdf8' }} />
-                <div>
-                  <div style={{ fontSize: '10px', color: '#94a3b8', letterSpacing: '0.5px', textTransform: 'uppercase' }}>Dynamic Island Ribbon</div>
-                  <div style={{ fontSize: '14px', fontWeight: 800, color: '#fff' }}>
-                    📅 {getRelativeLabel(selectedDate, todayStr)} • {formatDateDisplay(selectedDate)}
-                  </div>
-                </div>
-              </div>
-              {renderIosDatePickerOverlay()}
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <button type="button" className={styles.v1ArrowBtn} onClick={handlePrevDay} title="Вчера">◀</button>
-              {!isTodaySelected && (
-                <button type="button" className={styles.todayChip} onClick={handleGoToday}>☀️</button>
-              )}
-              <button type="button" className={styles.v1ArrowBtn} onClick={handleNextDay} title="Завтра">▶</button>
-            </div>
-          </div>
+          </SwipeGestureBox>
         )}
       </div>
     </div>
