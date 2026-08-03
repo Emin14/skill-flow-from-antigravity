@@ -10,6 +10,7 @@ const pathTitles: Record<string, string> = {
   '/': 'Сегодня',
   '/today': 'Сегодня',
   '/inbox': 'Входящие',
+  '/overdue': 'Просроченные',
   '/anytime': 'В любое время',
   '/goals': 'Цели и Навыки',
   '/calendar': 'Календарь',

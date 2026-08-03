@@ -12,8 +12,8 @@ export const BottomNav: React.FC = () => {
 
   const navItemsLeft = [
     { label: 'Сегодня', href: '/today', icon: '☀️' },
+    { label: 'Просроченные', href: '/overdue', icon: '🚨' },
     { label: 'Входящие', href: '/inbox', icon: '📥' },
-    { label: 'Любое время', href: '/anytime', icon: '♾️' },
   ];
 
   const navItemsRight = [

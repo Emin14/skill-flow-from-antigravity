@@ -49,14 +49,14 @@ export const TodayTasks: React.FC = () => {
   // Midnight auto-update: обновляет todayStr при смене суток
   useMidnightRefresh(() => setTodayStr(getTodayStr()));
 
-  // Tasks scheduled for today or overdue
+  // Tasks scheduled strictly for today
   const rawTodayTasks = useMemo(() => {
     return tasks.filter((t) => {
       if (t.isRepeating) {
-        return t.occurrences?.some((o) => o.date <= todayStr) || (t.scheduledDate && t.scheduledDate <= todayStr);
+        return t.occurrences?.some((o) => o.date === todayStr) || (t.scheduledDate && t.scheduledDate === todayStr);
       }
       if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') return false;
-      return t.scheduledDate <= todayStr;
+      return t.scheduledDate === todayStr;
     });
   }, [tasks, todayStr]);
 
@@ -108,8 +108,8 @@ export const TodayTasks: React.FC = () => {
     updateTaskParent(draggedTaskId, targetParentTask.id);
   };
 
-  const handleToggleCheckbox = (task: Task, isCurrentlyDone?: boolean) => {
-    const isDoneNow = isCurrentlyDone !== undefined ? isCurrentlyDone : getTaskStatusForToday(task) === 'Done';
+  const handleToggleCheckbox = (task: Task) => {
+    const isDoneNow = getTaskStatusForToday(task) === 'Done';
     if (isDoneNow) {
       toggleTaskStatus(task.id, undefined, todayStr);
     } else if (task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
@@ -213,12 +213,12 @@ export const TodayTasks: React.FC = () => {
             sectionClass={styles.stageSectionTodo}
             headerClass={styles.stageHeaderTodo}
             tasksList={todoTasks}
-            allTasks={todayTasks}
+            allTasks={tasks}
             todayStr={todayStr}
             onDropStage={(e) => handleDropToStage(e, 'Todo')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
-            onToggleCheckbox={(t) => handleToggleCheckbox(t, false)}
+            onToggleCheckbox={(t) => handleToggleCheckbox(t)}
             onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
             onDelete={(id) => deleteTask(id)}
             onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
@@ -231,12 +231,12 @@ export const TodayTasks: React.FC = () => {
             sectionClass={styles.stageSectionInProgress}
             headerClass={styles.stageHeaderInProgress}
             tasksList={inProgressTasks}
-            allTasks={todayTasks}
+            allTasks={tasks}
             todayStr={todayStr}
             onDropStage={(e) => handleDropToStage(e, 'InProgress')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
-            onToggleCheckbox={(t) => handleToggleCheckbox(t, false)}
+            onToggleCheckbox={(t) => handleToggleCheckbox(t)}
             onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
             onDelete={(id) => deleteTask(id)}
             onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
@@ -249,12 +249,12 @@ export const TodayTasks: React.FC = () => {
             sectionClass={styles.stageSectionDone}
             headerClass={styles.stageHeaderDone}
             tasksList={doneTasks}
-            allTasks={todayTasks}
+            allTasks={tasks}
             todayStr={todayStr}
             onDropStage={(e) => handleDropToStage(e, 'Done')}
             onDropOnTask={handleDropOnTask}
             onOpenCard={handleCardClick}
-            onToggleCheckbox={(t) => handleToggleCheckbox(t, true)}
+            onToggleCheckbox={(t) => handleToggleCheckbox(t)}
             onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
             onDelete={(id) => deleteTask(id)}
             onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
