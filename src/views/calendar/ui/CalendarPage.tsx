@@ -8,7 +8,7 @@ import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
 import { getTodayStr, formatSelectedDateTitle, formatDateStr } from '@/shared/lib/dateUtils';
-import { MonthCalendarWidget, MonthCalendarSelectorBar } from '@/widgets/month-calendar/ui/MonthCalendarWidget';
+import { MonthCalendarWidget } from '@/widgets/month-calendar/ui/MonthCalendarWidget';
 import styles from './CalendarPage.module.css';
 
 const getNowDateStr = () => getTodayStr();
@@ -43,7 +43,6 @@ export const CalendarPage: React.FC = () => {
   const [todayStr, setTodayStr] = useState<string>(getNowDateStr());
   const [selectedDate, setSelectedDate] = useState<string>(getNowDateStr());
   const [currentMonthDate, setCurrentMonthDate] = useState<Date>(new Date());
-  const [calendarVariant, setCalendarVariant] = useState<number>(1);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
@@ -219,7 +218,7 @@ export const CalendarPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* 1. Monthly Calendar Widget (20 Dynamic UX Concepts with Touch Swipe & Today Jump) */}
+      {/* 1. Monthly Calendar Widget (Material 3 Tonal Grid - Size #6 Winning Concept) */}
       <MonthCalendarWidget
         currentMonthDate={currentMonthDate}
         selectedDate={selectedDate}
@@ -229,13 +228,6 @@ export const CalendarPage: React.FC = () => {
         onPrevMonth={handlePrevMonth}
         onNextMonth={handleNextMonth}
         onGoToToday={handleGoToToday}
-        activeVariant={calendarVariant}
-      />
-
-      {/* 2. Selector Bar [1] [2] ... [20] Rendered DIRECTLY UNDER Calendar Widget */}
-      <MonthCalendarSelectorBar
-        activeVariant={calendarVariant}
-        onSelectVariant={setCalendarVariant}
       />
 
       {/* Selected Day Agenda Header & Task List */}
