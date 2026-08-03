@@ -46,7 +46,6 @@ export const HabitProgressBanner: React.FC = () => {
     <div className={styles.container}>
       {/* ─── VARIANT 1: Cyber Glass + Ring + Smooth Gradient Fill ────── */}
       <div className={styles.variant1}>
-        <div className={styles.variantTag}>Вариант 1 — Кибер-стекло с градиентным треком</div>
         <div className={styles.v1Header}>
           <div className={styles.v1Ring}>{percent}%</div>
           <div>
@@ -59,45 +58,44 @@ export const HabitProgressBanner: React.FC = () => {
         </div>
       </div>
 
-      {/* ─── VARIANT 2: Segmented Step Blocks ────────────────────────── */}
+      {/* ─── NEW VARIANT 2: Soft Glow Capsule Fill ───────────────────── */}
       <div className={styles.variant2}>
-        <div className={styles.variantTag}>Вариант 2 — Сегментированные шаги-блоки</div>
-        <div className={styles.v2Row}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
-            <div style={{ fontSize: '14px', fontWeight: 700 }}>{titleText}</div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
-              {doneCount} из {totalCount} шагов завершено
+            <div style={{ fontSize: '15px', fontWeight: 700 }}>{titleText}</div>
+            <div style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+              {doneCount} из {totalCount} выполнено
             </div>
           </div>
-          <div className={styles.v2Badge}>{percent}%</div>
+          <div style={{ fontSize: '18px', fontWeight: 800, color: '#38bdf8' }}>{percent}%</div>
         </div>
-        <div className={styles.v2Segments}>
-          {Array.from({ length: Math.max(1, totalCount) }).map((_, idx) => (
-            <div key={idx} className={idx < doneCount ? styles.v2SegDone : styles.v2SegTodo} />
-          ))}
+        <div className={styles.v2Track}>
+          <div className={styles.v2Fill} style={{ width: `${percent}%` }} />
         </div>
       </div>
 
-      {/* ─── VARIANT 3: Floating Card + Big Bold Percent ────────────── */}
+      {/* ─── NEW VARIANT 3: Floating Pin Tag Bar ─────────────────────── */}
       <div className={styles.variant3}>
-        <div className={styles.variantTag}>Вариант 3 — Минимализм с крупным процентом</div>
-        <div className={styles.v3Top}>
-          <div>
-            <div style={{ fontSize: '14px', fontWeight: 700 }}>{titleText}</div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>{doneCount} из {totalCount} выполнено</div>
-          </div>
-          <div className={styles.v3BigPercent}>{percent}%</div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ fontSize: '14.5px', fontWeight: 700 }}>{titleText}</div>
+          <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>{doneCount} из {totalCount}</div>
         </div>
-        <div className={styles.v3BarOuter}>
-          <div className={styles.v3BarInner} style={{ width: `${percent}%` }} />
+        <div className={styles.v3PinBarContainer}>
+          {percent > 5 && (
+            <div className={styles.v3PinTag} style={{ left: `${percent}%` }}>
+              {percent}%
+            </div>
+          )}
+          <div className={styles.v3Track}>
+            <div className={styles.v3Fill} style={{ width: `${percent}%` }} />
+          </div>
         </div>
       </div>
 
       {/* ─── VARIANT 4: Dual Stats Metric Card ───────────────────────── */}
       <div className={styles.variant4}>
         <div>
-          <div className={styles.variantTag}>Вариант 4 — Метрическая панель показателей</div>
-          <div style={{ fontSize: '14.5px', fontWeight: 700, marginTop: '2px' }}>{titleText}</div>
+          <div style={{ fontSize: '14.5px', fontWeight: 700 }}>{titleText}</div>
           <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Прогресс дня: {doneCount} из {totalCount}</div>
           <div className={styles.v4BarContainer}>
             <div style={{ height: '100%', width: `${percent}%`, background: '#34d399', borderRadius: '3px' }} />
@@ -106,20 +104,19 @@ export const HabitProgressBanner: React.FC = () => {
         <div className={styles.v4Pill}>{percent}%</div>
       </div>
 
-      {/* ─── VARIANT 5: Holographic Glow + Neon Glow Bar ────────────── */}
+      {/* ─── NEW VARIANT 5: Gradient Border & Glass Split ────────────── */}
       <div className={styles.variant5}>
-        <div className={styles.variantTag}>Вариант 5 — Неоновый голографический нео-бар</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
-            <div style={{ fontSize: '15px', fontWeight: 700, color: '#f472b6' }}>{titleText}</div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+            <div style={{ fontSize: '15px', fontWeight: 700, color: '#f59e0b' }}>{titleText}</div>
+            <div style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
               Выполнено {doneCount} из {totalCount} задач
             </div>
           </div>
-          <div style={{ fontSize: '20px', fontWeight: 800, color: '#ec4899' }}>{percent}%</div>
+          <div style={{ fontSize: '20px', fontWeight: 800, color: '#10b981' }}>{percent}%</div>
         </div>
-        <div className={styles.v5GlowBar}>
-          <div className={styles.v5GlowFill} style={{ width: `${percent}%` }} />
+        <div className={styles.v5Track}>
+          <div className={styles.v5Fill} style={{ width: `${percent}%` }} />
         </div>
       </div>
 
@@ -142,7 +139,6 @@ export const HabitProgressBanner: React.FC = () => {
           />
         </svg>
         <div className={styles.v6Right}>
-          <div className={styles.variantTag}>Вариант 6 — Кольцо активности (Apple Style)</div>
           <div style={{ fontSize: '14px', fontWeight: 700 }}>{titleText}</div>
           <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
             {doneCount} из {totalCount} ({percent}%)
@@ -155,7 +151,6 @@ export const HabitProgressBanner: React.FC = () => {
 
       {/* ─── VARIANT 7: Gamified XP Level Bar ────────────────────────── */}
       <div className={styles.variant7}>
-        <div className={styles.variantTag}>Вариант 7 — Геймифицированная полоса XP</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ fontSize: '13.5px', fontWeight: 700, color: '#f59e0b' }}>⚡ {titleText}</span>
           <span style={{ fontSize: '12px', fontWeight: 700, color: '#ef4444' }}>{percent}% XP</span>
@@ -170,7 +165,6 @@ export const HabitProgressBanner: React.FC = () => {
 
       {/* ─── VARIANT 8: Notion Clean Bottom Border Line ──────────────── */}
       <div className={styles.variant8}>
-        <div className={styles.variantTag}>Вариант 8 — Индикатор на нижней грани карточки</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <div style={{ fontSize: '14px', fontWeight: 700 }}>{titleText}</div>
@@ -183,25 +177,24 @@ export const HabitProgressBanner: React.FC = () => {
         <div className={styles.v8BottomLine} style={{ width: `${percent}%` }} />
       </div>
 
-      {/* ─── VARIANT 9: Bento Grid Card with Mini Micro-Chips ────────── */}
+      {/* ─── NEW VARIANT 9: Dashboard Row with Integrated Center Bar ── */}
       <div className={styles.variant9}>
-        <div className={styles.variantTag}>Вариант 9 — Bento-карточка со смарт-чипсами</div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ fontSize: '14.5px', fontWeight: 700 }}>{titleText}</div>
-          <div className={styles.v9ChipRow}>
-            <span className={styles.v9Chip}>✓ {doneCount}</span>
-            <span className={styles.v9Chip}>⏳ {remainingCount}</span>
-            <span className={styles.v9Chip} style={{ color: '#38bdf8' }}>{percent}%</span>
-          </div>
+          <div style={{ fontSize: '13px', fontWeight: 700, color: '#10b981' }}>{percent}%</div>
         </div>
-        <div style={{ width: '100%', height: '8px', background: 'rgba(255,255,255,0.06)', borderRadius: '4px', overflow: 'hidden' }}>
-          <div style={{ width: `${percent}%`, height: '100%', background: 'linear-gradient(90deg, #38bdf8 0%, #10b981 100%)', borderRadius: '4px' }} />
+        <div className={styles.v9Row}>
+          <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>
+            {doneCount} / {totalCount} задач
+          </span>
+          <div className={styles.v9Track}>
+            <div className={styles.v9Fill} style={{ width: `${percent}%` }} />
+          </div>
         </div>
       </div>
 
       {/* ─── VARIANT 10: Full Capsule with Embedded Text Bar ──────────── */}
       <div className={styles.variant10}>
-        <div className={styles.variantTag}>Вариант 10 — Капсульная полоса с текстом внутри</div>
         <div style={{ fontSize: '14px', fontWeight: 700 }}>{titleText}</div>
         <div className={styles.v10CapsuleBar}>
           <div className={styles.v10CapsuleFill} style={{ width: `${percent}%` }} />
