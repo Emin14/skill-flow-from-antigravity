@@ -165,27 +165,6 @@ export const TodayTasks: React.FC = () => {
         </div>
       </div>
 
-      {/* Progress Bar Widget (Always visible when there are tasks) */}
-      {totalCount > 0 && !is100PercentDone && (
-        <div style={{
-          padding: '12px 16px',
-          borderRadius: '14px',
-          background: 'rgba(255, 255, 255, 0.03)',
-          border: '1px solid var(--color-border)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '6px'
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12.5px', color: 'var(--color-text-muted)' }}>
-            <span>Прогресс дня ({doneCount} из {totalCount} выполнено)</span>
-            <span style={{ fontWeight: 700, color: 'var(--color-accent)' }}>{progressPercent}%</span>
-          </div>
-          <div style={{ width: '100%', height: '6px', borderRadius: '3px', background: 'rgba(255, 255, 255, 0.08)', overflow: 'hidden' }}>
-            <div style={{ width: `${progressPercent}%`, height: '100%', background: 'linear-gradient(90deg, #6366f1 0%, #38bdf8 100%)', transition: 'width 0.3s ease' }} />
-          </div>
-        </div>
-      )}
-
       {/* PM FEATURE: Celebratory 100% Completion Banner */}
       {is100PercentDone && (
         <div className={styles.celebrationBanner}>

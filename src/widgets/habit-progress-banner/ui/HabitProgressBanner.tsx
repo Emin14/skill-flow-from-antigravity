@@ -2,22 +2,43 @@
 
 import React from 'react';
 import { useTaskStore } from '@/entities/task';
+import { getTodayStr } from '@/shared/lib/dateUtils';
 import styles from './HabitProgressBanner.module.css';
 
 export const HabitProgressBanner: React.FC = () => {
   const tasks = useTaskStore((s) => s.tasks);
-  const todayStr = new Date().toISOString().split('T')[0];
+  const todayStr = getTodayStr();
 
-  // Strictly filter tasks whose scheduledDate === todayStr
-  const todayTasks = tasks.filter((t) => t.scheduledDate === todayStr);
+  // Strictly filter ALL tasks for TODAY (both regular and repeating, without sub-division)
+  const todayTasks = tasks.filter((t) => {
+    if (t.isRepeating) {
+      return t.occurrences?.some((o) => o.date === todayStr) || (t.scheduledDate && t.scheduledDate === todayStr);
+    }
+    if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') return false;
+    return t.scheduledDate === todayStr;
+  });
+
+  // Calculate status for each today task
+  const isTaskDoneForToday = (t: typeof tasks[0]): boolean => {
+    if (t.isRepeating) {
+      const occ = t.occurrences?.find((o) => o.date === todayStr);
+      if (occ) return occ.status === 'Done';
+      const legacyOcc = t.repetitionHistory?.find((h) => h.date === todayStr);
+      if (legacyOcc) return legacyOcc.completed;
+      return false;
+    }
+    return t.status === 'Done';
+  };
 
   const totalCount = todayTasks.length;
-  const doneCount = todayTasks.filter((t) => t.status === 'Done').length;
-  const percent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 100;
+  const doneCount = todayTasks.filter((t) => isTaskDoneForToday(t)).length;
+  const percent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
 
   const isAllCompleted = totalCount > 0 && doneCount === totalCount;
 
-  const titleText = isAllCompleted
+  const titleText = totalCount === 0
+    ? 'На сегодня нет запланированных задач ☕'
+    : isAllCompleted
     ? 'Отличная работа! Все задачи выполнены 🚀'
     : percent > 0
     ? 'В процессе выполнения задач! 💪'
