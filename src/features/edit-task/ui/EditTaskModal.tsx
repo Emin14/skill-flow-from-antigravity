@@ -55,13 +55,28 @@ const hint: React.CSSProperties = {
 };
 
 
+const getCategoryColor = (cat?: string): string => {
+  switch (cat) {
+    case 'Работа': return '#0ea5e9';
+    case 'Здоровье': return '#10b981';
+    case 'Обучение': return '#f59e0b';
+    case 'Личное': return '#ec4899';
+    case 'Финансы': return '#8b5cf6';
+    case 'Практика Frontend': return '#06b6d4';
+    case 'Опыт на камеру': return '#a855f7';
+    case 'Теория': return '#3b82f6';
+    case 'Без категории':
+    default: return 'rgba(255, 255, 255, 0.4)';
+  }
+};
+
 export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess }) => {
   const { updateTaskDetails, tasks } = useTaskStore();
 
   type PopoverKey = 'date' | 'category' | 'parent' | 'repeat' | 'freq' | null;
   const [openPopover, setOpenPopover] = useState<PopoverKey>(null);
   const hiddenNativeInputRef = useRef<HTMLInputElement>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
+  const activePopoverRef = useRef<HTMLDivElement>(null);
 
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState<TaskCategory>('Без категории');
@@ -83,13 +98,20 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
   useEffect(() => {
     if (openPopover === null) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      if (activePopoverRef.current && !activePopoverRef.current.contains(e.target as Node)) {
         setOpenPopover(null);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    const timer = setTimeout(() => {
+      window.addEventListener('mousedown', handlePointerDown);
+      window.addEventListener('touchstart', handlePointerDown);
+    }, 0);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('mousedown', handlePointerDown);
+      window.removeEventListener('touchstart', handlePointerDown);
+    };
   }, [openPopover]);
 
   useEffect(() => {
@@ -166,9 +188,23 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     onClose();
   };
 
+  const catThemeColor = getCategoryColor(category);
+
   return (
-    <div className={styles.overlay} onClick={() => { closeAll(); onClose(); }}>
-      <div className={styles.modal} ref={modalRef} onClick={(e) => e.stopPropagation()}>
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+
+        {/* Top Category Theme Accent Line */}
+        <div
+          style={{
+            height: '3px',
+            width: '100%',
+            borderRadius: '3px 3px 0 0',
+            background: `linear-gradient(90deg, ${catThemeColor} 0%, transparent 85%)`,
+            marginBottom: '4px',
+            transition: 'background 0.3s ease',
+          }}
+        />
 
         {/* Hidden date input for desktop showPicker() fallback */}
         <input type="date" ref={hiddenNativeInputRef} value={scheduledDate}
@@ -177,7 +213,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         />
 
         <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column' }}>
-          <div className={styles.modalBody} onClick={(e) => { if (e.target === e.currentTarget) closeAll(); }}>
+          <div className={styles.modalBody}>
 
             {/* ── Title ────────────────────────────────────────────── */}
             <Input
@@ -192,19 +228,46 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               {/* Category */}
               <div style={{ position: 'relative' }}>
                 <button type="button" style={glassBtn} onClick={() => toggle('category')}>
-                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    🏷 {category}
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <span
+                      style={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        backgroundColor: catThemeColor,
+                        boxShadow: `0 0 8px ${catThemeColor}`,
+                        flexShrink: 0,
+                      }}
+                    />
+                    <span>{category}</span>
                   </span>
                   <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0 }}>▾</span>
                 </button>
                 {openPopover === 'category' && (
-                  <div style={glassMenu}>
-                    {TASK_CATEGORIES.map((cat) => (
-                      <button key={cat} type="button" style={glassItem(category === cat)}
-                        onClick={() => { setCategory(cat); closeAll(); }}>
-                        {cat}
-                      </button>
-                    ))}
+                  <div style={glassMenu} ref={activePopoverRef}>
+                    {TASK_CATEGORIES.map((cat) => {
+                      const color = getCategoryColor(cat);
+                      return (
+                        <button
+                          key={cat}
+                          type="button"
+                          style={{ ...glassItem(category === cat), display: 'flex', alignItems: 'center', gap: '8px' }}
+                          onClick={() => { setCategory(cat); closeAll(); }}
+                        >
+                          <span
+                            style={{
+                              width: '8px',
+                              height: '8px',
+                              borderRadius: '50%',
+                              backgroundColor: color,
+                              boxShadow: `0 0 6px ${color}`,
+                              flexShrink: 0,
+                            }}
+                          />
+                          <span>{cat}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
                 <span style={hint}>Категория</span>
@@ -223,7 +286,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                     style={{ position: 'absolute', top: 0, left: 0, width: 'calc(100% - 36px)', height: '38px', opacity: 0, cursor: 'pointer', border: 'none', background: 'transparent', pointerEvents: 'auto', zIndex: 2, colorScheme: 'dark' }} />
                 )}
                 {openPopover === 'date' && (
-                  <div style={glassMenu}>
+                  <div style={glassMenu} ref={activePopoverRef}>
                     {([
                       { label: '☀️  Сегодня', action: selectToday },
                       { label: '🌅  Завтра', action: selectTomorrow },
@@ -249,7 +312,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0, marginLeft: '4px' }}>▾</span>
                 </button>
                 {openPopover === 'parent' && (
-                  <div style={glassMenu}>
+                  <div style={glassMenu} ref={activePopoverRef}>
                     <button type="button" style={glassItem(!parentTaskId)}
                       onClick={() => { setParentTaskId(null); closeAll(); }}>
                       📂 Основная задача
@@ -304,7 +367,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 </button>
 
                 {openPopover === 'repeat' && !hasSubtasks && (
-                  <div style={{ ...glassMenu, bottom: '44px', top: 'auto', left: 0, right: 0 }}>
+                  <div style={{ ...glassMenu, bottom: '44px', top: 'auto', left: 0, right: 0 }} ref={activePopoverRef}>
                     {Object.entries(REPEAT_LABELS).map(([val, label]) => (
                       <button
                         key={val}
@@ -367,7 +430,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 )}
 
                 {openPopover === 'freq' && repetitionMode === 'schedule' && (
-                  <div style={{ ...glassMenu, bottom: '44px', top: 'auto', left: 0, right: 0 }}>
+                  <div style={{ ...glassMenu, bottom: '44px', top: 'auto', left: 0, right: 0 }} ref={activePopoverRef}>
                     {Object.entries(FREQ_LABELS).map(([val, label]) => (
                       <button
                         key={val}
