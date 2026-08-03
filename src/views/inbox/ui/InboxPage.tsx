@@ -5,6 +5,7 @@ import { Card, Typography, Button, Input } from '@/shared/ui';
 import { useInboxStore, InboxItem } from '@/entities/inbox';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
+import { InboxHeaderWidget } from '@/widgets/inbox-header/ui/InboxHeaderWidget';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
@@ -84,21 +85,13 @@ export const InboxPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header & Quick Capture Form */}
-      <Card className={styles.quickCaptureCard}>
-        <Typography variant="h1">📥 Входящие ({items.length})</Typography>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
-          Быстрый захват мыслей, заметок и идей. Разберите их, когда будете готовы.
-        </Typography>
-
-        <form onSubmit={handleQuickCapture} style={{ marginTop: 'var(--space-2)' }}>
-          <Input
-            placeholder="Новая идея..."
-            value={quickInput}
-            onChange={(e) => setQuickInput(e.target.value)}
-          />
-        </form>
-      </Card>
+      {/* Header & Quick Capture Form Widget (Final Variant #6) */}
+      <InboxHeaderWidget
+        itemCount={items.length}
+        quickInput={quickInput}
+        setQuickInput={setQuickInput}
+        onSubmit={handleQuickCapture}
+      />
 
       {/* Controls Bar (Filter Tabs) */}
       <div className={styles.controlsBar}>

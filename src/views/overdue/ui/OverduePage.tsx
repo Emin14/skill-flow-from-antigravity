@@ -7,7 +7,8 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr } from '@/shared/lib/dateUtils';
-import { AlertCircle, Calendar, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
+import { OverdueHeaderWidget } from '@/widgets/overdue-header/ui/OverdueHeaderWidget';
 import styles from './OverduePage.module.css';
 
 export const OverduePage: React.FC = () => {
@@ -50,31 +51,11 @@ export const OverduePage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header Card */}
-      <Card className={styles.headerCard}>
-        <div className={styles.headerTitleRow}>
-          <div className={styles.titleGroup}>
-            <AlertCircle size={24} color="#ef4444" />
-            <Typography variant="h1">Просроченные ({overdueTasks.length})</Typography>
-          </div>
-
-          {overdueTasks.length > 0 && (
-            <button
-              type="button"
-              className={styles.bulkActionBtn}
-              onClick={handleRescheduleAllToToday}
-              title="Перенести все просроченные задачи на сегодня"
-            >
-              <Calendar size={14} />
-              Перенести все на сегодня ☀️
-            </button>
-          )}
-        </div>
-
-        <Typography variant="body" className={styles.subtitle}>
-          Задачи, срок выполнения которых уже прошёл. Перенесите их на сегодня или отметьте выполненными.
-        </Typography>
-      </Card>
+      {/* Header Widget (Final Variant #7) */}
+      <OverdueHeaderWidget
+        overdueCount={overdueTasks.length}
+        onRescheduleAll={handleRescheduleAllToToday}
+      />
 
       {/* Task List */}
       {isLoading ? (

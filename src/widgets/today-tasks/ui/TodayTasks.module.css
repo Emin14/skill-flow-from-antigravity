@@ -15,32 +15,34 @@
   gap: var(--space-2);
 }
 
-/* View Tab Switcher Bar */
+/* View Tab Switcher Bar - Full Width */
 .viewTabBtnBar {
   display: flex;
   align-items: center;
   gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--color-border);
   padding: 4px;
   border-radius: 14px;
-  margin-top: 4px;
 }
 
 .viewTabBtn {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  padding: 5px 12px;
-  min-width: 65px;
+  gap: 5px;
+  padding: 6px 8px;
+  height: 34px;
   border-radius: 10px;
   border: 1px solid transparent;
   background: transparent;
   color: var(--color-text-muted);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
 }
 
 .viewTabBtn:hover {
@@ -49,16 +51,10 @@
 }
 
 .viewTabBtnActive {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.16);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(8px);
-}
-
-.tabCountBadge {
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1;
 }
 
 .tabLabelText {
@@ -69,6 +65,18 @@
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.tabCountBadge {
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Single Board Container */

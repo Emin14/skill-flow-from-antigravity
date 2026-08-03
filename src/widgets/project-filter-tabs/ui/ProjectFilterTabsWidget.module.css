@@ -1,0 +1,364 @@
+/* CSS Module for iPhone 16 Pro Optimized Project Filter Tabs UX Concepts */
+.showcaseWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+/* Selector Bar [1] [2] ... [20] (Rendered BELOW Filter Tabs Widget) */
+.selectorBarUnderWidget {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 12px;
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  margin-top: 6px;
+}
+
+.selectorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.selectorGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.selectorBtn {
+  width: 30px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.selectorBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.selectorBtnActive {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  color: #fff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.4);
+}
+
+/* Base Filter Tab Button */
+.filterBtn {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-muted);
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-sizing: border-box;
+}
+
+.filterBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.filterBtnActive {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+/* 2x2 Grid Track for iPhone 16 Pro Screens */
+.gridTrack2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Equal Single Row Track for Short Labels */
+.equalTrackRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.equalBtn {
+  flex: 1;
+  text-align: center;
+  padding: 6px 2px;
+  font-size: 11px;
+}
+
+/* Touch-Swipe Ribbon */
+.touchSwiper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+  width: 100%;
+}
+
+.touchSwiper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Dropdown Select Style */
+.compactSelect {
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid #0ea5e9;
+  color: #38bdf8;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ── 20 IPHONE 16 PRO OPTIMIZED VARIANTS ── */
+
+/* Variant 1: Classic Floating Pills (Original Baseline) */
+.v1ClassicPills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Variant 2: Compact Mobile Icon-First Pills with Superscript Badges */
+.v2IconFirstPills {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+}
+
+/* Variant 3: iOS Segmented Control (Cupertino Native Track) */
+.v3CupertinoTrack {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Variant 4: 2x2 Clean Grid Box (Mobile Native 2x2 Grid) */
+.v4Grid2x2Box {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 8px;
+  width: 100%;
+}
+
+/* Variant 5: Single Compact Dropdown Selector Pill */
+.v5SingleDropdown {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 14px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Variant 6: Mobile Touch Swiper Ribbon */
+.v6TouchSwiperRibbon {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 6px 10px;
+  width: 100%;
+}
+
+/* Variant 7: Micro Icon Buttons with Active Label Pill */
+.v7MicroIconRow {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Variant 8: Glassmorphic 2x2 Grid Capsule */
+.v8GlassGrid {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 8px;
+  width: 100%;
+}
+
+/* Variant 9: Sub-Header Badge Bar with Dual Compact Rows */
+.v9DualRowSubHeader {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Variant 10: Compact Vertical Stacked Drawer Pills */
+.v10VerticalStackedPills {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Variant 11: Spotlight Touch Ribbon */
+.v11SpotlightTouch {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 14px;
+  padding: 6px 10px;
+  width: 100%;
+}
+
+/* Variant 12: Dual-Tone Mobile Banner with Segment Pills */
+.v12DualToneBanner {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Variant 13: Mobile Hairline 2x2 Grid Box */
+.v13HairlineGrid {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Variant 14: Cyberpunk Holo Matrix Mobile Buffer */
+.v14CyberpunkMatrix {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-family: monospace;
+  width: 100%;
+}
+
+/* Variant 15: Notion Mobile Callout Box with Dropdown Chip */
+.v15NotionCallout {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Variant 16: VisionOS Spatial Mobile Glass Track */
+.v16VisionOSGlass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+  border-radius: 16px;
+  padding: 6px;
+  width: 100%;
+}
+
+/* Variant 17: Compact Floating Action Bar */
+.v17FloatingActionBar {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Variant 18: iOS Inset Slider Track (Micro Font) */
+.v18iOSInsetTrack {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 4px;
+  width: 100%;
+}
+
+/* Variant 19: Vertical Card Header with 2x2 Grid */
+.v19VerticalCardGrid {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Variant 20: Master Mobile Dashboard Suite (iOS 16 Pro Optimized) */
+.v20MasterMobileDashboard {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}

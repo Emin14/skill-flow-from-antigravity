@@ -27,6 +27,7 @@ export const SettingsPage: React.FC = () => {
   const [selectedCategoryThemeId, setSelectedCategoryThemeId] = useState('amber');
   const [selectedCardBgThemeId, setSelectedCardBgThemeId] = useState('classic');
   const [bannerVariant, setBannerVariant] = useState('3');
+  const [daySwitcherVariant, setDaySwitcherVariant] = useState('12');
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<'Monday' | 'Sunday'>('Monday');
   const [dateFormat, setDateFormat] = useState<'DD.MM.YYYY' | 'YYYY-MM-DD'>('DD.MM.YYYY');
 
@@ -36,12 +37,14 @@ export const SettingsPage: React.FC = () => {
     const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
     const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
     const savedBannerVar = localStorage.getItem(STORAGE_KEYS.HABIT_BANNER_VARIANT) || '3';
+    const savedDaySwitcherVar = localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12';
 
     setTheme(savedTheme);
     setSelectedColor(savedColor);
     setSelectedCategoryThemeId(savedCatId);
     setSelectedCardBgThemeId(savedBgId);
     setBannerVariant(savedBannerVar);
+    setDaySwitcherVariant(savedDaySwitcherVar);
     applyCategoryTextTheme(savedCatId);
     applyCardBgTheme(savedBgId);
   }, []);
@@ -88,6 +91,13 @@ export const SettingsPage: React.FC = () => {
     localStorage.setItem(STORAGE_KEYS.HABIT_BANNER_VARIANT, varId);
     window.dispatchEvent(new Event('storage'));
     showToast(`Стиль виджета прогресса дня изменен на Вариант ${varId}`, 'info');
+  };
+
+  const handleDaySwitcherVariantChange = (varId: string) => {
+    setDaySwitcherVariant(varId);
+    localStorage.setItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT, varId);
+    window.dispatchEvent(new Event('storage'));
+    showToast(`Переключатель дней на странице «Сегодня» изменен на Вариант ${varId}`, 'info');
   };
 
   // Export JSON Backup
@@ -296,6 +306,28 @@ export const SettingsPage: React.FC = () => {
               <option value="8" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 8 — Тонкая линия по нижнему краю</option>
               <option value="9" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 9 — Компактный дашборд-ряд</option>
               <option value="10" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 10 — Капсула с текстом внутри</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Day Switcher Variant Select */}
+        <div className={styles.settingRow}>
+          <div>
+            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
+              🗓️ Стиль переключателя дней («Сегодня»)
+            </div>
+            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
+              Выберите между 12 и 19 вариантом отображения ленты дней
+            </div>
+          </div>
+          <div style={{ minWidth: '220px' }}>
+            <select
+              className={styles.themeSelect}
+              value={daySwitcherVariant}
+              onChange={(e) => handleDaySwitcherVariantChange(e.target.value)}
+            >
+              <option value="12" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 12 — Компактная лента с акцентным центром</option>
+              <option value="19" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 19 — Крупные карточки с экстра-числами</option>
             </select>
           </div>
         </div>

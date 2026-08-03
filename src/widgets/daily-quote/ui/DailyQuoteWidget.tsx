@@ -2,6 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { DAILY_MESSAGES } from '@/shared/config/dailyMessages';
+import styles from './DailyQuoteWidget.module.css';
 
 export const DailyQuoteWidget: React.FC = () => {
   const dailyMessage = useMemo(() => {
@@ -15,31 +16,11 @@ export const DailyQuoteWidget: React.FC = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        padding: '12px 16px',
-        borderRadius: '16px',
-        backgroundColor: 'rgba(14, 165, 233, 0.05)',
-        border: '1px solid rgba(14, 165, 233, 0.18)',
-        boxShadow: '0 4px 14px rgba(0, 0, 0, 0.03)',
-        width: '100%',
-        marginBottom: '12px',
-      }}
-    >
-      <span style={{ fontSize: '16px', flexShrink: 0 }}>💬</span>
-      <span
-        style={{
-          fontSize: '13.5px',
-          color: 'var(--color-text-primary)',
-          fontWeight: 500,
-          lineHeight: 1.45,
-        }}
-      >
-        {dailyMessage}
-      </span>
+    <div className={styles.quoteContainerBox}>
+      {/* 💡 Selected Final Variant #15: Minimalist Hairline Underline Caption */}
+      <div className={styles.v15DashedUnderline}>
+        <span>💡 {dailyMessage}</span>
+      </div>
     </div>
   );
 };

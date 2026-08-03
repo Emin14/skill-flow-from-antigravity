@@ -1,12 +1,15 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTaskStore } from '@/entities/task';
 import { useGoalStore } from '@/entities/goal';
 import { useTopicStore } from '@/entities/topic';
 import { useMaterialStore } from '@/entities/material';
 import { useRepeatCardStore } from '@/entities/repeat-card';
 import { useActivityStore } from '@/entities/activity';
+import { STORAGE_KEYS } from '@/shared/config/storageKeys';
+import { getTodayStr } from '@/shared/lib/dateUtils';
+import { DaySwitcherShowcase } from '@/features/day-switcher-showcase/ui/DaySwitcherShowcase';
 
 import { DailyQuoteWidget } from '@/widgets/daily-quote/ui/DailyQuoteWidget';
 import { HabitProgressBanner } from '@/widgets/habit-progress-banner/ui/HabitProgressBanner';
@@ -21,6 +24,9 @@ export const TodayPage: React.FC = () => {
   const fetchCards = useRepeatCardStore((s) => s.fetchCards);
   const fetchLogs = useActivityStore((s) => s.fetchLogs);
 
+  const [daySwitcherVariant, setDaySwitcherVariant] = useState<'12' | '19'>('12');
+  const [selectedDate, setSelectedDate] = useState<string>(getTodayStr());
+
   useEffect(() => {
     fetchTasks();
     fetchGoals();
@@ -28,18 +34,36 @@ export const TodayPage: React.FC = () => {
     fetchMaterials();
     fetchCards();
     fetchLogs();
+
+    const savedVariant = (localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12') as '12' | '19';
+    setDaySwitcherVariant(savedVariant);
+
+    const handleStorageChange = () => {
+      const updatedVariant = (localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12') as '12' | '19';
+      setDaySwitcherVariant(updatedVariant);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, [fetchTasks, fetchGoals, fetchTopics, fetchMaterials, fetchCards, fetchLogs]);
 
   return (
     <div className={styles.container}>
-      {/* Daily Motivational Quote Widget (Requirement 5) */}
+      {/* 1. Daily Motivational Quote Widget (Variant #15 - Minimalist Caption) */}
       <DailyQuoteWidget />
 
-      {/* Primary Top Header Dashboard Banner */}
+      {/* 2. 1st Top Widget: Day Switcher Ribbon */}
+      <DaySwitcherShowcase
+        selectedDate={selectedDate}
+        onDateChange={setSelectedDate}
+        variant={daySwitcherVariant}
+      />
+
+      {/* 3. 2nd Top Widget: Primary Dashboard Banner ("Время покорять вершины!") */}
       <HabitProgressBanner />
 
-      {/* Main Focus: 🎯 На сегодня — Vertical Mobile Kanban */}
-      <TodayTasks />
+      {/* 4. Main Today Tasks Board */}
+      <TodayTasks showDaySwitcher={false} />
     </div>
   );
 };

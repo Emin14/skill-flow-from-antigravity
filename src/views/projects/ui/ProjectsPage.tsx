@@ -7,9 +7,8 @@ import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { Folder, AlertCircle, ChevronDown, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ProjectFilterTabsWidget, ProjectFilterType } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
 import styles from './ProjectsPage.module.css';
-
-type ProjectFilter = 'all' | 'active' | 'completed' | 'has_overdue';
 
 const getCategoryColor = (cat?: string): string => {
   switch (cat) {
@@ -28,7 +27,7 @@ const getCategoryColor = (cat?: string): string => {
 
 export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
-  const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
+  const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
   const [cardVariant, setCardVariant] = useState<number>(8);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
@@ -120,24 +119,11 @@ export const ProjectsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Floating Filter Tabs (Point 6: Clean tabs without card box or title count) */}
-      <div className={styles.filterTabsRow}>
-        {[
-          { id: 'all', label: 'Все' },
-          { id: 'active', label: 'Активные' },
-          { id: 'completed', label: 'Завершенные' },
-          { id: 'has_overdue', label: '⚠️ Есть просроченные' },
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            className={`${styles.filterBtn} ${activeFilter === tab.id ? styles.filterBtnActive : ''}`}
-            onClick={() => setActiveFilter(tab.id as ProjectFilter)}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      {/* Filter Tabs Widget (Final Variant #9) */}
+      <ProjectFilterTabsWidget
+        activeFilter={activeFilter}
+        onSelectFilter={setActiveFilter}
+      />
 
       {/* Projects List */}
       {isLoading ? (

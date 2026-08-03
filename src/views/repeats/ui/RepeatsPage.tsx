@@ -4,13 +4,12 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
+import { HabitProgressHeaderWidget, HabitSortOption } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
 import styles from './RepeatsPage.module.css';
-
-type SortOption = 'overdue' | 'alphabetical' | 'count_asc';
 
 export const RepeatsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks } = useTaskStore();
-  const [sortOption, setSortOption] = useState<SortOption>('overdue');
+  const [sortOption, setSortOption] = useState<HabitSortOption>('overdue');
 
   useEffect(() => {
     fetchTasks();
@@ -43,67 +42,11 @@ export const RepeatsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header Card */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: '8px', borderRadius: '20px' }}>
-        <Typography variant="h2" style={{ color: 'var(--color-text-primary)' }}>
-          🔄 Трек прогресса привычек
-        </Typography>
-
-        {/* Top Sorting Bar */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '4px' }}>
-          <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
-            Сортировка:
-          </span>
-          <button
-            type="button"
-            onClick={() => setSortOption('overdue')}
-            style={{
-              background: sortOption === 'overdue' ? 'rgba(14, 165, 233, 0.2)' : 'rgba(255, 255, 255, 0.04)',
-              border: sortOption === 'overdue' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
-              color: sortOption === 'overdue' ? '#38bdf8' : 'var(--color-text-muted)',
-              borderRadius: '8px',
-              padding: '3px 9px',
-              fontSize: '11.5px',
-              cursor: 'pointer',
-              fontWeight: sortOption === 'overdue' ? 600 : 400,
-            }}
-          >
-            📅 Сначала ближайшие
-          </button>
-          <button
-            type="button"
-            onClick={() => setSortOption('alphabetical')}
-            style={{
-              background: sortOption === 'alphabetical' ? 'rgba(14, 165, 233, 0.2)' : 'rgba(255, 255, 255, 0.04)',
-              border: sortOption === 'alphabetical' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
-              color: sortOption === 'alphabetical' ? '#38bdf8' : 'var(--color-text-muted)',
-              borderRadius: '8px',
-              padding: '3px 9px',
-              fontSize: '11.5px',
-              cursor: 'pointer',
-              fontWeight: sortOption === 'alphabetical' ? 600 : 400,
-            }}
-          >
-            🔤 По алфавиту
-          </button>
-          <button
-            type="button"
-            onClick={() => setSortOption('count_asc')}
-            style={{
-              background: sortOption === 'count_asc' ? 'rgba(14, 165, 233, 0.2)' : 'rgba(255, 255, 255, 0.04)',
-              border: sortOption === 'count_asc' ? '1px solid #0ea5e9' : '1px solid var(--color-border)',
-              color: sortOption === 'count_asc' ? '#38bdf8' : 'var(--color-text-muted)',
-              borderRadius: '8px',
-              padding: '3px 9px',
-              fontSize: '11.5px',
-              cursor: 'pointer',
-              fontWeight: sortOption === 'count_asc' ? 600 : 400,
-            }}
-          >
-            📊 Меньше повторов
-          </button>
-        </div>
-      </Card>
+      {/* Header Widget (Final Variant #5) */}
+      <HabitProgressHeaderWidget
+        sortOption={sortOption}
+        onSelectSort={setSortOption}
+      />
 
       {/* List of Timeline Step Progression Cards */}
       {isLoading ? (

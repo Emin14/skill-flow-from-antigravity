@@ -19,6 +19,8 @@ import styles from './DaySwitcherShowcase.module.css';
 interface DaySwitcherShowcaseProps {
   selectedDate: string;
   onDateChange: (dateStr: string) => void;
+  variant?: '12' | '19' | number;
+  showShowcaseBar?: boolean;
 }
 
 const DAYS_RU = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
@@ -89,8 +91,11 @@ const SwipeGestureBox: React.FC<{
 export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
   selectedDate,
   onDateChange,
+  variant = 12,
+  showShowcaseBar = false,
 }) => {
-  const [activeVariant, setActiveVariant] = useState<number>(3);
+  const parsedVariant = typeof variant === 'string' ? parseInt(variant, 10) : variant;
+  const activeVariant: number = parsedVariant === 19 ? 19 : 12;
   const scrollRibbonRef = React.useRef<HTMLDivElement>(null);
 
   const todayStr = getTodayStr();
@@ -123,33 +128,22 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
 
   return (
     <div className={styles.showcaseContainer}>
-      {/* UX Variant Selector Bar [1] [2] ... [20] */}
-      <div className={styles.variantSelectorBar}>
-        <div className={styles.variantSelectorHeader}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Sparkles size={14} color="#38bdf8" />
-            <span>UX-вариант смены дня: (Выбрано: {formatDateDisplay(selectedDate)})</span>
+      {/* UX Variant Selector Bar [1] [2] ... [20] (Optional) */}
+      {showShowcaseBar && (
+        <div className={styles.variantSelectorBar}>
+          <div className={styles.variantSelectorHeader}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Sparkles size={14} color="#38bdf8" />
+              <span>UX-вариант смены дня: (Выбрано: {formatDateDisplay(selectedDate)})</span>
+            </div>
+            {!isTodaySelected && (
+              <button type="button" className={styles.todayChip} onClick={handleGoToday}>
+                <Sun size={11} /> Вернуться в Сегодня
+              </button>
+            )}
           </div>
-          {!isTodaySelected && (
-            <button type="button" className={styles.todayChip} onClick={handleGoToday}>
-              <Sun size={11} /> Вернуться в Сегодня
-            </button>
-          )}
         </div>
-
-        <div className={styles.variantGrid}>
-          {Array.from({ length: 20 }, (_, i) => i + 1).map((v) => (
-            <button
-              key={v}
-              type="button"
-              className={`${styles.variantBtn} ${activeVariant === v ? styles.variantBtnActive : ''}`}
-              onClick={() => setActiveVariant(v)}
-            >
-              {v}
-            </button>
-          ))}
-        </div>
-      </div>
+      )}
 
       {/* Dynamic UX Variant Render Box */}
       <div className={styles.variantRenderBox}>

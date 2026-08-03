@@ -15,33 +15,42 @@ import { useMidnightRefresh } from '@/shared/hooks/useMidnightRefresh';
 import { DaySwitcherShowcase } from '@/features/day-switcher-showcase/ui/DaySwitcherShowcase';
 import {
   Sun,
-  Clock,
-  CheckCircle2,
-  Brain,
-  Zap,
   PartyPopper,
-  ChevronDown,
 } from 'lucide-react';
 import styles from './TodayTasks.module.css';
 import { applyCategoryTextTheme, applyCardBgTheme } from '@/shared/config/categoryColors';
 
-type StatusFilter = 'all' | 'Todo' | 'InProgress' | 'Done';
+type StatusFilter = 'Todo' | 'InProgress' | 'Done';
 
-export const TodayTasks: React.FC = () => {
+interface TodayTasksProps {
+  showDaySwitcher?: boolean;
+}
+
+export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }) => {
   const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const {
     editingTask, detailTask, smartTask,
     openEditModal, openDetailModal, openSmartModal,
     closeEditModal, closeDetailModal, closeSmartModal,
   } = useTaskModals();
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('Todo');
   const [todayStr, setTodayStr] = useState<string>(getTodayStr());
+  const [daySwitcherVariant, setDaySwitcherVariant] = useState<'12' | '19'>('12');
 
   useEffect(() => {
     const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
     const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
+    const savedVariant = (localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12') as '12' | '19';
     applyCategoryTextTheme(savedCatId);
     applyCardBgTheme(savedBgId);
+    setDaySwitcherVariant(savedVariant);
+
+    const handleStorageChange = () => {
+      const updatedVariant = (localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12') as '12' | '19';
+      setDaySwitcherVariant(updatedVariant);
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
   useEffect(() => { fetchTasks(); }, [fetchTasks]);
@@ -53,18 +62,17 @@ export const TodayTasks: React.FC = () => {
   const rawTodayTasks = useMemo(() => {
     return tasks.filter((t) => {
       // Exclude main tasks with subtasks (they belong strictly in Projects section)
-      const hasChildTasks = tasks.some((sub) => sub.parentTaskId === t.id);
-      if (t.hasSubtasks || hasChildTasks) return false;
+      const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
+      if (t.hasSubtasks || hasChildren) return false;
 
+      // Handle repeating task occurrences scheduled for today
       if (t.isRepeating) {
-        return t.occurrences?.some((o) => o.date === todayStr) || (t.scheduledDate && t.scheduledDate === todayStr);
+        const hasTodayOcc = t.occurrences?.some((o) => o.date === todayStr);
+        return hasTodayOcc || t.scheduledDate === todayStr;
       }
-      if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') return false;
       return t.scheduledDate === todayStr;
     });
   }, [tasks, todayStr]);
-
-  const todayTasks = rawTodayTasks;
 
   // Helper to determine status of task for today
   const getTaskStatusForToday = (t: Task): TaskStatus => {
@@ -78,28 +86,17 @@ export const TodayTasks: React.FC = () => {
     return t.status;
   };
 
-  // Group tasks by Kanban Stages: Todo, InProgress, Done
-  const todoTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [todayTasks, todayStr]);
-  const inProgressTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [todayTasks, todayStr]);
-  const doneTasks = useMemo(() => todayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [todayTasks, todayStr]);
+  const todoTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [rawTodayTasks, todayStr]);
+  const inProgressTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [rawTodayTasks, todayStr]);
+  const doneTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [rawTodayTasks, todayStr]);
 
   // Exact math for progress bar widget
-  const totalCount = todayTasks.length;
+  const totalCount = rawTodayTasks.length;
   const doneCount = doneTasks.length;
-  const progressPercent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
   const is100PercentDone = totalCount > 0 && doneCount === totalCount;
 
   const handleCardClick = (task: Task) => {
     openDetailModal(task);
-  };
-
-  const handleDropToStage = (e: React.DragEvent, targetStatus: TaskStatus) => {
-    e.preventDefault();
-    const draggedTaskId = e.dataTransfer.getData('text/plain');
-    if (draggedTaskId) {
-      updateTaskStatus(draggedTaskId, targetStatus, undefined, todayStr);
-      updateTaskParent(draggedTaskId, null);
-    }
   };
 
   const handleDropOnTask = (draggedTaskId: string, targetParentTask: Task) => {
@@ -129,54 +126,42 @@ export const TodayTasks: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.sectionHeader}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Sun size={22} color="#f59e0b" />
-          <Typography variant="h2">Сегодня</Typography>
-        </div>
+      {/* 1. Day Switcher Ribbon Widget at top in place of static header */}
+      {showDaySwitcher && (
+        <DaySwitcherShowcase
+          selectedDate={todayStr}
+          onDateChange={setTodayStr}
+          variant={daySwitcherVariant}
+        />
+      )}
 
-        {/* Process Status Tab Switcher with Count Above Text */}
-        <div className={styles.viewTabBtnBar}>
-          <button
-            type="button"
-            className={`${styles.viewTabBtn} ${statusFilter === 'all' ? styles.viewTabBtnActive : ''}`}
-            onClick={() => setStatusFilter('all')}
-          >
-            <span className={styles.tabCountBadge} style={{ color: '#38bdf8' }}>{rawTodayTasks.length}</span>
-            <span className={styles.tabLabelText}>📋 Все</span>
-          </button>
-          <button
-            type="button"
-            className={`${styles.viewTabBtn} ${statusFilter === 'Todo' ? styles.viewTabBtnActive : ''}`}
-            onClick={() => setStatusFilter('Todo')}
-          >
-            <span className={styles.tabCountBadge} style={{ color: '#60a5fa' }}>{todoTasks.length}</span>
-            <span className={styles.tabLabelText}>🕒 План</span>
-          </button>
-          <button
-            type="button"
-            className={`${styles.viewTabBtn} ${statusFilter === 'InProgress' ? styles.viewTabBtnActive : ''}`}
-            onClick={() => setStatusFilter('InProgress')}
-          >
-            <span className={styles.tabCountBadge} style={{ color: '#f59e0b' }}>{inProgressTasks.length}</span>
-            <span className={styles.tabLabelText}>⚡ В работе</span>
-          </button>
-          <button
-            type="button"
-            className={`${styles.viewTabBtn} ${statusFilter === 'Done' ? styles.viewTabBtnActive : ''}`}
-            onClick={() => setStatusFilter('Done')}
-          >
-            <span className={styles.tabCountBadge} style={{ color: '#10b981' }}>{doneTasks.length}</span>
-            <span className={styles.tabLabelText}>✅ Выполнено</span>
-          </button>
-        </div>
+      {/* 2. Full-Width Compact Process Status Tab Switcher Bar */}
+      <div className={styles.viewTabBtnBar}>
+        <button
+          type="button"
+          className={`${styles.viewTabBtn} ${statusFilter === 'Todo' ? styles.viewTabBtnActive : ''}`}
+          onClick={() => setStatusFilter('Todo')}
+        >
+          <span className={styles.tabLabelText}>🕒 План</span>
+          <span className={styles.tabCountBadge} style={{ color: '#60a5fa' }}>{todoTasks.length}</span>
+        </button>
+        <button
+          type="button"
+          className={`${styles.viewTabBtn} ${statusFilter === 'InProgress' ? styles.viewTabBtnActive : ''}`}
+          onClick={() => setStatusFilter('InProgress')}
+        >
+          <span className={styles.tabLabelText}>⚡ В работе</span>
+          <span className={styles.tabCountBadge} style={{ color: '#f59e0b' }}>{inProgressTasks.length}</span>
+        </button>
+        <button
+          type="button"
+          className={`${styles.viewTabBtn} ${statusFilter === 'Done' ? styles.viewTabBtnActive : ''}`}
+          onClick={() => setStatusFilter('Done')}
+        >
+          <span className={styles.tabLabelText}>✅ Выполнено</span>
+          <span className={styles.tabCountBadge} style={{ color: '#10b981' }}>{doneTasks.length}</span>
+        </button>
       </div>
-
-      {/* 20 Day Switcher UX Concepts Showcase bar */}
-      <DaySwitcherShowcase
-        selectedDate={todayStr}
-        onDateChange={setTodayStr}
-      />
 
       {/* PM FEATURE: Celebratory 100% Completion Banner */}
       {is100PercentDone && (
@@ -211,7 +196,7 @@ export const TodayTasks: React.FC = () => {
         <div style={{ textAlign: 'center', padding: 'var(--space-6)', color: 'var(--color-text-muted)' }}>
           Загрузка задач...
         </div>
-      ) : todayTasks.length === 0 ? (
+      ) : rawTodayTasks.length === 0 ? (
         <div
           style={{
             textAlign: 'center',
@@ -226,7 +211,7 @@ export const TodayTasks: React.FC = () => {
       ) : (
         <div className={styles.singleBoardContainer}>
           {/* Stage 1: План (Todo) */}
-          {(statusFilter === 'all' || statusFilter === 'Todo') && todoTasks.length > 0 && (
+          {statusFilter === 'Todo' && todoTasks.length > 0 && (
             <SingleBoardSection
               tasksList={todoTasks}
               allTasks={tasks}
@@ -251,7 +236,7 @@ export const TodayTasks: React.FC = () => {
           )}
 
           {/* Stage 2: В работе (InProgress) */}
-          {(statusFilter === 'all' || statusFilter === 'InProgress') && inProgressTasks.length > 0 && (
+          {statusFilter === 'InProgress' && inProgressTasks.length > 0 && (
             <SingleBoardSection
               tasksList={inProgressTasks}
               allTasks={tasks}
@@ -276,7 +261,7 @@ export const TodayTasks: React.FC = () => {
           )}
 
           {/* Stage 3: Выполнено (Done) */}
-          {(statusFilter === 'all' || statusFilter === 'Done') && doneTasks.length > 0 && (
+          {statusFilter === 'Done' && doneTasks.length > 0 && (
             <SingleBoardSection
               tasksList={doneTasks}
               allTasks={tasks}
@@ -393,10 +378,8 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
     ));
   };
 
-  if (tasksList.length === 0) return null;
-
   return (
-    <div className={styles.taskList}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       {rootTasksInStage.map((task) => (
         <React.Fragment key={task.id}>
           <GlassmorphicTaskCard
