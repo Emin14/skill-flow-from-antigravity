@@ -1,63 +1,34 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1000px;
+  gap: 16px;
+  padding: 16px;
+  max-width: 900px;
   margin: 0 auto;
   min-height: calc(100vh - 120px);
 }
 
-.headerCard {
-  background: var(--glass-bg, rgba(30, 41, 59, 0.7));
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.12));
-  border-radius: 20px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.headerTitleRow {
+/* Floating Filter Tabs Bar (Point 6: No card box, no count title) */
+.filterTabsRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.titleGroup {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.titleGroup h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #38bdf8, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Filter Tabs Bar */
-.filterTabs {
-  display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  padding: 4px 0 8px 0;
+  scrollbar-width: none;
+}
+
+.filterTabsRow::-webkit-scrollbar {
+  display: none;
 }
 
 .filterBtn {
-  padding: 8px 16px;
+  padding: 7px 14px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   color: var(--color-text-secondary, #94a3b8);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
@@ -71,57 +42,113 @@
   box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
 }
 
+/* Project Card Switcher Bar */
+.variantSwitcherBar {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.switcherLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #38bdf8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switcherButtons {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.switcherBtn {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
 .projectsList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
-.projectCard {
+/* Common Card Base with strict title overflow protection (Point 3) */
+.projectCardBase {
   background: var(--glass-bg, rgba(30, 41, 59, 0.65));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
   border-radius: 18px;
-  padding: 20px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .projectCardDragOver {
-  border-color: #0ea5e9;
-  box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  border-color: #0ea5e9 !important;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.35) !important;
 }
 
 .projectCardHeader {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
+/* Strict title column flex truncation (Point 3 Fix) */
 .projectTitleCol {
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 0;
   flex: 1;
+  overflow: hidden;
 }
 
 .projectTitleRow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .projectTitle {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--color-text-primary, #f8fafc);
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  min-width: 0;
+  flex: 1;
 }
 
 .overdueBadge {
@@ -133,12 +160,13 @@
   background: rgba(239, 68, 68, 0.15);
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: #f87171;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .progressBarTrack {
-  height: 8px;
+  height: 7px;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
@@ -157,24 +185,24 @@
   background: rgba(245, 158, 11, 0.12);
   border: 1px solid rgba(245, 158, 11, 0.3);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  font-size: 12.5px;
+  gap: 10px;
+  font-size: 12px;
   color: #fbbf24;
   flex-wrap: wrap;
 }
 
 .dateFixBtn {
-  padding: 6px 12px;
+  padding: 5px 11px;
   border-radius: 8px;
   background: #f59e0b;
   border: none;
   color: #0f172a;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11.5px;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
   transition: transform 0.15s ease;

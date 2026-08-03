@@ -20,6 +20,7 @@ export const BottomNav: React.FC = () => {
     { label: 'Просроченные', href: '/overdue', icon: '🚨' },
     { label: 'Повторить', href: '/repeats', icon: '🔄' },
     { label: 'Календарь', href: '/calendar', icon: '📅' },
+    { label: 'Статистика', href: '/statistics', icon: '📊' },
   ];
 
   return (

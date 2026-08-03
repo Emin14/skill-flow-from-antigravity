@@ -28,7 +28,7 @@ const renderParentPath = (path: Task[], variant: number = 1, catColor: string) =
   const pathStr = path.map((t) => t.title).join(' › ');
 
   switch (variant) {
-    case 1: // Classic Breadcrumb Trail
+    case 1: // Classic Breadcrumb Trail (RETAINED)
       return (
         <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
           <span>📂</span>
@@ -43,23 +43,23 @@ const renderParentPath = (path: Task[], variant: number = 1, catColor: string) =
         </div>
       );
 
-    case 2: // Pill Chip Badge
+    case 2: // Linear Issue Key Badge (NEW)
       return (
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '12px', background: `${catColor}20`, border: `1px solid ${catColor}40`, fontSize: '10.5px', color: catColor, fontWeight: 600, marginBottom: '4px' }}>
-          <span>🏷️</span>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '2px 8px', borderRadius: '6px', background: 'rgba(15, 23, 42, 0.75)', border: `1px solid ${catColor}50`, fontSize: '10.5px', fontFamily: 'monospace', color: '#f1f5f9', fontWeight: 600, marginBottom: '4px', boxShadow: `0 0 10px ${catColor}20` }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: catColor }} />
           <span>{pathStr}</span>
         </div>
       );
 
-    case 3: // Left Accent Line & Tree Path
+    case 3: // Things 3 Area Pill (NEW)
       return (
-        <div style={{ borderLeft: `2.5px solid ${catColor}`, paddingLeft: '8px', marginBottom: '3px', fontSize: '11px', color: '#94a3b8' }}>
-          <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.5px', color: 'rgba(255,255,255,0.4)', display: 'block' }}>Проект</span>
-          <span style={{ fontWeight: 600, color: '#f1f5f9' }}>{pathStr}</span>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '12px', background: 'rgba(255, 255, 255, 0.07)', border: '1px solid rgba(255, 255, 255, 0.12)', fontSize: '10.5px', color: 'rgba(255,255,255,0.85)', fontWeight: 500, marginBottom: '4px' }}>
+          <span style={{ fontSize: '11px' }}>📁</span>
+          <span>{pathStr}</span>
         </div>
       );
 
-    case 4: // Compact Minimal Arrow Tag
+    case 4: // Compact Minimal Arrow Tag (RETAINED)
       return (
         <div style={{ fontSize: '11px', color: '#38bdf8', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '3px', marginBottom: '2px' }}>
           <span>📁</span>
@@ -67,54 +67,47 @@ const renderParentPath = (path: Task[], variant: number = 1, catColor: string) =
         </div>
       );
 
-    case 5: // Nested Folder Hierarchy Stack Badge
+    case 5: // Asana Multi-level Hierarchy Bar (NEW)
       return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'rgba(15, 23, 42, 0.6)', padding: '3px 8px', borderRadius: '6px', fontSize: '10.5px', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '4px' }}>
-          {path.map((p, idx) => (
-            <React.Fragment key={p.id}>
-              {idx > 0 && <span style={{ opacity: 0.3, fontSize: '10px' }}>▼</span>}
-              <span style={{ display: 'flex', alignItems: 'center', gap: '2px', color: idx === path.length - 1 ? '#60a5fa' : 'rgba(255,255,255,0.7)' }}>
-                <span>📁</span> {p.title}
-              </span>
-            </React.Fragment>
-          ))}
+        <div style={{ borderLeft: `3px solid ${catColor}`, paddingLeft: '8px', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11px', color: '#cbd5e1' }}>
+          <span style={{ fontSize: '9px', opacity: 0.6 }}>●</span>
+          <span style={{ fontWeight: 600 }}>{path.map((t) => t.title).join('  ▸  ')}</span>
         </div>
       );
 
-    case 6: // Notion-style Parent Label (Subtitle)
+    case 6: // Craft Floating Glass Header (NEW)
       return (
-        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', fontStyle: 'italic', marginBottom: '2px' }}>
-          из {pathStr}
-        </div>
-      );
-
-    case 7: // Glassmorphic Floating Ribbon
-      return (
-        <div style={{ margin: '-10px -12px 6px -12px', padding: '4px 12px', background: 'linear-gradient(90deg, rgba(14,165,233,0.15) 0%, rgba(37,99,235,0.05) 100%)', borderBottom: '1px solid rgba(14,165,233,0.2)', borderRadius: '12px 12px 0 0', fontSize: '10.5px', color: '#38bdf8', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <span>🔷</span>
+        <div style={{ margin: '-10px -12px 6px -12px', padding: '4px 12px', background: 'rgba(255, 255, 255, 0.05)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px 12px 0 0', fontSize: '10.5px', color: '#60a5fa', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span>⚡</span>
           <span>{pathStr}</span>
         </div>
       );
 
-    case 8: // Sub-level Tag Stack
+    case 7: // Raycast Action Chip (NEW)
       return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '4px' }}>
-          {path.map((p) => (
-            <span key={p.id} style={{ padding: '1px 6px', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', fontSize: '10px', color: '#e2e8f0' }}>
-              📁 {p.title}
-            </span>
-          ))}
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '2px 8px', borderRadius: '6px', background: 'linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.9))', border: '1px solid rgba(255,255,255,0.15)', fontSize: '10.5px', color: '#38bdf8', fontWeight: 600, marginBottom: '4px' }}>
+          <span style={{ opacity: 0.6, fontSize: '10px' }}>⌘</span>
+          <span>{pathStr}</span>
         </div>
       );
 
-    case 9: // Outline Border Badge
+    case 8: // Kanban Column Tag (NEW)
       return (
-        <div style={{ display: 'inline-block', padding: '1px 7px', borderRadius: '4px', border: `1px dashed ${catColor}`, fontSize: '10.5px', color: catColor, fontWeight: 500, marginBottom: '4px' }}>
-          ✦ {pathStr}
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '10px', background: `linear-gradient(90deg, ${catColor}30, transparent)`, borderLeft: `3px solid ${catColor}`, fontSize: '10.5px', color: '#f8fafc', fontWeight: 600, marginBottom: '4px' }}>
+          <span>🏷️</span>
+          <span>{pathStr}</span>
         </div>
       );
 
-    case 10: // Interactive Tree Link
+    case 9: // Minimal Subtitle Dot Path (NEW)
+      return (
+        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '2px' }}>
+          <span style={{ color: catColor }}>•</span>
+          <span style={{ fontWeight: 500 }}>{pathStr}</span>
+        </div>
+      );
+
+    case 10: // Interactive Tree Link (RETAINED)
     default:
       return (
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: '#0ea5e9', fontWeight: 600, cursor: 'pointer', marginBottom: '3px' }}>

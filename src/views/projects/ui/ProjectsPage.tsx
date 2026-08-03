@@ -11,9 +11,25 @@ import styles from './ProjectsPage.module.css';
 
 type ProjectFilter = 'all' | 'active' | 'completed' | 'has_overdue';
 
+const getCategoryColor = (cat?: string): string => {
+  switch (cat) {
+    case 'Работа': return '#0ea5e9';
+    case 'Здоровье': return '#10b981';
+    case 'Обучение': return '#f59e0b';
+    case 'Личное': return '#ec4899';
+    case 'Финансы': return '#8b5cf6';
+    case 'Практика Frontend': return '#06b6d4';
+    case 'Опыт на камеру': return '#a855f7';
+    case 'Теория': return '#3b82f6';
+    case 'Без категории':
+    default: return 'rgba(255, 255, 255, 0.3)';
+  }
+};
+
 export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
+  const [cardVariant, setCardVariant] = useState<number>(1);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
 
@@ -47,7 +63,7 @@ export const ProjectsPage: React.FC = () => {
     });
   };
 
-  // Filtered projects
+  // Filtered projects (Point 6: No project count title, no card wrapper around filters)
   const filteredProjects = useMemo(() => {
     return projectTasks.filter((project) => {
       const descendants = getAllDescendantTasks(project.id, tasks);
@@ -83,30 +99,45 @@ export const ProjectsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header Card */}
-      <div className={styles.headerCard}>
-        <div className={styles.headerTitleRow}>
-          <div className={styles.titleGroup}>
-            <Folder size={26} color="#38bdf8" />
-            <h1>Проекты ({filteredProjects.length})</h1>
-          </div>
-        </div>
+      {/* Floating Filter Tabs (Point 6: Clean tabs without card box or title count) */}
+      <div className={styles.filterTabsRow}>
+        {[
+          { id: 'all', label: 'Все' },
+          { id: 'active', label: 'Активные' },
+          { id: 'completed', label: 'Завершенные' },
+          { id: 'has_overdue', label: '⚠️ Есть просроченные' },
+        ].map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            className={`${styles.filterBtn} ${activeFilter === tab.id ? styles.filterBtnActive : ''}`}
+            onClick={() => setActiveFilter(tab.id as ProjectFilter)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
-        {/* Filter Tabs (Point 8) */}
-        <div className={styles.filterTabs}>
-          {[
-            { id: 'all', label: 'Все' },
-            { id: 'active', label: 'Активные' },
-            { id: 'completed', label: 'Завершенные' },
-            { id: 'has_overdue', label: '⚠️ Есть просроченные' },
-          ].map((tab) => (
+      {/* Project Card Design Switcher (Point 5: 9 Design Concepts) */}
+      <div className={styles.variantSwitcherBar}>
+        <div className={styles.switcherLabel}>
+          <span>🎨 Дизайн карточки проекта (Варианты 1-9):</span>
+          <span>Вариант {cardVariant}</span>
+        </div>
+        <div className={styles.switcherButtons}>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((v) => (
             <button
-              key={tab.id}
+              key={v}
               type="button"
-              className={`${styles.filterBtn} ${activeFilter === tab.id ? styles.filterBtnActive : ''}`}
-              onClick={() => setActiveFilter(tab.id as ProjectFilter)}
+              className={styles.switcherBtn}
+              onClick={() => setCardVariant(v)}
+              style={{
+                background: cardVariant === v ? 'linear-gradient(135deg, #0ea5e9, #2563eb)' : 'rgba(255,255,255,0.08)',
+                border: cardVariant === v ? 'none' : '1px solid rgba(255,255,255,0.12)',
+                color: '#ffffff',
+              }}
             >
-              {tab.label}
+              Вариант {v}
             </button>
           ))}
         </div>
@@ -124,6 +155,7 @@ export const ProjectsPage: React.FC = () => {
           {filteredProjects.map((project) => {
             const isOpen = openProjectIds.has(project.id);
             const isDragOver = dragOverProjectId === project.id;
+            const catColor = getCategoryColor(project.category);
 
             // Subtasks sorted by nearest scheduled date ascending (Point 6)
             const descendants = getAllDescendantTasks(project.id, tasks);
@@ -152,113 +184,32 @@ export const ProjectsPage: React.FC = () => {
             );
 
             return (
-              <div
+              <ProjectCardRenderer
                 key={project.id}
-                className={`${styles.projectCard} ${isDragOver ? styles.projectCardDragOver : ''}`}
+                variant={cardVariant}
+                project={project}
+                catColor={catColor}
+                isOpen={isOpen}
+                isDragOver={isDragOver}
+                doneCount={doneCount}
+                totalCount={totalCount}
+                progressPercent={progressPercent}
+                overdueCount={overdueCount}
+                hasDateMismatch={hasDateMismatch}
+                latestSubtaskDate={latestSubtaskDate}
+                sortedSubtasks={sortedSubtasks}
+                tasks={tasks}
+                todayStr={todayStr}
+                onToggleOpen={() => toggleProjectOpen(project.id)}
+                onEdit={() => setEditingTask(project)}
                 onDragOver={(e) => handleDragOver(e, project.id)}
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, project.id)}
-              >
-                {/* Project Header Row */}
-                <div
-                  className={styles.projectCardHeader}
-                  onClick={() => toggleProjectOpen(project.id)}
-                >
-                  <div className={styles.projectTitleCol}>
-                    <div className={styles.projectTitleRow}>
-                      <span style={{ fontSize: '20px' }}>📁</span>
-                      <h2 className={styles.projectTitle}>{project.title}</h2>
-
-                      {overdueBadgeCount(overdueCount)}
-                    </div>
-
-                    {/* Progress Metrics & Bar */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
-                      <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>
-                        Прогресс: {doneCount}/{totalCount} ({progressPercent}%)
-                      </span>
-                      <div className={styles.progressBarTrack} style={{ flex: 1 }}>
-                        <div
-                          className={styles.progressBarFill}
-                          style={{ width: `${progressPercent}%` }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setEditingTask(project);
-                      }}
-                      title="Редактировать проект"
-                      style={{
-                        background: 'rgba(255,255,255,0.08)',
-                        border: '1px solid rgba(255,255,255,0.12)',
-                        borderRadius: '8px',
-                        color: '#fff',
-                        width: '32px',
-                        height: '32px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      ✏️
-                    </button>
-                    {isOpen ? <ChevronDown size={20} color="#94a3b8" /> : <ChevronRight size={20} color="#94a3b8" />}
-                  </div>
-                </div>
-
-                {/* Date Mismatch Warning Banner (Point 12) */}
-                {hasDateMismatch && project.scheduledDate && latestSubtaskDate && (
-                  <div className={styles.dateWarningBanner}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <AlertCircle size={18} color="#f59e0b" />
-                      <div>
-                        <strong>⚠️ Есть подзадачи позже даты проекта.</strong>
-                        <div style={{ fontSize: '11.5px', opacity: 0.9 }}>
-                          Дата проекта: {formatDateDisplay(project.scheduledDate)} | Последняя подзадача: {formatDateDisplay(latestSubtaskDate)}
-                        </div>
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      className={styles.dateFixBtn}
-                      onClick={() => updateTaskDetails(project.id, { scheduledDate: latestSubtaskDate })}
-                    >
-                      [Изменить дату проекта]
-                    </button>
-                  </div>
-                )}
-
-                {/* Collapsible Subtasks List */}
-                {isOpen && (
-                  <div className={styles.subtaskList}>
-                    {sortedSubtasks.length === 0 ? (
-                      <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', padding: '8px', fontStyle: 'italic' }}>
-                        Нет подзадач в проекте (Перетащите сюда задачи).
-                      </div>
-                    ) : (
-                      sortedSubtasks.map((subtask) => (
-                        <GlassmorphicTaskCard
-                          key={subtask.id}
-                          task={subtask}
-                          occurrenceDate={subtask.scheduledDate || todayStr}
-                          allTasks={tasks}
-                          showDragHandle={true}
-                          onToggleCheckbox={() => toggleTaskStatus(subtask.id, undefined, subtask.scheduledDate || todayStr)}
-                          onDelete={() => deleteTaskOccurrence(subtask.id, subtask.scheduledDate || todayStr)}
-                          onClick={() => setDetailTask(subtask)}
-                        />
-                      ))
-                    )}
-                  </div>
-                )}
-              </div>
+                onFixDate={() => latestSubtaskDate && updateTaskDetails(project.id, { scheduledDate: latestSubtaskDate })}
+                onToggleSubtask={(st) => toggleTaskStatus(st.id, undefined, st.scheduledDate || todayStr)}
+                onDeleteSubtask={(st) => deleteTaskOccurrence(st.id, st.scheduledDate || todayStr)}
+                onSelectSubtask={(st) => setDetailTask(st)}
+              />
             );
           })}
         </div>
@@ -285,7 +236,175 @@ export const ProjectsPage: React.FC = () => {
   );
 };
 
-const overdueBadgeCount = (count: number) => {
+interface ProjectCardRendererProps {
+  variant: number;
+  project: Task;
+  catColor: string;
+  isOpen: boolean;
+  isDragOver: boolean;
+  doneCount: number;
+  totalCount: number;
+  progressPercent: number;
+  overdueCount: number;
+  hasDateMismatch: boolean;
+  latestSubtaskDate: string | null;
+  sortedSubtasks: Task[];
+  tasks: Task[];
+  todayStr: string;
+  onToggleOpen: () => void;
+  onEdit: () => void;
+  onDragOver: (e: React.DragEvent) => void;
+  onDragLeave: () => void;
+  onDrop: (e: React.DragEvent) => void;
+  onFixDate: () => void;
+  onToggleSubtask: (t: Task) => void;
+  onDeleteSubtask: (t: Task) => void;
+  onSelectSubtask: (t: Task) => void;
+}
+
+const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
+  variant,
+  project,
+  catColor,
+  isOpen,
+  isDragOver,
+  doneCount,
+  totalCount,
+  progressPercent,
+  overdueCount,
+  hasDateMismatch,
+  latestSubtaskDate,
+  sortedSubtasks,
+  tasks,
+  todayStr,
+  onToggleOpen,
+  onEdit,
+  onDragOver,
+  onDragLeave,
+  onDrop,
+  onFixDate,
+  onToggleSubtask,
+  onDeleteSubtask,
+  onSelectSubtask,
+}) => {
+  return (
+    <div
+      className={`${styles.projectCardBase} ${isDragOver ? styles.projectCardDragOver : ''}`}
+      style={variant === 7 ? { boxShadow: `0 0 16px ${catColor}25`, border: `1px solid ${catColor}40` } : undefined}
+      onDragOver={onDragOver}
+      onDragLeave={onDragLeave}
+      onDrop={onDrop}
+    >
+      {/* Top Accent Line for Variant 1 & 6 */}
+      {(variant === 1 || variant === 6) && (
+        <div style={{ height: '3px', margin: '-16px -18px 8px -18px', background: `linear-gradient(90deg, ${catColor} 0%, transparent 90%)` }} />
+      )}
+
+      {/* Project Card Header (Strictly Truncated Title - Point 3) */}
+      <div className={styles.projectCardHeader} onClick={onToggleOpen}>
+        <div className={styles.projectTitleCol}>
+          <div className={styles.projectTitleRow}>
+            <span style={{ fontSize: '18px', flexShrink: 0 }}>📁</span>
+            {/* Strict title truncation (Point 3) */}
+            <h2 className={styles.projectTitle} title={project.title}>
+              {project.title}
+            </h2>
+            {overdueBadge(overdueCount)}
+          </div>
+
+          {/* Progress Metric: ONLY SHOWN IF totalCount > 0 (Point 4 Fix) */}
+          {totalCount > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
+              <span style={{ fontSize: '11.5px', color: 'rgba(255,255,255,0.65)', fontWeight: 500, whiteSpace: 'nowrap' }}>
+                Прогресс: {doneCount}/{totalCount} ({progressPercent}%)
+              </span>
+              <div className={styles.progressBarTrack} style={{ flex: 1 }}>
+                <div className={styles.progressBarFill} style={{ width: `${progressPercent}%` }} />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Action Controls & Radial Ring for Variant 4 */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+          {variant === 4 && totalCount > 0 && (
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#10b981', background: 'rgba(16,185,129,0.15)', padding: '2px 8px', borderRadius: '10px' }}>
+              {progressPercent}%
+            </span>
+          )}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit();
+            }}
+            title="Редактировать проект"
+            style={{
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              borderRadius: '8px',
+              color: '#fff',
+              width: '30px',
+              height: '30px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              flexShrink: 0,
+            }}
+          >
+            ✏️
+          </button>
+          {isOpen ? <ChevronDown size={18} color="#94a3b8" /> : <ChevronRight size={18} color="#94a3b8" />}
+        </div>
+      </div>
+
+      {/* Date Mismatch Warning Banner (Point 12) */}
+      {hasDateMismatch && project.scheduledDate && latestSubtaskDate && (
+        <div className={styles.dateWarningBanner}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <AlertCircle size={16} color="#f59e0b" />
+            <div>
+              <strong>⚠️ Есть подзадачи позже даты проекта.</strong>
+              <div style={{ fontSize: '11px', opacity: 0.9 }}>
+                Дата проекта: {formatDateDisplay(project.scheduledDate)} | Последняя подзадача: {formatDateDisplay(latestSubtaskDate)}
+              </div>
+            </div>
+          </div>
+          <button type="button" className={styles.dateFixBtn} onClick={onFixDate}>
+            [Изменить дату проекта]
+          </button>
+        </div>
+      )}
+
+      {/* Collapsible Subtasks List */}
+      {isOpen && (
+        <div className={styles.subtaskList}>
+          {sortedSubtasks.length === 0 ? (
+            <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', padding: '6px 0', fontStyle: 'italic' }}>
+              Нет подзадач в проекте (Перетащите сюда задачи).
+            </div>
+          ) : (
+            sortedSubtasks.map((subtask) => (
+              <GlassmorphicTaskCard
+                key={subtask.id}
+                task={subtask}
+                occurrenceDate={subtask.scheduledDate || todayStr}
+                allTasks={tasks}
+                showDragHandle={true}
+                onToggleCheckbox={() => onToggleSubtask(subtask)}
+                onDelete={() => onDeleteSubtask(subtask)}
+                onClick={() => onSelectSubtask(subtask)}
+              />
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const overdueBadge = (count: number) => {
   if (count <= 0) return null;
   return (
     <span className={styles.overdueBadge}>
