@@ -38,7 +38,7 @@
   .mainContent {
     margin-left: 0;
     min-height: 100dvh;
-    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); /* Clearance for BottomNav */
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 16px)); /* Clearance for BottomNav */
   }
 
   .pageContent {
