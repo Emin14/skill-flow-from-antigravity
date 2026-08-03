@@ -28,7 +28,7 @@ type ViewMode = 'all' | 'actions' | 'repeats';
 
 
 export const TodayTasks: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const {
     editingTask, detailTask, smartTask,
     openEditModal, openDetailModal, openSmartModal,
