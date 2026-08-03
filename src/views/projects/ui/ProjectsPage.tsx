@@ -176,6 +176,7 @@ export const ProjectsPage: React.FC = () => {
                 latestSubtaskDate={latestSubtaskDate}
                 sortedSubtasks={sortedSubtasks}
                 tasks={tasks}
+                openProjectIds={openProjectIds}
                 todayStr={todayStr}
                 onToggleOpen={() => toggleProjectOpen(project.id)}
                 onEdit={() => setEditingTask(project)}
@@ -227,6 +228,7 @@ interface ProjectCardRendererProps {
   latestSubtaskDate: string | null;
   sortedSubtasks: Task[];
   tasks: Task[];
+  openProjectIds: Set<string>;
   todayStr: string;
   onToggleOpen: () => void;
   onEdit: () => void;
@@ -253,6 +255,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   latestSubtaskDate,
   sortedSubtasks,
   tasks,
+  openProjectIds,
   todayStr,
   onToggleOpen,
   onEdit,
