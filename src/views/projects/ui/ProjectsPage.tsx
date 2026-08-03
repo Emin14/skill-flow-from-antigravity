@@ -30,7 +30,6 @@ export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
   const [cardVariant, setCardVariant] = useState<number>(8);
-  const [bannerVariant, setBannerVariant] = useState<number>(1);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
 
@@ -119,34 +118,6 @@ export const ProjectsPage: React.FC = () => {
         ))}
       </div>
 
-      {/* 🎨 Interactive Warning Banner Design Switcher (10 Variants) */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', margin: '0 0 16px 0', padding: '10px 14px', background: 'rgba(255,255,255,0.03)', borderRadius: '14px', border: '1px solid var(--color-border)' }}>
-        <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-          🎨 Вариант предупреждения:
-        </span>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-          <button
-            key={num}
-            type="button"
-            style={{
-              background: bannerVariant === num ? '#f59e0b' : 'rgba(255,255,255,0.08)',
-              border: bannerVariant === num ? 'none' : '1px solid rgba(255,255,255,0.12)',
-              color: bannerVariant === num ? '#0f172a' : '#94a3b8',
-              borderRadius: '8px',
-              padding: '4px 10px',
-              fontSize: '12px',
-              fontWeight: bannerVariant === num ? 800 : 500,
-              cursor: 'pointer',
-              transition: 'all 0.15s ease',
-              boxShadow: bannerVariant === num ? '0 2px 8px rgba(245,158,11,0.35)' : 'none',
-            }}
-            onClick={() => setBannerVariant(num)}
-          >
-            {num}
-          </button>
-        ))}
-      </div>
-
 
 
       {/* Projects List */}
@@ -193,7 +164,6 @@ export const ProjectsPage: React.FC = () => {
               <ProjectCardRenderer
                 key={project.id}
                 variant={cardVariant}
-                bannerVariant={bannerVariant}
                 project={project}
                 catColor={catColor}
                 isOpen={isOpen}
@@ -246,7 +216,6 @@ export const ProjectsPage: React.FC = () => {
 
 interface ProjectCardRendererProps {
   variant: number;
-  bannerVariant: number;
   project: Task;
   catColor: string;
   isOpen: boolean;
@@ -274,7 +243,6 @@ interface ProjectCardRendererProps {
 
 const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   variant,
-  bannerVariant,
   project,
   catColor,
   isOpen,
@@ -411,10 +379,9 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         </div>
       </div>
 
-      {/* Date Mismatch Warning Banner (10 Design Variants Switcher) */}
+      {/* Date Mismatch Warning Banner (Glassmorphic Card) */}
       {hasDateMismatch && project.scheduledDate && latestSubtaskDate && (
         <DateWarningBanner
-          variant={bannerVariant}
           projectDate={project.scheduledDate}
           subtaskDate={latestSubtaskDate}
           onFixDate={onFixDate}
@@ -601,443 +568,54 @@ const overdueBadge = (count: number) => {
 };
 
 const DateWarningBanner: React.FC<{
-  variant: number;
   projectDate: string;
   subtaskDate: string;
   onFixDate: () => void;
-}> = ({ variant, projectDate, subtaskDate, onFixDate }) => {
+}> = ({ projectDate, subtaskDate, onFixDate }) => {
   const pDateStr = formatDateDisplay(projectDate);
   const sDateStr = formatDateDisplay(subtaskDate);
 
-  // Common mobile-friendly container styles for all Glassmorphic variants
-  const baseMobileGlassStyle: React.CSSProperties = {
-    margin: '8px 12px 0 12px',
-    padding: '10px 14px',
-    borderRadius: '14px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: '10px',
-    flexWrap: 'wrap', // Ensures perfect mobile wrapping on narrow screens!
-  };
-
-  switch (variant) {
-    case 1:
-      // Variant 1: Original Modern Glass Card (Golden Glow)
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: 'rgba(30, 41, 59, 0.55)',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(251, 191, 36, 0.35)',
-            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
-          }}
-        >
-          <div style={{ fontSize: '12.5px', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '8px', minWidth: '180px', flex: 1 }}>
-            <span style={{ fontSize: '16px', flexShrink: 0 }}>💡</span>
-            <span>
-              Проект: <strong style={{ color: '#fbbf24' }}>{pDateStr}</strong> • Крайняя задача: <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-              border: 'none',
-              color: '#fff',
-              borderRadius: '8px',
-              padding: '6px 14px',
-              fontSize: '11.5px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 2px 8px rgba(245, 158, 11, 0.3)',
-            }}
-          >
-            Продлить проект
-          </button>
-        </div>
-      );
-
-    case 2:
-      // Variant 2: Frosted Cyan-Gold Glass Pill with Date Chips
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: 'rgba(15, 23, 42, 0.65)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(56, 189, 248, 0.3)',
-            boxShadow: '0 4px 18px rgba(14, 165, 233, 0.15)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', minWidth: '180px', flex: 1, flexWrap: 'wrap' }}>
-            <span style={{ color: '#f59e0b', fontSize: '15px' }}>⚡</span>
-            <span style={{ color: '#e2e8f0', fontWeight: 500 }}>Срок подзадачи превышен:</span>
-            <span style={{ background: 'rgba(245, 158, 11, 0.18)', color: '#fde047', padding: '2px 8px', borderRadius: '6px', fontWeight: 600 }}>
-              📂 {pDateStr}
-            </span>
-            <span style={{ color: '#94a3b8' }}>➔</span>
-            <span style={{ background: 'rgba(56, 189, 248, 0.18)', color: '#38bdf8', padding: '2px 8px', borderRadius: '6px', fontWeight: 600 }}>
-              📌 {sDateStr}
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'linear-gradient(135deg, #38bdf8, #0284c7)',
-              border: 'none',
-              color: '#0f172a',
-              borderRadius: '10px',
-              padding: '6px 14px',
-              fontSize: '11.5px',
-              fontWeight: 800,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Подтянуть дату
-          </button>
-        </div>
-      );
-
-    case 3:
-      // Variant 3: Glass Strip with Left Amber Accent Bar
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: 'rgba(30, 41, 59, 0.5)',
-            backdropFilter: 'blur(8px)',
-            borderLeft: '4px solid #f59e0b',
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px', color: '#f1f5f9', minWidth: '180px', flex: 1 }}>
-            <AlertCircle size={16} color="#f59e0b" style={{ flexShrink: 0 }} />
-            <span>
-              Дата проекта <strong style={{ color: '#fbbf24' }}>{pDateStr}</strong> отстаёт от подзадачи <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'rgba(245, 158, 11, 0.18)',
-              border: '1px solid rgba(245, 158, 11, 0.4)',
-              color: '#fde68a',
-              borderRadius: '8px',
-              padding: '5px 12px',
-              fontSize: '11.5px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Выровнять до {sDateStr}
-          </button>
-        </div>
-      );
-
-    case 4:
-      // Variant 4: Soft Neumorphic Glass Card with Warm Amber Glow
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8))',
-            backdropFilter: 'blur(14px)',
-            border: '1px solid rgba(245, 158, 11, 0.3)',
-            boxShadow: '0 4px 20px rgba(245, 158, 11, 0.12)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: '180px', flex: 1 }}>
-            <div
-              style={{
-                width: '28px',
-                height: '28px',
-                borderRadius: '50%',
-                background: 'rgba(245, 158, 11, 0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fbbf24',
-                fontSize: '14px',
-                flexShrink: 0,
-              }}
-            >
-              ⚠️
-            </div>
-            <div style={{ fontSize: '12px', color: '#cbd5e1' }}>
-              Крайняя подзадача <strong style={{ color: '#38bdf8' }}>({sDateStr})</strong> выходит за границы проекта <strong style={{ color: '#fbbf24' }}>({pDateStr})</strong>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: '#f59e0b',
-              border: 'none',
-              color: '#0f172a',
-              borderRadius: '8px',
-              padding: '6px 14px',
-              fontSize: '11.5px',
-              fontWeight: 800,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 2px 8px rgba(245, 158, 11, 0.4)',
-            }}
-          >
-            Продлить до {sDateStr}
-          </button>
-        </div>
-      );
-
-    case 5:
-      // Variant 5: Apple Dynamic Island Glass Bar
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            borderRadius: '22px',
-            background: 'rgba(15, 23, 42, 0.75)',
-            backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(251, 191, 36, 0.35)',
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', minWidth: '180px', flex: 1 }}>
-            <span
-              style={{
-                background: 'rgba(245, 158, 11, 0.2)',
-                color: '#fbbf24',
-                padding: '2px 8px',
-                borderRadius: '12px',
-                fontSize: '11px',
-                fontWeight: 700,
-                flexShrink: 0,
-              }}
-            >
-              ⚠️ Срок
-            </span>
-            <span style={{ color: '#f1f5f9' }}>
-              Проект: <strong>{pDateStr}</strong> ➔ Подзадача: <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-              border: 'none',
-              color: '#ffffff',
-              borderRadius: '16px',
-              padding: '5px 14px',
-              fontSize: '11.5px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Синхронизировать
-          </button>
-        </div>
-      );
-
-    case 6:
-      // Variant 6: Deep Slate Glass Ribbon with Gold Border
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: 'rgba(30, 41, 59, 0.4)',
-            backdropFilter: 'blur(8px)',
-            border: '1px solid rgba(245, 158, 11, 0.25)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#e2e8f0', minWidth: '180px', flex: 1 }}>
-            <span>📂</span>
-            <span>
-              Срок проекта <strong>{pDateStr}</strong> меньше даты подзадачи <strong>{sDateStr}</strong>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.18)',
-              color: '#fff',
-              borderRadius: '8px',
-              padding: '5px 12px',
-              fontSize: '11.5px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Обновить дату
-          </button>
-        </div>
-      );
-
-    case 7:
-      // Variant 7: Things 3 Translucent Pill Card
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: 'rgba(15, 23, 42, 0.55)',
-            backdropFilter: 'blur(10px)',
-            border: '1px dashed rgba(245, 158, 11, 0.4)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#fcd34d', minWidth: '180px', flex: 1 }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f59e0b', flexShrink: 0 }} />
-            <span>
-              Крайняя подзадача (<strong>{sDateStr}</strong>) выходит за срок проекта (<strong>{pDateStr}</strong>)
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'rgba(245, 158, 11, 0.15)',
-              border: '1px solid rgba(245, 158, 11, 0.4)',
-              color: '#fbbf24',
-              borderRadius: '8px',
-              padding: '4px 12px',
-              fontSize: '11.5px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Установить {sDateStr}
-          </button>
-        </div>
-      );
-
-    case 8:
-      // Variant 8: Linear Dark Glass Card with Monospace Date Badges
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: '#090d16',
-            border: '1px solid #334155',
-            boxShadow: '0 4px 14px rgba(0, 0, 0, 0.4)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', minWidth: '180px', flex: 1 }}>
-            <span style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', padding: '2px 6px', borderRadius: '4px', fontSize: '10px', fontWeight: 700, fontFamily: 'monospace' }}>
-              MISMATCH
-            </span>
-            <span style={{ color: '#cbd5e1' }}>
-              <code style={{ color: '#fbbf24' }}>{pDateStr}</code> ➔ <code style={{ color: '#38bdf8' }}>{sDateStr}</code>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: '#f59e0b',
-              border: 'none',
-              color: '#0f172a',
-              borderRadius: '6px',
-              padding: '5px 12px',
-              fontSize: '11.5px',
-              fontWeight: 800,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Сдвинуть проект
-          </button>
-        </div>
-      );
-
-    case 9:
-      // Variant 9: Vercel Frosted Border Gradient Card
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: 'rgba(15, 23, 42, 0.65)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid transparent',
-            backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), linear-gradient(90deg, #f59e0b, #0ea5e9)',
-            backgroundOrigin: 'border-box',
-            backgroundClip: 'padding-box, border-box',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#e2e8f0', minWidth: '180px', flex: 1 }}>
-            <span style={{ color: '#f59e0b' }}>🔔</span>
-            <span>
-              Срок проекта <strong>{pDateStr}</strong> меньше даты подзадачи <strong>{sDateStr}</strong>
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: 'linear-gradient(90deg, #f59e0b, #0ea5e9)',
-              border: 'none',
-              color: '#0f172a',
-              borderRadius: '8px',
-              padding: '5px 14px',
-              fontSize: '11.5px',
-              fontWeight: 800,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Авто-продление
-          </button>
-        </div>
-      );
-
-    case 10:
-    default:
-      // Variant 10: Compact Mobile Glass Chip
-      return (
-        <div
-          style={{
-            ...baseMobileGlassStyle,
-            background: 'rgba(239, 68, 68, 0.08)',
-            backdropFilter: 'blur(8px)',
-            border: '1px solid rgba(239, 68, 68, 0.28)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#fca5a5', minWidth: '180px', flex: 1 }}>
-            <span>⚠️</span>
-            <span>
-              Подзадача на <strong>{sDateStr}</strong> выходит за дату проекта (<strong>{pDateStr}</strong>)
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={onFixDate}
-            style={{
-              background: '#ef4444',
-              border: 'none',
-              color: '#fff',
-              borderRadius: '8px',
-              padding: '5px 12px',
-              fontSize: '11.5px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            ⚡ Сдвинуть на {sDateStr}
-          </button>
-        </div>
-      );
-  }
+  return (
+    <div
+      style={{
+        margin: '8px 12px 0 12px',
+        padding: '10px 14px',
+        borderRadius: '14px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '10px',
+        flexWrap: 'wrap',
+        background: 'rgba(30, 41, 59, 0.55)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(251, 191, 36, 0.35)',
+        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
+      }}
+    >
+      <div style={{ fontSize: '12.5px', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '8px', minWidth: '180px', flex: 1 }}>
+        <span style={{ fontSize: '16px', flexShrink: 0 }}>💡</span>
+        <span>
+          Проект: <strong style={{ color: '#fbbf24' }}>{pDateStr}</strong> • Крайняя задача: <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
+        </span>
+      </div>
+      <button
+        type="button"
+        onClick={onFixDate}
+        style={{
+          background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+          border: 'none',
+          color: '#fff',
+          borderRadius: '8px',
+          padding: '6px 14px',
+          fontSize: '11.5px',
+          fontWeight: 700,
+          cursor: 'pointer',
+          whiteSpace: 'nowrap',
+          boxShadow: '0 2px 8px rgba(245, 158, 11, 0.3)',
+        }}
+      >
+        Продлить проект
+      </button>
+    </div>
+  );
 };
