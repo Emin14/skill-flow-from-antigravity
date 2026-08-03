@@ -407,7 +407,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
             )}
 
             <div className={styles.titleColumn}>
-              {renderParentPath(parentPath, parentPathVariant || 1, catColor)}
+              {parentPathVariant !== 0 && renderParentPath(parentPath, parentPathVariant ?? 4, catColor)}
               <span className={`${styles.taskTitle} ${isDone ? styles.taskTitleDone : ''}`}>
                 {task.title}
               </span>

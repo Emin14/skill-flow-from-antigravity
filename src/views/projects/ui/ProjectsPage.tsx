@@ -268,24 +268,16 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   const getCardStyle = (): React.CSSProperties => {
     switch (variant) {
       case 2: // Linear Monospace Dark
-        return { background: '#090d16', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '14px', fontFamily: 'monospace' };
+        return { fontFamily: 'monospace' };
       case 3: // Notion Document Block
-        return { background: 'rgba(255, 255, 255, 0.04)', borderLeft: '4px solid #38bdf8', borderRadius: '12px' };
-      case 5: // Things 3 Minimal Area
-        return { background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px' };
-      case 6: // Trello/Jira Banner Header
-        return { background: 'rgba(15, 23, 42, 0.85)', borderRadius: '18px', overflow: 'hidden', padding: 0 };
+        return { borderLeft: '4px solid #38bdf8' };
       case 7: // Neumorphic Soft Glow
-        return { background: 'rgba(30,41,59,0.7)', boxShadow: `0 0 20px ${catColor}35`, border: `1px solid ${catColor}50`, borderRadius: '20px' };
-      case 8: // Compact Expandable Accordion Bar
-        return { background: 'rgba(30,41,59,0.6)', borderRadius: '12px', padding: '10px 14px' };
-      case 9: // Hero Percentage Metric Card
-        return { background: 'linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95))', border: '1px solid rgba(14,165,233,0.3)', borderRadius: '22px' };
+        return { boxShadow: `0 0 20px ${catColor}35`, border: `1px solid ${catColor}50` };
       case 10: // ClickUp Vertical Accent Strip
-        return { background: 'rgba(30,41,59,0.65)', borderLeft: `6px solid ${catColor}`, borderRadius: '16px' };
-      case 1: // Glassmorphic Standard
+        return { borderLeft: `6px solid ${catColor}` };
+      case 8: // Compact Expandable Accordion Bar
       default:
-        return { background: 'rgba(30, 41, 59, 0.65)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '18px' };
+        return {};
     }
   };
 

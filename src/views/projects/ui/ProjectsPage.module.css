@@ -30,11 +30,17 @@
   transition: all 0.2s ease;
 }
 
+:global([data-theme="light"]) .filterBtn {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  color: #475569 !important;
+}
+
 .filterBtnActive {
-  background: linear-gradient(135deg, #0ea5e9, #2563eb);
-  border-color: transparent;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+  background: linear-gradient(135deg, #0ea5e9, #2563eb) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35) !important;
 }
 
 .projectsList {
@@ -45,12 +51,12 @@
 
 /* Common Card Base with theme support (Point 2: Light/Dark mode compatible) */
 .projectCardBase {
-  background: var(--glass-bg, var(--color-surface, rgba(30, 41, 59, 0.65)));
+  background: var(--color-surface, rgba(30, 41, 59, 0.65));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--glass-border, var(--color-border, rgba(255, 255, 255, 0.1)));
-  border-radius: 18px;
-  padding: 16px 18px;
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+  border-radius: 16px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -60,6 +66,12 @@
   overflow: hidden;
   box-shadow: var(--shadow-sm, 0 4px 12px rgba(0, 0, 0, 0.05));
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+:global([data-theme="light"]) .projectCardBase {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
 }
 
 .projectCardDragOver {
@@ -78,7 +90,7 @@
   box-sizing: border-box;
 }
 
-/* Strict title column flex truncation (Point 3 Fix) */
+/* Strict title column flex truncation */
 .projectTitleCol {
   display: flex;
   flex-direction: column;
@@ -110,6 +122,10 @@
   flex: 1;
 }
 
+:global([data-theme="light"]) .projectTitle {
+  color: #0f172a !important;
+}
+
 .overdueBadge {
   display: inline-flex;
   align-items: center;
@@ -127,10 +143,14 @@
 .progressBarTrack {
   height: 7px;
   border-radius: 4px;
-  background: var(--color-border, rgba(255, 255, 255, 0.08));
+  background: var(--color-border, rgba(255, 255, 255, 0.1));
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+
+:global([data-theme="light"]) .progressBarTrack {
+  background: rgba(0, 0, 0, 0.08) !important;
 }
 
 .progressBarFill {
@@ -177,6 +197,10 @@
   gap: 8px;
   padding-top: 10px;
   border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+}
+
+:global([data-theme="light"]) .subtaskList {
+  border-top-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 .emptyState {
