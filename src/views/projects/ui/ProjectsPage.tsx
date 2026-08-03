@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { useTaskStore, GlassmorphicTaskCard, getAllDescendantTasks } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
@@ -42,17 +42,33 @@ export const ProjectsPage: React.FC = () => {
     fetchTasks();
   }, [fetchTasks]);
 
+  const initialSetDoneRef = useRef(false);
+
+  // All parent tasks (both top-level projects and nested sub-projects)
+  const allParentTasks = useMemo(() => {
+    return tasks.filter((t) => t.hasSubtasks || tasks.some((sub) => sub.parentTaskId === t.id));
+  }, [tasks]);
+
   // Main / Parent tasks (hasSubtasks: true or has children)
   const projectTasks = useMemo(() => {
     return tasks.filter((t) => !t.parentTaskId && (t.hasSubtasks || tasks.some((sub) => sub.parentTaskId === t.id)));
   }, [tasks]);
 
-  // Expand all projects by default when loaded
+  // Expand all projects and sub-projects by default when loaded without wiping user toggles
   useEffect(() => {
-    if (projectTasks.length > 0) {
-      setOpenProjectIds(new Set(projectTasks.map((p) => p.id)));
+    if (allParentTasks.length > 0) {
+      setOpenProjectIds((prev) => {
+        const next = new Set(prev);
+        allParentTasks.forEach((p) => {
+          if (!initialSetDoneRef.current) {
+            next.add(p.id);
+          }
+        });
+        initialSetDoneRef.current = true;
+        return next;
+      });
     }
-  }, [projectTasks]);
+  }, [allParentTasks]);
 
   const toggleProjectOpen = (id: string) => {
     setOpenProjectIds((prev) => {
