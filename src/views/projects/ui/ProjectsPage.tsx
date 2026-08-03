@@ -198,7 +198,7 @@ export const ProjectsPage: React.FC = () => {
                 openProjectIds={openProjectIds}
                 todayStr={todayStr}
                 toggleProjectOpen={toggleProjectOpen}
-                onEdit={() => setEditingTask(project)}
+                onEdit={(taskToEdit) => setEditingTask(taskToEdit)}
                 onDragOver={(e) => handleDragOver(e, project.id)}
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, project.id)}
@@ -251,7 +251,7 @@ interface ProjectCardRendererProps {
   openProjectIds: Set<string>;
   todayStr: string;
   toggleProjectOpen: (id: string) => void;
-  onEdit: () => void;
+  onEdit: (task: Task) => void;
   onDragOver: (e: React.DragEvent) => void;
   onDragLeave: () => void;
   onDrop: (e: React.DragEvent) => void;
@@ -326,7 +326,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
             <span style={{ fontSize: '18px' }}>📂</span>
             <h2 className={styles.projectTitle} style={{ color: '#ffffff', fontWeight: 800 }}>{project.title}</h2>
           </div>
-          <button type="button" onClick={(e) => { e.stopPropagation(); onEdit(); }} style={{ background: 'rgba(0,0,0,0.3)', border: 'none', borderRadius: '6px', color: '#fff', padding: '4px 8px', cursor: 'pointer' }}>✏️</button>
+          <button type="button" onClick={(e) => { e.stopPropagation(); onEdit(project); }} style={{ background: 'rgba(0,0,0,0.3)', border: 'none', borderRadius: '6px', color: '#fff', padding: '4px 8px', cursor: 'pointer' }}>✏️</button>
         </div>
       )}
 
@@ -377,7 +377,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                onEdit();
+                onEdit(project);
               }}
               title="Редактировать проект"
               style={{
