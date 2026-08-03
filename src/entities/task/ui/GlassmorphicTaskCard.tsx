@@ -217,9 +217,9 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
 
   // Date badge: show scheduledDate, highlight overdue in red
   const todayStr = getTodayStr();
-  const showDateBadge = !hideDateBadge && !task.isRepeating && task.scheduledDate && task.scheduledDate !== '' && task.scheduledDate !== 'anytime' && !isDone;
-  const isOverdue = showDateBadge && task.scheduledDate! < todayStr;
-  const isToday = showDateBadge && task.scheduledDate === todayStr;
+  const showDateBadge = !hideDateBadge && task.scheduledDate && task.scheduledDate !== '' && task.scheduledDate !== 'anytime' && !isDone;
+  const isOverdue = Boolean(showDateBadge && task.scheduledDate && task.scheduledDate < todayStr);
+  const isToday = Boolean(showDateBadge && task.scheduledDate === todayStr);
   const dateBadgeLabel = (() => {
     if (!task.scheduledDate) return null;
     const parts = task.scheduledDate.split('-');

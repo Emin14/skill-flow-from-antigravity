@@ -394,7 +394,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         </div>
       )}
 
-      {/* Collapsible Subtasks List */}
+      {/* Collapsible Subtasks & Sub-Projects List (Point 2) */}
       {isOpen && (
         <div className={styles.subtaskList} style={variant === 6 ? { padding: '10px 18px 18px 18px' } : undefined}>
           {sortedSubtasks.length === 0 ? (
@@ -402,22 +402,164 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
               Нет подзадач в проекте (Перетащите сюда задачи).
             </div>
           ) : (
-            sortedSubtasks.map((subtask) => (
-              <GlassmorphicTaskCard
-                key={subtask.id}
-                task={subtask}
-                occurrenceDate={subtask.scheduledDate || todayStr}
-                allTasks={tasks}
-                showDragHandle={true}
-                parentPathVariant={0}
-                onToggleCheckbox={() => onToggleSubtask(subtask)}
-                onDelete={() => onDeleteSubtask(subtask)}
-                onClick={() => onSelectSubtask(subtask)}
-              />
-            ))
+            <RecursiveSubtaskList
+              parentId={project.id}
+              tasks={tasks}
+              openProjectIds={openProjectIds}
+              toggleProjectOpen={onToggleOpen}
+              onEdit={onEdit}
+              onToggleSubtask={onToggleSubtask}
+              onDeleteSubtask={onDeleteSubtask}
+              onSelectSubtask={onSelectSubtask}
+              todayStr={todayStr}
+            />
           )}
         </div>
       )}
+    </div>
+  );
+};
+
+const RecursiveSubtaskList: React.FC<{
+  parentId: string;
+  tasks: Task[];
+  openProjectIds: Set<string>;
+  toggleProjectOpen: (id: string) => void;
+  onEdit: (t: Task) => void;
+  onToggleSubtask: (t: Task) => void;
+  onDeleteSubtask: (t: Task) => void;
+  onSelectSubtask: (t: Task) => void;
+  todayStr: string;
+  depth?: number;
+}> = ({
+  parentId,
+  tasks,
+  openProjectIds,
+  toggleProjectOpen,
+  onEdit,
+  onToggleSubtask,
+  onDeleteSubtask,
+  onSelectSubtask,
+  todayStr,
+  depth = 0,
+}) => {
+  const children = tasks.filter((t) => t.parentTaskId === parentId);
+  if (children.length === 0) return null;
+
+  const sorted = [...children].sort((a, b) => {
+    if (!a.scheduledDate && !b.scheduledDate) return 0;
+    if (!a.scheduledDate) return 1;
+    if (!b.scheduledDate) return -1;
+    return a.scheduledDate.localeCompare(b.scheduledDate);
+  });
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginLeft: depth > 0 ? '16px' : '0' }}>
+      {sorted.map((child) => {
+        const hasChildTasks = tasks.some((t) => t.parentTaskId === child.id) || child.hasSubtasks;
+
+        if (hasChildTasks) {
+          const isSubProjectOpen = openProjectIds.has(child.id);
+          const subDescendants = getAllDescendantTasks(child.id, tasks);
+          const subDone = subDescendants.filter((t) => t.status === 'Done').length;
+          const subTotal = subDescendants.length;
+          const subPercent = subTotal > 0 ? Math.round((subDone / subTotal) * 100) : 0;
+          const subOverdue = subDescendants.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
+
+          return (
+            <div
+              key={child.id}
+              className={styles.projectCardBase}
+              style={{
+                borderRadius: '16px',
+                border: '1px solid rgba(14, 165, 233, 0.25)',
+                background: 'rgba(14, 165, 233, 0.04)',
+                padding: '12px 14px',
+                marginTop: '4px',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  cursor: 'pointer',
+                  gap: '8px',
+                }}
+                onClick={() => toggleProjectOpen(child.id)}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
+                  <span style={{ fontSize: '16px', flexShrink: 0 }}>📁</span>
+                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {child.title}
+                  </span>
+                  {subOverdue > 0 && (
+                    <span className={styles.overdueBadge} style={{ fontSize: '10px', padding: '1px 6px' }}>
+                      🚨 {subOverdue}
+                    </span>
+                  )}
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  {subTotal > 0 && (
+                    <span style={{ fontSize: '11px', color: '#10b981', fontWeight: 600 }}>
+                      {subDone}/{subTotal} ({subPercent}%)
+                    </span>
+                  )}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onEdit(child);
+                    }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: 'var(--color-text-muted)',
+                      cursor: 'pointer',
+                      fontSize: '14px',
+                    }}
+                  >
+                    ✏️
+                  </button>
+                  {isSubProjectOpen ? <ChevronDown size={16} color="#94a3b8" /> : <ChevronRight size={16} color="#94a3b8" />}
+                </div>
+              </div>
+
+              {isSubProjectOpen && (
+                <div style={{ marginTop: '10px' }}>
+                  <RecursiveSubtaskList
+                    parentId={child.id}
+                    tasks={tasks}
+                    openProjectIds={openProjectIds}
+                    toggleProjectOpen={toggleProjectOpen}
+                    onEdit={onEdit}
+                    onToggleSubtask={onToggleSubtask}
+                    onDeleteSubtask={onDeleteSubtask}
+                    onSelectSubtask={onSelectSubtask}
+                    todayStr={todayStr}
+                    depth={depth + 1}
+                  />
+                </div>
+              )}
+            </div>
+          );
+        }
+
+        return (
+          <GlassmorphicTaskCard
+            key={child.id}
+            task={child}
+            occurrenceDate={child.scheduledDate || todayStr}
+            allTasks={tasks}
+            showDragHandle={true}
+            parentPathVariant={0}
+            onToggleCheckbox={() => onToggleSubtask(child)}
+            onDelete={() => onDeleteSubtask(child)}
+            onClick={() => onSelectSubtask(child)}
+          />
+        );
+      })}
     </div>
   );
 };

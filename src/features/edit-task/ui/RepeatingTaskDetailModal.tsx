@@ -215,11 +215,18 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        {/* Modal Header Row 2: Date on Left, Streak on Right */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '10px', fontSize: '13.5px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        {/* Top-Right Dim Created Date (Point 3) */}
+        {masterTask.createdAt && (
+          <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', opacity: 0.55, textAlign: 'right', marginTop: '-6px', marginBottom: '-6px' }}>
+            Создано: {new Date(masterTask.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+          </div>
+        )}
+
+        {/* Modal Header Row 2: Prominent Scheduled Task Date on Left, Streak on Right (Point 3) */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '6px', fontSize: '13.5px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '4px 10px', borderRadius: '10px', background: 'rgba(14, 165, 233, 0.12)', border: '1px solid rgba(14, 165, 233, 0.3)' }}>
             <span>🗓</span>
-            <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{formattedDate}</span>
+            <span style={{ color: '#38bdf8', fontWeight: 700 }}>Дата задачи: {formattedDate}</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>

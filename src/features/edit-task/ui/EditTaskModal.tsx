@@ -270,6 +270,12 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
         <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column' }}>
           <div className={styles.modalBody}>
+            {/* Top-Right Dim Created Date (Point 3) */}
+            {task.createdAt && (
+              <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', opacity: 0.55, textAlign: 'right', marginBottom: '4px' }}>
+                Создано: {new Date(task.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+              </div>
+            )}
 
             {/* ── Title ────────────────────────────────────────────── */}
             <Input
