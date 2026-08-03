@@ -235,18 +235,18 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         const legacySeriesId = (t as { seriesId?: string }).seriesId;
         const key = legacySeriesId || (t.isRepeating ? t.title.toLowerCase().trim() : t.id);
         if (!cleanedMap.has(key)) {
-          const occurrences: TaskOccurrence[] = t.occurrences || [];
-          if (t.isRepeating && occurrences.length === 0) {
-            occurrences.push({
+          const rawOccs: TaskOccurrence[] = t.occurrences || [];
+          if (t.isRepeating && rawOccs.length === 0) {
+            rawOccs.push({
               id: uuidv4(),
               taskId: t.id,
-              date: t.scheduledDate || new Date().toISOString().split('T')[0],
+              date: t.scheduledDate || getTodayStr(),
               status: t.status || 'Todo',
               completedAt: t.completedAt,
               smartRating: t.lastSmartRating,
             });
           }
-          cleanedMap.set(key, { ...t, occurrences });
+          cleanedMap.set(key, { ...t, occurrences: rawOccs });
         } else {
           const existing = cleanedMap.get(key)!;
           const mergedOccurrences: TaskOccurrence[] = [
@@ -268,25 +268,35 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             }
           }
 
-          mergedOccurrences.sort((a, b) => a.date.localeCompare(b.date));
-          const doneCount = mergedOccurrences.filter((o) => o.status === 'Done').length;
-
           cleanedMap.set(key, {
             ...existing,
-            repetitionsCount: Math.max(existing.repetitionsCount || 0, doneCount),
             occurrences: mergedOccurrences,
           });
         }
       }
 
-      set({ tasks: Array.from(cleanedMap.values()), isLoading: false });
+      // ARCHITECTURE VARIANT A: Run every repeating task through normalizeOccurrences
+      const finalTasks = Array.from(cleanedMap.values()).map((t) => {
+        if (!t.isRepeating) return t;
+        const normOccs = normalizeOccurrences(t.occurrences, t.id);
+        const derivedDate = getDerivedScheduledDate({ ...t, occurrences: normOccs });
+        const derivedDoneCount = getDerivedRepetitionsCount({ ...t, occurrences: normOccs });
+        return {
+          ...t,
+          occurrences: normOccs,
+          scheduledDate: derivedDate,
+          repetitionsCount: derivedDoneCount,
+        };
+      });
+
+      set({ tasks: finalTasks, isLoading: false });
     } catch (e) {
       set({ error: (e as Error).message, isLoading: false });
     }
   },
 
   addTask: async (titleOrParams: string | AddTaskParams, priorityFallback: TaskPriority = 'P3') => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = getTodayStr();
     const taskId = uuidv4();
     let newTask: Task;
 
@@ -329,7 +339,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       const effectiveIsRepeating = effectiveHasSubtasks ? false : (isRepeating && repetitionMode !== 'none');
       const effectiveMode: RepetitionMode = effectiveIsRepeating ? (repetitionMode === 'none' ? 'spaced' : repetitionMode) : 'none';
 
-      const occurrences: TaskOccurrence[] = effectiveIsRepeating
+      const rawOccs: TaskOccurrence[] = effectiveIsRepeating
         ? [
             {
               id: uuidv4(),
@@ -340,13 +350,15 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           ]
         : [];
 
+      const normOccs = normalizeOccurrences(rawOccs, taskId);
+
       newTask = {
         id: taskId,
         title,
         status: 'Todo',
         priority: 'P3',
         category,
-        scheduledDate,
+        scheduledDate: effectiveIsRepeating ? (normOccs[0]?.date || scheduledDate) : scheduledDate,
         description,
         link,
         parentTaskId,
@@ -359,7 +371,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         hasSubtasks: effectiveHasSubtasks,
         targetRepetitions,
         repetitionsCount: 0,
-        occurrences,
+        occurrences: normOccs,
         createdAt: new Date().toISOString(),
         pomodorosCount: 1,
         totalActiveSeconds: 0,
