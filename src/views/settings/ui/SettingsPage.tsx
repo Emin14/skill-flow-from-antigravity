@@ -21,12 +21,8 @@ const colorPalettes = [
   { name: 'Бирюзовый (Aqua / Cyan)', hex: '#47b8c4' },
   { name: 'Изумрудный (Dark Emerald)', hex: '#10b981' },
   { name: 'Салатовый (Spring)', hex: '#84cc16' },
-  { name: 'Ярко-оранжевый (Dark Amber)', hex: '#ff6b00' },
   { name: 'Солнечно-янтарный (Sunshine)', hex: '#f59e0b' },
-  { name: 'Кораллово-красный (Сегодня Red)', hex: '#ef4444' },
   { name: 'Розово-персиковый (Peach)', hex: '#f43f5e' },
-  { name: 'Сиреневый (Lilac Violet)', hex: '#8b5cf6' },
-  { name: 'Пурпурный (Magenta)', hex: '#d946ef' },
 ];
 
 export const SettingsPage: React.FC = () => {
