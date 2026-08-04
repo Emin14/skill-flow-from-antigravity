@@ -15,15 +15,17 @@ import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 
 const colorPalettes = [
   { name: 'Индиго (Aura)', hex: '#6366f1' },
-  { name: 'Сапфировый / Голубой', hex: '#3b82f6' },
-  { name: 'Изумрудный', hex: '#10b981' },
-  { name: 'Ярко-оранжевый', hex: '#ff6b00' },
-  { name: 'Розовый', hex: '#f43f5e' },
-  { name: 'Янтарный', hex: '#f59e0b' },
-  { name: 'Аквамарин', hex: '#06b6d4' },
-  { name: 'Неоновый голубой', hex: '#30b5ff' },
-  { name: 'Аметистовый', hex: '#8b5cf6' },
-  { name: 'Салатовый', hex: '#84cc16' },
+  { name: 'Сапфировый (Default / Sky Blue)', hex: '#3b82f6' },
+  { name: 'Небесно-голубой (iCloud)', hex: '#38a5f8' },
+  { name: 'Бирюзовый (Aqua / Cyan)', hex: '#47b8c4' },
+  { name: 'Изумрудный (Dark Emerald)', hex: '#10b981' },
+  { name: 'Салатовый (Spring)', hex: '#84cc16' },
+  { name: 'Ярко-оранжевый (Dark Amber)', hex: '#ff6b00' },
+  { name: 'Солнечно-янтарный (Sunshine)', hex: '#f59e0b' },
+  { name: 'Кораллово-красный (Сегодня Red)', hex: '#ef4444' },
+  { name: 'Розово-персиковый (Peach)', hex: '#f43f5e' },
+  { name: 'Сиреневый (Lilac Violet)', hex: '#8b5cf6' },
+  { name: 'Пурпурный (Magenta)', hex: '#d946ef' },
 ];
 
 export const SettingsPage: React.FC = () => {
