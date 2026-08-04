@@ -38,6 +38,19 @@ export const TopBar: React.FC = () => {
     month: 'long',
   });
 
+  const handleSettingsToggle = () => {
+    if (pathname === '/settings') {
+      const prev = typeof window !== 'undefined' ? sessionStorage.getItem('pre_settings_path') : null;
+      const target = prev && prev !== '/settings' ? prev : '/today';
+      router.push(target);
+    } else {
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('pre_settings_path', pathname);
+      }
+      router.push('/settings');
+    }
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.titleWrapper}>
@@ -77,8 +90,8 @@ export const TopBar: React.FC = () => {
         </button>
 
         <button
-          onClick={() => router.push('/settings')}
-          title="Открыть Настройки"
+          onClick={handleSettingsToggle}
+          title={pathname === '/settings' ? "Вернуться назад" : "Открыть Настройки"}
           aria-label="Настройки"
           style={{
             background: 'rgba(255, 255, 255, 0.06)',

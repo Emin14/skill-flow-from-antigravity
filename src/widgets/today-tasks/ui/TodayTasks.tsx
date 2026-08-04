@@ -8,7 +8,7 @@ import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
-import { getTodayStr } from '@/shared/lib/dateUtils';
+import { getTodayStr, isSmartRepeatTask } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { useTaskModals } from '@/shared/hooks/useTaskModals';
 import { useMidnightRefresh } from '@/shared/hooks/useMidnightRefresh';
@@ -124,7 +124,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
     const isDoneNow = getTaskStatusForToday(task) === 'Done';
     if (isDoneNow) {
       toggleTaskStatus(task.id, undefined, todayStr);
-    } else if (task.isRepeating || task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
+    } else if (isSmartRepeatTask(task)) {
       openSmartModal(task);
     } else {
       toggleTaskStatus(task.id, undefined, todayStr);
@@ -434,19 +434,6 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      {/* Column Title Drop Header */}
-      <div
-        data-drop-status={targetStatus}
-        className={`${styles.sectionHeaderDropTitle} ${isHeaderDragOver ? styles.sectionHeaderDropTitleDragOver : ''}`}
-        onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setIsHeaderDragOver(true); }}
-        onDragLeave={(e) => { e.preventDefault(); e.stopPropagation(); setIsHeaderDragOver(false); }}
-        onDrop={handleHeaderDrop}
-        title="Перетащите задачу на этот заголовок для смены статуса"
-      >
-        <span>{statusTitleText} ({tasksList.length})</span>
-        <span style={{ fontSize: '10px', opacity: 0.6 }}>Drag & Drop сюда</span>
-      </div>
-
       {tasksList.length === 0 ? (
         <div style={{ padding: '16px', textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', border: '1px dashed rgba(255,255,255,0.1)', borderRadius: '12px' }}>
           В этой колонке нет задач. Перетащите задачу сюда.

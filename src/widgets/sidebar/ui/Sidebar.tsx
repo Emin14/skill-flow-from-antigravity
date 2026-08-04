@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useQuickCreateModalStore } from '@/features/quick-create';
 import styles from './Sidebar.module.css';
 
@@ -27,6 +27,7 @@ const navItems: NavItem[] = [
 
 export const Sidebar: React.FC = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const openModal = useQuickCreateModalStore((s) => s.openModal);
 
@@ -64,6 +65,37 @@ export const Sidebar: React.FC = () => {
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href === '/today' && pathname === '/');
 
+          if (item.href === '/settings') {
+            return (
+              <button
+                key={item.href}
+                type="button"
+                onClick={() => {
+                  if (pathname === '/settings') {
+                    const prev = typeof window !== 'undefined' ? sessionStorage.getItem('pre_settings_path') : null;
+                    const target = prev && prev !== '/settings' ? prev : '/today';
+                    router.push(target);
+                  } else {
+                    if (typeof window !== 'undefined') {
+                      sessionStorage.setItem('pre_settings_path', pathname);
+                    }
+                    router.push('/settings');
+                  }
+                }}
+                title={isCollapsed ? item.label : undefined}
+                className={`
+                  ${styles.navItem} 
+                  ${isCollapsed ? styles.navItemCollapsed : ''} 
+                  ${isActive ? styles.navItemActive : ''}
+                `}
+                style={{ background: 'none', border: 'none', width: '100%', textAlign: 'left', cursor: 'pointer' }}
+              >
+                <span style={{ fontSize: '18px' }}>{item.icon}</span>
+                {!isCollapsed && <span>{item.label}</span>}
+              </button>
+            );
+          }
+
           return (
             <Link
               key={item.href}
@@ -74,6 +106,11 @@ export const Sidebar: React.FC = () => {
                 ${isCollapsed ? styles.navItemCollapsed : ''} 
                 ${isActive ? styles.navItemActive : ''}
               `}
+              onClick={() => {
+                if (pathname !== '/settings' && typeof window !== 'undefined') {
+                  sessionStorage.setItem('pre_settings_path', pathname);
+                }
+              }}
             >
               <span style={{ fontSize: '18px' }}>{item.icon}</span>
               {!isCollapsed && <span>{item.label}</span>}

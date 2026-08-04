@@ -7,7 +7,7 @@ import { SmartRating } from '@/shared/config/repetitionRules';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
-import { getTodayStr, formatSelectedDateTitle, formatDateStr } from '@/shared/lib/dateUtils';
+import { getTodayStr, formatSelectedDateTitle, formatDateStr, isSmartRepeatTask } from '@/shared/lib/dateUtils';
 import { MonthCalendarWidget } from '@/widgets/month-calendar/ui/MonthCalendarWidget';
 import styles from './CalendarPage.module.css';
 
@@ -111,7 +111,7 @@ export const CalendarPage: React.FC = () => {
 
     if (isDone) {
       toggleTaskStatus(task.id, undefined, selectedDate);
-    } else if (task.isRepeating || task.repetitionMode === 'smart' || task.repetitionMode === 'spaced') {
+    } else if (isSmartRepeatTask(task)) {
       setSmartTask(task);
     } else {
       toggleTaskStatus(task.id, undefined, selectedDate);

@@ -76,3 +76,18 @@ export const formatSelectedDateTitle = (dateStr: string): string => {
     year: 'numeric',
   });
 };
+
+/**
+ * Проверяет, относится ли задача к адаптивному Умному повтору (smart).
+ * Только для таких задач при выполнении чекбоксом должна выпадать оценка сложности (SmartRatingModal).
+ * Для интервального (spaced), по расписанию (schedule), через N дней (after_completion) окно НЕ выпадает.
+ */
+export const isSmartRepeatTask = (task: {
+  isRepeating?: boolean;
+  repetitionMode?: string;
+  repeatConfig?: { repeatType?: string };
+}): boolean => {
+  const mode = task.repetitionMode;
+  const type = task.repeatConfig?.repeatType;
+  return mode === 'smart' || type === 'smart';
+};

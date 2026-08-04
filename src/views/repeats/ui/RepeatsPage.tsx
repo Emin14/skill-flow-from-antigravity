@@ -132,6 +132,30 @@ const formatRepetitionCount = (count: number): { numStr: string; textStr: string
   return { numStr: String(count), textStr: word };
 };
 
+const getRepeatTypeLabel = (task: Task): string => {
+  const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
+  switch (mode) {
+    case 'smart':
+      return '🧠 Умный адаптивный повтор';
+    case 'spaced':
+      return '🧠 Интервальный повтор';
+    case 'schedule': {
+      const freqMap: Record<string, string> = {
+        daily: 'Каждый день',
+        weekly: 'Каждую неделю',
+        monthly: 'Каждый месяц',
+        yearly: 'Каждый год',
+      };
+      const freq = freqMap[task.scheduleFrequency || ''] || 'По расписанию';
+      return `📅 ${freq}`;
+    }
+    case 'after_completion':
+      return `⏱ Через ${task.afterCompletionDays || 3} дн. после выполнения`;
+    default:
+      return '🔁 Повторение';
+  }
+};
+
 const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }) => {
   const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
   const occurrences = useMemo(() => {
@@ -245,6 +269,11 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
 
       {/* Timeline Track */}
       <div className={styles.timelineTrackContainer}>
+        {/* Repeat Type Label where red cross mark was placed */}
+        <div style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.45)', marginBottom: '8px', fontWeight: 500 }}>
+          {getRepeatTypeLabel(task)}
+        </div>
+
         <div className={styles.timelineTrack}>
           {/* Connector Bar behind nodes */}
           <div className={styles.connectorLine}>
