@@ -164,7 +164,7 @@
   padding: 2px 7px;
   border-radius: 6px;
   background: var(--widget-custom-accent, var(--color-accent));
-  color: #ffffff; /* on solid accent — always white */
+  color: var(--color-accent-on-accent);
   font-size: 10.5px;
   font-weight: 800;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);

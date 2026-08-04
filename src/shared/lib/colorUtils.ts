@@ -1,7 +1,8 @@
 'use client';
 
 /**
- * Calculates contrasting text color (black or white) ON TOP of a solid background button of `hex`.
+ * Calculates contrasting text color (#0f172a or #ffffff) ON TOP of a solid accent element of `hex`.
+ * Uses WCAG 2.1 relative luminance calculation.
  */
 export const getContrastingTextColor = (hex: string): string => {
   const cleanHex = hex.replace('#', '');
@@ -9,9 +10,17 @@ export const getContrastingTextColor = (hex: string): string => {
   const r = parseInt(cleanHex.substring(0, 2), 16);
   const g = parseInt(cleanHex.substring(2, 4), 16);
   const b = parseInt(cleanHex.substring(4, 6), 16);
-  // Relative luminance (WCAG Standard)
-  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-  return yiq >= 150 ? '#0f172a' : '#ffffff';
+
+  // Relative luminance (WCAG Standard formula)
+  const sR = r / 255;
+  const sG = g / 255;
+  const sB = b / 255;
+  const R = sR <= 0.03928 ? sR / 12.92 : Math.pow((sR + 0.055) / 1.055, 2.4);
+  const G = sG <= 0.03928 ? sG / 12.92 : Math.pow((sG + 0.055) / 1.055, 2.4);
+  const B = sB <= 0.03928 ? sB / 12.92 : Math.pow((sB + 0.055) / 1.055, 2.4);
+  const L = 0.2126 * R + 0.7152 * G + 0.0722 * B;
+
+  return L > 0.45 ? '#0f172a' : '#ffffff';
 };
 
 /**
@@ -41,24 +50,32 @@ export const getReadableAccentTextColor = (hex: string, isLight: boolean): strin
   }
 
   const hueDeg = Math.round(h * 360);
+  const satPercent = Math.round(s * 100);
 
   if (isLight) {
-    // Light surface (#ffffff / #f8fafc): Lightness must be low (25% - 40%) for 4.5:1+ contrast
-    const targetL = Math.min(l, 0.38);
-    return `hsl(${hueDeg}, ${Math.round(s * 100)}%, ${Math.round(targetL * 100)}%)`;
+    // Light surface (#ffffff / #f8fafc): Lightness must be low (22% - 32%) for WCAG 4.5:1+ contrast
+    const targetL = Math.min(l, 0.30);
+    const minSat = Math.max(satPercent, 65);
+    return `hsl(${hueDeg}, ${minSat}%, ${Math.round(targetL * 100)}%)`;
   } else {
-    // Dark surface (#0f172a / #1e293b): Lightness must be high (60% - 75%) for 4.5:1+ contrast
-    const targetL = Math.max(l, 0.62);
-    return `hsl(${hueDeg}, ${Math.round(s * 100)}%, ${Math.round(targetL * 100)}%)`;
+    // Dark surface (#0f172a / #1e293b): Lightness must be high (65% - 75%) for WCAG 4.5:1+ contrast
+    const targetL = Math.max(l, 0.65);
+    const minSat = Math.max(satPercent, 70);
+    return `hsl(${hueDeg}, ${minSat}%, ${Math.round(targetL * 100)}%)`;
   }
 };
 
+/**
+ * Systemic Accent Token Injector — computes and sets all dynamic accent tokens
+ * on documentElement without any theme conditional hacks in components.
+ */
 export const applyAccentColorVars = (hex: string) => {
   if (typeof window === 'undefined') return;
   const root = document.documentElement;
   const isLight = root.getAttribute('data-theme') === 'light';
 
   root.style.setProperty('--color-accent', hex);
+  localStorage.setItem('user-accent-color', hex);
 
   const cleanHex = hex.replace('#', '');
   if (cleanHex.length === 6) {
@@ -67,17 +84,19 @@ export const applyAccentColorVars = (hex: string) => {
     const b = parseInt(cleanHex.substring(4, 6), 16);
 
     // Soft accent background (chips, selected items, progress track)
-    root.style.setProperty('--color-accent-light', `rgba(${r}, ${g}, ${b}, 0.14)`);
+    root.style.setProperty('--color-accent-light', `rgba(${r}, ${g}, ${b}, ${isLight ? 0.12 : 0.16})`);
     // Accent-tinted border / focus ring
-    root.style.setProperty('--color-accent-border', `rgba(${r}, ${g}, ${b}, 0.30)`);
+    root.style.setProperty('--color-accent-border', `rgba(${r}, ${g}, ${b}, ${isLight ? 0.28 : 0.35})`);
 
-    // --color-accent-text: readable accent color ON neutral surfaces (WCAG AA, no if-theme checks)
-    // Dark surface: hue preserved, L pushed to ≥ 65%
-    // Light surface: hue preserved, L pushed to ≤ 38%
+    // --color-accent-text: readable accent color ON neutral surfaces (WCAG AA, no component hacks)
     const readableAccentText = getReadableAccentTextColor(hex, isLight);
     root.style.setProperty('--color-accent-text', readableAccentText);
 
-    // Hover state: darken the accent slightly
+    // --color-accent-on-accent: high contrast text ON TOP OF solid accent elements (buttons, active tabs)
+    const onAccentText = getContrastingTextColor(hex);
+    root.style.setProperty('--color-accent-on-accent', onAccentText);
+
+    // Hover state: adjust accent brightness
     const darkenFactor = isLight ? 0.85 : 0.9;
     const rH = Math.round(r * darkenFactor);
     const gH = Math.round(g * darkenFactor);

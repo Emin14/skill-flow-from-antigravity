@@ -110,10 +110,10 @@
 
 /* Prominent Glowing Active Date Selection Highlight */
 .dateCellActive {
-  background: var(--color-accent, #6366f1) !important;
-  color: #ffffff !important;
+  background: var(--color-accent) !important;
+  color: var(--color-accent-on-accent) !important;
   font-weight: 800 !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 6px 18px var(--color-accent-border) !important;
   transform: scale(1.06);
   border: 1.5px solid var(--color-accent) !important;
   z-index: 5;
@@ -136,11 +136,11 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #38bdf8;
+  background-color: var(--color-accent);
 }
 
 .dotDone {
-  background-color: #10b981;
+  background-color: var(--color-success);
 }
 
 .selectedDayCard {
@@ -212,9 +212,9 @@
   justify-content: space-between;
   padding: 10px 14px;
   border-radius: 16px;
-  background: var(--glass-bg, var(--color-surface, rgba(30, 41, 59, 0.7)));
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
-  box-shadow: var(--shadow-sm, 0 4px 14px rgba(0, 0, 0, 0.08));
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
   backdrop-filter: blur(8px);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -222,19 +222,19 @@
 
 .agendaTaskCard:hover {
   transform: translateY(-1px);
-  border-color: rgba(14, 165, 233, 0.5);
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.18);
+  border-color: var(--color-accent-border);
+  box-shadow: 0 6px 20px var(--color-accent-light);
 }
 
 :global([data-theme="light"]) .agendaTaskCard {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
 }
 
 :global([data-theme="light"]) .agendaTaskCard:hover {
-  border-color: #0ea5e9 !important;
-  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.2) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 6px 18px var(--color-accent-light) !important;
 }
 
 .agendaTaskCardDone {
@@ -259,8 +259,8 @@
   font-size: 11px;
   padding: 3px 8px;
   border-radius: 10px;
-  background: rgba(14, 165, 233, 0.15);
-  color: #38bdf8;
+  background: var(--color-accent-light);
+  color: var(--color-accent-text);
   font-weight: 600;
   display: inline-flex;
   align-items: center;

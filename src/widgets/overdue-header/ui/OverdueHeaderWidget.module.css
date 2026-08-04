@@ -82,7 +82,7 @@
 .bulkActionBtn:hover {
   background: var(--widget-custom-accent, var(--color-accent));
   border-color: var(--widget-custom-accent, var(--color-accent));
-  color: #ffffff;
+  color: var(--color-accent-on-accent);
   box-shadow: 0 0 12px var(--color-accent-light);
 }
 
@@ -90,12 +90,12 @@
 :global([data-theme="light"]) .bulkActionBtn {
   background: var(--color-accent-light);
   border-color: var(--color-accent-border);
-  color: var(--widget-custom-accent, var(--color-accent));
+  color: var(--widget-custom-accent, var(--color-accent-text));
 }
 
 :global([data-theme="light"]) .bulkActionBtn:hover {
   background: var(--widget-custom-accent, var(--color-accent));
   border-color: var(--widget-custom-accent, var(--color-accent));
-  color: #ffffff;
+  color: var(--color-accent-on-accent);
   box-shadow: 0 4px 14px var(--color-accent-light);
 }

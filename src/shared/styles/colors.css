@@ -28,6 +28,8 @@
   --color-accent-border: rgba(99, 102, 241, 0.30);
   /* Readable accent text on dark surface — WCAG AA: hue preserved, L ≥ 65%   */
   --color-accent-text: #818cf8;
+  /* Text color ON TOP of solid accent elements (#ffffff or #0f172a depending on accent luminance) */
+  --color-accent-on-accent: #ffffff;
 
   --color-success: #10b981;
   --color-success-light: rgba(16, 185, 129, 0.13);
@@ -50,12 +52,12 @@
   --color-surface-hover: rgba(0, 0, 0, 0.04);
   --color-surface-active: rgba(0, 0, 0, 0.08);
 
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-border-hover: rgba(0, 0, 0, 0.16);
+  --color-border: rgba(0, 0, 0, 0.10);
+  --color-border-hover: rgba(0, 0, 0, 0.18);
 
   --color-text-primary: #0f172a;
-  --color-text-secondary: #334155;
-  --color-text-muted: #64748b;
+  --color-text-secondary: #1e293b;
+  --color-text-muted: #475569;   /* High WCAG AA contrast (7.0:1 ratio on #ffffff) */
   --color-text-disabled: #94a3b8;
 
   /* Scoped Task Card Tokens (Isolated from global surface overrides) */
@@ -68,8 +70,9 @@
   --color-accent-hover: #4338ca;
   --color-accent-light: rgba(79, 70, 229, 0.10);
   --color-accent-border: rgba(79, 70, 229, 0.25);
-  /* Readable accent text on light surface — WCAG AA: hue preserved, L ≤ 35%  */
+  /* Readable accent text on light surface — WCAG AA: hue preserved, L ≤ 30%  */
   --color-accent-text: #3730a3;
+  --color-accent-on-accent: #ffffff;
 
   --color-success: #059669;
   --color-success-light: rgba(5, 150, 105, 0.10);

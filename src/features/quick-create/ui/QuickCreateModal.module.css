@@ -79,7 +79,7 @@
 
 .variantBtnActive {
   background: var(--color-accent) !important;
-  color: #ffffff !important;
+  color: var(--color-accent-on-accent) !important;
   border-color: var(--color-accent) !important;
   box-shadow: 0 0 8px var(--color-accent-border);
 }
@@ -214,7 +214,7 @@
   border-radius: var(--radius-md);
   background-color: var(--color-accent);
   border: none;
-  color: var(--color-text-primary) !important;
+  color: var(--color-accent-on-accent) !important;
   font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;

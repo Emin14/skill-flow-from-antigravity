@@ -68,18 +68,18 @@
 /* Active Filter Tab Styling - Crisp Contrast */
 .filterBtnActive {
   background: var(--color-accent) !important;
-  color: var(--color-accent-text) !important;
+  color: var(--color-accent-on-accent) !important;
   border-color: var(--color-accent) !important;
   box-shadow: 0 4px 12px var(--color-accent-border) !important;
 }
 
 .filterBtnActive span {
-  color: var(--color-accent-text) !important;
+  color: var(--color-accent-on-accent) !important;
   font-weight: 700 !important;
 }
 
 .filterBtnActive svg {
-  color: var(--color-accent-text) !important;
+  color: var(--color-accent-on-accent) !important;
 }
 
 /* 4 Equal Columns Grid Track (Fits 100% inside card on mobile) */
@@ -122,15 +122,15 @@
 
 :global([data-theme="light"]) .filterBtnActive {
   background: var(--color-accent) !important;
-  color: var(--color-accent-text) !important;
+  color: var(--color-accent-on-accent) !important;
   border-color: var(--color-accent) !important;
   box-shadow: 0 4px 12px var(--color-accent-border) !important;
 }
 
 :global([data-theme="light"]) .filterBtnActive span {
-  color: var(--color-accent-text) !important;
+  color: var(--color-accent-on-accent) !important;
 }
 
 :global([data-theme="light"]) .filterBtnActive svg {
-  color: var(--color-accent-text) !important;
+  color: var(--color-accent-on-accent) !important;
 }

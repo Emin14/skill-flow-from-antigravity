@@ -1,6 +1,7 @@
 import { applyIdealWidgetCandidate } from '@/shared/config/idealWidgetThemes';
 import { applyCategoryTextTheme, applyCardBgTheme } from '@/shared/config/categoryColors';
 import { applyProgressWidgetStyle } from '@/shared/config/progressWidgetThemes';
+import { applyAccentColorVars } from '@/shared/lib/colorUtils';
 
 export interface AppThemePreset {
   id: string;
@@ -52,6 +53,10 @@ export const applyAppThemePreset = (themeId: string) => {
   root.setAttribute('data-theme', preset.category);
   localStorage.setItem('app-preset-theme-id', preset.id);
   localStorage.setItem('app-theme', preset.category);
+
+  // Пересчет динамических акцентных токенов под новую категорию темы (light/dark)
+  const currentAccent = localStorage.getItem('user-accent-color') || '#6366f1';
+  applyAccentColorVars(currentAccent);
 
   // Применение идеального варианта виджета под данную тему
   applyIdealWidgetCandidate(preset.id);

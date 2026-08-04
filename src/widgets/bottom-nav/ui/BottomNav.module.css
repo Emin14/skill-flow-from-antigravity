@@ -67,7 +67,7 @@
     height: 48px;
     border-radius: 50%;
     background: var(--color-accent) !important;
-    color: #ffffff; /* always white on solid accent */
+    color: var(--color-accent-on-accent);
     border: 3px solid var(--color-bg);
     display: flex;
     align-items: center;
