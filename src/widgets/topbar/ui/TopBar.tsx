@@ -71,7 +71,7 @@ export const TopBar: React.FC = () => {
           aria-label="Смена темы"
           className={styles.iconActionBtn}
         >
-          {theme === 'dark' ? '🌙 Ночь' : '☀️ День'}
+          {theme === 'dark' ? '🌙' : '☀️'}
         </button>
 
         <button
