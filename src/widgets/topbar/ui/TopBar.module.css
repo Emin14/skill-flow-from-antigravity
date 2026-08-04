@@ -46,11 +46,11 @@
 
 /* High Contrast Header Control Buttons (Dark / Light day-night adaptation) */
 .iconActionBtn {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--color-border);
+  border: 1px solid var(--color-border-hover);
   border-radius: var(--radius-full);
   padding: 6px 12px;
-  color: #ffffff !important;
+  color: var(--color-text-primary) !important;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -65,21 +65,21 @@
 }
 
 .iconActionBtn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: var(--color-border-hover);
+  border-color: var(--color-surface-active);
   transform: translateY(-1px);
 }
 
 :global([data-theme="light"]) .iconActionBtn {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.12);
-  color: #0f172a !important;
+  background: var(--color-surface-hover);
+  border-color: var(--color-border);
+  color: var(--color-text-primary) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 :global([data-theme="light"]) .iconActionBtn:hover {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.2);
+  background: var(--color-border);
+  border-color: var(--color-border-hover);
 }
 
 .iconRoundBtn {

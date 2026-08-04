@@ -13,12 +13,12 @@
 
 /* Green Glow for Completed Subtasks Container */
 .taskCardGlowContainer {
-  border: 1px solid rgba(16, 185, 129, 0.5) !important;
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.3) !important;
+  border: 1px solid var(--color-success-border) !important;
+  box-shadow: 0 0 16px var(--color-success-border) !important;
 }
 
 .taskCardDropTarget {
-  box-shadow: 0 0 0 2px #0ea5e9;
+  box-shadow: 0 0 0 2px var(--color-accent);
   border-radius: 16px;
 }
 
@@ -30,7 +30,7 @@
   right: 0;
   width: 80px;
   background-color: var(--color-danger);
-  color: #ffffff;
+  color: var(--color-text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,9 +65,9 @@
   justify-content: space-between;
   padding: 10px 14px;
   border-radius: 16px;
-  background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.12));
-  box-shadow: var(--shadow-sm, 0 4px 14px rgba(0, 0, 0, 0.08));
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
   backdrop-filter: blur(8px);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -77,16 +77,16 @@
 }
 
 :global([data-card-frameless-neon="true"]) .cardPill {
-  background: rgba(255, 255, 255, 0.03) !important;
-  border: 1px solid var(--color-accent-border, rgba(255, 255, 255, 0.12)) !important;
-  box-shadow: 0 4px 16px var(--color-accent-light, rgba(99, 102, 241, 0.15)) !important;
+  background: var(--color-surface-hover) !important;
+  border: 1px solid var(--color-accent-border) !important;
+  box-shadow: 0 4px 16px var(--color-accent-light) !important;
   backdrop-filter: blur(12px) !important;
 }
 
 .cardPill:hover {
   transform: translateY(-1px);
-  border-color: var(--color-accent, #0ea5e9);
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.18);
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 20px var(--color-accent-border);
 }
 
 .taskDone {
@@ -146,21 +146,21 @@
 }
 
 .categoryText {
-  color: var(--category-text-color, #fbbf24);
+  color: var(--category-text-color, var(--color-accent-text));
   font-weight: 500;
 }
 
 :global([data-theme="light"]) .categoryText {
-  color: var(--category-text-color, #b45309);
+  color: var(--category-text-color, var(--color-accent-text));
 }
 
 .repeatTag {
-  color: var(--repeat-tag-color, #38bdf8);
+  color: var(--repeat-tag-color, var(--color-accent-text));
   font-weight: 600;
 }
 
 :global([data-theme="light"]) .repeatTag {
-  color: var(--repeat-tag-color, #0369a1);
+  color: var(--repeat-tag-color, var(--color-accent-text));
 }
 
 .dateBadge {
@@ -171,7 +171,7 @@
   font-weight: 600;
   padding: 1px 5px;
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--color-border);
   letter-spacing: 0.01em;
   white-space: nowrap;
   transition: all 0.2s ease;
@@ -179,27 +179,27 @@
 }
 
 .dateBadgeOverdue {
-  color: #ef4444 !important;
-  border-color: rgba(239, 68, 68, 0.4) !important;
-  background-color: rgba(239, 68, 68, 0.1) !important;
+  color: var(--color-danger) !important;
+  border-color: var(--color-danger-border) !important;
+  background-color: var(--color-danger-light) !important;
 }
 
 :global([data-theme="light"]) .dateBadgeOverdue {
-  color: #dc2626 !important;
-  border-color: rgba(220, 38, 38, 0.35) !important;
-  background-color: rgba(220, 38, 38, 0.08) !important;
+  color: var(--color-danger) !important;
+  border-color: var(--color-danger-border) !important;
+  background-color: var(--color-danger-light) !important;
 }
 
 .dateBadgeToday {
-  color: #f59e0b !important;
-  border-color: rgba(245, 158, 11, 0.4) !important;
-  background-color: rgba(245, 158, 11, 0.1) !important;
+  color: var(--color-warning) !important;
+  border-color: var(--color-warning-border) !important;
+  background-color: var(--color-warning-light) !important;
 }
 
 :global([data-theme="light"]) .dateBadgeToday {
-  color: #b45309 !important;
-  border-color: rgba(180, 83, 9, 0.35) !important;
-  background-color: rgba(180, 83, 9, 0.08) !important;
+  color: var(--color-warning) !important;
+  border-color: var(--color-warning-border) !important;
+  background-color: var(--color-warning-light) !important;
 }
 
 /* Drag Handle Top */
@@ -222,7 +222,7 @@
 .dragHandle:hover {
   opacity: 1;
   color: var(--color-text-primary);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--color-surface-hover);
 }
 
 .dragHandle:active {
@@ -243,11 +243,11 @@
   position: absolute;
   font-size: 8px;
   font-weight: 700;
-  color: #38bdf8;
+  color: var(--color-accent-text);
 }
 
 :global([data-theme="light"]) .progressRingText {
-  color: #0369a1;
+  color: var(--color-accent-text);
 }
 
 /* Prompt Banner when all subtasks of container are done */
@@ -259,18 +259,18 @@
   padding: 8px 12px;
   margin-top: 6px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  color: #10b981;
+  background: linear-gradient(135deg, var(--color-success-light) 0%, var(--color-surface-hover) 100%);
+  border: 1px solid var(--color-success-border);
+  color: var(--color-success);
   font-size: 12px;
   font-weight: 600;
   transition: all 0.2s ease;
 }
 
 :global([data-theme="light"]) .completeParentPromptBtn {
-  color: #047857;
-  border-color: rgba(5, 150, 105, 0.4);
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.04) 100%);
+  color: var(--color-success);
+  border-color: var(--color-success-border);
+  background: linear-gradient(135deg, var(--color-success-light) 0%, var(--color-surface-hover) 100%);
 }
 
 .promptActions {
@@ -285,8 +285,8 @@
   gap: 4px;
   padding: 4px 10px;
   border-radius: 8px;
-  background-color: #10b981;
-  color: #ffffff;
+  background-color: var(--color-success);
+  color: #ffffff; /* on solid success — always white */
   border: none;
   font-size: 11.5px;
   font-weight: 600;
@@ -295,7 +295,7 @@
 }
 
 .promptConfirmBtn:hover {
-  background-color: #059669;
+  opacity: 0.85;
 }
 
 .promptDismissBtn {
@@ -304,9 +304,9 @@
   gap: 4px;
   padding: 4px 8px;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--color-surface-hover);
   color: var(--color-text-muted);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--color-border);
   font-size: 11.5px;
   font-weight: 500;
   cursor: pointer;
@@ -314,7 +314,7 @@
 }
 
 .promptDismissBtn:hover {
-  background-color: rgba(255, 255, 255, 0.16);
+  background-color: var(--color-border);
   color: var(--color-text-primary);
 }
 
@@ -322,9 +322,9 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: rgba(245, 158, 11, 0.14);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  color: #f59e0b;
+  background: var(--color-warning-light);
+  border: 1px solid var(--color-warning-border);
+  color: var(--color-warning);
   font-size: 11px;
   font-weight: 600;
   padding: 2px 8px;
@@ -335,8 +335,8 @@
 }
 
 .rescheduleTodayChip:hover {
-  background: rgba(245, 158, 11, 0.28);
-  border-color: rgba(245, 158, 11, 0.7);
+  background: var(--color-warning-light);
+  border-color: var(--color-warning);
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+  box-shadow: 0 2px 8px var(--color-warning-border);
 }

@@ -48,7 +48,7 @@
   bottom: 0;
   width: 80px;
   background-color: var(--color-danger);
-  color: #ffffff;
+  color: var(--color-text-primary); /* on solid danger */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,8 +110,8 @@
 }
 
 .categoryBadgeNoBorder {
-  color: #38bdf8;
-  background-color: rgba(56, 189, 248, 0.12);
+  color: var(--color-accent-text);
+  background-color: var(--color-accent-light);
   padding: 3px 9px;
   border-radius: var(--radius-sm);
   border: none !important;

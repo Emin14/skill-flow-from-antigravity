@@ -1,5 +1,5 @@
 .card {
-  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.12)) 0%, var(--color-surface) 100%)) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
   border-radius: var(--radius-lg);
   border: 1px solid var(--widget-custom-border, var(--color-accent-border, var(--color-border))) !important;
   padding: var(--space-5);
@@ -9,8 +9,8 @@
 }
 
 :global([data-theme="light"]) .card {
-  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.08)) 0%, #ffffff 100%)) !important;
-  border-color: var(--widget-custom-border, var(--color-accent-border, rgba(0, 0, 0, 0.1))) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
+  border-color: var(--widget-custom-border, var(--color-accent-border)) !important;
 }
 
 @media (max-width: 768px) {

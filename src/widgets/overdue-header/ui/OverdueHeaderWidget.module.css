@@ -1,8 +1,8 @@
 /* CSS Module for Overdue Header UX Concept with Full Theme Support (Dark & Light) */
 
 .v7DoubleLineCard {
-  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(239, 68, 68, 0.12)) 0%, var(--color-surface) 100%)) !important;
-  border: 1px solid var(--widget-custom-border, var(--color-accent-border, rgba(239, 68, 68, 0.3))) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
+  border: 1px solid var(--widget-custom-border, var(--color-accent-border)) !important;
   border-radius: 16px;
   padding: 14px 16px;
   display: flex;
@@ -15,51 +15,50 @@
 }
 
 :global([data-theme="light"]) .v7DoubleLineCard {
-  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(239, 68, 68, 0.08)) 0%, #ffffff 100%)) !important;
-  border-color: var(--widget-custom-border, var(--color-accent-border, rgba(239, 68, 68, 0.25))) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
+  border-color: var(--widget-custom-border, var(--color-accent-border)) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .titleWrapper {
   font-size: 16px;
   font-weight: 800;
-  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
+  color: var(--widget-custom-text, var(--color-text-primary));
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .alertIcon {
-  color: #ef4444;
+  color: var(--color-danger);
 }
 
 .widgetTitle {
   font-size: 16px;
   font-weight: 800;
-  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
+  color: var(--widget-custom-text, var(--color-text-primary));
 }
 
 :global([data-theme="light"]) .widgetTitle {
-  color: var(--widget-custom-text, #0f172a);
+  color: var(--widget-custom-text, var(--color-text-primary));
 }
 
 .widgetBadge {
   font-size: 11px;
-  color: var(--color-text-muted, #94a3b8);
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 
 :global([data-theme="light"]) .widgetBadge {
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .dashedDivider {
-  border-top: 1px dashed rgba(255, 255, 255, 0.12);
-  margin: 2px 0;
+  border-top: 1px dashed var(--color-border);
 }
 
 :global([data-theme="light"]) .dashedDivider {
-  border-top-color: rgba(0, 0, 0, 0.08);
+  border-top-color: var(--color-border);
 }
 
 /* Bulk Reschedule Action Button Base */
@@ -69,9 +68,9 @@
   gap: 6px;
   padding: 9px 14px;
   border-radius: 12px;
-  border: 1px solid var(--color-accent-border, rgba(16, 185, 129, 0.35));
-  background: var(--color-accent-light, rgba(16, 185, 129, 0.12));
-  color: var(--widget-custom-accent, var(--color-accent, #34d399));
+  border: 1px solid var(--color-accent-border);
+  background: var(--color-accent-light);
+  color: var(--widget-custom-accent, var(--color-accent));
   font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
@@ -89,9 +88,9 @@
 
 /* Light Mode Overrides for Bulk Action Button */
 :global([data-theme="light"]) .bulkActionBtn {
-  background: var(--color-accent-light, rgba(5, 150, 105, 0.08));
-  border-color: var(--color-accent-border, rgba(5, 150, 105, 0.3));
-  color: var(--widget-custom-accent, var(--color-accent, #047857));
+  background: var(--color-accent-light);
+  border-color: var(--color-accent-border);
+  color: var(--widget-custom-accent, var(--color-accent));
 }
 
 :global([data-theme="light"]) .bulkActionBtn:hover {

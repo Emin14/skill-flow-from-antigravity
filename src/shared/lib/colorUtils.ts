@@ -66,15 +66,22 @@ export const applyAccentColorVars = (hex: string) => {
     const g = parseInt(cleanHex.substring(2, 4), 16);
     const b = parseInt(cleanHex.substring(4, 6), 16);
 
+    // Soft accent background (chips, selected items, progress track)
     root.style.setProperty('--color-accent-light', `rgba(${r}, ${g}, ${b}, 0.14)`);
-    root.style.setProperty('--color-accent-light-bg', `rgba(${r}, ${g}, ${b}, 0.08)`);
-    root.style.setProperty('--color-accent-border', `rgba(${r}, ${g}, ${b}, 0.28)`);
+    // Accent-tinted border / focus ring
+    root.style.setProperty('--color-accent-border', `rgba(${r}, ${g}, ${b}, 0.30)`);
 
-    const textContrastColor = getContrastingTextColor(hex);
-    root.style.setProperty('--color-accent-text', textContrastColor);
-
-    // Dynamic WCAG AA Compliant Accent Text Variable
+    // --color-accent-text: readable accent color ON neutral surfaces (WCAG AA, no if-theme checks)
+    // Dark surface: hue preserved, L pushed to ≥ 65%
+    // Light surface: hue preserved, L pushed to ≤ 38%
     const readableAccentText = getReadableAccentTextColor(hex, isLight);
-    root.style.setProperty('--color-accent-text-readable', readableAccentText);
+    root.style.setProperty('--color-accent-text', readableAccentText);
+
+    // Hover state: darken the accent slightly
+    const darkenFactor = isLight ? 0.85 : 0.9;
+    const rH = Math.round(r * darkenFactor);
+    const gH = Math.round(g * darkenFactor);
+    const bH = Math.round(b * darkenFactor);
+    root.style.setProperty('--color-accent-hover', `rgb(${rH}, ${gH}, ${bH})`);
   }
 };

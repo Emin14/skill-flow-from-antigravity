@@ -22,7 +22,7 @@
   gap: 6px;
   width: 100%;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
   padding: 4px;
   border-radius: 14px;
@@ -47,13 +47,13 @@
 
 .viewTabBtn:hover {
   color: var(--color-text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-hover);
 }
 
 /* 🌟 PERFECT HIGH CONTRAST ACTIVE TAB TILE */
 .viewTabBtnActive {
-  background: var(--color-accent, #6366f1) !important;
-  color: var(--color-accent-text, #ffffff) !important;
+  background: var(--color-accent) !important;
+  color: var(--color-accent-text) !important;
   border-color: var(--color-accent) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
 }
@@ -64,14 +64,14 @@
 }
 
 .viewTabBtnActive .tabCountBadge {
-  background: rgba(255, 255, 255, 0.25) !important;
-  color: var(--color-accent-text, #ffffff) !important;
+  background: var(--color-border) !important;
+  color: var(--color-accent-text) !important;
   font-weight: 800 !important;
 }
 
 :global([data-theme="light"]) .viewTabBtnActive {
-  background: var(--color-accent, #2563eb) !important;
-  color: var(--color-accent-text, #ffffff) !important;
+  background: var(--color-accent) !important;
+  color: var(--color-accent-text) !important;
   border-color: var(--color-accent) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
 }
@@ -81,17 +81,17 @@
 }
 
 :global([data-theme="light"]) .viewTabBtnActive .tabCountBadge {
-  background: rgba(255, 255, 255, 0.3) !important;
-  color: var(--color-accent-text, #ffffff) !important;
+  background: var(--color-border) !important;
+  color: var(--color-accent-text) !important;
 }
 
 /* Drag Over Tab Highlight for Status Change */
 .viewTabBtnDragOver {
-  border-color: #0ea5e9 !important;
-  background: rgba(14, 165, 233, 0.25) !important;
-  box-shadow: 0 0 14px rgba(14, 165, 233, 0.5) !important;
+  border-color: var(--color-accent) !important;
+  background: var(--color-accent-light) !important;
+  box-shadow: 0 0 14px var(--color-accent-border) !important;
   transform: scale(1.03);
-  color: #ffffff !important;
+  color: var(--color-text-primary) !important;
 }
 
 .tabLabelText {
@@ -110,7 +110,7 @@
   line-height: 1;
   padding: 2px 6px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-border);
   color: var(--color-text-muted);
   display: inline-flex;
   align-items: center;
@@ -127,14 +127,14 @@
 
 /* Celebration Banner */
 .celebrationBanner {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(14, 165, 233, 0.1) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: linear-gradient(135deg, var(--color-success-light) 0%, var(--color-accent-light) 100%);
+  border: 1px solid var(--color-success-border);
   border-radius: var(--radius-lg);
   padding: var(--space-4) var(--space-5);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 4px 20px var(--color-success-light);
   animation: fadeIn 0.4s ease;
 }
 
@@ -177,7 +177,7 @@
 .progressBarTrack {
   width: 100%;
   height: 6px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--color-border);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
@@ -185,7 +185,7 @@
 .progressBarFill100 {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+  background: linear-gradient(90deg, var(--color-success) 0%, var(--color-success-light) 100%);
   border-radius: var(--radius-full);
 }
 
@@ -198,17 +198,17 @@
   border-radius: 10px;
   font-size: 12px;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px dashed rgba(255, 255, 255, 0.1);
+  background: var(--color-surface-hover);
+  border: 1px dashed var(--color-border);
   color: var(--color-text-primary);
   margin-bottom: 6px;
   transition: all 0.2s ease;
 }
 
 .sectionHeaderDropTitleDragOver {
-  border-color: #0ea5e9 !important;
-  background: rgba(14, 165, 233, 0.2) !important;
-  box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
+  border-color: var(--color-accent) !important;
+  background: var(--color-accent-light) !important;
+  box-shadow: 0 0 12px var(--color-accent-border);
 }
 
 /* Kanban Grid */
@@ -250,18 +250,18 @@
 }
 
 .stageHeaderTodo {
-  background-color: rgba(96, 165, 250, 0.12);
-  color: #60a5fa;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent-text);
 }
 
 .stageHeaderInProgress {
-  background-color: rgba(245, 158, 11, 0.12);
-  color: #f59e0b;
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
 }
 
 .stageHeaderDone {
-  background-color: rgba(16, 185, 129, 0.12);
-  color: #10b981;
+  background-color: var(--color-success-light);
+  color: var(--color-success);
 }
 
 .headerTitleGroup {
@@ -279,7 +279,7 @@
 }
 
 .stageBadge {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--color-border);
   padding: 2px 8px;
   border-radius: var(--radius-full);
   font-size: var(--font-size-xs);
@@ -320,12 +320,12 @@
 
 /* GREEN GLOW FOR COMPLETED SUBTASKS CONTAINER */
 .taskCardGlowContainer {
-  border: 1px solid rgba(16, 185, 129, 0.5) !important;
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.3) !important;
+  border: 1px solid var(--color-success-border) !important;
+  box-shadow: 0 0 16px var(--color-success-border) !important;
 }
 
 .taskCardDropTarget {
-  box-shadow: 0 0 0 2px #0ea5e9;
+  box-shadow: 0 0 0 2px var(--color-accent);
   border-radius: 16px;
 }
 
@@ -336,7 +336,7 @@
   right: 0;
   width: 80px;
   background-color: var(--color-danger);
-  color: #ffffff;
+  color: var(--color-text-primary); /* on solid danger */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -431,7 +431,7 @@
 .dragHandleTop:hover {
   opacity: 1;
   color: var(--color-text-primary);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--color-surface-hover);
 }
 
 .dragHandleTop:active {
@@ -466,8 +466,8 @@
   justify-content: space-between;
   padding: 10px 14px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, var(--color-surface-hover) 0%, transparent 100%);
+  border: 1px solid var(--color-border);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(8px);
   cursor: pointer;
@@ -476,8 +476,8 @@
 
 .todayTaskCard:hover {
   transform: translateY(-1px);
-  border-color: rgba(14, 165, 233, 0.4);
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.15);
+  border-color: var(--color-accent-border);
+  box-shadow: 0 6px 20px var(--color-accent-light);
 }
 
 .taskDone {
@@ -504,7 +504,7 @@
   position: absolute;
   font-size: 9px;
   font-weight: 700;
-  color: #38bdf8;
+  color: var(--color-accent-text);
 }
 
 /* Complete Parent Button Prompt */
@@ -515,10 +515,10 @@
   gap: 8px;
   margin-top: 6px;
   padding: 6px 12px;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: var(--color-success-light);
+  border: 1px solid var(--color-success-border);
   border-radius: var(--radius-sm);
-  color: #10b981;
+  color: var(--color-success);
   font-size: 11.5px;
   font-weight: 600;
   cursor: pointer;
@@ -526,7 +526,7 @@
 }
 
 .completeParentPromptBtn:hover {
-  background: rgba(16, 185, 129, 0.25);
+  background: var(--color-success-light);
   transform: translateY(-1px);
 }
 

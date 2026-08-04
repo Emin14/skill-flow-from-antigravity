@@ -2,11 +2,12 @@
   /* Dark theme palette (Default) */
   --color-bg: #0f172a;
   --color-surface: #1e293b;
-  --color-surface-hover: #334155;
-  --color-surface-active: #475569;
+  --color-surface-elevated: #283548;
+  --color-surface-hover: rgba(255, 255, 255, 0.06);
+  --color-surface-active: rgba(255, 255, 255, 0.12);
   
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.16);
+  --color-border: rgba(255, 255, 255, 0.10);
+  --color-border-hover: rgba(255, 255, 255, 0.20);
 
   --color-text-primary: #f8fafc;
   --color-text-secondary: #cbd5e1;
@@ -14,26 +15,35 @@
   --color-text-muted: #94a3b8;
   --color-text-disabled: #64748b;
 
+  /* Accent — computed dynamically by colorUtils.ts / applyAccentColorVars()   */
+  /* Static fallbacks below (default indigo) ensure a valid state before JS runs */
   --color-accent: #6366f1;
   --color-accent-hover: #4f46e5;
-  --color-accent-light: rgba(99, 102, 241, 0.15);
+  --color-accent-light: rgba(99, 102, 241, 0.14);
+  --color-accent-border: rgba(99, 102, 241, 0.30);
+  /* Readable accent text on dark surface — WCAG AA: hue preserved, L ≥ 65%   */
+  --color-accent-text: #818cf8;
 
   --color-success: #10b981;
-  --color-success-light: rgba(16, 185, 129, 0.15);
+  --color-success-light: rgba(16, 185, 129, 0.13);
+  --color-success-border: rgba(16, 185, 129, 0.30);
 
   --color-warning: #f59e0b;
-  --color-warning-light: rgba(245, 158, 11, 0.15);
+  --color-warning-light: rgba(245, 158, 11, 0.13);
+  --color-warning-border: rgba(245, 158, 11, 0.30);
 
   --color-danger: #ef4444;
   --color-danger-hover: #dc2626;
-  --color-danger-light: rgba(239, 68, 68, 0.15);
+  --color-danger-light: rgba(239, 68, 68, 0.13);
+  --color-danger-border: rgba(239, 68, 68, 0.30);
 }
 
 [data-theme="light"] {
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
-  --color-surface-hover: #f1f5f9;
-  --color-surface-active: #e2e8f0;
+  --color-surface-elevated: #f1f5f9;
+  --color-surface-hover: rgba(0, 0, 0, 0.04);
+  --color-surface-active: rgba(0, 0, 0, 0.08);
 
   --color-border: rgba(0, 0, 0, 0.08);
   --color-border-hover: rgba(0, 0, 0, 0.16);
@@ -43,11 +53,24 @@
   --color-text-muted: #64748b;
   --color-text-disabled: #94a3b8;
 
+  /* Light-mode accent fallbacks (default indigo-light) */
   --color-accent: #4f46e5;
   --color-accent-hover: #4338ca;
-  --color-accent-light: rgba(79, 70, 229, 0.1);
+  --color-accent-light: rgba(79, 70, 229, 0.10);
+  --color-accent-border: rgba(79, 70, 229, 0.28);
+  /* Readable accent text on light surface — WCAG AA: hue preserved, L ≤ 38%  */
+  --color-accent-text: #4338ca;
 
   --color-success: #059669;
+  --color-success-light: rgba(5, 150, 105, 0.10);
+  --color-success-border: rgba(5, 150, 105, 0.28);
+
   --color-warning: #d97706;
+  --color-warning-light: rgba(217, 119, 6, 0.10);
+  --color-warning-border: rgba(217, 119, 6, 0.28);
+
   --color-danger: #dc2626;
+  --color-danger-hover: #b91c1c;
+  --color-danger-light: rgba(220, 38, 38, 0.10);
+  --color-danger-border: rgba(220, 38, 38, 0.28);
 }

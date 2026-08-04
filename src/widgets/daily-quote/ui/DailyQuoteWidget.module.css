@@ -1,10 +1,10 @@
 /* CSS Module for Daily Quote / Motivation Widget with Full Theme Support (Dark & Light) */
 
 .v15DashedUnderline {
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  border-bottom: 1px dashed var(--color-border-hover);
   padding-bottom: 6px;
   font-size: 12px;
-  color: var(--color-text-muted, #94a3b8);
+  color: var(--color-text-muted);
   font-style: italic;
   display: flex;
   align-items: center;
@@ -12,6 +12,6 @@
 }
 
 :global([data-theme="light"]) .v15DashedUnderline {
-  border-bottom-color: rgba(0, 0, 0, 0.12);
-  color: #64748b;
+  border-bottom-color: var(--color-border);
+  color: var(--color-text-muted);
 }

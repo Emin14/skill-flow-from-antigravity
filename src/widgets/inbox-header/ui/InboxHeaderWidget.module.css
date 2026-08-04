@@ -1,8 +1,8 @@
 /* CSS Module for Inbox Header UX Concept with Full Theme Support (Dark & Light) */
 
 .v6PillPanel {
-  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.12)) 0%, var(--color-surface) 100%)) !important;
-  border: 1px solid var(--widget-custom-border, var(--color-accent-border, rgba(255, 255, 255, 0.08))) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
+  border: 1px solid var(--widget-custom-border, var(--color-accent-border)) !important;
   border-radius: 16px;
   padding: 14px 16px;
   display: flex;
@@ -15,29 +15,29 @@
 }
 
 :global([data-theme="light"]) .v6PillPanel {
-  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.08)) 0%, #ffffff 100%)) !important;
-  border-color: var(--widget-custom-border, var(--color-accent-border, rgba(0, 0, 0, 0.1))) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
+  border-color: var(--widget-custom-border, var(--color-accent-border)) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .widgetTitle {
   font-size: 16px;
   font-weight: 800;
-  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
+  color: var(--widget-custom-text, var(--color-text-primary));
 }
 
 :global([data-theme="light"]) .widgetTitle {
-  color: var(--widget-custom-text, #0f172a);
+  color: var(--widget-custom-text, var(--color-text-primary));
 }
 
 .widgetBadge {
   font-size: 11.5px;
-  color: var(--color-text-muted, #94a3b8);
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 
 :global([data-theme="light"]) .widgetBadge {
-  color: #64748b;
+  color: var(--color-text-muted);
 }
 
 .titleIcon {
@@ -51,11 +51,11 @@
 /* Form Input Styling */
 .cleanInput {
   width: 100%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 10px 14px;
-  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
+  color: var(--widget-custom-text, var(--color-text-primary));
   font-size: 13.5px;
   outline: none;
   transition: all 0.2s ease;
@@ -63,28 +63,28 @@
 }
 
 .cleanInput::placeholder {
-  color: var(--color-text-muted, #94a3b8);
+  color: var(--color-text-muted);
   opacity: 0.8;
 }
 
 .cleanInput:focus {
   border-color: var(--widget-custom-accent, var(--color-accent));
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-surface-hover);
   box-shadow: 0 0 12px var(--color-accent-light);
 }
 
 :global([data-theme="light"]) .cleanInput {
-  background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(0, 0, 0, 0.1);
-  color: #0f172a;
+  background: var(--color-surface-hover);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
 }
 
 :global([data-theme="light"]) .cleanInput::placeholder {
-  color: #94a3b8;
+  color: var(--color-text-muted);
 }
 
 :global([data-theme="light"]) .cleanInput:focus {
-  background: #ffffff;
+  background: var(--color-surface);
   border-color: var(--widget-custom-accent, var(--color-accent));
   box-shadow: 0 0 12px var(--color-accent-light);
 }

@@ -1,8 +1,8 @@
 /* CSS Module for Project Filter Tabs UX Concept with Full Theme Support (Dark & Light) */
 
 .v9DualRowSubHeader {
-  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.12)) 0%, var(--color-surface) 100%)) !important;
-  border: 1px solid var(--widget-custom-border, var(--color-accent-border, rgba(255, 255, 255, 0.08))) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
+  border: 1px solid var(--widget-custom-border, var(--color-accent-border)) !important;
   border-radius: 16px;
   padding: 12px 12px;
   display: flex;
@@ -16,36 +16,36 @@
 }
 
 :global([data-theme="light"]) .v9DualRowSubHeader {
-  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.08)) 0%, #ffffff 100%)) !important;
-  border-color: var(--widget-custom-border, var(--color-accent-border, rgba(0, 0, 0, 0.1))) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
+  border-color: var(--widget-custom-border, var(--color-accent-border)) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .widgetTitle {
   font-size: 14px;
   font-weight: 800;
-  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
+  color: var(--widget-custom-text, var(--color-text-primary));
 }
 
 :global([data-theme="light"]) .widgetTitle {
-  color: var(--widget-custom-text, #0f172a);
+  color: var(--widget-custom-text, var(--color-text-primary));
 }
 
 .widgetBadge {
   font-size: 11px;
-  color: var(--widget-custom-accent, var(--color-accent, #38bdf8));
+  color: var(--widget-custom-accent, var(--color-accent-text));
   font-weight: 800;
 }
 
 :global([data-theme="light"]) .widgetBadge {
-  color: var(--widget-custom-accent, var(--color-accent, #0284c7));
+  color: var(--widget-custom-accent, var(--color-accent-text));
 }
 
 /* Base Filter Tab Button */
 .filterBtn {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text-muted, #94a3b8);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-hover);
+  color: var(--color-text-muted);
   border-radius: 10px;
   padding: 6px 12px;
   font-size: 12px;
@@ -61,25 +61,25 @@
 }
 
 .filterBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-surface-hover);
   color: var(--color-text-primary);
 }
 
 /* Active Filter Tab Styling - Crisp Contrast */
 .filterBtnActive {
-  background: var(--color-accent, #0ea5e9) !important;
-  color: var(--color-accent-text, #ffffff) !important;
-  border-color: var(--color-accent, #38bdf8) !important;
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3) !important;
+  background: var(--color-accent) !important;
+  color: var(--color-accent-text) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 4px 12px var(--color-accent-border) !important;
 }
 
 .filterBtnActive span {
-  color: var(--color-accent-text, #ffffff) !important;
+  color: var(--color-accent-text) !important;
   font-weight: 700 !important;
 }
 
 .filterBtnActive svg {
-  color: var(--color-accent-text, #ffffff) !important;
+  color: var(--color-accent-text) !important;
 }
 
 /* 4 Equal Columns Grid Track (Fits 100% inside card on mobile) */
@@ -110,27 +110,27 @@
 
 /* Light Theme Overrides for Filter Buttons */
 :global([data-theme="light"]) .filterBtn {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.08);
-  color: #475569;
+  background: var(--color-surface-hover);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
 }
 
 :global([data-theme="light"]) .filterBtn:hover {
-  background: rgba(0, 0, 0, 0.08);
-  color: #0f172a;
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
 }
 
 :global([data-theme="light"]) .filterBtnActive {
-  background: var(--color-accent, #0ea5e9) !important;
-  color: var(--color-accent-text, #ffffff) !important;
-  border-color: var(--color-accent, #0284c7) !important;
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25) !important;
+  background: var(--color-accent) !important;
+  color: var(--color-accent-text) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 4px 12px var(--color-accent-border) !important;
 }
 
 :global([data-theme="light"]) .filterBtnActive span {
-  color: var(--color-accent-text, #ffffff) !important;
+  color: var(--color-accent-text) !important;
 }
 
 :global([data-theme="light"]) .filterBtnActive svg {
-  color: var(--color-accent-text, #ffffff) !important;
+  color: var(--color-accent-text) !important;
 }
