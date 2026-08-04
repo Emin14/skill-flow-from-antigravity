@@ -6,24 +6,24 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   VARIANT 1: Accent-Filled Banner
+   VARIANT 1: Cyber Glass + Soft Pastel Accent Background
    ───────────────────────────────────────────────────────────── */
 .variant1 {
-  background: var(--color-accent, #6366f1) !important;
-  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--color-accent-light, rgba(16, 185, 129, 0.14)) 0%, var(--color-surface) 100%) !important;
+  border: 1px solid var(--color-accent-border, rgba(16, 185, 129, 0.3)) !important;
   border-radius: 20px;
   padding: 16px 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(12px);
 }
 
 :global([data-theme="light"]) .variant1 {
-  background: var(--color-accent, #6366f1) !important;
-  color: #ffffff !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, var(--color-accent-light, rgba(16, 185, 129, 0.1)) 0%, #ffffff 100%) !important;
+  border-color: var(--color-accent-border, rgba(16, 185, 129, 0.25)) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .v1Header {
@@ -37,44 +37,43 @@
   height: 48px;
   min-width: 48px;
   border-radius: 50%;
-  border: 3px solid #ffffff;
-  background: rgba(255, 255, 255, 0.2);
+  border: 3px solid var(--color-accent, #10b981);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 13px;
-  color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  color: var(--color-accent, #10b981);
+  box-shadow: 0 0 12px var(--color-accent-light, rgba(16, 185, 129, 0.3));
 }
 
 .v1Title {
   font-size: 15px;
   font-weight: 700;
-  color: #ffffff !important;
+  color: var(--color-text-primary);
 }
 
 .v1Sub {
   font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: var(--color-text-muted);
   margin-top: 2px;
 }
 
 .v1Track {
   width: 100%;
   height: 8px;
-  background: rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   overflow: hidden;
 }
 
 :global([data-theme="light"]) .v1Track {
-  background: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .v1Fill {
   height: 100%;
-  background: #ffffff !important;
+  background: var(--color-accent, #10b981);
   border-radius: 4px;
   transition: width 0.4s ease;
 }
@@ -83,27 +82,27 @@
    VARIANT 2: Soft Glow Capsule Fill
    ───────────────────────────────────────────────────────────── */
 .variant2 {
-  background: var(--color-accent, #38bdf8) !important;
-  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--color-accent-light, rgba(56, 189, 248, 0.14)) 0%, var(--color-surface) 100%) !important;
+  border: 1px solid var(--color-accent-border, rgba(56, 189, 248, 0.3)) !important;
   border-radius: 20px;
   padding: 16px 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
 :global([data-theme="light"]) .variant2 {
-  background: var(--color-accent, #38bdf8) !important;
-  color: #ffffff !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, var(--color-accent-light, rgba(56, 189, 248, 0.1)) 0%, #ffffff 100%) !important;
+  border-color: var(--color-accent-border, rgba(56, 189, 248, 0.25)) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .v2Track {
   position: relative;
   width: 100%;
   height: 14px;
-  background: rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 7px;
   overflow: hidden;
   padding: 2px;
@@ -111,35 +110,35 @@
 }
 
 :global([data-theme="light"]) .v2Track {
-  background: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .v2Fill {
   height: 100%;
-  background: #ffffff !important;
+  background: var(--color-accent, #38bdf8);
   border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px var(--color-accent-light, rgba(56, 189, 248, 0.5));
   transition: width 0.4s ease;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   VARIANT 3: Floating Pin Tag Bar
+   VARIANT 3: Floating Pin Tag Bar with Soft Accent Background
    ───────────────────────────────────────────────────────────── */
 .variant3 {
-  background: var(--color-accent, #6366f1) !important;
-  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.14)) 0%, var(--color-surface) 100%) !important;
+  border: 1px solid var(--color-accent-border, rgba(99, 102, 241, 0.3)) !important;
   border-radius: 18px;
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 :global([data-theme="light"]) .variant3 {
-  background: var(--color-accent, #6366f1) !important;
-  color: #ffffff !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.1)) 0%, #ffffff 100%) !important;
+  border-color: var(--color-accent-border, rgba(99, 102, 241, 0.25)) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .v3PinBarContainer {
@@ -151,18 +150,18 @@
 .v3Track {
   width: 100%;
   height: 8px;
-  background: rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 4px;
   overflow: hidden;
 }
 
 :global([data-theme="light"]) .v3Track {
-  background: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .v3Fill {
   height: 100%;
-  background: #ffffff !important;
+  background: var(--color-accent, #10b981);
   border-radius: 4px;
 }
 
@@ -172,9 +171,9 @@
   transform: translateX(-50%);
   padding: 2px 7px;
   border-radius: 6px;
-  background: #ffffff !important;
-  color: var(--color-accent, #6366f1) !important;
+  background: var(--color-accent, #10b981);
+  color: #ffffff;
   font-size: 10.5px;
-  font-weight: 900;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }

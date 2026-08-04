@@ -12,6 +12,7 @@ import {
 import { APP_THEME_PRESETS, AppThemePreset } from '@/shared/config/appThemes';
 import { useThemeStore } from '@/shared/model/useThemeStore';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
+import { applyAccentColorVars } from '@/shared/lib/colorUtils';
 
 const colorPalettes = [
   { name: 'Индиго (Aura)', hex: '#6366f1' },
@@ -51,6 +52,7 @@ export const SettingsPage: React.FC = () => {
 
     setTheme(savedTheme);
     setSelectedColor(savedColor);
+    applyAccentColorVars(savedColor);
     setSelectedCategoryThemeId(savedCatId);
     setSelectedCardBgThemeId(savedBgId);
     setBannerVariant(savedBannerVar);
@@ -76,16 +78,7 @@ export const SettingsPage: React.FC = () => {
   const handleColorChange = (hex: string) => {
     setSelectedColor(hex);
     localStorage.setItem(STORAGE_KEYS.ACCENT_COLOR, hex);
-    document.documentElement.style.setProperty('--color-accent', hex);
-
-    const cleanHex = hex.replace('#', '');
-    if (cleanHex.length === 6) {
-      const r = parseInt(cleanHex.substring(0, 2), 16);
-      const g = parseInt(cleanHex.substring(2, 4), 16);
-      const b = parseInt(cleanHex.substring(4, 6), 16);
-      document.documentElement.style.setProperty('--color-accent-light', `rgba(${r}, ${g}, ${b}, 0.15)`);
-    }
-
+    applyAccentColorVars(hex);
     showToast('Основной цвет интерфейса обновлен!', 'success');
   };
 
