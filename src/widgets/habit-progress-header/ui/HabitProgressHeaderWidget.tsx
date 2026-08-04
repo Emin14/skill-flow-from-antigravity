@@ -1,53 +1,87 @@
 'use client';
 
 import React from 'react';
-import { Calendar, ArrowUpDown, BarChart2 } from 'lucide-react';
+import { Calendar, ArrowUpDown, BarChart2, Clock, ArrowDown, ArrowUp } from 'lucide-react';
 import styles from './HabitProgressHeaderWidget.module.css';
 
-export type HabitSortOption = 'overdue' | 'alphabetical' | 'count_asc';
+export type HabitSortKey = 'overdue' | 'alphabetical' | 'count' | 'created';
+export type HabitSortDirection = 'desc' | 'asc';
 
 interface HabitProgressHeaderWidgetProps {
-  sortOption: HabitSortOption;
-  onSelectSort: (opt: HabitSortOption) => void;
+  sortKey: HabitSortKey;
+  sortDirection: HabitSortDirection;
+  onSelectSortKey: (key: HabitSortKey) => void;
+  onToggleDirection: () => void;
 }
 
 export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps> = ({
-  sortOption,
-  onSelectSort,
+  sortKey,
+  sortDirection,
+  onSelectSortKey,
+  onToggleDirection,
 }) => {
+  const isDesc = sortDirection === 'desc';
+
+  const handleCategoryClick = (key: HabitSortKey) => {
+    if (sortKey === key) {
+      onToggleDirection();
+    } else {
+      onSelectSortKey(key);
+    }
+  };
+
   return (
-    <div style={{ width: '100%' }}>
-      {/* 💡 Selected Final Variant #5: Two-Row Compact Header with Full-Width Equal Segment Track */}
-      <div className={styles.v5TwoRowFullWidth}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span className={styles.widgetTitle}>🔄 Трек прогресса привычек</span>
-          <span className={styles.widgetBadge}>Интервалы</span>
+    <div className={styles.container}>
+      <div className={styles.headerBase}>
+        {/* Row 1: Title on Left, Direction Flip Button on Right */}
+        <div className={styles.titleRow}>
+          <span className={styles.widgetTitle}>🔄 Привычки & Сортировка</span>
+          <button
+            type="button"
+            className={styles.v1CircleFlipBtn}
+            onClick={onToggleDirection}
+            title={isDesc ? 'Сменить на По возрастанию' : 'Сменить на По убыванию'}
+          >
+            {isDesc ? <ArrowDown size={16} /> : <ArrowUp size={16} />}
+          </button>
         </div>
 
-        <div className={styles.equalTrack}>
+        {/* Row 2: All 4 Filters Strictly on 1 Single Equal Horizontal Line */}
+        <div className={styles.filterTrackSingleLine}>
           <button
             type="button"
-            className={`${styles.sortBtn} ${styles.equalBtn} ${sortOption === 'overdue' ? styles.sortBtnActive : ''}`}
-            onClick={() => onSelectSort('overdue')}
+            className={`${styles.sortBtn} ${sortKey === 'overdue' ? styles.sortBtnActive : ''}`}
+            onClick={() => handleCategoryClick('overdue')}
           >
             <Calendar size={13} />
-            <span>Ближайшие</span>
+            <span>Срок</span>
           </button>
+
           <button
             type="button"
-            className={`${styles.sortBtn} ${styles.equalBtn} ${sortOption === 'alphabetical' ? styles.sortBtnActive : ''}`}
-            onClick={() => onSelectSort('alphabetical')}
+            className={`${styles.sortBtn} ${sortKey === 'alphabetical' ? styles.sortBtnActive : ''}`}
+            onClick={() => handleCategoryClick('alphabetical')}
           >
             <ArrowUpDown size={13} />
-            <span>По алфавиту</span>
+            <span>Алфавит</span>
           </button>
+
           <button
             type="button"
-            className={`${styles.sortBtn} ${styles.equalBtn} ${sortOption === 'count_asc' ? styles.sortBtnActive : ''}`}
-            onClick={() => onSelectSort('count_asc')}
+            className={`${styles.sortBtn} ${sortKey === 'count' ? styles.sortBtnActive : ''}`}
+            onClick={() => handleCategoryClick('count')}
           >
             <BarChart2 size={13} />
             <span>Повторы</span>
+          </button>
+
+          <button
+            type="button"
+            className={`${styles.sortBtn} ${sortKey === 'created' ? styles.sortBtnActive : ''}`}
+            onClick={() => handleCategoryClick('created')}
+          >
+            <Clock size={13} />
+            <span>Создано</span>
           </button>
         </div>
       </div>

@@ -6,29 +6,17 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
-import { Folder, AlertCircle, ChevronDown, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, ChevronRight, Sparkles } from 'lucide-react';
 import { ProjectFilterTabsWidget, ProjectFilterType } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
+import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
+import { useToastStore } from '@/shared/ui/toast/toastStore';
 import styles from './ProjectsPage.module.css';
 
-const getCategoryColor = (cat?: string): string => {
-  switch (cat) {
-    case 'Работа': return '#0ea5e9';
-    case 'Здоровье': return '#10b981';
-    case 'Обучение': return '#f59e0b';
-    case 'Личное': return '#ec4899';
-    case 'Финансы': return '#8b5cf6';
-    case 'Практика Frontend': return '#06b6d4';
-    case 'Опыт на камеру': return '#a855f7';
-    case 'Теория': return '#3b82f6';
-    case 'Без категории':
-    default: return 'rgba(255, 255, 255, 0.3)';
-  }
-};
+import { getCategoryColor } from '@/shared/config/categoryColors';
 
 export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
-  const [cardVariant, setCardVariant] = useState<number>(8);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
 
@@ -40,6 +28,22 @@ export const ProjectsPage: React.FC = () => {
   useEffect(() => {
     fetchTasks();
   }, [fetchTasks]);
+
+  useEffect(() => {
+    registerPointerDropHandler((draggedTaskId, target) => {
+      if (target.type === 'project_card' && target.projectId) {
+        updateTaskParent(draggedTaskId, target.projectId);
+        setOpenProjectIds((prev) => new Set(prev).add(target.projectId!));
+        const targetProj = tasks.find((t) => t.id === target.projectId);
+        useToastStore.getState().showToast(`Подзадача привязана к проекту "${targetProj?.title || 'Проект'}"`, 'info');
+      } else if (target.type === 'task_card' && target.taskId) {
+        updateTaskParent(draggedTaskId, target.taskId);
+        setOpenProjectIds((prev) => new Set(prev).add(target.taskId!));
+        const targetTask = tasks.find((t) => t.id === target.taskId);
+        useToastStore.getState().showToast(`Подзадача привязана к "${targetTask?.title || 'Задача'}"`, 'info');
+      }
+    });
+  }, [tasks, updateTaskParent]);
 
   const initialSetDoneRef = useRef(false);
 
@@ -78,7 +82,7 @@ export const ProjectsPage: React.FC = () => {
     });
   };
 
-  // Filtered projects (Point 6: No project count title, no card wrapper around filters)
+  // Filtered projects
   const filteredProjects = useMemo(() => {
     return projectTasks.filter((project) => {
       const descendants = getAllDescendantTasks(project.id, tasks);
@@ -95,31 +99,53 @@ export const ProjectsPage: React.FC = () => {
 
   const handleDragOver = (e: React.DragEvent, projectId: string) => {
     e.preventDefault();
+    e.stopPropagation();
     e.dataTransfer.dropEffect = 'move';
     setDragOverProjectId(projectId);
   };
 
-  const handleDragLeave = () => {
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setDragOverProjectId(null);
   };
 
   const handleDrop = async (e: React.DragEvent, targetProjectId: string) => {
     e.preventDefault();
+    e.stopPropagation();
     setDragOverProjectId(null);
-    const draggedTaskId = e.dataTransfer.getData('text/plain');
+    const draggedTaskId =
+      e.dataTransfer.getData('text/plain') ||
+      e.dataTransfer.getData('taskId') ||
+      (typeof window !== 'undefined' ? window.__draggedTaskId : null);
     if (draggedTaskId && draggedTaskId !== targetProjectId) {
       await updateTaskParent(draggedTaskId, targetProjectId);
+      setOpenProjectIds((prev) => {
+        const next = new Set(prev);
+        next.add(targetProjectId);
+        return next;
+      });
     }
   };
 
   const handleDropOnTask = async (draggedTaskId: string, targetTask: Task) => {
-    if (draggedTaskId === targetTask.id) return;
-    await updateTaskParent(draggedTaskId, targetTask.id);
+    const actualDraggedId =
+      draggedTaskId || (typeof window !== 'undefined' ? window.__draggedTaskId : null);
+    if (!actualDraggedId || actualDraggedId === targetTask.id) return;
+    await updateTaskParent(actualDraggedId, targetTask.id);
+    setOpenProjectIds((prev) => {
+      const next = new Set(prev);
+      next.add(targetTask.id);
+      if (targetTask.parentTaskId) {
+        next.add(targetTask.parentTaskId);
+      }
+      return next;
+    });
   };
 
   return (
     <div className={styles.container}>
-      {/* Filter Tabs Widget (Final Variant #9) */}
+      {/* Filter Tabs Widget */}
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
         onSelectFilter={setActiveFilter}
@@ -139,7 +165,7 @@ export const ProjectsPage: React.FC = () => {
             const isDragOver = dragOverProjectId === project.id;
             const catColor = getCategoryColor(project.category);
 
-            // Subtasks sorted by nearest scheduled date ascending (Point 6)
+            // Subtasks sorted by nearest scheduled date ascending
             const descendants = getAllDescendantTasks(project.id, tasks);
             const sortedSubtasks = [...descendants].sort((a, b) => {
               if (!a.scheduledDate && !b.scheduledDate) return 0;
@@ -153,7 +179,7 @@ export const ProjectsPage: React.FC = () => {
             const progressPercent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
             const overdueCount = descendants.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
 
-            // Subtask Date > Project Date Warning Detection (Point 12)
+            // Subtask Date > Project Date Warning Detection
             const subtaskDates = descendants
               .map((t) => t.scheduledDate)
               .filter((d): d is string => !!d && d.includes('-'));
@@ -168,7 +194,6 @@ export const ProjectsPage: React.FC = () => {
             return (
               <ProjectCardRenderer
                 key={project.id}
-                variant={cardVariant}
                 project={project}
                 catColor={catColor}
                 isOpen={isOpen}
@@ -221,7 +246,6 @@ export const ProjectsPage: React.FC = () => {
 };
 
 interface ProjectCardRendererProps {
-  variant: number;
   project: Task;
   catColor: string;
   isOpen: boolean;
@@ -239,7 +263,7 @@ interface ProjectCardRendererProps {
   toggleProjectOpen: (id: string) => void;
   onEdit: (task: Task) => void;
   onDragOver: (e: React.DragEvent) => void;
-  onDragLeave: () => void;
+  onDragLeave: (e: React.DragEvent) => void;
   onDrop: (e: React.DragEvent) => void;
   onDropOnTask: (draggedTaskId: string, targetTask: Task) => void;
   onFixDate: () => void;
@@ -249,7 +273,6 @@ interface ProjectCardRendererProps {
 }
 
 const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
-  variant,
   project,
   catColor,
   isOpen,
@@ -275,119 +298,73 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   onDeleteSubtask,
   onSelectSubtask,
 }) => {
-  // Dynamic styling per card variant
-  const getCardStyle = (): React.CSSProperties => {
-    switch (variant) {
-      case 2: // Linear Monospace Dark
-        return { fontFamily: 'monospace' };
-      case 3: // Notion Document Block
-        return { borderLeft: '4px solid #38bdf8' };
-      case 7: // Neumorphic Soft Glow
-        return { boxShadow: `0 0 20px ${catColor}35`, border: `1px solid ${catColor}50` };
-      case 10: // ClickUp Vertical Accent Strip
-        return { borderLeft: `6px solid ${catColor}` };
-      case 8: // Compact Expandable Accordion Bar
-      default:
-        return {};
-    }
-  };
-
   return (
     <div
+      data-project-id={project.id}
       className={`${styles.projectCardBase} ${isDragOver ? styles.projectCardDragOver : ''}`}
-      style={{ ...getCardStyle(), position: 'relative' }}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
     >
-      {/* Top Accent Bar for Variant 1 */}
-      {variant === 1 && (
-        <div style={{ height: '3px', margin: '-16px -18px 8px -18px', background: `linear-gradient(90deg, ${catColor} 0%, transparent 90%)` }} />
-      )}
-
-      {/* Full Banner Header for Variant 6 */}
-      {variant === 6 && (
-        <div style={{ padding: '14px 18px', background: `linear-gradient(135deg, ${catColor}50 0%, rgba(15,23,42,0.9) 100%)`, borderBottom: '1px solid rgba(255,255,255,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
-            <span style={{ fontSize: '18px' }}>📂</span>
-            <h2 className={styles.projectTitle} style={{ color: '#ffffff', fontWeight: 800 }}>{project.title}</h2>
-          </div>
-          <button type="button" onClick={(e) => { e.stopPropagation(); onEdit(project); }} style={{ background: 'rgba(0,0,0,0.3)', border: 'none', borderRadius: '6px', color: '#fff', padding: '4px 8px', cursor: 'pointer' }}>✏️</button>
-        </div>
-      )}
-
-      {/* Main Header Row (Strict Title Truncation - Point 3) */}
-      <div className={styles.projectCardHeader} onClick={() => toggleProjectOpen(project.id)} style={variant === 6 ? { padding: '14px 18px 0 18px' } : undefined}>
-        <div className={styles.projectTitleCol}>
-          <div className={styles.projectTitleRow}>
-            {variant !== 6 && <span style={{ fontSize: '18px', flexShrink: 0 }}>📁</span>}
-            {variant !== 6 && (
-              <h2 className={styles.projectTitle} title={project.title}>
-                {project.title}
-              </h2>
-            )}
+      {/* Header Row */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', cursor: 'pointer' }} onClick={() => toggleProjectOpen(project.id)}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: 0, flex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '12px', color: catColor, fontWeight: 700 }}>● {project.category || 'Проект'}</span>
             {overdueBadge(overdueCount)}
           </div>
-
-          {/* Progress Metric: ONLY SHOWN IF totalCount > 0 (Point 4 Fix) */}
+          <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#ffffff', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {project.title}
+          </h2>
           {totalCount > 0 && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
-              <span style={{ fontSize: '11.5px', color: 'rgba(255,255,255,0.65)', fontWeight: 500, whiteSpace: 'nowrap' }}>
-                Прогресс: {doneCount}/{totalCount} ({progressPercent}%)
-              </span>
-              <div className={styles.progressBarTrack} style={{ flex: 1 }}>
-                <div className={styles.progressBarFill} style={{ width: `${progressPercent}%`, background: variant === 7 ? `linear-gradient(90deg, ${catColor}, #10b981)` : undefined }} />
-              </div>
+            <div style={{ fontSize: '12px', color: '#94a3b8', marginTop: '2px' }}>
+              Выполнено {doneCount} из {totalCount} подзадач
             </div>
           )}
         </div>
-
-        {/* Right side widgets per variant */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
-          {variant === 4 && totalCount > 0 && (
-            <span style={{ fontSize: '12px', fontWeight: 700, color: '#10b981', background: 'rgba(16,185,129,0.15)', padding: '3px 10px', borderRadius: '12px', border: '1px solid rgba(16,185,129,0.3)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
+          {totalCount > 0 && (
+            <span style={{
+              fontSize: '36px',
+              fontWeight: 900,
+              background: 'linear-gradient(135deg, #38bdf8, #10b981)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              lineHeight: 1,
+            }}>
               {progressPercent}%
             </span>
           )}
-
-          {variant === 9 && totalCount > 0 && (
-            <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-              <span style={{ fontSize: '20px', fontWeight: 900, background: 'linear-gradient(135deg, #38bdf8, #10b981)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                {progressPercent}%
-              </span>
-            </div>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit(project);
+            }}
+            style={{
+              background: 'rgba(255,255,255,0.06)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '8px',
+              color: '#fff',
+              width: '28px',
+              height: '28px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+            }}
+          >
+            ✏️
+          </button>
+          {isOpen ? (
+            <ChevronDown size={20} color="#38bdf8" />
+          ) : (
+            <ChevronRight size={20} color="#38bdf8" />
           )}
-
-          {variant !== 6 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onEdit(project);
-              }}
-              title="Редактировать проект"
-              style={{
-                background: 'rgba(255,255,255,0.08)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                borderRadius: '8px',
-                color: '#fff',
-                width: '30px',
-                height: '30px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                flexShrink: 0,
-              }}
-            >
-              ✏️
-            </button>
-          )}
-          {isOpen ? <ChevronDown size={18} color="#94a3b8" /> : <ChevronRight size={18} color="#94a3b8" />}
         </div>
       </div>
 
-      {/* Date Mismatch Warning Banner (Glassmorphic Card) */}
+      {/* Date Mismatch Warning Banner */}
       {hasDateMismatch && project.scheduledDate && latestSubtaskDate && (
         <DateWarningBanner
           projectDate={project.scheduledDate}
@@ -396,9 +373,9 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         />
       )}
 
-      {/* Collapsible Subtasks & Sub-Projects List (Point 2) */}
+      {/* Collapsible Subtasks & Sub-Projects List */}
       {isOpen && (
-        <div className={styles.subtaskList} style={variant === 6 ? { padding: '10px 18px 18px 18px' } : undefined}>
+        <div className={styles.subtaskList}>
           {sortedSubtasks.length === 0 ? (
             <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', padding: '6px 0', fontStyle: 'italic' }}>
               Нет подзадач в проекте (Перетащите сюда задачи).
@@ -470,26 +447,28 @@ const RecursiveSubtaskList: React.FC<{
           const subTotal = subDescendants.length;
           const subPercent = subTotal > 0 ? Math.round((subDone / subTotal) * 100) : 0;
           const subOverdue = subDescendants.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
+          const subCatColor = getCategoryColor(child.category);
 
           return (
             <div
               key={child.id}
+              data-project-id={child.id}
               className={styles.projectCardBase}
               style={{
-                borderRadius: '16px',
-                border: '1px solid rgba(14, 165, 233, 0.25)',
-                background: 'rgba(14, 165, 233, 0.04)',
-                padding: '12px 14px',
-                marginTop: '4px',
+                marginTop: '6px',
               }}
               onDragOver={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
                 e.dataTransfer.dropEffect = 'move';
               }}
               onDrop={async (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const draggedId = e.dataTransfer.getData('text/plain');
+                const draggedId =
+                  e.dataTransfer.getData('text/plain') ||
+                  e.dataTransfer.getData('taskId') ||
+                  (typeof window !== 'undefined' ? window.__draggedTaskId : null);
                 if (draggedId && draggedId !== child.id) {
                   await onDropOnTask(draggedId, child);
                 }
@@ -508,22 +487,24 @@ const RecursiveSubtaskList: React.FC<{
                   toggleProjectOpen(child.id);
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
-                  <span style={{ fontSize: '16px', flexShrink: 0 }}>📁</span>
-                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {child.title}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0, flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span style={{ fontSize: '11px', color: subCatColor, fontWeight: 700 }}>● {child.category || 'Подпроект'}</span>
+                    {subOverdue > 0 && (
+                      <span className={styles.overdueBadge} style={{ fontSize: '10px', padding: '1px 6px' }}>
+                        🚨 {subOverdue}
+                      </span>
+                    )}
+                  </div>
+                  <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    📁 {child.title}
                   </span>
-                  {subOverdue > 0 && (
-                    <span className={styles.overdueBadge} style={{ fontSize: '10px', padding: '1px 6px' }}>
-                      🚨 {subOverdue}
-                    </span>
-                  )}
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   {subTotal > 0 && (
-                    <span style={{ fontSize: '11px', color: '#10b981', fontWeight: 600 }}>
-                      {subDone}/{subTotal} ({subPercent}%)
+                    <span style={{ fontSize: '24px', fontWeight: 900, color: '#10b981', lineHeight: 1 }}>
+                      {subPercent}%
                     </span>
                   )}
                   <button
@@ -542,7 +523,7 @@ const RecursiveSubtaskList: React.FC<{
                   >
                     ✏️
                   </button>
-                  {isSubProjectOpen ? <ChevronDown size={16} color="#94a3b8" /> : <ChevronRight size={16} color="#94a3b8" />}
+                  {isSubProjectOpen ? <ChevronDown size={16} color="#38bdf8" /> : <ChevronRight size={16} color="#38bdf8" />}
                 </div>
               </div>
 

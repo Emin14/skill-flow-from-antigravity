@@ -231,3 +231,28 @@ export const applyCardBgTheme = (themeId: string) => {
   document.documentElement.style.setProperty('--card-bg-gradient', modeData.bgGradient);
   document.documentElement.style.setProperty('--card-border-color', modeData.borderColor);
 };
+
+export const getCategoryColor = (cat?: string): string => {
+  if (!cat || !cat.trim() || cat.trim() === 'Без категории') return 'rgba(255, 255, 255, 0.35)';
+  switch (cat.trim()) {
+    case 'Задача': return '#38bdf8';
+    case 'Проект': return '#a855f7';
+    case 'Работа': return '#0ea5e9';
+    case 'Здоровье': return '#10b981';
+    case 'Обучение': return '#f59e0b';
+    case 'Личное': return '#ec4899';
+    case 'Финансы': return '#8b5cf6';
+    case 'Практика Frontend': return '#06b6d4';
+    case 'Опыт на камеру': return '#a855f7';
+    case 'Теория': return '#3b82f6';
+    default: {
+      let hash = 0;
+      for (let i = 0; i < cat.length; i++) {
+        hash = cat.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const hue = Math.abs(hash) % 360;
+      return `hsl(${hue}, 85%, 60%)`;
+    }
+  }
+};
+

@@ -7,7 +7,7 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr } from '@/shared/lib/dateUtils';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Lightbulb } from 'lucide-react';
 import { OverdueHeaderWidget } from '@/widgets/overdue-header/ui/OverdueHeaderWidget';
 import styles from './OverduePage.module.css';
 
@@ -16,6 +16,7 @@ export const OverduePage: React.FC = () => {
 
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+
   const todayStr = useMemo(() => getTodayStr(), []);
 
   useEffect(() => {
@@ -51,11 +52,17 @@ export const OverduePage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header Widget (Final Variant #7) */}
+      {/* Overdue Header Widget ("Просрочено / Срок выполнения прошел") */}
       <OverdueHeaderWidget
         overdueCount={overdueTasks.length}
         onRescheduleAll={handleRescheduleAllToToday}
       />
+
+      {/* Locked Ultra-Minimalist Gesture Guide (Variant #1) */}
+      <div className={styles.v1ThingsHairline}>
+        <Lightbulb size={13} style={{ flexShrink: 0, opacity: 0.8 }} />
+        <span>👉 Свайп вправо — на Сегодня  •  👈 Свайп влево — удалить</span>
+      </div>
 
       {/* Task List */}
       {isLoading ? (

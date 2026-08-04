@@ -6,6 +6,7 @@ import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
+import { getCategoryColor } from '@/shared/config/categoryColors';
 import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS } from '@/shared/config/repetitionRules';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import styles from './EditTaskModal.module.css';
@@ -54,21 +55,6 @@ const hint: React.CSSProperties = {
   userSelect: 'none',
 };
 
-
-const getCategoryColor = (cat?: string): string => {
-  switch (cat) {
-    case 'Работа': return '#0ea5e9';
-    case 'Здоровье': return '#10b981';
-    case 'Обучение': return '#f59e0b';
-    case 'Личное': return '#ec4899';
-    case 'Финансы': return '#8b5cf6';
-    case 'Практика Frontend': return '#06b6d4';
-    case 'Опыт на камеру': return '#a855f7';
-    case 'Теория': return '#3b82f6';
-    case 'Без категории':
-    default: return 'rgba(255, 255, 255, 0.4)';
-  }
-};
 
 export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess }) => {
   const { updateTaskDetails, deleteTaskSeries, tasks } = useTaskStore();

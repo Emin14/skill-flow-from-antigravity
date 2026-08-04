@@ -4,12 +4,13 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
-import { HabitProgressHeaderWidget, HabitSortOption } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
+import { HabitProgressHeaderWidget, HabitSortKey, HabitSortDirection } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
 import styles from './RepeatsPage.module.css';
 
 export const RepeatsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks } = useTaskStore();
-  const [sortOption, setSortOption] = useState<HabitSortOption>('overdue');
+  const [sortKey, setSortKey] = useState<HabitSortKey>('overdue');
+  const [sortDirection, setSortDirection] = useState<HabitSortDirection>('desc');
 
   useEffect(() => {
     fetchTasks();
@@ -22,30 +23,39 @@ export const RepeatsPage: React.FC = () => {
 
   const sortedRepeatingTasks = useMemo(() => {
     const list = [...uniqueRepeatingTasks];
-    if (sortOption === 'overdue') {
-      list.sort((a, b) => {
+
+    list.sort((a, b) => {
+      let res = 0;
+      if (sortKey === 'overdue') {
         const dateA = a.scheduledDate || '9999-99-99';
         const dateB = b.scheduledDate || '9999-99-99';
-        return dateA.localeCompare(dateB);
-      });
-    } else if (sortOption === 'alphabetical') {
-      list.sort((a, b) => a.title.localeCompare(b.title, 'ru'));
-    } else if (sortOption === 'count_asc') {
-      list.sort((a, b) => {
+        res = dateA.localeCompare(dateB);
+      } else if (sortKey === 'alphabetical') {
+        res = a.title.localeCompare(b.title, 'ru');
+      } else if (sortKey === 'count') {
         const countA = a.occurrences?.filter((o) => o.status === 'Done').length || a.repetitionsCount || 0;
         const countB = b.occurrences?.filter((o) => o.status === 'Done').length || b.repetitionsCount || 0;
-        return countA - countB;
-      });
-    }
+        res = countA - countB;
+      } else if (sortKey === 'created') {
+        const createdA = a.createdAt || '';
+        const createdB = b.createdAt || '';
+        res = createdA.localeCompare(createdB);
+      }
+
+      return sortDirection === 'desc' ? -res : res;
+    });
+
     return list;
-  }, [uniqueRepeatingTasks, sortOption]);
+  }, [uniqueRepeatingTasks, sortKey, sortDirection]);
 
   return (
     <div className={styles.container}>
-      {/* Header Widget (Final Variant #5) */}
+      {/* Header Widget Locked to Variant 1 */}
       <HabitProgressHeaderWidget
-        sortOption={sortOption}
-        onSelectSort={setSortOption}
+        sortKey={sortKey}
+        sortDirection={sortDirection}
+        onSelectSortKey={setSortKey}
+        onToggleDirection={() => setSortDirection((prev) => (prev === 'desc' ? 'asc' : 'desc'))}
       />
 
       {/* List of Timeline Step Progression Cards */}
@@ -136,17 +146,29 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
   const isOverdue = nextDateRaw ? nextDateRaw < todayStr : false;
 
   const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
+  const freqStr = String(task.scheduleFrequency || mode);
 
+  // Point 3 & Point 4: Start at 0, and show exact intervals (30-31 days for month, 365 for year, 7 for week)
   const defaultLabels = useMemo(() => {
-    if (mode === 'schedule') {
-      return ['1', '2', '3', '4', '5', '6'];
+    if (freqStr === 'monthly' || freqStr === 'month' || mode === 'schedule') {
+      return ['0', '~30д', '~60д', '~90д', '~120д', '~150д'];
+    }
+    if (freqStr === 'yearly' || freqStr === 'year') {
+      return ['0', '365д', '730д', '1095д', '1460д', '1825д'];
+    }
+    if (freqStr === 'weekly' || freqStr === 'week') {
+      return ['0', '7д', '14д', '21д', '28д', '35д'];
+    }
+    if (freqStr === 'daily' || freqStr === 'day') {
+      return ['0', '1д', '2д', '3д', '4д', '5д'];
     }
     if (mode === 'after_completion') {
       const days = task.afterCompletionDays || 3;
-      return ['1', ...[1, 2, 3, 4, 5].map((n) => String(n * days))];
+      return ['0', ...[1, 2, 3, 4, 5].map((n) => `${n * days}д`)];
     }
-    return ['1', '3', '7', '14', '30', '90'];
-  }, [mode, task.afterCompletionDays]);
+    // Spaced repetition interval labels (starts at 0)
+    return ['0', '1д', '3д', '7д', '14д', '30д'];
+  }, [mode, freqStr, task.afterCompletionDays]);
 
   const steps: StepNode[] = useMemo(() => {
     const list: StepNode[] = [];
@@ -159,7 +181,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
 
       let label = '';
       if (!isUnknownFuture) {
-        label = defaultLabels[i] || String(i + 1);
+        label = defaultLabels[i] || String(i);
       }
 
       let subLabel = '';
@@ -183,7 +205,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
       }
 
       list.push({
-        stepIndex: i + 1,
+        stepIndex: i,
         label,
         subLabel,
         isCompleted,
@@ -197,7 +219,6 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
   }, [completedCount, completedOccurrences, nextDateRaw, isOverdue, mode, defaultLabels, task]);
 
   const { numStr, textStr } = formatRepetitionCount(completedCount);
-
   const createdDateStr = task.createdAt ? formatDateNumeric(task.createdAt.split('T')[0]) : '';
 
   return (

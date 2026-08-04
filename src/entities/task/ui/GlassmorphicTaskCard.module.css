@@ -6,6 +6,9 @@
   touch-action: pan-y;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
   width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 /* Green Glow for Completed Subtasks Container */
@@ -46,6 +49,9 @@
   border-radius: 16px;
   background-color: var(--color-surface);
   transition: transform 0.15s ease-out;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .taskCardDragging {
@@ -65,6 +71,9 @@
   backdrop-filter: blur(8px);
   cursor: pointer;
   transition: all 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .cardPill:hover {
@@ -104,6 +113,9 @@
   gap: 2px;
   flex: 1;
   min-width: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .taskTitle {
@@ -113,6 +125,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 .taskTitleDone {

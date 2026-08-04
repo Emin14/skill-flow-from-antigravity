@@ -7,9 +7,10 @@ import { SmartRating } from '@/shared/config/repetitionRules';
 interface UseTaskModalsReturn {
   editingTask: Task | null;
   detailTask: Task | null;
+  detailOccurrenceDate?: string;
   smartTask: Task | null;
   openEditModal: (task: Task) => void;
-  openDetailModal: (task: Task) => void;
+  openDetailModal: (task: Task, occurrenceDate?: string) => void;
   openSmartModal: (task: Task) => void;
   closeEditModal: () => void;
   closeDetailModal: () => void;
@@ -20,26 +21,27 @@ interface UseTaskModalsReturn {
 /**
  * shared/hooks/useTaskModals.ts
  *
- * Управляет тремя модальными окнами, связанными с задачами:
+ * Управляет модальными окнами задач:
  * - EditTaskModal (редактирование задачи)
- * - RepeatingTaskDetailModal (детали повторяющейся задачи)
+ * - RepeatingTaskDetailModal (детали повторяющейся задачи с привязкой даты экземпляра)
  * - SmartRatingModal (оценка выполнения)
- *
- * Используется в TodayTasks, CalendarPage, AnytimePage.
  */
 export const useTaskModals = (): UseTaskModalsReturn => {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [detailOccurrenceDate, setDetailOccurrenceDate] = useState<string | undefined>(undefined);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
 
   const openEditModal = useCallback((task: Task) => {
     setEditingTask(task);
     setDetailTask(null);
+    setDetailOccurrenceDate(undefined);
     setSmartTask(null);
   }, []);
 
-  const openDetailModal = useCallback((task: Task) => {
+  const openDetailModal = useCallback((task: Task, occurrenceDate?: string) => {
     setDetailTask(task);
+    setDetailOccurrenceDate(occurrenceDate);
     setEditingTask(null);
     setSmartTask(null);
   }, []);
@@ -48,21 +50,27 @@ export const useTaskModals = (): UseTaskModalsReturn => {
     setSmartTask(task);
     setEditingTask(null);
     setDetailTask(null);
+    setDetailOccurrenceDate(undefined);
   }, []);
 
   const closeEditModal = useCallback(() => setEditingTask(null), []);
-  const closeDetailModal = useCallback(() => setDetailTask(null), []);
+  const closeDetailModal = useCallback(() => {
+    setDetailTask(null);
+    setDetailOccurrenceDate(undefined);
+  }, []);
   const closeSmartModal = useCallback(() => setSmartTask(null), []);
 
   const closeAll = useCallback(() => {
     setEditingTask(null);
     setDetailTask(null);
+    setDetailOccurrenceDate(undefined);
     setSmartTask(null);
   }, []);
 
   return {
     editingTask,
     detailTask,
+    detailOccurrenceDate,
     smartTask,
     openEditModal,
     openDetailModal,

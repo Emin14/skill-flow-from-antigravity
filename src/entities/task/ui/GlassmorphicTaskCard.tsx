@@ -6,19 +6,26 @@ import { Task, TaskStatus } from '@/entities/task/model/types';
 import { getAllDescendantTasks, getTaskParentPath } from '@/entities/task/model/store';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { GripVertical, Check, ExternalLink, Calendar } from 'lucide-react';
+import { startPointerDrag } from '@/shared/lib/pointerDrag';
 import styles from './GlassmorphicTaskCard.module.css';
+
+declare global {
+  interface Window {
+    __draggedTaskId?: string | null;
+  }
+}
 
 interface GlassmorphicTaskCardProps {
   task: Task;
   occurrenceDate?: string;
   allTasks?: Task[];
   showDragHandle?: boolean;
-  parentPathVariant?: number; // 1 to 10 concept variants
+  parentPathVariant?: number;
   hideDateBadge?: boolean;
   onToggleCheckbox?: () => void;
   onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
-  onClick?: () => void;
+  onClick?: (occurrenceDate?: string) => void;
   onDropOnTask?: (draggedTaskId: string, targetParentTask: Task) => void;
   onCompleteParent?: () => void;
   onRescheduleToToday?: () => void;
@@ -29,7 +36,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
   const pathStr = path.map((t) => t.title).join(' › ');
 
   switch (variant) {
-    case 1: // Classic Breadcrumb Trail (RETAINED)
+    case 1:
       return (
         <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.65)', display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
           <span>📂</span>
@@ -44,7 +51,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 2: // Linear Issue Key Badge (NEW)
+    case 2:
       return (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '2px 8px', borderRadius: '6px', background: 'rgba(15, 23, 42, 0.85)', border: `1px solid ${catColor}50`, fontSize: '10.5px', fontFamily: 'monospace', color: '#f1f5f9', fontWeight: 600, marginBottom: '4px', width: 'fit-content', maxWidth: '100%', boxShadow: `0 0 10px ${catColor}20` }}>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: catColor, flexShrink: 0 }} />
@@ -52,7 +59,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 3: // Things 3 Area Pill (NEW)
+    case 3:
       return (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '12px', background: 'rgba(255, 255, 255, 0.07)', border: '1px solid rgba(255, 255, 255, 0.12)', fontSize: '10.5px', color: 'rgba(255,255,255,0.85)', fontWeight: 500, marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ fontSize: '11px', flexShrink: 0 }}>📁</span>
@@ -60,7 +67,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 4: // Compact Minimal Arrow Tag (RETAINED)
+    case 4:
       return (
         <div style={{ fontSize: '11px', color: '#38bdf8', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '3px', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ flexShrink: 0 }}>📁</span>
@@ -68,7 +75,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 5: // Asana Multi-level Hierarchy Bar (NEW)
+    case 5:
       return (
         <div style={{ borderLeft: `3px solid ${catColor}`, paddingLeft: '8px', marginBottom: '4px', display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '11px', color: '#cbd5e1', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ fontSize: '9px', opacity: 0.6, flexShrink: 0 }}>●</span>
@@ -76,7 +83,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 6: // Craft Frosted Glass Pill (NEW)
+    case 6:
       return (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '3px 10px', background: 'rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255, 255, 255, 0.14)', borderRadius: '12px', fontSize: '10.5px', color: '#60a5fa', fontWeight: 600, marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ flexShrink: 0 }}>⚡</span>
@@ -84,7 +91,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 7: // Raycast Action Chip (NEW)
+    case 7:
       return (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '2px 8px', borderRadius: '6px', background: 'linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.9))', border: '1px solid rgba(255,255,255,0.15)', fontSize: '10.5px', color: '#38bdf8', fontWeight: 600, marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ opacity: 0.6, fontSize: '10px', flexShrink: 0 }}>⌘</span>
@@ -92,7 +99,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 8: // Kanban Column Tag (NEW)
+    case 8:
       return (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '10px', background: `linear-gradient(90deg, ${catColor}30, transparent)`, borderLeft: `3px solid ${catColor}`, fontSize: '10.5px', color: '#f8fafc', fontWeight: 600, marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ flexShrink: 0 }}>🏷️</span>
@@ -100,7 +107,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 9: // Minimal Subtitle Dot Path (NEW)
+    case 9:
       return (
         <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ color: catColor, flexShrink: 0 }}>•</span>
@@ -108,7 +115,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
         </div>
       );
 
-    case 10: // Interactive Tree Link (RETAINED)
+    case 10:
     default:
       return (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: '#0ea5e9', fontWeight: 600, cursor: 'pointer', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
@@ -119,22 +126,8 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
   }
 };
 
-const getCategoryColor = (cat?: string): string => {
-  switch (cat) {
-    case 'Работа': return '#0ea5e9';
-    case 'Здоровье': return '#10b981';
-    case 'Обучение': return '#f59e0b';
-    case 'Личное': return '#ec4899';
-    case 'Финансы': return '#8b5cf6';
-    case 'Практика Frontend': return '#06b6d4';
-    case 'Опыт на камеру': return '#a855f7';
-    case 'Теория': return '#3b82f6';
-    case 'Без категории':
-    default: return 'rgba(255, 255, 255, 0.3)';
-  }
-};
+import { getCategoryColor } from '@/shared/config/categoryColors';
 
-// BUG-MED-02: Safe URL formatter
 const formatExternalUrl = (url?: string): string | null => {
   if (!url || !url.trim()) return null;
   const trimmed = url.trim();
@@ -195,6 +188,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   onRescheduleToToday,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const isJustDraggedRef = useRef<boolean>(false);
 
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
@@ -204,6 +198,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [isOverTarget, setIsOverTarget] = useState<boolean>(false);
   const [isPromptDismissed, setIsPromptDismissed] = useState<boolean>(false);
+  const [isTouchDragging, setIsTouchDragging] = useState<boolean>(false);
 
   const currentOcc = useMemo(() => {
     if (!task.isRepeating) return null;
@@ -215,7 +210,6 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   const catColor = getCategoryColor(task.category);
   const formattedLink = formatExternalUrl(task.link);
 
-  // Date badge: show scheduledDate, highlight overdue in red
   const todayStr = getTodayStr();
   const showDateBadge = !hideDateBadge && task.scheduledDate && task.scheduledDate !== '' && task.scheduledDate !== 'anytime' && !isDone;
   const isOverdue = Boolean(showDateBadge && task.scheduledDate && task.scheduledDate < todayStr);
@@ -227,13 +221,11 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     return `${parts[2]}.${parts[1]}`;
   })();
 
-  // BUG-HIGH-01: Multi-level subtasks progress calculation using getAllDescendantTasks
   const descendantSubtasks = useMemo(() => getAllDescendantTasks(task.id, allTasks), [allTasks, task.id]);
   const isContainer = descendantSubtasks.length > 0;
   const doneSubtasksCount = useMemo(() => descendantSubtasks.filter((t) => t.status === 'Done').length, [descendantSubtasks]);
   const areAllSubtasksDone = isContainer && descendantSubtasks.length > 0 && doneSubtasksCount === descendantSubtasks.length;
 
-  // BUG-HIGH-05: Mobile touch gesture angle detection
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
     setTouchStartY(e.targetTouches[0].clientY);
@@ -281,22 +273,24 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
         setSwipeOffset(0);
       } else {
         if (diff > 45) {
-          // Swipe Left -> Delete Action Button
           setIsSwipedLeft(true);
           setSwipeOffset(-80);
         } else if (diff < -45) {
-          // Swipe Right -> Advance / Cycle Process Stage
           setSwipeOffset(0);
-          const currentStatus = currentOcc ? currentOcc.status : task.status;
-          let nextStatus: TaskStatus = 'Done';
-          if (currentStatus === 'Todo') nextStatus = 'InProgress';
-          else if (currentStatus === 'InProgress') nextStatus = 'Done';
-          else if (currentStatus === 'Done') nextStatus = 'Todo';
+          if (onRescheduleToToday) {
+            onRescheduleToToday();
+          } else {
+            const currentStatus = currentOcc ? currentOcc.status : task.status;
+            let nextStatus: TaskStatus = 'Todo';
+            if (currentStatus === 'Todo') nextStatus = 'InProgress';
+            else if (currentStatus === 'InProgress') nextStatus = 'Done';
+            else if (currentStatus === 'Done') nextStatus = 'Todo';
 
-          if (onStatusChange) {
-            onStatusChange(nextStatus);
-          } else if (onToggleCheckbox) {
-            onToggleCheckbox();
+            if (onStatusChange) {
+              onStatusChange(nextStatus);
+            } else if (onToggleCheckbox) {
+              onToggleCheckbox();
+            }
           }
         } else {
           setIsSwipedLeft(false);
@@ -309,20 +303,37 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     setIsVerticalScroll(false);
   };
 
+  // PC HTML5 Drag Handlers
   const handleDragStart = (e: React.DragEvent) => {
     e.stopPropagation();
     setIsDragging(true);
-    e.dataTransfer.setData('text/plain', task.id);
+    isJustDraggedRef.current = true;
+    if (typeof window !== 'undefined') {
+      window.__draggedTaskId = task.id;
+    }
+    try {
+      e.dataTransfer.setData('text/plain', task.id);
+      e.dataTransfer.setData('taskId', task.id);
+    } catch (err) {
+      // IE/Safari fallback
+    }
     e.dataTransfer.effectAllowed = 'move';
   };
 
   const handleDragEnd = () => {
     setIsDragging(false);
+    if (typeof window !== 'undefined') {
+      window.__draggedTaskId = null;
+    }
+    setTimeout(() => {
+      isJustDraggedRef.current = false;
+    }, 300);
   };
 
   const handleTaskDragOver = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    e.dataTransfer.dropEffect = 'move';
     setIsOverTarget(true);
   };
 
@@ -336,23 +347,62 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     e.preventDefault();
     e.stopPropagation();
     setIsOverTarget(false);
-    const draggedTaskId = e.dataTransfer.getData('text/plain');
+    const draggedTaskId = e.dataTransfer.getData('text/plain') || e.dataTransfer.getData('taskId') || window.__draggedTaskId;
     if (draggedTaskId && draggedTaskId !== task.id && onDropOnTask) {
       onDropOnTask(draggedTaskId, task);
     }
   };
 
-  // BUG-MED-01: Cascade completion confirmation prompt for parent tasks
-  const handleCompleteParentWithPrompt = () => {
-    if (!onCompleteParent) return;
-    const uncompletedSubtasks = descendantSubtasks.filter((t) => t.status !== 'Done');
-    if (uncompletedSubtasks.length > 0) {
-      const confirmed = window.confirm(
-        `Завершить родительскую задачу "${task.title}" и ${uncompletedSubtasks.length} невыполненных подзадач?`
-      );
-      if (!confirmed) return;
+  // Mobile Touch Drag Handlers (Grip Handle)
+  const handleGripTouchStart = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    setIsTouchDragging(true);
+    if (typeof window !== 'undefined') {
+      window.__draggedTaskId = task.id;
     }
-    onCompleteParent();
+  };
+
+  const handleGripTouchMove = (e: React.TouchEvent) => {
+    if (!isTouchDragging) return;
+    const touch = e.touches[0];
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    const card = element?.closest('[data-task-id]');
+    if (card) {
+      const targetId = card.getAttribute('data-task-id');
+      if (targetId && targetId !== task.id) {
+        card.classList.add(styles.taskCardDropTarget);
+      }
+    }
+  };
+
+  const handleGripTouchEnd = (e: React.TouchEvent) => {
+    if (!isTouchDragging) return;
+    setIsTouchDragging(false);
+    const touch = e.changedTouches[0];
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    const card = element?.closest('[data-task-id]');
+    if (card) {
+      const targetId = card.getAttribute('data-task-id');
+      card.classList.remove(styles.taskCardDropTarget);
+      if (targetId && targetId !== task.id && onDropOnTask && allTasks) {
+        const targetTask = allTasks.find((t) => t.id === targetId);
+        if (targetTask) {
+          onDropOnTask(task.id, targetTask);
+        }
+      }
+    }
+    if (typeof window !== 'undefined') {
+      window.__draggedTaskId = null;
+    }
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (isDragging || isJustDraggedRef.current) {
+      e.stopPropagation();
+      e.preventDefault();
+      return;
+    }
+    if (onClick) onClick(occurrenceDate);
   };
 
   const parentPath = useMemo(() => {
@@ -365,12 +415,15 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     <div
       ref={wrapperRef}
       data-task-id={task.id}
-      className={`${styles.taskCardWrapper} ${
-        areAllSubtasksDone && !isDone ? styles.taskCardGlowContainer : ''
-      } ${isOverTarget ? styles.taskCardDropTarget : ''}`}
+      draggable={showDragHandle}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
       onDragOver={handleTaskDragOver}
       onDragLeave={handleTaskDragLeave}
       onDrop={handleTaskDrop}
+      className={`${styles.taskCardWrapper} ${
+        areAllSubtasksDone && !isDone ? styles.taskCardGlowContainer : ''
+      } ${isOverTarget ? styles.taskCardDropTarget : ''}`}
     >
       {(swipeOffset < 0 || isSwipedLeft) && (
         <div
@@ -390,7 +443,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        onClick={onClick}
+        onClick={handleCardClick}
       >
         <div className={`${styles.cardPill} ${isDone ? styles.taskDone : ''}`}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
@@ -430,19 +483,6 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                     {isOverdue ? `⚠ ${dateBadgeLabel}` : dateBadgeLabel}
                   </span>
                 )}
-                {onRescheduleToToday && (
-                  <button
-                    type="button"
-                    className={styles.rescheduleTodayChip}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onRescheduleToToday();
-                    }}
-                    title="Перенести задачу на сегодня"
-                  >
-                    ☀️ На сегодня
-                  </button>
-                )}
                 {formattedLink && (
                   <a
                     href={formattedLink}
@@ -465,10 +505,14 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
               draggable
               onDragStart={handleDragStart}
               onDragEnd={handleDragEnd}
-              title="Перетащите карточку"
+              onMouseDown={(e) => startPointerDrag(e, task.id, task.title)}
+              onTouchStart={handleGripTouchStart}
+              onTouchMove={handleGripTouchMove}
+              onTouchEnd={handleGripTouchEnd}
+              title="Перетащите карточку мышкой на ПК или пальцем на смартфоне"
               onClick={(e) => e.stopPropagation()}
             >
-              <GripVertical size={14} />
+              <GripVertical size={16} />
             </div>
           )}
         </div>

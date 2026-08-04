@@ -46,20 +46,7 @@ const hint: React.CSSProperties = {
   userSelect: 'none',
 };
 
-const getCategoryColor = (cat?: string): string => {
-  switch (cat) {
-    case 'Работа': return '#0ea5e9';
-    case 'Здоровье': return '#10b981';
-    case 'Обучение': return '#f59e0b';
-    case 'Личное': return '#ec4899';
-    case 'Финансы': return '#8b5cf6';
-    case 'Практика Frontend': return '#06b6d4';
-    case 'Опыт на камеру': return '#a855f7';
-    case 'Теория': return '#3b82f6';
-    case 'Без категории':
-    default: return 'rgba(255, 255, 255, 0.4)';
-  }
-};
+import { getCategoryColor } from '@/shared/config/categoryColors';
 
 export const QuickCreateModal: React.FC = () => {
   const { isOpen, closeModal } = useQuickCreateModalStore();

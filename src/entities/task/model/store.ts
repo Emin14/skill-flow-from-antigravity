@@ -116,6 +116,7 @@ interface TaskState {
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
   updateTaskPomodoros: (id: string, count: number) => Promise<void>;
   deleteTaskOccurrence: (id: string, dateStr: string) => Promise<void>;
+  updateOccurrenceDate: (id: string, currentDateStr: string, newDateStr: string) => Promise<void>;
   deleteTaskSeries: (id: string, confirmed?: boolean) => Promise<void>;
   deleteTask: (id: string, confirmed?: boolean) => Promise<void>;
   rescheduleTaskToToday: (id: string) => Promise<void>;
@@ -705,6 +706,47 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
     await taskRepository.update(id, updates);
     useToastStore.getState().showToast(`Повторение на ${dateStr} удалено`, 'info');
+  },
+
+  updateOccurrenceDate: async (id: string, currentDateStr: string, newDateStr: string) => {
+    const task = get().tasks.find((t) => t.id === id);
+    if (!task || !newDateStr || currentDateStr === newDateStr) return;
+
+    const currentOccs = task.occurrences || [];
+    let found = false;
+    const updatedOccs = currentOccs.map((o) => {
+      if (o.date === currentDateStr) {
+        found = true;
+        return { ...o, date: newDateStr };
+      }
+      return o;
+    });
+
+    if (!found) {
+      updatedOccs.push({
+        id: uuidv4(),
+        taskId: id,
+        date: newDateStr,
+        status: 'Todo',
+      });
+    }
+
+    const normOccs = normalizeOccurrences(updatedOccs, id);
+    const derivedDate = getDerivedScheduledDate({ ...task, occurrences: normOccs });
+    const derivedDoneCount = getDerivedRepetitionsCount({ ...task, occurrences: normOccs });
+
+    const updates: Partial<Task> = {
+      occurrences: normOccs,
+      scheduledDate: derivedDate,
+      repetitionsCount: derivedDoneCount,
+    };
+
+    set((state) => ({
+      tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
+    }));
+
+    await taskRepository.update(id, updates);
+    useToastStore.getState().showToast(`Экземпляр перенесен на ${newDateStr}`, 'success');
   },
 
   deleteTaskSeries: async (id: string, confirmed?: boolean) => {

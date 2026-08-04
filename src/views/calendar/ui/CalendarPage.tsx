@@ -45,6 +45,7 @@ export const CalendarPage: React.FC = () => {
   const [currentMonthDate, setCurrentMonthDate] = useState<Date>(new Date());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [detailOccurrenceDate, setDetailOccurrenceDate] = useState<string | undefined>(undefined);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
 
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -212,8 +213,9 @@ export const CalendarPage: React.FC = () => {
 
   const formattedSelectedDate = formatSelectedDateTitle(selectedDate);
 
-  const handleTaskClick = (task: Task) => {
+  const handleTaskClick = (task: Task, occDate?: string) => {
     setDetailTask(task);
+    setDetailOccurrenceDate(occDate || selectedDate);
   };
 
   return (
@@ -309,11 +311,16 @@ export const CalendarPage: React.FC = () => {
       {/* Repeating Task Detail Modal */}
       <RepeatingTaskDetailModal
         task={detailTask}
+        occurrenceDate={detailOccurrenceDate || selectedDate}
         isOpen={!!detailTask}
-        onClose={() => setDetailTask(null)}
+        onClose={() => {
+          setDetailTask(null);
+          setDetailOccurrenceDate(undefined);
+        }}
         onOpenEdit={() => {
           setEditingTask(detailTask);
           setDetailTask(null);
+          setDetailOccurrenceDate(undefined);
         }}
       />
 

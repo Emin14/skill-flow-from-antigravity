@@ -1,14 +1,17 @@
 'use client';
 
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Task } from '@/entities/task/model/types';
 import { useTaskStore, normalizeOccurrences } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
-import { getTodayStr } from '@/shared/lib/dateUtils';
+import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
+import { ChevronDown, ChevronUp, Calendar, Trash2, ExternalLink, CheckCircle2, Clock, Sparkles } from 'lucide-react';
 import styles from './EditTaskModal.module.css';
 
 interface RepeatingTaskDetailModalProps {
   task: Task | null;
+  occurrenceDate?: string;
   isOpen: boolean;
   onClose: () => void;
   onOpenEdit: () => void;
@@ -27,12 +30,15 @@ const formatDateTitleRu = (dateStr?: string) => {
 
 export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> = ({
   task,
+  occurrenceDate,
   isOpen,
   onClose,
   onOpenEdit,
 }) => {
-  const { tasks, updateTaskPomodoros, updateTaskStatus, deleteTaskSeries } = useTaskStore();
-  const [showDeleteConfirm, setShowDeleteConfirm] = React.useState(false);
+  const router = useRouter();
+  const { tasks, updateTaskPomodoros, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus } = useTaskStore();
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
   const masterTask = useMemo(() => {
     if (!task) return null;
@@ -90,9 +96,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   }
 
   const todayStr = getTodayStr();
-  const occForToday = masterTask.occurrences?.find((o) => o.date === todayStr);
-  const displayDateStr = occForToday ? todayStr : masterTask.scheduledDate;
-  const formattedDate = formatDateTitleRu(displayDateStr);
+
+  // Point 1 Fix: Display active occurrence date if provided, otherwise derived date
+  const activeOccDate = occurrenceDate || (masterTask.occurrences?.find((o) => o.status === 'Todo')?.date) || masterTask.scheduledDate || todayStr;
+  const formattedOccDate = formatDateTitleRu(activeOccDate);
 
   const pomoOptions = [
     { num: '⅓', hasTomato: false, val: 0.33 },
@@ -103,9 +110,12 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     { num: '4', hasTomato: true, val: 4 },
   ];
 
+  // Point 2: Sort occurrences list for history
+  const occurrencesList = [...(masterTask.occurrences || [])].sort((a, b) => b.date.localeCompare(a.date));
+
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()} style={{ gap: '14px', padding: '20px' }}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()} style={{ gap: '14px', padding: '20px', maxHeight: '90vh', overflowY: 'auto' }}>
         {/* Modal Header Row 1: Icon, Title + Category column, Action buttons */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1 }}>
@@ -128,7 +138,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               {masterTask.isRepeating ? '🔄' : '📌'}
             </div>
 
-            {/* Task Title & Category directly under Title */}
+            {/* Task Title & Category */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0, flex: 1 }}>
               <h2
                 style={{
@@ -215,18 +225,25 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        {/* Top-Right Dim Created Date (Point 3) */}
+        {/* Top-Right Dim Created Date */}
         {masterTask.createdAt && (
           <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', opacity: 0.55, textAlign: 'right', marginTop: '-6px', marginBottom: '-6px' }}>
             Создано: {new Date(masterTask.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
           </div>
         )}
 
-        {/* Modal Header Row 2: Original Date style on Left, Streak on Right */}
+        {/* Modal Header Row 2: Point 1 Fix - Occurrence Date prominently shown */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '6px', fontSize: '13.5px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span>🗓</span>
-            <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>{formattedDate}</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span>🗓 Экземпляр:</span>
+              <span style={{ color: '#38bdf8', fontWeight: 700 }}>{formattedOccDate}</span>
+            </div>
+            {masterTask.isRepeating && masterTask.scheduledDate && masterTask.scheduledDate !== activeOccDate && (
+              <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', opacity: 0.7 }}>
+                (Старт серии: {formatDateTitleRu(masterTask.scheduledDate)})
+              </span>
+            )}
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -236,7 +253,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
         </div>
 
         {/* Horizontal Divider Line */}
-        <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '10px 0 6px 0' }} />
+        <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '6px 0' }} />
 
         {/* Description & Link if present */}
         {(masterTask.description || masterTask.link) && (
@@ -322,7 +339,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                 <button
                   key={rating.key}
                   type="button"
-                  onClick={() => updateTaskStatus(masterTask.id, 'Done', rating.key as any, masterTask.scheduledDate)}
+                  onClick={() => updateTaskStatus(masterTask.id, 'Done', rating.key as any, activeOccDate)}
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -348,7 +365,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        {/* Completion Progress Bar */}
+        {/* Completion Progress Bar Widget */}
         {masterTask.isRepeating && (
           <div
             style={{
@@ -388,6 +405,200 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                 );
               })}
             </div>
+          </div>
+        )}
+
+        {/* Point 2: Collapsible Repetition History Accordion Widget */}
+        {masterTask.isRepeating && (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px',
+              borderRadius: '16px',
+              background: 'rgba(30, 41, 59, 0.6)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              padding: '12px 14px',
+              width: '100%',
+              boxSizing: 'border-box',
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setIsHistoryOpen((prev) => !prev)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+                background: 'none',
+                border: 'none',
+                color: 'var(--color-text-primary)',
+                cursor: 'pointer',
+                fontSize: '13.5px',
+                fontWeight: 700,
+                padding: 0,
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span>📜 История повторений</span>
+                <span style={{ fontSize: '11px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', padding: '2px 8px', borderRadius: '10px' }}>
+                  {occurrencesList.length}
+                </span>
+              </div>
+              {isHistoryOpen ? <ChevronUp size={18} color="#38bdf8" /> : <ChevronDown size={18} color="#38bdf8" />}
+            </button>
+
+            {isHistoryOpen && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '4px' }}>
+                {occurrencesList.length === 0 ? (
+                  <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
+                    История повторений пока пуста.
+                  </div>
+                ) : (
+                  occurrencesList.map((occ) => {
+                    const isOccDone = occ.status === 'Done';
+                    const ratingEmoji =
+                      occ.smartRating === 'easy' ? '😄' :
+                      occ.smartRating === 'normal' ? '🙂' :
+                      occ.smartRating === 'hard' ? '😣' :
+                      occ.smartRating === 'again' ? '❌' : null;
+
+                    return (
+                      <div
+                        key={occ.id || occ.date}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '8px',
+                          padding: '8px 10px',
+                          borderRadius: '12px',
+                          background: isOccDone ? 'rgba(16, 185, 129, 0.08)' : 'rgba(255, 255, 255, 0.04)',
+                          border: isOccDone ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid rgba(255, 255, 255, 0.08)',
+                          fontSize: '12.5px',
+                        }}
+                      >
+                        {/* Interactive Calendar Date Picker Input */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', position: 'relative' }}>
+                          <label
+                            title="Нажмите, чтобы изменить дату экземпляра"
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              cursor: 'pointer',
+                              background: 'rgba(56, 189, 248, 0.12)',
+                              border: '1px solid rgba(56, 189, 248, 0.3)',
+                              borderRadius: '8px',
+                              padding: '4px 8px',
+                              color: '#38bdf8',
+                              fontWeight: 700,
+                              fontSize: '12px',
+                            }}
+                          >
+                            <Calendar size={13} color="#38bdf8" />
+                            <span>{formatDateDisplay(occ.date)}</span>
+                            <input
+                              type="date"
+                              value={occ.date}
+                              onChange={(e) => {
+                                if (e.target.value) {
+                                  updateOccurrenceDate(masterTask.id, occ.date, e.target.value);
+                                }
+                              }}
+                              style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                opacity: 0,
+                                cursor: 'pointer',
+                              }}
+                            />
+                          </label>
+                        </div>
+
+                        {/* Status Toggle & Rating Badge */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <button
+                            type="button"
+                            onClick={() => toggleTaskStatus(masterTask.id, undefined, occ.date)}
+                            style={{
+                              border: 'none',
+                              borderRadius: '8px',
+                              padding: '4px 8px',
+                              fontSize: '11px',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              background: isOccDone ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)',
+                              color: isOccDone ? '#10b981' : '#f59e0b',
+                            }}
+                          >
+                            {isOccDone ? '✅ Выполнено' : '⏳ В ожидании'}
+                          </button>
+
+                          {ratingEmoji && (
+                            <span style={{ fontSize: '14px' }} title={`Оценка: ${occ.smartRating}`}>
+                              {ratingEmoji}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Icon Action Buttons: A) Delete occurrence B) Go to Calendar Day */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          {/* Button Б: Go to calendar date */}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              router.push(`/calendar?date=${occ.date}`);
+                              onClose();
+                            }}
+                            title={`Перейти в календарь на ${formatDateDisplay(occ.date)}`}
+                            style={{
+                              width: '28px',
+                              height: '28px',
+                              borderRadius: '6px',
+                              background: 'rgba(255, 255, 255, 0.08)',
+                              border: '1px solid rgba(255, 255, 255, 0.12)',
+                              color: '#38bdf8',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            <Calendar size={13} />
+                          </button>
+
+                          {/* Button А: Delete specific occurrence */}
+                          <button
+                            type="button"
+                            onClick={() => deleteTaskOccurrence(masterTask.id, occ.date)}
+                            title={`Удалить этот экземпляр (${formatDateDisplay(occ.date)})`}
+                            style={{
+                              width: '28px',
+                              height: '28px',
+                              borderRadius: '6px',
+                              background: 'rgba(239, 68, 68, 0.15)',
+                              border: '1px solid rgba(239, 68, 68, 0.3)',
+                              color: '#ef4444',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            )}
           </div>
         )}
 

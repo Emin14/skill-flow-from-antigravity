@@ -56,7 +56,7 @@
   min-width: 0;
 }
 
-/* Constant Date Badge Styling (Color NEVER changes based on circle node!) */
+/* Constant Date Badge Styling */
 .statusBadgeNext {
   font-size: 11.5px;
   font-weight: 600;
@@ -66,6 +66,12 @@
   color: #60a5fa;
   border: 1px solid rgba(59, 130, 246, 0.3);
   white-space: nowrap;
+}
+
+:global([data-theme="light"]) .statusBadgeNext {
+  background-color: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.25);
 }
 
 /* Line 2: Category & Repetition Count on 1 line */
@@ -111,6 +117,11 @@
   user-select: none;
 }
 
+:global([data-theme="light"]) .timelineTrackContainer {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
 .timelineTrack {
   display: flex;
   align-items: flex-start;
@@ -151,6 +162,10 @@
   color: #60a5fa;
 }
 
+:global([data-theme="light"]) .stepLabelNext {
+  color: #0284c7;
+}
+
 .stepLabelFuture {
   color: var(--color-text-muted);
 }
@@ -181,10 +196,14 @@
 }
 
 .lineSegmentFuture {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Timeline Circle Nodes - ALWAYS SOLID OPAQUE BACKGROUND TO PREVENT LINE BLEED */
+:global([data-theme="light"]) .lineSegmentFuture {
+  background-color: rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Timeline Circle Nodes */
 .nodeCircle {
   position: relative;
   width: 22px;
@@ -197,7 +216,11 @@
   font-weight: bold;
   transition: all 0.2s ease;
   z-index: 5;
-  background-color: #161828; /* Solid surface background prevents green line from entering circle! */
+  background-color: var(--color-surface, #161828);
+}
+
+:global([data-theme="light"]) .nodeCircle {
+  background-color: #ffffff !important;
 }
 
 .smartRatingBadge {
@@ -213,7 +236,7 @@
 }
 
 .nodeCompleted {
-  background-color: #10b981;
+  background-color: #10b981 !important;
   border: 2px solid #059669;
   color: #ffffff;
   box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
@@ -221,26 +244,41 @@
 
 /* Standard next node (Today or Future) - Blue/Cyan */
 .nodeNext {
-  background-color: #161828;
+  background-color: var(--color-surface, #161828);
   border: 2.5px solid #3b82f6;
   color: #3b82f6;
   box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
   animation: pulseBlue 2s infinite ease-in-out;
 }
 
+:global([data-theme="light"]) .nodeNext {
+  background-color: #ffffff !important;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
 /* Overdue next node (Yesterday or earlier) - Soft Solid Red */
 .nodeOverdue {
-  background-color: #161828; /* Solid background prevents line bleed! */
+  background-color: var(--color-surface, #161828);
   border: 2.5px solid #ef4444;
   color: #ef4444;
   box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
   animation: pulseSoftRed 2.5s infinite ease-in-out;
 }
 
+:global([data-theme="light"]) .nodeOverdue {
+  background-color: #ffffff !important;
+}
+
 .nodeFuture {
-  background-color: #161828;
-  border: 2px solid var(--color-border);
+  background-color: var(--color-surface, #161828);
+  border: 2px solid var(--color-border, rgba(255, 255, 255, 0.15));
   color: var(--color-text-muted);
+}
+
+:global([data-theme="light"]) .nodeFuture {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.22) !important;
 }
 
 .subLabel {

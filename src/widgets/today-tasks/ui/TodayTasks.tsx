@@ -14,6 +14,7 @@ import { useTaskModals } from '@/shared/hooks/useTaskModals';
 import { useMidnightRefresh } from '@/shared/hooks/useMidnightRefresh';
 import { DaySwitcherShowcase } from '@/features/day-switcher-showcase/ui/DaySwitcherShowcase';
 import { useToastStore } from '@/shared/ui/toast/toastStore';
+import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
 import {
   Sun,
   PartyPopper,
@@ -30,7 +31,7 @@ interface TodayTasksProps {
 export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }) => {
   const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const {
-    editingTask, detailTask, smartTask,
+    editingTask, detailTask, detailOccurrenceDate, smartTask,
     openEditModal, openDetailModal, openSmartModal,
     closeEditModal, closeDetailModal, closeSmartModal,
   } = useTaskModals();
@@ -54,6 +55,19 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
+
+  useEffect(() => {
+    registerPointerDropHandler((draggedTaskId, target) => {
+      if (target.type === 'status_tab' && target.status) {
+        updateTaskStatus(draggedTaskId, target.status, undefined, todayStr);
+        const statusLabel = target.status === 'Todo' ? 'План' : target.status === 'InProgress' ? 'В работе' : 'Выполнено';
+        useToastStore.getState().showToast(`Задача перенесена в колонку "${statusLabel}"`, 'info');
+      } else if (target.type === 'task_card' && target.taskId) {
+        updateTaskParent(draggedTaskId, target.taskId);
+        useToastStore.getState().showToast('Задача привязана как подзадача', 'info');
+      }
+    });
+  }, [todayStr, updateTaskStatus, updateTaskParent]);
 
   useEffect(() => { fetchTasks(); }, [fetchTasks]);
 
@@ -124,12 +138,21 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
     }
   };
 
+  const getDraggedTaskId = (e: React.DragEvent): string | null => {
+    const windowId = typeof window !== 'undefined' ? window.__draggedTaskId : null;
+    if (windowId) return windowId;
+    const raw = e.dataTransfer.getData('taskId') || e.dataTransfer.getData('text/plain');
+    if (!raw) return null;
+    const found = tasks.find((t) => t.id === raw || t.title === raw);
+    return found ? found.id : raw;
+  };
+
   // Drag and Drop Task onto Column Header / Tab Button handler
   const handleDropOnTabHeader = (e: React.DragEvent, targetStatus: TaskStatus) => {
     e.preventDefault();
     e.stopPropagation();
     setDragOverTab(null);
-    const taskId = e.dataTransfer.getData('text/plain');
+    const taskId = getDraggedTaskId(e);
     if (taskId) {
       updateTaskStatus(taskId, targetStatus, undefined, todayStr);
       const statusLabel = targetStatus === 'Todo' ? 'План' : targetStatus === 'InProgress' ? 'В работе' : 'Выполнено';
@@ -152,6 +175,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
       <div className={styles.viewTabBtnBar}>
         <button
           type="button"
+          data-drop-status="Todo"
           className={`${styles.viewTabBtn} ${statusFilter === 'Todo' ? styles.viewTabBtnActive : ''} ${dragOverTab === 'Todo' ? styles.viewTabBtnDragOver : ''}`}
           onClick={() => setStatusFilter('Todo')}
           onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setDragOverTab('Todo'); }}
@@ -164,6 +188,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
         </button>
         <button
           type="button"
+          data-drop-status="InProgress"
           className={`${styles.viewTabBtn} ${statusFilter === 'InProgress' ? styles.viewTabBtnActive : ''} ${dragOverTab === 'InProgress' ? styles.viewTabBtnDragOver : ''}`}
           onClick={() => setStatusFilter('InProgress')}
           onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setDragOverTab('InProgress'); }}
@@ -176,6 +201,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
         </button>
         <button
           type="button"
+          data-drop-status="Done"
           className={`${styles.viewTabBtn} ${statusFilter === 'Done' ? styles.viewTabBtnActive : ''} ${dragOverTab === 'Done' ? styles.viewTabBtnDragOver : ''}`}
           onClick={() => setStatusFilter('Done')}
           onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setDragOverTab('Done'); }}
@@ -301,6 +327,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
       {/* Task Detail Modal */}
       <RepeatingTaskDetailModal
         task={detailTask}
+        occurrenceDate={detailOccurrenceDate || todayStr}
         isOpen={!!detailTask}
         onClose={closeDetailModal}
         onOpenEdit={() => {
@@ -363,9 +390,14 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
     e.preventDefault();
     e.stopPropagation();
     setIsHeaderDragOver(false);
-    const taskId = e.dataTransfer.getData('text/plain');
+    const taskId =
+      (typeof window !== 'undefined' && window.__draggedTaskId) ||
+      e.dataTransfer.getData('taskId') ||
+      e.dataTransfer.getData('text/plain');
     if (taskId) {
-      onDropOnSection(taskId, targetStatus);
+      const found = allTasks.find((t) => t.id === taskId || t.title === taskId);
+      const realId = found ? found.id : taskId;
+      onDropOnSection(realId, targetStatus);
     }
   };
 
@@ -404,6 +436,7 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
       {/* Column Title Drop Header */}
       <div
+        data-drop-status={targetStatus}
         className={`${styles.sectionHeaderDropTitle} ${isHeaderDragOver ? styles.sectionHeaderDropTitleDragOver : ''}`}
         onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); setIsHeaderDragOver(true); }}
         onDragLeave={(e) => { e.preventDefault(); e.stopPropagation(); setIsHeaderDragOver(false); }}
