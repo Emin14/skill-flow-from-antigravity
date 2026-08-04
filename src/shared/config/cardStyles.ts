@@ -67,10 +67,10 @@ export const applyTaskCardStyle = (styleId: string) => {
   const styleOpt = TASK_CARD_STYLES.find((s) => s.id === styleId) || TASK_CARD_STYLES[0];
   const root = document.documentElement;
 
-  root.style.setProperty('--color-surface', styleOpt.cardBgColor);
-  root.style.setProperty('--color-border', styleOpt.cardBorder);
+  root.style.setProperty('--card-surface', styleOpt.cardBgColor);
+  root.style.setProperty('--card-border', styleOpt.cardBorder);
   if (styleOpt.textColor) {
-    root.style.setProperty('--color-text-primary', styleOpt.textColor);
+    root.style.setProperty('--card-text-primary', styleOpt.textColor);
   }
 
   if (styleOpt.isFramelessNeon) {

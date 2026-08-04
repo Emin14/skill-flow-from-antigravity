@@ -27,6 +27,12 @@ export interface CardBgThemeOption {
 // 1. Dual Accent Text Themes (Category + Repeat Tag) - WCAG 2.1 AA Compliant (min 4.5:1 contrast)
 export const CATEGORY_TEXT_THEMES: DualAccentThemeOption[] = [
   {
+    id: 'adaptive',
+    name: '✨ Адаптивный к акценту (Синхронизирован с темой)',
+    dark: { categoryColor: 'var(--color-accent-text)', repeatColor: 'var(--color-accent-text)' },
+    light: { categoryColor: 'var(--color-accent-text)', repeatColor: 'var(--color-accent-text)' },
+  },
+  {
     id: 'amber',
     name: '🔥 Неоновый янтарь (По умолчанию)',
     dark: { categoryColor: '#fbbf24', repeatColor: '#38bdf8' },

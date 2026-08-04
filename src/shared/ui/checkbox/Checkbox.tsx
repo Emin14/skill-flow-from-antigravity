@@ -40,7 +40,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           height: '18px',
           borderRadius: 'var(--radius-sm)',
           border: checked ? 'none' : '1px solid var(--color-text-muted)',
-          backgroundColor: checked ? 'var(--color-success)' : 'transparent',
+          backgroundColor: checked ? 'var(--color-accent)' : 'transparent',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
