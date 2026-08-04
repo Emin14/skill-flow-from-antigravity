@@ -9,20 +9,20 @@
    VARIANT 1: Cyber Glass + Gradient Progress Bar
    ───────────────────────────────────────────────────────────── */
 .variant1 {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(99, 102, 241, 0.08) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-accent, #10b981) !important;
   border-radius: 20px;
   padding: 16px 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(12px);
 }
 
 :global([data-theme="light"]) .variant1 {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(99, 102, 241, 0.05) 100%);
-  border-color: rgba(16, 185, 129, 0.25);
+  background: #ffffff !important;
+  border-color: var(--color-accent, #10b981) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
@@ -79,22 +79,22 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   NEW VARIANT 2: Soft Glow Capsule Fill
+   VARIANT 2: Soft Glow Capsule Fill
    ───────────────────────────────────────────────────────────── */
 .variant2 {
-  background: var(--color-surface, rgba(30, 41, 59, 0.7));
-  border: 1px solid var(--color-border, rgba(56, 189, 248, 0.25));
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-accent, #38bdf8) !important;
   border-radius: 20px;
   padding: 16px 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 :global([data-theme="light"]) .variant2 {
-  background: #ffffff;
-  border-color: rgba(56, 189, 248, 0.25);
+  background: #ffffff !important;
+  border-color: var(--color-accent, #38bdf8) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
@@ -122,20 +122,23 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   NEW VARIANT 3: Floating Pin Tag Bar
+   VARIANT 3: Floating Pin Tag Bar
    ───────────────────────────────────────────────────────────── */
 .variant3 {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 1.5px solid var(--color-accent, #6366f1) !important;
   border-radius: 18px;
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 :global([data-theme="light"]) .variant3 {
-  background: #ffffff;
+  background: #ffffff !important;
+  border-color: var(--color-accent, #6366f1) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .v3PinBarContainer {
