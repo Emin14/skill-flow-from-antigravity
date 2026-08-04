@@ -405,8 +405,12 @@
 }
 
 .v19BigCardActive {
-  background: linear-gradient(135deg, #06b6d4, #3b82f6);
-  color: #fff;
-  border-color: #38bdf8;
-  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+  background: var(--color-accent, #6366f1) !important;
+  color: #fff !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+:global([data-theme="light"]) .v19BigCardActive * {
+  color: #ffffff !important;
 }

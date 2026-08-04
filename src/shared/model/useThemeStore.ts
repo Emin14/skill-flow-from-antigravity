@@ -2,6 +2,8 @@
 
 import { create } from 'zustand';
 import { APP_THEME_PRESETS, applyAppThemePreset } from '@/shared/config/appThemes';
+import { applyAccentColorVars } from '@/shared/lib/colorUtils';
+import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 
 type Theme = 'dark' | 'light';
 
@@ -21,8 +23,10 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
     if (typeof window !== 'undefined') {
       const savedPresetId = localStorage.getItem('app-preset-theme-id') || 'dark_today';
       const savedTheme = (localStorage.getItem('app-theme') as Theme) || 'dark';
+      const savedAccentColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
       set({ theme: savedTheme, activePresetId: savedPresetId });
       applyAppThemePreset(savedPresetId);
+      applyAccentColorVars(savedAccentColor);
     }
   },
   toggleTheme: () => {
