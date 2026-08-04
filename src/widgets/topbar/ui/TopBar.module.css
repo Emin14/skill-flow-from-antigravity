@@ -11,6 +11,7 @@
   top: 0;
   z-index: var(--z-index-sticky);
   backdrop-filter: blur(12px);
+  gap: 12px;
 }
 
 .titleWrapper {
@@ -43,6 +44,46 @@
   text-transform: capitalize;
 }
 
+/* Temporary Quick Theme Switcher Bar */
+.tempThemeBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-accent-light, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--color-accent-border, rgba(255, 255, 255, 0.12));
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  flex-wrap: wrap;
+}
+
+.tempBadge {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-accent, #6366f1);
+  white-space: nowrap;
+}
+
+.themeSelect {
+  background: var(--color-surface, #1e293b);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.15));
+  color: var(--color-text-primary, #ffffff);
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  max-width: 195px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:global([data-theme="light"]) .themeSelect {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #0f172a;
+}
+
 /* Daily Motivational Message under "Сегодня" */
 .dailyQuoteMsg {
   font-size: 12.5px;
@@ -56,11 +97,30 @@
   max-width: 600px;
 }
 
+@media (max-width: 900px) {
+  .themeSelect {
+    max-width: 130px;
+    font-size: 11px;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 8px var(--space-4);
     padding-top: env(safe-area-inset-top, 8px);
     min-height: calc(var(--layout-header-height) + env(safe-area-inset-top, 0px));
+    flex-wrap: wrap;
+  }
+
+  .tempThemeBar {
+    width: 100%;
+    justify-content: space-between;
+    order: 3;
+    margin-top: 4px;
+  }
+
+  .themeSelect {
+    max-width: 48%;
   }
 
   .dateSubtitle {
