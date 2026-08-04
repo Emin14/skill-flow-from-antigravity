@@ -126,13 +126,13 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                 height: '42px',
                 minWidth: '42px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #0ea5e9, #2563eb)',
+                background: 'linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '20px',
-                color: '#ffffff',
-                boxShadow: '0 4px 12px rgba(14, 165, 233, 0.35)',
+                color: '#ffffff', /* on solid accent button */
+                boxShadow: '0 4px 12px var(--color-accent-border)',
               }}
             >
               {masterTask.isRepeating ? '🔄' : '📌'}
@@ -237,7 +237,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span>🗓 Экземпляр:</span>
-              <span style={{ color: '#38bdf8', fontWeight: 700 }}>{formattedOccDate}</span>
+              <span style={{ color: 'var(--color-accent-text)', fontWeight: 700 }}>{formattedOccDate}</span>
             </div>
             {masterTask.isRepeating && masterTask.scheduledDate && masterTask.scheduledDate !== activeOccDate && (
               <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', opacity: 0.7 }}>
@@ -264,7 +264,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               </p>
             )}
             {masterTask.link && (
-              <a href={masterTask.link} target="_blank" rel="noreferrer" style={{ fontSize: '12px', color: '#38bdf8', textDecoration: 'underline', wordBreak: 'break-all' }}>
+              <a href={masterTask.link} target="_blank" rel="noreferrer" style={{ fontSize: '12px', color: 'var(--color-accent-text)', textDecoration: 'underline', wordBreak: 'break-all' }}>
                 🔗 {masterTask.link}
               </a>
             )}
@@ -298,14 +298,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                     height: '38px',
                     borderRadius: '9px',
                     border: 'none',
-                    background: isActive ? '#0ea5e9' : 'transparent',
+                    background: isActive ? 'var(--color-accent)' : 'transparent',
                     color: isActive ? '#ffffff' : 'var(--color-text-muted)',
                     fontWeight: isActive ? 700 : 500,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '1px',
-                    boxShadow: isActive ? '0 4px 14px rgba(14, 165, 233, 0.45)' : 'none',
+                    boxShadow: isActive ? '0 4px 14px var(--color-accent-border)' : 'none',
                     cursor: 'pointer',
                     transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                   }}
@@ -329,10 +329,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </label>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', width: '100%' }}>
             {[
-              { key: 'easy', emoji: '😄', title: 'Легко', color: '#10b981', bg: 'rgba(16, 185, 129, 0.16)', border: 'rgba(16, 185, 129, 0.4)' },
-              { key: 'normal', emoji: '🙂', title: 'Нормально', color: '#0ea5e9', bg: 'rgba(14, 165, 233, 0.16)', border: 'rgba(14, 165, 233, 0.4)' },
-              { key: 'hard', emoji: '😣', title: 'Сложно', color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.16)', border: 'rgba(245, 158, 11, 0.4)' },
-              { key: 'again', emoji: '❌', title: 'Не помню', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.16)', border: 'rgba(239, 68, 68, 0.4)' },
+              { key: 'easy', emoji: '😄', title: 'Легко', color: 'var(--color-success)', bg: 'var(--color-success-light)', border: 'var(--color-success-border)' },
+              { key: 'normal', emoji: '🙂', title: 'Нормально', color: 'var(--color-accent-text)', bg: 'var(--color-accent-light)', border: 'var(--color-accent-border)' },
+              { key: 'hard', emoji: '😣', title: 'Сложно', color: 'var(--color-warning)', bg: 'var(--color-warning-light)', border: 'var(--color-warning-border)' },
+              { key: 'again', emoji: '❌', title: 'Не помню', color: 'var(--color-danger)', bg: 'var(--color-danger-light)', border: 'var(--color-danger-border)' },
             ].map((rating) => {
               const isActive = activeRating === rating.key;
               return (
@@ -442,11 +442,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span>📜 История повторений</span>
-                <span style={{ fontSize: '11px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', padding: '2px 8px', borderRadius: '10px' }}>
+                <span style={{ fontSize: '11px', background: 'var(--color-accent-light)', color: 'var(--color-accent-text)', padding: '2px 8px', borderRadius: '10px' }}>
                   {occurrencesList.length}
                 </span>
               </div>
-              {isHistoryOpen ? <ChevronUp size={18} color="#38bdf8" /> : <ChevronDown size={18} color="#38bdf8" />}
+              {isHistoryOpen ? <ChevronUp size={18} color="var(--color-accent-text)" /> : <ChevronDown size={18} color="var(--color-accent-text)" />}
             </button>
 
             {isHistoryOpen && (

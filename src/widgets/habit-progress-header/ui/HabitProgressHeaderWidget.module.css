@@ -46,37 +46,37 @@
   color: #0f172a;
 }
 
-/* Flip Circle Button (Clean Icon-Only) */
+/* Flip Circle Button (Clean Icon-Only Neutral Secondary Button) */
 .v1CircleFlipBtn {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(14, 165, 233, 0.15);
-  border: 1px solid rgba(14, 165, 233, 0.35);
-  color: #38bdf8;
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.15s ease;
+  transition: transform 0.2s ease, background 0.15s ease, color 0.15s ease;
   flex-shrink: 0;
 }
 
 .v1CircleFlipBtn:hover {
-  background: #0ea5e9;
-  color: #ffffff;
+  background: var(--color-border-hover);
+  color: var(--color-text-primary);
   transform: rotate(180deg);
 }
 
 :global([data-theme="light"]) .v1CircleFlipBtn {
-  background: rgba(2, 132, 199, 0.1);
-  border-color: #0284c7;
-  color: #0284c7;
+  background: var(--color-surface-hover);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
 }
 
 :global([data-theme="light"]) .v1CircleFlipBtn:hover {
-  background: #0284c7;
-  color: #ffffff;
+  background: var(--color-border-hover);
+  color: var(--color-text-primary);
 }
 
 /* Row 2: All 4 Filters Strictly on 1 Single Equal Horizontal Line */
@@ -89,9 +89,9 @@
 
 .sortBtn {
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
-  color: var(--color-text-muted, #94a3b8);
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
   border-radius: 8px;
   padding: 6px 4px;
   font-size: 11.5px;
@@ -108,28 +108,28 @@
 }
 
 .sortBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: var(--color-border);
+  color: var(--color-text-primary);
 }
 
 .sortBtnActive {
-  background: rgba(14, 165, 233, 0.2);
-  border-color: #0ea5e9;
-  color: #38bdf8;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+  background: var(--color-accent-light) !important;
+  border-color: var(--color-accent-border) !important;
+  color: var(--color-accent-text) !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px var(--color-accent-border) !important;
 }
 
 :global([data-theme="light"]) .sortBtn {
-  background: #f1f5f9;
-  border-color: rgba(0, 0, 0, 0.08);
-  color: #475569;
+  background: var(--color-surface-hover);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
 }
 
 :global([data-theme="light"]) .sortBtnActive {
-  background: rgba(2, 132, 199, 0.1);
-  border-color: #0284c7;
-  color: #0284c7;
-  font-weight: 800;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
+  background: var(--color-accent-light) !important;
+  border-color: var(--color-accent-border) !important;
+  color: var(--color-accent-text) !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px var(--color-accent-border) !important;
 }

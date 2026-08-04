@@ -79,10 +79,10 @@
 }
 
 .variantBtnActive {
-  background: linear-gradient(135deg, #0ea5e9, #6366f1);
-  color: #fff;
-  border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(14, 165, 233, 0.4);
+  background: var(--color-accent) !important;
+  color: #fff !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 10px var(--color-accent-border);
 }
 
 /* Variant Render Area Container */
@@ -190,16 +190,16 @@
 }
 
 .swipeCardActive {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(99, 102, 241, 0.3));
-  border-color: #38bdf8;
-  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);
+  background: var(--color-accent-light);
+  border-color: var(--color-accent-border);
+  box-shadow: 0 4px 16px var(--color-accent-light);
 }
 
 :global([data-theme="light"]) .swipeCardActive {
-  background: linear-gradient(135deg, #0ea5e9, #0284c7);
-  border-color: #0284c7;
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 4px 14px var(--color-accent-border);
 }
 
 :global([data-theme="light"]) .swipeCardActive * {
@@ -243,21 +243,21 @@
 }
 
 .v4DayCardActive {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(99, 102, 241, 0.3));
-  border-color: #38bdf8;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+  background: var(--color-accent-light);
+  border-color: var(--color-accent-border);
+  box-shadow: 0 0 12px var(--color-accent-light);
 }
 
 :global([data-theme="light"]) .v4DayCardActive {
-  background: linear-gradient(135deg, #0ea5e9, #0284c7);
-  border-color: #0284c7;
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
   color: #ffffff !important;
 }
 
 /* Variant 6: Hero Banner */
 .v6HeroBanner {
-  background: var(--widget-custom-bg, linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(99, 102, 241, 0.12))) !important;
-  border: 1px solid var(--widget-custom-border, rgba(56, 189, 248, 0.3)) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)) !important;
+  border: 1px solid var(--widget-custom-border, var(--color-accent-border)) !important;
   border-radius: 18px;
   padding: 14px 18px;
   display: flex;
@@ -315,10 +315,10 @@
 }
 
 .v9CircleDotActive {
-  background: #0ea5e9;
-  border-color: #38bdf8;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: #fff;
-  box-shadow: 0 0 14px rgba(14, 165, 233, 0.5);
+  box-shadow: 0 0 14px var(--color-accent-border);
 }
 
 /* Variant 12 (Modified): Scroll Ribbon in Style 12 (Enlarged active day, no arrows, no calendar icon) */

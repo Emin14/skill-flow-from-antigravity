@@ -133,7 +133,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
         <div className={styles.variantSelectorBar}>
           <div className={styles.variantSelectorHeader}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={14} color="#38bdf8" />
+              <Sparkles size={14} color="var(--color-accent-text)" />
               <span>UX-вариант смены дня: (Выбрано: {formatDateDisplay(selectedDate)})</span>
             </div>
             {!isTodaySelected && (
@@ -156,7 +156,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
 
             <div className={styles.datePickerOverlayWrapper} style={{ cursor: 'pointer' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Calendar size={16} color="#38bdf8" />
+                <Calendar size={16} color="var(--color-accent-text)" />
                 <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
                   {getRelativeLabel(selectedDate, todayStr)} ({formatDateDisplay(selectedDate)})
                 </span>
@@ -196,7 +196,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     ) : (
                       <span style={{ fontSize: '10px', color: 'var(--color-text-muted)', fontWeight: 700 }}>{getDayName(dStr)}</span>
                     )}
-                    <span style={{ fontSize: '16px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '16px', fontWeight: 900, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                     <span style={{ fontSize: '9px', opacity: 0.5 }}>{dStr.split('-')[1]} мес</span>
                   </div>
                 );
@@ -223,7 +223,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     onClick={() => onDateChange(dStr)}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '16px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '16px', fontWeight: 900, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -248,13 +248,13 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                   onClick={() => onDateChange(dStr)}
                 >
                   {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                  <span style={{ fontSize: '15px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                  <span style={{ fontSize: '15px', fontWeight: 800, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                 </div>
               );
             })}
             <div className={styles.datePickerOverlayWrapper}>
               <button type="button" className={styles.v4DayCard} style={{ minWidth: '42px', justifyContent: 'center' }}>
-                <Calendar size={16} color="#38bdf8" />
+                <Calendar size={16} color="var(--color-accent-text)" />
               </button>
               {renderIosDatePickerOverlay()}
             </div>
@@ -276,7 +276,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     onClick={() => onDateChange(dStr)}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -289,14 +289,14 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
           <div className={styles.v6HeroBanner}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <div style={{ fontSize: '11px', color: '#38bdf8', fontWeight: 700, textTransform: 'uppercase' }}>Выбранный день</div>
+                <div style={{ fontSize: '11px', color: 'var(--color-accent-text)', fontWeight: 700, textTransform: 'uppercase' }}>Выбранный день</div>
                 <div style={{ fontSize: '18px', fontWeight: 900, color: '#fff', marginTop: '2px' }}>
                   📅 {formatSelectedDateTitle(selectedDate)}
                 </div>
               </div>
               <div className={styles.datePickerOverlayWrapper}>
                 <button type="button" className={styles.v1ArrowBtn}>
-                  <Calendar size={18} color="#38bdf8" />
+                  <Calendar size={18} color="var(--color-accent-text)" />
                 </button>
                 {renderIosDatePickerOverlay()}
               </div>
@@ -324,7 +324,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     onClick={() => onDateChange(dStr)}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -352,7 +352,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
             })}
             <div className={styles.datePickerOverlayWrapper}>
               <button type="button" className={styles.v4DayCard} style={{ minWidth: '42px', justifyContent: 'center' }}>
-                <Calendar size={16} color="#38bdf8" />
+                <Calendar size={16} color="var(--color-accent-text)" />
               </button>
               {renderIosDatePickerOverlay()}
             </div>
@@ -378,8 +378,8 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
               );
             })}
             <div className={styles.datePickerOverlayWrapper}>
-              <button type="button" className={styles.v9CircleDot} style={{ background: 'rgba(14,165,233,0.2)', borderColor: '#38bdf8' }}>
-                <Calendar size={14} color="#38bdf8" />
+              <button type="button" className={styles.v9CircleDot} style={{ background: 'rgba(14,165,233,0.2)', borderColor: 'var(--color-accent-text)' }}>
+                <Calendar size={14} color="var(--color-accent-text)" />
               </button>
               {renderIosDatePickerOverlay()}
             </div>
@@ -401,7 +401,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     onClick={() => onDateChange(dStr)}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -425,7 +425,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     style={{ padding: '14px 8px' }}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '11px', fontWeight: 700, opacity: 0.8 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '20px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '20px', fontWeight: 900, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -447,7 +447,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                   onClick={() => onDateChange(dStr)}
                 >
                   {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                  <span style={{ fontSize: isSel ? '17px' : '14px', fontWeight: isSel ? 900 : 600, color: isSel ? '#38bdf8' : '#fff' }}>
+                  <span style={{ fontSize: isSel ? '17px' : '14px', fontWeight: isSel ? 900 : 600, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>
                     {dStr.split('-')[2]}
                   </span>
                 </div>
@@ -471,7 +471,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     onClick={() => onDateChange(dStr)}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -494,7 +494,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     onClick={() => onDateChange(dStr)}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -541,7 +541,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     style={{ padding: '14px 8px' }}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '11px', fontWeight: 700, opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '22px', fontWeight: 900, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '22px', fontWeight: 900, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -565,7 +565,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     style={{ padding: '8px 4px' }}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '13px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
@@ -636,7 +636,7 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                     onClick={() => onDateChange(dStr)}
                   >
                     {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? '#38bdf8' : '#fff' }}>{dStr.split('-')[2]}</span>
+                    <span style={{ fontSize: '14px', fontWeight: 800, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>{dStr.split('-')[2]}</span>
                   </div>
                 );
               })}
