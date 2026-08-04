@@ -13,8 +13,26 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   disabled,
   ...props
 }) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLLabelElement>) => {
+    if ((e.key === ' ' || e.key === 'Enter') && !disabled && onChange) {
+      e.preventDefault();
+      // Trigger onChange
+      const syntheticEvent = {
+        target: { checked: !checked },
+        stopPropagation: () => {},
+        preventDefault: () => {},
+      } as unknown as React.ChangeEvent<HTMLInputElement>;
+      onChange(syntheticEvent);
+    }
+  };
+
   return (
     <label
+      role="checkbox"
+      aria-checked={!!checked}
+      aria-label={label || 'Выполнить задачу'}
+      tabIndex={disabled ? -1 : 0}
+      onKeyDown={handleKeyDown}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -22,6 +40,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.5 : 1,
         userSelect: 'none',
+        outline: 'none',
         ...style,
       }}
       className={className}

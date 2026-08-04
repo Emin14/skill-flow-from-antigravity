@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useMemo, useRef } from 'react';
+import { Button } from '@/shared/ui';
 import { useTaskStore, GlassmorphicTaskCard, getAllDescendantTasks } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
@@ -156,7 +157,30 @@ export const ProjectsPage: React.FC = () => {
         <div className={styles.emptyState}>Загрузка проектов...</div>
       ) : filteredProjects.length === 0 ? (
         <div className={styles.emptyState}>
-          📁 Проектов с подзадачами не найдено.
+          <div style={{ color: 'var(--color-text-secondary)', marginBottom: '12px' }}>
+            📁 Проектов с подзадачами не найдено.
+          </div>
+          <Button
+            variant="primary"
+            size="sm"
+            onClick={() => setEditingTask({
+              id: '',
+              title: '',
+              status: 'Todo',
+              priority: 'P3',
+              category: 'Проект',
+              scheduledDate: todayStr,
+              createdAt: new Date().toISOString(),
+              isRepeating: false,
+              hasSubtasks: true,
+              targetRepetitions: 8,
+              repetitionsCount: 0,
+              repetitionHistory: [],
+              pomodorosCount: 1,
+            })}
+          >
+            + Создать первый проект
+          </Button>
         </div>
       ) : (
         <div className={styles.projectsList}>

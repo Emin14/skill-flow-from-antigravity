@@ -136,6 +136,8 @@
   gap: 6px;
   font-size: 11px;
   color: var(--color-text-secondary);
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .catDot {

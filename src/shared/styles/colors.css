@@ -85,3 +85,13 @@
   --color-danger-light: rgba(220, 38, 38, 0.10);
   --color-danger-border: rgba(220, 38, 38, 0.25);
 }
+
+/* ───────────── PLATFORM RESETS & FOCUS RING RULES ───────────── */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

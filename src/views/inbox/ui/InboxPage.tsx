@@ -127,12 +127,22 @@ export const InboxPage: React.FC = () => {
           </Card>
         ) : filteredItems.length === 0 ? (
           <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
-            <Typography variant="body" style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-2)' }}>
+            <Typography variant="body" style={{ color: 'var(--color-text-secondary)', marginBottom: 'var(--space-2)' }}>
               🌱 Разум чист! Заметок в этой категории нет.
             </Typography>
-            <Typography variant="caption">
-              Введите мысль выше и нажмите Enter для сохранения.
+            <Typography variant="caption" style={{ color: 'var(--color-text-muted)', display: 'block', marginBottom: '14px' }}>
+              Введите мысль в поле выше или нажмите кнопку создания.
             </Typography>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => {
+                const input = document.querySelector('input[type="text"]') as HTMLInputElement;
+                if (input) input.focus();
+              }}
+            >
+              + Добавить первую идею
+            </Button>
           </Card>
         ) : (
           filteredItems.map((item) => (

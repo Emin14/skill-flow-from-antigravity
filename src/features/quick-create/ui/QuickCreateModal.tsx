@@ -85,6 +85,18 @@ export const QuickCreateModal: React.FC = () => {
   }, [isOpen]);
 
   useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, closeModal]);
+
+  useEffect(() => {
     if (openPopover === null) return;
     const handlePointerDown = (e: MouseEvent | TouchEvent) => {
       if (activePopoverRef.current && !activePopoverRef.current.contains(e.target as Node)) {
