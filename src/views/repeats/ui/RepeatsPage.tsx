@@ -194,9 +194,13 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
     return ['0', '1д', '3д', '7д', '14д', '30д'];
   }, [mode, freqStr, task.afterCompletionDays]);
 
+  const totalSteps = useMemo(() => {
+    return Math.max(6, completedCount + 2, task.targetRepetitions || 6);
+  }, [completedCount, task.targetRepetitions]);
+
   const steps: StepNode[] = useMemo(() => {
     const list: StepNode[] = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < totalSteps; i++) {
       const isCompleted = i < completedCount;
       const isNext = i === completedCount;
       const isFuture = i > completedCount;
@@ -205,7 +209,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
 
       let label = '';
       if (!isUnknownFuture) {
-        label = defaultLabels[i] || String(i);
+        label = defaultLabels[i] || `+${i}д`;
       }
 
       let subLabel = '';
@@ -240,7 +244,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
       });
     }
     return list;
-  }, [completedCount, completedOccurrences, nextDateRaw, isOverdue, mode, defaultLabels, task]);
+  }, [totalSteps, completedCount, completedOccurrences, nextDateRaw, isOverdue, mode, defaultLabels, task]);
 
   const { numStr, textStr } = formatRepetitionCount(completedCount);
   const createdDateStr = task.createdAt ? formatDateNumeric(task.createdAt.split('T')[0]) : '';
@@ -274,7 +278,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
           {getRepeatTypeLabel(task)}
         </div>
 
-        <div className={styles.timelineTrack}>
+        <div className={styles.timelineTrack} style={{ minWidth: steps.length > 6 ? `${steps.length * 68}px` : '100%' }}>
           {/* Connector Bar behind nodes */}
           <div className={styles.connectorLine}>
             {steps.slice(0, -1).map((step, idx) => (

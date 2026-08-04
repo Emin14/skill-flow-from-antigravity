@@ -397,7 +397,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                     gap: '6px',
                     width: '100%',
                     overflowX: isScrollable ? 'auto' : 'hidden',
-                    paddingBottom: isScrollable ? '6px' : '0',
+                    paddingBottom: isScrollable ? '8px' : '0',
                     scrollbarWidth: 'thin',
                     WebkitOverflowScrolling: 'touch',
                   }}
@@ -410,14 +410,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                         title={`Повторение ${index + 1}`}
                         style={{
                           flex: isScrollable ? 'none' : 1,
-                          minWidth: isScrollable ? '22px' : undefined,
-                          height: '22px',
+                          minWidth: isScrollable ? '34px' : undefined,
+                          height: '26px',
                           borderRadius: '50%',
                           flexShrink: isScrollable ? 0 : 1,
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          fontSize: '10px',
+                          fontSize: '11px',
                           fontWeight: 700,
                           backgroundColor: isFilled ? 'var(--color-success)' : 'var(--color-surface)',
                           border: isFilled ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)',
