@@ -1,5 +1,5 @@
 :root {
-  /* Dark theme palette (Default) */
+  /* ───────────── DARK THEME DESIGN SYSTEM PALETTE ───────────── */
   --color-bg: #0f172a;
   --color-surface: #1e293b;
   --color-surface-elevated: #283548;
@@ -9,9 +9,10 @@
   --color-border: rgba(255, 255, 255, 0.10);
   --color-border-hover: rgba(255, 255, 255, 0.20);
 
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #e2e8f0;
-  --color-text-muted: #cbd5e1;
+  /* 3-Tier Visual Hierarchy Tokens (Dark Mode) */
+  --color-text-primary: #f8fafc;   /* Level 1: Sees First (Headings, Task Titles, Active Numbers) */
+  --color-text-secondary: #cbd5e1; /* Level 2: Sees Second (Subtitles, Categories, Active Filters, Badges) */
+  --color-text-muted: #94a3b8;     /* Level 3: Sees When Searching (Inactive Tabs, Day Names, Timestamps, Drag Handles) */
   --color-text-disabled: #64748b;
 
   /* Scoped Task Card Tokens (Isolated from global surface overrides) */
@@ -19,15 +20,13 @@
   --card-border: var(--color-border);
   --card-text-primary: var(--color-text-primary);
 
-  /* Accent — computed dynamically by colorUtils.ts / applyAccentColorVars()   */
+  /* Dynamic Accent Tokens — Computed by colorUtils.ts / applyAccentColorVars() */
   --color-accent: #6366f1;
   --color-accent-hover: #4f46e5;
   --color-accent-light: rgba(99, 102, 241, 0.14);
   --color-accent-border: rgba(99, 102, 241, 0.30);
-  /* Luminous accent text on dark surface — WCAG AA: hue preserved, L ≥ 74%   */
-  --color-accent-text: #a5b4fc;
-  /* Text color ON TOP of solid accent elements (#ffffff or #0f172a depending on accent luminance) */
-  --color-accent-on-accent: #ffffff;
+  --color-accent-text: #818cf8;    /* Luminous Level 2 Accent Text (Hue preserved, L ≥ 68%) */
+  --color-accent-on-accent: #ffffff; /* High contrast text ON TOP of solid accent elements */
 
   --color-success: #10b981;
   --color-success-light: rgba(16, 185, 129, 0.13);
@@ -44,6 +43,7 @@
 }
 
 [data-theme="light"] {
+  /* ───────────── LIGHT THEME DESIGN SYSTEM PALETTE ───────────── */
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
   --color-surface-elevated: #f1f5f9;
@@ -53,9 +53,10 @@
   --color-border: rgba(0, 0, 0, 0.10);
   --color-border-hover: rgba(0, 0, 0, 0.18);
 
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #1e293b;
-  --color-text-muted: #475569;
+  /* 3-Tier Visual Hierarchy Tokens (Light Mode) */
+  --color-text-primary: #0f172a;   /* Level 1: Sees First (Headings, Task Titles, Active Numbers) */
+  --color-text-secondary: #334155; /* Level 2: Sees Second (Subtitles, Categories, Active Filters, Badges) */
+  --color-text-muted: #64748b;     /* Level 3: Sees When Searching (Inactive Tabs, Day Names, Timestamps, Drag Handles) */
   --color-text-disabled: #94a3b8;
 
   /* Scoped Task Card Tokens (Isolated from global surface overrides) */
@@ -63,13 +64,12 @@
   --card-border: var(--color-border);
   --card-text-primary: var(--color-text-primary);
 
-  /* Light-mode accent fallbacks (default indigo-light) */
+  /* Light-mode accent fallbacks */
   --color-accent: #4f46e5;
   --color-accent-hover: #4338ca;
   --color-accent-light: rgba(79, 70, 229, 0.10);
   --color-accent-border: rgba(79, 70, 229, 0.25);
-  /* Crisp accent text on light surface — WCAG AA: hue preserved, L ≤ 28%  */
-  --color-accent-text: #3730a3;
+  --color-accent-text: #3730a3;    /* Crisp Level 2 Accent Text (Hue preserved, L ≤ 30%) */
   --color-accent-on-accent: #ffffff;
 
   --color-success: #059669;
