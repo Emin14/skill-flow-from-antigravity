@@ -195,9 +195,9 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
   }, [mode, freqStr, task.afterCompletionDays]);
 
   const totalSteps = useMemo(() => {
-    const assignedCount = occurrences.length;
-    return Math.max(6, assignedCount, task.targetRepetitions || 6);
-  }, [occurrences.length, task.targetRepetitions]);
+    const activeCount = Math.max(completedCount + 1, occurrences.length);
+    return activeCount > 6 ? activeCount : 6;
+  }, [completedCount, occurrences.length]);
 
   const steps: StepNode[] = useMemo(() => {
     const list: StepNode[] = [];
@@ -275,7 +275,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
       </div>
 
       {/* Timeline Track */}
-      <div className={styles.timelineTrackContainer}>
+      <div className={styles.timelineTrackContainer} style={{ overflowX: steps.length > 6 ? 'auto' : 'hidden' }}>
         {/* Repeat Type Label where red cross mark was placed */}
         <div style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', marginBottom: '8px', fontWeight: 600 }}>
           {getRepeatTypeLabel(task)}
