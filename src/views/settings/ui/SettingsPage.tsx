@@ -9,6 +9,8 @@ import {
   applyCategoryTextTheme,
   applyCardBgTheme,
 } from '@/shared/config/categoryColors';
+import { APP_THEME_PRESETS, AppThemePreset } from '@/shared/config/appThemes';
+import { useThemeStore } from '@/shared/model/useThemeStore';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 
 const colorPalettes = [
@@ -21,6 +23,7 @@ const colorPalettes = [
 
 export const SettingsPage: React.FC = () => {
   const showToast = useToastStore((s) => s.showToast);
+  const { activePresetId, setPresetTheme } = useThemeStore();
 
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [selectedColor, setSelectedColor] = useState('#6366f1');
@@ -187,7 +190,7 @@ export const SettingsPage: React.FC = () => {
               Тема оформления
             </div>
             <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Выберите между темной и светлой палитрой
+              Быстрое переключение темная / светлая
             </div>
           </div>
           <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
@@ -205,6 +208,55 @@ export const SettingsPage: React.FC = () => {
             >
               ☀️ Светлая
             </Button>
+          </div>
+        </div>
+
+        {/* 20 Theme Presets Section */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '4px' }}>
+          <div>
+            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
+              🎨 Пресеты тем оформления (20 видов)
+            </div>
+            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
+              Выберите тему: динамически меняется фон приложения и цвет карточек в разделе «Сегодня»
+            </div>
+          </div>
+
+          <div className={styles.presetThemesGrid}>
+            {APP_THEME_PRESETS.map((preset) => {
+              const isActive = activePresetId === preset.id;
+              return (
+                <div
+                  key={preset.id}
+                  className={`${styles.presetThemeCard} ${isActive ? styles.presetThemeCardActive : ''}`}
+                  onClick={() => {
+                    setPresetTheme(preset.id);
+                    setTheme(preset.category);
+                    showToast(`Тема «${preset.name}» успешно применена!`, 'success');
+                  }}
+                >
+                  <div className={styles.presetNameRow}>
+                    <span>{preset.previewEmoji} {preset.name}</span>
+                    {isActive && <span className={styles.activeCheckBadge}>✓</span>}
+                  </div>
+
+                  {/* Visual Color Preview Box */}
+                  <div className={styles.presetPreviewBox} style={{ backgroundColor: preset.bgColor }}>
+                    <div
+                      className={styles.presetPreviewCardMini}
+                      style={{
+                        backgroundColor: preset.cardBgColor,
+                        border: `1px solid ${preset.cardBorder}`,
+                        color: preset.textColor,
+                      }}
+                    >
+                      <span style={{ fontSize: '10px' }}>✓ Задача</span>
+                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: preset.accentColor }} />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 

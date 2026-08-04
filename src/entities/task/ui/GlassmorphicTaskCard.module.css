@@ -65,8 +65,8 @@
   justify-content: space-between;
   padding: 10px 14px;
   border-radius: 16px;
-  background: var(--glass-bg, var(--color-surface, rgba(30, 41, 59, 0.7)));
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, rgba(0, 0, 0, 0.12));
   box-shadow: var(--shadow-sm, 0 4px 14px rgba(0, 0, 0, 0.08));
   backdrop-filter: blur(8px);
   cursor: pointer;
@@ -78,20 +78,8 @@
 
 .cardPill:hover {
   transform: translateY(-1px);
-  border-color: rgba(14, 165, 233, 0.5);
+  border-color: var(--color-accent, #0ea5e9);
   box-shadow: 0 6px 20px rgba(14, 165, 233, 0.18);
-}
-
-/* Light Theme Card Separation Fix (Point 4) */
-:global([data-theme="light"]) .cardPill {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.12) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
-}
-
-:global([data-theme="light"]) .cardPill:hover {
-  border-color: #0ea5e9 !important;
-  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.2) !important;
 }
 
 .taskDone {
