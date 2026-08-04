@@ -6,7 +6,7 @@ import { Task, TaskStatus } from '@/entities/task/model/types';
 import { getAllDescendantTasks, getTaskParentPath } from '@/entities/task/model/store';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { GripVertical, Check, ExternalLink, Calendar } from 'lucide-react';
-import { startPointerDrag } from '@/shared/lib/pointerDrag';
+import { startPointerDrag, cleanupPointerDrag } from '@/shared/lib/pointerDrag';
 import styles from './GlassmorphicTaskCard.module.css';
 
 declare global {
@@ -305,6 +305,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
 
   // PC HTML5 Drag Handlers
   const handleDragStart = (e: React.DragEvent) => {
+    cleanupPointerDrag();
     e.stopPropagation();
     setIsDragging(true);
     isJustDraggedRef.current = true;
@@ -321,6 +322,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   };
 
   const handleDragEnd = () => {
+    cleanupPointerDrag();
     setIsDragging(false);
     if (typeof window !== 'undefined') {
       window.__draggedTaskId = null;
@@ -376,6 +378,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   };
 
   const handleGripTouchEnd = (e: React.TouchEvent) => {
+    cleanupPointerDrag();
     if (!isTouchDragging) return;
     setIsTouchDragging(false);
     const touch = e.changedTouches[0];

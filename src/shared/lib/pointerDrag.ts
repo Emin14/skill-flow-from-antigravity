@@ -18,6 +18,38 @@ export const registerPointerDropHandler = (callback: PointerDropCallback) => {
   activeDropCallback = callback;
 };
 
+export const cleanupPointerDrag = () => {
+  if (typeof document !== 'undefined') {
+    const existingGhosts = document.querySelectorAll('#pointer-drag-ghost');
+    existingGhosts.forEach((el) => {
+      if (el && el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
+    });
+  }
+  if (ghostEl && ghostEl.parentNode) {
+    ghostEl.parentNode.removeChild(ghostEl);
+  }
+  ghostEl = null;
+
+  if (highlightedEl) {
+    highlightedEl.style.outline = '';
+    highlightedEl.style.boxShadow = '';
+    highlightedEl = null;
+  }
+  currentDraggedTaskId = null;
+};
+
+// Global event listeners to guarantee ghost element removal on any mouse/drag release
+if (typeof window !== 'undefined') {
+  window.addEventListener('mouseup', cleanupPointerDrag);
+  window.addEventListener('pointerup', cleanupPointerDrag);
+  window.addEventListener('dragend', cleanupPointerDrag);
+  window.addEventListener('touchend', cleanupPointerDrag);
+  window.addEventListener('touchcancel', cleanupPointerDrag);
+  window.addEventListener('blur', cleanupPointerDrag);
+}
+
 export const startPointerDrag = (
   e: React.MouseEvent | MouseEvent,
   taskId: string,
@@ -25,12 +57,9 @@ export const startPointerDrag = (
 ) => {
   if (e.button !== 0) return; // Only left mouse button
 
-  currentDraggedTaskId = taskId;
+  cleanupPointerDrag();
 
-  // Clean up any existing ghost
-  if (ghostEl && ghostEl.parentNode) {
-    ghostEl.parentNode.removeChild(ghostEl);
-  }
+  currentDraggedTaskId = taskId;
 
   // Create ghost element
   ghostEl = document.createElement('div');
@@ -84,16 +113,6 @@ export const startPointerDrag = (
     window.removeEventListener('mousemove', handleMouseMove);
     window.removeEventListener('mouseup', handleMouseUp);
 
-    if (ghostEl && ghostEl.parentNode) {
-      ghostEl.parentNode.removeChild(ghostEl);
-      ghostEl = null;
-    }
-
-    if (highlightedEl) {
-      highlightedEl.style.outline = '';
-      highlightedEl.style.boxShadow = '';
-    }
-
     const element = document.elementFromPoint(upEvent.clientX, upEvent.clientY);
     const dropTarget = element?.closest('[data-drop-status], [data-project-id], [data-task-id]') as HTMLElement | null;
 
@@ -111,10 +130,10 @@ export const startPointerDrag = (
       }
     }
 
-    currentDraggedTaskId = null;
-    highlightedEl = null;
+    cleanupPointerDrag();
   };
 
   window.addEventListener('mousemove', handleMouseMove);
-  window.addEventListener('mouseup', handleMouseUp);
+  window.addEventListener('mouseup', handleMouseUp, { once: true });
+  window.addEventListener('dragstart', cleanupPointerDrag, { once: true });
 };
