@@ -1,23 +1,23 @@
 /* CSS Module for Overdue Header UX Concept with Full Theme Support (Dark & Light) */
 
 .v7DoubleLineCard {
-  background: var(--color-surface, rgba(30, 41, 59, 0.7));
-  border: 1px solid var(--color-border, rgba(239, 68, 68, 0.3));
+  background: linear-gradient(135deg, var(--color-accent-light, rgba(239, 68, 68, 0.12)) 0%, var(--color-surface) 100%) !important;
+  border: 1px solid var(--color-accent-border, rgba(239, 68, 68, 0.3)) !important;
   border-radius: 16px;
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
 :global([data-theme="light"]) .v7DoubleLineCard {
-  background: #ffffff;
-  border-color: rgba(239, 68, 68, 0.2);
-  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.05);
+  background: linear-gradient(135deg, var(--color-accent-light, rgba(239, 68, 68, 0.08)) 0%, #ffffff 100%) !important;
+  border-color: var(--color-accent-border, rgba(239, 68, 68, 0.25)) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .titleWrapper {
@@ -69,9 +69,9 @@
   gap: 6px;
   padding: 9px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  background: rgba(16, 185, 129, 0.12);
-  color: #34d399;
+  border: 1px solid var(--color-accent-border, rgba(16, 185, 129, 0.35));
+  background: var(--color-accent-light, rgba(16, 185, 129, 0.12));
+  color: var(--color-accent, #34d399);
   font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
@@ -81,22 +81,22 @@
 }
 
 .bulkActionBtn:hover {
-  background: rgba(16, 185, 129, 0.22);
-  border-color: #10b981;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: #ffffff;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 12px var(--color-accent-light);
 }
 
 /* Light Mode Overrides for Bulk Action Button */
 :global([data-theme="light"]) .bulkActionBtn {
-  background: rgba(5, 150, 105, 0.08);
-  border-color: rgba(5, 150, 105, 0.3);
-  color: #047857;
+  background: var(--color-accent-light, rgba(5, 150, 105, 0.08));
+  border-color: var(--color-accent-border, rgba(5, 150, 105, 0.3));
+  color: var(--color-accent, #047857);
 }
 
 :global([data-theme="light"]) .bulkActionBtn:hover {
-  background: #059669;
-  border-color: #047857;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+  box-shadow: 0 4px 14px var(--color-accent-light);
 }
