@@ -24,7 +24,7 @@ export const getContrastingTextColor = (hex: string): string => {
 };
 
 /**
- * Ensures an accent color used AS TEXT or AN ICON on top of a surface background passes WCAG AA contrast (min 4.5:1).
+ * Ensures an accent color used AS TEXT or AN ICON on top of a surface background is vibrant, crisp, and readable at a fraction of a second.
  */
 export const getReadableAccentTextColor = (hex: string, isLight: boolean): string => {
   const cleanHex = hex.replace('#', '');
@@ -53,14 +53,14 @@ export const getReadableAccentTextColor = (hex: string, isLight: boolean): strin
   const satPercent = Math.round(s * 100);
 
   if (isLight) {
-    // Light surface (#ffffff / #f8fafc): Lightness must be low (22% - 32%) for WCAG 4.5:1+ contrast
-    const targetL = Math.min(l, 0.30);
-    const minSat = Math.max(satPercent, 65);
+    // Light surface (#ffffff / #f8fafc): Rich, deep, crisp accent text (Lightness <= 28%)
+    const targetL = Math.min(l, 0.28);
+    const minSat = Math.max(satPercent, 70);
     return `hsl(${hueDeg}, ${minSat}%, ${Math.round(targetL * 100)}%)`;
   } else {
-    // Dark surface (#0f172a / #1e293b): Lightness must be high (65% - 75%) for WCAG 4.5:1+ contrast
-    const targetL = Math.max(l, 0.65);
-    const minSat = Math.max(satPercent, 70);
+    // Dark surface (#0f172a / #1e293b / #2a2a2a): Luminous, bright accent text (Lightness >= 74%)
+    const targetL = Math.max(l, 0.74);
+    const minSat = Math.max(satPercent, 75);
     return `hsl(${hueDeg}, ${minSat}%, ${Math.round(targetL * 100)}%)`;
   }
 };
@@ -88,7 +88,7 @@ export const applyAccentColorVars = (hex: string) => {
     // Accent-tinted border / focus ring
     root.style.setProperty('--color-accent-border', `rgba(${r}, ${g}, ${b}, ${isLight ? 0.28 : 0.35})`);
 
-    // --color-accent-text: readable accent color ON neutral surfaces (WCAG AA, no component hacks)
+    // --color-accent-text: luminous/vibrant accent color ON neutral surfaces
     const readableAccentText = getReadableAccentTextColor(hex, isLight);
     root.style.setProperty('--color-accent-text', readableAccentText);
 

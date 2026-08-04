@@ -10,9 +10,8 @@
   --color-border-hover: rgba(255, 255, 255, 0.20);
 
   --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  /* WCAG 2.1 AA Compliant Muted Text (6.2:1 Contrast Ratio against #1e293b) */
-  --color-text-muted: #94a3b8;
+  --color-text-secondary: #e2e8f0;
+  --color-text-muted: #cbd5e1;
   --color-text-disabled: #64748b;
 
   /* Scoped Task Card Tokens (Isolated from global surface overrides) */
@@ -21,13 +20,12 @@
   --card-text-primary: var(--color-text-primary);
 
   /* Accent — computed dynamically by colorUtils.ts / applyAccentColorVars()   */
-  /* Static fallbacks below (default indigo) ensure a valid state before JS runs */
   --color-accent: #6366f1;
   --color-accent-hover: #4f46e5;
   --color-accent-light: rgba(99, 102, 241, 0.14);
   --color-accent-border: rgba(99, 102, 241, 0.30);
-  /* Readable accent text on dark surface — WCAG AA: hue preserved, L ≥ 65%   */
-  --color-accent-text: #818cf8;
+  /* Luminous accent text on dark surface — WCAG AA: hue preserved, L ≥ 74%   */
+  --color-accent-text: #a5b4fc;
   /* Text color ON TOP of solid accent elements (#ffffff or #0f172a depending on accent luminance) */
   --color-accent-on-accent: #ffffff;
 
@@ -57,7 +55,7 @@
 
   --color-text-primary: #0f172a;
   --color-text-secondary: #1e293b;
-  --color-text-muted: #475569;   /* High WCAG AA contrast (7.0:1 ratio on #ffffff) */
+  --color-text-muted: #475569;
   --color-text-disabled: #94a3b8;
 
   /* Scoped Task Card Tokens (Isolated from global surface overrides) */
@@ -70,7 +68,7 @@
   --color-accent-hover: #4338ca;
   --color-accent-light: rgba(79, 70, 229, 0.10);
   --color-accent-border: rgba(79, 70, 229, 0.25);
-  /* Readable accent text on light surface — WCAG AA: hue preserved, L ≤ 30%  */
+  /* Crisp accent text on light surface — WCAG AA: hue preserved, L ≤ 28%  */
   --color-accent-text: #3730a3;
   --color-accent-on-accent: #ffffff;
 

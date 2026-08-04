@@ -446,8 +446,14 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                   className={`${styles.v12Pill} ${isSel ? styles.v12PillActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                   onClick={() => onDateChange(dStr)}
                 >
-                  {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.7 }}>{getDayName(dStr)}</span>}
-                  <span style={{ fontSize: isSel ? '17px' : '14px', fontWeight: isSel ? 900 : 600, color: isSel ? 'var(--color-accent-text)' : '#fff' }}>
+                  {isTod ? (
+                    <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span>
+                  ) : (
+                    <span style={{ fontSize: '11px', fontWeight: 600, color: isSel ? 'var(--color-accent-on-accent)' : 'var(--color-text-secondary)' }}>
+                      {getDayName(dStr)}
+                    </span>
+                  )}
+                  <span style={{ fontSize: isSel ? '17px' : '14px', fontWeight: isSel ? 900 : 700, color: isSel ? 'var(--color-accent-on-accent)' : 'var(--color-text-primary)' }}>
                     {dStr.split('-')[2]}
                   </span>
                 </div>
@@ -613,8 +619,16 @@ export const DaySwitcherShowcase: React.FC<DaySwitcherShowcaseProps> = ({
                   className={`${styles.v19BigCard} ${isSel ? styles.v19BigCardActive : ''} ${isTod ? styles.todayCardBorder : ''}`}
                   onClick={() => onDateChange(dStr)}
                 >
-                  {isTod ? <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span> : <span style={{ fontSize: '10px', opacity: 0.8 }}>{getDayName(dStr)}</span>}
-                  <span style={{ fontSize: '20px', fontWeight: 900 }}>{dStr.split('-')[2]}</span>
+                  {isTod ? (
+                    <span className={styles.todayGoldBadge}>☀️ СЕГОДНЯ</span>
+                  ) : (
+                    <span style={{ fontSize: '11px', fontWeight: 600, color: isSel ? 'var(--color-accent-on-accent)' : 'var(--color-text-secondary)' }}>
+                      {getDayName(dStr)}
+                    </span>
+                  )}
+                  <span style={{ fontSize: '20px', fontWeight: 900, color: isSel ? 'var(--color-accent-on-accent)' : 'var(--color-text-primary)' }}>
+                    {dStr.split('-')[2]}
+                  </span>
                 </div>
               );
             })}
