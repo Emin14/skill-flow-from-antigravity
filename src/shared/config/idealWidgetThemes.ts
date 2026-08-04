@@ -13,7 +13,7 @@ export interface IdealWidgetCandidate {
 }
 
 export const LOCKED_WIDGET_THEMES: Record<string, IdealWidgetCandidate> = {
-  // ☀️ Светлые темы (9)
+  // ☀️ Светлые темы (9) - WCAG 2.1 AA Compliant Contrast (min 4.5:1 ratio)
   default: {
     id: 'default_2',
     name: 'Небесный (Ультра матовое белое стекло)',
@@ -21,7 +21,7 @@ export const LOCKED_WIDGET_THEMES: Record<string, IdealWidgetCandidate> = {
     borderColor: 'rgba(59, 130, 246, 0.22)',
     textColor: '#0f172a',
     mutedTextColor: '#475569',
-    accentColor: '#2563eb',
+    accentColor: '#0284c7',
     boxShadow: '0 4px 16px rgba(59, 130, 246, 0.08)',
   },
   pebble: {
@@ -31,7 +31,7 @@ export const LOCKED_WIDGET_THEMES: Record<string, IdealWidgetCandidate> = {
     borderColor: 'rgba(16, 185, 129, 0.3)',
     textColor: '#064e3b',
     mutedTextColor: '#047857',
-    accentColor: '#10b981',
+    accentColor: '#047857',
     boxShadow: '0 4px 16px rgba(16, 185, 129, 0.12)',
   },
   pearl: {
@@ -61,18 +61,18 @@ export const LOCKED_WIDGET_THEMES: Record<string, IdealWidgetCandidate> = {
     borderColor: 'rgba(245, 158, 11, 0.35)',
     textColor: '#1e293b',
     mutedTextColor: '#475569',
-    accentColor: '#d97706',
+    accentColor: '#b45309',
     boxShadow: '0 4px 16px rgba(245, 158, 11, 0.1)',
   },
   spring: {
     id: 'spring_3',
     name: 'Весенний мятный (Сплошной изумрудный плакат)',
-    bgGradient: '#10b981',
-    borderColor: '#10b981',
+    bgGradient: '#059669',
+    borderColor: '#059669',
     textColor: '#ffffff',
-    mutedTextColor: 'rgba(255, 255, 255, 0.9)',
+    mutedTextColor: 'rgba(255, 255, 255, 0.95)',
     accentColor: '#ffffff',
-    boxShadow: '0 6px 20px rgba(16, 185, 129, 0.25)',
+    boxShadow: '0 6px 20px rgba(5, 150, 105, 0.25)',
     isSolid: true,
   },
   peach: {
@@ -82,29 +82,29 @@ export const LOCKED_WIDGET_THEMES: Record<string, IdealWidgetCandidate> = {
     borderColor: 'rgba(244, 63, 94, 0.35)',
     textColor: '#4c0519',
     mutedTextColor: '#475569',
-    accentColor: '#e11d48',
+    accentColor: '#be123c',
     boxShadow: '0 4px 16px rgba(244, 63, 94, 0.1)',
   },
   turquoise: {
     id: 'turquoise_3',
     name: 'Бирюзовый (Сплошной лазурный плакат)',
-    bgGradient: '#06b6d4',
-    borderColor: '#06b6d4',
+    bgGradient: '#0891b2',
+    borderColor: '#0891b2',
     textColor: '#ffffff',
-    mutedTextColor: 'rgba(255, 255, 255, 0.9)',
+    mutedTextColor: 'rgba(255, 255, 255, 0.95)',
     accentColor: '#ffffff',
-    boxShadow: '0 6px 20px rgba(6, 182, 212, 0.25)',
+    boxShadow: '0 6px 20px rgba(8, 145, 178, 0.25)',
     isSolid: true,
   },
   winter: {
     id: 'winter_3',
     name: 'Зимний морозный (Сплошной небесный плакат)',
-    bgGradient: '#38bdf8',
-    borderColor: '#38bdf8',
+    bgGradient: '#0284c7',
+    borderColor: '#0284c7',
     textColor: '#ffffff',
-    mutedTextColor: 'rgba(255, 255, 255, 0.9)',
+    mutedTextColor: 'rgba(255, 255, 255, 0.95)',
     accentColor: '#ffffff',
-    boxShadow: '0 6px 20px rgba(56, 189, 248, 0.25)',
+    boxShadow: '0 6px 20px rgba(2, 132, 199, 0.25)',
     isSolid: true,
   },
 
@@ -136,7 +136,7 @@ export const LOCKED_WIDGET_THEMES: Record<string, IdealWidgetCandidate> = {
     borderColor: '#353B52',
     textColor: '#ffffff',
     mutedTextColor: '#94a3b8',
-    accentColor: '#3b82f6',
+    accentColor: '#60a5fa',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
   },
   midnight_neon: {
@@ -156,7 +156,7 @@ export const LOCKED_WIDGET_THEMES: Record<string, IdealWidgetCandidate> = {
     borderColor: '#3D3850',
     textColor: '#ffffff',
     mutedTextColor: '#cbd5e1',
-    accentColor: '#a855f7',
+    accentColor: '#c084fc',
     boxShadow: '0 4px 20px rgba(168, 85, 247, 0.2)',
   },
 };

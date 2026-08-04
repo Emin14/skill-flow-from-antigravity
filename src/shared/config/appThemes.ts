@@ -1,4 +1,6 @@
 import { applyIdealWidgetCandidate } from '@/shared/config/idealWidgetThemes';
+import { applyCategoryTextTheme, applyCardBgTheme } from '@/shared/config/categoryColors';
+import { applyProgressWidgetStyle } from '@/shared/config/progressWidgetThemes';
 
 export interface AppThemePreset {
   id: string;
@@ -53,4 +55,14 @@ export const applyAppThemePreset = (themeId: string) => {
 
   // Применение идеального варианта виджета под данную тему
   applyIdealWidgetCandidate(preset.id);
+
+  // Автоматическое переключение акцентных цветов категории и стилей прогресса под светлый/темный режим
+  const categoryThemeId = localStorage.getItem('category-text-theme-id') || 'amber';
+  applyCategoryTextTheme(categoryThemeId);
+
+  const cardBgThemeId = localStorage.getItem('card-bg-theme-id') || 'classic';
+  applyCardBgTheme(cardBgThemeId);
+
+  const progressStyleId = localStorage.getItem('progress-widget-color-variant') || 'adaptive';
+  applyProgressWidgetStyle(progressStyleId);
 };

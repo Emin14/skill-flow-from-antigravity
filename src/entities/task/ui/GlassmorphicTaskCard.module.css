@@ -150,9 +150,17 @@
   font-weight: 500;
 }
 
+:global([data-theme="light"]) .categoryText {
+  color: var(--category-text-color, #b45309);
+}
+
 .repeatTag {
   color: var(--repeat-tag-color, #38bdf8);
   font-weight: 600;
+}
+
+:global([data-theme="light"]) .repeatTag {
+  color: var(--repeat-tag-color, #0369a1);
 }
 
 .dateBadge {
@@ -163,10 +171,35 @@
   font-weight: 600;
   padding: 1px 5px;
   border-radius: 5px;
-  border: 1px solid;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   letter-spacing: 0.01em;
   white-space: nowrap;
   transition: all 0.2s ease;
+  color: var(--color-text-muted);
+}
+
+.dateBadgeOverdue {
+  color: #ef4444 !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+:global([data-theme="light"]) .dateBadgeOverdue {
+  color: #dc2626 !important;
+  border-color: rgba(220, 38, 38, 0.35) !important;
+  background-color: rgba(220, 38, 38, 0.08) !important;
+}
+
+.dateBadgeToday {
+  color: #f59e0b !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+:global([data-theme="light"]) .dateBadgeToday {
+  color: #b45309 !important;
+  border-color: rgba(180, 83, 9, 0.35) !important;
+  background-color: rgba(180, 83, 9, 0.08) !important;
 }
 
 /* Drag Handle Top */
@@ -213,6 +246,10 @@
   color: #38bdf8;
 }
 
+:global([data-theme="light"]) .progressRingText {
+  color: #0369a1;
+}
+
 /* Prompt Banner when all subtasks of container are done */
 .completeParentPromptBtn {
   display: flex;
@@ -228,6 +265,12 @@
   font-size: 12px;
   font-weight: 600;
   transition: all 0.2s ease;
+}
+
+:global([data-theme="light"]) .completeParentPromptBtn {
+  color: #047857;
+  border-color: rgba(5, 150, 105, 0.4);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0.04) 100%);
 }
 
 .promptActions {

@@ -24,67 +24,67 @@ export interface CardBgThemeOption {
   };
 }
 
-// 1. Dual Accent Text Themes (Category + Repeat Tag)
+// 1. Dual Accent Text Themes (Category + Repeat Tag) - WCAG 2.1 AA Compliant (min 4.5:1 contrast)
 export const CATEGORY_TEXT_THEMES: DualAccentThemeOption[] = [
   {
     id: 'amber',
     name: '🔥 Неоновый янтарь (По умолчанию)',
     dark: { categoryColor: '#fbbf24', repeatColor: '#38bdf8' },
-    light: { categoryColor: '#d97706', repeatColor: '#0284c7' },
+    light: { categoryColor: '#b45309', repeatColor: '#0369a1' },
   },
   {
     id: 'ocean',
     name: '🌊 Морской океан (Бирюза + Изумруд)',
     dark: { categoryColor: '#38bdf8', repeatColor: '#34d399' },
-    light: { categoryColor: '#0284c7', repeatColor: '#059669' },
+    light: { categoryColor: '#0369a1', repeatColor: '#047857' },
   },
   {
     id: 'violet_gold',
     name: '🔮 Кибер магия (Фиолетовый + Золото)',
     dark: { categoryColor: '#c084fc', repeatColor: '#fbbf24' },
-    light: { categoryColor: '#7c3aed', repeatColor: '#d97706' },
+    light: { categoryColor: '#6d28d9', repeatColor: '#b45309' },
   },
   {
     id: 'emerald_rose',
     name: '🌿 Мятная роза (Изумруд + Коралл)',
     dark: { categoryColor: '#34d399', repeatColor: '#fb7185' },
-    light: { categoryColor: '#059669', repeatColor: '#e11d48' },
+    light: { categoryColor: '#047857', repeatColor: '#be123c' },
   },
   {
     id: 'sunset_blue',
     name: '🌅 Закатный триумф (Оранжевый + Голубой)',
-    dark: { categoryColor: '#f97316', repeatColor: '#38bdf8' },
-    light: { categoryColor: '#c2410c', repeatColor: '#0284c7' },
+    dark: { categoryColor: '#fb923c', repeatColor: '#38bdf8' },
+    light: { categoryColor: '#c2410c', repeatColor: '#0369a1' },
   },
   {
     id: 'rose_lime',
     name: '🌸 Кибер сакура (Роза + Лайм)',
     dark: { categoryColor: '#fb7185', repeatColor: '#a3e635' },
-    light: { categoryColor: '#e11d48', repeatColor: '#4d7c0f' },
+    light: { categoryColor: '#be123c', repeatColor: '#4d7c0f' },
   },
   {
     id: 'lime_violet',
     name: '🍋 Лаймовый импульс (Лайм + Фиолетовый)',
     dark: { categoryColor: '#a3e635', repeatColor: '#c084fc' },
-    light: { categoryColor: '#4d7c0f', repeatColor: '#7c3aed' },
+    light: { categoryColor: '#4d7c0f', repeatColor: '#6d28d9' },
   },
   {
     id: 'indigo_amber',
     name: '🔮 Индиго и Золото (Индиго + Янтарь)',
-    dark: { categoryColor: '#818cf8', repeatColor: '#fde047' },
+    dark: { categoryColor: '#818cf8', repeatColor: '#fbbf24' },
     light: { categoryColor: '#4338ca', repeatColor: '#b45309' },
   },
   {
     id: 'bronze_teal',
     name: '👑 Теплая бронза (Бронза + Бирюза)',
-    dark: { categoryColor: '#fde047', repeatColor: '#2dd4bf' },
-    light: { categoryColor: '#92400e', repeatColor: '#0d9488' },
+    dark: { categoryColor: '#fbbf24', repeatColor: '#2dd4bf' },
+    light: { categoryColor: '#b45309', repeatColor: '#0f766e' },
   },
   {
     id: 'platinum_cyan',
     name: '🤍 Платиновый шторм (Серебро + Неон)',
     dark: { categoryColor: '#f8fafc', repeatColor: '#38bdf8' },
-    light: { categoryColor: '#1e293b', repeatColor: '#0284c7' },
+    light: { categoryColor: '#0f172a', repeatColor: '#0369a1' },
   },
 ];
 
@@ -98,7 +98,7 @@ export const CARD_BG_THEMES: CardBgThemeOption[] = [
       borderColor: 'rgba(255, 255, 255, 0.1)',
     },
     light: {
-      bgGradient: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(243, 244, 246, 0.8) 100%)',
+      bgGradient: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 244, 246, 0.85) 100%)',
       borderColor: 'rgba(0, 0, 0, 0.08)',
     },
   },
@@ -232,27 +232,34 @@ export const applyCardBgTheme = (themeId: string) => {
   document.documentElement.style.setProperty('--card-border-color', modeData.borderColor);
 };
 
-export const getCategoryColor = (cat?: string): string => {
-  if (!cat || !cat.trim() || cat.trim() === 'Без категории') return 'rgba(255, 255, 255, 0.35)';
-  switch (cat.trim()) {
-    case 'Задача': return '#38bdf8';
-    case 'Проект': return '#a855f7';
-    case 'Работа': return '#0ea5e9';
-    case 'Здоровье': return '#10b981';
-    case 'Обучение': return '#f59e0b';
-    case 'Личное': return '#ec4899';
-    case 'Финансы': return '#8b5cf6';
-    case 'Практика Frontend': return '#06b6d4';
-    case 'Опыт на камеру': return '#a855f7';
-    case 'Теория': return '#3b82f6';
+export const getCategoryColor = (cat?: string, isLightOverride?: boolean): string => {
+  if (!cat || !cat.trim() || cat.trim() === 'Без категории') {
+    return isLightOverride ? 'rgba(0, 0, 0, 0.45)' : 'rgba(255, 255, 255, 0.45)';
+  }
+  const isLight = isLightOverride !== undefined 
+    ? isLightOverride 
+    : (typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'light');
+
+  const normalized = cat.trim();
+  switch (normalized) {
+    case 'Задача': return isLight ? '#0284c7' : '#38bdf8';
+    case 'Проект': return isLight ? '#7e22ce' : '#a855f7';
+    case 'Работа': return isLight ? '#0369a1' : '#0ea5e9';
+    case 'Здоровье': return isLight ? '#047857' : '#10b981';
+    case 'Обучение': return isLight ? '#b45309' : '#f59e0b';
+    case 'Личное': return isLight ? '#be123c' : '#ec4899';
+    case 'Финансы': return isLight ? '#6d28d9' : '#8b5cf6';
+    case 'Практика Frontend': return isLight ? '#0e7490' : '#06b6d4';
+    case 'Опыт на камеру': return isLight ? '#7e22ce' : '#a855f7';
+    case 'Теория': return isLight ? '#1d4ed8' : '#3b82f6';
     default: {
       let hash = 0;
       for (let i = 0; i < cat.length; i++) {
         hash = cat.charCodeAt(i) + ((hash << 5) - hash);
       }
       const hue = Math.abs(hash) % 360;
-      return `hsl(${hue}, 85%, 60%)`;
+      const lightness = isLight ? 36 : 65;
+      return `hsl(${hue}, 85%, ${lightness}%)`;
     }
   }
 };
-

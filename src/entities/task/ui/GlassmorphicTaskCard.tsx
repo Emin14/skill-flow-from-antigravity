@@ -475,12 +475,9 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                 {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {showDateBadge && dateBadgeLabel && (
                   <span
-                    className={styles.dateBadge}
-                    style={{
-                      color: isOverdue ? '#ef4444' : isToday ? '#f59e0b' : 'var(--color-text-muted)',
-                      borderColor: isOverdue ? 'rgba(239,68,68,0.4)' : isToday ? 'rgba(245,158,11,0.4)' : 'rgba(255,255,255,0.12)',
-                      backgroundColor: isOverdue ? 'rgba(239,68,68,0.1)' : isToday ? 'rgba(245,158,11,0.1)' : 'transparent',
-                    }}
+                    className={`${styles.dateBadge} ${
+                      isOverdue ? styles.dateBadgeOverdue : isToday ? styles.dateBadgeToday : ''
+                    }`}
                   >
                     <Calendar size={9} />
                     {isOverdue ? `⚠ ${dateBadgeLabel}` : dateBadgeLabel}
