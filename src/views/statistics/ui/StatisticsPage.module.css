@@ -28,7 +28,8 @@
 
 .statLabel {
   font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
+  font-weight: 500;
 }
 
 .sectionGrid {
@@ -97,7 +98,7 @@
 
 .heatmapCellHigh {
   background-color: var(--color-accent);
-  color: #ffffff; /* on solid accent — always white */
+  color: var(--color-accent-on-accent);
 }
 
 @media (max-width: 900px) {

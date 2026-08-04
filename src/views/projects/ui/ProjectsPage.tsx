@@ -313,11 +313,11 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
             <span style={{ fontSize: '12px', color: catColor, fontWeight: 700 }}>● {project.category || 'Проект'}</span>
             {overdueBadge(overdueCount)}
           </div>
-          <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#ffffff', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {project.title}
           </h2>
           {totalCount > 0 && (
-            <div style={{ fontSize: '12px', color: '#94a3b8', marginTop: '2px' }}>
+            <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>
               Выполнено {doneCount} из {totalCount} подзадач
             </div>
           )}
@@ -327,7 +327,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
             <span style={{
               fontSize: '36px',
               fontWeight: 900,
-              background: 'linear-gradient(135deg, #38bdf8, #10b981)',
+              background: 'linear-gradient(135deg, var(--color-accent-text), var(--color-success))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               lineHeight: 1,
@@ -342,10 +342,10 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
               onEdit(project);
             }}
             style={{
-              background: 'rgba(255,255,255,0.06)',
-              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'var(--color-surface-hover)',
+              border: '1px solid var(--color-border)',
               borderRadius: '8px',
-              color: '#fff',
+              color: 'var(--color-text-primary)',
               width: '28px',
               height: '28px',
               display: 'flex',
@@ -357,9 +357,9 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
             ✏️
           </button>
           {isOpen ? (
-            <ChevronDown size={20} color="#38bdf8" />
+            <ChevronDown size={20} color="var(--color-accent-text)" />
           ) : (
-            <ChevronRight size={20} color="#38bdf8" />
+            <ChevronRight size={20} color="var(--color-accent-text)" />
           )}
         </div>
       </div>
@@ -377,7 +377,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
       {isOpen && (
         <div className={styles.subtaskList}>
           {sortedSubtasks.length === 0 ? (
-            <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', padding: '6px 0', fontStyle: 'italic' }}>
+            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', padding: '6px 0', fontStyle: 'italic' }}>
               Нет подзадач в проекте (Перетащите сюда задачи).
             </div>
           ) : (
