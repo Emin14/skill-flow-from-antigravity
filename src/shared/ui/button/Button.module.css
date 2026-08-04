@@ -35,7 +35,7 @@
 /* Variants */
 .primary {
   background-color: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-accent-text, #ffffff);
   border-color: var(--color-accent);
 }
 

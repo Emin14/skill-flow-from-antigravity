@@ -256,8 +256,8 @@
 
 /* Variant 6: Hero Banner */
 .v6HeroBanner {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(99, 102, 241, 0.12));
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: var(--widget-custom-bg, linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(99, 102, 241, 0.12))) !important;
+  border: 1px solid var(--widget-custom-border, rgba(56, 189, 248, 0.3)) !important;
   border-radius: 18px;
   padding: 14px 18px;
   display: flex;

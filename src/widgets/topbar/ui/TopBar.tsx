@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Settings } from 'lucide-react';
 import { useThemeStore } from '@/shared/model/useThemeStore';
-import { PROGRESS_WIDGET_VARIANTS, applyProgressWidgetStyle } from '@/shared/config/progressWidgetThemes';
 import styles from './TopBar.module.css';
 
 const pathTitles: Record<string, string> = {
@@ -29,21 +28,9 @@ export const TopBar: React.FC = () => {
 
   const { theme, initTheme, toggleTheme } = useThemeStore();
 
-  const [selectedWidgetColor, setSelectedWidgetColor] = useState<string>('adaptive');
-
   useEffect(() => {
     initTheme();
-    if (typeof window !== 'undefined') {
-      const savedWidgetColor = localStorage.getItem('progress-widget-color-variant') || 'adaptive';
-      setSelectedWidgetColor(savedWidgetColor);
-      applyProgressWidgetStyle(savedWidgetColor);
-    }
   }, [initTheme]);
-
-  const handleWidgetColorChange = (variantId: string) => {
-    setSelectedWidgetColor(variantId);
-    applyProgressWidgetStyle(variantId);
-  };
 
   const todayFormatted = new Date().toLocaleDateString('ru-RU', {
     weekday: 'long',
@@ -77,68 +64,23 @@ export const TopBar: React.FC = () => {
         </div>
       </div>
 
-      {/* Temporary Switcher for Progress Widget (20 Color Variants) */}
-      <div className={styles.tempThemeBar}>
-        <span className={styles.tempBadge}>💪 Виджет «В процессе»:</span>
-        <select
-          value={selectedWidgetColor}
-          onChange={(e) => handleWidgetColorChange(e.target.value)}
-          className={styles.themeSelect}
-          title="Временный выбор стиля/цвета виджета В процессе (20 вариантов)"
-        >
-          {PROGRESS_WIDGET_VARIANTS.map((variant) => (
-            <option key={variant.id} value={variant.id}>
-              {variant.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <button
           onClick={toggleTheme}
-          title={theme === 'dark' ? 'Переключить на светлую тему' : 'Переключить на темную тему'}
+          title={theme === 'dark' ? 'Переключить на светлый режим (День)' : 'Переключить на тёмный режим (Ночь)'}
           aria-label="Смена темы"
-          style={{
-            background: 'rgba(255, 255, 255, 0.06)',
-            border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-full)',
-            padding: '6px 12px',
-            color: 'var(--color-text-primary)',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            transition: 'all var(--transition-fast)',
-            whiteSpace: 'nowrap',
-            height: '34px',
-          }}
+          className={styles.iconActionBtn}
         >
-          {theme === 'dark' ? '🌙' : '☀️'}
+          {theme === 'dark' ? '🌙 Ночь' : '☀️ День'}
         </button>
 
         <button
           onClick={handleSettingsToggle}
           title={pathname === '/settings' ? "Вернуться назад" : "Открыть Настройки"}
           aria-label="Настройки"
-          style={{
-            background: 'rgba(255, 255, 255, 0.06)',
-            border: '1px solid var(--color-border)',
-            borderRadius: '50%',
-            width: '34px',
-            height: '34px',
-            color: 'var(--color-text-primary)',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all var(--transition-fast)',
-            flexShrink: 0,
-          }}
+          className={`${styles.iconActionBtn} ${styles.iconRoundBtn}`}
         >
-          <Settings size={17} />
+          <Settings size={18} />
         </button>
       </div>
     </header>

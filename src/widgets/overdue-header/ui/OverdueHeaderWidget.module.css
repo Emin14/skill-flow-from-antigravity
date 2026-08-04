@@ -1,29 +1,29 @@
 /* CSS Module for Overdue Header UX Concept with Full Theme Support (Dark & Light) */
 
 .v7DoubleLineCard {
-  background: linear-gradient(135deg, var(--color-accent-light, rgba(239, 68, 68, 0.12)) 0%, var(--color-surface) 100%) !important;
-  border: 1px solid var(--color-accent-border, rgba(239, 68, 68, 0.3)) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(239, 68, 68, 0.12)) 0%, var(--color-surface) 100%)) !important;
+  border: 1px solid var(--widget-custom-border, var(--color-accent-border, rgba(239, 68, 68, 0.3))) !important;
   border-radius: 16px;
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--widget-custom-shadow, 0 4px 16px rgba(0, 0, 0, 0.12));
   box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
 :global([data-theme="light"]) .v7DoubleLineCard {
-  background: linear-gradient(135deg, var(--color-accent-light, rgba(239, 68, 68, 0.08)) 0%, #ffffff 100%) !important;
-  border-color: var(--color-accent-border, rgba(239, 68, 68, 0.25)) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(239, 68, 68, 0.08)) 0%, #ffffff 100%)) !important;
+  border-color: var(--widget-custom-border, var(--color-accent-border, rgba(239, 68, 68, 0.25))) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .titleWrapper {
   font-size: 16px;
   font-weight: 800;
-  color: var(--color-text-primary, #f8fafc);
+  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
   display: flex;
   align-items: center;
   gap: 8px;
@@ -36,11 +36,11 @@
 .widgetTitle {
   font-size: 16px;
   font-weight: 800;
-  color: var(--color-text-primary, #f8fafc);
+  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
 }
 
 :global([data-theme="light"]) .widgetTitle {
-  color: #0f172a;
+  color: var(--widget-custom-text, #0f172a);
 }
 
 .widgetBadge {
@@ -71,7 +71,7 @@
   border-radius: 12px;
   border: 1px solid var(--color-accent-border, rgba(16, 185, 129, 0.35));
   background: var(--color-accent-light, rgba(16, 185, 129, 0.12));
-  color: var(--color-accent, #34d399);
+  color: var(--widget-custom-accent, var(--color-accent, #34d399));
   font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
@@ -81,8 +81,8 @@
 }
 
 .bulkActionBtn:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
+  background: var(--widget-custom-accent, var(--color-accent));
+  border-color: var(--widget-custom-accent, var(--color-accent));
   color: #ffffff;
   box-shadow: 0 0 12px var(--color-accent-light);
 }
@@ -91,12 +91,12 @@
 :global([data-theme="light"]) .bulkActionBtn {
   background: var(--color-accent-light, rgba(5, 150, 105, 0.08));
   border-color: var(--color-accent-border, rgba(5, 150, 105, 0.3));
-  color: var(--color-accent, #047857);
+  color: var(--widget-custom-accent, var(--color-accent, #047857));
 }
 
 :global([data-theme="light"]) .bulkActionBtn:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
+  background: var(--widget-custom-accent, var(--color-accent));
+  border-color: var(--widget-custom-accent, var(--color-accent));
   color: #ffffff;
   box-shadow: 0 4px 14px var(--color-accent-light);
 }

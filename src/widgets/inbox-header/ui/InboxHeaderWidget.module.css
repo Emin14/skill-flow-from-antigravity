@@ -1,33 +1,33 @@
 /* CSS Module for Inbox Header UX Concept with Full Theme Support (Dark & Light) */
 
 .v6PillPanel {
-  background: linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.12)) 0%, var(--color-surface) 100%) !important;
-  border: 1px solid var(--color-accent-border, rgba(255, 255, 255, 0.08)) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.12)) 0%, var(--color-surface) 100%)) !important;
+  border: 1px solid var(--widget-custom-border, var(--color-accent-border, rgba(255, 255, 255, 0.08))) !important;
   border-radius: 16px;
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--widget-custom-shadow, 0 4px 16px rgba(0, 0, 0, 0.12));
   transition: all 0.2s ease;
   width: 100%;
   box-sizing: border-box;
 }
 
 :global([data-theme="light"]) .v6PillPanel {
-  background: linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.08)) 0%, #ffffff 100%) !important;
-  border-color: var(--color-accent-border, rgba(0, 0, 0, 0.1)) !important;
+  background: var(--widget-custom-bg, linear-gradient(135deg, var(--color-accent-light, rgba(99, 102, 241, 0.08)) 0%, #ffffff 100%)) !important;
+  border-color: var(--widget-custom-border, var(--color-accent-border, rgba(0, 0, 0, 0.1))) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .widgetTitle {
   font-size: 16px;
   font-weight: 800;
-  color: var(--color-text-primary, #f8fafc);
+  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
 }
 
 :global([data-theme="light"]) .widgetTitle {
-  color: #0f172a;
+  color: var(--widget-custom-text, #0f172a);
 }
 
 .widgetBadge {
@@ -41,21 +41,21 @@
 }
 
 .titleIcon {
-  color: var(--color-accent);
+  color: var(--widget-custom-accent, var(--color-accent));
 }
 
 :global([data-theme="light"]) .titleIcon {
-  color: var(--color-accent);
+  color: var(--widget-custom-accent, var(--color-accent));
 }
 
 /* Form Input Styling */
 .cleanInput {
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--color-border, rgba(255, 255, 255, 0.12));
   border-radius: 12px;
   padding: 10px 14px;
-  color: var(--color-text-primary, #f8fafc);
+  color: var(--widget-custom-text, var(--color-text-primary, #f8fafc));
   font-size: 13.5px;
   outline: none;
   transition: all 0.2s ease;
@@ -68,7 +68,7 @@
 }
 
 .cleanInput:focus {
-  border-color: var(--color-accent);
+  border-color: var(--widget-custom-accent, var(--color-accent));
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 12px var(--color-accent-light);
 }
@@ -85,6 +85,6 @@
 
 :global([data-theme="light"]) .cleanInput:focus {
   background: #ffffff;
-  border-color: var(--color-accent);
+  border-color: var(--widget-custom-accent, var(--color-accent));
   box-shadow: 0 0 12px var(--color-accent-light);
 }

@@ -214,7 +214,7 @@
   border-radius: var(--radius-md);
   background-color: var(--color-accent);
   border: none;
-  color: #ffffff;
+  color: var(--color-accent-text, #ffffff) !important;
   font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;

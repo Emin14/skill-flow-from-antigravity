@@ -1,4 +1,4 @@
-'use client';
+import { applyIdealWidgetCandidate } from '@/shared/config/idealWidgetThemes';
 
 export interface AppThemePreset {
   id: string;
@@ -50,4 +50,7 @@ export const applyAppThemePreset = (themeId: string) => {
   root.setAttribute('data-theme', preset.category);
   localStorage.setItem('app-preset-theme-id', preset.id);
   localStorage.setItem('app-theme', preset.category);
+
+  // Применение идеального варианта виджета под данную тему
+  applyIdealWidgetCandidate(preset.id);
 };

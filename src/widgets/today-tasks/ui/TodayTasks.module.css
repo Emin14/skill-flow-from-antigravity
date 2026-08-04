@@ -50,11 +50,39 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
+/* 🌟 PERFECT HIGH CONTRAST ACTIVE TAB TILE */
 .viewTabBtnActive {
   background: var(--color-accent, #6366f1) !important;
-  color: #ffffff !important;
+  color: var(--color-accent-text, #ffffff) !important;
   border-color: var(--color-accent) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
+}
+
+.viewTabBtnActive .tabLabelText {
+  color: var(--color-accent-text, #ffffff) !important;
+  font-weight: 700 !important;
+}
+
+.viewTabBtnActive .tabCountBadge {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: var(--color-accent-text, #ffffff) !important;
+  font-weight: 800 !important;
+}
+
+:global([data-theme="light"]) .viewTabBtnActive {
+  background: var(--color-accent, #2563eb) !important;
+  color: var(--color-accent-text, #ffffff) !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12) !important;
+}
+
+:global([data-theme="light"]) .viewTabBtnActive .tabLabelText {
+  color: var(--color-accent-text, #ffffff) !important;
+}
+
+:global([data-theme="light"]) .viewTabBtnActive .tabCountBadge {
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: var(--color-accent-text, #ffffff) !important;
 }
 
 /* Drag Over Tab Highlight for Status Change */
@@ -82,7 +110,8 @@
   line-height: 1;
   padding: 2px 6px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-muted);
   display: inline-flex;
   align-items: center;
   justify-content: center;

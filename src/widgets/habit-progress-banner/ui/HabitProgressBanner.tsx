@@ -17,8 +17,6 @@ export const HabitProgressBanner: React.FC = () => {
     const loadVariant = () => {
       const saved = localStorage.getItem(STORAGE_KEYS.HABIT_BANNER_VARIANT) || '3';
       setActiveVariant(saved);
-      const savedColorVariant = localStorage.getItem('progress-widget-color-variant') || 'adaptive';
-      applyProgressWidgetStyle(savedColorVariant);
     };
 
     loadVariant();
@@ -82,12 +80,12 @@ export const HabitProgressBanner: React.FC = () => {
         <div className={styles.variant2}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-              <div style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
+              <div style={{ fontSize: '12.5px', color: 'var(--widget-custom-muted-text)', marginTop: '2px' }}>
                 {doneCount} из {totalCount} выполнено
               </div>
             </div>
-            <div style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-accent)' }}>{percent}%</div>
+            <div style={{ fontSize: '18px', fontWeight: 800, color: 'var(--widget-custom-accent)' }}>{percent}%</div>
           </div>
           <div className={styles.v2Track}>
             <div className={styles.v2Fill} style={{ width: `${percent}%` }} />
@@ -99,13 +97,13 @@ export const HabitProgressBanner: React.FC = () => {
       return (
         <div className={styles.variant4}>
           <div>
-            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Прогресс дня: {doneCount} из {totalCount}</div>
+            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
+            <div style={{ fontSize: '12px', color: 'var(--widget-custom-muted-text)' }}>Прогресс дня: {doneCount} из {totalCount}</div>
             <div className={styles.v4BarContainer}>
-              <div style={{ height: '100%', width: `${percent}%`, background: 'var(--color-accent)', borderRadius: '3px' }} />
+              <div style={{ height: '100%', width: `${percent}%`, background: 'var(--widget-custom-accent)', borderRadius: '3px' }} />
             </div>
           </div>
-          <div className={styles.v4Pill} style={{ background: 'var(--color-accent)', color: '#ffffff' }}>{percent}%</div>
+          <div className={styles.v4Pill} style={{ background: 'var(--widget-custom-accent)', color: '#ffffff' }}>{percent}%</div>
         </div>
       );
 
@@ -114,15 +112,15 @@ export const HabitProgressBanner: React.FC = () => {
         <div className={styles.variant5}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-              <div style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
+              <div style={{ fontSize: '12.5px', color: 'var(--widget-custom-muted-text)', marginTop: '2px' }}>
                 Выполнено {doneCount} из {totalCount} задач
               </div>
             </div>
-            <div style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-accent)' }}>{percent}%</div>
+            <div style={{ fontSize: '20px', fontWeight: 800, color: 'var(--widget-custom-accent)' }}>{percent}%</div>
           </div>
           <div className={styles.v5Track}>
-            <div className={styles.v5Fill} style={{ width: `${percent}%`, background: 'var(--color-accent)' }} />
+            <div className={styles.v5Fill} style={{ width: `${percent}%`, background: 'var(--widget-custom-accent)' }} />
           </div>
         </div>
       );
@@ -140,19 +138,19 @@ export const HabitProgressBanner: React.FC = () => {
             <path
               d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               fill="none"
-              stroke="var(--color-accent)"
+              stroke="var(--widget-custom-accent)"
               strokeWidth="3.8"
               strokeDasharray={`${percent}, 100`}
               strokeLinecap="round"
             />
           </svg>
           <div className={styles.v6Right}>
-            <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
+            <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
+            <div style={{ fontSize: '12px', color: 'var(--widget-custom-muted-text)' }}>
               {doneCount} из {totalCount} ({percent}%)
             </div>
             <div style={{ width: '100%', height: '5px', background: 'rgba(255,255,255,0.08)', borderRadius: '3px', overflow: 'hidden' }}>
-              <div style={{ width: `${percent}%`, height: '100%', background: 'var(--color-accent)', borderRadius: '3px' }} />
+              <div style={{ width: `${percent}%`, height: '100%', background: 'var(--widget-custom-accent)', borderRadius: '3px' }} />
             </div>
           </div>
         </div>
@@ -162,13 +160,13 @@ export const HabitProgressBanner: React.FC = () => {
       return (
         <div className={styles.variant7}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--color-accent)' }}>⚡ {titleText}</span>
-            <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-accent)' }}>{percent}% XP</span>
+            <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--widget-custom-accent)' }}>⚡ {titleText}</span>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--widget-custom-accent)' }}>{percent}% XP</span>
           </div>
           <div className={styles.v7XpTrack}>
-            <div className={styles.v7XpFill} style={{ width: `${percent}%`, background: 'var(--color-accent)' }} />
+            <div className={styles.v7XpFill} style={{ width: `${percent}%`, background: 'var(--widget-custom-accent)' }} />
           </div>
-          <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', textAlign: 'right' }}>
+          <div style={{ fontSize: '11px', color: 'var(--widget-custom-muted-text)', textAlign: 'right' }}>
             {doneCount}/{totalCount} задач • Осталось: {remainingCount}
           </div>
         </div>
@@ -179,14 +177,14 @@ export const HabitProgressBanner: React.FC = () => {
         <div className={styles.variant8}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-              <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+              <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
+              <div style={{ fontSize: '12px', color: 'var(--widget-custom-muted-text)', marginTop: '2px' }}>
                 Выполнено {doneCount} из {totalCount}
               </div>
             </div>
-            <div style={{ fontSize: '16px', fontWeight: 800, color: 'var(--color-accent)' }}>{percent}%</div>
+            <div style={{ fontSize: '16px', fontWeight: 800, color: 'var(--widget-custom-accent)' }}>{percent}%</div>
           </div>
-          <div className={styles.v8BottomLine} style={{ width: `${percent}%`, background: 'var(--color-accent)' }} />
+          <div className={styles.v8BottomLine} style={{ width: `${percent}%`, background: 'var(--widget-custom-accent)' }} />
         </div>
       );
 
@@ -194,15 +192,15 @@ export const HabitProgressBanner: React.FC = () => {
       return (
         <div className={styles.variant9}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-            <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-accent)' }}>{percent}%</div>
+            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
+            <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--widget-custom-accent)' }}>{percent}%</div>
           </div>
           <div className={styles.v9Row}>
-            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>
+            <span style={{ fontSize: '12px', color: 'var(--widget-custom-muted-text)', whiteSpace: 'nowrap' }}>
               {doneCount} / {totalCount} задач
             </span>
             <div className={styles.v9Track}>
-              <div className={styles.v9Fill} style={{ width: `${percent}%`, background: 'var(--color-accent)' }} />
+              <div className={styles.v9Fill} style={{ width: `${percent}%`, background: 'var(--widget-custom-accent)' }} />
             </div>
           </div>
         </div>
@@ -211,9 +209,9 @@ export const HabitProgressBanner: React.FC = () => {
     case '10':
       return (
         <div className={styles.variant10}>
-          <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
+          <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
           <div className={styles.v10CapsuleBar}>
-            <div className={styles.v10CapsuleFill} style={{ width: `${percent}%`, background: 'var(--color-accent)' }} />
+            <div className={styles.v10CapsuleFill} style={{ width: `${percent}%`, background: 'var(--widget-custom-accent)' }} />
             <span className={styles.v10CapsuleText}>
               Прогресс: {percent}% • {doneCount} из {totalCount} выполнено
             </span>
@@ -226,8 +224,8 @@ export const HabitProgressBanner: React.FC = () => {
       return (
         <div className={styles.variant3}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-            <div style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>{doneCount} из {totalCount}</div>
+            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
+            <div style={{ fontSize: '12px', color: 'var(--widget-custom-muted-text)' }}>{doneCount} из {totalCount}</div>
           </div>
           <div className={styles.v3PinBarContainer}>
             {percent > 5 && (
