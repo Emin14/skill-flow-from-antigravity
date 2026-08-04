@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTaskStore } from '@/entities/task';
 import { getTodayStr } from '@/shared/lib/dateUtils';
+import { applyProgressWidgetStyle } from '@/shared/config/progressWidgetThemes';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import styles from './HabitProgressBanner.module.css';
 
@@ -16,6 +17,8 @@ export const HabitProgressBanner: React.FC = () => {
     const loadVariant = () => {
       const saved = localStorage.getItem(STORAGE_KEYS.HABIT_BANNER_VARIANT) || '3';
       setActiveVariant(saved);
+      const savedColorVariant = localStorage.getItem('progress-widget-color-variant') || 'adaptive';
+      applyProgressWidgetStyle(savedColorVariant);
     };
 
     loadVariant();

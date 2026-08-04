@@ -10,7 +10,8 @@ type Theme = 'dark' | 'light';
 
 interface ThemeState {
   theme: Theme;
-  activePresetId: string;
+  activeLightPresetId: string;
+  activeDarkPresetId: string;
   initTheme: () => void;
   toggleTheme: () => void;
   setTheme: (theme: Theme) => void;
@@ -19,16 +20,24 @@ interface ThemeState {
 
 export const useThemeStore = create<ThemeState>((set, get) => ({
   theme: 'dark',
-  activePresetId: 'dark_today',
+  activeLightPresetId: 'default',
+  activeDarkPresetId: 'dark_today',
   initTheme: () => {
     if (typeof window !== 'undefined') {
-      const savedPresetId = localStorage.getItem('app-preset-theme-id') || 'dark_today';
       const savedTheme = (localStorage.getItem('app-theme') as Theme) || 'dark';
+      const savedLightPreset = localStorage.getItem('app-light-preset-id') || 'default';
+      const savedDarkPreset = localStorage.getItem('app-dark-preset-id') || 'dark_today';
       const savedAccentColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
       const savedCardStyleId = localStorage.getItem('user-card-style-id');
 
-      set({ theme: savedTheme, activePresetId: savedPresetId });
-      applyAppThemePreset(savedPresetId);
+      set({
+        theme: savedTheme,
+        activeLightPresetId: savedLightPreset,
+        activeDarkPresetId: savedDarkPreset,
+      });
+
+      const activePresetToApply = savedTheme === 'light' ? savedLightPreset : savedDarkPreset;
+      applyAppThemePreset(activePresetToApply);
       applyAccentColorVars(savedAccentColor);
 
       if (savedCardStyleId) {
@@ -43,15 +52,22 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
   setTheme: (theme: Theme) => {
     set({ theme });
     if (typeof window !== 'undefined') {
-      const defaultForCategory = theme === 'dark' ? 'dark_today' : 'default';
-      set({ activePresetId: defaultForCategory });
-      applyAppThemePreset(defaultForCategory);
+      const targetPresetId = theme === 'light' ? get().activeLightPresetId : get().activeDarkPresetId;
+      applyAppThemePreset(targetPresetId);
     }
   },
   setPresetTheme: (presetId: string) => {
     const preset = APP_THEME_PRESETS.find((t) => t.id === presetId);
     const category = preset ? preset.category : 'dark';
-    set({ activePresetId: presetId, theme: category });
+
+    if (category === 'light') {
+      set({ activeLightPresetId: presetId, theme: 'light' });
+      localStorage.setItem('app-light-preset-id', presetId);
+    } else {
+      set({ activeDarkPresetId: presetId, theme: 'dark' });
+      localStorage.setItem('app-dark-preset-id', presetId);
+    }
+
     applyAppThemePreset(presetId);
   },
 }));
