@@ -387,34 +387,51 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               </span>
             </div>
 
-            <div style={{ display: 'flex', gap: '6px', width: '100%', overflowX: 'auto', paddingBottom: '6px', scrollbarWidth: 'thin', WebkitOverflowScrolling: 'touch' }}>
-              {Array.from({ length: Math.max(8, targetCount) }).map((_, index) => {
-                const isFilled = index < currentCount;
-                return (
-                  <div
-                    key={index}
-                    title={`Повторение ${index + 1}`}
-                    style={{
-                      minWidth: '22px',
-                      height: '22px',
-                      borderRadius: '50%',
-                      flexShrink: 0,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '10px',
-                      fontWeight: 700,
-                      backgroundColor: isFilled ? 'var(--color-success)' : 'var(--color-surface)',
-                      border: isFilled ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)',
-                      color: isFilled ? 'var(--color-accent-on-accent)' : 'var(--color-text-muted)',
-                      boxShadow: isFilled ? '0 0 8px var(--color-success-border)' : 'none',
-                    }}
-                  >
-                    {isFilled ? '✓' : index + 1}
-                  </div>
-                );
-              })}
-            </div>
+            {(() => {
+              const totalCircles = Math.max(6, targetCount);
+              const isScrollable = totalCircles > 6;
+              return (
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: '6px',
+                    width: '100%',
+                    overflowX: isScrollable ? 'auto' : 'hidden',
+                    paddingBottom: isScrollable ? '6px' : '0',
+                    scrollbarWidth: 'thin',
+                    WebkitOverflowScrolling: 'touch',
+                  }}
+                >
+                  {Array.from({ length: totalCircles }).map((_, index) => {
+                    const isFilled = index < currentCount;
+                    return (
+                      <div
+                        key={index}
+                        title={`Повторение ${index + 1}`}
+                        style={{
+                          flex: isScrollable ? 'none' : 1,
+                          minWidth: isScrollable ? '22px' : undefined,
+                          height: '22px',
+                          borderRadius: '50%',
+                          flexShrink: isScrollable ? 0 : 1,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '10px',
+                          fontWeight: 700,
+                          backgroundColor: isFilled ? 'var(--color-success)' : 'var(--color-surface)',
+                          border: isFilled ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)',
+                          color: isFilled ? 'var(--color-accent-on-accent)' : 'var(--color-text-muted)',
+                          boxShadow: isFilled ? '0 0 8px var(--color-success-border)' : 'none',
+                        }}
+                      >
+                        {isFilled ? '✓' : index + 1}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })()}
           </div>
         )}
 
