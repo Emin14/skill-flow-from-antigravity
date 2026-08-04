@@ -195,8 +195,9 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
   }, [mode, freqStr, task.afterCompletionDays]);
 
   const totalSteps = useMemo(() => {
-    return Math.max(6, completedCount + 2, task.targetRepetitions || 6);
-  }, [completedCount, task.targetRepetitions]);
+    const assignedCount = occurrences.length;
+    return Math.max(6, assignedCount, task.targetRepetitions || 6);
+  }, [occurrences.length, task.targetRepetitions]);
 
   const steps: StepNode[] = useMemo(() => {
     const list: StepNode[] = [];
@@ -230,6 +231,8 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
         }
       } else if (isNext && nextDateRaw) {
         subLabel = formatDateNumeric(nextDateRaw);
+      } else if (occurrences[i]?.date) {
+        subLabel = formatDateNumeric(occurrences[i].date);
       }
 
       list.push({
@@ -244,7 +247,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
       });
     }
     return list;
-  }, [totalSteps, completedCount, completedOccurrences, nextDateRaw, isOverdue, mode, defaultLabels, task]);
+  }, [totalSteps, completedCount, completedOccurrences, nextDateRaw, isOverdue, mode, defaultLabels, task, occurrences]);
 
   const { numStr, textStr } = formatRepetitionCount(completedCount);
   const createdDateStr = task.createdAt ? formatDateNumeric(task.createdAt.split('T')[0]) : '';

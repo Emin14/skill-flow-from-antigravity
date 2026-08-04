@@ -388,7 +388,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             </div>
 
             {(() => {
-              const totalCircles = Math.max(6, targetCount);
+              const assignedCount = masterTask.occurrences?.length || 0;
+              const totalCircles = Math.max(assignedCount, targetCount);
               const isScrollable = totalCircles > 6;
               return (
                 <div
