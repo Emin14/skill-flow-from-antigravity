@@ -268,9 +268,9 @@
 
 /* Active Selected Cell Highlight */
 .dateCellActive {
-  background: #4f46e5 !important;
+  background: var(--color-accent, #4f46e5) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4) !important;
+  box-shadow: 0 4px 14px var(--color-accent-light, rgba(79, 70, 229, 0.4)) !important;
 }
 
 .dateCellActive .dayNum {

@@ -14,11 +14,16 @@ import { useThemeStore } from '@/shared/model/useThemeStore';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 
 const colorPalettes = [
-  { name: 'Фиолетовый (Aura)', hex: '#6366f1' },
+  { name: 'Индиго (Aura)', hex: '#6366f1' },
+  { name: 'Сапфировый / Голубой', hex: '#3b82f6' },
   { name: 'Изумрудный', hex: '#10b981' },
-  { name: 'Сапфировый', hex: '#3b82f6' },
+  { name: 'Ярко-оранжевый', hex: '#ff6b00' },
   { name: 'Розовый', hex: '#f43f5e' },
   { name: 'Янтарный', hex: '#f59e0b' },
+  { name: 'Аквамарин', hex: '#06b6d4' },
+  { name: 'Неоновый голубой', hex: '#30b5ff' },
+  { name: 'Аметистовый', hex: '#8b5cf6' },
+  { name: 'Салатовый', hex: '#84cc16' },
 ];
 
 export const SettingsPage: React.FC = () => {
@@ -211,14 +216,14 @@ export const SettingsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* 20 Theme Presets Section */}
+        {/* 17 Theme Presets Section */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '4px' }}>
           <div>
             <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              🎨 Пресеты тем оформления (20 видов)
+              🎨 Пресеты тем оформления (Уникальные сочетания фона)
             </div>
             <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Выберите тему: динамически меняется фон приложения и цвет карточек в разделе «Сегодня»
+              Темы отвечают <b>строго за общий фон приложения и цвет карточек задач</b> в разделе «Сегодня»
             </div>
           </div>
 
@@ -251,7 +256,7 @@ export const SettingsPage: React.FC = () => {
                       }}
                     >
                       <span style={{ fontSize: '10px' }}>✓ Задача</span>
-                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: preset.accentColor }} />
+                      <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: selectedColor }} />
                     </div>
                   </div>
                 </div>
@@ -263,10 +268,10 @@ export const SettingsPage: React.FC = () => {
         <div className={styles.settingRow}>
           <div>
             <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              Акцентный цвет интерфейса
+              🎯 Акцентный цвет интерфейса
             </div>
             <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Основной цвет для кнопок, свечения и выделений
+              Управляет кнопкой <b>«Добавить задачу» (+)</b>, фоном <b>активных виджетов</b> и выделением <b>в календаре</b>
             </div>
           </div>
           <div className={styles.colorPickerRow}>
