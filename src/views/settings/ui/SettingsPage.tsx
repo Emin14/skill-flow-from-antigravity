@@ -241,14 +241,11 @@ export const SettingsPage: React.FC = () => {
                 transition: 'all 0.2s ease',
               }}
             >
-              <option value="1">1 — Кибер-стекло с кольцом</option>
-              <option value="2">2 — Метрическая панель</option>
-              <option value="3">3 — Изумрудно-акцентная панель</option>
-              <option value="4">4 — Кольцо активности Apple Style</option>
-              <option value="5">5 — Геймифицированная полоса XP</option>
-              <option value="6">6 — Тонкая линия по нижнему краю</option>
-              <option value="7">7 — Компактный дашборд-ряд</option>
-              <option value="8">8 — Капсула с текстом внутри</option>
+              <option value="1">Кибер-стекло с кольцом</option>
+              <option value="2">Метрическая панель</option>
+              <option value="3">Изумрудно-акцентная панель</option>
+              <option value="4">Кольцо активности Apple Style</option>
+              <option value="5">Геймифицированная полоса XP</option>
             </select>
             <span
               style={{

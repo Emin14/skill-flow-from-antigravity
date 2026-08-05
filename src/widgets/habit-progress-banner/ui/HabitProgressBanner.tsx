@@ -56,9 +56,9 @@ export const HabitProgressBanner: React.FC = () => {
     ? 'В процессе выполнения задач! 💪'
     : 'Время покорять новые вершины! ⚡';
 
-  // Render strictly the chosen theme-adaptive variant
+  // Render strictly the chosen theme-adaptive variant (1 to 5)
   switch (activeVariant) {
-    // Variant 2: Метрическая панель (Former 4)
+    // Variant 2: Метрическая панель
     case '2':
       return (
         <div className={styles.variant2}>
@@ -75,7 +75,7 @@ export const HabitProgressBanner: React.FC = () => {
         </div>
       );
 
-    // Variant 3: Изумрудно-акцентная панель (Former 5)
+    // Variant 3: Изумрудно-акцентная панель
     case '3':
       return (
         <div className={styles.variant3}>
@@ -94,7 +94,7 @@ export const HabitProgressBanner: React.FC = () => {
         </div>
       );
 
-    // Variant 4: Кольцо активности Apple Style (Former 6)
+    // Variant 4: Кольцо активности Apple Style
     case '4':
       return (
         <div className={styles.variant4}>
@@ -126,7 +126,7 @@ export const HabitProgressBanner: React.FC = () => {
         </div>
       );
 
-    // Variant 5: Геймифицированная полоса XP (Former 7)
+    // Variant 5: Геймифицированная полоса XP
     case '5':
       return (
         <div className={styles.variant5}>
@@ -143,57 +143,7 @@ export const HabitProgressBanner: React.FC = () => {
         </div>
       );
 
-    // Variant 6: Тонкая линия по нижнему краю (Former 8)
-    case '6':
-      return (
-        <div className={styles.variant6}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-              <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
-                Выполнено {doneCount} из {totalCount}
-              </div>
-            </div>
-            <div style={{ fontSize: '16px', fontWeight: 800, color: 'var(--color-accent)' }}>{percent}%</div>
-          </div>
-          <div className={styles.v6BottomLine} style={{ width: `${percent}%` }} />
-        </div>
-      );
-
-    // Variant 7: Компактный дашборд-ряд (Former 9)
-    case '7':
-      return (
-        <div className={styles.variant7}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-            <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-accent)' }}>{percent}%</div>
-          </div>
-          <div className={styles.v7Row}>
-            <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>
-              {doneCount} / {totalCount} задач
-            </span>
-            <div className={styles.v7Track}>
-              <div className={styles.v7Fill} style={{ width: `${percent}%` }} />
-            </div>
-          </div>
-        </div>
-      );
-
-    // Variant 8: Капсула с текстом внутри (Former 10)
-    case '8':
-      return (
-        <div className={styles.variant8}>
-          <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>{titleText}</div>
-          <div className={styles.v8CapsuleBar}>
-            <div className={styles.v8CapsuleFill} style={{ width: `${percent}%` }} />
-            <span className={styles.v8CapsuleText}>
-              Прогресс: {percent}% • {doneCount} из {totalCount} выполнено
-            </span>
-          </div>
-        </div>
-      );
-
-    // Variant 1 (Default): Кибер-стекло с кольцом (Untouched!)
+    // Variant 1 (Default): Кибер-стекло с кольцом
     case '1':
     default:
       return (
