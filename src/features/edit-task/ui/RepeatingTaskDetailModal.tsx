@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Task } from '@/entities/task/model/types';
 import { useTaskStore, normalizeOccurrences } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
-import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
+import { getTodayStr, formatDateDisplay, formatLocalDateStr } from '@/shared/lib/dateUtils';
 import { ChevronDown, ChevronUp, Calendar, Trash2, ExternalLink, CheckCircle2, Clock, Sparkles } from 'lucide-react';
 import styles from './EditTaskModal.module.css';
 
@@ -16,6 +16,20 @@ interface RepeatingTaskDetailModalProps {
   onClose: () => void;
   onOpenEdit: () => void;
 }
+
+const formatRepetitionText = (count: number): string => {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  let word = 'повторений';
+  if (mod100 >= 11 && mod100 <= 19) {
+    word = 'повторений';
+  } else if (mod10 === 1) {
+    word = 'повторение';
+  } else if (mod10 >= 2 && mod10 <= 4) {
+    word = 'повторения';
+  }
+  return `Выполнено ${count} ${word}`;
+};
 
 const formatDateTitleRu = (dateStr?: string) => {
   if (!dateStr || !dateStr.includes('-')) return dateStr || 'Без даты';
@@ -87,7 +101,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   for (let i = 0; i < 365; i++) {
     const d = new Date(today);
     d.setDate(today.getDate() - i);
-    const dStr = d.toISOString().split('T')[0];
+    const dStr = formatLocalDateStr(d);
     if (historyDatesSet.has(dStr)) {
       streak++;
     } else if (i > 0) {
@@ -379,11 +393,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '13px', fontWeight: 'bold', color: 'var(--color-success)' }}>
-                📊 Выполнено: {currentCount} из {targetCount} повторений
-              </span>
-              <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--color-success)' }}>
-                {progressPercent}%
+              <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--color-success)' }}>
+                📊 {formatRepetitionText(currentCount)}
               </span>
             </div>
 

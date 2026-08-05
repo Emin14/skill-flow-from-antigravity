@@ -6,6 +6,7 @@ import { useInboxStore, InboxItem } from '@/entities/inbox';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { InboxHeaderWidget } from '@/widgets/inbox-header/ui/InboxHeaderWidget';
+import { getTodayStr } from '@/shared/lib/dateUtils';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
@@ -56,7 +57,7 @@ export const InboxPage: React.FC = () => {
       status: 'Todo',
       priority: 'P3',
       category: 'Задача',
-      scheduledDate: new Date().toISOString().split('T')[0],
+      scheduledDate: getTodayStr(),
       createdAt: new Date().toISOString(),
       isRepeating: false,
       hasSubtasks: false,
@@ -75,7 +76,7 @@ export const InboxPage: React.FC = () => {
     setTriagingTask(null);
   };
 
-  const todayStr = new Date().toISOString().split('T')[0];
+  const todayStr = getTodayStr();
 
   const filteredItems = items.filter((item) => {
     if (activeFilter === 'pinned' && !item.isPinned) return false;
