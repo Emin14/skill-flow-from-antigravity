@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { Goal } from './types';
 import { goalRepository } from '@/shared/repository';
 import { useToastStore } from '@/shared/ui';
+import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
 
 interface GoalState {
@@ -45,6 +46,7 @@ export const useGoalStore = create<GoalState>((set, get) => ({
     const saved = await goalRepository.save(newGoal);
     set((state) => ({ goals: [saved, ...state.goals] }));
     useToastStore.getState().showToast(`Цель "${title}" создана`, 'success');
+    useActivityStore.getState().logActivity('goal_created', `Создана цель: "${title}"`);
     return saved;
   },
 

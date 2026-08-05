@@ -125,7 +125,7 @@
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   box-shadow: var(--widget-custom-shadow, 0 4px 16px rgba(0, 0, 0, 0.12));
 }
 
@@ -135,16 +135,23 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
-.v3PinBarContainer {
-  position: relative;
-  width: 100%;
-  margin-top: 4px;
+.v3Badge {
+  background: var(--widget-custom-accent, var(--color-accent));
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 11.5px;
+  font-weight: 800;
+  box-shadow: 0 2px 8px var(--color-accent-light);
+  white-space: nowrap;
 }
 
 .v3Track {
   width: 100%;
-  height: 8px;
+  height: 10px;
   background: var(--color-border);
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 :global([data-theme="light"]) .v3Track {
@@ -154,18 +161,6 @@
 .v3Fill {
   height: 100%;
   background: var(--widget-custom-accent, var(--color-accent));
-  border-radius: 4px;
-}
-
-.v3PinTag {
-  position: absolute;
-  top: -24px;
-  transform: translateX(-50%);
-  padding: 2px 7px;
-  border-radius: 6px;
-  background: var(--widget-custom-accent, var(--color-accent));
-  color: var(--color-accent-on-accent);
-  font-size: 10.5px;
-  font-weight: 800;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: width 0.4s ease;
 }

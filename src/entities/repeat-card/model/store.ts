@@ -3,6 +3,7 @@ import { RepeatCard } from './types';
 import { repeatCardRepository } from '@/shared/repository';
 import { calculateNextReview, ReviewRating } from '@/shared/lib/fsrs';
 import { useToastStore } from '@/shared/ui';
+import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
 
 interface RepeatCardState {
@@ -122,6 +123,7 @@ export const useRepeatCardStore = create<RepeatCardState>((set, get) => ({
 
     try {
       await repeatCardRepository.update(id, updates);
+      useActivityStore.getState().logActivity('fsrs_reviewed', `Повторена карточка: "${card.front}"`);
     } catch (e) {
       set({ cards: get().cards, error: (e as Error).message });
     }

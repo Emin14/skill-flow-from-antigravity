@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { Topic } from './types';
 import { topicRepository } from '@/shared/repository';
+import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
 
 interface TopicState {
@@ -41,6 +42,7 @@ export const useTopicStore = create<TopicState>((set, get) => ({
 
     const saved = await topicRepository.save(newTopic);
     set((state) => ({ topics: [...state.topics, saved] }));
+    useActivityStore.getState().logActivity('topic_created', `Создана тема: "${title}"`);
     return saved;
   },
 

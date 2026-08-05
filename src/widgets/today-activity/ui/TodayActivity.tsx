@@ -20,7 +20,14 @@ const activityIcons: Record<string, string> = {
 export const TodayActivity: React.FC<TodayActivityProps> = memo(({ logs }) => {
   return (
     <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-      <Typography variant="h2">📜 Последняя активность (20 событий)</Typography>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+        <Typography variant="h2">📜 Последняя активность</Typography>
+        {logs.length > 0 && (
+          <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', fontWeight: 500, opacity: 0.75 }}>
+            последние {logs.length} из 20 событий
+          </span>
+        )}
+      </div>
 
       {logs.length === 0 ? (
         <div style={{ color: 'var(--color-text-muted)', textAlign: 'center', padding: 'var(--space-4)' }}>

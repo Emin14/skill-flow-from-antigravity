@@ -4,6 +4,7 @@ import { TaskCategory } from '@/shared/config/categories';
 import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS } from '@/shared/config/repetitionRules';
 import { taskRepository } from '@/shared/repository';
 import { useToastStore } from '@/shared/ui';
+import { useActivityStore } from '@/entities/activity';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -416,6 +417,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const saved = await taskRepository.save(newTask);
     set((state) => ({ tasks: [saved, ...state.tasks] }));
     useToastStore.getState().showToast(`Задача "${newTask.title}" создана`, 'success');
+    useActivityStore.getState().logActivity('task_created', `Создана задача: "${newTask.title}"`);
     return saved;
   },
 
@@ -536,6 +538,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         const nextOcc = normalized.find((o) => o.date > targetDate && o.status === 'Todo');
         const toastDate = nextOcc ? nextOcc.date : derivedScheduledDate;
         useToastStore.getState().showToast(`Следующее повторение: ${toastDate}`, 'success');
+        useActivityStore.getState().logActivity('task_completed', `Выполнено повторение: "${task.title}"`);
       } else {
         useToastStore.getState().showToast(`Отменено выполнение за ${targetDate}`, 'info');
       }
@@ -565,6 +568,9 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }));
 
     await taskRepository.update(id, updates);
+    if (newStatus === 'Done') {
+      useActivityStore.getState().logActivity('task_completed', `Выполнена задача: "${task.title}"`);
+    }
     for (const st of descendantTasks) {
       await taskRepository.update(st.id, { status: 'Done', completedAt: nowIso });
     }

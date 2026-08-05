@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { Material, MaterialType } from './types';
 import { materialRepository } from '@/shared/repository';
 import { useToastStore } from '@/shared/ui';
+import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
 
 interface MaterialState {
@@ -95,6 +96,9 @@ export const useMaterialStore = create<MaterialState>((set, get) => ({
       useToastStore
         .getState()
         .showToast(newCompleted ? `Материал "${mat.title}" изучен!` : 'Отметка сброшена', 'success');
+      if (newCompleted) {
+        useActivityStore.getState().logActivity('material_completed', `Изучен материал: "${mat.title}"`);
+      }
     } catch (e) {
       set((state) => ({
         materials: state.materials.map((m) => (m.id === id ? mat : m)),

@@ -15,7 +15,9 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  LabelList,
+  CartesianGrid,
+  PieChart,
+  Pie,
 } from 'recharts';
 
 const CustomChartTooltip = ({ active, payload }: any) => {
@@ -83,8 +85,12 @@ const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
   const events: CompletionEvent[] = [];
 
   allTasks.forEach((t) => {
-    if (t.status === 'Done') {
-      const dateStr = t.completedAt ? t.completedAt.split('T')[0] : t.scheduledDate;
+    // Exclude parent container tasks (matching Calendar Page filterCalendarVisibleTasks)
+    const hasChildren = allTasks.some((sub) => sub.parentTaskId === t.id);
+    if (t.hasSubtasks || hasChildren) return;
+
+    if (!t.isRepeating && t.status === 'Done') {
+      const dateStr = t.scheduledDate || (t.completedAt ? t.completedAt.split('T')[0] : undefined);
       if (dateStr) {
         events.push({
           taskId: t.id,
@@ -94,18 +100,29 @@ const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
       }
     }
 
-    if (t.repetitionHistory && t.repetitionHistory.length > 0) {
-      t.repetitionHistory.forEach((record) => {
-        if (record.date) {
-          const currentDate = t.completedAt ? t.completedAt.split('T')[0] : t.scheduledDate;
-          if (t.status === 'Done' && record.date === currentDate) {
-            return;
-          }
+    if (t.isRepeating && t.occurrences && t.occurrences.length > 0) {
+      t.occurrences.forEach((occ) => {
+        if (occ.date && occ.status === 'Done') {
           events.push({
             taskId: t.id,
             category: t.category || 'Задача',
-            dateStr: record.date,
+            dateStr: occ.date,
           });
+        }
+      });
+    }
+
+    if (t.repetitionHistory && t.repetitionHistory.length > 0) {
+      t.repetitionHistory.forEach((record) => {
+        if (record.date) {
+          const alreadyCountedInOcc = t.occurrences?.some((o) => o.date === record.date && o.status === 'Done');
+          if (!alreadyCountedInOcc) {
+            events.push({
+              taskId: t.id,
+              category: t.category || 'Задача',
+              dateStr: record.date,
+            });
+          }
         }
       });
     }
@@ -135,6 +152,10 @@ const getDaily30Stats = (allTasks: Task[]): Record<string, DayFullStats> => {
   }
 
   allTasks.forEach((t) => {
+    // Exclude parent container tasks (matching Calendar Page filterCalendarVisibleTasks)
+    const hasChildren = allTasks.some((sub) => sub.parentTaskId === t.id);
+    if (t.hasSubtasks || hasChildren) return;
+
     if (t.createdAt) {
       const createdDate = t.createdAt.split('T')[0];
       if (map[createdDate]) {
@@ -142,38 +163,43 @@ const getDaily30Stats = (allTasks: Task[]): Record<string, DayFullStats> => {
       }
     }
 
-    if (t.status === 'Done') {
-      const completedDate = t.completedAt ? t.completedAt.split('T')[0] : t.scheduledDate;
-      if (completedDate && map[completedDate]) {
-        map[completedDate].tasksDoneCount += 1;
-        if (t.pomodorosCount) {
-          map[completedDate].pomodorosCount += t.pomodorosCount;
+    // Process NON-REPEATING tasks:
+    if (!t.isRepeating) {
+      if (t.status === 'Done') {
+        const effectiveDate = t.scheduledDate || (t.completedAt ? t.completedAt.split('T')[0] : undefined);
+        if (effectiveDate && map[effectiveDate]) {
+          map[effectiveDate].tasksDoneCount += 1;
+          if (t.pomodorosCount) {
+            map[effectiveDate].pomodorosCount += t.pomodorosCount;
+          }
         }
       }
     }
 
-    if (t.repetitionHistory && t.repetitionHistory.length > 0) {
-      t.repetitionHistory.forEach((rec) => {
-        if (rec.date && map[rec.date]) {
-          map[rec.date].repeatsCount += 1;
-          const currentDate = t.completedAt ? t.completedAt.split('T')[0] : t.scheduledDate;
-          if (t.status !== 'Done' || rec.date !== currentDate) {
-            map[rec.date].tasksDoneCount += 1;
-          }
-          if (rec.pomodorosCount) {
-            map[rec.date].pomodorosCount += rec.pomodorosCount;
-          }
-        }
-      });
-    }
-
-    if (t.occurrences && t.occurrences.length > 0) {
+    // Process REPEATING tasks (occurrences):
+    if (t.isRepeating && t.occurrences && t.occurrences.length > 0) {
       t.occurrences.forEach((occ) => {
         if (occ.date && occ.status === 'Done' && map[occ.date]) {
           map[occ.date].repeatsCount += 1;
           map[occ.date].tasksDoneCount += 1;
           if (occ.pomodorosCount) {
             map[occ.date].pomodorosCount += occ.pomodorosCount;
+          }
+        }
+      });
+    }
+
+    // Process legacy repetition history records if present:
+    if (t.repetitionHistory && t.repetitionHistory.length > 0) {
+      t.repetitionHistory.forEach((rec) => {
+        if (rec.date && map[rec.date]) {
+          const alreadyCountedInOcc = t.occurrences?.some((o) => o.date === rec.date && o.status === 'Done');
+          if (!alreadyCountedInOcc) {
+            map[rec.date].repeatsCount += 1;
+            map[rec.date].tasksDoneCount += 1;
+            if (rec.pomodorosCount) {
+              map[rec.date].pomodorosCount += rec.pomodorosCount;
+            }
           }
         }
       });
@@ -213,6 +239,54 @@ export const StatisticsPage: React.FC = () => {
       };
     });
   }, [allCompletionEvents]);
+
+  // Category Donut Chart Data
+  const categoryDonutData = useMemo(() => {
+    const palette = [
+      '#10b981', // Emerald
+      '#0ea5e9', // Sky
+      '#a855f7', // Purple
+      '#f59e0b', // Amber
+      '#ec4899', // Pink
+      '#6366f1', // Indigo
+      '#14b8a6', // Teal
+      '#f43f5e', // Rose
+    ];
+
+    const activeCategories = categoryStats.filter((c) => c.completedCount > 0);
+
+    if (activeCategories.length === 0) {
+      return {
+        slices: [{ name: 'Нет данных', value: 1, fill: 'var(--color-border)' }],
+        colorMap: {} as Record<string, string>,
+      };
+    }
+
+    const colorMap: Record<string, string> = {};
+    const slices = activeCategories.map((c, idx) => {
+      const color = palette[idx % palette.length];
+      colorMap[c.category] = color;
+      return {
+        name: c.category,
+        value: c.completedCount,
+        fill: color,
+      };
+    });
+
+    return {
+      slices,
+      colorMap,
+    };
+  }, [categoryStats]);
+
+  const getTaskPlural = (count: number): string => {
+    const rem10 = count % 10;
+    const rem100 = count % 100;
+    if (rem100 >= 11 && rem100 <= 19) return 'задач';
+    if (rem10 === 1) return 'задача';
+    if (rem10 >= 2 && rem10 <= 4) return 'задачи';
+    return 'задач';
+  };
 
   // 7-day / Monthly / Yearly Dynamic Chart Data
   const [chartPeriod, setChartPeriod] = useState<'week' | 'month' | 'year'>('week');
@@ -422,8 +496,17 @@ export const StatisticsPage: React.FC = () => {
 
   const formattedSelectedDate = useMemo(() => {
     try {
-      const d = new Date(selectedDateStr);
+      const d = new Date(selectedDateStr + 'T00:00:00');
       return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+    } catch {
+      return selectedDateStr;
+    }
+  }, [selectedDateStr]);
+
+  const formattedSelectedDateShort = useMemo(() => {
+    try {
+      const d = new Date(selectedDateStr + 'T00:00:00');
+      return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
     } catch {
       return selectedDateStr;
     }
@@ -502,55 +585,197 @@ export const StatisticsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Category Accomplishment Statistics - 2 Items Per Row */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
-          <Typography variant="h2">🏷 Выполнено задач по категориям</Typography>
-          <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 'bold', color: 'var(--color-success)' }}>
-            Всего: {totalDoneTasks} ✅
-          </span>
+      {/* 1. 📅 Активность за 30 дней */}
+      <Card style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        {/* Header & Top Right Mini Stats */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+          <Typography variant="h2">📅 Активность за 30 дней</Typography>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', fontSize: '12px', fontWeight: 600 }}>
+            <span style={{ color: '#f97316' }}>🔥 {currentStreak} дней подряд</span>
+            <span style={{ color: 'var(--color-border)' }}>|</span>
+            <span style={{ color: 'var(--color-text-primary)' }}>
+              Лучший день: <b style={{ color: '#10b981' }}>{maxCountIn30Days} задач</b>
+            </span>
+            <span style={{ color: 'var(--color-border)' }}>|</span>
+            <span style={{ color: 'var(--color-text-primary)' }}>
+              Активных дней: <b style={{ color: '#10b981' }}>{activeDaysCount}/30</b>
+            </span>
+          </div>
         </div>
 
-        {/* Strictly 2 Columns Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: 'var(--space-3)',
-            width: '100%',
-          }}
-        >
-          {categoryStats.map(({ category, completedCount }) => (
-            <div
-              key={category}
+        {/* Minimalist Filter Tabs (✓ Задачи / 🧠 Повторы / 🍅 Помидоры) */}
+        <div style={{ display: 'flex', gap: '4px', width: '100%', alignItems: 'center' }}>
+          <button
+            onClick={() => setActivityFilterMode('tasks')}
+            style={{
+              flex: '1 1 0px',
+              minWidth: 0,
+              padding: '7px 4px',
+              borderRadius: '10px',
+              border: `1px solid ${activityFilterMode === 'tasks' ? 'var(--color-accent)' : 'var(--color-border)'}`,
+              backgroundColor: activityFilterMode === 'tasks' ? 'var(--color-accent-light)' : 'var(--color-bg)',
+              color: activityFilterMode === 'tasks' ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
+              fontSize: '11.5px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              textAlign: 'center',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            ✓ Все
+          </button>
+
+          <button
+            onClick={() => setActivityFilterMode('repeats')}
+            style={{
+              flex: '1 1 0px',
+              minWidth: 0,
+              padding: '7px 4px',
+              borderRadius: '10px',
+              border: `1px solid ${activityFilterMode === 'repeats' ? 'var(--color-accent)' : 'var(--color-border)'}`,
+              backgroundColor: activityFilterMode === 'repeats' ? 'var(--color-accent-light)' : 'var(--color-bg)',
+              color: activityFilterMode === 'repeats' ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
+              fontSize: '11.5px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              textAlign: 'center',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            🧠 Повторы
+          </button>
+
+          <button
+            onClick={() => setActivityFilterMode('pomodoros')}
+            style={{
+              flex: '1 1 0px',
+              minWidth: 0,
+              padding: '7px 4px',
+              borderRadius: '10px',
+              border: `1px solid ${activityFilterMode === 'pomodoros' ? 'var(--color-accent)' : 'var(--color-border)'}`,
+              backgroundColor: activityFilterMode === 'pomodoros' ? 'var(--color-accent-light)' : 'var(--color-bg)',
+              color: activityFilterMode === 'pomodoros' ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
+              fontSize: '11.5px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              textAlign: 'center',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            🍅 Помидоры
+          </button>
+        </div>
+
+        {/* 30-Day Heatmap Grid */}
+        <div className={styles.heatmapGrid}>
+          {heatmapData.map((cell) => {
+            const isSelected = cell.date === selectedDateStr;
+            let bg = 'rgba(255, 255, 255, 0.03)';
+            let borderColor = 'var(--color-border)';
+            let textColor = 'var(--color-text-muted)';
+            let boxShadow = 'none';
+
+            if (cell.count === 1) {
+              bg = 'rgba(16, 185, 129, 0.25)';
+              borderColor = 'rgba(16, 185, 129, 0.5)';
+              textColor = 'var(--color-text-primary)';
+            } else if (cell.count === 2) {
+              bg = 'rgba(16, 185, 129, 0.55)';
+              borderColor = 'rgba(16, 185, 129, 0.75)';
+              textColor = '#ffffff';
+            } else if (cell.count === 3) {
+              bg = '#059669';
+              borderColor = '#047857';
+              textColor = '#ffffff';
+            } else if (cell.count === 4) {
+              bg = '#047857';
+              borderColor = '#065f46';
+              textColor = '#ffffff';
+            } else if (cell.count >= 5) {
+              bg = '#022c22'; // VERY DARK GREEN
+              borderColor = '#10b981'; // Vibrant emerald border
+              textColor = '#ffffff';
+              boxShadow = '0 0 10px rgba(16, 185, 129, 0.4)';
+            }
+
+            const isToday = cell.date === getTodayStr();
+
+            if (isSelected) {
+              borderColor = '#38bdf8';
+              boxShadow = '0 0 0 2px #38bdf8, 0 4px 12px rgba(0, 0, 0, 0.3)';
+            } else if (isToday) {
+              borderColor = '#38bdf8';
+            }
+
+            return (
+              <div
+                key={cell.date}
+                className={styles.heatmapCell}
+                style={{
+                  backgroundColor: bg,
+                  borderColor,
+                  color: isToday && !isSelected && cell.count === 0 ? '#38bdf8' : textColor,
+                  fontWeight: isToday ? 800 : 600,
+                  boxShadow,
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                  transform: isSelected ? 'scale(1.1)' : 'scale(1)',
+                }}
+                onClick={() => setSelectedDateStr(cell.date)}
+                title={`${cell.monthNameStr}: ${cell.count} элементов`}
+              >
+                {cell.dayNum}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Selected Day Details (100% Single Line Layout with Full Words, No Icons) */}
+        <div className={styles.selectedDayBar}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+            <span
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '4px',
-                padding: '16px 18px',
-                borderRadius: '16px',
-                backgroundColor: 'var(--color-bg)',
-                border: '1px solid var(--color-border)',
-                transition: 'all var(--transition-fast)',
+                fontWeight: 700,
+                color: selectedDateStr === getTodayStr() ? '#10b981' : 'var(--color-text-primary)',
+                whiteSpace: 'nowrap',
               }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
-                  🏷 {category}
-                </span>
-                <span style={{ fontSize: '15px', fontWeight: 800, color: '#10b981' }}>
-                  {completedCount}
-                </span>
-              </div>
-              <div style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
-                {completedCount === 1 ? '1 выполнена' : `${completedCount} выполнено`}
-              </div>
+              📅 {formattedSelectedDateShort}
+            </span>
+          </div>
+
+          <div className={styles.selectedDayStatsGroup}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--color-text-primary)' }}>
+              <span style={{ color: 'var(--color-text-muted)', fontWeight: 500 }}>Выполнено:</span>
+              <span style={{ fontWeight: 800, color: '#10b981' }}>{selectedDayStats.tasksDoneCount}</span>
             </div>
-          ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--color-text-primary)' }}>
+              <span style={{ color: 'var(--color-text-muted)', fontWeight: 500 }}>Помидоры:</span>
+              <span style={{ fontWeight: 800, color: '#f59e0b' }}>{selectedDayStats.pomodorosCount}</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--color-text-primary)' }}>
+              <span style={{ color: 'var(--color-text-muted)', fontWeight: 500 }}>Повторы:</span>
+              <span style={{ fontWeight: 800, color: '#0ea5e9' }}>{selectedDayStats.repeatsCount}</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--color-text-primary)' }}>
+              <span style={{ color: 'var(--color-text-muted)', fontWeight: 500 }}>Создано:</span>
+              <span style={{ fontWeight: 800, color: 'var(--color-text-primary)' }}>{selectedDayStats.createdCount}</span>
+            </div>
+          </div>
         </div>
       </Card>
 
-      {/* 📊 Upgraded Dynamics Completion Chart (📊 Динамика выполнения) */}
+      {/* 2. 📊 Динамика выполнения */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
         {/* Header, Period Switcher & Growth Badge */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
@@ -678,19 +903,21 @@ export const StatisticsPage: React.FC = () => {
         </div>
 
         {/* Recharts Bar Container */}
-        <div style={{ width: '100%', height: 220, marginTop: '4px' }}>
+        <div className={styles.chartContainer}>
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={dynamicChartData} margin={{ top: 40, right: 10, left: 10, bottom: 0 }}>
+            <BarChart data={dynamicChartData} margin={{ top: 20, right: 10, left: -10, bottom: 0 }}>
               <defs>
-                <linearGradient id="todayBarGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#38bdf8" stopOpacity={1} />
-                  <stop offset="100%" stopColor="#0284c7" stopOpacity={0.85} />
-                </linearGradient>
                 <linearGradient id="normalBarGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#10b981" stopOpacity={1} />
                   <stop offset="100%" stopColor="#059669" stopOpacity={0.85} />
                 </linearGradient>
               </defs>
+              <CartesianGrid
+                strokeDasharray="3 3"
+                vertical={false}
+                stroke="var(--color-border)"
+                opacity={0.4}
+              />
               <XAxis
                 dataKey="dayLabel"
                 stroke="var(--color-text-muted)"
@@ -718,7 +945,15 @@ export const StatisticsPage: React.FC = () => {
                   );
                 }}
               />
-              <YAxis hide domain={[0, maxChartYDomain]} />
+              <YAxis
+                domain={[0, Math.max(10, maxChartYDomain)]}
+                axisLine={false}
+                tickLine={false}
+                stroke="var(--color-text-muted)"
+                fontSize={10}
+                tickCount={6}
+                width={30}
+              />
               <Tooltip
                 content={<CustomChartTooltip />}
                 position={{ y: 0 }}
@@ -739,254 +974,99 @@ export const StatisticsPage: React.FC = () => {
                 {dynamicChartData.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={entry.isToday ? 'url(#todayBarGradient)' : 'url(#normalBarGradient)'}
-                    stroke={entry.isToday ? '#38bdf8' : 'transparent'}
-                    strokeWidth={entry.isToday ? 1.5 : 0}
-                    style={{
-                      filter: entry.isToday ? 'drop-shadow(0 4px 12px rgba(56, 189, 248, 0.45))' : 'none',
-                    }}
+                    fill="url(#normalBarGradient)"
                   />
                 ))}
-                <LabelList
-                  content={(props: any) => {
-                    const { x, y, width, index } = props;
-                    const entry = dynamicChartData[index];
-                    if (!entry || !entry.isToday) return null;
-
-                    return (
-                      <g>
-                        <rect
-                          x={x + width / 2 - 25}
-                          y={Math.max(2, y - 22)}
-                          width={50}
-                          height={17}
-                          rx={8.5}
-                          fill="#38bdf8"
-                        />
-                        <text
-                          x={x + width / 2}
-                          y={Math.max(13, y - 9)}
-                          fill="#ffffff"
-                          textAnchor="middle"
-                          fontSize="9.5"
-                          fontWeight="800"
-                        >
-                          Сегодня
-                        </text>
-                      </g>
-                    );
-                  }}
-                />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
         </div>
       </Card>
 
-      {/* 30-Day Activity Widget (📅 Активность за 30 дней) */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-        {/* Header & Top Right Mini Stats */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-          <Typography variant="h2">📅 Активность за 30 дней</Typography>
+      {/* 3. 🏷 Выполнено задач по категориям */}
+      <Card style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <Typography variant="h2">🏷 Выполнено задач по категориям</Typography>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', fontSize: '12px', fontWeight: 600 }}>
-            <span style={{ color: '#f97316' }}>🔥 {currentStreak} дней подряд</span>
-            <span style={{ color: 'var(--color-border)' }}>|</span>
-            <span style={{ color: 'var(--color-text-primary)' }}>
-              Лучший день: <b style={{ color: '#10b981' }}>{maxCountIn30Days} задач</b>
-            </span>
-            <span style={{ color: 'var(--color-border)' }}>|</span>
-            <span style={{ color: 'var(--color-text-primary)' }}>
-              Активных дней: <b style={{ color: '#10b981' }}>{activeDaysCount}/30</b>
-            </span>
-          </div>
-        </div>
+        <div className={styles.categoryAccomplishmentLayout}>
+          {/* Donut Chart with Centered Total Count */}
+          <div className={styles.donutWrapper}>
+            <ResponsiveContainer width={160} height={160}>
+              <PieChart>
+                <Pie
+                  data={categoryDonutData.slices}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={52}
+                  outerRadius={72}
+                  paddingAngle={categoryDonutData.slices.length > 1 ? 3 : 0}
+                  dataKey="value"
+                  isAnimationActive={true}
+                  animationDuration={1000}
+                >
+                  {categoryDonutData.slices.map((entry, idx) => (
+                    <Cell key={`slice-${idx}`} fill={entry.fill} stroke="transparent" />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
 
-        {/* Minimalist Filter Tabs (✓ Задачи / 🧠 Повторы / 🍅 Помидоры) */}
-        <div style={{ display: 'flex', gap: '4px', width: '100%', alignItems: 'center' }}>
-          <button
-            onClick={() => setActivityFilterMode('tasks')}
-            style={{
-              flex: '1 1 0px',
-              minWidth: 0,
-              padding: '7px 4px',
-              borderRadius: '10px',
-              border: `1px solid ${activityFilterMode === 'tasks' ? 'var(--color-accent)' : 'var(--color-border)'}`,
-              backgroundColor: activityFilterMode === 'tasks' ? 'var(--color-accent-light)' : 'var(--color-bg)',
-              color: activityFilterMode === 'tasks' ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
-              fontSize: '11.5px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              textAlign: 'center',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            ✓ Все
-          </button>
-
-          <button
-            onClick={() => setActivityFilterMode('repeats')}
-            style={{
-              flex: '1 1 0px',
-              minWidth: 0,
-              padding: '7px 4px',
-              borderRadius: '10px',
-              border: `1px solid ${activityFilterMode === 'repeats' ? 'var(--color-accent)' : 'var(--color-border)'}`,
-              backgroundColor: activityFilterMode === 'repeats' ? 'var(--color-accent-light)' : 'var(--color-bg)',
-              color: activityFilterMode === 'repeats' ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
-              fontSize: '11.5px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              textAlign: 'center',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            🧠 Повторы
-          </button>
-
-          <button
-            onClick={() => setActivityFilterMode('pomodoros')}
-            style={{
-              flex: '1 1 0px',
-              minWidth: 0,
-              padding: '7px 4px',
-              borderRadius: '10px',
-              border: `1px solid ${activityFilterMode === 'pomodoros' ? 'var(--color-accent)' : 'var(--color-border)'}`,
-              backgroundColor: activityFilterMode === 'pomodoros' ? 'var(--color-accent-light)' : 'var(--color-bg)',
-              color: activityFilterMode === 'pomodoros' ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
-              fontSize: '11.5px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              textAlign: 'center',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            🍅 Помидоры
-          </button>
-        </div>
-
-        {/* 30-Day Heatmap Grid */}
-        <div className={styles.heatmapGrid}>
-          {heatmapData.map((cell) => {
-            const isSelected = cell.date === selectedDateStr;
-            let bg = 'rgba(255, 255, 255, 0.03)';
-            let borderColor = 'var(--color-border)';
-            let textColor = 'var(--color-text-muted)';
-            let boxShadow = 'none';
-
-            if (cell.count === 1) {
-              bg = 'rgba(16, 185, 129, 0.25)';
-              borderColor = 'rgba(16, 185, 129, 0.4)';
-              textColor = '#a7f3d0';
-            } else if (cell.count === 2) {
-              bg = 'rgba(16, 185, 129, 0.55)';
-              borderColor = 'rgba(16, 185, 129, 0.7)';
-              textColor = '#ffffff';
-            } else if (cell.count === 3) {
-              bg = '#059669';
-              borderColor = '#047857';
-              textColor = '#ffffff';
-            } else if (cell.count === 4) {
-              bg = '#047857';
-              borderColor = '#065f46';
-              textColor = '#ffffff';
-            } else if (cell.count >= 5) {
-              bg = '#022c22'; // VERY DARK GREEN
-              borderColor = '#10b981'; // Vibrant emerald border
-              textColor = '#34d399';
-              boxShadow = '0 0 10px rgba(16, 185, 129, 0.4)';
-            }
-
-            const isToday = cell.date === getTodayStr();
-
-            if (isSelected) {
-              borderColor = '#38bdf8';
-              boxShadow = '0 0 0 2px #38bdf8, 0 4px 12px rgba(0, 0, 0, 0.3)';
-            } else if (isToday) {
-              borderColor = 'rgba(16, 185, 129, 0.6)';
-            }
-
-            return (
-              <div
-                key={cell.date}
-                className={styles.heatmapCell}
-                style={{
-                  backgroundColor: bg,
-                  borderColor,
-                  color: isToday && !isSelected && cell.count === 0 ? '#10b981' : textColor,
-                  fontWeight: isToday ? 700 : 500,
-                  boxShadow,
-                  cursor: 'pointer',
-                  transition: 'all 0.15s ease',
-                  transform: isSelected ? 'scale(1.1)' : 'scale(1)',
-                }}
-                onClick={() => setSelectedDateStr(cell.date)}
-                title={`${cell.monthNameStr}: ${cell.count} элементов`}
-              >
-                {cell.dayNum}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Selected Day Details (Ultra-Slim Single Line Mobile Layout) */}
-        <div
-          style={{
-            marginTop: '4px',
-            padding: '8px 10px',
-            borderRadius: '12px',
-            backgroundColor: 'var(--color-bg)',
-            border: '1px solid var(--color-border)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '4px',
-            minHeight: '38px',
-            width: '100%',
-            boxSizing: 'border-box',
-            transition: 'all 0.2s ease',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
-            <span
-              style={{
-                fontSize: '12px',
-                fontWeight: 700,
-                color: selectedDateStr === getTodayStr() ? '#10b981' : 'var(--color-text-primary)',
-                transition: 'color 0.2s ease',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              📅 {formattedSelectedDate}
-            </span>
+            {/* Centered Donut Content */}
+            <div className={styles.donutCenterContent}>
+              <span className={styles.donutCenterNumber}>{totalDoneTasks}</span>
+              <span className={styles.donutCenterLabel}>{getTaskPlural(totalDoneTasks)}</span>
+            </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', whiteSpace: 'nowrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px', color: 'var(--color-text-primary)' }} title="Выполнено">
-              <span style={{ color: '#10b981', fontWeight: 700 }}>✓</span>
-              <span style={{ fontWeight: 800, color: '#10b981' }}>{selectedDayStats.tasksDoneCount}</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px', color: 'var(--color-text-primary)' }} title="Помидоры">
-              <span>🍅</span>
-              <span style={{ fontWeight: 800, color: '#f59e0b' }}>{selectedDayStats.pomodorosCount}</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px', color: 'var(--color-text-primary)' }} title="Повторы">
-              <span>🧠</span>
-              <span style={{ fontWeight: 800, color: '#0ea5e9' }}>{selectedDayStats.repeatsCount}</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2px', color: 'var(--color-text-primary)' }} title="Создано">
-              <span>📝</span>
-              <span style={{ fontWeight: 800, color: 'var(--color-text-muted)' }}>{selectedDayStats.createdCount}</span>
-            </div>
+          {/* Clean, Compact Category List */}
+          <div className={styles.categoryListGroup}>
+            {categoryStats.map(({ category, completedCount }) => {
+              const isZero = completedCount === 0;
+              const catColor = categoryDonutData.colorMap?.[category] || 'var(--color-border)';
+
+              return (
+                <div
+                  key={category}
+                  className={styles.categoryRow}
+                  style={{ opacity: isZero ? 0.45 : 1 }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+                    <span
+                      style={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        backgroundColor: isZero ? 'var(--color-text-disabled)' : catColor,
+                        flexShrink: 0,
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontSize: '12.5px',
+                        fontWeight: 600,
+                        color: isZero ? 'var(--color-text-disabled)' : 'var(--color-text-primary)',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
+                      {category}
+                    </span>
+                  </div>
+
+                  <span
+                    style={{
+                      fontSize: '13.5px',
+                      fontWeight: 800,
+                      color: isZero ? 'var(--color-text-disabled)' : '#10b981',
+                      marginLeft: '12px',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {completedCount}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </Card>

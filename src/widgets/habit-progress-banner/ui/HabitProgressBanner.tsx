@@ -223,19 +223,15 @@ export const HabitProgressBanner: React.FC = () => {
     default:
       return (
         <div className={styles.variant3}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
             <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--widget-custom-text)' }}>{titleText}</div>
-            <div style={{ fontSize: '12px', color: 'var(--widget-custom-muted-text)' }}>{doneCount} из {totalCount}</div>
-          </div>
-          <div className={styles.v3PinBarContainer}>
-            {percent > 5 && (
-              <div className={styles.v3PinTag} style={{ left: `${percent}%` }}>
-                {percent}%
-              </div>
-            )}
-            <div className={styles.v3Track}>
-              <div className={styles.v3Fill} style={{ width: `${percent}%` }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+              <span className={styles.v3Badge}>{percent}%</span>
+              <span style={{ fontSize: '12px', color: 'var(--widget-custom-muted-text)' }}>{doneCount} из {totalCount}</span>
             </div>
+          </div>
+          <div className={styles.v3Track}>
+            <div className={styles.v3Fill} style={{ width: `${percent}%` }} />
           </div>
         </div>
       );

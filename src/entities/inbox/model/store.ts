@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { InboxItem } from './types';
 import { inboxRepository } from '@/shared/repository';
 import { useToastStore } from '@/shared/ui';
+import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
 
 interface InboxState {
@@ -42,6 +43,7 @@ export const useInboxStore = create<InboxState>((set, get) => ({
     const saved = await inboxRepository.save(newItem);
     set((state) => ({ items: [saved, ...state.items] }));
     useToastStore.getState().showToast('Мысль сохранена во Входящие', 'success');
+    useActivityStore.getState().logActivity('task_created', `Добавлена мысль: "${text}"`);
     return saved;
   },
 
