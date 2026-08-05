@@ -623,6 +623,18 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         } else {
           useToastStore.getState().showToast(`Подзадача привязана к проекту "${parentTask.title}"`, 'info');
         }
+
+        // BUG-002 fix: also clean up the previous parent if it now has no subtasks
+        if (previousParentId && previousParentId !== parentTaskId) {
+          const remainingSubtasks = get().tasks.filter((t) => t.parentTaskId === previousParentId);
+          if (remainingSubtasks.length === 0) {
+            set((state) => ({
+              tasks: state.tasks.map((t) => (t.id === previousParentId ? { ...t, hasSubtasks: false } : t)),
+            }));
+            await taskRepository.update(previousParentId, { hasSubtasks: false });
+          }
+        }
+
         return;
       }
     }

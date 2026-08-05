@@ -58,7 +58,7 @@ const hint: React.CSSProperties = {
 
 
 export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess }) => {
-  const { updateTaskDetails, deleteTaskSeries, tasks } = useTaskStore();
+  const { addTask, updateTaskDetails, deleteTaskSeries, tasks } = useTaskStore();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [cardVariant, setCardVariant] = useState<'1' | '2'>('1');
 
@@ -206,12 +206,33 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     if (!title.trim()) return;
     const parsedDays = parseInt(afterCompletionDaysInput, 10);
     const afterCompletionDays = isNaN(parsedDays) || parsedDays < 1 ? 1 : parsedDays;
-    await updateTaskDetails(task.id, {
-      title: title.trim(), category, scheduledDate: scheduledDate.trim(),
-      description, link, parentTaskId,
-      isRepeating: repetitionMode !== 'none', repetitionMode,
-      scheduleFrequency, afterCompletionDays, hasSubtasks,
-    });
+
+    const isDraft = task.id.startsWith('draft-');
+
+    if (isDraft) {
+      // Inbox triage: create a brand-new task instead of updating a non-existent one
+      await addTask({
+        title: title.trim(),
+        category,
+        scheduledDate: scheduledDate.trim(),
+        description,
+        link,
+        parentTaskId,
+        isRepeating: repetitionMode !== 'none',
+        repetitionMode,
+        scheduleFrequency,
+        afterCompletionDays,
+        hasSubtasks,
+      });
+    } else {
+      await updateTaskDetails(task.id, {
+        title: title.trim(), category, scheduledDate: scheduledDate.trim(),
+        description, link, parentTaskId,
+        isRepeating: repetitionMode !== 'none', repetitionMode,
+        scheduleFrequency, afterCompletionDays, hasSubtasks,
+      });
+    }
+
     if (onSaveSuccess) onSaveSuccess();
     onClose();
   };
