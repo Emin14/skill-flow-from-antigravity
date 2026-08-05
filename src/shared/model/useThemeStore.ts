@@ -61,13 +61,16 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
     const category = preset ? preset.category : 'dark';
 
     if (category === 'light') {
-      set({ activeLightPresetId: presetId, theme: 'light' });
+      set({ activeLightPresetId: presetId });
       localStorage.setItem('app-light-preset-id', presetId);
     } else {
-      set({ activeDarkPresetId: presetId, theme: 'dark' });
+      set({ activeDarkPresetId: presetId });
       localStorage.setItem('app-dark-preset-id', presetId);
     }
 
-    applyAppThemePreset(presetId);
+    // Only apply theme styling to the document if the current app theme matches this category
+    if (get().theme === category) {
+      applyAppThemePreset(presetId);
+    }
   },
 }));

@@ -14,6 +14,9 @@ import { useThemeStore } from '@/shared/model/useThemeStore';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { applyAccentColorVars } from '@/shared/lib/colorUtils';
 
+import { LiveTodayPreviewWidget } from './LiveTodayPreviewWidget';
+import { ThemeArchitectureSelector } from './ThemeArchitectureSelector';
+
 const colorPalettes = [
   { name: 'Индиго (Aura)', hex: '#6366f1' },
   { name: 'Сапфировый (Default / Sky Blue)', hex: '#3b82f6' },
@@ -27,9 +30,9 @@ const colorPalettes = [
 
 export const SettingsPage: React.FC = () => {
   const showToast = useToastStore((s) => s.showToast);
-  const { activeLightPresetId, activeDarkPresetId, setPresetTheme } = useThemeStore();
+  const { theme, setTheme: setStoreTheme } = useThemeStore();
 
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [previewPresetId, setPreviewPresetId] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState('#6366f1');
   const [selectedCategoryThemeId, setSelectedCategoryThemeId] = useState('amber');
   const [selectedCardBgThemeId, setSelectedCardBgThemeId] = useState('classic');
@@ -39,14 +42,12 @@ export const SettingsPage: React.FC = () => {
   const [dateFormat, setDateFormat] = useState<'DD.MM.YYYY' | 'YYYY-MM-DD'>('DD.MM.YYYY');
 
   useEffect(() => {
-    const savedTheme = (localStorage.getItem(STORAGE_KEYS.THEME) as 'dark' | 'light') || 'dark';
     const savedColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
     const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
     const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
     const savedBannerVar = localStorage.getItem(STORAGE_KEYS.HABIT_BANNER_VARIANT) || '3';
     const savedDaySwitcherVar = localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12';
 
-    setTheme(savedTheme);
     setSelectedColor(savedColor);
     applyAccentColorVars(savedColor);
     setSelectedCategoryThemeId(savedCatId);
@@ -58,17 +59,9 @@ export const SettingsPage: React.FC = () => {
   }, []);
 
   const handleThemeChange = (newTheme: 'dark' | 'light') => {
-    setTheme(newTheme);
-    localStorage.setItem(STORAGE_KEYS.THEME, newTheme);
-    if (newTheme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-    }
-
-    applyCategoryTextTheme(selectedCategoryThemeId);
-    applyCardBgTheme(selectedCardBgThemeId);
-    showToast(`Тема переключена на ${newTheme === 'dark' ? 'Темную' : 'Светлую'}`, 'success');
+    setStoreTheme(newTheme);
+    const { activeLightPresetId, activeDarkPresetId } = useThemeStore.getState();
+    setPreviewPresetId(newTheme === 'light' ? activeLightPresetId : activeDarkPresetId);
   };
 
   const handleColorChange = (hex: string) => {
@@ -177,13 +170,16 @@ export const SettingsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-        <Typography variant="h1">⚙️ Настройки Приложения</Typography>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
-          Персонализация внешнего вида, поведения системы и резервного копирования
-        </Typography>
-      </Card>
+      {/* 📱 1. LIVE TODAY PREVIEW WIDGET (Before theme selection) */}
+      <LiveTodayPreviewWidget
+        theme={theme}
+        selectedColor={selectedColor}
+        selectedCategoryThemeId={selectedCategoryThemeId}
+        selectedCardBgThemeId={selectedCardBgThemeId}
+        bannerVariant={bannerVariant}
+        daySwitcherVariant={daySwitcherVariant}
+        previewPresetId={previewPresetId}
+      />
 
       {/* Appearance Settings */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
@@ -202,122 +198,39 @@ export const SettingsPage: React.FC = () => {
             <Button
               variant={theme === 'dark' ? 'primary' : 'secondary'}
               size="sm"
-              onClick={() => handleThemeChange('dark')}
+              onClick={() => {
+                setPreviewPresetId(null);
+                handleThemeChange('dark');
+              }}
             >
               🌙 Темная
             </Button>
             <Button
               variant={theme === 'light' ? 'primary' : 'secondary'}
               size="sm"
-              onClick={() => handleThemeChange('light')}
+              onClick={() => {
+                setPreviewPresetId(null);
+                handleThemeChange('light');
+              }}
             >
               ☀️ Светлая
             </Button>
           </div>
         </div>
 
-        {/* Separate Light and Dark Theme Presets Section */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '4px' }}>
-          <div>
-            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              🎨 Пресеты тем оформления (Отдельно Светлая и Тёмная)
-            </div>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Выберите ваш любимый вариант для светлого и тёмного режима. При переключении темы кнопкой <b>☀️ / 🌙</b> будет автоматически применяться выбранный вариант!
-            </div>
-          </div>
+        {/* 🎨 CLEAN DUAL SELECTORS: 1 FOR LIGHT THEME, 1 FOR DARK THEME */}
+        <ThemeArchitectureSelector
+          theme={theme}
+          selectedColor={selectedColor}
+          onSelectPreset={(presetId) => {
+            setPreviewPresetId(presetId);
+          }}
+        />
 
-          {/* ☀️ Light Themes Section */}
-          <div>
-            <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-accent)', marginBottom: '8px' }}>
-              ☀️ Светлые темы (9 пресетов)
-            </div>
-            <div className={styles.presetThemesGrid}>
-              {APP_THEME_PRESETS.filter((p) => p.category === 'light').map((preset) => {
-                const isActive = (useThemeStore.getState().activeLightPresetId || 'default') === preset.id;
-                return (
-                  <div
-                    key={preset.id}
-                    className={`${styles.presetThemeCard} ${isActive ? styles.presetThemeCardActive : ''}`}
-                    onClick={() => {
-                      setPresetTheme(preset.id);
-                      showToast(`Светлая тема «${preset.name}» сохранена!`, 'success');
-                    }}
-                  >
-                    <div className={styles.presetNameRow}>
-                      <span>{preset.previewEmoji} {preset.name}</span>
-                      {isActive && <span className={styles.activeCheckBadge}>✓ Выбрана</span>}
-                    </div>
-
-                    <div className={styles.presetPreviewBox} style={{ backgroundColor: preset.bgColor }}>
-                      <div
-                        className={styles.presetPreviewCardMini}
-                        style={{
-                          backgroundColor: preset.cardBgColor,
-                          border: `1px solid ${preset.cardBorder}`,
-                          color: preset.textColor,
-                        }}
-                      >
-                        <span style={{ fontSize: '10px' }}>✓ Задача</span>
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: selectedColor }} />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* 🌙 Dark Themes Section */}
-          <div>
-            <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-accent)', marginBottom: '8px' }}>
-              🌙 Тёмные темы (5 пресетов)
-            </div>
-            <div className={styles.presetThemesGrid}>
-              {APP_THEME_PRESETS.filter((p) => p.category === 'dark').map((preset) => {
-                const isActive = (useThemeStore.getState().activeDarkPresetId || 'dark_today') === preset.id;
-                return (
-                  <div
-                    key={preset.id}
-                    className={`${styles.presetThemeCard} ${isActive ? styles.presetThemeCardActive : ''}`}
-                    onClick={() => {
-                      setPresetTheme(preset.id);
-                      showToast(`Тёмная тема «${preset.name}» сохранена!`, 'success');
-                    }}
-                  >
-                    <div className={styles.presetNameRow}>
-                      <span>{preset.previewEmoji} {preset.name}</span>
-                      {isActive && <span className={styles.activeCheckBadge}>✓ Выбрана</span>}
-                    </div>
-
-                    <div className={styles.presetPreviewBox} style={{ backgroundColor: preset.bgColor }}>
-                      <div
-                        className={styles.presetPreviewCardMini}
-                        style={{
-                          backgroundColor: preset.cardBgColor,
-                          border: `1px solid ${preset.cardBorder}`,
-                          color: preset.textColor,
-                        }}
-                      >
-                        <span style={{ fontSize: '10px' }}>✓ Задача</span>
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: selectedColor }} />
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.settingRow}>
-          <div>
-            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              🎯 Акцентный цвет интерфейса
-            </div>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Управляет кнопкой <b>«Добавить задачу» (+)</b>, фоном <b>активных виджетов</b> и выделением <b>в календаре</b>
-            </div>
+        {/* Accent Color Section - Centered */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', width: '100%', padding: '8px 0' }}>
+          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)', textAlign: 'center' }}>
+            🎯 Акцентный цвет интерфейса
           </div>
           <div className={styles.colorPickerRow}>
             {colorPalettes.map((pal) => (
@@ -333,104 +246,196 @@ export const SettingsPage: React.FC = () => {
         </div>
 
         {/* Category Text Themes Select */}
-        <div className={styles.settingRow}>
-          <div>
-            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              🎨 Цвета надписей категории и повторов
-            </div>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Гармонично подобранные палитры текста категорий и повторений
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+            🎨 Цвета надписей категории и повторов
           </div>
-          <div style={{ minWidth: '220px' }}>
+          <div style={{ position: 'relative', width: '100%' }}>
             <select
-              className={styles.themeSelect}
               value={selectedCategoryThemeId}
               onChange={(e) => handleCategoryThemeChange(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                paddingRight: '36px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text-primary)',
+                fontSize: '13.5px',
+                fontWeight: 500,
+                outline: 'none',
+                cursor: 'pointer',
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                transition: 'all 0.2s ease',
+              }}
             >
               {CATEGORY_TEXT_THEMES.map((opt) => (
-                <option key={opt.id} value={opt.id} style={{ background: '#0f172a', color: '#f8fafc' }}>
+                <option key={opt.id} value={opt.id}>
                   {opt.name}
                 </option>
               ))}
             </select>
+            <span
+              style={{
+                position: 'absolute',
+                right: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+                color: 'var(--color-text-muted)',
+                fontSize: '11px',
+              }}
+            >
+              ▼
+            </span>
           </div>
         </div>
 
         {/* Card Background Themes Select */}
-        <div className={styles.settingRow}>
-          <div>
-            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              🎴 Фоновое оформление карточек задач
-            </div>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Стеклянные градиенты, свечения и контуры карточек задач
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+            🎴 Фоновое оформление карточек задач
           </div>
-          <div style={{ minWidth: '220px' }}>
+          <div style={{ position: 'relative', width: '100%' }}>
             <select
-              className={styles.themeSelect}
               value={selectedCardBgThemeId}
               onChange={(e) => handleCardBgThemeChange(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                paddingRight: '36px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text-primary)',
+                fontSize: '13.5px',
+                fontWeight: 500,
+                outline: 'none',
+                cursor: 'pointer',
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                transition: 'all 0.2s ease',
+              }}
             >
               {CARD_BG_THEMES.map((opt) => (
-                <option key={opt.id} value={opt.id} style={{ background: '#0f172a', color: '#f8fafc' }}>
+                <option key={opt.id} value={opt.id}>
                   {opt.name}
                 </option>
               ))}
             </select>
+            <span
+              style={{
+                position: 'absolute',
+                right: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+                color: 'var(--color-text-muted)',
+                fontSize: '11px',
+              }}
+            >
+              ▼
+            </span>
           </div>
         </div>
 
         {/* Habit Progress Banner Variant Select */}
-        <div className={styles.settingRow}>
-          <div>
-            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              📊 Стиль виджета прогресса дня
-            </div>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Оформление полосы выполнения задач на главной странице «Сегодня»
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+            📊 Стиль виджета прогресса дня
           </div>
-          <div style={{ minWidth: '220px' }}>
+          <div style={{ position: 'relative', width: '100%' }}>
             <select
-              className={styles.themeSelect}
               value={bannerVariant}
               onChange={(e) => handleBannerVariantChange(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                paddingRight: '36px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text-primary)',
+                fontSize: '13.5px',
+                fontWeight: 500,
+                outline: 'none',
+                cursor: 'pointer',
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                transition: 'all 0.2s ease',
+              }}
             >
-              <option value="1" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 1 — Кибер-стекло с кольцом</option>
-              <option value="2" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 2 — Голубая неоновая капсула</option>
-              <option value="3" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 3 — Пин-бейдж над треком (По умолчанию)</option>
-              <option value="4" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 4 — Метрическая панель</option>
-              <option value="5" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 5 — Янтарно-изумрудное стекло</option>
-              <option value="6" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 6 — Кольцо активности Apple Style</option>
-              <option value="7" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 7 — Геймифицированная полоса XP</option>
-              <option value="8" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 8 — Тонкая линия по нижнему краю</option>
-              <option value="9" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 9 — Компактный дашборд-ряд</option>
-              <option value="10" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 10 — Капсула с текстом внутри</option>
+              <option value="1">1 — Кибер-стекло с кольцом</option>
+              <option value="2">2 — Голубая неоновая капсула</option>
+              <option value="3">3 — Пин-бейдж над треком</option>
+              <option value="4">4 — Метрическая панель</option>
+              <option value="5">5 — Янтарно-изумрудное стекло</option>
+              <option value="6">6 — Кольцо активности Apple Style</option>
+              <option value="7">7 — Геймифицированная полоса XP</option>
+              <option value="8">8 — Тонкая линия по нижнему краю</option>
+              <option value="9">9 — Компактный дашборд-ряд</option>
+              <option value="10">10 — Капсула с текстом внутри</option>
             </select>
+            <span
+              style={{
+                position: 'absolute',
+                right: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+                color: 'var(--color-text-muted)',
+                fontSize: '11px',
+              }}
+            >
+              ▼
+            </span>
           </div>
         </div>
 
         {/* Day Switcher Variant Select */}
-        <div className={styles.settingRow}>
-          <div>
-            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              🗓️ Стиль переключателя дней («Сегодня»)
-            </div>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              Выберите между 12 и 19 вариантом отображения ленты дней
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+            🗓️ Стиль переключателя дней («Сегодня»)
           </div>
-          <div style={{ minWidth: '220px' }}>
+          <div style={{ position: 'relative', width: '100%' }}>
             <select
-              className={styles.themeSelect}
               value={daySwitcherVariant}
               onChange={(e) => handleDaySwitcherVariantChange(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                paddingRight: '36px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text-primary)',
+                fontSize: '13.5px',
+                fontWeight: 500,
+                outline: 'none',
+                cursor: 'pointer',
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                transition: 'all 0.2s ease',
+              }}
             >
-              <option value="12" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 12 — Компактная лента с акцентным центром</option>
-              <option value="19" style={{ background: '#0f172a', color: '#f8fafc' }}>Вариант 19 — Крупные карточки с экстра-числами</option>
+              <option value="12">12 — Компактная лента с акцентным центром</option>
+              <option value="19">19 — Крупные карточки с экстра-числами</option>
             </select>
+            <span
+              style={{
+                position: 'absolute',
+                right: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+                color: 'var(--color-text-muted)',
+                fontSize: '11px',
+              }}
+            >
+              ▼
+            </span>
           </div>
         </div>
       </Card>
@@ -439,77 +444,166 @@ export const SettingsPage: React.FC = () => {
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
         <Typography variant="h2">📅 Региональные настройки и Календарь</Typography>
 
-        <div className={styles.settingRow}>
-          <div>
-            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              Первый день недели
-            </div>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
-              С какого дня начинается расписание в сетке
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+            Первый день недели
           </div>
-          <select
-            className={styles.selectInput}
-            value={firstDayOfWeek}
-            onChange={(e) => setFirstDayOfWeek(e.target.value as 'Monday' | 'Sunday')}
-          >
-            <option value="Monday">Понедельник</option>
-            <option value="Sunday">Воскресенье</option>
-          </select>
+          <div style={{ position: 'relative', width: '100%' }}>
+            <select
+              value={firstDayOfWeek}
+              onChange={(e) => setFirstDayOfWeek(e.target.value as 'Monday' | 'Sunday')}
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                paddingRight: '36px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text-primary)',
+                fontSize: '13.5px',
+                fontWeight: 500,
+                outline: 'none',
+                cursor: 'pointer',
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <option value="Monday">Понедельник</option>
+              <option value="Sunday">Воскресенье</option>
+            </select>
+            <span
+              style={{
+                position: 'absolute',
+                right: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+                color: 'var(--color-text-muted)',
+                fontSize: '11px',
+              }}
+            >
+              ▼
+            </span>
+          </div>
         </div>
 
-        <div className={styles.settingRow}>
-          <div>
-            <div style={{ fontWeight: 'var(--font-weight-medium)', color: 'var(--color-text-primary)' }}>
-              Формат отображения дат
-            </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+            Формат отображения дат
           </div>
-          <select
-            className={styles.selectInput}
-            value={dateFormat}
-            onChange={(e) => setDateFormat(e.target.value as 'DD.MM.YYYY' | 'YYYY-MM-DD')}
-          >
-            <option value="DD.MM.YYYY">ДД.ММ.ГГГГ (29.07.2026)</option>
-            <option value="YYYY-MM-DD">ГГГГ-ММ-ДД (2026-07-29)</option>
-          </select>
+          <div style={{ position: 'relative', width: '100%' }}>
+            <select
+              value={dateFormat}
+              onChange={(e) => setDateFormat(e.target.value as 'DD.MM.YYYY' | 'YYYY-MM-DD')}
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                paddingRight: '36px',
+                borderRadius: '12px',
+                backgroundColor: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text-primary)',
+                fontSize: '13.5px',
+                fontWeight: 500,
+                outline: 'none',
+                cursor: 'pointer',
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <option value="DD.MM.YYYY">ДД.ММ.ГГГГ (29.07.2026)</option>
+              <option value="YYYY-MM-DD">ГГГГ-ММ-ДД (2026-07-29)</option>
+            </select>
+            <span
+              style={{
+                position: 'absolute',
+                right: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+                color: 'var(--color-text-muted)',
+                fontSize: '11px',
+              }}
+            >
+              ▼
+            </span>
+          </div>
         </div>
       </Card>
 
       {/* Export & Import Data Backup */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
         <Typography variant="h2">💾 Данные и Резервное Копирование</Typography>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
+        <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '12.5px' }}>
           Все ваши цели, темы, задачи, материалы и прогресс FSRS хранятся локально на этом устройстве.
         </Typography>
 
-        <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap', marginTop: 'var(--space-2)' }}>
-          <Button variant="primary" onClick={handleExportData}>
-            📥 Экспортировать бэкап (JSON)
+        <div style={{ display: 'flex', gap: '8px', width: '100%', alignItems: 'center', marginTop: '4px', boxSizing: 'border-box' }}>
+          <Button
+            variant="primary"
+            onClick={handleExportData}
+            style={{
+              flex: '1 1 0px',
+              minWidth: 0,
+              padding: '8px 6px',
+              fontSize: '12px',
+              fontWeight: 600,
+              justifyContent: 'center',
+              whiteSpace: 'nowrap',
+              minHeight: '40px',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            📥 Экспорт
           </Button>
 
-          <label style={{ cursor: 'pointer' }}>
+          <label style={{ cursor: 'pointer', flex: '1 1 0px', minWidth: 0, margin: 0 }}>
             <span
               style={{
-                display: 'inline-flex',
+                display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '8px 16px',
+                padding: '8px 6px',
                 borderRadius: 'var(--radius-md)',
                 backgroundColor: 'var(--color-surface)',
                 border: '1px solid var(--color-border)',
-                color: 'var(--color-text-secondary)',
-                fontSize: 'var(--font-size-md)',
-                fontWeight: 'var(--font-weight-medium)',
-                minHeight: '44px',
+                color: 'var(--color-text-primary)',
+                fontSize: '12px',
+                fontWeight: 600,
+                minHeight: '40px',
+                width: '100%',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                boxSizing: 'border-box',
+                transition: 'all 0.2s ease',
               }}
             >
-              📤 Импортировать бэкап (JSON)
+              📤 Импорт
             </span>
             <input type="file" accept=".json" onChange={handleImportData} style={{ display: 'none' }} />
           </label>
 
-          <Button variant="danger" onClick={handleResetData}>
-            🗑 Сбросить все данные
+          <Button
+            variant="danger"
+            onClick={handleResetData}
+            style={{
+              flex: '1 1 0px',
+              minWidth: 0,
+              padding: '8px 6px',
+              fontSize: '12px',
+              fontWeight: 600,
+              justifyContent: 'center',
+              whiteSpace: 'nowrap',
+              minHeight: '40px',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            🗑 Сбросить
           </Button>
         </div>
       </Card>
