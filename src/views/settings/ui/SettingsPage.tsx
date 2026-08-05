@@ -3,13 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Typography, Button, useToastStore } from '@/shared/ui';
 import styles from './SettingsPage.module.css';
-import {
-  CATEGORY_TEXT_THEMES,
-  CARD_BG_THEMES,
-  applyCategoryTextTheme,
-  applyCardBgTheme,
-} from '@/shared/config/categoryColors';
-import { APP_THEME_PRESETS, AppThemePreset } from '@/shared/config/appThemes';
+import { APP_THEME_PRESETS } from '@/shared/config/appThemes';
 import { useThemeStore } from '@/shared/model/useThemeStore';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { applyAccentColorVars } from '@/shared/lib/colorUtils';
@@ -34,28 +28,20 @@ export const SettingsPage: React.FC = () => {
 
   const [previewPresetId, setPreviewPresetId] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState('#6366f1');
-  const [selectedCategoryThemeId, setSelectedCategoryThemeId] = useState('amber');
-  const [selectedCardBgThemeId, setSelectedCardBgThemeId] = useState('classic');
-  const [bannerVariant, setBannerVariant] = useState('3');
+  const [bannerVariant, setBannerVariant] = useState('1');
   const [daySwitcherVariant, setDaySwitcherVariant] = useState('12');
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<'Monday' | 'Sunday'>('Monday');
   const [dateFormat, setDateFormat] = useState<'DD.MM.YYYY' | 'YYYY-MM-DD'>('DD.MM.YYYY');
 
   useEffect(() => {
     const savedColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
-    const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
-    const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
-    const savedBannerVar = localStorage.getItem(STORAGE_KEYS.HABIT_BANNER_VARIANT) || '3';
+    const savedBannerVar = localStorage.getItem(STORAGE_KEYS.HABIT_BANNER_VARIANT) || '1';
     const savedDaySwitcherVar = localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12';
 
     setSelectedColor(savedColor);
     applyAccentColorVars(savedColor);
-    setSelectedCategoryThemeId(savedCatId);
-    setSelectedCardBgThemeId(savedBgId);
     setBannerVariant(savedBannerVar);
     setDaySwitcherVariant(savedDaySwitcherVar);
-    applyCategoryTextTheme(savedCatId);
-    applyCardBgTheme(savedBgId);
   }, []);
 
   const handleThemeChange = (newTheme: 'dark' | 'light') => {
@@ -71,22 +57,6 @@ export const SettingsPage: React.FC = () => {
     showToast('Основной цвет интерфейса обновлен!', 'success');
   };
 
-  const handleCategoryThemeChange = (optId: string) => {
-    setSelectedCategoryThemeId(optId);
-    localStorage.setItem(STORAGE_KEYS.CATEGORY_THEME_ID, optId);
-    applyCategoryTextTheme(optId);
-    const opt = CATEGORY_TEXT_THEMES.find((o) => o.id === optId) || CATEGORY_TEXT_THEMES[0];
-    showToast(`Цвета текста категории и повторов изменены на: ${opt.name}`, 'info');
-  };
-
-  const handleCardBgThemeChange = (bgId: string) => {
-    setSelectedCardBgThemeId(bgId);
-    localStorage.setItem(STORAGE_KEYS.CARD_BG_THEME_ID, bgId);
-    applyCardBgTheme(bgId);
-    const opt = CARD_BG_THEMES.find((o) => o.id === bgId) || CARD_BG_THEMES[0];
-    showToast(`Фон карточек изменен на: ${opt.name}`, 'info');
-  };
-
   const handleBannerVariantChange = (varId: string) => {
     setBannerVariant(varId);
     localStorage.setItem(STORAGE_KEYS.HABIT_BANNER_VARIANT, varId);
@@ -98,7 +68,7 @@ export const SettingsPage: React.FC = () => {
     setDaySwitcherVariant(varId);
     localStorage.setItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT, varId);
     window.dispatchEvent(new Event('storage'));
-    showToast(`Переключатель дней на странице «Сегодня» изменен на Вариант ${varId}`, 'info');
+    showToast(`Переключатель дней на странице «Сегодня» изменен`, 'info');
   };
 
   // Export JSON Backup
@@ -170,12 +140,12 @@ export const SettingsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* 📱 1. LIVE TODAY PREVIEW WIDGET (Before theme selection) */}
+      {/* 📱 1. LIVE TODAY PREVIEW WIDGET */}
       <LiveTodayPreviewWidget
         theme={theme}
         selectedColor={selectedColor}
-        selectedCategoryThemeId={selectedCategoryThemeId}
-        selectedCardBgThemeId={selectedCardBgThemeId}
+        selectedCategoryThemeId="amber"
+        selectedCardBgThemeId="classic"
         bannerVariant={bannerVariant}
         daySwitcherVariant={daySwitcherVariant}
         previewPresetId={previewPresetId}
@@ -218,7 +188,7 @@ export const SettingsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* 🎨 CLEAN DUAL SELECTORS: 1 FOR LIGHT THEME, 1 FOR DARK THEME */}
+        {/* CLEAN DUAL SELECTORS: 1 FOR LIGHT THEME, 1 FOR DARK THEME */}
         <ThemeArchitectureSelector
           theme={theme}
           selectedColor={selectedColor}
@@ -242,102 +212,6 @@ export const SettingsPage: React.FC = () => {
                 onClick={() => handleColorChange(pal.hex)}
               />
             ))}
-          </div>
-        </div>
-
-        {/* Category Text Themes Select */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
-            🎨 Цвета надписей категории и повторов
-          </div>
-          <div style={{ position: 'relative', width: '100%' }}>
-            <select
-              value={selectedCategoryThemeId}
-              onChange={(e) => handleCategoryThemeChange(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '12px 16px',
-                paddingRight: '36px',
-                borderRadius: '12px',
-                backgroundColor: 'var(--color-surface)',
-                border: '1px solid var(--color-border)',
-                color: 'var(--color-text-primary)',
-                fontSize: '13.5px',
-                fontWeight: 500,
-                outline: 'none',
-                cursor: 'pointer',
-                appearance: 'none',
-                WebkitAppearance: 'none',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              {CATEGORY_TEXT_THEMES.map((opt) => (
-                <option key={opt.id} value={opt.id}>
-                  {opt.name}
-                </option>
-              ))}
-            </select>
-            <span
-              style={{
-                position: 'absolute',
-                right: '14px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                pointerEvents: 'none',
-                color: 'var(--color-text-muted)',
-                fontSize: '11px',
-              }}
-            >
-              ▼
-            </span>
-          </div>
-        </div>
-
-        {/* Card Background Themes Select */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
-            🎴 Фоновое оформление карточек задач
-          </div>
-          <div style={{ position: 'relative', width: '100%' }}>
-            <select
-              value={selectedCardBgThemeId}
-              onChange={(e) => handleCardBgThemeChange(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '12px 16px',
-                paddingRight: '36px',
-                borderRadius: '12px',
-                backgroundColor: 'var(--color-surface)',
-                border: '1px solid var(--color-border)',
-                color: 'var(--color-text-primary)',
-                fontSize: '13.5px',
-                fontWeight: 500,
-                outline: 'none',
-                cursor: 'pointer',
-                appearance: 'none',
-                WebkitAppearance: 'none',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              {CARD_BG_THEMES.map((opt) => (
-                <option key={opt.id} value={opt.id}>
-                  {opt.name}
-                </option>
-              ))}
-            </select>
-            <span
-              style={{
-                position: 'absolute',
-                right: '14px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                pointerEvents: 'none',
-                color: 'var(--color-text-muted)',
-                fontSize: '11px',
-              }}
-            >
-              ▼
-            </span>
           </div>
         </div>
 
@@ -368,15 +242,13 @@ export const SettingsPage: React.FC = () => {
               }}
             >
               <option value="1">1 — Кибер-стекло с кольцом</option>
-              <option value="2">2 — Голубая неоновая капсула</option>
-              <option value="3">3 — Пин-бейдж над треком</option>
-              <option value="4">4 — Метрическая панель</option>
-              <option value="5">5 — Янтарно-изумрудное стекло</option>
-              <option value="6">6 — Кольцо активности Apple Style</option>
-              <option value="7">7 — Геймифицированная полоса XP</option>
-              <option value="8">8 — Тонкая линия по нижнему краю</option>
-              <option value="9">9 — Компактный дашборд-ряд</option>
-              <option value="10">10 — Капсула с текстом внутри</option>
+              <option value="2">2 — Метрическая панель</option>
+              <option value="3">3 — Изумрудно-акцентная панель</option>
+              <option value="4">4 — Кольцо активности Apple Style</option>
+              <option value="5">5 — Геймифицированная полоса XP</option>
+              <option value="6">6 — Тонкая линия по нижнему краю</option>
+              <option value="7">7 — Компактный дашборд-ряд</option>
+              <option value="8">8 — Капсула с текстом внутри</option>
             </select>
             <span
               style={{
@@ -397,7 +269,7 @@ export const SettingsPage: React.FC = () => {
         {/* Day Switcher Variant Select */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
           <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
-            🗓️ Стиль переключателя дней («Сегодня»)
+            🗓️ Стиль виджета «Переключатель дней»
           </div>
           <div style={{ position: 'relative', width: '100%' }}>
             <select
@@ -420,8 +292,8 @@ export const SettingsPage: React.FC = () => {
                 transition: 'all 0.2s ease',
               }}
             >
-              <option value="12">12 — Компактная лента с акцентным центром</option>
-              <option value="19">19 — Крупные карточки с экстра-числами</option>
+              <option value="12">Компактная лента с акцентным центром</option>
+              <option value="19">Крупные карточки с экстра-числами</option>
             </select>
             <span
               style={{
@@ -513,8 +385,8 @@ export const SettingsPage: React.FC = () => {
                 transition: 'all 0.2s ease',
               }}
             >
-              <option value="DD.MM.YYYY">ДД.ММ.ГГГГ (29.07.2026)</option>
-              <option value="YYYY-MM-DD">ГГГГ-ММ-ДД (2026-07-29)</option>
+              <option value="DD.MM.YYYY">ДД.ММ.ГГГГ (24.08.2026)</option>
+              <option value="YYYY-MM-DD">ГГГГ-ММ-ДД (2026-08-24)</option>
             </select>
             <span
               style={{
@@ -533,77 +405,27 @@ export const SettingsPage: React.FC = () => {
         </div>
       </Card>
 
-      {/* Export & Import Data Backup */}
+      {/* Data Management Section */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-        <Typography variant="h2">💾 Данные и Резервное Копирование</Typography>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '12.5px' }}>
-          Все ваши цели, темы, задачи, материалы и прогресс FSRS хранятся локально на этом устройстве.
+        <Typography variant="h2">💾 Управление данными и Бэкап</Typography>
+        <Typography variant="body" color="muted">
+          Экспортируйте ваши задачи, цели и статистику в JSON файл или восстановите данные из бэкапа.
         </Typography>
 
-        <div style={{ display: 'flex', gap: '8px', width: '100%', alignItems: 'center', marginTop: '4px', boxSizing: 'border-box' }}>
-          <Button
-            variant="primary"
-            onClick={handleExportData}
-            style={{
-              flex: '1 1 0px',
-              minWidth: 0,
-              padding: '8px 6px',
-              fontSize: '12px',
-              fontWeight: 600,
-              justifyContent: 'center',
-              whiteSpace: 'nowrap',
-              minHeight: '40px',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            📥 Экспорт
+        <div className={styles.backupActions}>
+          <Button variant="secondary" onClick={handleExportData}>
+            📥 Экспорт бэкапа (JSON)
           </Button>
 
-          <label style={{ cursor: 'pointer', flex: '1 1 0px', minWidth: 0, margin: 0 }}>
-            <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '8px 6px',
-                borderRadius: 'var(--radius-md)',
-                backgroundColor: 'var(--color-surface)',
-                border: '1px solid var(--color-border)',
-                color: 'var(--color-text-primary)',
-                fontSize: '12px',
-                fontWeight: 600,
-                minHeight: '40px',
-                width: '100%',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                boxSizing: 'border-box',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              📤 Импорт
-            </span>
+          <label className={styles.fileInputLabel}>
+            📤 Импорт бэкапа (JSON)
             <input type="file" accept=".json" onChange={handleImportData} style={{ display: 'none' }} />
           </label>
+        </div>
 
-          <Button
-            variant="danger"
-            onClick={handleResetData}
-            style={{
-              flex: '1 1 0px',
-              minWidth: 0,
-              padding: '8px 6px',
-              fontSize: '12px',
-              fontWeight: 600,
-              justifyContent: 'center',
-              whiteSpace: 'nowrap',
-              minHeight: '40px',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
-            🗑 Сбросить
+        <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
+          <Button variant="danger" size="sm" onClick={handleResetData}>
+            ⚠️ Сбросить все данные приложения
           </Button>
         </div>
       </Card>
