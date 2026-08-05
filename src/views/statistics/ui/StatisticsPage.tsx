@@ -686,26 +686,26 @@ export const StatisticsPage: React.FC = () => {
             let boxShadow = 'none';
 
             if (cell.count === 1) {
-              bg = 'rgba(16, 185, 129, 0.25)';
-              borderColor = 'rgba(16, 185, 129, 0.5)';
-              textColor = 'var(--color-text-primary)';
+              bg = '#a7f3d0';
+              borderColor = '#6ee7b7';
+              textColor = '#064e3b';
             } else if (cell.count === 2) {
-              bg = 'rgba(16, 185, 129, 0.55)';
-              borderColor = 'rgba(16, 185, 129, 0.75)';
-              textColor = '#ffffff';
+              bg = '#34d399';
+              borderColor = '#10b981';
+              textColor = '#0f172a';
             } else if (cell.count === 3) {
+              bg = '#10b981';
+              borderColor = '#059669';
+              textColor = '#ffffff';
+            } else if (cell.count === 4) {
               bg = '#059669';
               borderColor = '#047857';
               textColor = '#ffffff';
-            } else if (cell.count === 4) {
-              bg = '#047857';
-              borderColor = '#065f46';
-              textColor = '#ffffff';
             } else if (cell.count >= 5) {
-              bg = '#022c22'; // VERY DARK GREEN
-              borderColor = '#10b981'; // Vibrant emerald border
+              bg = '#064e3b';
+              borderColor = '#10b981';
               textColor = '#ffffff';
-              boxShadow = '0 0 10px rgba(16, 185, 129, 0.4)';
+              boxShadow = '0 0 12px rgba(16, 185, 129, 0.6)';
             }
 
             const isToday = cell.date === getTodayStr();
