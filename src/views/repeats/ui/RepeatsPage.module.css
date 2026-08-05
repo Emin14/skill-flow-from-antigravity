@@ -221,10 +221,6 @@
   background-color: var(--color-surface);
 }
 
-:global([data-theme="light"]) .nodeCircle {
-  background-color: var(--color-surface) !important;
-}
-
 .smartRatingBadge {
   position: absolute;
   top: -10px;
@@ -239,14 +235,25 @@
 
 .nodeCompleted {
   background-color: var(--color-success) !important;
-  border: 2px solid var(--color-success);
-  color: #ffffff; /* on solid success — always white */
+  border: 2px solid var(--color-success) !important;
+  color: #ffffff !important;
   box-shadow: 0 0 10px var(--color-success-border);
+}
+
+:global([data-theme="light"]) .nodeCompleted {
+  background-color: var(--color-success) !important;
+  border-color: var(--color-success) !important;
+  color: #ffffff !important;
+}
+
+.checkmarkIcon {
+  color: #ffffff !important;
+  font-weight: 800;
 }
 
 /* Standard next node (Today or Future) - Uses Accent Color */
 .nodeNext {
-  background-color: var(--color-surface);
+  background-color: var(--color-accent-light);
   border: 2.5px solid var(--color-accent);
   color: var(--color-accent);
   box-shadow: 0 0 12px var(--color-accent-light);
@@ -254,33 +261,57 @@
 }
 
 :global([data-theme="light"]) .nodeNext {
-  background-color: var(--color-surface) !important;
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  background-color: #e0f2fe !important;
+  border-color: #0ea5e9 !important;
+  color: #0284c7 !important;
+  box-shadow: 0 0 14px rgba(14, 165, 233, 0.35) !important;
 }
 
 /* Overdue next node (Yesterday or earlier) - Soft Solid Red */
-.nodeOverdue {
-  background-color: var(--color-surface);
+.nodeOverdue,
+.nodeNextOverdue {
+  background-color: var(--color-danger-light);
   border: 2.5px solid var(--color-danger);
   color: var(--color-danger);
   box-shadow: 0 0 12px var(--color-danger-border);
   animation: pulseSoftRed 2.5s infinite ease-in-out;
 }
 
-:global([data-theme="light"]) .nodeOverdue {
-  background-color: var(--color-surface) !important;
+:global([data-theme="light"]) .nodeOverdue,
+:global([data-theme="light"]) .nodeNextOverdue {
+  background-color: #fee2e2 !important;
+  border-color: #ef4444 !important;
+  color: #dc2626 !important;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.35) !important;
 }
 
 .nodeFuture {
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-hover);
   border: 2px solid var(--color-border);
   color: var(--color-text-muted);
 }
 
 :global([data-theme="light"]) .nodeFuture {
-  background-color: var(--color-surface) !important;
-  border-color: var(--color-border) !important;
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.emptyDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+}
+
+:global([data-theme="light"]) .emptyDot {
+  background-color: #94a3b8 !important;
+}
+
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
 }
 
 .subLabel {

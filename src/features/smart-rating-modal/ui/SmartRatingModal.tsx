@@ -6,6 +6,7 @@ import { SmartRating } from '@/shared/config/repetitionRules';
 import { Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
+import { CheckCircle2 } from 'lucide-react';
 
 interface SmartRatingModalProps {
   task: Task | null;
@@ -20,9 +21,17 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
   onClose,
   onSelectRating,
 }) => {
-  const [selectedRating, setSelectedRating] = useState<SmartRating>('normal');
+  const [selectedRating, setSelectedRating] = useState<SmartRating | null>(task?.lastSmartRating || null);
   const [selectedPomodoros, setSelectedPomodoros] = useState<number>(task?.pomodorosCount || 1);
-  const { updateTaskPomodoros } = useTaskStore();
+  const { updateTaskPomodoros, updateTaskDetails } = useTaskStore();
+
+  useEffect(() => {
+    if (task?.lastSmartRating) {
+      setSelectedRating(task.lastSmartRating);
+    } else {
+      setSelectedRating(null);
+    }
+  }, [task?.id, task?.lastSmartRating]);
 
   // BUG-CRIT-06: Esc key handler & background scroll lock
   useEffect(() => {
@@ -45,7 +54,13 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
 
   if (!isOpen || !task) return null;
 
+  const handlePickRating = async (ratingKey: SmartRating) => {
+    setSelectedRating(ratingKey);
+    await updateTaskDetails(task.id, { lastSmartRating: ratingKey });
+  };
+
   const handleConfirm = () => {
+    if (!selectedRating) return;
     updateTaskPomodoros(task.id, selectedPomodoros);
     onSelectRating(selectedRating, selectedPomodoros);
     onClose();
@@ -124,7 +139,7 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
                 <button
                   key={opt.id}
                   type="button"
-                  onClick={() => setSelectedRating(opt.id as SmartRating)}
+                  onClick={() => handlePickRating(opt.id as SmartRating)}
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -220,21 +235,29 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
           </button>
           <button
             type="button"
+            disabled={!selectedRating}
             onClick={handleConfirm}
             style={{
               flex: 2,
               height: '42px',
               borderRadius: '12px',
-              backgroundColor: '#0ea5e9',
-              color: '#ffffff',
-              border: 'none',
-              fontSize: '14px',
+              backgroundColor: selectedRating ? 'var(--color-success)' : 'rgba(255, 255, 255, 0.05)',
+              color: selectedRating ? '#ffffff' : 'var(--color-text-muted)',
+              border: selectedRating ? 'none' : '1px solid var(--color-border)',
+              fontSize: '13.5px',
               fontWeight: 700,
-              cursor: 'pointer',
-              boxShadow: '0 4px 14px rgba(14, 165, 233, 0.35)',
+              cursor: selectedRating ? 'pointer' : 'not-allowed',
+              opacity: selectedRating ? 1 : 0.5,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              boxShadow: selectedRating ? '0 4px 14px var(--color-success-border)' : 'none',
+              transition: 'all 0.2s ease',
             }}
           >
-            ✓ Подтвердить
+            <CheckCircle2 size={16} />
+            <span>{selectedRating ? '✨ Отметить как выполненную' : 'Выберите сложность'}</span>
           </button>
         </div>
       </div>

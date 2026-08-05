@@ -601,6 +601,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     if (parentTaskId) {
       const parentTask = get().tasks.find((t) => t.id === parentTaskId);
       if (parentTask) {
+        const isConvertingToProject = !parentTask.hasSubtasks;
         const updates: Partial<Task> = {
           hasSubtasks: true,
           isRepeating: false,
@@ -617,7 +618,11 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
         await taskRepository.update(id, { parentTaskId });
         await taskRepository.update(parentTaskId, updates);
-        useToastStore.getState().showToast(`Подзадача привязана к "${parentTask.title}"`, 'info');
+        if (isConvertingToProject) {
+          useToastStore.getState().showToast(`Задача "${parentTask.title}" преобразована в проект`, 'success');
+        } else {
+          useToastStore.getState().showToast(`Подзадача привязана к проекту "${parentTask.title}"`, 'info');
+        }
         return;
       }
     }

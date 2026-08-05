@@ -24,7 +24,7 @@ export const TodayActivity: React.FC<TodayActivityProps> = memo(({ logs }) => {
         <Typography variant="h2">📜 Последняя активность</Typography>
         {logs.length > 0 && (
           <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', fontWeight: 500, opacity: 0.75 }}>
-            последние {logs.length} из 20 событий
+            Прокрутите вниз, чтобы увидеть всю историю
           </span>
         )}
       </div>
@@ -34,7 +34,17 @@ export const TodayActivity: React.FC<TodayActivityProps> = memo(({ logs }) => {
           🌱 Действий пока не зафиксировано.
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            maxHeight: '210px',
+            overflowY: 'auto',
+            paddingRight: '4px',
+            scrollbarWidth: 'thin',
+          }}
+        >
           {logs.map((log) => (
             <div
               key={log.id}
@@ -43,16 +53,20 @@ export const TodayActivity: React.FC<TodayActivityProps> = memo(({ logs }) => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 fontSize: 'var(--font-size-sm)',
-                padding: 'var(--space-2) var(--space-3)',
-                borderRadius: 'var(--radius-sm)',
-                backgroundColor: 'rgba(255, 255, 255, 0.01)',
+                padding: '8px 12px',
+                borderRadius: '10px',
+                backgroundColor: 'var(--color-surface-hover)',
+                border: '1px solid var(--color-border)',
+                flexShrink: 0,
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-                <span>{activityIcons[log.type] || '⚡'}</span>
-                <span style={{ color: 'var(--color-text-primary)' }}>{log.title}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
+                <span style={{ flexShrink: 0 }}>{activityIcons[log.type] || '⚡'}</span>
+                <span style={{ color: 'var(--color-text-primary)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {log.title}
+                </span>
               </div>
-              <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>
+              <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', flexShrink: 0, marginLeft: '8px' }}>
                 {new Date(log.createdAt).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}
               </span>
             </div>

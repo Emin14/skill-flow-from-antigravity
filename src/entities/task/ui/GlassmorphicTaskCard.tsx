@@ -22,6 +22,7 @@ interface GlassmorphicTaskCardProps {
   showDragHandle?: boolean;
   parentPathVariant?: number;
   hideDateBadge?: boolean;
+  hideCategory?: boolean;
   onToggleCheckbox?: () => void;
   onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
@@ -179,6 +180,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   showDragHandle = true,
   parentPathVariant = 4,
   hideDateBadge = false,
+  hideCategory = false,
   onToggleCheckbox,
   onStatusChange,
   onDelete,
@@ -471,8 +473,8 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                 {task.title}
               </span>
               <div className={styles.metaRow}>
-                <span className={styles.catDot} style={{ backgroundColor: catColor }} />
-                <span className={styles.categoryText}>{task.category || 'Без категории'}</span>
+                {!hideCategory && <span className={styles.catDot} style={{ backgroundColor: catColor }} />}
+                {!hideCategory && <span className={styles.categoryText}>{task.category || 'Без категории'}</span>}
                 {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {showDateBadge && dateBadgeLabel && (
                   <span
@@ -481,7 +483,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                     }`}
                   >
                     <Calendar size={9} />
-                    {isOverdue ? `⚠ ${dateBadgeLabel}` : dateBadgeLabel}
+                    {dateBadgeLabel}
                   </span>
                 )}
                 {formattedLink && (

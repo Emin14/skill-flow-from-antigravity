@@ -16,7 +16,7 @@ interface NavItemData {
 const NAV_ITEMS_LEFT: NavItemData[] = [
   { label: 'Сегодня', href: '/today', icon: '☀️' },
   { label: 'Входящие', href: '/inbox', icon: '📥' },
-  { label: 'Проекты', href: '/projects', icon: '📁' },
+  { label: 'Крупные задачи', href: '/projects', icon: '📁' },
 ];
 
 const NAV_ITEMS_RIGHT: NavItemData[] = [
@@ -60,7 +60,7 @@ export const BottomNav: React.FC = () => {
           onClick={() => openModal('Task')}
           aria-label="Быстрое создание задачи"
         >
-          <Plus size={22} strokeWidth={2.8} />
+          <Plus size={28} strokeWidth={3} />
         </button>
 
         {/* Right 4 Icons */}

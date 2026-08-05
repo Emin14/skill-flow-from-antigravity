@@ -16,7 +16,7 @@ const pathTitles: Record<string, string> = {
   '/calendar': 'Календарь',
   '/repeats': 'Повторить',
   '/statistics': 'Аналитика',
-  '/projects': 'Проекты',
+  '/projects': 'Крупные задачи',
   '/settings': 'Настройки',
 };
 

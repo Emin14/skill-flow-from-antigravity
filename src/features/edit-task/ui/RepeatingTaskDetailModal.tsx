@@ -3,10 +3,12 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Task } from '@/entities/task/model/types';
+import { SmartRating } from '@/shared/config/repetitionRules';
 import { useTaskStore, normalizeOccurrences } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { getTodayStr, formatDateDisplay, formatLocalDateStr } from '@/shared/lib/dateUtils';
 import { ChevronDown, ChevronUp, Calendar, Trash2, ExternalLink, CheckCircle2, Clock, Sparkles } from 'lucide-react';
+import { useToastStore } from '@/shared/ui';
 import styles from './EditTaskModal.module.css';
 
 interface RepeatingTaskDetailModalProps {
@@ -50,9 +52,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   onOpenEdit,
 }) => {
   const router = useRouter();
-  const { tasks, updateTaskPomodoros, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus } = useTaskStore();
+  const { tasks, updateTaskPomodoros, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus, updateTaskDetails } = useTaskStore();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [selectedRating, setSelectedRating] = useState<SmartRating | null>(null);
 
   const masterTask = useMemo(() => {
     if (!task) return null;
@@ -65,6 +68,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
       repetitionsCount: doneOccurrences.length,
     };
   }, [task, tasks]);
+
+  useEffect(() => {
+    if (masterTask?.lastSmartRating) {
+      setSelectedRating(masterTask.lastSmartRating);
+    } else {
+      setSelectedRating(null);
+    }
+  }, [masterTask?.id, masterTask?.lastSmartRating]);
 
   useEffect(() => {
     if (isOpen) {
@@ -266,33 +277,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        {/* Status Toggle for Non-Repeating Single Tasks */}
-        {!masterTask.isRepeating && (
-          <button
-            type="button"
-            onClick={() => toggleTaskStatus(masterTask.id)}
-            style={{
-              width: '100%',
-              padding: '10px',
-              borderRadius: '12px',
-              border: masterTask.status === 'Done' ? '1px solid var(--color-success-border)' : '1px solid var(--color-accent-border)',
-              backgroundColor: masterTask.status === 'Done' ? 'var(--color-success-light)' : 'var(--color-accent-light)',
-              color: masterTask.status === 'Done' ? 'var(--color-success)' : 'var(--color-accent-text)',
-              fontSize: '13px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              transition: 'all 0.2s ease',
-              marginTop: '6px',
-            }}
-          >
-            {masterTask.status === 'Done' ? '✅ Задача выполнена (Нажмите для отмены)' : '⭕ Отметить как выполненную'}
-          </button>
-        )}
-
         {/* Horizontal Divider Line */}
         <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '6px 0' }} />
 
@@ -363,7 +347,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        {/* Difficulty Rating Section */}
+        {/* Difficulty Rating Section (For Smart Repeat tasks) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
           <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
             💡 Оценка сложности:
@@ -375,12 +359,17 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               { key: 'hard', emoji: '😣', title: 'Сложно', color: 'var(--color-warning)', bg: 'var(--color-warning-light)', border: 'var(--color-warning-border)' },
               { key: 'again', emoji: '❌', title: 'Не помню', color: 'var(--color-danger)', bg: 'var(--color-danger-light)', border: 'var(--color-danger-border)' },
             ].map((rating) => {
-              const isActive = activeRating === rating.key;
+              const currentActive = selectedRating || activeRating;
+              const isActive = currentActive === rating.key;
               return (
                 <button
                   key={rating.key}
                   type="button"
-                  onClick={() => updateTaskStatus(masterTask.id, 'Done', rating.key as any, activeOccDate)}
+                  onClick={async () => {
+                    setSelectedRating(rating.key as SmartRating);
+                    await updateTaskDetails(masterTask.id, { lastSmartRating: rating.key as SmartRating });
+                    useToastStore.getState().showToast(`Сложность «${rating.title}» сохранена`, 'info');
+                  }}
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -405,6 +394,78 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             })}
           </div>
         </div>
+
+        {/* Task Completion Action Button (Placed AFTER Difficulty Rating Section!) */}
+        {(() => {
+          const occ = masterTask.occurrences?.find((o) => o.date === activeOccDate);
+          const isDoneNow = masterTask.isRepeating ? occ?.status === 'Done' : masterTask.status === 'Done';
+          const isSmart = masterTask.repetitionMode === 'spaced' || masterTask.repetitionMode === 'smart';
+          const effectiveRating = selectedRating || masterTask.lastSmartRating;
+          const isCompletionDisabled = !isDoneNow && isSmart && !effectiveRating;
+
+          const handleToggleCompletion = async () => {
+            if (isDoneNow) {
+              if (masterTask.isRepeating) {
+                await toggleTaskStatus(masterTask.id, undefined, activeOccDate);
+              } else {
+                await toggleTaskStatus(masterTask.id);
+              }
+            } else {
+              if (masterTask.isRepeating) {
+                await updateTaskStatus(masterTask.id, 'Done', effectiveRating || undefined, activeOccDate);
+              } else {
+                await updateTaskStatus(masterTask.id, 'Done', effectiveRating || undefined);
+              }
+              onClose();
+            }
+          };
+
+          return (
+            <button
+              type="button"
+              disabled={isCompletionDisabled}
+              onClick={handleToggleCompletion}
+              style={{
+                width: '100%',
+                padding: '12px 14px',
+                borderRadius: '14px',
+                border: isDoneNow
+                  ? '1px solid var(--color-success-border)'
+                  : isCompletionDisabled
+                  ? '1px solid var(--color-border)'
+                  : '1px solid var(--color-success-border)',
+                backgroundColor: isDoneNow
+                  ? 'var(--color-success-light)'
+                  : isCompletionDisabled
+                  ? 'rgba(255, 255, 255, 0.04)'
+                  : 'var(--color-success)',
+                color: isDoneNow
+                  ? 'var(--color-success)'
+                  : isCompletionDisabled
+                  ? 'var(--color-text-muted)'
+                  : '#ffffff',
+                fontSize: '13.5px',
+                fontWeight: 700,
+                cursor: isCompletionDisabled ? 'not-allowed' : 'pointer',
+                opacity: isCompletionDisabled ? 0.5 : 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                boxShadow: !isDoneNow && !isCompletionDisabled ? '0 4px 14px var(--color-success-border)' : 'none',
+                transition: 'all 0.2s ease',
+                marginTop: '4px',
+              }}
+            >
+              <CheckCircle2 size={18} />
+              <span>
+                {isDoneNow
+                  ? '✅ Задача выполнена'
+                  : '✨ Отметить как выполненную'}
+              </span>
+            </button>
+          );
+        })()}
 
         {/* Completion Progress Bar Widget */}
         {masterTask.isRepeating && (

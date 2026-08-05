@@ -64,7 +64,6 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
         useToastStore.getState().showToast(`Задача перенесена в колонку "${statusLabel}"`, 'info');
       } else if (target.type === 'task_card' && target.taskId) {
         updateTaskParent(draggedTaskId, target.taskId);
-        useToastStore.getState().showToast('Задача привязана как подзадача', 'info');
       }
     });
   }, [todayStr, updateTaskStatus, updateTaskParent]);

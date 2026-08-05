@@ -317,9 +317,7 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
                   step.isCompleted
                     ? styles.nodeCompleted
                     : step.isNext
-                    ? step.isOverdue
-                      ? styles.nodeNextOverdue
-                      : styles.nodeNext
+                    ? styles.nodeNext
                     : styles.nodeFuture
                 }`}
               >

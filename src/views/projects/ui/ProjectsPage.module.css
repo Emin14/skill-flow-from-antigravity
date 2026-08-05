@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   padding: 16px;
   max-width: 900px;
   margin: 0 auto;
@@ -11,25 +11,25 @@
 .projectsList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
+/* Primary Clean Split-Column Project Card Container */
 .projectCardBase {
   box-sizing: border-box;
   width: 100%;
   transition: all 0.2s ease;
-  background: var(--color-surface-hover) !important;
-  backdrop-filter: blur(24px) !important;
-  border: 1px solid var(--color-border-hover) !important;
-  border-radius: 24px !important;
-  padding: 18px 22px !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25) !important;
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 16px !important;
+  padding: 12px 16px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
 }
 
 :global([data-theme="light"]) .projectCardBase {
   background: var(--color-surface) !important;
   border-color: var(--color-border) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
 }
 
 .projectCardDragOver {
@@ -37,54 +37,20 @@
   box-shadow: 0 0 20px var(--color-accent-border) !important;
 }
 
-.overdueBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  border-radius: 8px;
-  background: var(--color-danger-light);
-  border: 1px solid var(--color-danger-border);
-  color: var(--color-danger);
-  font-size: 11px;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
-.progressBarTrack {
-  height: 5px;
-  border-radius: 3px;
-  background: var(--color-border);
-}
-
-:global([data-theme="light"]) .progressBarTrack {
-  background: var(--color-border) !important;
-}
-
-.progressBarFill {
-  height: 100%;
-  border-radius: 3px;
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-success) 100%);
-  transition: width 0.35s ease;
-}
-
 .subtaskList {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-top: 14px;
+  padding-top: 10px;
+  margin-top: 8px;
   border-top: 1px solid var(--color-border);
-}
-
-:global([data-theme="light"]) .subtaskList {
-  border-top-color: var(--color-border) !important;
 }
 
 .emptyState {
   text-align: center;
-  padding: 40px 20px;
+  padding: 36px 20px;
   border-radius: 18px;
   border: 1px dashed var(--color-border);
   color: var(--color-text-muted);
-  font-size: 14px;
+  font-size: 13.5px;
 }

@@ -7,7 +7,7 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
-import { ChevronDown, ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import { ProjectFilterTabsWidget, ProjectFilterType } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
 import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
 import { useToastStore } from '@/shared/ui/toast/toastStore';
@@ -48,17 +48,17 @@ export const ProjectsPage: React.FC = () => {
 
   const initialSetDoneRef = useRef(false);
 
-  // All parent tasks (both top-level projects and nested sub-projects)
+  // All parent tasks
   const allParentTasks = useMemo(() => {
     return tasks.filter((t) => t.hasSubtasks || tasks.some((sub) => sub.parentTaskId === t.id));
   }, [tasks]);
 
-  // Main / Parent tasks (hasSubtasks: true or has children)
+  // Main / Parent tasks
   const projectTasks = useMemo(() => {
     return tasks.filter((t) => !t.parentTaskId && (t.hasSubtasks || tasks.some((sub) => sub.parentTaskId === t.id)));
   }, [tasks]);
 
-  // Expand all projects and sub-projects by default when loaded without wiping user toggles
+  // Expand all projects and sub-projects by default
   useEffect(() => {
     if (allParentTasks.length > 0) {
       setOpenProjectIds((prev) => {
@@ -154,33 +154,41 @@ export const ProjectsPage: React.FC = () => {
 
       {/* Projects List */}
       {isLoading ? (
-        <div className={styles.emptyState}>Загрузка проектов...</div>
+        <div className={styles.emptyState}>Загрузка крупных задач...</div>
       ) : filteredProjects.length === 0 ? (
         <div className={styles.emptyState}>
-          <div style={{ color: 'var(--color-text-secondary)', marginBottom: '12px' }}>
-            📁 Проектов с подзадачами не найдено.
-          </div>
-          <Button
-            variant="primary"
-            size="sm"
-            onClick={() => setEditingTask({
-              id: '',
-              title: '',
-              status: 'Todo',
-              priority: 'P3',
-              category: 'Проект',
-              scheduledDate: todayStr,
-              createdAt: new Date().toISOString(),
-              isRepeating: false,
-              hasSubtasks: true,
-              targetRepetitions: 8,
-              repetitionsCount: 0,
-              repetitionHistory: [],
-              pomodorosCount: 1,
-            })}
-          >
-            + Создать первый проект
-          </Button>
+          {activeFilter === 'all' ? (
+            <>
+              <div style={{ color: 'var(--color-text-secondary)', marginBottom: '12px' }}>
+                📁 Крупных задач с подзадачами пока не найдено.
+              </div>
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={() => setEditingTask({
+                  id: '',
+                  title: '',
+                  status: 'Todo',
+                  priority: 'P3',
+                  category: 'Крупная задача',
+                  scheduledDate: todayStr,
+                  createdAt: new Date().toISOString(),
+                  isRepeating: false,
+                  hasSubtasks: true,
+                  targetRepetitions: 8,
+                  repetitionsCount: 0,
+                  repetitionHistory: [],
+                  pomodorosCount: 1,
+                })}
+              >
+                + Создать крупную задачу
+              </Button>
+            </>
+          ) : (
+            <div style={{ color: 'var(--color-text-muted)' }}>
+              📁 Нет крупных задач в этой категории ({activeFilter === 'active' ? 'Активные' : activeFilter === 'completed' ? 'Завершенные' : 'Просроченные'}).
+            </div>
+          )}
         </div>
       ) : (
         <div className={styles.projectsList}>
@@ -201,7 +209,6 @@ export const ProjectsPage: React.FC = () => {
             const doneCount = descendants.filter((t) => t.status === 'Done').length;
             const totalCount = descendants.length;
             const progressPercent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
-            const overdueCount = descendants.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
 
             // Subtask Date > Project Date Warning Detection
             const subtaskDates = descendants
@@ -225,7 +232,6 @@ export const ProjectsPage: React.FC = () => {
                 doneCount={doneCount}
                 totalCount={totalCount}
                 progressPercent={progressPercent}
-                overdueCount={overdueCount}
                 hasDateMismatch={hasDateMismatch}
                 latestSubtaskDate={latestSubtaskDate}
                 sortedSubtasks={sortedSubtasks}
@@ -277,7 +283,6 @@ interface ProjectCardRendererProps {
   doneCount: number;
   totalCount: number;
   progressPercent: number;
-  overdueCount: number;
   hasDateMismatch: boolean;
   latestSubtaskDate: string | null;
   sortedSubtasks: Task[];
@@ -304,7 +309,6 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   doneCount,
   totalCount,
   progressPercent,
-  overdueCount,
   hasDateMismatch,
   latestSubtaskDate,
   sortedSubtasks,
@@ -322,6 +326,65 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   onDeleteSubtask,
   onSelectSubtask,
 }) => {
+  const renderCircleRing = (size = 36, strokeWidth = 3) => {
+    const radius = (size - strokeWidth * 2) / 2;
+    const circumference = 2 * Math.PI * radius;
+    return (
+      <div style={{ position: 'relative', width: `${size}px`, height: `${size}px`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="var(--color-border)" strokeWidth={strokeWidth} />
+          <circle
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            fill="none"
+            stroke="#10b981"
+            strokeWidth={strokeWidth}
+            strokeDasharray={circumference}
+            strokeDashoffset={circumference - (circumference * progressPercent) / 100}
+            strokeLinecap="round"
+            transform={`rotate(-90 ${size / 2} ${size / 2})`}
+          />
+        </svg>
+        <span style={{ position: 'absolute', fontSize: size >= 36 ? '10px' : '9px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
+          {progressPercent}%
+        </span>
+      </div>
+    );
+  };
+
+  const editBtn = (
+    <button
+      type="button"
+      onClick={(e) => {
+        e.stopPropagation();
+        onEdit(project);
+      }}
+      style={{
+        background: 'var(--color-surface-hover)',
+        border: '1px solid var(--color-border)',
+        borderRadius: '7px',
+        color: 'var(--color-text-primary)',
+        width: '26px',
+        height: '26px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        fontSize: '12px',
+        flexShrink: 0,
+      }}
+    >
+      ✏️
+    </button>
+  );
+
+  const chevronBtn = isOpen ? (
+    <ChevronDown size={18} color="var(--color-accent-text)" style={{ flexShrink: 0 }} />
+  ) : (
+    <ChevronRight size={18} color="var(--color-accent-text)" style={{ flexShrink: 0 }} />
+  );
+
   return (
     <div
       data-project-id={project.id}
@@ -330,61 +393,23 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
       onDragLeave={onDragLeave}
       onDrop={onDrop}
     >
-      {/* Header Row */}
+      {/* Clean 60/40 Split Column Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', cursor: 'pointer' }} onClick={() => toggleProjectOpen(project.id)}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: 0, flex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '12px', color: catColor, fontWeight: 700 }}>● {project.category || 'Проект'}</span>
-            {overdueBadge(overdueCount)}
-          </div>
-          <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', width: '55%' }}>
+          <span style={{ fontSize: '11px', color: catColor, fontWeight: 700 }}>● {project.category || 'Крупная задача'}</span>
+          <h2 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {project.title}
           </h2>
-          {totalCount > 0 && (
-            <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>
-              Выполнено {doneCount} из {totalCount} подзадач
-            </div>
-          )}
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '40%', justifyContent: 'flex-end' }}>
           {totalCount > 0 && (
-            <span style={{
-              fontSize: '36px',
-              fontWeight: 900,
-              background: 'linear-gradient(135deg, var(--color-accent-text), var(--color-success))',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              lineHeight: 1,
-            }}>
-              {progressPercent}%
+            <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)' }}>
+              {doneCount}/{totalCount}
             </span>
           )}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onEdit(project);
-            }}
-            style={{
-              background: 'var(--color-surface-hover)',
-              border: '1px solid var(--color-border)',
-              borderRadius: '8px',
-              color: 'var(--color-text-primary)',
-              width: '28px',
-              height: '28px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-            }}
-          >
-            ✏️
-          </button>
-          {isOpen ? (
-            <ChevronDown size={20} color="var(--color-accent-text)" />
-          ) : (
-            <ChevronRight size={20} color="var(--color-accent-text)" />
-          )}
+          {totalCount > 0 && renderCircleRing(36, 3)}
+          {editBtn}
+          {chevronBtn}
         </div>
       </div>
 
@@ -397,7 +422,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         />
       )}
 
-      {/* Collapsible Subtasks & Sub-Projects List */}
+      {/* Collapsible Subtasks List */}
       {isOpen && (
         <div className={styles.subtaskList}>
           {sortedSubtasks.length === 0 ? (
@@ -453,6 +478,12 @@ const RecursiveSubtaskList: React.FC<{
   if (children.length === 0) return null;
 
   const sorted = [...children].sort((a, b) => {
+    const aIsContainer = tasks.some((t) => t.parentTaskId === a.id) || a.hasSubtasks;
+    const bIsContainer = tasks.some((t) => t.parentTaskId === b.id) || b.hasSubtasks;
+
+    if (aIsContainer && !bIsContainer) return 1;
+    if (!aIsContainer && bIsContainer) return -1;
+
     if (!a.scheduledDate && !b.scheduledDate) return 0;
     if (!a.scheduledDate) return 1;
     if (!b.scheduledDate) return -1;
@@ -470,8 +501,10 @@ const RecursiveSubtaskList: React.FC<{
           const subDone = subDescendants.filter((t) => t.status === 'Done').length;
           const subTotal = subDescendants.length;
           const subPercent = subTotal > 0 ? Math.round((subDone / subTotal) * 100) : 0;
-          const subOverdue = subDescendants.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
           const subCatColor = getCategoryColor(child.category);
+
+          const radius = (32 - 5) / 2;
+          const circumference = 2 * Math.PI * radius;
 
           return (
             <div
@@ -498,38 +531,54 @@ const RecursiveSubtaskList: React.FC<{
                 }
               }}
             >
+              {/* Clean 60/40 Split Column Header for Nested Sub-Projects */}
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   cursor: 'pointer',
-                  gap: '8px',
+                  width: '100%',
                 }}
                 onClick={(e) => {
                   e.stopPropagation();
                   toggleProjectOpen(child.id);
                 }}
               >
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0, flex: 1 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ fontSize: '11px', color: subCatColor, fontWeight: 700 }}>● {child.category || 'Подпроект'}</span>
-                    {subOverdue > 0 && (
-                      <span className={styles.overdueBadge} style={{ fontSize: '10px', padding: '1px 6px' }}>
-                        🚨 {subOverdue}
-                      </span>
-                    )}
-                  </div>
-                  <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    📁 {child.title}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', width: '55%' }}>
+                  <span style={{ fontSize: '10.5px', color: subCatColor, fontWeight: 700 }}>● {child.category || 'Подпроект'}</span>
+                  <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {child.title}
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '40%', justifyContent: 'flex-end' }}>
                   {subTotal > 0 && (
-                    <span style={{ fontSize: '24px', fontWeight: 900, color: '#10b981', lineHeight: 1 }}>
-                      {subPercent}%
+                    <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
+                      {subDone}/{subTotal}
                     </span>
+                  )}
+                  {subTotal > 0 && (
+                    <div style={{ position: 'relative', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <svg width={32} height={32} viewBox="0 0 32 32">
+                        <circle cx={16} cy={16} r={radius} fill="none" stroke="var(--color-border)" strokeWidth={2.5} />
+                        <circle
+                          cx={16}
+                          cy={16}
+                          r={radius}
+                          fill="none"
+                          stroke="#10b981"
+                          strokeWidth={2.5}
+                          strokeDasharray={circumference}
+                          strokeDashoffset={circumference - (circumference * subPercent) / 100}
+                          strokeLinecap="round"
+                          transform="rotate(-90 16 16)"
+                        />
+                      </svg>
+                      <span style={{ position: 'absolute', fontSize: '9px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
+                        {subPercent}%
+                      </span>
+                    </div>
                   )}
                   <button
                     type="button"
@@ -538,16 +587,23 @@ const RecursiveSubtaskList: React.FC<{
                       onEdit(child);
                     }}
                     style={{
-                      background: 'none',
-                      border: 'none',
-                      color: 'var(--color-text-muted)',
+                      background: 'var(--color-surface-hover)',
+                      border: '1px solid var(--color-border)',
+                      borderRadius: '6px',
+                      color: 'var(--color-text-primary)',
+                      width: '24px',
+                      height: '24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       cursor: 'pointer',
-                      fontSize: '14px',
+                      fontSize: '11px',
+                      flexShrink: 0,
                     }}
                   >
                     ✏️
                   </button>
-                  {isSubProjectOpen ? <ChevronDown size={16} color="#38bdf8" /> : <ChevronRight size={16} color="#38bdf8" />}
+                  {isSubProjectOpen ? <ChevronDown size={16} color="var(--color-accent-text)" /> : <ChevronRight size={16} color="var(--color-accent-text)" />}
                 </div>
               </div>
 
@@ -580,6 +636,7 @@ const RecursiveSubtaskList: React.FC<{
             allTasks={tasks}
             showDragHandle={true}
             parentPathVariant={0}
+            hideCategory={true}
             onToggleCheckbox={() => onToggleSubtask(child)}
             onDelete={() => onDeleteSubtask(child)}
             onClick={() => onSelectSubtask(child)}
@@ -588,15 +645,6 @@ const RecursiveSubtaskList: React.FC<{
         );
       })}
     </div>
-  );
-};
-
-const overdueBadge = (count: number) => {
-  if (count <= 0) return null;
-  return (
-    <span className={styles.overdueBadge}>
-      🚨 {count} просрочено
-    </span>
   );
 };
 

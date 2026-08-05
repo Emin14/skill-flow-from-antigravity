@@ -17,6 +17,7 @@ export const STORAGE_KEYS = {
   REPEAT_CARDS: 'skillflow_repeat_cards',
   HABIT_BANNER_VARIANT: 'skillflow_habit_banner_variant',
   DAY_SWITCHER_VARIANT: 'skillflow_day_switcher_variant',
+  TASK_MODAL_VARIANT: 'skillflow_task_modal_variant',
   WIDGET_ORDER: 'skillflow_widget_order',
 } as const;
 

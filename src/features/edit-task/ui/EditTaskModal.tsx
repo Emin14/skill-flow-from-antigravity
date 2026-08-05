@@ -9,6 +9,7 @@ import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS } from '@/shared/config/repetitionRules';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
+import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import styles from './EditTaskModal.module.css';
 
 interface EditTaskModalProps {
@@ -48,9 +49,9 @@ const glassItem = (active = false): React.CSSProperties => ({
   width: '100%',
 });
 
-// Subtle field hint text
+// Subtle field hint text - 100% legible on light & dark themes
 const hint: React.CSSProperties = {
-  display: 'block', fontSize: '10px', color: 'rgba(255,255,255,0.25)',
+  display: 'block', fontSize: '10.5px', color: 'var(--color-text-muted)',
   paddingLeft: '3px', marginTop: '3px', letterSpacing: '0.01em',
   userSelect: 'none',
 };
@@ -59,6 +60,30 @@ const hint: React.CSSProperties = {
 export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess }) => {
   const { updateTaskDetails, deleteTaskSeries, tasks } = useTaskStore();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [cardVariant, setCardVariant] = useState<'1' | '2'>('1');
+
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEYS.TASK_MODAL_VARIANT) || '1';
+    setCardVariant(saved as '1' | '2');
+  }, []);
+
+  const handleSetVariant = (v: '1' | '2') => {
+    setCardVariant(v);
+    localStorage.setItem(STORAGE_KEYS.TASK_MODAL_VARIANT, v);
+  };
+
+  const shiftScheduledDate = (deltaDays: number) => {
+    const current = scheduledDate || getTodayStr();
+    const parts = current.split('-').map(Number);
+    const dateObj = parts.length === 3 ? new Date(parts[0], parts[1] - 1, parts[2]) : new Date();
+    dateObj.setDate(dateObj.getDate() + deltaDays);
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const newStr = `${year}-${month}-${day}`;
+    setScheduledDate(newStr);
+    setDatePresetMode('custom');
+  };
 
   type PopoverKey = 'date' | 'category' | 'parent' | 'repeat' | 'freq' | null;
   const [openPopover, setOpenPopover] = useState<PopoverKey>(null);
@@ -268,275 +293,192 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
         <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column' }}>
           <div className={styles.modalBody}>
-            {/* Top-Right Dim Created Date (Point 3) */}
+            {/* Top-Right Dim Created Date */}
             {task.createdAt && (
-              <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', opacity: 0.55, textAlign: 'right', marginBottom: '4px' }}>
+              <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', opacity: 0.55, textAlign: 'right', marginBottom: '2px' }}>
                 Создано: {new Date(task.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
               </div>
             )}
 
-            {/* ── Title ────────────────────────────────────────────── */}
-            <Input
-              type="text" name="task_title_field" className={styles.selectInput}
-              value={title} onChange={(e) => setTitle(e.target.value)}
-              placeholder="Название задачи..." required autoFocus
-            />
-
-            {/* ── Category + Date ───────────────────────────────────── */}
-            <div className={styles.formRow}>
-
-              {/* Category */}
-              <div style={{ position: 'relative' }}>
-                <button type="button" style={glassBtn} onClick={() => toggle('category')}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    <span
-                      style={{
-                        width: '8px',
-                        height: '8px',
-                        borderRadius: '50%',
-                        backgroundColor: catThemeColor,
-                        boxShadow: `0 0 8px ${catThemeColor}`,
-                        flexShrink: 0,
-                      }}
-                    />
-                    <span>{category}</span>
-                  </span>
-                  <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0 }}>▾</span>
-                </button>
-                {openPopover === 'category' && (
-                  <div style={glassMenu} ref={activePopoverRef}>
-                    {TASK_CATEGORIES.map((cat) => {
-                      const color = getCategoryColor(cat);
-                      return (
-                        <button
-                          key={cat}
-                          type="button"
-                          style={{ ...glassItem(category === cat), display: 'flex', alignItems: 'center', gap: '8px' }}
-                          onClick={() => { setCategory(cat); closeAll(); }}
-                        >
-                          <span
-                            style={{
-                              width: '8px',
-                              height: '8px',
-                              borderRadius: '50%',
-                              backgroundColor: color,
-                              boxShadow: `0 0 6px ${color}`,
-                              flexShrink: 0,
-                            }}
-                          />
-                          <span>{cat}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-                <span style={hint}>Категория</span>
-              </div>
-
-              {/* Date */}
-              <div style={{ position: 'relative' }}>
-                <button type="button" style={glassBtn} onClick={() => toggle('date')}>
-                  <span>{getDateLabel()}</span>
-                  <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0 }}>▾</span>
-                </button>
-                {/* iOS transparent overlay — appears when custom date selected */}
-                {datePresetMode === 'custom' && openPopover !== 'date' && (
-                  <input ref={hiddenNativeInputRef} type="date" value={scheduledDate || ''}
-                    onChange={(e) => { if (e.target.value) { setScheduledDate(e.target.value); setDatePresetMode('custom'); } }}
-                    style={{ position: 'absolute', top: 0, left: 0, width: 'calc(100% - 36px)', height: '38px', opacity: 0, cursor: 'pointer', border: 'none', background: 'transparent', pointerEvents: 'auto', zIndex: 2, colorScheme: 'dark' }} />
-                )}
-                {openPopover === 'date' && (
-                  <div style={glassMenu} ref={activePopoverRef}>
-                    {([
-                      { label: '☀️  Сегодня', action: selectToday },
-                      { label: '🌅  Завтра', action: selectTomorrow },
-                      { label: '📆  Выбрать дату...', action: handlePickCustomDate },
-                      { label: '—   Без даты', action: selectNone },
-                    ] as const).map(({ label, action }) => (
-                      <button key={label} type="button" style={glassItem()} onClick={action}>{label}</button>
-                    ))}
-                  </div>
-                )}
-                <span style={hint}>Срок выполнения</span>
-              </div>
+            {/* 1. Title Input */}
+            <div>
+              <Input
+                type="text" name="task_title_field" className={styles.selectInput}
+                value={title} onChange={(e) => setTitle(e.target.value)}
+                placeholder="Название задачи..." required autoFocus
+              />
             </div>
 
-            {/* ── Parent task + Link ──────────────────────────────────── */}
-            <div className={styles.formRow}>
-              {/* Parent task */}
-              <div style={{ position: 'relative' }}>
-                <button type="button" style={glassBtn} onClick={() => toggle('parent')}>
-                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0, flex: 1, textAlign: 'left' }}>
-                    {getParentLabel()}
-                  </span>
-                  <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0, marginLeft: '4px' }}>▾</span>
-                </button>
-                {openPopover === 'parent' && (
-                  <div style={glassMenu} ref={activePopoverRef}>
-                    <button type="button" style={glassItem(!parentTaskId)}
-                      onClick={() => { setParentTaskId(null); closeAll(); }}>
-                      📂 Основная задача
-                    </button>
-                    {possibleParents.map((pt) => (
-                      <button key={pt.id} type="button" style={glassItem(parentTaskId === pt.id)}
-                        onClick={() => { setParentTaskId(pt.id); closeAll(); }}>
-                        📁 {pt.title}
-                      </button>
-                    ))}
-                    {possibleParents.length === 0 && (
-                      <div style={{ padding: '7px 11px', fontSize: '12px', color: 'rgba(255,255,255,0.3)' }}>
-                        Нет доступных задач
-                      </div>
-                    )}
-                  </div>
-                )}
-                <span style={hint}>Вложить в составную</span>
-              </div>
-
-              {/* Link */}
-              <div style={{ position: 'relative' }}>
-                <Input type="url" name="task_link_field" className={styles.selectInput}
-                  value={link} onChange={(e) => setLink(e.target.value)}
-                  placeholder="🔗 Ссылка..."
-                  style={{ height: '38px' }}
-                />
-                <span style={hint}>Ссылка (https://...)</span>
-              </div>
-            </div>
-
-            {/* ── Description ──────────────────────────────────────── */}
-            <textarea className={styles.compactTextarea} value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Заметки или описание..."
-            />
-
-            {/* ── Repetition Controls (Side-by-Side 2 Properties) ──── */}
-            <div className={styles.formRow}>
-
-              {/* Property 1: Main Repetition Mode Select */}
-              <div style={{ position: 'relative' }}>
+            {/* 2. Date Field with - / + Stepper */}
+            <div>
+              <div className={styles.v2DateRow}>
                 <button
                   type="button"
-                  style={{ ...glassBtn, opacity: hasSubtasks ? 0.4 : 1, cursor: hasSubtasks ? 'not-allowed' : 'pointer' }}
-                  onClick={() => !hasSubtasks && toggle('repeat')}
+                  className={styles.v2StepBtn}
+                  onClick={() => shiftScheduledDate(-1)}
+                  title="Уменьшить день на 1"
                 >
-                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {REPEAT_LABELS[repetitionMode] ?? '🔕 Без повторов'}
-                  </span>
-                  <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0 }}>▾</span>
+                  -
                 </button>
+                <input
+                  type="date"
+                  className={styles.v2DateInput}
+                  value={scheduledDate || getTodayStr()}
+                  onChange={(e) => {
+                    setScheduledDate(e.target.value || getTodayStr());
+                    setDatePresetMode('custom');
+                  }}
+                />
+                <button
+                  type="button"
+                  className={styles.v2StepBtn}
+                  onClick={() => shiftScheduledDate(1)}
+                  title="Увеличить день на 1"
+                >
+                  +
+                </button>
+              </div>
+            </div>
 
-                {openPopover === 'repeat' && !hasSubtasks && (
-                  <div style={{ ...glassMenu, bottom: '44px', top: 'auto', left: 0, right: 0 }} ref={activePopoverRef}>
-                    {Object.entries(REPEAT_LABELS).map(([val, label]) => (
-                      <button
-                        key={val}
-                        type="button"
-                        style={glassItem(repetitionMode === val)}
-                        onClick={() => { setRepetitionMode(val as RepetitionMode); closeAll(); }}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
-                )}
-                <span style={hint}>Режим повторения</span>
+            {/* 3. Category & Parent Task (Side-by-Side 50% / 50%) */}
+            <div className={styles.formRow}>
+              <div>
+                <select
+                  className={styles.v2Select}
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value as TaskCategory)}
+                >
+                  {TASK_CATEGORIES.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+                <span style={hint}>🏷 Категория</span>
               </div>
 
-              {/* Property 2: Mode Sub-option Select (Fixed 50% width, zero layout shift) */}
-              <div style={{ position: 'relative' }}>
-                {repetitionMode === 'schedule' ? (
-                  <button
-                    type="button"
-                    style={glassBtn}
-                    onClick={() => toggle('freq')}
+              <div>
+                <select
+                  className={styles.v2Select}
+                  value={parentTaskId || ''}
+                  onChange={(e) => setParentTaskId(e.target.value || null)}
+                >
+                  <option value="">Без родительской задачи</option>
+                  {possibleParents.map((pt) => (
+                    <option key={pt.id} value={pt.id}>
+                      📁 {pt.title}
+                    </option>
+                  ))}
+                </select>
+                <span style={hint}>📁 Родительская задача</span>
+              </div>
+            </div>
+
+            {/* 4. Repetition Mode & Frequency / Days (Side-by-Side 50% / 50% Fixed Width) + Mode Explanation Box */}
+            <div>
+              <div className={styles.formRow}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <select
+                    className={styles.v2Select}
+                    value={repetitionMode}
+                    disabled={hasSubtasks}
+                    onChange={(e) => setRepetitionMode(e.target.value as RepetitionMode)}
                   >
-                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      📅 {FREQ_LABELS[scheduleFrequency] ?? 'Каждый день'}
-                    </span>
-                    <span style={{ opacity: 0.4, fontSize: '11px', flexShrink: 0 }}>▾</span>
-                  </button>
-                ) : repetitionMode === 'after_completion' ? (
-                  <div style={{ ...glassBtn, padding: '0 8px', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '12px', whiteSpace: 'nowrap', opacity: 0.8 }}>✅ Через</span>
-                    <input
-                      type="number"
-                      min="1"
-                      max="365"
+                    <option value="none">🔕 Без повторов</option>
+                    <option value="spaced">🧠 Умный повтор</option>
+                    <option value="schedule">📅 По расписанию</option>
+                    <option value="after_completion">⏱ Через N дней</option>
+                  </select>
+                </div>
+
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  {repetitionMode === 'schedule' ? (
+                    <select
+                      className={styles.v2Select}
+                      value={scheduleFrequency}
+                      onChange={(e) => setScheduleFrequency(e.target.value as ScheduleFrequency)}
+                    >
+                      <option value="daily">Каждый день</option>
+                      <option value="weekly">Каждую неделю</option>
+                      <option value="monthly">Каждый месяц</option>
+                      <option value="yearly">Каждый год</option>
+                    </select>
+                  ) : repetitionMode === 'after_completion' ? (
+                    <select
+                      className={styles.v2Select}
                       value={afterCompletionDaysInput}
                       onChange={(e) => setAfterCompletionDaysInput(e.target.value)}
-                      onClick={(e) => e.stopPropagation()}
-                      style={{
-                        width: '42px',
-                        background: 'rgba(255,255,255,0.12)',
-                        border: '1px solid rgba(255,255,255,0.2)',
-                        borderRadius: '6px',
-                        color: 'var(--color-text)',
-                        fontSize: '12.5px',
-                        fontWeight: 600,
-                        textAlign: 'center',
-                        padding: '2px 0',
-                        outline: 'none',
-                      }}
-                    />
-                    <span style={{ fontSize: '11.5px', opacity: 0.7 }}>дн.</span>
-                  </div>
-                ) : (
-                  <div style={{ ...glassBtn, opacity: 0.5, cursor: 'default', justifyContent: 'center' }}>
-                    <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap' }}>
-                      {repetitionMode === 'spaced' ? '1,3,7,14,30,90 дн.' : repetitionMode === 'smart' ? 'Адаптивный' : '—'}
-                    </span>
-                  </div>
-                )}
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 10, 14, 30].map((d) => (
+                        <option key={d} value={String(d)}>
+                          Через {d} {d === 1 ? 'день' : d >= 2 && d <= 4 ? 'дня' : 'дней'}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <select
+                      className={styles.v2Select}
+                      disabled
+                      style={{ opacity: 0.55, cursor: 'not-allowed' }}
+                    >
+                      <option>
+                        {repetitionMode === 'spaced' ? '1,3,7,14,30,90д' : '—'}
+                      </option>
+                    </select>
+                  )}
+                </div>
+              </div>
+              <span style={hint}>🔁 Режим и опция повторения</span>
 
-                {openPopover === 'freq' && repetitionMode === 'schedule' && (
-                  <div style={{ ...glassMenu, bottom: '44px', top: 'auto', left: 0, right: 0 }} ref={activePopoverRef}>
-                    {Object.entries(FREQ_LABELS).map(([val, label]) => (
-                      <button
-                        key={val}
-                        type="button"
-                        style={glassItem(scheduleFrequency === val)}
-                        onClick={() => { setScheduleFrequency(val as ScheduleFrequency); closeAll(); }}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
+              {/* Mode Explanation Hint Box DIRECTLY Below Repetition Selects */}
+              <div
+                style={{
+                  minHeight: '28px',
+                  padding: '4px 8px',
+                  borderRadius: '8px',
+                  background: 'var(--color-surface-hover)',
+                  border: '1px solid var(--color-border)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  fontSize: '10.5px',
+                  color: 'var(--color-text-muted)',
+                  lineHeight: '1.25',
+                  boxSizing: 'border-box',
+                  marginTop: '3px',
+                }}
+              >
+                {hasSubtasks ? (
+                  <span style={{ color: 'var(--color-warning)' }}>⚠️ Задачи с подзадачами не имеют повторов</span>
+                ) : (
+                  <>
+                    {repetitionMode === 'none' && '💡 Задача выполняется 1 раз и не будет автоматически повторяться'}
+                    {repetitionMode === 'spaced' && '💡 Интервальное повторение: 1, 3, 7, 14, 30, 90 дней для памяти'}
+                    {repetitionMode === 'schedule' && `💡 Повтор строго по графику (${FREQ_LABELS[scheduleFrequency] || 'Каждый день'})`}
+                    {repetitionMode === 'after_completion' && `💡 Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено»`}
+                  </>
                 )}
-                <span style={hint}>Опция режима</span>
               </div>
             </div>
 
-            {/* ── Mode Explanation Hint Box (Fixed height, zero layout shift) ── */}
-            <div
-              style={{
-                minHeight: '30px',
-                padding: '6px 10px',
-                borderRadius: '8px',
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.06)',
-                display: 'flex',
-                alignItems: 'center',
-                fontSize: '11px',
-                color: 'rgba(255,255,255,0.65)',
-                lineHeight: '1.3',
-                boxSizing: 'border-box',
-                marginTop: '2px',
-              }}
-            >
-              {hasSubtasks ? (
-                <span style={{ color: '#f59e0b' }}>⚠️ Задачи с подзадачами не могут иметь режим повторения</span>
-              ) : (
-                <>
-                  {repetitionMode === 'none' && '💡 Задача выполняется 1 раз и не будет автоматически повторяться.'}
-                  {repetitionMode === 'spaced' && '💡 Интервальное повторение: 1, 3, 7, 14, 30, 90 дней для прочной памяти.'}
-                  {repetitionMode === 'schedule' && `💡 Автоматическое повторение строго по графику (${FREQ_LABELS[scheduleFrequency] || 'Каждый день'}).`}
-                  {repetitionMode === 'after_completion' && `💡 Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено».`}
-                  {repetitionMode === 'smart' && '💡 Умные адаптивные интервалы: график меняется от вашей оценки сложности.'}
-                </>
-              )}
+            {/* 5. Next Line: Description / Notes */}
+            <div>
+              <textarea
+                className={styles.compactTextarea}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Заметки или описание..."
+              />
             </div>
 
+            {/* 6. Next Line: Link */}
+            <div>
+              <Input
+                type="url" name="task_link_field" className={styles.selectInput}
+                value={link} onChange={(e) => setLink(e.target.value)}
+                placeholder="🔗 Ссылка..."
+                style={{ height: '38px' }}
+              />
+            </div>
           </div>
 
           {/* ── Action Buttons (Trash Delete + Cancel + Save) ───── */}

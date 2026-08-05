@@ -1,23 +1,22 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Card, Typography, Button, Input } from '@/shared/ui';
+import { Card, Typography, Button } from '@/shared/ui';
 import { useInboxStore, InboxItem } from '@/entities/inbox';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { InboxHeaderWidget } from '@/widgets/inbox-header/ui/InboxHeaderWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
+import { Lightbulb } from 'lucide-react';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
 
 export const InboxPage: React.FC = () => {
-  const { items, isLoading, fetchItems, addItem, updateItem, togglePin, deleteItem } = useInboxStore();
+  const { items, isLoading, fetchItems, addItem, togglePin, deleteItem } = useInboxStore();
 
   const [quickInput, setQuickInput] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
-  const [editingId, setEditingId] = useState<string | null>(null);
-  const [editText, setEditText] = useState('');
 
   // Triage state: keep track of item and draft task
   const [triagingItem, setTriagingItem] = useState<InboxItem | null>(null);
@@ -34,18 +33,6 @@ export const InboxPage: React.FC = () => {
 
     await addItem(quickInput.trim());
     setQuickInput('');
-  };
-
-  const startEdit = (item: InboxItem) => {
-    setEditingId(item.id);
-    setEditText(item.text);
-  };
-
-  const saveEdit = async (id: string) => {
-    if (editText.trim()) {
-      await updateItem(id, editText.trim());
-    }
-    setEditingId(null);
   };
 
   // Prepare triage draft without deleting inbox item yet
@@ -86,13 +73,19 @@ export const InboxPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header & Quick Capture Form Widget (Final Variant #6) */}
+      {/* Header & Quick Capture Form Widget */}
       <InboxHeaderWidget
         itemCount={items.length}
         quickInput={quickInput}
         setQuickInput={setQuickInput}
         onSubmit={handleQuickCapture}
       />
+
+      {/* Gesture Guide Banner */}
+      <div className={styles.swipeHintBar}>
+        <Lightbulb size={13} style={{ flexShrink: 0, opacity: 0.8 }} />
+        <span>👉 Свайп вправо — разобрать  •  👈 Свайп влево — удалить</span>
+      </div>
 
       {/* Controls Bar (Filter Tabs) */}
       <div className={styles.controlsBar}>
@@ -150,11 +143,6 @@ export const InboxPage: React.FC = () => {
             <InboxItemCard
               key={item.id}
               item={item}
-              editingId={editingId}
-              editText={editText}
-              setEditText={setEditText}
-              saveEdit={saveEdit}
-              startEdit={startEdit}
               handleTriage={handleTriage}
               togglePin={togglePin}
               deleteItem={deleteItem}
@@ -179,11 +167,6 @@ export const InboxPage: React.FC = () => {
 
 interface InboxItemCardProps {
   item: InboxItem;
-  editingId: string | null;
-  editText: string;
-  setEditText: (txt: string) => void;
-  saveEdit: (id: string) => void;
-  startEdit: (item: InboxItem) => void;
   handleTriage: (item: InboxItem) => void;
   togglePin: (id: string) => void;
   deleteItem: (id: string) => void;
@@ -191,18 +174,12 @@ interface InboxItemCardProps {
 
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
   item,
-  editingId,
-  editText,
-  setEditText,
-  saveEdit,
-  startEdit,
   handleTriage,
   togglePin,
   deleteItem,
 }) => {
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [isSwipedLeft, setIsSwipedLeft] = useState<boolean>(false);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
@@ -211,26 +188,29 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchStartX === null) return;
     const currentX = e.targetTouches[0].clientX;
-    const diff = touchStartX - currentX;
+    const diff = currentX - touchStartX; // positive = swipe right, negative = swipe left
 
-    if (diff > 0 && diff <= 80) {
-      setSwipeOffset(-diff);
-    } else if (diff < 0 && isSwipedLeft) {
-      const remaining = -80 - diff;
-      setSwipeOffset(Math.min(0, remaining));
+    if (diff > 0 && diff <= 100) {
+      setSwipeOffset(diff);
+    } else if (diff < 0 && diff >= -100) {
+      setSwipeOffset(diff);
     }
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX === null) return;
     const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
+    const diff = touchEndX - touchStartX;
 
     if (diff > 45) {
-      setIsSwipedLeft(true);
-      setSwipeOffset(-80);
+      // Swiped right -> Triage
+      handleTriage(item);
+      setSwipeOffset(0);
+    } else if (diff < -45) {
+      // Swiped left -> Delete
+      deleteItem(item.id);
+      setSwipeOffset(0);
     } else {
-      setIsSwipedLeft(false);
       setSwipeOffset(0);
     }
     setTouchStartX(null);
@@ -238,10 +218,33 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
 
   return (
     <div className={styles.itemCardWrapper}>
-      {/* Background Swipe Delete Action (No trash icon!) */}
-      <div className={styles.deleteSwipeAction} onClick={() => deleteItem(item.id)}>
-        Удалить
-      </div>
+      {/* Background Swipe Triage Action (Left side) - Only rendered when swiping right */}
+      {swipeOffset > 0 && (
+        <div
+          className={styles.triageSwipeAction}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleTriage(item);
+            setSwipeOffset(0);
+          }}
+        >
+          Разобрать
+        </div>
+      )}
+
+      {/* Background Swipe Delete Action (Right side) - Only rendered when swiping left */}
+      {swipeOffset < 0 && (
+        <div
+          className={styles.deleteSwipeAction}
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteItem(item.id);
+            setSwipeOffset(0);
+          }}
+        >
+          Удалить
+        </div>
+      )}
 
       {/* Main Ultra-Slim Item Card */}
       <div
@@ -251,36 +254,30 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {editingId === item.id ? (
-          <div style={{ flex: 1, display: 'flex', gap: 'var(--space-2)' }}>
-            <Input
-              value={editText}
-              onChange={(e) => setEditText(e.target.value)}
-              autoFocus
-            />
-            <Button variant="primary" size="sm" onClick={() => saveEdit(item.id)}>
-              Сохранить
-            </Button>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div className={styles.itemText}>{item.text}</div>
+          <div className={styles.itemMeta}>
+            {new Date(item.createdAt).toLocaleString('ru-RU', {
+              day: 'numeric',
+              month: 'short',
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
           </div>
-        ) : (
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div className={styles.itemText}>{item.text}</div>
-            <div className={styles.itemMeta}>
-              {new Date(item.createdAt).toLocaleString('ru-RU', {
-                day: 'numeric',
-                month: 'short',
-                hour: '2-digit',
-                minute: '2-digit',
-              })}
-            </div>
-          </div>
-        )}
+        </div>
 
-        {/* Quick Actions (Without Trash Icon Button) */}
+        {/* Quick Actions */}
         <div className={styles.itemActions}>
           <button
+            type="button"
             className={styles.triageBtn}
-            onClick={() => handleTriage(item)}
+            onTouchStart={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            onTouchEnd={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleTriage(item);
+            }}
             title="Разобрать запись в Задачу"
           >
             ✔ Разобрать
@@ -288,15 +285,15 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => (editingId === item.id ? saveEdit(item.id) : startEdit(item))}
-            title="Редактировать"
-          >
-            ✎
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => togglePin(item.id)}
+            onTouchStart={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            onTouchEnd={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              setSwipeOffset(0);
+              togglePin(item.id);
+            }}
             title={item.isPinned ? 'Открепить' : 'Закрепить'}
             style={{ color: item.isPinned ? 'var(--color-accent)' : 'var(--color-text-muted)' }}
           >
