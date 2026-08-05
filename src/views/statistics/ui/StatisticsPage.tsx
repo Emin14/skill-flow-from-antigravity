@@ -171,6 +171,7 @@ const getDaily30Stats = (allTasks: Task[]): Record<string, DayFullStats> => {
       t.occurrences.forEach((occ) => {
         if (occ.date && occ.status === 'Done' && map[occ.date]) {
           map[occ.date].repeatsCount += 1;
+          map[occ.date].tasksDoneCount += 1;
           if (occ.pomodorosCount) {
             map[occ.date].pomodorosCount += occ.pomodorosCount;
           }
@@ -604,7 +605,7 @@ export const StatisticsPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Minimalist Filter Tabs (✓ Задачи / 🧠 Повторы / 🍅 Помидоры) */}
+        {/* Minimalist Filter Tabs (✓ Все / 🧠 Повторы / 🍅 Помидоры) */}
         <div style={{ display: 'flex', gap: '4px', width: '100%', alignItems: 'center' }}>
           <button
             onClick={() => setChartFilterMode('tasks')}
@@ -626,7 +627,7 @@ export const StatisticsPage: React.FC = () => {
               transition: 'all 0.2s ease',
             }}
           >
-            ✓ Задачи
+            ✓ Все
           </button>
 
           <button
@@ -676,7 +677,7 @@ export const StatisticsPage: React.FC = () => {
           </button>
         </div>
 
-        {/* Recharts Bar Container (No Y-Axis, Rounded Bars, Growth Animation, Prominent Today Highlight) */}
+        {/* Recharts Bar Container */}
         <div style={{ width: '100%', height: 220, marginTop: '4px' }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={dynamicChartData} margin={{ top: 40, right: 10, left: 10, bottom: 0 }}>
@@ -823,7 +824,7 @@ export const StatisticsPage: React.FC = () => {
               transition: 'all 0.2s ease',
             }}
           >
-            ✓ Задачи
+            ✓ Все
           </button>
 
           <button

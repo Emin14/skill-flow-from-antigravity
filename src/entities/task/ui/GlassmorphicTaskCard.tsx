@@ -457,6 +457,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                 className={styles.checkboxWrapper}
                 onClick={(e) => {
                   e.stopPropagation();
+                  e.preventDefault();
                   if (onToggleCheckbox) onToggleCheckbox();
                 }}
               >

@@ -266,6 +266,33 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
+        {/* Status Toggle for Non-Repeating Single Tasks */}
+        {!masterTask.isRepeating && (
+          <button
+            type="button"
+            onClick={() => toggleTaskStatus(masterTask.id)}
+            style={{
+              width: '100%',
+              padding: '10px',
+              borderRadius: '12px',
+              border: masterTask.status === 'Done' ? '1px solid var(--color-success-border)' : '1px solid var(--color-accent-border)',
+              backgroundColor: masterTask.status === 'Done' ? 'var(--color-success-light)' : 'var(--color-accent-light)',
+              color: masterTask.status === 'Done' ? 'var(--color-success)' : 'var(--color-accent-text)',
+              fontSize: '13px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              transition: 'all 0.2s ease',
+              marginTop: '6px',
+            }}
+          >
+            {masterTask.status === 'Done' ? '✅ Задача выполнена (Нажмите для отмены)' : '⭕ Отметить как выполненную'}
+          </button>
+        )}
+
         {/* Horizontal Divider Line */}
         <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '6px 0' }} />
 
