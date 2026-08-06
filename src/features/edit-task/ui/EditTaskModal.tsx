@@ -464,7 +464,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                     >
                       <option value="Active">🟢 Активно</option>
                       <option value="Paused">⏸️ На паузе</option>
-                      <option value="Completed">🏁 Завершено</option>
+                      <option value="Completed">✅ Завершено</option>
                     </select>
                   </div>
                 )}

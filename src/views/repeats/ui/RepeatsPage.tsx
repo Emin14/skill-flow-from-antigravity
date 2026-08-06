@@ -99,7 +99,7 @@ export const RepeatsPage: React.FC = () => {
               : repeatStatusFilter === 'Paused'
               ? '⏸️ Нет повторяющихся задач на паузе.'
               : repeatStatusFilter === 'Completed'
-              ? '🏁 Нет завершённых повторений.'
+              ? '✅ Нет завершённых повторений.'
               : '🌱 Повторяющиеся задачи отсутствуют.'}
           </Typography>
           <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>

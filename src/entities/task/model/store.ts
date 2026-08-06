@@ -772,7 +772,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       if (repeatStatus === 'Paused') {
         useToastStore.getState().showToast(`Повторение "${task.title}" приостановлено ⏸️`, 'info');
       } else if (repeatStatus === 'Completed') {
-        useToastStore.getState().showToast(`Повторение "${task.title}" завершено 🏁`, 'success');
+        useToastStore.getState().showToast(`Повторение "${task.title}" завершено ✅`, 'success');
       } else {
         useToastStore.getState().showToast(`Повторение "${task.title}" возобновлено ▶️`, 'success');
       }

@@ -275,7 +275,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                       transition: 'all 0.15s ease',
                     }}
                   >
-                    🏁
+                    ✅
                   </button>
                 )}
               </>
@@ -562,66 +562,57 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           );
         })()}
 
-        {/* Completion Progress Bar Widget */}
+        {/* Completion Progress Bar Widget (Variant with Striped Bars / Полоски) */}
         {masterTask.isRepeating && (
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: 'var(--space-2)',
+              gap: '8px',
               padding: '12px 14px',
-              borderRadius: '14px',
-              backgroundColor: 'rgba(16, 185, 129, 0.08)',
-              border: '1px solid rgba(16, 185, 129, 0.25)',
+              borderRadius: '16px',
+              backgroundColor: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--color-success)' }}>
+              <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
                 📊 {formatRepetitionText(currentCount)}
+              </span>
+              <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', padding: '2px 8px', borderRadius: '10px' }}>
+                {masterTask.targetRepetitions ? `${Math.min(100, Math.round((currentCount / masterTask.targetRepetitions) * 100))}%` : `${currentCount} повт.`}
               </span>
             </div>
 
             {(() => {
-              const activeCount = Math.max(currentCount, masterTask.occurrences?.length || 0);
-              const totalCircles = activeCount > 6 ? activeCount : 6;
-              const isScrollable = totalCircles > 6;
+              const targetCount = masterTask.targetRepetitions || 6;
+              const activeCount = Math.max(currentCount, masterTask.occurrences?.length || 0, targetCount);
+              const totalBars = activeCount > 10 ? activeCount : Math.max(targetCount, 6);
               return (
                 <div
                   style={{
                     display: 'flex',
-                    gap: '6px',
+                    gap: '4px',
                     width: '100%',
-                    overflowX: isScrollable ? 'auto' : 'hidden',
-                    paddingBottom: isScrollable ? '8px' : '0',
-                    scrollbarWidth: 'thin',
-                    WebkitOverflowScrolling: 'touch',
+                    marginTop: '2px',
                   }}
                 >
-                  {Array.from({ length: totalCircles }).map((_, index) => {
+                  {Array.from({ length: totalBars }).map((_, index) => {
                     const isFilled = index < currentCount;
                     return (
                       <div
                         key={index}
                         title={`Повторение ${index + 1}`}
                         style={{
-                          flex: isScrollable ? 'none' : 1,
-                          minWidth: isScrollable ? '34px' : undefined,
-                          height: '26px',
-                          borderRadius: '50%',
-                          flexShrink: isScrollable ? 0 : 1,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '11px',
-                          fontWeight: 700,
-                          backgroundColor: isFilled ? 'var(--color-success)' : 'var(--color-surface)',
-                          border: isFilled ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)',
-                          color: isFilled ? 'var(--color-accent-on-accent)' : 'var(--color-text-muted)',
-                          boxShadow: isFilled ? '0 0 8px var(--color-success-border)' : 'none',
+                          flex: 1,
+                          height: '8px',
+                          borderRadius: '4px',
+                          backgroundColor: isFilled ? 'var(--color-success)' : 'var(--color-surface-hover)',
+                          border: isFilled ? 'none' : '1px solid var(--color-border)',
+                          boxShadow: isFilled ? '0 2px 6px var(--color-success-border)' : 'none',
+                          transition: 'all 0.2s ease',
                         }}
-                      >
-                        {isFilled ? '✓' : index + 1}
-                      </div>
+                      />
                     );
                   })}
                 </div>
@@ -630,7 +621,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         )}
 
-        {/* Point 2: Collapsible Repetition History Accordion Widget */}
+        {/* Collapsible Repetition History Accordion Widget (Full Light & Dark Theme Support) */}
         {masterTask.isRepeating && (
           <div
             style={{
@@ -638,8 +629,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               flexDirection: 'column',
               gap: '10px',
               borderRadius: '16px',
-              background: 'rgba(30, 41, 59, 0.6)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              background: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
               padding: '12px 14px',
               width: '100%',
               boxSizing: 'border-box',
@@ -696,8 +687,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                           gap: '8px',
                           padding: '8px 10px',
                           borderRadius: '12px',
-                          background: isOccDone ? 'rgba(16, 185, 129, 0.08)' : 'rgba(255, 255, 255, 0.04)',
-                          border: isOccDone ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid rgba(255, 255, 255, 0.08)',
+                          background: isOccDone ? 'var(--color-success-light)' : 'var(--color-surface-hover)',
+                          border: isOccDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)',
                           fontSize: '12.5px',
                         }}
                       >
@@ -710,16 +701,16 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                               alignItems: 'center',
                               gap: '6px',
                               cursor: 'pointer',
-                              background: 'rgba(56, 189, 248, 0.12)',
-                              border: '1px solid rgba(56, 189, 248, 0.3)',
+                              background: 'var(--color-accent-light)',
+                              border: '1px solid var(--color-accent-border)',
                               borderRadius: '8px',
                               padding: '4px 8px',
-                              color: '#38bdf8',
+                              color: 'var(--color-accent-text)',
                               fontWeight: 700,
                               fontSize: '12px',
                             }}
                           >
-                            <Calendar size={13} color="#38bdf8" />
+                            <Calendar size={13} color="var(--color-accent-text)" />
                             <span>{formatDateDisplay(occ.date)}</span>
                             <input
                               type="date"
@@ -748,14 +739,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                             type="button"
                             onClick={() => toggleTaskStatus(masterTask.id, undefined, occ.date)}
                             style={{
-                              border: 'none',
                               borderRadius: '8px',
                               padding: '4px 8px',
                               fontSize: '11px',
                               fontWeight: 700,
                               cursor: 'pointer',
-                              background: isOccDone ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)',
-                              color: isOccDone ? '#10b981' : '#f59e0b',
+                              background: isOccDone ? 'var(--color-success-light)' : 'var(--color-warning-light)',
+                              border: isOccDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-warning-border)',
+                              color: isOccDone ? 'var(--color-success)' : 'var(--color-warning)',
                             }}
                           >
                             {isOccDone ? '✅ Выполнено' : '⏳ В ожидании'}
@@ -782,9 +773,9 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                               width: '28px',
                               height: '28px',
                               borderRadius: '6px',
-                              background: 'rgba(255, 255, 255, 0.08)',
-                              border: '1px solid rgba(255, 255, 255, 0.12)',
-                              color: '#38bdf8',
+                              background: 'var(--color-surface-hover)',
+                              border: '1px solid var(--color-border)',
+                              color: 'var(--color-accent-text)',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -798,19 +789,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                           <button
                             type="button"
                             onClick={() => deleteTaskOccurrence(masterTask.id, occ.date)}
-                            title={`Удалить этот экземпляр (${formatDateDisplay(occ.date)})`}
-                            style={{
-                              width: '28px',
-                              height: '28px',
-                              borderRadius: '6px',
-                              background: 'rgba(239, 68, 68, 0.15)',
-                              border: '1px solid rgba(239, 68, 68, 0.3)',
-                              color: '#ef4444',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              cursor: 'pointer',
-                            }}
                           >
                             <Trash2 size={13} />
                           </button>

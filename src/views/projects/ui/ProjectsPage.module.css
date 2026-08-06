@@ -8,10 +8,12 @@
   min-height: calc(100vh - 120px);
 }
 
+.projectList,
 .projectsList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  width: 100%;
 }
 
 /* Primary Clean Split-Column Project Card Container */
