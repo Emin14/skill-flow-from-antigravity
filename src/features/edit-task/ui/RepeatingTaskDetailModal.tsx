@@ -368,7 +368,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                   onClick={async () => {
                     setSelectedRating(rating.key as SmartRating);
                     await updateTaskDetails(masterTask.id, { lastSmartRating: rating.key as SmartRating });
-                    useToastStore.getState().showToast(`Сложность «${rating.title}» сохранена`, 'info');
                   }}
                   style={{
                     display: 'flex',

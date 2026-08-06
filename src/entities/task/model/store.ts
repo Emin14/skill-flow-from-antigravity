@@ -710,6 +710,22 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       updates.repetitionMode = 'none';
     }
 
+    if (updates.isRepeating && (!task.occurrences || task.occurrences.length === 0)) {
+      const today = getTodayStr();
+      const targetDate = updates.scheduledDate || task.scheduledDate || today;
+      updates.occurrences = normalizeOccurrences(
+        [
+          {
+            id: uuidv4(),
+            taskId: id,
+            date: targetDate,
+            status: 'Todo',
+          },
+        ],
+        id
+      );
+    }
+
     set((state) => ({
       tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
     }));
@@ -777,7 +793,18 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
     const currentOccs = task.occurrences || [];
     const remainingOccs = currentOccs.filter((o) => o.date !== dateStr);
+
+    if (remainingOccs.length === 0) {
+      await get().deleteTask(id, true);
+      return;
+    }
+
     const normOccs = normalizeOccurrences(remainingOccs, id);
+
+    if (normOccs.length === 0) {
+      await get().deleteTask(id, true);
+      return;
+    }
 
     const derivedDate = getDerivedScheduledDate({ ...task, occurrences: normOccs });
     const derivedDoneCount = getDerivedRepetitionsCount({ ...task, occurrences: normOccs });
@@ -793,7 +820,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }));
 
     await taskRepository.update(id, updates);
-    useToastStore.getState().showToast(`Повторение на ${dateStr} удалено`, 'info');
   },
 
   updateOccurrenceDate: async (id: string, currentDateStr: string, newDateStr: string) => {

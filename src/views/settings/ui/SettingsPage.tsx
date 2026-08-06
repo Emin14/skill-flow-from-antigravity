@@ -54,21 +54,18 @@ export const SettingsPage: React.FC = () => {
     setSelectedColor(hex);
     localStorage.setItem(STORAGE_KEYS.ACCENT_COLOR, hex);
     applyAccentColorVars(hex);
-    showToast('Основной цвет интерфейса обновлен!', 'success');
   };
 
   const handleBannerVariantChange = (varId: string) => {
     setBannerVariant(varId);
     localStorage.setItem(STORAGE_KEYS.HABIT_BANNER_VARIANT, varId);
     window.dispatchEvent(new Event('storage'));
-    showToast(`Стиль виджета прогресса дня изменен на Вариант ${varId}`, 'info');
   };
 
   const handleDaySwitcherVariantChange = (varId: string) => {
     setDaySwitcherVariant(varId);
     localStorage.setItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT, varId);
     window.dispatchEvent(new Event('storage'));
-    showToast(`Переключатель дней на странице «Сегодня» изменен`, 'info');
   };
 
   // Export JSON Backup
