@@ -7,8 +7,8 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
-import { ChevronDown, ChevronRight } from 'lucide-react';
-import { ProjectFilterTabsWidget, ProjectFilterType } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
+import { ChevronDown, ChevronRight, AlertTriangle, Lightbulb } from 'lucide-react';
+import { ProjectFilterTabsWidget, ProjectFilterType, SubtaskViewMode } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
 import { TimelineRepeatCard } from '@/views/repeats/ui/RepeatsPage';
 import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
 import { useToastStore } from '@/shared/ui/toast/toastStore';
@@ -16,12 +16,106 @@ import styles from './ProjectsPage.module.css';
 
 import { getCategoryColor } from '@/shared/config/categoryColors';
 
+const AccentRepeatingSubtaskCard: React.FC<{
+  task: Task;
+  onToggleCheckbox: () => void;
+  onDelete: () => void;
+  onClick: () => void;
+}> = ({ task, onToggleCheckbox, onDelete, onClick }) => {
+  const occurrences = task.occurrences || [];
+  const completedCount = occurrences.filter((o) => o.status === 'Done').length;
+  const isDone = task.status === 'Done';
+
+  const modeLabels: Record<string, string> = {
+    smart: '🧠 Умный адаптивный повтор',
+    spaced: '🧠 Интервальный повтор',
+    schedule: '📅 По расписанию',
+    after_completion: '⏱ Через N дней',
+  };
+  const modeLabel = modeLabels[task.repetitionMode || 'spaced'] || '🔄 Повторение';
+
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)',
+        border: '1px solid rgba(99, 102, 241, 0.3)',
+        borderRadius: '12px',
+        padding: '10px 12px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '10px',
+        cursor: 'pointer',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+        transition: 'all 0.15s ease',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleCheckbox();
+          }}
+          style={{
+            width: '20px',
+            height: '20px',
+            borderRadius: '6px',
+            border: isDone ? 'none' : '2px solid var(--color-accent)',
+            background: isDone ? 'var(--color-accent)' : 'transparent',
+            color: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            flexShrink: 0,
+            fontSize: '12px',
+          }}
+        >
+          {isDone && '✓'}
+        </button>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--color-text-primary)', textDecoration: isDone ? 'line-through' : 'none', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {task.title}
+            </span>
+            <span style={{ fontSize: '10px', fontWeight: 800, padding: '2px 6px', borderRadius: '6px', background: 'rgba(99, 102, 241, 0.2)', color: '#818cf8', flexShrink: 0 }}>
+              🔄 Повтор
+            </span>
+          </div>
+
+          <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 500 }}>
+            {modeLabel}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+        <span style={{ fontSize: '11px', fontWeight: 700, padding: '3px 8px', borderRadius: '8px', background: 'var(--color-surface-hover)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
+          {completedCount} повторов
+        </span>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
+          style={{ background: 'transparent', border: 'none', color: 'var(--color-text-muted)', cursor: 'pointer', fontSize: '13px' }}
+        >
+          🗑️
+        </button>
+      </div>
+    </div>
+  );
+};
+
 export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
+  const [subtaskViewMode, setSubtaskViewMode] = useState<SubtaskViewMode>('standard');
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
-  const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
-
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
 
@@ -29,7 +123,16 @@ export const ProjectsPage: React.FC = () => {
 
   useEffect(() => {
     fetchTasks();
+    const savedMode = localStorage.getItem('subtaskViewMode') as SubtaskViewMode;
+    if (savedMode && ['standard', 'accent_card', 'timeline'].includes(savedMode)) {
+      setSubtaskViewMode(savedMode);
+    }
   }, [fetchTasks]);
+
+  const handleSelectSubtaskViewMode = (mode: SubtaskViewMode) => {
+    setSubtaskViewMode(mode);
+    localStorage.setItem('subtaskViewMode', mode);
+  };
 
   useEffect(() => {
     registerPointerDropHandler((draggedTaskId, target) => {
@@ -99,25 +202,10 @@ export const ProjectsPage: React.FC = () => {
     });
   }, [projectTasks, tasks, activeFilter, todayStr]);
 
-  const handleDragOver = (e: React.DragEvent, projectId: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.dataTransfer.dropEffect = 'move';
-    setDragOverProjectId(projectId);
-  };
-
-  const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragOverProjectId(null);
-  };
-
   const handleDrop = async (e: React.DragEvent, targetProjectId: string) => {
     e.preventDefault();
     e.stopPropagation();
-    setDragOverProjectId(null);
     const draggedTaskId =
-      e.dataTransfer.getData('text/plain') ||
       e.dataTransfer.getData('taskId') ||
       (typeof window !== 'undefined' ? window.__draggedTaskId : null);
     if (draggedTaskId && draggedTaskId !== targetProjectId) {
@@ -128,6 +216,17 @@ export const ProjectsPage: React.FC = () => {
         return next;
       });
     }
+  };
+
+  const handleDragOver = (e: React.DragEvent, targetProjectId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = 'move';
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
   };
 
   const handleDropOnTask = async (draggedTaskId: string, targetTask: Task) => {
@@ -151,6 +250,8 @@ export const ProjectsPage: React.FC = () => {
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
         onSelectFilter={setActiveFilter}
+        subtaskViewMode={subtaskViewMode}
+        onSelectSubtaskViewMode={handleSelectSubtaskViewMode}
       />
 
       {/* Projects List */}
@@ -179,24 +280,22 @@ export const ProjectsPage: React.FC = () => {
                   targetRepetitions: 8,
                   repetitionsCount: 0,
                   repetitionHistory: [],
-                  pomodorosCount: 1,
+                  occurrences: [],
                 })}
               >
                 + Создать крупную задачу
               </Button>
             </>
           ) : (
-            <div style={{ color: 'var(--color-text-muted)' }}>
-              📁 Нет крупных задач в этой категории ({activeFilter === 'active' ? 'Активные' : activeFilter === 'completed' ? 'Завершенные' : 'Просроченные'}).
-            </div>
+            <div>Нет крупных задач по выбранному фильтру.</div>
           )}
         </div>
       ) : (
-        <div className={styles.projectsList}>
+        <div className={styles.projectList}>
           {filteredProjects.map((project) => {
-            const isOpen = openProjectIds.has(project.id);
-            const isDragOver = dragOverProjectId === project.id;
             const catColor = getCategoryColor(project.category);
+            const isOpen = openProjectIds.has(project.id);
+            const isDragOver = false;
 
             // Subtasks sorted by nearest scheduled date ascending
             const descendants = getAllDescendantTasks(project.id, tasks);
@@ -212,11 +311,20 @@ export const ProjectsPage: React.FC = () => {
             const progressPercent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
 
             // Subtask Date > Project Date Warning Detection
+            // FIX Issue 1: Exclude auto-advancing future repeating occurrences from pushing latestSubtaskDate infinitely into future!
             const subtaskDates = descendants
-              .map((t) => t.scheduledDate)
+              .map((t) => {
+                if (t.isRepeating) {
+                  const occs = t.occurrences || [];
+                  const activeOcc = occs.find((o) => o.status === 'Todo');
+                  return activeOcc ? activeOcc.date : t.scheduledDate;
+                }
+                return t.scheduledDate;
+              })
               .filter((d): d is string => !!d && d.includes('-'));
             subtaskDates.sort();
             const latestSubtaskDate = subtaskDates.length > 0 ? subtaskDates[subtaskDates.length - 1] : null;
+
             const hasDateMismatch = !!(
               project.scheduledDate &&
               latestSubtaskDate &&
@@ -236,6 +344,7 @@ export const ProjectsPage: React.FC = () => {
                 hasDateMismatch={hasDateMismatch}
                 latestSubtaskDate={latestSubtaskDate}
                 sortedSubtasks={sortedSubtasks}
+                subtaskViewMode={subtaskViewMode}
                 tasks={tasks}
                 openProjectIds={openProjectIds}
                 todayStr={todayStr}
@@ -287,11 +396,12 @@ interface ProjectCardRendererProps {
   hasDateMismatch: boolean;
   latestSubtaskDate: string | null;
   sortedSubtasks: Task[];
+  subtaskViewMode: SubtaskViewMode;
   tasks: Task[];
   openProjectIds: Set<string>;
   todayStr: string;
   toggleProjectOpen: (id: string) => void;
-  onEdit: (task: Task) => void;
+  onEdit: (t: Task) => void;
   onDragOver: (e: React.DragEvent) => void;
   onDragLeave: (e: React.DragEvent) => void;
   onDrop: (e: React.DragEvent) => void;
@@ -313,6 +423,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   hasDateMismatch,
   latestSubtaskDate,
   sortedSubtasks,
+  subtaskViewMode,
   tasks,
   openProjectIds,
   todayStr,
@@ -327,27 +438,30 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   onDeleteSubtask,
   onSelectSubtask,
 }) => {
-  const renderCircleRing = (size = 36, strokeWidth = 3) => {
-    const radius = (size - strokeWidth * 2) / 2;
-    const circumference = 2 * Math.PI * radius;
+  const radius = (36 - 3) / 2;
+  const circumference = 2 * Math.PI * radius;
+
+  const renderCircleRing = (size: number = 36, strokeWidth: number = 3) => {
+    const r = (size - strokeWidth) / 2;
+    const c = 2 * Math.PI * r;
     return (
       <div style={{ position: 'relative', width: `${size}px`, height: `${size}px`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="var(--color-border)" strokeWidth={strokeWidth} />
+          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--color-border)" strokeWidth={strokeWidth} />
           <circle
             cx={size / 2}
             cy={size / 2}
-            r={radius}
+            r={r}
             fill="none"
             stroke="#10b981"
             strokeWidth={strokeWidth}
-            strokeDasharray={circumference}
-            strokeDashoffset={circumference - (circumference * progressPercent) / 100}
+            strokeDasharray={c}
+            strokeDashoffset={c - (c * progressPercent) / 100}
             strokeLinecap="round"
             transform={`rotate(-90 ${size / 2} ${size / 2})`}
           />
         </svg>
-        <span style={{ position: 'absolute', fontSize: size >= 36 ? '10px' : '9px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
+        <span style={{ position: 'absolute', fontSize: '10px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
           {progressPercent}%
         </span>
       </div>
@@ -361,13 +475,14 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         e.stopPropagation();
         onEdit(project);
       }}
+      title="Редактировать проект"
       style={{
         background: 'var(--color-surface-hover)',
         border: '1px solid var(--color-border)',
-        borderRadius: '7px',
+        borderRadius: '8px',
         color: 'var(--color-text-primary)',
-        width: '26px',
-        height: '26px',
+        width: '28px',
+        height: '28px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -380,24 +495,28 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
     </button>
   );
 
-  const chevronBtn = isOpen ? (
-    <ChevronDown size={18} color="var(--color-accent-text)" style={{ flexShrink: 0 }} />
-  ) : (
-    <ChevronRight size={18} color="var(--color-accent-text)" style={{ flexShrink: 0 }} />
+  const chevronBtn = (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', flexShrink: 0 }}>
+      {isOpen ? <ChevronDown size={20} color="var(--color-text-muted)" /> : <ChevronRight size={20} color="var(--color-text-muted)" />}
+    </div>
   );
 
   return (
     <div
       data-project-id={project.id}
-      className={`${styles.projectCardBase} ${isDragOver ? styles.projectCardDragOver : ''}`}
+      className={`${styles.projectCardBase} ${isDragOver ? styles.dragOver : ''}`}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
     >
-      {/* Clean 60/40 Split Column Header */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', cursor: 'pointer' }} onClick={() => toggleProjectOpen(project.id)}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', width: '55%' }}>
-          <span style={{ fontSize: '11px', color: catColor, fontWeight: 700 }}>● {project.category || 'Крупная задача'}</span>
+      {/* Project Card Header */}
+      <div
+        className={styles.headerRow}
+        onClick={() => toggleProjectOpen(project.id)}
+        style={{ cursor: 'pointer' }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '60%', minWidth: 0 }}>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: catColor, flexShrink: 0 }} />
           <h2 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {project.title}
           </h2>
@@ -434,6 +553,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
             <RecursiveSubtaskList
               parentId={project.id}
               tasks={tasks}
+              subtaskViewMode={subtaskViewMode}
               openProjectIds={openProjectIds}
               toggleProjectOpen={toggleProjectOpen}
               onEdit={onEdit}
@@ -450,9 +570,60 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   );
 };
 
+const DateWarningBanner: React.FC<{
+  projectDate: string;
+  subtaskDate: string;
+  onFixDate: () => void;
+}> = ({ projectDate, subtaskDate, onFixDate }) => {
+  return (
+    <div
+      style={{
+        margin: '8px 12px 4px 12px',
+        padding: '10px 14px',
+        borderRadius: '12px',
+        background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%)',
+        border: '1px solid rgba(245, 158, 11, 0.3)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '12px',
+        boxSizing: 'border-box',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
+        <Lightbulb size={16} color="#f59e0b" style={{ flexShrink: 0 }} />
+        <span style={{ fontSize: '11.5px', color: 'var(--color-text-primary)', fontWeight: 600, lineHeight: 1.3 }}>
+          Проект: <strong style={{ color: '#f59e0b' }}>{formatDateDisplay(projectDate)}</strong> • Крайняя задача: <strong style={{ color: '#38bdf8' }}>{formatDateDisplay(subtaskDate)}</strong>
+        </span>
+      </div>
+
+      <button
+        type="button"
+        onClick={onFixDate}
+        style={{
+          background: 'linear-gradient(135deg, #d97706, #f59e0b)',
+          border: 'none',
+          borderRadius: '8px',
+          color: '#ffffff',
+          fontWeight: 700,
+          fontSize: '11.5px',
+          padding: '6px 12px',
+          cursor: 'pointer',
+          whiteSpace: 'nowrap',
+          boxShadow: '0 2px 6px rgba(217, 119, 6, 0.3)',
+          flexShrink: 0,
+        }}
+      >
+        Продлить проект
+      </button>
+    </div>
+  );
+};
+
 const RecursiveSubtaskList: React.FC<{
   parentId: string;
   tasks: Task[];
+  subtaskViewMode: SubtaskViewMode;
   openProjectIds: Set<string>;
   toggleProjectOpen: (id: string) => void;
   onEdit: (t: Task) => void;
@@ -465,6 +636,7 @@ const RecursiveSubtaskList: React.FC<{
 }> = ({
   parentId,
   tasks,
+  subtaskViewMode,
   openProjectIds,
   toggleProjectOpen,
   onEdit,
@@ -502,7 +674,6 @@ const RecursiveSubtaskList: React.FC<{
           const subDone = subDescendants.filter((t) => t.status === 'Done').length;
           const subTotal = subDescendants.length;
           const subPercent = subTotal > 0 ? Math.round((subDone / subTotal) * 100) : 0;
-          const subCatColor = getCategoryColor(child.category);
 
           const radius = (32 - 5) / 2;
           const circumference = 2 * Math.PI * radius;
@@ -520,34 +691,25 @@ const RecursiveSubtaskList: React.FC<{
                 e.stopPropagation();
                 e.dataTransfer.dropEffect = 'move';
               }}
-              onDrop={async (e) => {
+              onDrop={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const draggedId =
-                  e.dataTransfer.getData('text/plain') ||
-                  e.dataTransfer.getData('taskId') ||
-                  (typeof window !== 'undefined' ? window.__draggedTaskId : null);
+                const draggedId = e.dataTransfer.getData('taskId') || (window as any).__draggedTaskId;
                 if (draggedId && draggedId !== child.id) {
-                  await onDropOnTask(draggedId, child);
+                  useTaskStore.getState().updateTaskParent(draggedId, child.id);
+                  toggleProjectOpen(child.id);
                 }
               }}
             >
-              {/* Clean 60/40 Split Column Header for Nested Sub-Projects */}
               <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  cursor: 'pointer',
-                  width: '100%',
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleProjectOpen(child.id);
-                }}
+                className={styles.headerRow}
+                onClick={() => toggleProjectOpen(child.id)}
+                style={{ cursor: 'pointer', padding: '10px 12px' }}
               >
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', width: '55%' }}>
-                  <span style={{ fontSize: '10.5px', color: subCatColor, fontWeight: 700 }}>● {child.category || 'Подпроект'}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '60%', minWidth: 0 }}>
+                  <span style={{ fontSize: '11px', fontWeight: 800, color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', padding: '1px 6px', borderRadius: '4px' }}>
+                    📁 Проект
+                  </span>
                   <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {child.title}
                   </span>
@@ -613,6 +775,7 @@ const RecursiveSubtaskList: React.FC<{
                   <RecursiveSubtaskList
                     parentId={child.id}
                     tasks={tasks}
+                    subtaskViewMode={subtaskViewMode}
                     openProjectIds={openProjectIds}
                     toggleProjectOpen={toggleProjectOpen}
                     onEdit={onEdit}
@@ -629,15 +792,31 @@ const RecursiveSubtaskList: React.FC<{
           );
         }
 
+        // RENDER REPEATING SUBTASK ACCORDING TO USER SELECTED VIEW MODE
         if (child.isRepeating) {
-          return (
-            <TimelineRepeatCard
-              key={child.id}
-              task={child}
-              allTasks={tasks}
-              onClick={() => onSelectSubtask(child)}
-            />
-          );
+          if (subtaskViewMode === 'timeline') {
+            return (
+              <TimelineRepeatCard
+                key={child.id}
+                task={child}
+                allTasks={tasks}
+                onClick={() => onSelectSubtask(child)}
+              />
+            );
+          }
+
+          if (subtaskViewMode === 'accent_card') {
+            return (
+              <AccentRepeatingSubtaskCard
+                key={child.id}
+                task={child}
+                onToggleCheckbox={() => onToggleSubtask(child)}
+                onDelete={() => onDeleteSubtask(child)}
+                onClick={() => onSelectSubtask(child)}
+              />
+            );
+          }
+          // Default / 'standard': Standard compact task card (like standard subtask)
         }
 
         return (
@@ -656,59 +835,6 @@ const RecursiveSubtaskList: React.FC<{
           />
         );
       })}
-    </div>
-  );
-};
-
-const DateWarningBanner: React.FC<{
-  projectDate: string;
-  subtaskDate: string;
-  onFixDate: () => void;
-}> = ({ projectDate, subtaskDate, onFixDate }) => {
-  const pDateStr = formatDateDisplay(projectDate);
-  const sDateStr = formatDateDisplay(subtaskDate);
-
-  return (
-    <div
-      style={{
-        margin: '8px 12px 0 12px',
-        padding: '10px 14px',
-        borderRadius: '14px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: '10px',
-        flexWrap: 'wrap',
-        background: 'rgba(30, 41, 59, 0.55)',
-        backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(251, 191, 36, 0.35)',
-        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
-      }}
-    >
-      <div style={{ fontSize: '12.5px', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '8px', minWidth: '180px', flex: 1 }}>
-        <span style={{ fontSize: '16px', flexShrink: 0 }}>💡</span>
-        <span>
-          Проект: <strong style={{ color: '#fbbf24' }}>{pDateStr}</strong> • Крайняя задача: <strong style={{ color: '#38bdf8' }}>{sDateStr}</strong>
-        </span>
-      </div>
-      <button
-        type="button"
-        onClick={onFixDate}
-        style={{
-          background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-          border: 'none',
-          color: '#fff',
-          borderRadius: '8px',
-          padding: '6px 14px',
-          fontSize: '11.5px',
-          fontWeight: 700,
-          cursor: 'pointer',
-          whiteSpace: 'nowrap',
-          boxShadow: '0 2px 8px rgba(245, 158, 11, 0.3)',
-        }}
-      >
-        Продлить проект
-      </button>
     </div>
   );
 };
