@@ -170,7 +170,7 @@ const getRepeatTypeLabel = (task: Task): string => {
     case 'smart':
       return '🧠 Умный адаптивный повтор';
     case 'spaced':
-      return '🧠 Интервальный повтор';
+      return '📐 Интервальный повтор';
     case 'schedule': {
       const freqMap: Record<string, string> = {
         daily: 'Каждый день',
@@ -178,7 +178,7 @@ const getRepeatTypeLabel = (task: Task): string => {
         monthly: 'Каждый месяц',
         yearly: 'Каждый год',
       };
-      const freq = freqMap[task.scheduleFrequency || ''] || 'По расписанию';
+      const freq = freqMap[task.scheduleFrequency || 'daily'] || 'По расписанию';
       return `📅 ${freq}`;
     }
     case 'after_completion':
@@ -202,29 +202,31 @@ export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onCli
   const isOverdue = nextDateRaw ? nextDateRaw < todayStr : false;
 
   const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
-  const freqStr = String(task.scheduleFrequency || mode);
 
-  // Point 3 & Point 4: Start at 0, and show exact intervals (30-31 days for month, 365 for year, 7 for week)
   const defaultLabels = useMemo(() => {
-    if (freqStr === 'monthly' || freqStr === 'month' || mode === 'schedule') {
-      return ['0', '~30д', '~60д', '~90д', '~120д', '~150д'];
-    }
-    if (freqStr === 'yearly' || freqStr === 'year') {
-      return ['0', '365д', '730д', '1095д', '1460д', '1825д'];
-    }
-    if (freqStr === 'weekly' || freqStr === 'week') {
-      return ['0', '7д', '14д', '21д', '28д', '35д'];
-    }
-    if (freqStr === 'daily' || freqStr === 'day') {
-      return ['0', '1д', '2д', '3д', '4д', '5д'];
-    }
     if (mode === 'after_completion') {
       const days = task.afterCompletionDays || 3;
-      return ['0', ...[1, 2, 3, 4, 5].map((n) => `${n * days}д`)];
+      return ['0', ...Array.from({ length: 15 }, (_, i) => `${(i + 1) * days}д`)];
     }
-    // Spaced repetition interval labels (starts at 0)
-    return ['0', '1д', '3д', '7д', '14д', '30д'];
-  }, [mode, freqStr, task.afterCompletionDays]);
+    if (mode === 'schedule') {
+      const freq = task.scheduleFrequency || 'daily';
+      if (freq === 'daily') {
+        return ['0', ...Array.from({ length: 15 }, (_, i) => `${i + 1}д`)];
+      }
+      if (freq === 'weekly') {
+        return ['0', ...Array.from({ length: 15 }, (_, i) => `${(i + 1) * 7}д`)];
+      }
+      if (freq === 'yearly') {
+        return ['0', ...Array.from({ length: 15 }, (_, i) => `${(i + 1) * 365}д`)];
+      }
+      // Monthly schedule fallback
+      return ['0', ...Array.from({ length: 15 }, (_, i) => `~${(i + 1) * 30}д`)];
+    }
+    if (mode === 'spaced' || mode === 'smart') {
+      return ['0', '1д', '3д', '7д', '14д', '30д', '90д', '120д', '150д', '180д', '210д', '240д'];
+    }
+    return ['0', '1д', '2д', '3д', '4д', '5д', '6д', '7д', '8д', '9д'];
+  }, [mode, task.scheduleFrequency, task.afterCompletionDays]);
 
   const totalSteps = useMemo(() => {
     const activeCount = Math.max(completedCount + 1, occurrences.length);

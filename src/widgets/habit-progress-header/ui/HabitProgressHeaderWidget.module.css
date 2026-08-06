@@ -123,31 +123,31 @@
 }
 
 .sortBtnActive {
-  background: var(--color-accent) !important;
+  background: var(--color-accent-light) !important;
   border-color: var(--color-accent) !important;
-  color: var(--color-accent-text, #ffffff) !important;
+  color: var(--color-accent-text) !important;
   font-weight: 700 !important;
   box-shadow: 0 2px 8px var(--color-accent-light) !important;
 }
 
 .sortBtnActive span {
-  color: var(--color-accent-text, #ffffff) !important;
+  color: var(--color-accent-text) !important;
 }
 
 :global([data-theme="light"]) .sortBtn {
   background: rgba(0, 0, 0, 0.04);
   border-color: rgba(0, 0, 0, 0.08);
-  color: #475569;
+  color: #334155;
 }
 
 :global([data-theme="light"]) .sortBtnActive {
-  background: var(--color-accent) !important;
+  background: var(--color-accent-light) !important;
   border-color: var(--color-accent) !important;
-  color: var(--color-accent-text, #ffffff) !important;
+  color: var(--color-accent-text) !important;
   font-weight: 800 !important;
   box-shadow: 0 2px 8px var(--color-accent-light) !important;
 }
 
 :global([data-theme="light"]) .sortBtnActive span {
-  color: var(--color-accent-text, #ffffff) !important;
+  color: var(--color-accent-text) !important;
 }

@@ -23,8 +23,11 @@ export const HabitProgressBanner: React.FC = () => {
     return () => window.removeEventListener('storage', loadVariant);
   }, []);
 
-  // Strictly filter ALL tasks for TODAY (both regular and repeating)
+  // Strictly filter ALL tasks for TODAY (both regular and repeating, excluding parent container tasks)
   const todayTasks = tasks.filter((t) => {
+    const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
+    if (t.hasSubtasks || hasChildren) return false;
+
     if (t.isRepeating) {
       return t.occurrences?.some((o) => o.date === todayStr) || (t.scheduledDate && t.scheduledDate === todayStr);
     }
