@@ -60,6 +60,7 @@
 
 /* Glassmorphic Card Pill Body */
 .cardPill {
+  font-family: var(--task-card-font-family, inherit);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,6 +115,7 @@
 }
 
 .taskTitle {
+  font-family: var(--task-card-font-family, inherit);
   font-size: 16px;
   font-weight: 600;
   color: var(--color-text-primary);

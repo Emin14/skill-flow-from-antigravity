@@ -317,8 +317,8 @@ export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onCli
 
       {/* Timeline Track */}
       <div className={styles.timelineTrackContainer} style={{ overflowX: steps.length > 6 ? 'auto' : 'hidden' }}>
-        {/* Repeat Type Label where red cross mark was placed */}
-        <div style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', marginBottom: '8px', fontWeight: 600 }}>
+        {/* Repeat Type Label */}
+        <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '4px', fontWeight: 600 }}>
           {getRepeatTypeLabel(task)}
         </div>
 

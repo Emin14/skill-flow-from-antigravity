@@ -55,20 +55,23 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       />
       <div
         style={{
-          width: '18px',
-          height: '18px',
-          borderRadius: 'var(--radius-sm)',
-          border: checked ? 'none' : '1px solid var(--color-text-muted)',
+          width: '20px',
+          height: '20px',
+          aspectRatio: '1 / 1',
+          boxSizing: 'border-box',
+          flexShrink: 0,
+          borderRadius: '50%',
+          border: checked ? '1.5px solid var(--color-accent)' : '1.5px solid var(--color-text-muted)',
           backgroundColor: checked ? 'var(--color-accent)' : 'transparent',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          transition: 'all var(--transition-fast)',
+          transition: 'all 0.15s ease',
         }}
       >
         {checked && (
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 5L4.5 8.5L11 1.5" stroke="var(--color-accent-on-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <svg width="11" height="9" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 5L4.5 8L10.5 2" stroke="var(--color-accent-on-accent, #ffffff)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         )}
       </div>

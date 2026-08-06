@@ -688,8 +688,10 @@ const CheckButton: React.FC<{ isDone: boolean; onToggle: () => void }> = ({ isDo
     style={{
       width: '20px',
       height: '20px',
-      borderRadius: '6px',
-      border: isDone ? 'none' : '2px solid var(--color-accent)',
+      aspectRatio: '1 / 1',
+      boxSizing: 'border-box',
+      borderRadius: '50%',
+      border: isDone ? '1.5px solid var(--color-accent)' : '1.5px solid var(--color-accent)',
       background: isDone ? 'var(--color-accent)' : 'transparent',
       color: '#ffffff',
       display: 'flex',
@@ -697,7 +699,8 @@ const CheckButton: React.FC<{ isDone: boolean; onToggle: () => void }> = ({ isDo
       justifyContent: 'center',
       cursor: 'pointer',
       flexShrink: 0,
-      fontSize: '12px',
+      fontSize: '11px',
+      lineHeight: 1,
     }}
   >
     {isDone && '✓'}

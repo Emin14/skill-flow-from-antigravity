@@ -7,6 +7,7 @@ import { APP_THEME_PRESETS } from '@/shared/config/appThemes';
 import { useThemeStore } from '@/shared/model/useThemeStore';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { applyAccentColorVars } from '@/shared/lib/colorUtils';
+import { TASK_CARD_FONTS, applyTaskCardFont } from '@/shared/config/cardFonts';
 
 import { LiveTodayPreviewWidget } from './LiveTodayPreviewWidget';
 import { ThemeArchitectureSelector } from './ThemeArchitectureSelector';
@@ -33,16 +34,25 @@ export const SettingsPage: React.FC = () => {
   const [firstDayOfWeek, setFirstDayOfWeek] = useState<'Monday' | 'Sunday'>('Monday');
   const [dateFormat, setDateFormat] = useState<'DD.MM.YYYY' | 'YYYY-MM-DD'>('DD.MM.YYYY');
 
+  const [cardFontId, setCardFontId] = useState('system_ios');
+
   useEffect(() => {
     const savedColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
     const savedBannerVar = localStorage.getItem(STORAGE_KEYS.HABIT_BANNER_VARIANT) || '1';
     const savedDaySwitcherVar = localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12';
+    const savedCardFont = localStorage.getItem('user-card-font-id') || 'system_ios';
 
     setSelectedColor(savedColor);
     applyAccentColorVars(savedColor);
     setBannerVariant(savedBannerVar);
     setDaySwitcherVariant(savedDaySwitcherVar);
+    setCardFontId(savedCardFont);
   }, []);
+
+  const handleCardFontChange = (fontId: string) => {
+    setCardFontId(fontId);
+    applyTaskCardFont(fontId);
+  };
 
   const handleThemeChange = (newTheme: 'dark' | 'light') => {
     setStoreTheme(newTheme);

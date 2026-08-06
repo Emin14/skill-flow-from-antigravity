@@ -4,6 +4,7 @@ import { create } from 'zustand';
 import { APP_THEME_PRESETS, applyAppThemePreset } from '@/shared/config/appThemes';
 import { applyAccentColorVars } from '@/shared/lib/colorUtils';
 import { applyTaskCardStyle } from '@/shared/config/cardStyles';
+import { applyTaskCardFont } from '@/shared/config/cardFonts';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 
 type Theme = 'dark' | 'light';
@@ -29,6 +30,7 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       const savedDarkPreset = localStorage.getItem('app-dark-preset-id') || 'dark_today';
       const savedAccentColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
       const savedCardStyleId = localStorage.getItem('user-card-style-id');
+      const savedCardFontId = localStorage.getItem('user-card-font-id');
 
       set({
         theme: savedTheme,
@@ -44,6 +46,10 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
         applyTaskCardStyle(savedCardStyleId);
       } else {
         applyTaskCardStyle(null);
+      }
+
+      if (savedCardFontId) {
+        applyTaskCardFont(savedCardFontId);
       }
     }
   },

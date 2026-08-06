@@ -15,7 +15,7 @@
 .repeatCard {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-2);
   padding: 16px 18px;
   border-radius: 18px;
   background-color: var(--color-surface);
@@ -46,7 +46,7 @@
 }
 
 .taskTitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-text-primary);
   white-space: nowrap;
@@ -58,7 +58,7 @@
 
 /* Constant Date Badge Styling - Clean Text without Pill Background */
 .statusBadgeNext {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 500;
   padding: 0;
   border-radius: 0;
@@ -81,7 +81,7 @@
   justify-content: space-between;
   gap: 10px;
   width: 100%;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-muted);
 }
 
@@ -99,25 +99,25 @@
 }
 
 .categoryText {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
 }
 
 .repetitionCounter {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-muted);
 }
 
 .repetitionNum {
   color: var(--color-success);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .timelineTrackContainer {
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 6px;
   border-radius: 14px;
   background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
@@ -153,7 +153,7 @@
 }
 
 .stepLabel {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--color-text-muted);
   margin-bottom: 8px;
@@ -324,7 +324,7 @@
 }
 
 .subLabel {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-muted);
   margin-top: 6px;
   min-height: 14px;
