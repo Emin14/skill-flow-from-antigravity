@@ -391,12 +391,32 @@ export const StatisticsPage: React.FC = () => {
         let mCreated = 0;
 
         tasks.forEach((t) => {
-          if (t.status === 'Done' && t.completedAt) {
-            const cd = new Date(t.completedAt);
-            if (cd.getMonth() === d.getMonth() && cd.getFullYear() === d.getFullYear()) {
-              mDone++;
-              if (t.pomodorosCount) mPoms += t.pomodorosCount;
+          if (t.createdAt) {
+            const crd = new Date(t.createdAt);
+            if (crd.getMonth() === d.getMonth() && crd.getFullYear() === d.getFullYear()) {
+              mCreated++;
             }
+          }
+
+          if (!t.isRepeating) {
+            if (t.status === 'Done' && t.completedAt) {
+              const cd = new Date(t.completedAt);
+              if (cd.getMonth() === d.getMonth() && cd.getFullYear() === d.getFullYear()) {
+                mDone++;
+                if (t.pomodorosCount) mPoms += t.pomodorosCount;
+              }
+            }
+          } else if (t.occurrences && t.occurrences.length > 0) {
+            t.occurrences.forEach((occ) => {
+              if (occ.status === 'Done' && occ.date && occ.date.includes('-')) {
+                const parts = occ.date.split('-').map(Number);
+                if (parts.length === 3 && parts[1] - 1 === d.getMonth() && parts[0] === d.getFullYear()) {
+                  mRepeats++;
+                  mDone++;
+                  if (occ.pomodorosCount) mPoms += occ.pomodorosCount;
+                }
+              }
+            });
           }
         });
 

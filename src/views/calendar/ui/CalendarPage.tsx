@@ -225,7 +225,11 @@ export const CalendarPage: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* 1. Monthly Calendar Widget (Material 3 Tonal Grid - Size #6 Winning Concept) */}
       <MonthCalendarWidget
         currentMonthDate={currentMonthDate}

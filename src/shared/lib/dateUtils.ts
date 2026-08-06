@@ -89,5 +89,5 @@ export const isSmartRepeatTask = (task: {
 }): boolean => {
   const mode = task.repetitionMode;
   const type = task.repeatConfig?.repeatType;
-  return mode === 'smart' || mode === 'spaced' || type === 'smart' || type === 'spaced' || (!!task.isRepeating && (!mode || mode === 'smart' || mode === 'spaced'));
+  return mode === 'smart' || type === 'smart';
 };

@@ -190,11 +190,8 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     const currentX = e.targetTouches[0].clientX;
     const diff = currentX - touchStartX; // positive = swipe right, negative = swipe left
 
-    if (diff > 0 && diff <= 100) {
-      setSwipeOffset(diff);
-    } else if (diff < 0 && diff >= -100) {
-      setSwipeOffset(diff);
-    }
+    const clamped = Math.max(-100, Math.min(100, diff));
+    setSwipeOffset(clamped);
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
