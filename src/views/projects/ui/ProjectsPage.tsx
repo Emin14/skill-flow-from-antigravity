@@ -19,7 +19,7 @@ import { getCategoryColor } from '@/shared/config/categoryColors';
 export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskParent, updateTaskDetails, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
-  const [subtaskVariantId, setSubtaskVariantId] = useState<SubtaskVariantId>(1);
+  const [subtaskVariantId, setSubtaskVariantId] = useState<SubtaskVariantId>(18);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
@@ -152,57 +152,31 @@ export const ProjectsPage: React.FC = () => {
     });
   };
 
+  const handleExtendProjectDate = (project: Task, latestSubtaskDate: string | null) => {
+    if (!latestSubtaskDate) return;
+    let targetDate = latestSubtaskDate;
+    if (project.scheduledDate && targetDate <= project.scheduledDate) {
+      const parts = project.scheduledDate.split('-').map(Number);
+      const d = new Date(parts[0], parts[1] - 1, parts[2] + 30);
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      targetDate = `${year}-${month}-${day}`;
+    }
+
+    updateTaskDetails(project.id, {
+      scheduledDate: targetDate,
+    });
+    useToastStore.getState().showToast(`Срок проекта "${project.title}" продлён до ${formatDateDisplay(targetDate)} 📅`, 'success');
+  };
+
   return (
     <div className={styles.container}>
-      {/* 1. Original Filter Tabs Widget (Restored to Exact Original State) */}
+      {/* 1. Original Filter Tabs Widget */}
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
         onSelectFilter={setActiveFilter}
       />
-
-      {/* 2. Subtask Repeating View Variant Switcher Bar (20 Options) */}
-      <div
-        style={{
-          background: 'var(--color-surface)',
-          border: '1px solid var(--color-border)',
-          borderRadius: '12px',
-          padding: '8px 12px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '10px',
-          marginTop: '-4px',
-          marginBottom: '4px',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', fontWeight: 700, color: 'var(--color-text-secondary)' }}>
-          <Sparkles size={14} color="var(--color-accent-text)" />
-          <span>Вид повторяющихся подзадач:</span>
-        </div>
-
-        <select
-          value={subtaskVariantId}
-          onChange={(e) => handleSelectVariant(parseInt(e.target.value, 10) as SubtaskVariantId)}
-          style={{
-            background: 'var(--color-surface-hover)',
-            border: '1px solid var(--color-border)',
-            borderRadius: '8px',
-            color: 'var(--color-text-primary)',
-            fontSize: '11.5px',
-            fontWeight: 700,
-            padding: '4px 8px',
-            cursor: 'pointer',
-            maxWidth: '220px',
-            outline: 'none',
-          }}
-        >
-          {SUBTASK_VARIANTS_LIST.map((v) => (
-            <option key={v.id} value={v.id}>
-              {v.name}
-            </option>
-          ))}
-        </select>
-      </div>
 
       {/* Projects List */}
       {isLoading ? (
@@ -304,7 +278,7 @@ export const ProjectsPage: React.FC = () => {
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, project.id)}
                 onDropOnTask={handleDropOnTask}
-                onFixDate={() => latestSubtaskDate && updateTaskDetails(project.id, { scheduledDate: latestSubtaskDate })}
+                onFixDate={() => handleExtendProjectDate(project, latestSubtaskDate)}
                 onToggleSubtask={(st) => toggleTaskStatus(st.id, undefined, st.scheduledDate || todayStr)}
                 onDeleteSubtask={(st) => deleteTaskOccurrence(st.id, st.scheduledDate || todayStr)}
                 onSelectSubtask={(st) => setDetailTask(st)}

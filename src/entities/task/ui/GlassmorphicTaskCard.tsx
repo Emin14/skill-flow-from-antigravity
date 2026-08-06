@@ -25,6 +25,7 @@ interface GlassmorphicTaskCardProps {
   hideCategory?: boolean;
   hideRepeatTag?: boolean;
   customCheckboxIcon?: React.ReactNode;
+  extraMetaNode?: React.ReactNode;
   onToggleCheckbox?: () => void;
   onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
@@ -185,6 +186,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   hideCategory = false,
   hideRepeatTag = false,
   customCheckboxIcon,
+  extraMetaNode,
   onToggleCheckbox,
   onStatusChange,
   onDelete,
@@ -212,7 +214,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     return task.occurrences?.find((o) => o.date === targetDate) || null;
   }, [task, occurrenceDate]);
 
-  const isDone = currentOcc ? currentOcc.status === 'Done' : task.status === 'Done';
+  const isDone = task.status === 'Done' || (currentOcc ? currentOcc.status === 'Done' : false);
   const catColor = getCategoryColor(task.category);
   const formattedLink = formatExternalUrl(task.link);
 
@@ -500,6 +502,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                     {dateBadgeLabel}
                   </span>
                 )}
+                {extraMetaNode}
                 {task.isRepeating && !hideRepeatTag && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {formattedLink && (
                   <a

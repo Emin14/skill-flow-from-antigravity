@@ -17,6 +17,7 @@ import {
   Clock,
   Sparkles,
   Layers,
+  Check,
 } from 'lucide-react';
 import { useTaskStore } from '@/entities/task';
 
@@ -73,17 +74,17 @@ export const SUBTASK_VARIANTS_LIST: { id: SubtaskVariantId; name: string; desc: 
   { id: 16, name: '16. Без чекбокса 9: Левый оранжевый маркер с датой', desc: 'Вертикальный оранжевый маркер с датой слева, название и точки справа' },
   { id: 17, name: '17. Без чекбокса 10: Горизонтальный поток (Название ➔ Дата ➔ Точки)', desc: 'Единый горизонтальный поток без переносов' },
 
-  // 10 VARIANTS BASED ON VARIANT 1 (24x24 VIVID ICON IN CHECKBOX SLOT, 100% PERFECT CENTER ALIGNMENT WITH CHECKBOX, WITHOUT • ↻ ПОВТОР)
-  { id: 18, name: '18. Вариант 1 + Яркая иконка RefreshCw (🔄)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка RefreshCw, без • ↻ Повтор' },
-  { id: 19, name: '19. Вариант 1 + Яркая иконка RotateCw (↻)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка RotateCw' },
-  { id: 20, name: '20. Вариант 1 + Яркая иконка Pause (⏸️)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка Pause (пауза/актив)' },
-  { id: 21, name: '21. Вариант 1 + Яркая иконка Play (▶️)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка Play' },
-  { id: 22, name: '22. Вариант 1 + Яркая иконка Repeat (🔂)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка Repeat' },
-  { id: 23, name: '23. Вариант 1 + Яркая иконка History (📜)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка History' },
-  { id: 24, name: '24. Вариант 1 + Яркая иконка PauseCircle (⏸️)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка PauseCircle' },
-  { id: 25, name: '25. Вариант 1 + Яркая иконка Clock (⏰)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка Clock' },
-  { id: 26, name: '26. Вариант 1 + Яркая иконка Sparkles (✨)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка Sparkles' },
-  { id: 27, name: '27. Вариант 1 + Яркая иконка Layers (🥞)', desc: '100% совпадение центра с чекбоксом, яркая 24x24 иконка Layers' },
+  // VARIANTS BASED ON VARIANT 18 LAYOUT PARITY (24x24 ICON IN CHECKBOX SLOT, 100% PERFECT CENTER ALIGNMENT)
+  { id: 18, name: '18. Вариант 18: Динамическая иконка (🔄/⏸️/✅) + Точки после даты', desc: 'Динамическая иконка (🔄 Повтор / ⏸️ Пауза / ✅ Выполнено) + точки progress dots после даты' },
+  { id: 19, name: '19. Вариант 19: Иконка Пауза (⏸️)', desc: 'Точно как Вариант 18, только с иконкой паузы Pause (24x24, аналогичное выравнивание)' },
+  { id: 20, name: '20. Вариант 20: Зеленая иконка Выполнено (✅)', desc: 'Точно как Вариант 18, только с зеленой иконкой выполнения Check (24x24, аналогичное выравнивание)' },
+  { id: 21, name: '21. Вариант 21: Иконка Play (▶️)', desc: 'Точно как Вариант 18 с иконкой Play (24x24)' },
+  { id: 22, name: '22. Вариант 22: Иконка Repeat (🔂)', desc: 'Точно как Вариант 18 с иконкой Repeat (24x24)' },
+  { id: 23, name: '23. Вариант 23: Иконка History (📜)', desc: 'Точно как Вариант 18 с иконкой History (24x24)' },
+  { id: 24, name: '24. Вариант 24: Иконка PauseCircle (⏸️)', desc: 'Точно как Вариант 18 с иконкой PauseCircle (24x24)' },
+  { id: 25, name: '25. Вариант 25: Иконка Clock (⏰)', desc: 'Точно как Вариант 18 с иконкой Clock (24x24)' },
+  { id: 26, name: '26. Вариант 26: Иконка Sparkles (✨)', desc: 'Точно как Вариант 18 с иконкой Sparkles (24x24)' },
+  { id: 27, name: '27. Вариант 27: Иконка Layers (🥞)', desc: 'Точно как Вариант 18 с иконкой Layers (24x24)' },
 ];
 
 interface RepeatingSubtaskRendererProps {
@@ -156,7 +157,7 @@ export const RepeatingSubtaskRenderer: React.FC<RepeatingSubtaskRendererProps> =
   );
 
   // Helper for rendering Variant 1 layout with ONLY the left icon swapped (exact 100% parity with GlassmorphicTaskCard!)
-  const renderVariant1WithSwappedIcon = (iconNode: React.ReactNode, onAction?: () => void) => (
+  const renderVariant1WithSwappedIcon = (iconNode: React.ReactNode, onAction?: () => void, extraMetaNode?: React.ReactNode) => (
     <GlassmorphicTaskCard
       task={task}
       occurrenceDate={task.scheduledDate || todayStr}
@@ -170,8 +171,7 @@ export const RepeatingSubtaskRenderer: React.FC<RepeatingSubtaskRendererProps> =
           type="button"
           onClick={(e) => {
             e.stopPropagation();
-            if (onAction) onAction();
-            else onToggleCheckbox();
+            onClick();
           }}
           style={{
             width: '24px',
@@ -190,6 +190,7 @@ export const RepeatingSubtaskRenderer: React.FC<RepeatingSubtaskRendererProps> =
           {iconNode}
         </button>
       }
+      extraMetaNode={extraMetaNode}
       onToggleCheckbox={onToggleCheckbox}
       onDelete={onDelete}
       onClick={onClick}
@@ -529,26 +530,100 @@ export const RepeatingSubtaskRenderer: React.FC<RepeatingSubtaskRendererProps> =
   }
 
   // =========================================================================
-  // 10 VARIANTS BASED ON VARIANT 1 (USING GlassmorphicTaskCard DIRECTLY, EXACT PARITY, WITHOUT • ↻ ПОВТОР)
+  // VARIANTS BASED ON VARIANT 18 LAYOUT PARITY (24x24 ICON IN CHECKBOX SLOT, 100% PERFECT CENTER ALIGNMENT)
   // =========================================================================
 
-  // VARIANT 18: RefreshCw (🔄 Bright Vivid Blue #3b82f6 Icon)
+  // VARIANT 18: Smart Dynamic Subtask Card (Dynamic Icon + Progress Dots after Date)
   if (variantId === 18) {
-    return renderVariant1WithSwappedIcon(<RefreshCw size={14} color="#3b82f6" strokeWidth={2.5} />);
+    const isTaskDone = task.status === 'Done';
+    const isTaskPaused = task.repeatStatus === 'Paused';
+
+    let dynamicIcon: React.ReactNode;
+    let iconBorderColor = 'var(--color-border)';
+    let iconBgColor = 'var(--color-surface-hover)';
+
+    if (isTaskDone) {
+      dynamicIcon = <Check size={14} color="#10b981" strokeWidth={3} />;
+      iconBorderColor = '#10b981';
+      iconBgColor = 'rgba(16, 185, 129, 0.15)';
+    } else if (isTaskPaused) {
+      dynamicIcon = <Pause size={13} color="#f59e0b" strokeWidth={2.5} />;
+      iconBorderColor = '#f59e0b';
+      iconBgColor = 'rgba(245, 158, 11, 0.15)';
+    } else {
+      dynamicIcon = <RefreshCw size={14} color="#3b82f6" strokeWidth={2.5} />;
+    }
+
+    const progressDotsNode = (
+      <div style={{ display: 'inline-flex', gap: '4px', alignItems: 'center', marginLeft: '4px' }}>
+        {dots.map((filled, idx) => (
+          <span
+            key={idx}
+            style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: filled ? '#10b981' : 'var(--color-border)',
+              display: 'inline-block',
+            }}
+          />
+        ))}
+      </div>
+    );
+
+    return (
+      <GlassmorphicTaskCard
+        task={task}
+        occurrenceDate={task.scheduledDate || todayStr}
+        allTasks={allTasks}
+        showDragHandle={true}
+        parentPathVariant={0}
+        hideCategory={true}
+        hideRepeatTag={true}
+        customCheckboxIcon={
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick();
+            }}
+            style={{
+              width: '24px',
+              height: '24px',
+              borderRadius: '50%',
+              border: `1.5px solid ${iconBorderColor}`,
+              background: iconBgColor,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              boxSizing: 'border-box',
+              padding: 0,
+            }}
+          >
+            {dynamicIcon}
+          </button>
+        }
+        extraMetaNode={progressDotsNode}
+        onToggleCheckbox={onToggleCheckbox}
+        onDelete={onDelete}
+        onClick={onClick}
+      />
+    );
   }
 
-  // VARIANT 19: RotateCw (↻ Bright Vivid Blue #3b82f6 Icon)
+  // VARIANT 19: Pause (⏸️ Bright Amber/Blue #f59e0b Pause Icon - exact same layout & 24x24 size as 18)
   if (variantId === 19) {
-    return renderVariant1WithSwappedIcon(<RotateCw size={14} color="#3b82f6" strokeWidth={2.5} />);
-  }
-
-  // VARIANT 20: Pause (⏸️ Bright Amber #f59e0b Icon)
-  if (variantId === 20) {
     const isPaused = task.repeatStatus === 'Paused';
     return renderVariant1WithSwappedIcon(
       <Pause size={13} color={isPaused ? '#ef4444' : '#f59e0b'} strokeWidth={2.5} />,
       () => updateRepeatStatus(task.id, isPaused ? 'Active' : 'Paused')
     );
+  }
+
+  // VARIANT 20: Green Check / Completed (✅ Bright Green #10b981 Icon - exact same layout & 24x24 size as 18)
+  if (variantId === 20) {
+    return renderVariant1WithSwappedIcon(<Check size={14} color="#10b981" strokeWidth={3} />);
   }
 
   // VARIANT 21: Play (▶️ Bright Green #10b981 Icon)

@@ -733,10 +733,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
   updateRepeatStatus: async (id: string, repeatStatus: RepeatStatus) => {
     const task = get().tasks.find((t) => t.id === id);
-    if (!task || !task.isRepeating) return;
+    if (!task) return;
 
     const oldTask = { ...task };
-    const updates: Partial<Task> = { repeatStatus };
+    const updates: Partial<Task> = { repeatStatus, isRepeating: true };
 
     // If resuming to Active, ensure at least 1 upcoming Todo occurrence exists
     let newOccurrences = task.occurrences ? [...task.occurrences] : [];

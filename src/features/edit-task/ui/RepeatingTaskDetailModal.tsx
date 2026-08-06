@@ -491,9 +491,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           const isDoneNow = masterTask.isRepeating ? occ?.status === 'Done' : masterTask.status === 'Done';
           const isSmart = masterTask.repetitionMode === 'spaced' || masterTask.repetitionMode === 'smart';
           const effectiveRating = selectedRating || masterTask.lastSmartRating;
-          const isCompletionDisabled = !isDoneNow && isSmart && !effectiveRating;
+          const isCompletionDisabled = false;
 
           const handleToggleCompletion = async () => {
+            const ratingToUse = effectiveRating || (isSmart ? 'normal' : undefined);
             if (isDoneNow) {
               if (masterTask.isRepeating) {
                 await toggleTaskStatus(masterTask.id, undefined, activeOccDate);
@@ -502,9 +503,9 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               }
             } else {
               if (masterTask.isRepeating) {
-                await updateTaskStatus(masterTask.id, 'Done', effectiveRating || undefined, activeOccDate);
+                await updateTaskStatus(masterTask.id, 'Done', ratingToUse, activeOccDate);
               } else {
-                await updateTaskStatus(masterTask.id, 'Done', effectiveRating || undefined);
+                await updateTaskStatus(masterTask.id, 'Done', ratingToUse);
               }
               onClose();
             }
