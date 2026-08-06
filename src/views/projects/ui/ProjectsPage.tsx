@@ -466,7 +466,6 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         style={{ cursor: 'pointer' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '60%', minWidth: 0 }}>
-          <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: catColor, flexShrink: 0 }} />
           <h2 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {project.title}
           </h2>
@@ -657,9 +656,6 @@ const RecursiveSubtaskList: React.FC<{
                 style={{ cursor: 'pointer', padding: '10px 12px' }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '60%', minWidth: 0 }}>
-                  <span style={{ fontSize: '11px', fontWeight: 800, color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', padding: '1px 6px', borderRadius: '4px' }}>
-                    📁 Проект
-                  </span>
                   <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {child.title}
                   </span>
