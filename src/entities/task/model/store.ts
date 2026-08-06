@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Task, TaskPriority, TaskStatus, TaskOccurrence, TaskRepetitionRecord } from './types';
+import { Task, TaskPriority, TaskStatus, TaskOccurrence, TaskRepetitionRecord, RepeatStatus } from './types';
 import { TaskCategory } from '@/shared/config/categories';
 import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS } from '@/shared/config/repetitionRules';
 import { taskRepository } from '@/shared/repository';
@@ -133,6 +133,7 @@ export interface AddTaskParams {
   parentTaskId?: string | null;
   topicId?: string | null;
   isRepeating?: boolean;
+  repeatStatus?: RepeatStatus;
   repetitionMode?: RepetitionMode;
   scheduleFrequency?: ScheduleFrequency;
   afterCompletionDays?: number;
@@ -151,6 +152,7 @@ interface TaskState {
   updateTaskStatus: (id: string, newStatus: TaskStatus, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTaskParent: (id: string, parentTaskId: string | null) => Promise<void>;
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
+  updateRepeatStatus: (id: string, repeatStatus: RepeatStatus) => Promise<void>;
   updateTaskPomodoros: (id: string, count: number, dateStr?: string) => Promise<void>;
   deleteTaskOccurrence: (id: string, dateStr: string) => Promise<void>;
   updateOccurrenceDate: (id: string, currentDateStr: string, newDateStr: string) => Promise<void>;
@@ -400,6 +402,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         parentTaskId = null,
         topicId = null,
         isRepeating = false,
+        repeatStatus: customRepeatStatus = 'Active',
         repetitionMode = 'none',
         scheduleFrequency = 'daily',
         afterCompletionDays = 3,
@@ -436,6 +439,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         parentTaskId,
         topicId,
         isRepeating: effectiveIsRepeating,
+        repeatStatus: effectiveIsRepeating ? customRepeatStatus : undefined,
         repetitionMode: effectiveMode,
         scheduleFrequency,
         afterCompletionDays: Math.max(1, afterCompletionDays),
@@ -528,21 +532,24 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       }
 
       if (newStatus === 'Done') {
-        const doneCount = occs.filter((o) => o.status === 'Done').length;
-        const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating);
-        const nextDate = addDaysToDateStr(targetDate, daysToAdd);
+        const isStopped = task.repeatStatus === 'Paused' || task.repeatStatus === 'Completed';
+        if (!isStopped) {
+          const doneCount = occs.filter((o) => o.status === 'Done').length;
+          const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating);
+          const nextDate = addDaysToDateStr(targetDate, daysToAdd);
 
-        // Remove any future uncompleted occurrences that were beyond targetDate to prevent ghost skips
-        occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate || o.date === nextDate);
+          // Remove any future uncompleted occurrences that were beyond targetDate to prevent ghost skips
+          occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate || o.date === nextDate);
 
-        const hasNext = occs.some((o) => o.date === nextDate);
-        if (!hasNext) {
-          occs.push({
-            id: uuidv4(),
-            taskId: id,
-            date: nextDate,
-            status: 'Todo',
-          });
+          const hasNext = occs.some((o) => o.date === nextDate);
+          if (!hasNext) {
+            occs.push({
+              id: uuidv4(),
+              taskId: id,
+              date: nextDate,
+              status: 'Todo',
+            });
+          }
         }
       } else if (newStatus === 'Todo') {
         // UNCOMPLETING AN OCCURRENCE:
@@ -719,6 +726,52 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     } catch (e) {
       set((state) => ({
         tasks: state.tasks.map((t) => (t.id === id ? task : t)),
+        error: (e as Error).message,
+      }));
+    }
+  },
+
+  updateRepeatStatus: async (id: string, repeatStatus: RepeatStatus) => {
+    const task = get().tasks.find((t) => t.id === id);
+    if (!task || !task.isRepeating) return;
+
+    const oldTask = { ...task };
+    const updates: Partial<Task> = { repeatStatus };
+
+    // If resuming to Active, ensure at least 1 upcoming Todo occurrence exists
+    let newOccurrences = task.occurrences ? [...task.occurrences] : [];
+    if (repeatStatus === 'Active') {
+      const today = getTodayStr();
+      const hasUpcoming = newOccurrences.some((o) => o.status === 'Todo');
+      if (!hasUpcoming) {
+        newOccurrences.push({
+          id: uuidv4(),
+          taskId: id,
+          date: today,
+          status: 'Todo',
+        });
+        newOccurrences = normalizeOccurrences(newOccurrences, id);
+        updates.occurrences = newOccurrences;
+        updates.scheduledDate = getDerivedScheduledDate({ ...task, occurrences: newOccurrences });
+      }
+    }
+
+    set((state) => ({
+      tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
+    }));
+
+    try {
+      await taskRepository.update(id, updates);
+      if (repeatStatus === 'Paused') {
+        useToastStore.getState().showToast(`Повторение "${task.title}" приостановлено ⏸️`, 'info');
+      } else if (repeatStatus === 'Completed') {
+        useToastStore.getState().showToast(`Повторение "${task.title}" завершено 🏁`, 'success');
+      } else {
+        useToastStore.getState().showToast(`Повторение "${task.title}" возобновлено ▶️`, 'success');
+      }
+    } catch (e) {
+      set((state) => ({
+        tasks: state.tasks.map((t) => (t.id === id ? oldTask : t)),
         error: (e as Error).message,
       }));
     }

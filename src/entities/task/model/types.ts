@@ -3,6 +3,7 @@ import { RepetitionMode, ScheduleFrequency, SmartRating } from '@/shared/config/
 
 export type TaskStatus = 'Todo' | 'InProgress' | 'Done';
 export type TaskPriority = 'P1' | 'P2' | 'P3' | 'P4';
+export type RepeatStatus = 'Active' | 'Paused' | 'Completed';
 
 export interface TaskRepetitionRecord {
   date: string;
@@ -34,6 +35,7 @@ export interface Task {
   parentTaskId?: string | null;
   scheduledDate: string;
   isRepeating?: boolean;
+  repeatStatus?: RepeatStatus;
   repetitionMode?: RepetitionMode;
   scheduleFrequency?: ScheduleFrequency;
   afterCompletionDays?: number;

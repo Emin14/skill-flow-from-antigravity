@@ -4,7 +4,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
-import { HabitProgressHeaderWidget, HabitSortKey, HabitSortDirection } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
+import { HabitProgressHeaderWidget, HabitSortKey, HabitSortDirection, RepeatStatusFilter } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import styles from './RepeatsPage.module.css';
 
@@ -12,18 +12,40 @@ export const RepeatsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks } = useTaskStore();
   const [sortKey, setSortKey] = useState<HabitSortKey>('overdue');
   const [sortDirection, setSortDirection] = useState<HabitSortDirection>('desc');
+  const [repeatStatusFilter, setRepeatStatusFilter] = useState<RepeatStatusFilter>('Active');
 
   useEffect(() => {
     fetchTasks();
   }, [fetchTasks]);
 
   // SINGLE TASK ARCHITECTURE: Each repeating task exists as 1 single Task record
-  const uniqueRepeatingTasks = useMemo(() => {
+  const allRepeatingTasks = useMemo(() => {
     return tasks.filter((t) => t.isRepeating);
   }, [tasks]);
 
+  const statusCounts = useMemo(() => {
+    let active = 0;
+    let paused = 0;
+    let completed = 0;
+    for (const t of allRepeatingTasks) {
+      const st = t.repeatStatus || 'Active';
+      if (st === 'Paused') paused++;
+      else if (st === 'Completed') completed++;
+      else active++;
+    }
+    return { active, paused, completed, total: allRepeatingTasks.length };
+  }, [allRepeatingTasks]);
+
+  const filteredRepeatingTasks = useMemo(() => {
+    if (repeatStatusFilter === 'all') return allRepeatingTasks;
+    return allRepeatingTasks.filter((t) => {
+      const st = t.repeatStatus || 'Active';
+      return st === repeatStatusFilter;
+    });
+  }, [allRepeatingTasks, repeatStatusFilter]);
+
   const sortedRepeatingTasks = useMemo(() => {
-    const list = [...uniqueRepeatingTasks];
+    const list = [...filteredRepeatingTasks];
 
     list.sort((a, b) => {
       let res = 0;
@@ -47,7 +69,7 @@ export const RepeatsPage: React.FC = () => {
     });
 
     return list;
-  }, [uniqueRepeatingTasks, sortKey, sortDirection]);
+  }, [filteredRepeatingTasks, sortKey, sortDirection]);
 
   return (
     <div className={styles.container}>
@@ -55,8 +77,11 @@ export const RepeatsPage: React.FC = () => {
       <HabitProgressHeaderWidget
         sortKey={sortKey}
         sortDirection={sortDirection}
+        repeatStatusFilter={repeatStatusFilter}
         onSelectSortKey={setSortKey}
         onToggleDirection={() => setSortDirection((prev) => (prev === 'desc' ? 'asc' : 'desc'))}
+        onSelectRepeatStatusFilter={setRepeatStatusFilter}
+        statusCounts={statusCounts}
       />
 
       {/* List of Timeline Step Progression Cards */}
@@ -69,7 +94,13 @@ export const RepeatsPage: React.FC = () => {
       ) : sortedRepeatingTasks.length === 0 ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)' }}>
-            🌱 У вас пока нет повторяющихся задач.
+            {repeatStatusFilter === 'Active'
+              ? '🌱 У вас пока нет активных повторяющихся задач.'
+              : repeatStatusFilter === 'Paused'
+              ? '⏸️ Нет повторяющихся задач на паузе.'
+              : repeatStatusFilter === 'Completed'
+              ? '🏁 Нет завершённых повторений.'
+              : '🌱 Повторяющиеся задачи отсутствуют.'}
           </Typography>
           <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
             Создайте задачу и выберите режим повторения.

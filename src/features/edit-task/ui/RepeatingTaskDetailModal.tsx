@@ -52,7 +52,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   onOpenEdit,
 }) => {
   const router = useRouter();
-  const { tasks, updateTaskPomodoros, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus, updateTaskDetails } = useTaskStore();
+  const { tasks, updateTaskPomodoros, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus, updateTaskDetails, updateRepeatStatus } = useTaskStore();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState<SmartRating | null>(null);
@@ -185,8 +185,98 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             </div>
           </div>
 
-          {/* Action Buttons: Pencil Edit, Delete & Close */}
+          {/* Action Buttons: Pause/Resume, Complete Series, Pencil Edit, Delete & Close */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {/* Pause / Resume Button */}
+            {(masterTask.repeatStatus || 'Active') === 'Paused' ? (
+              <button
+                onClick={() => updateRepeatStatus(masterTask.id, 'Active')}
+                title="Возобновить повторение"
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: 'rgba(16, 185, 129, 0.15)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  color: '#10b981',
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                ▶️
+              </button>
+            ) : (
+              <button
+                onClick={() => updateRepeatStatus(masterTask.id, 'Paused')}
+                title="Приостановить повторение"
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: 'rgba(245, 158, 11, 0.15)',
+                  border: '1px solid rgba(245, 158, 11, 0.3)',
+                  color: '#f59e0b',
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                ⏸️
+              </button>
+            )}
+
+            {/* Complete Series Button */}
+            {(masterTask.repeatStatus || 'Active') === 'Completed' ? (
+              <button
+                onClick={() => updateRepeatStatus(masterTask.id, 'Active')}
+                title="Возобновить завершённое повторение"
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: 'rgba(99, 102, 241, 0.15)',
+                  border: '1px solid rgba(99, 102, 241, 0.3)',
+                  color: '#6366f1',
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                🔄
+              </button>
+            ) : (
+              <button
+                onClick={() => updateRepeatStatus(masterTask.id, 'Completed')}
+                title="Завершить повторение"
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: 'rgba(99, 102, 241, 0.15)',
+                  border: '1px solid rgba(99, 102, 241, 0.3)',
+                  color: '#6366f1',
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                🏁
+              </button>
+            )}
+
             <button
               onClick={onOpenEdit}
               title="Редактировать задачу"
