@@ -231,10 +231,19 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
       });
     } else {
       await updateTaskDetails(task.id, {
-        title: title.trim(), category, scheduledDate: scheduledDate.trim(),
-        description, link, parentTaskId,
-        isRepeating: repetitionMode !== 'none', repetitionMode,
-        scheduleFrequency, afterCompletionDays, hasSubtasks,
+        title: title.trim(),
+        category,
+        scheduledDate: scheduledDate.trim(),
+        description,
+        link,
+        parentTaskId,
+        isRepeating: effectiveIsRepeating,
+        repetitionMode: effectiveMode,
+        scheduleFrequency,
+        afterCompletionDays,
+        hasSubtasks,
+        repeatStatus: effectiveIsRepeating ? repeatStatus : undefined,
+        status: repeatStatus === 'Completed' ? 'Done' : (task.status === 'Done' && repeatStatus === 'Active' ? 'Todo' : task.status),
       });
     }
 

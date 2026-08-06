@@ -111,7 +111,7 @@ export const RepeatingSubtaskRenderer: React.FC<RepeatingSubtaskRendererProps> =
 
   const occurrences = task.occurrences || [];
   const completedCount = occurrences.filter((o) => o.status === 'Done').length;
-  const isDone = task.status === 'Done';
+  const isDone = task.status === 'Done' || task.repeatStatus === 'Completed';
   const target = task.targetRepetitions || 8;
   const percent = Math.min(100, Math.round((completedCount / target) * 100));
 
@@ -535,7 +535,7 @@ export const RepeatingSubtaskRenderer: React.FC<RepeatingSubtaskRendererProps> =
 
   // VARIANT 18: Smart Dynamic Subtask Card (Dynamic Icon + Progress Dots after Date)
   if (variantId === 18) {
-    const isTaskDone = task.status === 'Done';
+    const isTaskDone = task.status === 'Done' || task.repeatStatus === 'Completed';
     const isTaskPaused = task.repeatStatus === 'Paused';
 
     let dynamicIcon: React.ReactNode;

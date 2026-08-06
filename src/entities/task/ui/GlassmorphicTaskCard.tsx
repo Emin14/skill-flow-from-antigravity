@@ -216,7 +216,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     return task.occurrences?.find((o) => o.date === targetDate) || null;
   }, [task, occurrenceDate]);
 
-  const isDone = task.status === 'Done' || (currentOcc ? currentOcc.status === 'Done' : false);
+  const isDone = task.status === 'Done' || task.repeatStatus === 'Completed' || (currentOcc ? currentOcc.status === 'Done' : false);
   const catColor = getCategoryColor(task.category);
   const formattedLink = formatExternalUrl(task.link);
 
