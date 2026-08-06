@@ -102,16 +102,21 @@ export const ProjectsPage: React.FC = () => {
   const filteredProjects = useMemo(() => {
     return projectTasks.filter((project) => {
       const descendants = getAllDescendantTasks(project.id, tasks);
-      const doneCount = descendants.filter((t) => t.status === 'Done').length;
-      const isCompleted = descendants.length > 0 && doneCount === descendants.length;
-      const overdueCount = descendants.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
+      const leafSubtasks = descendants.filter((t) => !t.hasSubtasks && !tasks.some((sub) => sub.parentTaskId === t.id));
+
+      const doneCount = leafSubtasks.filter((t) =>
+        progressMode === 'all_time' ? (t.status === 'Done' || t.repeatStatus === 'Completed') : isSubtaskDoneForProject(t, todayStr)
+      ).length;
+
+      const isCompleted = leafSubtasks.length > 0 && doneCount === leafSubtasks.length;
+      const overdueCount = leafSubtasks.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
 
       if (activeFilter === 'active') return !isCompleted;
       if (activeFilter === 'completed') return isCompleted;
       if (activeFilter === 'has_overdue') return overdueCount > 0;
       return true;
     });
-  }, [projectTasks, tasks, activeFilter, todayStr]);
+  }, [projectTasks, tasks, activeFilter, progressMode, todayStr]);
 
   const handleDrop = async (e: React.DragEvent, targetProjectId: string) => {
     e.preventDefault();
