@@ -281,7 +281,7 @@ export const ProjectsPage: React.FC = () => {
                 onFixDate={() => handleExtendProjectDate(project, latestSubtaskDate)}
                 onToggleSubtask={(st) => toggleTaskStatus(st.id, undefined, st.scheduledDate || todayStr)}
                 onDeleteSubtask={(st) => deleteTaskOccurrence(st.id, st.scheduledDate || todayStr)}
-                onSelectSubtask={(st) => setDetailTask(st)}
+                onSelectSubtask={(st) => setEditingTask(st)}
               />
             );
           })}
@@ -501,7 +501,7 @@ const DateWarningBanner: React.FC<{
   return (
     <div
       style={{
-        margin: '8px 12px 4px 12px',
+        margin: '8px 2px 4px 2px',
         padding: '10px 14px',
         borderRadius: '12px',
         background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%)',
@@ -513,7 +513,7 @@ const DateWarningBanner: React.FC<{
         boxSizing: 'border-box',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, flex: 1 }}>
         <Lightbulb size={16} color="#f59e0b" style={{ flexShrink: 0 }} />
         <span style={{ fontSize: '11.5px', color: 'var(--color-text-primary)', fontWeight: 600, lineHeight: 1.3 }}>
           Проект: <strong style={{ color: '#f59e0b' }}>{formatDateDisplay(projectDate)}</strong> • Крайняя задача: <strong style={{ color: '#38bdf8' }}>{formatDateDisplay(subtaskDate)}</strong>
@@ -530,7 +530,7 @@ const DateWarningBanner: React.FC<{
           color: '#ffffff',
           fontWeight: 700,
           fontSize: '11.5px',
-          padding: '6px 12px',
+          padding: '4px 4px',
           cursor: 'pointer',
           whiteSpace: 'nowrap',
           boxShadow: '0 2px 6px rgba(217, 119, 6, 0.3)',
