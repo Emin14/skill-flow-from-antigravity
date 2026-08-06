@@ -7,114 +7,19 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
-import { ChevronDown, ChevronRight, AlertTriangle, Lightbulb } from 'lucide-react';
-import { ProjectFilterTabsWidget, ProjectFilterType, SubtaskViewMode } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
-import { TimelineRepeatCard } from '@/views/repeats/ui/RepeatsPage';
+import { ChevronDown, ChevronRight, Lightbulb, Sparkles } from 'lucide-react';
+import { ProjectFilterTabsWidget, ProjectFilterType } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
 import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
 import { useToastStore } from '@/shared/ui/toast/toastStore';
+import { SUBTASK_VARIANTS_LIST, SubtaskVariantId, RepeatingSubtaskRenderer } from './RepeatingSubtaskVariants';
 import styles from './ProjectsPage.module.css';
 
 import { getCategoryColor } from '@/shared/config/categoryColors';
 
-const AccentRepeatingSubtaskCard: React.FC<{
-  task: Task;
-  onToggleCheckbox: () => void;
-  onDelete: () => void;
-  onClick: () => void;
-}> = ({ task, onToggleCheckbox, onDelete, onClick }) => {
-  const occurrences = task.occurrences || [];
-  const completedCount = occurrences.filter((o) => o.status === 'Done').length;
-  const isDone = task.status === 'Done';
-
-  const modeLabels: Record<string, string> = {
-    smart: '🧠 Умный адаптивный повтор',
-    spaced: '🧠 Интервальный повтор',
-    schedule: '📅 По расписанию',
-    after_completion: '⏱ Через N дней',
-  };
-  const modeLabel = modeLabels[task.repetitionMode || 'spaced'] || '🔄 Повторение';
-
-  return (
-    <div
-      onClick={onClick}
-      style={{
-        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%)',
-        border: '1px solid rgba(99, 102, 241, 0.3)',
-        borderRadius: '12px',
-        padding: '10px 12px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: '10px',
-        cursor: 'pointer',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-        transition: 'all 0.15s ease',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onToggleCheckbox();
-          }}
-          style={{
-            width: '20px',
-            height: '20px',
-            borderRadius: '6px',
-            border: isDone ? 'none' : '2px solid var(--color-accent)',
-            background: isDone ? 'var(--color-accent)' : 'transparent',
-            color: '#ffffff',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            flexShrink: 0,
-            fontSize: '12px',
-          }}
-        >
-          {isDone && '✓'}
-        </button>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--color-text-primary)', textDecoration: isDone ? 'line-through' : 'none', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {task.title}
-            </span>
-            <span style={{ fontSize: '10px', fontWeight: 800, padding: '2px 6px', borderRadius: '6px', background: 'rgba(99, 102, 241, 0.2)', color: '#818cf8', flexShrink: 0 }}>
-              🔄 Повтор
-            </span>
-          </div>
-
-          <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 500 }}>
-            {modeLabel}
-          </div>
-        </div>
-      </div>
-
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
-        <span style={{ fontSize: '11px', fontWeight: 700, padding: '3px 8px', borderRadius: '8px', background: 'var(--color-surface-hover)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
-          {completedCount} повторов
-        </span>
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            onDelete();
-          }}
-          style={{ background: 'transparent', border: 'none', color: 'var(--color-text-muted)', cursor: 'pointer', fontSize: '13px' }}
-        >
-          🗑️
-        </button>
-      </div>
-    </div>
-  );
-};
-
 export const ProjectsPage: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, updateTaskParent, updateTaskDetails, deleteTask, deleteTaskOccurrence } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskParent, updateTaskDetails, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
-  const [subtaskViewMode, setSubtaskViewMode] = useState<SubtaskViewMode>('standard');
+  const [subtaskVariantId, setSubtaskVariantId] = useState<SubtaskVariantId>(1);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
@@ -123,15 +28,18 @@ export const ProjectsPage: React.FC = () => {
 
   useEffect(() => {
     fetchTasks();
-    const savedMode = localStorage.getItem('subtaskViewMode') as SubtaskViewMode;
-    if (savedMode && ['standard', 'accent_card', 'timeline'].includes(savedMode)) {
-      setSubtaskViewMode(savedMode);
+    const savedVariant = localStorage.getItem('subtaskVariantId');
+    if (savedVariant) {
+      const parsed = parseInt(savedVariant, 10) as SubtaskVariantId;
+      if (parsed >= 1 && parsed <= 20) {
+        setSubtaskVariantId(parsed);
+      }
     }
   }, [fetchTasks]);
 
-  const handleSelectSubtaskViewMode = (mode: SubtaskViewMode) => {
-    setSubtaskViewMode(mode);
-    localStorage.setItem('subtaskViewMode', mode);
+  const handleSelectVariant = (id: SubtaskVariantId) => {
+    setSubtaskVariantId(id);
+    localStorage.setItem('subtaskVariantId', String(id));
   };
 
   useEffect(() => {
@@ -246,13 +154,55 @@ export const ProjectsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Filter Tabs Widget */}
+      {/* 1. Original Filter Tabs Widget (Restored to Exact Original State) */}
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
         onSelectFilter={setActiveFilter}
-        subtaskViewMode={subtaskViewMode}
-        onSelectSubtaskViewMode={handleSelectSubtaskViewMode}
       />
+
+      {/* 2. Subtask Repeating View Variant Switcher Bar (20 Options) */}
+      <div
+        style={{
+          background: 'var(--color-surface)',
+          border: '1px solid var(--color-border)',
+          borderRadius: '12px',
+          padding: '8px 12px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '10px',
+          marginTop: '-4px',
+          marginBottom: '4px',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', fontWeight: 700, color: 'var(--color-text-secondary)' }}>
+          <Sparkles size={14} color="var(--color-accent-text)" />
+          <span>Вид повторяющихся подзадач:</span>
+        </div>
+
+        <select
+          value={subtaskVariantId}
+          onChange={(e) => handleSelectVariant(parseInt(e.target.value, 10) as SubtaskVariantId)}
+          style={{
+            background: 'var(--color-surface-hover)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '8px',
+            color: 'var(--color-text-primary)',
+            fontSize: '11.5px',
+            fontWeight: 700,
+            padding: '4px 8px',
+            cursor: 'pointer',
+            maxWidth: '220px',
+            outline: 'none',
+          }}
+        >
+          {SUBTASK_VARIANTS_LIST.map((v) => (
+            <option key={v.id} value={v.id}>
+              {v.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {/* Projects List */}
       {isLoading ? (
@@ -344,7 +294,7 @@ export const ProjectsPage: React.FC = () => {
                 hasDateMismatch={hasDateMismatch}
                 latestSubtaskDate={latestSubtaskDate}
                 sortedSubtasks={sortedSubtasks}
-                subtaskViewMode={subtaskViewMode}
+                subtaskVariantId={subtaskVariantId}
                 tasks={tasks}
                 openProjectIds={openProjectIds}
                 todayStr={todayStr}
@@ -396,7 +346,7 @@ interface ProjectCardRendererProps {
   hasDateMismatch: boolean;
   latestSubtaskDate: string | null;
   sortedSubtasks: Task[];
-  subtaskViewMode: SubtaskViewMode;
+  subtaskVariantId: SubtaskVariantId;
   tasks: Task[];
   openProjectIds: Set<string>;
   todayStr: string;
@@ -423,7 +373,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   hasDateMismatch,
   latestSubtaskDate,
   sortedSubtasks,
-  subtaskViewMode,
+  subtaskVariantId,
   tasks,
   openProjectIds,
   todayStr,
@@ -553,7 +503,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
             <RecursiveSubtaskList
               parentId={project.id}
               tasks={tasks}
-              subtaskViewMode={subtaskViewMode}
+              subtaskVariantId={subtaskVariantId}
               openProjectIds={openProjectIds}
               toggleProjectOpen={toggleProjectOpen}
               onEdit={onEdit}
@@ -623,7 +573,7 @@ const DateWarningBanner: React.FC<{
 const RecursiveSubtaskList: React.FC<{
   parentId: string;
   tasks: Task[];
-  subtaskViewMode: SubtaskViewMode;
+  subtaskVariantId: SubtaskVariantId;
   openProjectIds: Set<string>;
   toggleProjectOpen: (id: string) => void;
   onEdit: (t: Task) => void;
@@ -636,7 +586,7 @@ const RecursiveSubtaskList: React.FC<{
 }> = ({
   parentId,
   tasks,
-  subtaskViewMode,
+  subtaskVariantId,
   openProjectIds,
   toggleProjectOpen,
   onEdit,
@@ -775,7 +725,7 @@ const RecursiveSubtaskList: React.FC<{
                   <RecursiveSubtaskList
                     parentId={child.id}
                     tasks={tasks}
-                    subtaskViewMode={subtaskViewMode}
+                    subtaskVariantId={subtaskVariantId}
                     openProjectIds={openProjectIds}
                     toggleProjectOpen={toggleProjectOpen}
                     onEdit={onEdit}
@@ -792,31 +742,20 @@ const RecursiveSubtaskList: React.FC<{
           );
         }
 
-        // RENDER REPEATING SUBTASK ACCORDING TO USER SELECTED VIEW MODE
+        // RENDER REPEATING SUBTASK ACCORDING TO SELECTED VARIANT (1 THROUGH 20)
         if (child.isRepeating) {
-          if (subtaskViewMode === 'timeline') {
-            return (
-              <TimelineRepeatCard
-                key={child.id}
-                task={child}
-                allTasks={tasks}
-                onClick={() => onSelectSubtask(child)}
-              />
-            );
-          }
-
-          if (subtaskViewMode === 'accent_card') {
-            return (
-              <AccentRepeatingSubtaskCard
-                key={child.id}
-                task={child}
-                onToggleCheckbox={() => onToggleSubtask(child)}
-                onDelete={() => onDeleteSubtask(child)}
-                onClick={() => onSelectSubtask(child)}
-              />
-            );
-          }
-          // Default / 'standard': Standard compact task card (like standard subtask)
+          return (
+            <RepeatingSubtaskRenderer
+              key={child.id}
+              variantId={subtaskVariantId}
+              task={child}
+              allTasks={tasks}
+              todayStr={todayStr}
+              onToggleCheckbox={() => onToggleSubtask(child)}
+              onDelete={() => onDeleteSubtask(child)}
+              onClick={() => onSelectSubtask(child)}
+            />
+          );
         }
 
         return (
@@ -831,7 +770,7 @@ const RecursiveSubtaskList: React.FC<{
             onToggleCheckbox={() => onToggleSubtask(child)}
             onDelete={() => onDeleteSubtask(child)}
             onClick={() => onSelectSubtask(child)}
-            onDropOnTask={(draggedTaskId, targetTask) => onDropOnTask(draggedTaskId, targetTask)}
+            onDropOnTask={(draggedTaskId: string, targetTask: Task) => onDropOnTask(draggedTaskId, targetTask)}
           />
         );
       })}
