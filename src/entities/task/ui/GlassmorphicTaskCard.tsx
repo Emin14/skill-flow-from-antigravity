@@ -475,7 +475,6 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
               <div className={styles.metaRow}>
                 {!hideCategory && <span className={styles.catDot} style={{ backgroundColor: catColor }} />}
                 {!hideCategory && <span className={styles.categoryText}>{task.category || 'Без категории'}</span>}
-                {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {showDateBadge && dateBadgeLabel && (
                   <span
                     className={`${styles.dateBadge} ${
@@ -486,6 +485,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                     {dateBadgeLabel}
                   </span>
                 )}
+                {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {formattedLink && (
                   <a
                     href={formattedLink}

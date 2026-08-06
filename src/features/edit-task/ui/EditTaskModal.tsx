@@ -406,7 +406,8 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                     onChange={(e) => setRepetitionMode(e.target.value as RepetitionMode)}
                   >
                     <option value="none">🔕 Без повторов</option>
-                    <option value="spaced">🧠 Умный повтор</option>
+                    <option value="spaced">📐 Интервальный повтор</option>
+                    <option value="smart">🧠 Умный повтор</option>
                     <option value="schedule">📅 По расписанию</option>
                     <option value="after_completion">⏱ Через N дней</option>
                   </select>
@@ -443,7 +444,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                       style={{ opacity: 0.55, cursor: 'not-allowed' }}
                     >
                       <option>
-                        {repetitionMode === 'spaced' ? '1,3,7,14,30,90д' : '—'}
+                        {repetitionMode === 'spaced' || repetitionMode === 'smart' ? '1,3,7,14,30,90д' : '—'}
                       </option>
                     </select>
                   )}
@@ -474,6 +475,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   <>
                     {repetitionMode === 'none' && '💡 Задача выполняется 1 раз и не будет автоматически повторяться'}
                     {repetitionMode === 'spaced' && '💡 Интервальное повторение: 1, 3, 7, 14, 30, 90 дней для памяти'}
+                    {repetitionMode === 'smart' && '💡 Умное повторение: интервалы адаптируются по оценке сложности (Легко/Нормально/Сложно)'}
                     {repetitionMode === 'schedule' && `💡 Повтор строго по графику (${FREQ_LABELS[scheduleFrequency] || 'Каждый день'})`}
                     {repetitionMode === 'after_completion' && `💡 Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено»`}
                   </>

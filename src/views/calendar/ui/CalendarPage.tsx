@@ -112,7 +112,13 @@ export const CalendarPage: React.FC = () => {
     if (isDone) {
       toggleTaskStatus(task.id, undefined, selectedDate);
     } else if (isSmartRepeatTask(task)) {
-      setSmartTask(task);
+      const occ = task.occurrences?.find((o) => o.date === selectedDate);
+      const preRating = occ?.smartRating || task.lastSmartRating;
+      if (preRating) {
+        updateTaskStatus(task.id, 'Done', preRating, selectedDate);
+      } else {
+        setSmartTask(task);
+      }
     } else {
       toggleTaskStatus(task.id, undefined, selectedDate);
     }

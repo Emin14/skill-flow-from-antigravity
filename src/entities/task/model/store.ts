@@ -680,7 +680,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
     try {
       await taskRepository.update(id, updates);
-      useToastStore.getState().showToast(`Задача "${updates.title || task.title}" обновлена`, 'success');
     } catch (e) {
       set((state) => ({
         tasks: state.tasks.map((t) => (t.id === id ? task : t)),
