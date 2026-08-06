@@ -318,7 +318,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                 <button
                   key={item.val}
                   type="button"
-                  onClick={() => updateTaskPomodoros(masterTask.id, item.val)}
+                  onClick={() => updateTaskPomodoros(masterTask.id, item.val, activeOccDate)}
                   style={{
                     height: '38px',
                     borderRadius: '9px',

@@ -88,6 +88,42 @@ export const getDerivedRepetitionsCount = (task: Task): number => {
   return norm.filter((o) => o.status === 'Done').length;
 };
 
+/**
+ * Single Source of Truth Helper: Returns last smart rating from occurrences
+ */
+export const getDerivedLastSmartRating = (task: Task): SmartRating | undefined => {
+  if (!task.isRepeating) return task.lastSmartRating;
+  const doneOccs = (task.occurrences || []).filter((o) => o.status === 'Done' && o.smartRating);
+  if (doneOccs.length > 0) {
+    return doneOccs[doneOccs.length - 1].smartRating;
+  }
+  return task.lastSmartRating;
+};
+
+/**
+ * Single Source of Truth Helper: Returns pomodoros for repeating occurrence or task total
+ */
+export const getDerivedTaskPomodoros = (task: Task, dateStr?: string): number => {
+  if (!task.isRepeating) return task.pomodorosCount || 1;
+  const occs = task.occurrences || [];
+  if (dateStr) {
+    const occ = occs.find((o) => o.date === dateStr);
+    return occ?.pomodorosCount || task.pomodorosCount || 1;
+  }
+  const sum = occs.reduce((acc, o) => acc + (o.pomodorosCount || 0), 0);
+  return sum > 0 ? sum : (task.pomodorosCount || 1);
+};
+
+/**
+ * Single Source of Truth Helper: Returns task status for date or task status
+ */
+export const getDerivedTaskStatus = (task: Task, dateStr?: string): TaskStatus => {
+  if (!task.isRepeating) return task.status;
+  const targetDate = dateStr || getTodayStr();
+  const occ = task.occurrences?.find((o) => o.date === targetDate);
+  return occ ? occ.status : 'Todo';
+};
+
 export interface AddTaskParams {
   title: string;
   category?: TaskCategory;
@@ -115,7 +151,7 @@ interface TaskState {
   updateTaskStatus: (id: string, newStatus: TaskStatus, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTaskParent: (id: string, parentTaskId: string | null) => Promise<void>;
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
-  updateTaskPomodoros: (id: string, count: number) => Promise<void>;
+  updateTaskPomodoros: (id: string, count: number, dateStr?: string) => Promise<void>;
   deleteTaskOccurrence: (id: string, dateStr: string) => Promise<void>;
   updateOccurrenceDate: (id: string, currentDateStr: string, newDateStr: string) => Promise<void>;
   deleteTaskSeries: (id: string, confirmed?: boolean) => Promise<void>;
@@ -688,16 +724,46 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }
   },
 
-  updateTaskPomodoros: async (id: string, count: number) => {
+  updateTaskPomodoros: async (id: string, count: number, dateStr?: string) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
 
     const safeCount = Math.max(0.1, count);
-    set((state) => ({
-      tasks: state.tasks.map((t) => (t.id === id ? { ...t, pomodorosCount: safeCount } : t)),
-    }));
+    const targetDate = dateStr || getTodayStr();
 
-    await taskRepository.update(id, { pomodorosCount: safeCount });
+    if (task.isRepeating) {
+      const currentOccs = task.occurrences || [];
+      const existingOcc = currentOccs.find((o) => o.date === targetDate);
+      let updatedOccs: TaskOccurrence[];
+
+      if (existingOcc) {
+        updatedOccs = currentOccs.map((o) => (o.date === targetDate ? { ...o, pomodorosCount: safeCount } : o));
+      } else {
+        updatedOccs = [
+          ...currentOccs,
+          {
+            id: uuidv4(),
+            taskId: id,
+            date: targetDate,
+            status: 'Todo',
+            pomodorosCount: safeCount,
+          },
+        ];
+      }
+
+      const normalized = normalizeOccurrences(updatedOccs, id);
+      set((state) => ({
+        tasks: state.tasks.map((t) => (t.id === id ? { ...t, occurrences: normalized, pomodorosCount: safeCount } : t)),
+      }));
+
+      await taskRepository.update(id, { occurrences: normalized, pomodorosCount: safeCount });
+    } else {
+      set((state) => ({
+        tasks: state.tasks.map((t) => (t.id === id ? { ...t, pomodorosCount: safeCount } : t)),
+      }));
+
+      await taskRepository.update(id, { pomodorosCount: safeCount });
+    }
   },
 
   deleteTaskOccurrence: async (id: string, dateStr: string) => {
