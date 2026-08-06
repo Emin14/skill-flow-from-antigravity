@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Input } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
-import { Task } from '@/entities/task/model/types';
+import { Task, TaskPriority, TaskStatus, RepeatStatus } from '@/entities/task/model/types';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS } from '@/shared/config/repetitionRules';
@@ -98,6 +98,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const [link, setLink] = useState('');
   const [parentTaskId, setParentTaskId] = useState<string | null>(null);
   const [repetitionMode, setRepetitionMode] = useState<RepetitionMode>('none');
+  const [repeatStatus, setRepeatStatus] = useState<RepeatStatus>('Active');
   const [scheduleFrequency, setScheduleFrequency] = useState<ScheduleFrequency>('daily');
   const [afterCompletionDaysInput, setAfterCompletionDaysInput] = useState('3');
   const [hasSubtasks, setHasSubtasks] = useState(false);
@@ -157,6 +158,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     setParentTaskId(task.parentTaskId || null);
     const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
     setRepetitionMode(mode);
+    setRepeatStatus(task.repeatStatus || 'Active');
     setScheduleFrequency(task.scheduleFrequency || 'daily');
     setAfterCompletionDaysInput(String(task.afterCompletionDays || 3));
     setHasSubtasks(!!task.hasSubtasks || tasks.some((t) => t.parentTaskId === task.id));
@@ -208,6 +210,8 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     const afterCompletionDays = isNaN(parsedDays) || parsedDays < 1 ? 1 : parsedDays;
 
     const isDraft = task.id.startsWith('draft-');
+    const effectiveIsRepeating = repetitionMode !== 'none';
+    const effectiveMode = repetitionMode === 'none' ? undefined : repetitionMode;
 
     if (isDraft) {
       // Inbox triage: create a brand-new task instead of updating a non-existent one
@@ -218,18 +222,28 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         description,
         link,
         parentTaskId,
-        isRepeating: repetitionMode !== 'none',
-        repetitionMode,
+        isRepeating: effectiveIsRepeating,
+        repeatStatus: effectiveIsRepeating ? repeatStatus : undefined,
+        repetitionMode: effectiveMode,
         scheduleFrequency,
         afterCompletionDays,
         hasSubtasks,
       });
     } else {
       await updateTaskDetails(task.id, {
-        title: title.trim(), category, scheduledDate: scheduledDate.trim(),
-        description, link, parentTaskId,
-        isRepeating: repetitionMode !== 'none', repetitionMode,
-        scheduleFrequency, afterCompletionDays, hasSubtasks,
+        title: title.trim(),
+        category,
+        scheduledDate: scheduledDate.trim(),
+        description,
+        link,
+        parentTaskId,
+        isRepeating: effectiveIsRepeating,
+        repetitionMode: effectiveMode,
+        scheduleFrequency,
+        afterCompletionDays,
+        hasSubtasks,
+        repeatStatus: effectiveIsRepeating ? repeatStatus : undefined,
+        status: repeatStatus === 'Completed' ? 'Done' : (task.status === 'Done' && repeatStatus === 'Active' ? 'Todo' : task.status),
       });
     }
 
@@ -413,8 +427,8 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   </select>
                 </div>
 
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  {repetitionMode === 'schedule' ? (
+                {repetitionMode === 'schedule' ? (
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <select
                       className={styles.v2Select}
                       value={scheduleFrequency}
@@ -425,7 +439,9 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                       <option value="monthly">Каждый месяц</option>
                       <option value="yearly">Каждый год</option>
                     </select>
-                  ) : repetitionMode === 'after_completion' ? (
+                  </div>
+                ) : repetitionMode === 'after_completion' ? (
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <select
                       className={styles.v2Select}
                       value={afterCompletionDaysInput}
@@ -437,20 +453,34 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                         </option>
                       ))}
                     </select>
-                  ) : (
+                  </div>
+                ) : repetitionMode === 'spaced' ? (
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <select
                       className={styles.v2Select}
                       disabled
                       style={{ opacity: 0.55, cursor: 'not-allowed' }}
                     >
-                      <option>
-                        {repetitionMode === 'spaced' || repetitionMode === 'smart' ? '1,3,7,14,30,90д' : '—'}
-                      </option>
+                      <option>1, 3, 7, 14, 30, 90д</option>
                     </select>
-                  )}
-                </div>
+                  </div>
+                ) : null}
+
+                {repetitionMode !== 'none' && (
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <select
+                      className={styles.v2Select}
+                      value={repeatStatus}
+                      onChange={(e) => setRepeatStatus(e.target.value as RepeatStatus)}
+                    >
+                      <option value="Active">🟢 Активно</option>
+                      <option value="Paused">⏸️ На паузе</option>
+                      <option value="Completed">✅ Завершено</option>
+                    </select>
+                  </div>
+                )}
               </div>
-              <span style={hint}>🔁 Режим и опция повторения</span>
+              <span style={hint}>🔁 Режим, опция и статус повторения</span>
 
               {/* Mode Explanation Hint Box DIRECTLY Below Repetition Selects */}
               <div

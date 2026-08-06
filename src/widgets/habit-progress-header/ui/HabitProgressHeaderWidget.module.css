@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-/* Header Card Base with 2-Row Stack */
+/* Header Card Base */
 .headerBase {
   background: var(--color-surface, rgba(30, 41, 59, 0.7));
   border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
@@ -25,7 +25,7 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
-/* Row 1: Title on Left, Direction Flip Button on Right */
+/* Header Title Row */
 .titleRow {
   display: flex;
   align-items: center;
@@ -34,22 +34,35 @@
 }
 
 .widgetTitle {
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 800;
   color: var(--color-text-primary, #f8fafc);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 :global([data-theme="light"]) .widgetTitle {
   color: #0f172a;
 }
 
-/* Flip Circle Button (Clean Icon-Only Neutral Secondary Button) */
+/* Section Subheaders */
+.sectionLabel {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+}
+
+/* Flip Direction Circle Button */
 .v1CircleFlipBtn {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
@@ -68,43 +81,40 @@
   transform: rotate(180deg);
 }
 
-:global([data-theme="light"]) .v1CircleFlipBtn {
-  background: var(--color-surface-hover);
-  border-color: var(--color-border);
-  color: var(--color-text-secondary);
-}
-
-:global([data-theme="light"]) .v1CircleFlipBtn:hover {
-  background: var(--color-border-hover);
-  color: var(--color-text-primary);
-}
-
-/* Row 2: All 4 Filters Strictly on 1 Single Equal Horizontal Line */
-.filterTrackSingleLine {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+/* 🌟 PERFECT 4-COLUMN SEGMENTED GRID (Zero Overflow, Zero Scrollbar) */
+.equal4Grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .sortBtn {
-  flex: 1;
+  width: 100%;
+  min-width: 0;
   background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
   color: var(--color-text-secondary);
-  border-radius: 8px;
-  padding: 6px 4px;
-  font-size: 11.5px;
+  border-radius: 9px;
+  padding: 6px 2px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 3px;
   white-space: nowrap;
   box-sizing: border-box;
   text-align: center;
+}
+
+.sortBtn span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sortBtn:hover {
@@ -113,23 +123,31 @@
 }
 
 .sortBtnActive {
-  background: var(--color-accent-light) !important;
-  border-color: var(--color-accent-border) !important;
-  color: var(--color-accent-text) !important;
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent-text, #ffffff) !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 8px var(--color-accent-border) !important;
+  box-shadow: 0 2px 8px var(--color-accent-light) !important;
+}
+
+.sortBtnActive span {
+  color: var(--color-accent-text, #ffffff) !important;
 }
 
 :global([data-theme="light"]) .sortBtn {
-  background: var(--color-surface-hover);
-  border-color: var(--color-border);
-  color: var(--color-text-secondary);
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #475569;
 }
 
 :global([data-theme="light"]) .sortBtnActive {
-  background: var(--color-accent-light) !important;
-  border-color: var(--color-accent-border) !important;
-  color: var(--color-accent-text) !important;
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent-text, #ffffff) !important;
   font-weight: 800 !important;
-  box-shadow: 0 2px 8px var(--color-accent-border) !important;
+  box-shadow: 0 2px 8px var(--color-accent-light) !important;
+}
+
+:global([data-theme="light"]) .sortBtnActive span {
+  color: var(--color-accent-text, #ffffff) !important;
 }

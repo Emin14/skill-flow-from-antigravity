@@ -28,13 +28,6 @@ const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Ta
       if (!t.scheduledDate || t.scheduledDate !== targetDateStr) return false;
     }
 
-    if (t.parentTaskId) {
-      const parentTask = tasksMap.get(t.parentTaskId);
-      if (parentTask && parentTask.scheduledDate === targetDateStr) {
-        return false;
-      }
-    }
-
     return true;
   });
 };
@@ -139,10 +132,6 @@ export const CalendarPage: React.FC = () => {
     for (const t of tasks) {
       if (t.isRepeating && t.occurrences && t.occurrences.length > 0) {
         for (const occ of t.occurrences) {
-          if (t.parentTaskId) {
-            const parent = tasksMap.get(t.parentTaskId);
-            if (parent && parent.scheduledDate === occ.date) continue;
-          }
           const existing = map.get(occ.date) || { total: 0, done: 0 };
           existing.total += 1;
           if (occ.status === 'Done') {
@@ -152,10 +141,6 @@ export const CalendarPage: React.FC = () => {
         }
       } else {
         if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') continue;
-        if (t.parentTaskId) {
-          const parent = tasksMap.get(t.parentTaskId);
-          if (parent && parent.scheduledDate === t.scheduledDate) continue;
-        }
 
         const existing = map.get(t.scheduledDate) || { total: 0, done: 0 };
         existing.total += 1;

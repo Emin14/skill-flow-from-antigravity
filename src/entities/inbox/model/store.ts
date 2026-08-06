@@ -41,7 +41,11 @@ export const useInboxStore = create<InboxState>((set, get) => ({
     };
 
     const saved = await inboxRepository.save(newItem);
-    set((state) => ({ items: [saved, ...state.items] }));
+    set((state) => {
+      const exists = state.items.some((i) => i.id === saved.id);
+      if (exists) return { items: state.items };
+      return { items: [saved, ...state.items] };
+    });
     useToastStore.getState().showToast('Мысль сохранена во Входящие', 'success');
     useActivityStore.getState().logActivity('task_created', `Добавлена мысль: "${text}"`);
     return saved;

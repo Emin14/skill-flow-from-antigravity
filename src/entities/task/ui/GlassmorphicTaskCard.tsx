@@ -3,7 +3,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { Checkbox } from '@/shared/ui';
 import { Task, TaskStatus } from '@/entities/task/model/types';
-import { getAllDescendantTasks, getTaskParentPath } from '@/entities/task/model/store';
+import { getAllDescendantTasks, getTaskParentPath, isSubtaskDoneForProject } from '@/entities/task/model/store';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { GripVertical, Check, ExternalLink, Calendar } from 'lucide-react';
 import { startPointerDrag, cleanupPointerDrag } from '@/shared/lib/pointerDrag';
@@ -23,6 +23,10 @@ interface GlassmorphicTaskCardProps {
   parentPathVariant?: number;
   hideDateBadge?: boolean;
   hideCategory?: boolean;
+  hideRepeatTag?: boolean;
+  customCheckboxIcon?: React.ReactNode;
+  extraMetaNode?: React.ReactNode;
+  progressMode?: 'today' | 'all_time';
   onToggleCheckbox?: () => void;
   onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
@@ -181,6 +185,10 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   parentPathVariant = 4,
   hideDateBadge = false,
   hideCategory = false,
+  hideRepeatTag = false,
+  customCheckboxIcon,
+  extraMetaNode,
+  progressMode = 'today',
   onToggleCheckbox,
   onStatusChange,
   onDelete,
@@ -208,7 +216,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     return task.occurrences?.find((o) => o.date === targetDate) || null;
   }, [task, occurrenceDate]);
 
-  const isDone = currentOcc ? currentOcc.status === 'Done' : task.status === 'Done';
+  const isDone = task.status === 'Done' || task.repeatStatus === 'Completed' || (currentOcc ? currentOcc.status === 'Done' : false);
   const catColor = getCategoryColor(task.category);
   const formattedLink = formatExternalUrl(task.link);
 
@@ -225,7 +233,10 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
 
   const descendantSubtasks = useMemo(() => getAllDescendantTasks(task.id, allTasks), [allTasks, task.id]);
   const isContainer = descendantSubtasks.length > 0;
-  const doneSubtasksCount = useMemo(() => descendantSubtasks.filter((t) => t.status === 'Done').length, [descendantSubtasks]);
+  const doneSubtasksCount = useMemo(
+    () => descendantSubtasks.filter((t) => (progressMode === 'all_time' ? t.status === 'Done' : isSubtaskDoneForProject(t, todayStr))).length,
+    [descendantSubtasks, todayStr, progressMode]
+  );
   const areAllSubtasksDone = isContainer && descendantSubtasks.length > 0 && doneSubtasksCount === descendantSubtasks.length;
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -454,6 +465,17 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
             {isContainer ? (
               <SubtaskProgressRing total={descendantSubtasks.length} done={doneSubtasksCount} />
+            ) : customCheckboxIcon ? (
+              <div
+                className={styles.checkboxWrapper}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  if (onClick) onClick(occurrenceDate);
+                }}
+              >
+                {customCheckboxIcon}
+              </div>
             ) : (
               <div
                 className={styles.checkboxWrapper}
@@ -485,7 +507,8 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                     {dateBadgeLabel}
                   </span>
                 )}
-                {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
+                {extraMetaNode}
+                {task.isRepeating && !hideRepeatTag && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {formattedLink && (
                   <a
                     href={formattedLink}
