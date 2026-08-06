@@ -62,10 +62,27 @@ export const TASK_CARD_STYLES: TaskCardStyleOption[] = [
   },
 ];
 
-export const applyTaskCardStyle = (styleId: string) => {
+export const applyTaskCardStyle = (styleId: string | null) => {
   if (typeof window === 'undefined') return;
-  const styleOpt = TASK_CARD_STYLES.find((s) => s.id === styleId) || TASK_CARD_STYLES[0];
   const root = document.documentElement;
+
+  if (!styleId || styleId === 'default' || styleId === 'system') {
+    root.style.removeProperty('--card-surface');
+    root.style.removeProperty('--card-border');
+    root.style.removeProperty('--card-text-primary');
+    root.removeAttribute('data-card-frameless-neon');
+    localStorage.removeItem('user-card-style-id');
+    return;
+  }
+
+  const styleOpt = TASK_CARD_STYLES.find((s) => s.id === styleId);
+  if (!styleOpt) {
+    root.style.removeProperty('--card-surface');
+    root.style.removeProperty('--card-border');
+    root.style.removeProperty('--card-text-primary');
+    root.removeAttribute('data-card-frameless-neon');
+    return;
+  }
 
   root.style.setProperty('--card-surface', styleOpt.cardBgColor);
   root.style.setProperty('--card-border', styleOpt.cardBorder);

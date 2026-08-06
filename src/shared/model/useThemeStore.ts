@@ -40,8 +40,10 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       applyAppThemePreset(activePresetToApply);
       applyAccentColorVars(savedAccentColor);
 
-      if (savedCardStyleId) {
+      if (savedCardStyleId && savedCardStyleId !== 'white') {
         applyTaskCardStyle(savedCardStyleId);
+      } else {
+        applyTaskCardStyle(null);
       }
     }
   },
