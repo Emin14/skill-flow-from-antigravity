@@ -31,7 +31,7 @@ export const ProjectsPage: React.FC = () => {
     const savedVariant = localStorage.getItem('subtaskVariantId');
     if (savedVariant) {
       const parsed = parseInt(savedVariant, 10) as SubtaskVariantId;
-      if (parsed >= 1 && parsed <= 30) {
+      if (parsed >= 1 && parsed <= 17) {
         setSubtaskVariantId(parsed);
       }
     }
