@@ -463,16 +463,16 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
       <div
         className={styles.headerRow}
         onClick={() => toggleProjectOpen(project.id)}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', flexWrap: 'nowrap', gap: '12px' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '60%', minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
           <h2 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {project.title}
           </h2>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '40%', justifyContent: 'flex-end' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0, justifyContent: 'flex-end' }}>
           {totalCount > 0 && (
-            <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)' }}>
+            <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>
               {doneCount}/{totalCount}
             </span>
           )}
@@ -653,15 +653,15 @@ const RecursiveSubtaskList: React.FC<{
               <div
                 className={styles.headerRow}
                 onClick={() => toggleProjectOpen(child.id)}
-                style={{ cursor: 'pointer', padding: '10px 12px' }}
+                style={{ cursor: 'pointer', padding: '10px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', flexWrap: 'nowrap', gap: '10px' }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', width: '60%', minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0, flex: 1 }}>
                   <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {child.title}
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '40%', justifyContent: 'flex-end' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0, justifyContent: 'flex-end' }}>
                   {subTotal > 0 && (
                     <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
                       {subDone}/{subTotal}
