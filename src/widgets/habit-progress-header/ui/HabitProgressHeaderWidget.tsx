@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, ArrowUpDown, BarChart2, Clock, ArrowDown, ArrowUp, PlayCircle, PauseCircle, CheckCircle, Layers } from 'lucide-react';
+import { Calendar, ArrowUpDown, BarChart2, Clock, ArrowDown, ArrowUp, PlayCircle, PauseCircle, CheckCircle, Layers, Filter } from 'lucide-react';
 import { RepeatStatus } from '@/entities/task/model/types';
 import styles from './HabitProgressHeaderWidget.module.css';
 
@@ -41,7 +41,7 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
   return (
     <div className={styles.container}>
       <div className={styles.headerBase}>
-        {/* Row 1: Title & Direction Flip Button */}
+        {/* Header Title Row */}
         <div className={styles.titleRow}>
           <span className={styles.widgetTitle}>🔄 Привычки & Повторения</span>
           <button
@@ -50,86 +50,98 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
             onClick={onToggleDirection}
             title={isDesc ? 'Сменить на По возрастанию' : 'Сменить на По убыванию'}
           >
-            {isDesc ? <ArrowDown size={16} /> : <ArrowUp size={16} />}
+            {isDesc ? <ArrowDown size={14} /> : <ArrowUp size={14} />}
           </button>
         </div>
 
-        {/* Row 2: Status Filter Tabs (Active, Paused, Completed, All) */}
-        <div className={styles.filterTrackSingleLine} style={{ marginBottom: '8px' }}>
-          <button
-            type="button"
-            className={`${styles.sortBtn} ${repeatStatusFilter === 'Active' ? styles.sortBtnActive : ''}`}
-            onClick={() => onSelectRepeatStatusFilter('Active')}
-          >
-            <PlayCircle size={13} color={repeatStatusFilter === 'Active' ? '#ffffff' : '#10b981'} />
-            <span>Активные {statusCounts ? `(${statusCounts.active})` : ''}</span>
-          </button>
+        {/* Section 1: STATUS FILTER (4 Equal Columns Grid) */}
+        <div>
+          <div className={styles.sectionLabel}>
+            <Filter size={10} />
+            <span>Фильтр по статусу</span>
+          </div>
+          <div className={styles.equal4Grid}>
+            <button
+              type="button"
+              className={`${styles.sortBtn} ${repeatStatusFilter === 'Active' ? styles.sortBtnActive : ''}`}
+              onClick={() => onSelectRepeatStatusFilter('Active')}
+            >
+              <PlayCircle size={12} color={repeatStatusFilter === 'Active' ? 'currentColor' : '#10b981'} />
+              <span>Актив {statusCounts ? `(${statusCounts.active})` : ''}</span>
+            </button>
 
-          <button
-            type="button"
-            className={`${styles.sortBtn} ${repeatStatusFilter === 'Paused' ? styles.sortBtnActive : ''}`}
-            onClick={() => onSelectRepeatStatusFilter('Paused')}
-          >
-            <PauseCircle size={13} color={repeatStatusFilter === 'Paused' ? '#ffffff' : '#f59e0b'} />
-            <span>Пауза {statusCounts ? `(${statusCounts.paused})` : ''}</span>
-          </button>
+            <button
+              type="button"
+              className={`${styles.sortBtn} ${repeatStatusFilter === 'Paused' ? styles.sortBtnActive : ''}`}
+              onClick={() => onSelectRepeatStatusFilter('Paused')}
+            >
+              <PauseCircle size={12} color={repeatStatusFilter === 'Paused' ? 'currentColor' : '#f59e0b'} />
+              <span>Пауза {statusCounts ? `(${statusCounts.paused})` : ''}</span>
+            </button>
 
-          <button
-            type="button"
-            className={`${styles.sortBtn} ${repeatStatusFilter === 'Completed' ? styles.sortBtnActive : ''}`}
-            onClick={() => onSelectRepeatStatusFilter('Completed')}
-          >
-            <CheckCircle size={13} color={repeatStatusFilter === 'Completed' ? '#ffffff' : '#6366f1'} />
-            <span>Завершено {statusCounts ? `(${statusCounts.completed})` : ''}</span>
-          </button>
+            <button
+              type="button"
+              className={`${styles.sortBtn} ${repeatStatusFilter === 'Completed' ? styles.sortBtnActive : ''}`}
+              onClick={() => onSelectRepeatStatusFilter('Completed')}
+            >
+              <CheckCircle size={12} color={repeatStatusFilter === 'Completed' ? 'currentColor' : '#6366f1'} />
+              <span>Готово {statusCounts ? `(${statusCounts.completed})` : ''}</span>
+            </button>
 
-          <button
-            type="button"
-            className={`${styles.sortBtn} ${repeatStatusFilter === 'all' ? styles.sortBtnActive : ''}`}
-            onClick={() => onSelectRepeatStatusFilter('all')}
-          >
-            <Layers size={13} />
-            <span>Все {statusCounts ? `(${statusCounts.total})` : ''}</span>
-          </button>
+            <button
+              type="button"
+              className={`${styles.sortBtn} ${repeatStatusFilter === 'all' ? styles.sortBtnActive : ''}`}
+              onClick={() => onSelectRepeatStatusFilter('all')}
+            >
+              <Layers size={12} />
+              <span>Все {statusCounts ? `(${statusCounts.total})` : ''}</span>
+            </button>
+          </div>
         </div>
 
-        {/* Row 3: Sorting Options */}
-        <div className={styles.filterTrackSingleLine}>
-          <button
-            type="button"
-            className={`${styles.sortBtn} ${sortKey === 'overdue' ? styles.sortBtnActive : ''}`}
-            onClick={() => handleCategoryClick('overdue')}
-          >
-            <Calendar size={13} />
-            <span>Срок</span>
-          </button>
+        {/* Section 2: SORTING OPTIONS (4 Equal Columns Grid) */}
+        <div>
+          <div className={styles.sectionLabel}>
+            <ArrowUpDown size={10} />
+            <span>Сортировка</span>
+          </div>
+          <div className={styles.equal4Grid}>
+            <button
+              type="button"
+              className={`${styles.sortBtn} ${sortKey === 'overdue' ? styles.sortBtnActive : ''}`}
+              onClick={() => handleCategoryClick('overdue')}
+            >
+              <Calendar size={12} />
+              <span>Срок</span>
+            </button>
 
-          <button
-            type="button"
-            className={`${styles.sortBtn} ${sortKey === 'alphabetical' ? styles.sortBtnActive : ''}`}
-            onClick={() => handleCategoryClick('alphabetical')}
-          >
-            <ArrowUpDown size={13} />
-            <span>Алфавит</span>
-          </button>
+            <button
+              type="button"
+              className={`${styles.sortBtn} ${sortKey === 'alphabetical' ? styles.sortBtnActive : ''}`}
+              onClick={() => handleCategoryClick('alphabetical')}
+            >
+              <ArrowUpDown size={12} />
+              <span>А-Я</span>
+            </button>
 
-          <button
-            type="button"
-            className={`${styles.sortBtn} ${sortKey === 'count' ? styles.sortBtnActive : ''}`}
-            onClick={() => handleCategoryClick('count')}
-          >
-            <BarChart2 size={13} />
-            <span>Повторы</span>
-          </button>
+            <button
+              type="button"
+              className={`${styles.sortBtn} ${sortKey === 'count' ? styles.sortBtnActive : ''}`}
+              onClick={() => handleCategoryClick('count')}
+            >
+              <BarChart2 size={12} />
+              <span>Повторы</span>
+            </button>
 
-          <button
-            type="button"
-            className={`${styles.sortBtn} ${sortKey === 'created' ? styles.sortBtnActive : ''}`}
-            onClick={() => handleCategoryClick('created')}
-          >
-            <Clock size={13} />
-            <span>Создано</span>
-          </button>
+            <button
+              type="button"
+              className={`${styles.sortBtn} ${sortKey === 'created' ? styles.sortBtnActive : ''}`}
+              onClick={() => handleCategoryClick('created')}
+            >
+              <Clock size={12} />
+              <span>Дата</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
