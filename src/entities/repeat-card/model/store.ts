@@ -6,6 +6,8 @@ import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
 
+import { getTodayStr } from '@/shared/lib/dateUtils';
+
 interface RepeatCardState {
   cards: RepeatCard[];
   isLoading: boolean;
@@ -36,7 +38,7 @@ export const useRepeatCardStore = create<RepeatCardState>((set, get) => ({
   },
 
   addCard: async (materialId: string, front: string, back: string) => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = getTodayStr();
     const newCard: RepeatCard = {
       id: uuidv4(),
       materialId,
@@ -94,7 +96,7 @@ export const useRepeatCardStore = create<RepeatCardState>((set, get) => ({
   },
 
   getDueCards: () => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = getTodayStr();
     return get().cards.filter((c) => !c.nextReviewDate || c.nextReviewDate <= today);
   },
 

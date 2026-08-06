@@ -50,6 +50,8 @@ export interface AchievementItem {
   progressText: string;
 }
 
+import { formatLocalDateStr, getTodayStr } from '@/shared/lib/dateUtils';
+
 export const analyticsService = {
   getSummaryStats(
     goals: Goal[],
@@ -58,7 +60,7 @@ export const analyticsService = {
     materials: Material[],
     cards: RepeatCard[]
   ): SummaryStats {
-    const today = new Date().toISOString().split('T')[0];
+    const today = getTodayStr();
 
     return {
       totalGoals: goals.length,
@@ -108,7 +110,7 @@ export const analyticsService = {
   },
 
   getFsrsStats(cards: RepeatCard[]): FsrsStats {
-    const today = new Date().toISOString().split('T')[0];
+    const today = getTodayStr();
     const totalCards = cards.length;
 
     if (totalCards === 0) {
@@ -146,7 +148,7 @@ export const analyticsService = {
     for (let i = 6; i >= 0; i--) {
       const d = new Date();
       d.setDate(d.getDate() - i);
-      const dateStr = d.toISOString().split('T')[0];
+      const dateStr = formatLocalDateStr(d);
       const dayLabel = d.toLocaleDateString('ru-RU', { weekday: 'short' });
 
       const tasksDone = tasks.filter((t) => t.status === 'Done' && t.completedAt?.startsWith(dateStr)).length;

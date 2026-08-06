@@ -7,6 +7,7 @@ import { useActivityStore } from '@/entities/activity';
 import { TodayActivity } from '@/widgets/today-activity/ui/TodayActivity';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { Task } from '@/entities/task/model/types';
+import { formatLocalDateStr, getTodayStr } from '@/shared/lib/dateUtils';
 import {
   ResponsiveContainer,
   BarChart,
@@ -90,7 +91,7 @@ const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
     if (t.hasSubtasks || hasChildren) return;
 
     if (!t.isRepeating && t.status === 'Done') {
-      const dateStr = t.scheduledDate || (t.completedAt ? t.completedAt.split('T')[0] : undefined);
+      const dateStr = t.scheduledDate || (t.completedAt ? formatLocalDateStr(new Date(t.completedAt)) : undefined);
       if (dateStr) {
         events.push({
           taskId: t.id,
@@ -137,7 +138,7 @@ const getDaily30Stats = (allTasks: Task[]): Record<string, DayFullStats> => {
   for (let i = 29; i >= 0; i--) {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    const dateStr = d.toISOString().split('T')[0];
+    const dateStr = formatLocalDateStr(d);
     const monthNameStr = d.toLocaleDateString('ru-RU', { month: 'long', day: 'numeric' });
 
     map[dateStr] = {
@@ -157,7 +158,7 @@ const getDaily30Stats = (allTasks: Task[]): Record<string, DayFullStats> => {
     if (t.hasSubtasks || hasChildren) return;
 
     if (t.createdAt) {
-      const createdDate = t.createdAt.split('T')[0];
+      const createdDate = formatLocalDateStr(new Date(t.createdAt));
       if (map[createdDate]) {
         map[createdDate].createdCount += 1;
       }
@@ -166,7 +167,7 @@ const getDaily30Stats = (allTasks: Task[]): Record<string, DayFullStats> => {
     // Process NON-REPEATING tasks:
     if (!t.isRepeating) {
       if (t.status === 'Done') {
-        const effectiveDate = t.scheduledDate || (t.completedAt ? t.completedAt.split('T')[0] : undefined);
+        const effectiveDate = t.scheduledDate || (t.completedAt ? formatLocalDateStr(new Date(t.completedAt)) : undefined);
         if (effectiveDate && map[effectiveDate]) {
           map[effectiveDate].tasksDoneCount += 1;
           if (t.pomodorosCount) {
@@ -213,8 +214,7 @@ export const StatisticsPage: React.FC = () => {
   const { tasks, fetchTasks } = useTaskStore();
   const { logs, fetchLogs } = useActivityStore();
 
-  const getTodayStr = () => new Date().toISOString().split('T')[0];
-  const [selectedDateStr, setSelectedDateStr] = useState<string>(getTodayStr);
+  const [selectedDateStr, setSelectedDateStr] = useState<string>(() => getTodayStr());
   const [activityFilterMode, setActivityFilterMode] = useState<'tasks' | 'repeats' | 'pomodoros'>('tasks');
 
   useEffect(() => {
@@ -302,7 +302,7 @@ export const StatisticsPage: React.FC = () => {
       for (let i = 6; i >= 0; i--) {
         const d = new Date();
         d.setDate(d.getDate() - i);
-        const dateStr = d.toISOString().split('T')[0];
+        const dateStr = formatLocalDateStr(d);
         const dayLabel = d.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric' });
         const fullDateLabel = d.toLocaleDateString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
 
@@ -334,7 +334,7 @@ export const StatisticsPage: React.FC = () => {
       for (let i = 13; i >= 7; i--) {
         const d = new Date();
         d.setDate(d.getDate() - i);
-        const dateStr = d.toISOString().split('T')[0];
+        const dateStr = formatLocalDateStr(d);
         const stat = daily30StatsMap[dateStr] || {
           tasksDoneCount: 0,
           repeatsCount: 0,
@@ -349,7 +349,7 @@ export const StatisticsPage: React.FC = () => {
       for (let i = 29; i >= 0; i--) {
         const d = new Date();
         d.setDate(d.getDate() - i);
-        const dateStr = d.toISOString().split('T')[0];
+        const dateStr = formatLocalDateStr(d);
         const dayLabel = `${d.getDate()}`;
         const fullDateLabel = d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
 
@@ -479,7 +479,7 @@ export const StatisticsPage: React.FC = () => {
     for (let i = 0; i < 365; i++) {
       const d = new Date(today);
       d.setDate(d.getDate() - i);
-      const dateStr = d.toISOString().split('T')[0];
+      const dateStr = formatLocalDateStr(d);
       if (daysWithActivity.has(dateStr)) {
         streak++;
       } else {

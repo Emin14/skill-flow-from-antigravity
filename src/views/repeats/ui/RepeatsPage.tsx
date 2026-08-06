@@ -5,6 +5,7 @@ import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { HabitProgressHeaderWidget, HabitSortKey, HabitSortDirection } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
+import { getTodayStr } from '@/shared/lib/dateUtils';
 import styles from './RepeatsPage.module.css';
 
 export const RepeatsPage: React.FC = () => {
@@ -157,7 +158,7 @@ const getRepeatTypeLabel = (task: Task): string => {
 };
 
 const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }) => {
-  const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
+  const todayStr = useMemo(() => getTodayStr(), []);
   const occurrences = useMemo(() => {
     return (task.occurrences || []).slice().sort((a, b) => a.date.localeCompare(b.date));
   }, [task.occurrences]);

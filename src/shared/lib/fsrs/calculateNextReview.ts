@@ -1,5 +1,7 @@
 export type ReviewRating = 'Again' | 'Hard' | 'Good' | 'Easy';
 
+import { formatLocalDateStr } from '@/shared/lib/dateUtils';
+
 export interface FSRSResult {
   nextInterval: number;
   newRepetitions: number;
@@ -49,7 +51,7 @@ export function calculateNextReview(
   // Calculate future date YYYY-MM-DD
   const targetDate = new Date();
   targetDate.setDate(targetDate.getDate() + nextInterval);
-  const nextReviewDate = targetDate.toISOString().split('T')[0];
+  const nextReviewDate = formatLocalDateStr(targetDate);
 
   return {
     nextInterval,
