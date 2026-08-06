@@ -23,6 +23,8 @@ interface GlassmorphicTaskCardProps {
   parentPathVariant?: number;
   hideDateBadge?: boolean;
   hideCategory?: boolean;
+  hideRepeatTag?: boolean;
+  customCheckboxIcon?: React.ReactNode;
   onToggleCheckbox?: () => void;
   onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
@@ -181,6 +183,8 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   parentPathVariant = 4,
   hideDateBadge = false,
   hideCategory = false,
+  hideRepeatTag = false,
+  customCheckboxIcon,
   onToggleCheckbox,
   onStatusChange,
   onDelete,
@@ -454,6 +458,17 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
             {isContainer ? (
               <SubtaskProgressRing total={descendantSubtasks.length} done={doneSubtasksCount} />
+            ) : customCheckboxIcon ? (
+              <div
+                className={styles.checkboxWrapper}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  if (onToggleCheckbox) onToggleCheckbox();
+                }}
+              >
+                {customCheckboxIcon}
+              </div>
             ) : (
               <div
                 className={styles.checkboxWrapper}
@@ -485,7 +500,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                     {dateBadgeLabel}
                   </span>
                 )}
-                {task.isRepeating && <span className={styles.repeatTag}>• ↻ Повтор</span>}
+                {task.isRepeating && !hideRepeatTag && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {formattedLink && (
                   <a
                     href={formattedLink}
