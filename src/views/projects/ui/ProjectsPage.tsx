@@ -281,7 +281,13 @@ export const ProjectsPage: React.FC = () => {
                 onFixDate={() => handleExtendProjectDate(project, latestSubtaskDate)}
                 onToggleSubtask={(st) => toggleTaskStatus(st.id, undefined, st.scheduledDate || todayStr)}
                 onDeleteSubtask={(st) => deleteTaskOccurrence(st.id, st.scheduledDate || todayStr)}
-                onSelectSubtask={(st) => setEditingTask(st)}
+                onSelectSubtask={(st) => {
+                  if (st.isRepeating) {
+                    setEditingTask(st);
+                  } else {
+                    setDetailTask(st);
+                  }
+                }}
               />
             );
           })}

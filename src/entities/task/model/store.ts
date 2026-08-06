@@ -717,6 +717,13 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       updates.repetitionMode = 'none';
     }
 
+    if (updates.scheduledDate && task.occurrences && task.occurrences.length > 0) {
+      const occs = task.occurrences.map((o) =>
+        o.status === 'Todo' ? { ...o, date: updates.scheduledDate! } : o
+      );
+      updates.occurrences = occs;
+    }
+
     set((state) => ({
       tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
     }));

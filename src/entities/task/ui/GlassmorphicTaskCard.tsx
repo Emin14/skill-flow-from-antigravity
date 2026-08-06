@@ -466,7 +466,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
-                  if (onToggleCheckbox) onToggleCheckbox();
+                  if (onClick) onClick(occurrenceDate);
                 }}
               >
                 {customCheckboxIcon}
