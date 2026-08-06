@@ -6,6 +6,7 @@ import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { HabitProgressHeaderWidget, HabitSortKey, HabitSortDirection, RepeatStatusFilter } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
+import { getCategoryColor } from '@/shared/config/categoryColors';
 import styles from './RepeatsPage.module.css';
 
 export const RepeatsPage: React.FC = () => {
@@ -285,13 +286,10 @@ export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onCli
 
   const { numStr, textStr } = formatRepetitionCount(completedCount);
   const createdDateStr = task.createdAt ? formatDateNumeric(task.createdAt.split('T')[0]) : '';
+  const catColor = getCategoryColor(task.category);
 
   return (
-    <div
-      className={styles.repeatCard}
-      onClick={onClick}
-      style={{ cursor: onClick ? 'pointer' : 'default' }}
-    >
+    <Card className={styles.repeatCard} onClick={onClick}>
       {/* 2-Line Card Header */}
       <div className={styles.cardHeader}>
         <div className={styles.line1}>
@@ -305,7 +303,12 @@ export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onCli
         </div>
 
         <div className={styles.line2}>
-          <span className={styles.categoryTag}>🏷 {task.category || 'Без категории'}</span>
+          <div className={styles.categoryRow}>
+            <span className={styles.catDot} style={{ backgroundColor: catColor }} />
+            <span className={styles.categoryText} style={{ color: catColor }}>
+              {task.category || 'Без категории'}
+            </span>
+          </div>
           <div className={styles.repetitionCounter}>
             <span className={styles.repetitionNum}>{numStr}</span> {textStr}
           </div>
@@ -392,6 +395,6 @@ export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onCli
           ))}
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
