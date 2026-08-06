@@ -1,26 +1,35 @@
 import { InboxItem } from '@/entities/inbox/model/types';
 import { InboxRepository } from '../interfaces/InboxRepository';
-
-const STORAGE_KEY = 'skillflow_inbox';
+import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 
 export class LocalStorageInboxRepository implements InboxRepository {
+  private cache: InboxItem[] | null = null;
+  private writeQueue: Promise<void> = Promise.resolve();
+
   private getStorage(): InboxItem[] {
+    if (this.cache) return this.cache;
     if (typeof window === 'undefined') return [];
     try {
-      const data = localStorage.getItem(STORAGE_KEY);
-      return data ? JSON.parse(data) : [];
+      const data = localStorage.getItem(STORAGE_KEYS.INBOX);
+      this.cache = data ? JSON.parse(data) : [];
+      return this.cache || [];
     } catch {
+      this.cache = [];
       return [];
     }
   }
 
-  private setStorage(items: InboxItem[]): void {
-    if (typeof window === 'undefined') return;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    } catch (e) {
-      console.error('Failed to save inbox items to LocalStorage', e);
-    }
+  private setStorage(items: InboxItem[]): Promise<void> {
+    this.cache = items;
+    this.writeQueue = this.writeQueue.then(() => {
+      if (typeof window === 'undefined') return;
+      try {
+        localStorage.setItem(STORAGE_KEYS.INBOX, JSON.stringify(items));
+      } catch (e) {
+        console.error('Failed to save inbox items to LocalStorage', e);
+      }
+    });
+    return this.writeQueue;
   }
 
   async getAll(): Promise<InboxItem[]> {

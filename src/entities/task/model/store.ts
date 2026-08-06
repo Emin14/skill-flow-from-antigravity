@@ -155,7 +155,7 @@ interface TaskState {
   deleteTaskOccurrence: (id: string, dateStr: string) => Promise<void>;
   updateOccurrenceDate: (id: string, currentDateStr: string, newDateStr: string) => Promise<void>;
   deleteTaskSeries: (id: string, confirmed?: boolean) => Promise<void>;
-  deleteTask: (id: string, confirmed?: boolean) => Promise<void>;
+  deleteTask: (id: string, confirmed?: boolean, deleteSubtasks?: boolean) => Promise<void>;
   rescheduleTaskToToday: (id: string) => Promise<void>;
   completeRepetition: (id: string, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTargetRepetitions: (id: string, newTarget: number) => Promise<void>;
@@ -841,18 +841,55 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     await get().deleteTask(id, confirmed);
   },
 
-  deleteTask: async (id: string, confirmed?: boolean) => {
+  deleteTask: async (id: string, confirmed?: boolean, deleteSubtasks: boolean = true) => {
     const deletedTask = get().tasks.find((t) => t.id === id);
     if (!deletedTask) return;
 
     const descendantTasks = getAllDescendantTasks(id, get().tasks);
 
-    // Если есть подзадачи и подтверждение явно не передано — прерываем.
-    // UI-слой отвечает за вызов window.confirm и передачу confirmed=true.
+    // Если у задачи есть подзадачи и подтверждение не получено — запрашиваем выбор у пользователя
     if (descendantTasks.length > 0 && confirmed !== true) {
+      if (typeof window !== 'undefined') {
+        const promptMsg = 'Задача "' + deletedTask.title + '" содержит ' + descendantTasks.length + ' подзадач(и).\n\nУдалить родительскую задачу ВМЕСТЕ со всеми подзадачами?';
+        const shouldDeleteSubtasks = window.confirm(promptMsg);
+
+        if (shouldDeleteSubtasks) {
+          return get().deleteTask(id, true, true);
+        } else {
+          const shouldKeepSubtasks = window.confirm(
+            'Сохранить подзадачи как основные задачи в общем списке?'
+          );
+          if (shouldKeepSubtasks) {
+            return get().deleteTask(id, true, false);
+          } else {
+            return; // Пользователь отменил действие
+          }
+        }
+      }
       return;
     }
 
+    // ВАРИАНТ А: Пользователь решил сохранить подзадачи — отвязываем их от родителя
+    if (descendantTasks.length > 0 && !deleteSubtasks) {
+      const directChildren = get().tasks.filter((t) => t.parentTaskId === id);
+      set((state) => ({
+        tasks: state.tasks.map((t) => (t.parentTaskId === id ? { ...t, parentTaskId: null } : t)),
+      }));
+
+      for (const child of directChildren) {
+        await taskRepository.update(child.id, { parentTaskId: null });
+      }
+
+      set((state) => ({
+        tasks: state.tasks.filter((t) => t.id !== id),
+      }));
+      await taskRepository.delete(id);
+
+      useToastStore.getState().showToast(`Задача "${deletedTask.title}" удалена. Подзадачи сохранены как основные.`, 'info');
+      return;
+    }
+
+    // ВАРИАНТ Б: Стандартное удаление родителя и всех его потомков
     const allToDelete = [deletedTask, ...descendantTasks];
     const allDeleteIds = allToDelete.map((t) => t.id);
     const parentTaskId = deletedTask.parentTaskId;
@@ -864,11 +901,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         if (remainingSubtasks.length === 0) {
           const parentObj = state.tasks.find((t) => t.id === parentTaskId);
           if (parentObj && parentObj.hasSubtasks) {
-            setTimeout(() => {
-              if (window.confirm(`Проект "${parentObj.title}" больше не содержит подзадач.\nСделать его обычной задачей?`)) {
-                get().updateTaskDetails(parentTaskId, { hasSubtasks: false });
-              }
-            }, 100);
+            nextTasks = nextTasks.map((t) => (t.id === parentTaskId ? { ...t, hasSubtasks: false } : t));
           }
         }
       }
@@ -886,24 +919,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         for (const t of allToDelete) {
           await taskRepository.save(t);
         }
-        const currentTasks = get().tasks;
-        const restoredIds = new Set(allToDelete.map((t) => t.id));
-        const nextTasks = [...allToDelete, ...currentTasks].map((t) => {
-          const hasChildren = [...allToDelete, ...currentTasks].some((c) => c.parentTaskId === t.id && c.id !== t.id);
-          if (hasChildren) {
-            return { ...t, hasSubtasks: true };
-          }
-          return t;
-        });
-
-        for (const t of nextTasks) {
-          if (restoredIds.has(t.id) || t.hasSubtasks) {
-            await taskRepository.update(t.id, { hasSubtasks: t.hasSubtasks });
-          }
-        }
-
-        set({ tasks: nextTasks });
-        useToastStore.getState().showToast('Задача восстановлена', 'success');
+        set((state) => ({
+          tasks: [...get().tasks, ...allToDelete.filter((t) => !get().tasks.some((existing) => existing.id === t.id))],
+        }));
+        useToastStore.getState().showToast('Задача и подзадачи восстановлены', 'success');
       }
     );
   },

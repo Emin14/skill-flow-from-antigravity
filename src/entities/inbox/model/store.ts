@@ -48,31 +48,50 @@ export const useInboxStore = create<InboxState>((set, get) => ({
   },
 
   updateItem: async (id: string, text: string) => {
+    const previousItems = get().items;
     set((state) => ({
       items: state.items.map((i) => (i.id === id ? { ...i, text } : i)),
     }));
-    await inboxRepository.update(id, { text });
-    useToastStore.getState().showToast('Заметка обновлена', 'success');
+    try {
+      await inboxRepository.update(id, { text });
+      useToastStore.getState().showToast('Заметка обновлена', 'success');
+    } catch (e) {
+      set({ items: previousItems });
+      useToastStore.getState().showToast('Ошибка сохранения заметки', 'error');
+    }
   },
 
   togglePin: async (id: string) => {
     const item = get().items.find((i) => i.id === id);
     if (!item) return;
 
+    const previousItems = get().items;
     const newPinned = !item.isPinned;
     set((state) => ({
       items: state.items.map((i) => (i.id === id ? { ...i, isPinned: newPinned } : i)),
     }));
-    await inboxRepository.update(id, { isPinned: newPinned });
-    useToastStore.getState().showToast(newPinned ? 'Заметка закреплена' : 'Заметка откреплена', 'info');
+    try {
+      await inboxRepository.update(id, { isPinned: newPinned });
+      useToastStore.getState().showToast(newPinned ? 'Заметка закреплена' : 'Заметка откреплена', 'info');
+    } catch (e) {
+      set({ items: previousItems });
+      useToastStore.getState().showToast('Ошибка изменения закрепления', 'error');
+    }
   },
 
   deleteItem: async (id: string) => {
     const deletedItem = get().items.find((i) => i.id === id);
     if (!deletedItem) return;
 
+    const previousItems = get().items;
     set((state) => ({ items: state.items.filter((i) => i.id !== id) }));
-    await inboxRepository.delete(id);
+    try {
+      await inboxRepository.delete(id);
+    } catch (e) {
+      set({ items: previousItems });
+      useToastStore.getState().showToast('Ошибка удаления заметки', 'error');
+      return;
+    }
 
     // Undo toast for Inbox
     useToastStore.getState().showToast(

@@ -1,26 +1,35 @@
 import { Task } from '@/entities/task/model/types';
 import { TaskRepository } from '../interfaces/TaskRepository';
-
-const STORAGE_KEY = 'skillflow_tasks';
+import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 
 export class LocalStorageTaskRepository implements TaskRepository {
+  private cache: Task[] | null = null;
+  private writeQueue: Promise<void> = Promise.resolve();
+
   private getStorage(): Task[] {
+    if (this.cache) return this.cache;
     if (typeof window === 'undefined') return [];
     try {
-      const data = localStorage.getItem(STORAGE_KEY);
-      return data ? JSON.parse(data) : [];
+      const data = localStorage.getItem(STORAGE_KEYS.TASKS);
+      this.cache = data ? JSON.parse(data) : [];
+      return this.cache || [];
     } catch {
+      this.cache = [];
       return [];
     }
   }
 
-  private setStorage(tasks: Task[]): void {
-    if (typeof window === 'undefined') return;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-    } catch (e) {
-      console.error('Failed to save tasks to LocalStorage', e);
-    }
+  private setStorage(tasks: Task[]): Promise<void> {
+    this.cache = tasks;
+    this.writeQueue = this.writeQueue.then(() => {
+      if (typeof window === 'undefined') return;
+      try {
+        localStorage.setItem(STORAGE_KEYS.TASKS, JSON.stringify(tasks));
+      } catch (e) {
+        console.error('Failed to save tasks to LocalStorage', e);
+      }
+    });
+    return this.writeQueue;
   }
 
   async getAll(): Promise<Task[]> {
@@ -43,7 +52,7 @@ export class LocalStorageTaskRepository implements TaskRepository {
   }
 
   async save(task: Task): Promise<Task> {
-    const tasks = this.getStorage();
+    const tasks = [...this.getStorage()];
     const existingIndex = tasks.findIndex((t) => t.id === task.id);
 
     if (existingIndex >= 0) {
@@ -52,12 +61,12 @@ export class LocalStorageTaskRepository implements TaskRepository {
       tasks.push(task);
     }
 
-    this.setStorage(tasks);
+    await this.setStorage(tasks);
     return task;
   }
 
   async update(id: string, updates: Partial<Task>): Promise<Task> {
-    const tasks = this.getStorage();
+    const tasks = [...this.getStorage()];
     const index = tasks.findIndex((t) => t.id === id);
     if (index === -1) {
       throw new Error(`Task with id ${id} not found`);
@@ -65,16 +74,16 @@ export class LocalStorageTaskRepository implements TaskRepository {
 
     const updatedTask = { ...tasks[index], ...updates };
     tasks[index] = updatedTask;
-    this.setStorage(tasks);
+    await this.setStorage(tasks);
     return updatedTask;
   }
 
   async delete(id: string): Promise<boolean> {
-    const tasks = this.getStorage();
+    const tasks = [...this.getStorage()];
     const filtered = tasks.filter((t) => t.id !== id);
     if (filtered.length === tasks.length) return false;
 
-    this.setStorage(filtered);
+    await this.setStorage(filtered);
     return true;
   }
 }
