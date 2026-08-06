@@ -178,6 +178,21 @@ const addDaysToDateStr = (dateStr: string, days: number): string => {
   return `${year}-${month}-${day}`;
 };
 
+export const isSubtaskDoneForProject = (task: Task, todayStr: string): boolean => {
+  if (task.isRepeating) {
+    const occs = task.occurrences || [];
+    const hasPendingDueOrOverdue = occs.some((o) => o.date <= todayStr && o.status === 'Todo');
+    if (hasPendingDueOrOverdue) {
+      return false;
+    }
+    if (task.scheduledDate <= todayStr && task.status === 'Todo') {
+      return false;
+    }
+    return true;
+  }
+  return task.status === 'Done';
+};
+
 export const getAllDescendantTasks = (parentId: string, allTasks: Task[]): Task[] => {
   const directChildren = allTasks.filter((t) => t.parentTaskId === parentId);
   let descendants: Task[] = [];

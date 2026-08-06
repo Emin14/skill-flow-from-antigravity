@@ -3,7 +3,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { Checkbox } from '@/shared/ui';
 import { Task, TaskStatus } from '@/entities/task/model/types';
-import { getAllDescendantTasks, getTaskParentPath } from '@/entities/task/model/store';
+import { getAllDescendantTasks, getTaskParentPath, isSubtaskDoneForProject } from '@/entities/task/model/store';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { GripVertical, Check, ExternalLink, Calendar } from 'lucide-react';
 import { startPointerDrag, cleanupPointerDrag } from '@/shared/lib/pointerDrag';
@@ -231,7 +231,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
 
   const descendantSubtasks = useMemo(() => getAllDescendantTasks(task.id, allTasks), [allTasks, task.id]);
   const isContainer = descendantSubtasks.length > 0;
-  const doneSubtasksCount = useMemo(() => descendantSubtasks.filter((t) => t.status === 'Done').length, [descendantSubtasks]);
+  const doneSubtasksCount = useMemo(() => descendantSubtasks.filter((t) => isSubtaskDoneForProject(t, todayStr)).length, [descendantSubtasks, todayStr]);
   const areAllSubtasksDone = isContainer && descendantSubtasks.length > 0 && doneSubtasksCount === descendantSubtasks.length;
 
   const handleTouchStart = (e: React.TouchEvent) => {

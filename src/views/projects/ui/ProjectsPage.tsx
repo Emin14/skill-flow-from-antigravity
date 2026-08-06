@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { Button } from '@/shared/ui';
-import { useTaskStore, GlassmorphicTaskCard, getAllDescendantTasks } from '@/entities/task';
+import { useTaskStore, GlassmorphicTaskCard, getAllDescendantTasks, isSubtaskDoneForProject } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
@@ -230,7 +230,7 @@ export const ProjectsPage: React.FC = () => {
               return a.scheduledDate.localeCompare(b.scheduledDate);
             });
 
-            const doneCount = descendants.filter((t) => t.status === 'Done').length;
+            const doneCount = descendants.filter((t) => isSubtaskDoneForProject(t, todayStr)).length;
             const totalCount = descendants.length;
             const progressPercent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
 
@@ -600,7 +600,7 @@ const RecursiveSubtaskList: React.FC<{
         if (hasChildTasks) {
           const isSubProjectOpen = openProjectIds.has(child.id);
           const subDescendants = getAllDescendantTasks(child.id, tasks);
-          const subDone = subDescendants.filter((t) => t.status === 'Done').length;
+          const subDone = subDescendants.filter((t) => isSubtaskDoneForProject(t, todayStr)).length;
           const subTotal = subDescendants.length;
           const subPercent = subTotal > 0 ? Math.round((subDone / subTotal) * 100) : 0;
 
