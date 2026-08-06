@@ -427,8 +427,8 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   </select>
                 </div>
 
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  {repetitionMode === 'schedule' ? (
+                {repetitionMode === 'schedule' ? (
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <select
                       className={styles.v2Select}
                       value={scheduleFrequency}
@@ -439,7 +439,9 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                       <option value="monthly">Каждый месяц</option>
                       <option value="yearly">Каждый год</option>
                     </select>
-                  ) : repetitionMode === 'after_completion' ? (
+                  </div>
+                ) : repetitionMode === 'after_completion' ? (
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <select
                       className={styles.v2Select}
                       value={afterCompletionDaysInput}
@@ -451,22 +453,18 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                         </option>
                       ))}
                     </select>
-                  ) : (
+                  </div>
+                ) : repetitionMode === 'spaced' ? (
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <select
                       className={styles.v2Select}
                       disabled
                       style={{ opacity: 0.55, cursor: 'not-allowed' }}
                     >
-                      <option>
-                        {repetitionMode === 'smart'
-                          ? '🧠 Адаптивный (оценка)'
-                          : repetitionMode === 'spaced'
-                          ? '1, 3, 7, 14, 30, 90д'
-                          : '—'}
-                      </option>
+                      <option>1, 3, 7, 14, 30, 90д</option>
                     </select>
-                  )}
-                </div>
+                  </div>
+                ) : null}
 
                 {repetitionMode !== 'none' && (
                   <div style={{ flex: 1, minWidth: 0 }}>
