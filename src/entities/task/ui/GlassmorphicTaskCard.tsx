@@ -26,6 +26,7 @@ interface GlassmorphicTaskCardProps {
   hideRepeatTag?: boolean;
   customCheckboxIcon?: React.ReactNode;
   extraMetaNode?: React.ReactNode;
+  progressMode?: 'today' | 'all_time';
   onToggleCheckbox?: () => void;
   onStatusChange?: (newStatus: TaskStatus) => void;
   onDelete?: () => void;
@@ -187,6 +188,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   hideRepeatTag = false,
   customCheckboxIcon,
   extraMetaNode,
+  progressMode = 'today',
   onToggleCheckbox,
   onStatusChange,
   onDelete,
@@ -231,7 +233,10 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
 
   const descendantSubtasks = useMemo(() => getAllDescendantTasks(task.id, allTasks), [allTasks, task.id]);
   const isContainer = descendantSubtasks.length > 0;
-  const doneSubtasksCount = useMemo(() => descendantSubtasks.filter((t) => isSubtaskDoneForProject(t, todayStr)).length, [descendantSubtasks, todayStr]);
+  const doneSubtasksCount = useMemo(
+    () => descendantSubtasks.filter((t) => (progressMode === 'all_time' ? t.status === 'Done' : isSubtaskDoneForProject(t, todayStr))).length,
+    [descendantSubtasks, todayStr, progressMode]
+  );
   const areAllSubtasksDone = isContainer && descendantSubtasks.length > 0 && doneSubtasksCount === descendantSubtasks.length;
 
   const handleTouchStart = (e: React.TouchEvent) => {

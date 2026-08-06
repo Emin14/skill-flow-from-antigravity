@@ -8,7 +8,7 @@ import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { ChevronDown, ChevronRight, Lightbulb, Sparkles } from 'lucide-react';
-import { ProjectFilterTabsWidget, ProjectFilterType } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
+import { ProjectFilterTabsWidget, ProjectFilterType, ProjectProgressMode } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
 import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
 import { useToastStore } from '@/shared/ui/toast/toastStore';
 import { SUBTASK_VARIANTS_LIST, SubtaskVariantId, RepeatingSubtaskRenderer } from './RepeatingSubtaskVariants';
@@ -19,6 +19,7 @@ import { getCategoryColor } from '@/shared/config/categoryColors';
 export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskParent, updateTaskDetails, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
+  const [progressMode, setProgressMode] = useState<ProjectProgressMode>('today');
   const [subtaskVariantId, setSubtaskVariantId] = useState<SubtaskVariantId>(18);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -28,14 +29,16 @@ export const ProjectsPage: React.FC = () => {
 
   useEffect(() => {
     fetchTasks();
-    const savedVariant = localStorage.getItem('subtaskVariantId');
-    if (savedVariant) {
-      const parsed = parseInt(savedVariant, 10) as SubtaskVariantId;
-      if (parsed >= 1 && parsed <= 27) {
-        setSubtaskVariantId(parsed);
-      }
+    const savedMode = localStorage.getItem('project-progress-mode') as ProjectProgressMode;
+    if (savedMode === 'today' || savedMode === 'all_time') {
+      setProgressMode(savedMode);
     }
   }, [fetchTasks]);
+
+  const handleToggleProgressMode = (mode: ProjectProgressMode) => {
+    setProgressMode(mode);
+    localStorage.setItem('project-progress-mode', mode);
+  };
 
   const handleSelectVariant = (id: SubtaskVariantId) => {
     setSubtaskVariantId(id);
@@ -176,6 +179,8 @@ export const ProjectsPage: React.FC = () => {
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
         onSelectFilter={setActiveFilter}
+        progressMode={progressMode}
+        onToggleProgressMode={handleToggleProgressMode}
       />
 
       {/* Projects List */}
@@ -230,7 +235,9 @@ export const ProjectsPage: React.FC = () => {
               return a.scheduledDate.localeCompare(b.scheduledDate);
             });
 
-            const doneCount = descendants.filter((t) => isSubtaskDoneForProject(t, todayStr)).length;
+            const doneCount = descendants.filter((t) =>
+              progressMode === 'all_time' ? t.status === 'Done' : isSubtaskDoneForProject(t, todayStr)
+            ).length;
             const totalCount = descendants.length;
             const progressPercent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
 
@@ -272,6 +279,7 @@ export const ProjectsPage: React.FC = () => {
                 tasks={tasks}
                 openProjectIds={openProjectIds}
                 todayStr={todayStr}
+                progressMode={progressMode}
                 toggleProjectOpen={toggleProjectOpen}
                 onEdit={(taskToEdit) => setEditingTask(taskToEdit)}
                 onDragOver={(e) => handleDragOver(e, project.id)}
@@ -330,6 +338,7 @@ interface ProjectCardRendererProps {
   tasks: Task[];
   openProjectIds: Set<string>;
   todayStr: string;
+  progressMode?: ProjectProgressMode;
   toggleProjectOpen: (id: string) => void;
   onEdit: (t: Task) => void;
   onDragOver: (e: React.DragEvent) => void;
@@ -357,6 +366,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   tasks,
   openProjectIds,
   todayStr,
+  progressMode = 'today',
   toggleProjectOpen,
   onEdit,
   onDragOver,
@@ -491,6 +501,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
               onSelectSubtask={onSelectSubtask}
               onDropOnTask={onDropOnTask}
               todayStr={todayStr}
+              progressMode={progressMode}
             />
           )}
         </div>
@@ -561,6 +572,7 @@ const RecursiveSubtaskList: React.FC<{
   onSelectSubtask: (t: Task) => void;
   onDropOnTask: (draggedTaskId: string, targetTask: Task) => void;
   todayStr: string;
+  progressMode?: ProjectProgressMode;
   depth?: number;
 }> = ({
   parentId,
@@ -574,6 +586,7 @@ const RecursiveSubtaskList: React.FC<{
   onSelectSubtask,
   onDropOnTask,
   todayStr,
+  progressMode = 'today',
   depth = 0,
 }) => {
   const children = tasks.filter((t) => t.parentTaskId === parentId);
@@ -600,7 +613,9 @@ const RecursiveSubtaskList: React.FC<{
         if (hasChildTasks) {
           const isSubProjectOpen = openProjectIds.has(child.id);
           const subDescendants = getAllDescendantTasks(child.id, tasks);
-          const subDone = subDescendants.filter((t) => isSubtaskDoneForProject(t, todayStr)).length;
+          const subDone = subDescendants.filter((t) =>
+            progressMode === 'all_time' ? t.status === 'Done' : isSubtaskDoneForProject(t, todayStr)
+          ).length;
           const subTotal = subDescendants.length;
           const subPercent = subTotal > 0 ? Math.round((subDone / subTotal) * 100) : 0;
 
@@ -710,6 +725,7 @@ const RecursiveSubtaskList: React.FC<{
                     onSelectSubtask={onSelectSubtask}
                     onDropOnTask={onDropOnTask}
                     todayStr={todayStr}
+                    progressMode={progressMode}
                     depth={depth + 1}
                   />
                 </div>
@@ -743,6 +759,7 @@ const RecursiveSubtaskList: React.FC<{
             showDragHandle={true}
             parentPathVariant={0}
             hideCategory={true}
+            progressMode={progressMode}
             onToggleCheckbox={() => onToggleSubtask(child)}
             onDelete={() => onDeleteSubtask(child)}
             onClick={() => onSelectSubtask(child)}
