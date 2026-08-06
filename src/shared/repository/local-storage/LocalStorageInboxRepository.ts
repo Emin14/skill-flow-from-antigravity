@@ -7,12 +7,12 @@ export class LocalStorageInboxRepository implements InboxRepository {
   private writeQueue: Promise<void> = Promise.resolve();
 
   private getStorage(): InboxItem[] {
-    if (this.cache) return this.cache;
+    if (this.cache) return [...this.cache];
     if (typeof window === 'undefined') return [];
     try {
       const data = localStorage.getItem(STORAGE_KEYS.INBOX);
       this.cache = data ? JSON.parse(data) : [];
-      return this.cache || [];
+      return [...(this.cache || [])];
     } catch {
       this.cache = [];
       return [];
@@ -20,7 +20,7 @@ export class LocalStorageInboxRepository implements InboxRepository {
   }
 
   private setStorage(items: InboxItem[]): Promise<void> {
-    this.cache = items;
+    this.cache = [...items];
     this.writeQueue = this.writeQueue.then(() => {
       if (typeof window === 'undefined') return;
       try {
@@ -49,7 +49,7 @@ export class LocalStorageInboxRepository implements InboxRepository {
     } else {
       items.unshift(item);
     }
-    this.setStorage(items);
+    await this.setStorage(items);
     return item;
   }
 

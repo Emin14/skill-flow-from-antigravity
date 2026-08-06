@@ -458,7 +458,11 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                       style={{ opacity: 0.55, cursor: 'not-allowed' }}
                     >
                       <option>
-                        {repetitionMode === 'spaced' || repetitionMode === 'smart' ? '1,3,7,14,30,90д' : '—'}
+                        {repetitionMode === 'smart'
+                          ? '🧠 Адаптивный (оценка)'
+                          : repetitionMode === 'spaced'
+                          ? '1, 3, 7, 14, 30, 90д'
+                          : '—'}
                       </option>
                     </select>
                   )}
