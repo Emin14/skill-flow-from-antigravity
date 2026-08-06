@@ -9,6 +9,7 @@ import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskD
 import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { ProjectFilterTabsWidget, ProjectFilterType } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
+import { TimelineRepeatCard } from '@/views/repeats/ui/RepeatsPage';
 import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
 import { useToastStore } from '@/shared/ui/toast/toastStore';
 import styles from './ProjectsPage.module.css';
@@ -625,6 +626,17 @@ const RecursiveSubtaskList: React.FC<{
                 </div>
               )}
             </div>
+          );
+        }
+
+        if (child.isRepeating) {
+          return (
+            <TimelineRepeatCard
+              key={child.id}
+              task={child}
+              allTasks={tasks}
+              onClick={() => onSelectSubtask(child)}
+            />
           );
         }
 

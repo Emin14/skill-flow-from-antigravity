@@ -188,7 +188,7 @@ const getRepeatTypeLabel = (task: Task): string => {
   }
 };
 
-const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }) => {
+export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onClick?: () => void }> = ({ task, onClick }) => {
   const todayStr = useMemo(() => getTodayStr(), []);
   const occurrences = useMemo(() => {
     return (task.occurrences || []).slice().sort((a, b) => a.date.localeCompare(b.date));
@@ -285,7 +285,11 @@ const TimelineRepeatCard: React.FC<{ task: Task; allTasks: Task[] }> = ({ task }
   const createdDateStr = task.createdAt ? formatDateNumeric(task.createdAt.split('T')[0]) : '';
 
   return (
-    <div className={styles.repeatCard}>
+    <div
+      className={styles.repeatCard}
+      onClick={onClick}
+      style={{ cursor: onClick ? 'pointer' : 'default' }}
+    >
       {/* 2-Line Card Header */}
       <div className={styles.cardHeader}>
         <div className={styles.line1}>
