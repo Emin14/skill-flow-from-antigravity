@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { ArrowDown, ArrowUp } from 'lucide-react';
+import React, { startTransition } from 'react';
+import { ArrowDown, ArrowUp, ChevronDown } from 'lucide-react';
 import { RepeatStatus } from '@/entities/task/model/types';
 
 export type HabitSortKey = 'overdue' | 'alphabetical' | 'count' | 'created';
@@ -29,9 +29,21 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
 }) => {
   const isDesc = sortDirection === 'desc';
 
+  const handleStatusChange = (val: RepeatStatusFilter) => {
+    startTransition(() => {
+      onSelectRepeatStatusFilter(val);
+    });
+  };
+
+  const handleSortChange = (val: HabitSortKey) => {
+    startTransition(() => {
+      onSelectSortKey(val);
+    });
+  };
+
   return (
     <div style={{ width: '100%', marginBottom: '16px', boxSizing: 'border-box' }}>
-      {/* Locked Variant 3: Segmented Compact Single Horizontal Bar (No variant selector bar) */}
+      {/* iOS Segmented Bar with Native Smooth Select Controls */}
       <div
         style={{
           display: 'flex',
@@ -43,53 +55,81 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
           border: '1px solid var(--color-border)',
           width: '100%',
           boxSizing: 'border-box',
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'manipulation',
         }}
       >
         {/* Status Filter Dropdown */}
-        <select
-          value={repeatStatusFilter}
-          onChange={(e) => onSelectRepeatStatusFilter(e.target.value as RepeatStatusFilter)}
-          style={{
-            flex: 1,
-            minWidth: 0,
-            padding: '6px 10px',
-            borderRadius: '12px',
-            border: '1px solid var(--color-border)',
-            background: 'var(--color-surface)',
-            color: 'var(--color-text-primary)',
-            fontSize: '11.5px',
-            fontWeight: 700,
-            cursor: 'pointer',
-          }}
-        >
-          <option value="Active">▶️ Активные {statusCounts ? `(${statusCounts.active})` : ''}</option>
-          <option value="Paused">⏸️ На паузе {statusCounts ? `(${statusCounts.paused})` : ''}</option>
-          <option value="Completed">✅ Завершенные {statusCounts ? `(${statusCounts.completed})` : ''}</option>
-          <option value="all">🥞 Все {statusCounts ? `(${statusCounts.total})` : ''}</option>
-        </select>
+        <div style={{ position: 'relative', flex: 1, minWidth: 0, display: 'flex', alignItems: 'center' }}>
+          <select
+            value={repeatStatusFilter}
+            onChange={(e) => handleStatusChange(e.target.value as RepeatStatusFilter)}
+            style={{
+              width: '100%',
+              padding: '7px 24px 7px 10px',
+              borderRadius: '12px',
+              border: '1px solid var(--color-border)',
+              background: 'var(--color-surface)',
+              color: 'var(--color-text-primary)',
+              fontSize: '16px', // 16px prevents iOS Safari auto-zoom lag
+              fontWeight: 700,
+              cursor: 'pointer',
+              outline: 'none',
+              appearance: 'none',
+              WebkitAppearance: 'none',
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
+              height: '34px',
+              lineHeight: '20px',
+            }}
+          >
+            <option value="Active">▶️ Активные {statusCounts ? `(${statusCounts.active})` : ''}</option>
+            <option value="Paused">⏸️ На паузе {statusCounts ? `(${statusCounts.paused})` : ''}</option>
+            <option value="Completed">✅ Завершенные {statusCounts ? `(${statusCounts.completed})` : ''}</option>
+            <option value="all">🥞 Все {statusCounts ? `(${statusCounts.total})` : ''}</option>
+          </select>
+          <ChevronDown
+            size={13}
+            color="var(--color-text-muted)"
+            style={{ position: 'absolute', right: '8px', pointerEvents: 'none' }}
+          />
+        </div>
 
         {/* Sort Key Dropdown */}
-        <select
-          value={sortKey}
-          onChange={(e) => onSelectSortKey(e.target.value as HabitSortKey)}
-          style={{
-            flex: 1,
-            minWidth: 0,
-            padding: '6px 10px',
-            borderRadius: '12px',
-            border: '1px solid var(--color-border)',
-            background: 'var(--color-surface)',
-            color: 'var(--color-text-primary)',
-            fontSize: '11.5px',
-            fontWeight: 700,
-            cursor: 'pointer',
-          }}
-        >
-          <option value="overdue">📅 По сроку</option>
-          <option value="alphabetical">🔤 По алфавиту (А-Я)</option>
-          <option value="count">📊 По повторам</option>
-          <option value="created">🕒 По дате создания</option>
-        </select>
+        <div style={{ position: 'relative', flex: 1, minWidth: 0, display: 'flex', alignItems: 'center' }}>
+          <select
+            value={sortKey}
+            onChange={(e) => handleSortChange(e.target.value as HabitSortKey)}
+            style={{
+              width: '100%',
+              padding: '7px 24px 7px 10px',
+              borderRadius: '12px',
+              border: '1px solid var(--color-border)',
+              background: 'var(--color-surface)',
+              color: 'var(--color-text-primary)',
+              fontSize: '16px', // 16px prevents iOS Safari auto-zoom lag
+              fontWeight: 700,
+              cursor: 'pointer',
+              outline: 'none',
+              appearance: 'none',
+              WebkitAppearance: 'none',
+              WebkitTapHighlightColor: 'transparent',
+              touchAction: 'manipulation',
+              height: '34px',
+              lineHeight: '20px',
+            }}
+          >
+            <option value="overdue">📅 По сроку</option>
+            <option value="alphabetical">🔤 По алфавиту</option>
+            <option value="count">📊 По повторам</option>
+            <option value="created">🕒 По дате создания</option>
+          </select>
+          <ChevronDown
+            size={13}
+            color="var(--color-text-muted)"
+            style={{ position: 'absolute', right: '8px', pointerEvents: 'none' }}
+          />
+        </div>
 
         {/* Direction Toggle Button */}
         <button
@@ -100,14 +140,16 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '32px',
-            height: '32px',
+            width: '34px',
+            height: '34px',
             borderRadius: '10px',
             border: '1px solid var(--color-border)',
             background: 'var(--color-surface)',
             color: 'var(--color-text-primary)',
             cursor: 'pointer',
             flexShrink: 0,
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation',
           }}
         >
           {isDesc ? <ArrowDown size={14} /> : <ArrowUp size={14} />}

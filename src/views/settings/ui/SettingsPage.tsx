@@ -9,7 +9,7 @@ import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { applyAccentColorVars } from '@/shared/lib/colorUtils';
 import { TASK_CARD_FONTS, applyTaskCardFont } from '@/shared/config/cardFonts';
 
-import { isCompletionSoundEnabled, setCompletionSoundEnabled, playTaskCompletionSound } from '@/shared/lib/soundUtils';
+import { isCompletionSoundEnabled, setCompletionSoundEnabled, playTaskCompletionSound, unlockAudio } from '@/shared/lib/soundUtils';
 
 import { LiveTodayPreviewWidget } from './LiveTodayPreviewWidget';
 import { ThemeArchitectureSelector } from './ThemeArchitectureSelector';
@@ -452,7 +452,10 @@ export const SettingsPage: React.FC = () => {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => playTaskCompletionSound(true)}
+            onClick={() => {
+              unlockAudio();
+              playTaskCompletionSound(true);
+            }}
             style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}
           >
             🎵 Прослушать звук
@@ -467,12 +470,32 @@ export const SettingsPage: React.FC = () => {
           Экспортируйте ваши задачи, цели и статистику в JSON файл или восстановите данные из бэкапа.
         </Typography>
 
-        <div className={styles.backupActions}>
-          <Button variant="secondary" onClick={handleExportData}>
+        {/* Restore Single Row Action Bar */}
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', width: '100%', flexWrap: 'wrap' }}>
+          <Button variant="secondary" onClick={handleExportData} style={{ flex: 1, minWidth: '160px', justifyContent: 'center' }}>
             📥 Экспорт бэкапа (JSON)
           </Button>
 
-          <label className={styles.fileInputLabel}>
+          <label
+            style={{
+              flex: 1,
+              minWidth: '160px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '6px',
+              padding: '10px 16px',
+              borderRadius: '12px',
+              border: '1px solid var(--color-border)',
+              background: 'var(--color-surface-hover)',
+              color: 'var(--color-text-primary)',
+              fontSize: '13px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxSizing: 'border-box',
+            }}
+          >
             📤 Импорт бэкапа (JSON)
             <input type="file" accept=".json" onChange={handleImportData} style={{ display: 'none' }} />
           </label>

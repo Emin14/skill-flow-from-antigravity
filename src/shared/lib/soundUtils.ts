@@ -4,21 +4,44 @@
  */
 
 let audioCtx: AudioContext | null = null;
+let isUnlocked = false;
 
-const getAudioContext = (): AudioContext | null => {
-  if (typeof window === 'undefined') return null;
-  if (!audioCtx) {
-    const AudioContextClass =
-      window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    if (AudioContextClass) {
-      audioCtx = new AudioContextClass();
+export const unlockAudio = (): void => {
+  if (typeof window === 'undefined') return;
+  try {
+    if (!audioCtx) {
+      const AudioContextClass =
+        window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
+      }
     }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().then(() => {
+        isUnlocked = true;
+      }).catch(() => {});
+    } else if (audioCtx && audioCtx.state === 'running') {
+      isUnlocked = true;
+    }
+  } catch (err) {
+    // Ignore audio unlock errors
   }
-  if (audioCtx && audioCtx.state === 'suspended') {
-    audioCtx.resume();
-  }
-  return audioCtx;
 };
+
+// Listen for first touch/click interaction on mobile Safari to unlock Web Audio API
+if (typeof window !== 'undefined') {
+  const handleUserGesture = () => {
+    unlockAudio();
+    if (isUnlocked) {
+      window.removeEventListener('touchstart', handleUserGesture);
+      window.removeEventListener('touchend', handleUserGesture);
+      window.removeEventListener('click', handleUserGesture);
+    }
+  };
+  window.addEventListener('touchstart', handleUserGesture, { passive: true });
+  window.addEventListener('touchend', handleUserGesture, { passive: true });
+  window.addEventListener('click', handleUserGesture, { passive: true });
+}
 
 export const isCompletionSoundEnabled = (): boolean => {
   if (typeof window === 'undefined') return true;
@@ -38,9 +61,16 @@ export const playTaskCompletionSound = (force: boolean = false): void => {
   if (!force && !isCompletionSoundEnabled()) return;
 
   try {
-    const ctx = getAudioContext();
-    if (!ctx) return;
+    unlockAudio();
 
+    if (!audioCtx) return;
+
+    // Force resume if suspended (critical for iOS Safari)
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(() => {});
+    }
+
+    const ctx = audioCtx;
     const now = ctx.currentTime;
 
     // Dual Oscillators for rich harmonic warmth
@@ -61,8 +91,8 @@ export const playTaskCompletionSound = (force: boolean = false): void => {
 
     // Soft Gain Envelope: fast attack, smooth exponential decay
     gain.gain.setValueAtTime(0.001, now);
-    gain.gain.linearRampToValueAtTime(0.18, now + 0.02);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+    gain.gain.linearRampToValueAtTime(0.22, now + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
 
     osc1.connect(gain);
     osc2.connect(gain);
@@ -70,8 +100,8 @@ export const playTaskCompletionSound = (force: boolean = false): void => {
 
     osc1.start(now);
     osc2.start(now);
-    osc1.stop(now + 0.32);
-    osc2.stop(now + 0.32);
+    osc1.stop(now + 0.35);
+    osc2.stop(now + 0.35);
   } catch (err) {
     // Silent failover if audio API is blocked
   }
