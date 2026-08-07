@@ -8,10 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "import:json": "npx ts-node prisma/import-json.ts",
-    "import:data": "npx ts-node prisma/seed.ts"
+    "import:data": "node prisma/seed.js"
   },
   "prisma": {
-    "seed": "npx ts-node prisma/seed.ts"
+    "seed": "node prisma/seed.js"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
