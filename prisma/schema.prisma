@@ -21,6 +21,8 @@ model Task {
   repeatStatus        String?          @default("Active")
   repetitionMode      String?          @default("smart")
   scheduleFrequency   String?
+  topicId             String?
+  goalId              String?
   createdAt           DateTime         @default(now())
   occurrences         TaskOccurrence[]
 }
@@ -33,4 +35,62 @@ model TaskOccurrence {
   status         String    @default("Todo")
   completedAt    DateTime?
   pomodorosCount Float?
+}
+
+model Goal {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  color       String
+  status      String   @default("Active")
+  createdAt   DateTime @default(now())
+}
+
+model Topic {
+  id        String   @id @default(uuid())
+  goalId    String
+  parentId  String?
+  title     String
+  weight    Float    @default(1.0)
+  createdAt DateTime @default(now())
+}
+
+model Material {
+  id              String    @id @default(uuid())
+  topicId         String
+  title           String
+  description     String?
+  readTimeMinutes Int?
+  type            String
+  content         String?
+  isCompleted     Boolean   @default(false)
+  completedAt     DateTime?
+  createdAt       DateTime  @default(now())
+}
+
+model InboxItem {
+  id        String   @id @default(uuid())
+  text      String
+  isPinned  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model RepeatCard {
+  id             String    @id @default(uuid())
+  materialId     String
+  front          String
+  back           String
+  interval       Int       @default(1)
+  repetitions    Int       @default(0)
+  easeFactor     Float     @default(2.5)
+  nextReviewDate String
+  lastReviewedAt DateTime?
+  createdAt      DateTime  @default(now())
+}
+
+model ActivityLog {
+  id        String   @id @default(uuid())
+  type      String
+  title     String
+  createdAt DateTime @default(now())
 }

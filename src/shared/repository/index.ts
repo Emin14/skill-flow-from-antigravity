@@ -6,10 +6,10 @@ export * from './interfaces/InboxRepository';
 export * from './interfaces/RepeatCardRepository';
 export * from './interfaces/ActivityRepository';
 
-export * from './local-storage/LocalStorageGoalRepository';
-export * from './local-storage/LocalStorageTopicRepository';
-export * from './local-storage/LocalStorageTaskRepository';
-export * from './local-storage/LocalStorageMaterialRepository';
-export * from './local-storage/LocalStorageInboxRepository';
-export * from './local-storage/LocalStorageRepeatCardRepository';
-export * from './local-storage/LocalStorageActivityRepository';
+export { PrismaTaskRepository, prismaTaskRepository, taskRepository } from '@/entities/task/api/prisma-task.repository';
+export { PrismaGoalRepository, prismaGoalRepository, goalRepository } from '@/entities/goal/api/prisma-goal.repository';
+export { PrismaTopicRepository, prismaTopicRepository, topicRepository } from '@/entities/topic/api/prisma-topic.repository';
+export { PrismaMaterialRepository, prismaMaterialRepository, materialRepository } from '@/entities/material/api/prisma-material.repository';
+export { PrismaInboxRepository, prismaInboxRepository, inboxRepository } from '@/entities/inbox/api/prisma-inbox.repository';
+export { PrismaRepeatCardRepository, prismaRepeatCardRepository, repeatCardRepository } from '@/entities/repeat-card/api/prisma-repeat-card.repository';
+export { PrismaActivityRepository, prismaActivityRepository, activityRepository } from '@/entities/activity/api/prisma-activity.repository';

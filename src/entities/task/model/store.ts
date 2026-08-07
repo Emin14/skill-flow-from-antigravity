@@ -473,7 +473,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       };
     }
 
-    const saved = await taskRepository.save(newTask);
+    const saved = await taskRepository.create(newTask);
     set((state) => ({ tasks: [saved, ...state.tasks] }));
     useToastStore.getState().showToast(`Задача "${newTask.title}" создана`, 'success');
     useActivityStore.getState().logActivity('task_created', `Создана задача: "${newTask.title}"`);
@@ -1113,7 +1113,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       'undo',
       async () => {
         for (const t of allToDelete) {
-          await taskRepository.save(t);
+          await taskRepository.create(t);
         }
         set((state) => ({
           tasks: [...get().tasks, ...allToDelete.filter((t) => !get().tasks.some((existing) => existing.id === t.id))],
