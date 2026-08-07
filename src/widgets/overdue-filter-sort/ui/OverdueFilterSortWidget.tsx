@@ -1,7 +1,7 @@
 'use client';
 
-import React, { startTransition } from 'react';
-import { ArrowDown, ArrowUp, ChevronDown } from 'lucide-react';
+import React from 'react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 
 export type OverdueSortKey = 'date' | 'alphabetical' | 'count';
 export type OverdueSortDirection = 'asc' | 'desc';
@@ -16,6 +16,12 @@ interface OverdueFilterSortWidgetProps {
   onToggleDirection: () => void;
 }
 
+const SORT_ITEMS: { id: OverdueSortKey; label: string }[] = [
+  { id: 'date', label: '📅 Дате' },
+  { id: 'alphabetical', label: '🔤 Алфавиту' },
+  { id: 'count', label: '📊 Выполнению' },
+];
+
 export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = ({
   categoryFilter,
   onSelectCategoryFilter,
@@ -27,28 +33,88 @@ export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = (
 }) => {
   const isDesc = sortDirection === 'desc';
 
-  const handleCategoryChange = (val: string) => {
-    startTransition(() => {
-      onSelectCategoryFilter(val);
-    });
-  };
-
-  const handleSortChange = (val: OverdueSortKey) => {
-    startTransition(() => {
-      onSelectSortKey(val);
-    });
-  };
-
   return (
-    <div style={{ width: '100%', marginBottom: '10px', boxSizing: 'border-box' }}>
-      {/* iOS Segmented Bar with Native Smooth Select Controls */}
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px', boxSizing: 'border-box' }}>
+      {/* Category Pills Bar (Horizontal Scrollable iOS Pill Strip) */}
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
+          gap: '4px',
+          padding: '4px',
+          borderRadius: '14px',
+          background: 'var(--color-surface-hover)',
+          border: '1px solid var(--color-border)',
+          width: '100%',
+          boxSizing: 'border-box',
+          overflowX: 'auto',
+          scrollbarWidth: 'none',
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'manipulation',
+        }}
+      >
+        <button
+          type="button"
+          onClick={() => onSelectCategoryFilter('all')}
+          style={{
+            padding: '5px 10px',
+            borderRadius: '10px',
+            border: 'none',
+            fontSize: '11.5px',
+            fontWeight: categoryFilter === 'all' ? 700 : 500,
+            cursor: 'pointer',
+            background: categoryFilter === 'all' ? 'var(--color-accent)' : 'transparent',
+            color: categoryFilter === 'all' ? '#ffffff' : 'var(--color-text-muted)',
+            boxShadow: categoryFilter === 'all' ? '0 2px 8px var(--color-accent-border)' : 'none',
+            transition: 'all 0.12s ease',
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
+            WebkitTapHighlightColor: 'transparent',
+            touchAction: 'manipulation',
+          }}
+        >
+          🥞 Все
+        </button>
+
+        {availableCategories.map((cat) => {
+          const isActive = categoryFilter === cat;
+          return (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => onSelectCategoryFilter(cat)}
+              style={{
+                padding: '5px 10px',
+                borderRadius: '10px',
+                border: 'none',
+                fontSize: '11.5px',
+                fontWeight: isActive ? 700 : 500,
+                cursor: 'pointer',
+                background: isActive ? 'var(--color-accent)' : 'transparent',
+                color: isActive ? '#ffffff' : 'var(--color-text-muted)',
+                boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
+                transition: 'all 0.12s ease',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+                WebkitTapHighlightColor: 'transparent',
+                touchAction: 'manipulation',
+              }}
+            >
+              📁 {cat}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Sort Key Segmented Bar + Direction Toggle Button */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           gap: '6px',
-          padding: '5px',
-          borderRadius: '16px',
+          padding: '4px',
+          borderRadius: '14px',
           background: 'var(--color-surface-hover)',
           border: '1px solid var(--color-border)',
           width: '100%',
@@ -57,77 +123,35 @@ export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = (
           touchAction: 'manipulation',
         }}
       >
-        {/* Category Filter Dropdown */}
-        <div style={{ position: 'relative', flex: 1, minWidth: 0, display: 'flex', alignItems: 'center' }}>
-          <select
-            value={categoryFilter}
-            onChange={(e) => handleCategoryChange(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '7px 24px 7px 10px',
-              borderRadius: '12px',
-              border: '1px solid var(--color-border)',
-              background: 'var(--color-surface)',
-              color: 'var(--color-text-primary)',
-              fontSize: '16px', // 16px prevents iOS Safari auto-zoom lag
-              fontWeight: 700,
-              cursor: 'pointer',
-              outline: 'none',
-              appearance: 'none',
-              WebkitAppearance: 'none',
-              WebkitTapHighlightColor: 'transparent',
-              touchAction: 'manipulation',
-              height: '34px',
-              lineHeight: '20px',
-            }}
-          >
-            <option value="all">🥞 Все категории</option>
-            {availableCategories.map((cat) => (
-              <option key={cat} value={cat}>
-                📁 {cat}
-              </option>
-            ))}
-          </select>
-          <ChevronDown
-            size={13}
-            color="var(--color-text-muted)"
-            style={{ position: 'absolute', right: '8px', pointerEvents: 'none' }}
-          />
-        </div>
-
-        {/* Sort Key Dropdown */}
-        <div style={{ position: 'relative', flex: 1, minWidth: 0, display: 'flex', alignItems: 'center' }}>
-          <select
-            value={sortKey}
-            onChange={(e) => handleSortChange(e.target.value as OverdueSortKey)}
-            style={{
-              width: '100%',
-              padding: '7px 24px 7px 10px',
-              borderRadius: '12px',
-              border: '1px solid var(--color-border)',
-              background: 'var(--color-surface)',
-              color: 'var(--color-text-primary)',
-              fontSize: '16px', // 16px prevents iOS Safari auto-zoom lag
-              fontWeight: 700,
-              cursor: 'pointer',
-              outline: 'none',
-              appearance: 'none',
-              WebkitAppearance: 'none',
-              WebkitTapHighlightColor: 'transparent',
-              touchAction: 'manipulation',
-              height: '34px',
-              lineHeight: '20px',
-            }}
-          >
-            <option value="date">📅 По дате</option>
-            <option value="alphabetical">🔤 По алфавиту</option>
-            <option value="count">📊 По выполнению</option>
-          </select>
-          <ChevronDown
-            size={13}
-            color="var(--color-text-muted)"
-            style={{ position: 'absolute', right: '8px', pointerEvents: 'none' }}
-          />
+        <div style={{ display: 'flex', gap: '3px', flex: 1, minWidth: 0 }}>
+          {SORT_ITEMS.map((item) => {
+            const isActive = sortKey === item.id;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => onSelectSortKey(item.id)}
+                style={{
+                  flex: 1,
+                  padding: '5px 8px',
+                  borderRadius: '10px',
+                  border: 'none',
+                  fontSize: '11.5px',
+                  fontWeight: isActive ? 700 : 500,
+                  cursor: 'pointer',
+                  background: isActive ? 'var(--color-accent)' : 'transparent',
+                  color: isActive ? '#ffffff' : 'var(--color-text-muted)',
+                  boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
+                  transition: 'all 0.12s ease',
+                  whiteSpace: 'nowrap',
+                  WebkitTapHighlightColor: 'transparent',
+                  touchAction: 'manipulation',
+                }}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Sort Direction Toggle Button */}
@@ -139,8 +163,7 @@ export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = (
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '34px',
-            height: '34px',
+            padding: '5px 9px',
             borderRadius: '10px',
             border: '1px solid var(--color-border)',
             background: 'var(--color-surface)',

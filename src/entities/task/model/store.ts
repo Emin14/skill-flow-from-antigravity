@@ -5,7 +5,7 @@ import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS }
 import { taskRepository } from '@/shared/repository';
 import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
-import { getTodayStr } from '@/shared/lib/dateUtils';
+import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { playTaskCompletionSound } from '@/shared/lib/soundUtils';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -843,6 +843,8 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const oldTask = { ...task };
     const updates: Partial<Task> = { repeatStatus, isRepeating: true };
 
+    let createdNewOccDate: string | null = null;
+
     // If resuming to Active, ensure at least 1 upcoming Todo occurrence exists
     let newOccurrences = task.occurrences ? [...task.occurrences] : [];
     if (repeatStatus === 'Active') {
@@ -872,6 +874,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           status: 'Todo',
         });
 
+        createdNewOccDate = nextDate;
         const finalOccs = normalizeOccurrences(normOccs, id);
         updates.occurrences = finalOccs;
         updates.scheduledDate = getDerivedScheduledDate({ ...task, occurrences: finalOccs });
@@ -889,7 +892,15 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       } else if (repeatStatus === 'Completed') {
         useToastStore.getState().showToast(`Повторение "${task.title}" завершено ✅`, 'success');
       } else {
-        useToastStore.getState().showToast(`Повторение "${task.title}" возобновлено ▶️`, 'success');
+        if (createdNewOccDate) {
+          playTaskCompletionSound();
+          const todayStr = getTodayStr();
+          const tomorrowStr = getTomorrowStr();
+          const dateText = createdNewOccDate === todayStr ? 'Сегодня' : createdNewOccDate === tomorrowStr ? 'Завтра' : formatDateDisplay(createdNewOccDate);
+          useToastStore.getState().showToast(`Повторение "${task.title}" возобновлено! Следующий экземпляр: ${dateText} 🔄`, 'success');
+        } else {
+          useToastStore.getState().showToast(`Повторение "${task.title}" возобновлено ▶️`, 'success');
+        }
       }
     } catch (e) {
       set((state) => ({

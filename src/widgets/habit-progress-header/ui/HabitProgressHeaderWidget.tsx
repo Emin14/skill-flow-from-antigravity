@@ -1,7 +1,7 @@
 'use client';
 
-import React, { startTransition } from 'react';
-import { ArrowDown, ArrowUp, ChevronDown } from 'lucide-react';
+import React from 'react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 import { RepeatStatus } from '@/entities/task/model/types';
 
 export type HabitSortKey = 'overdue' | 'alphabetical' | 'count' | 'created';
@@ -18,6 +18,20 @@ interface HabitProgressHeaderWidgetProps {
   statusCounts?: { active: number; paused: number; completed: number; total: number };
 }
 
+const STATUS_ITEMS: { id: RepeatStatusFilter; label: string; countKey?: 'active' | 'paused' | 'completed' | 'total' }[] = [
+  { id: 'Active', label: '▶️ Активные', countKey: 'active' },
+  { id: 'Paused', label: '⏸️ Пауза', countKey: 'paused' },
+  { id: 'Completed', label: '✅ Готово', countKey: 'completed' },
+  { id: 'all', label: '🥞 Все', countKey: 'total' },
+];
+
+const SORT_ITEMS: { id: HabitSortKey; label: string }[] = [
+  { id: 'overdue', label: '📅 Сроку' },
+  { id: 'alphabetical', label: '🔤 Алфавиту' },
+  { id: 'count', label: '📊 Повторам' },
+  { id: 'created', label: '🕒 Созданию' },
+];
+
 export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps> = ({
   sortKey,
   sortDirection,
@@ -29,28 +43,67 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
 }) => {
   const isDesc = sortDirection === 'desc';
 
-  const handleStatusChange = (val: RepeatStatusFilter) => {
-    startTransition(() => {
-      onSelectRepeatStatusFilter(val);
-    });
-  };
-
-  const handleSortChange = (val: HabitSortKey) => {
-    startTransition(() => {
-      onSelectSortKey(val);
-    });
-  };
-
   return (
-    <div style={{ width: '100%', marginBottom: '16px', boxSizing: 'border-box' }}>
-      {/* iOS Segmented Bar with Native Smooth Select Controls */}
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px', boxSizing: 'border-box' }}>
+      {/* Repeat Status Segmented Pills Bar */}
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
+          gap: '3px',
+          padding: '4px',
+          borderRadius: '14px',
+          background: 'var(--color-surface-hover)',
+          border: '1px solid var(--color-border)',
+          width: '100%',
+          boxSizing: 'border-box',
+          overflowX: 'auto',
+          scrollbarWidth: 'none',
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'manipulation',
+        }}
+      >
+        {STATUS_ITEMS.map((item) => {
+          const isActive = repeatStatusFilter === item.id;
+          const count = statusCounts && item.countKey ? statusCounts[item.countKey] : null;
+          return (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => onSelectRepeatStatusFilter(item.id)}
+              style={{
+                flex: 1,
+                padding: '6px 8px',
+                borderRadius: '10px',
+                border: 'none',
+                fontSize: '11.5px',
+                fontWeight: isActive ? 700 : 500,
+                cursor: 'pointer',
+                background: isActive ? 'var(--color-accent)' : 'transparent',
+                color: isActive ? '#ffffff' : 'var(--color-text-muted)',
+                boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
+                transition: 'all 0.12s ease',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+                WebkitTapHighlightColor: 'transparent',
+                touchAction: 'manipulation',
+              }}
+            >
+              {item.label} {count !== null ? `(${count})` : ''}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Sort Key Segmented Bar + Direction Toggle Button */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           gap: '6px',
-          padding: '5px',
-          borderRadius: '16px',
+          padding: '4px',
+          borderRadius: '14px',
           background: 'var(--color-surface-hover)',
           border: '1px solid var(--color-border)',
           width: '100%',
@@ -59,76 +112,36 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
           touchAction: 'manipulation',
         }}
       >
-        {/* Status Filter Dropdown */}
-        <div style={{ position: 'relative', flex: 1, minWidth: 0, display: 'flex', alignItems: 'center' }}>
-          <select
-            value={repeatStatusFilter}
-            onChange={(e) => handleStatusChange(e.target.value as RepeatStatusFilter)}
-            style={{
-              width: '100%',
-              padding: '7px 24px 7px 10px',
-              borderRadius: '12px',
-              border: '1px solid var(--color-border)',
-              background: 'var(--color-surface)',
-              color: 'var(--color-text-primary)',
-              fontSize: '16px', // 16px prevents iOS Safari auto-zoom lag
-              fontWeight: 700,
-              cursor: 'pointer',
-              outline: 'none',
-              appearance: 'none',
-              WebkitAppearance: 'none',
-              WebkitTapHighlightColor: 'transparent',
-              touchAction: 'manipulation',
-              height: '34px',
-              lineHeight: '20px',
-            }}
-          >
-            <option value="Active">▶️ Активные {statusCounts ? `(${statusCounts.active})` : ''}</option>
-            <option value="Paused">⏸️ На паузе {statusCounts ? `(${statusCounts.paused})` : ''}</option>
-            <option value="Completed">✅ Завершенные {statusCounts ? `(${statusCounts.completed})` : ''}</option>
-            <option value="all">🥞 Все {statusCounts ? `(${statusCounts.total})` : ''}</option>
-          </select>
-          <ChevronDown
-            size={13}
-            color="var(--color-text-muted)"
-            style={{ position: 'absolute', right: '8px', pointerEvents: 'none' }}
-          />
-        </div>
-
-        {/* Sort Key Dropdown */}
-        <div style={{ position: 'relative', flex: 1, minWidth: 0, display: 'flex', alignItems: 'center' }}>
-          <select
-            value={sortKey}
-            onChange={(e) => handleSortChange(e.target.value as HabitSortKey)}
-            style={{
-              width: '100%',
-              padding: '7px 24px 7px 10px',
-              borderRadius: '12px',
-              border: '1px solid var(--color-border)',
-              background: 'var(--color-surface)',
-              color: 'var(--color-text-primary)',
-              fontSize: '16px', // 16px prevents iOS Safari auto-zoom lag
-              fontWeight: 700,
-              cursor: 'pointer',
-              outline: 'none',
-              appearance: 'none',
-              WebkitAppearance: 'none',
-              WebkitTapHighlightColor: 'transparent',
-              touchAction: 'manipulation',
-              height: '34px',
-              lineHeight: '20px',
-            }}
-          >
-            <option value="overdue">📅 По сроку</option>
-            <option value="alphabetical">🔤 По алфавиту</option>
-            <option value="count">📊 По повторам</option>
-            <option value="created">🕒 По дате создания</option>
-          </select>
-          <ChevronDown
-            size={13}
-            color="var(--color-text-muted)"
-            style={{ position: 'absolute', right: '8px', pointerEvents: 'none' }}
-          />
+        <div style={{ display: 'flex', gap: '3px', flex: 1, minWidth: 0, overflowX: 'auto', scrollbarWidth: 'none' }}>
+          {SORT_ITEMS.map((item) => {
+            const isActive = sortKey === item.id;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => onSelectSortKey(item.id)}
+                style={{
+                  flex: 1,
+                  padding: '5px 6px',
+                  borderRadius: '10px',
+                  border: 'none',
+                  fontSize: '11.5px',
+                  fontWeight: isActive ? 700 : 500,
+                  cursor: 'pointer',
+                  background: isActive ? 'var(--color-accent)' : 'transparent',
+                  color: isActive ? '#ffffff' : 'var(--color-text-muted)',
+                  boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
+                  transition: 'all 0.12s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                  WebkitTapHighlightColor: 'transparent',
+                  touchAction: 'manipulation',
+                }}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Direction Toggle Button */}
@@ -140,8 +153,7 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '34px',
-            height: '34px',
+            padding: '5px 9px',
             borderRadius: '10px',
             border: '1px solid var(--color-border)',
             background: 'var(--color-surface)',
