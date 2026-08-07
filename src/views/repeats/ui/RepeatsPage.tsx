@@ -14,10 +14,20 @@ export const RepeatsPage: React.FC = () => {
   const [sortKey, setSortKey] = useState<HabitSortKey>('overdue');
   const [sortDirection, setSortDirection] = useState<HabitSortDirection>('desc');
   const [repeatStatusFilter, setRepeatStatusFilter] = useState<RepeatStatusFilter>('Active');
+  const [repeatsFontMode, setRepeatsFontMode] = useState<RepeatsFontMode>('default');
 
   useEffect(() => {
     fetchTasks();
+    const saved = localStorage.getItem('repeats-font-mode') as RepeatsFontMode;
+    if (saved === 'default' || saved === 'force400') {
+      setRepeatsFontMode(saved);
+    }
   }, [fetchTasks]);
+
+  const handleToggleRepeatsFontMode = (mode: RepeatsFontMode) => {
+    setRepeatsFontMode(mode);
+    localStorage.setItem('repeats-font-mode', mode);
+  };
 
   // SINGLE TASK ARCHITECTURE: Each repeating task exists as 1 single Task record
   const allRepeatingTasks = useMemo(() => {
@@ -73,7 +83,7 @@ export const RepeatsPage: React.FC = () => {
   }, [filteredRepeatingTasks, sortKey, sortDirection]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-repeats-font-mode={repeatsFontMode}>
       {/* Header Widget Locked to Variant 1 */}
       <HabitProgressHeaderWidget
         sortKey={sortKey}
@@ -83,6 +93,8 @@ export const RepeatsPage: React.FC = () => {
         onToggleDirection={() => setSortDirection((prev) => (prev === 'desc' ? 'asc' : 'desc'))}
         onSelectRepeatStatusFilter={setRepeatStatusFilter}
         statusCounts={statusCounts}
+        repeatsFontMode={repeatsFontMode}
+        onToggleRepeatsFontMode={handleToggleRepeatsFontMode}
       />
 
       {/* List of Timeline Step Progression Cards */}

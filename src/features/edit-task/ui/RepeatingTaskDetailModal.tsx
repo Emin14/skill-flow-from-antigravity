@@ -56,6 +56,21 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState<SmartRating | null>(null);
+  const [detailVariantId, setDetailVariantId] = useState<number>(1);
+  const [activeTab, setActiveTab] = useState<'main' | 'pomo' | 'history'>('main');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('detail-task-variant-id');
+    if (saved) {
+      const num = Number(saved);
+      if (num >= 1 && num <= 20) setDetailVariantId(num);
+    }
+  }, []);
+
+  const handleSelectVariant = (id: number) => {
+    setDetailVariantId(id);
+    localStorage.setItem('detail-task-variant-id', String(id));
+  };
 
   const masterTask = useMemo(() => {
     if (!task) return null;
@@ -171,6 +186,52 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   // Point 2: Sort occurrences list for history
   const occurrencesList = [...(masterTask.occurrences || [])].sort((a, b) => b.date.localeCompare(a.date));
 
+  let variantStyleOverride: React.CSSProperties = {};
+
+  if (detailVariantId === 4) {
+    variantStyleOverride = {
+      fontFamily: '"JetBrains Mono", monospace',
+      borderRadius: '8px',
+      border: '1px solid #334155',
+      background: '#090d16',
+    };
+  } else if (detailVariantId === 8) {
+    variantStyleOverride = {
+      border: '1px solid #818cf8',
+      boxShadow: '0 0 25px rgba(99, 102, 241, 0.35)',
+      background: '#0f172a',
+    };
+  } else if (detailVariantId === 12) {
+    variantStyleOverride = {
+      borderLeft: '6px solid var(--color-accent)',
+      borderRadius: '16px',
+    };
+  } else if (detailVariantId === 14) {
+    variantStyleOverride = {
+      borderRadius: '24px',
+      boxShadow: '8px 8px 20px rgba(0,0,0,0.3), -6px -6px 16px rgba(255,255,255,0.04)',
+    };
+  } else if (detailVariantId === 16) {
+    variantStyleOverride = {
+      fontFamily: '"Playfair Display", Georgia, serif',
+    };
+  } else if (detailVariantId === 17) {
+    variantStyleOverride = {
+      background: 'radial-gradient(circle at 80% 20%, rgba(99,102,241,0.25) 0%, rgba(16,185,129,0.15) 50%, var(--color-surface) 100%)',
+      backdropFilter: 'blur(20px)',
+    };
+  } else if (detailVariantId === 19) {
+    variantStyleOverride = {
+      borderRadius: '32px',
+      boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+    };
+  } else if (detailVariantId === 20) {
+    variantStyleOverride = {
+      border: '1px solid var(--color-accent-border)',
+      background: 'linear-gradient(180deg, var(--color-surface-hover) 0%, var(--color-surface) 100%)',
+    };
+  }
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div
@@ -183,6 +244,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           overflowY: 'auto',
           transform: `translateY(${dragY}px)`,
           transition: isDragging ? 'none' : 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+          ...variantStyleOverride,
         }}
       >
         {/* Point 5: Swipe Down Handle for Modal */}
@@ -193,10 +255,102 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           onTouchMove={handleTouchMove}
           onMouseUp={handleTouchEnd}
           onTouchEnd={handleTouchEnd}
-          style={{ width: '100%', cursor: 'grab', paddingBottom: '4px', touchAction: 'none' }}
+          style={{ width: '100%', cursor: 'grab', paddingBottom: '2px', touchAction: 'none' }}
         >
           <div style={{ width: '36px', height: '4px', borderRadius: '2px', backgroundColor: 'var(--color-border)', margin: '0 auto' }} />
         </div>
+
+        {/* 🎨 20 Design Variants Top Selector Bar */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%', marginBottom: '2px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span style={{ fontSize: '10.5px', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              🎨 Стилистика карточки (Вариант {detailVariantId} из 20)
+            </span>
+          </div>
+          <div style={{ display: 'flex', gap: '4px', overflowX: 'auto', paddingBottom: '4px', width: '100%', boxSizing: 'border-box' }}>
+            {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+              <button
+                key={num}
+                type="button"
+                onClick={() => handleSelectVariant(num)}
+                title={`Переключить на Вариант ${num}`}
+                style={{
+                  minWidth: '26px',
+                  height: '24px',
+                  padding: '0 5px',
+                  borderRadius: '7px',
+                  border: detailVariantId === num ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
+                  background: detailVariantId === num ? 'var(--color-accent)' : 'rgba(255,255,255,0.05)',
+                  color: detailVariantId === num ? '#ffffff' : 'var(--color-text-muted)',
+                  fontSize: '11px',
+                  fontWeight: detailVariantId === num ? 700 : 500,
+                  cursor: 'pointer',
+                  flexShrink: 0,
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                {num}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Variant 9 Segmented Tab Bar */}
+        {detailVariantId === 9 && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', width: '100%', marginBottom: '4px' }}>
+            <button
+              type="button"
+              onClick={() => setActiveTab('main')}
+              style={{
+                padding: '6px 10px',
+                borderRadius: '10px',
+                border: activeTab === 'main' ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
+                background: activeTab === 'main' ? 'var(--color-accent)' : 'var(--color-surface-hover)',
+                color: activeTab === 'main' ? '#ffffff' : 'var(--color-text-muted)',
+                fontSize: '12px',
+                fontWeight: activeTab === 'main' ? 700 : 500,
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              📋 Главное
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('pomo')}
+              style={{
+                padding: '6px 10px',
+                borderRadius: '10px',
+                border: activeTab === 'pomo' ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
+                background: activeTab === 'pomo' ? 'var(--color-accent)' : 'var(--color-surface-hover)',
+                color: activeTab === 'pomo' ? '#ffffff' : 'var(--color-text-muted)',
+                fontSize: '12px',
+                fontWeight: activeTab === 'pomo' ? 700 : 500,
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              🍅 Оценка & Помидоро
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('history')}
+              style={{
+                padding: '6px 10px',
+                borderRadius: '10px',
+                border: activeTab === 'history' ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
+                background: activeTab === 'history' ? 'var(--color-accent)' : 'var(--color-surface-hover)',
+                color: activeTab === 'history' ? '#ffffff' : 'var(--color-text-muted)',
+                fontSize: '12px',
+                fontWeight: activeTab === 'history' ? 700 : 500,
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              📊 История
+            </button>
+          </div>
+        )}
 
         {/* Modal Header Row 1: Icon, Title + Category column, Action buttons */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>

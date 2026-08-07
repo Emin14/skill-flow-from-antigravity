@@ -5,6 +5,17 @@
   width: 100%;
 }
 
+.container[data-repeats-font-mode="force400"] span,
+.container[data-repeats-font-mode="force400"] div,
+.container[data-repeats-font-mode="force400"] p,
+.container[data-repeats-font-mode="force400"] small {
+  font-weight: 400 !important;
+}
+
+.container[data-repeats-font-mode="force400"] .taskTitle {
+  font-weight: 600 !important;
+}
+
 .repeatsList {
   display: flex;
   flex-direction: column;

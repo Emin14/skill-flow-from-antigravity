@@ -9,6 +9,8 @@ export type HabitSortKey = 'overdue' | 'alphabetical' | 'count' | 'created';
 export type HabitSortDirection = 'desc' | 'asc';
 export type RepeatStatusFilter = RepeatStatus | 'all';
 
+export type RepeatsFontMode = 'default' | 'force400';
+
 interface HabitProgressHeaderWidgetProps {
   sortKey: HabitSortKey;
   sortDirection: HabitSortDirection;
@@ -17,6 +19,8 @@ interface HabitProgressHeaderWidgetProps {
   onToggleDirection: () => void;
   onSelectRepeatStatusFilter: (filter: RepeatStatusFilter) => void;
   statusCounts?: { active: number; paused: number; completed: number; total: number };
+  repeatsFontMode?: RepeatsFontMode;
+  onToggleRepeatsFontMode?: (mode: RepeatsFontMode) => void;
 }
 
 export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps> = ({
@@ -27,6 +31,8 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
   onToggleDirection,
   onSelectRepeatStatusFilter,
   statusCounts,
+  repeatsFontMode = 'default',
+  onToggleRepeatsFontMode,
 }) => {
   const isDesc = sortDirection === 'desc';
 
@@ -44,14 +50,79 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
         {/* Header Title Row */}
         <div className={styles.titleRow}>
           <span className={styles.widgetTitle}>🔄 Привычки & Повторения</span>
-          <button
-            type="button"
-            className={styles.v1CircleFlipBtn}
-            onClick={onToggleDirection}
-            title={isDesc ? 'Сменить на По возрастанию' : 'Сменить на По убыванию'}
-          >
-            {isDesc ? <ArrowDown size={14} /> : <ArrowUp size={14} />}
-          </button>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {onToggleRepeatsFontMode && (
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  background: 'var(--color-surface-hover)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: '20px',
+                  padding: '2px',
+                  gap: '2px',
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => onToggleRepeatsFontMode('default')}
+                  title="Шрифт: По умолчанию (как есть)"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '3px 8px',
+                    borderRadius: '16px',
+                    border: 'none',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    background: repeatsFontMode === 'default' ? 'var(--color-accent)' : 'transparent',
+                    color: repeatsFontMode === 'default' ? '#ffffff' : 'var(--color-text-muted)',
+                    boxShadow: repeatsFontMode === 'default' ? '0 2px 8px var(--color-accent-border)' : 'none',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <span>🔤</span>
+                  <span>Обычный</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onToggleRepeatsFontMode('force400')}
+                  title="Шрифт: Заголовок жирный, остальное 400"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '3px 8px',
+                    borderRadius: '16px',
+                    border: 'none',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    background: repeatsFontMode === 'force400' ? 'var(--color-accent)' : 'transparent',
+                    color: repeatsFontMode === 'force400' ? '#ffffff' : 'var(--color-text-muted)',
+                    boxShadow: repeatsFontMode === 'force400' ? '0 2px 8px var(--color-accent-border)' : 'none',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <span>🔤</span>
+                  <span>Все 400</span>
+                </button>
+              </div>
+            )}
+
+            <button
+              type="button"
+              className={styles.v1CircleFlipBtn}
+              onClick={onToggleDirection}
+              title={isDesc ? 'Сменить на По возрастанию' : 'Сменить на По убыванию'}
+            >
+              {isDesc ? <ArrowDown size={14} /> : <ArrowUp size={14} />}
+            </button>
+          </div>
         </div>
 
         {/* Section 1: STATUS FILTER (4 Equal Columns Grid) */}

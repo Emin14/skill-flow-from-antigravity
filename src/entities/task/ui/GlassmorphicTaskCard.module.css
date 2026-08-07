@@ -151,7 +151,7 @@
 
 .categoryText {
   color: var(--category-text-color, var(--color-accent-text));
-  font-weight: var(--task-title-weight, 600);
+  font-weight: 400;
 }
 
 :global([data-theme="light"]) .categoryText {
@@ -160,7 +160,7 @@
 
 .repeatTag {
   color: var(--repeat-tag-color, var(--color-accent-text));
-  font-weight: var(--task-title-weight, 600);
+  font-weight: 400;
 }
 
 :global([data-theme="light"]) .repeatTag {
@@ -172,7 +172,7 @@
   align-items: center;
   gap: 3px;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 400;
   padding: 1px 5px;
   border-radius: 5px;
   border: 1px solid var(--color-border);

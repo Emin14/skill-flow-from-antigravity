@@ -20,6 +20,7 @@ export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskParent, updateTaskDetails, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
   const [progressMode, setProgressMode] = useState<ProjectProgressMode>('today');
+  const [titleFontWeightMode, setTitleFontWeightMode] = useState<ProjectTitleFontWeightMode>('600');
   const [subtaskVariantId, setSubtaskVariantId] = useState<SubtaskVariantId>(18);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -33,11 +34,20 @@ export const ProjectsPage: React.FC = () => {
     if (savedMode === 'today' || savedMode === 'all_time') {
       setProgressMode(savedMode);
     }
+    const savedWeight = localStorage.getItem('projects-title-font-weight') as ProjectTitleFontWeightMode;
+    if (savedWeight === '600' || savedWeight === '400') {
+      setTitleFontWeightMode(savedWeight);
+    }
   }, [fetchTasks]);
 
   const handleToggleProgressMode = (mode: ProjectProgressMode) => {
     setProgressMode(mode);
     localStorage.setItem('project-progress-mode', mode);
+  };
+
+  const handleToggleFontWeightMode = (mode: ProjectTitleFontWeightMode) => {
+    setTitleFontWeightMode(mode);
+    localStorage.setItem('projects-title-font-weight', mode);
   };
 
   const handleSelectVariant = (id: SubtaskVariantId) => {
@@ -179,13 +189,15 @@ export const ProjectsPage: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ '--task-title-weight': titleFontWeightMode } as React.CSSProperties}>
       {/* 1. Original Filter Tabs Widget */}
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
         onSelectFilter={setActiveFilter}
         progressMode={progressMode}
         onToggleProgressMode={handleToggleProgressMode}
+        titleFontWeightMode={titleFontWeightMode}
+        onToggleFontWeightMode={handleToggleFontWeightMode}
       />
 
       {/* Projects List */}
