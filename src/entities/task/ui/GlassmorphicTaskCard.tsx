@@ -48,7 +48,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
           {path.map((p, idx) => (
             <React.Fragment key={p.id}>
               {idx > 0 && <span style={{ opacity: 0.4 }}>/</span>}
-              <span style={{ fontWeight: idx === path.length - 1 ? 600 : 400, color: idx === path.length - 1 ? 'var(--color-accent-text)' : 'inherit', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <span style={{ fontWeight: idx === path.length - 1 ? ('var(--task-title-weight, 600)' as unknown as number) : 400, color: idx === path.length - 1 ? 'var(--color-accent-text)' : 'inherit', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {p.title}
               </span>
             </React.Fragment>
@@ -58,7 +58,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
 
     case 2:
       return (
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '2px 8px', borderRadius: '6px', background: 'var(--color-surface)', border: `1px solid ${catColor}50`, fontSize: '10.5px', fontFamily: 'monospace', color: 'var(--color-text-primary)', fontWeight: 600, marginBottom: '4px', width: 'fit-content', maxWidth: '100%', boxShadow: `0 0 10px ${catColor}20` }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '2px 8px', borderRadius: '6px', background: 'var(--color-surface)', border: `1px solid ${catColor}50`, fontSize: '10.5px', fontFamily: 'monospace', color: 'var(--color-text-primary)', fontWeight: ('var(--task-title-weight, 600)' as unknown as number), marginBottom: '4px', width: 'fit-content', maxWidth: '100%', boxShadow: `0 0 10px ${catColor}20` }}>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: catColor, flexShrink: 0 }} />
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pathStr}</span>
         </div>
@@ -66,7 +66,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
 
     case 3:
       return (
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '12px', background: 'var(--color-surface-hover)', border: '1px solid var(--color-border)', fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: 500, marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '12px', background: 'var(--color-surface-hover)', border: '1px solid var(--color-border)', fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: ('var(--task-title-weight, 500)' as unknown as number), marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ fontSize: '11px', flexShrink: 0 }}>📁</span>
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pathStr}</span>
         </div>
@@ -74,7 +74,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
 
     case 4:
       return (
-        <div style={{ fontSize: '11px', color: 'var(--color-accent-text)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '3px', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
+        <div style={{ fontSize: '11px', color: 'var(--color-accent-text)', fontWeight: ('var(--task-title-weight, 600)' as unknown as number), display: 'inline-flex', alignItems: 'center', gap: '3px', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ flexShrink: 0 }}>📁</span>
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{path.map((t) => t.title).join(' ➔ ')}</span>
         </div>
@@ -84,13 +84,13 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
       return (
         <div style={{ borderLeft: `3px solid ${catColor}`, paddingLeft: '8px', marginBottom: '4px', display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '11px', color: 'var(--color-text-secondary)', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ fontSize: '9px', opacity: 0.6, flexShrink: 0 }}>●</span>
-          <span style={{ fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{path.map((t) => t.title).join('  ▸  ')}</span>
+          <span style={{ fontWeight: ('var(--task-title-weight, 600)' as unknown as number), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{path.map((t) => t.title).join('  ▸  ')}</span>
         </div>
       );
 
     case 6:
       return (
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '3px 10px', background: 'var(--color-surface-hover)', backdropFilter: 'blur(8px)', border: '1px solid var(--color-border)', borderRadius: '12px', fontSize: '10.5px', color: 'var(--color-accent-text)', fontWeight: 600, marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '3px 10px', background: 'var(--color-surface-hover)', backdropFilter: 'blur(8px)', border: '1px solid var(--color-border)', borderRadius: '12px', fontSize: '10.5px', color: 'var(--color-accent-text)', fontWeight: ('var(--task-title-weight, 600)' as unknown as number), marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ flexShrink: 0 }}>⚡</span>
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pathStr}</span>
         </div>
@@ -98,7 +98,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
 
     case 7:
       return (
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '2px 8px', borderRadius: '6px', background: 'var(--color-surface)', border: '1px solid var(--color-border)', fontSize: '10.5px', color: 'var(--color-accent-text)', fontWeight: 600, marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '2px 8px', borderRadius: '6px', background: 'var(--color-surface)', border: '1px solid var(--color-border)', fontSize: '10.5px', color: 'var(--color-accent-text)', fontWeight: ('var(--task-title-weight, 600)' as unknown as number), marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ opacity: 0.6, fontSize: '10px', flexShrink: 0 }}>⌘</span>
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pathStr}</span>
         </div>
@@ -106,7 +106,7 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
 
     case 8:
       return (
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '10px', background: `linear-gradient(90deg, ${catColor}30, transparent)`, borderLeft: `3px solid ${catColor}`, fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: 600, marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '2px 8px', borderRadius: '10px', background: `linear-gradient(90deg, ${catColor}30, transparent)`, borderLeft: `3px solid ${catColor}`, fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: ('var(--task-title-weight, 600)' as unknown as number), marginBottom: '4px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ flexShrink: 0 }}>🏷️</span>
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pathStr}</span>
         </div>
@@ -116,14 +116,14 @@ const renderParentPath = (path: Task[], variant: number = 4, catColor: string) =
       return (
         <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ color: catColor, flexShrink: 0 }}>•</span>
-          <span style={{ fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pathStr}</span>
+          <span style={{ fontWeight: ('var(--task-title-weight, 500)' as unknown as number), overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pathStr}</span>
         </div>
       );
 
     case 10:
     default:
       return (
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: 'var(--color-accent-text)', fontWeight: 600, cursor: 'pointer', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: 'var(--color-accent-text)', fontWeight: ('var(--task-title-weight, 600)' as unknown as number), cursor: 'pointer', marginBottom: '3px', width: 'fit-content', maxWidth: '100%' }}>
           <span style={{ flexShrink: 0 }}>🌿</span>
           <span style={{ textDecoration: 'underline', textUnderlineOffset: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pathStr}</span>
         </div>

@@ -117,7 +117,7 @@
 .taskTitle {
   font-family: var(--task-card-font-family, inherit);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--task-title-weight, 600);
   color: var(--color-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -151,7 +151,7 @@
 
 .categoryText {
   color: var(--category-text-color, var(--color-accent-text));
-  font-weight: 600;
+  font-weight: var(--task-title-weight, 600);
 }
 
 :global([data-theme="light"]) .categoryText {
@@ -160,7 +160,7 @@
 
 .repeatTag {
   color: var(--repeat-tag-color, var(--color-accent-text));
-  font-weight: 600;
+  font-weight: var(--task-title-weight, 600);
 }
 
 :global([data-theme="light"]) .repeatTag {
