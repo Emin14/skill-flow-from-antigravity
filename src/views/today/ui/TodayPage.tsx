@@ -60,10 +60,10 @@ export const TodayPage: React.FC = () => {
       />
 
       {/* 3. 2nd Top Widget: Primary Dashboard Banner ("Время покорять вершины!") */}
-      <HabitProgressBanner />
+      <HabitProgressBanner targetDate={selectedDate} />
 
       {/* 4. Main Today Tasks Board */}
-      <TodayTasks showDaySwitcher={false} />
+      <TodayTasks showDaySwitcher={false} selectedDate={selectedDate} onDateChange={setSelectedDate} />
     </div>
   );
 };

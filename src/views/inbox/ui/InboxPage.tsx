@@ -43,7 +43,7 @@ export const InboxPage: React.FC = () => {
       title: item.text,
       status: 'Todo',
       priority: 'P3',
-      category: 'Задача',
+      category: 'Без категории',
       scheduledDate: getTodayStr(),
       createdAt: new Date().toISOString(),
       isRepeating: false,

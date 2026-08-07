@@ -6,9 +6,13 @@ import { getTodayStr } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import styles from './HabitProgressBanner.module.css';
 
-export const HabitProgressBanner: React.FC = () => {
+interface HabitProgressBannerProps {
+  targetDate?: string;
+}
+
+export const HabitProgressBanner: React.FC<HabitProgressBannerProps> = ({ targetDate }) => {
   const tasks = useTaskStore((s) => s.tasks);
-  const todayStr = getTodayStr();
+  const activeDateStr = targetDate || getTodayStr();
 
   const [activeVariant, setActiveVariant] = useState<string>('1');
 
@@ -23,23 +27,26 @@ export const HabitProgressBanner: React.FC = () => {
     return () => window.removeEventListener('storage', loadVariant);
   }, []);
 
-  // Strictly filter ALL tasks for TODAY (both regular and repeating, excluding parent container tasks)
+  // Strictly filter ALL tasks for TODAY / targetDate (both regular and repeating, excluding parent container tasks)
   const todayTasks = tasks.filter((t) => {
     const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
     if (t.hasSubtasks || hasChildren) return false;
 
     if (t.isRepeating) {
-      return t.occurrences?.some((o) => o.date === todayStr) || (t.scheduledDate && t.scheduledDate === todayStr);
+      if (t.occurrences && t.occurrences.length > 0) {
+        return t.occurrences.some((o) => o.date === activeDateStr);
+      }
+      return t.scheduledDate === activeDateStr;
     }
     if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') return false;
-    return t.scheduledDate === todayStr;
+    return t.scheduledDate === activeDateStr;
   });
 
   const isTaskDoneForToday = (t: typeof tasks[0]): boolean => {
     if (t.isRepeating) {
-      const occ = t.occurrences?.find((o) => o.date === todayStr);
+      const occ = t.occurrences?.find((o) => o.date === activeDateStr);
       if (occ) return occ.status === 'Done';
-      const legacyOcc = t.repetitionHistory?.find((h) => h.date === todayStr);
+      const legacyOcc = t.repetitionHistory?.find((h) => h.date === activeDateStr);
       if (legacyOcc) return legacyOcc.completed;
       return false;
     }

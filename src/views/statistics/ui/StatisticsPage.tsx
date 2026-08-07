@@ -216,6 +216,9 @@ export const StatisticsPage: React.FC = () => {
 
   const [selectedDateStr, setSelectedDateStr] = useState<string>(() => getTodayStr());
   const [activityFilterMode, setActivityFilterMode] = useState<'tasks' | 'repeats' | 'pomodoros'>('tasks');
+  const [categoryTimeFilter, setCategoryTimeFilter] = useState<'all_time' | 'today'>('all_time');
+
+  const todayStr = useMemo(() => getTodayStr(), []);
 
   useEffect(() => {
     fetchTasks();
@@ -226,19 +229,29 @@ export const StatisticsPage: React.FC = () => {
   const allCompletionEvents = useMemo(() => getCombinedCompletionEvents(tasks), [tasks]);
   const totalDoneTasks = useMemo(() => allCompletionEvents.length, [allCompletionEvents]);
 
+  // Filtered completion events for category accomplishments widget
+  const categoryCompletionEvents = useMemo(() => {
+    if (categoryTimeFilter === 'today') {
+      return allCompletionEvents.filter((ev) => ev.dateStr === todayStr);
+    }
+    return allCompletionEvents;
+  }, [allCompletionEvents, categoryTimeFilter, todayStr]);
+
+  const categoryTotalDoneTasks = useMemo(() => categoryCompletionEvents.length, [categoryCompletionEvents]);
+
   // 30-day comprehensive daily stats
   const daily30StatsMap = useMemo(() => getDaily30Stats(tasks), [tasks]);
 
   // Category completion statistics
   const categoryStats = useMemo(() => {
     return TASK_CATEGORIES.map((cat) => {
-      const completedCount = allCompletionEvents.filter((ev) => ev.category === cat).length;
+      const completedCount = categoryCompletionEvents.filter((ev) => ev.category === cat).length;
       return {
         category: cat,
         completedCount,
       };
     });
-  }, [allCompletionEvents]);
+  }, [categoryCompletionEvents]);
 
   // Category Donut Chart Data
   const categoryDonutData = useMemo(() => {
@@ -1005,7 +1018,25 @@ export const StatisticsPage: React.FC = () => {
 
       {/* 3. 🏷 Выполнено задач по категориям */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <Typography variant="h2">🏷 Выполнено задач по категориям</Typography>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+          <Typography variant="h2">🏷 Выполнено задач по категориям</Typography>
+          <div className={styles.filterPillGroup}>
+            <button
+              type="button"
+              className={`${styles.filterPillBtn} ${categoryTimeFilter === 'all_time' ? styles.filterPillBtnActive : ''}`}
+              onClick={() => setCategoryTimeFilter('all_time')}
+            >
+              За всё время
+            </button>
+            <button
+              type="button"
+              className={`${styles.filterPillBtn} ${categoryTimeFilter === 'today' ? styles.filterPillBtnActive : ''}`}
+              onClick={() => setCategoryTimeFilter('today')}
+            >
+              Сегодня
+            </button>
+          </div>
+        </div>
 
         <div className={styles.categoryAccomplishmentLayout}>
           {/* Donut Chart with Centered Total Count */}
@@ -1032,8 +1063,8 @@ export const StatisticsPage: React.FC = () => {
 
             {/* Centered Donut Content */}
             <div className={styles.donutCenterContent}>
-              <span className={styles.donutCenterNumber}>{totalDoneTasks}</span>
-              <span className={styles.donutCenterLabel}>{getTaskPlural(totalDoneTasks)}</span>
+              <span className={styles.donutCenterNumber}>{categoryTotalDoneTasks}</span>
+              <span className={styles.donutCenterLabel}>{getTaskPlural(categoryTotalDoneTasks)}</span>
             </div>
           </div>
 

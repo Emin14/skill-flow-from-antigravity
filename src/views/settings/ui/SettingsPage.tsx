@@ -9,6 +9,8 @@ import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { applyAccentColorVars } from '@/shared/lib/colorUtils';
 import { TASK_CARD_FONTS, applyTaskCardFont } from '@/shared/config/cardFonts';
 
+import { isCompletionSoundEnabled, setCompletionSoundEnabled, playTaskCompletionSound } from '@/shared/lib/soundUtils';
+
 import { LiveTodayPreviewWidget } from './LiveTodayPreviewWidget';
 import { ThemeArchitectureSelector } from './ThemeArchitectureSelector';
 
@@ -35,6 +37,7 @@ export const SettingsPage: React.FC = () => {
   const [dateFormat, setDateFormat] = useState<'DD.MM.YYYY' | 'YYYY-MM-DD'>('DD.MM.YYYY');
 
   const [cardFontId, setCardFontId] = useState('system_ios');
+  const [soundEnabled, setSoundEnabled] = useState(true);
 
   useEffect(() => {
     const savedColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
@@ -47,6 +50,7 @@ export const SettingsPage: React.FC = () => {
     setBannerVariant(savedBannerVar);
     setDaySwitcherVariant(savedDaySwitcherVar);
     setCardFontId(savedCardFont);
+    setSoundEnabled(isCompletionSoundEnabled());
   }, []);
 
   const handleCardFontChange = (fontId: string) => {
@@ -406,6 +410,53 @@ export const SettingsPage: React.FC = () => {
               ▼
             </span>
           </div>
+        </div>
+      </Card>
+
+      {/* Sound Settings Section */}
+      <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '12px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', flex: 1 }}>
+            <Typography variant="h2">🔊 Звуковой эффект при выполнении</Typography>
+            <Typography variant="body" color="muted">
+              Воспроизводить гармоничный звук при выполнении задачи (поддерживается на iPhone Safari, Android и ПК).
+            </Typography>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              const next = !soundEnabled;
+              setSoundEnabled(next);
+              setCompletionSoundEnabled(next);
+              if (next) playTaskCompletionSound(true);
+              showToast(next ? '🔊 Звук выполнения включен' : '🔇 Звук выполнения выключен', 'info');
+            }}
+            style={{
+              padding: '6px 14px',
+              borderRadius: '20px',
+              border: soundEnabled ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)',
+              background: soundEnabled ? 'var(--color-success-light)' : 'var(--color-surface-hover)',
+              color: soundEnabled ? 'var(--color-success)' : 'var(--color-text-muted)',
+              fontSize: '12px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            {soundEnabled ? 'Включен ✅' : 'Выключен ❌'}
+          </button>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '2px' }}>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => playTaskCompletionSound(true)}
+            style={{ fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}
+          >
+            🎵 Прослушать звук
+          </Button>
         </div>
       </Card>
 

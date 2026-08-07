@@ -551,7 +551,7 @@ export const RepeatingSubtaskRenderer: React.FC<RepeatingSubtaskRendererProps> =
       iconBorderColor = '#f59e0b';
       iconBgColor = 'rgba(245, 158, 11, 0.15)';
     } else {
-      dynamicIcon = <RefreshCw size={14} color="#3b82f6" strokeWidth={2.5} />;
+      dynamicIcon = <RefreshCw size={14} color="var(--color-accent-text)" strokeWidth={2.5} />;
     }
 
     const progressDotsNode = (

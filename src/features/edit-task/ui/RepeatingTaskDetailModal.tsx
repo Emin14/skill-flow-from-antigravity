@@ -88,6 +88,34 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     };
   }, [isOpen]);
 
+  const startYRef = React.useRef<number>(0);
+  const [dragY, setDragY] = useState<number>(0);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+
+  const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    startYRef.current = clientY;
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!isDragging) return;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    const deltaY = clientY - startYRef.current;
+    if (deltaY > 0) setDragY(deltaY);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    if (dragY > 90) {
+      setDragY(0);
+      onClose();
+    } else {
+      setDragY(0);
+    }
+  };
+
   if (!isOpen || !masterTask) return null;
 
   const handleConfirmDeleteSeries = async () => {
@@ -105,26 +133,31 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const activeRating = masterTask.lastSmartRating;
   const currentPomodoros = masterTask.pomodorosCount || 1;
 
-  const historyDatesSet = new Set(history.map((h) => h.date));
+  const todayStr = getTodayStr();
 
+  // Streak calculation: Consecutive completed occurrences due on or before today without overdue gaps
   let streak = 0;
-  const today = new Date();
-  for (let i = 0; i < 365; i++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() - i);
-    const dStr = formatLocalDateStr(d);
-    if (historyDatesSet.has(dStr)) {
+  const pastOrTodayOccs = [...(masterTask.occurrences || [])]
+    .filter((o) => o.date <= todayStr)
+    .sort((a, b) => b.date.localeCompare(a.date));
+
+  for (const occ of pastOrTodayOccs) {
+    if (occ.status === 'Done') {
       streak++;
-    } else if (i > 0) {
+    } else if (occ.date < todayStr && occ.status === 'Todo') {
+      // Overdue uncompleted occurrence breaks the active streak!
       break;
     }
   }
 
-  const todayStr = getTodayStr();
-
   // Point 1 Fix: Display active occurrence date if provided, otherwise derived date
   const activeOccDate = occurrenceDate || (masterTask.occurrences?.find((o) => o.status === 'Todo')?.date) || masterTask.scheduledDate || todayStr;
   const formattedOccDate = formatDateTitleRu(activeOccDate);
+
+  // Point 4 Fix: True Series Start Date calculation (date of the 1st occurrence in the series)
+  const seriesStartDate = masterTask.occurrences && masterTask.occurrences.length > 0
+    ? masterTask.occurrences[0].date
+    : masterTask.scheduledDate || todayStr;
 
   const pomoOptions = [
     { num: '⅓', hasTomato: false, val: 0.33 },
@@ -140,7 +173,31 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()} style={{ gap: '14px', padding: '20px', maxHeight: '90vh', overflowY: 'auto' }}>
+      <div
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          gap: '14px',
+          padding: '16px 20px 20px 20px',
+          maxHeight: '90vh',
+          overflowY: 'auto',
+          transform: `translateY(${dragY}px)`,
+          transition: isDragging ? 'none' : 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+        }}
+      >
+        {/* Point 5: Swipe Down Handle for Modal */}
+        <div
+          onMouseDown={handleTouchStart}
+          onTouchStart={handleTouchStart}
+          onMouseMove={handleTouchMove}
+          onTouchMove={handleTouchMove}
+          onMouseUp={handleTouchEnd}
+          onTouchEnd={handleTouchEnd}
+          style={{ width: '100%', cursor: 'grab', paddingBottom: '4px', touchAction: 'none' }}
+        >
+          <div style={{ width: '36px', height: '4px', borderRadius: '2px', backgroundColor: 'var(--color-border)', margin: '0 auto' }} />
+        </div>
+
         {/* Modal Header Row 1: Icon, Title + Category column, Action buttons */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1 }}>
@@ -156,7 +213,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '20px',
-                color: '#ffffff', /* on solid accent button */
+                color: '#ffffff',
                 boxShadow: '0 4px 12px var(--color-accent-border)',
               }}
             >
@@ -358,9 +415,9 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               <span>🗓 Экземпляр:</span>
               <span style={{ color: 'var(--color-accent-text)', fontWeight: 700 }}>{formattedOccDate}</span>
             </div>
-            {masterTask.isRepeating && masterTask.scheduledDate && masterTask.scheduledDate !== activeOccDate && (
+            {masterTask.isRepeating && seriesStartDate && seriesStartDate !== activeOccDate && (
               <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', opacity: 0.7 }}>
-                (Старт серии: {formatDateTitleRu(masterTask.scheduledDate)})
+                (Старт серии: {formatDateTitleRu(seriesStartDate)})
               </span>
             )}
           </div>
@@ -570,7 +627,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               gap: '8px',
               padding: '12px 14px',
               borderRadius: '16px',
-              backgroundColor: 'var(--color-surface)',
+              backgroundColor: 'var(--color-surface-elevated)',
               border: '1px solid var(--color-border)',
             }}
           >
@@ -578,7 +635,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
                 📊 {formatRepetitionText(currentCount)}
               </span>
-              <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', padding: '2px 8px', borderRadius: '10px' }}>
+              <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', border: '1px solid var(--color-accent-border)', padding: '2px 8px', borderRadius: '10px' }}>
                 {masterTask.targetRepetitions ? `${Math.min(100, Math.round((currentCount / masterTask.targetRepetitions) * 100))}%` : `${currentCount} повт.`}
               </span>
             </div>
@@ -628,7 +685,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               flexDirection: 'column',
               gap: '10px',
               borderRadius: '16px',
-              background: 'var(--color-surface)',
+              background: 'var(--color-surface-elevated)',
               border: '1px solid var(--color-border)',
               padding: '12px 14px',
               width: '100%',
@@ -654,7 +711,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span>📜 История повторений</span>
-                <span style={{ fontSize: '11px', background: 'var(--color-accent-light)', color: 'var(--color-accent-text)', padding: '2px 8px', borderRadius: '10px' }}>
+                <span style={{ fontSize: '11px', background: 'var(--color-accent-light)', border: '1px solid var(--color-accent-border)', color: 'var(--color-accent-text)', padding: '2px 8px', borderRadius: '10px', fontWeight: 700 }}>
                   {occurrencesList.length}
                 </span>
               </div>
@@ -688,6 +745,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                           borderRadius: '12px',
                           background: isOccDone ? 'var(--color-success-light)' : 'var(--color-surface-hover)',
                           border: isOccDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)',
+                          color: 'var(--color-text-primary)',
                           fontSize: '12.5px',
                         }}
                       >
@@ -788,6 +846,19 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                           <button
                             type="button"
                             onClick={() => deleteTaskOccurrence(masterTask.id, occ.date)}
+                            title="Удалить этот экземпляр"
+                            style={{
+                              width: '28px',
+                              height: '28px',
+                              borderRadius: '6px',
+                              background: 'rgba(239, 68, 68, 0.12)',
+                              border: '1px solid rgba(239, 68, 68, 0.3)',
+                              color: 'var(--color-danger)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              cursor: 'pointer',
+                            }}
                           >
                             <Trash2 size={13} />
                           </button>

@@ -6,6 +6,7 @@ import { taskRepository } from '@/shared/repository';
 import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
 import { getTodayStr } from '@/shared/lib/dateUtils';
+import { playTaskCompletionSound } from '@/shared/lib/soundUtils';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -596,6 +597,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       await taskRepository.update(id, updates);
 
       if (newStatus === 'Done') {
+        playTaskCompletionSound();
         const nextOcc = normalized.find((o) => o.date > targetDate && o.status === 'Todo');
         const toastDate = nextOcc ? nextOcc.date : derivedScheduledDate;
         useToastStore.getState().showToast(`Следующее повторение: ${toastDate}`, 'success');
@@ -620,20 +622,84 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     const descendantTasks = newStatus === 'Done' ? getAllDescendantTasks(id, get().tasks) : [];
     const descendantIds = descendantTasks.map((t) => t.id);
 
+    const updatedSubtasksMap = new Map<string, Task>();
+
     set((state) => ({
       tasks: state.tasks.map((t) => {
         if (t.id === id) return { ...t, ...updates };
-        if (descendantIds.includes(t.id)) return { ...t, status: 'Done', completedAt: nowIso };
+        if (descendantIds.includes(t.id)) {
+          if (!t.isRepeating) {
+            const updated = { ...t, status: 'Done' as TaskStatus, completedAt: nowIso };
+            updatedSubtasksMap.set(t.id, updated);
+            return updated;
+          }
+          let occs = normalizeOccurrences(t.occurrences || [], t.id);
+          let targetOcc = occs.find((o) => o.date === targetDate);
+          if (!targetOcc) {
+            targetOcc = {
+              id: uuidv4(),
+              taskId: t.id,
+              date: targetDate,
+              status: 'Done',
+              completedAt: nowIso,
+            };
+            occs.push(targetOcc);
+          } else {
+            occs = occs.map((o) =>
+              o.date === targetDate
+                ? { ...o, status: 'Done', completedAt: nowIso }
+                : o
+            );
+          }
+          const isStopped = t.repeatStatus === 'Paused' || t.repeatStatus === 'Completed';
+          if (!isStopped) {
+            const doneCount = occs.filter((o) => o.status === 'Done').length;
+            const { daysToAdd } = calculateNextInterval(t, doneCount);
+            const nextDate = addDaysToDateStr(targetDate, daysToAdd);
+            occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate || o.date === nextDate);
+            if (!occs.some((o) => o.date === nextDate)) {
+              occs.push({
+                id: uuidv4(),
+                taskId: t.id,
+                date: nextDate,
+                status: 'Todo',
+              });
+            }
+          }
+          const normalized = normalizeOccurrences(occs, t.id);
+          const derivedScheduledDate = getDerivedScheduledDate({ ...t, occurrences: normalized });
+          const derivedDoneCount = getDerivedRepetitionsCount({ ...t, occurrences: normalized });
+          const updated = {
+            ...t,
+            occurrences: normalized,
+            scheduledDate: derivedScheduledDate,
+            repetitionsCount: derivedDoneCount,
+          };
+          updatedSubtasksMap.set(t.id, updated);
+          return updated;
+        }
         return t;
       }),
     }));
 
     await taskRepository.update(id, updates);
     if (newStatus === 'Done') {
+      playTaskCompletionSound();
       useActivityStore.getState().logActivity('task_completed', `Выполнена задача: "${task.title}"`);
     }
     for (const st of descendantTasks) {
-      await taskRepository.update(st.id, { status: 'Done', completedAt: nowIso });
+      const updatedSub = updatedSubtasksMap.get(st.id);
+      if (updatedSub) {
+        await taskRepository.update(st.id, {
+          status: updatedSub.status,
+          completedAt: updatedSub.completedAt,
+          occurrences: updatedSub.occurrences,
+          scheduledDate: updatedSub.scheduledDate,
+          repetitionsCount: updatedSub.repetitionsCount,
+        });
+      } else {
+        await taskRepository.update(st.id, { status: 'Done', completedAt: nowIso });
+      }
     }
 
     if (newStatus === 'Done') {

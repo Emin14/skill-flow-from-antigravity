@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTaskStore, GlassmorphicTaskCard } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { SmartRating } from '@/shared/config/repetitionRules';
@@ -33,9 +34,23 @@ const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Ta
 };
 
 export const CalendarPage: React.FC = () => {
+  const searchParams = useSearchParams();
+  const dateParam = searchParams.get('date');
+
   const [todayStr, setTodayStr] = useState<string>(getNowDateStr());
-  const [selectedDate, setSelectedDate] = useState<string>(getNowDateStr());
-  const [currentMonthDate, setCurrentMonthDate] = useState<Date>(new Date());
+  const [selectedDate, setSelectedDate] = useState<string>(() => {
+    if (dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam)) {
+      return dateParam;
+    }
+    return getNowDateStr();
+  });
+  const [currentMonthDate, setCurrentMonthDate] = useState<Date>(() => {
+    if (dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam)) {
+      const parts = dateParam.split('-').map(Number);
+      return new Date(parts[0], parts[1] - 1, 1);
+    }
+    return new Date();
+  });
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [detailOccurrenceDate, setDetailOccurrenceDate] = useState<string | undefined>(undefined);
@@ -58,34 +73,35 @@ export const CalendarPage: React.FC = () => {
   }, [fetchTasks, todayStr]);
 
   const handlePrevMonth = () => {
-    setCurrentMonthDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1));
+    setCurrentMonthDate((prev) => {
+      const newMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
+      const year = newMonth.getFullYear();
+      const month = String(newMonth.getMonth() + 1).padStart(2, '0');
+      const prefix = `${year}-${month}`;
+      if (!selectedDate.startsWith(prefix)) {
+        setSelectedDate(`${prefix}-01`);
+      }
+      return newMonth;
+    });
   };
 
   const handleNextMonth = () => {
-    setCurrentMonthDate((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1));
+    setCurrentMonthDate((prev) => {
+      const newMonth = new Date(prev.getFullYear(), prev.getMonth() + 1, 1);
+      const year = newMonth.getFullYear();
+      const month = String(newMonth.getMonth() + 1).padStart(2, '0');
+      const prefix = `${year}-${month}`;
+      if (!selectedDate.startsWith(prefix)) {
+        setSelectedDate(`${prefix}-01`);
+      }
+      return newMonth;
+    });
   };
 
   const handleGoToToday = () => {
     const now = new Date();
     setCurrentMonthDate(now);
     setSelectedDate(getTodayStr());
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart === null) return;
-    const touchEnd = e.changedTouches[0].clientX;
-    const diff = touchStart - touchEnd;
-
-    if (diff > 45) {
-      handleNextMonth();
-    } else if (diff < -45) {
-      handlePrevMonth();
-    }
-    setTouchStart(null);
   };
 
   const isTaskDoneOnDate = (task: Task, dateStr: string): boolean => {
@@ -210,11 +226,7 @@ export const CalendarPage: React.FC = () => {
   };
 
   return (
-    <div
-      className={styles.container}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div className={styles.container}>
       {/* 1. Monthly Calendar Widget (Material 3 Tonal Grid - Size #6 Winning Concept) */}
       <MonthCalendarWidget
         currentMonthDate={currentMonthDate}

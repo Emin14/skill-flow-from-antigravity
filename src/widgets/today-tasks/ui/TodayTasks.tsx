@@ -26,9 +26,11 @@ type StatusFilter = 'Todo' | 'InProgress' | 'Done';
 
 interface TodayTasksProps {
   showDaySwitcher?: boolean;
+  selectedDate?: string;
+  onDateChange?: (date: string) => void;
 }
 
-export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }) => {
+export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, selectedDate, onDateChange }) => {
   const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask, deleteTaskOccurrence } = useTaskStore();
   const {
     editingTask, detailTask, detailOccurrenceDate, smartTask,
@@ -39,6 +41,13 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
   const [todayStr, setTodayStr] = useState<string>(getTodayStr());
   const [daySwitcherVariant, setDaySwitcherVariant] = useState<'12' | '19'>('12');
   const [dragOverTab, setDragOverTab] = useState<StatusFilter | null>(null);
+
+  const activeDateStr = selectedDate || todayStr;
+
+  const handleDateChange = (newDate: string) => {
+    setTodayStr(newDate);
+    if (onDateChange) onDateChange(newDate);
+  };
 
   useEffect(() => {
     const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
@@ -59,51 +68,57 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
   useEffect(() => {
     registerPointerDropHandler((draggedTaskId, target) => {
       if (target.type === 'status_tab' && target.status) {
-        updateTaskStatus(draggedTaskId, target.status, undefined, todayStr);
+        updateTaskStatus(draggedTaskId, target.status, undefined, activeDateStr);
         const statusLabel = target.status === 'Todo' ? 'План' : target.status === 'InProgress' ? 'В работе' : 'Выполнено';
         useToastStore.getState().showToast(`Задача перенесена в колонку "${statusLabel}"`, 'info');
       } else if (target.type === 'task_card' && target.taskId) {
         updateTaskParent(draggedTaskId, target.taskId);
       }
     });
-  }, [todayStr, updateTaskStatus, updateTaskParent]);
+  }, [activeDateStr, updateTaskStatus, updateTaskParent]);
 
   useEffect(() => { fetchTasks(); }, [fetchTasks]);
 
   // Midnight auto-update: обновляет todayStr при смене суток
-  useMidnightRefresh(() => setTodayStr(getTodayStr()));
+  useMidnightRefresh(() => {
+    const fresh = getTodayStr();
+    setTodayStr(fresh);
+    if (onDateChange) onDateChange(fresh);
+  });
 
-  // Tasks scheduled strictly for today (EXCLUDING parent tasks with subtasks)
+  // Tasks scheduled strictly for activeDateStr (EXCLUDING parent tasks with subtasks)
   const rawTodayTasks = useMemo(() => {
     return tasks.filter((t) => {
       // Exclude main tasks with subtasks (they belong strictly in Projects section)
       const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
       if (t.hasSubtasks || hasChildren) return false;
 
-      // Handle repeating task occurrences scheduled for today
+      // Handle repeating task occurrences scheduled for activeDateStr
       if (t.isRepeating) {
-        const hasTodayOcc = t.occurrences?.some((o) => o.date === todayStr);
-        return hasTodayOcc || t.scheduledDate === todayStr;
+        if (t.occurrences && t.occurrences.length > 0) {
+          return t.occurrences.some((o) => o.date === activeDateStr);
+        }
+        return t.scheduledDate === activeDateStr;
       }
-      return t.scheduledDate === todayStr;
+      return t.scheduledDate === activeDateStr;
     });
-  }, [tasks, todayStr]);
+  }, [tasks, activeDateStr]);
 
-  // Helper to determine status of task for today
+  // Helper to determine status of task for activeDateStr
   const getTaskStatusForToday = (t: Task): TaskStatus => {
     if (t.isRepeating) {
-      const occ = t.occurrences?.find((o) => o.date === todayStr);
+      const occ = t.occurrences?.find((o) => o.date === activeDateStr);
       if (occ) return occ.status;
-      const legacyOcc = t.repetitionHistory?.find((h) => h.date === todayStr);
+      const legacyOcc = t.repetitionHistory?.find((h) => h.date === activeDateStr);
       if (legacyOcc) return legacyOcc.completed ? 'Done' : 'Todo';
       return 'Todo';
     }
     return t.status;
   };
 
-  const todoTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [rawTodayTasks, todayStr]);
-  const inProgressTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [rawTodayTasks, todayStr]);
-  const doneTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [rawTodayTasks, todayStr]);
+  const todoTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [rawTodayTasks, activeDateStr]);
+  const inProgressTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [rawTodayTasks, activeDateStr]);
+  const doneTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [rawTodayTasks, activeDateStr]);
 
   // Exact math for progress bar widget
   const totalCount = rawTodayTasks.length;
@@ -111,7 +126,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
   const is100PercentDone = totalCount > 0 && doneCount === totalCount;
 
   const handleCardClick = (task: Task) => {
-    openDetailModal(task);
+    openDetailModal(task, activeDateStr);
   };
 
   const handleDropOnTask = (draggedTaskId: string, targetParentTask: Task) => {
@@ -122,17 +137,17 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
   const handleToggleCheckbox = (task: Task) => {
     const isDoneNow = getTaskStatusForToday(task) === 'Done';
     if (isDoneNow) {
-      toggleTaskStatus(task.id, undefined, todayStr);
+      toggleTaskStatus(task.id, undefined, activeDateStr);
     } else if (isSmartRepeatTask(task)) {
-      const currentOcc = task.occurrences?.find((o) => o.date === todayStr);
+      const currentOcc = task.occurrences?.find((o) => o.date === activeDateStr);
       const preRating = currentOcc?.smartRating || task.lastSmartRating;
       if (preRating) {
-        updateTaskStatus(task.id, 'Done', preRating, todayStr);
+        updateTaskStatus(task.id, 'Done', preRating, activeDateStr);
       } else {
         openSmartModal(task);
       }
     } else {
-      toggleTaskStatus(task.id, undefined, todayStr);
+      toggleTaskStatus(task.id, undefined, activeDateStr);
     }
   };
 
@@ -159,7 +174,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
     setDragOverTab(null);
     const taskId = getDraggedTaskId(e);
     if (taskId) {
-      updateTaskStatus(taskId, targetStatus, undefined, todayStr);
+      updateTaskStatus(taskId, targetStatus, undefined, activeDateStr);
       const statusLabel = targetStatus === 'Todo' ? 'План' : targetStatus === 'InProgress' ? 'В работе' : 'Выполнено';
       useToastStore.getState().showToast(`Задача перенесена в колонку "${statusLabel}"`, 'info');
     }
@@ -170,8 +185,8 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
       {/* 1. Day Switcher Ribbon Widget at top in place of static header */}
       {showDaySwitcher && (
         <DaySwitcherShowcase
-          selectedDate={todayStr}
-          onDateChange={setTodayStr}
+          selectedDate={activeDateStr}
+          onDateChange={handleDateChange}
           variant={daySwitcherVariant}
         />
       )}
@@ -271,16 +286,16 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
             <SingleBoardSection
               tasksList={todoTasks}
               allTasks={tasks}
-              todayStr={todayStr}
+              todayStr={activeDateStr}
               targetStatus="Todo"
               parentPathVariant={4}
               onDropOnTask={handleDropOnTask}
-              onDropOnSection={(taskId, status) => updateTaskStatus(taskId, status, undefined, todayStr)}
+              onDropOnSection={(taskId, status) => updateTaskStatus(taskId, status, undefined, activeDateStr)}
               onOpenCard={handleCardClick}
               onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-              onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
-              onDelete={(id) => deleteTaskOccurrence(id, todayStr)}
-              onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
+              onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, activeDateStr)}
+              onDelete={(id) => deleteTaskOccurrence(id, activeDateStr)}
+              onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, activeDateStr)}
             />
           )}
 
@@ -289,16 +304,16 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
             <SingleBoardSection
               tasksList={inProgressTasks}
               allTasks={tasks}
-              todayStr={todayStr}
+              todayStr={activeDateStr}
               targetStatus="InProgress"
               parentPathVariant={4}
               onDropOnTask={handleDropOnTask}
-              onDropOnSection={(taskId, status) => updateTaskStatus(taskId, status, undefined, todayStr)}
+              onDropOnSection={(taskId, status) => updateTaskStatus(taskId, status, undefined, activeDateStr)}
               onOpenCard={handleCardClick}
               onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-              onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
-              onDelete={(id) => deleteTaskOccurrence(id, todayStr)}
-              onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
+              onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, activeDateStr)}
+              onDelete={(id) => deleteTaskOccurrence(id, activeDateStr)}
+              onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, activeDateStr)}
             />
           )}
 
@@ -307,16 +322,16 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
             <SingleBoardSection
               tasksList={doneTasks}
               allTasks={tasks}
-              todayStr={todayStr}
+              todayStr={activeDateStr}
               targetStatus="Done"
               parentPathVariant={4}
               onDropOnTask={handleDropOnTask}
-              onDropOnSection={(taskId, status) => updateTaskStatus(taskId, status, undefined, todayStr)}
+              onDropOnSection={(taskId, status) => updateTaskStatus(taskId, status, undefined, activeDateStr)}
               onOpenCard={handleCardClick}
               onToggleCheckbox={(t) => handleToggleCheckbox(t)}
-              onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, todayStr)}
-              onDelete={(id) => deleteTaskOccurrence(id, todayStr)}
-              onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, todayStr)}
+              onStatusChange={(taskId, nextStatus) => updateTaskStatus(taskId, nextStatus, undefined, activeDateStr)}
+              onDelete={(id) => deleteTaskOccurrence(id, activeDateStr)}
+              onCompleteParent={(id) => updateTaskStatus(id, 'Done', undefined, activeDateStr)}
             />
           )}
         </div>
@@ -332,7 +347,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true }
       {/* Task Detail Modal */}
       <RepeatingTaskDetailModal
         task={detailTask}
-        occurrenceDate={detailOccurrenceDate || todayStr}
+        occurrenceDate={detailOccurrenceDate || activeDateStr}
         isOpen={!!detailTask}
         onClose={closeDetailModal}
         onOpenEdit={() => {
