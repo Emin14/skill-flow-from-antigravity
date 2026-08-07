@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -27,6 +31,16 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/emin14/skill-flow-from-antigravity:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and Push Migration Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile.migrate
+          push: true
+          tags: ghcr.io/emin14/skill-flow-from-antigravity:migrate
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
