@@ -84,7 +84,7 @@ export const InboxPage: React.FC = () => {
       {/* Gesture Guide Banner */}
       <div className={styles.swipeHintBar}>
         <Lightbulb size={13} style={{ flexShrink: 0, opacity: 0.8 }} />
-        <span>👉 Свайп вправо — разобрать  •  👈 Свайп влево — удалить</span>
+        <span>👉 свайп вправо — разобрать  •  👈 свайп влево — удалить</span>
       </div>
 
       {/* Controls Bar (Filter Tabs) */}

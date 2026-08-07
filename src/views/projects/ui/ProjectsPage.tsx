@@ -9,6 +9,7 @@ import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskD
 import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { ChevronDown, ChevronRight, Lightbulb, Sparkles } from 'lucide-react';
 import { ProjectFilterTabsWidget, ProjectFilterType, ProjectProgressMode } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
+import { ProjectSectionBannerWidget } from '@/widgets/project-section-banner/ui/ProjectSectionBannerWidget';
 import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
 import { useToastStore } from '@/shared/ui/toast/toastStore';
 import { SUBTASK_VARIANTS_LIST, SubtaskVariantId, RepeatingSubtaskRenderer } from './RepeatingSubtaskVariants';
@@ -20,7 +21,6 @@ export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskParent, updateTaskDetails, deleteTaskOccurrence } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
   const [progressMode, setProgressMode] = useState<ProjectProgressMode>('today');
-  const [titleFontWeightMode, setTitleFontWeightMode] = useState<ProjectTitleFontWeightMode>('600');
   const [subtaskVariantId, setSubtaskVariantId] = useState<SubtaskVariantId>(18);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -34,20 +34,11 @@ export const ProjectsPage: React.FC = () => {
     if (savedMode === 'today' || savedMode === 'all_time') {
       setProgressMode(savedMode);
     }
-    const savedWeight = localStorage.getItem('projects-title-font-weight') as ProjectTitleFontWeightMode;
-    if (savedWeight === '600' || savedWeight === '400') {
-      setTitleFontWeightMode(savedWeight);
-    }
   }, [fetchTasks]);
 
   const handleToggleProgressMode = (mode: ProjectProgressMode) => {
     setProgressMode(mode);
     localStorage.setItem('project-progress-mode', mode);
-  };
-
-  const handleToggleFontWeightMode = (mode: ProjectTitleFontWeightMode) => {
-    setTitleFontWeightMode(mode);
-    localStorage.setItem('projects-title-font-weight', mode);
   };
 
   const handleSelectVariant = (id: SubtaskVariantId) => {
@@ -188,16 +179,42 @@ export const ProjectsPage: React.FC = () => {
     useToastStore.getState().showToast(`Срок проекта "${project.title}" продлён до ${formatDateDisplay(targetDate)} 📅`, 'success');
   };
 
+  const bannerStats = useMemo(() => {
+    const totalProjects = projectTasks.length;
+    let activeProjects = 0;
+    let completedProjects = 0;
+    let overdueProjects = 0;
+
+    projectTasks.forEach((project) => {
+      const descendants = getAllDescendantTasks(project.id, tasks);
+      const leafSubtasks = descendants.filter((t) => !t.hasSubtasks && !tasks.some((sub) => sub.parentTaskId === t.id));
+      const doneCount = leafSubtasks.filter((t) =>
+        progressMode === 'all_time' ? (t.status === 'Done' || t.repeatStatus === 'Completed') : isSubtaskDoneForProject(t, todayStr)
+      ).length;
+
+      const isCompleted = leafSubtasks.length > 0 && doneCount === leafSubtasks.length;
+      const overdueCount = leafSubtasks.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
+
+      if (isCompleted) completedProjects++;
+      else activeProjects++;
+
+      if (overdueCount > 0) overdueProjects++;
+    });
+
+    return { totalProjects, activeProjects, completedProjects, overdueProjects };
+  }, [projectTasks, tasks, progressMode, todayStr]);
+
   return (
-    <div className={styles.container} style={{ '--task-title-weight': titleFontWeightMode } as React.CSSProperties}>
+    <div className={styles.container}>
+      {/* 0. Section Info Banner Widget with 19 UI Variants */}
+      <ProjectSectionBannerWidget />
+
       {/* 1. Original Filter Tabs Widget */}
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
         onSelectFilter={setActiveFilter}
         progressMode={progressMode}
         onToggleProgressMode={handleToggleProgressMode}
-        titleFontWeightMode={titleFontWeightMode}
-        onToggleFontWeightMode={handleToggleFontWeightMode}
       />
 
       {/* Projects List */}

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { Typography } from '@/shared/ui';
 import { useTaskStore, GlassmorphicTaskCard } from '@/entities/task';
 import { Task, TaskStatus } from '@/entities/task/model/types';
@@ -41,7 +41,6 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
   const [todayStr, setTodayStr] = useState<string>(getTodayStr());
   const [daySwitcherVariant, setDaySwitcherVariant] = useState<'12' | '19'>('12');
   const [dragOverTab, setDragOverTab] = useState<StatusFilter | null>(null);
-  const [titleWeight, setTitleWeight] = useState<'default' | '400'>('default');
 
   const activeDateStr = selectedDate || todayStr;
 
@@ -50,30 +49,13 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
     if (onDateChange) onDateChange(newDate);
   };
 
-  const handleWeightChange = (weight: 'default' | '400') => {
-    setTitleWeight(weight);
-    localStorage.setItem('temp-task-title-weight', weight);
-    if (weight === '400') {
-      document.documentElement.style.setProperty('--task-title-weight', '400');
-    } else {
-      document.documentElement.style.setProperty('--task-title-weight', '600');
-    }
-  };
-
   useEffect(() => {
     const savedCatId = localStorage.getItem(STORAGE_KEYS.CATEGORY_THEME_ID) || 'amber';
     const savedBgId = localStorage.getItem(STORAGE_KEYS.CARD_BG_THEME_ID) || 'classic';
     const savedVariant = (localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12') as '12' | '19';
-    const savedWeight = (localStorage.getItem('temp-task-title-weight') || 'default') as 'default' | '400';
     applyCategoryTextTheme(savedCatId);
     applyCardBgTheme(savedBgId);
     setDaySwitcherVariant(savedVariant);
-    setTitleWeight(savedWeight);
-    if (savedWeight === '400') {
-      document.documentElement.style.setProperty('--task-title-weight', '400');
-    } else {
-      document.documentElement.style.setProperty('--task-title-weight', '600');
-    }
 
     const handleStorageChange = () => {
       const updatedVariant = (localStorage.getItem(STORAGE_KEYS.DAY_SWITCHER_VARIANT) || '12') as '12' | '19';
@@ -123,7 +105,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
   }, [tasks, activeDateStr]);
 
   // Helper to determine status of task for activeDateStr
-  const getTaskStatusForToday = (t: Task): TaskStatus => {
+  const getTaskStatusForToday = useCallback((t: Task): TaskStatus => {
     if (t.isRepeating) {
       const occ = t.occurrences?.find((o) => o.date === activeDateStr);
       if (occ) return occ.status;
@@ -132,11 +114,11 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
       return 'Todo';
     }
     return t.status;
-  };
+  }, [activeDateStr]);
 
-  const todoTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [rawTodayTasks, activeDateStr]);
-  const inProgressTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [rawTodayTasks, activeDateStr]);
-  const doneTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [rawTodayTasks, activeDateStr]);
+  const todoTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [rawTodayTasks, getTaskStatusForToday]);
+  const inProgressTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [rawTodayTasks, getTaskStatusForToday]);
+  const doneTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [rawTodayTasks, getTaskStatusForToday]);
 
   // Exact math for progress bar widget
   const totalCount = rawTodayTasks.length;
@@ -200,7 +182,6 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
 
   return (
     <div className={styles.container}>
-      {/* 1. Day Switcher Ribbon Widget at top in place of static header */}
       {showDaySwitcher && (
         <DaySwitcherShowcase
           selectedDate={activeDateStr}
@@ -208,62 +189,6 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
           variant={daySwitcherVariant}
         />
       )}
-
-      {/* Temporary Font Weight Toggle Switcher */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '8px',
-          padding: '8px 12px',
-          borderRadius: '12px',
-          background: 'var(--color-surface)',
-          border: '1px solid var(--color-border)',
-          marginBottom: '10px',
-        }}
-      >
-        <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-          🔤 Жирность шрифта заголовка:
-        </span>
-        <div style={{ display: 'flex', gap: '4px', background: 'var(--color-surface-hover)', padding: '3px', borderRadius: '10px', border: '1px solid var(--color-border)' }}>
-          <button
-            type="button"
-            onClick={() => handleWeightChange('default')}
-            style={{
-              padding: '4px 10px',
-              borderRadius: '8px',
-              border: 'none',
-              background: titleWeight === 'default' ? 'var(--color-accent)' : 'transparent',
-              color: titleWeight === 'default' ? '#ffffff' : 'var(--color-text-muted)',
-              fontSize: '11.5px',
-              fontWeight: titleWeight === 'default' ? 700 : 500,
-              cursor: 'pointer',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            Вариант 1 (Как сейчас)
-          </button>
-          <button
-            type="button"
-            onClick={() => handleWeightChange('400')}
-            style={{
-              padding: '4px 10px',
-              borderRadius: '8px',
-              border: 'none',
-              background: titleWeight === '400' ? 'var(--color-accent)' : 'transparent',
-              color: titleWeight === '400' ? '#ffffff' : 'var(--color-text-muted)',
-              fontSize: '11.5px',
-              fontWeight: titleWeight === '400' ? 700 : 400,
-              cursor: 'pointer',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            Вариант 2 (Жирность 400)
-          </button>
-        </div>
-      </div>
-
       {/* 2. Full-Width Compact Process Status Tab Switcher Bar with Drag-and-Drop Drop Targets */}
       <div className={styles.viewTabBtnBar}>
         <button
@@ -526,7 +451,23 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div
+      onDragOver={(e) => {
+        e.preventDefault();
+        setIsHeaderDragOver(true);
+      }}
+      onDragLeave={() => setIsHeaderDragOver(false)}
+      onDrop={handleHeaderDrop}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+        border: isHeaderDragOver ? '1.5px dashed var(--color-accent)' : '1.5px solid transparent',
+        borderRadius: '12px',
+        padding: '4px',
+        transition: 'all 0.15s ease',
+      }}
+    >
       {tasksList.length === 0 ? (
         <div style={{ padding: '16px', textAlign: 'center', fontSize: '12px', color: 'var(--color-text-muted)', border: '1px dashed rgba(255,255,255,0.1)', borderRadius: '12px' }}>
           В этой колонке нет задач. Перетащите задачу сюда.

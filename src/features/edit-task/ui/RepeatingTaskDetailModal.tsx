@@ -56,21 +56,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState<SmartRating | null>(null);
-  const [detailVariantId, setDetailVariantId] = useState<number>(1);
-  const [activeTab, setActiveTab] = useState<'main' | 'pomo' | 'history'>('main');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('detail-task-variant-id');
-    if (saved) {
-      const num = Number(saved);
-      if (num >= 1 && num <= 20) setDetailVariantId(num);
-    }
-  }, []);
-
-  const handleSelectVariant = (id: number) => {
-    setDetailVariantId(id);
-    localStorage.setItem('detail-task-variant-id', String(id));
-  };
 
   const masterTask = useMemo(() => {
     if (!task) return null;
@@ -143,14 +128,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
   const currentCount = masterTask.repetitionsCount || 0;
   const targetCount = masterTask.targetRepetitions || 8;
-  const progressPercent = Math.min(100, Math.round((currentCount / targetCount) * 100));
-  const history = masterTask.repetitionHistory || [];
   const activeRating = masterTask.lastSmartRating;
   const currentPomodoros = masterTask.pomodorosCount || 1;
 
   const todayStr = getTodayStr();
 
-  // Streak calculation: Consecutive completed occurrences due on or before today without overdue gaps
   let streak = 0;
   const pastOrTodayOccs = [...(masterTask.occurrences || [])]
     .filter((o) => o.date <= todayStr)
@@ -160,16 +142,13 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     if (occ.status === 'Done') {
       streak++;
     } else if (occ.date < todayStr && occ.status === 'Todo') {
-      // Overdue uncompleted occurrence breaks the active streak!
       break;
     }
   }
 
-  // Point 1 Fix: Display active occurrence date if provided, otherwise derived date
   const activeOccDate = occurrenceDate || (masterTask.occurrences?.find((o) => o.status === 'Todo')?.date) || masterTask.scheduledDate || todayStr;
   const formattedOccDate = formatDateTitleRu(activeOccDate);
 
-  // Point 4 Fix: True Series Start Date calculation (date of the 1st occurrence in the series)
   const seriesStartDate = masterTask.occurrences && masterTask.occurrences.length > 0
     ? masterTask.occurrences[0].date
     : masterTask.scheduledDate || todayStr;
@@ -183,54 +162,36 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     { num: '4', hasTomato: true, val: 4 },
   ];
 
-  // Point 2: Sort occurrences list for history
   const occurrencesList = [...(masterTask.occurrences || [])].sort((a, b) => b.date.localeCompare(a.date));
 
-  let variantStyleOverride: React.CSSProperties = {};
+  const todayOccurrence = masterTask.occurrences?.find((o) => o.date === activeOccDate);
+  const isTodayDone = masterTask.isRepeating ? todayOccurrence?.status === 'Done' : masterTask.status === 'Done';
 
-  if (detailVariantId === 4) {
-    variantStyleOverride = {
-      fontFamily: '"JetBrains Mono", monospace',
-      borderRadius: '8px',
-      border: '1px solid #334155',
-      background: '#090d16',
-    };
-  } else if (detailVariantId === 8) {
-    variantStyleOverride = {
-      border: '1px solid #818cf8',
-      boxShadow: '0 0 25px rgba(99, 102, 241, 0.35)',
-      background: '#0f172a',
-    };
-  } else if (detailVariantId === 12) {
-    variantStyleOverride = {
-      borderLeft: '6px solid var(--color-accent)',
-      borderRadius: '16px',
-    };
-  } else if (detailVariantId === 14) {
-    variantStyleOverride = {
-      borderRadius: '24px',
-      boxShadow: '8px 8px 20px rgba(0,0,0,0.3), -6px -6px 16px rgba(255,255,255,0.04)',
-    };
-  } else if (detailVariantId === 16) {
-    variantStyleOverride = {
-      fontFamily: '"Playfair Display", Georgia, serif',
-    };
-  } else if (detailVariantId === 17) {
-    variantStyleOverride = {
-      background: 'radial-gradient(circle at 80% 20%, rgba(99,102,241,0.25) 0%, rgba(16,185,129,0.15) 50%, var(--color-surface) 100%)',
-      backdropFilter: 'blur(20px)',
-    };
-  } else if (detailVariantId === 19) {
-    variantStyleOverride = {
-      borderRadius: '32px',
-      boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-    };
-  } else if (detailVariantId === 20) {
-    variantStyleOverride = {
-      border: '1px solid var(--color-accent-border)',
-      background: 'linear-gradient(180deg, var(--color-surface-hover) 0%, var(--color-surface) 100%)',
-    };
-  }
+  const handleRatingClick = async (ratingKey: SmartRating) => {
+    setSelectedRating(ratingKey);
+    if (masterTask) {
+      await updateTaskDetails(masterTask.id, { lastSmartRating: ratingKey });
+    }
+  };
+
+  const handleToggleTodayOccurrence = async () => {
+    if (!masterTask) return;
+    const ratingToUse = selectedRating || masterTask.lastSmartRating || 'normal';
+    if (isTodayDone) {
+      if (masterTask.isRepeating) {
+        await toggleTaskStatus(masterTask.id, undefined, activeOccDate);
+      } else {
+        await toggleTaskStatus(masterTask.id);
+      }
+    } else {
+      if (masterTask.isRepeating) {
+        await updateTaskStatus(masterTask.id, 'Done', ratingToUse, activeOccDate);
+      } else {
+        await updateTaskStatus(masterTask.id, 'Done', ratingToUse);
+      }
+      onClose();
+    }
+  };
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -244,10 +205,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           overflowY: 'auto',
           transform: `translateY(${dragY}px)`,
           transition: isDragging ? 'none' : 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-          ...variantStyleOverride,
         }}
       >
-        {/* Point 5: Swipe Down Handle for Modal */}
         <div
           onMouseDown={handleTouchStart}
           onTouchStart={handleTouchStart}
@@ -255,138 +214,18 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           onTouchMove={handleTouchMove}
           onMouseUp={handleTouchEnd}
           onTouchEnd={handleTouchEnd}
-          style={{ width: '100%', cursor: 'grab', paddingBottom: '2px', touchAction: 'none' }}
+          style={{ width: '100%', cursor: 'grab', paddingBottom: '4px', touchAction: 'none' }}
         >
           <div style={{ width: '36px', height: '4px', borderRadius: '2px', backgroundColor: 'var(--color-border)', margin: '0 auto' }} />
         </div>
 
-        {/* 🎨 20 Design Variants Top Selector Bar */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', width: '100%', marginBottom: '2px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span style={{ fontSize: '10.5px', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              🎨 Стилистика карточки (Вариант {detailVariantId} из 20)
-            </span>
-          </div>
-          <div style={{ display: 'flex', gap: '4px', overflowX: 'auto', paddingBottom: '4px', width: '100%', boxSizing: 'border-box' }}>
-            {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
-              <button
-                key={num}
-                type="button"
-                onClick={() => handleSelectVariant(num)}
-                title={`Переключить на Вариант ${num}`}
-                style={{
-                  minWidth: '26px',
-                  height: '24px',
-                  padding: '0 5px',
-                  borderRadius: '7px',
-                  border: detailVariantId === num ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
-                  background: detailVariantId === num ? 'var(--color-accent)' : 'rgba(255,255,255,0.05)',
-                  color: detailVariantId === num ? '#ffffff' : 'var(--color-text-muted)',
-                  fontSize: '11px',
-                  fontWeight: detailVariantId === num ? 700 : 500,
-                  cursor: 'pointer',
-                  flexShrink: 0,
-                  transition: 'all 0.15s ease',
-                }}
-              >
-                {num}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Variant 9 Segmented Tab Bar */}
-        {detailVariantId === 9 && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', width: '100%', marginBottom: '4px' }}>
-            <button
-              type="button"
-              onClick={() => setActiveTab('main')}
-              style={{
-                padding: '6px 10px',
-                borderRadius: '10px',
-                border: activeTab === 'main' ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
-                background: activeTab === 'main' ? 'var(--color-accent)' : 'var(--color-surface-hover)',
-                color: activeTab === 'main' ? '#ffffff' : 'var(--color-text-muted)',
-                fontSize: '12px',
-                fontWeight: activeTab === 'main' ? 700 : 500,
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              📋 Главное
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('pomo')}
-              style={{
-                padding: '6px 10px',
-                borderRadius: '10px',
-                border: activeTab === 'pomo' ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
-                background: activeTab === 'pomo' ? 'var(--color-accent)' : 'var(--color-surface-hover)',
-                color: activeTab === 'pomo' ? '#ffffff' : 'var(--color-text-muted)',
-                fontSize: '12px',
-                fontWeight: activeTab === 'pomo' ? 700 : 500,
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              🍅 Оценка & Помидоро
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('history')}
-              style={{
-                padding: '6px 10px',
-                borderRadius: '10px',
-                border: activeTab === 'history' ? '1px solid var(--color-accent)' : '1px solid var(--color-border)',
-                background: activeTab === 'history' ? 'var(--color-accent)' : 'var(--color-surface-hover)',
-                color: activeTab === 'history' ? '#ffffff' : 'var(--color-text-muted)',
-                fontSize: '12px',
-                fontWeight: activeTab === 'history' ? 700 : 500,
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              📊 История
-            </button>
-          </div>
-        )}
-
-        {/* Modal Header Row 1: Icon, Title + Category column, Action buttons */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1 }}>
-            {/* Round Icon */}
-            <div
-              style={{
-                width: '42px',
-                height: '42px',
-                minWidth: '42px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '20px',
-                color: '#ffffff',
-                boxShadow: '0 4px 12px var(--color-accent-border)',
-              }}
-            >
+            <div style={{ width: '42px', height: '42px', minWidth: '42px', borderRadius: '12px', background: 'linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', color: '#ffffff', boxShadow: '0 4px 12px var(--color-accent-border)' }}>
               {masterTask.isRepeating ? '🔄' : '📌'}
             </div>
-
-            {/* Task Title & Category */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0, flex: 1 }}>
-              <h2
-                style={{
-                  fontSize: '18px',
-                  fontWeight: 700,
-                  color: 'var(--color-text-primary)',
-                  margin: 0,
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                }}
-              >
+              <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {masterTask.title}
               </h2>
               <div style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -396,173 +235,35 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             </div>
           </div>
 
-          {/* Action Buttons: Pause/Resume, Complete Series (Only for repeating tasks!), Pencil Edit, Delete & Close */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             {masterTask.isRepeating && (
               <>
-                {/* Pause / Resume Button */}
                 {(masterTask.repeatStatus || 'Active') === 'Paused' ? (
-                  <button
-                    onClick={() => updateRepeatStatus(masterTask.id, 'Active')}
-                    title="Возобновить повторение"
-                    style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '10px',
-                      background: 'rgba(16, 185, 129, 0.15)',
-                      border: '1px solid rgba(16, 185, 129, 0.3)',
-                      color: '#10b981',
-                      fontSize: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                    }}
-                  >
-                    ▶️
-                  </button>
+                  <button onClick={() => updateRepeatStatus(masterTask.id, 'Active')} title="Возобновить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#10b981', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>▶️</button>
                 ) : (
-                  <button
-                    onClick={() => updateRepeatStatus(masterTask.id, 'Paused')}
-                    title="Приостановить повторение"
-                    style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '10px',
-                      background: 'rgba(245, 158, 11, 0.15)',
-                      border: '1px solid rgba(245, 158, 11, 0.3)',
-                      color: '#f59e0b',
-                      fontSize: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                    }}
-                  >
-                    ⏸️
-                  </button>
+                  <button onClick={() => updateRepeatStatus(masterTask.id, 'Paused')} title="Приостановить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.3)', color: '#f59e0b', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>⏸️</button>
                 )}
 
-                {/* Complete Series Button */}
                 {(masterTask.repeatStatus || 'Active') === 'Completed' ? (
-                  <button
-                    onClick={() => updateRepeatStatus(masterTask.id, 'Active')}
-                    title="Возобновить завершённое повторение"
-                    style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '10px',
-                      background: 'rgba(99, 102, 241, 0.15)',
-                      border: '1px solid rgba(99, 102, 241, 0.3)',
-                      color: '#6366f1',
-                      fontSize: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                    }}
-                  >
-                    🔄
-                  </button>
+                  <button onClick={() => updateRepeatStatus(masterTask.id, 'Active')} title="Возобновить завершённое повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.3)', color: '#6366f1', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>🔄</button>
                 ) : (
-                  <button
-                    onClick={() => updateRepeatStatus(masterTask.id, 'Completed')}
-                    title="Завершить повторение"
-                    style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '10px',
-                      background: 'rgba(99, 102, 241, 0.15)',
-                      border: '1px solid rgba(99, 102, 241, 0.3)',
-                      color: '#6366f1',
-                      fontSize: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                    }}
-                  >
-                    ✅
-                  </button>
+                  <button onClick={() => updateRepeatStatus(masterTask.id, 'Completed')} title="Завершить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.3)', color: '#6366f1', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✅</button>
                 )}
               </>
             )}
 
-            <button
-              onClick={onOpenEdit}
-              title="Редактировать задачу"
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                color: '#ffffff',
-                fontSize: '16px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              ✏️
-            </button>
-
-            <button
-              onClick={() => setShowDeleteConfirm(true)}
-              title="Удалить задачу со всеми её повторениями"
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'rgba(239, 68, 68, 0.12)',
-                border: '1px solid rgba(239, 68, 68, 0.25)',
-                color: '#ef4444',
-                fontSize: '16px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              🗑️
-            </button>
-
-            <button
-              onClick={onClose}
-              title="Закрыть"
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                color: '#ffffff',
-                fontSize: '16px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              ✕
-            </button>
+            <button onClick={onOpenEdit} title="Редактировать задачу" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#ffffff', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✏️</button>
+            <button onClick={() => setShowDeleteConfirm(true)} title="Удалить задачу со всеми её повторениями" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.25)', color: '#ef4444', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>🗑️</button>
+            <button onClick={onClose} title="Закрыть" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#ffffff', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✕</button>
           </div>
         </div>
 
-        {/* Top-Right Dim Created Date */}
         {masterTask.createdAt && (
           <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', opacity: 0.55, textAlign: 'right', marginTop: '-6px', marginBottom: '-6px' }}>
             Создано: {new Date(masterTask.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
           </div>
         )}
 
-        {/* Modal Header Row 2: Point 1 Fix - Occurrence Date prominently shown */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '6px', fontSize: '13.5px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -575,17 +276,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               </span>
             )}
           </div>
-
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span>🔥</span>
             <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>Стрик: {streak} дней</span>
           </div>
         </div>
 
-        {/* Horizontal Divider Line */}
         <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '6px 0' }} />
 
-        {/* Description & Link if present */}
         {(masterTask.description || masterTask.link) && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', padding: '10px 12px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)' }}>
             {masterTask.description && (
@@ -601,58 +299,23 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         )}
 
-        {/* Pomodoro Selector Option 8 */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
           <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
             🍅 Время (Помидоры):
           </label>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(6, 1fr)',
-              gap: '4px',
-              padding: '4px',
-              borderRadius: '12px',
-              background: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid var(--color-border)',
-            }}
-          >
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '4px', padding: '4px', borderRadius: '12px', background: 'rgba(255, 255, 255, 0.04)', border: '1px solid var(--color-border)' }}>
             {pomoOptions.map((item) => {
               const isActive = currentPomodoros === item.val;
               return (
-                <button
-                  key={item.val}
-                  type="button"
-                  onClick={() => updateTaskPomodoros(masterTask.id, item.val, activeOccDate)}
-                  style={{
-                    height: '38px',
-                    borderRadius: '9px',
-                    border: 'none',
-                    background: isActive ? 'var(--color-accent)' : 'transparent',
-                    color: isActive ? '#ffffff' : 'var(--color-text-muted)',
-                    fontWeight: isActive ? 700 : 500,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '1px',
-                    boxShadow: isActive ? '0 4px 14px var(--color-accent-border)' : 'none',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                  }}
-                >
-                  <span style={{ fontSize: '11px', fontWeight: isActive ? 700 : 500 }}>
-                    {item.num}
-                  </span>
-                  {item.hasTomato && (
-                    <span style={{ fontSize: '18px', lineHeight: 1 }}>🍅</span>
-                  )}
+                <button key={item.val} type="button" onClick={() => updateTaskPomodoros(masterTask.id, item.val, activeOccDate)} style={{ height: '38px', borderRadius: '9px', border: 'none', background: isActive ? 'var(--color-accent)' : 'transparent', color: isActive ? '#ffffff' : 'var(--color-text-muted)', fontWeight: isActive ? 700 : 500, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1px', boxShadow: isActive ? '0 4px 14px var(--color-accent-border)' : 'none', cursor: 'pointer' }}>
+                  <span style={{ fontSize: '11px', fontWeight: isActive ? 700 : 500 }}>{item.num}</span>
+                  {item.hasTomato && <span style={{ fontSize: '18px', lineHeight: 1 }}>🍅</span>}
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Difficulty Rating Section (For Smart Repeat tasks) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
           <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
             💡 Оценка сложности:
@@ -667,202 +330,40 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               const currentActive = selectedRating || activeRating;
               const isActive = currentActive === rating.key;
               return (
-                <button
-                  key={rating.key}
-                  type="button"
-                  onClick={async () => {
-                    setSelectedRating(rating.key as SmartRating);
-                    await updateTaskDetails(masterTask.id, { lastSmartRating: rating.key as SmartRating });
-                  }}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '4px',
-                    padding: '8px 4px',
-                    borderRadius: '12px',
-                    background: isActive ? rating.bg : 'rgba(255, 255, 255, 0.03)',
-                    border: isActive ? `1.5px solid ${rating.border}` : '1px solid var(--color-border)',
-                    cursor: 'pointer',
-                    transform: isActive ? 'scale(1.03)' : 'none',
-                    boxShadow: isActive ? `0 4px 14px ${rating.bg}` : 'none',
-                  }}
-                >
+                <button key={rating.key} type="button" onClick={() => handleRatingClick(rating.key as SmartRating)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', padding: '8px 4px', borderRadius: '12px', background: isActive ? rating.bg : 'rgba(255, 255, 255, 0.03)', border: isActive ? `1.5px solid ${rating.border}` : '1px solid var(--color-border)', cursor: 'pointer', transform: isActive ? 'scale(1.03)' : 'none', boxShadow: isActive ? `0 4px 14px ${rating.bg}` : 'none' }}>
                   <span style={{ fontSize: '18px', lineHeight: 1 }}>{rating.emoji}</span>
-                  <span style={{ fontSize: '11px', fontWeight: isActive ? 700 : 500, color: isActive ? rating.color : 'var(--color-text-muted)' }}>
-                    {rating.title}
-                  </span>
+                  <span style={{ fontSize: '11px', fontWeight: isActive ? 700 : 500, color: isActive ? rating.color : 'var(--color-text-muted)' }}>{rating.title}</span>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Task Completion Action Button (Placed AFTER Difficulty Rating Section!) */}
-        {(() => {
-          const occ = masterTask.occurrences?.find((o) => o.date === activeOccDate);
-          const isDoneNow = masterTask.isRepeating ? occ?.status === 'Done' : masterTask.status === 'Done';
-          const isSmart = masterTask.repetitionMode === 'spaced' || masterTask.repetitionMode === 'smart';
-          const effectiveRating = selectedRating || masterTask.lastSmartRating;
-          const isCompletionDisabled = false;
+        <button type="button" onClick={handleToggleTodayOccurrence} style={{ width: '100%', padding: '12px 14px', borderRadius: '14px', border: isTodayDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-success-border)', backgroundColor: isTodayDone ? 'var(--color-success-light)' : 'var(--color-success)', color: isTodayDone ? 'var(--color-success)' : '#ffffff', fontSize: '13.5px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', boxShadow: !isTodayDone ? '0 4px 14px var(--color-success-border)' : 'none', transition: 'all 0.2s ease', marginTop: '4px' }}>
+          <CheckCircle2 size={18} />
+          <span>{isTodayDone ? '✅ Задача выполнена' : '✨ Отметить как выполненную'}</span>
+        </button>
 
-          const handleToggleCompletion = async () => {
-            const ratingToUse = effectiveRating || (isSmart ? 'normal' : undefined);
-            if (isDoneNow) {
-              if (masterTask.isRepeating) {
-                await toggleTaskStatus(masterTask.id, undefined, activeOccDate);
-              } else {
-                await toggleTaskStatus(masterTask.id);
-              }
-            } else {
-              if (masterTask.isRepeating) {
-                await updateTaskStatus(masterTask.id, 'Done', ratingToUse, activeOccDate);
-              } else {
-                await updateTaskStatus(masterTask.id, 'Done', ratingToUse);
-              }
-              onClose();
-            }
-          };
-
-          return (
-            <button
-              type="button"
-              disabled={isCompletionDisabled}
-              onClick={handleToggleCompletion}
-              style={{
-                width: '100%',
-                padding: '12px 14px',
-                borderRadius: '14px',
-                border: isDoneNow
-                  ? '1px solid var(--color-success-border)'
-                  : isCompletionDisabled
-                  ? '1px solid var(--color-border)'
-                  : '1px solid var(--color-success-border)',
-                backgroundColor: isDoneNow
-                  ? 'var(--color-success-light)'
-                  : isCompletionDisabled
-                  ? 'rgba(255, 255, 255, 0.04)'
-                  : 'var(--color-success)',
-                color: isDoneNow
-                  ? 'var(--color-success)'
-                  : isCompletionDisabled
-                  ? 'var(--color-text-muted)'
-                  : '#ffffff',
-                fontSize: '13.5px',
-                fontWeight: 700,
-                cursor: isCompletionDisabled ? 'not-allowed' : 'pointer',
-                opacity: isCompletionDisabled ? 0.5 : 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                boxShadow: !isDoneNow && !isCompletionDisabled ? '0 4px 14px var(--color-success-border)' : 'none',
-                transition: 'all 0.2s ease',
-                marginTop: '4px',
-              }}
-            >
-              <CheckCircle2 size={18} />
-              <span>
-                {isDoneNow
-                  ? '✅ Задача выполнена'
-                  : '✨ Отметить как выполненную'}
-              </span>
-            </button>
-          );
-        })()}
-
-        {/* Completion Progress Bar Widget (Variant with Striped Bars / Полоски) */}
         {masterTask.isRepeating && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '8px',
-              padding: '12px 14px',
-              borderRadius: '16px',
-              backgroundColor: 'var(--color-surface-elevated)',
-              border: '1px solid var(--color-border)',
-            }}
-          >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px 14px', borderRadius: '16px', backgroundColor: 'var(--color-surface-elevated)', border: '1px solid var(--color-border)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
-                📊 {formatRepetitionText(currentCount)}
-              </span>
+              <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-text-primary)' }}>📊 {formatRepetitionText(currentCount)}</span>
               <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', border: '1px solid var(--color-accent-border)', padding: '2px 8px', borderRadius: '10px' }}>
                 {masterTask.targetRepetitions ? `${Math.min(100, Math.round((currentCount / masterTask.targetRepetitions) * 100))}%` : `${currentCount} повт.`}
               </span>
             </div>
-
-            {(() => {
-              const targetCount = masterTask.targetRepetitions || 6;
-              const activeCount = Math.max(currentCount, masterTask.occurrences?.length || 0, targetCount);
-              const totalBars = activeCount > 10 ? activeCount : Math.max(targetCount, 6);
-              return (
-                <div
-                  style={{
-                    display: 'flex',
-                    gap: '4px',
-                    width: '100%',
-                    marginTop: '2px',
-                  }}
-                >
-                  {Array.from({ length: totalBars }).map((_, index) => {
-                    const isFilled = index < currentCount;
-                    return (
-                      <div
-                        key={index}
-                        title={`Повторение ${index + 1}`}
-                        style={{
-                          flex: 1,
-                          height: '8px',
-                          borderRadius: '4px',
-                          backgroundColor: isFilled ? 'var(--color-success)' : 'var(--color-surface-hover)',
-                          border: isFilled ? 'none' : '1px solid var(--color-border)',
-                          boxShadow: isFilled ? '0 2px 6px var(--color-success-border)' : 'none',
-                          transition: 'all 0.2s ease',
-                        }}
-                      />
-                    );
-                  })}
-                </div>
-              );
-            })()}
+            <div style={{ display: 'flex', gap: '4px', width: '100%', marginTop: '2px' }}>
+              {Array.from({ length: Math.max(targetCount, 6) }).map((_, index) => {
+                const isFilled = index < currentCount;
+                return <div key={index} title={`Повторение ${index + 1}`} style={{ flex: 1, height: '8px', borderRadius: '4px', backgroundColor: isFilled ? 'var(--color-success)' : 'var(--color-surface-hover)', border: isFilled ? 'none' : '1px solid var(--color-border)', boxShadow: isFilled ? '0 2px 6px var(--color-success-border)' : 'none' }} />;
+              })}
+            </div>
           </div>
         )}
 
-        {/* Collapsible Repetition History Accordion Widget (Full Light & Dark Theme Support) */}
         {masterTask.isRepeating && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '10px',
-              borderRadius: '16px',
-              background: 'var(--color-surface-elevated)',
-              border: '1px solid var(--color-border)',
-              padding: '12px 14px',
-              width: '100%',
-              boxSizing: 'border-box',
-            }}
-          >
-            <button
-              type="button"
-              onClick={() => setIsHistoryOpen((prev) => !prev)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
-                background: 'none',
-                border: 'none',
-                color: 'var(--color-text-primary)',
-                cursor: 'pointer',
-                fontSize: '13.5px',
-                fontWeight: 700,
-                padding: 0,
-              }}
-            >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', borderRadius: '16px', background: 'var(--color-surface-elevated)', border: '1px solid var(--color-border)', padding: '12px 14px', width: '100%', boxSizing: 'border-box' }}>
+            <button type="button" onClick={() => setIsHistoryOpen((prev) => !prev)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', color: 'var(--color-text-primary)', cursor: 'pointer', fontSize: '13.5px', fontWeight: 700, padding: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span>📜 История повторений</span>
                 <span style={{ fontSize: '11px', background: 'var(--color-accent-light)', border: '1px solid var(--color-accent-border)', color: 'var(--color-accent-text)', padding: '2px 8px', borderRadius: '10px', fontWeight: 700 }}>
@@ -888,78 +389,17 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                       occ.smartRating === 'again' ? '❌' : null;
 
                     return (
-                      <div
-                        key={occ.id || occ.date}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          gap: '8px',
-                          padding: '8px 10px',
-                          borderRadius: '12px',
-                          background: isOccDone ? 'var(--color-success-light)' : 'var(--color-surface-hover)',
-                          border: isOccDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)',
-                          color: 'var(--color-text-primary)',
-                          fontSize: '12.5px',
-                        }}
-                      >
-                        {/* Interactive Calendar Date Picker Input */}
+                      <div key={occ.id || occ.date} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', padding: '8px 10px', borderRadius: '12px', background: isOccDone ? 'var(--color-success-light)' : 'var(--color-surface-hover)', border: isOccDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-border)', color: 'var(--color-text-primary)', fontSize: '12.5px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', position: 'relative' }}>
-                          <label
-                            title="Нажмите, чтобы изменить дату экземпляра"
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '6px',
-                              cursor: 'pointer',
-                              background: 'var(--color-accent-light)',
-                              border: '1px solid var(--color-accent-border)',
-                              borderRadius: '8px',
-                              padding: '4px 8px',
-                              color: 'var(--color-accent-text)',
-                              fontWeight: 700,
-                              fontSize: '12px',
-                            }}
-                          >
+                          <label title="Нажмите, чтобы изменить дату экземпляра" style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', background: 'var(--color-accent-light)', border: '1px solid var(--color-accent-border)', borderRadius: '8px', padding: '4px 8px', color: 'var(--color-accent-text)', fontWeight: 700, fontSize: '12px' }}>
                             <Calendar size={13} color="var(--color-accent-text)" />
                             <span>{formatDateDisplay(occ.date)}</span>
-                            <input
-                              type="date"
-                              value={occ.date}
-                              onChange={(e) => {
-                                if (e.target.value) {
-                                  updateOccurrenceDate(masterTask.id, occ.date, e.target.value);
-                                }
-                              }}
-                              style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                opacity: 0,
-                                cursor: 'pointer',
-                              }}
-                            />
+                            <input type="date" value={occ.date} onChange={(e) => e.target.value && updateOccurrenceDate(masterTask.id, occ.date, e.target.value)} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer' }} />
                           </label>
                         </div>
 
-                        {/* Status Toggle & Rating Badge */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <button
-                            type="button"
-                            onClick={() => toggleTaskStatus(masterTask.id, undefined, occ.date)}
-                            style={{
-                              borderRadius: '8px',
-                              padding: '4px 8px',
-                              fontSize: '11px',
-                              fontWeight: 700,
-                              cursor: 'pointer',
-                              background: isOccDone ? 'var(--color-success-light)' : 'var(--color-warning-light)',
-                              border: isOccDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-warning-border)',
-                              color: isOccDone ? 'var(--color-success)' : 'var(--color-warning)',
-                            }}
-                          >
+                          <button type="button" onClick={() => toggleTaskStatus(masterTask.id, undefined, occ.date)} style={{ borderRadius: '8px', padding: '4px 8px', fontSize: '11px', fontWeight: 700, cursor: 'pointer', background: isOccDone ? 'var(--color-success-light)' : 'var(--color-warning-light)', border: isOccDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-warning-border)', color: isOccDone ? 'var(--color-success)' : 'var(--color-warning)' }}>
                             {isOccDone ? '✅ Выполнено' : '⏳ В ожидании'}
                           </button>
 
@@ -970,50 +410,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                           )}
                         </div>
 
-                        {/* Icon Action Buttons: A) Delete occurrence B) Go to Calendar Day */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          {/* Button Б: Go to calendar date */}
-                          <button
-                            type="button"
-                            onClick={() => {
-                              router.push(`/calendar?date=${occ.date}`);
-                              onClose();
-                            }}
-                            title={`Перейти в календарь на ${formatDateDisplay(occ.date)}`}
-                            style={{
-                              width: '28px',
-                              height: '28px',
-                              borderRadius: '6px',
-                              background: 'var(--color-surface-hover)',
-                              border: '1px solid var(--color-border)',
-                              color: 'var(--color-accent-text)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              cursor: 'pointer',
-                            }}
-                          >
+                          <button type="button" onClick={() => { router.push(`/calendar?date=${occ.date}`); onClose(); }} title={`Перейти в календарь на ${formatDateDisplay(occ.date)}`} style={{ width: '28px', height: '28px', borderRadius: '6px', background: 'var(--color-surface-hover)', border: '1px solid var(--color-border)', color: 'var(--color-accent-text)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
                             <Calendar size={13} />
                           </button>
-
-                          {/* Button А: Delete specific occurrence */}
-                          <button
-                            type="button"
-                            onClick={() => deleteTaskOccurrence(masterTask.id, occ.date)}
-                            title="Удалить этот экземпляр"
-                            style={{
-                              width: '28px',
-                              height: '28px',
-                              borderRadius: '6px',
-                              background: 'rgba(239, 68, 68, 0.12)',
-                              border: '1px solid rgba(239, 68, 68, 0.3)',
-                              color: 'var(--color-danger)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              cursor: 'pointer',
-                            }}
-                          >
+                          <button type="button" onClick={() => deleteTaskOccurrence(masterTask.id, occ.date)} title="Удалить этот экземпляр" style={{ width: '28px', height: '28px', borderRadius: '6px', background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.3)', color: 'var(--color-danger)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
                             <Trash2 size={13} />
                           </button>
                         </div>
@@ -1026,36 +427,21 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         )}
 
-        {/* Small Delete Confirmation Modal Dialog */}
         {showDeleteConfirm && (
           <div
             style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.75)',
-              backdropFilter: 'blur(8px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10000,
-              padding: '16px',
+              position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(8px)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              zIndex: 10000, padding: '16px',
             }}
             onClick={() => setShowDeleteConfirm(false)}
           >
             <div
               style={{
-                background: '#1e293b',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                borderRadius: '16px',
-                padding: '20px',
-                width: '100%',
-                maxWidth: '360px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
+                background: '#1e293b', border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: '16px', padding: '20px', width: '100%', maxWidth: '360px',
+                display: 'flex', flexDirection: 'column', gap: '16px',
                 boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
               }}
               onClick={(e) => e.stopPropagation()}
@@ -1066,45 +452,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                   Удаление задачи
                 </h3>
               </div>
-
               <p style={{ margin: 0, fontSize: '13.5px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.45 }}>
                 Удалить текущую задачу со всеми её повторениями?
               </p>
-
               <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
-                <button
-                  type="button"
-                  onClick={() => setShowDeleteConfirm(false)}
-                  style={{
-                    flex: 1,
-                    height: '38px',
-                    borderRadius: '10px',
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    color: 'var(--color-text-secondary)',
-                    fontSize: '13.5px',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                  }}
-                >
+                <button type="button" onClick={() => setShowDeleteConfirm(false)} style={{ flex: 1, height: '38px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.12)', color: 'var(--color-text-secondary)', fontSize: '13.5px', fontWeight: 600, cursor: 'pointer' }}>
                   Нет
                 </button>
-                <button
-                  type="button"
-                  onClick={handleConfirmDeleteSeries}
-                  style={{
-                    flex: 1,
-                    height: '38px',
-                    borderRadius: '10px',
-                    background: '#ef4444',
-                    border: 'none',
-                    color: '#ffffff',
-                    fontSize: '13.5px',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 12px rgba(239, 68, 68, 0.4)',
-                  }}
-                >
+                <button type="button" onClick={handleConfirmDeleteSeries} style={{ flex: 1, height: '38px', borderRadius: '10px', background: '#ef4444', border: 'none', color: '#ffffff', fontSize: '13.5px', fontWeight: 600, cursor: 'pointer', boxShadow: '0 4px 12px rgba(239, 68, 68, 0.4)' }}>
                   Да
                 </button>
               </div>

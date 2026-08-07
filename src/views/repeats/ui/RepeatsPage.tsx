@@ -5,6 +5,7 @@ import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { HabitProgressHeaderWidget, HabitSortKey, HabitSortDirection, RepeatStatusFilter } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
+import { HabitSectionBannerWidget } from '@/widgets/habit-section-banner/ui/HabitSectionBannerWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 import styles from './RepeatsPage.module.css';
@@ -14,20 +15,10 @@ export const RepeatsPage: React.FC = () => {
   const [sortKey, setSortKey] = useState<HabitSortKey>('overdue');
   const [sortDirection, setSortDirection] = useState<HabitSortDirection>('desc');
   const [repeatStatusFilter, setRepeatStatusFilter] = useState<RepeatStatusFilter>('Active');
-  const [repeatsFontMode, setRepeatsFontMode] = useState<RepeatsFontMode>('default');
 
   useEffect(() => {
     fetchTasks();
-    const saved = localStorage.getItem('repeats-font-mode') as RepeatsFontMode;
-    if (saved === 'default' || saved === 'force400') {
-      setRepeatsFontMode(saved);
-    }
   }, [fetchTasks]);
-
-  const handleToggleRepeatsFontMode = (mode: RepeatsFontMode) => {
-    setRepeatsFontMode(mode);
-    localStorage.setItem('repeats-font-mode', mode);
-  };
 
   // SINGLE TASK ARCHITECTURE: Each repeating task exists as 1 single Task record
   const allRepeatingTasks = useMemo(() => {
@@ -83,8 +74,11 @@ export const RepeatsPage: React.FC = () => {
   }, [filteredRepeatingTasks, sortKey, sortDirection]);
 
   return (
-    <div className={styles.container} data-repeats-font-mode={repeatsFontMode}>
-      {/* Header Widget Locked to Variant 1 */}
+    <div className={styles.container}>
+      {/* 0. Habit Section Banner Widget (10 Theme Gradient Variants) */}
+      <HabitSectionBannerWidget />
+
+      {/* 1. Header Widget Locked to Variant 3 */}
       <HabitProgressHeaderWidget
         sortKey={sortKey}
         sortDirection={sortDirection}
@@ -93,8 +87,6 @@ export const RepeatsPage: React.FC = () => {
         onToggleDirection={() => setSortDirection((prev) => (prev === 'desc' ? 'asc' : 'desc'))}
         onSelectRepeatStatusFilter={setRepeatStatusFilter}
         statusCounts={statusCounts}
-        repeatsFontMode={repeatsFontMode}
-        onToggleRepeatsFontMode={handleToggleRepeatsFontMode}
       />
 
       {/* List of Timeline Step Progression Cards */}

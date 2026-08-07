@@ -2,36 +2,33 @@
 
 import React from 'react';
 import { ArrowDown, ArrowUp } from 'lucide-react';
-import { RepeatStatus } from '@/entities/task/model/types';
 
-export type HabitSortKey = 'overdue' | 'alphabetical' | 'count' | 'created';
-export type HabitSortDirection = 'desc' | 'asc';
-export type RepeatStatusFilter = RepeatStatus | 'all';
+export type OverdueSortKey = 'date' | 'alphabetical' | 'count';
+export type OverdueSortDirection = 'asc' | 'desc';
 
-interface HabitProgressHeaderWidgetProps {
-  sortKey: HabitSortKey;
-  sortDirection: HabitSortDirection;
-  repeatStatusFilter: RepeatStatusFilter;
-  onSelectSortKey: (key: HabitSortKey) => void;
+interface OverdueFilterSortWidgetProps {
+  categoryFilter: string;
+  onSelectCategoryFilter: (category: string) => void;
+  availableCategories: string[];
+  sortKey: OverdueSortKey;
+  onSelectSortKey: (key: OverdueSortKey) => void;
+  sortDirection: OverdueSortDirection;
   onToggleDirection: () => void;
-  onSelectRepeatStatusFilter: (filter: RepeatStatusFilter) => void;
-  statusCounts?: { active: number; paused: number; completed: number; total: number };
 }
 
-export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps> = ({
+export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = ({
+  categoryFilter,
+  onSelectCategoryFilter,
+  availableCategories,
   sortKey,
-  sortDirection,
-  repeatStatusFilter,
   onSelectSortKey,
+  sortDirection,
   onToggleDirection,
-  onSelectRepeatStatusFilter,
-  statusCounts,
 }) => {
   const isDesc = sortDirection === 'desc';
 
   return (
-    <div style={{ width: '100%', marginBottom: '16px', boxSizing: 'border-box' }}>
-      {/* Locked Variant 3: Segmented Compact Single Horizontal Bar (No variant selector bar) */}
+    <div style={{ width: '100%', marginBottom: '10px', boxSizing: 'border-box' }}>
       <div
         style={{
           display: 'flex',
@@ -45,10 +42,10 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
           boxSizing: 'border-box',
         }}
       >
-        {/* Status Filter Dropdown */}
+        {/* Category Filter Dropdown */}
         <select
-          value={repeatStatusFilter}
-          onChange={(e) => onSelectRepeatStatusFilter(e.target.value as RepeatStatusFilter)}
+          value={categoryFilter}
+          onChange={(e) => onSelectCategoryFilter(e.target.value)}
           style={{
             flex: 1,
             minWidth: 0,
@@ -62,16 +59,18 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
             cursor: 'pointer',
           }}
         >
-          <option value="Active">▶️ Активные {statusCounts ? `(${statusCounts.active})` : ''}</option>
-          <option value="Paused">⏸️ На паузе {statusCounts ? `(${statusCounts.paused})` : ''}</option>
-          <option value="Completed">✅ Завершенные {statusCounts ? `(${statusCounts.completed})` : ''}</option>
-          <option value="all">🥞 Все {statusCounts ? `(${statusCounts.total})` : ''}</option>
+          <option value="all">🥞 Все категории</option>
+          {availableCategories.map((cat) => (
+            <option key={cat} value={cat}>
+              📁 {cat}
+            </option>
+          ))}
         </select>
 
         {/* Sort Key Dropdown */}
         <select
           value={sortKey}
-          onChange={(e) => onSelectSortKey(e.target.value as HabitSortKey)}
+          onChange={(e) => onSelectSortKey(e.target.value as OverdueSortKey)}
           style={{
             flex: 1,
             minWidth: 0,
@@ -85,13 +84,12 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
             cursor: 'pointer',
           }}
         >
-          <option value="overdue">📅 По сроку</option>
-          <option value="alphabetical">🔤 По алфавиту (А-Я)</option>
-          <option value="count">📊 По повторам</option>
-          <option value="created">🕒 По дате создания</option>
+          <option value="date">📅 По дате</option>
+          <option value="alphabetical">🔤 По алфавиту</option>
+          <option value="count">📊 По выполнению</option>
         </select>
 
-        {/* Direction Toggle Button */}
+        {/* Sort Direction Toggle Button */}
         <button
           type="button"
           onClick={onToggleDirection}

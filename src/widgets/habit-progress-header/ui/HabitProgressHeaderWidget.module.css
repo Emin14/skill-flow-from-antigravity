@@ -99,7 +99,7 @@
   border-radius: 9px;
   padding: 6px 2px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.15s ease;
   display: inline-flex;
@@ -115,6 +115,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-weight: 400;
 }
 
 .sortBtn:hover {
@@ -126,7 +127,7 @@
   background: var(--color-accent-light) !important;
   border-color: var(--color-accent) !important;
   color: var(--color-accent-text) !important;
-  font-weight: 700 !important;
+  font-weight: 400 !important;
   box-shadow: 0 2px 8px var(--color-accent-light) !important;
 }
 

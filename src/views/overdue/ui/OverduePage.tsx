@@ -9,6 +9,7 @@ import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskD
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { CheckCircle2, Lightbulb } from 'lucide-react';
 import { OverdueHeaderWidget } from '@/widgets/overdue-header/ui/OverdueHeaderWidget';
+import { OverdueFilterSortWidget, OverdueSortKey, OverdueSortDirection } from '@/widgets/overdue-filter-sort/ui/OverdueFilterSortWidget';
 import styles from './OverduePage.module.css';
 
 export const OverduePage: React.FC = () => {
@@ -17,14 +18,19 @@ export const OverduePage: React.FC = () => {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
 
+  // Category filter & Sorting state
+  const [categoryFilter, setCategoryFilter] = useState<string>('all');
+  const [sortKey, setSortKey] = useState<OverdueSortKey>('date');
+  const [sortDirection, setSortDirection] = useState<OverdueSortDirection>('asc');
+
   const todayStr = useMemo(() => getTodayStr(), []);
 
   useEffect(() => {
     fetchTasks();
   }, [fetchTasks]);
 
-  // Filter tasks whose scheduledDate is strictly less than todayStr and status !== 'Done' (EXCLUDING parent tasks)
-  const overdueTasks = useMemo(() => {
+  // Base list of all overdue tasks (EXCLUDING parent tasks)
+  const rawOverdueTasks = useMemo(() => {
     return tasks.filter((t) => {
       if (t.status === 'Done') return false;
       const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
@@ -40,6 +46,47 @@ export const OverduePage: React.FC = () => {
     });
   }, [tasks, todayStr]);
 
+  // Unique categories present in tasks
+  const availableCategories = useMemo(() => {
+    const set = new Set<string>();
+    tasks.forEach((t) => {
+      if (t.category && t.category.trim() !== '') {
+        set.add(t.category);
+      }
+    });
+    return Array.from(set);
+  }, [tasks]);
+
+  // Category Filtered + Sorted Overdue Tasks
+  const overdueTasks = useMemo(() => {
+    let list = [...rawOverdueTasks];
+
+    // Category Filter
+    if (categoryFilter !== 'all') {
+      list = list.filter((t) => t.category === categoryFilter);
+    }
+
+    // Sorting
+    list.sort((a, b) => {
+      let res = 0;
+      if (sortKey === 'date') {
+        const dateA = a.scheduledDate || '9999-99-99';
+        const dateB = b.scheduledDate || '9999-99-99';
+        res = dateA.localeCompare(dateB);
+      } else if (sortKey === 'alphabetical') {
+        res = a.title.localeCompare(b.title, 'ru');
+      } else if (sortKey === 'count') {
+        const countA = a.occurrences?.filter((o) => o.status === 'Done').length || a.repetitionsCount || 0;
+        const countB = b.occurrences?.filter((o) => o.status === 'Done').length || b.repetitionsCount || 0;
+        res = countA - countB;
+      }
+
+      return sortDirection === 'desc' ? -res : res;
+    });
+
+    return list;
+  }, [rawOverdueTasks, categoryFilter, sortKey, sortDirection]);
+
   const handleRescheduleAllToToday = async () => {
     for (const t of overdueTasks) {
       await rescheduleTaskToToday(t.id);
@@ -54,14 +101,25 @@ export const OverduePage: React.FC = () => {
     <div className={styles.container}>
       {/* Overdue Header Widget ("Просрочено / Срок выполнения прошел") */}
       <OverdueHeaderWidget
-        overdueCount={overdueTasks.length}
+        overdueCount={rawOverdueTasks.length}
         onRescheduleAll={handleRescheduleAllToToday}
+      />
+
+      {/* Filter and Sorting Widget (Placed directly ABOVE "Свайп вправо...") */}
+      <OverdueFilterSortWidget
+        categoryFilter={categoryFilter}
+        onSelectCategoryFilter={setCategoryFilter}
+        availableCategories={availableCategories}
+        sortKey={sortKey}
+        onSelectSortKey={setSortKey}
+        sortDirection={sortDirection}
+        onToggleDirection={() => setSortDirection((prev) => (prev === 'asc' ? 'desc' : 'asc'))}
       />
 
       {/* Locked Ultra-Minimalist Gesture Guide (Variant #1) */}
       <div className={styles.v1ThingsHairline}>
         <Lightbulb size={13} style={{ flexShrink: 0, opacity: 0.8 }} />
-        <span>👉 Свайп вправо — на Сегодня  •  👈 Свайп влево — удалить</span>
+        <span>👉 свайп вправо — "на сегодня"  •  👈 свайп влево — удалить</span>
       </div>
 
       {/* Task List */}
@@ -75,10 +133,10 @@ export const OverduePage: React.FC = () => {
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)', borderRadius: '20px' }}>
           <CheckCircle2 size={40} color="#10b981" style={{ margin: '0 auto 12px auto' }} />
           <Typography variant="h2" style={{ color: '#10b981', marginBottom: 'var(--space-2)' }}>
-            Всё чисто! Просроченных задач нет 🎉
+            {categoryFilter !== 'all' ? 'Нет просроченных задач в этой категории!' : 'Всё чисто! Просроченных задач нет 🎉'}
           </Typography>
           <Typography variant="caption" style={{ color: 'var(--color-text-muted)' }}>
-            Отличная работа с тайм-менеджментом. Все запланированные задачи выполняются вовремя.
+            {categoryFilter !== 'all' ? 'Попробуйте выбрать другую категорию или переключить на «Все категории».' : 'Отличная работа с тайм-менеджментом. Все запланированные задачи выполняются вовремя.'}
           </Typography>
         </Card>
       ) : (
