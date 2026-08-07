@@ -1,13 +1,35 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
-generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
-}
-
 datasource db {
   provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Task {
+  id                  String           @id @default(uuid())
+  title               String
+  status              String           @default("Todo")
+  priority            String           @default("P2")
+  category            String
+  description         String?
+  link                String?
+  parentTaskId        String?
+  scheduledDate       String
+  isRepeating         Boolean          @default(false)
+  repeatStatus        String?          @default("Active")
+  repetitionMode      String?          @default("smart")
+  scheduleFrequency   String?
+  createdAt           DateTime         @default(now())
+  occurrences         TaskOccurrence[]
+}
+
+model TaskOccurrence {
+  id             String    @id @default(uuid())
+  taskId         String
+  task           Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  date           String
+  status         String    @default("Todo")
+  completedAt    DateTime?
+  pomodorosCount Float?
 }
