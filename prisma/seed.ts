@@ -1,14 +1,196 @@
 import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
-import { PrismaPg } from '@prisma/adapter-pg';
-import { Pool } from 'pg';
 
-const connectionString = process.env.DATABASE_URL;
-const pool = new Pool({ connectionString });
-const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({ adapter });
+const prisma = new PrismaClient();
 
-const normalizedTasks = [
+// ==========================================
+// ТИПЫ И СТАТИСТИКА ИМПОРТА
+// ==========================================
+
+export interface FailedItem {
+  id: string;
+  error: string;
+}
+
+export interface OccurrenceSeedItem {
+  id: string;
+  date: string;
+  status: string;
+  completedAt?: Date | null;
+  pomodorosCount?: number | null;
+}
+
+export interface TaskSeedItem {
+  id: string;
+  title: string;
+  status: string;
+  priority: string;
+  category: string;
+  scheduledDate: string;
+  isRepeating: boolean;
+  repeatStatus?: string | null;
+  repetitionMode?: string | null;
+  link?: string | null;
+  topicId?: string | null;
+  goalId?: string | null;
+  createdAt: Date;
+  occurrences: OccurrenceSeedItem[];
+}
+
+export interface EntityImportStats {
+  entityName: string;
+  total: number;
+  successCount: number;
+  failureCount: number;
+  failedItems: FailedItem[];
+}
+
+export class ImportReport {
+  private stats: Map<string, EntityImportStats> = new Map();
+
+  initEntity(entityName: string, total: number) {
+    this.stats.set(entityName, {
+      entityName,
+      total,
+      successCount: 0,
+      failureCount: 0,
+      failedItems: [],
+    });
+  }
+
+  recordSuccess(entityName: string) {
+    const s = this.stats.get(entityName);
+    if (s) s.successCount++;
+  }
+
+  recordFailure(entityName: string, id: string, errorMsg: string) {
+    const s = this.stats.get(entityName);
+    if (s) {
+      s.failureCount++;
+      s.failedItems.push({ id, error: errorMsg });
+    }
+  }
+
+  printSummary() {
+    console.log('\n==================================================');
+    console.log('📊 ИТОГОВАЯ СТАТИСТИКА ИМПОРТА ДАННЫХ В POSTGRESQL');
+    console.log('==================================================\n');
+
+    let totalAll = 0;
+    let successAll = 0;
+    let failureAll = 0;
+
+    for (const [entityName, stat] of this.stats.entries()) {
+      totalAll += stat.total;
+      successAll += stat.successCount;
+      failureAll += stat.failureCount;
+
+      const icon = stat.failureCount === 0 ? '✅' : '⚠️';
+      console.log(`${icon} [${entityName}]: Обработано: ${stat.total} | Успешно: ${stat.successCount} | Ошибок: ${stat.failureCount}`);
+      
+      if (stat.failedItems.length > 0) {
+        console.log(`   └─ Неудачные записи:`);
+        stat.failedItems.forEach((item) => {
+          console.log(`      • ID: ${item.id} -> Ошибка: ${item.error}`);
+        });
+      }
+    }
+
+    console.log('\n--------------------------------------------------');
+    console.log(`🏆 ИТОГО: Всего записей: ${totalAll} | Загружено: ${successAll} | Ошибок: ${failureAll}`);
+    console.log('==================================================\n');
+  }
+}
+
+// ==========================================
+// ТЕСТОВЫЕ / СТАРТОВЫЕ НАБОРЫ ДАННЫХ
+// ==========================================
+
+const goalsData = [
+  {
+    id: "goal-001",
+    title: "Подготовка к Собеседованиям Frontend Senior",
+    description: "Систематизировать знания по JS, TS, React, Next.js и алгоритмам",
+    color: "#6366f1",
+    status: "Active",
+    createdAt: new Date("2026-06-01T10:00:00.000Z"),
+  },
+  {
+    id: "goal-002",
+    title: "Здоровье и Осанка",
+    description: "Ежедневная разминка и тренировки",
+    color: "#10b981",
+    status: "Active",
+    createdAt: new Date("2026-06-01T10:00:00.000Z"),
+  }
+];
+
+const topicsData = [
+  {
+    id: "topic-001",
+    goalId: "goal-001",
+    title: "JavaScript & Async",
+    weight: 1.0,
+    createdAt: new Date("2026-06-01T10:00:00.000Z"),
+  },
+  {
+    id: "topic-002",
+    goalId: "goal-001",
+    title: "Алгоритмы и Структуры данных",
+    weight: 1.2,
+    createdAt: new Date("2026-06-01T10:00:00.000Z"),
+  }
+];
+
+const materialsData = [
+  {
+    id: "mat-001",
+    topicId: "topic-001",
+    title: "Глубокий разбор Promise API",
+    description: "Promise.all, race, any, allSettled",
+    type: "Article",
+    content: "Подробная документация...",
+    isCompleted: true,
+    completedAt: new Date("2026-06-25T18:00:00.000Z"),
+    createdAt: new Date("2026-06-24T10:00:00.000Z"),
+  }
+];
+
+const repeatCardsData = [
+  {
+    id: "card-001",
+    materialId: "mat-001",
+    front: "В чем разница между Promise.all и Promise.allSettled?",
+    back: "Promise.all падают при первом сбое, allSettled возвращает результаты всех промисов.",
+    interval: 3,
+    repetitions: 2,
+    easeFactor: 2.5,
+    nextReviewDate: "2026-08-10",
+    lastReviewedAt: new Date("2026-08-07T12:00:00.000Z"),
+    createdAt: new Date("2026-06-25T10:00:00.000Z"),
+  }
+];
+
+const inboxData = [
+  {
+    id: "inbox-001",
+    text: "Почитать про Turbopack в Next.js 16",
+    isPinned: true,
+    createdAt: new Date("2026-08-01T10:00:00.000Z"),
+  }
+];
+
+const activityData = [
+  {
+    id: "act-001",
+    type: "task_completed",
+    title: "Завершена задача: Бинарный поиск числа",
+    createdAt: new Date("2026-07-22T18:00:00.000Z"),
+  }
+];
+
+// Полный нормализованный набор задач со скриншотов
+const tasksData: TaskSeedItem[] = [
   {
     id: "task-smart-001",
     title: "Одна из трудных задач: создание интерактивного обучающего модуля",
@@ -19,6 +201,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    goalId: "goal-001",
     createdAt: new Date("2026-06-11T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-001-1", date: "2026-06-11", status: "Done", pomodorosCount: 2, completedAt: new Date("2026-06-11T18:00:00.000Z") },
@@ -35,6 +218,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    goalId: "goal-001",
     createdAt: new Date("2026-06-17T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-002-1", date: "2026-06-17", status: "Done", completedAt: new Date("2026-06-17T18:00:00.000Z") },
@@ -51,6 +235,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    goalId: "goal-001",
     createdAt: new Date("2026-06-24T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-003-1", date: "2026-06-24", status: "Done", completedAt: new Date("2026-06-24T18:00:00.000Z") },
@@ -67,6 +252,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-001",
     createdAt: new Date("2026-06-24T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-004-1", date: "2026-06-24", status: "Done", completedAt: new Date("2026-06-24T18:00:00.000Z") },
@@ -101,6 +287,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-001",
     createdAt: new Date("2026-06-27T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-006-1", date: "2026-06-27", status: "Done", completedAt: new Date("2026-06-27T18:00:00.000Z") },
@@ -117,6 +304,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-001",
     createdAt: new Date("2026-06-28T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-007-1", date: "2026-06-28", status: "Done", completedAt: new Date("2026-06-28T18:00:00.000Z") },
@@ -164,6 +352,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-002",
     createdAt: new Date("2026-07-22T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-010-1", date: "2026-07-22", status: "Done", pomodorosCount: 1, completedAt: new Date("2026-07-22T18:00:00.000Z") }
@@ -180,6 +369,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-002",
     createdAt: new Date("2026-07-22T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-011-1", date: "2026-07-22", status: "Done", pomodorosCount: 1, completedAt: new Date("2026-07-22T18:00:00.000Z") }
@@ -196,6 +386,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-002",
     createdAt: new Date("2026-07-24T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-012-1", date: "2026-07-24", status: "Done", pomodorosCount: 0.5, completedAt: new Date("2026-07-24T18:00:00.000Z") }
@@ -212,6 +403,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-001",
     createdAt: new Date("2026-07-24T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-013-1", date: "2026-07-24", status: "Done", pomodorosCount: 0.5, completedAt: new Date("2026-07-24T18:00:00.000Z") }
@@ -228,6 +420,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-001",
     createdAt: new Date("2026-07-25T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-014-1", date: "2026-07-25", status: "Done", completedAt: new Date("2026-07-25T18:00:00.000Z") }
@@ -303,6 +496,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    goalId: "goal-002",
     createdAt: new Date("2026-07-24T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-019-1", date: "2026-07-24", status: "Todo" }
@@ -318,6 +512,7 @@ const normalizedTasks = [
     isRepeating: true,
     repeatStatus: "Active",
     repetitionMode: "smart",
+    topicId: "topic-001",
     createdAt: new Date("2026-07-27T10:00:00.000Z"),
     occurrences: [
       { id: "occ-smart-020-1", date: "2026-07-27", status: "Todo" }
@@ -340,33 +535,251 @@ const normalizedTasks = [
   }
 ];
 
-async function main() {
-  console.log('🌱 Инициализация сидинга нормализованного набора задач...');
+// ==========================================
+// МОДУЛЬНЫЕ ФУНКЦИИ ИМПОРТА
+// ==========================================
 
-  for (const taskData of normalizedTasks) {
-    const { occurrences, ...taskBody } = taskData;
-    
-    await prisma.task.upsert({
-      where: { id: taskBody.id },
-      update: {},
-      create: {
-        ...taskBody,
-        occurrences: {
-          create: occurrences,
+async function importGoals(report: ImportReport) {
+  report.initEntity('Goal', goalsData.length);
+  console.log(`📦 Импорт сущности Goal (${goalsData.length} записей)...`);
+
+  for (let i = 0; i < goalsData.length; i++) {
+    const item = goalsData[i];
+    try {
+      await prisma.goal.upsert({
+        where: { id: item.id },
+        update: {
+          title: item.title,
+          description: item.description,
+          color: item.color,
+          status: item.status,
         },
-      },
-    });
-  }
+        create: item,
+      });
+      report.recordSuccess('Goal');
+    } catch (err: any) {
+      report.recordFailure('Goal', item.id, err.message || String(err));
+    }
 
-  console.log('✅ Сидинг успешно завершен! Все 21 задачи загружены в PostgreSQL.');
+    if ((i + 1) % 5 === 0 || i === goalsData.length - 1) {
+      console.log(`   └─ Обработано Goals: ${i + 1}/${goalsData.length}`);
+    }
+  }
+}
+
+async function importTopics(report: ImportReport) {
+  report.initEntity('Topic', topicsData.length);
+  console.log(`📦 Импорт сущности Topic (${topicsData.length} записей)...`);
+
+  for (let i = 0; i < topicsData.length; i++) {
+    const item = topicsData[i];
+    try {
+      await prisma.topic.upsert({
+        where: { id: item.id },
+        update: {
+          goalId: item.goalId,
+          title: item.title,
+          weight: item.weight,
+        },
+        create: item,
+      });
+      report.recordSuccess('Topic');
+    } catch (err: any) {
+      report.recordFailure('Topic', item.id, err.message || String(err));
+    }
+
+    if ((i + 1) % 5 === 0 || i === topicsData.length - 1) {
+      console.log(`   └─ Обработано Topics: ${i + 1}/${topicsData.length}`);
+    }
+  }
+}
+
+async function importMaterials(report: ImportReport) {
+  report.initEntity('Material', materialsData.length);
+  console.log(`📦 Импорт сущности Material (${materialsData.length} записей)...`);
+
+  for (let i = 0; i < materialsData.length; i++) {
+    const item = materialsData[i];
+    try {
+      await prisma.material.upsert({
+        where: { id: item.id },
+        update: {
+          topicId: item.topicId,
+          title: item.title,
+          description: item.description,
+          type: item.type,
+          content: item.content,
+          isCompleted: item.isCompleted,
+          completedAt: item.completedAt,
+        },
+        create: item,
+      });
+      report.recordSuccess('Material');
+    } catch (err: any) {
+      report.recordFailure('Material', item.id, err.message || String(err));
+    }
+  }
+}
+
+async function importRepeatCards(report: ImportReport) {
+  report.initEntity('RepeatCard', repeatCardsData.length);
+  console.log(`📦 Импорт сущности RepeatCard (${repeatCardsData.length} записей)...`);
+
+  for (let i = 0; i < repeatCardsData.length; i++) {
+    const item = repeatCardsData[i];
+    try {
+      await prisma.repeatCard.upsert({
+        where: { id: item.id },
+        update: {
+          materialId: item.materialId,
+          front: item.front,
+          back: item.back,
+          interval: item.interval,
+          repetitions: item.repetitions,
+          easeFactor: item.easeFactor,
+          nextReviewDate: item.nextReviewDate,
+          lastReviewedAt: item.lastReviewedAt,
+        },
+        create: item,
+      });
+      report.recordSuccess('RepeatCard');
+    } catch (err: any) {
+      report.recordFailure('RepeatCard', item.id, err.message || String(err));
+    }
+  }
+}
+
+async function importInbox(report: ImportReport) {
+  report.initEntity('InboxItem', inboxData.length);
+  console.log(`📦 Импорт сущности InboxItem (${inboxData.length} записей)...`);
+
+  for (let i = 0; i < inboxData.length; i++) {
+    const item = inboxData[i];
+    try {
+      await prisma.inboxItem.upsert({
+        where: { id: item.id },
+        update: {
+          text: item.text,
+          isPinned: item.isPinned,
+        },
+        create: item,
+      });
+      report.recordSuccess('InboxItem');
+    } catch (err: any) {
+      report.recordFailure('InboxItem', item.id, err.message || String(err));
+    }
+  }
+}
+
+async function importActivityLogs(report: ImportReport) {
+  report.initEntity('ActivityLog', activityData.length);
+  console.log(`📦 Импорт сущности ActivityLog (${activityData.length} записей)...`);
+
+  for (let i = 0; i < activityData.length; i++) {
+    const item = activityData[i];
+    try {
+      await prisma.activityLog.upsert({
+        where: { id: item.id },
+        update: {
+          type: item.type,
+          title: item.title,
+        },
+        create: item,
+      });
+      report.recordSuccess('ActivityLog');
+    } catch (err: any) {
+      report.recordFailure('ActivityLog', item.id, err.message || String(err));
+    }
+  }
+}
+
+async function importTasks(report: ImportReport) {
+  report.initEntity('Task', tasksData.length);
+  console.log(`📦 Импорт сущностей Task & TaskOccurrence (${tasksData.length} макро-задач)...`);
+
+  for (let i = 0; i < tasksData.length; i++) {
+    const taskData = tasksData[i];
+    const { occurrences, ...taskBody } = taskData;
+
+    try {
+      // Идемпотентный upsert родительской задачи
+      await prisma.task.upsert({
+        where: { id: taskBody.id },
+        update: {
+          title: taskBody.title,
+          status: taskBody.status,
+          priority: taskBody.priority,
+          category: taskBody.category,
+          scheduledDate: taskBody.scheduledDate,
+          isRepeating: taskBody.isRepeating,
+          repeatStatus: taskBody.repeatStatus,
+          repetitionMode: taskBody.repetitionMode,
+          topicId: taskBody.topicId,
+          goalId: taskBody.goalId,
+        },
+        create: taskBody,
+      });
+
+      // Идемпотентный upsert каждого экземпляра повтора (TaskOccurrence)
+      if (occurrences && occurrences.length > 0) {
+        for (const occ of occurrences) {
+          await prisma.taskOccurrence.upsert({
+            where: { id: occ.id },
+            update: {
+              taskId: taskBody.id,
+              date: occ.date,
+              status: occ.status,
+              completedAt: occ.completedAt || null,
+              pomodorosCount: occ.pomodorosCount || null,
+            },
+            create: {
+              id: occ.id,
+              taskId: taskBody.id,
+              date: occ.date,
+              status: occ.status,
+              completedAt: occ.completedAt || null,
+              pomodorosCount: occ.pomodorosCount || null,
+            },
+          });
+        }
+      }
+
+      report.recordSuccess('Task');
+    } catch (err: any) {
+      report.recordFailure('Task', taskData.id, err.message || String(err));
+    }
+
+    if ((i + 1) % 5 === 0 || i === tasksData.length - 1) {
+      console.log(`   └─ Обработано Задач: ${i + 1}/${tasksData.length}`);
+    }
+  }
+}
+
+// ==========================================
+// ГЛАВНАЯ ТОЧКА ВХОДА СИДИНГА И ИМПОРТА
+// ==========================================
+
+async function main() {
+  console.log('🚀 Запуск чистого, отказоустойчивого импорта данных в PostgreSQL через Prisma...\n');
+  const report = new ImportReport();
+
+  // Строгий порядок с учетом внешних ключей
+  await importGoals(report);
+  await importTopics(report);
+  await importMaterials(report);
+  await importRepeatCards(report);
+  await importInbox(report);
+  await importActivityLogs(report);
+  await importTasks(report);
+
+  report.printSummary();
 }
 
 main()
   .catch((e) => {
-    console.error('❌ Ошибка сидинга:', e);
+    console.error('❌ Критическая ошибка при исполнении скрипта импорта:', e);
     process.exit(1);
   })
   .finally(async () => {
     await prisma.$disconnect();
-    await pool.end();
   });

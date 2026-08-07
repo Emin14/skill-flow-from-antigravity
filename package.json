@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "import:json": "npx ts-node prisma/import-json.ts"
+    "import:json": "npx ts-node prisma/import-json.ts",
+    "import:data": "npx ts-node prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "npx ts-node prisma/seed.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

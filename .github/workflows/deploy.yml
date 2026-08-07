@@ -53,6 +53,7 @@ jobs:
           script: |
             cd /opt/skillflow
             docker compose pull app
+            docker compose pull migrate
             docker compose up -d postgres
-            docker compose run --rm app npx prisma migrate deploy
+            docker compose run --rm migrate
             docker compose up -d --no-deps app
