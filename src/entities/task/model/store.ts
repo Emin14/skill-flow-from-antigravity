@@ -846,18 +846,35 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     // If resuming to Active, ensure at least 1 upcoming Todo occurrence exists
     let newOccurrences = task.occurrences ? [...task.occurrences] : [];
     if (repeatStatus === 'Active') {
-      const today = getTodayStr();
-      const hasUpcoming = newOccurrences.some((o) => o.status === 'Todo');
-      if (!hasUpcoming) {
-        newOccurrences.push({
+      const todayStr = getTodayStr();
+      const normOccs = normalizeOccurrences(newOccurrences, id);
+      const hasUpcomingTodo = normOccs.some((o) => o.status === 'Todo');
+
+      if (!hasUpcomingTodo) {
+        // Last occurrence was completed! Generate next instance based on interval rules.
+        const doneOccs = normOccs.filter((o) => o.status === 'Done');
+        const lastDoneOcc = doneOccs.length > 0 ? doneOccs[doneOccs.length - 1] : null;
+
+        const targetStartDate = lastDoneOcc ? lastDoneOcc.date : todayStr;
+        const doneCount = doneOccs.length;
+        const { daysToAdd } = calculateNextInterval(task, doneCount, task.lastSmartRating);
+        let nextDate = addDaysToDateStr(targetStartDate, daysToAdd);
+
+        // Ensure next occurrence date is not in the past
+        if (nextDate < todayStr) {
+          nextDate = todayStr;
+        }
+
+        normOccs.push({
           id: uuidv4(),
           taskId: id,
-          date: today,
+          date: nextDate,
           status: 'Todo',
         });
-        newOccurrences = normalizeOccurrences(newOccurrences, id);
-        updates.occurrences = newOccurrences;
-        updates.scheduledDate = getDerivedScheduledDate({ ...task, occurrences: newOccurrences });
+
+        const finalOccs = normalizeOccurrences(normOccs, id);
+        updates.occurrences = finalOccs;
+        updates.scheduledDate = getDerivedScheduledDate({ ...task, occurrences: finalOccs });
       }
     }
 
