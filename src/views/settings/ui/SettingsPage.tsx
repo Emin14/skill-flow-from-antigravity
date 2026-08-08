@@ -3,16 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Typography, Button, useToastStore } from '@/shared/ui';
 import styles from './SettingsPage.module.css';
-import { APP_THEME_PRESETS } from '@/shared/config/appThemes';
 import { useThemeStore } from '@/shared/model/useThemeStore';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { applyAccentColorVars } from '@/shared/lib/colorUtils';
-import { TASK_CARD_FONTS, applyTaskCardFont } from '@/shared/config/cardFonts';
-
 import { isCompletionSoundEnabled, setCompletionSoundEnabled, playTaskCompletionSound, unlockAudio } from '@/shared/lib/soundUtils';
 
 import { LiveTodayPreviewWidget } from './LiveTodayPreviewWidget';
 import { ThemeArchitectureSelector } from './ThemeArchitectureSelector';
+import { CategoriesSettingsTab } from './CategoriesSettingsTab';
 
 const colorPalettes = [
   { name: 'Индиго (Aura)', hex: '#6366f1' },
@@ -52,11 +50,6 @@ export const SettingsPage: React.FC = () => {
     setCardFontId(savedCardFont);
     setSoundEnabled(isCompletionSoundEnabled());
   }, []);
-
-  const handleCardFontChange = (fontId: string) => {
-    setCardFontId(fontId);
-    applyTaskCardFont(fontId);
-  };
 
   const handleThemeChange = (newTheme: 'dark' | 'light') => {
     setStoreTheme(newTheme);
@@ -162,7 +155,7 @@ export const SettingsPage: React.FC = () => {
         previewPresetId={previewPresetId}
       />
 
-      {/* Appearance Settings */}
+      {/* 🎨 2. APPEARANCE & THEMES */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
         <Typography variant="h2">🎨 Внешний вид и Тема</Typography>
 
@@ -320,7 +313,12 @@ export const SettingsPage: React.FC = () => {
         </div>
       </Card>
 
-      {/* Regional & Calendar Settings */}
+      {/* 🏷️ 3. CATEGORIES MANAGEMENT SECTION */}
+      <Card style={{ padding: '16px' }}>
+        <CategoriesSettingsTab />
+      </Card>
+
+      {/* 📅 4. REGIONAL & CALENDAR SETTINGS */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
         <Typography variant="h2">📅 Региональные настройки и Календарь</Typography>
 
@@ -413,7 +411,7 @@ export const SettingsPage: React.FC = () => {
         </div>
       </Card>
 
-      {/* Sound Settings Section */}
+      {/* 🔊 5. SOUND SETTINGS SECTION */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '12px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', flex: 1 }}>
@@ -463,14 +461,13 @@ export const SettingsPage: React.FC = () => {
         </div>
       </Card>
 
-      {/* Data Management Section */}
+      {/* 💾 6. DATA MANAGEMENT SECTION */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
         <Typography variant="h2">💾 Управление данными и Бэкап</Typography>
         <Typography variant="body" color="muted">
           Экспортируйте ваши задачи, цели и статистику в JSON файл или восстановите данные из бэкапа.
         </Typography>
 
-        {/* Restore Single Row Action Bar */}
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center', width: '100%', flexWrap: 'wrap' }}>
           <Button variant="secondary" onClick={handleExportData} style={{ flex: 1, minWidth: '160px', justifyContent: 'center' }}>
             📥 Экспорт бэкапа (JSON)
