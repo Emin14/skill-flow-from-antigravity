@@ -4,6 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { Task } from '../model/types';
 import { TaskMapper } from './task.mapper';
 
+const safeDate = (val: string | Date | null | undefined): Date | null => {
+  if (!val) return null;
+  const d = new Date(val);
+  return isNaN(d.getTime()) ? null : d;
+};
+
 export class PrismaTaskRepository {
   async getAll(): Promise<Task[]> {
     if (typeof window !== 'undefined') return [];
@@ -94,15 +100,15 @@ export class PrismaTaskRepository {
   async create(task: Task): Promise<Task> {
     if (typeof window !== 'undefined') return task;
     const occurrencesData = (task.occurrences || []).map((o) => ({
-      id: o.id,
+      id: o.id || uuidv4(),
       date: o.date,
       status: o.status || 'Todo',
       note: o.note || null,
-      startedAt: o.startedAt ? new Date(o.startedAt) : null,
+      startedAt: safeDate(o.startedAt),
       activeMinutes: o.activeMinutes ?? 0,
       pomodorosCount: o.pomodorosCount ?? 0,
       smartRating: o.smartRating || null,
-      completedAt: o.completedAt ? new Date(o.completedAt) : null,
+      completedAt: safeDate(o.completedAt),
     }));
 
     try {
@@ -126,7 +132,7 @@ export class PrismaTaskRepository {
           targetRepetitions: task.targetRepetitions ?? null,
           topicId: task.topicId || null,
           goalId: task.goalId || null,
-          createdAt: task.createdAt ? new Date(task.createdAt) : new Date(),
+          createdAt: safeDate(task.createdAt) || new Date(),
           occurrences: {
             create: occurrencesData,
           },
@@ -177,10 +183,12 @@ export class PrismaTaskRepository {
         if (updates.topicId !== undefined) taskUpdateData.topicId = updates.topicId;
         if (updates.goalId !== undefined) taskUpdateData.goalId = updates.goalId;
 
-        await tx.task.update({
-          where: { id },
-          data: taskUpdateData,
-        });
+        if (Object.keys(taskUpdateData).length > 0) {
+          await tx.task.update({
+            where: { id },
+            data: taskUpdateData,
+          });
+        }
 
         if (updates.occurrences) {
           await tx.taskOccurrence.deleteMany({
@@ -198,11 +206,11 @@ export class PrismaTaskRepository {
                 date: o.date,
                 status: o.status || 'Todo',
                 note: o.note || null,
-                startedAt: o.startedAt ? new Date(o.startedAt) : null,
+                startedAt: safeDate(o.startedAt),
                 activeMinutes: o.activeMinutes ?? 0,
                 pomodorosCount: o.pomodorosCount ?? 0,
                 smartRating: o.smartRating || null,
-                completedAt: o.completedAt ? new Date(o.completedAt) : null,
+                completedAt: safeDate(o.completedAt),
               };
             });
 
