@@ -80,13 +80,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     return masterTask.occurrences?.find((o) => o.date === activeOccDate)?.note || '';
   }, [masterTask?.id, masterTask?.occurrences, activeOccDate]);
 
+  const currentSessionOcc = useMemo(() => {
+    if (!masterTask) return null;
+    return masterTask.occurrences?.find((o) => o.date === activeOccDate) || null;
+  }, [masterTask, activeOccDate]);
+
   useEffect(() => {
-    if (masterTask?.lastSmartRating) {
-      setSelectedRating(masterTask.lastSmartRating);
-    } else {
-      setSelectedRating(null);
-    }
-  }, [masterTask?.id, masterTask?.lastSmartRating]);
+    setSelectedRating(currentSessionOcc?.smartRating || null);
+  }, [currentSessionOcc?.smartRating, activeOccDate]);
 
   useEffect(() => {
     setSessionNote(currentSessionNote);
@@ -143,8 +144,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
   const currentCount = masterTask.repetitionsCount || 0;
   const targetCount = masterTask.targetRepetitions || 8;
-  const activeRating = masterTask.lastSmartRating;
-  const currentPomodoros = masterTask.pomodorosCount || 1;
+  const activeRating = currentSessionOcc?.smartRating || null;
+  const currentPomodoros = currentSessionOcc?.pomodorosCount ?? 1;
 
   const todayStr = getTodayStr();
 
