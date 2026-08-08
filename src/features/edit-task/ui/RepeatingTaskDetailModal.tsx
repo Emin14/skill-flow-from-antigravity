@@ -78,7 +78,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const currentSessionNote = useMemo(() => {
     if (!masterTask) return '';
     return masterTask.occurrences?.find((o) => o.date === activeOccDate)?.note || '';
-  }, [masterTask, activeOccDate]);
+  }, [masterTask?.id, masterTask?.occurrences, activeOccDate]);
 
   useEffect(() => {
     if (masterTask?.lastSmartRating) {
@@ -319,7 +319,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </label>
           <textarea
             value={sessionNote}
-            onChange={(e) => setSessionNote(e.target.value)}
+            onChange={(e) => {
+              const val = e.target.value;
+              setSessionNote(val);
+              updateOccurrenceNote(masterTask.id, val, activeOccDate);
+            }}
             onBlur={() => updateOccurrenceNote(masterTask.id, sessionNote, activeOccDate)}
             placeholder="Заметка к этой конкретной сессии (например: решилось легко за 15 мин)..."
             rows={2}
