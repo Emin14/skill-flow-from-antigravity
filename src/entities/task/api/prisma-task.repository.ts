@@ -218,6 +218,14 @@ export class PrismaTaskRepository {
     });
     return list.map(TaskMapper.toOccurrenceDto);
   }
+
+  async updateCategoryBatch(oldCategory: string, newCategory: string): Promise<number> {
+    const result = await prisma.task.updateMany({
+      where: { category: oldCategory },
+      data: { category: newCategory },
+    });
+    return result.count;
+  }
 }
 
 export const prismaTaskRepository = new PrismaTaskRepository();

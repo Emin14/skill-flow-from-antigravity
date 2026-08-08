@@ -1,40 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model Task {
-  id                  String           @id @default(uuid())
-  title               String
-  status              String           @default("Todo")
-  priority            String           @default("P2")
-  category            String
-  description         String?
-  link                String?
-  parentTaskId        String?
-  scheduledDate       String
-  isRepeating         Boolean          @default(false)
-  repeatStatus        String?          @default("Active")
-  repetitionMode      String?          @default("smart")
-  scheduleFrequency   String?
-  topicId             String?
-  goalId              String?
-  createdAt           DateTime         @default(now())
-  occurrences         TaskOccurrence[]
+  id                String           @id @default(uuid())
+  title             String
+  status            String           @default("Todo")
+  priority          String           @default("P2")
+  category          String
+  description       String?
+  link              String?
+  parentTaskId      String?
+  topicId           String?
+  goalId            String?
+  scheduledDate     String
+  isRepeating       Boolean          @default(false)
+  repeatStatus      String?          @default("Active")
+  repetitionMode    String?          @default("smart")
+  scheduleFrequency String?
+  createdAt         DateTime         @default(now())
+  occurrences       TaskOccurrence[]
 }
 
 model TaskOccurrence {
   id             String    @id @default(uuid())
   taskId         String
-  task           Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
   date           String
   status         String    @default("Todo")
   completedAt    DateTime?
   pomodorosCount Float?
+  task           Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
 }
 
 model Goal {
@@ -61,18 +61,11 @@ model Material {
   title           String
   description     String?
   readTimeMinutes Int?
-  type            String
+  type            String    @default("Note")
   content         String?
   isCompleted     Boolean   @default(false)
   completedAt     DateTime?
   createdAt       DateTime  @default(now())
-}
-
-model InboxItem {
-  id        String   @id @default(uuid())
-  text      String
-  isPinned  Boolean  @default(false)
-  createdAt DateTime @default(now())
 }
 
 model RepeatCard {
@@ -92,5 +85,19 @@ model ActivityLog {
   id        String   @id @default(uuid())
   type      String
   title     String
+  createdAt DateTime @default(now())
+}
+
+model InboxItem {
+  id        String   @id @default(uuid())
+  text      String
+  isPinned  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  color     String
   createdAt DateTime @default(now())
 }

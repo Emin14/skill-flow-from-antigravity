@@ -162,6 +162,7 @@ interface TaskState {
   rescheduleTaskToToday: (id: string) => Promise<void>;
   completeRepetition: (id: string, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTargetRepetitions: (id: string, newTarget: number) => Promise<void>;
+  updateTaskCategoryBatch: (oldCategory: string, newCategory: string) => Promise<void>;
 }
 
 const addDaysToDateStr = (dateStr: string, days: number): string => {
@@ -180,7 +181,7 @@ const addDaysToDateStr = (dateStr: string, days: number): string => {
 };
 
 export const isSubtaskDoneForProject = (task: Task, todayStr: string): boolean => {
-  if (task.repeatStatus === 'Completed' || task.status === 'Done') {
+  if (task.repeatStatus === 'Completed') {
     return true;
   }
   if (task.isRepeating) {
@@ -190,11 +191,13 @@ export const isSubtaskDoneForProject = (task: Task, todayStr: string): boolean =
       return false;
     }
     if (task.scheduledDate <= todayStr) {
+      const todayOcc = occs.find((o) => o.date === todayStr);
+      if (todayOcc) return todayOcc.status === 'Done';
       return false;
     }
     return true;
   }
-  return false;
+  return task.status === 'Done';
 };
 
 export const getAllDescendantTasks = (parentId: string, allTasks: Task[]): Task[] => {
@@ -1180,5 +1183,26 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
     await taskApi.update(id, { targetRepetitions: newTarget });
     useToastStore.getState().showToast(`Цель повторений изменена на ${newTarget}`, 'info');
+  },
+
+  updateTaskCategoryBatch: async (oldCategory: string, newCategory: string) => {
+    if (!oldCategory || oldCategory === newCategory) return;
+    set((state) => ({
+      tasks: state.tasks.map((t) => (t.category === oldCategory ? { ...t, category: newCategory } : t)),
+    }));
+
+    try {
+      await fetch('/api/tasks', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'batchUpdateCategory',
+          oldCategory,
+          newCategory,
+        }),
+      });
+    } catch (e) {
+      console.warn('Failed to update categories batch on server', e);
+    }
   },
 }));

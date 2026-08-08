@@ -23,6 +23,13 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
+
+    if (body.action === 'batchUpdateCategory') {
+      const { oldCategory, newCategory } = body;
+      const count = await prismaTaskRepository.updateCategoryBatch(oldCategory, newCategory);
+      return NextResponse.json({ success: true, count });
+    }
+
     const { id, ...updates } = body;
     const updated = await prismaTaskRepository.update(id, updates);
     return NextResponse.json(updated);
