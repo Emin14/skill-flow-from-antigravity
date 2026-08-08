@@ -3,7 +3,16 @@ import { RepetitionMode, ScheduleFrequency, SmartRating } from '@/shared/config/
 
 export type TaskStatus = 'Todo' | 'InProgress' | 'Done';
 export type TaskPriority = 'P1' | 'P2' | 'P3' | 'P4';
+export type TaskState = 'active' | 'paused' | 'completed' | null;
 export type RepeatStatus = 'Active' | 'Paused' | 'Completed';
+
+export interface TagItem {
+  id: string;
+  name: string;
+  color?: string | null;
+  icon?: string | null;
+  createdAt?: string;
+}
 
 export interface TaskRepetitionRecord {
   date: string;
@@ -18,10 +27,12 @@ export interface TaskOccurrence {
   taskId: string;
   date: string;
   status: TaskStatus;
-  completedAt?: string | null;
-  smartRating?: SmartRating;
-  pomodorosCount?: number;
+  note?: string | null;
+  startedAt?: string | null;
   activeMinutes?: number;
+  pomodorosCount?: number;
+  smartRating?: SmartRating;
+  completedAt?: string | null;
 }
 
 export interface Task {
@@ -34,27 +45,52 @@ export interface Task {
   link?: string;
   parentTaskId?: string | null;
   scheduledDate: string;
+  sortOrder?: number | null;
+  
   isRepeating?: boolean;
+  taskState?: TaskState;
   repeatStatus?: RepeatStatus;
-  repetitionMode?: RepetitionMode;
-  scheduleFrequency?: ScheduleFrequency;
-  afterCompletionDays?: number;
-  currentIntervalDays?: number;
-  lastSmartRating?: SmartRating;
-  spacedStepIndex?: number;
+  repetitionMode?: RepetitionMode | null;
+  scheduleFrequency?: ScheduleFrequency | null;
+  afterCompletionDays?: number | null;
+  currentIntervalDays?: number | null;
+  spacedStepIndex?: number | null;
+  targetRepetitions?: number | null;
+  
+  // Time tracking backward compatibility
+  startedAt?: string | null;
+  totalActiveSeconds?: number;
+  
+  // Derived/Calculated fields
   hasSubtasks?: boolean;
-  targetRepetitions?: number;
   repetitionsCount?: number;
-  lastReviewedAt?: string | null;
-  nextReviewDate?: string | null;
+  lastSmartRating?: SmartRating;
+  completedAt?: string | null;
+  pomodorosCount?: number;
   repetitionHistory?: TaskRepetitionRecord[];
+  
+  tags?: TagItem[];
   occurrences?: TaskOccurrence[];
   topicId?: string | null;
   goalId?: string | null;
   createdAt: string;
-  startedAt?: string | null;
-  lastStartedAt?: string | null;
-  totalActiveSeconds?: number;
-  completedAt?: string | null;
-  pomodorosCount?: number;
+  updatedAt?: string;
 }
+
+/** Derived Helper Computations (Single Source of Truth) */
+
+export const getDerivedRepetitionsCount = (task: Partial<Task>): number => {
+  if (!task.occurrences) return task.repetitionsCount || 0;
+  return task.occurrences.filter((o) => o.status === 'Done').length;
+};
+
+export const getDerivedLastSmartRating = (task: Partial<Task>): SmartRating | undefined => {
+  if (!task.occurrences || task.occurrences.length === 0) return task.lastSmartRating;
+  const doneWithRatings = task.occurrences.filter((o) => o.status === 'Done' && o.smartRating);
+  if (doneWithRatings.length === 0) return task.lastSmartRating;
+  return doneWithRatings[doneWithRatings.length - 1].smartRating as SmartRating;
+};
+
+export const getHasSubtasks = (taskId: string, allTasks: Task[]): boolean => {
+  return allTasks.some((t) => t.parentTaskId === taskId);
+};

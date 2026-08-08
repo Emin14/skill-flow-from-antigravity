@@ -1,6 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { Prisma } from '@prisma/client';
-import { Task, TaskOccurrence } from '../model/types';
+import { Task } from '../model/types';
 import { TaskMapper } from './task.mapper';
 
 export class PrismaTaskRepository {
@@ -8,10 +8,13 @@ export class PrismaTaskRepository {
     const prismaTasks = await prisma.task.findMany({
       include: {
         occurrences: true,
+        tags: true,
+        subtasks: true,
       },
-      orderBy: {
-        createdAt: 'asc',
-      },
+      orderBy: [
+        { sortOrder: 'asc' },
+        { createdAt: 'asc' },
+      ],
     });
     return prismaTasks.map(TaskMapper.toDto);
   }
@@ -21,6 +24,8 @@ export class PrismaTaskRepository {
       where: { id },
       include: {
         occurrences: true,
+        tags: true,
+        subtasks: true,
       },
     });
     return prismaTask ? TaskMapper.toDto(prismaTask) : null;
@@ -36,10 +41,13 @@ export class PrismaTaskRepository {
       },
       include: {
         occurrences: true,
+        tags: true,
+        subtasks: true,
       },
-      orderBy: {
-        createdAt: 'asc',
-      },
+      orderBy: [
+        { sortOrder: 'asc' },
+        { createdAt: 'asc' },
+      ],
     });
     return prismaTasks.map(TaskMapper.toDto);
   }
@@ -47,17 +55,17 @@ export class PrismaTaskRepository {
   async getByDate(dateStr: string): Promise<Task[]> {
     const prismaTasks = await prisma.task.findMany({
       where: {
-        OR: [
-          { scheduledDate: dateStr },
-          { occurrences: { some: { date: dateStr } } },
-        ],
+        occurrences: { some: { date: dateStr } },
       },
       include: {
         occurrences: true,
+        tags: true,
+        subtasks: true,
       },
-      orderBy: {
-        createdAt: 'asc',
-      },
+      orderBy: [
+        { sortOrder: 'asc' },
+        { createdAt: 'asc' },
+      ],
     });
     return prismaTasks.map(TaskMapper.toDto);
   }
@@ -67,25 +75,32 @@ export class PrismaTaskRepository {
       id: o.id,
       date: o.date,
       status: o.status || 'Todo',
+      note: o.note || null,
+      startedAt: o.startedAt ? new Date(o.startedAt) : null,
+      activeMinutes: o.activeMinutes ?? 0,
+      pomodorosCount: o.pomodorosCount ?? 0,
+      smartRating: o.smartRating || null,
       completedAt: o.completedAt ? new Date(o.completedAt) : null,
-      pomodorosCount: o.pomodorosCount ?? null,
     }));
 
     const result = await prisma.task.create({
       data: {
         id: task.id,
         title: task.title,
-        status: task.status || 'Todo',
         priority: task.priority || 'P2',
         category: task.category || 'Без категории',
         description: task.description || null,
         link: task.link || null,
         parentTaskId: task.parentTaskId || null,
-        scheduledDate: task.scheduledDate,
+        sortOrder: task.sortOrder ?? null,
         isRepeating: task.isRepeating ?? false,
-        repeatStatus: task.repeatStatus || 'Active',
-        repetitionMode: task.repetitionMode || 'smart',
+        taskState: task.taskState || (task.isRepeating ? 'active' : null),
+        repetitionMode: task.repetitionMode || null,
         scheduleFrequency: task.scheduleFrequency || null,
+        afterCompletionDays: task.afterCompletionDays ?? null,
+        spacedStepIndex: task.spacedStepIndex ?? null,
+        currentIntervalDays: task.currentIntervalDays ?? null,
+        targetRepetitions: task.targetRepetitions ?? null,
         topicId: task.topicId || null,
         goalId: task.goalId || null,
         createdAt: task.createdAt ? new Date(task.createdAt) : new Date(),
@@ -95,6 +110,8 @@ export class PrismaTaskRepository {
       },
       include: {
         occurrences: true,
+        tags: true,
+        subtasks: true,
       },
     });
 
@@ -102,29 +119,32 @@ export class PrismaTaskRepository {
   }
 
   async update(id: string, updates: Partial<Task>): Promise<Task> {
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const existing = await tx.task.findUnique({
         where: { id },
-        include: { occurrences: true },
+        include: { occurrences: true, tags: true, subtasks: true },
       });
 
       if (!existing) {
         throw new Error(`Task with id ${id} not found`);
       }
 
-      const taskUpdateData: Prisma.TaskUpdateInput = {};
+      const taskUpdateData: Prisma.TaskUncheckedUpdateInput = {};
       if (updates.title !== undefined) taskUpdateData.title = updates.title;
-      if (updates.status !== undefined) taskUpdateData.status = updates.status;
       if (updates.priority !== undefined) taskUpdateData.priority = updates.priority;
       if (updates.category !== undefined) taskUpdateData.category = updates.category;
       if (updates.description !== undefined) taskUpdateData.description = updates.description;
       if (updates.link !== undefined) taskUpdateData.link = updates.link;
       if (updates.parentTaskId !== undefined) taskUpdateData.parentTaskId = updates.parentTaskId;
-      if (updates.scheduledDate !== undefined) taskUpdateData.scheduledDate = updates.scheduledDate;
+      if (updates.sortOrder !== undefined) taskUpdateData.sortOrder = updates.sortOrder;
       if (updates.isRepeating !== undefined) taskUpdateData.isRepeating = updates.isRepeating;
-      if (updates.repeatStatus !== undefined) taskUpdateData.repeatStatus = updates.repeatStatus;
+      if (updates.taskState !== undefined) taskUpdateData.taskState = updates.taskState;
       if (updates.repetitionMode !== undefined) taskUpdateData.repetitionMode = updates.repetitionMode;
       if (updates.scheduleFrequency !== undefined) taskUpdateData.scheduleFrequency = updates.scheduleFrequency;
+      if (updates.afterCompletionDays !== undefined) taskUpdateData.afterCompletionDays = updates.afterCompletionDays;
+      if (updates.spacedStepIndex !== undefined) taskUpdateData.spacedStepIndex = updates.spacedStepIndex;
+      if (updates.currentIntervalDays !== undefined) taskUpdateData.currentIntervalDays = updates.currentIntervalDays;
+      if (updates.targetRepetitions !== undefined) taskUpdateData.targetRepetitions = updates.targetRepetitions;
       if (updates.topicId !== undefined) taskUpdateData.topicId = updates.topicId;
       if (updates.goalId !== undefined) taskUpdateData.goalId = updates.goalId;
 
@@ -145,8 +165,12 @@ export class PrismaTaskRepository {
               taskId: id,
               date: o.date,
               status: o.status || 'Todo',
+              note: o.note || null,
+              startedAt: o.startedAt ? new Date(o.startedAt) : null,
+              activeMinutes: o.activeMinutes ?? 0,
+              pomodorosCount: o.pomodorosCount ?? 0,
+              smartRating: o.smartRating || null,
               completedAt: o.completedAt ? new Date(o.completedAt) : null,
-              pomodorosCount: o.pomodorosCount ?? null,
             })),
           });
         }
@@ -154,7 +178,7 @@ export class PrismaTaskRepository {
 
       return tx.task.findUniqueOrThrow({
         where: { id },
-        include: { occurrences: true },
+        include: { occurrences: true, tags: true, subtasks: true },
       });
     });
 
@@ -170,53 +194,6 @@ export class PrismaTaskRepository {
     } catch {
       return false;
     }
-  }
-
-  // TaskOccurrence CRUD
-  async createOccurrence(taskId: string, occ: TaskOccurrence): Promise<TaskOccurrence> {
-    const created = await prisma.taskOccurrence.create({
-      data: {
-        id: occ.id,
-        taskId,
-        date: occ.date,
-        status: occ.status || 'Todo',
-        completedAt: occ.completedAt ? new Date(occ.completedAt) : null,
-        pomodorosCount: occ.pomodorosCount ?? null,
-      },
-    });
-    return TaskMapper.toOccurrenceDto(created);
-  }
-
-  async updateOccurrence(id: string, updates: Partial<TaskOccurrence>): Promise<TaskOccurrence> {
-    const data: Prisma.TaskOccurrenceUpdateInput = {};
-    if (updates.date !== undefined) data.date = updates.date;
-    if (updates.status !== undefined) data.status = updates.status;
-    if (updates.completedAt !== undefined) data.completedAt = updates.completedAt ? new Date(updates.completedAt) : null;
-    if (updates.pomodorosCount !== undefined) data.pomodorosCount = updates.pomodorosCount;
-
-    const updated = await prisma.taskOccurrence.update({
-      where: { id },
-      data,
-    });
-    return TaskMapper.toOccurrenceDto(updated);
-  }
-
-  async deleteOccurrence(id: string): Promise<boolean> {
-    try {
-      await prisma.taskOccurrence.delete({
-        where: { id },
-      });
-      return true;
-    } catch {
-      return false;
-    }
-  }
-
-  async getOccurrences(taskId: string): Promise<TaskOccurrence[]> {
-    const list = await prisma.taskOccurrence.findMany({
-      where: { taskId },
-    });
-    return list.map(TaskMapper.toOccurrenceDto);
   }
 
   async updateCategoryBatch(oldCategory: string, newCategory: string): Promise<number> {

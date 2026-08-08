@@ -84,7 +84,7 @@ export const formatSelectedDateTitle = (dateStr: string): string => {
  */
 export const isSmartRepeatTask = (task: {
   isRepeating?: boolean;
-  repetitionMode?: string;
+  repetitionMode?: string | null;
   repeatConfig?: { repeatType?: string };
 }): boolean => {
   const mode = task.repetitionMode;

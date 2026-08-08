@@ -436,16 +436,14 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       const effectiveIsRepeating = effectiveHasSubtasks ? false : (isRepeating && repetitionMode !== 'none');
       const effectiveMode: RepetitionMode = effectiveIsRepeating ? (repetitionMode === 'none' ? 'spaced' : repetitionMode) : 'none';
 
-      const rawOccs: TaskOccurrence[] = effectiveIsRepeating
-        ? [
-            {
-              id: uuidv4(),
-              taskId,
-              date: scheduledDate || today,
-              status: 'Todo',
-            },
-          ]
-        : [];
+      const rawOccs: TaskOccurrence[] = [
+        {
+          id: uuidv4(),
+          taskId,
+          date: scheduledDate || today,
+          status: 'Todo',
+        },
+      ];
 
       const normOccs = normalizeOccurrences(rawOccs, taskId);
 

@@ -7,33 +7,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Tag {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  color     String?
+  icon      String?
+  createdAt DateTime @default(now())
+  tasks     Task[]   @relation("TaskTags")
+}
+
 model Task {
-  id                String           @id @default(uuid())
-  title             String
-  status            String           @default("Todo")
-  priority          String           @default("P2")
-  category          String
-  description       String?
-  link              String?
-  parentTaskId      String?
-  topicId           String?
-  goalId            String?
-  scheduledDate     String
-  isRepeating       Boolean          @default(false)
-  repeatStatus      String?          @default("Active")
-  repetitionMode    String?          @default("smart")
-  scheduleFrequency String?
-  createdAt         DateTime         @default(now())
-  occurrences       TaskOccurrence[]
+  id                  String           @id @default(uuid())
+  title               String
+  description         String?
+  link                String?          // External problem URL
+  category            String
+  priority            String?          @default("P2")
+  
+  // Goals & Topics Relations
+  goalId              String?
+  topicId             String?
+  
+  // Subtasks Hierarchy (Self-Relation)
+  parentTaskId        String?
+  parentTask          Task?            @relation("TaskHierarchy", fields: [parentTaskId], references: [id], onDelete: Cascade)
+  subtasks            Task[]           @relation("TaskHierarchy")
+  
+  // Sorting order for DnD
+  sortOrder           Int?
+  
+  // Repetition fields (for repeating tasks)
+  isRepeating         Boolean          @default(false)
+  taskState           String?          // 'active' | 'paused' | 'completed' (null for single tasks)
+  repetitionMode      String?          // 'smart' | 'spaced' | 'schedule' | 'after_completion'
+  scheduleFrequency   String?          // 'daily' | 'weekly' | 'monthly'
+  afterCompletionDays Int?
+  spacedStepIndex     Int?
+  currentIntervalDays Int?
+  targetRepetitions   Int?
+  
+  // Timestamps
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @default(now()) @updatedAt
+  
+  // Relations
+  tags                Tag[]            @relation("TaskTags")
+  occurrences         TaskOccurrence[]
 }
 
 model TaskOccurrence {
   id             String    @id @default(uuid())
   taskId         String
-  date           String
-  status         String    @default("Todo")
+  date           String    // "YYYY-MM-DD"
+  status         String    @default("Todo") // 'Todo' | 'InProgress' | 'Done'
+  note           String?   // Session notes
+  
+  // Time tracking per occurrence session
+  startedAt      DateTime?
+  activeMinutes  Float?    @default(0)
+  pomodorosCount Float?    @default(0)
+  
+  smartRating    String?   // 'easy' | 'normal' | 'hard' | 'again'
   completedAt    DateTime?
-  pomodorosCount Float?
   task           Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
 }
 
