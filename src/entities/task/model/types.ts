@@ -80,3 +80,20 @@ export interface Task {
   pomodorosCount?: number;
   repetitionHistory?: any[];
 }
+
+export const getDerivedRepetitionsCount = (task: Partial<Task>): number => {
+  if (!task.occurrences) return task.repetitionsCount || 0;
+  return task.occurrences.filter((o) => o.status === 'Done').length;
+};
+
+export const getDerivedLastSmartRating = (task: Partial<Task>): SmartRating | null => {
+  if (!task.occurrences || task.occurrences.length === 0) return task.lastSmartRating ?? null;
+  const doneWithRatings = task.occurrences
+    .filter((o) => o.status === 'Done' && o.smartRating != null)
+    .sort((a, b) => (b.completedAt || b.date).localeCompare(a.completedAt || a.date));
+  return (doneWithRatings[0]?.smartRating as SmartRating) ?? task.lastSmartRating ?? null;
+};
+
+export const getHasSubtasks = (taskId: string, allTasks: Task[]): boolean => {
+  return allTasks.some((t) => t.parentTaskId === taskId);
+};
