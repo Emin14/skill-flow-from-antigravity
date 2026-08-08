@@ -52,10 +52,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   onOpenEdit,
 }) => {
   const router = useRouter();
-  const { tasks, updateTaskPomodoros, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus, updateTaskDetails, updateRepeatStatus } = useTaskStore();
+  const { tasks, updateTaskPomodoros, updateOccurrenceNote, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus, updateTaskDetails, updateRepeatStatus } = useTaskStore();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState<SmartRating | null>(null);
+  const [sessionNote, setSessionNote] = useState<string>('');
 
   const masterTask = useMemo(() => {
     if (!task) return null;
@@ -148,6 +149,12 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
   const activeOccDate = occurrenceDate || (masterTask.occurrences?.find((o) => o.status === 'Todo')?.date) || masterTask.scheduledDate || todayStr;
   const formattedOccDate = formatDateTitleRu(activeOccDate);
+
+  const currentSessionOcc = masterTask?.occurrences?.find((o) => o.date === activeOccDate);
+
+  useEffect(() => {
+    setSessionNote(currentSessionOcc?.note || '');
+  }, [currentSessionOcc?.note, activeOccDate]);
 
   const seriesStartDate = masterTask.occurrences && masterTask.occurrences.length > 0
     ? masterTask.occurrences[0].date
@@ -298,6 +305,31 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             )}
           </div>
         )}
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
+          <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            📝 Заметка к сессии ({formattedOccDate}):
+          </label>
+          <textarea
+            value={sessionNote}
+            onChange={(e) => setSessionNote(e.target.value)}
+            onBlur={() => updateOccurrenceNote(masterTask.id, sessionNote, activeOccDate)}
+            placeholder="Заметка к этой конкретной сессии (например: решилось легко за 15 мин)..."
+            rows={2}
+            style={{
+              width: '100%',
+              borderRadius: '10px',
+              background: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid var(--color-border)',
+              color: 'var(--color-text-primary)',
+              fontSize: '13px',
+              padding: '8px 12px',
+              resize: 'vertical',
+              fontFamily: 'inherit',
+              outline: 'none',
+            }}
+          />
+        </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
           <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>

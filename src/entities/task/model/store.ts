@@ -155,6 +155,7 @@ interface TaskState {
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
   updateRepeatStatus: (id: string, repeatStatus: RepeatStatus) => Promise<void>;
   updateTaskPomodoros: (id: string, count: number, dateStr?: string) => Promise<void>;
+  updateOccurrenceNote: (id: string, note: string, dateStr?: string) => Promise<void>;
   deleteTaskOccurrence: (id: string, dateStr: string) => Promise<void>;
   updateOccurrenceDate: (id: string, currentDateStr: string, newDateStr: string) => Promise<void>;
   deleteTaskSeries: (id: string, confirmed?: boolean) => Promise<void>;
@@ -977,6 +978,38 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
       await taskApi.update(id, { pomodorosCount: safeCount });
     }
+  },
+
+  updateOccurrenceNote: async (id: string, note: string, dateStr?: string) => {
+    const task = get().tasks.find((t) => t.id === id);
+    if (!task) return;
+
+    const targetDate = dateStr || getTodayStr();
+    const currentOccs = task.occurrences || [];
+    const existingOcc = currentOccs.find((o) => o.date === targetDate);
+    let updatedOccs: TaskOccurrence[];
+
+    if (existingOcc) {
+      updatedOccs = currentOccs.map((o) => (o.date === targetDate ? { ...o, note } : o));
+    } else {
+      updatedOccs = [
+        ...currentOccs,
+        {
+          id: uuidv4(),
+          taskId: id,
+          date: targetDate,
+          status: 'Todo',
+          note,
+        },
+      ];
+    }
+
+    const normalized = normalizeOccurrences(updatedOccs, id);
+    set((state) => ({
+      tasks: state.tasks.map((t) => (t.id === id ? { ...t, occurrences: normalized } : t)),
+    }));
+
+    await taskApi.update(id, { occurrences: normalized });
   },
 
   deleteTaskOccurrence: async (id: string, dateStr: string) => {

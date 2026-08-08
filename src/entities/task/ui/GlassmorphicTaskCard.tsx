@@ -510,6 +510,24 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                   </span>
                 )}
                 {extraMetaNode}
+                {task.tags && task.tags.length > 0 && task.tags.map((tag) => (
+                  <span
+                    key={tag.id}
+                    style={{
+                      fontSize: '10px',
+                      padding: '1px 6px',
+                      borderRadius: '6px',
+                      background: tag.color ? `${tag.color}22` : 'rgba(99, 102, 241, 0.15)',
+                      color: tag.color || 'var(--color-accent-text)',
+                      border: `1px solid ${tag.color ? `${tag.color}44` : 'rgba(99, 102, 241, 0.3)'}`,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '3px',
+                    }}
+                  >
+                    {tag.icon && <span>{tag.icon}</span>}#{tag.name}
+                  </span>
+                ))}
                 {task.isRepeating && !hideRepeatTag && <span className={styles.repeatTag}>• ↻ Повтор</span>}
                 {formattedLink && (
                   <a
