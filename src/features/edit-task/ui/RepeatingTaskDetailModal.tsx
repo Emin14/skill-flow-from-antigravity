@@ -70,6 +70,16 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     };
   }, [task, tasks]);
 
+  const activeOccDate = useMemo(() => {
+    if (!masterTask) return getTodayStr();
+    return occurrenceDate || (masterTask.occurrences?.find((o) => o.status === 'Todo')?.date) || masterTask.scheduledDate || getTodayStr();
+  }, [masterTask, occurrenceDate]);
+
+  const currentSessionNote = useMemo(() => {
+    if (!masterTask) return '';
+    return masterTask.occurrences?.find((o) => o.date === activeOccDate)?.note || '';
+  }, [masterTask, activeOccDate]);
+
   useEffect(() => {
     if (masterTask?.lastSmartRating) {
       setSelectedRating(masterTask.lastSmartRating);
@@ -77,6 +87,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
       setSelectedRating(null);
     }
   }, [masterTask?.id, masterTask?.lastSmartRating]);
+
+  useEffect(() => {
+    setSessionNote(currentSessionNote);
+  }, [currentSessionNote]);
 
   useEffect(() => {
     if (isOpen) {
@@ -147,14 +161,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     }
   }
 
-  const activeOccDate = occurrenceDate || (masterTask.occurrences?.find((o) => o.status === 'Todo')?.date) || masterTask.scheduledDate || todayStr;
   const formattedOccDate = formatDateTitleRu(activeOccDate);
-
-  const currentSessionOcc = masterTask?.occurrences?.find((o) => o.date === activeOccDate);
-
-  useEffect(() => {
-    setSessionNote(currentSessionOcc?.note || '');
-  }, [currentSessionOcc?.note, activeOccDate]);
 
   const seriesStartDate = masterTask.occurrences && masterTask.occurrences.length > 0
     ? masterTask.occurrences[0].date
