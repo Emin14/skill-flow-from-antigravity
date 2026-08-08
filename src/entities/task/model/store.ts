@@ -613,7 +613,27 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }
 
     // NON-REPEATING TASK LOGIC
-    const updates: Partial<Task> = { status: newStatus };
+    let updatedOccs = (task.occurrences || []).map((o) => ({
+      ...o,
+      status: newStatus,
+      completedAt: newStatus === 'Done' ? nowIso : null,
+    }));
+    if (updatedOccs.length === 0) {
+      updatedOccs = [
+        {
+          id: uuidv4(),
+          taskId: id,
+          date: task.scheduledDate || todayStr,
+          status: newStatus,
+          completedAt: newStatus === 'Done' ? nowIso : null,
+        },
+      ];
+    }
+
+    const updates: Partial<Task> = {
+      status: newStatus,
+      occurrences: updatedOccs,
+    };
     if (newStatus === 'Done') {
       updates.completedAt = nowIso;
       if (!task.scheduledDate || task.scheduledDate === '' || task.scheduledDate === 'anytime') {
