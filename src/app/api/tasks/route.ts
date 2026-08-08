@@ -42,8 +42,14 @@ export async function DELETE(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
+    const deleteSubtasks = searchParams.get('deleteSubtasks') === 'true';
     if (!id) return NextResponse.json({ error: 'Missing task id' }, { status: 400 });
-    await prismaTaskRepository.delete(id);
+
+    if (deleteSubtasks) {
+      await prismaTaskRepository.deleteWithSubtasks(id);
+    } else {
+      await prismaTaskRepository.delete(id);
+    }
     return NextResponse.json({ success: true });
   } catch (error: any) {
     return NextResponse.json({ error: error.message || 'Failed to delete task' }, { status: 500 });

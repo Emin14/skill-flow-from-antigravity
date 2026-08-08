@@ -158,7 +158,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     setDescription(task.description || '');
     setLink(task.link || '');
     setParentTaskId(task.parentTaskId || null);
-    const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
+    const mode = (task.repetitionMode as RepetitionMode) || (task.isRepeating ? 'spaced' : 'none');
     setRepetitionMode(mode);
     setRepeatStatus(task.repeatStatus || 'Active');
     setScheduleFrequency(task.scheduleFrequency || 'daily');
@@ -232,6 +232,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         hasSubtasks,
       });
     } else {
+      const taskState = repeatStatus === 'Paused' ? 'paused' : (repeatStatus === 'Completed' ? 'completed' : 'active');
       await updateTaskDetails(task.id, {
         title: title.trim(),
         category,
@@ -244,8 +245,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         scheduleFrequency,
         afterCompletionDays,
         hasSubtasks,
-        repeatStatus: effectiveIsRepeating ? repeatStatus : undefined,
-        status: repeatStatus === 'Completed' ? 'Done' : (task.status === 'Done' && repeatStatus === 'Active' ? 'Todo' : task.status),
+        taskState: effectiveIsRepeating ? taskState : null,
       });
     }
 

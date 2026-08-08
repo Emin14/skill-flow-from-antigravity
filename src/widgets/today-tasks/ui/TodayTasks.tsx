@@ -113,7 +113,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
       if (legacyOcc) return legacyOcc.completed ? 'Done' : 'Todo';
       return 'Todo';
     }
-    return t.status;
+    return t.status || 'Todo';
   }, [activeDateStr]);
 
   const todoTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [rawTodayTasks, getTaskStatusForToday]);

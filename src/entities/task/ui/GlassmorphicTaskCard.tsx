@@ -220,7 +220,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     ? (task.repeatStatus === 'Completed' || (currentOcc ? currentOcc.status === 'Done' : false))
     : task.status === 'Done';
   const catColor = getCategoryColor(task.category);
-  const formattedLink = formatExternalUrl(task.link);
+  const formattedLink = formatExternalUrl(task.link || undefined);
 
   const todayStr = getTodayStr();
   const showDateBadge = !hideDateBadge && task.scheduledDate && task.scheduledDate !== '' && task.scheduledDate !== 'anytime' && !isDone;

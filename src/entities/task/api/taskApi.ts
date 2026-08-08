@@ -33,8 +33,9 @@ export const taskApi = {
     return res.json();
   },
 
-  async delete(id: string): Promise<boolean> {
-    const res = await fetch(`/api/tasks?id=${encodeURIComponent(id)}`, {
+  async delete(id: string, deleteSubtasks: boolean = false): Promise<boolean> {
+    const url = `/api/tasks?id=${encodeURIComponent(id)}${deleteSubtasks ? '&deleteSubtasks=true' : ''}`;
+    const res = await fetch(url, {
       method: 'DELETE',
     });
     if (!res.ok) {

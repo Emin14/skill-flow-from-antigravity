@@ -20,38 +20,26 @@ model Task {
   id                  String           @id @default(uuid())
   title               String
   description         String?
-  link                String?          // External problem URL
+  link                String?
   category            String
+  tags                Tag[]            @relation("TaskTags")
   priority            String?          @default("P2")
-  
-  // Goals & Topics Relations
   goalId              String?
   topicId             String?
-  
-  // Subtasks Hierarchy (Self-Relation)
   parentTaskId        String?
-  parentTask          Task?            @relation("TaskHierarchy", fields: [parentTaskId], references: [id], onDelete: Cascade)
+  parentTask          Task?            @relation("TaskHierarchy", fields: [parentTaskId], references: [id], onDelete: SetNull)
   subtasks            Task[]           @relation("TaskHierarchy")
-  
-  // Sorting order for DnD
   sortOrder           Int?
-  
-  // Repetition fields (for repeating tasks)
   isRepeating         Boolean          @default(false)
-  taskState           String?          // 'active' | 'paused' | 'completed' (null for single tasks)
+  taskState           String?          // 'active' | 'paused' | 'completed'
   repetitionMode      String?          // 'smart' | 'spaced' | 'schedule' | 'after_completion'
   scheduleFrequency   String?          // 'daily' | 'weekly' | 'monthly'
   afterCompletionDays Int?
   spacedStepIndex     Int?
-  currentIntervalDays Int?
+  currentIntervalDays Float?
   targetRepetitions   Int?
-  
-  // Timestamps
   createdAt           DateTime         @default(now())
   updatedAt           DateTime         @default(now()) @updatedAt
-  
-  // Relations
-  tags                Tag[]            @relation("TaskTags")
   occurrences         TaskOccurrence[]
 }
 
@@ -61,12 +49,9 @@ model TaskOccurrence {
   date           String    // "YYYY-MM-DD"
   status         String    @default("Todo") // 'Todo' | 'InProgress' | 'Done'
   note           String?   // Session notes
-  
-  // Time tracking per occurrence session
   startedAt      DateTime?
   activeMinutes  Float?    @default(0)
   pomodorosCount Float?    @default(0)
-  
   smartRating    String?   // 'easy' | 'normal' | 'hard' | 'again'
   completedAt    DateTime?
   task           Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)

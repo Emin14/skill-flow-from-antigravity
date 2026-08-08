@@ -1,58 +1,83 @@
 import { Prisma, TaskOccurrence as PrismaTaskOccurrence, Tag as PrismaTag } from '@prisma/client';
-import { Task, TaskStatus, TaskPriority, TaskState, TaskOccurrence, TagItem, getDerivedRepetitionsCount, getDerivedLastSmartRating } from '../model/types';
+import { Task, TaskStatus, TaskPriority, TaskState, RepeatStatus, TaskOccurrence, Tag } from '../model/types';
 import { TaskCategory } from '@/shared/config/categories';
-import { RepetitionMode, ScheduleFrequency } from '@/shared/config/repetitionRules';
+import { RepetitionMode, ScheduleFrequency, SmartRating } from '@/shared/config/repetitionRules';
 
-export type TaskWithRelations = Prisma.TaskGetPayload<{
+export type TaskWithOccurrences = Prisma.TaskGetPayload<{
   include: { occurrences: true; tags: true; subtasks: true };
 }>;
 
 export class TaskMapper {
-  static toDto(prismaTask: TaskWithRelations): Task {
+  static toDto(prismaTask: TaskWithOccurrences): Task {
     const occurrences = (prismaTask.occurrences || []).map(TaskMapper.toOccurrenceDto);
     const tags = (prismaTask.tags || []).map(TaskMapper.toTagDto);
 
-    // Derived status and scheduledDate from active occurrence
-    const firstTodoOcc = occurrences.find((o) => o.status === 'Todo') || occurrences[0];
-    const derivedStatus: TaskStatus = firstTodoOcc ? firstTodoOcc.status : 'Todo';
-    const derivedScheduledDate = firstTodoOcc ? firstTodoOcc.date : '';
+    // Compute dynamic repetitionsCount
+    const repetitionsCount = occurrences.filter((o) => o.status === 'Done').length;
 
-    const taskDto: Task = {
+    // Compute dynamic lastSmartRating: latest completed occurrence with non-null smartRating
+    const completedWithRating = occurrences
+      .filter((o) => o.status === 'Done' && o.smartRating != null)
+      .sort((a, b) => {
+        const timeA = a.completedAt || a.date;
+        const timeB = b.completedAt || b.date;
+        return timeB.localeCompare(timeA);
+      });
+    const lastSmartRating = (completedWithRating[0]?.smartRating as SmartRating) ?? null;
+
+    // Compute dynamic hasSubtasks
+    const hasSubtasks = Boolean(prismaTask.subtasks && prismaTask.subtasks.length > 0);
+
+    // Derive scheduledDate, status, repeatStatus, completedAt, pomodorosCount for backward compatibility
+    const firstTodoOcc = occurrences.find((o) => o.status === 'Todo') || occurrences[0];
+    const scheduledDate = firstTodoOcc?.date || occurrences[0]?.date || '';
+    const status = firstTodoOcc?.status || occurrences[0]?.status || 'Todo';
+    const repeatStatus: RepeatStatus = prismaTask.taskState === 'paused'
+      ? 'Paused'
+      : (prismaTask.taskState === 'completed' ? 'Completed' : 'Active');
+
+    const lastDoneOcc = occurrences.filter((o) => o.status === 'Done').pop();
+    const completedAt = lastDoneOcc?.completedAt || null;
+    const pomodorosCount = occurrences[0]?.pomodorosCount || 1;
+
+    return {
       id: prismaTask.id,
       title: prismaTask.title,
-      status: derivedStatus,
-      priority: (prismaTask.priority as TaskPriority) || 'P2',
-      category: (prismaTask.category as TaskCategory) || 'Без категории',
       description: prismaTask.description || undefined,
-      link: prismaTask.link || undefined,
+      category: (prismaTask.category as TaskCategory) || 'Без категории',
+      tags,
+      priority: (prismaTask.priority as TaskPriority) || 'P2',
       parentTaskId: prismaTask.parentTaskId || null,
-      scheduledDate: derivedScheduledDate,
       sortOrder: prismaTask.sortOrder ?? null,
-      
-      isRepeating: prismaTask.isRepeating,
-      taskState: (prismaTask.taskState as TaskState) || (prismaTask.isRepeating ? 'active' : null),
-      repeatStatus: (prismaTask.taskState === 'paused' ? 'Paused' : prismaTask.taskState === 'completed' ? 'Completed' : 'Active'),
-      repetitionMode: (prismaTask.repetitionMode as RepetitionMode) || null,
-      scheduleFrequency: (prismaTask.scheduleFrequency as ScheduleFrequency) || null,
-      afterCompletionDays: prismaTask.afterCompletionDays ?? null,
-      spacedStepIndex: prismaTask.spacedStepIndex ?? null,
       currentIntervalDays: prismaTask.currentIntervalDays ?? null,
+      taskState: (prismaTask.taskState as TaskState) ?? null,
+      isRepeating: prismaTask.isRepeating ?? false,
+      repetitionMode: (prismaTask.repetitionMode as RepetitionMode) ?? null,
       targetRepetitions: prismaTask.targetRepetitions ?? null,
-      
-      hasSubtasks: Boolean(prismaTask.subtasks && prismaTask.subtasks.length > 0),
-      topicId: prismaTask.topicId || null,
-      goalId: prismaTask.goalId || null,
+      scheduleFrequency: (prismaTask.scheduleFrequency as ScheduleFrequency) ?? null,
       createdAt: prismaTask.createdAt instanceof Date ? prismaTask.createdAt.toISOString() : String(prismaTask.createdAt),
       updatedAt: prismaTask.updatedAt instanceof Date ? prismaTask.updatedAt.toISOString() : String(prismaTask.updatedAt),
-      tags,
+      link: prismaTask.link || null,
+      topicId: prismaTask.topicId || null,
+      goalId: prismaTask.goalId || null,
+      afterCompletionDays: prismaTask.afterCompletionDays ?? null,
+      spacedStepIndex: prismaTask.spacedStepIndex ?? null,
+
       occurrences,
+
+      // Computed properties (NOT stored in DB)
+      hasSubtasks,
+      repetitionsCount,
+      lastSmartRating,
+
+      // Derived compatibility getters
+      scheduledDate,
+      status,
+      repeatStatus,
+      completedAt,
+      pomodorosCount,
+      repetitionHistory: occurrences,
     };
-
-    // Calculate derived repetitionsCount and lastSmartRating on the fly
-    taskDto.repetitionsCount = getDerivedRepetitionsCount(taskDto);
-    taskDto.lastSmartRating = getDerivedLastSmartRating(taskDto);
-
-    return taskDto;
   }
 
   static toOccurrenceDto(occ: PrismaTaskOccurrence): TaskOccurrence {
@@ -62,21 +87,18 @@ export class TaskMapper {
       date: occ.date,
       status: (occ.status as TaskStatus) || 'Todo',
       note: occ.note || null,
-      startedAt: occ.startedAt ? occ.startedAt.toISOString() : null,
-      activeMinutes: occ.activeMinutes ?? 0,
-      pomodorosCount: occ.pomodorosCount ?? 0,
-      smartRating: (occ.smartRating as any) || undefined,
+      pomodorosCount: occ.pomodorosCount ?? undefined,
+      activeMinutes: occ.activeMinutes ?? undefined,
+      smartRating: (occ.smartRating as SmartRating) ?? null,
       completedAt: occ.completedAt ? occ.completedAt.toISOString() : null,
     };
   }
 
-  static toTagDto(tag: PrismaTag): TagItem {
+  static toTagDto(tag: PrismaTag): Tag {
     return {
       id: tag.id,
       name: tag.name,
       color: tag.color || null,
-      icon: tag.icon || null,
-      createdAt: tag.createdAt instanceof Date ? tag.createdAt.toISOString() : String(tag.createdAt),
     };
   }
 }

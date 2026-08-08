@@ -95,13 +95,16 @@ export const getDerivedRepetitionsCount = (task: Task): number => {
 /**
  * Single Source of Truth Helper: Returns last smart rating from occurrences
  */
-export const getDerivedLastSmartRating = (task: Task): SmartRating | undefined => {
-  if (!task.isRepeating) return task.lastSmartRating;
-  const doneOccs = (task.occurrences || []).filter((o) => o.status === 'Done' && o.smartRating);
-  if (doneOccs.length > 0) {
-    return doneOccs[doneOccs.length - 1].smartRating;
-  }
-  return task.lastSmartRating;
+export const getDerivedLastSmartRating = (task: Task): SmartRating | null => {
+  const doneOccs = (task.occurrences || [])
+    .filter((o) => o.status === 'Done' && o.smartRating != null)
+    .sort((a, b) => {
+      const timeA = a.completedAt || a.date;
+      const timeB = b.completedAt || b.date;
+      return timeB.localeCompare(timeA);
+    });
+
+  return (doneOccs[0]?.smartRating as SmartRating) ?? null;
 };
 
 /**
@@ -122,7 +125,7 @@ export const getDerivedTaskPomodoros = (task: Task, dateStr?: string): number =>
  * Single Source of Truth Helper: Returns task status for date or task status
  */
 export const getDerivedTaskStatus = (task: Task, dateStr?: string): TaskStatus => {
-  if (!task.isRepeating) return task.status;
+  if (!task.isRepeating) return task.status || 'Todo';
   const targetDate = dateStr || getTodayStr();
   const occ = task.occurrences?.find((o) => o.date === targetDate);
   return occ ? occ.status : 'Todo';
@@ -194,9 +197,7 @@ export const isSubtaskDoneForProject = (task: Task, todayStr: string): boolean =
     if (hasPendingDueOrOverdue) {
       return false;
     }
-    if (task.scheduledDate <= todayStr) {
-      const todayOcc = occs.find((o) => o.date === todayStr);
-      if (todayOcc) return todayOcc.status === 'Done';
+    if ((task.scheduledDate || '') <= todayStr) {
       return false;
     }
     return true;
@@ -377,7 +378,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         repetitionsCount: 0,
         createdAt: new Date().toISOString(),
         pomodorosCount: 1,
-        totalActiveSeconds: 0,
         currentIntervalDays: 1.0,
       };
     } else {
@@ -436,7 +436,6 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         occurrences: normOccs,
         createdAt: new Date().toISOString(),
         pomodorosCount: 1,
-        totalActiveSeconds: 0,
       };
     }
 
@@ -855,7 +854,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
         const targetStartDate = lastDoneOcc ? lastDoneOcc.date : todayStr;
         const doneCount = doneOccs.length;
-        const { daysToAdd } = calculateNextInterval(task, doneCount, task.lastSmartRating);
+        const { daysToAdd } = calculateNextInterval(task, doneCount, task.lastSmartRating || undefined);
         let nextDate = addDaysToDateStr(targetStartDate, daysToAdd);
 
         // Ensure next occurrence date is not in the past
