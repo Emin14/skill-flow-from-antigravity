@@ -1,5 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { Prisma } from '@prisma/client';
+import { v4 as uuidv4 } from 'uuid';
 import { Task } from '../model/types';
 import { TaskMapper } from './task.mapper';
 
@@ -187,9 +188,12 @@ export class PrismaTaskRepository {
           });
 
           if (updates.occurrences.length > 0) {
-            await tx.taskOccurrence.createMany({
-              data: updates.occurrences.map((o) => ({
-                id: o.id,
+            const seenIds = new Set<string>();
+            const occData = updates.occurrences.map((o) => {
+              let occId = o.id && !seenIds.has(o.id) ? o.id : uuidv4();
+              seenIds.add(occId);
+              return {
+                id: occId,
                 taskId: id,
                 date: o.date,
                 status: o.status || 'Todo',
@@ -199,7 +203,11 @@ export class PrismaTaskRepository {
                 pomodorosCount: o.pomodorosCount ?? 0,
                 smartRating: o.smartRating || null,
                 completedAt: o.completedAt ? new Date(o.completedAt) : null,
-              })),
+              };
+            });
+
+            await tx.taskOccurrence.createMany({
+              data: occData,
             });
           }
         }
@@ -211,8 +219,9 @@ export class PrismaTaskRepository {
       });
 
       return TaskMapper.toDto(result);
-    } catch {
-      return fallback;
+    } catch (err) {
+      console.error(`[prismaTaskRepository.update] Error updating task ${id}:`, err);
+      throw err;
     }
   }
 

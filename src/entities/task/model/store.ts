@@ -41,6 +41,7 @@ export const normalizeOccurrences = (
         smartRating: occ.smartRating,
         pomodorosCount: occ.pomodorosCount,
         activeMinutes: occ.activeMinutes,
+        note: occ.note || null,
       });
     } else {
       if (occ.status === 'Done' && existing.status !== 'Done') {
@@ -51,12 +52,14 @@ export const normalizeOccurrences = (
           smartRating: occ.smartRating || existing.smartRating,
           pomodorosCount: occ.pomodorosCount || existing.pomodorosCount,
           activeMinutes: occ.activeMinutes || existing.activeMinutes,
+          note: occ.note || existing.note || null,
         });
       } else if (occ.status === 'Done' && existing.status === 'Done') {
         dateMap.set(dateStr, {
           ...existing,
           completedAt: occ.completedAt || existing.completedAt,
           smartRating: occ.smartRating || existing.smartRating,
+          note: occ.note || existing.note || null,
         });
       }
     }
