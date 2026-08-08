@@ -908,41 +908,33 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     if (!task) return;
 
     const safeCount = Math.max(0.1, count);
-    const targetDate = dateStr || getTodayStr();
+    const targetDate = dateStr || task.scheduledDate || getTodayStr();
 
-    if (task.isRepeating) {
-      const currentOccs = task.occurrences || [];
-      const existingOcc = currentOccs.find((o) => o.date === targetDate);
-      let updatedOccs: TaskOccurrence[];
+    const currentOccs = task.occurrences || [];
+    const existingOcc = currentOccs.find((o) => o.date === targetDate) || currentOccs[0];
+    let updatedOccs: TaskOccurrence[];
 
-      if (existingOcc) {
-        updatedOccs = currentOccs.map((o) => (o.date === targetDate ? { ...o, pomodorosCount: safeCount } : o));
-      } else {
-        updatedOccs = [
-          ...currentOccs,
-          {
-            id: uuidv4(),
-            taskId: id,
-            date: targetDate,
-            status: 'Todo',
-            pomodorosCount: safeCount,
-          },
-        ];
-      }
-
-      const normalized = normalizeOccurrences(updatedOccs, id);
-      set((state) => ({
-        tasks: state.tasks.map((t) => (t.id === id ? { ...t, occurrences: normalized, pomodorosCount: safeCount } : t)),
-      }));
-
-      await taskApi.update(id, { occurrences: normalized, pomodorosCount: safeCount });
+    if (existingOcc) {
+      updatedOccs = currentOccs.map((o) => (o.id === existingOcc.id || o.date === targetDate ? { ...o, pomodorosCount: safeCount } : o));
     } else {
-      set((state) => ({
-        tasks: state.tasks.map((t) => (t.id === id ? { ...t, pomodorosCount: safeCount } : t)),
-      }));
-
-      await taskApi.update(id, { pomodorosCount: safeCount });
+      updatedOccs = [
+        ...currentOccs,
+        {
+          id: uuidv4(),
+          taskId: id,
+          date: targetDate,
+          status: 'Todo',
+          pomodorosCount: safeCount,
+        },
+      ];
     }
+
+    const normalized = normalizeOccurrences(updatedOccs, id);
+    set((state) => ({
+      tasks: state.tasks.map((t) => (t.id === id ? { ...t, occurrences: normalized, pomodorosCount: safeCount } : t)),
+    }));
+
+    await taskApi.update(id, { occurrences: normalized });
   },
 
   updateOccurrenceNote: async (id: string, note: string, dateStr?: string) => {
