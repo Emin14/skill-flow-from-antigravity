@@ -558,7 +558,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         if (!isStopped) {
           const doneCount = occs.filter((o) => o.status === 'Done').length;
           const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating);
-          const nextDate = addDaysToDateStr(targetDate, daysToAdd);
+          let nextDate = addDaysToDateStr(targetDate, daysToAdd);
+          if (nextDate < todayStr) {
+            nextDate = todayStr;
+          }
 
           // Remove any future uncompleted occurrences that were beyond targetDate to prevent ghost skips
           occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate || o.date === nextDate);
@@ -658,7 +661,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           if (!isStopped) {
             const doneCount = occs.filter((o) => o.status === 'Done').length;
             const { daysToAdd } = calculateNextInterval(t, doneCount);
-            const nextDate = addDaysToDateStr(targetDate, daysToAdd);
+            let nextDate = addDaysToDateStr(targetDate, daysToAdd);
+            if (nextDate < todayStr) {
+              nextDate = todayStr;
+            }
             occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate || o.date === nextDate);
             if (!occs.some((o) => o.date === nextDate)) {
               occs.push({
