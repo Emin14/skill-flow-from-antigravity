@@ -326,67 +326,29 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     try {
       const rawTasks = await taskApi.getAll();
 
-      // Clean up legacy cloned series tasks: group by title/seriesId and merge into single Task entity
-      const cleanedMap = new Map<string, Task>();
-      for (const t of rawTasks) {
-        const legacySeriesId = (t as { seriesId?: string }).seriesId;
-        const key = legacySeriesId || (t.isRepeating ? t.title.toLowerCase().trim() : t.id);
-        if (!cleanedMap.has(key)) {
-          const rawOccs: TaskOccurrence[] = t.occurrences || [];
-          if (t.isRepeating && rawOccs.length === 0) {
-            rawOccs.push({
-              id: uuidv4(),
-              taskId: t.id,
-              date: t.scheduledDate || getTodayStr(),
-              status: t.status || 'Todo',
-              completedAt: t.completedAt,
-              smartRating: t.lastSmartRating,
-            });
-          }
-          cleanedMap.set(key, { ...t, occurrences: rawOccs });
-        } else {
-          const existing = cleanedMap.get(key)!;
-          const mergedOccurrences: TaskOccurrence[] = [
-            ...(existing.occurrences || []),
-            ...(t.occurrences || []),
-          ];
-
-          if (t.status === 'Done' || t.scheduledDate) {
-            const hasOcc = mergedOccurrences.some((o) => o.date === t.scheduledDate);
-            if (!hasOcc && t.scheduledDate) {
-              mergedOccurrences.push({
-                id: uuidv4(),
-                taskId: existing.id,
-                date: t.scheduledDate,
-                status: t.status,
-                completedAt: t.completedAt,
-                smartRating: t.lastSmartRating,
-              });
-            }
-          }
-
-          cleanedMap.set(key, {
-            ...existing,
-            occurrences: mergedOccurrences,
+      const cleanedTasks = rawTasks.map((t) => {
+        const rawOccs: TaskOccurrence[] = t.occurrences ? [...t.occurrences] : [];
+        if (rawOccs.length === 0) {
+          rawOccs.push({
+            id: uuidv4(),
+            taskId: t.id,
+            date: t.scheduledDate || getTodayStr(),
+            status: t.status || 'Todo',
+            completedAt: t.completedAt,
+            smartRating: t.lastSmartRating,
           });
         }
-      }
-
-      // ARCHITECTURE VARIANT A: Run every repeating task through normalizeOccurrences
-      const finalTasks = Array.from(cleanedMap.values()).map((t) => {
-        if (!t.isRepeating) return t;
-        const normOccs = normalizeOccurrences(t.occurrences, t.id);
-        const derivedDate = getDerivedScheduledDate({ ...t, occurrences: normOccs });
-        const derivedDoneCount = getDerivedRepetitionsCount({ ...t, occurrences: normOccs });
+        const normalized = normalizeOccurrences(rawOccs, t.id);
         return {
           ...t,
-          occurrences: normOccs,
-          scheduledDate: derivedDate,
-          repetitionsCount: derivedDoneCount,
+          occurrences: normalized,
+          scheduledDate: getDerivedScheduledDate({ ...t, occurrences: normalized }),
+          repetitionsCount: getDerivedRepetitionsCount({ ...t, occurrences: normalized }),
+          lastSmartRating: getDerivedLastSmartRating({ ...t, occurrences: normalized }),
         };
       });
 
-      set({ tasks: finalTasks, isLoading: false });
+      set({ tasks: cleanedTasks, isLoading: false });
     } catch (e) {
       set({ error: (e as Error).message, isLoading: false });
     }
