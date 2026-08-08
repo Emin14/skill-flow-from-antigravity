@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Task } from '@/entities/task/model/types';
 import { SmartRating } from '@/shared/config/repetitionRules';
@@ -85,13 +85,42 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     return masterTask.occurrences?.find((o) => o.date === activeOccDate) || null;
   }, [masterTask, activeOccDate]);
 
+  const latestNoteRef = useRef<string>('');
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
     setSelectedRating(currentSessionOcc?.smartRating || null);
   }, [currentSessionOcc?.smartRating, activeOccDate]);
 
   useEffect(() => {
     setSessionNote(currentSessionNote);
-  }, [currentSessionNote]);
+    latestNoteRef.current = currentSessionNote;
+  }, [masterTask?.id, activeOccDate, currentSessionNote]);
+
+  const handleNoteChange = (val: string) => {
+    setSessionNote(val);
+    latestNoteRef.current = val;
+    if (!masterTask) return;
+    const currentTaskId = masterTask.id;
+    const currentDate = activeOccDate;
+
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    debounceTimerRef.current = setTimeout(() => {
+      updateOccurrenceNote(currentTaskId, val, currentDate);
+    }, 400);
+  };
+
+  const handleNoteBlur = () => {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = null;
+    }
+    if (masterTask) {
+      updateOccurrenceNote(masterTask.id, latestNoteRef.current, activeOccDate);
+    }
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -320,12 +349,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </label>
           <textarea
             value={sessionNote}
-            onChange={(e) => {
-              const val = e.target.value;
-              setSessionNote(val);
-              updateOccurrenceNote(masterTask.id, val, activeOccDate);
-            }}
-            onBlur={() => updateOccurrenceNote(masterTask.id, sessionNote, activeOccDate)}
+            onChange={(e) => handleNoteChange(e.target.value)}
+            onBlur={handleNoteBlur}
             placeholder="Заметка к этой конкретной сессии (например: решилось легко за 15 мин)..."
             rows={2}
             style={{
