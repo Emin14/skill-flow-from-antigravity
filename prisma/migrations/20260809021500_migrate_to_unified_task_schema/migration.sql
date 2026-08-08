@@ -74,7 +74,7 @@ BEGIN
             COALESCE(t."scheduledDate", TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD')),
             COALESCE(t."status", 'Todo'),
             CASE WHEN t."status" = 'Done' THEN CURRENT_TIMESTAMP ELSE NULL END,
-            1,
+            0,
             0
         FROM "Task" t
         WHERE NOT EXISTS (
