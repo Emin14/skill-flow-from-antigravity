@@ -153,7 +153,7 @@ interface TaskState {
   fetchTasks: () => Promise<void>;
   addTask: (titleOrParams: string | AddTaskParams, priorityFallback?: TaskPriority) => Promise<Task>;
   toggleTaskStatus: (id: string, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
-  updateTaskStatus: (id: string, newStatus: TaskStatus, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
+  updateTaskStatus: (id: string, newStatus: TaskStatus, smartRating?: SmartRating, occurrenceDate?: string, pomodorosCount?: number) => Promise<void>;
   updateTaskParent: (id: string, parentTaskId: string | null) => Promise<void>;
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
   updateRepeatStatus: (id: string, repeatStatus: RepeatStatus) => Promise<void>;
@@ -480,7 +480,8 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     id: string,
     newStatus: TaskStatus,
     smartRating?: SmartRating,
-    occurrenceDate?: string
+    occurrenceDate?: string,
+    pomodorosCount?: number
   ) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
@@ -502,6 +503,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           status: newStatus,
           completedAt: newStatus === 'Done' ? nowIso : null,
           smartRating,
+          pomodorosCount: pomodorosCount ?? 1,
         };
         occs.push(targetOcc);
       } else {
@@ -512,6 +514,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
                 status: newStatus,
                 completedAt: newStatus === 'Done' ? nowIso : null,
                 smartRating: smartRating || (newStatus === 'Todo' ? undefined : o.smartRating),
+                pomodorosCount: pomodorosCount ?? o.pomodorosCount ?? 1,
               }
             : o
         );

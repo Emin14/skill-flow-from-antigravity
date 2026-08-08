@@ -150,9 +150,9 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
     }
   };
 
-  const handleSelectSmartRating = (rating: SmartRating) => {
+  const handleSelectSmartRating = (rating: SmartRating, pomodorosCount?: number) => {
     if (smartTask) {
-      updateTaskStatus(smartTask.id, 'Done', rating, todayStr);
+      updateTaskStatus(smartTask.id, 'Done', rating, activeDateStr, pomodorosCount);
       closeSmartModal();
     }
   };

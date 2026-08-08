@@ -132,9 +132,9 @@ export const CalendarPage: React.FC = () => {
     }
   };
 
-  const handleSelectSmartRating = (rating: SmartRating) => {
+  const handleSelectSmartRating = (rating: SmartRating, pomodorosCount?: number) => {
     if (smartTask) {
-      updateTaskStatus(smartTask.id, 'Done', rating, selectedDate);
+      updateTaskStatus(smartTask.id, 'Done', rating, selectedDate, pomodorosCount);
       setSmartTask(null);
     }
   };

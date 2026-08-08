@@ -60,7 +60,6 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
 
   const handleConfirm = () => {
     if (!selectedRating) return;
-    updateTaskPomodoros(task.id, selectedPomodoros);
     onSelectRating(selectedRating, selectedPomodoros);
     onClose();
   };
