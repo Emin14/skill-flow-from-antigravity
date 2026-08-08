@@ -59,9 +59,10 @@ ALTER TABLE "TaskOccurrence" ADD COLUMN IF NOT EXISTS "smartRating" TEXT;
 ALTER TABLE "Task" DROP CONSTRAINT IF EXISTS "Task_parentTaskId_fkey";
 ALTER TABLE "Task" ADD CONSTRAINT "Task_parentTaskId_fkey" FOREIGN KEY ("parentTaskId") REFERENCES "Task"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
--- Step 6: DATA MIGRATION — Transfer existing Task.scheduledDate & Task.status to TaskOccurrence
+-- Step 6: DATA MIGRATION — Transfer existing Task.scheduledDate & Task.status to TaskOccurrence and repeatStatus to taskState
 DO $$
 BEGIN
+    -- Transfer scheduledDate and status to TaskOccurrence
     IF EXISTS (
         SELECT 1 
         FROM information_schema.columns 
@@ -80,6 +81,17 @@ BEGIN
         WHERE NOT EXISTS (
             SELECT 1 FROM "TaskOccurrence" o WHERE o."taskId" = t."id"
         );
+    END IF;
+
+    -- Transfer repeatStatus to taskState before repeatStatus column is dropped
+    IF EXISTS (
+        SELECT 1 
+        FROM information_schema.columns 
+        WHERE table_name = 'Task' AND column_name = 'repeatStatus'
+    ) THEN
+        UPDATE "Task"
+        SET "taskState" = LOWER("repeatStatus")
+        WHERE "isRepeating" = true AND "parentTaskId" IS NULL AND "repeatStatus" IS NOT NULL;
     END IF;
 END $$;
 
