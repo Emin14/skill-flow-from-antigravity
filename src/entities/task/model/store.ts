@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { Task, TaskPriority, TaskStatus, TaskOccurrence, TaskRepetitionRecord, RepeatStatus } from './types';
 import { TaskCategory } from '@/shared/config/categories';
 import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS } from '@/shared/config/repetitionRules';
-import { taskRepository } from '@/shared/repository';
+import { taskApi } from '../api/taskApi';
 import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
@@ -320,7 +320,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
   fetchTasks: async () => {
     set({ isLoading: true, error: null });
     try {
-      const rawTasks = await taskRepository.getAll();
+      const rawTasks = await taskApi.getAll();
 
       // Clean up legacy cloned series tasks: group by title/seriesId and merge into single Task entity
       const cleanedMap = new Map<string, Task>();
@@ -473,7 +473,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       };
     }
 
-    const saved = await taskRepository.create(newTask);
+    const saved = await taskApi.create(newTask);
     set((state) => ({ tasks: [saved, ...state.tasks] }));
     useToastStore.getState().showToast(`Задача "${newTask.title}" создана`, 'success');
     useActivityStore.getState().logActivity('task_created', `Создана задача: "${newTask.title}"`);
@@ -594,7 +594,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
       }));
 
-      await taskRepository.update(id, updates);
+      await taskApi.update(id, updates);
 
       if (newStatus === 'Done') {
         playTaskCompletionSound();
@@ -682,7 +682,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       }),
     }));
 
-    await taskRepository.update(id, updates);
+    await taskApi.update(id, updates);
     if (newStatus === 'Done') {
       playTaskCompletionSound();
       useActivityStore.getState().logActivity('task_completed', `Выполнена задача: "${task.title}"`);
@@ -690,7 +690,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     for (const st of descendantTasks) {
       const updatedSub = updatedSubtasksMap.get(st.id);
       if (updatedSub) {
-        await taskRepository.update(st.id, {
+        await taskApi.update(st.id, {
           status: updatedSub.status,
           completedAt: updatedSub.completedAt,
           occurrences: updatedSub.occurrences,
@@ -698,7 +698,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           repetitionsCount: updatedSub.repetitionsCount,
         });
       } else {
-        await taskRepository.update(st.id, { status: 'Done', completedAt: nowIso });
+        await taskApi.update(st.id, { status: 'Done', completedAt: nowIso });
       }
     }
 
@@ -743,8 +743,8 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           }),
         }));
 
-        await taskRepository.update(id, { parentTaskId });
-        await taskRepository.update(parentTaskId, updates);
+        await taskApi.update(id, { parentTaskId });
+        await taskApi.update(parentTaskId, updates);
         if (isConvertingToProject) {
           useToastStore.getState().showToast(`Задача "${parentTask.title}" преобразована в проект`, 'success');
         } else {
@@ -758,7 +758,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
             set((state) => ({
               tasks: state.tasks.map((t) => (t.id === previousParentId ? { ...t, hasSubtasks: false } : t)),
             }));
-            await taskRepository.update(previousParentId, { hasSubtasks: false });
+            await taskApi.update(previousParentId, { hasSubtasks: false });
           }
         }
 
@@ -770,7 +770,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       tasks: state.tasks.map((t) => (t.id === id ? { ...t, parentTaskId } : t)),
     }));
 
-    await taskRepository.update(id, { parentTaskId });
+    await taskApi.update(id, { parentTaskId });
 
     if (previousParentId) {
       const remainingSubtasks = get().tasks.filter((t) => t.parentTaskId === previousParentId);
@@ -778,7 +778,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         set((state) => ({
           tasks: state.tasks.map((t) => (t.id === previousParentId ? { ...t, hasSubtasks: false } : t)),
         }));
-        await taskRepository.update(previousParentId, { hasSubtasks: false });
+        await taskApi.update(previousParentId, { hasSubtasks: false });
       }
     }
   },
@@ -827,7 +827,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }));
 
     try {
-      await taskRepository.update(id, updates);
+      await taskApi.update(id, updates);
     } catch (e) {
       set((state) => ({
         tasks: state.tasks.map((t) => (t.id === id ? task : t)),
@@ -886,7 +886,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }));
 
     try {
-      await taskRepository.update(id, updates);
+      await taskApi.update(id, updates);
       if (repeatStatus === 'Paused') {
         useToastStore.getState().showToast(`Повторение "${task.title}" приостановлено ⏸️`, 'info');
       } else if (repeatStatus === 'Completed') {
@@ -942,13 +942,13 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         tasks: state.tasks.map((t) => (t.id === id ? { ...t, occurrences: normalized, pomodorosCount: safeCount } : t)),
       }));
 
-      await taskRepository.update(id, { occurrences: normalized, pomodorosCount: safeCount });
+      await taskApi.update(id, { occurrences: normalized, pomodorosCount: safeCount });
     } else {
       set((state) => ({
         tasks: state.tasks.map((t) => (t.id === id ? { ...t, pomodorosCount: safeCount } : t)),
       }));
 
-      await taskRepository.update(id, { pomodorosCount: safeCount });
+      await taskApi.update(id, { pomodorosCount: safeCount });
     }
   },
 
@@ -989,7 +989,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
     }));
 
-    await taskRepository.update(id, updates);
+    await taskApi.update(id, updates);
   },
 
   updateOccurrenceDate: async (id: string, currentDateStr: string, newDateStr: string) => {
@@ -1029,7 +1029,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
     }));
 
-    await taskRepository.update(id, updates);
+    await taskApi.update(id, updates);
     useToastStore.getState().showToast(`Экземпляр перенесен на ${newDateStr}`, 'success');
   },
 
@@ -1073,13 +1073,13 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       }));
 
       for (const child of directChildren) {
-        await taskRepository.update(child.id, { parentTaskId: null });
+        await taskApi.update(child.id, { parentTaskId: null });
       }
 
       set((state) => ({
         tasks: state.tasks.filter((t) => t.id !== id),
       }));
-      await taskRepository.delete(id);
+      await taskApi.delete(id);
 
       useToastStore.getState().showToast(`Задача "${deletedTask.title}" удалена. Подзадачи сохранены как основные.`, 'info');
       return;
@@ -1105,7 +1105,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     });
 
     for (const t of allToDelete) {
-      await taskRepository.delete(t.id);
+      await taskApi.delete(t.id);
     }
 
     useToastStore.getState().showToast(
@@ -1113,7 +1113,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       'undo',
       async () => {
         for (const t of allToDelete) {
-          await taskRepository.create(t);
+          await taskApi.create(t);
         }
         set((state) => ({
           tasks: [...get().tasks, ...allToDelete.filter((t) => !get().tasks.some((existing) => existing.id === t.id))],
@@ -1152,7 +1152,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
       }));
 
-      await taskRepository.update(id, updates);
+      await taskApi.update(id, updates);
     } else {
       const updates: Partial<Task> = { scheduledDate: todayStr };
 
@@ -1160,7 +1160,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),
       }));
 
-      await taskRepository.update(id, updates);
+      await taskApi.update(id, updates);
     }
 
     useToastStore.getState().showToast(`Задача "${task.title}" перенесена на сегодня ☀️`, 'success');
@@ -1178,7 +1178,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       tasks: state.tasks.map((t) => (t.id === id ? { ...t, targetRepetitions: newTarget } : t)),
     }));
 
-    await taskRepository.update(id, { targetRepetitions: newTarget });
+    await taskApi.update(id, { targetRepetitions: newTarget });
     useToastStore.getState().showToast(`Цель повторений изменена на ${newTarget}`, 'info');
   },
 }));

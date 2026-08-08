@@ -1,0 +1,44 @@
+import { NextResponse } from 'next/server';
+import { prismaTaskRepository } from '@/entities/task/api/prisma-task.repository';
+
+export async function GET() {
+  try {
+    const tasks = await prismaTaskRepository.getAll();
+    return NextResponse.json(tasks);
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message || 'Failed to fetch tasks' }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const created = await prismaTaskRepository.create(body);
+    return NextResponse.json(created, { status: 201 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message || 'Failed to create task' }, { status: 500 });
+  }
+}
+
+export async function PUT(request: Request) {
+  try {
+    const body = await request.json();
+    const { id, ...updates } = body;
+    const updated = await prismaTaskRepository.update(id, updates);
+    return NextResponse.json(updated);
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message || 'Failed to update task' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'Missing task id' }, { status: 400 });
+    await prismaTaskRepository.delete(id);
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message || 'Failed to delete task' }, { status: 500 });
+  }
+}
