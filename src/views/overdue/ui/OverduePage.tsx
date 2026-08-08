@@ -19,9 +19,51 @@ export const OverduePage: React.FC = () => {
   const [detailTask, setDetailTask] = useState<Task | null>(null);
 
   // Category filter & Sorting state
-  const [categoryFilter, setCategoryFilter] = useState<string>('all');
-  const [sortKey, setSortKey] = useState<OverdueSortKey>('date');
-  const [sortDirection, setSortDirection] = useState<OverdueSortDirection>('asc');
+  const [categoryFilter, setCategoryFilter] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('overdue-category-filter');
+      if (saved) return saved;
+    }
+    return 'all';
+  });
+  const [sortKey, setSortKey] = useState<OverdueSortKey>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('overdue-sort-key') as OverdueSortKey;
+      if (saved && ['date', 'alphabetical', 'count'].includes(saved)) return saved;
+    }
+    return 'date';
+  });
+  const [sortDirection, setSortDirection] = useState<OverdueSortDirection>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('overdue-sort-direction') as OverdueSortDirection;
+      if (saved && ['asc', 'desc'].includes(saved)) return saved;
+    }
+    return 'asc';
+  });
+
+  const handleSelectCategoryFilter = (cat: string) => {
+    setCategoryFilter(cat);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('overdue-category-filter', cat);
+    }
+  };
+
+  const handleSelectSortKey = (key: OverdueSortKey) => {
+    setSortKey(key);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('overdue-sort-key', key);
+    }
+  };
+
+  const handleToggleDirection = () => {
+    setSortDirection((prev) => {
+      const next = prev === 'asc' ? 'desc' : 'asc';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('overdue-sort-direction', next);
+      }
+      return next;
+    });
+  };
 
   const todayStr = useMemo(() => getTodayStr(), []);
 
@@ -108,12 +150,12 @@ export const OverduePage: React.FC = () => {
       {/* Filter and Sorting Widget (Placed directly ABOVE "Свайп вправо...") */}
       <OverdueFilterSortWidget
         categoryFilter={categoryFilter}
-        onSelectCategoryFilter={setCategoryFilter}
+        onSelectCategoryFilter={handleSelectCategoryFilter}
         availableCategories={availableCategories}
         sortKey={sortKey}
-        onSelectSortKey={setSortKey}
+        onSelectSortKey={handleSelectSortKey}
         sortDirection={sortDirection}
-        onToggleDirection={() => setSortDirection((prev) => (prev === 'asc' ? 'desc' : 'asc'))}
+        onToggleDirection={handleToggleDirection}
       />
 
       {/* Locked Ultra-Minimalist Gesture Guide (Variant #1) */}

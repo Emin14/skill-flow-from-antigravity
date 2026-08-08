@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Input } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
+import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS } from '@/shared/config/repetitionRules';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
@@ -52,6 +53,7 @@ import { getCategoryColor } from '@/shared/config/categoryColors';
 export const QuickCreateModal: React.FC = () => {
   const { isOpen, closeModal } = useQuickCreateModalStore();
   const { addTask, tasks } = useTaskStore();
+  const storeCategories = useCategoryStore((s) => s.categories);
   const [cardVariant, setCardVariant] = useState<'1' | '2'>('1');
 
   useEffect(() => {
@@ -324,9 +326,9 @@ export const QuickCreateModal: React.FC = () => {
                   value={category}
                   onChange={(e) => setCategory(e.target.value as TaskCategory)}
                 >
-                  {TASK_CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
+                  {storeCategories.map((cat) => (
+                    <option key={cat.id || cat.name} value={cat.name}>
+                      {cat.name}
                     </option>
                   ))}
                 </select>

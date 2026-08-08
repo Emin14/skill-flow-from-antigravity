@@ -3,11 +3,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
+import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
 import { useActivityStore } from '@/entities/activity';
 import { TodayActivity } from '@/widgets/today-activity/ui/TodayActivity';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
+import { getCategoryColor } from '@/shared/config/categoryColors';
 import { Task } from '@/entities/task/model/types';
 import { formatLocalDateStr, getTodayStr } from '@/shared/lib/dateUtils';
+import { formatPomodorosCount } from '@/shared/lib/formatUtils';
 import {
   ResponsiveContainer,
   BarChart,
@@ -27,32 +30,29 @@ const CustomChartTooltip = ({ active, payload }: any) => {
     return (
       <div
         style={{
-          backgroundColor: 'var(--color-surface)',
+          background: 'var(--color-surface-elevated)',
           border: '1px solid var(--color-border)',
-          borderRadius: '14px',
+          borderRadius: '12px',
           padding: '10px 14px',
-          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)',
+          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+          fontSize: '12.5px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '6px',
-          fontSize: '12.5px',
-          minWidth: '175px',
+          gap: '4px',
         }}
       >
-        <div style={{ fontWeight: 700, fontSize: '13px', color: 'var(--color-text-primary)', borderBottom: '1px solid var(--color-border)', paddingBottom: '4px' }}>
-          {data.fullDateLabel}
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#10b981', fontWeight: 700 }}>
-          <span>✓ Выполнено:</span>
+        <span style={{ fontWeight: 700, color: 'var(--color-text-primary)' }}>{data.monthNameStr}</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#10b981', fontWeight: 600 }}>
+          <span>✓ Задачи:</span>
           <span>{data.tasksDoneCount}</span>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#0ea5e9', fontWeight: 600 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#6366f1', fontWeight: 600 }}>
           <span>🧠 Повторы:</span>
           <span>{data.repeatsCount}</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', color: '#f59e0b', fontWeight: 600 }}>
           <span>🍅 Помидоры:</span>
-          <span>{data.pomodorosCount}</span>
+          <span>{formatPomodorosCount(data.pomodorosCount)}</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--color-text-muted)', fontWeight: 500 }}>
           <span>📝 Создано:</span>
@@ -95,7 +95,7 @@ const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
       if (dateStr) {
         events.push({
           taskId: t.id,
-          category: t.category || 'Задача',
+          category: t.category || 'Без категории',
           dateStr,
         });
       }
@@ -106,7 +106,7 @@ const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
         if (occ.date && occ.status === 'Done') {
           events.push({
             taskId: t.id,
-            category: t.category || 'Задача',
+            category: t.category || 'Без категории',
             dateStr: occ.date,
           });
         }
@@ -120,7 +120,7 @@ const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
           if (!alreadyCountedInOcc) {
             events.push({
               taskId: t.id,
-              category: t.category || 'Задача',
+              category: t.category || 'Без категории',
               dateStr: record.date,
             });
           }
@@ -242,16 +242,28 @@ export const StatisticsPage: React.FC = () => {
   // 30-day comprehensive daily stats
   const daily30StatsMap = useMemo(() => getDaily30Stats(tasks), [tasks]);
 
+  const storeCategories = useCategoryStore((s) => s.categories);
+
   // Category completion statistics
   const categoryStats = useMemo(() => {
-    return TASK_CATEGORIES.map((cat) => {
-      const completedCount = categoryCompletionEvents.filter((ev) => ev.category === cat).length;
+    return storeCategories.map((catItem) => {
+      const cat = catItem.name;
+      const completedCount = categoryCompletionEvents.filter(
+        (ev) => (ev.category || 'Без категории').trim().toLowerCase() === cat.trim().toLowerCase()
+      ).length;
+
+      const todoCount = tasks.filter(
+        (t) => (t.category || 'Без категории').trim().toLowerCase() === cat.trim().toLowerCase() && t.status !== 'Done'
+      ).length;
+
       return {
         category: cat,
         completedCount,
+        todoCount,
+        color: catItem.color,
       };
     });
-  }, [categoryCompletionEvents]);
+  }, [categoryCompletionEvents, tasks, storeCategories]);
 
   // Category Donut Chart Data
   const categoryDonutData = useMemo(() => {
@@ -276,8 +288,8 @@ export const StatisticsPage: React.FC = () => {
     }
 
     const colorMap: Record<string, string> = {};
-    const slices = activeCategories.map((c, idx) => {
-      const color = palette[idx % palette.length];
+    const slices = activeCategories.map((c) => {
+      const color = c.color || getCategoryColor(c.category);
       colorMap[c.category] = color;
       return {
         name: c.category,
@@ -794,7 +806,7 @@ export const StatisticsPage: React.FC = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--color-text-primary)' }}>
               <span style={{ color: 'var(--color-text-muted)', fontWeight: 500 }}>Помидоры:</span>
-              <span style={{ fontWeight: 800, color: '#f59e0b' }}>{selectedDayStats.pomodorosCount}</span>
+              <span style={{ fontWeight: 800, color: '#f59e0b' }}>{formatPomodorosCount(selectedDayStats.pomodorosCount)}</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--color-text-primary)' }}>
               <span style={{ color: 'var(--color-text-muted)', fontWeight: 500 }}>Повторы:</span>
@@ -1070,9 +1082,9 @@ export const StatisticsPage: React.FC = () => {
 
           {/* Clean, Compact Category List */}
           <div className={styles.categoryListGroup}>
-            {categoryStats.map(({ category, completedCount }) => {
+            {categoryStats.map(({ category, completedCount, color }) => {
               const isZero = completedCount === 0;
-              const catColor = categoryDonutData.colorMap?.[category] || 'var(--color-border)';
+              const catColor = color || categoryDonutData.colorMap?.[category] || 'var(--color-border)';
 
               return (
                 <div
@@ -1087,6 +1099,7 @@ export const StatisticsPage: React.FC = () => {
                         height: '8px',
                         borderRadius: '50%',
                         backgroundColor: isZero ? 'var(--color-text-disabled)' : catColor,
+                        boxShadow: isZero ? 'none' : `0 0 6px ${catColor}60`,
                         flexShrink: 0,
                       }}
                     />

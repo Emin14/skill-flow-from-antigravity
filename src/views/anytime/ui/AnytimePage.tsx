@@ -4,13 +4,15 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore, GlassmorphicTaskCard } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
-import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
+import { TaskCategory } from '@/shared/config/categories';
+import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import styles from './AnytimePage.module.css';
 
 export const AnytimePage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTask } = useTaskStore();
+  const storeCategories = useCategoryStore((s) => s.categories);
 
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
@@ -32,8 +34,8 @@ export const AnytimePage: React.FC = () => {
   // Available categories (only those with tasks)
   const usedCategories = useMemo(() => {
     const cats = new Set(anytimeTasks.map((t) => t.category || 'Без категории'));
-    return TASK_CATEGORIES.filter((c) => cats.has(c));
-  }, [anytimeTasks]);
+    return storeCategories.map((c) => c.name).filter((name) => cats.has(name));
+  }, [anytimeTasks, storeCategories]);
 
   // Filtered tasks by selected category
   const filteredTasks = useMemo(() => {

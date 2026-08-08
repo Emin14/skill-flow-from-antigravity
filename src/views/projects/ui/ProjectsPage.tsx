@@ -19,7 +19,13 @@ import { getCategoryColor } from '@/shared/config/categoryColors';
 
 export const ProjectsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskParent, updateTaskDetails, deleteTaskOccurrence } = useTaskStore();
-  const [activeFilter, setActiveFilter] = useState<ProjectFilterType>('all');
+  const [activeFilter, setActiveFilter] = useState<ProjectFilterType>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('projects-filter-key') as ProjectFilterType;
+      if (saved && ['all', 'active', 'completed', 'has_overdue'].includes(saved)) return saved;
+    }
+    return 'all';
+  });
   const [progressMode, setProgressMode] = useState<ProjectProgressMode>('today');
   const [subtaskVariantId, setSubtaskVariantId] = useState<SubtaskVariantId>(18);
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
@@ -35,6 +41,13 @@ export const ProjectsPage: React.FC = () => {
       setProgressMode(savedMode);
     }
   }, [fetchTasks]);
+
+  const handleSelectFilter = (filter: ProjectFilterType) => {
+    setActiveFilter(filter);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('projects-filter-key', filter);
+    }
+  };
 
   const handleToggleProgressMode = (mode: ProjectProgressMode) => {
     setProgressMode(mode);
@@ -212,7 +225,7 @@ export const ProjectsPage: React.FC = () => {
       {/* 1. Original Filter Tabs Widget */}
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
-        onSelectFilter={setActiveFilter}
+        onSelectFilter={handleSelectFilter}
         progressMode={progressMode}
         onToggleProgressMode={handleToggleProgressMode}
       />

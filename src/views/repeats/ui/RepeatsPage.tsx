@@ -12,9 +12,51 @@ import styles from './RepeatsPage.module.css';
 
 export const RepeatsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks } = useTaskStore();
-  const [sortKey, setSortKey] = useState<HabitSortKey>('overdue');
-  const [sortDirection, setSortDirection] = useState<HabitSortDirection>('desc');
-  const [repeatStatusFilter, setRepeatStatusFilter] = useState<RepeatStatusFilter>('Active');
+  const [sortKey, setSortKey] = useState<HabitSortKey>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('repeats-sort-key') as HabitSortKey;
+      if (saved && ['overdue', 'alphabetical', 'count', 'created'].includes(saved)) return saved;
+    }
+    return 'overdue';
+  });
+  const [sortDirection, setSortDirection] = useState<HabitSortDirection>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('repeats-sort-direction') as HabitSortDirection;
+      if (saved && ['asc', 'desc'].includes(saved)) return saved;
+    }
+    return 'desc';
+  });
+  const [repeatStatusFilter, setRepeatStatusFilter] = useState<RepeatStatusFilter>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('repeats-status-filter') as RepeatStatusFilter;
+      if (saved && ['Active', 'Paused', 'Completed', 'all'].includes(saved)) return saved;
+    }
+    return 'Active';
+  });
+
+  const handleSelectSortKey = (key: HabitSortKey) => {
+    setSortKey(key);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('repeats-sort-key', key);
+    }
+  };
+
+  const handleToggleDirection = () => {
+    setSortDirection((prev) => {
+      const next = prev === 'desc' ? 'asc' : 'desc';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('repeats-sort-direction', next);
+      }
+      return next;
+    });
+  };
+
+  const handleSelectRepeatStatusFilter = (filter: RepeatStatusFilter) => {
+    setRepeatStatusFilter(filter);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('repeats-status-filter', filter);
+    }
+  };
 
   useEffect(() => {
     fetchTasks();
@@ -83,9 +125,9 @@ export const RepeatsPage: React.FC = () => {
         sortKey={sortKey}
         sortDirection={sortDirection}
         repeatStatusFilter={repeatStatusFilter}
-        onSelectSortKey={setSortKey}
-        onToggleDirection={() => setSortDirection((prev) => (prev === 'desc' ? 'asc' : 'desc'))}
-        onSelectRepeatStatusFilter={setRepeatStatusFilter}
+        onSelectSortKey={handleSelectSortKey}
+        onToggleDirection={handleToggleDirection}
+        onSelectRepeatStatusFilter={handleSelectRepeatStatusFilter}
         statusCounts={statusCounts}
       />
 

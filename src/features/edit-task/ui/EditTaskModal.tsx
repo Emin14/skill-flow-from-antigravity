@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Input } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
+import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
 import { Task, TaskPriority, TaskStatus, RepeatStatus } from '@/entities/task/model/types';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { getCategoryColor } from '@/shared/config/categoryColors';
@@ -89,6 +90,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const [openPopover, setOpenPopover] = useState<PopoverKey>(null);
   const hiddenNativeInputRef = useRef<HTMLInputElement>(null);
   const activePopoverRef = useRef<HTMLDivElement>(null);
+  const storeCategories = useCategoryStore((s) => s.categories);
 
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState<TaskCategory>('Без категории');
@@ -383,9 +385,9 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   value={category}
                   onChange={(e) => setCategory(e.target.value as TaskCategory)}
                 >
-                  {TASK_CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
+                  {storeCategories.map((cat) => (
+                    <option key={cat.id || cat.name} value={cat.name}>
+                      {cat.name}
                     </option>
                   ))}
                 </select>
