@@ -100,23 +100,12 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const handleNoteChange = (val: string) => {
     setSessionNote(val);
     latestNoteRef.current = val;
-    if (!masterTask) return;
-    const currentTaskId = masterTask.id;
-    const currentDate = activeOccDate;
-
-    if (debounceTimerRef.current) {
-      clearTimeout(debounceTimerRef.current);
+    if (masterTask) {
+      updateOccurrenceNote(masterTask.id, val, activeOccDate);
     }
-    debounceTimerRef.current = setTimeout(() => {
-      updateOccurrenceNote(currentTaskId, val, currentDate);
-    }, 400);
   };
 
   const handleNoteBlur = () => {
-    if (debounceTimerRef.current) {
-      clearTimeout(debounceTimerRef.current);
-      debounceTimerRef.current = null;
-    }
     if (masterTask) {
       updateOccurrenceNote(masterTask.id, latestNoteRef.current, activeOccDate);
     }
@@ -211,11 +200,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const todayOccurrence = masterTask.occurrences?.find((o) => o.date === activeOccDate);
   const isTodayDone = masterTask.isRepeating ? todayOccurrence?.status === 'Done' : masterTask.status === 'Done';
 
-  const handleRatingClick = async (ratingKey: SmartRating) => {
+  const handleRatingClick = (ratingKey: SmartRating) => {
     setSelectedRating(ratingKey);
-    if (masterTask) {
-      await updateTaskDetails(masterTask.id, { lastSmartRating: ratingKey });
-    }
   };
 
   const handleToggleTodayOccurrence = async () => {

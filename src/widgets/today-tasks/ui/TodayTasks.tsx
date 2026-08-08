@@ -140,9 +140,8 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
       toggleTaskStatus(task.id, undefined, activeDateStr);
     } else if (isSmartRepeatTask(task)) {
       const currentOcc = task.occurrences?.find((o) => o.date === activeDateStr);
-      const preRating = currentOcc?.smartRating || task.lastSmartRating;
-      if (preRating) {
-        updateTaskStatus(task.id, 'Done', preRating, activeDateStr);
+      if (currentOcc?.smartRating) {
+        updateTaskStatus(task.id, 'Done', currentOcc.smartRating, activeDateStr);
       } else {
         openSmartModal(task);
       }

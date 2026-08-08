@@ -54,9 +54,8 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
 
   if (!isOpen || !task) return null;
 
-  const handlePickRating = async (ratingKey: SmartRating) => {
+  const handlePickRating = (ratingKey: SmartRating) => {
     setSelectedRating(ratingKey);
-    await updateTaskDetails(task.id, { lastSmartRating: ratingKey });
   };
 
   const handleConfirm = () => {
