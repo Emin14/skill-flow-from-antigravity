@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS "_TaskTags" (
 
 CREATE INDEX IF NOT EXISTS "_TaskTags_B_index" ON "_TaskTags"("B");
 
--- Add foreign keys for _TaskTags
+-- Add foreign keys for _TaskTags (A -> Tag.id, B -> Task.id per Prisma alphabetical naming convention)
 DO $$
 BEGIN
     IF NOT EXISTS (
@@ -40,18 +40,26 @@ BEGIN
     END IF;
 END $$;
 
--- Step 3: Add new columns to TaskOccurrence safely
+-- Step 3: Add new columns to Task table if they don't exist yet
+ALTER TABLE "Task" ADD COLUMN IF NOT EXISTS "sortOrder" INTEGER;
+ALTER TABLE "Task" ADD COLUMN IF NOT EXISTS "currentIntervalDays" DOUBLE PRECISION;
+ALTER TABLE "Task" ADD COLUMN IF NOT EXISTS "taskState" TEXT;
+ALTER TABLE "Task" ADD COLUMN IF NOT EXISTS "targetRepetitions" INTEGER;
+ALTER TABLE "Task" ADD COLUMN IF NOT EXISTS "afterCompletionDays" INTEGER;
+ALTER TABLE "Task" ADD COLUMN IF NOT EXISTS "spacedStepIndex" INTEGER;
+ALTER TABLE "Task" ADD COLUMN IF NOT EXISTS "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- Step 4: Add new columns to TaskOccurrence safely
 ALTER TABLE "TaskOccurrence" ADD COLUMN IF NOT EXISTS "note" TEXT;
 ALTER TABLE "TaskOccurrence" ADD COLUMN IF NOT EXISTS "startedAt" TIMESTAMP(3);
 ALTER TABLE "TaskOccurrence" ADD COLUMN IF NOT EXISTS "activeMinutes" DOUBLE PRECISION DEFAULT 0;
 ALTER TABLE "TaskOccurrence" ADD COLUMN IF NOT EXISTS "smartRating" TEXT;
 
--- Step 4: Update foreign key on Task.parentTaskId to ON DELETE SET NULL
+-- Step 5: Update foreign key on Task.parentTaskId to ON DELETE SET NULL
 ALTER TABLE "Task" DROP CONSTRAINT IF EXISTS "Task_parentTaskId_fkey";
 ALTER TABLE "Task" ADD CONSTRAINT "Task_parentTaskId_fkey" FOREIGN KEY ("parentTaskId") REFERENCES "Task"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
--- Step 5: DATA MIGRATION — Transfer existing Task.scheduledDate & Task.status to TaskOccurrence
--- For any existing Task record that does NOT have an occurrence entry yet, create one from scheduledDate and status.
+-- Step 6: DATA MIGRATION — Transfer existing Task.scheduledDate & Task.status to TaskOccurrence
 DO $$
 BEGIN
     IF EXISTS (
@@ -75,7 +83,7 @@ BEGIN
     END IF;
 END $$;
 
--- Step 6: Safely DROP old stored columns from Task AFTER data migration
+-- Step 7: Safely DROP old stored columns from Task AFTER data migration
 ALTER TABLE "Task" DROP COLUMN IF EXISTS "scheduledDate";
 ALTER TABLE "Task" DROP COLUMN IF EXISTS "status";
 ALTER TABLE "Task" DROP COLUMN IF EXISTS "repeatStatus";
