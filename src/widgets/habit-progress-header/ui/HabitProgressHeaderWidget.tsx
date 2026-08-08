@@ -44,105 +44,67 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
   const isDesc = sortDirection === 'desc';
 
   return (
-    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px', boxSizing: 'border-box' }}>
-      {/* Repeat Status Segmented Pills Bar */}
+    <div style={{ width: '100%', marginBottom: '14px', boxSizing: 'border-box' }}>
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '3px',
-          padding: '4px',
-          borderRadius: '14px',
-          background: 'var(--color-surface-hover)',
-          border: '1px solid var(--color-border)',
-          width: '100%',
-          boxSizing: 'border-box',
-          overflowX: 'auto',
-          scrollbarWidth: 'none',
-          WebkitTapHighlightColor: 'transparent',
-          touchAction: 'manipulation',
-        }}
-      >
-        {STATUS_ITEMS.map((item) => {
-          const isActive = repeatStatusFilter === item.id;
-          const count = statusCounts && item.countKey ? statusCounts[item.countKey] : null;
-          return (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => onSelectRepeatStatusFilter(item.id)}
-              style={{
-                flex: 1,
-                padding: '6px 8px',
-                borderRadius: '10px',
-                border: 'none',
-                fontSize: '11.5px',
-                fontWeight: isActive ? 700 : 500,
-                cursor: 'pointer',
-                background: isActive ? 'var(--color-accent)' : 'transparent',
-                color: isActive ? '#ffffff' : 'var(--color-text-muted)',
-                boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
-                transition: 'all 0.12s ease',
-                whiteSpace: 'nowrap',
-                flexShrink: 0,
-                WebkitTapHighlightColor: 'transparent',
-                touchAction: 'manipulation',
-              }}
-            >
-              {item.label} {count !== null ? `(${count})` : ''}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Sort Key Segmented Bar + Direction Toggle Button */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
           gap: '6px',
           padding: '4px',
-          borderRadius: '14px',
+          borderRadius: '16px',
           background: 'var(--color-surface-hover)',
           border: '1px solid var(--color-border)',
           width: '100%',
           boxSizing: 'border-box',
-          WebkitTapHighlightColor: 'transparent',
-          touchAction: 'manipulation',
         }}
       >
-        <div style={{ display: 'flex', gap: '3px', flex: 1, minWidth: 0, overflowX: 'auto', scrollbarWidth: 'none' }}>
-          {SORT_ITEMS.map((item) => {
-            const isActive = sortKey === item.id;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => onSelectSortKey(item.id)}
-                style={{
-                  flex: 1,
-                  padding: '5px 6px',
-                  borderRadius: '10px',
-                  border: 'none',
-                  fontSize: '11.5px',
-                  fontWeight: isActive ? 700 : 500,
-                  cursor: 'pointer',
-                  background: isActive ? 'var(--color-accent)' : 'transparent',
-                  color: isActive ? '#ffffff' : 'var(--color-text-muted)',
-                  boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
-                  transition: 'all 0.12s ease',
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                  WebkitTapHighlightColor: 'transparent',
-                  touchAction: 'manipulation',
-                }}
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
+        {/* Status Filter Select */}
+        <select
+          value={repeatStatusFilter}
+          onChange={(e) => onSelectRepeatStatusFilter(e.target.value as RepeatStatusFilter)}
+          style={{
+            flex: 1,
+            minWidth: 0,
+            padding: '7px 10px',
+            borderRadius: '12px',
+            border: '1px solid var(--color-border)',
+            background: 'var(--color-surface)',
+            color: 'var(--color-text-primary)',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            outline: 'none',
+          }}
+        >
+          <option value="Active">▶️ Активные ({statusCounts?.active ?? 0})</option>
+          <option value="Paused">⏸️ Пауза ({statusCounts?.paused ?? 0})</option>
+          <option value="Completed">✅ Готово ({statusCounts?.completed ?? 0})</option>
+          <option value="all">🥞 Все ({statusCounts?.total ?? 0})</option>
+        </select>
+
+        {/* Sort Key Select */}
+        <select
+          value={sortKey}
+          onChange={(e) => onSelectSortKey(e.target.value as HabitSortKey)}
+          style={{
+            flex: 1,
+            minWidth: 0,
+            padding: '7px 10px',
+            borderRadius: '12px',
+            border: '1px solid var(--color-border)',
+            background: 'var(--color-surface)',
+            color: 'var(--color-text-primary)',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            outline: 'none',
+          }}
+        >
+          <option value="overdue">📅 По сроку</option>
+          <option value="alphabetical">🔤 По названию</option>
+          <option value="count">📊 По повторам</option>
+          <option value="created">🕒 По созданию</option>
+        </select>
 
         {/* Direction Toggle Button */}
         <button
@@ -153,15 +115,13 @@ export const HabitProgressHeaderWidget: React.FC<HabitProgressHeaderWidgetProps>
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '5px 9px',
-            borderRadius: '10px',
+            padding: '7px 10px',
+            borderRadius: '12px',
             border: '1px solid var(--color-border)',
             background: 'var(--color-surface)',
             color: 'var(--color-text-primary)',
             cursor: 'pointer',
             flexShrink: 0,
-            WebkitTapHighlightColor: 'transparent',
-            touchAction: 'manipulation',
           }}
         >
           {isDesc ? <ArrowDown size={14} /> : <ArrowUp size={14} />}

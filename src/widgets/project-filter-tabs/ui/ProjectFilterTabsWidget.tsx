@@ -26,59 +26,44 @@ export const ProjectFilterTabsWidget: React.FC<ProjectFilterTabsWidgetProps> = (
   onToggleProgressMode,
 }) => {
   return (
-    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px', boxSizing: 'border-box' }}>
-      {/* Upper Bar: Smooth iOS Segmented Tabs for Project Filter */}
+    <div style={{ width: '100%', marginBottom: '12px', boxSizing: 'border-box' }}>
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '6px',
+          gap: '8px',
           padding: '4px',
-          borderRadius: '14px',
+          borderRadius: '16px',
           background: 'var(--color-surface-hover)',
           border: '1px solid var(--color-border)',
           width: '100%',
           boxSizing: 'border-box',
-          WebkitTapHighlightColor: 'transparent',
-          touchAction: 'manipulation',
-          overflowX: 'auto',
-          scrollbarWidth: 'none',
         }}
       >
-        {/* iOS Segmented Pills Bar */}
-        <div style={{ display: 'flex', gap: '3px', flex: 1, minWidth: 0 }}>
-          {FILTER_ITEMS.map((item) => {
-            const isActive = activeFilter === item.id;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => onSelectFilter(item.id)}
-                style={{
-                  flex: 1,
-                  padding: '6px 8px',
-                  borderRadius: '10px',
-                  border: 'none',
-                  fontSize: '11.5px',
-                  fontWeight: isActive ? 700 : 500,
-                  cursor: 'pointer',
-                  background: isActive ? 'var(--color-accent)' : 'transparent',
-                  color: isActive ? '#ffffff' : 'var(--color-text-muted)',
-                  boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
-                  transition: 'all 0.12s ease',
-                  whiteSpace: 'nowrap',
-                  WebkitTapHighlightColor: 'transparent',
-                  touchAction: 'manipulation',
-                  userSelect: 'none',
-                  WebkitUserSelect: 'none',
-                }}
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
+        {/* Filter Dropdown Select */}
+        <select
+          value={activeFilter}
+          onChange={(e) => onSelectFilter(e.target.value as ProjectFilterType)}
+          style={{
+            flex: 1,
+            minWidth: 0,
+            padding: '7px 12px',
+            borderRadius: '12px',
+            border: '1px solid var(--color-border)',
+            background: 'var(--color-surface)',
+            color: 'var(--color-text-primary)',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            outline: 'none',
+          }}
+        >
+          <option value="all">🥞 Все задачи</option>
+          <option value="active">🔘 Активные</option>
+          <option value="completed">🎯 Завершенные</option>
+          <option value="has_overdue">⚠️ Просроченные</option>
+        </select>
 
         {/* Mode Switcher: Today / All Time */}
         <div
@@ -87,21 +72,19 @@ export const ProjectFilterTabsWidget: React.FC<ProjectFilterTabsWidgetProps> = (
             alignItems: 'center',
             background: 'var(--color-surface)',
             border: '1px solid var(--color-border)',
-            borderRadius: '10px',
+            borderRadius: '12px',
             padding: '2px',
             gap: '2px',
             flexShrink: 0,
-            WebkitTapHighlightColor: 'transparent',
-            touchAction: 'manipulation',
           }}
         >
           <button
             type="button"
             onClick={() => onToggleProgressMode('today')}
-            title="Проценты на сегодня (по текущим экземплярам)"
+            title="Проценты на сегодня"
             style={{
-              padding: '4px 8px',
-              borderRadius: '8px',
+              padding: '4px 9px',
+              borderRadius: '9px',
               border: 'none',
               fontSize: '11px',
               fontWeight: progressMode === 'today' ? 700 : 500,
@@ -110,8 +93,6 @@ export const ProjectFilterTabsWidget: React.FC<ProjectFilterTabsWidgetProps> = (
               color: progressMode === 'today' ? '#ffffff' : 'var(--color-text-muted)',
               transition: 'all 0.12s ease',
               whiteSpace: 'nowrap',
-              WebkitTapHighlightColor: 'transparent',
-              touchAction: 'manipulation',
             }}
           >
             📅 Сегодня
@@ -119,10 +100,10 @@ export const ProjectFilterTabsWidget: React.FC<ProjectFilterTabsWidgetProps> = (
           <button
             type="button"
             onClick={() => onToggleProgressMode('all_time')}
-            title="Проценты за всё время (только мастер-статус)"
+            title="Проценты за всё время"
             style={{
-              padding: '4px 8px',
-              borderRadius: '8px',
+              padding: '4px 9px',
+              borderRadius: '9px',
               border: 'none',
               fontSize: '11px',
               fontWeight: progressMode === 'all_time' ? 700 : 500,
@@ -131,8 +112,6 @@ export const ProjectFilterTabsWidget: React.FC<ProjectFilterTabsWidgetProps> = (
               color: progressMode === 'all_time' ? '#ffffff' : 'var(--color-text-muted)',
               transition: 'all 0.12s ease',
               whiteSpace: 'nowrap',
-              WebkitTapHighlightColor: 'transparent',
-              touchAction: 'manipulation',
             }}
           >
             ♾️ Всё время

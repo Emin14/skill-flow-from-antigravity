@@ -34,127 +34,70 @@ export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = (
   const isDesc = sortDirection === 'desc';
 
   return (
-    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px', boxSizing: 'border-box' }}>
-      {/* Category Pills Bar (Horizontal Scrollable iOS Pill Strip) */}
+    <div style={{ width: '100%', marginBottom: '12px', boxSizing: 'border-box' }}>
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '4px',
-          padding: '4px',
-          borderRadius: '14px',
-          background: 'var(--color-surface-hover)',
-          border: '1px solid var(--color-border)',
-          width: '100%',
-          boxSizing: 'border-box',
-          overflowX: 'auto',
-          scrollbarWidth: 'none',
-          WebkitTapHighlightColor: 'transparent',
-          touchAction: 'manipulation',
-        }}
-      >
-        <button
-          type="button"
-          onClick={() => onSelectCategoryFilter('all')}
-          style={{
-            padding: '5px 10px',
-            borderRadius: '10px',
-            border: 'none',
-            fontSize: '11.5px',
-            fontWeight: categoryFilter === 'all' ? 700 : 500,
-            cursor: 'pointer',
-            background: categoryFilter === 'all' ? 'var(--color-accent)' : 'transparent',
-            color: categoryFilter === 'all' ? '#ffffff' : 'var(--color-text-muted)',
-            boxShadow: categoryFilter === 'all' ? '0 2px 8px var(--color-accent-border)' : 'none',
-            transition: 'all 0.12s ease',
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-            WebkitTapHighlightColor: 'transparent',
-            touchAction: 'manipulation',
-          }}
-        >
-          🥞 Все
-        </button>
-
-        {availableCategories.map((cat) => {
-          const isActive = categoryFilter === cat;
-          return (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => onSelectCategoryFilter(cat)}
-              style={{
-                padding: '5px 10px',
-                borderRadius: '10px',
-                border: 'none',
-                fontSize: '11.5px',
-                fontWeight: isActive ? 700 : 500,
-                cursor: 'pointer',
-                background: isActive ? 'var(--color-accent)' : 'transparent',
-                color: isActive ? '#ffffff' : 'var(--color-text-muted)',
-                boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
-                transition: 'all 0.12s ease',
-                whiteSpace: 'nowrap',
-                flexShrink: 0,
-                WebkitTapHighlightColor: 'transparent',
-                touchAction: 'manipulation',
-              }}
-            >
-              📁 {cat}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Sort Key Segmented Bar + Direction Toggle Button */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
           gap: '6px',
           padding: '4px',
-          borderRadius: '14px',
+          borderRadius: '16px',
           background: 'var(--color-surface-hover)',
           border: '1px solid var(--color-border)',
           width: '100%',
           boxSizing: 'border-box',
-          WebkitTapHighlightColor: 'transparent',
-          touchAction: 'manipulation',
         }}
       >
-        <div style={{ display: 'flex', gap: '3px', flex: 1, minWidth: 0 }}>
-          {SORT_ITEMS.map((item) => {
-            const isActive = sortKey === item.id;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => onSelectSortKey(item.id)}
-                style={{
-                  flex: 1,
-                  padding: '5px 8px',
-                  borderRadius: '10px',
-                  border: 'none',
-                  fontSize: '11.5px',
-                  fontWeight: isActive ? 700 : 500,
-                  cursor: 'pointer',
-                  background: isActive ? 'var(--color-accent)' : 'transparent',
-                  color: isActive ? '#ffffff' : 'var(--color-text-muted)',
-                  boxShadow: isActive ? '0 2px 8px var(--color-accent-border)' : 'none',
-                  transition: 'all 0.12s ease',
-                  whiteSpace: 'nowrap',
-                  WebkitTapHighlightColor: 'transparent',
-                  touchAction: 'manipulation',
-                }}
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </div>
+        {/* Category Filter Select */}
+        <select
+          value={categoryFilter}
+          onChange={(e) => onSelectCategoryFilter(e.target.value)}
+          style={{
+            flex: 1,
+            minWidth: 0,
+            padding: '7px 10px',
+            borderRadius: '12px',
+            border: '1px solid var(--color-border)',
+            background: 'var(--color-surface)',
+            color: 'var(--color-text-primary)',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            outline: 'none',
+          }}
+        >
+          <option value="all">🥞 Все категории</option>
+          {availableCategories.map((cat) => (
+            <option key={cat} value={cat}>
+              📁 {cat}
+            </option>
+          ))}
+        </select>
 
-        {/* Sort Direction Toggle Button */}
+        {/* Sort Key Select */}
+        <select
+          value={sortKey}
+          onChange={(e) => onSelectSortKey(e.target.value as OverdueSortKey)}
+          style={{
+            flex: 1,
+            minWidth: 0,
+            padding: '7px 10px',
+            borderRadius: '12px',
+            border: '1px solid var(--color-border)',
+            background: 'var(--color-surface)',
+            color: 'var(--color-text-primary)',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            outline: 'none',
+          }}
+        >
+          <option value="date">📅 По дате</option>
+          <option value="alphabetical">🔤 По алфавиту</option>
+          <option value="count">📊 По выполнению</option>
+        </select>
+
+        {/* Direction Toggle Button */}
         <button
           type="button"
           onClick={onToggleDirection}
@@ -163,15 +106,13 @@ export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = (
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '5px 9px',
-            borderRadius: '10px',
+            padding: '7px 10px',
+            borderRadius: '12px',
             border: '1px solid var(--color-border)',
             background: 'var(--color-surface)',
             color: 'var(--color-text-primary)',
             cursor: 'pointer',
             flexShrink: 0,
-            WebkitTapHighlightColor: 'transparent',
-            touchAction: 'manipulation',
           }}
         >
           {isDesc ? <ArrowDown size={14} /> : <ArrowUp size={14} />}
