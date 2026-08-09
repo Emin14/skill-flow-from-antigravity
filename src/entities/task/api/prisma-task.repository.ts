@@ -200,7 +200,7 @@ export class PrismaTaskRepository {
           scheduleFrequency: effectiveIsRepeating ? (task.scheduleFrequency || null) : null,
           targetRepetitions: effectiveIsRepeating ? parseNumInt(task.targetRepetitions) : null,
           afterCompletionDays: effectiveIsRepeating ? parseNumInt(task.afterCompletionDays) : null,
-          currentIntervalDays: effectiveIsRepeating ? parseNumFloat(task.currentIntervalDays) : null,
+          currentIntervalDays: effectiveIsRepeating ? parseNumInt(task.currentIntervalDays) : null,
           spacedStepIndex: effectiveIsRepeating ? parseNumInt(task.spacedStepIndex) : null,
           sortOrder: parseNumInt(task.sortOrder),
           topicId: effectiveTopicId,
@@ -279,7 +279,7 @@ export class PrismaTaskRepository {
           if (updates.scheduleFrequency !== undefined) taskUpdateData.scheduleFrequency = updates.scheduleFrequency;
           if (updates.targetRepetitions !== undefined) taskUpdateData.targetRepetitions = parseNumInt(updates.targetRepetitions);
           if (updates.afterCompletionDays !== undefined) taskUpdateData.afterCompletionDays = parseNumInt(updates.afterCompletionDays);
-          if (updates.currentIntervalDays !== undefined) taskUpdateData.currentIntervalDays = parseNumFloat(updates.currentIntervalDays);
+          if (updates.currentIntervalDays !== undefined) taskUpdateData.currentIntervalDays = parseNumInt(updates.currentIntervalDays);
           if (updates.spacedStepIndex !== undefined) taskUpdateData.spacedStepIndex = parseNumInt(updates.spacedStepIndex);
         }
 
