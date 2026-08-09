@@ -281,20 +281,61 @@
 .taskDots {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   position: absolute;
-  bottom: 3px;
+  bottom: 4px;
 }
 
 .dot {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #38bdf8;
+  border: 1px solid rgba(15, 23, 42, 0.7);
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.9);
+  transition: all 0.18s ease;
 }
 
 .dotDone {
   background: #10b981;
+  border: 1px solid rgba(15, 23, 42, 0.7);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.9);
+}
+
+:global([data-theme="light"]) .dot {
+  background: #0284c7;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 6px rgba(2, 132, 199, 0.7);
+}
+
+:global([data-theme="light"]) .dotDone {
+  background: #059669;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 6px rgba(5, 150, 105, 0.7);
+}
+
+.dateCellActive .dot {
+  background: #38bdf8 !important;
+  border: 1px solid #ffffff !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9) !important;
+}
+
+.dateCellActive .dotDone {
+  background: #34d399 !important;
+  border: 1px solid #ffffff !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9) !important;
+}
+
+.dateCellToday .dot {
+  background: #0284c7 !important;
+  border: 1px solid #0f172a !important;
+  box-shadow: 0 0 6px rgba(15, 23, 42, 0.8) !important;
+}
+
+.dateCellToday .dotDone {
+  background: #047857 !important;
+  border: 1px solid #0f172a !important;
+  box-shadow: 0 0 6px rgba(15, 23, 42, 0.8) !important;
 }
 
 /* ── 10 DISTINCT SIZE / SCALE VARIANTS ── */

@@ -812,10 +812,6 @@ export const StatisticsPage: React.FC = () => {
               <span style={{ color: 'var(--color-text-muted)', fontWeight: 500 }}>Повторы:</span>
               <span style={{ fontWeight: 800, color: '#0ea5e9' }}>{selectedDayStats.repeatsCount}</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--color-text-primary)' }}>
-              <span style={{ color: 'var(--color-text-muted)', fontWeight: 500 }}>Создано:</span>
-              <span style={{ fontWeight: 800, color: 'var(--color-text-primary)' }}>{selectedDayStats.createdCount}</span>
-            </div>
           </div>
         </div>
       </Card>
