@@ -103,7 +103,7 @@ export class PrismaTaskRepository {
     // Business Rule: Subtasks can NEVER be repeating (isRepeating is always false for subtasks)
     const effectiveIsRepeating = effectiveParentId ? false : (task.isRepeating ?? false);
 
-    const occurrencesData = (task.occurrences || []).map((o) => ({
+    let occurrencesData = (task.occurrences || []).map((o) => ({
       id: o.id || uuidv4(),
       date: o.date,
       status: o.status || 'Todo',
@@ -114,6 +114,21 @@ export class PrismaTaskRepository {
       smartRating: o.smartRating || null,
       completedAt: safeDate(o.completedAt),
     }));
+
+    if (occurrencesData.length === 0) {
+      const defaultDate = task.scheduledDate || new Date().toISOString().split('T')[0];
+      occurrencesData = [{
+        id: uuidv4(),
+        date: defaultDate,
+        status: 'Todo',
+        note: null,
+        startedAt: null,
+        activeMinutes: 0,
+        pomodorosCount: 0,
+        smartRating: null,
+        completedAt: null,
+      }];
+    }
 
     try {
       const result = await prisma.task.create({
@@ -149,8 +164,9 @@ export class PrismaTaskRepository {
       });
 
       return TaskMapper.toDto(result);
-    } catch {
-      return task;
+    } catch (err) {
+      console.error('[prismaTaskRepository.create] Error creating task:', err);
+      throw err;
     }
   }
 
@@ -243,6 +259,19 @@ export class PrismaTaskRepository {
               data: occData,
             });
           }
+        } else if (updates.isRepeating && existing.occurrences.length === 0) {
+          // If updated to repeating and had 0 occurrences, create initial occurrence
+          const defaultDate = updates.scheduledDate || new Date().toISOString().split('T')[0];
+          await tx.taskOccurrence.create({
+            data: {
+              id: uuidv4(),
+              taskId: id,
+              date: defaultDate,
+              status: 'Todo',
+              activeMinutes: 0,
+              pomodorosCount: 0,
+            },
+          });
         }
 
         return tx.task.findUniqueOrThrow({

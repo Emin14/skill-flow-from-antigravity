@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Task, TaskPriority, TaskStatus, TaskOccurrence, TaskRepetitionRecord, RepeatStatus } from './types';
+import { Task, TaskPriority, TaskStatus, TaskState as TaskDomainState, TaskOccurrence, TaskRepetitionRecord, RepeatStatus } from './types';
 import { TaskCategory } from '@/shared/config/categories';
 import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS } from '@/shared/config/repetitionRules';
 import { taskApi } from '../api/taskApi';
@@ -140,6 +140,7 @@ export interface AddTaskParams {
   parentTaskId?: string | null;
   topicId?: string | null;
   isRepeating?: boolean;
+  taskState?: TaskDomainState | null;
   repeatStatus?: RepeatStatus;
   repetitionMode?: RepetitionMode;
   scheduleFrequency?: ScheduleFrequency;
@@ -390,6 +391,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         parentTaskId = null,
         topicId = null,
         isRepeating = false,
+        taskState: inputTaskState,
         repeatStatus: customRepeatStatus = 'Active',
         repetitionMode = 'none',
         scheduleFrequency = 'daily',
@@ -413,6 +415,10 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
       const normOccs = normalizeOccurrences(rawOccs, taskId);
 
+      const derivedState: TaskDomainState | null = effectiveIsRepeating
+        ? ((inputTaskState as TaskDomainState) || (customRepeatStatus === 'Paused' ? 'paused' : customRepeatStatus === 'Completed' ? 'completed' : 'active'))
+        : null;
+
       newTask = {
         id: taskId,
         title,
@@ -425,6 +431,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         parentTaskId,
         topicId,
         isRepeating: effectiveIsRepeating,
+        taskState: derivedState,
         repeatStatus: effectiveIsRepeating ? customRepeatStatus : undefined,
         repetitionMode: effectiveMode,
         scheduleFrequency,
@@ -815,6 +822,14 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         o.status === 'Todo' ? { ...o, date: updates.scheduledDate! } : o
       );
       updates.occurrences = occs;
+    } else if (updates.isRepeating && (!task.occurrences || task.occurrences.length === 0)) {
+      const targetDate = updates.scheduledDate || task.scheduledDate || getTodayStr();
+      updates.occurrences = [{
+        id: uuidv4(),
+        taskId: id,
+        date: targetDate,
+        status: 'Todo',
+      }];
     }
 
     set((state) => ({
