@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { RepeatCard } from './types';
-import { repeatCardRepository } from '@/shared/repository';
+import { repeatCardApi } from '../api/repeatCardApi';
 import { calculateNextReview, ReviewRating } from '@/shared/lib/fsrs';
 import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
@@ -30,7 +30,7 @@ export const useRepeatCardStore = create<RepeatCardState>((set, get) => ({
   fetchCards: async () => {
     set({ isLoading: true, error: null });
     try {
-      const cards = await repeatCardRepository.getAll();
+      const cards = await repeatCardApi.getAll();
       set({ cards, isLoading: false });
     } catch (e) {
       set({ error: (e as Error).message, isLoading: false });
@@ -52,7 +52,7 @@ export const useRepeatCardStore = create<RepeatCardState>((set, get) => ({
       createdAt: new Date().toISOString(),
     };
 
-    const saved = await repeatCardRepository.save(newCard);
+    const saved = await repeatCardApi.create(newCard);
     set((state) => ({ cards: [...state.cards, saved] }));
     useToastStore.getState().showToast('FSRS карточка создана', 'success');
     return saved;
@@ -60,7 +60,7 @@ export const useRepeatCardStore = create<RepeatCardState>((set, get) => ({
 
   updateCard: async (id: string, updates: Partial<RepeatCard>) => {
     try {
-      const updated = await repeatCardRepository.update(id, updates);
+      const updated = await repeatCardApi.update(id, updates);
       set((state) => ({
         cards: state.cards.map((c) => (c.id === id ? updated : c)),
       }));
@@ -77,14 +77,14 @@ export const useRepeatCardStore = create<RepeatCardState>((set, get) => ({
     if (!deletedCard) return;
 
     set((state) => ({ cards: state.cards.filter((c) => c.id !== id) }));
-    await repeatCardRepository.delete(id);
+    await repeatCardApi.delete(id);
 
     // Undo toast for Card
     useToastStore.getState().showToast(
       'FSRS карточка удалена',
       'undo',
       async () => {
-        await repeatCardRepository.save(deletedCard);
+        await repeatCardApi.create(deletedCard);
         set((state) => ({ cards: [...state.cards, deletedCard] }));
         useToastStore.getState().showToast('Карточка восстановлена', 'success');
       }
@@ -124,7 +124,7 @@ export const useRepeatCardStore = create<RepeatCardState>((set, get) => ({
     }));
 
     try {
-      await repeatCardRepository.update(id, updates);
+      await repeatCardApi.update(id, updates);
       useActivityStore.getState().logActivity('fsrs_reviewed', `Повторена карточка: "${card.front}"`);
     } catch (e) {
       set({ cards: get().cards, error: (e as Error).message });

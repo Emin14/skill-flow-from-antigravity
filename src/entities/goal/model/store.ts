@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { Goal } from './types';
-import { goalRepository } from '@/shared/repository';
+import { goalApi } from '../api/goalApi';
 import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
@@ -26,7 +26,7 @@ export const useGoalStore = create<GoalState>((set, get) => ({
   fetchGoals: async () => {
     set({ isLoading: true, error: null });
     try {
-      const goals = await goalRepository.getAll();
+      const goals = await goalApi.getAll();
       set({ goals, isLoading: false });
     } catch (e) {
       set({ error: (e as Error).message, isLoading: false });
@@ -43,7 +43,7 @@ export const useGoalStore = create<GoalState>((set, get) => ({
       createdAt: new Date().toISOString(),
     };
 
-    const saved = await goalRepository.save(newGoal);
+    const saved = await goalApi.create(newGoal);
     set((state) => ({ goals: [saved, ...state.goals] }));
     useToastStore.getState().showToast(`Цель "${title}" создана`, 'success');
     useActivityStore.getState().logActivity('goal_created', `Создана цель: "${title}"`);
@@ -52,7 +52,7 @@ export const useGoalStore = create<GoalState>((set, get) => ({
 
   updateGoal: async (id: string, updates: Partial<Goal>) => {
     try {
-      const updated = await goalRepository.update(id, updates);
+      const updated = await goalApi.update(id, updates);
       set((state) => ({
         goals: state.goals.map((g) => (g.id === id ? updated : g)),
       }));
@@ -84,13 +84,13 @@ export const useGoalStore = create<GoalState>((set, get) => ({
     if (!deletedGoal) return;
 
     set((state) => ({ goals: state.goals.filter((g) => g.id !== id) }));
-    await goalRepository.delete(id);
+    await goalApi.delete(id);
 
     useToastStore.getState().showToast(
       `Цель "${deletedGoal.title}" удалена`,
       'undo',
       async () => {
-        await goalRepository.save(deletedGoal);
+        await goalApi.create(deletedGoal);
         set((state) => ({ goals: [deletedGoal, ...state.goals] }));
         useToastStore.getState().showToast('Цель восстановлена', 'success');
       }

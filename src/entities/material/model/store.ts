@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { Material, MaterialType } from './types';
-import { materialRepository } from '@/shared/repository';
+import { materialApi } from '../api/materialApi';
 import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
@@ -31,7 +31,7 @@ export const useMaterialStore = create<MaterialState>((set, get) => ({
   fetchMaterials: async () => {
     set({ isLoading: true, error: null });
     try {
-      const materials = await materialRepository.getAll();
+      const materials = await materialApi.getAll();
       set({ materials, isLoading: false });
     } catch (e) {
       set({ error: (e as Error).message, isLoading: false });
@@ -58,7 +58,7 @@ export const useMaterialStore = create<MaterialState>((set, get) => ({
       createdAt: new Date().toISOString(),
     };
 
-    const saved = await materialRepository.save(newMaterial);
+    const saved = await materialApi.create(newMaterial);
     set((state) => ({ materials: [saved, ...state.materials] }));
     useToastStore.getState().showToast(`Материал "${title}" создан`, 'success');
     return saved;
@@ -66,7 +66,7 @@ export const useMaterialStore = create<MaterialState>((set, get) => ({
 
   updateMaterial: async (id: string, updates: Partial<Material>) => {
     try {
-      const updated = await materialRepository.update(id, updates);
+      const updated = await materialApi.update(id, updates);
       set((state) => ({
         materials: state.materials.map((m) => (m.id === id ? updated : m)),
       }));
@@ -92,7 +92,7 @@ export const useMaterialStore = create<MaterialState>((set, get) => ({
     }));
 
     try {
-      await materialRepository.update(id, { isCompleted: newCompleted, completedAt });
+      await materialApi.update(id, { isCompleted: newCompleted, completedAt });
       useToastStore
         .getState()
         .showToast(newCompleted ? `Материал "${mat.title}" изучен!` : 'Отметка сброшена', 'success');
@@ -112,14 +112,14 @@ export const useMaterialStore = create<MaterialState>((set, get) => ({
     if (!deletedMaterial) return;
 
     set((state) => ({ materials: state.materials.filter((m) => m.id !== id) }));
-    await materialRepository.delete(id);
+    await materialApi.delete(id);
 
     // Undo toast for Material
     useToastStore.getState().showToast(
       `Материал "${deletedMaterial.title}" удален`,
       'undo',
       async () => {
-        await materialRepository.save(deletedMaterial);
+        await materialApi.create(deletedMaterial);
         set((state) => ({ materials: [deletedMaterial, ...state.materials] }));
         useToastStore.getState().showToast('Материал восстановлен', 'success');
       }

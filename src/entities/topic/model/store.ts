@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { Topic } from './types';
-import { topicRepository } from '@/shared/repository';
+import { topicApi } from '../api/topicApi';
 import { useActivityStore } from '@/entities/activity';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -23,7 +23,7 @@ export const useTopicStore = create<TopicState>((set, get) => ({
   fetchTopics: async () => {
     set({ isLoading: true, error: null });
     try {
-      const topics = await topicRepository.getAll();
+      const topics = await topicApi.getAll();
       set({ topics, isLoading: false });
     } catch (e) {
       set({ error: (e as Error).message, isLoading: false });
@@ -40,7 +40,7 @@ export const useTopicStore = create<TopicState>((set, get) => ({
       createdAt: new Date().toISOString(),
     };
 
-    const saved = await topicRepository.save(newTopic);
+    const saved = await topicApi.create(newTopic);
     set((state) => ({ topics: [...state.topics, saved] }));
     useActivityStore.getState().logActivity('topic_created', `Создана тема: "${title}"`);
     return saved;
@@ -48,7 +48,7 @@ export const useTopicStore = create<TopicState>((set, get) => ({
 
   updateTopic: async (id: string, updates: Partial<Topic>) => {
     try {
-      const updated = await topicRepository.update(id, updates);
+      const updated = await topicApi.update(id, updates);
       set((state) => ({
         topics: state.topics.map((t) => (t.id === id ? updated : t)),
       }));
@@ -63,7 +63,7 @@ export const useTopicStore = create<TopicState>((set, get) => ({
     const previous = get().topics;
     set((state) => ({ topics: state.topics.filter((t) => t.id !== id) }));
     try {
-      await topicRepository.delete(id);
+      await topicApi.delete(id);
     } catch (e) {
       set({ topics: previous, error: (e as Error).message });
     }
