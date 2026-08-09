@@ -22,6 +22,25 @@ const DEFAULT_CATEGORIES: CategoryItem[] = [
 
 const STORAGE_KEY = 'skillflow_custom_categories_v2';
 
+const mergeCategories = (baseList: CategoryItem[], incomingList: CategoryItem[]): CategoryItem[] => {
+  const map = new Map<string, CategoryItem>();
+  for (const item of baseList) {
+    if (!item || !item.name) continue;
+    map.set(item.name.trim().toLowerCase(), item);
+  }
+  for (const item of incomingList) {
+    if (!item || !item.name) continue;
+    const key = item.name.trim().toLowerCase();
+    const existing = map.get(key);
+    if (existing) {
+      map.set(key, { ...existing, id: item.id || existing.id, color: item.color || existing.color });
+    } else {
+      map.set(key, item);
+    }
+  }
+  return Array.from(map.values());
+};
+
 const loadCategoriesFromStorage = (): CategoryItem[] => {
   if (typeof window === 'undefined') return DEFAULT_CATEGORIES;
   try {
@@ -29,12 +48,7 @@ const loadCategoriesFromStorage = (): CategoryItem[] => {
     if (raw) {
       const parsed: CategoryItem[] = JSON.parse(raw);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        // Ensure system 'Без категории' is present
-        const hasNoCat = parsed.some((c) => c.name.trim().toLowerCase() === 'без категории');
-        if (!hasNoCat) {
-          return [DEFAULT_CATEGORIES[0], ...parsed];
-        }
-        return parsed;
+        return mergeCategories(DEFAULT_CATEGORIES, parsed);
       }
     }
   } catch (e) {
@@ -71,13 +85,10 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
       const res = await fetch('/api/categories');
       if (res.ok) {
         const dbCategories: CategoryItem[] = await res.json();
-        if (dbCategories.length > 0) {
-          const hasNoCat = dbCategories.some((c) => c.name.trim().toLowerCase() === 'без категории');
-          const merged = hasNoCat ? dbCategories : [DEFAULT_CATEGORIES[0], ...dbCategories];
-          set({ categories: merged });
-          saveCategoriesToStorage(merged);
-          return;
-        }
+        const currentStored = get().categories;
+        const merged = mergeCategories(mergeCategories(DEFAULT_CATEGORIES, currentStored), Array.isArray(dbCategories) ? dbCategories : []);
+        set({ categories: merged });
+        saveCategoriesToStorage(merged);
       }
     } catch (e) {
       console.warn('API /api/categories unavailable, using local storage fallback');
