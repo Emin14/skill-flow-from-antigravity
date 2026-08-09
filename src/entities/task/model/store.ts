@@ -377,7 +377,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         repetitionsCount: 0,
         createdAt: new Date().toISOString(),
         pomodorosCount: 1,
-        currentIntervalDays: 1.0,
+        currentIntervalDays: 1,
       };
     } else {
       const {
@@ -434,7 +434,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         repetitionMode: effectiveMode,
         scheduleFrequency,
         afterCompletionDays: Math.max(1, afterCompletionDays),
-        currentIntervalDays: 1.0,
+        currentIntervalDays: 1,
         hasSubtasks: effectiveHasSubtasks,
         targetRepetitions,
         repetitionsCount: 0,

@@ -12,7 +12,7 @@ const safeDate = (val: string | Date | null | undefined): Date | null => {
 
 const parseNumInt = (val: any): number | null => {
   if (val === null || val === undefined || val === '') return null;
-  const parsed = typeof val === 'number' ? val : parseInt(String(val), 10);
+  const parsed = typeof val === 'number' ? Math.round(val) : parseInt(String(val), 10);
   return isNaN(parsed) ? null : parsed;
 };
 
