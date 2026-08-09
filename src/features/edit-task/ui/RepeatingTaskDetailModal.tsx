@@ -306,10 +306,12 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               </span>
             )}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span>🔥</span>
-            <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>Стрик: {streak} дней</span>
-          </div>
+          {masterTask.isRepeating && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span>🔥</span>
+              <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>Стрик: {streak} дней</span>
+            </div>
+          )}
         </div>
 
         <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '6px 0' }} />
