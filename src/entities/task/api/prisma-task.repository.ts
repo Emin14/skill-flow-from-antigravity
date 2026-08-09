@@ -10,6 +10,18 @@ const safeDate = (val: string | Date | null | undefined): Date | null => {
   return isNaN(d.getTime()) ? null : d;
 };
 
+const parseNumInt = (val: any): number | null => {
+  if (val === null || val === undefined || val === '') return null;
+  const parsed = typeof val === 'number' ? val : parseInt(String(val), 10);
+  return isNaN(parsed) ? null : parsed;
+};
+
+const parseNumFloat = (val: any): number | null => {
+  if (val === null || val === undefined || val === '') return null;
+  const parsed = typeof val === 'number' ? val : parseFloat(String(val));
+  return isNaN(parsed) ? null : parsed;
+};
+
 export class PrismaTaskRepository {
   async getAll(): Promise<Task[]> {
     if (typeof window !== 'undefined') return [];
@@ -150,8 +162,8 @@ export class PrismaTaskRepository {
       status: o.status || 'Todo',
       note: o.note || null,
       startedAt: safeDate((o as any).startedAt),
-      activeMinutes: o.activeMinutes ?? 0,
-      pomodorosCount: o.pomodorosCount ?? 0,
+      activeMinutes: parseNumFloat(o.activeMinutes) ?? 0,
+      pomodorosCount: parseNumFloat(o.pomodorosCount) ?? 0,
       smartRating: o.smartRating || null,
       completedAt: safeDate(o.completedAt),
     }));
@@ -186,11 +198,11 @@ export class PrismaTaskRepository {
           taskState: effectiveIsRepeating ? (task.taskState || 'active') : null,
           repetitionMode: effectiveIsRepeating ? (task.repetitionMode || null) : null,
           scheduleFrequency: effectiveIsRepeating ? (task.scheduleFrequency || null) : null,
-          targetRepetitions: effectiveIsRepeating ? (task.targetRepetitions ?? null) : null,
-          afterCompletionDays: effectiveIsRepeating ? (task.afterCompletionDays ?? null) : null,
-          currentIntervalDays: effectiveIsRepeating ? (task.currentIntervalDays ?? null) : null,
-          spacedStepIndex: effectiveIsRepeating ? (task.spacedStepIndex ?? null) : null,
-          sortOrder: task.sortOrder ?? null,
+          targetRepetitions: effectiveIsRepeating ? parseNumInt(task.targetRepetitions) : null,
+          afterCompletionDays: effectiveIsRepeating ? parseNumInt(task.afterCompletionDays) : null,
+          currentIntervalDays: effectiveIsRepeating ? parseNumFloat(task.currentIntervalDays) : null,
+          spacedStepIndex: effectiveIsRepeating ? parseNumInt(task.spacedStepIndex) : null,
+          sortOrder: parseNumInt(task.sortOrder),
           topicId: effectiveTopicId,
           goalId: effectiveGoalId,
           createdAt: safeDate(task.createdAt) || new Date(),
@@ -249,7 +261,7 @@ export class PrismaTaskRepository {
             taskUpdateData.parentTask = { disconnect: true };
           }
         }
-        if (updates.sortOrder !== undefined) taskUpdateData.sortOrder = updates.sortOrder;
+        if (updates.sortOrder !== undefined) taskUpdateData.sortOrder = parseNumInt(updates.sortOrder);
 
         if (forceNonRepeating) {
           taskUpdateData.isRepeating = false;
@@ -265,10 +277,10 @@ export class PrismaTaskRepository {
           if (updates.taskState !== undefined) taskUpdateData.taskState = updates.taskState;
           if (updates.repetitionMode !== undefined) taskUpdateData.repetitionMode = updates.repetitionMode;
           if (updates.scheduleFrequency !== undefined) taskUpdateData.scheduleFrequency = updates.scheduleFrequency;
-          if (updates.targetRepetitions !== undefined) taskUpdateData.targetRepetitions = updates.targetRepetitions;
-          if (updates.afterCompletionDays !== undefined) taskUpdateData.afterCompletionDays = updates.afterCompletionDays;
-          if (updates.currentIntervalDays !== undefined) taskUpdateData.currentIntervalDays = updates.currentIntervalDays;
-          if (updates.spacedStepIndex !== undefined) taskUpdateData.spacedStepIndex = updates.spacedStepIndex;
+          if (updates.targetRepetitions !== undefined) taskUpdateData.targetRepetitions = parseNumInt(updates.targetRepetitions);
+          if (updates.afterCompletionDays !== undefined) taskUpdateData.afterCompletionDays = parseNumInt(updates.afterCompletionDays);
+          if (updates.currentIntervalDays !== undefined) taskUpdateData.currentIntervalDays = parseNumFloat(updates.currentIntervalDays);
+          if (updates.spacedStepIndex !== undefined) taskUpdateData.spacedStepIndex = parseNumInt(updates.spacedStepIndex);
         }
 
         if (updates.topicId !== undefined) {
