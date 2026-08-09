@@ -71,20 +71,19 @@ export const OverduePage: React.FC = () => {
     fetchTasks();
   }, [fetchTasks]);
 
-  // Base list of all overdue tasks (EXCLUDING parent tasks)
+  // Base list of all overdue tasks (EXCLUDING parent container tasks)
   const rawOverdueTasks = useMemo(() => {
     return tasks.filter((t) => {
-      if (t.status === 'Done') return false;
       const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
       if (t.hasSubtasks || hasChildren) return false;
 
-      if (t.isRepeating) {
-        const hasOverdueOcc = t.occurrences?.some((o) => o.date < todayStr && o.status !== 'Done');
-        const isScheduledOverdue = t.scheduledDate && t.scheduledDate < todayStr;
-        return hasOverdueOcc || isScheduledOverdue;
+      // Under Unified Task Schema: Check if any occurrence is scheduled before todayStr and not completed
+      if (t.occurrences && t.occurrences.length > 0) {
+        return t.occurrences.some((o) => o.date < todayStr && o.status !== 'Done');
       }
+
       if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') return false;
-      return t.scheduledDate < todayStr;
+      return t.scheduledDate < todayStr && t.status !== 'Done';
     });
   }, [tasks, todayStr]);
 

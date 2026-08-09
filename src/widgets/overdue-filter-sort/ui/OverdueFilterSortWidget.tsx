@@ -19,7 +19,7 @@ interface OverdueFilterSortWidgetProps {
 const SORT_ITEMS: { id: OverdueSortKey; label: string }[] = [
   { id: 'date', label: '📅 Дате' },
   { id: 'alphabetical', label: '🔤 Алфавиту' },
-  { id: 'count', label: '📊 Выполнению' },
+  { id: 'count', label: '📊 Кол-ву выполнений' },
 ];
 
 export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = ({
@@ -94,7 +94,7 @@ export const OverdueFilterSortWidget: React.FC<OverdueFilterSortWidgetProps> = (
         >
           <option value="date">📅 По дате</option>
           <option value="alphabetical">🔤 По алфавиту</option>
-          <option value="count">📊 По выполнению</option>
+          <option value="count">📊 По кол-ву выполнений</option>
         </select>
 
         {/* Direction Toggle Button */}
