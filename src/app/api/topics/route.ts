@@ -6,6 +6,7 @@ export async function GET() {
     const topics = await prismaTopicRepository.getAll();
     return NextResponse.json(topics);
   } catch (error: any) {
+    console.error('[GET /api/topics] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to fetch topics' }, { status: 500 });
   }
 }
@@ -16,6 +17,7 @@ export async function POST(request: Request) {
     const created = await prismaTopicRepository.save(body);
     return NextResponse.json(created, { status: 201 });
   } catch (error: any) {
+    console.error('[POST /api/topics] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to create topic' }, { status: 500 });
   }
 }
@@ -27,6 +29,7 @@ export async function PUT(request: Request) {
     const updated = await prismaTopicRepository.update(id, updates);
     return NextResponse.json(updated);
   } catch (error: any) {
+    console.error('[PUT /api/topics] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to update topic' }, { status: 500 });
   }
 }
@@ -40,6 +43,7 @@ export async function DELETE(request: Request) {
     await prismaTopicRepository.delete(id);
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    console.error('[DELETE /api/topics] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to delete topic' }, { status: 500 });
   }
 }

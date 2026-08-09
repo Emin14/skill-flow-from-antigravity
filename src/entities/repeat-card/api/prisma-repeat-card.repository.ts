@@ -1,5 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { Prisma } from '@prisma/client';
+import { v4 as uuidv4 } from 'uuid';
 import { RepeatCard } from '../model/types';
 import { RepeatCardMapper } from './repeat-card.mapper';
 import { RepeatCardRepository } from '@/shared/repository/interfaces/RepeatCardRepository';
@@ -44,35 +45,38 @@ export class PrismaRepeatCardRepository implements RepeatCardRepository {
 
   async save(card: RepeatCard): Promise<RepeatCard> {
     if (typeof window !== 'undefined') return card;
+    const cardId = (card.id && typeof card.id === 'string' && card.id.trim()) ? card.id.trim() : uuidv4();
+    const todayStr = new Date().toISOString().split('T')[0];
     try {
       const result = await prisma.repeatCard.upsert({
-        where: { id: card.id },
+        where: { id: cardId },
         create: {
-          id: card.id,
-          materialId: card.materialId,
-          front: card.front,
-          back: card.back,
+          id: cardId,
+          materialId: card.materialId || '',
+          front: card.front || 'Без вопроса',
+          back: card.back || 'Без ответа',
           interval: card.interval ?? 1,
           repetitions: card.repetitions ?? 0,
           easeFactor: card.easeFactor ?? 2.5,
-          nextReviewDate: card.nextReviewDate,
+          nextReviewDate: card.nextReviewDate || todayStr,
           lastReviewedAt: card.lastReviewedAt ? new Date(card.lastReviewedAt) : null,
           createdAt: card.createdAt ? new Date(card.createdAt) : new Date(),
         },
         update: {
-          materialId: card.materialId,
-          front: card.front,
-          back: card.back,
+          materialId: card.materialId || '',
+          front: card.front || 'Без вопроса',
+          back: card.back || 'Без ответа',
           interval: card.interval ?? 1,
           repetitions: card.repetitions ?? 0,
           easeFactor: card.easeFactor ?? 2.5,
-          nextReviewDate: card.nextReviewDate,
+          nextReviewDate: card.nextReviewDate || todayStr,
           lastReviewedAt: card.lastReviewedAt ? new Date(card.lastReviewedAt) : null,
         },
       });
       return RepeatCardMapper.toDto(result);
-    } catch {
-      return card;
+    } catch (err) {
+      console.error('[PrismaRepeatCardRepository.save] Error:', err);
+      throw err;
     }
   }
 
@@ -95,8 +99,9 @@ export class PrismaRepeatCardRepository implements RepeatCardRepository {
         data,
       });
       return RepeatCardMapper.toDto(result);
-    } catch {
-      return fallback;
+    } catch (err) {
+      console.error(`[PrismaRepeatCardRepository.update] Error updating repeat card ${id}:`, err);
+      throw err;
     }
   }
 
@@ -105,8 +110,9 @@ export class PrismaRepeatCardRepository implements RepeatCardRepository {
     try {
       await prisma.repeatCard.delete({ where: { id } });
       return true;
-    } catch {
-      return false;
+    } catch (err) {
+      console.error(`[PrismaRepeatCardRepository.delete] Error deleting repeat card ${id}:`, err);
+      throw err;
     }
   }
 }

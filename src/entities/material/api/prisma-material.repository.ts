@@ -1,5 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { Prisma } from '@prisma/client';
+import { v4 as uuidv4 } from 'uuid';
 import { Material } from '../model/types';
 import { MaterialMapper } from './material.mapper';
 import { MaterialRepository } from '@/shared/repository/interfaces/MaterialRepository';
@@ -44,13 +45,14 @@ export class PrismaMaterialRepository implements MaterialRepository {
 
   async save(material: Material): Promise<Material> {
     if (typeof window !== 'undefined') return material;
+    const materialId = (material.id && typeof material.id === 'string' && material.id.trim()) ? material.id.trim() : uuidv4();
     try {
       const result = await prisma.material.upsert({
-        where: { id: material.id },
+        where: { id: materialId },
         create: {
-          id: material.id,
+          id: materialId,
           topicId: material.topicId,
-          title: material.title,
+          title: material.title || 'Без названия',
           description: material.description || null,
           readTimeMinutes: material.readTimeMinutes ?? null,
           type: material.type || 'Note',
@@ -61,7 +63,7 @@ export class PrismaMaterialRepository implements MaterialRepository {
         },
         update: {
           topicId: material.topicId,
-          title: material.title,
+          title: material.title || 'Без названия',
           description: material.description || null,
           readTimeMinutes: material.readTimeMinutes ?? null,
           type: material.type || 'Note',
@@ -71,8 +73,9 @@ export class PrismaMaterialRepository implements MaterialRepository {
         },
       });
       return MaterialMapper.toDto(result);
-    } catch {
-      return material;
+    } catch (err) {
+      console.error('[PrismaMaterialRepository.save] Error:', err);
+      throw err;
     }
   }
 
@@ -95,8 +98,9 @@ export class PrismaMaterialRepository implements MaterialRepository {
         data,
       });
       return MaterialMapper.toDto(result);
-    } catch {
-      return fallback;
+    } catch (err) {
+      console.error(`[PrismaMaterialRepository.update] Error updating material ${id}:`, err);
+      throw err;
     }
   }
 
@@ -105,8 +109,9 @@ export class PrismaMaterialRepository implements MaterialRepository {
     try {
       await prisma.material.delete({ where: { id } });
       return true;
-    } catch {
-      return false;
+    } catch (err) {
+      console.error(`[PrismaMaterialRepository.delete] Error deleting material ${id}:`, err);
+      throw err;
     }
   }
 }

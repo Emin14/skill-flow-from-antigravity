@@ -1,5 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { Prisma } from '@prisma/client';
+import { v4 as uuidv4 } from 'uuid';
 import { Goal } from '../model/types';
 import { GoalMapper } from './goal.mapper';
 import { GoalRepository } from '@/shared/repository/interfaces/GoalRepository';
@@ -31,27 +32,29 @@ export class PrismaGoalRepository implements GoalRepository {
 
   async save(goal: Goal): Promise<Goal> {
     if (typeof window !== 'undefined') return goal;
+    const goalId = (goal.id && typeof goal.id === 'string' && goal.id.trim()) ? goal.id.trim() : uuidv4();
     try {
       const result = await prisma.goal.upsert({
-        where: { id: goal.id },
+        where: { id: goalId },
         create: {
-          id: goal.id,
-          title: goal.title,
+          id: goalId,
+          title: goal.title || 'Без названия',
           description: goal.description || null,
-          color: goal.color,
+          color: goal.color || '#6366f1',
           status: goal.status || 'Active',
           createdAt: goal.createdAt ? new Date(goal.createdAt) : new Date(),
         },
         update: {
-          title: goal.title,
+          title: goal.title || 'Без названия',
           description: goal.description || null,
-          color: goal.color,
+          color: goal.color || '#6366f1',
           status: goal.status || 'Active',
         },
       });
       return GoalMapper.toDto(result);
-    } catch {
-      return goal;
+    } catch (err) {
+      console.error('[PrismaGoalRepository.save] Error:', err);
+      throw err;
     }
   }
 
@@ -70,8 +73,9 @@ export class PrismaGoalRepository implements GoalRepository {
         data,
       });
       return GoalMapper.toDto(result);
-    } catch {
-      return fallback;
+    } catch (err) {
+      console.error(`[PrismaGoalRepository.update] Error updating goal ${id}:`, err);
+      throw err;
     }
   }
 
@@ -80,8 +84,9 @@ export class PrismaGoalRepository implements GoalRepository {
     try {
       await prisma.goal.delete({ where: { id } });
       return true;
-    } catch {
-      return false;
+    } catch (err) {
+      console.error(`[PrismaGoalRepository.delete] Error deleting goal ${id}:`, err);
+      throw err;
     }
   }
 }

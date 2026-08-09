@@ -1,5 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { Prisma } from '@prisma/client';
+import { v4 as uuidv4 } from 'uuid';
 import { InboxItem } from '../model/types';
 import { InboxMapper } from './inbox.mapper';
 import { InboxRepository } from '@/shared/repository/interfaces/InboxRepository';
@@ -31,23 +32,25 @@ export class PrismaInboxRepository implements InboxRepository {
 
   async save(item: InboxItem): Promise<InboxItem> {
     if (typeof window !== 'undefined') return item;
+    const itemId = (item.id && typeof item.id === 'string' && item.id.trim()) ? item.id.trim() : uuidv4();
     try {
       const result = await prisma.inboxItem.upsert({
-        where: { id: item.id },
+        where: { id: itemId },
         create: {
-          id: item.id,
-          text: item.text,
+          id: itemId,
+          text: item.text || 'Без названия',
           isPinned: item.isPinned ?? false,
           createdAt: item.createdAt ? new Date(item.createdAt) : new Date(),
         },
         update: {
-          text: item.text,
+          text: item.text || 'Без названия',
           isPinned: item.isPinned ?? false,
         },
       });
       return InboxMapper.toDto(result);
-    } catch {
-      return item;
+    } catch (err) {
+      console.error('[PrismaInboxRepository.save] Error:', err);
+      throw err;
     }
   }
 
@@ -64,8 +67,9 @@ export class PrismaInboxRepository implements InboxRepository {
         data,
       });
       return InboxMapper.toDto(result);
-    } catch {
-      return fallback;
+    } catch (err) {
+      console.error(`[PrismaInboxRepository.update] Error updating inbox item ${id}:`, err);
+      throw err;
     }
   }
 
@@ -74,8 +78,9 @@ export class PrismaInboxRepository implements InboxRepository {
     try {
       await prisma.inboxItem.delete({ where: { id } });
       return true;
-    } catch {
-      return false;
+    } catch (err) {
+      console.error(`[PrismaInboxRepository.delete] Error deleting inbox item ${id}:`, err);
+      throw err;
     }
   }
 }

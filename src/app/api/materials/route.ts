@@ -6,6 +6,7 @@ export async function GET() {
     const materials = await prismaMaterialRepository.getAll();
     return NextResponse.json(materials);
   } catch (error: any) {
+    console.error('[GET /api/materials] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to fetch materials' }, { status: 500 });
   }
 }
@@ -16,6 +17,7 @@ export async function POST(request: Request) {
     const created = await prismaMaterialRepository.save(body);
     return NextResponse.json(created, { status: 201 });
   } catch (error: any) {
+    console.error('[POST /api/materials] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to create material' }, { status: 500 });
   }
 }
@@ -27,6 +29,7 @@ export async function PUT(request: Request) {
     const updated = await prismaMaterialRepository.update(id, updates);
     return NextResponse.json(updated);
   } catch (error: any) {
+    console.error('[PUT /api/materials] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to update material' }, { status: 500 });
   }
 }
@@ -40,6 +43,7 @@ export async function DELETE(request: Request) {
     await prismaMaterialRepository.delete(id);
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    console.error('[DELETE /api/materials] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to delete material' }, { status: 500 });
   }
 }

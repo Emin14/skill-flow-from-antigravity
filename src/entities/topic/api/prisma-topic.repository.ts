@@ -1,5 +1,6 @@
 import { prisma } from '@/shared/lib/prisma';
 import { Prisma } from '@prisma/client';
+import { v4 as uuidv4 } from 'uuid';
 import { Topic } from '../model/types';
 import { TopicMapper } from './topic.mapper';
 import { TopicRepository } from '@/shared/repository/interfaces/TopicRepository';
@@ -44,27 +45,29 @@ export class PrismaTopicRepository implements TopicRepository {
 
   async save(topic: Topic): Promise<Topic> {
     if (typeof window !== 'undefined') return topic;
+    const topicId = (topic.id && typeof topic.id === 'string' && topic.id.trim()) ? topic.id.trim() : uuidv4();
     try {
       const result = await prisma.topic.upsert({
-        where: { id: topic.id },
+        where: { id: topicId },
         create: {
-          id: topic.id,
+          id: topicId,
           goalId: topic.goalId,
           parentId: topic.parentId || null,
-          title: topic.title,
+          title: topic.title || 'Без названия',
           weight: topic.weight ?? 1.0,
           createdAt: topic.createdAt ? new Date(topic.createdAt) : new Date(),
         },
         update: {
           goalId: topic.goalId,
           parentId: topic.parentId || null,
-          title: topic.title,
+          title: topic.title || 'Без названия',
           weight: topic.weight ?? 1.0,
         },
       });
       return TopicMapper.toDto(result);
-    } catch {
-      return topic;
+    } catch (err) {
+      console.error('[PrismaTopicRepository.save] Error:', err);
+      throw err;
     }
   }
 
@@ -83,8 +86,9 @@ export class PrismaTopicRepository implements TopicRepository {
         data,
       });
       return TopicMapper.toDto(result);
-    } catch {
-      return fallback;
+    } catch (err) {
+      console.error(`[PrismaTopicRepository.update] Error updating topic ${id}:`, err);
+      throw err;
     }
   }
 
@@ -93,8 +97,9 @@ export class PrismaTopicRepository implements TopicRepository {
     try {
       await prisma.topic.delete({ where: { id } });
       return true;
-    } catch {
-      return false;
+    } catch (err) {
+      console.error(`[PrismaTopicRepository.delete] Error deleting topic ${id}:`, err);
+      throw err;
     }
   }
 }

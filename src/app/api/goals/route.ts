@@ -6,6 +6,7 @@ export async function GET() {
     const goals = await prismaGoalRepository.getAll();
     return NextResponse.json(goals);
   } catch (error: any) {
+    console.error('[GET /api/goals] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to fetch goals' }, { status: 500 });
   }
 }
@@ -16,6 +17,7 @@ export async function POST(request: Request) {
     const created = await prismaGoalRepository.save(body);
     return NextResponse.json(created, { status: 201 });
   } catch (error: any) {
+    console.error('[POST /api/goals] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to create goal' }, { status: 500 });
   }
 }
@@ -27,6 +29,7 @@ export async function PUT(request: Request) {
     const updated = await prismaGoalRepository.update(id, updates);
     return NextResponse.json(updated);
   } catch (error: any) {
+    console.error('[PUT /api/goals] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to update goal' }, { status: 500 });
   }
 }
@@ -40,6 +43,7 @@ export async function DELETE(request: Request) {
     await prismaGoalRepository.delete(id);
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    console.error('[DELETE /api/goals] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to delete goal' }, { status: 500 });
   }
 }

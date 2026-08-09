@@ -6,6 +6,7 @@ export async function GET() {
     const cards = await prismaRepeatCardRepository.getAll();
     return NextResponse.json(cards);
   } catch (error: any) {
+    console.error('[GET /api/repeat-cards] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to fetch repeat cards' }, { status: 500 });
   }
 }
@@ -16,6 +17,7 @@ export async function POST(request: Request) {
     const created = await prismaRepeatCardRepository.save(body);
     return NextResponse.json(created, { status: 201 });
   } catch (error: any) {
+    console.error('[POST /api/repeat-cards] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to create repeat card' }, { status: 500 });
   }
 }
@@ -27,6 +29,7 @@ export async function PUT(request: Request) {
     const updated = await prismaRepeatCardRepository.update(id, updates);
     return NextResponse.json(updated);
   } catch (error: any) {
+    console.error('[PUT /api/repeat-cards] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to update repeat card' }, { status: 500 });
   }
 }
@@ -40,6 +43,7 @@ export async function DELETE(request: Request) {
     await prismaRepeatCardRepository.delete(id);
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    console.error('[DELETE /api/repeat-cards] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to delete repeat card' }, { status: 500 });
   }
 }
