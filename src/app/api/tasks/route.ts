@@ -6,6 +6,7 @@ export async function GET() {
     const tasks = await prismaTaskRepository.getAll();
     return NextResponse.json(tasks);
   } catch (error: any) {
+    console.error('[GET /api/tasks] Error:', error);
     return NextResponse.json({ error: error.message || 'Failed to fetch tasks' }, { status: 500 });
   }
 }
@@ -16,6 +17,7 @@ export async function POST(request: Request) {
     const created = await prismaTaskRepository.create(body);
     return NextResponse.json(created, { status: 201 });
   } catch (error: any) {
+    console.error('[POST /api/tasks] Error creating task:', error);
     return NextResponse.json({ error: error.message || 'Failed to create task' }, { status: 500 });
   }
 }
@@ -34,6 +36,7 @@ export async function PUT(request: Request) {
     const updated = await prismaTaskRepository.update(id, updates);
     return NextResponse.json(updated);
   } catch (error: any) {
+    console.error('[PUT /api/tasks] Error updating task:', error);
     return NextResponse.json({ error: error.message || 'Failed to update task' }, { status: 500 });
   }
 }
@@ -52,6 +55,7 @@ export async function DELETE(request: Request) {
     }
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    console.error('[DELETE /api/tasks] Error deleting task:', error);
     return NextResponse.json({ error: error.message || 'Failed to delete task' }, { status: 500 });
   }
 }

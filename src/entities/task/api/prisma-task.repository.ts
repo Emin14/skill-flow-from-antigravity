@@ -99,13 +99,54 @@ export class PrismaTaskRepository {
 
   async create(task: Task): Promise<Task> {
     if (typeof window !== 'undefined') return task;
-    const effectiveParentId = task.parentTaskId || null;
+
+    let effectiveParentId: string | null = null;
+    if (task.parentTaskId && typeof task.parentTaskId === 'string' && task.parentTaskId.trim()) {
+      const cleanParentId = task.parentTaskId.trim();
+      const parentExists = await prisma.task.findUnique({
+        where: { id: cleanParentId },
+        select: { id: true },
+      });
+      if (parentExists) {
+        effectiveParentId = cleanParentId;
+      }
+    }
+
+    let effectiveTopicId: string | null = null;
+    if (task.topicId && typeof task.topicId === 'string' && task.topicId.trim()) {
+      const cleanTopicId = task.topicId.trim();
+      const topicExists = await prisma.topic.findUnique({
+        where: { id: cleanTopicId },
+        select: { id: true },
+      });
+      if (topicExists) {
+        effectiveTopicId = cleanTopicId;
+      }
+    }
+
+    let effectiveGoalId: string | null = null;
+    if (task.goalId && typeof task.goalId === 'string' && task.goalId.trim()) {
+      const cleanGoalId = task.goalId.trim();
+      const goalExists = await prisma.goal.findUnique({
+        where: { id: cleanGoalId },
+        select: { id: true },
+      });
+      if (goalExists) {
+        effectiveGoalId = cleanGoalId;
+      }
+    }
+
     // Business Rule: Subtasks can NEVER be repeating (isRepeating is always false for subtasks)
     const effectiveIsRepeating = effectiveParentId ? false : (task.isRepeating ?? false);
 
+    const todayStr = new Date().toISOString().split('T')[0];
+    const defaultDate = (task.scheduledDate && typeof task.scheduledDate === 'string' && task.scheduledDate.trim())
+      ? task.scheduledDate.trim()
+      : todayStr;
+
     let occurrencesData = (task.occurrences || []).map((o) => ({
-      id: o.id || uuidv4(),
-      date: o.date,
+      id: (o.id && typeof o.id === 'string' && o.id.trim()) ? o.id.trim() : uuidv4(),
+      date: (o.date && typeof o.date === 'string' && o.date.trim()) ? o.date.trim() : defaultDate,
       status: o.status || 'Todo',
       note: o.note || null,
       startedAt: safeDate((o as any).startedAt),
@@ -116,7 +157,6 @@ export class PrismaTaskRepository {
     }));
 
     if (occurrencesData.length === 0) {
-      const defaultDate = task.scheduledDate || new Date().toISOString().split('T')[0];
       occurrencesData = [{
         id: uuidv4(),
         date: defaultDate,
@@ -130,13 +170,15 @@ export class PrismaTaskRepository {
       }];
     }
 
+    const taskId = (task.id && typeof task.id === 'string' && task.id.trim()) ? task.id.trim() : uuidv4();
+
     try {
       const result = await prisma.task.create({
         data: {
-          id: task.id,
-          title: task.title,
-          priority: task.priority || 'P2',
-          category: task.category || 'Без категории',
+          id: taskId,
+          title: (task.title && typeof task.title === 'string' && task.title.trim()) ? task.title.trim() : 'Без названия',
+          priority: task.priority || 'P3',
+          category: (task.category && typeof task.category === 'string' && task.category.trim()) ? task.category.trim() : 'Без категории',
           description: task.description || null,
           link: task.link || null,
           parentTaskId: effectiveParentId,
@@ -149,8 +191,8 @@ export class PrismaTaskRepository {
           currentIntervalDays: effectiveIsRepeating ? (task.currentIntervalDays ?? null) : null,
           spacedStepIndex: effectiveIsRepeating ? (task.spacedStepIndex ?? null) : null,
           sortOrder: task.sortOrder ?? null,
-          topicId: task.topicId || null,
-          goalId: task.goalId || null,
+          topicId: effectiveTopicId,
+          goalId: effectiveGoalId,
           createdAt: safeDate(task.createdAt) || new Date(),
           occurrences: {
             create: occurrencesData,
@@ -195,8 +237,14 @@ export class PrismaTaskRepository {
         if (updates.description !== undefined) taskUpdateData.description = updates.description;
         if (updates.link !== undefined) taskUpdateData.link = updates.link;
         if (updates.parentTaskId !== undefined) {
-          if (updates.parentTaskId) {
-            taskUpdateData.parentTask = { connect: { id: updates.parentTaskId } };
+          if (updates.parentTaskId && typeof updates.parentTaskId === 'string' && updates.parentTaskId.trim()) {
+            const cleanPId = updates.parentTaskId.trim();
+            const pExists = await tx.task.findUnique({ where: { id: cleanPId }, select: { id: true } });
+            if (pExists) {
+              taskUpdateData.parentTask = { connect: { id: cleanPId } };
+            } else {
+              taskUpdateData.parentTask = { disconnect: true };
+            }
           } else {
             taskUpdateData.parentTask = { disconnect: true };
           }
@@ -223,8 +271,22 @@ export class PrismaTaskRepository {
           if (updates.spacedStepIndex !== undefined) taskUpdateData.spacedStepIndex = updates.spacedStepIndex;
         }
 
-        if (updates.topicId !== undefined) taskUpdateData.topicId = updates.topicId;
-        if (updates.goalId !== undefined) taskUpdateData.goalId = updates.goalId;
+        if (updates.topicId !== undefined) {
+          if (updates.topicId && typeof updates.topicId === 'string' && updates.topicId.trim()) {
+            const tExists = await tx.topic.findUnique({ where: { id: updates.topicId.trim() }, select: { id: true } });
+            taskUpdateData.topicId = tExists ? tExists.id : null;
+          } else {
+            taskUpdateData.topicId = null;
+          }
+        }
+        if (updates.goalId !== undefined) {
+          if (updates.goalId && typeof updates.goalId === 'string' && updates.goalId.trim()) {
+            const gExists = await tx.goal.findUnique({ where: { id: updates.goalId.trim() }, select: { id: true } });
+            taskUpdateData.goalId = gExists ? gExists.id : null;
+          } else {
+            taskUpdateData.goalId = null;
+          }
+        }
 
         await tx.task.update({
           where: { id },
@@ -238,13 +300,14 @@ export class PrismaTaskRepository {
 
           if (updates.occurrences.length > 0) {
             const seenIds = new Set<string>();
+            const defaultDate = updates.scheduledDate || new Date().toISOString().split('T')[0];
             const occData = updates.occurrences.map((o) => {
-              let occId = o.id && !seenIds.has(o.id) ? o.id : uuidv4();
+              let occId = o.id && typeof o.id === 'string' && o.id.trim() && !seenIds.has(o.id.trim()) ? o.id.trim() : uuidv4();
               seenIds.add(occId);
               return {
                 id: occId,
                 taskId: id,
-                date: o.date,
+                date: (o.date && typeof o.date === 'string' && o.date.trim()) ? o.date.trim() : defaultDate,
                 status: o.status || 'Todo',
                 note: o.note || null,
                 startedAt: safeDate((o as any).startedAt),
