@@ -9,8 +9,26 @@ export type TaskWithOccurrences = Prisma.TaskGetPayload<{
 
 export class TaskMapper {
   static toDto(prismaTask: TaskWithOccurrences): Task {
-    const occurrences = (prismaTask.occurrences || []).map(TaskMapper.toOccurrenceDto);
+    let occurrences = (prismaTask.occurrences || []).map(TaskMapper.toOccurrenceDto);
     const tags = (prismaTask.tags || []).map(TaskMapper.toTagDto);
+
+    const fallbackDate = prismaTask.createdAt instanceof Date 
+      ? prismaTask.createdAt.toISOString().split('T')[0] 
+      : (String(prismaTask.createdAt).split('T')[0] || new Date().toISOString().split('T')[0]);
+
+    if (occurrences.length === 0) {
+      occurrences = [{
+        id: `synthetic-${prismaTask.id}`,
+        taskId: prismaTask.id,
+        date: fallbackDate,
+        status: 'Todo',
+        pomodorosCount: 0,
+        activeMinutes: 0,
+        note: null,
+        smartRating: null,
+        completedAt: null,
+      }];
+    }
 
     // Compute dynamic repetitionsCount
     const repetitionsCount = occurrences.filter((o) => o.status === 'Done').length;
@@ -30,18 +48,15 @@ export class TaskMapper {
 
     // Derive scheduledDate, status, repeatStatus, completedAt, pomodorosCount for backward compatibility
     const firstTodoOcc = occurrences.find((o) => o.status === 'Todo') || occurrences[0];
-    const fallbackDate = prismaTask.createdAt instanceof Date 
-      ? prismaTask.createdAt.toISOString().split('T')[0] 
-      : (String(prismaTask.createdAt).split('T')[0] || new Date().toISOString().split('T')[0]);
-    const scheduledDate = firstTodoOcc?.date || occurrences[0]?.date || fallbackDate;
-    const status = firstTodoOcc?.status || occurrences[0]?.status || 'Todo';
+    const scheduledDate = firstTodoOcc.date;
+    const status = firstTodoOcc.status;
     const repeatStatus: RepeatStatus = prismaTask.taskState === 'paused'
       ? 'Paused'
       : (prismaTask.taskState === 'completed' ? 'Completed' : 'Active');
 
     const lastDoneOcc = occurrences.filter((o) => o.status === 'Done').pop();
     const completedAt = lastDoneOcc?.completedAt || null;
-    const pomodorosCount = occurrences[0]?.pomodorosCount || 1;
+    const pomodorosCount = occurrences[0].pomodorosCount || 1;
 
     return {
       id: prismaTask.id,

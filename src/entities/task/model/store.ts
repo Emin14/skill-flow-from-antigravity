@@ -107,17 +107,14 @@ export const getDerivedLastSmartRating = (task: Task): SmartRating | null => {
   return (doneOccs[0]?.smartRating as SmartRating) ?? null;
 };
 
-/**
- * Single Source of Truth Helper: Returns pomodoros for repeating occurrence or task total
- */
 export const getDerivedTaskPomodoros = (task: Task, dateStr?: string): number => {
-  if (!task.isRepeating) return task.pomodorosCount || 1;
-  const occs = task.occurrences || [];
+  const norm = normalizeOccurrences(task.occurrences, task.id);
+  if (!task.isRepeating) return norm[0]?.pomodorosCount || task.pomodorosCount || 1;
   if (dateStr) {
-    const occ = occs.find((o) => o.date === dateStr);
+    const occ = norm.find((o) => o.date === dateStr);
     return occ?.pomodorosCount || task.pomodorosCount || 1;
   }
-  const sum = occs.reduce((acc, o) => acc + (o.pomodorosCount || 0), 0);
+  const sum = norm.reduce((acc, o) => acc + (o.pomodorosCount || 0), 0);
   return sum > 0 ? sum : (task.pomodorosCount || 1);
 };
 
@@ -125,10 +122,11 @@ export const getDerivedTaskPomodoros = (task: Task, dateStr?: string): number =>
  * Single Source of Truth Helper: Returns task status for date or task status
  */
 export const getDerivedTaskStatus = (task: Task, dateStr?: string): TaskStatus => {
-  if (!task.isRepeating) return task.status || 'Todo';
+  const norm = normalizeOccurrences(task.occurrences, task.id);
+  if (!task.isRepeating) return norm[0]?.status || task.status || 'Todo';
   const targetDate = dateStr || getTodayStr();
-  const occ = task.occurrences?.find((o) => o.date === targetDate);
-  return occ ? occ.status : 'Todo';
+  const occ = norm.find((o) => o.date === targetDate);
+  return occ ? occ.status : (norm.find((o) => o.status === 'Todo')?.status || norm[0]?.status || 'Todo');
 };
 
 export interface AddTaskParams {
