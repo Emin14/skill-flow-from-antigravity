@@ -420,40 +420,72 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
 
 
-        {/* BASE HEADER LAYOUT FOR ALL VARIANTS (UNTOUCHED BASE WITH TITLE ELLIPSIS) */}
-        <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-          {/* Ряд 1: Название (с троеточием) слева, иконки (Повтор + ✏️ + ✕) справа */}
+        {/* ─── HEADER SECTION WITH SUBTLE DIVIDER ──────────────────────── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', paddingBottom: '14px', borderBottom: '1px solid var(--color-border)' }}>
+          {/* Ряд 1: Заголовок (слева), Знак повтора + Стрик + ✕ (справа) */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
             <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0, lineHeight: 1.25, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1, minWidth: 0 }}>
               {masterTask.title}
             </h2>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+              {/* Знак повтора (если задача с повтором — с эффектом нажатия/подсветки, иначе тусклое) */}
               <span
                 title={masterTask.isRepeating ? 'Повторяющаяся задача' : 'Обычная задача'}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '26px',
-                  height: '26px',
-                  borderRadius: '7px',
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '8px',
                   fontSize: '13px',
-                  background: masterTask.isRepeating ? 'rgba(56, 189, 248, 0.2)' : 'transparent',
+                  background: masterTask.isRepeating ? 'rgba(56, 189, 248, 0.2)' : 'rgba(255, 255, 255, 0.04)',
                   color: masterTask.isRepeating ? '#38bdf8' : 'var(--color-text-muted)',
-                  border: masterTask.isRepeating ? '1px solid rgba(56, 189, 248, 0.4)' : 'none',
+                  border: masterTask.isRepeating ? '1px solid rgba(56, 189, 248, 0.4)' : '1px solid var(--color-border)',
                   opacity: masterTask.isRepeating ? 1 : 0.4,
-                  boxShadow: masterTask.isRepeating ? '0 0 8px rgba(56, 189, 248, 0.3)' : 'none',
+                  boxShadow: masterTask.isRepeating ? '0 0 10px rgba(56, 189, 248, 0.3)' : 'none',
+                  transition: 'all 0.2s ease',
+                  userSelect: 'none',
                 }}
               >
                 🔄
               </span>
-              <button onClick={onOpenEdit} title="Редактировать" style={{ background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer', padding: '2px' }}>✏️</button>
-              <button onClick={onClose} title="Закрыть" style={{ background: 'none', border: 'none', fontSize: '18px', color: 'var(--color-text-muted)', cursor: 'pointer', padding: '2px' }}>✕</button>
+
+              {/* Стрик справа (если задача с повтором — яркий стрик, иначе тусклое положение) */}
+              {masterTask.isRepeating ? (
+                <span style={{ fontSize: '12.5px', fontWeight: 700, color: '#f59e0b', background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.3)', padding: '3px 8px', borderRadius: '7px' }}>
+                  🔥 {streak} дн.
+                </span>
+              ) : (
+                <span style={{ fontSize: '12px', fontWeight: 500, color: 'var(--color-text-muted)', opacity: 0.35 }}>
+                  🔥 —
+                </span>
+              )}
+
+              {/* Кнопка закрытия модального окна ✕ */}
+              <button
+                type="button"
+                onClick={onClose}
+                title="Закрыть"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  fontSize: '18px',
+                  color: 'var(--color-text-muted)',
+                  cursor: 'pointer',
+                  padding: '2px 4px',
+                  borderRadius: '6px',
+                  lineHeight: 1,
+                }}
+              >
+                ✕
+              </button>
             </div>
           </div>
 
-          {/* Ряд 2: Без отступа сверху — иконка категории и название (слева), дата создания без времени (справа) */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '2px', fontSize: '12.5px', color: 'var(--color-text-muted)' }}>
+          {/* Ряд 2: Категория (слева) и Создано (справа) по разным краям */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '12.5px', color: 'var(--color-text-muted)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--color-accent-text)', fontWeight: 600 }}>
               <span>🏷</span>
               <span>{masterTask.category || 'Без категории'}</span>
@@ -465,21 +497,65 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             )}
           </div>
 
-          {/* Ряд 3: Стрик справа */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginTop: '4px', marginBottom: '10px' }}>
-            {masterTask.isRepeating && (
-              <span style={{ fontSize: '12px', fontWeight: 700, color: '#f59e0b' }}>🔥 Стрик: {streak} дн.</span>
-            )}
-          </div>
-
-          {/* Ряд 4: Минималистичные плашки статуса и даты без внешней рамки */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
-            <RenderStatusBadge />
-            <RenderDatePickerBadge />
+          {/* Ряд 3: Кнопки управления (редактировать задачу, удалить задачу) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', marginTop: '2px' }}>
+            <button
+              type="button"
+              onClick={onOpenEdit}
+              title="Редактировать задачу"
+              style={{
+                flex: 1,
+                height: '36px',
+                borderRadius: '10px',
+                background: 'var(--color-surface-hover)',
+                border: '1px solid var(--color-border)',
+                color: 'var(--color-text-primary)',
+                fontSize: '13px',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              ✏️ Редактировать
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowDeleteConfirm(true)}
+              title="Удалить задачу"
+              style={{
+                height: '36px',
+                padding: '0 14px',
+                borderRadius: '10px',
+                background: 'rgba(239, 68, 68, 0.12)',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
+                color: '#ef4444',
+                fontSize: '13px',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              🗑️ Удалить
+            </button>
           </div>
         </div>
+        {/* ─── КОНЕЦ ШАПКИ ──────────────────────────────────────────────── */}
 
+        {/* НИЖЕ ШАПКИ: 1. Дата и Статус */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          <RenderDatePickerBadge />
+          <RenderStatusBadge />
+        </div>
 
+        {/* Описание / Ссылка (если есть) */}
         {(masterTask.description || masterTask.link) && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', padding: '10px 12px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)' }}>
             {masterTask.description && (
@@ -495,6 +571,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         )}
 
+        {/* 2. Заметка */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
           <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
             📝 Заметка:
