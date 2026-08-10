@@ -57,6 +57,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState<SmartRating | null>(null);
   const [sessionNote, setSessionNote] = useState<string>('');
+  const [overrideDate, setOverrideDate] = useState<string | null>(null);
+
+  useEffect(() => {
+    setOverrideDate(null);
+  }, [task?.id, occurrenceDate, isOpen]);
 
   const masterTask = useMemo(() => {
     if (!task) return null;
@@ -71,9 +76,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   }, [task, tasks]);
 
   const activeOccDate = useMemo(() => {
+    if (overrideDate) return overrideDate;
     if (!masterTask) return getTodayStr();
     return occurrenceDate || (masterTask.occurrences?.find((o) => o.status === 'Todo')?.date) || masterTask.scheduledDate || getTodayStr();
-  }, [masterTask, occurrenceDate]);
+  }, [masterTask, occurrenceDate, overrideDate]);
 
   const currentSessionNote = useMemo(() => {
     if (!masterTask) return '';
@@ -311,30 +317,34 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                   }}
                   title="Нажмите, чтобы изменить дату этого экземпляра"
                   style={{
-                    background: 'var(--color-accent-light)',
-                    border: '1px solid var(--color-accent-border)',
-                    color: 'var(--color-accent-text)',
-                    fontWeight: 700,
-                    fontSize: '12.5px',
-                    padding: '3px 10px',
-                    borderRadius: '8px',
+                    background: 'rgba(99, 102, 241, 0.12)',
+                    border: '1px solid rgba(99, 102, 241, 0.3)',
+                    color: '#818cf8',
+                    fontWeight: 600,
+                    fontSize: '11.5px',
+                    padding: '2px 7px',
+                    borderRadius: '6px',
                     cursor: 'pointer',
-                    display: 'flex',
+                    display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '5px',
-                    boxShadow: '0 2px 6px var(--color-accent-border)',
+                    gap: '4px',
+                    lineHeight: 1.2,
+                    transition: 'all 0.15s ease',
                   }}
                 >
                   <span>{formattedOccDate}</span>
-                  <Calendar size={13} />
+                  <Calendar size={12} />
                 </button>
                 <input
                   ref={dateInputRef}
                   type="date"
                   value={activeOccDate}
-                  onChange={(e) => {
+                  onChange={async (e) => {
                     if (e.target.value && e.target.value !== activeOccDate && masterTask) {
-                      updateOccurrenceDate(masterTask.id, activeOccDate, e.target.value);
+                      const newDate = e.target.value;
+                      const oldDate = activeOccDate;
+                      setOverrideDate(newDate);
+                      await updateOccurrenceDate(masterTask.id, oldDate, newDate);
                     }
                   }}
                   style={{
