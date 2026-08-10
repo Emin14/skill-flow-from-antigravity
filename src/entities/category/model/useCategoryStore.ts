@@ -11,7 +11,7 @@ export interface CategoryItem {
 
 const DEFAULT_CATEGORIES: CategoryItem[] = [
   { id: 'cat-0', name: 'Без категории', color: 'rgba(255, 255, 255, 0.45)', isSystem: true },
-  { id: 'cat-1', name: 'Задачи', color: getCategoryColor('Задачи') },
+  { id: 'cat-1', name: 'Задача', color: getCategoryColor('Задача') },
   { id: 'cat-2', name: 'Опыт на камеру', color: getCategoryColor('Опыт на камеру') },
   { id: 'cat-3', name: 'Теория', color: getCategoryColor('Теория') },
   { id: 'cat-4', name: 'Здоровье', color: getCategoryColor('Здоровье') },

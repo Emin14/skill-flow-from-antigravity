@@ -220,7 +220,10 @@ export const StatisticsPage: React.FC = () => {
 
   const todayStr = useMemo(() => getTodayStr(), []);
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     fetchTasks();
     fetchLogs();
   }, [fetchTasks, fetchLogs]);
@@ -246,7 +249,8 @@ export const StatisticsPage: React.FC = () => {
 
   // Category completion statistics
   const categoryStats = useMemo(() => {
-    return storeCategories.map((catItem) => {
+    const catsToUse = mounted ? storeCategories : [];
+    return catsToUse.map((catItem) => {
       const cat = catItem.name;
       const completedCount = categoryCompletionEvents.filter(
         (ev) => (ev.category || 'Без категории').trim().toLowerCase() === cat.trim().toLowerCase()
@@ -263,7 +267,7 @@ export const StatisticsPage: React.FC = () => {
         color: catItem.color,
       };
     });
-  }, [categoryCompletionEvents, tasks, storeCategories]);
+  }, [categoryCompletionEvents, tasks, storeCategories, mounted]);
 
   // Category Donut Chart Data
   const categoryDonutData = useMemo(() => {
