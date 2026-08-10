@@ -310,23 +310,28 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                   position: 'relative',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '4px',
-                  background: 'rgba(99, 102, 241, 0.12)',
-                  border: '1px solid rgba(99, 102, 241, 0.3)',
+                  gap: '5px',
+                  background: 'rgba(99, 102, 241, 0.14)',
+                  border: '1px solid rgba(99, 102, 241, 0.35)',
                   color: '#818cf8',
                   fontWeight: 600,
-                  fontSize: '11.5px',
-                  padding: '2px 7px',
-                  borderRadius: '6px',
-                  lineHeight: 1.2,
+                  fontSize: '12px',
+                  padding: '3px 9px',
+                  borderRadius: '7px',
+                  lineHeight: 1.25,
                   cursor: 'pointer',
-                  overflow: 'hidden',
+                  userSelect: 'none',
+                  WebkitUserSelect: 'none',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                  transition: 'all 0.15s ease',
                 }}
               >
                 <span>{formattedOccDate}</span>
-                <Calendar size={12} />
+                <Calendar size={13} style={{ opacity: 0.85 }} />
                 <input
                   type="date"
+                  className="ios-date-picker-overlay"
                   value={activeOccDate}
                   onChange={async (e) => {
                     if (e.target.value && e.target.value !== activeOccDate && masterTask) {
@@ -335,16 +340,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                       setOverrideDate(newDate);
                       await updateOccurrenceDate(masterTask.id, oldDate, newDate);
                     }
-                  }}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    opacity: 0,
-                    cursor: 'pointer',
-                    fontSize: '16px',
                   }}
                 />
               </div>
