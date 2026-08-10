@@ -223,6 +223,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     }
   };
 
+  const dateInputRef = useRef<HTMLInputElement>(null);
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div
@@ -297,8 +299,56 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '6px', fontSize: '13.5px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span>🗓 Экземпляр:</span>
-              <span style={{ color: 'var(--color-accent-text)', fontWeight: 700 }}>{formattedOccDate}</span>
+              <span style={{ fontWeight: 600, color: 'var(--color-text-secondary)' }}>📅 Дата:</span>
+              <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (dateInputRef.current && 'showPicker' in dateInputRef.current) {
+                      (dateInputRef.current as any).showPicker();
+                    } else if (dateInputRef.current) {
+                      (dateInputRef.current as HTMLInputElement).focus();
+                    }
+                  }}
+                  title="Нажмите, чтобы изменить дату этого экземпляра"
+                  style={{
+                    background: 'var(--color-accent-light)',
+                    border: '1px solid var(--color-accent-border)',
+                    color: 'var(--color-accent-text)',
+                    fontWeight: 700,
+                    fontSize: '12.5px',
+                    padding: '3px 10px',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    boxShadow: '0 2px 6px var(--color-accent-border)',
+                  }}
+                >
+                  <span>{formattedOccDate}</span>
+                  <Calendar size={13} />
+                </button>
+                <input
+                  ref={dateInputRef}
+                  type="date"
+                  value={activeOccDate}
+                  onChange={(e) => {
+                    if (e.target.value && e.target.value !== activeOccDate && masterTask) {
+                      updateOccurrenceDate(masterTask.id, activeOccDate, e.target.value);
+                    }
+                  }}
+                  style={{
+                    position: 'absolute',
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    width: '1px',
+                    height: '1px',
+                    bottom: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
             </div>
             {masterTask.isRepeating && seriesStartDate && seriesStartDate !== activeOccDate && (
               <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', opacity: 0.7 }}>
@@ -333,13 +383,13 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
           <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            📝 Заметка к сессии ({formattedOccDate}):
+            📝 Заметка:
           </label>
           <textarea
             value={sessionNote}
             onChange={(e) => handleNoteChange(e.target.value)}
             onBlur={handleNoteBlur}
-            placeholder="Заметка к этой конкретной сессии (например: решилось легко за 15 мин)..."
+            placeholder="Расскажите как прошла задача..."
             rows={2}
             style={{
               width: '100%',

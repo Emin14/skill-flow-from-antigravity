@@ -56,7 +56,7 @@ export class TaskMapper {
 
     const lastDoneOcc = occurrences.filter((o) => o.status === 'Done').pop();
     const completedAt = lastDoneOcc?.completedAt || null;
-    const pomodorosCount = occurrences[0].pomodorosCount || 1;
+    const pomodorosCount = occurrences[0].pomodorosCount ?? 0;
 
     return {
       id: prismaTask.id,

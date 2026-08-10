@@ -109,13 +109,13 @@ export const getDerivedLastSmartRating = (task: Task): SmartRating | null => {
 
 export const getDerivedTaskPomodoros = (task: Task, dateStr?: string): number => {
   const norm = normalizeOccurrences(task.occurrences, task.id);
-  if (!task.isRepeating) return norm[0]?.pomodorosCount || task.pomodorosCount || 1;
+  if (!task.isRepeating) return norm[0]?.pomodorosCount ?? task.pomodorosCount ?? 0;
   if (dateStr) {
     const occ = norm.find((o) => o.date === dateStr);
-    return occ?.pomodorosCount || task.pomodorosCount || 1;
+    return occ?.pomodorosCount ?? task.pomodorosCount ?? 0;
   }
   const sum = norm.reduce((acc, o) => acc + (o.pomodorosCount || 0), 0);
-  return sum > 0 ? sum : (task.pomodorosCount || 1);
+  return sum;
 };
 
 /**
@@ -507,7 +507,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           status: newStatus,
           completedAt: newStatus === 'Done' ? nowIso : null,
           smartRating,
-          pomodorosCount: pomodorosCount ?? 1,
+          pomodorosCount: pomodorosCount ?? 0,
         };
         occs.push(targetOcc);
       } else {
@@ -518,7 +518,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
                 status: newStatus,
                 completedAt: newStatus === 'Done' ? nowIso : null,
                 smartRating: smartRating || (newStatus === 'Todo' ? undefined : o.smartRating),
-                pomodorosCount: pomodorosCount ?? o.pomodorosCount ?? 1,
+                pomodorosCount: pomodorosCount ?? o.pomodorosCount ?? 0,
               }
             : o
         );
