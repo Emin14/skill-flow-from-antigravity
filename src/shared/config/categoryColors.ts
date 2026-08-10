@@ -248,7 +248,8 @@ export const getCategoryColor = (cat?: string, isLightOverride?: boolean): strin
 
   const normalized = cat.trim();
   switch (normalized) {
-    case 'Задача': return isLight ? '#0284c7' : '#38bdf8';
+    case 'Задача':
+    case 'Задачи': return isLight ? '#0284c7' : '#38bdf8';
     case 'Проект': return isLight ? '#7e22ce' : '#a855f7';
     case 'Работа': return isLight ? '#0369a1' : '#0ea5e9';
     case 'Здоровье': return isLight ? '#047857' : '#10b981';

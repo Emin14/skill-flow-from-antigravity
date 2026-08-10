@@ -1072,7 +1072,7 @@ export const StatisticsPage: React.FC = () => {
             {/* Centered Donut Content */}
             <div className={styles.donutCenterContent}>
               <span className={styles.donutCenterNumber}>{categoryTotalDoneTasks}</span>
-              <span className={styles.donutCenterLabel}>{getTaskPlural(categoryTotalDoneTasks)}</span>
+              <span className={styles.donutCenterLabel} suppressHydrationWarning>{getTaskPlural(categoryTotalDoneTasks)}</span>
             </div>
           </div>
 
@@ -1100,6 +1100,7 @@ export const StatisticsPage: React.FC = () => {
                       }}
                     />
                     <span
+                      suppressHydrationWarning
                       style={{
                         fontSize: '12.5px',
                         fontWeight: 600,
