@@ -93,7 +93,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
   const latestNoteRef = useRef<string>('');
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const dateInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setSelectedRating(currentSessionOcc?.smartRating || null);
@@ -305,38 +304,28 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span style={{ fontWeight: 600, color: 'var(--color-text-secondary)' }}>📅 Дата:</span>
-              <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (dateInputRef.current && 'showPicker' in dateInputRef.current) {
-                      (dateInputRef.current as any).showPicker();
-                    } else if (dateInputRef.current) {
-                      (dateInputRef.current as HTMLInputElement).focus();
-                    }
-                  }}
-                  title="Нажмите, чтобы изменить дату этого экземпляра"
-                  style={{
-                    background: 'rgba(99, 102, 241, 0.12)',
-                    border: '1px solid rgba(99, 102, 241, 0.3)',
-                    color: '#818cf8',
-                    fontWeight: 600,
-                    fontSize: '11.5px',
-                    padding: '2px 7px',
-                    borderRadius: '6px',
-                    cursor: 'pointer',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    lineHeight: 1.2,
-                    transition: 'all 0.15s ease',
-                  }}
-                >
-                  <span>{formattedOccDate}</span>
-                  <Calendar size={12} />
-                </button>
+              <div
+                title="Нажмите, чтобы изменить дату этого экземпляра"
+                style={{
+                  position: 'relative',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  background: 'rgba(99, 102, 241, 0.12)',
+                  border: '1px solid rgba(99, 102, 241, 0.3)',
+                  color: '#818cf8',
+                  fontWeight: 600,
+                  fontSize: '11.5px',
+                  padding: '2px 7px',
+                  borderRadius: '6px',
+                  lineHeight: 1.2,
+                  cursor: 'pointer',
+                  overflow: 'hidden',
+                }}
+              >
+                <span>{formattedOccDate}</span>
+                <Calendar size={12} />
                 <input
-                  ref={dateInputRef}
                   type="date"
                   value={activeOccDate}
                   onChange={async (e) => {
@@ -349,12 +338,13 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                   }}
                   style={{
                     position: 'absolute',
-                    opacity: 0,
-                    pointerEvents: 'none',
-                    width: '1px',
-                    height: '1px',
-                    bottom: 0,
+                    top: 0,
                     left: 0,
+                    width: '100%',
+                    height: '100%',
+                    opacity: 0,
+                    cursor: 'pointer',
+                    fontSize: '16px',
                   }}
                 />
               </div>
