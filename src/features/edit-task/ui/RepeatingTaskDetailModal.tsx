@@ -87,6 +87,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
   const latestNoteRef = useRef<string>('');
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const dateInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setSelectedRating(currentSessionOcc?.smartRating || null);
@@ -222,8 +223,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
       onClose();
     }
   };
-
-  const dateInputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className={styles.overlay} onClick={onClose}>
