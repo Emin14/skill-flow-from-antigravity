@@ -21,7 +21,13 @@ export const CategoryAccomplishments: React.FC = () => {
 
       <div className={styles.grid}>
         {categories.map((cat) => {
-          const completedCount = tasks.filter((t) => (t.category || 'Без категории') === cat.name && t.status === 'Done').length;
+          const completedCount = tasks.reduce((sum, t) => {
+            const tCat = t.category || 'Без категории';
+            if (tCat.trim().toLowerCase() !== cat.name.trim().toLowerCase()) return sum;
+            if (!t.isRepeating) return t.status === 'Done' ? sum + 1 : sum;
+            const doneOccs = t.occurrences?.filter((o) => o.status === 'Done').length || 0;
+            return sum + doneOccs;
+          }, 0);
 
           return (
             <div key={cat.id || cat.name} className={styles.categoryItem}>

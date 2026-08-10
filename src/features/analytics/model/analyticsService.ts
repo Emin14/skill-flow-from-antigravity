@@ -66,7 +66,10 @@ export const analyticsService = {
       totalGoals: goals.length,
       totalTopics: topics.length,
       totalTasks: tasks.length,
-      completedTasks: tasks.filter((t) => t.status === 'Done').length,
+      completedTasks: tasks.reduce((sum, t) => {
+        if (!t.isRepeating) return t.status === 'Done' ? sum + 1 : sum;
+        return sum + (t.occurrences?.filter((o) => o.status === 'Done').length || 0);
+      }, 0),
       totalMaterials: materials.length,
       completedMaterials: materials.filter((m) => m.isCompleted).length,
       totalFsrsCards: cards.length,
@@ -151,7 +154,13 @@ export const analyticsService = {
       const dateStr = formatLocalDateStr(d);
       const dayLabel = d.toLocaleDateString('ru-RU', { weekday: 'short' });
 
-      const tasksDone = tasks.filter((t) => t.status === 'Done' && t.completedAt?.startsWith(dateStr)).length;
+      const tasksDone = tasks.reduce((sum, t) => {
+        if (!t.isRepeating) {
+          return (t.status === 'Done' && (t.scheduledDate === dateStr || t.completedAt?.startsWith(dateStr))) ? sum + 1 : sum;
+        }
+        const doneCount = t.occurrences?.filter((o) => o.status === 'Done' && o.date === dateStr).length || 0;
+        return sum + doneCount;
+      }, 0);
       const materialsDone = materials.filter((m) => m.isCompleted && m.completedAt?.startsWith(dateStr)).length;
       const fsrsReviewed = cards.filter((c) => c.lastReviewedAt?.startsWith(dateStr)).length;
 

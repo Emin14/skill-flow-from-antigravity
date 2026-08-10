@@ -115,7 +115,8 @@ const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
 
     if (t.repetitionHistory && t.repetitionHistory.length > 0) {
       t.repetitionHistory.forEach((record) => {
-        if (record.date) {
+        const isRecDone = record.completed === true || (record as any).status === 'Done';
+        if (record.date && isRecDone) {
           const alreadyCountedInOcc = t.occurrences?.some((o) => o.date === record.date && o.status === 'Done');
           if (!alreadyCountedInOcc) {
             events.push({
@@ -193,7 +194,8 @@ const getDaily30Stats = (allTasks: Task[]): Record<string, DayFullStats> => {
     // Process legacy repetition history records if present:
     if (t.repetitionHistory && t.repetitionHistory.length > 0) {
       t.repetitionHistory.forEach((rec) => {
-        if (rec.date && map[rec.date]) {
+        const isRecDone = rec.completed === true || (rec as any).status === 'Done';
+        if (rec.date && map[rec.date] && isRecDone) {
           const alreadyCountedInOcc = t.occurrences?.some((o) => o.date === rec.date && o.status === 'Done');
           if (!alreadyCountedInOcc) {
             map[rec.date].repeatsCount += 1;
