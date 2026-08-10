@@ -521,7 +521,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 className={styles.compactTextarea}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Заметки или описание..."
+                placeholder="Описание задачи..."
               />
             </div>
 

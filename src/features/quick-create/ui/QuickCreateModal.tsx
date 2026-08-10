@@ -448,7 +448,7 @@ export const QuickCreateModal: React.FC = () => {
                 className={styles.compactTextarea}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Заметки или описание..."
+                placeholder="Описание задачи..."
               />
             </div>
 

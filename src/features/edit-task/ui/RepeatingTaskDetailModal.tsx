@@ -128,32 +128,37 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     };
   }, [isOpen]);
 
-  const startYRef = React.useRef<number>(0);
-  const [dragY, setDragY] = useState<number>(0);
-  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const touchStartYRef = useRef<number>(0);
+  const touchCurrentYRef = useRef<number>(0);
 
   const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
     const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-    startYRef.current = clientY;
-    setIsDragging(true);
+    touchStartYRef.current = clientY;
+    touchCurrentYRef.current = clientY;
   };
 
   const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
-    if (!isDragging) return;
     const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-    const deltaY = clientY - startYRef.current;
-    if (deltaY > 0) setDragY(deltaY);
+    touchCurrentYRef.current = clientY;
+    const deltaY = touchCurrentYRef.current - touchStartYRef.current;
+
+    if (deltaY > 0 && modalRef.current) {
+      modalRef.current.style.transform = `translateY(${deltaY}px)`;
+      modalRef.current.style.transition = 'none';
+    }
   };
 
   const handleTouchEnd = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    if (dragY > 90) {
-      setDragY(0);
+    const deltaY = touchCurrentYRef.current - touchStartYRef.current;
+    if (deltaY > 100) {
       onClose();
-    } else {
-      setDragY(0);
+    } else if (modalRef.current) {
+      modalRef.current.style.transform = 'translateY(0)';
+      modalRef.current.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
     }
+    touchStartYRef.current = 0;
+    touchCurrentYRef.current = 0;
   };
 
   if (!isOpen || !masterTask) return null;
@@ -229,9 +234,169 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     }
   };
 
+  const repeatConfigText = masterTask.isRepeating
+    ? (masterTask.repetitionMode === 'smart' ? 'Повтор: умный (SM-2)'
+      : masterTask.repetitionMode === 'spaced' ? 'Повтор: интервальный'
+      : masterTask.repetitionMode === 'schedule' ? 'Повтор: по расписанию'
+      : 'Повтор: ежедневно')
+    : 'Без повтора';
+
+  // Common Reusable Date Picker Component
+  const RenderDatePickerBadge = ({ styleOverride }: { styleOverride?: React.CSSProperties }) => (
+    <div
+      title="Нажмите, чтобы изменить дату этого экземпляра"
+      style={{
+        position: 'relative',
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '5px',
+        background: 'rgba(99, 102, 241, 0.14)',
+        border: '1px solid rgba(99, 102, 241, 0.35)',
+        color: '#818cf8',
+        fontWeight: 600,
+        fontSize: '12px',
+        padding: '3px 9px',
+        borderRadius: '7px',
+        lineHeight: 1.25,
+        cursor: 'pointer',
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+        transition: 'all 0.15s ease',
+        ...styleOverride,
+      }}
+    >
+      <span>{formattedOccDate}</span>
+      <Calendar size={13} style={{ opacity: 0.85 }} />
+      <input
+        type="date"
+        className="ios-date-picker-overlay"
+        value={activeOccDate}
+        onChange={async (e) => {
+          if (e.target.value && e.target.value !== activeOccDate && masterTask) {
+            const newDate = e.target.value;
+            const oldDate = activeOccDate;
+            setOverrideDate(newDate);
+            await updateOccurrenceDate(masterTask.id, oldDate, newDate);
+          }
+        }}
+      />
+    </div>
+  );
+
+  // Common Status Toggle / Repeat Status Badge Component
+  const RenderStatusBadge = ({ styleOverride }: { styleOverride?: React.CSSProperties }) => {
+    if (!masterTask.isRepeating) {
+      return (
+        <button
+          type="button"
+          onClick={handleToggleTodayOccurrence}
+          title="Нажмите, чтобы изменить статус задачи"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '5px',
+            padding: '3px 10px',
+            borderRadius: '7px',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            border: isTodayDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-accent-border)',
+            background: isTodayDone ? 'var(--color-success-light)' : 'var(--color-accent-light)',
+            color: isTodayDone ? 'var(--color-success)' : 'var(--color-accent-text)',
+            transition: 'all 0.15s ease',
+            ...styleOverride,
+          }}
+        >
+          <CheckCircle2 size={13} />
+          <span>{isTodayDone ? 'Выполнено' : 'В ожидании'}</span>
+        </button>
+      );
+    }
+
+    const currentStatus = masterTask.repeatStatus || 'Active';
+    const statusInfo =
+      currentStatus === 'Paused'
+        ? { label: '⏸️ На паузе', bg: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.35)', color: '#f59e0b' }
+        : currentStatus === 'Completed'
+        ? { label: '✅ Завершено', bg: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.35)', color: '#818cf8' }
+        : { label: '▶️ В работе', bg: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.35)', color: '#10b981' };
+
+    return (
+      <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+        <select
+          value={currentStatus}
+          onChange={(e) => updateRepeatStatus(masterTask.id, e.target.value as any)}
+          title="Нажмите, чтобы изменить статус повторения задачи"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            opacity: 0,
+            cursor: 'pointer',
+            zIndex: 10,
+          }}
+        >
+          <option value="Active">▶️ В работе (Активно)</option>
+          <option value="Paused">⏸️ На паузе</option>
+          <option value="Completed">✅ Завершено</option>
+        </select>
+        <button
+          type="button"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '5px',
+            padding: '3px 10px',
+            borderRadius: '7px',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            border: statusInfo.border,
+            background: statusInfo.bg,
+            color: statusInfo.color,
+            transition: 'all 0.15s ease',
+            pointerEvents: 'none',
+            ...styleOverride,
+          }}
+        >
+          <span>{statusInfo.label}</span>
+          <ChevronDown size={12} style={{ opacity: 0.8 }} />
+        </button>
+      </div>
+    );
+  };
+
+  // Common Action Buttons Toolbar
+  const RenderActionButtons = () => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      {masterTask.isRepeating && (
+        <>
+          {(masterTask.repeatStatus || 'Active') === 'Paused' ? (
+            <button onClick={() => updateRepeatStatus(masterTask.id, 'Active')} title="Возобновить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#10b981', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>▶️</button>
+          ) : (
+            <button onClick={() => updateRepeatStatus(masterTask.id, 'Paused')} title="Приостановить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.3)', color: '#f59e0b', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>⏸️</button>
+          )}
+
+          {(masterTask.repeatStatus || 'Active') === 'Completed' ? (
+            <button onClick={() => updateRepeatStatus(masterTask.id, 'Active')} title="Возобновить завершённое повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.3)', color: '#6366f1', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>🔄</button>
+          ) : (
+            <button onClick={() => updateRepeatStatus(masterTask.id, 'Completed')} title="Завершить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.3)', color: '#6366f1', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✅</button>
+          )}
+        </>
+      )}
+
+      <button onClick={onClose} title="Закрыть" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#ffffff', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✕</button>
+    </div>
+  );
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div
+        ref={modalRef}
         className={styles.modal}
         onClick={(e) => e.stopPropagation()}
         style={{
@@ -239,8 +404,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           padding: '16px 20px 20px 20px',
           maxHeight: '90vh',
           overflowY: 'auto',
-          transform: `translateY(${dragY}px)`,
-          transition: isDragging ? 'none' : 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       >
         <div
@@ -255,110 +418,67 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           <div style={{ width: '36px', height: '4px', borderRadius: '2px', backgroundColor: 'var(--color-border)', margin: '0 auto' }} />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1 }}>
-            <div style={{ width: '42px', height: '42px', minWidth: '42px', borderRadius: '12px', background: 'linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', color: '#ffffff', boxShadow: '0 4px 12px var(--color-accent-border)' }}>
-              {masterTask.isRepeating ? '🔄' : '📌'}
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', minWidth: 0, flex: 1 }}>
-              <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                {masterTask.title}
-              </h2>
-              <div style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <span>🏷</span>
-                <span>{masterTask.category || 'Без категории'}</span>
-              </div>
-            </div>
-          </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            {masterTask.isRepeating && (
-              <>
-                {(masterTask.repeatStatus || 'Active') === 'Paused' ? (
-                  <button onClick={() => updateRepeatStatus(masterTask.id, 'Active')} title="Возобновить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#10b981', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>▶️</button>
-                ) : (
-                  <button onClick={() => updateRepeatStatus(masterTask.id, 'Paused')} title="Приостановить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.3)', color: '#f59e0b', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>⏸️</button>
-                )}
 
-                {(masterTask.repeatStatus || 'Active') === 'Completed' ? (
-                  <button onClick={() => updateRepeatStatus(masterTask.id, 'Active')} title="Возобновить завершённое повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.3)', color: '#6366f1', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>🔄</button>
-                ) : (
-                  <button onClick={() => updateRepeatStatus(masterTask.id, 'Completed')} title="Завершить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.3)', color: '#6366f1', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✅</button>
-                )}
-              </>
-            )}
-
-            <button onClick={onOpenEdit} title="Редактировать задачу" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#ffffff', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✏️</button>
-            <button onClick={() => setShowDeleteConfirm(true)} title="Удалить задачу со всеми её повторениями" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.25)', color: '#ef4444', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>🗑️</button>
-            <button onClick={onClose} title="Закрыть" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#ffffff', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✕</button>
-          </div>
-        </div>
-
-        {masterTask.createdAt && (
-          <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', opacity: 0.55, textAlign: 'right', marginTop: '-6px', marginBottom: '-6px' }}>
-            Создано: {new Date(masterTask.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
-          </div>
-        )}
-
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginTop: '6px', fontSize: '13.5px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span style={{ fontWeight: 600, color: 'var(--color-text-secondary)' }}>📅 Дата:</span>
-              <div
-                title="Нажмите, чтобы изменить дату этого экземпляра"
+        {/* BASE HEADER LAYOUT FOR ALL VARIANTS (UNTOUCHED BASE WITH TITLE ELLIPSIS) */}
+        <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+          {/* Ряд 1: Название (с троеточием) слева, иконки (Повтор + ✏️ + ✕) справа */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0, lineHeight: 1.25, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1, minWidth: 0 }}>
+              {masterTask.title}
+            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+              <span
+                title={masterTask.isRepeating ? 'Повторяющаяся задача' : 'Обычная задача'}
                 style={{
-                  position: 'relative',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '5px',
-                  background: 'rgba(99, 102, 241, 0.14)',
-                  border: '1px solid rgba(99, 102, 241, 0.35)',
-                  color: '#818cf8',
-                  fontWeight: 600,
-                  fontSize: '12px',
-                  padding: '3px 9px',
+                  justifyContent: 'center',
+                  width: '26px',
+                  height: '26px',
                   borderRadius: '7px',
-                  lineHeight: 1.25,
-                  cursor: 'pointer',
-                  userSelect: 'none',
-                  WebkitUserSelect: 'none',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
-                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.15s ease',
+                  fontSize: '13px',
+                  background: masterTask.isRepeating ? 'rgba(56, 189, 248, 0.2)' : 'transparent',
+                  color: masterTask.isRepeating ? '#38bdf8' : 'var(--color-text-muted)',
+                  border: masterTask.isRepeating ? '1px solid rgba(56, 189, 248, 0.4)' : 'none',
+                  opacity: masterTask.isRepeating ? 1 : 0.4,
+                  boxShadow: masterTask.isRepeating ? '0 0 8px rgba(56, 189, 248, 0.3)' : 'none',
                 }}
               >
-                <span>{formattedOccDate}</span>
-                <Calendar size={13} style={{ opacity: 0.85 }} />
-                <input
-                  type="date"
-                  className="ios-date-picker-overlay"
-                  value={activeOccDate}
-                  onChange={async (e) => {
-                    if (e.target.value && e.target.value !== activeOccDate && masterTask) {
-                      const newDate = e.target.value;
-                      const oldDate = activeOccDate;
-                      setOverrideDate(newDate);
-                      await updateOccurrenceDate(masterTask.id, oldDate, newDate);
-                    }
-                  }}
-                />
-              </div>
+                🔄
+              </span>
+              <button onClick={onOpenEdit} title="Редактировать" style={{ background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer', padding: '2px' }}>✏️</button>
+              <button onClick={onClose} title="Закрыть" style={{ background: 'none', border: 'none', fontSize: '18px', color: 'var(--color-text-muted)', cursor: 'pointer', padding: '2px' }}>✕</button>
             </div>
-            {masterTask.isRepeating && seriesStartDate && seriesStartDate !== activeOccDate && (
-              <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', opacity: 0.7 }}>
-                (Старт серии: {formatDateTitleRu(seriesStartDate)})
+          </div>
+
+          {/* Ряд 2: Без отступа сверху — иконка категории и название (слева), дата создания без времени (справа) */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '2px', fontSize: '12.5px', color: 'var(--color-text-muted)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--color-accent-text)', fontWeight: 600 }}>
+              <span>🏷</span>
+              <span>{masterTask.category || 'Без категории'}</span>
+            </div>
+            {masterTask.createdAt && (
+              <span style={{ fontSize: '11.5px', opacity: 0.75 }}>
+                Создано {new Date(masterTask.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' })}
               </span>
             )}
           </div>
-          {masterTask.isRepeating && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span>🔥</span>
-              <span style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>Стрик: {streak} дней</span>
-            </div>
-          )}
+
+          {/* Ряд 3: Стрик справа */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginTop: '4px', marginBottom: '10px' }}>
+            {masterTask.isRepeating && (
+              <span style={{ fontSize: '12px', fontWeight: 700, color: '#f59e0b' }}>🔥 Стрик: {streak} дн.</span>
+            )}
+          </div>
+
+          {/* Ряд 4: Минималистичные плашки статуса и даты без внешней рамки */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+            <RenderStatusBadge />
+            <RenderDatePickerBadge />
+          </div>
         </div>
 
-        <div style={{ width: '100%', height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.08)', margin: '6px 0' }} />
 
         {(masterTask.description || masterTask.link) && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', padding: '10px 12px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)' }}>
@@ -400,6 +520,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           />
         </div>
 
+
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
           <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
             🍅 Время (Помидоры):
@@ -439,6 +561,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             })}
           </div>
         </div>
+
+
 
         <button type="button" onClick={handleToggleTodayOccurrence} style={{ width: '100%', padding: '12px 14px', borderRadius: '14px', border: isTodayDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-success-border)', backgroundColor: isTodayDone ? 'var(--color-success-light)' : 'var(--color-success)', color: isTodayDone ? 'var(--color-success)' : '#ffffff', fontSize: '13.5px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', boxShadow: !isTodayDone ? '0 4px 14px var(--color-success-border)' : 'none', transition: 'all 0.2s ease', marginTop: '4px' }}>
           <CheckCircle2 size={18} />
@@ -527,6 +651,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             )}
           </div>
         )}
+
+
 
         {showDeleteConfirm && (
           <div
