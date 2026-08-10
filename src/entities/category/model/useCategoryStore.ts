@@ -21,6 +21,28 @@ const DEFAULT_CATEGORIES: CategoryItem[] = [
 ];
 
 const STORAGE_KEY = 'skillflow_custom_categories_v2';
+const DELETED_KEY = 'skillflow_deleted_categories_v2';
+
+const getDeletedCategoryNames = (): Set<string> => {
+  if (typeof window === 'undefined') return new Set();
+  try {
+    const raw = localStorage.getItem(DELETED_KEY);
+    if (raw) {
+      const arr = JSON.parse(raw);
+      if (Array.isArray(arr)) {
+        return new Set(arr.map((s: string) => String(s).toLowerCase().trim()));
+      }
+    }
+  } catch (e) {}
+  return new Set();
+};
+
+const saveDeletedCategoryNames = (names: Set<string>) => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(DELETED_KEY, JSON.stringify(Array.from(names)));
+  } catch (e) {}
+};
 
 const mergeCategories = (baseList: CategoryItem[], incomingList: CategoryItem[]): CategoryItem[] => {
   const map = new Map<string, CategoryItem>();
@@ -43,18 +65,22 @@ const mergeCategories = (baseList: CategoryItem[], incomingList: CategoryItem[])
 
 const loadCategoriesFromStorage = (): CategoryItem[] => {
   if (typeof window === 'undefined') return DEFAULT_CATEGORIES;
+  const deleted = getDeletedCategoryNames();
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed: CategoryItem[] = JSON.parse(raw);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        return mergeCategories(DEFAULT_CATEGORIES, parsed);
+        return parsed.filter((c) => c && c.name && !deleted.has(c.name.toLowerCase().trim()));
       }
     }
   } catch (e) {
     console.error('Failed to load categories from storage', e);
   }
-  return DEFAULT_CATEGORIES;
+
+  const initial = DEFAULT_CATEGORIES.filter((c) => !deleted.has(c.name.toLowerCase().trim()));
+  saveCategoriesToStorage(initial);
+  return initial;
 };
 
 const saveCategoriesToStorage = (categories: CategoryItem[]) => {
@@ -85,10 +111,21 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
       const res = await fetch('/api/categories');
       if (res.ok) {
         const dbCategories: CategoryItem[] = await res.json();
-        const currentStored = get().categories;
-        const merged = mergeCategories(mergeCategories(DEFAULT_CATEGORIES, currentStored), Array.isArray(dbCategories) ? dbCategories : []);
-        set({ categories: merged });
-        saveCategoriesToStorage(merged);
+        const deleted = getDeletedCategoryNames();
+
+        if (Array.isArray(dbCategories)) {
+          const validFromDb = dbCategories.filter((c) => c && c.name && !deleted.has(c.name.toLowerCase().trim()));
+          const currentStored = get().categories.filter((c) => c && c.name && !deleted.has(c.name.toLowerCase().trim()));
+          const merged = mergeCategories(currentStored, validFromDb);
+
+          // Ensure system 'Без категории' is present
+          if (!merged.some((c) => c.name === 'Без категории')) {
+            merged.unshift(DEFAULT_CATEGORIES[0]);
+          }
+
+          set({ categories: merged });
+          saveCategoriesToStorage(merged);
+        }
       }
     } catch (e) {
       console.warn('API /api/categories unavailable, using local storage fallback');
@@ -97,15 +134,17 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
 
   syncCategoriesWithTasks: (tasks: Task[]) => {
     if (!tasks || tasks.length === 0) return;
-    const currentList = get().categories;
+    const deleted = getDeletedCategoryNames();
+    const currentList = get().categories.filter((c) => c && c.name && !deleted.has(c.name.toLowerCase().trim()));
     const existingNames = new Set(currentList.map((c) => c.name.trim().toLowerCase()));
 
     const newItems: CategoryItem[] = [];
     tasks.forEach((t) => {
       if (t.category && t.category.trim()) {
         const nameClean = t.category.trim();
-        if (!existingNames.has(nameClean.toLowerCase())) {
-          existingNames.add(nameClean.toLowerCase());
+        const key = nameClean.toLowerCase();
+        if (!existingNames.has(key) && !deleted.has(key) && nameClean !== 'Без категории') {
+          existingNames.add(key);
           newItems.push({
             id: `cat-auto-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
             name: nameClean,
@@ -121,13 +160,11 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
       saveCategoriesToStorage(merged);
 
       newItems.forEach((cat) => {
-        if (cat.name !== 'Без категории') {
-          fetch('/api/categories', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: cat.name, color: cat.color }),
-          }).catch(() => {});
-        }
+        fetch('/api/categories', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: cat.name, color: cat.color }),
+        }).catch(() => {});
       });
     }
   },
@@ -137,6 +174,13 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
     if (!trimmed) return;
     const existing = get().categories.find((c) => c.name.toLowerCase() === trimmed.toLowerCase());
     if (existing) return;
+
+    // Unmark from deleted if re-added explicitly
+    const deleted = getDeletedCategoryNames();
+    if (deleted.has(trimmed.toLowerCase())) {
+      deleted.delete(trimmed.toLowerCase());
+      saveDeletedCategoryNames(deleted);
+    }
 
     const newCategory: CategoryItem = {
       id: `cat-${Date.now()}`,
@@ -174,7 +218,7 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
     if (oldName && oldName !== trimmed) {
       try {
         const { useTaskStore } = await import('@/entities/task');
-        useTaskStore.getState().updateTaskCategoryBatch(oldName, trimmed);
+        await useTaskStore.getState().updateTaskCategoryBatch(oldName, trimmed);
       } catch (e) {
         console.warn('Failed to cascade rename category to tasks', e);
       }
@@ -193,28 +237,33 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
 
   deleteCategory: async (id: string) => {
     const target = get().categories.find((c) => c.id === id);
-    if (target?.isSystem) return; // Prevent deleting system 'Без категории'
+    if (!target || target.isSystem) return; // Prevent deleting system 'Без категории'
 
-    const oldName = target ? target.name : null;
+    const oldName = target.name.trim();
 
-    const updated = get().categories.filter((c) => c.id !== id);
+    // 1. Mark as deleted in storage so background syncs never restore it
+    const deleted = getDeletedCategoryNames();
+    deleted.add(oldName.toLowerCase());
+    saveDeletedCategoryNames(deleted);
+
+    // 2. Remove from active categories list
+    const updated = get().categories.filter((c) => c.id !== id && c.name.toLowerCase().trim() !== oldName.toLowerCase());
     set({ categories: updated });
     saveCategoriesToStorage(updated);
 
-    // Cascade reset tasks to 'Без категории' when category is deleted
+    // 3. Cascade reset tasks with this category to 'Без категории'
     if (oldName) {
       try {
         const { useTaskStore } = await import('@/entities/task');
-        useTaskStore.getState().updateTaskCategoryBatch(oldName, 'Без категории');
+        await useTaskStore.getState().updateTaskCategoryBatch(oldName, 'Без категории');
       } catch (e) {
         console.warn('Failed to reset tasks category to Без категории', e);
       }
     }
 
+    // 4. Send DELETE request to backend DB
     try {
-      const query = oldName
-        ? `id=${encodeURIComponent(id)}&name=${encodeURIComponent(oldName)}`
-        : `id=${encodeURIComponent(id)}`;
+      const query = `id=${encodeURIComponent(id)}&name=${encodeURIComponent(oldName)}`;
       await fetch(`/api/categories?${query}`, {
         method: 'DELETE',
       });
