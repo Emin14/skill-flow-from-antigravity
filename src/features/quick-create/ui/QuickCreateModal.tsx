@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Input, CustomCategorySelect } from '@/shared/ui';
+import { Input, CustomCategorySelect, useToastStore } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
+import { NO_DATE_VARIANTS, RenderNoDateButton } from '@/shared/config/noDateVariants';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
-import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS } from '@/shared/config/repetitionRules';
+import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS, WEEKDAY_OPTIONS, formatWeeklyDays } from '@/shared/config/repetitionRules';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { getCategoryEmojiDot } from '@/shared/config/categoryColors';
@@ -95,7 +96,20 @@ export const QuickCreateModal: React.FC = () => {
   const [repetitionMode, setRepetitionMode] = useState<RepetitionMode>('none');
   const [scheduleFrequency, setScheduleFrequency] = useState<ScheduleFrequency>('daily');
   const [afterCompletionDaysInput, setAfterCompletionDaysInput] = useState('3');
+  const [weeklyDays, setWeeklyDays] = useState<number[]>([1, 2, 3, 4, 5]);
   const [hasSubtasks, setHasSubtasks] = useState(false);
+
+  const handleToggleWeekday = (dayId: number) => {
+    if (weeklyDays.includes(dayId)) {
+      if (weeklyDays.length <= 1) {
+        useToastStore.getState().showToast('Должен быть выбран хотя бы один день недели', 'warning');
+        return;
+      }
+      setWeeklyDays(weeklyDays.filter((id) => id !== dayId));
+    } else {
+      setWeeklyDays([...weeklyDays, dayId].sort((a, b) => (a === 0 ? 7 : a) - (b === 0 ? 7 : b)));
+    }
+  };
 
   const [dragY, setDragY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -197,6 +211,7 @@ export const QuickCreateModal: React.FC = () => {
       repetitionMode,
       scheduleFrequency,
       afterCompletionDays,
+      weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
       hasSubtasks: false,
     });
 
@@ -276,7 +291,7 @@ export const QuickCreateModal: React.FC = () => {
               />
             </div>
 
-            {/* 2. Date Field with - / + Stepper */}
+            {/* 2. Date Field with - / + Stepper & Variant 7 Button */}
             <div>
               <div className={styles.v2DateRow}>
                 <button
@@ -290,10 +305,10 @@ export const QuickCreateModal: React.FC = () => {
                 <input
                   type="date"
                   className={styles.v2DateInput}
-                  value={scheduledDate || getTodayStr()}
+                  value={scheduledDate}
                   onChange={(e) => {
-                    setScheduledDate(e.target.value || getTodayStr());
-                    setDatePresetMode('custom');
+                    setScheduledDate(e.target.value);
+                    setDatePresetMode(e.target.value ? 'custom' : 'none');
                   }}
                 />
                 <button
@@ -304,6 +319,18 @@ export const QuickCreateModal: React.FC = () => {
                 >
                   +
                 </button>
+                <RenderNoDateButton
+                  variantId={11}
+                  scheduledDate={scheduledDate}
+                  onClear={() => {
+                    setScheduledDate('');
+                    setDatePresetMode('none');
+                  }}
+                  onSetToday={() => {
+                    setScheduledDate(getTodayStr());
+                    setDatePresetMode('today');
+                  }}
+                />
               </div>
             </div>
 
@@ -355,6 +382,7 @@ export const QuickCreateModal: React.FC = () => {
                     <option value="spaced">📐 Интервальный повтор</option>
                     <option value="smart">🧠 Умный повтор</option>
                     <option value="schedule">📅 По расписанию</option>
+                    <option value="specific_days">🗓️ По определенным дням</option>
                     <option value="after_completion">⏱ Через N дней</option>
                   </select>
                 </div>
@@ -371,6 +399,38 @@ export const QuickCreateModal: React.FC = () => {
                       <option value="monthly">Каждый месяц</option>
                       <option value="yearly">Каждый год</option>
                     </select>
+                  </div>
+                ) : repetitionMode === 'specific_days' ? (
+                  <div style={{ flex: 1, minWidth: 0, display: 'flex', gap: '3px', alignItems: 'center' }}>
+                    {WEEKDAY_OPTIONS.map((w) => {
+                      const isSelected = weeklyDays.includes(w.id);
+                      return (
+                        <button
+                          key={w.id}
+                          type="button"
+                          onClick={() => handleToggleWeekday(w.id)}
+                          title={w.label}
+                          style={{
+                            flex: 1,
+                            minWidth: 0,
+                            height: '32px',
+                            borderRadius: '6px',
+                            background: isSelected ? 'rgba(99, 102, 241, 0.35)' : 'rgba(255, 255, 255, 0.05)',
+                            border: isSelected ? '1px solid rgba(99, 102, 241, 0.7)' : '1px solid var(--color-border)',
+                            color: isSelected ? '#ffffff' : 'var(--color-text-muted)',
+                            fontSize: '11px',
+                            fontWeight: isSelected ? 700 : 400,
+                            cursor: 'pointer',
+                            transition: 'all 0.15s ease',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          {w.short}
+                        </button>
+                      );
+                    })}
                   </div>
                 ) : repetitionMode === 'after_completion' ? (
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -431,6 +491,8 @@ export const QuickCreateModal: React.FC = () => {
                     ? 'Умное повторение: интервалы адаптируются по оценке сложности'
                     : repetitionMode === 'schedule'
                     ? `Повтор строго по графику (${FREQ_LABELS[scheduleFrequency] || 'Каждый день'})`
+                    : repetitionMode === 'specific_days'
+                    ? `Повтор по выбранным дням: ${formatWeeklyDays(weeklyDays)}`
                     : `Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено»`}
                 </span>
               </div>

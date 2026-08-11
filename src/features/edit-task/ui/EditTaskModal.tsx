@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Input, CustomCategorySelect } from '@/shared/ui';
+import { Input, CustomCategorySelect, useToastStore } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
+import { NO_DATE_VARIANTS, RenderNoDateButton } from '@/shared/config/noDateVariants';
 import { Task, TaskPriority, TaskStatus, RepeatStatus } from '@/entities/task/model/types';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { getCategoryColor, getCategoryEmojiDot } from '@/shared/config/categoryColors';
-import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS } from '@/shared/config/repetitionRules';
+import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS, WEEKDAY_OPTIONS, formatWeeklyDays } from '@/shared/config/repetitionRules';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import styles from './EditTaskModal.module.css';
@@ -103,7 +104,20 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const [repeatStatus, setRepeatStatus] = useState<RepeatStatus>('Active');
   const [scheduleFrequency, setScheduleFrequency] = useState<ScheduleFrequency>('daily');
   const [afterCompletionDaysInput, setAfterCompletionDaysInput] = useState('3');
+  const [weeklyDays, setWeeklyDays] = useState<number[]>([1, 2, 3, 4, 5]);
   const [hasSubtasks, setHasSubtasks] = useState(false);
+
+  const handleToggleWeekday = (dayId: number) => {
+    if (weeklyDays.includes(dayId)) {
+      if (weeklyDays.length <= 1) {
+        useToastStore.getState().showToast('Должен быть выбран хотя бы один день недели', 'warning');
+        return;
+      }
+      setWeeklyDays(weeklyDays.filter((id) => id !== dayId));
+    } else {
+      setWeeklyDays([...weeklyDays, dayId].sort((a, b) => (a === 0 ? 7 : a) - (b === 0 ? 7 : b)));
+    }
+  };
 
   const [dragY, setDragY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -163,6 +177,11 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     setRepeatStatus(task.repeatStatus || 'Active');
     setScheduleFrequency(task.scheduleFrequency || 'daily');
     setAfterCompletionDaysInput(String(task.afterCompletionDays || 3));
+    if (task.weeklyDays && Array.isArray(task.weeklyDays) && task.weeklyDays.length > 0) {
+      setWeeklyDays(task.weeklyDays);
+    } else {
+      setWeeklyDays([1, 2, 3, 4, 5]);
+    }
     setHasSubtasks(!!task.hasSubtasks || tasks.some((t) => t.parentTaskId === task.id));
   }, [task, tasks]);
 
@@ -229,6 +248,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         repetitionMode: effectiveMode,
         scheduleFrequency,
         afterCompletionDays,
+        weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
         hasSubtasks,
       });
     } else {
@@ -244,6 +264,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         repetitionMode: effectiveMode,
         scheduleFrequency,
         afterCompletionDays,
+        weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
         hasSubtasks,
         taskState: effectiveIsRepeating ? taskState : null,
       });
@@ -334,7 +355,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               />
             </div>
 
-            {/* 2. Date Field with - / + Stepper */}
+            {/* 2. Date Field with - / + Stepper & RenderNoDateButton */}
             <div>
               <div className={styles.v2DateRow}>
                 <button
@@ -348,10 +369,10 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 <input
                   type="date"
                   className={styles.v2DateInput}
-                  value={scheduledDate || getTodayStr()}
+                  value={scheduledDate}
                   onChange={(e) => {
-                    setScheduledDate(e.target.value || getTodayStr());
-                    setDatePresetMode('custom');
+                    setScheduledDate(e.target.value);
+                    setDatePresetMode(e.target.value ? 'custom' : 'none');
                   }}
                 />
                 <button
@@ -362,6 +383,18 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 >
                   +
                 </button>
+                <RenderNoDateButton
+                  variantId={11}
+                  scheduledDate={scheduledDate}
+                  onClear={() => {
+                    setScheduledDate('');
+                    setDatePresetMode('none');
+                  }}
+                  onSetToday={() => {
+                    setScheduledDate(getTodayStr());
+                    setDatePresetMode('today');
+                  }}
+                />
               </div>
             </div>
 
@@ -413,6 +446,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                     <option value="spaced">📐 Интервальный повтор</option>
                     <option value="smart">🧠 Умный повтор</option>
                     <option value="schedule">📅 По расписанию</option>
+                    <option value="specific_days">🗓️ По определенным дням</option>
                     <option value="after_completion">⏱ Через N дней</option>
                   </select>
                 </div>
@@ -429,6 +463,38 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                       <option value="monthly">Каждый месяц</option>
                       <option value="yearly">Каждый год</option>
                     </select>
+                  </div>
+                ) : repetitionMode === 'specific_days' ? (
+                  <div style={{ flex: 1, minWidth: 0, display: 'flex', gap: '3px', alignItems: 'center' }}>
+                    {WEEKDAY_OPTIONS.map((w) => {
+                      const isSelected = weeklyDays.includes(w.id);
+                      return (
+                        <button
+                          key={w.id}
+                          type="button"
+                          onClick={() => handleToggleWeekday(w.id)}
+                          title={w.label}
+                          style={{
+                            flex: 1,
+                            minWidth: 0,
+                            height: '32px',
+                            borderRadius: '6px',
+                            background: isSelected ? 'rgba(99, 102, 241, 0.35)' : 'rgba(255, 255, 255, 0.05)',
+                            border: isSelected ? '1px solid rgba(99, 102, 241, 0.7)' : '1px solid var(--color-border)',
+                            color: isSelected ? '#ffffff' : 'var(--color-text-muted)',
+                            fontSize: '11px',
+                            fontWeight: isSelected ? 700 : 400,
+                            cursor: 'pointer',
+                            transition: 'all 0.15s ease',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          {w.short}
+                        </button>
+                      );
+                    })}
                   </div>
                 ) : repetitionMode === 'after_completion' ? (
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -490,6 +556,8 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                     ? 'Умное повторение: интервалы адаптируются по оценке сложности'
                     : repetitionMode === 'schedule'
                     ? `Повтор строго по графику (${FREQ_LABELS[scheduleFrequency] || 'Каждый день'})`
+                    : repetitionMode === 'specific_days'
+                    ? `Повтор по выбранным дням: ${formatWeeklyDays(weeklyDays)}`
                     : `Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено»`}
                 </span>
               </div>
@@ -562,7 +630,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               right: 0,
               bottom: 0,
               backgroundColor: 'rgba(0, 0, 0, 0.75)',
-              backdropFilter: 'blur(8px)',
+              backdropFilter: 'blur(10px)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -573,8 +641,8 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
           >
             <div
               style={{
-                background: '#1e293b',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
+                background: 'var(--color-surface, #1e293b)',
+                border: '1px solid var(--color-border, rgba(255, 255, 255, 0.2))',
                 borderRadius: '16px',
                 padding: '20px',
                 width: '100%',
@@ -582,18 +650,18 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '16px',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.7)',
               }}
               onClick={(e) => e.stopPropagation()}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span style={{ fontSize: '22px' }}>⚠️</span>
-                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 600, color: '#f87171' }}>
+                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: 'var(--color-danger, #f87171)' }}>
                   Удаление задачи
                 </h3>
               </div>
 
-              <p style={{ margin: 0, fontSize: '13.5px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.45 }}>
+              <p style={{ margin: 0, fontSize: '13.5px', color: 'var(--color-text-primary, rgba(255, 255, 255, 0.95))', lineHeight: 1.45 }}>
                 Удалить текущую задачу со всеми её повторениями?
               </p>
 
@@ -605,12 +673,13 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                     flex: 1,
                     height: '38px',
                     borderRadius: '10px',
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    color: 'var(--color-text-secondary)',
+                    background: 'rgba(255, 255, 255, 0.12)',
+                    border: '1px solid var(--color-border, rgba(255, 255, 255, 0.25))',
+                    color: 'var(--color-text-primary, #ffffff)',
                     fontSize: '13.5px',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     cursor: 'pointer',
+                    transition: 'all 0.15s ease',
                   }}
                 >
                   Нет
@@ -626,12 +695,13 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                     border: 'none',
                     color: '#ffffff',
                     fontSize: '13.5px',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     cursor: 'pointer',
                     boxShadow: '0 4px 12px rgba(239, 68, 68, 0.4)',
+                    transition: 'all 0.15s ease',
                   }}
                 >
-                  Да
+                  Да, удалить
                 </button>
               </div>
             </div>

@@ -3,7 +3,7 @@
 import React, { useMemo, useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Task } from '@/entities/task/model/types';
-import { SmartRating } from '@/shared/config/repetitionRules';
+import { SmartRating, formatWeeklyDays } from '@/shared/config/repetitionRules';
 import { useTaskStore, normalizeOccurrences } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { getTodayStr, formatDateDisplay, formatLocalDateStr } from '@/shared/lib/dateUtils';
@@ -253,6 +253,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     ? (masterTask.repetitionMode === 'smart' ? 'Повтор: умный (SM-2)'
       : masterTask.repetitionMode === 'spaced' ? 'Повтор: интервальный'
       : masterTask.repetitionMode === 'schedule' ? 'Повтор: по расписанию'
+      : masterTask.repetitionMode === 'specific_days' ? `Повтор: по дням (${formatWeeklyDays(masterTask.weeklyDays)})`
       : 'Повтор: ежедневно')
     : 'Без повтора';
 
@@ -835,7 +836,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           <div
             style={{
               position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(8px)',
+              backgroundColor: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(10px)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               zIndex: 10000, padding: '16px',
             }}
@@ -843,28 +844,60 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           >
             <div
               style={{
-                background: '#1e293b', border: '1px solid rgba(255, 255, 255, 0.12)',
+                background: 'var(--color-surface, #1e293b)',
+                border: '1px solid var(--color-border, rgba(255, 255, 255, 0.2))',
                 borderRadius: '16px', padding: '20px', width: '100%', maxWidth: '360px',
                 display: 'flex', flexDirection: 'column', gap: '16px',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.7)',
               }}
               onClick={(e) => e.stopPropagation()}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span style={{ fontSize: '22px' }}>⚠️</span>
-                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 600, color: '#f87171' }}>
+                <h3 style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: 'var(--color-danger, #f87171)' }}>
                   Удаление задачи
                 </h3>
               </div>
-              <p style={{ margin: 0, fontSize: '13.5px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.45 }}>
+              <p style={{ margin: 0, fontSize: '13.5px', color: 'var(--color-text-primary, rgba(255, 255, 255, 0.95))', lineHeight: 1.45 }}>
                 Удалить текущую задачу со всеми её повторениями?
               </p>
               <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
-                <button type="button" onClick={() => setShowDeleteConfirm(false)} style={{ flex: 1, height: '38px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.12)', color: 'var(--color-text-secondary)', fontSize: '13.5px', fontWeight: 600, cursor: 'pointer' }}>
+                <button
+                  type="button"
+                  onClick={() => setShowDeleteConfirm(false)}
+                  style={{
+                    flex: 1,
+                    height: '38px',
+                    borderRadius: '10px',
+                    background: 'rgba(255, 255, 255, 0.12)',
+                    border: '1px solid var(--color-border, rgba(255, 255, 255, 0.25))',
+                    color: 'var(--color-text-primary, #ffffff)',
+                    fontSize: '13.5px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
                   Нет
                 </button>
-                <button type="button" onClick={handleConfirmDeleteSeries} style={{ flex: 1, height: '38px', borderRadius: '10px', background: '#ef4444', border: 'none', color: '#ffffff', fontSize: '13.5px', fontWeight: 600, cursor: 'pointer', boxShadow: '0 4px 12px rgba(239, 68, 68, 0.4)' }}>
-                  Да
+                <button
+                  type="button"
+                  onClick={handleConfirmDeleteSeries}
+                  style={{
+                    flex: 1,
+                    height: '38px',
+                    borderRadius: '10px',
+                    background: '#ef4444',
+                    border: 'none',
+                    color: '#ffffff',
+                    fontSize: '13.5px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 12px rgba(239, 68, 68, 0.4)',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  Да, удалить
                 </button>
               </div>
             </div>
