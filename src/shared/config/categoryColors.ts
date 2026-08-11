@@ -270,3 +270,45 @@ export const getCategoryColor = (cat?: string, isLightOverride?: boolean): strin
     }
   }
 };
+
+export const getCategoryEmojiDot = (catName?: string, colorHex?: string): string => {
+  if (!catName || catName.trim() === 'Без категории') return '⚪';
+  const color = (colorHex || getCategoryColor(catName)).toLowerCase();
+
+  const hslMatch = color.match(/hsl\(\s*(\d+)/);
+  if (hslMatch) {
+    const hue = parseInt(hslMatch[1], 10);
+    if (hue >= 340 || hue < 20) return '🔴';
+    if (hue >= 20 && hue < 45) return '🟠';
+    if (hue >= 45 && hue < 75) return '🟡';
+    if (hue >= 75 && hue < 165) return '🟢';
+    if (hue >= 165 && hue < 260) return '🔵';
+    if (hue >= 260 && hue < 340) return '🟣';
+  }
+
+  if (color.includes('#38bdf8') || color.includes('#0ea5e9') || color.includes('#0284c7') || 
+      color.includes('#0369a1') || color.includes('#3b82f6') || color.includes('#06b6d4') || 
+      color.includes('#1d4ed8') || color.includes('#0e7490') || color.includes('#6366f1') || color.includes('#a5b4fc')) {
+    return '🔵';
+  }
+  if (color.includes('#10b981') || color.includes('#047857') || color.includes('#34d399') || 
+      color.includes('#059669')) {
+    return '🟢';
+  }
+  if (color.includes('#a855f7') || color.includes('#7e22ce') || color.includes('#8b5cf6') || 
+      color.includes('#6d28d9') || color.includes('#c084fc') || color.includes('#818cf8')) {
+    return '🟣';
+  }
+  if (color.includes('#f59e0b') || color.includes('#b45309') || color.includes('#fbbf24') || 
+      color.includes('#d97706')) {
+    return '🟡';
+  }
+  if (color.includes('#ec4899') || color.includes('#be123c') || color.includes('#ef4444') || 
+      color.includes('#fb7185') || color.includes('#f43f5e')) {
+    return '🔴';
+  }
+  if (color.includes('#fb923c') || color.includes('#c2410c') || color.includes('#f97316')) {
+    return '🟠';
+  }
+  return '🔵';
+};

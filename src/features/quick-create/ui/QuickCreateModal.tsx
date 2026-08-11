@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Input } from '@/shared/ui';
+import { Input, CustomCategorySelect } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
@@ -9,6 +9,7 @@ import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS } from '@/shared/config/repetitionRules';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
+import { getCategoryEmojiDot } from '@/shared/config/categoryColors';
 import { useQuickCreateModalStore } from '../model/quickCreateStore';
 import styles from './QuickCreateModal.module.css';
 
@@ -44,7 +45,7 @@ const glassItem = (active = false): React.CSSProperties => ({
 // Subtle field hint text - 100% legible on light & dark themes
 const hint: React.CSSProperties = {
   display: 'block', fontSize: '10.5px', color: 'var(--color-text-muted)',
-  paddingLeft: '3px', marginTop: '3px', letterSpacing: '0.01em',
+  paddingLeft: '2px', marginTop: '1px', letterSpacing: '0.01em',
   userSelect: 'none',
 };
 
@@ -257,18 +258,6 @@ export const QuickCreateModal: React.FC = () => {
           <div className={styles.dragHandleBar} />
         </div>
 
-        {/* Top Category Theme Accent Line */}
-        <div
-          style={{
-            height: '3px',
-            width: '100%',
-            borderRadius: '3px 3px 0 0',
-            background: `linear-gradient(90deg, ${catThemeColor} 0%, transparent 85%)`,
-            marginBottom: '4px',
-            transition: 'background 0.3s ease',
-          }}
-        />
-
         {/* Hidden date input for desktop showPicker() fallback */}
         <input type="date" ref={hiddenNativeInputRef} value={scheduledDate}
           onChange={(e) => { if (e.target.value) { setScheduledDate(e.target.value); setDatePresetMode('custom'); } }}
@@ -328,11 +317,11 @@ export const QuickCreateModal: React.FC = () => {
                 >
                   {storeCategories.map((cat) => (
                     <option key={cat.id || cat.name} value={cat.name}>
-                      {cat.name}
+                      {getCategoryEmojiDot(cat.name, cat.color)} {cat.name}
                     </option>
                   ))}
                 </select>
-                <span style={hint}>🏷 Категория</span>
+                <span style={hint}>Категория</span>
               </div>
 
               <div>
@@ -348,7 +337,7 @@ export const QuickCreateModal: React.FC = () => {
                     </option>
                   ))}
                 </select>
-                <span style={hint}>📁 Родительская задача</span>
+                <span style={hint}>Родительская задача</span>
               </div>
             </div>
 
@@ -409,36 +398,41 @@ export const QuickCreateModal: React.FC = () => {
                   </div>
                 ) : null}
               </div>
-              <span style={hint}>🔁 Режим и опция повторения</span>
+              <span style={hint}>Режим и опция повторения</span>
 
-              {/* Mode Explanation Hint Box DIRECTLY Below Repetition Selects */}
+              {/* Repetition Hint Line (Variant 7 Apple Reminders Note Style) */}
               <div
                 style={{
-                  minHeight: '28px',
-                  padding: '4px 8px',
-                  borderRadius: '8px',
-                  background: 'var(--color-surface-hover)',
-                  border: '1px solid var(--color-border)',
+                  height: '30px',
+                  minHeight: '30px',
+                  maxHeight: '30px',
                   display: 'flex',
                   alignItems: 'center',
+                  padding: '0 2px',
+                  background: 'transparent',
+                  opacity: 0.8,
                   fontSize: '10.5px',
                   color: 'var(--color-text-muted)',
                   lineHeight: '1.25',
                   boxSizing: 'border-box',
-                  marginTop: '3px',
+                  marginTop: '4px',
+                  overflow: 'hidden',
                 }}
               >
-                {hasSubtasks ? (
-                  <span style={{ color: 'var(--color-warning)' }}>⚠️ Задачи с подзадачами не имеют повторов</span>
-                ) : (
-                  <>
-                    {repetitionMode === 'none' && '💡 Задача выполняется 1 раз и не будет автоматически повторяться'}
-                    {repetitionMode === 'spaced' && '💡 Интервальное повторение: 1, 3, 7, 14, 30, 90 дней для памяти'}
-                    {repetitionMode === 'smart' && '💡 Умное повторение: интервалы адаптируются по оценке сложности (Легко/Нормально/Сложно)'}
-                    {repetitionMode === 'schedule' && `💡 Повтор строго по графику (${FREQ_LABELS[scheduleFrequency] || 'Каждый день'})`}
-                    {repetitionMode === 'after_completion' && `💡 Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено»`}
-                  </>
-                )}
+                <span style={{ marginRight: '4px' }}>📌</span>
+                <span>
+                  {hasSubtasks
+                    ? '⚠️ Задачи с подзадачами не имеют повторов'
+                    : repetitionMode === 'none'
+                    ? 'Задача выполняется 1 раз и не будет автоматически повторяться'
+                    : repetitionMode === 'spaced'
+                    ? 'Интервальное повторение: 1, 3, 7, 14, 30, 90 дней для памяти'
+                    : repetitionMode === 'smart'
+                    ? 'Умное повторение: интервалы адаптируются по оценке сложности'
+                    : repetitionMode === 'schedule'
+                    ? `Повтор строго по графику (${FREQ_LABELS[scheduleFrequency] || 'Каждый день'})`
+                    : `Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено»`}
+                </span>
               </div>
             </div>
 
@@ -458,7 +452,7 @@ export const QuickCreateModal: React.FC = () => {
                 type="url" name="task_link_field" className={styles.selectInput}
                 value={link} onChange={(e) => setLink(e.target.value)}
                 placeholder="🔗 Ссылка..."
-                style={{ height: '38px' }}
+                style={{ height: '26px' }}
               />
             </div>
 
