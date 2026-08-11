@@ -52,7 +52,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   onOpenEdit,
 }) => {
   const router = useRouter();
-  const { tasks, updateTaskPomodoros, updateOccurrenceNote, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus, updateTaskDetails, updateRepeatStatus } = useTaskStore();
+  const { tasks, updateTaskPomodoros, updateOccurrenceRating, updateOccurrenceNote, updateTaskStatus, deleteTaskSeries, deleteTaskOccurrence, updateOccurrenceDate, toggleTaskStatus, updateTaskDetails, updateRepeatStatus } = useTaskStore();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   const [selectedRating, setSelectedRating] = useState<SmartRating | null>(null);
@@ -223,7 +223,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const isTodayDone = masterTask.isRepeating ? todayOccurrence?.status === 'Done' : masterTask.status === 'Done';
 
   const handleRatingClick = (ratingKey: SmartRating) => {
-    setSelectedRating(ratingKey);
+    const newRating = selectedRating === ratingKey ? null : ratingKey;
+    setSelectedRating(newRating);
+    if (masterTask) {
+      updateOccurrenceRating(masterTask.id, newRating, activeOccDate);
+    }
   };
 
   const handleToggleTodayOccurrence = async () => {
@@ -444,99 +448,53 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           }}
         >
 
-          {/* Ряд 1: Заголовок (слева), Кнопка статуса (справа) */}
+          {/* Ряд 1: Заголовок (слева) и Стрик (справа) */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
             <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0, lineHeight: 1.25, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1, minWidth: 0 }}>
               {masterTask.title}
             </h2>
 
-            {/* Минималистичная кнопка статуса повторения (на одной линии с заголовком справа) */}
             {masterTask.isRepeating && (
-              <div
-                title={`Статус повторения: ${masterTask.repeatStatus === 'Paused' ? 'На паузе' : masterTask.repeatStatus === 'Completed' ? 'Завершено' : 'В работе'} (нажмите, чтобы изменить)`}
+              <span
+                title={`Текущий стрик: ${streak} дн.`}
                 style={{
-                  position: 'relative',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '28px',
-                  padding: '0 8px',
-                  borderRadius: '8px',
                   fontSize: '12px',
                   fontWeight: 700,
+                  color: '#f59e0b',
+                  background: 'rgba(245, 158, 11, 0.15)',
+                  border: '1px solid rgba(245, 158, 11, 0.3)',
+                  padding: '2px 8px',
+                  borderRadius: '7px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
                   gap: '4px',
-                  background:
-                    masterTask.repeatStatus === 'Paused'
-                      ? 'rgba(245, 158, 11, 0.18)'
-                      : masterTask.repeatStatus === 'Completed'
-                      ? 'rgba(129, 140, 248, 0.18)'
-                      : 'rgba(16, 185, 129, 0.18)',
-                  color:
-                    masterTask.repeatStatus === 'Paused'
-                      ? '#f59e0b'
-                      : masterTask.repeatStatus === 'Completed'
-                      ? '#818cf8'
-                      : '#10b981',
-                  border:
-                    masterTask.repeatStatus === 'Paused'
-                      ? '1px solid rgba(245, 158, 11, 0.4)'
-                      : masterTask.repeatStatus === 'Completed'
-                      ? '1px solid rgba(129, 140, 248, 0.4)'
-                      : '1px solid rgba(16, 185, 129, 0.4)',
-                  cursor: 'pointer',
                   userSelect: 'none',
-                  transition: 'all 0.2s ease',
                   flexShrink: 0,
                 }}
               >
-                <span>
-                  {masterTask.repeatStatus === 'Paused'
-                    ? '⏸️'
-                    : masterTask.repeatStatus === 'Completed'
-                    ? '✅'
-                    : '▶️'}
-                </span>
-                <select
-                  value={masterTask.repeatStatus || 'Active'}
-                  onChange={(e) => updateRepeatStatus(masterTask.id, e.target.value as any)}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    opacity: 0,
-                    cursor: 'pointer',
-                    WebkitAppearance: 'menulist-button',
-                  }}
-                >
-                  <option value="Active" style={{ background: '#1e293b', color: '#10b981' }}>▶️ В работе</option>
-                  <option value="Paused" style={{ background: '#1e293b', color: '#f59e0b' }}>⏸️ На паузе</option>
-                  <option value="Completed" style={{ background: '#1e293b', color: '#818cf8' }}>✅ Завершено</option>
-                </select>
-              </div>
+                🔥 {streak} дн.
+              </span>
             )}
           </div>
 
-          {/* Ряд 2: Категория (слева) и Иконка повтора + Стрик + Создано (справа) */}
+          {/* Ряд 2: Категория (слева) и Повтор (иконка) + Создано (справа) */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '12.5px', color: 'var(--color-text-muted)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--color-accent-text)', fontWeight: 600 }}>
               <span>🏷</span>
               <span>{masterTask.category || 'Без категории'}</span>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              {/* Знак повтора */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span
                 title={masterTask.isRepeating ? 'Повторяющаяся задача' : 'Обычная задача'}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '5px',
-                  fontSize: '11px',
+                  width: '22px',
+                  height: '22px',
+                  borderRadius: '6px',
+                  fontSize: '12px',
                   background: masterTask.isRepeating ? 'rgba(56, 189, 248, 0.2)' : 'rgba(255, 255, 255, 0.04)',
                   color: masterTask.isRepeating ? '#38bdf8' : 'var(--color-text-muted)',
                   border: masterTask.isRepeating ? '1px solid rgba(56, 189, 248, 0.4)' : '1px solid var(--color-border)',
@@ -547,13 +505,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                 🔄
               </span>
 
-              {/* Стрик */}
-              {masterTask.isRepeating && streak > 0 && (
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#f59e0b', background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.3)', padding: '1px 6px', borderRadius: '5px' }}>
-                  🔥 {streak} дн.
-                </span>
-              )}
-
               {masterTask.createdAt && (
                 <span style={{ fontSize: '11.5px', opacity: 0.75 }}>
                   Создано {new Date(masterTask.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' })}
@@ -562,7 +513,33 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             </div>
           </div>
 
-          {/* Ряд 3: Кнопки управления шапки (Редактировать и Удалить) */}
+          {/* Ряд 3: Статус задачи (ТОЛЬКО ДЛЯ ПОВТОРЯЮЩИХСЯ ЗАДАЧ) */}
+          {masterTask.isRepeating && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', width: '100%', flexWrap: 'nowrap' }}>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-secondary)', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                Статус повторений:
+              </span>
+
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+                {[
+                  { key: 'Active', label: 'В работе', color: '#10b981' },
+                  { key: 'Paused', label: 'На паузе', color: '#f59e0b' },
+                  { key: 'Completed', label: 'Завершено', color: '#818cf8' },
+                ].map((opt) => {
+                  const isSelected = (masterTask.repeatStatus || 'Active') === opt.key;
+                  return (
+                    <button key={opt.key} type="button" onClick={() => updateRepeatStatus(masterTask.id, opt.key as any)} style={{ padding: '3px 7px', borderRadius: '6px', fontSize: '11.5px', fontWeight: isSelected ? 700 : 500, background: 'transparent', color: isSelected ? opt.color : 'var(--color-text-muted)', border: 'none', cursor: 'pointer' }}>
+                      <span>{opt.label}</span>
+                      {isSelected && <span style={{ marginLeft: '3px', fontWeight: 800 }}>✓</span>}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+
+          {/* Ряд 4: Кнопки управления (Редактировать и Удалить) */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', marginTop: '2px' }}>
             <button
               type="button"
@@ -665,7 +642,12 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             {pomoOptions.map((item) => {
               const isActive = currentPomodoros === item.val;
               return (
-                <button key={item.val} type="button" onClick={() => updateTaskPomodoros(masterTask.id, item.val, activeOccDate)} style={{ height: '38px', borderRadius: '9px', border: 'none', background: isActive ? 'var(--color-accent)' : 'transparent', color: isActive ? '#ffffff' : 'var(--color-text-muted)', fontWeight: isActive ? 700 : 500, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1px', boxShadow: isActive ? '0 4px 14px var(--color-accent-border)' : 'none', cursor: 'pointer' }}>
+                <button
+                  key={item.val}
+                  type="button"
+                  onClick={() => updateTaskPomodoros(masterTask.id, isActive ? 0 : item.val, activeOccDate)}
+                  style={{ height: '38px', borderRadius: '9px', border: 'none', background: isActive ? 'var(--color-accent)' : 'transparent', color: isActive ? '#ffffff' : 'var(--color-text-muted)', fontWeight: isActive ? 700 : 500, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1px', boxShadow: isActive ? '0 4px 14px var(--color-accent-border)' : 'none', cursor: 'pointer' }}
+                >
                   <span style={{ fontSize: '11px', fontWeight: isActive ? 700 : 500 }}>{item.num}</span>
                   {item.hasTomato && <span style={{ fontSize: '18px', lineHeight: 1 }}>🍅</span>}
                 </button>

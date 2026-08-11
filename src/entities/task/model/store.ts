@@ -49,7 +49,7 @@ export const normalizeOccurrences = (
           ...existing,
           status: 'Done',
           completedAt: occ.completedAt || new Date().toISOString(),
-          smartRating: occ.smartRating || existing.smartRating,
+          smartRating: 'smartRating' in occ ? occ.smartRating : existing.smartRating,
           pomodorosCount: occ.pomodorosCount || existing.pomodorosCount,
           activeMinutes: occ.activeMinutes || existing.activeMinutes,
           note: occ.note || existing.note || null,
@@ -58,8 +58,14 @@ export const normalizeOccurrences = (
         dateMap.set(dateStr, {
           ...existing,
           completedAt: occ.completedAt || existing.completedAt,
-          smartRating: occ.smartRating || existing.smartRating,
+          smartRating: 'smartRating' in occ ? occ.smartRating : existing.smartRating,
           note: occ.note || existing.note || null,
+        });
+      } else {
+        dateMap.set(dateStr, {
+          ...existing,
+          ...occ,
+          smartRating: 'smartRating' in occ ? occ.smartRating : existing.smartRating,
         });
       }
     }
@@ -160,6 +166,7 @@ interface TaskState {
   updateTaskDetails: (id: string, updates: Partial<Task>) => Promise<void>;
   updateRepeatStatus: (id: string, repeatStatus: RepeatStatus) => Promise<void>;
   updateTaskPomodoros: (id: string, count: number, dateStr?: string) => Promise<void>;
+  updateOccurrenceRating: (id: string, rating: SmartRating | null, dateStr?: string) => Promise<void>;
   updateOccurrenceNote: (id: string, note: string, dateStr?: string) => Promise<void>;
   deleteTaskOccurrence: (id: string, dateStr: string) => Promise<void>;
   updateOccurrenceDate: (id: string, currentDateStr: string, newDateStr: string) => Promise<void>;
@@ -324,8 +331,12 @@ export const useTaskStore = create<TaskState>((set, get) => ({
   isLoading: false,
   error: null,
 
-  fetchTasks: async () => {
-    set({ isLoading: true, error: null });
+  fetchTasks: async (forceRefresh = false) => {
+    const currentTasks = get().tasks;
+    // Only set blocking isLoading state if store is currently empty or explicit forceRefresh requested
+    if (!currentTasks || currentTasks.length === 0 || forceRefresh) {
+      set({ isLoading: true, error: null });
+    }
     try {
       const rawTasks = await taskApi.getAll();
 
@@ -950,6 +961,52 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }));
 
     await taskApi.update(id, { occurrences: normalized });
+  },
+
+  updateOccurrenceRating: async (id: string, rating: SmartRating | null, dateStr?: string) => {
+    const task = get().tasks.find((t) => t.id === id);
+    if (!task) return;
+
+    const targetDate = dateStr || task.scheduledDate || getTodayStr();
+    const currentOccs = task.occurrences || [];
+    const existingOcc = currentOccs.find((o) => o.date === targetDate);
+    let updatedOccs: TaskOccurrence[];
+
+    if (existingOcc) {
+      updatedOccs = currentOccs.map((o) => {
+        if (o.date === targetDate) {
+          const updated = { ...o };
+          if (rating) {
+            updated.smartRating = rating;
+          } else {
+            delete updated.smartRating;
+          }
+          return updated;
+        }
+        return o;
+      });
+    } else {
+      const newOcc: TaskOccurrence = {
+        id: uuidv4(),
+        taskId: id,
+        date: targetDate,
+        status: 'Todo',
+      };
+      if (rating) newOcc.smartRating = rating;
+      updatedOccs = [...currentOccs, newOcc];
+    }
+
+    const normalized = normalizeOccurrences(updatedOccs, id);
+    const updates: Partial<Task> = {
+      occurrences: normalized,
+      lastSmartRating: rating || undefined,
+    };
+
+    set((state) => ({
+      tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates, lastSmartRating: rating || undefined } : t)),
+    }));
+
+    await taskApi.update(id, updates);
   },
 
   updateOccurrenceNote: async (id: string, note: string, dateStr?: string) => {

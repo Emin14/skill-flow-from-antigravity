@@ -6,17 +6,20 @@ import { useTaskStore, GlassmorphicTaskCard } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
-import { getTodayStr } from '@/shared/lib/dateUtils';
+import { SmartRatingModal } from '@/features/smart-rating-modal/ui/SmartRatingModal';
+import { getTodayStr, isSmartRepeatTask } from '@/shared/lib/dateUtils';
+import { SmartRating } from '@/shared/config/repetitionRules';
 import { CheckCircle2, Lightbulb } from 'lucide-react';
 import { OverdueHeaderWidget } from '@/widgets/overdue-header/ui/OverdueHeaderWidget';
 import { OverdueFilterSortWidget, OverdueSortKey, OverdueSortDirection } from '@/widgets/overdue-filter-sort/ui/OverdueFilterSortWidget';
 import styles from './OverduePage.module.css';
 
 export const OverduePage: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTaskOccurrence, rescheduleTaskToToday } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTaskOccurrence, rescheduleTaskToToday } = useTaskStore();
 
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [smartTask, setSmartTask] = useState<Task | null>(null);
 
   // Category filter & Sorting state
   const [categoryFilter, setCategoryFilter] = useState<string>(() => {
@@ -188,7 +191,18 @@ export const OverduePage: React.FC = () => {
               task={task}
               allTasks={tasks}
               showDragHandle={false}
-              onToggleCheckbox={() => toggleTaskStatus(task.id, undefined, task.scheduledDate)}
+              onToggleCheckbox={() => {
+                if (isSmartRepeatTask(task)) {
+                  const occ = task.occurrences?.find((o) => o.date === task.scheduledDate);
+                  if (occ?.smartRating) {
+                    updateTaskStatus(task.id, 'Done', occ.smartRating, task.scheduledDate);
+                  } else {
+                    setSmartTask(task);
+                  }
+                } else {
+                  toggleTaskStatus(task.id, undefined, task.scheduledDate);
+                }
+              }}
               onDelete={() => deleteTaskOccurrence(task.id, task.scheduledDate || '')}
               onClick={() => handleTaskClick(task)}
               onRescheduleToToday={() => rescheduleTaskToToday(task.id)}
@@ -211,6 +225,18 @@ export const OverduePage: React.FC = () => {
         onOpenEdit={() => {
           setEditingTask(detailTask);
           setDetailTask(null);
+        }}
+      />
+
+      <SmartRatingModal
+        task={smartTask}
+        isOpen={!!smartTask}
+        onClose={() => setSmartTask(null)}
+        onSelectRating={(rating, pomodoros) => {
+          if (smartTask) {
+            updateTaskStatus(smartTask.id, 'Done', rating, smartTask.scheduledDate, pomodoros);
+            setSmartTask(null);
+          }
         }}
       />
     </div>

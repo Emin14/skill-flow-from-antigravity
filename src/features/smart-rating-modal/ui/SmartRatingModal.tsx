@@ -55,7 +55,7 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
   if (!isOpen || !task) return null;
 
   const handlePickRating = (ratingKey: SmartRating) => {
-    setSelectedRating(ratingKey);
+    setSelectedRating((prev) => (prev === ratingKey ? null : ratingKey));
   };
 
   const handleConfirm = () => {
@@ -191,7 +191,7 @@ export const SmartRatingModal: React.FC<SmartRatingModalProps> = ({
                 <button
                   key={pItem.val}
                   type="button"
-                  onClick={() => setSelectedPomodoros(pItem.val)}
+                  onClick={() => setSelectedPomodoros((prev) => (prev === pItem.val ? 0 : pItem.val))}
                   style={{
                     height: '38px',
                     borderRadius: '9px',
