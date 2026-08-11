@@ -17,6 +17,7 @@ const NAV_ITEMS_LEFT: NavItemData[] = [
   { label: 'Сегодня', href: '/today', icon: '☀️' },
   { label: 'Входящие', href: '/inbox', icon: '📥' },
   { label: 'Крупные задачи', href: '/projects', icon: '📁' },
+  { label: 'В любое время', href: '/anytime', icon: '♾️' },
 ];
 
 const NAV_ITEMS_RIGHT: NavItemData[] = [

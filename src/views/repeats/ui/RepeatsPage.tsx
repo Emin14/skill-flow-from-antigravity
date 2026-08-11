@@ -10,6 +10,7 @@ import { getTodayStr } from '@/shared/lib/dateUtils';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
+import { formatWeeklyDays, WEEKDAY_OPTIONS } from '@/shared/config/repetitionRules';
 import styles from './RepeatsPage.module.css';
 
 export const RepeatsPage: React.FC = () => {
@@ -260,6 +261,10 @@ const getRepeatTypeLabel = (task: Task): string => {
       const freq = freqMap[task.scheduleFrequency || 'daily'] || 'По расписанию';
       return `📅 ${freq}`;
     }
+    case 'specific_days': {
+      const daysText = formatWeeklyDays(task.weeklyDays);
+      return `🗓️ По дням (${daysText})`;
+    }
     case 'after_completion':
       return `⏱ Через ${task.afterCompletionDays || 3} дн. после выполнения`;
     default:
@@ -422,26 +427,47 @@ export const TimelineRepeatCard: React.FC<{
   const defaultLabels = useMemo(() => {
     if (mode === 'after_completion') {
       const days = task.afterCompletionDays || 3;
-      return ['0', ...Array.from({ length: 15 }, (_, i) => `${(i + 1) * days}д`)];
+      return ['0', ...Array.from({ length: 15 }, () => `+${days}д`)];
     }
+
+    if (mode === 'specific_days') {
+      const days = (task.weeklyDays && task.weeklyDays.length > 0) ? task.weeklyDays : [1, 2, 3, 4, 5];
+      const dayNames = days.map((d) => {
+        const found = WEEKDAY_OPTIONS.find((w) => w.id === d);
+        return found ? found.short : '';
+      }).filter(Boolean);
+      const safeDayNames = dayNames.length > 0 ? dayNames : ['Пн'];
+      return Array.from({ length: 16 }, (_, i) => safeDayNames[i % safeDayNames.length]);
+    }
+
     if (mode === 'schedule') {
       const freq = task.scheduleFrequency || 'daily';
       if (freq === 'daily') {
-        return ['0', ...Array.from({ length: 15 }, (_, i) => `${i + 1}д`)];
+        return Array.from({ length: 16 }, (_, i) => `День ${i + 1}`);
       }
       if (freq === 'weekly') {
-        return ['0', ...Array.from({ length: 15 }, (_, i) => `${(i + 1) * 7}д`)];
+        return Array.from({ length: 16 }, (_, i) => `Нед ${i + 1}`);
+      }
+      if (freq === 'monthly') {
+        return Array.from({ length: 16 }, (_, i) => `Мес ${i + 1}`);
       }
       if (freq === 'yearly') {
-        return ['0', ...Array.from({ length: 15 }, (_, i) => `${(i + 1) * 365}д`)];
+        return Array.from({ length: 16 }, (_, i) => `Год ${i + 1}`);
       }
-      return ['0', ...Array.from({ length: 15 }, (_, i) => `~${(i + 1) * 30}д`)];
+      return Array.from({ length: 16 }, (_, i) => `День ${i + 1}`);
     }
-    if (mode === 'spaced' || mode === 'smart') {
-      return ['0', '1д', '3д', '7д', '14д', '30д', '90д', '120д', '150д', '180д', '210д', '240д'];
+
+    if (mode === 'smart') {
+      return Array.from({ length: 16 }, (_, i) => `#${i + 1}`);
     }
-    return ['0', '1д', '2д', '3д', '4д', '5д', '6д', '7д', '8д', '9д'];
-  }, [mode, task.scheduleFrequency, task.afterCompletionDays]);
+
+    if (mode === 'spaced') {
+      const intervals = ['1д', '3д', '7д', '14д', '30д', '90д', '120д', '150д', '180д', '210д', '240д'];
+      return ['0', ...intervals.map((d) => `+${d}`)];
+    }
+
+    return Array.from({ length: 16 }, (_, i) => `#${i + 1}`);
+  }, [mode, task.scheduleFrequency, task.afterCompletionDays, task.weeklyDays]);
 
   const totalSteps = useMemo(() => {
     const activeCount = Math.max(completedCount + 1, occurrences.length);
@@ -455,12 +481,7 @@ export const TimelineRepeatCard: React.FC<{
       const isNext = i === completedCount;
       const isFuture = i > completedCount;
 
-      const isUnknownFuture = mode === 'smart' && isFuture;
-
-      let label = '';
-      if (!isUnknownFuture) {
-        label = defaultLabels[i] || `+${i}д`;
-      }
+      const label = defaultLabels[i] || `#${i}`;
 
       let subLabel = '';
       let smartRatingEmoji: string | undefined = undefined;

@@ -40,7 +40,9 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    min-width: 38px;
+    flex: 1;
+    max-width: 44px;
+    min-width: 28px;
     height: 44px;
     border-radius: 12px;
     position: relative;

@@ -5,7 +5,7 @@ import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS }
 import { taskApi } from '../api/taskApi';
 import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
-import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
+import { getTodayStr, getTomorrowStr, formatDateDisplay, getNextSpecificDayDate } from '@/shared/lib/dateUtils';
 import { playTaskCompletionSound } from '@/shared/lib/soundUtils';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -81,13 +81,14 @@ export const normalizeOccurrences = (
  * Derived helper: Returns the date of the next uncompleted occurrence, or latest occurrence date
  */
 export const getDerivedScheduledDate = (task: Task): string => {
+  if (task.scheduledDate === '' || task.scheduledDate === 'anytime') return '';
   const norm = normalizeOccurrences(task.occurrences, task.id);
-  if (norm.length === 0) return task.scheduledDate || getTodayStr();
+  if (norm.length === 0) return task.scheduledDate || '';
 
   const upcomingTodo = norm.find((o) => o.status === 'Todo');
   if (upcomingTodo) return upcomingTodo.date;
 
-  return norm[norm.length - 1].date;
+  return norm[norm.length - 1]?.date || task.scheduledDate || '';
 };
 
 /**
@@ -149,6 +150,7 @@ export interface AddTaskParams {
   repetitionMode?: RepetitionMode;
   scheduleFrequency?: ScheduleFrequency;
   afterCompletionDays?: number;
+  weeklyDays?: number[] | null;
   hasSubtasks?: boolean;
   targetRepetitions?: number;
 }
@@ -307,6 +309,13 @@ export const calculateNextInterval = (
     return { nextIntervalFloat: days, daysToAdd: days };
   }
 
+  if (mode === 'specific_days' && !smartRating) {
+    const days = task.weeklyDays || [1, 2, 3, 4, 5];
+    const today = getTodayStr();
+    const { daysToAdd } = getNextSpecificDayDate(today, days);
+    return { nextIntervalFloat: daysToAdd, daysToAdd };
+  }
+
   const baseInterval = getDynamicSmartBaseInterval(task);
 
   let nextFloat = 1.0;
@@ -405,6 +414,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         repetitionMode = 'none',
         scheduleFrequency = 'daily',
         afterCompletionDays = 3,
+        weeklyDays = null,
         hasSubtasks = false,
         targetRepetitions = 8,
       } = titleOrParams;
@@ -445,6 +455,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         repetitionMode: effectiveMode,
         scheduleFrequency,
         afterCompletionDays: Math.max(1, afterCompletionDays),
+        weeklyDays: effectiveIsRepeating && effectiveMode === 'specific_days' ? (weeklyDays || [1, 2, 3, 4, 5]) : null,
         currentIntervalDays: 1,
         hasSubtasks: effectiveHasSubtasks,
         targetRepetitions,
@@ -500,6 +511,18 @@ export const useTaskStore = create<TaskState>((set, get) => ({
   ) => {
     const task = get().tasks.find((t) => t.id === id);
     if (!task) return;
+
+    if (newStatus === 'Done') {
+      const hasScheduledDate = Boolean(
+        task.scheduledDate &&
+        task.scheduledDate.trim() !== '' &&
+        task.scheduledDate !== 'anytime'
+      );
+      if (!hasScheduledDate) {
+        useToastStore.getState().showToast('Пожалуйста, укажите дату перед выполнением задачи', 'error');
+        return;
+      }
+    }
 
     const nowIso = new Date().toISOString();
     const todayStr = nowIso.split('T')[0];
@@ -826,11 +849,20 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         ],
         id
       );
-    } else if (updates.scheduledDate && task.occurrences && task.occurrences.length > 0) {
-      const occs = task.occurrences.map((o) =>
-        o.status === 'Todo' ? { ...o, date: updates.scheduledDate! } : o
-      );
-      updates.occurrences = occs;
+    } else if (updates.scheduledDate !== undefined) {
+      const cleanDate = (updates.scheduledDate || '').trim();
+      updates.scheduledDate = cleanDate;
+      if (cleanDate === '' || cleanDate === 'anytime') {
+        const occs = (task.occurrences || []).map((o) =>
+          o.status === 'Todo' ? { ...o, date: '' } : o
+        );
+        updates.occurrences = occs;
+      } else if (task.occurrences && task.occurrences.length > 0) {
+        const occs = task.occurrences.map((o) =>
+          o.status === 'Todo' ? { ...o, date: cleanDate } : o
+        );
+        updates.occurrences = occs;
+      }
     } else if (updates.isRepeating && (!task.occurrences || task.occurrences.length === 0)) {
       const targetDate = updates.scheduledDate || task.scheduledDate || getTodayStr();
       updates.occurrences = [{
@@ -1220,12 +1252,21 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
     if (task.isRepeating) {
       const currentOccs = task.occurrences || [];
-      const updatedOccs = currentOccs.map((o) => {
-        if (o.date < todayStr && o.status !== 'Done') {
+      let updatedOccs = currentOccs.map((o) => {
+        if (o.status === 'Todo' && (o.date < todayStr || !o.date || o.date === 'anytime')) {
           return { ...o, date: todayStr };
         }
         return o;
       });
+
+      if (!updatedOccs.some((o) => o.status === 'Todo' && o.date === todayStr)) {
+        updatedOccs.push({
+          id: uuidv4(),
+          taskId: id,
+          date: todayStr,
+          status: 'Todo',
+        });
+      }
 
       const normOccs = normalizeOccurrences(updatedOccs, id);
       const derivedDate = getDerivedScheduledDate({ ...task, occurrences: normOccs });
@@ -1233,7 +1274,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
       const updates: Partial<Task> = {
         occurrences: normOccs,
-        scheduledDate: derivedDate,
+        scheduledDate: derivedDate || todayStr,
         repetitionsCount: derivedDoneCount,
       };
 
@@ -1243,7 +1284,23 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
       await taskApi.update(id, updates);
     } else {
-      const updates: Partial<Task> = { scheduledDate: todayStr };
+      let occs = (task.occurrences || []).map((o) =>
+        o.status === 'Todo' ? { ...o, date: todayStr } : o
+      );
+      if (occs.length === 0) {
+        occs = [
+          {
+            id: uuidv4(),
+            taskId: id,
+            date: todayStr,
+            status: task.status || 'Todo',
+          },
+        ];
+      }
+      const updates: Partial<Task> = {
+        scheduledDate: todayStr,
+        occurrences: occs,
+      };
 
       set((state) => ({
         tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)),

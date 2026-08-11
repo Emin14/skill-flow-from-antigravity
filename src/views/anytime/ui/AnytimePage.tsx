@@ -11,7 +11,7 @@ import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskD
 import styles from './AnytimePage.module.css';
 
 export const AnytimePage: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTask } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, deleteTask, rescheduleTaskToToday } = useTaskStore();
   const storeCategories = useCategoryStore((s) => s.categories);
 
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -49,21 +49,36 @@ export const AnytimePage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <Card style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', borderRadius: '20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
-          <Typography variant="h1">♾️ В любое время</Typography>
-          <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+      {/* Header Banner - styled like ProjectSectionBannerWidget */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '3px',
+          padding: '12px 16px',
+          borderRadius: '16px',
+          background: 'linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%)',
+          border: '1px solid var(--color-accent-border)',
+          width: '100%',
+          boxSizing: 'border-box',
+          marginBottom: '12px',
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h2 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>
+            ♾️ В любое время
+          </h2>
+          <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
             {filteredTasks.length} задач{filteredTasks.length !== anytimeTasks.length ? ` из ${anytimeTasks.length}` : ''}
           </span>
         </div>
-        <Typography variant="body" style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
+        <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', margin: '2px 0 0 0', lineHeight: 1.4 }}>
           Задачи без определённой даты. Выполняйте по мере появления времени.
-        </Typography>
+        </p>
 
         {/* Category Filter Pills */}
         {usedCategories.length > 1 && (
-          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '4px' }}>
+          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '8px' }}>
             <button
               type="button"
               onClick={() => setActiveCategory('all')}
@@ -73,7 +88,7 @@ export const AnytimePage: React.FC = () => {
                 color: activeCategory === 'all' ? '#a5b4fc' : 'var(--color-text-muted)',
                 borderRadius: '8px',
                 padding: '4px 10px',
-                fontSize: '12px',
+                fontSize: '11.5px',
                 fontWeight: activeCategory === 'all' ? 700 : 400,
                 cursor: 'pointer',
                 transition: 'all 0.15s ease',
@@ -95,7 +110,7 @@ export const AnytimePage: React.FC = () => {
                     color: isActive ? '#a5b4fc' : 'var(--color-text-muted)',
                     borderRadius: '8px',
                     padding: '4px 10px',
-                    fontSize: '11.5px',
+                    fontSize: '11px',
                     fontWeight: isActive ? 600 : 400,
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
@@ -107,7 +122,7 @@ export const AnytimePage: React.FC = () => {
             })}
           </div>
         )}
-      </Card>
+      </div>
 
       {/* Task List */}
       {isLoading ? (
@@ -138,6 +153,7 @@ export const AnytimePage: React.FC = () => {
               allTasks={tasks}
               showDragHandle={true}
               onToggleCheckbox={() => toggleTaskStatus(task.id)}
+              onRescheduleToToday={() => rescheduleTaskToToday(task.id)}
               onDelete={() => deleteTask(task.id)}
               onClick={() => handleTaskClick(task)}
             />

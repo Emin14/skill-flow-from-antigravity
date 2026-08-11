@@ -199,6 +199,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isJustDraggedRef = useRef<boolean>(false);
+  const isJustSwipedRef = useRef<boolean>(false);
 
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
@@ -283,6 +284,13 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     const diff = touchStartX - touchEndX;
 
     if (!isVerticalScroll) {
+      if (Math.abs(diff) > 45) {
+        isJustSwipedRef.current = true;
+        setTimeout(() => {
+          isJustSwipedRef.current = false;
+        }, 300);
+      }
+
       if (isSwipedLeft) {
         setIsSwipedLeft(false);
         setSwipeOffset(0);
@@ -415,7 +423,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   };
 
   const handleCardClick = (e: React.MouseEvent) => {
-    if (isDragging || isJustDraggedRef.current) {
+    if (isDragging || isJustDraggedRef.current || isJustSwipedRef.current) {
       e.stopPropagation();
       e.preventDefault();
       return;
