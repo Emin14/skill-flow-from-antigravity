@@ -151,10 +151,9 @@ export class PrismaTaskRepository {
     // Business Rule: Subtasks can NEVER be repeating (isRepeating is always false for subtasks)
     const effectiveIsRepeating = effectiveParentId ? false : (task.isRepeating ?? false);
 
-    const todayStr = new Date().toISOString().split('T')[0];
-    const defaultDate = (task.scheduledDate && typeof task.scheduledDate === 'string' && task.scheduledDate.trim())
+    const defaultDate = (task.scheduledDate !== undefined && task.scheduledDate !== null)
       ? task.scheduledDate.trim()
-      : todayStr;
+      : '';
 
     let occurrencesData = (task.occurrences || []).map((o) => ({
       id: (o.id && typeof o.id === 'string' && o.id.trim()) ? o.id.trim() : uuidv4(),
@@ -200,6 +199,7 @@ export class PrismaTaskRepository {
           scheduleFrequency: effectiveIsRepeating ? (task.scheduleFrequency || null) : null,
           targetRepetitions: effectiveIsRepeating ? parseNumInt(task.targetRepetitions) : null,
           afterCompletionDays: effectiveIsRepeating ? parseNumInt(task.afterCompletionDays) : null,
+          weeklyDays: effectiveIsRepeating && task.weeklyDays ? JSON.stringify(task.weeklyDays) : null,
           currentIntervalDays: effectiveIsRepeating ? parseNumInt(task.currentIntervalDays) : null,
           spacedStepIndex: effectiveIsRepeating ? parseNumInt(task.spacedStepIndex) : null,
           sortOrder: parseNumInt(task.sortOrder),
@@ -270,6 +270,7 @@ export class PrismaTaskRepository {
           taskUpdateData.scheduleFrequency = null;
           taskUpdateData.targetRepetitions = null;
           taskUpdateData.afterCompletionDays = null;
+          (taskUpdateData as any).weeklyDays = null;
           taskUpdateData.currentIntervalDays = null;
           taskUpdateData.spacedStepIndex = null;
         } else {
@@ -279,6 +280,7 @@ export class PrismaTaskRepository {
           if (updates.scheduleFrequency !== undefined) taskUpdateData.scheduleFrequency = updates.scheduleFrequency;
           if (updates.targetRepetitions !== undefined) taskUpdateData.targetRepetitions = parseNumInt(updates.targetRepetitions);
           if (updates.afterCompletionDays !== undefined) taskUpdateData.afterCompletionDays = parseNumInt(updates.afterCompletionDays);
+          if (updates.weeklyDays !== undefined) (taskUpdateData as any).weeklyDays = updates.weeklyDays ? JSON.stringify(updates.weeklyDays) : null;
           if (updates.currentIntervalDays !== undefined) taskUpdateData.currentIntervalDays = parseNumInt(updates.currentIntervalDays);
           if (updates.spacedStepIndex !== undefined) taskUpdateData.spacedStepIndex = parseNumInt(updates.spacedStepIndex);
         }
@@ -312,14 +314,14 @@ export class PrismaTaskRepository {
 
           if (updates.occurrences.length > 0) {
             const seenIds = new Set<string>();
-            const defaultDate = updates.scheduledDate || new Date().toISOString().split('T')[0];
+            const defaultDate = updates.scheduledDate !== undefined ? updates.scheduledDate.trim() : (existing.occurrences[0]?.date || '');
             const occData = updates.occurrences.map((o) => {
               let occId = o.id && typeof o.id === 'string' && o.id.trim() && !seenIds.has(o.id.trim()) ? o.id.trim() : uuidv4();
               seenIds.add(occId);
               return {
                 id: occId,
                 taskId: id,
-                date: (o.date && typeof o.date === 'string' && o.date.trim()) ? o.date.trim() : defaultDate,
+                date: o.date !== undefined ? (o.date || '').trim() : defaultDate,
                 status: o.status || 'Todo',
                 note: o.note || null,
                 startedAt: safeDate((o as any).startedAt),

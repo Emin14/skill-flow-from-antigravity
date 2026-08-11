@@ -91,3 +91,27 @@ export const isSmartRepeatTask = (task: {
   const type = task.repeatConfig?.repeatType;
   return mode === 'smart' || type === 'smart';
 };
+
+/**
+ * Находит следующий день недели из списка weeklyDays после даты fromDateStr.
+ */
+export const getNextSpecificDayDate = (
+  fromDateStr: string,
+  weeklyDays: number[]
+): { daysToAdd: number; nextDateStr: string } => {
+  if (!weeklyDays || weeklyDays.length === 0) {
+    return { daysToAdd: 1, nextDateStr: addDaysToDateStr(fromDateStr, 1) };
+  }
+  const parts = (fromDateStr || getTodayStr()).split('-').map(Number);
+  const start = parts.length === 3 ? new Date(parts[0], parts[1] - 1, parts[2]) : new Date();
+
+  for (let i = 1; i <= 7; i++) {
+    const next = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+    const dayOfWeek = next.getDay(); // 0 = Sun, 1 = Mon ...
+    if (weeklyDays.includes(dayOfWeek)) {
+      const nextDateStr = formatLocalDateStr(next);
+      return { daysToAdd: i, nextDateStr };
+    }
+  }
+  return { daysToAdd: 7, nextDateStr: addDaysToDateStr(fromDateStr, 7) };
+};

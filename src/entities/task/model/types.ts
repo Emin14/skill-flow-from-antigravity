@@ -63,6 +63,7 @@ export interface Task {
   topicId?: string | null;
   goalId?: string | null;
   afterCompletionDays?: number | null;
+  weeklyDays?: number[] | null;
   spacedStepIndex?: number | null;
 
   occurrences?: TaskOccurrence[];

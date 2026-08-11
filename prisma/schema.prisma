@@ -35,6 +35,7 @@ model Task {
   repetitionMode      String?          // 'smart' | 'spaced' | 'schedule' | 'after_completion'
   scheduleFrequency   String?          // 'daily' | 'weekly' | 'monthly'
   afterCompletionDays Int?
+  weeklyDays          String?          // JSON array e.g. '[1,2,3,4,5]'
   spacedStepIndex     Int?
   currentIntervalDays Int?
   targetRepetitions   Int?

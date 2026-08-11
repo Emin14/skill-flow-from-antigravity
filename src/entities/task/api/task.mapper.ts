@@ -79,6 +79,16 @@ export class TaskMapper {
       topicId: prismaTask.topicId || null,
       goalId: prismaTask.goalId || null,
       afterCompletionDays: prismaTask.afterCompletionDays ?? null,
+      weeklyDays: (() => {
+        const raw = (prismaTask as any).weeklyDays;
+        if (!raw) return null;
+        try {
+          const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
+          return Array.isArray(parsed) ? parsed : null;
+        } catch {
+          return null;
+        }
+      })(),
       spacedStepIndex: prismaTask.spacedStepIndex ?? null,
 
       occurrences,
