@@ -498,7 +498,7 @@ export const SettingsPage: React.FC = () => {
           </label>
         </div>
 
-        <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)' }}>
+        <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)', marginTop: 'var(--space-2)', display: 'flex', justifyContent: 'center', width: '100%' }}>
           <Button variant="danger" size="sm" onClick={handleResetData}>
             ⚠️ Сбросить все данные приложения
           </Button>
