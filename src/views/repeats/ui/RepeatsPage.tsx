@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { Card, Typography } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
@@ -8,10 +8,28 @@ import { HabitProgressHeaderWidget, HabitSortKey, HabitSortDirection, RepeatStat
 import { HabitSectionBannerWidget } from '@/widgets/habit-section-banner/ui/HabitSectionBannerWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { getCategoryColor } from '@/shared/config/categoryColors';
+import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
+import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import styles from './RepeatsPage.module.css';
 
 export const RepeatsPage: React.FC = () => {
   const { tasks, isLoading, fetchTasks } = useTaskStore();
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [selectedOccDate, setSelectedOccDate] = useState<string | undefined>(undefined);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
+  const handleOpenDetail = (task: Task, occDate?: string) => {
+    setSelectedTask(task);
+    setSelectedOccDate(occDate);
+    setIsDetailOpen(true);
+  };
+
+  const handleOpenEditFromDetail = () => {
+    setIsDetailOpen(false);
+    setIsEditOpen(true);
+  };
+
   const [sortKey, setSortKey] = useState<HabitSortKey>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('repeats-sort-key') as HabitSortKey;
@@ -62,7 +80,6 @@ export const RepeatsPage: React.FC = () => {
     fetchTasks();
   }, [fetchTasks]);
 
-  // SINGLE TASK ARCHITECTURE: Each repeating task exists as 1 single Task record
   const allRepeatingTasks = useMemo(() => {
     return tasks.filter((t) => t.isRepeating);
   }, [tasks]);
@@ -117,10 +134,8 @@ export const RepeatsPage: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* 0. Habit Section Banner Widget (10 Theme Gradient Variants) */}
       <HabitSectionBannerWidget />
 
-      {/* 1. Header Widget Locked to Variant 3 */}
       <HabitProgressHeaderWidget
         sortKey={sortKey}
         sortDirection={sortDirection}
@@ -131,7 +146,6 @@ export const RepeatsPage: React.FC = () => {
         statusCounts={statusCounts}
       />
 
-      {/* List of Timeline Step Progression Cards */}
       {isLoading ? (
         <Card style={{ textAlign: 'center', padding: 'var(--space-8)' }}>
           <Typography variant="body" style={{ color: 'var(--color-text-muted)' }}>
@@ -156,9 +170,27 @@ export const RepeatsPage: React.FC = () => {
       ) : (
         <div className={styles.repeatsList}>
           {sortedRepeatingTasks.map((task) => (
-            <TimelineRepeatCard key={task.id} task={task} allTasks={tasks} />
+            <TimelineRepeatCard key={task.id} task={task} allTasks={tasks} onOpenDetail={handleOpenDetail} />
           ))}
         </div>
+      )}
+
+      {isDetailOpen && selectedTask && (
+        <RepeatingTaskDetailModal
+          task={selectedTask}
+          occurrenceDate={selectedOccDate}
+          isOpen={isDetailOpen}
+          onClose={() => setIsDetailOpen(false)}
+          onOpenEdit={handleOpenEditFromDetail}
+        />
+      )}
+
+      {isEditOpen && selectedTask && (
+        <EditTaskModal
+          task={selectedTask}
+          isOpen={isEditOpen}
+          onClose={() => setIsEditOpen(false)}
+        />
       )}
     </div>
   );
@@ -235,7 +267,144 @@ const getRepeatTypeLabel = (task: Task): string => {
   }
 };
 
-export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onClick?: () => void }> = ({ task, onClick }) => {
+interface RepeatNodeItemProps {
+  step: StepNode;
+  task: Task;
+  occDate?: string;
+  onOpenDetail?: (task: Task, occDate?: string) => void;
+}
+
+const RepeatNodeItem: React.FC<RepeatNodeItemProps> = ({ step, task, occDate, onOpenDetail }) => {
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const isLongPressRef = useRef(false);
+  const startPosRef = useRef<{ x: number; y: number } | null>(null);
+
+  const handleStart = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!occDate) return;
+    isLongPressRef.current = false;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    startPosRef.current = { x: clientX, y: clientY };
+
+    timerRef.current = setTimeout(() => {
+      isLongPressRef.current = true;
+      if (typeof window !== 'undefined' && 'vibrate' in navigator) {
+        try { navigator.vibrate(40); } catch {}
+      }
+      if (onOpenDetail) {
+        onOpenDetail(task, occDate);
+      }
+    }, 450);
+  };
+
+  const handleMove = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!startPosRef.current || !timerRef.current) return;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    const deltaX = Math.abs(clientX - startPosRef.current.x);
+    const deltaY = Math.abs(clientY - startPosRef.current.y);
+
+    // Cancel long-press timer if finger moves > 8px horizontally or vertically (swiping)!
+    if (deltaX > 8 || deltaY > 8) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
+  const handleEnd = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!occDate) return;
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+      if (!isLongPressRef.current && onOpenDetail) {
+        onOpenDetail(task, occDate);
+      }
+    }
+    startPosRef.current = null;
+  };
+
+  const handleCancel = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    startPosRef.current = null;
+  };
+
+  return (
+    <div
+      className={`${styles.stepColumn} ${step.isNext ? styles.stepColumnNextActive : ''}`}
+      onTouchStart={handleStart}
+      onTouchMove={handleMove}
+      onTouchEnd={handleEnd}
+      onTouchCancel={handleCancel}
+      onMouseDown={handleStart}
+      onMouseMove={handleMove}
+      onMouseUp={handleEnd}
+      onMouseLeave={handleCancel}
+      onContextMenu={(e) => e.preventDefault()}
+      style={{ userSelect: 'none', WebkitUserSelect: 'none', WebkitTouchCallout: 'none', cursor: 'pointer' }}
+    >
+      <span
+        className={`${styles.stepLabel} ${
+          step.isCompleted
+            ? styles.stepLabelCompleted
+            : step.isNext
+            ? styles.stepLabelNext
+            : styles.stepLabelFuture
+        }`}
+      >
+        {step.label}
+      </span>
+
+      <div
+        className={`${styles.nodeCircle} ${
+          step.isCompleted
+            ? styles.nodeCompleted
+            : step.isNext
+            ? styles.nodeNext
+            : styles.nodeFuture
+        }`}
+      >
+        {step.isCompleted ? (
+          <>
+            <span className={styles.checkmarkIcon}>✓</span>
+            {step.smartRatingEmoji && (
+              <span className={styles.smartRatingBadge} title={`Оценка: ${step.smartRatingEmoji}`}>
+                {step.smartRatingEmoji}
+              </span>
+            )}
+          </>
+        ) : step.isNext ? (
+          <span className={styles.pulseDot} />
+        ) : (
+          <span className={styles.emptyDot} />
+        )}
+      </div>
+
+      <span
+        className={`${styles.subLabel} ${
+          step.isCompleted
+            ? styles.subLabelCompleted
+            : step.isNext
+            ? step.isOverdue
+              ? styles.subLabelOverdue
+              : styles.subLabelNext
+            : styles.subLabelFuture
+        }`}
+      >
+        {step.subLabel}
+      </span>
+    </div>
+  );
+};
+
+export const TimelineRepeatCard: React.FC<{
+  task: Task;
+  allTasks?: Task[];
+  onClick?: () => void;
+  onOpenDetail?: (task: Task, occDate?: string) => void;
+}> = ({ task, onClick, onOpenDetail }) => {
   const todayStr = useMemo(() => getTodayStr(), []);
   const occurrences = useMemo(() => {
     return (task.occurrences || []).slice().sort((a, b) => a.date.localeCompare(b.date));
@@ -266,7 +435,6 @@ export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onCli
       if (freq === 'yearly') {
         return ['0', ...Array.from({ length: 15 }, (_, i) => `${(i + 1) * 365}д`)];
       }
-      // Monthly schedule fallback
       return ['0', ...Array.from({ length: 15 }, (_, i) => `~${(i + 1) * 30}д`)];
     }
     if (mode === 'spaced' || mode === 'smart') {
@@ -334,6 +502,18 @@ export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onCli
   const createdDateStr = task.createdAt ? formatDateNumeric(task.createdAt.split('T')[0]) : '';
   const catColor = getCategoryColor(task.category);
 
+  const getOccDateForStep = (step: StepNode): string | undefined => {
+    if (step.isCompleted) {
+      const occ = completedOccurrences[step.stepIndex];
+      return occ?.date || (step.stepIndex === 0 ? task.scheduledDate : undefined);
+    }
+    if (step.isNext) {
+      return nextDateRaw || task.scheduledDate || undefined;
+    }
+    // Future projection nodes without actual dates do not open modal
+    return occurrences[step.stepIndex]?.date || undefined;
+  };
+
   return (
     <Card className={styles.repeatCard} onClick={onClick}>
       {/* 2-Line Card Header */}
@@ -383,61 +563,13 @@ export const TimelineRepeatCard: React.FC<{ task: Task; allTasks?: Task[]; onCli
 
           {/* Milestone Step Nodes */}
           {steps.map((step) => (
-            <div
+            <RepeatNodeItem
               key={step.stepIndex}
-              className={`${styles.stepColumn} ${step.isNext ? styles.stepColumnNextActive : ''}`}
-            >
-              <span
-                className={`${styles.stepLabel} ${
-                  step.isCompleted
-                    ? styles.stepLabelCompleted
-                    : step.isNext
-                    ? styles.stepLabelNext
-                    : styles.stepLabelFuture
-                }`}
-              >
-                {step.label}
-              </span>
-
-              <div
-                className={`${styles.nodeCircle} ${
-                  step.isCompleted
-                    ? styles.nodeCompleted
-                    : step.isNext
-                    ? styles.nodeNext
-                    : styles.nodeFuture
-                }`}
-              >
-                {step.isCompleted ? (
-                  <>
-                    <span className={styles.checkmarkIcon}>✓</span>
-                    {step.smartRatingEmoji && (
-                      <span className={styles.smartRatingBadge} title={`Оценка: ${step.smartRatingEmoji}`}>
-                        {step.smartRatingEmoji}
-                      </span>
-                    )}
-                  </>
-                ) : step.isNext ? (
-                  <span className={styles.pulseDot} />
-                ) : (
-                  <span className={styles.emptyDot} />
-                )}
-              </div>
-
-              <span
-                className={`${styles.subLabel} ${
-                  step.isCompleted
-                    ? styles.subLabelCompleted
-                    : step.isNext
-                    ? step.isOverdue
-                      ? styles.subLabelOverdue
-                      : styles.subLabelNext
-                    : styles.subLabelFuture
-                }`}
-              >
-                {step.subLabel}
-              </span>
-            </div>
+              step={step}
+              task={task}
+              occDate={getOccDateForStep(step)}
+              onOpenDetail={onOpenDetail}
+            />
           ))}
         </div>
       </div>

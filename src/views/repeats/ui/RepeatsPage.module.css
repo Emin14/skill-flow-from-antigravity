@@ -239,6 +239,10 @@
   transition: all 0.2s ease;
   z-index: 5;
   background-color: var(--color-surface);
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .smartRatingBadge {
