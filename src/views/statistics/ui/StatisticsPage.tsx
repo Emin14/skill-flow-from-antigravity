@@ -6,6 +6,7 @@ import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
 import { useActivityStore } from '@/entities/activity';
 import { TodayActivity } from '@/widgets/today-activity/ui/TodayActivity';
+import { CategoryGrowthWidget } from './CategoryGrowthWidget';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 import { Task } from '@/entities/task/model/types';
@@ -635,6 +636,9 @@ export const StatisticsPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* 👤 Widget: «Твой рост» */}
+      <CategoryGrowthWidget />
 
       {/* 1. 📅 Активность за 30 дней */}
       <Card style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
