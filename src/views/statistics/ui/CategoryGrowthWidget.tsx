@@ -243,53 +243,67 @@ export const CategoryGrowthWidget: React.FC = () => {
 
       {/* Category Rows */}
       <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-        {categoryData.map((s, idx) => (
-          <div key={s.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 4px', borderBottom: idx < categoryData.length - 1 ? '1px solid var(--color-border)' : 'none' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '7px', minWidth: 0, flex: 1, paddingRight: '8px' }}>
-              <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: s.color, flexShrink: 0 }} />
-              <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                {s.name}
-              </span>
-            </div>
+        {categoryData.map((s, idx) => {
+          const isZero = s.periodCount === 0;
+          return (
+            <div
+              key={s.id}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '8px 4px',
+                borderBottom: idx < categoryData.length - 1 ? '1px solid var(--color-border)' : 'none',
+                opacity: isZero ? 0.45 : 1,
+                transition: 'opacity 0.2s ease',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '7px', minWidth: 0, flex: 1, paddingRight: '8px' }}>
+                <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: isZero ? 'var(--color-text-disabled)' : s.color, flexShrink: 0 }} />
+                <span style={{ fontSize: '13px', fontWeight: isZero ? 500 : 600, color: isZero ? 'var(--color-text-muted)' : 'var(--color-text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {s.name}
+                </span>
+              </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
-              {/* Period Column Value (Green - Fixed 76px Centered) */}
-              <span
-                style={{
-                  fontSize: '13.5px',
-                  fontWeight: 700,
-                  color: '#10b981',
-                  fontVariantNumeric: 'tabular-nums',
-                  width: '76px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                }}
-              >
-                +{s.periodCount}
-              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
+                {/* Period Column Value (Green '+' if > 0, Neutral '0' if 0 - Fixed 76px Centered) */}
+                <span
+                  style={{
+                    fontSize: '13.5px',
+                    fontWeight: isZero ? 500 : 700,
+                    color: isZero ? 'var(--color-text-muted)' : '#10b981',
+                    fontVariantNumeric: 'tabular-nums',
+                    width: '76px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                  }}
+                >
+                  {isZero ? '0' : `+${s.periodCount}`}
+                </span>
 
-              {/* Total Column Value (Neutral - Fixed 48px Centered) */}
-              <span
-                style={{
-                  fontSize: '13.5px',
-                  fontWeight: 600,
-                  color: 'var(--color-text-primary)',
-                  fontVariantNumeric: 'tabular-nums',
-                  width: '48px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  opacity: 0.9,
-                }}
-              >
-                {s.totalCount}
-              </span>
+                {/* Total Column Value (Neutral - Fixed 48px Centered) */}
+                <span
+                  style={{
+                    fontSize: '13.5px',
+                    fontWeight: 600,
+                    color: isZero ? 'var(--color-text-muted)' : 'var(--color-text-primary)',
+                    fontVariantNumeric: 'tabular-nums',
+                    width: '48px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    opacity: isZero ? 0.8 : 0.9,
+                  }}
+                >
+                  {s.totalCount}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </Card>
   );
