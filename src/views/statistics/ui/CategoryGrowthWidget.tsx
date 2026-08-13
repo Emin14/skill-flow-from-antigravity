@@ -82,7 +82,7 @@ export const CategoryGrowthWidget: React.FC = () => {
       ];
     }
 
-    return sourceCats.map((catItem, idx) => {
+    const mapped = sourceCats.map((catItem, idx) => {
       const catName = catItem.name;
       const defaultColor = idx % 2 === 0 ? '#3b82f6' : idx % 3 === 1 ? '#8b5cf6' : '#10b981';
       const catColor = catItem.color || getCategoryColor(catName) || defaultColor;
@@ -150,6 +150,22 @@ export const CategoryGrowthWidget: React.FC = () => {
         periodCount,
         totalCount,
       };
+    });
+
+    // Sort: categories with growth (> 0) on top (sorted by periodCount desc),
+    // and categories without growth (=== 0) at the bottom (sorted by totalCount desc)
+    return mapped.sort((a, b) => {
+      if (a.periodCount > 0 && b.periodCount === 0) return -1;
+      if (a.periodCount === 0 && b.periodCount > 0) return 1;
+
+      if (a.periodCount > 0 && b.periodCount > 0) {
+        if (b.periodCount !== a.periodCount) {
+          return b.periodCount - a.periodCount;
+        }
+        return b.totalCount - a.totalCount;
+      }
+
+      return b.totalCount - a.totalCount;
     });
   }, [categories, tasks, selectedPeriod]);
 
