@@ -250,6 +250,8 @@ export const SettingsPage: React.FC = () => {
               <option value="3">Изумрудно-акцентная панель</option>
               <option value="4">Кольцо активности Apple Style</option>
               <option value="5">Геймифицированная полоса XP</option>
+              <option value="6">🎯 Прогресс за день (XP-трекер)</option>
+              <option value="7">🎯 Прогресс за день (Матовое стекло)</option>
             </select>
             <span
               style={{

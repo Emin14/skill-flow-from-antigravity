@@ -153,6 +153,120 @@ export const HabitProgressBanner: React.FC<HabitProgressBannerProps> = ({ target
         </div>
       );
 
+    // Variant 6: 🎯 Прогресс за день (XP-трекер сложного процента)
+    case '6': {
+      const dailyGainNum = (doneCount * 0.2).toFixed(1);
+      const neededTasks = Math.max(0, 5 - doneCount);
+      const isTargetMet = doneCount >= 5;
+      const progressPercent = Math.min(100, (Number(dailyGainNum) / 1.0) * 100);
+      const annualMult = Math.pow(1 + Number(dailyGainNum) / 100, 365);
+      const formattedPace = doneCount === 0 ? '1.0x' : annualMult >= 100 ? `${Math.round(annualMult)}x` : `${annualMult.toFixed(1)}x`;
+
+      const getTaskWord = (c: number) => {
+        const abs = Math.abs(c) % 100;
+        const lastDigit = abs % 10;
+        if (abs > 10 && abs < 20) return 'задач';
+        if (lastDigit === 1) return 'задача';
+        if (lastDigit >= 2 && lastDigit <= 4) return 'задачи';
+        return 'задач';
+      };
+
+      let subtitleText = '';
+      if (doneCount === 0) {
+        subtitleText = 'Сейчас ты растёшь с темпом 1.0x за год. Ещё 5 задач сегодня, чтобы достичь развития в 37.8x!';
+      } else if (isTargetMet) {
+        subtitleText = `🔥 Отлично! Твой текущий темп — ${formattedPace} за год. Цель развития в 37.8x достигнута!`;
+      } else {
+        subtitleText = `Сейчас ты растёшь с темпом ${formattedPace} за год. Ещё ${neededTasks} ${getTaskWord(neededTasks)} сегодня, чтобы достичь развития в 37.8x!`;
+      }
+
+      return (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            padding: '14px 16px',
+            borderRadius: '20px',
+            background: 'linear-gradient(135deg, var(--color-surface) 0%, rgba(16, 185, 129, 0.05) 100%)',
+            border: '1px solid var(--color-border)',
+            boxSizing: 'border-box',
+            width: '100%',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+                🎯 Прогресс за день
+              </span>
+            </div>
+            <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#10b981' }}>
+              +{dailyGainNum}% XP
+            </span>
+          </div>
+
+          <div style={{ width: '100%', height: '8px', borderRadius: '4px', backgroundColor: 'var(--color-surface-hover)', border: '1px solid var(--color-border)', overflow: 'hidden' }}>
+            <div
+              style={{
+                width: `${progressPercent}%`,
+                height: '100%',
+                borderRadius: '4px',
+                background: 'linear-gradient(90deg, #10b981 0%, #059669 100%)',
+                transition: 'width 0.6s ease',
+              }}
+            />
+          </div>
+
+          <div style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', lineHeight: 1.35 }}>
+            {subtitleText}
+          </div>
+        </div>
+      );
+    }
+
+    // Variant 7: 🎯 Прогресс за день (Матовое стекло)
+    case '7': {
+      const dailyGainNum = (doneCount * 0.2).toFixed(1);
+      const progressPercent = Math.min(100, (Number(dailyGainNum) / 1.0) * 100);
+      const annualMult = Math.pow(1 + Number(dailyGainNum) / 100, 365);
+      const formattedPace = annualMult >= 100 ? `${Math.round(annualMult)}x` : `${annualMult.toFixed(1)}x`;
+
+      return (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            padding: '14px 16px',
+            borderRadius: '20px',
+            background: 'rgba(255, 255, 255, 0.03)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid rgba(16, 185, 129, 0.25)',
+            boxShadow: '0 4px 20px rgba(16, 185, 129, 0.06)',
+            boxSizing: 'border-box',
+            width: '100%',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+              🎯 Прогресс за день
+            </span>
+            <span style={{ fontSize: '13px', fontWeight: 800, color: '#10b981' }}>
+              +{dailyGainNum}% ({doneCount}/{Math.max(5, doneCount)})
+            </span>
+          </div>
+          <div style={{ width: '100%', height: '8px', borderRadius: '4px', backgroundColor: 'var(--color-surface-hover)', border: '1px solid var(--color-border)', overflow: 'hidden' }}>
+            <div style={{ width: `${progressPercent}%`, height: '100%', background: 'linear-gradient(90deg, #10b981, #34d399)', transition: 'width 0.6s ease' }} />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--color-text-muted)' }}>
+            <span>⚡ Темп: <strong style={{ color: '#10b981' }}>{formattedPace}</strong></span>
+            <span>Цель: 37.8x</span>
+          </div>
+        </div>
+      );
+    }
+
     // Variant 1 (Default): Кибер-стекло с кольцом
     case '1':
     default:
