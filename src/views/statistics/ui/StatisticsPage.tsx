@@ -6,7 +6,6 @@ import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
 import { useActivityStore } from '@/entities/activity';
 import { TodayActivity } from '@/widgets/today-activity/ui/TodayActivity';
-import { CategoryGrowthWidget } from './CategoryGrowthWidget';
 import { CompoundedGrowthWidget } from './CompoundedGrowthWidget';
 import { TASK_CATEGORIES, TaskCategory } from '@/shared/config/categories';
 import { getCategoryColor } from '@/shared/config/categoryColors';
@@ -637,9 +636,6 @@ export const StatisticsPage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* 👤 Widget: «Твой рост» */}
-      <CategoryGrowthWidget />
 
       {/* 📈 Widget: «Сложный процент роста» */}
       <CompoundedGrowthWidget />

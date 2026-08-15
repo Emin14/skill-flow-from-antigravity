@@ -1,86 +1,100 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Card } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 import { formatLocalDateStr, getTodayStr } from '@/shared/lib/dateUtils';
 
-// Mathematical weight: 1 completed action = +0.2% daily compound growth (5 actions/day = ideal +1.0% daily growth for (1.01)^365 = 37.8x)
+type PeriodType = 'today' | '7days' | '30days';
+
+const PERIOD_CONFIG: Record<
+  PeriodType,
+  { label: string; daysCount: number; targetDailyNorm: number }
+> = {
+  today: { label: 'день', daysCount: 1, targetDailyNorm: 5 },
+  '7days': { label: '7 дней', daysCount: 7, targetDailyNorm: 35 },
+  '30days': { label: '30 дней', daysCount: 30, targetDailyNorm: 150 },
+};
+
 const GAIN_PER_ACTION_PERCENT = 0.2;
-
-const getActionWord = (count: number) => {
-  const abs = Math.abs(count) % 100;
-  const lastDigit = abs % 10;
-  if (abs > 10 && abs < 20) return 'действий';
-  if (lastDigit === 1) return 'действие';
-  if (lastDigit >= 2 && lastDigit <= 4) return 'действия';
-  return 'действий';
-};
-
-const calculatePaceInfo = (dailyGainNum: number, totalTasksToday: number) => {
-  if (totalTasksToday === 0 || dailyGainNum === 0) {
-    return {
-      paceMultiplier: '1.0x',
-      neededTasks: 5,
-      statusText: 'Сегодня пока 0%. Сделай 1 задачу (+0.2%), чтобы запустить сложный процент!',
-      isTargetMet: false,
-    };
-  }
-
-  const dailyRate = dailyGainNum / 100;
-  const annualMult = Math.pow(1 + dailyRate, 365);
-  const formattedPace = annualMult >= 100 ? `${Math.round(annualMult)}x` : `${annualMult.toFixed(1)}x`;
-
-  const neededTasks = Math.max(0, 5 - totalTasksToday);
-  const isTargetMet = totalTasksToday >= 5;
-
-  let statusText = '';
-  if (isTargetMet) {
-    statusText = `🔥 Отлично! Ты закрыл ${totalTasksToday} ${getActionWord(totalTasksToday)} (+${dailyGainNum.toFixed(1)}%). Твой темп — ${formattedPace} за год (цель 37.8x перевыполнена)!`;
-  } else {
-    statusText = `Сегодня у тебя +${dailyGainNum.toFixed(1)}%. Такими темпами твой рост за год составит ${formattedPace}. Осталось всего ${neededTasks} ${getActionWord(neededTasks)}, чтобы выйти на 37.8x!`;
-  }
-
-  return {
-    paceMultiplier: formattedPace,
-    neededTasks,
-    statusText,
-    isTargetMet,
-  };
-};
 
 export const CompoundedGrowthWidget: React.FC = () => {
   const { tasks } = useTaskStore();
   const categories = useCategoryStore((s) => s.categories);
 
   const [mounted, setMounted] = useState(false);
+  const [period, setPeriod] = useState<PeriodType>('today');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
+    const saved = localStorage.getItem('periodic-compound-growth-period');
+    if (saved === 'today' || saved === '7days' || saved === '30days') {
+      setPeriod(saved);
+    }
   }, []);
 
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
+  const handlePeriodChange = (p: PeriodType) => {
+    setPeriod(p);
+    setIsDropdownOpen(false);
+    localStorage.setItem('periodic-compound-growth-period', p);
+  };
+
   const todayStr = useMemo(() => getTodayStr(), []);
+
+  // Generate date set for the chosen period
+  const periodDateSet = useMemo(() => {
+    const config = PERIOD_CONFIG[period];
+    const set = new Set<string>();
+
+    for (let i = 0; i < config.daysCount; i++) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      set.add(formatLocalDateStr(d));
+    }
+
+    return set;
+  }, [period]);
 
   const compoundData = useMemo(() => {
     const validCats = categories.filter((c) => c.name.trim().toLowerCase() !== 'без категории');
     const sourceCats = validCats.length > 0 ? validCats : categories;
+    const config = PERIOD_CONFIG[period];
 
     if (sourceCats.length === 0) {
+      const demoDone = period === 'today' ? 4 : period === '7days' ? 26 : 110;
       return {
         list: [
-          { id: '1', name: 'TypeScript', color: '#3b82f6', count: 3, gainPercent: '0.6' },
-          { id: '2', name: 'Английский', color: '#8b5cf6', count: 2, gainPercent: '0.4' },
-          { id: '3', name: 'Алгоритмы', color: '#10b981', count: 1, gainPercent: '0.2' },
+          { id: '1', name: 'TypeScript', color: '#3b82f6', count: Math.round(demoDone * 0.5), gainPercent: (demoDone * 0.5 * 0.2).toFixed(1) },
+          { id: '2', name: 'Английский', color: '#8b5cf6', count: Math.round(demoDone * 0.3), gainPercent: (demoDone * 0.3 * 0.2).toFixed(1) },
+          { id: '3', name: 'Алгоритмы', color: '#10b981', count: Math.round(demoDone * 0.2), gainPercent: (demoDone * 0.2 * 0.2).toFixed(1) },
         ],
-        dailyPercentGain: '1.2',
-        yearlyMultiplier: '37.8x',
-        totalActionsToday: 6,
+        totalDone: demoDone,
+        totalGainPercent: (demoDone * GAIN_PER_ACTION_PERCENT).toFixed(1),
+        targetTasks: config.targetDailyNorm,
+        targetPercent: `${(config.targetDailyNorm * GAIN_PER_ACTION_PERCENT).toFixed(0)}%`,
       };
     }
 
-    let totalDoneToday = 0;
+    let totalDone = 0;
 
     const list = sourceCats.map((cat, idx) => {
       const catName = cat.name;
@@ -91,36 +105,52 @@ export const CompoundedGrowthWidget: React.FC = () => {
         (t) => (t.category || 'Без категории').trim().toLowerCase() === catName.trim().toLowerCase()
       );
 
-      let doneToday = 0;
+      let doneInPeriod = 0;
+
       catTasks.forEach((t) => {
         const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
         if (t.hasSubtasks || hasChildren) return;
 
         if (!t.isRepeating && t.status === 'Done') {
           const dateStr = (t.completedAt ? formatLocalDateStr(new Date(t.completedAt)) : undefined) || t.scheduledDate;
-          if (dateStr === todayStr) doneToday += 1;
+          if (dateStr && periodDateSet.has(dateStr)) {
+            doneInPeriod += 1;
+          }
         }
+
         if (t.isRepeating && t.occurrences) {
           t.occurrences.forEach((occ) => {
-            if (occ.status === 'Done' && occ.date === todayStr) doneToday += 1;
+            if (occ.status === 'Done' && occ.date && periodDateSet.has(occ.date)) {
+              doneInPeriod += 1;
+            }
+          });
+        }
+
+        if (t.repetitionHistory) {
+          t.repetitionHistory.forEach((rec) => {
+            const isRecDone = rec.completed === true || (rec as any).status === 'Done';
+            if (isRecDone && rec.date && periodDateSet.has(rec.date)) {
+              const alreadyCounted = t.occurrences?.some((o) => o.date === rec.date && o.status === 'Done');
+              if (!alreadyCounted) {
+                doneInPeriod += 1;
+              }
+            }
           });
         }
       });
 
-      totalDoneToday += doneToday;
-      const gainPercent = (doneToday * GAIN_PER_ACTION_PERCENT).toFixed(1);
+      totalDone += doneInPeriod;
+      const gainPercent = (doneInPeriod * GAIN_PER_ACTION_PERCENT).toFixed(1);
 
       return {
         id: cat.id || `cat-${idx}`,
         name: catName,
         color: catColor,
-        count: doneToday,
+        count: doneInPeriod,
         gainPercent,
       };
     });
 
-    // Sort: categories with growth (> 0) on top (sorted by count desc),
-    // and categories without growth (=== 0) at the bottom
     const sortedList = list.sort((a, b) => {
       if (a.count > 0 && b.count === 0) return -1;
       if (a.count === 0 && b.count > 0) return 1;
@@ -130,20 +160,37 @@ export const CompoundedGrowthWidget: React.FC = () => {
       return 0;
     });
 
-    const dailyPercentGain = (totalDoneToday * GAIN_PER_ACTION_PERCENT).toFixed(1);
+    const totalGainPercent = (totalDone * GAIN_PER_ACTION_PERCENT).toFixed(1);
+    const targetTasks = config.targetDailyNorm;
+    const targetPercent = `${(targetTasks * GAIN_PER_ACTION_PERCENT).toFixed(0)}%`;
 
     return {
       list: sortedList,
-      dailyPercentGain,
-      yearlyMultiplier: '37.8x',
-      totalActionsToday: totalDoneToday,
+      totalDone,
+      totalGainPercent,
+      targetTasks,
+      targetPercent,
     };
-  }, [categories, tasks, todayStr]);
+  }, [categories, tasks, period, periodDateSet]);
 
   if (!mounted) return null;
 
-  const totalGainNum = Number(compoundData.dailyPercentGain);
-  const paceInfo = calculatePaceInfo(totalGainNum, compoundData.totalActionsToday);
+  const currentConfig = PERIOD_CONFIG[period];
+  const totalGainNum = Number(compoundData.totalGainPercent);
+  const isTargetMet = compoundData.totalDone >= compoundData.targetTasks;
+
+  // Pace Calculation (Annual Multiplier based on daily average in period)
+  const averageDailyActions = compoundData.totalDone / currentConfig.daysCount;
+  const averageDailyGainRate = (averageDailyActions * GAIN_PER_ACTION_PERCENT) / 100;
+  const annualMultiplier = Math.pow(1 + averageDailyGainRate, 365);
+  const formattedPace =
+    compoundData.totalDone === 0
+      ? '1.0x'
+      : annualMultiplier >= 100
+      ? `${Math.round(annualMultiplier)}x`
+      : `${annualMultiplier.toFixed(1)}x`;
+
+  const progressPercent = Math.min(100, (compoundData.totalDone / compoundData.targetTasks) * 100);
 
   return (
     <Card
@@ -157,7 +204,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
         border: '1px solid var(--color-border)',
       }}
     >
-      {/* Header Section */}
+      {/* Header Section with Custom Seamless Period Dropdown */}
       <div
         style={{
           display: 'flex',
@@ -168,12 +215,111 @@ export const CompoundedGrowthWidget: React.FC = () => {
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
-            🎯 Прогресс за день
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span
+              style={{
+                fontSize: '15px',
+                fontWeight: 700,
+                color: 'var(--color-text-primary)',
+                lineHeight: 1,
+                display: 'inline-flex',
+                alignItems: 'center',
+              }}
+            >
+              🎯 Прогресс за
+            </span>
+
+            {/* Custom Seamless Dropdown with 100% Identical Typographical Baseline */}
+            <div ref={dropdownRef} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+              <button
+                type="button"
+                onClick={() => setIsDropdownOpen((prev) => !prev)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  padding: '3px 8px',
+                  borderRadius: '7px',
+                  backgroundColor: 'var(--color-surface-hover)',
+                  border: '1px solid var(--color-border)',
+                  color: 'var(--color-text-primary)',
+                  fontSize: '15px',
+                  fontWeight: 700,
+                  fontFamily: 'inherit',
+                  cursor: 'pointer',
+                  lineHeight: 1,
+                  transition: 'all 0.15s ease',
+                  userSelect: 'none',
+                }}
+              >
+                <span>{PERIOD_CONFIG[period].label}</span>
+                <span
+                  style={{
+                    fontSize: '8px',
+                    color: 'var(--color-text-muted)',
+                    transition: 'transform 0.2s ease',
+                    transform: isDropdownOpen ? 'rotate(180deg)' : 'none',
+                  }}
+                >
+                  ▼
+                </span>
+              </button>
+
+              {/* Dropdown Popover */}
+              {isDropdownOpen && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 'calc(100% + 6px)',
+                    left: 0,
+                    zIndex: 50,
+                    minWidth: '100px',
+                    backgroundColor: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '10px',
+                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.16)',
+                    padding: '4px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2px',
+                  }}
+                >
+                  {(['today', '7days', '30days'] as PeriodType[]).map((p) => {
+                    const isSelected = period === p;
+                    return (
+                      <button
+                        key={p}
+                        type="button"
+                        onClick={() => handlePeriodChange(p)}
+                        style={{
+                          textAlign: 'left',
+                          padding: '6px 10px',
+                          borderRadius: '6px',
+                          backgroundColor: isSelected ? 'var(--color-surface-hover)' : 'transparent',
+                          color: isSelected ? '#10b981' : 'var(--color-text-primary)',
+                          fontSize: '13.5px',
+                          fontWeight: isSelected ? 700 : 500,
+                          fontFamily: 'inherit',
+                          border: 'none',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          transition: 'background-color 0.15s ease',
+                        }}
+                      >
+                        <span>{PERIOD_CONFIG[p].label}</span>
+                        {isSelected && <span style={{ fontSize: '11px', color: '#10b981', fontWeight: 800 }}>✓</span>}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
-        {/* Progress Section: Top Filled % & (X/5) + 1% Goal + 10px Indicator Bar */}
+        {/* Progress Section: Top Filled % & (X/Total) + Goal % + 10px Indicator Bar */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
@@ -185,7 +331,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >
-                {totalGainNum > 0 ? `+${compoundData.dailyPercentGain}%` : '0%'}
+                {totalGainNum > 0 ? `+${compoundData.totalGainPercent}%` : '0%'}
               </span>
               <span
                 style={{
@@ -195,7 +341,8 @@ export const CompoundedGrowthWidget: React.FC = () => {
                   letterSpacing: '0.2px',
                 }}
               >
-                ({compoundData.totalActionsToday}/5{compoundData.totalActionsToday >= 5 ? ' ✓' : ''})
+                ({compoundData.totalDone}/{compoundData.targetTasks}
+                {isTargetMet ? ' ✓' : ''})
               </span>
             </div>
 
@@ -207,7 +354,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
                 fontVariantNumeric: 'tabular-nums',
               }}
             >
-              1%
+              {compoundData.targetPercent}
             </span>
           </div>
 
@@ -224,7 +371,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
           >
             <div
               style={{
-                width: `${Math.min(100, (totalGainNum / 1.0) * 100)}%`,
+                width: `${progressPercent}%`,
                 height: '100%',
                 borderRadius: '5px',
                 backgroundColor: '#10b981',
@@ -244,13 +391,14 @@ export const CompoundedGrowthWidget: React.FC = () => {
             borderRadius: '12px',
             background: 'rgba(255, 255, 255, 0.04)',
             backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
             border: '1px solid var(--color-border)',
             fontSize: '11.5px',
             marginTop: '2px',
           }}
         >
           <span style={{ color: 'var(--color-text-muted)', fontWeight: 600 }}>
-            ⚡ Прогноз: <strong style={{ color: '#10b981', fontWeight: 800 }}>{paceInfo.paceMultiplier}</strong>
+            ⚡ Прогноз: <strong style={{ color: '#10b981', fontWeight: 800 }}>{formattedPace}</strong>
           </span>
           <span style={{ color: 'var(--color-text-muted)', fontWeight: 600 }}>
             🎯 Цель: <strong style={{ color: 'var(--color-text-primary)', fontWeight: 800 }}>37.8x</strong>
