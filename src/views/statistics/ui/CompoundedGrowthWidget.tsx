@@ -7,15 +7,16 @@ import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 import { formatLocalDateStr, getTodayStr } from '@/shared/lib/dateUtils';
 
-type PeriodType = 'today' | '7days' | '30days';
+type PeriodType = 'today' | '7days' | '30days' | 'year';
 
 const PERIOD_CONFIG: Record<
   PeriodType,
-  { label: string; daysCount: number; targetDailyNorm: number }
+  { label: string; daysCount: number; activeDaysNorm: number; targetDailyNorm: number; yearlyTargetMultiplier: string; yearlyDaysBase: number }
 > = {
-  today: { label: 'день', daysCount: 1, targetDailyNorm: 5 },
-  '7days': { label: '7 дней', daysCount: 7, targetDailyNorm: 35 },
-  '30days': { label: '30 дней', daysCount: 30, targetDailyNorm: 150 },
+  today: { label: 'день', daysCount: 1, activeDaysNorm: 1, targetDailyNorm: 5, yearlyTargetMultiplier: '37.8x', yearlyDaysBase: 365 },
+  '7days': { label: '7 дней', daysCount: 7, activeDaysNorm: 6, targetDailyNorm: 30, yearlyTargetMultiplier: '22.4x', yearlyDaysBase: 313 },
+  '30days': { label: '30 дней', daysCount: 30, activeDaysNorm: 26, targetDailyNorm: 130, yearlyTargetMultiplier: '22.4x', yearlyDaysBase: 313 },
+  year: { label: 'год', daysCount: 365, activeDaysNorm: 313, targetDailyNorm: 1565, yearlyTargetMultiplier: '22.4x', yearlyDaysBase: 313 },
 };
 
 const GAIN_PER_ACTION_PERCENT = 0.2;
@@ -32,7 +33,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem('periodic-compound-growth-period');
-    if (saved === 'today' || saved === '7days' || saved === '30days') {
+    if (saved === 'today' || saved === '7days' || saved === '30days' || saved === 'year') {
       setPeriod(saved);
     }
   }, []);
@@ -80,7 +81,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
     const config = PERIOD_CONFIG[period];
 
     if (sourceCats.length === 0) {
-      const demoDone = period === 'today' ? 4 : period === '7days' ? 26 : 110;
+      const demoDone = period === 'today' ? 4 : period === '7days' ? 24 : period === '30days' ? 95 : 820;
       return {
         list: [
           { id: '1', name: 'TypeScript', color: '#3b82f6', count: Math.round(demoDone * 0.5), gainPercent: (demoDone * 0.5 * 0.2).toFixed(1) },
@@ -179,10 +180,10 @@ export const CompoundedGrowthWidget: React.FC = () => {
   const totalGainNum = Number(compoundData.totalGainPercent);
   const isTargetMet = compoundData.totalDone >= compoundData.targetTasks;
 
-  // Pace Calculation (Annual Multiplier based on daily average in period)
-  const averageDailyActions = compoundData.totalDone / currentConfig.daysCount;
+  // Pace Calculation (Annual Multiplier based on daily average in active days over yearlyDaysBase)
+  const averageDailyActions = compoundData.totalDone / currentConfig.activeDaysNorm;
   const averageDailyGainRate = (averageDailyActions * GAIN_PER_ACTION_PERCENT) / 100;
-  const annualMultiplier = Math.pow(1 + averageDailyGainRate, 365);
+  const annualMultiplier = Math.pow(1 + averageDailyGainRate, currentConfig.yearlyDaysBase);
   const formattedPace =
     compoundData.totalDone === 0
       ? '1.0x'
@@ -284,7 +285,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
                     gap: '2px',
                   }}
                 >
-                  {(['today', '7days', '30days'] as PeriodType[]).map((p) => {
+                  {(['today', '7days', '30days', 'year'] as PeriodType[]).map((p) => {
                     const isSelected = period === p;
                     return (
                       <button
@@ -401,7 +402,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
             ⚡ Прогноз: <strong style={{ color: '#10b981', fontWeight: 800 }}>{formattedPace}</strong>
           </span>
           <span style={{ color: 'var(--color-text-muted)', fontWeight: 600 }}>
-            🎯 Цель: <strong style={{ color: 'var(--color-text-primary)', fontWeight: 800 }}>37.8x</strong>
+            🎯 Цель: <strong style={{ color: 'var(--color-text-primary)', fontWeight: 800 }}>{currentConfig.yearlyTargetMultiplier}</strong>
           </span>
         </div>
       </div>
