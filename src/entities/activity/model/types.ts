@@ -4,7 +4,8 @@ export type ActivityType =
   | 'material_completed'
   | 'fsrs_reviewed'
   | 'goal_created'
-  | 'topic_created';
+  | 'topic_created'
+  | 'achievement_created';
 
 export interface ActivityLog {
   id: string;

@@ -19,6 +19,7 @@ export const STORAGE_KEYS = {
   DAY_SWITCHER_VARIANT: 'skillflow_day_switcher_variant',
   TASK_MODAL_VARIANT: 'skillflow_task_modal_variant',
   WIDGET_ORDER: 'skillflow_widget_order',
+  ACHIEVEMENTS: 'skillflow_achievements',
 } as const;
 
 export type StorageKey = (typeof STORAGE_KEYS)[keyof typeof STORAGE_KEYS];

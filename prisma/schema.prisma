@@ -122,3 +122,15 @@ model Category {
   color     String
   createdAt DateTime @default(now())
 }
+
+model Achievement {
+  id          String   @id @default(uuid())
+  title       String
+  date        String   // "YYYY-MM-DD"
+  category    String?
+  icon        String?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+

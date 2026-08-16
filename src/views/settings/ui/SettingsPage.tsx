@@ -86,6 +86,7 @@ export const SettingsPage: React.FC = () => {
       STORAGE_KEYS.REPEAT_CARDS,
       STORAGE_KEYS.INBOX,
       STORAGE_KEYS.ACTIVITY_LOG,
+      STORAGE_KEYS.ACHIEVEMENTS,
     ];
 
     keys.forEach((key) => {
