@@ -13,6 +13,7 @@ import { DaySwitcherShowcase } from '@/features/day-switcher-showcase/ui/DaySwit
 
 import { DailyQuoteWidget } from '@/widgets/daily-quote/ui/DailyQuoteWidget';
 import { HabitProgressBanner } from '@/widgets/habit-progress-banner/ui/HabitProgressBanner';
+import { EnglishDailyWidget } from '@/widgets/english-daily-widget';
 import { TodayTasks } from '@/widgets/today-tasks/ui/TodayTasks';
 import styles from './TodayPage.module.css';
 
@@ -62,7 +63,10 @@ export const TodayPage: React.FC = () => {
       {/* 3. 2nd Top Widget: Primary Dashboard Banner ("Время покорять вершины!") */}
       <HabitProgressBanner targetDate={selectedDate} />
 
-      {/* 4. Main Today Tasks Board */}
+      {/* 4. English Learning Daily Widget */}
+      <EnglishDailyWidget />
+
+      {/* 5. Main Today Tasks Board */}
       <TodayTasks showDaySwitcher={false} selectedDate={selectedDate} onDateChange={setSelectedDate} />
     </div>
   );

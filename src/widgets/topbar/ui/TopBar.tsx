@@ -15,6 +15,7 @@ interface PathMeta {
 const pathMetaMap: Record<string, PathMeta> = {
   '/': { title: 'Сегодня', icon: '☀️' },
   '/today': { title: 'Сегодня', icon: '☀️' },
+  '/english': { title: 'Английский', icon: '🇬🇧' },
   '/inbox': { title: 'Входящие', icon: '📥' },
   '/calendar': { title: 'Календарь', icon: '📅' },
   '/overdue': { title: 'Просроченные', icon: '🚨' },

@@ -23,6 +23,7 @@ const SECTION_GROUPS: NavSectionGroup[] = [
     groupTitle: 'Ежедневные',
     items: [
       { label: 'Сегодня', href: '/today', icon: '☀️', description: 'Фокус дня и текущие дела' },
+      { label: 'Английский', href: '/english', icon: '🇬🇧', description: 'Словарь Oxford 3000 и карточки' },
       { label: 'Календарь', href: '/calendar', icon: '📅', description: 'Сетка расписания и недели' },
       { label: 'Входящие', href: '/inbox', icon: '📥', description: 'Быстрый сбор мыслей и идей' },
       { label: 'Просроченные', href: '/overdue', icon: '🚨', description: 'Задачи, требующие внимания' },
