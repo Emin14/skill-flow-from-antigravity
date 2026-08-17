@@ -1,29 +1,39 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Settings } from 'lucide-react';
+import { Settings, ChevronDown } from 'lucide-react';
 import { useThemeStore } from '@/shared/model/useThemeStore';
+import { SectionSwitcherModal } from './SectionSwitcherModal';
 import styles from './TopBar.module.css';
 
-const pathTitles: Record<string, string> = {
-  '/': 'Сегодня',
-  '/today': 'Сегодня',
-  '/inbox': 'Входящие',
-  '/overdue': 'Просроченные',
-  '/anytime': 'В любое время',
-  '/goals': 'Цели и Навыки',
-  '/calendar': 'Календарь',
-  '/repeats': 'Повторить',
-  '/statistics': 'Аналитика',
-  '/projects': 'Крупные задачи',
-  '/settings': 'Настройки',
+interface PathMeta {
+  title: string;
+  icon: string;
+}
+
+const pathMetaMap: Record<string, PathMeta> = {
+  '/': { title: 'Сегодня', icon: '☀️' },
+  '/today': { title: 'Сегодня', icon: '☀️' },
+  '/inbox': { title: 'Входящие', icon: '📥' },
+  '/calendar': { title: 'Календарь', icon: '📅' },
+  '/overdue': { title: 'Просроченные', icon: '🚨' },
+  '/projects': { title: 'Крупные задачи', icon: '📁' },
+  '/repeats': { title: 'Повторить', icon: '🔄' },
+  '/goals': { title: 'Цели', icon: '🎯' },
+  '/achievements': { title: 'Достижения', icon: '🏆' },
+  '/anytime': { title: 'В любое время', icon: '♾️' },
+  '/statistics': { title: 'Статистика', icon: '📊' },
+  '/review': { title: 'Итоги дня', icon: '🌙' },
+  '/settings': { title: 'Настройки', icon: '⚙️' },
 };
 
 export const TopBar: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const currentTitle = pathTitles[pathname] || 'SkillFlow';
+  const [isSwitcherOpen, setIsSwitcherOpen] = useState(false);
+
+  const currentMeta = pathMetaMap[pathname] || { title: 'SkillFlow', icon: '⚡' };
   const isTodayPage = pathname === '/' || pathname === '/today';
 
   const { theme, initTheme, toggleTheme } = useThemeStore();
@@ -52,37 +62,62 @@ export const TopBar: React.FC = () => {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.titleWrapper}>
-        <div className={styles.headerTitleRow}>
-          <h1 className={styles.title}>{currentTitle}</h1>
-          {isTodayPage && (
-            <span className={styles.dateSubtitle}>
-              • {todayFormatted}
-            </span>
-          )}
+    <>
+      <header className={styles.header}>
+        <div className={styles.titleWrapper}>
+          <div className={styles.headerTitleRow}>
+            {/* Linear-Style Interactive Section Switcher Trigger */}
+            <button
+              type="button"
+              className={`${styles.switcherTriggerBtn} ${isSwitcherOpen ? styles.switcherTriggerBtnOpen : ''}`}
+              onClick={() => setIsSwitcherOpen((prev) => !prev)}
+              aria-expanded={isSwitcherOpen}
+              aria-label="Открыть меню всех разделов"
+              title="Переключить раздел"
+            >
+              <span className={styles.switcherIcon}>{currentMeta.icon}</span>
+              <h1 className={styles.title}>{currentMeta.title}</h1>
+              <ChevronDown
+                size={16}
+                className={`${styles.chevronIcon} ${isSwitcherOpen ? styles.chevronIconRotated : ''}`}
+              />
+            </button>
+
+            {isTodayPage && (
+              <span className={styles.dateSubtitle}>
+                • {todayFormatted}
+              </span>
+            )}
+          </div>
         </div>
-      </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <button
-          onClick={toggleTheme}
-          title={theme === 'dark' ? 'Переключить на светлый режим (День)' : 'Переключить на тёмный режим (Ночь)'}
-          aria-label="Смена темы"
-          className={styles.iconActionBtn}
-        >
-          {theme === 'dark' ? '🌙' : '☀️'}
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <button
+            onClick={toggleTheme}
+            title={theme === 'dark' ? 'Переключить на светлый режим (День)' : 'Переключить на тёмный режим (Ночь)'}
+            aria-label="Смена темы"
+            className={styles.iconActionBtn}
+          >
+            {theme === 'dark' ? '🌙' : '☀️'}
+          </button>
 
-        <button
-          onClick={handleSettingsToggle}
-          title={pathname === '/settings' ? "Вернуться назад" : "Открыть Настройки"}
-          aria-label="Настройки"
-          className={`${styles.iconActionBtn} ${styles.iconRoundBtn}`}
-        >
-          <Settings size={18} />
-        </button>
-      </div>
-    </header>
+          <button
+            onClick={handleSettingsToggle}
+            title={pathname === '/settings' ? "Вернуться назад" : "Открыть Настройки"}
+            aria-label="Настройки"
+            className={`${styles.iconActionBtn} ${styles.iconRoundBtn}`}
+          >
+            <Settings size={18} />
+          </button>
+        </div>
+      </header>
+
+      {/* Section Switcher Modal Overlay */}
+      <SectionSwitcherModal
+        isOpen={isSwitcherOpen}
+        onClose={() => setIsSwitcherOpen(false)}
+        currentPath={pathname}
+      />
+    </>
   );
 };
