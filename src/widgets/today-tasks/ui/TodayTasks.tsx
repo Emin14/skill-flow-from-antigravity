@@ -68,6 +68,18 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
   useEffect(() => {
     registerPointerDropHandler((draggedTaskId, target) => {
       if (target.type === 'status_tab' && target.status) {
+        if (target.status === 'Done') {
+          const task = tasks.find((t) => t.id === draggedTaskId);
+          if (task && isSmartRepeatTask(task)) {
+            const currentOcc = task.occurrences?.find((o) => o.date === activeDateStr);
+            if (currentOcc?.smartRating) {
+              updateTaskStatus(task.id, 'Done', currentOcc.smartRating, activeDateStr);
+            } else {
+              openSmartModal(task);
+            }
+            return;
+          }
+        }
         updateTaskStatus(draggedTaskId, target.status, undefined, activeDateStr);
         const statusLabel = target.status === 'Todo' ? 'План' : target.status === 'InProgress' ? 'В работе' : 'Выполнено';
         useToastStore.getState().showToast(`Задача перенесена в колонку "${statusLabel}"`, 'info');
@@ -75,7 +87,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
         updateTaskParent(draggedTaskId, target.taskId);
       }
     });
-  }, [activeDateStr, updateTaskStatus, updateTaskParent]);
+  }, [activeDateStr, tasks, updateTaskStatus, updateTaskParent, openSmartModal]);
 
   useEffect(() => { fetchTasks(); }, [fetchTasks]);
 
@@ -84,6 +96,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
     const fresh = getTodayStr();
     setTodayStr(fresh);
     if (onDateChange) onDateChange(fresh);
+    fetchTasks(true);
   });
 
   // Tasks scheduled strictly for activeDateStr (EXCLUDING parent tasks with subtasks)
@@ -173,6 +186,18 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
     setDragOverTab(null);
     const taskId = getDraggedTaskId(e);
     if (taskId) {
+      if (targetStatus === 'Done') {
+        const task = tasks.find((t) => t.id === taskId);
+        if (task && isSmartRepeatTask(task)) {
+          const currentOcc = task.occurrences?.find((o) => o.date === activeDateStr);
+          if (currentOcc?.smartRating) {
+            updateTaskStatus(task.id, 'Done', currentOcc.smartRating, activeDateStr);
+          } else {
+            openSmartModal(task);
+          }
+          return;
+        }
+      }
       updateTaskStatus(taskId, targetStatus, undefined, activeDateStr);
       const statusLabel = targetStatus === 'Todo' ? 'План' : targetStatus === 'InProgress' ? 'В работе' : 'Выполнено';
       useToastStore.getState().showToast(`Задача перенесена в колонку "${statusLabel}"`, 'info');

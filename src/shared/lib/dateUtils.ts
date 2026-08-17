@@ -115,3 +115,77 @@ export const getNextSpecificDayDate = (
   }
   return { daysToAdd: 7, nextDateStr: addDaysToDateStr(fromDateStr, 7) };
 };
+
+/**
+ * Находит самый последний плановый день недели из списка weeklyDays, который наступил на или ДО даты referenceDateStr.
+ */
+export const getLatestScheduledDayDate = (
+  referenceDateStr: string,
+  weeklyDays: number[]
+): string => {
+  if (!weeklyDays || weeklyDays.length === 0) {
+    return referenceDateStr || getTodayStr();
+  }
+  const parts = (referenceDateStr || getTodayStr()).split('-').map(Number);
+  const ref = parts.length === 3 ? new Date(parts[0], parts[1] - 1, parts[2]) : new Date();
+
+  for (let i = 0; i <= 6; i++) {
+    const prev = new Date(ref.getFullYear(), ref.getMonth(), ref.getDate() - i);
+    const dayOfWeek = prev.getDay(); // 0 = Sun, 1 = Mon ...
+    if (weeklyDays.includes(dayOfWeek)) {
+      return formatLocalDateStr(prev);
+    }
+  }
+  return referenceDateStr;
+};
+
+/**
+ * Определяет актуальную последнюю наступившую дату повтора для задачи по расписанию.
+ */
+export const getLatestScheduledDateForTask = (
+  task: {
+    repetitionMode?: string | null;
+    weeklyDays?: number[] | null;
+    scheduleFrequency?: string | null;
+    scheduledDate?: string | null;
+    createdAt?: string | null;
+  },
+  referenceDateStr: string
+): string => {
+  const mode = task.repetitionMode;
+  if (mode === 'specific_days') {
+    const days = task.weeklyDays && task.weeklyDays.length > 0 ? task.weeklyDays : [1, 2, 3, 4, 5];
+    return getLatestScheduledDayDate(referenceDateStr, days);
+  }
+
+  if (mode === 'schedule') {
+    const freq = task.scheduleFrequency || 'daily';
+    if (freq === 'daily') {
+      return referenceDateStr;
+    }
+    if (freq === 'weekly') {
+      const baseDateStr = task.scheduledDate || (task.createdAt ? task.createdAt.split('T')[0] : referenceDateStr);
+      const baseParts = baseDateStr.split('-').map(Number);
+      const baseD = baseParts.length === 3 ? new Date(baseParts[0], baseParts[1] - 1, baseParts[2]) : new Date();
+      const baseDayOfWeek = baseD.getDay();
+      return getLatestScheduledDayDate(referenceDateStr, [baseDayOfWeek]);
+    }
+    if (freq === 'monthly') {
+      const baseDateStr = task.scheduledDate || (task.createdAt ? task.createdAt.split('T')[0] : referenceDateStr);
+      const baseDayOfMonth = parseInt(baseDateStr.split('-')[2] || '1', 10);
+      const refParts = referenceDateStr.split('-').map(Number);
+      const refYear = refParts[0];
+      const refMonth = refParts[1];
+      const refDay = refParts[2];
+      if (refDay >= baseDayOfMonth) {
+        return `${refYear}-${String(refMonth).padStart(2, '0')}-${String(baseDayOfMonth).padStart(2, '0')}`;
+      } else {
+        const prevMonthDate = new Date(refYear, refMonth - 2, baseDayOfMonth);
+        return formatLocalDateStr(prevMonthDate);
+      }
+    }
+  }
+
+  return referenceDateStr;
+};
+

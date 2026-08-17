@@ -5,7 +5,7 @@ import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS }
 import { taskApi } from '../api/taskApi';
 import { useToastStore } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
-import { getTodayStr, getTomorrowStr, formatDateDisplay, getNextSpecificDayDate } from '@/shared/lib/dateUtils';
+import { getTodayStr, getTomorrowStr, formatDateDisplay, getNextSpecificDayDate, getLatestScheduledDateForTask } from '@/shared/lib/dateUtils';
 import { playTaskCompletionSound } from '@/shared/lib/soundUtils';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -75,6 +75,96 @@ export const normalizeOccurrences = (
   // INVARIANT 2: Always sort strictly by date ascending
   normalized.sort((a, b) => a.date.localeCompare(b.date));
   return normalized;
+};
+
+/**
+ * Автоматический перенос невыполненного повтора по расписанию:
+ * Если для задачи (repetitionMode === 'specific_days' | 'schedule') наступил новый плановый день,
+ * то прошлый невыполненный повтор (Todo) переносится на этот новый плановый день (старый удаляется/замещается),
+ * не накапливая стек пропущенных задач.
+ */
+export const reconcileScheduledTaskOccurrences = (
+  task: {
+    id: string;
+    isRepeating?: boolean;
+    repetitionMode?: string | null;
+    weeklyDays?: number[] | null;
+    scheduleFrequency?: string | null;
+    scheduledDate?: string | null;
+    createdAt?: string | null;
+    repeatStatus?: string | null;
+    occurrences?: TaskOccurrence[] | null;
+  },
+  todayStr: string = getTodayStr()
+): { updatedOccurrences: TaskOccurrence[]; hasChanges: boolean } => {
+  if (!task.isRepeating) {
+    return { updatedOccurrences: task.occurrences || [], hasChanges: false };
+  }
+
+  const mode = task.repetitionMode;
+  if (mode !== 'specific_days' && mode !== 'schedule') {
+    return { updatedOccurrences: task.occurrences || [], hasChanges: false };
+  }
+
+  if (task.repeatStatus === 'Paused' || task.repeatStatus === 'Completed') {
+    return { updatedOccurrences: task.occurrences || [], hasChanges: false };
+  }
+
+  const occs = normalizeOccurrences(task.occurrences || [], task.id);
+  const doneOccs = occs.filter((o) => o.status === 'Done');
+  const todoOccs = occs.filter((o) => o.status !== 'Done');
+
+  const latestScheduledDate = getLatestScheduledDateForTask(task, todayStr);
+
+  // If there are uncompleted Todo occurrences
+  if (todoOccs.length > 0) {
+    todoOccs.sort((a, b) => a.date.localeCompare(b.date));
+    const earliestTodo = todoOccs[0];
+
+    // If the earliest uncompleted occurrence was scheduled before the latest scheduled date that has already arrived
+    if (earliestTodo.date < latestScheduledDate) {
+      // Check if there is already a Done occurrence on latestScheduledDate
+      const doneOnLatest = doneOccs.some((o) => o.date === latestScheduledDate);
+
+      if (!doneOnLatest) {
+        // Roll over the uncompleted occurrence to latestScheduledDate and drop older/stacked Todo occurrences
+        const rolledOcc: TaskOccurrence = {
+          ...earliestTodo,
+          date: latestScheduledDate,
+          status: 'Todo',
+        };
+        const newOccs = [...doneOccs.filter((o) => o.date !== latestScheduledDate), rolledOcc];
+        newOccs.sort((a, b) => a.date.localeCompare(b.date));
+        return { updatedOccurrences: newOccs, hasChanges: true };
+      } else {
+        // Already done on latestScheduledDate, remove the obsolete Todo occurrence
+        return { updatedOccurrences: doneOccs, hasChanges: true };
+      }
+    } else if (todoOccs.length > 1) {
+      // Collapse redundant multiple Todo occurrences into the single latest one
+      const latestTodo = todoOccs[todoOccs.length - 1];
+      const newOccs = [...doneOccs, latestTodo];
+      newOccs.sort((a, b) => a.date.localeCompare(b.date));
+      return { updatedOccurrences: newOccs, hasChanges: true };
+    }
+  } else {
+    // If no Todo occurrences exist, check if latestScheduledDate was completed.
+    // If not completed and latestScheduledDate <= todayStr (or task is active), ensure occurrence exists.
+    const alreadyDoneOnLatest = doneOccs.some((o) => o.date === latestScheduledDate);
+    if (!alreadyDoneOnLatest && latestScheduledDate <= todayStr) {
+      const newOcc: TaskOccurrence = {
+        id: uuidv4(),
+        taskId: task.id,
+        date: latestScheduledDate,
+        status: 'Todo',
+      };
+      const newOccs = [...doneOccs, newOcc];
+      newOccs.sort((a, b) => a.date.localeCompare(b.date));
+      return { updatedOccurrences: newOccs, hasChanges: true };
+    }
+  }
+
+  return { updatedOccurrences: occs, hasChanges: false };
 };
 
 /**
@@ -160,7 +250,7 @@ interface TaskState {
   isLoading: boolean;
   error: string | null;
 
-  fetchTasks: () => Promise<void>;
+  fetchTasks: (forceRefresh?: boolean) => Promise<void>;
   addTask: (titleOrParams: string | AddTaskParams, priorityFallback?: TaskPriority) => Promise<Task>;
   toggleTaskStatus: (id: string, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTaskStatus: (id: string, newStatus: TaskStatus, smartRating?: SmartRating, occurrenceDate?: string, pomodorosCount?: number) => Promise<void>;
@@ -280,7 +370,8 @@ export const getDynamicSmartBaseInterval = (task: Task): number => {
 export const calculateNextInterval = (
   task: Task,
   newCount: number,
-  smartRating?: SmartRating
+  smartRating?: SmartRating,
+  fromDateStr?: string
 ): { nextIntervalFloat: number; daysToAdd: number } => {
   const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
 
@@ -311,8 +402,8 @@ export const calculateNextInterval = (
 
   if (mode === 'specific_days' && !smartRating) {
     const days = task.weeklyDays || [1, 2, 3, 4, 5];
-    const today = getTodayStr();
-    const { daysToAdd } = getNextSpecificDayDate(today, days);
+    const base = fromDateStr || getTodayStr();
+    const { daysToAdd } = getNextSpecificDayDate(base, days);
     return { nextIntervalFloat: daysToAdd, daysToAdd };
   }
 
@@ -349,25 +440,40 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     try {
       const rawTasks = await taskApi.getAll();
 
+      const todayStr = getTodayStr();
+
       const cleanedTasks = rawTasks.map((t) => {
         const rawOccs: TaskOccurrence[] = t.occurrences ? [...t.occurrences] : [];
         if (rawOccs.length === 0) {
           rawOccs.push({
             id: uuidv4(),
             taskId: t.id,
-            date: t.scheduledDate || getTodayStr(),
+            date: t.scheduledDate || todayStr,
             status: t.status || 'Todo',
             completedAt: t.completedAt,
             smartRating: t.lastSmartRating,
           });
         }
         const normalized = normalizeOccurrences(rawOccs, t.id);
+        const { updatedOccurrences, hasChanges } = reconcileScheduledTaskOccurrences(
+          { ...t, occurrences: normalized },
+          todayStr
+        );
+        const finalOccs = updatedOccurrences;
+
+        if (hasChanges) {
+          taskApi.update(t.id, {
+            occurrences: finalOccs,
+            scheduledDate: getDerivedScheduledDate({ ...t, occurrences: finalOccs }),
+          }).catch(() => {});
+        }
+
         return {
           ...t,
-          occurrences: normalized,
-          scheduledDate: getDerivedScheduledDate({ ...t, occurrences: normalized }),
-          repetitionsCount: getDerivedRepetitionsCount({ ...t, occurrences: normalized }),
-          lastSmartRating: getDerivedLastSmartRating({ ...t, occurrences: normalized }),
+          occurrences: finalOccs,
+          scheduledDate: getDerivedScheduledDate({ ...t, occurrences: finalOccs }),
+          repetitionsCount: getDerivedRepetitionsCount({ ...t, occurrences: finalOccs }),
+          lastSmartRating: getDerivedLastSmartRating({ ...t, occurrences: finalOccs }),
         };
       });
 
@@ -562,14 +668,15 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         const isStopped = task.repeatStatus === 'Paused' || task.repeatStatus === 'Completed';
         if (!isStopped) {
           const doneCount = occs.filter((o) => o.status === 'Done').length;
-          const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating);
-          let nextDate = addDaysToDateStr(targetDate, daysToAdd);
+          const baseDate = targetDate > todayStr ? targetDate : todayStr;
+          const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating, baseDate);
+          let nextDate = addDaysToDateStr(baseDate, daysToAdd);
           if (nextDate < todayStr) {
             nextDate = todayStr;
           }
 
-          // Remove any future uncompleted occurrences that were beyond targetDate to prevent ghost skips
-          occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate || o.date === nextDate);
+          // Remove any uncompleted Todo occurrences to ensure clean, non-stacking next repeat
+          occs = occs.filter((o) => o.status === 'Done' || o.date === nextDate);
 
           const hasNext = occs.some((o) => o.date === nextDate);
           if (!hasNext) {
