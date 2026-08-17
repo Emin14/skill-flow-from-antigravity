@@ -134,3 +134,26 @@ model Achievement {
   updatedAt   DateTime @default(now()) @updatedAt
 }
 
+model EnglishWordProgress {
+  wordId         String    @id
+  status         String    @default("NEW") // 'NEW' | 'LEARNING' | 'REVIEW' | 'MASTERED'
+  nextReviewDate String    // "YYYY-MM-DD"
+  intervalDays   Int       @default(1)
+  easeFactor     Float     @default(2.5)
+  repetitions    Int       @default(0)
+  errorCount     Int       @default(0)
+  lastReviewedAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @default(now()) @updatedAt
+}
+
+model EnglishSettings {
+  id               String   @id @default("default")
+  dailyNewWords    Int      @default(5)
+  maxReviewsPerDay Int      @default(30)
+  activeLevels     String   @default("[\"A1\",\"A2\",\"B1\",\"B2\"]")
+  autoPronounce    Boolean  @default(true)
+  accent           String   @default("us") // 'us' | 'uk'
+  updatedAt        DateTime @default(now()) @updatedAt
+}
+
