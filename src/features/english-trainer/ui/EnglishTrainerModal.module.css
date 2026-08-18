@@ -2,59 +2,175 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: env(safe-area-inset-top, 16px) env(safe-area-inset-right, 16px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 16px);
-  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  overflow: hidden; /* No scroll on open */
   user-select: none;
   -webkit-user-select: none;
 }
 
-.header {
+.cardContainer {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+/* Concept 20 Variant Selector Bar Above Card Header */
+.variantBar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+  padding: 4px 6px;
+  margin-bottom: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  scrollbar-width: thin;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+
+.variantBar::-webkit-scrollbar {
+  height: 3px;
+}
+
+.variantBar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.variantBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+  flex-shrink: 0;
+}
+
+.variantBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.variantBtnActive {
+  background: var(--color-accent-light);
+  border-color: var(--color-accent-border);
+  color: var(--color-accent-text);
+  font-weight: 700;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl, 20px);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-xl, 0 20px 40px -15px rgba(0, 0, 0, 0.3));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  transition: all var(--transition-normal) ease;
+}
+
+/* Modal Inner Header */
+.cardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 4px 8px 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .closeBtn {
-  background: var(--color-surface);
+  background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
   color: var(--color-text-secondary);
-  padding: 8px 14px;
-  border-radius: var(--radius-md, 12px);
-  font-size: 13px;
-  font-weight: 500;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: var(--radius-md, 8px);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  transition: all var(--transition-fast) ease;
+  touch-action: manipulation;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: var(--color-surface-active);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-hover);
+}
+
+.closeBtn:active {
+  transform: scale(0.92);
+}
+
+.headerRightGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alreadyKnowHeaderBtn {
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #eab308;
+  padding: 5px 10px;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   transition: all var(--transition-fast) ease;
   touch-action: manipulation;
 }
 
-.closeBtn:active {
+.alreadyKnowHeaderBtn:hover {
+  background: rgba(234, 179, 8, 0.22);
+}
+
+.alreadyKnowHeaderBtn:active {
   transform: scale(0.95);
-  background: var(--color-surface-hover);
 }
 
 .progressStats {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .counterBadge {
   background: var(--color-accent-light);
   border: 1px solid var(--color-accent-border);
   color: var(--color-accent-text);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: var(--radius-full, 9999px);
 }
 
@@ -62,37 +178,16 @@
   background: var(--color-warning-light);
   border: 1px solid var(--color-warning-border);
   color: var(--color-warning);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: var(--radius-sm, 6px);
 }
 
-.cardContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 12px 0;
-}
-
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl, 20px);
-  padding: 24px;
-  box-shadow: var(--shadow-xl, 0 20px 40px -15px rgba(0, 0, 0, 0.25));
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: all var(--transition-normal) ease;
-}
-
+/* Word Title Section */
 .wordSection {
   text-align: center;
+  padding: 2px 0;
 }
 
 .wordRow {
@@ -103,7 +198,7 @@
 }
 
 .headword {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
   color: var(--color-text-primary);
   letter-spacing: -0.3px;
@@ -114,14 +209,14 @@
   background: var(--color-accent-light);
   border: 1px solid var(--color-accent-border);
   color: var(--color-accent-text);
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   transition: all var(--transition-fast) ease;
   touch-action: manipulation;
 }
@@ -131,20 +226,47 @@
 }
 
 .transcription {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--color-text-muted);
-  margin-top: 4px;
+  margin-top: 2px;
   font-family: var(--font-family-base);
+}
+
+.cardTypeBadgeRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.cardTypePillReview {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent-border);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full, 9999px);
+}
+
+.cardTypePillNew {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full, 9999px);
 }
 
 .exampleMasked {
   background: var(--color-surface-hover);
   border-left: 3px solid var(--color-accent);
-  padding: 12px 14px;
+  padding: 10px 12px;
   border-radius: 0 var(--radius-md, 10px) var(--radius-md, 10px) 0;
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: 1.45;
   font-style: italic;
 }
 
@@ -158,8 +280,8 @@
   background: var(--color-bg);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md, 12px);
-  padding: 12px 14px;
-  font-size: 15px;
+  padding: 11px 13px;
+  font-size: 14.5px;
   color: var(--color-text-primary);
   outline: none;
   transition: all var(--transition-fast) ease;
@@ -185,9 +307,9 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
-  padding: 8px 12px;
+  padding: 7px 10px;
   border-radius: var(--radius-md, 10px);
   animation: fadeIn 0.2s ease-out;
 }
@@ -209,14 +331,14 @@
   color: var(--color-accent-on-accent);
   border: none;
   border-radius: var(--radius-md, 12px);
-  padding: 14px;
-  font-size: 14px;
+  padding: 12px;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 7px;
   transition: all var(--transition-fast) ease;
   touch-action: manipulation;
 }
@@ -232,8 +354,8 @@
 .revealedContent {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-top: 14px;
+  gap: 10px;
+  padding-top: 10px;
   border-top: 1px solid var(--color-border);
   animation: fadeIn 0.2s ease-out;
 }
@@ -243,16 +365,15 @@
   border: 1px dashed var(--color-border);
   color: var(--color-text-muted);
   border-radius: var(--radius-md, 10px);
-  padding: 8px 12px;
-  font-size: 12px;
+  padding: 6px 10px;
+  font-size: 11.5px;
   font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   transition: all var(--transition-fast) ease;
-  margin-bottom: 4px;
 }
 
 .hideAnswerBtn:hover {
@@ -269,13 +390,13 @@
 .translationsList {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .posGroup {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 7px;
   flex-wrap: wrap;
 }
 
@@ -289,7 +410,7 @@
 }
 
 .meanings {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-accent-text);
 }
@@ -297,10 +418,10 @@
 .detailsBlock {
   background: var(--color-surface-hover);
   border-radius: var(--radius-md, 10px);
-  padding: 10px 12px;
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .detailTitle {
@@ -312,37 +433,38 @@
 }
 
 .collocItem, .exampleFullItem {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--color-text-primary);
   line-height: 1.4;
 }
 
 .collocRu, .exampleRu {
   color: var(--color-text-muted);
-  font-size: 12px;
+  font-size: 11.5px;
   margin-left: 4px;
 }
 
-.footerControls {
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 8px;
+/* Modal Inner Footer Controls */
+.cardFooter {
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+  margin-top: 2px;
 }
 
+/* Primary Study Buttons Row (New word) */
 .actionButtonsRow {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
-  gap: 10px;
+  gap: 8px;
 }
 
 .nextWordBtn {
-  background: var(--color-surface);
+  background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
   color: var(--color-text-primary);
   border-radius: var(--radius-md, 12px);
-  padding: 14px 12px;
-  font-size: 14px;
+  padding: 12px 10px;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -354,7 +476,7 @@
 }
 
 .nextWordBtn:hover:not(:disabled) {
-  background: var(--color-surface-hover);
+  background: var(--color-surface-active);
 }
 
 .nextWordBtn:active:not(:disabled) {
@@ -364,7 +486,7 @@
 .nextWordBtn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
-  background: var(--color-surface);
+  background: var(--color-surface-hover);
   border-color: var(--color-border);
   color: var(--color-text-disabled, #64748b);
 }
@@ -374,8 +496,8 @@
   color: #ffffff;
   border: none;
   border-radius: var(--radius-md, 12px);
-  padding: 14px 12px;
-  font-size: 14px;
+  padding: 12px 10px;
+  font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -395,22 +517,92 @@
   transform: scale(0.96);
 }
 
+/* Review Smart Recall 4-Rating Buttons Grid (Emoji style) */
+.reviewRatingGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.reviewRateBtn {
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 12px);
+  padding: 8px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+  touch-action: manipulation;
+}
+
+.reviewRateBtn:active {
+  transform: scale(0.94);
+}
+
+.rateEmoji {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.rateText {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.rateAgainBtn {
+  border-color: var(--color-danger-border);
+  color: var(--color-danger);
+}
+.rateAgainBtn:hover {
+  background: var(--color-danger-light);
+}
+
+.rateHardBtn {
+  border-color: var(--color-warning-border);
+  color: var(--color-warning);
+}
+.rateHardBtn:hover {
+  background: var(--color-warning-light);
+}
+
+.rateGoodBtn {
+  border-color: var(--color-accent-border);
+  color: var(--color-accent-text);
+}
+.rateGoodBtn:hover {
+  background: var(--color-accent-light);
+}
+
+.rateEasyBtn {
+  border-color: var(--color-success-border);
+  color: var(--color-success);
+}
+.rateEasyBtn:hover {
+  background: var(--color-success-light);
+}
+
 /* Completion Screen */
 .completedCard {
   text-align: center;
   background: var(--color-surface);
   border: 1px solid var(--color-success-border);
   border-radius: var(--radius-xl, 20px);
-  padding: 28px 20px;
+  padding: 26px 18px;
   box-shadow: var(--shadow-lg, 0 10px 25px -5px rgba(0, 0, 0, 0.15));
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .celebrateEmoji {
-  font-size: 44px;
+  font-size: 40px;
 }
 
 .finishBtn {
@@ -418,11 +610,11 @@
   color: var(--color-accent-on-accent);
   border: none;
   border-radius: var(--radius-md, 12px);
-  padding: 12px 24px;
-  font-size: 14px;
+  padding: 11px 22px;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 6px;
   transition: all var(--transition-fast) ease;
 }
 

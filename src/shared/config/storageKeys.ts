@@ -18,6 +18,7 @@ export const STORAGE_KEYS = {
   HABIT_BANNER_VARIANT: 'skillflow_habit_banner_variant',
   DAY_SWITCHER_VARIANT: 'skillflow_day_switcher_variant',
   TASK_MODAL_VARIANT: 'skillflow_task_modal_variant',
+  ENGLISH_CARD_VARIANT: 'skillflow_english_card_variant',
   WIDGET_ORDER: 'skillflow_widget_order',
   ACHIEVEMENTS: 'skillflow_achievements',
 } as const;

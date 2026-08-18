@@ -39,7 +39,12 @@ export async function POST(req: Request) {
     let status = progress?.status ?? 'NEW';
 
     // SuperMemo-2 (SM-2) adapted algorithm
-    if (rating === 'again') {
+    if (rating === 'already_know') {
+      repetitions = 10;
+      intervalDays = 365;
+      easeFactor = 2.5;
+      status = 'MASTERED';
+    } else if (rating === 'again') {
       repetitions = 0;
       intervalDays = 1;
       errorCount += 1;

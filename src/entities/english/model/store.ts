@@ -22,6 +22,7 @@ interface EnglishState {
   // Actions
   fetchSession: () => Promise<void>;
   submitReview: (wordId: string, rating: ReviewRating) => Promise<void>;
+  resetTodayProgress: () => Promise<void>;
   fetchSettings: () => Promise<void>;
   updateSettings: (newSettings: Partial<EnglishSettingsConfig>) => Promise<void>;
   searchDictionary: (query?: string, level?: string, status?: string, page?: number) => Promise<void>;
@@ -89,6 +90,23 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
       }
     } catch (err) {
       console.error('Error submitting review:', err);
+    }
+  },
+
+  resetTodayProgress: async () => {
+    try {
+      set({ isLoadingSession: true });
+      const res = await fetch('/api/english/reset-today', {
+        method: 'POST',
+      });
+      if (res.ok) {
+        await get().fetchSession();
+      } else {
+        set({ isLoadingSession: false });
+      }
+    } catch (err) {
+      console.error('Error resetting today English progress:', err);
+      set({ isLoadingSession: false });
     }
   },
 

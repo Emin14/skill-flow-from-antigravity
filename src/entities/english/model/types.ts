@@ -2,7 +2,7 @@ export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2';
 
 export type WordStatus = 'NEW' | 'LEARNING' | 'REVIEW' | 'MASTERED';
 
-export type ReviewRating = 'again' | 'hard' | 'good' | 'easy';
+export type ReviewRating = 'again' | 'hard' | 'good' | 'easy' | 'already_know';
 
 export interface TranslationMeaning {
   partOfSpeech: string;

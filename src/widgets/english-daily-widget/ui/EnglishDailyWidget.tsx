@@ -3,10 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import { useEnglishStore } from '@/entities/english';
 import { EnglishTrainerModal } from '@/features/english-trainer';
+import { RotateCcw } from 'lucide-react';
 import styles from './EnglishDailyWidget.module.css';
 
 export const EnglishDailyWidget: React.FC = () => {
-  const { session, isLoadingSession, fetchSession } = useEnglishStore();
+  const { session, isLoadingSession, fetchSession, resetTodayProgress } = useEnglishStore();
   const [isTrainerOpen, setIsTrainerOpen] = useState(false);
 
   useEffect(() => {
@@ -18,7 +19,12 @@ export const EnglishDailyWidget: React.FC = () => {
   const totalRemaining = newCount + reviewCount;
   const dailyLearned = session?.dailyLearnedCount ?? 0;
   const dailyTarget = session?.dailyTargetCount ?? 5;
-  const isDone = session?.isCompletedToday || totalRemaining === 0;
+  const isDone = session?.isCompletedToday || (totalRemaining === 0 && dailyLearned > 0);
+
+  const handleResetToday = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    await resetTodayProgress();
+  };
 
   return (
     <>
@@ -28,25 +34,36 @@ export const EnglishDailyWidget: React.FC = () => {
           <div className={styles.textGroup}>
             <div className={styles.titleRow}>
               <h3 className={styles.widgetTitle}>Английский</h3>
-              {/* Daily Progress Badge (e.g. 2/5) */}
               <span className={styles.progressCounterPill}>
-                {dailyLearned}/{dailyTarget} выучено
+                {dailyLearned}/{dailyTarget}
               </span>
               {session && session.streakDays > 0 && (
-                <span className={styles.streakPill}>🔥 {session.streakDays} дн.</span>
+                <span className={styles.streakPill} title={`Серия: ${session.streakDays} дн. подряд`}>
+                  🔥{session.streakDays}
+                </span>
               )}
             </div>
             <p className={styles.statsSubtitle}>
               {isDone
-                ? `Выполнено на сегодня! (Всего выучено: ${session?.totalLearned || 0} слов)`
-                : `Осталось выучить: ${totalRemaining} слов • ~${Math.max(2, Math.ceil(totalRemaining * 0.5))} мин`}
+                ? `Выполнено! (${session?.totalLearned || 0} слов)`
+                : `Осталось: ${totalRemaining} • ~${Math.max(2, Math.ceil(totalRemaining * 0.5))} мин`}
             </p>
           </div>
         </div>
 
         <div className={styles.actionsRight}>
           {isDone ? (
-            <span className={styles.completedPill}>✓ Выполнено</span>
+            <div className={styles.completedGroup}>
+              <span className={styles.completedPill}>✓ Готово</span>
+              <button
+                className={styles.resetBtn}
+                onClick={handleResetToday}
+                title="Сбросить прогресс за сегодня и пройти 5 слов заново"
+              >
+                <RotateCcw size={12} />
+                <span>Заново</span>
+              </button>
+            </div>
           ) : (
             <button
               className={styles.startBtn}

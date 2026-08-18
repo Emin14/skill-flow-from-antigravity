@@ -4,10 +4,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   useEnglishStore,
   SessionWordCard,
+  ReviewRating,
   speakEnglishWord,
   triggerHapticFeedback,
 } from '@/entities/english';
-import { Check, X, EyeOff, CheckCheck, ArrowRight } from 'lucide-react';
+import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
+import {
+  Check,
+  X,
+  RotateCw,
+  Volume2,
+} from 'lucide-react';
 import styles from './EnglishTrainerModal.module.css';
 
 interface EnglishTrainerModalProps {
@@ -24,6 +31,29 @@ function shuffleList<T>(array: T[]): T[] {
   return arr;
 }
 
+const renderHighlightedSentence = (text: string, target: string) => {
+  if (!text || !target) return text;
+  const regex = new RegExp(`(\\b${target}[a-zA-Z]*\\b)`, 'gi');
+  const parts = text.split(regex);
+
+  return parts.map((part, index) => {
+    if (part.toLowerCase().startsWith(target.toLowerCase())) {
+      return (
+        <span
+          key={index}
+          style={{
+            color: 'var(--color-accent-text)',
+            fontWeight: 600,
+          }}
+        >
+          {part}
+        </span>
+      );
+    }
+    return <span key={index}>{part}</span>;
+  });
+};
+
 export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   isOpen,
   onClose,
@@ -37,10 +67,12 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   const [isMatch, setIsMatch] = useState<boolean | null>(null);
   const [isFinished, setIsFinished] = useState<boolean>(false);
 
+  const [isFlipped, setIsFlipped] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<'none' | 'ex' | 'cl' | 'rel'>('none');
+
   const inputRef = useRef<HTMLInputElement>(null);
   const cardContentRef = useRef<HTMLDivElement>(null);
   const autoAdvanceTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const initialMountRef = useRef<boolean>(false);
 
   const clearAutoTimer = () => {
     if (autoAdvanceTimerRef.current) {
@@ -49,9 +81,18 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     }
   };
 
+  // Scroll lock when modal opens
   useEffect(() => {
-    return () => clearAutoTimer();
-  }, []);
+    if (isOpen) {
+      lockBodyScroll();
+    } else {
+      unlockBodyScroll();
+    }
+    return () => {
+      unlockBodyScroll();
+      clearAutoTimer();
+    };
+  }, [isOpen]);
 
   // When modal is opened, capture active cards and start clean session run
   useEffect(() => {
@@ -62,6 +103,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
         setQueue(shuffleList(allCards));
         setCurrentIndex(0);
         setIsAnswerRevealed(false);
+        setIsFlipped(false);
+        setActiveTab('none');
         setUserInput('');
         setIsMatch(null);
         setIsFinished(false);
@@ -69,11 +112,11 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
         fetchSession();
       }
     }
-    // Only re-run when isOpen changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const currentCard: SessionWordCard | undefined = queue[currentIndex];
+  const isReviewWord = currentCard ? !currentCard.isNew : false;
 
   // Auto pronounce word on card arrival if enabled
   useEffect(() => {
@@ -108,15 +151,29 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   if (!isOpen) return null;
 
   const checkAnswerMatch = (input: string, card: SessionWordCard): boolean => {
-    const cleanInput = input.trim().toLowerCase();
+    const cleanInput = input
+      .trim()
+      .toLowerCase()
+      .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '');
     if (!cleanInput) return false;
 
     for (const tr of card.translations || []) {
       for (const m of tr.meanings || []) {
-        const cleanMeaning = m.trim().toLowerCase();
-        if (cleanMeaning === cleanInput) return true;
-        if (cleanMeaning.includes(cleanInput) || cleanInput.includes(cleanMeaning)) {
-          return true;
+        // Split composite translations by comma or slash e.g. "бежать, бег" -> ["бежать", "бег"]
+        const subMeanings = m.split(/[,/]/).map((s) =>
+          s
+            .trim()
+            .toLowerCase()
+            .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '')
+        );
+
+        for (const sub of subMeanings) {
+          if (!sub) continue;
+          if (sub === cleanInput) return true;
+          // Exact sub-word match
+          if (sub.startsWith(cleanInput) || cleanInput.startsWith(sub)) {
+            if (Math.abs(sub.length - cleanInput.length) <= 2) return true;
+          }
         }
       }
     }
@@ -128,10 +185,11 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     if (currentIndex + 1 < queue.length) {
       setCurrentIndex((idx) => idx + 1);
       setIsAnswerRevealed(false);
+      setIsFlipped(false);
+      setActiveTab('none');
       setUserInput('');
       setIsMatch(null);
     } else {
-      // Completed current run
       setIsFinished(true);
       triggerHapticFeedback('success');
       setTimeout(() => {
@@ -141,19 +199,61 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     }
   };
 
-  const handleNextWordOnly = () => {
-    // Only allow if correct answer has been verified (isMatch === true)
-    if (isMatch !== true) return;
-    triggerHapticFeedback('light');
-    advanceToNext();
+  const handlePrevWord = () => {
+    if (currentIndex > 0) {
+      clearAutoTimer();
+      setCurrentIndex((idx) => idx - 1);
+      setIsAnswerRevealed(false);
+      setIsFlipped(false);
+      setActiveTab('none');
+      setUserInput('');
+      setIsMatch(null);
+    }
   };
 
-  const handleMarkAsMastered = () => {
+  const handleNextWord = () => {
+    if (currentIndex + 1 < queue.length) {
+      clearAutoTimer();
+      setCurrentIndex((idx) => idx + 1);
+      setIsAnswerRevealed(false);
+      setIsFlipped(false);
+      setActiveTab('none');
+      setUserInput('');
+      setIsMatch(null);
+    }
+  };
+
+  const handleMarkAsLearned = () => {
     const cardToRate = queue[currentIndex];
     if (!cardToRate) return;
 
     triggerHapticFeedback('success');
     submitReview(cardToRate.id, 'easy');
+    advanceToNext();
+  };
+
+  const handleAlreadyKnowWord = () => {
+    const cardToRate = queue[currentIndex];
+    if (!cardToRate) return;
+
+    triggerHapticFeedback('success');
+    submitReview(cardToRate.id, 'already_know');
+    advanceToNext();
+  };
+
+  const handleReviewRating = (rating: ReviewRating) => {
+    const cardToRate = queue[currentIndex];
+    if (!cardToRate) return;
+
+    if (rating === 'again') {
+      triggerHapticFeedback('error');
+    } else if (rating === 'easy') {
+      triggerHapticFeedback('success');
+    } else {
+      triggerHapticFeedback('medium');
+    }
+
+    submitReview(cardToRate.id, rating);
     advanceToNext();
   };
 
@@ -173,15 +273,6 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     setIsAnswerRevealed(true);
   };
 
-  const handleHideAnswer = () => {
-    clearAutoTimer();
-    setIsAnswerRevealed(false);
-    setIsMatch(null);
-    setTimeout(() => {
-      inputRef.current?.focus();
-    }, 50);
-  };
-
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       clearAutoTimer();
@@ -189,38 +280,20 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     }
   };
 
-  const getMaskedExample = (text: string, targetWord: string) => {
-    const regex = new RegExp(`\\b${targetWord}[a-zA-Z]*\\b`, 'gi');
-    return text.replace(regex, '[ ... ]');
-  };
+  const primaryMeaning = currentCard?.translations?.[0]?.meanings?.[0] || 'Перевод';
+  const pos = currentCard?.translations?.[0]?.partOfSpeech || 'noun';
+  const allExamplesList = currentCard?.examples || [];
+  const allCollocsList = currentCard?.collocations || [];
+  const allRelatedList = currentCard?.relatedWords || [];
+
+  // Formatted frequency rank e.g. "oxford-0867"
+  const formattedRank = currentCard?.frequencyRank
+    ? `oxford-${String(currentCard.frequencyRank).padStart(4, '0')}`
+    : '';
 
   return (
     <div className={styles.overlay} onClick={handleBackdropClick}>
-      {/* Top Bar */}
-      <div className={styles.header}>
-        <button
-          className={styles.closeBtn}
-          onClick={() => {
-            clearAutoTimer();
-            onClose();
-          }}
-        >
-          <span>✕</span>
-          <span>Закрыть (Esc)</span>
-        </button>
-
-        {!isFinished && currentCard && (
-          <div className={styles.progressStats}>
-            <span className={styles.levelBadge}>{currentCard.cefrLevel}</span>
-            <span className={styles.counterBadge}>
-              {currentIndex + 1} / {queue.length}
-            </span>
-          </div>
-        )}
-      </div>
-
-      {/* Main Study Area */}
-      <div className={styles.cardContainer} onClick={handleBackdropClick}>
+      <div className={styles.cardContainer} onClick={(e) => e.stopPropagation()}>
         {isFinished || (queue.length === 0 && !currentCard) ? (
           <div className={styles.completedCard}>
             <div className={styles.celebrateEmoji}>🎉</div>
@@ -229,8 +302,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
             </h2>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>
               {isFinished
-                ? 'Вы просмотрели все карточки этого круга. Окно закрывается...'
-                : 'На сегодня больше нет невыученных слов. Отличный результат!'}
+                ? 'Отличный прогресс! Вы прошли всю текущую сессию.'
+                : 'Вы выполнили дневную норму слов. Возвращайтесь завтра для закрепления.'}
             </p>
             <button
               className={styles.finishBtn}
@@ -244,156 +317,463 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
           </div>
         ) : currentCard ? (
           <div ref={cardContentRef} className={styles.card}>
-            {/* Headword Header */}
-            <div className={styles.wordSection}>
-              <div className={styles.wordRow}>
-                <h1 className={styles.headword}>{currentCard.word}</h1>
+            {/* Slim Ultra-Compact Header Bar */}
+            <div
+              className={styles.cardHeader}
+              style={{
+                paddingBottom: '4px',
+                marginBottom: '2px',
+              }}
+            >
+              <button
+                className={styles.closeBtn}
+                style={{ width: '26px', height: '26px', borderRadius: '6px' }}
+                onClick={() => {
+                  clearAutoTimer();
+                  onClose();
+                }}
+                aria-label="Закрыть модальное окно"
+                title="Закрыть (Esc)"
+              >
+                <X size={15} />
+              </button>
+
+              <div className={styles.headerRightGroup}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                  <button
+                    onClick={handlePrevWord}
+                    disabled={currentIndex === 0}
+                    style={{
+                      background: 'var(--color-surface-hover)',
+                      border: '1px solid var(--color-border)',
+                      borderRadius: '6px',
+                      width: '24px',
+                      height: '24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: currentIndex > 0 ? 'pointer' : 'not-allowed',
+                      opacity: currentIndex > 0 ? 1 : 0.25,
+                      color: 'var(--color-text-primary)',
+                      fontSize: '10px',
+                      padding: 0,
+                    }}
+                    title="Предыдущее слово (←)"
+                  >
+                    ◀
+                  </button>
+
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--color-text-muted)', padding: '0 3px' }}>
+                    {currentIndex + 1} / {queue.length}
+                  </span>
+
+                  <button
+                    onClick={handleNextWord}
+                    disabled={currentIndex + 1 >= queue.length}
+                    style={{
+                      background: 'var(--color-surface-hover)',
+                      border: '1px solid var(--color-border)',
+                      borderRadius: '6px',
+                      width: '24px',
+                      height: '24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: currentIndex + 1 < queue.length ? 'pointer' : 'not-allowed',
+                      opacity: currentIndex + 1 < queue.length ? 1 : 0.25,
+                      color: 'var(--color-text-primary)',
+                      fontSize: '10px',
+                      padding: 0,
+                    }}
+                    title="Следующее слово (→)"
+                  >
+                    ▶
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Core Card Body (Strictly based on Final Variant #13) */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {/* Top Badges Row */}
+              <div style={{ display: 'flex', gap: '6px', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                  <span
+                    style={{
+                      background: 'var(--color-surface-hover)',
+                      fontSize: '11px',
+                      padding: '3px 8px',
+                      borderRadius: '6px',
+                      color: 'var(--color-text-muted)',
+                      border: '1px solid var(--color-border)',
+                    }}
+                  >
+                    #{currentCard.frequencyRank}
+                  </span>
+                  {isReviewWord ? (
+                    <span className={styles.cardTypePillReview}>🔄 Повторение</span>
+                  ) : (
+                    <span className={styles.cardTypePillNew}>✨ Новое</span>
+                  )}
+                </div>
+
                 <button
                   className={styles.audioBtn}
                   onClick={() => speakEnglishWord(currentCard.word, settings.accent)}
                   title="Прослушать произношение"
                 >
-                  🔊
+                  <Volume2 size={16} />
                 </button>
               </div>
-              <div className={styles.transcription}>{currentCard.transcription}</div>
-            </div>
 
-            {/* Context Masked Example */}
-            {currentCard.examples && currentCard.examples.length > 0 && (
-              <div className={styles.exampleMasked}>
-                «{getMaskedExample(currentCard.examples[0].en, currentCard.word)}»
+              {/* Flip tile with strict fixed height (never jumps) */}
+              <div
+                onClick={() => {
+                  setIsFlipped(!isFlipped);
+                  if (!isAnswerRevealed) handleRevealAnswer();
+                }}
+                style={{
+                  background: isFlipped ? 'var(--color-accent-light)' : 'var(--color-surface-hover)',
+                  border: `1.5px solid ${isFlipped ? 'var(--color-accent)' : 'var(--color-border)'}`,
+                  borderRadius: '14px',
+                  padding: '10px 14px',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  height: '74px',
+                  boxSizing: 'border-box',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  position: 'relative',
+                  userSelect: 'none',
+                }}
+                title="Нажмите, чтобы перевернуть карточку"
+              >
+                <div style={{ position: 'absolute', top: '8px', right: '8px', opacity: 0.7 }}>
+                  <RotateCw size={13} />
+                </div>
+                {!isFlipped ? (
+                  <>
+                    <div style={{ fontSize: '24px', fontWeight: 800, color: 'var(--color-text-primary)', lineHeight: 1.15 }}>
+                      {currentCard.word}
+                    </div>
+                    <div style={{ fontSize: '13px', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+                      {currentCard.transcription}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-accent-text)', lineHeight: 1.15 }}>
+                      {primaryMeaning}
+                    </div>
+                    <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)', marginTop: '2px' }}>
+                      Часть речи: <i>{pos}</i>
+                    </div>
+                  </>
+                )}
               </div>
-            )}
 
-            {/* Interactive User Guess Input */}
-            <div className={styles.inputSection}>
-              <input
-                ref={inputRef}
-                type="text"
-                className={`
-                  ${styles.typeInput} 
-                  ${isAnswerRevealed && isMatch === true ? styles.typeInputCorrect : ''}
-                  ${isAnswerRevealed && isMatch === false ? styles.typeInputWrong : ''}
-                `}
-                placeholder="Введите перевод на русском (или нажмите Enter)..."
-                value={userInput}
-                disabled={isAnswerRevealed}
-                onChange={(e) => setUserInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    if (!isAnswerRevealed) {
+              {/* Tab row with Examples, Collocations and Forms */}
+              <div style={{ display: 'flex', gap: '4px' }}>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab(activeTab === 'ex' ? 'none' : 'ex')}
+                  style={{
+                    flex: 1,
+                    padding: '5px 4px',
+                    borderRadius: '8px',
+                    border: '1px solid var(--color-border)',
+                    background: activeTab === 'ex' ? 'var(--color-accent-light)' : 'var(--color-surface-hover)',
+                    color: activeTab === 'ex' ? 'var(--color-accent-text)' : 'var(--color-text-primary)',
+                    fontSize: '11px',
+                    cursor: 'pointer',
+                    fontWeight: 600,
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title="Все примеры предложений"
+                >
+                  💬 Примеры ({allExamplesList.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab(activeTab === 'cl' ? 'none' : 'cl')}
+                  style={{
+                    flex: 1,
+                    padding: '5px 4px',
+                    borderRadius: '8px',
+                    border: '1px solid var(--color-border)',
+                    background: activeTab === 'cl' ? 'var(--color-accent-light)' : 'var(--color-surface-hover)',
+                    color: activeTab === 'cl' ? 'var(--color-accent-text)' : 'var(--color-text-primary)',
+                    fontSize: '11px',
+                    cursor: 'pointer',
+                    fontWeight: 600,
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title="Все устойчивые словосочетания"
+                >
+                  🔗 Связки ({allCollocsList.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab(activeTab === 'rel' ? 'none' : 'rel')}
+                  style={{
+                    flex: 1,
+                    padding: '5px 4px',
+                    borderRadius: '8px',
+                    border: '1px solid var(--color-border)',
+                    background: activeTab === 'rel' ? 'var(--color-accent-light)' : 'var(--color-surface-hover)',
+                    color: activeTab === 'rel' ? 'var(--color-accent-text)' : 'var(--color-text-primary)',
+                    fontSize: '11px',
+                    cursor: 'pointer',
+                    fontWeight: 600,
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title="Грамматические формы и родственные слова"
+                >
+                  🌱 Формы ({allRelatedList.length + (currentCard.wordForms?.verbForms ? 1 : 0) + (currentCard.wordForms?.nounForms ? 1 : 0) + (currentCard.wordForms?.adjectiveForms ? 1 : 0)})
+                </button>
+              </div>
+
+              {/* Stable Non-Jumping Container with comfortable height */}
+              <div
+                style={{
+                  minHeight: '124px',
+                  background: 'var(--color-surface-hover)',
+                  borderRadius: '12px',
+                  border: '1px solid var(--color-border)',
+                  padding: '10px 12px',
+                  boxSizing: 'border-box',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: activeTab === 'none' ? 'center' : 'flex-start',
+                }}
+              >
+                {activeTab === 'none' && (
+                  <div style={{ textAlign: 'center', color: 'var(--color-text-muted)', fontSize: '12.5px', userSelect: 'none' }}>
+                    Нажмите вкладку выше, чтобы открыть примеры, связки или формы
+                  </div>
+                )}
+
+                {activeTab === 'ex' && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {allExamplesList.length > 0 ? (
+                      allExamplesList.map((ex, i) => (
+                        <div key={i} style={{ borderBottom: i < allExamplesList.length - 1 ? '1px dashed var(--color-border)' : 'none', paddingBottom: '5px' }}>
+                          <div style={{ color: 'var(--color-text-primary)', fontSize: '13px', lineHeight: 1.35 }}>
+                            • {renderHighlightedSentence(ex.en, currentCard.word)}
+                          </div>
+                          {ex.ru && (
+                            <div style={{ color: 'var(--color-text-muted)', fontSize: '11.5px', marginTop: '2px', marginLeft: '8px' }}>
+                              {ex.ru}
+                            </div>
+                          )}
+                        </div>
+                      ))
+                    ) : (
+                      <div style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>Нет примеров в базе</div>
+                    )}
+                  </div>
+                )}
+
+                {activeTab === 'cl' && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                    {allCollocsList.length > 0 ? (
+                      allCollocsList.map((cl, i) => (
+                        <div key={i} style={{ fontSize: '12.5px', borderBottom: i < allCollocsList.length - 1 ? '1px dashed var(--color-border)' : 'none', paddingBottom: '3px' }}>
+                          <strong style={{ color: 'var(--color-text-primary)' }}>• {cl.en}</strong> — <span style={{ color: 'var(--color-text-muted)' }}>{cl.ru}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>Нет связок в базе</div>
+                    )}
+                  </div>
+                )}
+
+                {activeTab === 'rel' && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    {/* Grammar Word Forms */}
+                    {currentCard.wordForms && (
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: allRelatedList.length > 0 ? '4px' : 0 }}>
+                        {currentCard.wordForms.nounForms?.plural && (
+                          <span style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '2px 8px', fontSize: '11.5px' }}>
+                            Plural: <strong>{currentCard.wordForms.nounForms.plural}</strong>
+                          </span>
+                        )}
+                        {currentCard.wordForms.verbForms?.past && (
+                          <span style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '2px 8px', fontSize: '11.5px' }}>
+                            Past: <strong>{currentCard.wordForms.verbForms.past}</strong>
+                          </span>
+                        )}
+                        {currentCard.wordForms.verbForms?.pastParticiple && (
+                          <span style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '2px 8px', fontSize: '11.5px' }}>
+                            V3: <strong>{currentCard.wordForms.verbForms.pastParticiple}</strong>
+                          </span>
+                        )}
+                        {currentCard.wordForms.adjectiveForms?.comparative && (
+                          <span style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '2px 8px', fontSize: '11.5px' }}>
+                            Comp: <strong>{currentCard.wordForms.adjectiveForms.comparative}</strong>
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Related Words */}
+                    {allRelatedList.length > 0 ? (
+                      allRelatedList.map((rw, i) => (
+                        <div key={i} style={{ fontSize: '12.5px', borderBottom: i < allRelatedList.length - 1 ? '1px dashed var(--color-border)' : 'none', paddingBottom: '3px' }}>
+                          <strong style={{ color: 'var(--color-accent-text)' }}>• {rw.word}</strong> — <span style={{ color: 'var(--color-text-muted)' }}>{rw.translation}</span>
+                        </div>
+                      ))
+                    ) : !currentCard.wordForms ? (
+                      <div style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>Нет форм и родственных слов в базе</div>
+                    ) : null}
+                  </div>
+                )}
+              </div>
+
+              {/* Input Section */}
+              <div className={styles.inputSection}>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  className={`
+                    ${styles.typeInput} 
+                    ${isAnswerRevealed && isMatch === true ? styles.typeInputCorrect : ''}
+                    ${isAnswerRevealed && isMatch === false ? styles.typeInputWrong : ''}
+                  `}
+                  placeholder="Введите перевод (Enter)..."
+                  value={userInput}
+                  disabled={isAnswerRevealed}
+                  onChange={(e) => setUserInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !isAnswerRevealed) {
                       handleRevealAnswer();
                     }
-                  }
-                }}
-              />
+                  }}
+                />
 
-              {/* Feedback badge if user typed an answer */}
-              {isAnswerRevealed && isMatch !== null && (
-                <div
-                  className={`
-                    ${styles.feedbackBadge}
-                    ${isMatch ? styles.feedbackCorrect : styles.feedbackIncorrect}
-                  `}
-                >
-                  {isMatch ? (
-                    <>
-                      <Check size={16} strokeWidth={3} />
-                      <span>Отлично! Перевод правильный</span>
-                    </>
-                  ) : (
-                    <>
-                      <X size={16} strokeWidth={3} />
-                      <span>Не совсем так. Скройте перевод и введите правильное слово</span>
-                    </>
-                  )}
-                </div>
-              )}
-
-              {!isAnswerRevealed && (
-                <button className={styles.showAnswerBtn} onClick={handleRevealAnswer}>
-                  <span>👁</span>
-                  <span>Показать перевод (Enter)</span>
-                </button>
-              )}
-            </div>
-
-            {/* Revealed Translations & Details */}
-            {isAnswerRevealed && (
-              <div className={styles.revealedContent}>
-                {/* Button to hide translation back and retry typing */}
-                <button className={styles.hideAnswerBtn} onClick={handleHideAnswer}>
-                  <EyeOff size={14} />
-                  <span>Скрыть перевод и ввести заново</span>
-                </button>
-
-                <div className={styles.translationsList}>
-                  {currentCard.translations?.map((tr, i) => (
-                    <div key={i} className={styles.posGroup}>
-                      <span className={styles.posTag}>{tr.partOfSpeech}</span>
-                      <span className={styles.meanings}>{tr.meanings.join(', ')}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {currentCard.collocations && currentCard.collocations.length > 0 && (
-                  <div className={styles.detailsBlock}>
-                    <span className={styles.detailTitle}>Словосочетания:</span>
-                    {currentCard.collocations.map((cl, i) => (
-                      <div key={i} className={styles.collocItem}>
-                        <strong>• {cl.en}</strong> — <span className={styles.collocRu}>{cl.ru}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {currentCard.examples && currentCard.examples.length > 0 && (
-                  <div className={styles.detailsBlock}>
-                    <span className={styles.detailTitle}>Примеры предложений:</span>
-                    {currentCard.examples.map((ex, i) => (
-                      <div key={i} className={styles.exampleFullItem}>
-                        • {ex.en} <br />
-                        <span className={styles.exampleRu}>({ex.ru})</span>
-                      </div>
-                    ))}
+                {isAnswerRevealed && isMatch !== null && (
+                  <div
+                    className={`
+                      ${styles.feedbackBadge}
+                      ${isMatch ? styles.feedbackCorrect : styles.feedbackIncorrect}
+                    `}
+                  >
+                    {isMatch ? (
+                      <>
+                        <Check size={15} strokeWidth={3} />
+                        <span>Отлично! Перевод правильный</span>
+                      </>
+                    ) : (
+                      <>
+                        <X size={15} strokeWidth={3} />
+                        <span>Не совсем так. Скройте перевод и введите правильное слово</span>
+                      </>
+                    )}
                   </div>
                 )}
               </div>
-            )}
+
+              {/* Bottom Action Controls */}
+              {isReviewWord ? (
+                /* Repetition rating buttons */
+                <div className={styles.reviewRatingGrid}>
+                  <button
+                    className={`${styles.reviewRateBtn} ${styles.rateAgainBtn}`}
+                    onClick={() => handleReviewRating('again')}
+                    title="Не вспомнил слово"
+                  >
+                    <span className={styles.rateEmoji}>🔴</span>
+                    <span className={styles.rateText}>Не помню</span>
+                  </button>
+
+                  <button
+                    className={`${styles.reviewRateBtn} ${styles.rateHardBtn}`}
+                    onClick={() => handleReviewRating('hard')}
+                    title="Вспомнил с трудом"
+                  >
+                    <span className={styles.rateEmoji}>🟡</span>
+                    <span className={styles.rateText}>С трудом</span>
+                  </button>
+
+                  <button
+                    className={`${styles.reviewRateBtn} ${styles.rateGoodBtn}`}
+                    onClick={() => handleReviewRating('good')}
+                    title="Вспомнил нормально"
+                  >
+                    <span className={styles.rateEmoji}>🟢</span>
+                    <span className={styles.rateText}>Помню</span>
+                  </button>
+
+                  <button
+                    className={`${styles.reviewRateBtn} ${styles.rateEasyBtn}`}
+                    onClick={() => handleReviewRating('easy')}
+                    title="Вспомнил очень легко"
+                  >
+                    <span className={styles.rateEmoji}>🔵</span>
+                    <span className={styles.rateText}>Легко</span>
+                  </button>
+                </div>
+              ) : (
+                /* Initial study mode: Clean 50/50 actions */
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '2px' }}>
+                  <button
+                    type="button"
+                    onClick={handleMarkAsLearned}
+                    style={{
+                      padding: '11px 14px',
+                      background: 'var(--color-accent)',
+                      border: 'none',
+                      color: '#ffffff',
+                      borderRadius: '12px',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px',
+                      boxShadow: 'var(--shadow-sm)',
+                    }}
+                    title="Отметить слово изученным на сегодня"
+                  >
+                    <span>✓ Изучил</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleAlreadyKnowWord}
+                    style={{
+                      padding: '11px 14px',
+                      background: 'rgba(234, 179, 8, 0.12)',
+                      border: '1.5px solid rgba(234, 179, 8, 0.4)',
+                      color: '#eab308',
+                      borderRadius: '12px',
+                      fontSize: '13px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px',
+                    }}
+                    title="Я уже знаю это слово — убрать из очереди навсегда"
+                  >
+                    <span>⚡ Уже знаю</span>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         ) : null}
       </div>
-
-      {/* Bottom Controls: Next Card (requires valid input) & Mastered buttons */}
-      {!isFinished && currentCard && (
-        <div className={styles.footerControls}>
-          <div className={styles.actionButtonsRow}>
-            <button
-              className={styles.nextWordBtn}
-              onClick={handleNextWordOnly}
-              disabled={isMatch !== true}
-              title={
-                isMatch === true
-                  ? 'Перейти к следующему слову'
-                  : 'Введите правильный перевод слова, чтобы перейти дальше'
-              }
-            >
-              <span>Дальше</span>
-              <ArrowRight size={16} />
-            </button>
-
-            <button
-              className={styles.masteredBtn}
-              onClick={handleMarkAsMastered}
-              title="Отметить слово изученным — больше не показывать сегодня"
-            >
-              <CheckCheck size={18} />
-              <span>Изучил ✓</span>
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

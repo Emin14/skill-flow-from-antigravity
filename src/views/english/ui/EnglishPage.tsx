@@ -104,16 +104,31 @@ export const EnglishPage: React.FC = () => {
 
           <div className={styles.practiceCard}>
             <h3 className={styles.practiceTitle}>
-              План на сегодня: {totalToday} слов
+              План на сегодня: {totalToday > 0 ? `${totalToday} слов` : 'Все слова выучены! 🎉'}
             </h3>
             <p className={styles.practiceDesc}>
-              {newCount} новых слов + {reviewCount} на повторение по интервальной системе (SRS).
+              {totalToday > 0
+                ? `${newCount} новых слов + ${reviewCount} на повторение по интервальной системе (SRS).`
+                : `Вы успешно освоили сегодняшнюю норму (${session?.dailyLearnedCount || 0}/${session?.dailyTargetCount || 5} слов).`}
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <button className={styles.topActionBtn} onClick={() => setIsTrainerOpen(true)}>
-                <span>▶</span>
-                <span>{totalToday > 0 ? 'Запустить тренировку' : 'Повторить еще раз'}</span>
-              </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+              {totalToday > 0 ? (
+                <button className={styles.topActionBtn} onClick={() => setIsTrainerOpen(true)}>
+                  <span>▶</span>
+                  <span>Запустить тренировку</span>
+                </button>
+              ) : (
+                <button
+                  className={styles.topActionBtn}
+                  onClick={async () => {
+                    await useEnglishStore.getState().resetTodayProgress();
+                  }}
+                  style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
+                >
+                  <span>🔄</span>
+                  <span>Сбросить и пройти заново</span>
+                </button>
+              )}
             </div>
           </div>
         </>
