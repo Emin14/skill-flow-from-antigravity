@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useEnglishStore } from '@/entities/english';
 import { EnglishTrainerModal } from '@/features/english-trainer';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, ArrowRight } from 'lucide-react';
 import styles from './EnglishDailyWidget.module.css';
 
 export const EnglishDailyWidget: React.FC = () => {
@@ -34,7 +34,7 @@ export const EnglishDailyWidget: React.FC = () => {
           <div className={styles.textGroup}>
             <div className={styles.titleRow}>
               <h3 className={styles.widgetTitle}>Английский</h3>
-              <span className={styles.progressCounterPill}>
+              <span className={styles.progressCounterText}>
                 {dailyLearned}/{dailyTarget}
               </span>
               {session && session.streakDays > 0 && (
@@ -45,8 +45,8 @@ export const EnglishDailyWidget: React.FC = () => {
             </div>
             <p className={styles.statsSubtitle}>
               {isDone
-                ? `Выполнено! (${session?.totalLearned || 0} слов)`
-                : `Осталось: ${totalRemaining} • ~${Math.max(2, Math.ceil(totalRemaining * 0.5))} мин`}
+                ? `Выполнено за сегодня! (${session?.totalLearned || 0} слов всего)`
+                : `Осталось: ${totalRemaining} слов • ~${Math.max(2, Math.ceil(totalRemaining * 0.5))} мин`}
             </p>
           </div>
         </div>
@@ -69,8 +69,8 @@ export const EnglishDailyWidget: React.FC = () => {
               className={styles.startBtn}
               onClick={() => setIsTrainerOpen(true)}
             >
-              <span>▶</span>
-              <span>Учить ({totalRemaining})</span>
+              <span>Учить</span>
+              <ArrowRight size={14} />
             </button>
           )}
         </div>

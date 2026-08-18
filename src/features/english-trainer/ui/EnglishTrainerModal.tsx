@@ -284,7 +284,16 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   const pos = currentCard?.translations?.[0]?.partOfSpeech || 'noun';
   const allExamplesList = currentCard?.examples || [];
   const allCollocsList = currentCard?.collocations || [];
-  const allRelatedList = currentCard?.relatedWords || [];
+  const wordFamilyList = currentCard?.wordFamily || currentCard?.relatedWords || [];
+  const synonymsList = currentCard?.synonyms || [];
+  const antonymsList = currentCard?.antonyms || [];
+  const grammarFormsCount =
+    (currentCard?.wordForms?.nounForms?.plural ? 1 : 0) +
+    (currentCard?.wordForms?.verbForms?.past ? 1 : 0) +
+    (currentCard?.wordForms?.verbForms?.pastParticiple ? 1 : 0) +
+    (currentCard?.wordForms?.adjectiveForms?.comparative ? 1 : 0) +
+    (currentCard?.wordForms?.adjectiveForms?.superlative ? 1 : 0);
+  const totalRelCount = grammarFormsCount + wordFamilyList.length + synonymsList.length + antonymsList.length;
 
   // Formatted frequency rank e.g. "oxford-0867"
   const formattedRank = currentCard?.frequencyRank
@@ -535,23 +544,16 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                   }}
-                  title="Грамматические формы и родственные слова"
+                  title="Грамматические формы, синонимы, антонимы и однокоренные слова"
                 >
-                  🌱 Формы ({allRelatedList.length + (currentCard.wordForms?.verbForms ? 1 : 0) + (currentCard.wordForms?.nounForms ? 1 : 0) + (currentCard.wordForms?.adjectiveForms ? 1 : 0)})
+                  🌱 Формы ({totalRelCount})
                 </button>
               </div>
 
               {/* Stable Non-Jumping Container with comfortable height */}
               <div
+                className={styles.tabDetailsBox}
                 style={{
-                  minHeight: '124px',
-                  background: 'var(--color-surface-hover)',
-                  borderRadius: '12px',
-                  border: '1px solid var(--color-border)',
-                  padding: '10px 12px',
-                  boxSizing: 'border-box',
-                  display: 'flex',
-                  flexDirection: 'column',
                   justifyContent: activeTab === 'none' ? 'center' : 'flex-start',
                 }}
               >
@@ -597,10 +599,10 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 )}
 
                 {activeTab === 'rel' && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {/* Grammar Word Forms */}
-                    {currentCard.wordForms && (
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: allRelatedList.length > 0 ? '4px' : 0 }}>
+                    {currentCard.wordForms && grammarFormsCount > 0 && (
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                         {currentCard.wordForms.nounForms?.plural && (
                           <span style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '2px 8px', fontSize: '11.5px' }}>
                             Plural: <strong>{currentCard.wordForms.nounForms.plural}</strong>
@@ -621,19 +623,62 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                             Comp: <strong>{currentCard.wordForms.adjectiveForms.comparative}</strong>
                           </span>
                         )}
+                        {currentCard.wordForms.adjectiveForms?.superlative && (
+                          <span style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '2px 8px', fontSize: '11.5px' }}>
+                            Super: <strong>{currentCard.wordForms.adjectiveForms.superlative}</strong>
+                          </span>
+                        )}
                       </div>
                     )}
 
-                    {/* Related Words */}
-                    {allRelatedList.length > 0 ? (
-                      allRelatedList.map((rw, i) => (
-                        <div key={i} style={{ fontSize: '12.5px', borderBottom: i < allRelatedList.length - 1 ? '1px dashed var(--color-border)' : 'none', paddingBottom: '3px' }}>
-                          <strong style={{ color: 'var(--color-accent-text)' }}>• {rw.word}</strong> — <span style={{ color: 'var(--color-text-muted)' }}>{rw.translation}</span>
+                    {/* Synonyms */}
+                    {synonymsList.length > 0 && (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                        <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                          ≈ Синонимы
                         </div>
-                      ))
-                    ) : !currentCard.wordForms ? (
+                        {synonymsList.map((syn, i) => (
+                          <div key={i} style={{ fontSize: '12.5px', paddingLeft: '4px' }}>
+                            <strong style={{ color: 'var(--color-text-primary)' }}>• {syn.word}</strong>
+                            {syn.translation ? <span style={{ color: 'var(--color-text-muted)' }}> — {syn.translation}</span> : null}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Antonyms */}
+                    {antonymsList.length > 0 && (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                        <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                          ≠ Антонимы
+                        </div>
+                        {antonymsList.map((ant, i) => (
+                          <div key={i} style={{ fontSize: '12.5px', paddingLeft: '4px' }}>
+                            <strong style={{ color: 'var(--color-text-primary)' }}>• {ant.word}</strong>
+                            {ant.translation ? <span style={{ color: 'var(--color-text-muted)' }}> — {ant.translation}</span> : null}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Word Family */}
+                    {wordFamilyList.length > 0 && (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                        <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                          🌳 Однокоренные слова
+                        </div>
+                        {wordFamilyList.map((fam, i) => (
+                          <div key={i} style={{ fontSize: '12.5px', paddingLeft: '4px' }}>
+                            <strong style={{ color: 'var(--color-accent-text)' }}>• {fam.word}</strong>
+                            {fam.translation ? <span style={{ color: 'var(--color-text-muted)' }}> — {fam.translation}</span> : null}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {totalRelCount === 0 && (
                       <div style={{ color: 'var(--color-text-muted)', fontSize: '12px' }}>Нет форм и родственных слов в базе</div>
-                    ) : null}
+                    )}
                   </div>
                 )}
               </div>

@@ -420,8 +420,11 @@ export const SettingsPage: React.FC = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', flex: 1 }}>
             <Typography variant="h2">🔊 Звуковой эффект при выполнении</Typography>
             <Typography variant="body" color="muted">
-              Воспроизводить гармоничный звук при выполнении задачи (поддерживается на iPhone Safari, Android и ПК).
+              Воспроизводить гармоничный звук при выполнении задачи.
             </Typography>
+            <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginTop: '2px', opacity: 0.85 }}>
+              💡 <strong>Совет для iPhone:</strong> Убедитесь, что переключатель «Бесшумный режим» на левой грани iPhone отключён.
+            </div>
           </div>
           <button
             type="button"

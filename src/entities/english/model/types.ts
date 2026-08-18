@@ -48,7 +48,10 @@ export interface OxfordWord {
   frequencyRank: number;
   translations: TranslationMeaning[];
   wordForms: WordForms;
-  relatedWords: RelatedWord[];
+  relatedWords?: RelatedWord[];
+  wordFamily?: RelatedWord[];
+  synonyms?: RelatedWord[];
+  antonyms?: RelatedWord[];
   collocations: Collocation[];
   examples: SentenceExample[];
 }
