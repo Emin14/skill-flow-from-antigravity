@@ -22,59 +22,6 @@
   margin: auto;
 }
 
-/* Concept 20 Variant Selector Bar Above Card Header */
-.variantBar {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  overflow-x: auto;
-  padding: 4px 6px;
-  margin-bottom: 6px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg, 12px);
-  scrollbar-width: thin;
-  flex-shrink: 0;
-  max-width: 100%;
-}
-
-.variantBar::-webkit-scrollbar {
-  height: 3px;
-}
-
-.variantBar::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 3px;
-}
-
-.variantBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  font-size: 11px;
-  font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition: all var(--transition-fast) ease;
-  flex-shrink: 0;
-}
-
-.variantBtn:hover {
-  background: var(--color-surface-hover);
-  color: var(--color-text-primary);
-}
-
-.variantBtnActive {
-  background: var(--color-accent-light);
-  border-color: var(--color-accent-border);
-  color: var(--color-accent-text);
-  font-weight: 700;
-}
 
 .card {
   background: var(--color-surface);
@@ -644,4 +591,300 @@
 
 .finishBtn:active {
   transform: scale(0.96);
+}
+
+/* ==========================================================================
+   Static Word Card & Meanings Slider Styles
+   ========================================================================== */
+
+.wordCardBox {
+  background: var(--color-surface-hover);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg, 14px);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.wordTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+}
+
+.wordTranscription {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  margin-top: 3px;
+  font-family: inherit;
+}
+
+.wordFormsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.wordFormPill {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.wordFormPill strong {
+/* Word Card Box (Top Header) */
+.wordCardBox {
+  background: linear-gradient(145deg, var(--color-surface), var(--color-surface-hover));
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg, 16px);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  gap: 4px;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+}
+
+.wordTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+}
+
+.wordTranscription {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  letter-spacing: 0.2px;
+}
+
+.wordFormsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  justify-content: center;
+}
+
+.wordFormPill {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.wordFormPill strong {
+  color: var(--color-text-primary);
+}
+
+/* Beautiful Meanings & Examples Card */
+.meaningsSliderBox {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-accent-border, var(--color-border));
+  border-radius: var(--radius-lg, 16px);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 200px;
+  box-sizing: border-box;
+  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-fast) ease;
+}
+
+.sliderHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sliderHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.posBadge {
+  background: var(--color-accent-light);
+  border: 1px solid var(--color-accent-border);
+  color: var(--color-accent-text);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 9px;
+  border-radius: 8px;
+}
+
+.registerBadge {
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #eab308;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.sliderNavGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  padding: 2px 4px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.sliderNavBtn {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: 11px;
+  padding: 0;
+  transition: all var(--transition-fast) ease;
+}
+
+.sliderNavBtn:hover:not(:disabled) {
+  background: var(--color-surface-active);
+  color: var(--color-accent-text);
+}
+
+.sliderNavBtn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.sliderCounter {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding: 0 4px;
+  white-space: nowrap;
+}
+
+.meaningTranslation {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--color-accent-text);
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+}
+
+.meaningExamplesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2px;
+  max-height: 180px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-right: 2px;
+}
+
+.meaningExamplesList::-webkit-scrollbar {
+  width: 3px;
+}
+
+.meaningExamplesList::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.meaningExampleItem {
+  background: var(--color-surface-hover);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 10px 10px 0;
+  padding: 8px 12px;
+  transition: background-color var(--transition-fast) ease;
+}
+
+.exampleEn {
+  font-size: 13.5px;
+  color: var(--color-text-primary);
+  line-height: 1.35;
+}
+
+.exampleRu {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+.noExamplesNote {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 4px 0;
+}
+
+.sliderPillsBar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 6px 2px 2px;
+  scrollbar-width: thin;
+  margin-top: auto;
+  border-top: 1px dashed var(--color-border);
+}
+
+.sliderPillsBar::-webkit-scrollbar {
+  height: 3px;
+}
+
+.sliderPillBtn {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-hover);
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast) ease;
+}
+
+.sliderPillBtn:hover {
+  color: var(--color-text-primary);
+  background: var(--color-surface-active);
+}
+
+.sliderPillBtnActive {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+  font-weight: 700;
 }

@@ -48,7 +48,7 @@ export const EnglishPage: React.FC = () => {
           <span style={{ fontSize: '32px' }}>🇬🇧</span>
           <div>
             <h1 className={styles.pageTitle}>Английский язык</h1>
-            <p className={styles.subtitle}>Словарь Oxford 3000 (3 677 ключевых слов A1–B2)</p>
+            <p className={styles.subtitle}>Словарь Oxford 5000 (4 963 ключевых слова A1–C1)</p>
           </div>
         </div>
 
@@ -98,7 +98,7 @@ export const EnglishPage: React.FC = () => {
             </div>
             <div className={styles.statCard}>
               <span className={styles.statLabel}>Всего слов в базе</span>
-              <span className={styles.statNumber}>{session?.totalWords || 3677}</span>
+              <span className={styles.statNumber}>{session?.totalWords || 4963}</span>
             </div>
           </div>
 
@@ -162,6 +162,7 @@ export const EnglishPage: React.FC = () => {
               <option value="A2">Уровень A2 (Элементарный)</option>
               <option value="B1">Уровень B1 (Средний)</option>
               <option value="B2">Уровень B2 (Выше среднего)</option>
+              <option value="C1">Уровень C1 (Продвинутый)</option>
             </select>
 
             <select

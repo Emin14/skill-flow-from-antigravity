@@ -31,7 +31,7 @@ interface EnglishState {
 const DEFAULT_SETTINGS: EnglishSettingsConfig = {
   dailyNewWords: 5,
   maxReviewsPerDay: 30,
-  activeLevels: ['A1', 'A2', 'B1', 'B2'],
+  activeLevels: ['A1', 'A2', 'B1', 'B2', 'C1'],
   autoPronounce: true,
   accent: 'us',
 };
