@@ -11,6 +11,7 @@ interface RawMeaning {
   id?: number;
   partOfSpeech?: string;
   translation?: string;
+  primary?: boolean;
   register?: string[];
   examples?: Array<{ en?: string; ru?: string }>;
 }
@@ -113,6 +114,7 @@ function buildOxford5000(): OxfordWord[] {
       id: m.id || mIdx + 1,
       partOfSpeech: m.partOfSpeech || 'other',
       translation: m.translation || '',
+      primary: m.primary,
       register: m.register || [],
       examples: Array.isArray(m.examples)
         ? m.examples

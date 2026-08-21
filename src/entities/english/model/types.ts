@@ -44,6 +44,7 @@ export interface WordMeaningItem {
   id?: number;
   partOfSpeech: string;
   translation: string;
+  primary?: boolean;
   register?: string[];
   synonyms?: string[];
   examples?: SentenceExample[];
