@@ -16,7 +16,7 @@ export async function GET() {
           id: 'default',
           dailyNewWords: 5,
           maxReviewsPerDay: 30,
-          activeLevels: JSON.stringify(['A1', 'A2', 'B1', 'B2']),
+          activeLevels: JSON.stringify(['A1', 'A2', 'B1', 'B2', 'C1']),
           autoPronounce: true,
           accent: 'us',
         },
@@ -26,7 +26,7 @@ export async function GET() {
     const config: EnglishSettingsConfig = {
       dailyNewWords: settings.dailyNewWords,
       maxReviewsPerDay: settings.maxReviewsPerDay,
-      activeLevels: JSON.parse(settings.activeLevels || '["A1","A2","B1","B2"]'),
+      activeLevels: JSON.parse(settings.activeLevels || '["A1","A2","B1","B2","C1"]'),
       autoPronounce: settings.autoPronounce,
       accent: settings.accent as 'us' | 'uk',
     };
@@ -48,7 +48,7 @@ export async function PUT(req: Request) {
         id: 'default',
         dailyNewWords: body.dailyNewWords ?? 5,
         maxReviewsPerDay: body.maxReviewsPerDay ?? 30,
-        activeLevels: JSON.stringify(body.activeLevels ?? ['A1', 'A2', 'B1', 'B2']),
+        activeLevels: JSON.stringify(body.activeLevels ?? ['A1', 'A2', 'B1', 'B2', 'C1']),
         autoPronounce: body.autoPronounce ?? true,
         accent: body.accent ?? 'us',
       },

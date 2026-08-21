@@ -1,11 +1,8 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
-import oxfordDictionary from '@/data/oxford_3000.json';
-import { OxfordWord } from '@/entities/english/model/types';
+import { getOxfordDictionary } from '@/entities/english';
 
 export const dynamic = 'force-dynamic';
-
-const dictionary = oxfordDictionary as unknown as OxfordWord[];
 
 export async function GET(req: Request) {
   try {
@@ -20,6 +17,7 @@ export async function GET(req: Request) {
     const progressList = await prisma.englishWordProgress.findMany();
     const progressMap = new Map(progressList.map((p) => [p.wordId, p.status]));
 
+    const dictionary = getOxfordDictionary();
     let filtered = dictionary;
 
     // Filter by search query (word or russian translation)

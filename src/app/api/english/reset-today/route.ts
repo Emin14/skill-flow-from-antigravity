@@ -1,12 +1,8 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
 import { getTodayStr } from '@/shared/lib/dateUtils';
-import oxfordDictionary from '@/data/oxford_3000.json';
-import { OxfordWord } from '@/entities/english/model/types';
 
 export const dynamic = 'force-dynamic';
-
-const dictionary = oxfordDictionary as unknown as OxfordWord[];
 
 export async function POST() {
   try {

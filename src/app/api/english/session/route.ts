@@ -1,15 +1,14 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
 import { getTodayStr, formatLocalDateStr } from '@/shared/lib/dateUtils';
-import oxfordDictionary from '@/data/oxford_3000.json';
-import { OxfordWord, SessionWordCard } from '@/entities/english/model/types';
+import {
+  OxfordWord,
+  SessionWordCard,
+  getOxfordDictionary,
+  getOxfordDictionaryMap,
+} from '@/entities/english';
 
 export const dynamic = 'force-dynamic';
-
-const dictionary = oxfordDictionary as unknown as OxfordWord[];
-const dictionaryMap = new Map<string, OxfordWord>(
-  dictionary.map((w) => [w.id, w])
-);
 
 // Deterministic seed-based pseudo-random generator
 function getSeededRandom(seedStr: string) {
@@ -35,6 +34,9 @@ function shuffleWithSeed<T>(array: T[], seedStr: string): T[] {
 }
 
 export async function GET() {
+  const dictionary = getOxfordDictionary();
+  const dictionaryMap = getOxfordDictionaryMap();
+
   try {
     const todayStr = getTodayStr();
 
@@ -50,7 +52,7 @@ export async function GET() {
             id: 'default',
             dailyNewWords: 5,
             maxReviewsPerDay: 30,
-            activeLevels: JSON.stringify(['A1', 'A2', 'B1', 'B2']),
+            activeLevels: JSON.stringify(['A1', 'A2', 'B1', 'B2', 'C1']),
             autoPronounce: true,
             accent: 'us',
           },
@@ -61,8 +63,8 @@ export async function GET() {
     }
 
     const activeLevels: string[] = settings
-      ? JSON.parse(settings.activeLevels || '["A1","A2","B1","B2"]')
-      : ['A1', 'A2', 'B1', 'B2'];
+      ? JSON.parse(settings.activeLevels || '["A1","A2","B1","B2","C1"]')
+      : ['A1', 'A2', 'B1', 'B2', 'C1'];
     const dailyTargetCount = settings?.dailyNewWords ?? 5;
     const maxReviewsLimit = settings?.maxReviewsPerDay ?? 30;
 

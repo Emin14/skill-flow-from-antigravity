@@ -1,4 +1,4 @@
-export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2';
+export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
 
 export type WordStatus = 'NEW' | 'LEARNING' | 'REVIEW' | 'MASTERED';
 
@@ -40,12 +40,24 @@ export interface SentenceExample {
   ru: string;
 }
 
+export interface WordMeaningItem {
+  id?: number;
+  partOfSpeech: string;
+  translation: string;
+  register?: string[];
+  synonyms?: string[];
+  examples?: SentenceExample[];
+}
+
 export interface OxfordWord {
   id: string;
   word: string;
   transcription: string;
+  phonBr?: string;
+  phonNAm?: string;
   cefrLevel: CEFRLevel;
   frequencyRank: number;
+  meanings: WordMeaningItem[];
   translations: TranslationMeaning[];
   wordForms: WordForms;
   relatedWords?: RelatedWord[];
@@ -54,6 +66,10 @@ export interface OxfordWord {
   antonyms?: RelatedWord[];
   collocations: Collocation[];
   examples: SentenceExample[];
+  lists?: {
+    oxford3000?: boolean;
+    oxford5000?: boolean;
+  };
 }
 
 export interface EnglishWordProgressItem {
