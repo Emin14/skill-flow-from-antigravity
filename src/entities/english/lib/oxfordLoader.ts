@@ -13,6 +13,7 @@ interface RawMeaning {
   translation?: string;
   primary?: boolean;
   register?: string[];
+  synonyms?: string[];
   examples?: Array<{ en?: string; ru?: string }>;
 }
 
@@ -28,6 +29,7 @@ interface RawEntry {
   phon_br?: string;
   phon_n_am?: string;
   forms?: RawForm[] | null;
+  topics?: string[];
   lists?: {
     oxford3000?: boolean;
     oxford5000?: boolean;
@@ -116,6 +118,7 @@ function buildOxford5000(): OxfordWord[] {
       translation: m.translation || '',
       primary: m.primary,
       register: m.register || [],
+      synonyms: m.synonyms || [],
       examples: Array.isArray(m.examples)
         ? m.examples
             .filter((ex) => ex && ex.en)
@@ -140,6 +143,7 @@ function buildOxford5000(): OxfordWord[] {
       synonyms: [],
       antonyms: [],
       lists: entry.lists,
+      topics: entry.topics || [],
     };
   });
 

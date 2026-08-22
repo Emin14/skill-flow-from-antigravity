@@ -71,6 +71,7 @@ export interface OxfordWord {
     oxford3000?: boolean;
     oxford5000?: boolean;
   };
+  topics?: string[];
 }
 
 export interface EnglishWordProgressItem {
