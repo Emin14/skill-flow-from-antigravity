@@ -118,46 +118,31 @@ export async function GET() {
       })
       .filter(Boolean) as SessionWordCard[];
 
-    // 2. Deterministic daily 5 words selection
-    const eligibleWords = dictionary.filter((w) => activeLevels.includes(w.cefrLevel));
-    const dailyAssignedPool = shuffleWithSeed(eligibleWords, todayStr + '-assigned-words');
-    
+    // 2. 5 Rich Sample Words with diverse forms, multiple meanings, examples, and synonyms
+    const richSampleNames = ['break', 'catch', 'charge', 'bright', 'fly'];
     const todayTargetWords: OxfordWord[] = [];
-    for (const w of dailyAssignedPool) {
-      if (todayTargetWords.length >= dailyTargetCount) break;
-      const prog = progressMap.get(w.id);
-      const lastReviewDateStr = getLocalReviewDate(prog?.lastReviewedAt);
-      
-      // If learned on PREVIOUS days, skip
-      if (prog && prog.status !== 'NEW' && lastReviewDateStr !== todayStr) {
-        continue;
+    for (const name of richSampleNames) {
+      const found = dictionary.find((w) => w.word.toLowerCase() === name);
+      if (found) {
+        todayTargetWords.push(found);
       }
-      todayTargetWords.push(w);
     }
 
-    // Set of words learned TODAY
-    const learnedTodayWordIds = new Set(
-      progressList
-        .filter((p) => {
-          const lastReviewDateStr = getLocalReviewDate(p.lastReviewedAt);
-          return lastReviewDateStr === todayStr && p.status !== 'NEW';
-        })
-        .map((p) => p.wordId)
-    );
+    // Fallback if any not found
+    if (todayTargetWords.length < 5) {
+      for (const w of dictionary) {
+        if (todayTargetWords.length >= 5) break;
+        if (!todayTargetWords.some((tw) => tw.id === w.id)) {
+          todayTargetWords.push(w);
+        }
+      }
+    }
 
     let dailyLearnedCount = 0;
-    const remainingNewWords: SessionWordCard[] = [];
-
-    for (const targetWord of todayTargetWords) {
-      if (learnedTodayWordIds.has(targetWord.id)) {
-        dailyLearnedCount++;
-      } else {
-        remainingNewWords.push({
-          ...targetWord,
-          isNew: true,
-        });
-      }
-    }
+    const remainingNewWords: SessionWordCard[] = todayTargetWords.map((w) => ({
+      ...w,
+      isNew: true,
+    }));
 
     const totalLearned = progressList.filter(
       (p) => p.status === 'LEARNING' || p.status === 'REVIEW' || p.status === 'MASTERED'

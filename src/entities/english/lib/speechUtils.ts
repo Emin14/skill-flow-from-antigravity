@@ -9,7 +9,8 @@ export const speakEnglishWord = (text: string, accent: 'us' | 'uk' = 'us', rate 
   try {
     window.speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(text);
+    const cleanText = text.replace(/\d+$/, '');
+    const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = accent === 'uk' ? 'en-GB' : 'en-US';
     utterance.rate = rate;
     utterance.pitch = 1.0;

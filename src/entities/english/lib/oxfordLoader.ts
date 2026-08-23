@@ -14,7 +14,7 @@ interface RawMeaning {
   primary?: boolean;
   register?: string[];
   synonyms?: string[];
-  examples?: Array<{ en?: string; ru?: string }>;
+  examples?: Array<{ en?: string; ru?: string; register?: string }>;
 }
 
 interface RawForm {
@@ -29,11 +29,11 @@ interface RawEntry {
   phon_br?: string;
   phon_n_am?: string;
   forms?: RawForm[] | null;
-  topics?: string[];
   lists?: {
     oxford3000?: boolean;
     oxford5000?: boolean;
   };
+  topics?: string[];
   meanings?: RawMeaning[];
 }
 
@@ -122,7 +122,11 @@ function buildOxford5000(): OxfordWord[] {
       examples: Array.isArray(m.examples)
         ? m.examples
             .filter((ex) => ex && ex.en)
-            .map((ex) => ({ en: ex.en!, ru: ex.ru || '' }))
+            .map((ex) => ({
+              en: ex.en!,
+              ru: ex.ru || '',
+              ...(ex.register ? { register: ex.register } : {}),
+            }))
         : [],
     }));
 

@@ -14,8 +14,10 @@ import {
   Check,
   X,
   Volume2,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
-import { MeaningSliderCard } from './MeaningSliderCard';
+import { CardVariantRenderer } from './variants';
 import styles from './EnglishTrainerModal.module.css';
 
 interface EnglishTrainerModalProps {
@@ -313,27 +315,6 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   );
   const currentMeaning = meaningsList[safeMeaningIndex];
 
-  const handlePrevMeaning = () => {
-    if (safeMeaningIndex > 0) {
-      setMeaningIndex(safeMeaningIndex - 1);
-      triggerHapticFeedback('light');
-    }
-  };
-
-  const handleNextMeaning = () => {
-    if (safeMeaningIndex < meaningsList.length - 1) {
-      setMeaningIndex(safeMeaningIndex + 1);
-      triggerHapticFeedback('light');
-    }
-  };
-
-  const grammarFormsCount =
-    (currentCard?.wordForms?.nounForms?.plural ? 1 : 0) +
-    (currentCard?.wordForms?.verbForms?.past ? 1 : 0) +
-    (currentCard?.wordForms?.verbForms?.pastParticiple ? 1 : 0) +
-    (currentCard?.wordForms?.adjectiveForms?.comparative ? 1 : 0) +
-    (currentCard?.wordForms?.adjectiveForms?.superlative ? 1 : 0);
-
   // Accent-aware transcription
   const displayTranscription = currentCard
     ? settings.accent === 'uk'
@@ -367,130 +348,159 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
           </div>
         ) : currentCard ? (
           <div ref={cardContentRef} className={styles.card}>
-            {/* Slim Header Bar with Card Counter */}
+            {/* Single Harmonious Top Ribbon with Fixed Height */}
             <div
-              className={styles.cardHeader}
               style={{
-                paddingBottom: '4px',
-                marginBottom: '2px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '6px',
+                padding: '0',
+                marginBottom: '4px',
+                borderBottom: '1px solid var(--color-border)',
+                width: '100%',
+                height: '36px',
+                minHeight: '36px',
+                maxHeight: '36px',
+                boxSizing: 'border-box',
               }}
             >
+              {/* Left: Previous Word Arrow */}
               <button
-                className={styles.closeBtn}
-                style={{ width: '26px', height: '26px', borderRadius: '6px' }}
-                onClick={() => {
-                  clearAutoTimer();
-                  onClose();
+                onClick={handlePrevWord}
+                disabled={currentIndex === 0}
+                style={{
+                  background: 'var(--color-surface-hover)',
+                  border: '1.5px solid var(--color-border)',
+                  borderRadius: '8px',
+                  width: '28px',
+                  height: '28px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: currentIndex > 0 ? 'pointer' : 'not-allowed',
+                  opacity: currentIndex > 0 ? 1 : 0.25,
+                  color: 'var(--color-text-primary)',
+                  padding: 0,
+                  flexShrink: 0,
                 }}
-                aria-label="Закрыть модальное окно"
-                title="Закрыть (Esc)"
+                title="Предыдущее слово (←)"
               >
-                <X size={15} />
+                <ChevronLeft size={16} />
               </button>
 
-              <div className={styles.headerRightGroup}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
-                  <button
-                    onClick={handlePrevWord}
-                    disabled={currentIndex === 0}
-                    style={{
-                      background: 'var(--color-surface-hover)',
-                      border: '1px solid var(--color-border)',
-                      borderRadius: '6px',
-                      width: '24px',
-                      height: '24px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: currentIndex > 0 ? 'pointer' : 'not-allowed',
-                      opacity: currentIndex > 0 ? 1 : 0.25,
-                      color: 'var(--color-text-primary)',
-                      fontSize: '10px',
-                      padding: 0,
-                    }}
-                    title="Предыдущее слово (←)"
-                  >
-                    ◀
-                  </button>
+              {/* Center: Unified Harmonious Metadata Ribbon */}
+              <div
+                style={{
+                  display: 'flex',
+                  gap: '5px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexWrap: 'nowrap',
+                  overflowX: 'auto',
+                  scrollbarWidth: 'none',
+                  flex: 1,
+                  padding: '0 4px',
+                }}
+              >
+                {/* Frequency Rank */}
+                <span
+                  style={{
+                    background: 'var(--color-surface-hover)',
+                    fontSize: '10.5px',
+                    fontWeight: 700,
+                    padding: '2px 6px',
+                    borderRadius: '5px',
+                    color: 'var(--color-text-muted)',
+                    border: '1px solid var(--color-border)',
+                    flexShrink: 0,
+                  }}
+                >
+                  #{currentCard.frequencyRank}
+                </span>
 
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--color-text-muted)', padding: '0 3px' }}>
-                    {currentIndex + 1} / {queue.length}
+                {/* CEFR Level */}
+                <span
+                  style={{
+                    background: 'var(--color-warning-light)',
+                    border: '1px solid var(--color-warning-border)',
+                    color: 'var(--color-warning)',
+                    fontSize: '10.5px',
+                    fontWeight: 800,
+                    padding: '2px 6px',
+                    borderRadius: '5px',
+                    flexShrink: 0,
+                  }}
+                >
+                  {currentCard.cefrLevel}
+                </span>
+
+                {/* Status Pill */}
+                {isReviewWord ? (
+                  <span className={styles.cardTypePillReview} style={{ fontSize: '10px', padding: '2px 6px', flexShrink: 0 }}>🔄 Повторение</span>
+                ) : (
+                  <span className={styles.cardTypePillNew} style={{ fontSize: '10px', padding: '2px 6px', flexShrink: 0 }}>✨ Новое</span>
+                )}
+
+                {/* Topic Badges */}
+                {currentCard.topics && currentCard.topics.map((t, idx) => (
+                  <span
+                    key={idx}
+                    style={{
+                      background: '#f3e8ff',
+                      color: '#6b21a8',
+                      border: '1px solid #e9d5ff',
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      padding: '2px 7px',
+                      borderRadius: '10px',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {t}
                   </span>
+                ))}
 
-                  <button
-                    onClick={handleNextWord}
-                    disabled={currentIndex + 1 >= queue.length}
-                    style={{
-                      background: 'var(--color-surface-hover)',
-                      border: '1px solid var(--color-border)',
-                      borderRadius: '6px',
-                      width: '24px',
-                      height: '24px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: currentIndex + 1 < queue.length ? 'pointer' : 'not-allowed',
-                      opacity: currentIndex + 1 < queue.length ? 1 : 0.25,
-                      color: 'var(--color-text-primary)',
-                      fontSize: '10px',
-                      padding: 0,
-                    }}
-                    title="Следующее слово (→)"
-                  >
-                    ▶
-                  </button>
-                </div>
+                {/* Oxford 3000 / 5000 Lists */}
+                <span style={{ border: '1px solid #c7d2fe', color: '#3730a3', background: '#eef2ff', padding: '1px 5px', borderRadius: '5px', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>
+                  3000
+                </span>
+                <span style={{ border: '1px solid #c7d2fe', color: '#3730a3', background: '#eef2ff', padding: '1px 5px', borderRadius: '5px', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>
+                  5000
+                </span>
               </div>
+
+              {/* Right: Next Word Arrow */}
+              <button
+                onClick={handleNextWord}
+                disabled={currentIndex + 1 >= queue.length}
+                style={{
+                  background: 'var(--color-surface-hover)',
+                  border: '1.5px solid var(--color-border)',
+                  borderRadius: '8px',
+                  width: '28px',
+                  height: '28px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: currentIndex + 1 < queue.length ? 'pointer' : 'not-allowed',
+                  opacity: currentIndex + 1 < queue.length ? 1 : 0.25,
+                  color: 'var(--color-text-primary)',
+                  padding: 0,
+                  flexShrink: 0,
+                }}
+                title="Следующее слово (→)"
+              >
+                <ChevronRight size={16} />
+              </button>
             </div>
 
             {/* Core Card Body */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {/* Top Badges Row */}
-              <div style={{ display: 'flex', gap: '6px', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                  <span
-                    style={{
-                      background: 'var(--color-surface-hover)',
-                      fontSize: '11px',
-                      padding: '3px 8px',
-                      borderRadius: '6px',
-                      color: 'var(--color-text-muted)',
-                      border: '1px solid var(--color-border)',
-                    }}
-                  >
-                    #{currentCard.frequencyRank}
-                  </span>
-                  <span
-                    style={{
-                      background: 'var(--color-warning-light)',
-                      border: '1px solid var(--color-warning-border)',
-                      color: 'var(--color-warning)',
-                      fontSize: '11px',
-                      fontWeight: 700,
-                      padding: '3px 6px',
-                      borderRadius: '6px',
-                    }}
-                  >
-                    {currentCard.cefrLevel}
-                  </span>
-                  {isReviewWord ? (
-                    <span className={styles.cardTypePillReview}>🔄 Повторение</span>
-                  ) : (
-                    <span className={styles.cardTypePillNew}>✨ Новое</span>
-                  )}
-                </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
 
-                <button
-                  className={styles.audioBtn}
-                  onClick={() => speakEnglishWord(currentCard.word, settings.accent)}
-                  title="Прослушать произношение"
-                >
-                  <Volume2 size={16} />
-                </button>
-              </div>
-
-              {/* Final Meaning Card Slider */}
-              <MeaningSliderCard
+              {/* Active Card Variant Component */}
+              <CardVariantRenderer
+                variantId={2}
                 currentCard={currentCard}
                 meaningsList={meaningsList}
                 safeMeaningIndex={safeMeaningIndex}

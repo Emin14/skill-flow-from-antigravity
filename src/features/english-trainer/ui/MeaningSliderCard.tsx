@@ -43,7 +43,12 @@ export const MeaningSliderCard: React.FC<MeaningSliderCardProps> = ({
         }}
       >
         <span style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
-          {currentCard.word}
+          {currentCard.word.replace(/\d+$/, '')}
+          {/\d+$/.test(currentCard.word) && (
+            <sup style={{ fontSize: '11px', color: 'var(--color-accent)', marginLeft: '2px' }}>
+              {currentCard.word.match(/\d+$/)?.[0]}
+            </sup>
+          )}
         </span>
         <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
           {displayTranscription}
@@ -148,6 +153,16 @@ export const MeaningSliderCard: React.FC<MeaningSliderCardProps> = ({
           {currentMeaning?.translation}
         </div>
 
+        {/* Synonyms Section */}
+        {currentMeaning?.synonyms && currentMeaning.synonyms.length > 0 && (
+          <div style={{ fontSize: '11.5px', marginTop: '4px', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <span style={{ color: '#2563eb', fontWeight: 800 }}>Синонимы: </span>
+            <span style={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>
+              {currentMeaning.synonyms.join(', ')}
+            </span>
+          </div>
+        )}
+
         {/* Fixed stable container: exactly 110px high, never jumps */}
         <div
           style={{
@@ -166,7 +181,30 @@ export const MeaningSliderCard: React.FC<MeaningSliderCardProps> = ({
           {currentMeaning?.examples && currentMeaning.examples.length > 0 ? (
             currentMeaning.examples.map((ex, i) => (
               <div key={i} style={{ fontSize: '12px', marginBottom: '2px', lineHeight: 1.35 }}>
-                <div>• {renderHighlightedSentence(ex.en, currentCard.word)}</div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                  <span>• {renderHighlightedSentence(ex.en, currentCard.word)}</span>
+                  {ex.register && (
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        fontSize: '7.5px',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.02em',
+                        padding: '0.5px 3.5px',
+                        borderRadius: '3px',
+                        background: 'rgba(234, 179, 8, 0.10)',
+                        border: '1px solid rgba(234, 179, 8, 0.28)',
+                        color: '#ca8a04',
+                        marginLeft: '5px',
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {ex.register}
+                    </span>
+                  )}
+                </div>
                 {ex.ru && (
                   <div style={{ color: 'var(--color-text-muted)', fontSize: '11px', marginTop: '2px' }}>
                     {ex.ru}

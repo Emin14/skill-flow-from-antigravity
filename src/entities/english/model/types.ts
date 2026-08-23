@@ -38,6 +38,7 @@ export interface Collocation {
 export interface SentenceExample {
   en: string;
   ru: string;
+  register?: string;
 }
 
 export interface WordMeaningItem {
