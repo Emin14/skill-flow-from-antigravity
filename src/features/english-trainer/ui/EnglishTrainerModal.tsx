@@ -16,6 +16,7 @@ import {
   Volume2,
   ChevronLeft,
   ChevronRight,
+  Shuffle,
 } from 'lucide-react';
 import { CardVariantRenderer } from './variants';
 import styles from './EnglishTrainerModal.module.css';
@@ -70,6 +71,29 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   const [userInput, setUserInput] = useState<string>('');
   const [isMatch, setIsMatch] = useState<boolean | null>(null);
   const [isFinished, setIsFinished] = useState<boolean>(false);
+  const [isLoadingRandom, setIsLoadingRandom] = useState<boolean>(false);
+
+  const handleLoadRandomWords = async () => {
+    setIsLoadingRandom(true);
+    clearAutoTimer();
+    try {
+      const words = await useEnglishStore.getState().fetchRandomWords(5);
+      if (words && words.length > 0) {
+        setQueue(words);
+        setCurrentIndex(0);
+        setMeaningIndex(0);
+        setIsAnswerRevealed(false);
+        setUserInput('');
+        setIsMatch(null);
+        setIsFinished(false);
+        triggerHapticFeedback('medium');
+      }
+    } catch (e) {
+      console.error('Error loading random words:', e);
+    } finally {
+      setIsLoadingRandom(false);
+    }
+  };
 
   const inputRef = useRef<HTMLInputElement>(null);
   const cardContentRef = useRef<HTMLDivElement>(null);
@@ -337,6 +361,24 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 : 'Вы выполнили дневную норму слов. Возвращайтесь завтра для закрепления.'}
             </p>
             <button
+              type="button"
+              className={styles.finishBtn}
+              onClick={handleLoadRandomWords}
+              disabled={isLoadingRandom}
+              style={{
+                background: 'var(--color-primary, #6366f1)',
+                color: '#fff',
+                marginBottom: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+              }}
+            >
+              <Shuffle size={14} className={isLoadingRandom ? styles.spinIcon : undefined} />
+              <span>{isLoadingRandom ? 'Загрузка...' : '🎲 Взять 5 новых случайных слов'}</span>
+            </button>
+            <button
               className={styles.finishBtn}
               onClick={() => {
                 clearAutoTimer();
@@ -348,6 +390,52 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
           </div>
         ) : currentCard ? (
           <div ref={cardContentRef} className={styles.card}>
+            {/* Temporary Random Words Quick Button Bar */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                background: 'rgba(99, 102, 241, 0.08)',
+                border: '1px dashed rgba(99, 102, 241, 0.4)',
+                borderRadius: '8px',
+                padding: '4px 8px',
+                marginBottom: '4px',
+                gap: '8px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <span style={{ fontSize: '13px' }}>🎲</span>
+                <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--color-primary, #6366f1)' }}>
+                  Случайные 5 слов {queue.length > 0 ? `(${currentIndex + 1}/${queue.length})` : ''}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={handleLoadRandomWords}
+                disabled={isLoadingRandom}
+                style={{
+                  background: 'var(--color-primary, #6366f1)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '6px',
+                  padding: '3px 8px',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  cursor: isLoadingRandom ? 'wait' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  transition: 'opacity 0.2s',
+                  opacity: isLoadingRandom ? 0.7 : 1,
+                }}
+                title="Дать новую порцию из 5 случайных слов"
+              >
+                <Shuffle size={12} className={isLoadingRandom ? styles.spinIcon : undefined} />
+                <span>{isLoadingRandom ? 'Загрузка...' : '5 новых слов'}</span>
+              </button>
+            </div>
+
             {/* Single Harmonious Top Ribbon with Fixed Height */}
             <div
               style={{

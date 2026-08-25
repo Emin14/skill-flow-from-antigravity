@@ -26,6 +26,7 @@ interface EnglishState {
   fetchSettings: () => Promise<void>;
   updateSettings: (newSettings: Partial<EnglishSettingsConfig>) => Promise<void>;
   searchDictionary: (query?: string, level?: string, status?: string, page?: number) => Promise<void>;
+  fetchRandomWords: (count?: number) => Promise<SessionWordCard[]>;
 }
 
 const DEFAULT_SETTINGS: EnglishSettingsConfig = {
@@ -160,5 +161,18 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
     } catch {
       set({ isLoadingDictionary: false });
     }
+  },
+
+  fetchRandomWords: async (count = 5): Promise<SessionWordCard[]> => {
+    try {
+      const res = await fetch(`/api/english/random?count=${count}`);
+      if (res.ok) {
+        const data = await res.json();
+        return data.words || [];
+      }
+    } catch (err) {
+      console.error('Failed to fetch random English words:', err);
+    }
+    return [];
   },
 }));
