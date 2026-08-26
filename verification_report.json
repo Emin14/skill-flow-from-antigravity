@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-08-26T20:52:54",
+  "files": {
+    "original_file": "oxford_5000_updated.json",
+    "original_sha256": "606b1a84471cdee3878412b739b769f718cc52d3b5b2ffad2218f02bd52fc3c8",
+    "verified_file": "oxford_5000_verified.json",
+    "verified_sha256": "0aa7c1ae5f6ec07d1d3add949e56cdcf10287987dd033bdce7622167ce5219b1"
+  },
+  "safety_checks": {
+    "original_file_untouched": true,
+    "unique_word_count": 4975,
+    "metadata_intact": true,
+    "all_changes_tracked_in_changes_json": true,
+    "sequential_ids_valid": true,
+    "no_empty_translations": true,
+    "no_misplaced_registers": true,
+    "no_derivative_copies": true,
+    "no_grammar_cut_errors": true
+  },
+  "metrics": {
+    "total_words": 4975,
+    "total_meanings": 23792,
+    "total_examples": 10892,
+    "total_phrases": 1126,
+    "words_with_phrases": 578,
+    "total_changes_recorded": 9905,
+    "structural_fixes_count": 452,
+    "translation_fixes_count": 4577,
+    "example_fixes_count": 2662,
+    "phrase_fixes_count": 610,
+    "derivative_fixes_count": 75,
+    "grammar_fixes_count": 107,
+    "duplicates_removed": 7
+  }
+}

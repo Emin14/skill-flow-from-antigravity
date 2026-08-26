@@ -1,162 +1,90 @@
 # -*- coding: utf-8 -*-
 """
-Test register extraction and clean translation output.
+Test script for extracting registers from translations.
 """
-
-import sys
-import json
 import re
-import unicodedata
 
-sys.stdout.reconfigure(encoding='utf-8')
-
-REGISTER_TO_FULL = {
-    'ав': 'авиация',
-    'авт': 'автомобильное',
-    'амер': 'американизм',
-    'анат': 'анатомия',
-    'археол': 'археология',
-    'архит': 'архитектура',
-    'астр': 'астрономия',
-    'банк': 'банковское',
-    'библ': 'библейское',
-    'биол': 'биологическое',
-    'бот': 'ботаника',
-    'бухг': 'бухгалтерия',
-    'воен': 'военное',
-    'возвыш': 'возвышенное',
-    'вчт': 'информатика',
-    'геогр': 'география',
-    'геод': 'геодезия',
-    'геол': 'геология',
-    'геом': 'геометрия',
-    'геральд': 'геральдика',
-    'грам': 'грамматика',
-    'детск': 'детское',
-    'дип': 'дипломатия',
-    'дор': 'дорожное',
-    'ж-д': 'железнодорожное',
-    'ж.-д': 'железнодорожное',
-    'жив': 'живопись',
-    'зоол': 'зоология',
-    'ирон': 'ироническое',
-    'иск': 'искусство',
-    'ист': 'историческое',
-    'канад': 'канадское',
-    'канц': 'канцелярское',
-    'карт': 'карточный термин',
-    'кино': 'кинематография',
-    'книжн': 'книжное',
-    'ком': 'коммерческое',
-    'косм': 'космонавтика',
-    'кул': 'кулинария',
-    'лингв': 'лингвистика',
-    'лит': 'литература',
-    'лог': 'логика',
-    'мат': 'математика',
+REGISTER_ABBR_MAP = {
+    'юр': 'юриспруденция',
+    'юрид': 'юриспруденция',
     'мед': 'медицина',
-    'метал': 'металлургия',
-    'метео': 'метеорология',
-    'мех': 'механика',
-    'мин': 'минералогия',
-    'миф': 'мифология',
-    'мор': 'морское',
+    'биол': 'биология',
+    'мат': 'математика',
+    'воен': 'военный термин',
     'муз': 'музыка',
-    'неодобр': 'неодобрительное',
-    'опт': 'оптика',
-    'охот': 'охота',
-    'парл': 'парламентское',
-    'перен': 'переносное',
-    'полигр': 'полиграфия',
-    'полит': 'политика',
-    'поэт': 'поэтическое',
-    'презр': 'презрительное',
-    'пренебр': 'пренебрежительное',
-    'психол': 'психология',
-    'радио': 'радио',
-    'разг': 'разговорное',
-    'рел': 'религия',
-    'собир': 'собирательное',
-    'спорт': 'спорт',
-    'стат': 'статистика',
-    'стр': 'строительное',
-    'студ': 'студенческое',
-    'с-х': 'сельское хозяйство',
-    'с.-х': 'сельское хозяйство',
-    'театр': 'театр',
-    'текст': 'текстильное',
     'тех': 'техника',
-    'тлв': 'телевидение',
-    'топ': 'топография',
-    'унив': 'университетское',
-    'уст': 'устаревшее',
-    'фарм': 'фармакология',
-    'физ': 'физика',
-    'физиол': 'физиология',
-    'филос': 'философия',
-    'фин': 'финансовое',
+    'мор': 'морской термин',
+    'спорт': 'спорт',
+    'театр': 'театр',
+    'грам': 'грамматика',
+    'лингв': 'лингвистика',
+    'анат': 'анатомия',
+    'бот': 'ботаника',
+    'зоол': 'зоология',
+    'геогр': 'география',
+    'геол': 'геология',
+    'астр': 'астрономия',
     'хим': 'химия',
-    'церк': 'церковное',
-    'шахм': 'шахматы',
-    'эк': 'экономика',
-    'экол': 'экология',
+    'физ': 'физика',
+    'филос': 'философия',
     'эл': 'электротехника',
-    'юр': 'юридическое',
+    'ком': 'коммерция',
+    'фин': 'финансы',
+    'полит': 'политика',
+    'рел': 'религия',
+    'с.-х': 'сельское хозяйство',
+    'разг': 'разговорное',
     'шутл': 'шутливое',
+    'ирон': 'ироническое',
     'бран': 'бранное',
     'груб': 'грубое',
+    'поэт': 'поэтическое',
+    'книжн': 'книжное',
+    'уст': 'устаревшее',
     'редк': 'редкое',
+    'амер': 'американизм',
     'австрал': 'австралийское',
-    'шотл': 'шотландское'
+    'шотл': 'шотландское',
+    'вчт': 'информатика',
+    'информ': 'информатика',
+    'кино': 'кинематограф',
+    'тлв': 'телевидение',
+    'иск': 'искусство',
+    'авиа': 'авиация'
 }
 
-def extract_registers_from_translation(text, existing_registers=None):
-    if not text:
-        return "", []
-    registers = list(existing_registers) if existing_registers else []
+def extract_leading_registers(translation, existing_registers=None):
+    regs = list(existing_registers) if existing_registers else []
+    t = translation.strip()
     
-    # Sort keys by length descending to match compound registers first (с.-х, ж.-д)
-    sorted_regs = sorted(REGISTER_TO_FULL.keys(), key=len, reverse=True)
+    pattern = r'^(?:(?:(?:' + '|'.join(re.escape(k) for k in REGISTER_ABBR_MAP.keys()) + r')(?:\.|\b))\s*[,;\.]?\s*)+'
     
-    # Pattern to match register at the start of string or inside: e.g. "юр. ", "юр ", "тех. ", "с.-х. "
-    # Regex looks for register prefix followed by optional dot and space
-    for r in sorted_regs:
-        full_name = REGISTER_TO_FULL[r]
-        # Match register prefix at start of text
-        pat_start = r'^(?:' + re.escape(r) + r'\.?|\(' + re.escape(r) + r'\.?\))\s*'
-        if re.search(pat_start, text, flags=re.IGNORECASE):
-            text = re.sub(pat_start, '', text, flags=re.IGNORECASE).strip()
-            if full_name not in registers:
-                registers.append(full_name)
-                
-        # Match register prefix after semicolon or bracket: e.g. "; тех. "
-        pat_mid = r'(?<=[;\(\[\{])\s*(?:' + re.escape(r) + r'\.?|\(' + re.escape(r) + r'\.?\))\s+'
-        if re.search(pat_mid, text, flags=re.IGNORECASE):
-            text = re.sub(pat_mid, ' ', text, flags=re.IGNORECASE).strip()
-            if full_name not in registers:
-                registers.append(full_name)
-                
-    text = re.sub(r'^\s*[\)\.\,\;\:]+\s*', '', text)
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text, registers
+    m = re.match(pattern, t, flags=re.IGNORECASE)
+    if m:
+        matched_text = m.group(0)
+        found_abbrs = re.findall(r'\b(?:' + '|'.join(re.escape(k) for k in REGISTER_ABBR_MAP.keys()) + r')\b', matched_text, flags=re.IGNORECASE)
+        for a in found_abbrs:
+            full_name = REGISTER_ABBR_MAP.get(a.lower())
+            if full_name and full_name not in regs:
+                regs.append(full_name)
+        t = t[len(matched_text):].strip()
+        t = re.sub(r'^\s*[,;:]+\s*', '', t)
+        
+    return t, (regs if regs else None)
 
-test_samples = [
-    "юр. оправдывать (подсудимого)",
-    "эл. разряжать (аккумулятор)",
-    "разг. парень, малый",
-    "тех. хомутик, поводок; зуб (муфты); кулачок (патрона); упор, собачка; гвоздодёр",
-    "эл. плохо заряженный; севший (о батарее)",
-    "дип. посланник; советник посольства",
-    "вчт. считывание (информации)",
-    "тех. подвергать действию внешней силы",
-    "биол. гибридизация, скрещивание",
-    "фин. перечёркивать, кроссировать (чек)",
-    "биол. скрещивать(ся)"
+# Tests
+test_cases = [
+    ("мед. преждевременное прекращение беременности, аборт, выкидыш", None),
+    ("хим., физ. активировать; делать радиоактивным", None),
+    ("кино, тлв. операторский кран, журавль", None),
+    ("разг. красть, прикарманивать", None),
+    ("юр. бенефициар(ий)", None),
+    ("юр. неподсудность", None),
+    ("обычный текст перевода", None)
 ]
 
-print("=== Testing Register Extraction ===")
-for sample in test_samples:
-    clean_tr, regs = extract_registers_from_translation(sample)
-    print(f"\nOriginal: {repr(sample)}")
-    print(f"Clean TR: {repr(clean_tr)}")
-    print(f"Register: {regs}")
+for tc, ex_r in test_cases:
+    clean_t, r = extract_leading_registers(tc, ex_r)
+    print(f"Original: {tc}")
+    print(f"  Clean:    {clean_t}")
+    print(f"  Register: {r}\n")

@@ -27,6 +27,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 ROOT = Path(__file__).resolve().parent.parent
 PDF_PATH = ROOT / "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf"
+FALLBACK_PDF_PATH = ROOT / "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf"
 OXFORD_PATH = ROOT / "oxford_5000.json"
 APP_OXFORD_PATH = ROOT / "src" / "data" / "oxford_5000.json"
 WORK_DIR = ROOT / "tmp" / "muller_rebuild"
@@ -72,15 +73,25 @@ def is_italic_font(fontname: str) -> bool:
 
 
 def is_accent_glyph(text: str, fontname: str) -> bool:
-    return "NewtonC" in fontname and bool(re.fullmatch(r"(?:\(cid:\d+\))+", text))
+    # NewtonC (cid:2) is the zero-width stress mark. At a physical line break
+    # the same font emits (cid:2)(cid:4): cid:4 is the printed discretionary
+    # hyphen and must survive so the two halves of the word can be rejoined.
+    return (
+        "NewtonC" in fontname
+        and "(cid:4)" not in text
+        and bool(re.fullmatch(r"(?:\(cid:\d+\))+", text))
+    )
 
 
 def clean_pdf_token(text: str, fontname: str, *, headword: bool = False) -> str:
+    if "NewtonC" in fontname and "(cid:4)" in text:
+        return SOFT_BREAK
     if is_accent_glyph(text, fontname):
         return ""
 
     text = unicodedata.normalize("NFKC", text)
     text = text.replace("’", "'").replace("‘", "'")
+    text = text.replace("\u00ad", "-" if headword else SOFT_BREAK)
 
     if "(cid:" in text:
         if "Petersburg" in fontname or "Pragmatica" in fontname:
@@ -112,9 +123,13 @@ def group_lines(words: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
         # baseline.  Align it to that following line; otherwise it is emitted
         # between the two halves of a wrapped word (подо- ♦ нки) and can also
         # move a whole idiom/phrasal marker inside the preceding example.
-        if "Symbol" in str(word["fontname"]):
+        # Symbol punctuation is drawn above the text baseline. Shift it down
+        # together with an attached closing bracket (♦]) but leave the degree
+        # sign alone; 90° belongs to the ordinary line and was previously
+        # displaced into the next dictionary sense.
+        if "Symbol" in str(word["fontname"]) and str(word["text"]) != "°":
             top += 4.5
-        elif "Signs" in str(word["fontname"]):
+        elif "Signs" in str(word["fontname"]) and str(word["text"]) == "¬":
             top += 3.5
         best_index: int | None = None
         best_delta = 99.0
@@ -165,7 +180,12 @@ def strip_phonetic_tokens(tokens: list[dict[str, Any]]) -> list[dict[str, Any]]:
         # A morphology such as [-s] is also a short Latin bracketed block.
         # Only the dedicated MSTT phonetic font is unambiguous at token level;
         # multi-line leading transcriptions are removed after article assembly.
-        if saw_mstt and "]" in bracket_text:
+        fallback_leading_phonetics = bool(
+            index <= 2
+            and not re.search(r"[А-Яа-яЁё]", bracket_text)
+            and re.search(r"[A-Za-zɐ-˿]", bracket_text)
+        )
+        if (saw_mstt or fallback_leading_phonetics) and "]" in bracket_text:
             # A pronunciation inside morphology often ends in the same PDF
             # token as the outer closing parenthesis: z]).  Remove only the
             # bracketed transcription and retain that trailing punctuation.
@@ -222,6 +242,49 @@ def join_tokens(tokens: list[dict[str, Any]]) -> str:
     text = re.sub(r"([([])\s+", r"\1", text)
     text = re.sub(r"\s+([-–—])\s+", r" \1 ", text)
     return normalize_spaces(text)
+
+
+def line_has_unknown_body_cid(tokens: list[dict[str, Any]]) -> bool:
+    """Detect visible A4 glyphs whose embedded font has no Unicode map.
+
+    The OCR-aligned copy is used only for these lines. Pronunciation glyphs are
+    deliberately ignored because they are outside the meanings schema.
+    """
+    square_depth = 0
+    for token in tokens:
+        text = str(token["text"])
+        before = square_depth
+        square_depth += text.count("[")
+        fontname = str(token["fontname"])
+        unknown = (
+            "(cid:" in text
+            and not any(
+                known in fontname
+                for known in ("Petersburg", "Pragmatica", "NewtonC")
+            )
+            and float(token["width"]) > 0.1
+        )
+        if unknown and before == 0:
+            return True
+        square_depth = max(0, square_depth - text.count("]"))
+    return False
+
+
+def aligned_fallback_line(
+    source_line: list[dict[str, Any]],
+    fallback_lines: list[list[dict[str, Any]]],
+) -> list[dict[str, Any]] | None:
+    if not fallback_lines:
+        return None
+    source_top = sum(float(token["top"]) for token in source_line) / len(source_line)
+    candidate = min(
+        fallback_lines,
+        key=lambda line: abs(
+            source_top - sum(float(token["top"]) for token in line) / len(line)
+        ),
+    )
+    candidate_top = sum(float(token["top"]) for token in candidate) / len(candidate)
+    return candidate if abs(source_top - candidate_top) <= 1.8 else None
 
 
 def detect_headword(line: list[dict[str, Any]]) -> tuple[str, int] | None:
@@ -293,6 +356,25 @@ CLITIC_HYPHEN_PAIRS.update(
 )
 CLITIC_HYPHEN_PAIRS.add(("из", "за"))
 
+# The A4 PDF contains a small number of legacy discretionary-hyphen glyphs
+# inside a single visual line. They cannot be distinguished from an intended
+# hyphen by geometry alone, so keep this source-verified list deliberately
+# narrow. Real compounds and abbreviations (об-ва, на-гора, м-р, etc.) are
+# not included.
+INLINE_SOFT_JOIN_PAIRS = {
+    ("стено", "й"), ("ми", "мо"), ("го", "ды"), ("пролете", "ли"),
+    ("подверга", "ться"), ("килево", "й"), ("ка", "чке"),
+    ("научно", "го"), ("подверга", "ть"), ("како", "му"),
+    ("техни", "ческому"), ("враща", "тельно"),
+    ("поступа", "тельное"), ("испыта", "нию"),
+    ("устано", "вленный"), ("выступа", "ть"), ("ка", "честве"),
+    ("обвини", "теля"), ("ко", "му"), ("восточно", "го"),
+    ("строчи", "ть"), ("бо", "йко"), ("за", "дали"),
+    ("тру", "дную"), ("обеспе", "чение"), ("проду", "кты"),
+    ("основно", "м"), ("сте", "пени"), ("про", "чно"),
+    ("а", "нглии"),
+}
+
 
 def resolve_soft_breaks(text: str, vocabulary: Counter[str]) -> str:
     # Each visual line is styled independently.  Rejoin the same italic run
@@ -315,6 +397,8 @@ def resolve_soft_breaks(text: str, vocabulary: Counter[str]) -> str:
         left_lower = left.lower()
         right_lower = right.lower().rstrip(".")
 
+        if (left_lower, right_lower) in INLINE_SOFT_JOIN_PAIRS:
+            return left + right
         if (
             left_lower in HYPHEN_LEFT
             or right_lower in HYPHEN_RIGHT
@@ -329,9 +413,41 @@ def resolve_soft_breaks(text: str, vocabulary: Counter[str]) -> str:
     while previous != text:
         previous = text
         text = pattern.sub(replace, text)
+
+    # Resolve the verified discretionary marks which appear in the middle of
+    # a single extracted line. Leave every other mark intact for the normal
+    # hyphen conversion below.
+    inline_pattern = re.compile(
+        rf"([A-Za-zА-Яа-яЁё]+){re.escape(SOFT_BREAK)}([A-Za-zА-Яа-яЁё]+)"
+    )
+
+    def replace_inline(match: re.Match[str]) -> str:
+        left, right = match.group(1), match.group(2)
+        if (left.lower(), right.lower().rstrip(".")) in INLINE_SOFT_JOIN_PAIRS:
+            return left + right
+        return match.group(0)
+
+    text = inline_pattern.sub(replace_inline, text)
     text = text.replace(SOFT_BREAK, "-")
     text = re.sub(r"\s*\n\s*", " ", text)
     text = normalize_spaces(text)
+    text = text.replace("<i>u</i>", "<i>и</i>")
+    # Some inflection lines contain a duplicated invisible closing phonetic
+    # bracket (e.g. the source-rendered "pled)" is extracted as "pled])").
+    # Remove only closing square brackets which have no matching opener.
+    bracket_depth = 0
+    balanced: list[str] = []
+    for char in text:
+        if char == "[":
+            bracket_depth += 1
+            balanced.append(char)
+        elif char == "]":
+            if bracket_depth:
+                bracket_depth -= 1
+                balanced.append(char)
+        else:
+            balanced.append(char)
+    text = "".join(balanced)
     text = re.sub(r"<i>([^<]+)</i>\.", r"<i>\1.</i>", text)
     # Pronunciation is not represented by the meanings schema.  This also
     # catches transcriptions split across visual lines, which token-level
@@ -346,7 +462,7 @@ def extract_articles() -> list[dict[str, Any]]:
     current: dict[str, Any] | None = None
     started_at = time.time()
 
-    with pdfplumber.open(PDF_PATH) as pdf:
+    with pdfplumber.open(PDF_PATH) as pdf, pdfplumber.open(FALLBACK_PDF_PATH) as fallback_pdf:
         for page_index in range(FIRST_PAGE_INDEX, LAST_PAGE_INDEX_EXCLUSIVE):
             page = pdf.pages[page_index]
             words = page.extract_words(extra_attrs=["fontname", "size"])
@@ -356,10 +472,49 @@ def extract_articles() -> list[dict[str, Any]]:
                 if float(word["top"]) >= 55.0 and float(word["bottom"]) <= float(page.height) - 20.0
             ]
 
+            source_lines_by_column: list[list[list[dict[str, Any]]]] = []
+            needs_fallback = False
+            for left, right in COLUMN_BOUNDS:
+                column_words = [
+                    word for word in body_words if left <= float(word["x0"]) < right
+                ]
+                column_lines = group_lines(column_words)
+                source_lines_by_column.append(column_lines)
+                needs_fallback = needs_fallback or any(
+                    line_has_unknown_body_cid(line) for line in column_lines
+                )
+
+            fallback_lines_by_column: list[list[list[dict[str, Any]]]] = [[], [], []]
+            fallback_page = None
+            if needs_fallback:
+                fallback_page = fallback_pdf.pages[page_index]
+                fallback_words = fallback_page.extract_words(
+                    extra_attrs=["fontname", "size"]
+                )
+                fallback_body_words = [
+                    word
+                    for word in fallback_words
+                    if float(word["top"]) >= 55.0
+                    and float(word["bottom"]) <= float(fallback_page.height) - 20.0
+                ]
+                for column_index, (left, right) in enumerate(COLUMN_BOUNDS):
+                    fallback_column_words = [
+                        word
+                        for word in fallback_body_words
+                        if left <= float(word["x0"]) < right
+                    ]
+                    fallback_lines_by_column[column_index] = group_lines(
+                        fallback_column_words
+                    )
+
             for column_index, (left, right) in enumerate(COLUMN_BOUNDS):
-                column_words = [word for word in body_words if left <= float(word["x0"]) < right]
-                for line in group_lines(column_words):
+                for line in source_lines_by_column[column_index]:
                     headword_match = detect_headword(line)
+                    replacement_line = None
+                    if line_has_unknown_body_cid(line):
+                        replacement_line = aligned_fallback_line(
+                            line, fallback_lines_by_column[column_index]
+                        )
                     if headword_match:
                         if current is not None:
                             current["body_raw"] = "\n".join(current.pop("lines"))
@@ -372,17 +527,27 @@ def extract_articles() -> list[dict[str, Any]]:
                             "top": round(float(line[0]["top"]), 2),
                             "lines": [],
                         }
-                        body_line = join_tokens(line[body_start_index:])
+                        body_tokens = line[body_start_index:]
+                        if replacement_line is not None and body_tokens:
+                            body_x0 = float(body_tokens[0]["x0"])
+                            body_tokens = [
+                                token
+                                for token in replacement_line
+                                if float(token["x0"]) >= body_x0 - 1.0
+                            ]
+                        body_line = join_tokens(body_tokens)
                         if body_line:
                             current["lines"].append(body_line)
                     elif current is not None:
-                        continuation = join_tokens(line)
+                        continuation = join_tokens(replacement_line or line)
                         if continuation:
                             current["lines"].append(continuation)
 
             # pdfplumber/pdfminer otherwise retains each page layout and all
             # character objects until the whole document is closed.
             page.close()
+            if fallback_page is not None:
+                fallback_page.close()
 
             if (page_index + 1) % 100 == 0:
                 print(
@@ -760,12 +925,64 @@ def strip_markup(text: str) -> str:
 
 def clean_plain(text: str) -> str:
     text = strip_markup(text)
-    text = text.replace("≅", "≈")
+    # The source prints ≈/≅ as a label for an approximate equivalent. It is
+    # represented in `register`, not leaked into translation/example strings.
+    text = text.replace("≅", " ").replace("≈", " ")
     text = normalize_spaces(text)
+    # Repair legacy discretionary hyphens whose glyph was extracted as a
+    # regular hyphen. These shapes are unambiguous: an intended Russian
+    # compound has no whitespace after its hyphen.
+    text = re.sub(r"(?<=[А-Яа-яЁё])-{2,}\s*(?=[А-Яа-яЁё])", "", text)
+    text = re.sub(
+        r"(?<=[А-Яа-яЁё])-\s+(?=(?!и(?:ли)?\b)[А-Яа-яЁё])",
+        "",
+        text,
+    )
+    text = re.sub(r"(?<=[А-Яа-яЁё])-(?=[,;])", "", text)
+    text = text.replace("како го-л.", "какого-л.")
+    text = text.replace("стихи-", "стихи")
+    # One source line wraps "востока" without a printed discretionary
+    # hyphen. The corpus-wide joined-word audit finds this as the only selected
+    # Russian pair with that signature.
+    text = re.sub(r"\bвос\s+тока\b", "востока", text)
+    text = text.replace("ЛаМанш", "Ла-Манш")
+    text = text.replace("СанктПетербург", "Санкт-Петербург")
+
+    # The aligned OCR layer represents stress by capitalising the stressed
+    # Cyrillic vowel inside a word (e.g. лОжное). Stress is not part of the
+    # meanings schema; fold internal capitals back to ordinary orthography.
+    text = re.sub(
+        r"[А-Яа-яЁё]+",
+        lambda match: match.group(0)[0] + match.group(0)[1:].lower()
+        if re.search(r"[а-яё][А-ЯЁ]", match.group(0))
+        else match.group(0),
+        text,
+    )
+    # A ♦/¬ inside [см. ...] is a navigation glyph, not the start of a new
+    # idiom/phrasal block. Preserve the human-readable cross-reference while
+    # keeping source control glyphs out of the JSON text.
+    text = re.sub(r"(?<=\[)([^\]]*?)\s+♦\s+(?=[^\]]+\])", r"\1: ", text)
+    text = re.sub(r"♦", "идиомы", text)
+    text = re.sub(r"¬\s*", "", text)
     text = re.sub(r"\s+([,.;:!?%)\]])", r"\1", text)
     text = re.sub(r"([([])\s+", r"\1", text)
     text = re.sub(r"\s+([-–—])\s+", r" \1 ", text)
     return text.strip(" ;:")
+
+
+def normalize_number_markup(text: str) -> str:
+    """Move a numbered-sense delimiter out of an accidental italic run.
+
+    In a few source articles the font boundary falls between the digit and its
+    closing parenthesis (``3<i>) мед.</i>``).  The typography is not part of
+    the delimiter, so normalize it before structural parsing while retaining
+    the italic label which follows it.
+    """
+    return re.sub(
+        r"(?<!\d)(\d+)<i>\)\s*([^<]*)</i>",
+        lambda match: f"{match.group(1)}) <i>{match.group(2).strip()}</i>",
+        text,
+    )
 
 
 def registers_in_text(text: str) -> list[str]:
@@ -805,16 +1022,17 @@ def find_top_level_markers(text: str, delimiter: str) -> list[Marker]:
             index += 4
             continue
         char = text[index]
-        if not in_tag:
-            if char == "(":
-                paren_depth += 1
-            elif char == ")" and paren_depth:
-                paren_depth -= 1
-            elif char == "[":
-                bracket_depth += 1
-            elif char == "]" and bracket_depth:
-                bracket_depth -= 1
-            elif char.isdigit() and paren_depth == 0 and bracket_depth == 0:
+        # Markup changes font only. Parentheses can open outside an italic run
+        # and close inside it, so their nesting must be tracked across tags.
+        if char == "(":
+            paren_depth += 1
+        elif char == ")" and paren_depth:
+            paren_depth -= 1
+        elif char == "[":
+            bracket_depth += 1
+        elif char == "]" and bracket_depth:
+            bracket_depth -= 1
+        elif not in_tag and char.isdigit() and paren_depth == 0 and bracket_depth == 0:
                 previous = text[index - 1] if index else " "
                 if previous.isspace() or index == 0:
                     end = index + 1
@@ -845,16 +1063,20 @@ def split_top_level(text: str, delimiter: str = ";") -> list[str]:
             index += 4
             continue
         char = text[index]
-        if not in_tag:
-            if char == "(":
-                paren_depth += 1
-            elif char == ")" and paren_depth:
-                paren_depth -= 1
-            elif char == "[":
-                bracket_depth += 1
-            elif char == "]" and bracket_depth:
-                bracket_depth -= 1
-            elif char == delimiter and paren_depth == 0 and bracket_depth == 0:
+        if char == "(":
+            paren_depth += 1
+        elif char == ")" and paren_depth:
+            paren_depth -= 1
+        elif char == "[":
+            bracket_depth += 1
+        elif char == "]" and bracket_depth:
+            bracket_depth -= 1
+        elif (
+            not in_tag
+            and char == delimiter
+            and paren_depth == 0
+            and bracket_depth == 0
+        ):
                 parts.append(text[start:index])
                 start = index + 1
         index += 1
@@ -960,8 +1182,62 @@ def pos_prefix(text: str) -> tuple[str | None, list[str], str]:
 
 
 def major_sections(body: str) -> list[tuple[str | None, list[str], str]]:
-    markers = find_top_level_markers(body, ".")
+    candidates = find_top_level_markers(body, ".")
+
+    # A bare ``N.`` is ambiguous: the same shape occurs in clock times,
+    # decimals and cross-references (6.30, 11.6, manual 1.).  Real numbered
+    # grammar sections form a consecutive sequence beginning at 1, or begin at
+    # 2 when the first POS is unnumbered.  Restrict splitting to that structure.
+    markers: list[Marker] = []
+    plausible_starts: list[Marker] = []
+    for marker in candidates:
+        if marker.number != 1:
+            continue
+        prefix = body[: marker.start].strip()
+        prefix_pos, _, prefix_tail = pos_prefix(prefix)
+        prefix_plain = clean_plain(remove_register_tokens(prefix))
+        if not prefix_plain or (prefix_pos and not clean_plain(prefix_tail)):
+            plausible_starts.append(marker)
+
+    # A visible grammatical label is conclusive even when the printed section
+    # number is duplicated (clip II contains two separate ``2. v`` blocks).
+    markers = [marker for marker in candidates if pos_prefix(body[marker.end :])[0]]
+
+    # Some first sections carry morphology or an article-level note before
+    # ``1.`` and put their POS after it.  Others omit a repeated POS on a
+    # following section whose number is nevertheless consecutive.
+    if markers:
+        if markers[0].number == 2:
+            preceding_one = next(
+                (
+                    marker
+                    for marker in plausible_starts
+                    if marker.start < markers[0].start
+                ),
+                None,
+            )
+            if preceding_one:
+                markers.insert(0, preceding_one)
+
+        last = markers[-1]
+        expected = last.number + 1
+        trailing = next(
+            (
+                marker
+                for marker in candidates
+                if marker.start > last.start and marker.number == expected
+            ),
+            None,
+        )
+        if trailing:
+            markers.append(trailing)
+    elif plausible_starts:
+        start_marker = plausible_starts[0]
+        if pos_prefix(body[start_marker.end :])[0]:
+            markers = [start_marker]
+
     prefix_registers: list[str] = []
+    prefix_part_of_speech: str | None = None
     morphology_prefix = ""
     raw_sections: list[str] = [body.strip()]
 
@@ -973,6 +1249,7 @@ def major_sections(body: str) -> list[tuple[str | None, list[str], str]]:
         prefix_without_registers = remove_register_tokens(prefix)
         prefix_pos, _, prefix_tail = pos_prefix(prefix_without_registers)
         if prefix_pos and not clean_plain(prefix_tail):
+            prefix_part_of_speech = prefix_pos
             prefix_without_registers = ""
         prefix_plain = clean_plain(prefix_without_registers)
         prefix_plain = re.sub(r"^\[[^\]]{1,120}\]\s*", "", prefix_plain)
@@ -994,6 +1271,8 @@ def major_sections(body: str) -> list[tuple[str | None, list[str], str]]:
     for index, raw in enumerate(raw_sections):
         part_of_speech, registers, content = pos_prefix(raw)
         registers = dedupe([*prefix_registers, *registers])
+        if index == 0 and part_of_speech is None and prefix_part_of_speech:
+            part_of_speech = prefix_part_of_speech
         if index == 0 and morphology_prefix:
             content = morphology_prefix + (" " + content if content else "")
         if part_of_speech is None and len(raw_sections) > 1 and index == 0:
@@ -1106,6 +1385,8 @@ def extract_example(clause: str, word: str) -> dict[str, str] | None:
     ru_raw = clause[boundary:].strip()
 
     registers: list[str] = []
+    if "≈" in clause or "≅" in clause:
+        registers.append("приблизительный перевод")
     for content in re.findall(r"<i>(.*?)</i>", en_raw):
         registers.extend(registers_in_text(content))
     # Composite abbreviations can be split into adjacent font runs, for
@@ -1147,14 +1428,34 @@ def extract_example(clause: str, word: str) -> dict[str, str] | None:
 
 def split_embedded_examples(example: dict[str, str], word: str) -> list[dict[str, str]]:
     """Split a second English/Russian pair printed in the same source clause."""
+
+    def find_separator(text: str) -> tuple[int, int] | None:
+        paren_depth = 0
+        bracket_depth = 0
+        for index, char in enumerate(text):
+            if char == "(":
+                paren_depth += 1
+            elif char == ")" and paren_depth:
+                paren_depth -= 1
+            elif char == "[":
+                bracket_depth += 1
+            elif char == "]" and bracket_depth:
+                bracket_depth -= 1
+            elif char in ",;" and paren_depth == 0 and bracket_depth == 0:
+                tail = re.match(r"\s*(?=[A-Za-z~])", text[index + 1 :])
+                if tail:
+                    return index, index + 1 + tail.end()
+        return None
+
     results = [example]
     while True:
         current = results[-1]
         ru = current["ru"]
-        separator = re.search(r"[,;]\s*(?=[A-Za-z~])", ru)
+        separator = find_separator(ru)
         if not separator:
             break
-        remainder = ru[separator.end() :]
+        separator_start, separator_end = separator
+        remainder = ru[separator_end:]
         boundary = re.search(r"[А-Яа-яЁё]", remainder)
         if not boundary:
             break
@@ -1162,7 +1463,7 @@ def split_embedded_examples(example: dict[str, str], word: str) -> list[dict[str
         translated = remainder[boundary.start() :].strip()
         if not re.search(r"[A-Za-z]", en) or not translated:
             break
-        current["ru"] = ru[: separator.start()].rstrip()
+        current["ru"] = ru[:separator_start].rstrip()
         results.append({"en": en, "ru": translated})
     return results
 
@@ -1181,11 +1482,16 @@ def parse_sense_text(text: str, word: str) -> tuple[str, list[dict[str, str]], l
     translation_after_examples = False
 
     for clause in clauses:
+        has_approximation = "≈" in clause or "≅" in clause
         colon = top_level_colon(clause)
         if colon is not None:
             before = clean_plain(clause[:colon])
             if before:
                 translations.append(before)
+                if has_approximation:
+                    meaning_registers = dedupe(
+                        [*meaning_registers, "приблизительный перевод"]
+                    )
             clause = clause[colon + 1 :].strip()
 
         if starts_like_example(clause):
@@ -1195,6 +1501,10 @@ def parse_sense_text(text: str, word: str) -> tuple[str, list[dict[str, str]], l
                 translation_after_examples = False
                 continue
 
+        if has_approximation:
+            meaning_registers = dedupe(
+                [*meaning_registers, "приблизительный перевод"]
+            )
         plain = clean_plain(clause)
         if not plain:
             continue
@@ -1219,7 +1529,45 @@ def parse_sense_text(text: str, word: str) -> tuple[str, list[dict[str, str]], l
 
 
 def split_special_blocks(text: str) -> tuple[str, list[tuple[str, str]]]:
-    positions = [(match.start(), match.group(0)) for match in re.finditer(r"[¬♦]", text)]
+    # ♦ and ¬ also occur inside cross-references such as [см. тж. ♦] and
+    # [см. тж. ¬ go after]. Only top-level glyphs open actual special blocks.
+    # A handful of source lines print ♦ immediately before the next Arabic
+    # sense.  It is a visual separator there, not an idiom block opener.  One
+    # article (track) places that separator just outside a cross-reference;
+    # restore it to the bracket before removing top-level separators.
+    text = re.sub(r"\]\s*♦(?=\s*\d+\))", " ♦]", text)
+    text = re.sub(r"♦(?=\s*\d+\))", "", text)
+    positions: list[tuple[int, str]] = []
+    paren_depth = 0
+    bracket_depth = 0
+    in_tag = False
+    index = 0
+    while index < len(text):
+        if text.startswith("<i>", index):
+            in_tag = True
+            index += 3
+            continue
+        if text.startswith("</i>", index):
+            in_tag = False
+            index += 4
+            continue
+        char = text[index]
+        if char == "(":
+            paren_depth += 1
+        elif char == ")" and paren_depth:
+            paren_depth -= 1
+        elif char == "[":
+            bracket_depth += 1
+        elif char == "]" and bracket_depth:
+            bracket_depth -= 1
+        elif (
+            not in_tag
+            and char in "¬♦"
+            and paren_depth == 0
+            and bracket_depth == 0
+        ):
+                positions.append((index, char))
+        index += 1
     if not positions:
         return text, []
     main = text[: positions[0][0]].strip()
@@ -1263,16 +1611,25 @@ def parse_phrasal_block(
     part_of_speech: str,
     section_registers: list[str],
 ) -> dict[str, Any]:
-    boundary = first_cyrillic_outside_italic(content)
-    if boundary is None:
-        translation = expand_tilde(clean_plain(content), word)
-        examples: list[dict[str, str]] = []
-        registers: list[str] = []
-    else:
-        heading = expand_tilde(clean_plain(content[:boundary]), word).strip(" :;")
-        tail = content[boundary:].strip()
-        parsed_translation, examples, registers = parse_sense_text(tail, word)
-        translation = f"{heading} — {parsed_translation}" if parsed_translation else heading
+    # One ¬ block is one source meaning even when it lists several phrasal
+    # heads separated by semicolons. Preserve every English/Russian pair in
+    # the translation instead of letting later heads collapse into the first.
+    translations: list[str] = []
+    examples: list[dict[str, str]] = []
+    registers: list[str] = []
+    for clause in split_top_level(content):
+        example = extract_example(clause, word)
+        if example:
+            expanded_examples = split_embedded_examples(example, word)
+            examples.extend(expanded_examples)
+            translations.extend(
+                f"{item['en']} — {item['ru']}" for item in expanded_examples
+            )
+            continue
+        plain = expand_tilde(clean_plain(clause), word)
+        if plain:
+            translations.append(plain)
+    translation = "; ".join(translations)
     return {
         "partOfSpeech": part_of_speech,
         "translation": translation,
@@ -1283,7 +1640,8 @@ def parse_phrasal_block(
 
 def parse_article(article: dict[str, Any], word: str) -> list[dict[str, Any]]:
     parsed: list[dict[str, Any]] = []
-    for section_pos, section_registers, section_text in major_sections(article["body"]):
+    body = normalize_number_markup(article["body"])
+    for section_pos, section_registers, section_text in major_sections(body):
         part_of_speech = section_pos or ("article" if word.lower() == "a" else "other")
         main, blocks = split_special_blocks(section_text)
         for raw_sense in split_senses(main):
@@ -1309,15 +1667,11 @@ def parse_article(article: dict[str, Any], word: str) -> list[dict[str, Any]]:
                     parse_idiom_block(content, word, part_of_speech, section_registers)
                 )
             else:
-                # A single ¬ block can contain several phrasal heads separated
-                # by semicolons.  Split only before another tilde-headed clause.
-                phrasal_parts = re.split(r";\s*(?=~\s+[A-Za-z])", content)
-                for phrasal in phrasal_parts:
-                    parsed.append(
-                        parse_phrasal_block(
-                            phrasal, word, part_of_speech, section_registers
-                        )
+                parsed.append(
+                    parse_phrasal_block(
+                        content, word, part_of_speech, section_registers
                     )
+                )
     return parsed
 
 
@@ -1582,7 +1936,7 @@ def validate_rebuilt(entries: list[dict[str, Any]]) -> list[str]:
                 errors.append(f"{entry['word']}: POS section marker leaked")
             for example in meaning.get("examples", []):
                 if re.search(
-                    r"^(?:n|v|a|adv|pron|prep|int)$|^\(?\s*(?:pl|sing|past и|pres\. p\.|p\. p\.)\b",
+                    r"^(?:n|v|a|adv|pron|prep|int)$|^\(?\s*(?:pl|past и|pres\. p\.|p\. p\.)\b|^\(?\s*sing[.)]",
                     example.get("en", ""),
                     re.IGNORECASE,
                 ):

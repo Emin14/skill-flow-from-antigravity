@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Perfected parse_entry_meanings.py with line-break concatenation for English examples and phrases.
+Perfected parse_entry_meanings_v2.py with English homoglyph sanitizer and plural marker filters.
 """
 import sys
 import os
@@ -10,6 +10,8 @@ import unicodedata
 
 from parse_utils import REGISTER_MAP, POS_MAP
 from hyphen_protection import protect_hyphenated_russian, restore_hyphenated_russian
+from deep_cleaner import clean_russian_text_deep
+from ocr_hyphen_merger import sanitize_english_homoglyphs
 
 sys.stdout.reconfigure(encoding='utf-8')
 
@@ -26,69 +28,12 @@ def normalize_text_nfc(t):
 
 def clean_russian_text(text):
     if not text: return ""
-    text = protect_hyphenated_russian(text)
-    text = re.sub(r'([а-яёА-ЯЁa-zA-Z])-\s*([а-яёА-ЯЁa-zA-Z])', r'\1\2', text)
-    text = restore_hyphenated_russian(text)
-    
-    text = re.sub(r'\(?\s*преим\.\s*pl\s*\)?', '___PREIM_PL___', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*преим\s+pl\s*\)?', '___PREIM_PL___', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*обыкн\.\s*pl\s*\)?', '___OBYKN_PL___', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*обыкн\s+pl\s*\)?', '___OBYKN_PL___', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*преим\.\s*во\s+мн\.\s*ч\.\s*\)?', '___PREIM_PL___', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*преим\s+во\s+мн\s+ч\s*\)?', '___PREIM_PL___', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*обыкн\s+во\s+мн\s+ч\s*\)?', '___OBYKN_PL___', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*мн\s+ч\s*\)?', '(во мн.ч.)', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*ед\s+ч\s*\)?', '(в ед.ч.)', text, flags=re.IGNORECASE)
-    text = re.sub(r'\bpl\b', '(во мн.ч.)', text, flags=re.IGNORECASE)
-    text = re.sub(r'\bsg\b', '(в ед.ч.)', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*обыкн\s+pass\s*\)?', '(обыкн. в страд. залоге)', text, flags=re.IGNORECASE)
-    text = re.sub(r'\(?\s*преим\s+pass\s*\)?', '(преим. в страд. залоге)', text, flags=re.IGNORECASE)
-    text = re.sub(r'\bpass\b', 'страд. залог', text, flags=re.IGNORECASE)
-    text = re.sub(r'\bpredic\b', 'в знач. сказуемого', text, flags=re.IGNORECASE)
-    text = re.sub(r'\battr\b', 'в роли определения', text, flags=re.IGNORECASE)
-    text = re.sub(r'\bsmb\b', 'кого-л.', text)
-    text = re.sub(r'\bsmth\b', 'что-л.', text)
-    text = re.sub(r'\bsmb’s\b', 'чей-л.', text)
-    text = re.sub(r'\bsmb\'s\b', 'чей-л.', text)
-    text = re.sub(r'\bтж\b', 'также', text)
-    text = re.sub(r'\bособ\b', 'особенно', text)
-    text = re.sub(r'\bв\s+т\s+ч\b', 'в т.ч.', text)
-    text = re.sub(r'\bи\s+т\s+п\b', 'и т.п.', text)
-    text = re.sub(r'\bи\s+др\b', 'и др.', text)
-    text = re.sub(r'\bи\s+пр\b', 'и пр.', text)
-    text = re.sub(r'\bт\s+к\b', 'т.к.', text)
-    text = re.sub(r'\bт\s+е\b', 'т.е.', text)
-
-    text = re.sub(r'\bразг\b(?!\.)', 'разг.', text)
-    text = re.sub(r'\bшутл\b(?!\.)', 'шутл.', text)
-    text = re.sub(r'\bирон\b(?!\.)', 'ирон.', text)
-    text = re.sub(r'\bбран\b(?!\.)', 'бран.', text)
-    text = re.sub(r'\bгруб\b(?!\.)', 'груб.', text)
-    text = re.sub(r'\bпоэт\b(?!\.)', 'поэт.', text)
-    text = re.sub(r'\bкнижн\b(?!\.)', 'книжн.', text)
-    text = re.sub(r'\bуст\b(?!\.)', 'уст.', text)
-    text = re.sub(r'\bредк\b(?!\.)', 'редк.', text)
-    text = re.sub(r'\bамер\b(?!\.)', 'амер.', text)
-    text = re.sub(r'\bавстрал\b(?!\.)', 'австрал.', text)
-    text = re.sub(r'\bшотл\b(?!\.)', 'шотл.', text)
-
-    text = text.replace('___PREIM_PL___', '(преим. во мн.ч.)')
-    text = text.replace('___OBYKN_PL___', '(обыкн. во мн.ч.)')
-
-    text = re.sub(r'\(\s*\)', '', text)
-    text = re.sub(r'\(\s*\(', '(', text)
-    text = re.sub(r'\)\s*\)', ')', text)
-    
-    text = re.sub(r'\s+([,;:?.!)])', r'\1', text)
-    text = re.sub(r'([(])\s+', r'\1', text)
-    text = re.sub(r'\s+', ' ', text).strip()
-    
-    text = re.sub(r'^[,;:\s]+', '', text)
-    text = re.sub(r'[,;:\s]+$', '', text)
-    return unicodedata.normalize('NFC', text).strip()
+    text = re.sub(r'^\s*,\s*', '', text) # remove leading commas like ', тлв, кино...'
+    return clean_russian_text_deep(text)
 
 def clean_english_example(text):
     if not text: return ""
+    text = sanitize_english_homoglyphs(text)
     text = re.sub(r'([a-zA-Z])-\s*([a-zA-Z])', r'\1\2', text)
     text = re.sub(r'(£|\$|€)\s*(\d+)\s+(\d+)', r'\1\2\3', text)
     text = re.sub(r'(£|\$|€)\s+(\d+)', r'\1\2', text)
@@ -98,6 +43,16 @@ def clean_english_example(text):
     text = re.sub(r'\s+', ' ', text).strip()
     text = re.sub(r'^[,;:\s]+', '', text)
     text = re.sub(r'[,;:\s]+$', '', text)
+    
+    # Filter stray plural marks that are not examples
+    if text.strip() in ['genii )', 'monies ) pl', '-es )', 'pennies )', '-os )', '-da )', 'staves )', 'pl', 'pl )', ')', '(']:
+        return ""
+    if text.endswith('('):
+        text = text[:-1].strip()
+    if text.endswith(')'):
+        if text.count(')') > text.count('('):
+            text = text[:-1].strip()
+            
     return unicodedata.normalize('NFC', text).strip()
 
 def is_headword_span(s):
@@ -119,18 +74,23 @@ def parse_entry_meanings_and_phrases(raw_hw, body_spans, default_pos='other'):
         if not txt: continue
         font = s['font']
         
-        if '[' in txt and ']' not in txt:
-            in_phonetic = True
-            continue
-        if in_phonetic:
-            if ']' in txt:
-                in_phonetic = False
-            continue
-        if '[' in txt and ']' in txt:
-            txt = re.sub(r'\[.*?\]', '', txt)
-            if not txt.strip(): continue
         if 'Phonetic' in font:
             continue
+            
+        if '[' in txt and ']' not in txt:
+            in_phonetic = True
+            txt = txt[:txt.find('[')]
+            if not txt.strip(): continue
+        elif in_phonetic:
+            if ']' in txt:
+                in_phonetic = False
+                txt = txt[txt.find(']')+1:]
+                if not txt.strip(): continue
+            else:
+                continue
+        elif '[' in txt and ']' in txt:
+            txt = re.sub(r'\[.*?\]', '', txt)
+            if not txt.strip(): continue
             
         f_type = 'REG'
         if 'Bold' in font and 'Pragmatica' not in font:
@@ -151,19 +111,17 @@ def parse_entry_meanings_and_phrases(raw_hw, body_spans, default_pos='other'):
                 raw_tokens.append({'text': p, 'type': f_type, 'font': font})
 
     entry_pos = default_pos
+    
     header_idx = 0
-    while header_idx < len(raw_tokens) and header_idx < 10:
+    while header_idx < len(raw_tokens) and header_idx < 15:
         tok = raw_tokens[header_idx]
         t_clean = tok['text'].strip()
-        m_pos = re.match(r'^(n|v|adj|adv|prep|cj|num|pron|int|part|art|predic|attr)\b', t_clean)
-        if m_pos and (tok['type'] in ['ITAL', 'REG']):
+        m_pos = re.search(r'\b(n|v|adj|adv|prep|cj|num|pron|int|part|art|predic|attr)\b', t_clean)
+        if m_pos:
             p_code = m_pos.group(1)
             entry_pos = POS_MAP.get(p_code, entry_pos)
             header_idx += 1
             break
-        if t_clean.startswith('(') and (t_clean.endswith(')') or header_idx + 1 < len(raw_tokens)):
-            header_idx += 1
-            continue
         if tok['type'] == 'BOLD' and re.match(r'^\d+$', t_clean):
             break
         header_idx += 1
@@ -236,6 +194,8 @@ def parse_entry_meanings_and_phrases(raw_hw, body_spans, default_pos='other'):
             phrasal_body = sec_tokens[p_idx:]
             
             p_has_num = any(t['type'] == 'BOLD' and re.match(r'^\d+$', t['text'].strip()) for t in phrasal_body)
+            phrasal_pos = entry_pos if entry_pos != 'other' else 'verb'
+            
             if p_has_num:
                 p_blocks = []
                 curr_pb = {'num': None, 'tokens': []}
@@ -252,13 +212,13 @@ def parse_entry_meanings_and_phrases(raw_hw, body_spans, default_pos='other'):
                 p_blocks = [pb for pb in p_blocks if pb['num'] is not None]
                 
                 for pb in p_blocks:
-                    m_item = _parse_token_block(pb['tokens'], entry_pos)
+                    m_item = _parse_token_block(pb['tokens'], phrasal_pos)
                     if m_item:
                         if phrasal_verb and not m_item['examples']:
                             m_item['examples'] = [{'en': phrasal_verb, 'ru': m_item['translation']}]
                         meanings.append(m_item)
             else:
-                m_item = _parse_token_block(phrasal_body, entry_pos)
+                m_item = _parse_token_block(phrasal_body, phrasal_pos)
                 if m_item:
                     if phrasal_verb and not m_item['examples']:
                         m_item['examples'] = [{'en': phrasal_verb, 'ru': m_item['translation']}]
@@ -290,7 +250,8 @@ def _extract_phrase_pairs(tokens):
         t = tok['text']
         t_type = tok['type']
         
-        is_bold_en = (t_type == 'BOLD' or 'NewtonTd-Bold' in tok['font'] or 'Bold' in tok['font']) and bool(re.search(r'[a-zA-Z£]', t)) and not bool(re.search(r'[а-яёА-ЯЁ]', t))
+        has_cyrillic = bool(re.search(r'[а-яёА-ЯЁ]', t))
+        is_bold_en = (t_type == 'BOLD' or 'NewtonTd-Bold' in tok['font'] or 'Bold' in tok['font']) and bool(re.search(r'[a-zA-Z£]', t)) and not has_cyrillic
         
         if is_bold_en:
             if mode == 'RU':
@@ -302,19 +263,17 @@ def _extract_phrase_pairs(tokens):
                     curr_ru = []
                     mode = 'EN'
                 else:
-                    # Concatenate if incomplete
                     curr_en.append(t)
                     mode = 'EN'
             else:
                 curr_en.append(t)
                 mode = 'EN'
+        elif has_cyrillic:
+            curr_ru.append(t)
+            mode = 'RU'
         else:
             if mode == 'EN':
-                if t.strip() in ['/', ',', ';', '...'] and not curr_ru:
-                    curr_en.append(t)
-                else:
-                    curr_ru.append(t)
-                    mode = 'RU'
+                curr_en.append(t)
             elif mode == 'RU':
                 curr_ru.append(t)
                 
@@ -355,12 +314,21 @@ def _parse_token_block(tokens, default_pos):
     curr_en = []
     curr_ru = []
     
+    raw_block_text = ''.join(t['text'] for t in tokens[idx:]).strip()
+    if raw_block_text.startswith('='):
+        return {
+            'partOfSpeech': entry_pos,
+            'translation': clean_russian_text(raw_block_text),
+            'examples': []
+        }
+    
     while idx < len(tokens):
         tok = tokens[idx]
         t = tok['text']
         t_type = tok['type']
         
-        is_bold_en = (t_type == 'BOLD' or 'NewtonTd-Bold' in tok['font'] or 'Bold' in tok['font']) and bool(re.search(r'[a-zA-Z£]', t)) and not bool(re.search(r'[а-яёА-ЯЁ]', t))
+        has_cyrillic = bool(re.search(r'[а-яёА-ЯЁ]', t))
+        is_bold_en = (t_type == 'BOLD' or 'NewtonTd-Bold' in tok['font'] or 'Bold' in tok['font']) and bool(re.search(r'[a-zA-Z£]', t)) and not has_cyrillic
         
         if is_bold_en:
             if curr_mode == 'EX_RU':
@@ -379,13 +347,17 @@ def _parse_token_block(tokens, default_pos):
             else:
                 curr_en = [t]
                 curr_mode = 'EX_EN'
+        elif has_cyrillic:
+            if curr_mode == 'EX_EN':
+                curr_ru.append(t)
+                curr_mode = 'EX_RU'
+            elif curr_mode == 'EX_RU':
+                curr_ru.append(t)
+            else:
+                translations.append(t)
         else:
             if curr_mode == 'EX_EN':
-                if t.strip() in ['/', ',', ';', '...'] and not curr_ru:
-                    curr_en.append(t)
-                else:
-                    curr_ru.append(t)
-                    curr_mode = 'EX_RU'
+                curr_en.append(t)
             elif curr_mode == 'EX_RU':
                 curr_ru.append(t)
             else:
@@ -409,10 +381,18 @@ def _parse_token_block(tokens, default_pos):
     if not trans_str and not examples:
         return None
         
+    # Clean examples
+    filtered_examples = []
+    for ex in examples:
+        clean_en = clean_english_example(ex.get('en', ''))
+        clean_ru = clean_russian_text(ex.get('ru', ''))
+        if clean_en and clean_ru:
+            filtered_examples.append({'en': clean_en, 'ru': clean_ru})
+            
     m_item = {
         'partOfSpeech': entry_pos,
         'translation': trans_str,
-        'examples': examples
+        'examples': filtered_examples
     }
     if registers:
         m_item['register'] = list(dict.fromkeys(registers))
