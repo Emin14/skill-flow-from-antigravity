@@ -1,0 +1,76 @@
+[
+  {
+    "word": "burst",
+    "meaning_id": 7,
+    "before": "взрывать, разрывать, разрушать; разламывать; вскрывать; to burst into (или upon) the view внезапно появиться (в поле зрения); to burst out crying (laughing) = to burst into tears (into laughter); burst up; взорваться; потерпеть неудачу, крушение",
+    "after": "взрывать, разрывать, разрушать; разламывать; вскрывать; burst into: to burst into blossom расцвести; to burst into (или upon) the view внезапно появиться (в поле зрения); to burst out crying (laughing) = to burst into tears (into laughter); burst up; взорваться; потерпеть неудачу, крушение",
+    "action": "restore_ambiguous_block"
+  },
+  {
+    "word": "colour",
+    "meaning_id": 11,
+    "before": {
+      "en": "colour bar, colour line «",
+      "ru": "цветной барьер», расовая дискриминация"
+    },
+    "after": {
+      "en": "colour bar, colour line",
+      "ru": "«цветной барьер», расовая дискриминация"
+    },
+    "action": "repair_quote_or_hyphen_boundary"
+  },
+  {
+    "word": "cream",
+    "meaning_id": 3,
+    "before": {
+      "en": "the cream of society «",
+      "ru": "сливки общества»"
+    },
+    "after": {
+      "en": "the cream of society",
+      "ru": "«сливки общества»"
+    },
+    "action": "repair_quote_or_hyphen_boundary"
+  },
+  {
+    "word": "laugh",
+    "meaning_id": 5,
+    "before": "высмеять laugh away рассеять, прогнать смехом (скуку, опасения); заглушить смехом (речь и т. п.)",
+    "after": "высмеять laugh away рассеять, прогнать смехом (скуку, опасения); заглушить смехом (речь и т. п.); laugh out: to laugh smb. out of smth. насмешкой отучить кого-л. от чего-либо",
+    "action": "restore_ambiguous_block"
+  },
+  {
+    "word": "push",
+    "meaning_id": 7,
+    "before": "продавать наркотики push around помыкать (кем-либо); push forward; торопиться; стремиться вперёд; продвигать; способствовать осуществлению; push off; отталкиваться (от берега); отталкивать; убираться, исчезать; push on; спешить (вперёд); проталкивать, ускорять; push out; выпускать; давать ростки (о растении); выступать, выдаваться вперёд; пробиваться",
+    "after": "продавать наркотики push around помыкать (кем-либо); push forward; торопиться; стремиться вперёд; продвигать; способствовать осуществлению; push off; отталкиваться (от берега); отталкивать; убираться, исчезать; push on; спешить (вперёд); проталкивать, ускорять; push out; выпускать; давать ростки (о растении); выступать, выдаваться вперёд; пробиваться; push upon: to push smth. upon smb. навязывать что-либо кому-либо",
+    "action": "restore_ambiguous_block"
+  },
+  {
+    "word": "ring",
+    "meaning_id": 25,
+    "before": "оглашаться (with); перен. положить конец (чему-либо) [ср. тж. ring up; ]; ring in; вводить, представлять; ознаменовывать колокольным звоном; вешать трубку; ring out; прозвучать; провожать колокольным звоном; ring up; разбудить звонком; звонить, вызывать по телефону; : to ring the curtain up дать звонок к поднятию занавеса; перен. начать (что-либо) [ср. тж. ring down]",
+    "after": "оглашаться (with); ring down: to ring the curtain down дать звонок к спуску занавеса; перен. положить конец (чему-либо) [ср. тж. ring up; ]; ring in; вводить, представлять; ознаменовывать колокольным звоном; вешать трубку; ring out; прозвучать; провожать колокольным звоном; ring up; разбудить звонком; звонить, вызывать по телефону; : to ring the curtain up дать звонок к поднятию занавеса; перен. начать (что-либо) [ср. тж. ring down]",
+    "action": "restore_ambiguous_block"
+  },
+  {
+    "word": "visit",
+    "meaning_id": 10,
+    "before": "карать; отмщать (upon — кому-либо, with — чем-либо); the sins of the fathers are visited upon the children = грехи отцов падают на головы детей visit with (преим. поговорить, поболтать",
+    "after": "карать; отмщать (upon — кому-либо, with — чем-либо); the sins of the fathers are visited upon the children = грехи отцов падают на головы детей visit with (преим. поговорить, поболтать; she loves visiting with her neighbours and having a good gossip она любит поболтать и посплетничать с соседями",
+    "action": "restore_ambiguous_block"
+  },
+  {
+    "word": "winter",
+    "meaning_id": 2,
+    "before": {
+      "en": "of fifty winters 50-",
+      "ru": "летний"
+    },
+    "after": {
+      "en": "of fifty winters",
+      "ru": "50-летний"
+    },
+    "action": "repair_quote_or_hyphen_boundary"
+  }
+]

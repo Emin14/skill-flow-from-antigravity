@@ -1,0 +1,293 @@
+MANUAL AUDIT REPORT — First 500 entries
+======================================================================
+
+
+──────────────────────────────────────────────────
+WORD: a
+PDF:  a II [e (полная форма);   (редуцирован ная форма)] 1) грам. неопределённый артикль (а — перед согласными, перед eu и перед u, когда u произносится как [ju:]; an — перед гласными и перед не мым h; напр.: a horse, но an hour; a European, a union, но an umbrella; тж. a one) 2) вместо числ. один; it
+ISSUES (4):
+  [6] ocr_error | example.ru
+    OLD: некий мистер Генри Грин A
+    FIX: некий мистер Генри Грин
+    NOTE: OCR: ' A' → ''
+  [6] ocr_trailing_artifact | example.ru
+    OLD: некий мистер Генри Грин A
+    FIX: некий мистер Генри Грин
+    NOTE: Trailing letter "A" is likely a PDF column header artifact
+  [7] ocr_error | translation
+    OLD: апостериори, из опыта, по опыту a
+    FIX: апостериори, из опыта, по опыту
+    NOTE: OCR: ' a' → ''
+  [7] ocr_trailing_artifact | translation
+    OLD: апостериори, из опыта, по опыту a
+    FIX: апостериори, из опыта, по опыту
+    NOTE: Trailing letter "a" is likely a PDF column header artifact
+
+──────────────────────────────────────────────────
+WORD: abandon
+PDF:  abandon [  bænd n] 1. v 1) покидать, оставлять 2) отказываться от чегол.; to ~ the project отказаться от проекта 3) refl. предаваться (страсти, отчая нию и т.п.; to); to ~ oneself to the idea склоняться к мысли 2. n развязность, несдержанность;
+ISSUES (1):
+  [3] stuck_adverb_in_noun_translation | translation
+    OLD: развязность, несдержанность; самозабвенно
+    FIX: развязность, несдержанность
+    NOTE: Adverb stuck in noun translation (likely part of adjacent example)
+
+──────────────────────────────────────────────────
+WORD: ability
+PDF:  ability [  bl t] n 1) способность; уме ние; to the best of one's abilities по мере сил и способностей 2) дарова ние; a man of great abilities высокоода рённый человек 3) ловкость 4): ~ to
+ISSUES (1):
+  [5] ocr_error | translation
+    OLD: петенция
+    FIX: компетенция
+    NOTE: OCR: 'петенци' → 'компетенци'
+
+──────────────────────────────────────────────────
+WORD: about
+PDF:  about I [  ba t] 1. adv 1) приблизи тельно, около, почти; you are ~ right вы почти правы; it is ~ two o'clock сейчас около двух часов 2) неподалё ку, недалеко; he is somewhere ~ он гдето здесь 3) кругом, вокруг; везде, повсюду; to look ~ оглянуться вок руг; don't leave the papers ~ не разбра сывай бумаги!; rumours are ~ ходят слухи 4) в обратном направлении; to
+ISSUES (2):
+  [8] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "иметь что-либо при себе, с собой"
+  [8] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "иметь что-либо при себе, с собой"
+
+──────────────────────────────────────────────────
+WORD: above
+PDF:  above [  b v] 1. adv 1) наверху; выше 2) наверх; a staircase leading ~ лест ница (ведущая) наверх; from ~ свер ху 3) выше, раньше; as stated ~ как сказано выше 2. prep 1) над; ~ my head над моей го ловой; ~ board = aboveboard 2; ~ ground = aboveground 2; 2) свыше, больше 3) выше; ~ suspicion вне по дозрений; it is ~ me это выше моего понимания; ~ measure сверх меры 4) раньше, до (в книге, докумен
+ISSUES (1):
+  [9] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "вышеупомянутое"
+
+──────────────────────────────────────────────────
+WORD: access
+PDF:  access [ ækses] 1. n 1) проход; подход; ~ road подъездной путь 2) доступ 3) приступ (гнева, болезни) 4) ин форм. выборка (из памяти); доступ (к базе данных) 2. v информ. обращаться (к базе данных)
+ISSUES (1):
+  [4] ocr_error | translation
+    OLD: картин форм. выборка (из памяти); доступ (к базе данных)
+    FIX: информ. выборка (из памяти); доступ (к базе данных)
+    NOTE: OCR: 'картин форм.' → 'информ.'
+
+──────────────────────────────────────────────────
+WORD: accident
+PDF:  accident [ æksd nt] n 1) случай; слу чайность; by ~ случайно, нечаянно; by a lucky ~ по счастливой случайно сти 2) несчастный случай; катастро фа; авария; to meet with an ~ потер петь аварию, крушение; fatal ~ несча стный случай со смертельным исхо дом; industrial ~ несчастный случай на производстве 3) астр., геол. неров ность поверхности, складка 4) лог. случайное свойство 5) attr.: ~ insu
+ISSUES (5):
+  [1] ocr_error | example.ru
+    OLD: учайно, нечаянно
+    FIX: случайно, нечаянно
+    NOTE: OCR: 'учайно' → 'случайно'
+  [1] ocr_error | example.ru
+    OLD: учайно, нечаянно
+    FIX: случайно, нечаянно
+    NOTE: OCR: 'учайн' → 'случайн'
+  [4] ocr_error | translation
+    OLD: учайное свойство
+    FIX: случайное свойство
+    NOTE: OCR: 'учайн' → 'случайн'
+  [5] ocr_error | example.ru
+    OLD: ахование от несчастных случаев
+    FIX: страхование от несчастных случаев
+    NOTE: OCR: 'ахование' → 'страхование'
+  [5] ocr_error | example.ru
+    OLD: ахование от несчастных случаев
+    FIX: страхование от несчастных случаев
+    NOTE: OCR: 'аховани' → 'страховани'
+
+──────────────────────────────────────────────────
+WORD: accidentally
+PDF:  accidentally [ æks dentl] adv случай но; непредумышленно
+ISSUES (2):
+  [1] ocr_error | translation
+    OLD: учайно; непредумышленно
+    FIX: случайно; непредумышленно
+    NOTE: OCR: 'учайно' → 'случайно'
+  [1] ocr_error | translation
+    OLD: учайно; непредумышленно
+    FIX: случайно; непредумышленно
+    NOTE: OCR: 'учайн' → 'случайн'
+
+──────────────────────────────────────────────────
+WORD: accountant
+PDF:  accountant [  ka nt nt] n 1) бухгал тер 2) юр. ответчик
+ISSUES (1):
+  [1] ocr_error | translation
+    OLD: алтер
+    FIX: бухгалтер
+    NOTE: OCR: 'алтер' → 'бухгалтер'
+
+──────────────────────────────────────────────────
+WORD: adapt
+PDF:  adapt [  dæpt] v 1) приспосабливать, пригонять, прилаживать (to, for) 2) адаптировать, сокращать и упро щать 3) переделывать; to ~ a novel инсценировать роман 4) refl приспо сабливаться, применяться
+ISSUES (1):
+  [4] structural_refl_in_translation | translation
+    OLD: refl приспосабливаться, применяться
+    FIX: приспосабливаться, применяться
+    NOTE: refl. mark leaked into translation (should be in examples or register)
+
+──────────────────────────────────────────────────
+WORD: address
+PDF:  address [  dres] 1. n 1) (тж. информ.) адрес 2) обращение; речь; выступле ние 3) такт; ловкость; (умелое) об хождение 4) pl ухаживание; to pay
+ISSUES (1):
+  [7] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "браться, приниматься за что-либо"
+
+──────────────────────────────────────────────────
+WORD: advocate
+PDF:  advocate 1. n [ ædv k t] 1) защит ник; сторонник (мнения) 2) адвокат, защитник (особ. в Шотландии);
+ISSUES (2):
+  [2] ocr_error | example.en
+    OLD: Lord A
+    FIX: Lord
+    NOTE: OCR: ' A' → ''
+  [2] ocr_trailing_artifact | example.en
+    OLD: Lord A
+    FIX: Lord
+    NOTE: Trailing letter "A" is likely a PDF column header artifact
+
+──────────────────────────────────────────────────
+WORD: agriculture
+PDF:  agriculture [ æ r k lt ] n сельское хозяйство; земледелие; агрономия;
+ISSUES (2):
+  [1] ocr_error | example.en
+    OLD: Ministry of A
+    FIX: Ministry of
+    NOTE: OCR: ' A' → ''
+  [1] ocr_trailing_artifact | example.en
+    OLD: Ministry of A
+    FIX: Ministry of
+    NOTE: Trailing letter "A" is likely a PDF column header artifact
+
+──────────────────────────────────────────────────
+WORD: altogether
+PDF:  altogether [  :lt   e$ ] 1. adv 1) впол не, всецело, совершенно; ~ bad со вершенно негодный 2) в общем, в целом 3) всего 2. n: the ~ разг. обнажённая модель; in the ~ разг. в обнажённом виде (о модели художника) alto relievo [ ælt  r li:v  ] n (pl os [  z]) иск. горельеф
+ISSUES (2):
+  [4] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "обнажённая модель"
+  [4] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "обнажённая модель"
+
+──────────────────────────────────────────────────
+WORD: any
+PDF:  any [ en] 1. pron indef. 1) какойни будь, скольконибудь (в вопр. предл.); никакой (в отриц. предл.); can you
+ISSUES (1):
+  [3] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "если у него и были деньги, то очень немного, у него почти не"
+
+──────────────────────────────────────────────────
+WORD: arm
+PDF:  arm I [ :m] n 1) рука (от кисти до пле ча); to  fold in one's ~s заключить в объятия; under one's ~ под мышкой;
+ISSUES (1):
+  [7] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "род войск"
+
+──────────────────────────────────────────────────
+WORD: assumption
+PDF:  assumption [  s mpn] n 1) предполо жение, допущение; on the ~ that... предполагая, что... 2) присвоение, принятие на себя; ~ of power приход к власти 3) вступление (в долж ность) 4) притворство 5) высокоме рие 6) (A.) рел. Успение
+ISSUES (1):
+  [6] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "Успение"
+
+──────────────────────────────────────────────────
+WORD: assurance
+PDF:  assurance [    # ns] n 1) уверен ность, убеждённость; to make ~ do
+ISSUES (4):
+  [3] ocr_error | translation
+    OLD: ахование
+    FIX: страхование
+    NOTE: OCR: 'ахование' → 'страхование'
+  [3] ocr_error | translation
+    OLD: ахование
+    FIX: страхование
+    NOTE: OCR: 'аховани' → 'страховани'
+  [3] ocr_error | example.ru
+    OLD: ахование от пожара
+    FIX: страхование от пожара
+    NOTE: OCR: 'ахование' → 'страхование'
+  [3] ocr_error | example.ru
+    OLD: ахование от пожара
+    FIX: страхование от пожара
+    NOTE: OCR: 'аховани' → 'страховани'
+
+──────────────────────────────────────────────────
+WORD: attend
+PDF:  attend [  tend] v 1) посещать; присут ствовать (на лекциях, собраниях и т. п.); I have to ~ a meeting мне надо быть на собрании; to ~ school посе щать школу 2) сопровождать; сопут ствовать; I will ~ you to the theatre я провожу вас до театра; success ~s
+ISSUES (2):
+  [3] ocr_error | example.en
+    OLD: the patient was attended by Dr X
+    FIX: the patient was attended by Dr X
+    NOTE: OCR: ' A' → ''
+  [3] ocr_trailing_artifact | example.en
+    OLD: the patient was attended by Dr X
+    FIX: the patient was attended by Dr
+    NOTE: Trailing letter "X" is likely a PDF column header artifact
+
+──────────────────────────────────────────────────
+WORD: balance
+PDF:  balance [ bæl ns] 1. n 1) весы 2) рав новесие; ~ of forces равновесие сил; ~ of power политическое равнове сие (между государствами); to keep
+ISSUES (1):
+  [7] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "Весы (созвездие и знак зодиака)"
+
+──────────────────────────────────────────────────
+WORD: bend
+PDF:  bend [bend]  1. n 1) изгиб дороги; из лучина реки 2) сгиб, изгиб 3) мор. узел; pl шпангоуты 4) тех. колено; отвод 5) (the ~s) pl разг. кессонная болезнь ♦ round the ~ не в своём уме 2. v (bent) 1) сгибать(ся); гнуть(ся), изгибать(ся); trees ~ before the wind деревья гнутся от ветра; to ~ the
+ISSUES (1):
+  [5] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "при англ. мн. ч.: кессонная болезнь"
+
+──────────────────────────────────────────────────
+WORD: beyond
+PDF:  beyond [b  j nd] 1. adv вдали; на рас стоянии 2. prep 1) за; по ту сторону 2) позже; после; ~ the appointed hour позже на значенного часа 3) вне; сверх, выше; ~ reach вне досягаемости; ~ belief не вероятно; ~ compare вне всякого сравнения; ~ doubt бесспорно; ~ hope безнадёжно; ~ measure чрезмерно; ~ one's depth слишком трудно; it is ~ me это выше моего понимания 3. n  (the  ~)  загробная жизнь ♦ 
+ISSUES (1):
+  [5] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "загробная жизнь"
+
+──────────────────────────────────────────────────
+WORD: bite
+PDF:  bite [ba t] 1. n 1) укус 2) след укуса 3) кусок (пищи) 4) завтрак, лёгкая закуска; to have a ~ перекусить, за кусить 5) клёв (рыбы) 6) острота, едкость 7) травление (при гравиров ке) 8) мед. прикус 9) тех. зажатие, сцепление 2. v (bit; bit, bitten) 1) кусать(ся); жалить 2) клевать (о рыбе) 3) ко лоть, рубить (саблей) 4) жечь (о пер це, горчице и т. п.) 5) щипать, кусать (о морозе) 6) травить, раз
+ISSUES (1):
+  [18] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "попадаться, поддаваться обману"
+
+──────────────────────────────────────────────────
+WORD: blanket
+PDF:  blanket [ blæ k t] 1. n 1) шерстяное одеяло 2) попона, чепрак 3) чтол. за крывающее, покрывающее; покров 4) геол. нанос; поверхностный слой; отложение; покров ♦ born on the
+ISSUES (1):
+  [6] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "газетный лист большого формата"
+
+──────────────────────────────────────────────────
+WORD: blind
+PDF:  blind [bla nd] 1. a 1) слепой; ~ in one
+ISSUES (1):
+  [9] duplicate_example_ru | ?
+    OLD: 
+    NOTE: example.ru == translation: "при англ. мн. ч.: слепые"
+
+
+======================================================================
+SUMMARY
+======================================================================
+Entries checked:  500
+Found in PDF:     492
+Total issues:     41
+Time:             2.7s
+
+BY TYPE:
+  ocr_error: 19
+  duplicate_example_ru: 15
+  ocr_trailing_artifact: 5
+  stuck_adverb_in_noun_translation: 1
+  structural_refl_in_translation: 1

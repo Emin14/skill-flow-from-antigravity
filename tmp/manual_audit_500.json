@@ -1,0 +1,326 @@
+[
+  {
+    "type": "ocr_error",
+    "word": "a",
+    "meaning_id": 6,
+    "field": "example.ru",
+    "old": "некий мистер Генри Грин A",
+    "fix_hint": "некий мистер Генри Грин",
+    "detail": "OCR: ' A' → ''"
+  },
+  {
+    "type": "ocr_trailing_artifact",
+    "word": "a",
+    "meaning_id": 6,
+    "field": "example.ru",
+    "old": "некий мистер Генри Грин A",
+    "fix_hint": "некий мистер Генри Грин",
+    "detail": "Trailing letter \"A\" is likely a PDF column header artifact"
+  },
+  {
+    "type": "ocr_error",
+    "word": "a",
+    "meaning_id": 7,
+    "field": "translation",
+    "old": "апостериори, из опыта, по опыту a",
+    "fix_hint": "апостериори, из опыта, по опыту",
+    "detail": "OCR: ' a' → ''"
+  },
+  {
+    "type": "ocr_trailing_artifact",
+    "word": "a",
+    "meaning_id": 7,
+    "field": "translation",
+    "old": "апостериори, из опыта, по опыту a",
+    "fix_hint": "апостериори, из опыта, по опыту",
+    "detail": "Trailing letter \"a\" is likely a PDF column header artifact"
+  },
+  {
+    "type": "stuck_adverb_in_noun_translation",
+    "word": "abandon",
+    "meaning_id": 3,
+    "field": "translation",
+    "old": "развязность, несдержанность; самозабвенно",
+    "fix_hint": "развязность, несдержанность",
+    "detail": "Adverb stuck in noun translation (likely part of adjacent example)"
+  },
+  {
+    "type": "ocr_error",
+    "word": "ability",
+    "meaning_id": 5,
+    "field": "translation",
+    "old": "петенция",
+    "fix_hint": "компетенция",
+    "detail": "OCR: 'петенци' → 'компетенци'"
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"иметь что-либо при себе, с собой\"",
+    "word": "about",
+    "meaning_id": 8
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"иметь что-либо при себе, с собой\"",
+    "word": "about",
+    "meaning_id": 8
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"вышеупомянутое\"",
+    "word": "above",
+    "meaning_id": 9
+  },
+  {
+    "type": "ocr_error",
+    "word": "access",
+    "meaning_id": 4,
+    "field": "translation",
+    "old": "картин форм. выборка (из памяти); доступ (к базе данных)",
+    "fix_hint": "информ. выборка (из памяти); доступ (к базе данных)",
+    "detail": "OCR: 'картин форм.' → 'информ.'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "accident",
+    "meaning_id": 1,
+    "field": "example.ru",
+    "old": "учайно, нечаянно",
+    "fix_hint": "случайно, нечаянно",
+    "detail": "OCR: 'учайно' → 'случайно'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "accident",
+    "meaning_id": 1,
+    "field": "example.ru",
+    "old": "учайно, нечаянно",
+    "fix_hint": "случайно, нечаянно",
+    "detail": "OCR: 'учайн' → 'случайн'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "accident",
+    "meaning_id": 4,
+    "field": "translation",
+    "old": "учайное свойство",
+    "fix_hint": "случайное свойство",
+    "detail": "OCR: 'учайн' → 'случайн'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "accident",
+    "meaning_id": 5,
+    "field": "example.ru",
+    "old": "ахование от несчастных случаев",
+    "fix_hint": "страхование от несчастных случаев",
+    "detail": "OCR: 'ахование' → 'страхование'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "accident",
+    "meaning_id": 5,
+    "field": "example.ru",
+    "old": "ахование от несчастных случаев",
+    "fix_hint": "страхование от несчастных случаев",
+    "detail": "OCR: 'аховани' → 'страховани'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "accidentally",
+    "meaning_id": 1,
+    "field": "translation",
+    "old": "учайно; непредумышленно",
+    "fix_hint": "случайно; непредумышленно",
+    "detail": "OCR: 'учайно' → 'случайно'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "accidentally",
+    "meaning_id": 1,
+    "field": "translation",
+    "old": "учайно; непредумышленно",
+    "fix_hint": "случайно; непредумышленно",
+    "detail": "OCR: 'учайн' → 'случайн'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "accountant",
+    "meaning_id": 1,
+    "field": "translation",
+    "old": "алтер",
+    "fix_hint": "бухгалтер",
+    "detail": "OCR: 'алтер' → 'бухгалтер'"
+  },
+  {
+    "type": "structural_refl_in_translation",
+    "word": "adapt",
+    "meaning_id": 4,
+    "field": "translation",
+    "old": "refl приспосабливаться, применяться",
+    "fix_hint": "приспосабливаться, применяться",
+    "detail": "refl. mark leaked into translation (should be in examples or register)"
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"браться, приниматься за что-либо\"",
+    "word": "address",
+    "meaning_id": 7
+  },
+  {
+    "type": "ocr_error",
+    "word": "advocate",
+    "meaning_id": 2,
+    "field": "example.en",
+    "old": "Lord A",
+    "fix_hint": "Lord",
+    "detail": "OCR: ' A' → ''"
+  },
+  {
+    "type": "ocr_trailing_artifact",
+    "word": "advocate",
+    "meaning_id": 2,
+    "field": "example.en",
+    "old": "Lord A",
+    "fix_hint": "Lord",
+    "detail": "Trailing letter \"A\" is likely a PDF column header artifact"
+  },
+  {
+    "type": "ocr_error",
+    "word": "agriculture",
+    "meaning_id": 1,
+    "field": "example.en",
+    "old": "Ministry of A",
+    "fix_hint": "Ministry of",
+    "detail": "OCR: ' A' → ''"
+  },
+  {
+    "type": "ocr_trailing_artifact",
+    "word": "agriculture",
+    "meaning_id": 1,
+    "field": "example.en",
+    "old": "Ministry of A",
+    "fix_hint": "Ministry of",
+    "detail": "Trailing letter \"A\" is likely a PDF column header artifact"
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"обнажённая модель\"",
+    "word": "altogether",
+    "meaning_id": 4
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"обнажённая модель\"",
+    "word": "altogether",
+    "meaning_id": 4
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"если у него и были деньги, то очень немного, у него почти не\"",
+    "word": "any",
+    "meaning_id": 3
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"род войск\"",
+    "word": "arm",
+    "meaning_id": 7
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"Успение\"",
+    "word": "assumption",
+    "meaning_id": 6
+  },
+  {
+    "type": "ocr_error",
+    "word": "assurance",
+    "meaning_id": 3,
+    "field": "translation",
+    "old": "ахование",
+    "fix_hint": "страхование",
+    "detail": "OCR: 'ахование' → 'страхование'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "assurance",
+    "meaning_id": 3,
+    "field": "translation",
+    "old": "ахование",
+    "fix_hint": "страхование",
+    "detail": "OCR: 'аховани' → 'страховани'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "assurance",
+    "meaning_id": 3,
+    "field": "example.ru",
+    "old": "ахование от пожара",
+    "fix_hint": "страхование от пожара",
+    "detail": "OCR: 'ахование' → 'страхование'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "assurance",
+    "meaning_id": 3,
+    "field": "example.ru",
+    "old": "ахование от пожара",
+    "fix_hint": "страхование от пожара",
+    "detail": "OCR: 'аховани' → 'страховани'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "attend",
+    "meaning_id": 3,
+    "field": "example.en",
+    "old": "the patient was attended by Dr X",
+    "fix_hint": "the patient was attended by Dr X",
+    "detail": "OCR: ' A' → ''"
+  },
+  {
+    "type": "ocr_trailing_artifact",
+    "word": "attend",
+    "meaning_id": 3,
+    "field": "example.en",
+    "old": "the patient was attended by Dr X",
+    "fix_hint": "the patient was attended by Dr",
+    "detail": "Trailing letter \"X\" is likely a PDF column header artifact"
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"Весы (созвездие и знак зодиака)\"",
+    "word": "balance",
+    "meaning_id": 7
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: кессонная болезнь\"",
+    "word": "bend",
+    "meaning_id": 5
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"загробная жизнь\"",
+    "word": "beyond",
+    "meaning_id": 5
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"попадаться, поддаваться обману\"",
+    "word": "bite",
+    "meaning_id": 18
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"газетный лист большого формата\"",
+    "word": "blanket",
+    "meaning_id": 6
+  },
+  {
+    "type": "duplicate_example_ru",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: слепые\"",
+    "word": "blind",
+    "meaning_id": 9
+  }
+]

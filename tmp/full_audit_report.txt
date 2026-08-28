@@ -1,0 +1,827 @@
+======================================================================
+FULL AUDIT REPORT — oxford_5000_2026-08-27.json vs Мюллер 2021
+======================================================================
+
+Total entries:    4980
+Found in PDF:     4400
+Not found in PDF: 580
+Total issues:     5410
+
+ISSUES BY TYPE:
+  translation_mismatch: 4819
+  duplicate_translation: 301
+  ocr_error: 287
+  structural: 3
+
+======================================================================
+KNOWN CONFIRMED FIXES (from manual PDF review):
+======================================================================
+
+Word: a  meaning_id: 6
+  Field:  example.ru
+  OLD:    некий мистер Генри Грин A
+  NEW:    некий мистер Генри Грин
+  Type:   ocr_artifact
+  Reason: Trailing letter "A" is a column header artifact from PDF layout
+  Page:   15
+
+Word: a  meaning_id: 7
+  Field:  translation
+  OLD:    апостериори, из опыта, по опыту a
+  NEW:    апостериори, из опыта, по опыту
+  Type:   ocr_artifact
+  Reason: Trailing letter "a" is artifact; also meaning [7] and [8] (a posteriori/a priori) are prefix entries, not meanings of article "a"
+  Page:   15
+
+Word: abandon  meaning_id: 3
+  Field:  translation
+  OLD:    развязность, несдержанность; самозабвенно
+  NEW:    развязность, несдержанность
+  Type:   stuck_translation
+  Reason: PDF: "2. n развязность, несдержанность; with ~ не сдерживаясь; самозабвенно" — "самозабвенно" is part of the example "with ~ не сдерживаясь; самозабвенно", not the translation of the noun
+  Page:   15
+
+Word: ability  meaning_id: 5
+  Field:  translation
+  OLD:    петенция
+  NEW:    компетенция
+  Type:   ocr_error
+  Reason: OCR: "компетенция" was truncated to "петенция" (lost "ком")
+  Page:   15
+
+Word: accident  meaning_id: 1
+  Field:  example.ru
+  OLD:    учайно, нечаянно
+  NEW:    случайно, нечаянно
+  Type:   ocr_error
+  Reason: OCR: "случайно" truncated to "учайно" (lost "сл")
+  Page:   15
+
+Word: accident  meaning_id: 4
+  Field:  translation
+  OLD:    учайное свойство
+  NEW:    случайное свойство
+  Type:   ocr_error
+  Reason: OCR: "случайное" truncated to "учайное"
+  Page:   15
+
+Word: accident  meaning_id: 5
+  Field:  example.ru
+  OLD:    ахование от несчастных случаев
+  NEW:    страхование от несчастных случаев
+  Type:   ocr_error
+  Reason: OCR: "страхование" truncated to "ахование" (lost "стр")
+  Page:   15
+
+Word: accountant  meaning_id: 1
+  Field:  translation
+  OLD:    алтер
+  NEW:    бухгалтер
+  Type:   ocr_error
+  Reason: OCR: "бухгалтер" truncated to "алтер" (lost "бухг")
+  Page:   16
+
+Word: access  meaning_id: 4
+  Field:  translation
+  OLD:    картин форм. выборка (из памяти); доступ (к базе данных)
+  NEW:    выборка (из памяти); доступ (к базе данных)
+  Type:   ocr_error
+  Reason: OCR artefact: "картин форм." should be register "информ." which was corrupted. The register should be extracted to register field.
+  Page:   16
+
+
+======================================================================
+DETECTED ISSUES DETAIL:
+======================================================================
+
+
+──────────────────────────────────────────────────
+TRANSLATION_MISMATCH (4819)
+──────────────────────────────────────────────────
+  [ability] meaning 2 | translation
+  OLD: дарование
+  NOTE: Key word "дарование" not found in PDF article text
+
+  [ability] meaning 4 | translation
+  OLD: в роли определения к другому слову
+  NOTE: Key word "роли" not found in PDF article text
+
+  [abroad] meaning 2 | translation
+  OLD: широко; повсюду
+  NOTE: Key word "широко" not found in PDF article text
+
+  [absent] meaning 1 | translation
+  OLD: отсутствующий
+  NOTE: Key word "отсутствующий" not found in PDF article text
+
+  [absent] meaning 3 | translation
+  OLD: отлучаться; отсутствовать (refl. — oneself)
+  NOTE: Key word "отлучаться" not found in PDF article text
+
+  [abstract] meaning 7 | translation
+  OLD: резюмировать; суммировать
+  NOTE: Key word "резюмировать" not found in PDF article text
+
+  [abuse] meaning 4 | translation
+  OLD: неправильное употребление
+  NOTE: Key word "неправильное" not found in PDF article text
+
+  [academic] meaning 1 | translation
+  OLD: академический; учебный
+  NOTE: Key word "академический" not found in PDF article text
+
+  [academic] meaning 4 | translation
+  OLD: при англ. мн. ч.: чисто теоретические, академические аргументы и т. п
+  NOTE: Key word "англ" not found in PDF article text
+
+  [accent] meaning 1 | translation
+  OLD: произношение; акцент
+  NOTE: Key word "произношение" not found in PDF article text
+
+  [accept] meaning 2 | translation
+  OLD: допускать; соглашаться; признавать
+  NOTE: Key word "допускать" not found in PDF article text
+
+  [acceptable] meaning 1 | translation
+  OLD: приемлемый, допустимый
+  NOTE: Key word "приемлемый" not found in PDF article text
+
+  [acceptance] meaning 1 | translation
+  OLD: принятие, приём
+  NOTE: Key word "принятие" not found in PDF article text
+
+  [acceptance] meaning 5 | translation
+  OLD: в роли определения к другому слову
+  NOTE: Key word "роли" not found in PDF article text
+
+  [access] meaning 4 | translation
+  OLD: картин форм. выборка (из памяти); доступ (к базе данных)
+  NOTE: Key word "картин" not found in PDF article text
+
+  [accident] meaning 3 | translation
+  OLD: неровность поверхности, складка
+  NOTE: Key word "неровность" not found in PDF article text
+
+  [accident] meaning 5 | translation
+  OLD: в роли определения к другому слову
+  NOTE: Key word "роли" not found in PDF article text
+
+  [accidentally] meaning 1 | translation
+  OLD: учайно; непредумышленно
+  NOTE: Key word "учайно" not found in PDF article text
+
+  [accommodation] meaning 1 | translation
+  OLD: помещение; жильё; стол и ночлег
+  NOTE: Key word "помещение" not found in PDF article text
+
+  [accommodation] meaning 5 | translation
+  OLD: согласование; соглашение; компромисс
+  NOTE: Key word "согласование" not found in PDF article text
+
+  [accompany] meaning 1 | translation
+  OLD: сопровождать, сопутствовать
+  NOTE: Key word "сопровождать" not found in PDF article text
+
+  [accompany] meaning 2 | translation
+  OLD: аккомпанировать
+  NOTE: Key word "аккомпанировать" not found in PDF article text
+
+  [accomplish] meaning 1 | translation
+  OLD: совершать, (успешно) выполнять; достигать; доводить до конца, завершать
+  NOTE: Key word "совершать" not found in PDF article text
+
+  [accomplishment] meaning 2 | translation
+  OLD: достижение
+  NOTE: Key word "достижение" not found in PDF article text
+
+  [accomplishment] meaning 3 | translation
+  OLD: при англ. мн. ч.: образованность; воспитание; достоинства; совершенства
+  NOTE: Key word "англ" not found in PDF article text
+
+  [accordingly] meaning 1 | translation
+  OLD: соответственно; в соответствии
+  NOTE: Key word "соответственно" not found in PDF article text
+
+  [account] meaning 10 | translation
+  OLD: объяснять (for — что-либо)
+  NOTE: Key word "объяснять" not found in PDF article text
+
+  [accountability] meaning 1 | translation
+  OLD: ответственность
+  NOTE: Key word "ответственность" not found in PDF article text
+
+  [accountable] meaning 1 | translation
+  OLD: ответственный (to — перед кем-либо; for — за что-либо)
+  NOTE: Key word "ответственный" not found in PDF article text
+
+  [accumulate] meaning 1 | translation
+  OLD: аккумулировать, накапливать; скапливать; складывать
+  NOTE: Key word "аккумулировать" not found in PDF article text
+
+  [accumulation] meaning 3 | translation
+  OLD: накапливание; аккумуляция
+  NOTE: Key word "накапливание" not found in PDF article text
+
+  [accurate] meaning 3 | translation
+  OLD: калиброванный
+  NOTE: Key word "калиброванный" not found in PDF article text
+
+  [accused] meaning 2 | translation
+  OLD: при англ. мн. ч.: обвиняемые, подсудимые
+  NOTE: Key word "англ" not found in PDF article text
+
+  [achievement] meaning 1 | translation
+  OLD: достижение
+  NOTE: Key word "достижение" not found in PDF article text
+
+  [acid] meaning 2 | translation
+  OLD: наркотик ЛСД
+  NOTE: Key word "наркотик" not found in PDF article text
+
+  [acre] meaning 2 | translation
+  OLD: при англ. мн. ч.: земли, владения
+  NOTE: Key word "англ" not found in PDF article text
+
+  [across] meaning 1 | translation
+  OLD: на ту сторону; на той стороне
+  NOTE: Key word "сторону" not found in PDF article text
+
+  [act] meaning 1 | translation
+  OLD: деяние, поступок, действие
+  NOTE: Key word "деяние" not found in PDF article text
+
+  [act] meaning 10 | translation
+  OLD: работать, функционировать (о механизме)
+  NOTE: Key word "работать" not found in PDF article text
+
+  [action] meaning 2 | translation
+  OLD: при англ. мн. ч.: поведение
+  NOTE: Key word "англ" not found in PDF article text
+
+  [action] meaning 7 | translation
+  OLD: обвинение, иск; судебный процесс
+  NOTE: Key word "обвинение" not found in PDF article text
+
+  [action] meaning 8 | translation
+  OLD: в роли определения к другому слову
+  NOTE: Key word "роли" not found in PDF article text
+
+  [action] meaning 10 | translation
+  OLD: в роли определения к другому слову
+  NOTE: Key word "роли" not found in PDF article text
+
+  [activate] meaning 3 | translation
+  OLD: делать радиоактивным
+  NOTE: Key word "делать" not found in PDF article text
+
+  [active] meaning 2 | translation
+  OLD: действующий
+  NOTE: Key word "действующий" not found in PDF article text
+
+  [ad] meaning 1 | translation
+  OLD: объявление, реклама; сокр. от advertisement
+  NOTE: Key word "объявление" not found in PDF article text
+
+  [adapt] meaning 4 | translation
+  OLD: refl приспосабливаться, применяться
+  NOTE: Key word "приспосабливаться" not found in PDF article text
+
+  [adaptation] meaning 2 | translation
+  OLD: переделка
+  NOTE: Key word "переделка" not found in PDF article text
+
+  [address] meaning 4 | translation
+  OLD: при англ. мн. ч.: ухаживание
+  NOTE: Key word "англ" not found in PDF article text
+
+  [address] meaning 6 | translation
+  OLD: обращаться (к кому-либо); выступать
+  NOTE: Key word "обращаться" not found in PDF article text
+
+
+──────────────────────────────────────────────────
+DUPLICATE_TRANSLATION (301)
+──────────────────────────────────────────────────
+  [about] meaning 8 | example.ru
+  OLD: иметь что-либо при себе, с собой
+  NOTE: Example ru duplicates meaning translation
+
+  [about] meaning 8 | example.ru
+  OLD: иметь что-либо при себе, с собой
+  NOTE: Example ru duplicates meaning translation
+
+  [above] meaning 9 | example.ru
+  OLD: вышеупомянутое
+  NOTE: Example ru duplicates meaning translation
+
+  [address] meaning 7 | example.ru
+  OLD: браться, приниматься за что-либо
+  NOTE: Example ru duplicates meaning translation
+
+  [altogether] meaning 4 | example.ru
+  OLD: обнажённая модель
+  NOTE: Example ru duplicates meaning translation
+
+  [altogether] meaning 4 | example.ru
+  OLD: обнажённая модель
+  NOTE: Example ru duplicates meaning translation
+
+  [any] meaning 3 | example.ru
+  OLD: если у него и были деньги, то очень немного, у него почти не было денег
+  NOTE: Example ru duplicates meaning translation
+
+  [arm] meaning 7 | example.ru
+  OLD: род войск
+  NOTE: Example ru duplicates meaning translation
+
+  [assumption] meaning 6 | example.ru
+  OLD: Успение
+  NOTE: Example ru duplicates meaning translation
+
+  [balance] meaning 7 | example.ru
+  OLD: Весы (созвездие и знак зодиака)
+  NOTE: Example ru duplicates meaning translation
+
+  [bend] meaning 5 | example.ru
+  OLD: при англ. мн. ч.: кессонная болезнь
+  NOTE: Example ru duplicates meaning translation
+
+  [beyond] meaning 5 | example.ru
+  OLD: загробная жизнь
+  NOTE: Example ru duplicates meaning translation
+
+  [bite] meaning 18 | example.ru
+  OLD: попадаться, поддаваться обману
+  NOTE: Example ru duplicates meaning translation
+
+  [blanket] meaning 6 | example.ru
+  OLD: газетный лист большого формата
+  NOTE: Example ru duplicates meaning translation
+
+  [blind] meaning 9 | example.ru
+  OLD: при англ. мн. ч.: слепые
+  NOTE: Example ru duplicates meaning translation
+
+  [book] meaning 2 | example.ru
+  OLD: Библия
+  NOTE: Example ru duplicates meaning translation
+
+  [boot] meaning 5 | example.ru
+  OLD: увольнение (с работы)
+  NOTE: Example ru duplicates meaning translation
+
+  [born] meaning 2 | example.ru
+  OLD: прирождённый
+  NOTE: Example ru duplicates meaning translation
+
+  [break] meaning 4 | example.ru
+  OLD: рассвет
+  NOTE: Example ru duplicates meaning translation
+
+  [break] meaning 4 | example.ru
+  OLD: рассвет
+  NOTE: Example ru duplicates meaning translation
+
+  [buddy] meaning 1 | example.ru
+  OLD: коляска мотоцикла
+  NOTE: Example ru duplicates meaning translation
+
+  [bus] meaning 4 | example.ru
+  OLD: ехать в автобусе, омнибусе
+  NOTE: Example ru duplicates meaning translation
+
+  [cabinet] meaning 3 | example.ru
+  OLD: кабинет министров, правительство
+  NOTE: Example ru duplicates meaning translation
+
+  [capital] meaning 7 | example.ru
+  OLD: прописная буква
+  NOTE: Example ru duplicates meaning translation
+
+  [cease] meaning 3 | example.ru
+  OLD: непрестанно
+  NOTE: Example ru duplicates meaning translation
+
+  [cease] meaning 3 | example.ru
+  OLD: непрестанно
+  NOTE: Example ru duplicates meaning translation
+
+  [certain] meaning 4 | example.ru
+  OLD: удостовериться в
+  NOTE: Example ru duplicates meaning translation
+
+  [certain] meaning 4 | example.ru
+  OLD: удостовериться в
+  NOTE: Example ru duplicates meaning translation
+
+  [certain] meaning 6 | example.ru
+  OLD: не знать наверняка
+  NOTE: Example ru duplicates meaning translation
+
+  [cheap] meaning 6 | example.ru
+  OLD: по невысокой цене, по дешёвке
+  NOTE: Example ru duplicates meaning translation
+
+  [clock] meaning 2 | example.ru
+  OLD: который час?
+  NOTE: Example ru duplicates meaning translation
+
+  [collective] meaning 2 | example.ru
+  OLD: имя существительное собирательное
+  NOTE: Example ru duplicates meaning translation
+
+  [congregation] meaning 2 | example.ru
+  OLD: университетский совет
+  NOTE: Example ru duplicates meaning translation
+
+  [conservative] meaning 3 | example.ru
+  OLD: относящийся к консервативной партии
+  NOTE: Example ru duplicates meaning translation
+
+  [conservative] meaning 6 | example.ru
+  OLD: член консервативной партии
+  NOTE: Example ru duplicates meaning translation
+
+  [constitutional] meaning 3 | example.ru
+  OLD: формула строения, структурная формула
+  NOTE: Example ru duplicates meaning translation
+
+  [cope] meaning 2 | example.ru
+  OLD: небесный свод
+  NOTE: Example ru duplicates meaning translation
+
+  [cope] meaning 2 | example.ru
+  OLD: небесный свод
+  NOTE: Example ru duplicates meaning translation
+
+  [could] meaning 1 | example.ru
+  OLD: от
+  NOTE: Example ru duplicates meaning translation
+
+  [course] meaning 8 | example.ru
+  OLD: валютный курс
+  NOTE: Example ru duplicates meaning translation
+
+  [craft] meaning 6 | example.ru
+  OLD: масонское братство
+  NOTE: Example ru duplicates meaning translation
+
+  [creator] meaning 2 | example.ru
+  OLD: бог
+  NOTE: Example ru duplicates meaning translation
+
+  [dead] meaning 19 | example.ru
+  OLD: при англ. мн. ч.: умершие, покойники
+  NOTE: Example ru duplicates meaning translation
+
+  [debate] meaning 3 | example.ru
+  OLD: при англ. мн. ч.: официальный отчёт о парламентских заседаниях
+  NOTE: Example ru duplicates meaning translation
+
+  [democracy] meaning 4 | example.ru
+  OLD: демократическая партия
+  NOTE: Example ru duplicates meaning translation
+
+  [destructive] meaning 3 | example.ru
+  OLD: сухая перегонка
+  NOTE: Example ru duplicates meaning translation
+
+  [diary] meaning 4 | example.ru
+  OLD: рассеяние, еврейская диаспора
+  NOTE: Example ru duplicates meaning translation
+
+  [directory] meaning 4 | example.ru
+  OLD: Директория
+  NOTE: Example ru duplicates meaning translation
+
+  [dirty] meaning 7 | example.ru
+  OLD: подложить свинью кому-либо
+  NOTE: Example ru duplicates meaning translation
+
+  [dog] meaning 10 | example.ru
+  OLD: при англ. мн. ч.: состязание борзых
+  NOTE: Example ru duplicates meaning translation
+
+
+──────────────────────────────────────────────────
+OCR_ERROR (287)
+──────────────────────────────────────────────────
+  [a] meaning 6 | example.ru
+  OLD: некий мистер Генри Грин A
+  NOTE: trailing uppercase letter (column header artifact)
+
+  [academic] meaning 4 | translation
+  OLD: при англ. мн. ч.: чисто теоретические, академические аргументы и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [access] meaning 4 | translation
+  OLD: картин форм. выборка (из памяти); доступ (к базе данных)
+  NOTE: OCR: картин форм. → информ.
+
+  [accident] meaning 1 | example.ru
+  OLD: учайно, нечаянно
+  NOTE: учайно → случайно
+
+  [accident] meaning 1 | example.ru
+  OLD: учайно, нечаянно
+  NOTE: учайн → случайн
+
+  [accident] meaning 4 | translation
+  OLD: учайное свойство
+  NOTE: учайн → случайн
+
+  [accident] meaning 5 | example.ru
+  OLD: ахование от несчастных случаев
+  NOTE: ахование → страхование
+
+  [accident] meaning 5 | example.ru
+  OLD: ахование от несчастных случаев
+  NOTE: ахование → страхование
+
+  [accidentally] meaning 1 | translation
+  OLD: учайно; непредумышленно
+  NOTE: учайно → случайно
+
+  [accidentally] meaning 1 | translation
+  OLD: учайно; непредумышленно
+  NOTE: учайн → случайн
+
+  [accountant] meaning 1 | translation
+  OLD: алтер
+  NOTE: алтер → бухгалтер
+
+  [add] meaning 2 | example.ru
+  OLD: сводиться к
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [advocate] meaning 2 | example.en
+  OLD: Lord A
+  NOTE: trailing uppercase letter (column header artifact)
+
+  [against] meaning 2 | translation
+  OLD: опору, фон, препятствие о, об, по, на, к
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [against] meaning 3 | translation
+  OLD: непосредственное соседство рядом, у
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [against] meaning 4 | translation
+  OLD: столкновение или соприкосновение на, с
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [agriculture] meaning 1 | example.en
+  OLD: Ministry of A
+  NOTE: trailing uppercase letter (column header artifact)
+
+  [album] meaning 3 | translation
+  OLD: книга автографов известных актёров, спортсменов и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [ally] meaning 2 | translation
+  OLD: соединять; иметь общие черты с
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [ally] meaning 2 | example.ru
+  OLD: быть тесно связанным с
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [analogy] meaning 1 | example.ru
+  OLD: по аналогии с
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [and] meaning 1 | translation
+  OLD: соединительный союз и
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [anxious] meaning 1 | example.ru
+  OLD: беспокоиться о
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [assess] meaning 2 | translation
+  OLD: определять сумму налога, штрафа и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [assurance] meaning 3 | translation
+  OLD: ахование
+  NOTE: ахование → страхование
+
+  [assurance] meaning 3 | translation
+  OLD: ахование
+  NOTE: ахование → страхование
+
+  [assurance] meaning 3 | example.ru
+  OLD: ахование от пожара
+  NOTE: ахование → страхование
+
+  [assurance] meaning 3 | example.ru
+  OLD: ахование от пожара
+  NOTE: ахование → страхование
+
+  [at] meaning 2 | translation
+  OLD: во временном значении указывает на; момент или период времени в, на; во время обеда; возраст в
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [at] meaning 6 | translation
+  OLD: указывает на источник из, в
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [at] meaning 9 | translation
+  OLD: указывает на сферу проявления способностей к
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [attend] meaning 3 | example.en
+  OLD: the patient was attended by Dr X
+  NOTE: trailing uppercase letter (column header artifact)
+
+  [attend] meaning 3 | example.ru
+  OLD: больного лечил доктор Х
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [away] meaning 1 | translation
+  OLD: обозначает отдаление от данного места далеко и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [bare] meaning 4 | example.ru
+  OLD: при одном упоминании о
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [beside] meaning 2 | translation
+  OLD: по сравнению с
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [bin] meaning 3 | translation
+  OLD: хранить в закромах и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [bold] meaning 2 | example.ru
+  OLD: позволять себе вольности с
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [bomb] meaning 7 | translation
+  OLD: сигарета с марихуаной и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [by] meaning 2 | translation
+  OLD: во временном значении указывает на приближение к определённому моменту, сроку и т. п. к
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [cabin] meaning 9 | translation
+  OLD: помещать в тесную комнату, кабину и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [casual] meaning 1 | translation
+  OLD: учайный
+  NOTE: учайн → случайн
+
+  [casual] meaning 3 | translation
+  OLD: учайный, нерегулярный; casual labourer (или worker) рабочий, не имеющий постоянной работы
+  NOTE: учайн → случайн
+
+  [casual] meaning 7 | translation
+  OLD: у чайный посетитель, клиент, покупатель и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [ceiling] meaning 4 | translation
+  OLD: максимальная цена; максимальный выпуск продукции и т. п
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [central] meaning 1 | translation
+  OLD: расположенный в центре или недалеко от центра; C. Asia; Средняя Азия; Центральная Азия
+  NOTE: maybe OK but check
+
+  [certain] meaning 4 | translation
+  OLD: удостовериться в
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [certain] meaning 4 | example.ru
+  OLD: удостовериться в
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [certain] meaning 4 | example.ru
+  OLD: удостовериться в
+  NOTE: possible truncated end of line (single Cyrillic char)
+
+  [chance] meaning 1 | example.ru
+  OLD: учайно
+  NOTE: учайно → случайно
+
+
+──────────────────────────────────────────────────
+STRUCTURAL (3)
+──────────────────────────────────────────────────
+  [adapt] meaning 4 | translation
+  OLD: refl приспосабливаться, применяться
+  NOTE: refl. mark should be in register, not translation
+
+  [drum] meaning 8 | translation
+  OLD: to drum smth. into smb., to drum smth. into smb.'s head вдалбливать что-либо кому-либо
+  NOTE: example leaked into translation
+
+  [rage] meaning 7 | translation
+  OLD: refl.
+  NOTE: refl. mark should be in register, not translation
+
+
+======================================================================
+NOT FOUND IN PDF (first 100):
+  a
+  about
+  according to
+  activation
+  additionally
+  adequately
+  affect
+  AIDS
+  all right
+  ally
+  amazed
+  angle
+  any more
+  app
+  appropriately
+  April
+  arm
+  arms
+  art
+  ash
+  August
+  automatically
+  back
+  bail
+  ball
+  band
+  bank1
+  bank2
+  bank3
+  base
+  bass
+  bat
+  bay
+  bear1
+  bear2
+  bell
+  bent
+  better
+  bill
+  bit
+  blog
+  blow
+  board
+  boast
+  boil
+  bond
+  boom
+  boot
+  boss
+  bottle
+  bound
+  bow
+  bowl
+  box
+  bridge
+  broadband
+  buck
+  burden
+  burn
+  bush
+  business
+  but
+  bye
+  can1
+  can2
+  capital
+  card
+  case
+  cat
+  cave
+  CD
+  chase
+  chat
+  cheese
+  chop
+  clip
+  clock
+  close
+  club
+  coach
+  compound
+  confusing
+  consistently
+  content
+  continent
+  continually
+  cooking
+  coordinator
+  cop
+  cope
+  copper
+  cotton
+  counselling
+  count
+  counter
+  cow
+  crash
+  crew
+  critically
+  cue

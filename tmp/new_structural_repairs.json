@@ -1,0 +1,100 @@
+[
+  {
+    "word": "her",
+    "meaning_id": 2,
+    "before": "свой; принадлежащий ей",
+    "after": "свой; принадлежащий ей; употр. атрибутивно",
+    "reason": "grammar-label-not-example"
+  },
+  {
+    "word": "hers",
+    "meaning_id": 1,
+    "before": "свой; принадлежащий ей",
+    "after": "свой; принадлежащий ей; абсолютная форма",
+    "reason": "grammar-label-not-example"
+  },
+  {
+    "word": "its",
+    "meaning_id": 1,
+    "before": "свой; принадлежащий ему, ей",
+    "after": "свой; принадлежащий ему, ей; (о предметах и животных) его, её",
+    "reason": "grammar-label-not-example"
+  },
+  {
+    "word": "mine1",
+    "meaning_id": 1,
+    "before": "мой; моя; моё",
+    "after": "мой; моя; моё; абсолютная форма, не употр. атрибутивно",
+    "reason": "grammar-label-not-example"
+  },
+  {
+    "word": "mine2",
+    "meaning_id": 1,
+    "before": "мой; моя; моё",
+    "after": "мой; моя; моё; абсолютная форма, не употр. атрибутивно",
+    "reason": "grammar-label-not-example"
+  },
+  {
+    "word": "their",
+    "meaning_id": 1,
+    "before": "свой, свои",
+    "after": "свой, свои; употр. атрибутивно",
+    "reason": "grammar-label-not-example"
+  },
+  {
+    "word": "theirs",
+    "meaning_id": 1,
+    "before": "не употр. атрибутивно",
+    "after": "не употр. атрибутивно; абсолютная форма",
+    "reason": "grammar-label-not-example"
+  },
+  {
+    "word": "your",
+    "meaning_id": 1,
+    "before": "твой",
+    "after": "твой; (употр. атрибутивно: ср. yours) ваш",
+    "reason": "grammar-label-not-example"
+  },
+  {
+    "word": "itself",
+    "meaning_id": 1,
+    "before": "-ся, -сь; себе",
+    "after": "сам, сама, само; -ся, -сь; себе; себя",
+    "reason": "truncated-reflexive-pronoun"
+  },
+  {
+    "word": "jurisdiction",
+    "meaning_id": 3,
+    "before": "это не входит в мою компетенцию jurisprudence 428",
+    "after": "это не входит в мою компетенцию",
+    "reason": "next-headword/page leak"
+  },
+  {
+    "word": "jury",
+    "meaning_id": 1,
+    "before": "petty (или common, trial) jury 12",
+    "after": "petty (или common, trial) jury",
+    "reason": "page-number leak"
+  },
+  {
+    "word": "lift",
+    "meaning_id": 21,
+    "before": "ликвидировать задолженность, уплатить долги lift down поднять и затем опустить вниз",
+    "after": "ликвидировать задолженность, уплатить долги",
+    "reason": "phrasal-verb block"
+  },
+  {
+    "word": "light",
+    "meaning_id": 1,
+    "before": "свет; освещение; дневной свет; to see the light; увидеть свет, родиться; выйти из печати; обратиться (в какую-либо веру и т. п.); понять; убедиться; перен. мешать, стоять на дороге",
+    "after": "свет; освещение; дневной свет",
+    "reason": "idiom block"
+  },
+  {
+    "word": "light",
+    "meaning_id": 4,
+    "before": "(часто при англ. мн. ч.:) светофор; green light. «зелёная улица»",
+    "after": "(часто при англ. мн. ч.:) светофор",
+    "reason": "idiom block"
+  }
+]

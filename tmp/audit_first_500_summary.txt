@@ -1,0 +1,752 @@
+FULL AUDIT SUMMARY FOR FIRST 500 WORDS (Found 79 words with issues)
+======================================================================
+
+[1] WORD: a (6 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: перед гласными и перед немым h
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: это стоит один фунт
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: и перед счётными существительными a dozen дюжина, a score два десятка, a hundred
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: все одной и той же величины
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: каждый
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: некий
+
+[2] WORD: abandon (1 issues)
+  - [4] stuck_adverb | translation: adverb stuck in noun translation
+    VAL: развязность, несдержанность; самозабвенно
+
+[11] WORD: absent (1 issues)
+  - [2] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: рассеянный 2. v refl. отлучиться; отсутствовать
+
+[19] WORD: academic (1 issues)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: чисто теоретические, академические аргументы и т. п
+
+[26] WORD: access (1 issues)
+  - [4] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: доступ (к базе данных) 2. v информ. обращаться (к базе данных)
+
+[28] WORD: accident (1 issues)
+  - [5] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: скан- ≅ дал в благородном семействе
+
+[34] WORD: accomplishment (1 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: образованность; воспитание; достоинства; совершенства
+
+[38] WORD: account (22 issues)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: текущий счёт
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: вклад в банке, депозит
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: общий счёт
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: бухг. вести книги
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: рассчитывать на что-либо
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: принимать что-либо в расчёт
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: рассчитываться с кем-либо
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: (сводить счёты с кем-либо отчёт)
+  - [12] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: давать отчёт в чём-либо
+  - [13] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: (призвать к ответу, потребовать объяснения, отчёта основание, причина)
+  - [14] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: из-за, вследствие
+  - [15] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: (ни в коем случае значение, важность)
+  - [16] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: no account незначительный
+  - [17] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: (придавать значение выгода, польза)
+  - [18] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: использовать
+  - [19] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: извлекать выгоду
+  - [20] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: (использовать что-либо в своих интересах торговый баланс attr.: account book кон
+  - [20] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: (использовать что-либо в своих интересах торговый баланс attr.: account book кон
+  - [21] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: день Страшного суда, судный день
+  - [22] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: на свой страх и риск
+  - [23] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: самостоятельно
+  - [24] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ради кого-либо
+
+[56] WORD: acre (3 issues)
+  - [2] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: ≅ земли, владения
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ≅ земли, владения
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: кладбище
+
+[59] WORD: action (12 issues)
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: поведение
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: действие, воздействие
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: деятельность
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: бой
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: пасть в бою
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: действие, работа (механизма)
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: обвинение, иск; судебный процесс
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: радиус действия (самолёта и т. п.)
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: боевой
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: форма абстрактной живописи (разбрызгивание краски по холсту)
+  - [12] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. ≅ не по словам судят, а по делам
+  - [12] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: посл. ≅ не по словам судят, а по делам
+
+[71] WORD: adapt (1 issues)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: приспосабливаться, применяться
+
+[78] WORD: address (1 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ухаживание
+
+[108] WORD: affair (3 issues)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: дела, занятия
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: грандиозное событие
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: любовная связь, роман
+
+[113] WORD: afraid (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: боящийся
+
+[114] WORD: after (1 issues)
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: после того как
+
+[119] WORD: against (13 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: указывает на
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: они плыли против ветра
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: на тёмном фоне
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: дом рядом с кинотеатром
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: наскочить на скалу
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: к концу месяца
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: она сделала это против моей воли
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: про чёрный день
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: стоять перед задачей
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: встретить трудности
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: стараться кончить работу к определённому времени
+  - [12] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: наговорить на кого-либо
+  - [13] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: кто против?
+
+[123] WORD: agenda (3 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: иногда употр. как sing
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: повестка дня
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: последовательность операций в ЭВМ
+
+[124] WORD: agent (3 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: агентура
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: действующая сила; фактор; вещество
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: разбойник с большой дороги
+
+[132] WORD: ah (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ах!, а!
+
+[134] WORD: aid (3 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: вспомогательные средства; пособия
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: сборы, налоги, дань
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: вспомогательные войска
+
+[138] WORD: air (18 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: аффектация, важничанье
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: песня; ария; мелодия
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: дуновение, ветерок
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: «висеть в воздухе», находиться в неопределённом положении
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: носиться в воздухе
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ходят слухи
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: быть незащищённым с флангов
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: появиться неожиданно
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: скрыться из виду, бесследно исчезнуть
+  - [12] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: передаваться по радио
+  - [13] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: выступать по радио
+  - [14] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: вести передачи
+  - [15] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: они кончили радиопередачу
+  - [16] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: разрядить атмосферу, обстановку
+  - [17] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: уволить кого-либо. со службы
+  - [18] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ног под собой не чуять
+  - [19] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ликовать, радоваться
+  - [20] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: предать что-либо гласности
+
+[143] WORD: albeit (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: даже хотя, тем не менее
+
+[152] WORD: alive (11 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: живой; в живых
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: существующий; вызывающий интерес
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: действующий, работающий, на ходу
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: живой, бодрый
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: чуткий (к чему-либо.), ясно понимающий (что-либо.)
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: кишащий (with)
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: жив и здоров
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: полон жизни
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: живей!
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: живей!, пошевеливайся!
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: выражение удивления: man alive! I am glad to see you! боже мой, как я рад вас ви
+
+[154] WORD: all right (1 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: хорошо!, ладно!, согласен!
+
+[162] WORD: allowance (3 issues)
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: довольствие
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: разрешение, позволение
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: допуск
+
+[172] WORD: although (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: хотя, если бы даже; несмотря на то, что
+
+[195] WORD: ancient (2 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: древние народы
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: античные писатели
+
+[196] WORD: and (8 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: мальчики и девочки
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: сто двадцать
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: я пойду, а ты оставайся здесь
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: приходите посмотреть
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: бесконечно
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: очень далеко
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: часами, очень долго
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: и всё же
+
+[197] WORD: angel (1 issues)
+  - [2] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: глупо и самонадеянно пускаться в рискованное предприятие 2. v поддерживать (како
+
+[213] WORD: another (8 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ещё один
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: новый, ещё один, похожий
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: другой, отличный
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: загробный, потусторонний мир
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: совсем другое дело
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: вместе взятые
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: в среднем
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: парл. другая палата
+
+[220] WORD: anybody (3 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: кто-нибудь (в вопр. предл.); никто (в отриц. предл.)
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: любой (в утв. предл.)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: может быть и так, кто знает
+
+[221] WORD: anyone (2 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: кто-нибудь (в вопр. предл.); никто (в отриц. предл.)
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: любой, всякий (в утв. предл.)
+
+[222] WORD: anything (9 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: что-нибудь (в вопр. предл.); ничто (в отриц. предл.)
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: что угодно, всё (в утв. предл.); take anything you like возьмите всё, что вам нр
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: всё что угодно, только не; he is anything but a coward он всё что угодно, только
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: далеко не; it is anything but clear это далеко не ясно
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: сильно, стремительно, изо всех сил
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: он бежал изо всех сил
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: чрезвычайно, очень, ужасно
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: пожалуй, если хотите
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: пожалуй, он совсем не изменился
+
+[226] WORD: apartment (3 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: меблированные комнаты
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: комната
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: квартира в доме без лифта
+
+[233] WORD: appeal (1 issues)
+  - [13] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: уговаривать отказаться от необду- ≅ манного решения
+
+[239] WORD: apple (1 issues)
+  - [6] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. паршивая овца всё стадо ≅ портит
+
+[245] WORD: appointment (1 issues)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: оборудование; обстановка, мебель
+
+[248] WORD: approach (2 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: авансы; попытки
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: заход на посадку по приборам
+
+[266] WORD: arm (3 issues)
+  - [13] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: война, военные действия
+  - [14] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: герб (обыкн. coat of arms)
+  - [15] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: гонка вооружений
+
+[281] WORD: artificial (1 issues)
+  - [2] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: притворный 2. n pl искусственное удобрение
+
+[285] WORD: as (8 issues)
+  - [26] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: когда, в то время как (or just as)
+  - [27] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: так как
+  - [28] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: хотя; как ни
+  - [29] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: как будто
+  - [30] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: так сказать
+  - [31] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: относительно, что касается
+  - [32] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: они осведомились об истинной причине
+  - [33] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: отставить!
+
+[286] WORD: ash (3 issues)
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: прах, останки
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: разлететься в прах (о надеждах)
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: рябина
+
+[287] WORD: ashamed (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: пристыженный
+
+[290] WORD: asleep (3 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: спящий
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: тупой, вялый
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: затёкший (о руке, ноге)
+
+[291] WORD: aspect (1 issues)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: перспективы
+
+[321] WORD: attach (1 issues)
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: военно-воздушный (военный, морской) атташе
+
+[323] WORD: attack (4 issues)
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: нападки
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: приступ болезни, припадок
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: нападение
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: штурмовой
+
+[328] WORD: attention (2 issues)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ухаживание
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: смирно!
+
+[330] WORD: attorney (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: адвокат; юрист; прокурор; министр юстиции (в США)
+
+[345] WORD: auto (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: см. automatic 1
+
+[356] WORD: aware (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: знающий, осведомлённый
+
+[362] WORD: back (1 issues)
+  - [22] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: знать как свои пять пальцев ≅
+
+[368] WORD: bacteria (1 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: от bacterium
+
+[372] WORD: bag (23 issues)
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: мешки (под глазами)
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: баллон
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: полость (в горной породе), карман
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: полость
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: вымя
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: дипломатическая почта
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: дело в шляпе
+  - [12] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: дело верное
+  - [13] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: стараться захватить, зариться (на что-либо.)
+  - [14] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: со всеми пожитками
+  - [15] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: совершенно
+  - [16] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: в общем, в совокупности
+  - [17] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: болтун, пустозвон, хвастун
+  - [18] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: почтовый мешок для писем, полученных после установленного срока приёма почты
+  - [19] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: всяческие ухищрения
+  - [20] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: всё без остатка
+  - [21] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: в качестве крайнего средства
+  - [22] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: покинуть кого-либо. в беде
+  - [23] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: улизнуть от кого-либо
+  - [24] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: взять верх над кем-либо, одолеть кого-либо
+  - [25] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: распоряжаться деньгами
+  - [26] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: быть хозяином положения
+  - [27] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: захватить, уничтожить что-либо
+
+[383] WORD: band (2 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: две белые полоски, спускающиеся с воротника (судьи, англиканского священника)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ленточный
+
+[387] WORD: banner (1 issues)
+  - [3] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: скитаться всю ночь, не имея пристанища 2. a (наи)лучший
+
+[388] WORD: bar (5 issues)
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: решётка
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: такт
+  - [22] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: барьер, отделяющий судей от подсудимых
+  - [23] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: адвокатура
+  - [24] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: суд, суждение
+
+[404] WORD: bat (1 issues)
+  - [14] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: гулять, кутить
+
+[410] WORD: bay (2 issues)
+  - [20] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: лавры, лавровый венок
+  - [21] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: лавровишневая вода (лосьон для волос)
+
+[411] WORD: be (22 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: быть, существовать
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: находиться; бывать
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: происходить, случаться
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: стоить
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: мне холодно
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: как вспомогательный глагол служит
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: для образования длительной формы: I am reading я читаю
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: для образования пассива: such questions are settled by the committee подобные во
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: он должен быть там сейчас
+  - [33] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: здравствуйте!, как поживаете?
+  - [34] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: собираться (с inf. часто придаёт значение будущего времени)
+  - [35] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: часы сейчас будут бить
+  - [36] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: оставлять в покое
+  - [37] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: прийти в себя
+  - [38] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: быть самим собой
+  - [39] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: быть одним из (группы, класса и т. п.)
+  - [40] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: они знали, что он придерживается другого мнения
+  - [41] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: быть свойственным, характерным для кого-либо
+  - [42] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: это не в его натуре, на него это не похоже
+  - [43] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: это всё уже известно
+  - [44] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: ну и наделали вы дел ≅
+  - [44] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ну и наделали вы дел ≅
+
+[415] WORD: bear1 (1 issues)
+  - [6] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: делить шкуру неубитого медведя 2. v бирж. играть на понижение
+
+[416] WORD: bear2 (1 issues)
+  - [6] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: делить шкуру неубитого медведя 2. v бирж. играть на понижение
+
+[420] WORD: beauty (1 issues)
+  - [4] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: не по хорошу мил, а ≅ по милу хорош
+
+[421] WORD: because (2 issues)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: потому что; так как
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: (употр. как предлог) из-за, вследствие
+
+[423] WORD: bed (2 issues)
+  - [15] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: ложиться засветло и ≅ вставать с петухами
+  - [16] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: встать с левой ≅ ноги, быть в плохом настроении
+
+[428] WORD: before (1 issues)
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: прежде чем
+
+[431] WORD: beginning (5 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: истоки, начальная стадия
+  - [4] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. хорошее начало полдела от- ≅ качало
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: посл. хорошее начало полдела от- ≅ качало
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: посл. что посеешь, то и пожнёшь
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: посл. начиная дело, думай о конце
+
+[446] WORD: bend (4 issues)
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: шпангоуты
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: отвод
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: кессонная болезнь
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: не в своём уме
+
+[451] WORD: bent (1 issues)
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: и p. p. от bend 2
+
+[455] WORD: bet (1 issues)
+  - [10] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: даю голову на отсечение ≅
+
+[468] WORD: bind (1 issues)
+  - [18] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: быть отданным в учение (ремеслу) 2. n лигатура
+
+[472] WORD: bird (7 issues)
+  - [6] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. не сули журавля в небе, дай синицу ≅ в руки
+  - [7] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: одного поля ≅ ягода
+  - [9] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. рыбак ры- ≅ бака видит издалека
+  - [10] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: стре- ≅ ляный воробей
+  - [11] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. кто ра- ≅ но встаёт, того удача ждёт
+  - [12] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: одним ударом ≅ убить двух зайцев
+  - [14] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: кто-то мне ≅ сказал
+
+[477] WORD: bit (1 issues)
+  - [17] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: и p. p. от bite 2
+
+[481] WORD: black (1 issues)
+  - [20] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: тос- ≅ ка зелёная
+
+[487] WORD: bleed (1 issues)
+  - [10] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: выкачать деньги 2. a напечатанный в край страницы, без полей
+
+[490] WORD: blessing (1 issues)
+  - [5] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: не было бы счастья, да несча- ≅ стье помогло
+
+[492] WORD: block (5 issues)
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: кубики; «строитель» (игрушка)
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: шашка (подрывная, дымовая)
+  - [12] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: преграда; затор (движения)
+  - [13] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: блокпост
+  - [14] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: единовременная субсидия
+
+[497] WORD: blue (5 issues)
+  - [23] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: меланхолия, хандра
+  - [24] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: прибедняться
+  - [25] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: синие и серые» (северная и южная армии в американской Гражданской войне 1861— 18
+  - [26] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: команда Оксфорда
+  - [27] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: команда Кембриджа
+
+[498] WORD: board (8 issues)
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: подмостки, сцена
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: крышка переплёта
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: борт (судна)
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: лавировать
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: забрать все ставки
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: завладеть всем
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: понять
+  - [12] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: принять
+
+
+======================================================================
+COUNTS BY ISSUE TYPE:
+  pos_other: 260
+  glued_idiom: 22
+  glued_pos_header: 9
+  stuck_adverb: 1

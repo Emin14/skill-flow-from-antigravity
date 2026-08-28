@@ -1,0 +1,283 @@
+AUDIT 1501–2000
+============================================================
+
+
+──────────────────────────────────────────────────
+WORD: episode
+PDF:  episode [ ep s d] n 1) эпизод 2) серия (телефильма, радиопостановки и т. п.) episodic(al) [ ep  s d k(l)] a 1) эпизо дический 2) случайный
+  [2] ocr_trailing | translation
+    OLD: серия (телефильма, радиопостановки и т. п.) episodic(al) [,epi'sodik(l)] a
+    FIX: серия (телефильма, радиопостановки и т. п.) episodic(al) [,epi'sodik(l)]
+    NOTE: trailing letter "a"
+  [4] ocr_error | translation
+    OLD: учайный
+    FIX: случайный
+    NOTE: pattern '\bучайн' matched 'учайн'
+
+──────────────────────────────────────────────────
+WORD: executive
+PDF:  executive [   zekjt v] 1. a исполни тельный; амер. тж. администра тивный; ~ council амер. исполнитель ный совет; ~ committee исполнитель ный комитет; ~ secretary ответствен ный секретарь; управляющий де лами (в органах ООН); ~ agreement амер. договор, заключаемый прези дентом с иностранным государс
+  [3] dup_example | example.ru
+    OLD: исполнительная власть, исполнительный орган
+    NOTE: example.ru == translation: "исполнительная власть, исполнительный орган"
+  [4] dup_example | example.ru
+    OLD: глава исполнительной власти
+    NOTE: example.ru == translation: "глава исполнительной власти"
+  [4] dup_example | example.ru
+    OLD: глава исполнительной власти
+    NOTE: example.ru == translation: "глава исполнительной власти"
+
+──────────────────────────────────────────────────
+WORD: exercise
+PDF:  exercise [ eks sa z] 1. n 1) упражне ние; тренировка 2) (часто pl) упраж нение, задача, задание; fivefinger ~s упражнения на рояле; Latin ~ школь ный латинский перевод 3) физиче ская зарядка; моцион; to take ~ делать моцион; заниматься спортом 4) осуществление, проявление; the ~ of good will проявл
+  [14] dup_example | example.ru
+    OLD: беспокоиться (over, about)
+    NOTE: example.ru == translation: "беспокоиться (over, about)"
+
+──────────────────────────────────────────────────
+WORD: exile
+PDF:  exile [ eksa l] 1. n 1) изгнание; ссылка; to live in ~ быть или жить в изгна нии; to be sent into ~ быть сослан ным,  высланным  2)  изгнанник; ссыльный 3) (the E.) библ. вавилон ское пленение 2. v изгонять; ссылать
+  [3] dup_example | example.ru
+    OLD: вавилонское пленение
+    NOTE: example.ru == translation: "вавилонское пленение"
+
+──────────────────────────────────────────────────
+WORD: expect
+PDF:  expect [ k spekt] v 1) ждать, ожидать 2) рассчитывать, надеяться 3) разг. предполагать, полагать, думать 4): to be ~ing эвф. ожидать ребёнка, быть в положении
+  [4] ocr_trailing | example.ru
+    OLD: эвф. ожидать ребёнка, быть в положении expectance, -cy [ik'spektans, -si] n
+    FIX: эвф. ожидать ребёнка, быть в положении expectance, -cy [ik'spektans, -si]
+    NOTE: trailing "n"
+
+──────────────────────────────────────────────────
+WORD: express
+PDF:  express [ k spres] 1. n 1) ж.д. экс пресс 2) срочное (почтовое) отправ ление 3) пересылка денег, багажа, товаров и т. п. с нарочным или через посредство транспортной кон торы 4) амер. частная транспортная контора (тж. ~ company) 2. a 1) срочный; курьерский; ~ train курьерский поезд, экспресс; ~ del
+  [9] dup_example | example.ru
+    OLD: ехать экспрессом
+    NOTE: example.ru == translation: "ехать экспрессом"
+
+──────────────────────────────────────────────────
+WORD: false
+PDF:  false [f :ls] 1. a 1) ложный, ошибоч ный, неправильный; ~ pride ложная гордость  2) фальшивый, веролом ный; лживый; обманчивый; ~ pre
+  [4] dup_example | example.ru
+    OLD: фальшкиль
+    NOTE: example.ru == translation: "фальшкиль"
+  [5] dup_example | example.ru
+    OLD: обмануть, предать кого-либо
+    NOTE: example.ru == translation: "обмануть, предать кого-либо"
+
+──────────────────────────────────────────────────
+WORD: fast
+PDF:  fast I [f:st] 1. n пост; to break (one's) ~ разговеться 2. v поститься
+  [8] dup_example | example.ru
+    OLD: прожигать жизнь
+    NOTE: example.ru == translation: "прожигать жизнь"
+
+──────────────────────────────────────────────────
+WORD: fate
+PDF:  fate [fe t] 1. n 1) гибель, смерть; to go to one's ~ идти на гибель 2) рок, судь ба; жребий, удел; as sure as ~ несом ненно 3) (the Fates) pl миф. парки 2. v (обыкн. pass.) предопределять; he was ~d to do it ему суждено было сделать это
+  [3] dup_example | example.ru
+    OLD: при англ. мн. ч.: миф. парки
+    NOTE: example.ru == translation: "при англ. мн. ч.: миф. парки"
+
+──────────────────────────────────────────────────
+WORD: few
+PDF:  few [fju:] 1. a 1) немногие, немного, мало; ~ possessions скудные пожит ки; he is a man of ~ words он немно гословен; every ~ hours каждые не сколько часов; his friends are ~ у него мало друзей; his visitors are ~ у него гости редки 2) (a ~) несколько; quite a ~ порядочное число, довольно много ♦ i
+  [2] dup_example | example.ru
+    OLD: несколько
+    NOTE: example.ru == translation: "несколько"
+  [2] dup_example | example.ru
+    OLD: несколько
+    NOTE: example.ru == translation: "несколько"
+
+──────────────────────────────────────────────────
+WORD: fifteen
+PDF:  fifteen [ f f ti:n] 1. num. card. пятнад цать 2. n спорт. команда игроков в регби ♦ the F. ист. восстание якобитов в 1715 г.
+  [1] dup_example | example.ru
+    OLD: пятнадцать
+    NOTE: example.ru == translation: "пятнадцать"
+
+──────────────────────────────────────────────────
+WORD: fifth
+PDF:  fifth [f f ] 1. num. ord. пятый; ~ part пятая часть ♦ ~ column пятая ко лонна, предатели внутри страны или организации; ~ wheel пятая спица в колеснице 2. n 1) пятая часть 2) (the ~) пя тое число 3) 1/5 галлона (едини ца измерения спиртных напитков) 4) муз. квинта
+  [1] dup_example | example.ru
+    OLD: пятый
+    NOTE: example.ru == translation: "пятый"
+  [1] dup_example | example.ru
+    OLD: пятый
+    NOTE: example.ru == translation: "пятый"
+  [3] dup_example | example.ru
+    OLD: пятое число
+    NOTE: example.ru == translation: "пятое число"
+
+──────────────────────────────────────────────────
+WORD: fifty
+PDF:  fifty [ f ft ] 1. num. card. пятьдесят; ~one пятьдесят один; ~two пятьде сят два и т. п.; he is over ~ ему за пятьдесят 2. n пятьдесят (единиц, штук) fifty fifty [ f ft  f ft ] 1. a равный, с рав ными шансами или частями; on a ~
+  [1] dup_example | example.ru
+    OLD: пятьдесят
+    NOTE: example.ru == translation: "пятьдесят"
+  [1] dup_example | example.ru
+    OLD: пятьдесят
+    NOTE: example.ru == translation: "пятьдесят"
+
+──────────────────────────────────────────────────
+WORD: figure
+PDF:  figure [ f   ] 1. n 1) фигура; внешний вид; облик, образ; to keep one's ~ следить за фигурой  2) личность, фигура; a person of ~ выдающаяся личность; public ~ общественный де ятель 3) изображение, картина, ста туя 4) иллюстрация, рисунок (в книге); диаграмма, чертёж 5) геом. фигура, тело 6) цифра; 
+  [2] ocr_error | example.ru
+    OLD: едить за фигурой
+    FIX: следить за фигурой
+    NOTE: 'едить' -> 'следить'
+
+──────────────────────────────────────────────────
+WORD: first
+PDF:  first [f :st] 1. num. ord. первый; ~ form первый класс (в школе) 2. a 1) первый; ранний; ~ thing пер вым делом; I'll do it ~ thing in the
+  [1] dup_example | example.ru
+    OLD: первый
+    NOTE: example.ru == translation: "первый"
+  [1] dup_example | example.ru
+    OLD: первый
+    NOTE: example.ru == translation: "первый"
+  [5] dup_example | example.ru
+    OLD: человек или предмет, упоминаемый или появляющийся первым
+    NOTE: example.ru == translation: "человек или предмет, упоминаемый или появляющийся первым"
+  [7] dup_example | example.ru
+    OLD: первое число
+    NOTE: example.ru == translation: "первое число"
+
+──────────────────────────────────────────────────
+WORD: fish
+PDF:  fish I [f  ] 1. n 1) (pl часто без измен.) рыба; распр. тж. крабы, устрицы; ~ and chips рыба с жареной картош кой 2) разг. тип; cold ~ бесчувствен ный человек; cool ~ нахал, наглец;
+  [4] dup_example | example.ru
+    OLD: Рыбы (созвездие и знак зодиака)
+    NOTE: example.ru == translation: "Рыбы (созвездие и знак зодиака)"
+
+──────────────────────────────────────────────────
+WORD: flower
+PDF:  flower [ fla  ] 1. n 1) цветок; цветко вое растение 2) расцвет; цветение; in ~ в цвету; to come to full ~ расцве сти пышным цветом; in the ~ of one's
+  [5] dup_example | example.ru
+    OLD: серный цвет
+    NOTE: example.ru == translation: "серный цвет"
+
+──────────────────────────────────────────────────
+WORD: fold
+PDF:  fold I [f  ld] 1. n 1) складка, сгиб; a dress
+  [4] ocr_error | example.ru
+    OLD: ожить письмо
+    FIX: сложить письмо
+    NOTE: 'ожить' -> 'сложить'
+  [4] ocr_error | example.ru
+    OLD: ожить руки; перен. сидеть сложа руки
+    FIX: сложить руки; перен. сидеть сложа руки
+    NOTE: 'ожить' -> 'сложить'
+
+──────────────────────────────────────────────────
+WORD: follow
+PDF:  follow [ f l  ] v 1) следовать, идти за; a concert ~ed the lecture, the lecture
+  [8] ocr_error | translation
+    OLD: едить, провожать (взглядом)
+    FIX: следить, провожать (взглядом)
+    NOTE: pattern '\bедить\b' matched 'едить'
+
+──────────────────────────────────────────────────
+WORD: following
+PDF:  following [ f l    ] 1. pres. p. от follow 2. n 1) последователи, привержен цы; he has a large ~ у него много по следователей 2) (the ~) следующее;
+  [3] dup_example | example.ru
+    OLD: следующее
+    NOTE: example.ru == translation: "следующее"
+  [3] dup_example | example.ru
+    OLD: следующее
+    NOTE: example.ru == translation: "следующее"
+
+──────────────────────────────────────────────────
+WORD: foreign
+PDF:  foreign [ f r n] a 1) иностранный; зару бежный; ~ policy внешняя политика; ~ problems вопросы внешней полити ки; the F. Office министерство ино странных дел (в Англии); F. Secretary министр иностранных дел (в Англии); ~ service дипломатическая служба; ~ economic relations внешнеэкономи ческие связи
+  [1] ocr_error | example.ru
+    OLD: ерство иностранных дел (в Англии)
+    FIX: Министерство иностранных дел (в Англии)
+    NOTE: 'ерство' -> 'Министерство'
+
+──────────────────────────────────────────────────
+WORD: forty
+PDF:  forty [ f :t ] 1. num. card. сорок; ~one сорок один; ~two сорок два и т. д. ♦ ~ winks короткий (послеобеден ный) сон; the F.five якобитское вос стание 1745 г. 2. n 1) сорок (единиц, штук) forty niner [ f :t  na n ] n амер. разг. золотоискатель (прибывший в Ка лифорнию в 1849 г. после откры тия в не
+  [1] dup_example | example.ru
+    OLD: сорок
+    NOTE: example.ru == translation: "сорок"
+  [1] dup_example | example.ru
+    OLD: сорок
+    NOTE: example.ru == translation: "сорок"
+
+──────────────────────────────────────────────────
+WORD: four
+PDF:  four [f :] 1. num. card. четыре 2. n 1) четвёрка 2) pl четвёртый но мер (размер перчаток, обуви и т. п.) 3) разг. четвёрка (лодка); команда четвёрки 4) pl воен. строй по четыре;
+  [1] dup_example | example.ru
+    OLD: четыре
+    NOTE: example.ru == translation: "четыре"
+
+──────────────────────────────────────────────────
+WORD: fourth
+PDF:  fourth [f : ] 1. num. ord. четвёртый ♦ the ~ arm военновоздушные силы 2. n 1) четверть 2) (the ~) четвёртое число; the F. (of July) амер. 4 июля (день провозглашения независимо сти США)
+  [1] dup_example | example.ru
+    OLD: четвёртый
+    NOTE: example.ru == translation: "четвёртый"
+
+──────────────────────────────────────────────────
+WORD: fresh
+PDF:  fresh [fre ] 1. a 1) свежий; ~ paint ещё не просохшая краска; ~ paint! ос торожно, окрашено!; ~ sprouts моло дые побеги 2) новый; другой; to begin a ~ chapter начать новую главу; to
+  [15] ocr_trailing | translation
+    OLD: = freshet freshen ffrejn] v
+    FIX: = freshet freshen ffrejn]
+    NOTE: trailing letter "v"
+  [17] dup_example | example.ru
+    OLD: приводить себя в порядок
+    NOTE: example.ru == translation: "приводить себя в порядок"
+
+──────────────────────────────────────────────────
+WORD: friendly
+PDF:  friendly [ frendl ] 1. a 1) дружеский; дружески расположенный; друже любный; ~ in manner обходитель ный; F. Society общество взаимопо мощи; ~ match спорт. товарищеская встреча 2) дружественный; ~ nation дружественная страна 3) сочувству ющий, одобряющий (to) 4) благо приятный 5) (F.) квакерский 2. 
+  [5] dup_example | example.ru
+    OLD: квакерский
+    NOTE: example.ru == translation: "квакерский"
+
+──────────────────────────────────────────────────
+WORD: frog
+PDF:  frog I [fr  ] n 1) лягушка 2) (F.) презр. француз 3) стрелка (в копыте лоша ди) 4) эл. воздушная стрелка 5) ж.д. крестовина (стрелочного перевода) 6) стойкабашмак (плуга)
+  [2] dup_example | example.ru
+    OLD: француз
+    NOTE: example.ru == translation: "француз"
+
+──────────────────────────────────────────────────
+WORD: full
+PDF:  full I [f l] 1. a 1) полный; целый; a ~
+  [11] dup_example | example.ru
+    OLD: полностью
+    NOTE: example.ru == translation: "полностью"
+  [11] dup_example | example.ru
+    OLD: полностью
+    NOTE: example.ru == translation: "полностью"
+
+──────────────────────────────────────────────────
+WORD: fund
+PDF:  fund [f nd] 1. n 1) запас; a ~ of
+  [4] dup_example | example.ru
+    OLD: при англ. мн. ч.: государственные процентные бумаги
+    NOTE: example.ru == translation: "при англ. мн. ч.: государственные процентные бумаги"
+  [4] dup_example | example.ru
+    OLD: при англ. мн. ч.: государственные процентные бумаги
+    NOTE: example.ru == translation: "при англ. мн. ч.: государственные процентные бумаги"
+
+──────────────────────────────────────────────────
+WORD: get
+PDF:  get [ et] 1. v (got; р. р. уст., амер.
+  [13] dup_example | example.ru
+    OLD: иметь, обладать, владеть
+    NOTE: example.ru == translation: "иметь, обладать, владеть"
+  [13] dup_example | example.ru
+    OLD: иметь, обладать, владеть
+    NOTE: example.ru == translation: "иметь, обладать, владеть"
+
+
+============================================================
+SUMMARY: 500 entries, PDF found 479, issues 48
+  dup_example: 39
+  ocr_error: 6
+  ocr_trailing: 3

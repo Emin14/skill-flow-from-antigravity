@@ -1,0 +1,507 @@
+FULL AUDIT SUMMARY FOR WORDS 1001-1500 (Found 56 words with issues)
+======================================================================
+
+[1017] WORD: correspondent (1 issues)
+PDF Snippet:  correspondent [ k r sp nd nt] 1. n корреспондент 2. a книжн. согласный, в согласии, соответственный (to, with)
+  - [1] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: корреспондент 2. a согласный, в согласии, соответственный (to, with)
+
+--------------------------------------------------
+
+[1022] WORD: cost (9 issues)
+PDF Snippet:  cost [k st] 1. n 1) цена, стоимость (тж. перен.); below ~ ниже себесто имости; free of ~ бесплатно; prime ~ себестоимость;  ~s  of  production издержки производства; ~ of living прожиточный минимум; ~ and freight ком. стоимость и фрахт; ~, insurance and freight (сокр. c. i. f.) ком. сто имость, стр
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: расходы, издержки, затраты
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: судебные издержки
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: учёт затрат
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: любой ценой
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: во что бы то ни стало
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ценою чего-либо
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: за чей-либо. счёт
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: взвесить все обстоятельства
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: знать (узнать) по горькому опыту
+
+--------------------------------------------------
+
+[1026] WORD: cotton (3 issues)
+PDF Snippet:  cotton I [k tn] 1. n 1) хлопок 2) хлопчатник 3) хлопчатобумаж ная ткань 4) pl одежда из хлопчато бумажной ткани 5) нитка; a needle and ~ иголка с ниткой 6) вата (тж. ~ wool) 2. a 1) хлопковый 2) хлопчатобу мажный
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: одежда из хлопчатобумажной ткани
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: нитка
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: вата (or cotton wool)
+
+--------------------------------------------------
+
+[1027] WORD: could (2 issues)
+PDF Snippet:  could [k d] v модальный глагол 1) past от can I; the boy said he ~ speak English fluently мальчик сказал, что может свободно говорить поанг лийски; I ~ not understand what he said я не мог понять, что он сказал 2) в условных предложениях с про стым инфинитивом выражает ре альную  возможность  совер
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: от can I
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: не может быть, чтобы они уехали, не повидав нас
+
+--------------------------------------------------
+
+[1049] WORD: cow (1 issues)
+PDF Snippet:  cow I [ka ] n 1) (pl s [z], уст. тж. kine) корова 2) самка слона, носоро га, кита, тюленя и т. д. ♦ till the ~s come home ≅ после дождичка в чет верг
+  - [3] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: после дождичка в чет- ≅ верг
+
+--------------------------------------------------
+
+[1050] WORD: crack (1 issues)
+PDF Snippet:  crack [kræk] 1. n 1) треск; щёл канье (хлыста) 2) ломающийся го лос (у мальчика) 3) удар; затрещина 4) трещина; щель, расселина; свищ 5) разг. острота, шутка; саркастиче ское замечание 6) ктол. или чтол. замечательное 7) крэк (форма кока ина) 2. a разг. великолепный, перво классный; знаменитый 3. v
+  - [7] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: крэк (форма кокаина) 2. a великолепный, первоклассный; знаменитый
+
+--------------------------------------------------
+
+[1059] WORD: creativity (1 issues)
+PDF Snippet:  creativity [           ] n творчество
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: n творчество
+
+--------------------------------------------------
+
+[1066] WORD: crew (1 issues)
+PDF Snippet:  crew I [kru:] n 1) судовая коман да; экипаж (судна) 2) воен. ору дийный или пулемётный расчёт 3) бригада или артель рабочих; engine ~ паровозная бригада 4) разг. компания, шайка; a noisy, disre putable ~ шумная, непристойная компания
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: от crow II, 2
+
+--------------------------------------------------
+
+[1067] WORD: crime (1 issues)
+PDF Snippet:  crime [kra m] 1. n 1) преступление; злодеяние; ~s against humanity пре ступление  против  человечности; petty ~ мелкое хулиганство 2) пре ступность 2. v воен. карать за нарушение ус тава
+  - [2] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: преступность 2. v карать за нарушение устава
+
+--------------------------------------------------
+
+[1078] WORD: cross (1 issues)
+PDF Snippet:  cross [kr s] 1. n 1) крест; Red C. Красный Крест 2) (the C.) христи анство 3) распятие 4) крестное зна мение 5) крестик, знак + или x 6) крест (знак отличия) 7) черта, пе речёркивающая буквы t, f 8) стра дания, испытания; to bear one's ~ не сти свой крест 9) биол. гибридиза ция, скрещивание (пород)
+  - [27] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: ставить точки ≅ над i
+
+--------------------------------------------------
+
+[1087] WORD: cry (1 issues)
+PDF Snippet:  cry [kra ] 1. n 1) крик 2) вопль; моль ба 3) плач; she had a good ~ она выплакалась 4) лозунг; (боевой) клич 5) молва; on the ~ по слухам; the popular ~ общее мнение, «глас народа» 6) крик уличных разносчи ков 7) звук, издаваемый животным 8) собачий лай 9) свора собак ♦ much ~ and little wool ≅ мно
+  - [31] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. сделан- ≅ ного, потерянного не воротишь
+
+--------------------------------------------------
+
+[1093] WORD: culture (1 issues)
+PDF Snippet:  culture [k lt  ] 1. n 1) культура 2) разведение, возделывание; ~ of vine (oysters, etc.) разведение вино градной  лозы  (устриц  и  т. п.) 3) сельскохозяйственная  культура 4) культура, выращивание бактерий 5) пометки и названия на топогра фических картах 2. v биол. выращивать (микроорга низмы в пи
+  - [5] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: пометки и названия на топографических картах 2. v выращивать (микроорганизмы в п
+
+--------------------------------------------------
+
+[1096] WORD: cure (1 issues)
+PDF Snippet:  cure I [kj  ] 1. n 1) лечение 2) изле чение 3) лекарство; средство 4) курс лечения 5) церк. попечение (о паст ве) 6) церк. приход 7) тех. вулкани зация (резины) 2. v 1) вылечивать, исцелять 2) ис правлять (вред, зло) 3) заготовлять, консервировать 4) вулканизировать (резину) ♦ what cannot be ~d mus
+  - [9] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. что нельзя испра- ≅ вить, то следует терпеть
+
+--------------------------------------------------
+
+[1111] WORD: cute (2 issues)
+PDF Snippet:  cute [kju:t] a разг. 1) привлекатель ный, миловидный 2) амер. умный, сообразительный; остроумный, на ходчивый cut glass [k t l :s] n гранёное стекло
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: привлекательный, миловидный
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: остроумный, находчивый
+
+--------------------------------------------------
+
+[1112] WORD: cutting (2 issues)
+PDF Snippet:  cutting [k t  ] 1. pres. p. от cut I, 1 2. n 1) резание; рубка; тесание; гранение; фрезерование 2) вырезка (газетная,  журнальная)  3)  c.х. черенок  4)  вырезанная  фигура 5) pl обрезки, опилки, стружки ♦ railway ~ выемка железнодорож ного пути 3. a 1) острый, резкий; язвительный (о замечании) 2) 
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: обрезки, опилки, стружки
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: выемка железнодорожного пути
+
+--------------------------------------------------
+
+[1116] WORD: daily (1 issues)
+PDF Snippet:  daily [ del] 1. a ежедневный; повсе дневный; суточный; it is of ~ occur rence это происходит ежедневно; это повседневное явление; ~ living needs, ~ wants насущные потребности, бы товые нужды; ~ allowance воен. су точное довольствие; ~ duty дежур ство ♦ ~ dozen спорт. разг. зарядка 2. n разг. 1) еже
+  - [2] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: зарядка 2. n ежедневная газета приходящая работница (or daily help)
+
+--------------------------------------------------
+
+[1129] WORD: data (2 issues)
+PDF Snippet:  data [ det ] n pl 1) pl от datum 2) (часто употр. как sing) данные; факты; сведения 3) (часто употр. как sing) информация data bank, database [ det bæ k, bes] n информ. банк, база данных
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: от datum
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: факты; сведения
+
+--------------------------------------------------
+
+[1134] WORD: day (1 issues)
+PDF Snippet:  day [de] n 1) день; сутки; on that ~ в тот день; all (the) ~ весь день; all ~ long деньденьской; solar (или astro nomical, nautical) ~ астрономиче ские сутки (исчисляются от 12 ч. дня); civil ~ гражданские сутки (ис числяются от 12 ч. ночи); every other ~, ~ about через день; the present ~ сегодня;
+  - [29] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: поставить ≅ на одну доску с
+
+--------------------------------------------------
+
+[1142] WORD: debate (1 issues)
+PDF Snippet:  debate [d bet] 1. n 1) дискуссия, пре ния, дебаты; to open a ~ открыть дискуссию 2) спор, полемика; bey ond ~ бесспорно 3) (the ~s) pl офи циальный отчёт о парламентских за седаниях 2. v 1) обсуждать, дебатировать; спорить; оспаривать 2) обдумывать; рассматривать; to ~ a matter in one's mind взвеши
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: официальный отчёт о парламентских заседаниях
+
+--------------------------------------------------
+
+[1158] WORD: decoration (1 issues)
+PDF Snippet:  decoration [ dek  re n] n 1) укра шение; убранство 2) архит. декор, наружная и внутренняя отделка, ук рашение дома 3) орден, знак отли чия; to confer a ~ on smb. наградить когол. орденом, знаком отличия 4) pl праздничные флаги, гирлянды 5) attr.: D. Day амер. = Memorial
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: праздничные флаги, гирлянды
+
+--------------------------------------------------
+
+[1162] WORD: deed (1 issues)
+PDF Snippet:  deed [di:d] 1. n 1) действие, поступок 2) дело; акт; in word and ~ словом и делом; in ~ and not in name на деле, а не на словах (только); in very ~ в самом деле, в действительности 3) подвиг 4) юр. документ, акт; to draw up a ~ составлять документ 2. v амер. передавать по акту deed poll [ di:dp  l]
+  - [4] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: составлять документ 2. v передавать по акту
+
+--------------------------------------------------
+
+[1164] WORD: deep (1 issues)
+PDF Snippet:  deep [di:p] 1. a 1) глубокий; ~ water большая глубина; ~ sleep глубокий сон; to my ~ regret к моему глубоко му сожалению; to keep smth. a ~ secret хранить чтол. в строгой тайне; ~ in debt по уши в долгу 2) низкий (о звуке) 3) насыщенный, тёмный, густой (о краске, цвете) 4) сильный, глубокий; ~ feel
+  - [16] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. в тихом омуте черти водятся ≅
+
+--------------------------------------------------
+
+[1242] WORD: detail (3 issues)
+PDF Snippet:  detail [ di:tel] 1. n 1) подробность; де таль; to go (или to enter) into ~s вда ваться в подробности; in ~ обстоя тельно; подробно 2) частность, несу щественная подробность 3) pl де тали (здания или машины); части, элементы 4) воен. наряд; команда 5)  attr.  детальный,  подробный; ~ drawing детальн
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: детали (здания или машины); части, элементы
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: команда
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: детальный, подробный
+
+--------------------------------------------------
+
+[1257] WORD: devil (3 issues)
+PDF Snippet:  devil [ devl] 1. n 1) (обыкн. the D.) дьявол, сатана 2) чёрт, бес 3) страш ный, коварный человек, настоящий дьявол 4) разг. энергичный, напо ристый человек; a ~ to work работа ет, как чёрт; a ~ to eat ест за четве рых 5) разг. человек, парень; lucky ~ счастливец; poor ~ бедняга; a ~ of a fellow хра
+  - [17] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: меж- ≅ ду двух огней
+  - [18] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: чер- ≅ товски везёт
+  - [20] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: горе не- ≅ удачникам
+
+--------------------------------------------------
+
+[1269] WORD: die (2 issues)
+PDF Snippet:  die I [da] 1. n 1) (pl dice) игральная кость; to play with loaded dice жуль ничать 2) штамп, пуансон; штем пель, матрица 3) тех. винторезная головка; клупп 4) (pl dice) архит. цоколь (колонны) 5) тех. воло чильная доска; фильера ♦ the ~ is cast (или thrown) жребий брошен, выбор сделан; to be upon t
+  - [33] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. двум смертям не бывать, а одной ≅ не миновать
+  - [34] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. ни- ≅ когда не следует отчаиваться
+
+--------------------------------------------------
+
+[1277] WORD: difficulty (1 issues)
+PDF Snippet:  difficulty [ dfklt] n 1) трудность; the difficulties of English трудности в изучении английского языка; to find ~ in doing smth. столкнуться с труд ностями в чёмл. 2) препятствие, за труднение; to put difficulties in the way ставить препятствия на пути; to overcome difficulties преодолевать труднос
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: затруднения (материальные)
+
+--------------------------------------------------
+
+[1282] WORD: dimension (1 issues)
+PDF Snippet:  dimension [da men n] 1. n 1) измере ние; of three ~s трёхмерный 2) сто рона, аспект 3) pl размеры, величи на; объём; протяжение; scheme of vast ~s план огромной важности, ог ромного размаха 2. v проставлять размеры; соблю дать нужные размеры
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: размеры, величина; объём; протяжение
+
+--------------------------------------------------
+
+[1284] WORD: dinner (2 issues)
+PDF Snippet:  dinner [ dn ] n 1) обед; to have (или to take) ~ обедать; to give a ~ устраивать званый обед 2) attr. обе денный; ~ break обеденный перерыв; ~ companion сотрапезник ♦ ~ with out grace ≅ брачные отношения до брака; after ~ comes the reckoning посл. ≅ любишь кататься, люби и са ночки возить dinner be
+  - [3] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: брачные отношения до ≅ брака
+  - [4] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. любишь кататься, люби и са- ≅ ночки возить
+
+--------------------------------------------------
+
+[1289] WORD: direction (6 issues)
+PDF Snippet:  direction [d" rek n] n 1) руководство, управление; to work under the ~ of smb. работать под руководством ко гол. 2) (часто pl) указание; инст рукция, правила пользования; рас поряжение; at the ~ по указанию, по распоряжению; to give ~s отдавать распоряжения  3)  pl  директивы 4) направление; in the
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: директивы
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: направление
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: адрес (на письме и т. п.)
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: сфера, область
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: дирекция; правление
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: режиссура
+
+--------------------------------------------------
+
+[1318] WORD: discretion (1 issues)
+PDF Snippet:  discretion [d skre n] n 1) благора зумие, осторожность; the years of ~ возраст (в Англии — 14 лет), с ко торого человек считается ответ ственным за свои поступки; to act with ~ вести себя осторожно, благо разумно; to show ~ проявлять благо разумие 2) свобода действий; усмот рение; the instructions 
+  - [3] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: следует избегать ненужного риска ≅ (обыкн. как шутливое оправдание трусости)
+
+--------------------------------------------------
+
+[1323] WORD: dish (4 issues)
+PDF Snippet:  dish [d ] 1. n 1) блюдо, тарелка, миска 2) блюдо, кушанье 3) pl по суда; to do (или to wash) the ~es мыть посуду 4) сл. красотка; лако мый кусочек 5) ложбина, впадина; котлован ♦ to have a hand in the ~ быть замешанным в чёмл.  <<<PAGE236>>> dishabille 222 dismemberment 2. v 1) класть на блюдо 2) р
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: посуда
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: лакомый кусочек
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: ложбина, впадина; котлован
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: быть замешанным в чём-либо
+
+--------------------------------------------------
+
+[1362] WORD: doctor (1 issues)
+PDF Snippet:  doctor [ d kt ] 1. n 1) врач, доктор 2) амер. дантист; ветеринарный врач 3) доктор (учёная степень) 4) разг. мастер по ремонту 5) вспо могательный  механизм  6)  мор. жарг. судовой повар 7) искусствен ная муха (употр. для ужения) 2. v разг. 1) заниматься врачебной практикой; лечить; to ~ oneself ле
+  - [5] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: искусственная муха (употр. для ужения) 2. v
+
+--------------------------------------------------
+
+[1367] WORD: dog (1 issues)
+PDF Snippet:  dog [d  ] 1. n 1) собака, пёс; Greater (Lesser) Dog созвездие Большого (Малого) Пса 2) кобель; самец вол ка, лисы (тж. ~wolf, ~fox) 3) разг. подлец, собака 4) разг. парень (пе реводится по контексту); gay (или jolly) ~ весельчак; lucky ~ счаст ливец; lazy ~ лентяй; dirty ~ дрянь человек, «свинья» 5
+  - [17] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: будет и на нашей улице ≅ праздник
+
+--------------------------------------------------
+
+[1370] WORD: domestic (2 issues)
+PDF Snippet:  domestic [d  mestk] 1. a 1) домаш ний; семейный; ~ science домовод ство; ~ appliances предметы домаш него обихода 2) внутренний; отече ственный; ~ industry отечественная промышленность; ~ trade внутрен няя торговля; ~ issue внутриполити ческий вопрос 3) домашний, ручной (о животных) 4) домоседливый
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: товары отечественного производства
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: простые хлопчатобумажные ткани
+
+--------------------------------------------------
+
+[1382] WORD: down (2 issues)
+PDF Snippet:  down  [           ]  a увязший, застрявший (в чёмл.)
+  - [28] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: (сердиться на кого-либо. 5. v опускать, спускать сбивать (самолёт, человека) гло
+  - [29] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: (подчинять кончать (с чем-либо.), разделываться ♦ to down tools прекратить работ
+
+--------------------------------------------------
+
+[1383] WORD: download (1 issues)
+PDF Snippet:  download [  "      ] v информ. за кладывать, загружать (в память); пересылать (по линии связи)
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: пересылать (по линии связи)
+
+--------------------------------------------------
+
+[1389] WORD: drag (1 issues)
+PDF Snippet:  drag [dræ ] 1. n 1) торможение, за держка движения; медленное дви жение 2) ав., авто лобовое сопро тивление 3) медленное затруднён ное движение 4) тормоз, тормозной башмак 5) разг. обуза; бремя; to be a ~ on smb. быть для когол. обузой 6) сл. скучный тип, зануда; скучища 7) охот. пахучая приманка; 
+  - [20] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: притянуть за уши (довод ≅ и т. п.)
+
+--------------------------------------------------
+
+[1394] WORD: draw (1 issues)
+PDF Snippet:  draw [dr :] 1. n 1) тяга; вытягивание 2) то, что привлекает, нравится; приманка; the play is a ~ эта пьеса имеет успех 3) жеребьёвка; лотерея 4) жребий; выигрыш 5) игра вни чью, ничья 6) затяжка (сигаретой) 7) замечание, имеющее целью вы пытать чтол.; наводящий вопрос; a sure ~ замечание, которое о
+  - [72] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: обез- ≅ вредить
+
+--------------------------------------------------
+
+[1409] WORD: drunk (6 issues)
+PDF Snippet:  drunk [dr  k] 1. p. p. от drink 2 2. a predic. 1) пьяный; to get ~ на питься пьяным; ~ as a lord (или as a fiddler) ≅ пьян как сапожник, как стелька; blind (или dead) ~ мерт вецки пьян 2) опьянённый (успехом и т. п.; with) 3. n разг. 1) пьяный 2) попойка; за пой
+  - [1] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: от drink 2 2. a predic
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: от drink 2 2. a predic
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: пьяный
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: опьянённый (успехом и т. п)
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: пьяный
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: попойка; запой
+
+--------------------------------------------------
+
+[1410] WORD: dry (1 issues)
+PDF Snippet:  dry [dra] 1. a 1) сухой; ~ cough сухой кашель; ~ masonry стр. кладка без раствора (насухо); ~ cell (или bat tery) сухая электрическая батарея 2) засушливый 3) сухой, высохший (о колодце, реке и т. п.) 4) сухой, несладкий (о вине) 5) сухой; скуч ный, неинтересный; ~ book скучная книга; ~ facts голые
+  - [15] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: у него ещё молоко на ≅ губах не обсохло
+
+--------------------------------------------------
+
+[1413] WORD: due (3 issues)
+PDF Snippet:  due [dju:] 1. n 1) должное; то, что причитается; to give smb. his ~ возда вать комул. по заслугам; отдавать должное; to get one's ~ получить по заслугам 2) pl сборы, налоги, пош лины; custom ~s таможенные пош лины 3) pl членские взносы; party ~s партийные взносы ♦ for a full ~ ос новательно, прочно
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: сборы, налоги, пошлины
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: членские взносы
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: основательно, прочно
+
+--------------------------------------------------
+
+[1416] WORD: dump (1 issues)
+PDF Snippet:  dump I [d mp] 1. n 1) свалка, груда хлама; мусорная куча 2) разг. глушь, мрачная дыра 3) воен. временный полевой склад 4) штабель угля или руды; отвал, куча шлака 5) глухой звук от падения тяжёлого предмета 2. v 1) сбрасывать, сваливать (му сор) 2) опрокидывать (вагонетку); разгружать 3) разг. брос
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: деньги
+
+--------------------------------------------------
+
+[1420] WORD: dust (1 issues)
+PDF Snippet:  dust [d st] 1. n 1) пыль; gold ~ золо той песок; atomic ~ радиоактивная пыль; cosmic ~ космическая пыль 2) бот.  пыльца  3)  поэт.  прах 4) разг. деньги, презренный металл ♦ to raise (или to make) a ~ подни мать шум, суматоху; humbled in (или to) the ~ крайне униженный; по верженный во прах; to giv
+  - [8] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: втирать очки ≅ кому-либо
+
+--------------------------------------------------
+
+[1429] WORD: earnings (2 issues)
+PDF Snippet:  earnings [  :n  z] n pl 1) заработанные деньги, заработок 2) доход, прибыль
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: заработанные деньги, заработок
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: доход, прибыль
+
+--------------------------------------------------
+
+[1434] WORD: east (1 issues)
+PDF Snippet:  east [i:st] 1. n 1) восток; мор. ост; to the ~ (of) к востоку (от) 2) (the E.) Восток; Far E. Дальний Восток; Middle E. Средний Восток (страны Ближнего Востока вместе с Ира ном и Афганистаном); Near E. Ближний Восток (страны восточ ного Средиземноморья, в том числе Турция и Северная Африка) 3) вос 
+  - [4] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. в гостях ≅ хорошо, а дома лучше
+
+--------------------------------------------------
+
+[1436] WORD: easy (2 issues)
+PDF Snippet:  easy [ i:z ] 1. a 1) лёгкий, нетрудный; ~ of access доступный; ~ money шаль ные деньги 2) спокойный; make your mind ~ успокойтесь 3) удобный; ~ coat просторное пальто 4) обеспе ченный, состоятельный; ~ circum stances достаток 5) непринуждённый, свободный, естественный; ~ manners непринуждённые мане
+  - [19] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: посл. тише едешь, ≅ дальше будешь
+  - [20] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: как ≅ нажито, так и прожито
+
+--------------------------------------------------
+
+[1441] WORD: economics (3 issues)
+PDF Snippet:  economics [  :k  n m ks] n pl (употр. как sing) 1) экономика, экономиче ская наука, политическая экономия 2) экономика; народное хозяйство; planned ~ плановое хозяйство economic 
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: употр. как sing
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: экономика, экономическая наука, политическая экономия
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: экономика; народное хозяйство
+
+--------------------------------------------------
+
+[1454] WORD: effect (4 issues)
+PDF Snippet:  effect [  fekt] 1. n 1) следствие, ре зультат; cause and ~ причина и след ствие; of (или to) no ~, without ~ а) безрезультатный; б) бесполез ный; в) безрезультатно; бесцельно; to have ~ иметь желательный ре зультат; подействовать 2) действие, влияние; воздействие; the ~ of light on plants действие 
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: имущество, пожитки
+  - [9] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: звуковые эффекты
+  - [10] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: цель, намерение; в этом смысле
+  - [11] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: содержание
+
+--------------------------------------------------
+
+[1455] WORD: effective (1 issues)
+PDF Snippet:  effective [  fekt v] 1. a 1) действи тельный, эффективный, результа тивный; ~ demand эк. платёжеспо собный спрос 2) эффектный; про изводящий впечатление, впечатля ющий 3) имеющий хождение (о де нежных знаках) 4) действующий, имеющий силу (о законе и т. п.); to become ~ входить в силу; ~ from 22 hou
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: боевой состав
+
+--------------------------------------------------
+
+[1462] WORD: egg (1 issues)
+PDF Snippet:  egg I [e ] 1. n 1) яйцо; soft(boiled) ~, lightly boiled ~ яйцо всмятку; hard boiled ~ крутое яйцо; ham and ~s яичница с ветчиной 2) биол. яйце клетка 3) воен. жарг. бомба; граната ♦ in the ~ в зачаточном состоянии; to crush in the ~ подавить в зароды ше, пресечь в корне; a bad ~ разг. а) непутёвый,
+  - [10] glued_idiom | translation: Contains idiom symbol ≅ or ♦
+    VAL: яйца ≅ курицу не учат
+
+--------------------------------------------------
+
+[1464] WORD: eight (5 issues)
+PDF Snippet:  eight [e t] 1. num. card. восемь 2. n 1) восьмёрка 2) (the Eights) pl гребные состязания между оксфорд скими и кембриджскими студента ми 3): in ~s в восьмую долю листа ♦ to cut ~s делать восьмёрки (в фи гурном катании); to be behind the ~ ball амер. оказаться в опасном или крайне затруднительном по
+  - [2] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: гребные состязания между оксфордскими и кембриджскими студентами
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: в восьмую долю листа
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: делать восьмёрки (в фигурном катании)
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: оказаться в опасном или крайне затруднительном положении
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: напиться, опьянеть
+
+--------------------------------------------------
+
+[1465] WORD: eighteen (1 issues)
+PDF Snippet:  eighteen [ e  ti:n] num. card. восем надцать
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: восемнадцать
+
+--------------------------------------------------
+
+[1467] WORD: either (1 issues)
+PDF Snippet:  either [ a   ] 1. pron. indef. 1) один из двух; тот или другой; ~ of the two boys may go один из этих двух мальчиков может пойти 2) и тот и другой; оба; каждый, любой (из двух); ~ will do подойдёт и тот и другой 2. a 1) один из двух; такой или дру гой; этот или иной; you may put the lamp at ~ end o
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: или
+
+--------------------------------------------------
+
+[1478] WORD: electronics (1 issues)
+PDF Snippet:  electronics  [  lek tr n ks]  n  pl (употр. как sing) электроника electron volt [  lektr n v lt] n физ. электронвольт
+  - [1] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: (употр. как sing) электроника
+
+--------------------------------------------------
+
+[1479] WORD: elegant (1 issues)
+PDF Snippet:  elegant [ el   nt] 1. a 1) изящный, элегантный; изысканный 2) амер. разг. прекрасный; лучший; перво классный 2. n разг. модник, пижон, щёголь
+  - [2] glued_pos_header | translation: Contains glued part of speech transition (e.g. 2. v)
+    VAL: лучший; первоклассный 2. n модник, пижон, щёголь
+
+--------------------------------------------------
+
+[1480] WORD: element (6 issues)
+PDF Snippet:  element [ el m nt] n 1) элемент; со ставная часть; небольшая часть, след; an ~ of truth доля правды 2) хим., физ. элемент 3) стихия; war of the ~s борьба стихий; the four ~s земля, воздух, огонь, вода; the de vouring ~ огонь 4) эл. нагреватель ный элемент 5) pl основы (науки и т. п.); азы 6) pl цер
+  - [3] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: основы (науки и т. п.); азы
+  - [4] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: святые дары, причастие
+  - [5] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: быть в своей стихии
+  - [6] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: чувствовать себя как рыба в воде
+  - [7] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: он занимается не своим делом
+  - [8] pos_other | partOfSpeech: partOfSpeech is "other"
+    VAL: он чувствует себя как рыба, вынутая из воды
+
+--------------------------------------------------
+
+
+======================================================================
+COUNTS BY ISSUE TYPE:
+  pos_other: 75
+  glued_idiom: 24
+  glued_pos_header: 10

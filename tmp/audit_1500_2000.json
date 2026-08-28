@@ -1,0 +1,395 @@
+[
+  {
+    "type": "ocr_trailing",
+    "word": "episode",
+    "mid": 2,
+    "field": "translation",
+    "old": "серия (телефильма, радиопостановки и т. п.) episodic(al) [,epi'sodik(l)] a",
+    "fix_hint": "серия (телефильма, радиопостановки и т. п.) episodic(al) [,epi'sodik(l)]",
+    "detail": "trailing letter \"a\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "episode",
+    "mid": 4,
+    "field": "translation",
+    "old": "учайный",
+    "fix_hint": "случайный",
+    "detail": "pattern '\\bучайн' matched 'учайн'"
+  },
+  {
+    "type": "dup_example",
+    "word": "executive",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "исполнительная власть, исполнительный орган",
+    "detail": "example.ru == translation: \"исполнительная власть, исполнительный орган\""
+  },
+  {
+    "type": "dup_example",
+    "word": "executive",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "глава исполнительной власти",
+    "detail": "example.ru == translation: \"глава исполнительной власти\""
+  },
+  {
+    "type": "dup_example",
+    "word": "executive",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "глава исполнительной власти",
+    "detail": "example.ru == translation: \"глава исполнительной власти\""
+  },
+  {
+    "type": "dup_example",
+    "word": "exercise",
+    "mid": 14,
+    "field": "example.ru",
+    "old": "беспокоиться (over, about)",
+    "detail": "example.ru == translation: \"беспокоиться (over, about)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "exile",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "вавилонское пленение",
+    "detail": "example.ru == translation: \"вавилонское пленение\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "expect",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "эвф. ожидать ребёнка, быть в положении expectance, -cy [ik'spektans, -si] n",
+    "fix_hint": "эвф. ожидать ребёнка, быть в положении expectance, -cy [ik'spektans, -si]",
+    "detail": "trailing \"n\""
+  },
+  {
+    "type": "dup_example",
+    "word": "express",
+    "mid": 9,
+    "field": "example.ru",
+    "old": "ехать экспрессом",
+    "detail": "example.ru == translation: \"ехать экспрессом\""
+  },
+  {
+    "type": "dup_example",
+    "word": "false",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "фальшкиль",
+    "detail": "example.ru == translation: \"фальшкиль\""
+  },
+  {
+    "type": "dup_example",
+    "word": "false",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "обмануть, предать кого-либо",
+    "detail": "example.ru == translation: \"обмануть, предать кого-либо\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fast",
+    "mid": 8,
+    "field": "example.ru",
+    "old": "прожигать жизнь",
+    "detail": "example.ru == translation: \"прожигать жизнь\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fate",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: миф. парки",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: миф. парки\""
+  },
+  {
+    "type": "dup_example",
+    "word": "few",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "несколько",
+    "detail": "example.ru == translation: \"несколько\""
+  },
+  {
+    "type": "dup_example",
+    "word": "few",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "несколько",
+    "detail": "example.ru == translation: \"несколько\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fifteen",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "пятнадцать",
+    "detail": "example.ru == translation: \"пятнадцать\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fifth",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "пятый",
+    "detail": "example.ru == translation: \"пятый\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fifth",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "пятый",
+    "detail": "example.ru == translation: \"пятый\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fifth",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "пятое число",
+    "detail": "example.ru == translation: \"пятое число\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fifty",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "пятьдесят",
+    "detail": "example.ru == translation: \"пятьдесят\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fifty",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "пятьдесят",
+    "detail": "example.ru == translation: \"пятьдесят\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "figure",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "едить за фигурой",
+    "fix_hint": "следить за фигурой",
+    "detail": "'едить' -> 'следить'"
+  },
+  {
+    "type": "dup_example",
+    "word": "first",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "первый",
+    "detail": "example.ru == translation: \"первый\""
+  },
+  {
+    "type": "dup_example",
+    "word": "first",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "первый",
+    "detail": "example.ru == translation: \"первый\""
+  },
+  {
+    "type": "dup_example",
+    "word": "first",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "человек или предмет, упоминаемый или появляющийся первым",
+    "detail": "example.ru == translation: \"человек или предмет, упоминаемый или появляющийся первым\""
+  },
+  {
+    "type": "dup_example",
+    "word": "first",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "первое число",
+    "detail": "example.ru == translation: \"первое число\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fish",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "Рыбы (созвездие и знак зодиака)",
+    "detail": "example.ru == translation: \"Рыбы (созвездие и знак зодиака)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "flower",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "серный цвет",
+    "detail": "example.ru == translation: \"серный цвет\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "fold",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "ожить письмо",
+    "fix_hint": "сложить письмо",
+    "detail": "'ожить' -> 'сложить'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "fold",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "ожить руки; перен. сидеть сложа руки",
+    "fix_hint": "сложить руки; перен. сидеть сложа руки",
+    "detail": "'ожить' -> 'сложить'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "follow",
+    "mid": 8,
+    "field": "translation",
+    "old": "едить, провожать (взглядом)",
+    "fix_hint": "следить, провожать (взглядом)",
+    "detail": "pattern '\\bедить\\b' matched 'едить'"
+  },
+  {
+    "type": "dup_example",
+    "word": "following",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "следующее",
+    "detail": "example.ru == translation: \"следующее\""
+  },
+  {
+    "type": "dup_example",
+    "word": "following",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "следующее",
+    "detail": "example.ru == translation: \"следующее\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "foreign",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "ерство иностранных дел (в Англии)",
+    "fix_hint": "Министерство иностранных дел (в Англии)",
+    "detail": "'ерство' -> 'Министерство'"
+  },
+  {
+    "type": "dup_example",
+    "word": "forty",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "сорок",
+    "detail": "example.ru == translation: \"сорок\""
+  },
+  {
+    "type": "dup_example",
+    "word": "forty",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "сорок",
+    "detail": "example.ru == translation: \"сорок\""
+  },
+  {
+    "type": "dup_example",
+    "word": "four",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "четыре",
+    "detail": "example.ru == translation: \"четыре\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fourth",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "четвёртый",
+    "detail": "example.ru == translation: \"четвёртый\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "fresh",
+    "mid": 15,
+    "field": "translation",
+    "old": "= freshet freshen ffrejn] v",
+    "fix_hint": "= freshet freshen ffrejn]",
+    "detail": "trailing letter \"v\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fresh",
+    "mid": 17,
+    "field": "example.ru",
+    "old": "приводить себя в порядок",
+    "detail": "example.ru == translation: \"приводить себя в порядок\""
+  },
+  {
+    "type": "dup_example",
+    "word": "friendly",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "квакерский",
+    "detail": "example.ru == translation: \"квакерский\""
+  },
+  {
+    "type": "dup_example",
+    "word": "frog",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "француз",
+    "detail": "example.ru == translation: \"француз\""
+  },
+  {
+    "type": "dup_example",
+    "word": "full",
+    "mid": 11,
+    "field": "example.ru",
+    "old": "полностью",
+    "detail": "example.ru == translation: \"полностью\""
+  },
+  {
+    "type": "dup_example",
+    "word": "full",
+    "mid": 11,
+    "field": "example.ru",
+    "old": "полностью",
+    "detail": "example.ru == translation: \"полностью\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fund",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: государственные процентные бумаги",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: государственные процентные бумаги\""
+  },
+  {
+    "type": "dup_example",
+    "word": "fund",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: государственные процентные бумаги",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: государственные процентные бумаги\""
+  },
+  {
+    "type": "dup_example",
+    "word": "get",
+    "mid": 13,
+    "field": "example.ru",
+    "old": "иметь, обладать, владеть",
+    "detail": "example.ru == translation: \"иметь, обладать, владеть\""
+  },
+  {
+    "type": "dup_example",
+    "word": "get",
+    "mid": 13,
+    "field": "example.ru",
+    "old": "иметь, обладать, владеть",
+    "detail": "example.ru == translation: \"иметь, обладать, владеть\""
+  }
+]

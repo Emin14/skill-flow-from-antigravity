@@ -1,0 +1,897 @@
+[
+  {
+    "type": "ocr_trailing",
+    "word": "should",
+    "mid": 1,
+    "field": "translation",
+    "old": "вспомогательный глагол; служит для образования будущего в прошедшем в 1 л. ед. и мн. ч.: I",
+    "fix_hint": "вспомогательный глагол; служит для образования будущего в прошедшем в 1 л. ед. и мн. ч.:",
+    "detail": "trailing letter \"I\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "shut",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "ожить веер",
+    "fix_hint": "сложить веер",
+    "detail": "'ожить' -> 'сложить'"
+  },
+  {
+    "type": "dup_example",
+    "word": "side",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "правая (левая) сторона материи, лицо (изнанка) материи",
+    "detail": "example.ru == translation: \"правая (левая) сторона материи, лицо (изнанка) материи\""
+  },
+  {
+    "type": "dup_example",
+    "word": "ski",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "ходить на лыжах",
+    "detail": "example.ru == translation: \"ходить на лыжах\""
+  },
+  {
+    "type": "dup_example",
+    "word": "small",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "поясница",
+    "detail": "example.ru == translation: \"поясница\""
+  },
+  {
+    "type": "dup_example",
+    "word": "smell",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "понюхать",
+    "detail": "example.ru == translation: \"понюхать\""
+  },
+  {
+    "type": "dup_example",
+    "word": "smoke",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "большой город, особ. ЛОндон",
+    "detail": "example.ru == translation: \"большой город, особ. ЛОндон\""
+  },
+  {
+    "type": "dup_example",
+    "word": "soak",
+    "mid": 9,
+    "field": "example.ru",
+    "old": "погрузиться в работу",
+    "detail": "example.ru == translation: \"погрузиться в работу\""
+  },
+  {
+    "type": "dup_example",
+    "word": "sock",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "дать тумака кому-либо",
+    "detail": "example.ru == translation: \"дать тумака кому-либо\""
+  },
+  {
+    "type": "dup_example",
+    "word": "somebody",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "кто-то, кто-нибудь",
+    "detail": "example.ru == translation: \"кто-то, кто-нибудь\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "something",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "ишком много этого",
+    "fix_hint": "слишком много этого",
+    "detail": "'ишком' -> 'слишком'"
+  },
+  {
+    "type": "dup_example",
+    "word": "south",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "южная часть страны, особ. юг, южные штаты США",
+    "detail": "example.ru == translation: \"южная часть страны, особ. юг, южные штаты США\""
+  },
+  {
+    "type": "dup_example",
+    "word": "spark",
+    "mid": 10,
+    "field": "example.ru",
+    "old": "ухаживать за",
+    "detail": "example.ru == translation: \"ухаживать за\""
+  },
+  {
+    "type": "dup_example",
+    "word": "speaker",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "спикер (председатель палаты общин в Англии, председатель палаты представителей в США)",
+    "detail": "example.ru == translation: \"спикер (председатель палаты общин в Англии, председатель пал\""
+  },
+  {
+    "type": "dup_example",
+    "word": "speed",
+    "mid": 8,
+    "field": "example.ru",
+    "old": "устанавливать скорость",
+    "detail": "example.ru == translation: \"устанавливать скорость\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "spy",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "едить за кем-либо",
+    "fix_hint": "следить за кем-либо",
+    "detail": "'едить' -> 'следить'"
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "staff",
+    "mid": 1,
+    "field": "example.en",
+    "old": "with swords and staves c",
+    "fix_hint": "with swords and staves",
+    "detail": "trailing \"c\""
+  },
+  {
+    "type": "dup_example",
+    "word": "stage",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "драматическое искусство, профессия актёра",
+    "detail": "example.ru == translation: \"драматическое искусство, профессия актёра\""
+  },
+  {
+    "type": "dup_example",
+    "word": "stake",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "смерть на костре, сожжение заживо",
+    "detail": "example.ru == translation: \"смерть на костре, сожжение заживо\""
+  },
+  {
+    "type": "dup_example",
+    "word": "star",
+    "mid": 8,
+    "field": "example.ru",
+    "old": "труппа с одним, двумя первоклассными актёрами и слабым ансамблем",
+    "detail": "example.ru == translation: \"труппа с одним, двумя первоклассными актёрами и слабым ансам\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "stay",
+    "mid": 13,
+    "field": "example.en",
+    "old": "to stay one's hunger (или stomach) s",
+    "fix_hint": "to stay one's hunger (или stomach)",
+    "detail": "trailing \"s\""
+  },
+  {
+    "type": "dup_example",
+    "word": "stick",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "наказание, порка",
+    "detail": "example.ru == translation: \"наказание, порка\""
+  },
+  {
+    "type": "dup_example",
+    "word": "stick",
+    "mid": 11,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: захолустье",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: захолустье\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "stiff",
+    "mid": 8,
+    "field": "example.en",
+    "old": "I feel stiff s",
+    "fix_hint": "I feel stiff",
+    "detail": "trailing \"s\""
+  },
+  {
+    "type": "dup_example",
+    "word": "store",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: магазин, торгующий товарами первой необходимости",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: магазин, торгующий товарами первой необход\""
+  },
+  {
+    "type": "dup_example",
+    "word": "street",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "деловой или финансовый центр (обыкн. Уоллстрит)",
+    "detail": "example.ru == translation: \"деловой или финансовый центр (обыкн. Уоллстрит)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "strike",
+    "mid": 19,
+    "field": "example.ru",
+    "old": "сформировать специальный состав присяжных (дав обеим сторонам вычеркнуть одинаковое количество кандидатов)",
+    "detail": "example.ru == translation: \"сформировать специальный состав присяжных (дав обеим сторона\""
+  },
+  {
+    "type": "dup_example",
+    "word": "string",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: струнные инструменты оркестра",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: струнные инструменты оркестра\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "stroke",
+    "mid": 3,
+    "field": "example.en",
+    "old": "they have not done a stroke of work s",
+    "fix_hint": "they have not done a stroke of work",
+    "detail": "trailing \"s\""
+  },
+  {
+    "type": "dup_example",
+    "word": "stuff",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "достаточный запас (особ. питья или наркотиков)",
+    "detail": "example.ru == translation: \"достаточный запас (особ. питья или наркотиков)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "suck",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "высосать, истощить",
+    "detail": "example.ru == translation: \"высосать, истощить\""
+  },
+  {
+    "type": "dup_example",
+    "word": "sudden",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "внезапно, вдруг",
+    "detail": "example.ru == translation: \"внезапно, вдруг\""
+  },
+  {
+    "type": "dup_example",
+    "word": "surprise",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "вынудить кого-либо сделать что-либо (неожиданным вопросом и т. п.)",
+    "detail": "example.ru == translation: \"вынудить кого-либо сделать что-либо (неожиданным вопросом и \""
+  },
+  {
+    "type": "dup_example",
+    "word": "surprise",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "вынудить кого-либо сделать что-либо (неожиданным вопросом и т. п.)",
+    "detail": "example.ru == translation: \"вынудить кого-либо сделать что-либо (неожиданным вопросом и \""
+  },
+  {
+    "type": "dup_example",
+    "word": "surveillance",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "орган, руководящий изысканиями в области геологии, геодезии и гидрографии (в США)",
+    "detail": "example.ru == translation: \"орган, руководящий изысканиями в области геологии, геодезии \""
+  },
+  {
+    "type": "dup_example",
+    "word": "ten",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "десять",
+    "detail": "example.ru == translation: \"десять\""
+  },
+  {
+    "type": "dup_example",
+    "word": "ten",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "десять",
+    "detail": "example.ru == translation: \"десять\""
+  },
+  {
+    "type": "dup_example",
+    "word": "that",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "тот, та, то (иногда этот и пр.)",
+    "detail": "example.ru == translation: \"тот, та, то (иногда этот и пр.)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "themselves",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "сами",
+    "detail": "example.ru == translation: \"сами\""
+  },
+  {
+    "type": "dup_example",
+    "word": "third",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "третье число",
+    "detail": "example.ru == translation: \"третье число\""
+  },
+  {
+    "type": "dup_example",
+    "word": "thirty",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "тридцать",
+    "detail": "example.ru == translation: \"тридцать\""
+  },
+  {
+    "type": "dup_example",
+    "word": "thirty",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "тридцать",
+    "detail": "example.ru == translation: \"тридцать\""
+  },
+  {
+    "type": "dup_example",
+    "word": "this",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "этот, эта, это",
+    "detail": "example.ru == translation: \"этот, эта, это\""
+  },
+  {
+    "type": "dup_example",
+    "word": "thousand",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "тысяча",
+    "detail": "example.ru == translation: \"тысяча\""
+  },
+  {
+    "type": "dup_example",
+    "word": "thread",
+    "mid": 10,
+    "field": "example.ru",
+    "old": "заряжать аппарат кинолентой",
+    "detail": "example.ru == translation: \"заряжать аппарат кинолентой\""
+  },
+  {
+    "type": "dup_example",
+    "word": "ticket",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "получить увольнение",
+    "detail": "example.ru == translation: \"получить увольнение\""
+  },
+  {
+    "type": "dup_example",
+    "word": "ticket",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "получить увольнение",
+    "detail": "example.ru == translation: \"получить увольнение\""
+  },
+  {
+    "type": "dup_example",
+    "word": "tide",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "преодолевать",
+    "detail": "example.ru == translation: \"преодолевать\""
+  },
+  {
+    "type": "dup_example",
+    "word": "tide",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "преодолевать",
+    "detail": "example.ru == translation: \"преодолевать\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "time",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "ишком рано",
+    "fix_hint": "слишком рано",
+    "detail": "'ишком' -> 'слишком'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "too",
+    "mid": 1,
+    "field": "translation",
+    "old": "ишком; это уже чересчур",
+    "fix_hint": "слишком; это уже чересчур",
+    "detail": "pattern '\\bишком\\b' matched 'ишком'"
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "too",
+    "mid": 1,
+    "field": "example.en",
+    "old": "it is too much (of a good thing) s",
+    "fix_hint": "it is too much (of a good thing)",
+    "detail": "trailing \"s\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "touch",
+    "mid": 24,
+    "field": "example.en",
+    "old": "he is slightly touched s",
+    "fix_hint": "he is slightly touched",
+    "detail": "trailing \"s\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "trace",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "едить за чем-либо",
+    "fix_hint": "следить за чем-либо",
+    "detail": "'едить' -> 'следить'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "trace",
+    "mid": 11,
+    "field": "translation",
+    "old": "едить (за кем-либо, чем-либо), прослеживать, выслеживать",
+    "fix_hint": "следить (за кем-либо, чем-либо), прослеживать, выслеживать",
+    "detail": "pattern '\\bедить\\b' matched 'едить'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "track",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "едить",
+    "fix_hint": "следить",
+    "detail": "'едить' -> 'следить'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "track",
+    "mid": 4,
+    "field": "translation",
+    "old": "едить, прослеживать; выслеживать",
+    "fix_hint": "следить, прослеживать; выслеживать",
+    "detail": "pattern '\\bедить\\b' matched 'едить'"
+  },
+  {
+    "type": "dup_example",
+    "word": "trade",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "розничные торговцы",
+    "detail": "example.ru == translation: \"розничные торговцы\""
+  },
+  {
+    "type": "dup_example",
+    "word": "trade",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "розничные торговцы",
+    "detail": "example.ru == translation: \"розничные торговцы\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "tragedy",
+    "mid": 3,
+    "field": "translation",
+    "old": "относящийся к трагедии; главный трагический актёр труппы tragic(al) ['tr®d3ik(l)] a",
+    "fix_hint": "относящийся к трагедии; главный трагический актёр труппы tragic(al) ['tr®d3ik(l)]",
+    "detail": "trailing letter \"a\""
+  },
+  {
+    "type": "dup_example",
+    "word": "transfer",
+    "mid": 9,
+    "field": "example.ru",
+    "old": "перевести ребёнка в другую школу",
+    "detail": "example.ru == translation: \"перевести ребёнка в другую школу\""
+  },
+  {
+    "type": "dup_example",
+    "word": "transmission",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "передача",
+    "detail": "example.ru == translation: \"передача\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "turn",
+    "mid": 6,
+    "field": "translation",
+    "old": "перемена; изменение (состояния); he hopes for a",
+    "fix_hint": "перемена; изменение (состояния); he hopes for",
+    "detail": "trailing letter \"a\""
+  },
+  {
+    "type": "dup_example",
+    "word": "twelve",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "двенадцать",
+    "detail": "example.ru == translation: \"двенадцать\""
+  },
+  {
+    "type": "dup_example",
+    "word": "two",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "два",
+    "detail": "example.ru == translation: \"два\""
+  },
+  {
+    "type": "dup_example",
+    "word": "unconscious",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "подсознательное (в психоанализе)",
+    "detail": "example.ru == translation: \"подсознательное (в психоанализе)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "unemployed",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: безработные",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: безработные\""
+  },
+  {
+    "type": "dup_example",
+    "word": "variety",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "ряд, множество",
+    "detail": "example.ru == translation: \"ряд, множество\""
+  },
+  {
+    "type": "dup_example",
+    "word": "very",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "очень",
+    "detail": "example.ru == translation: \"очень\""
+  },
+  {
+    "type": "dup_example",
+    "word": "vice",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "Порок (шутовская фигура в моралите)",
+    "detail": "example.ru == translation: \"Порок (шутовская фигура в моралите)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wait",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: христославы (певцы, ходящие по домам в Сочельник)",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: христославы (певцы, ходящие по домам в Соч\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "war",
+    "mid": 1,
+    "field": "example.en",
+    "old": "the Great W., World W. I",
+    "fix_hint": "the Great W., World W.",
+    "detail": "trailing \"I\""
+  },
+  {
+    "type": "dup_example",
+    "word": "ward",
+    "mid": 8,
+    "field": "example.ru",
+    "old": "отражать, отвращать (удар, опасность)",
+    "detail": "example.ru == translation: \"отражать, отвращать (удар, опасность)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wash",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "мытьё",
+    "detail": "example.ru == translation: \"мытьё\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wash",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "мытьё",
+    "detail": "example.ru == translation: \"мытьё\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wash",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "стирка",
+    "detail": "example.ru == translation: \"стирка\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wash",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "стирка",
+    "detail": "example.ru == translation: \"стирка\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wash",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "бельё",
+    "detail": "example.ru == translation: \"бельё\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wash",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "бельё",
+    "detail": "example.ru == translation: \"бельё\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wear",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "плавать под флагом",
+    "detail": "example.ru == translation: \"плавать под флагом\""
+  },
+  {
+    "type": "dup_example",
+    "word": "web",
+    "mid": 10,
+    "field": "example.ru",
+    "old": "информ. сеть",
+    "detail": "example.ru == translation: \"информ. сеть\""
+  },
+  {
+    "type": "dup_example",
+    "word": "weed",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "табак",
+    "detail": "example.ru == translation: \"табак\""
+  },
+  {
+    "type": "dup_example",
+    "word": "west",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "западные штаты",
+    "detail": "example.ru == translation: \"западные штаты\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wheel",
+    "mid": 10,
+    "field": "example.ru",
+    "old": "правое (левое) плечо вперёд!",
+    "detail": "example.ru == translation: \"правое (левое) плечо вперёд!\""
+  },
+  {
+    "type": "dup_example",
+    "word": "when",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "когда",
+    "detail": "example.ru == translation: \"когда\""
+  },
+  {
+    "type": "dup_example",
+    "word": "when",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "когда",
+    "detail": "example.ru == translation: \"когда\""
+  },
+  {
+    "type": "dup_example",
+    "word": "where",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "где",
+    "detail": "example.ru == translation: \"где\""
+  },
+  {
+    "type": "dup_example",
+    "word": "where",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "где",
+    "detail": "example.ru == translation: \"где\""
+  },
+  {
+    "type": "dup_example",
+    "word": "whereby",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "посредством чего",
+    "detail": "example.ru == translation: \"посредством чего\""
+  },
+  {
+    "type": "dup_example",
+    "word": "which",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "каковой, который, что",
+    "detail": "example.ru == translation: \"каковой, который, что\""
+  },
+  {
+    "type": "dup_example",
+    "word": "whip",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "партийная дисциплина и директивы (члену парламента) голосовать за кандидата или мероприятие",
+    "detail": "example.ru == translation: \"партийная дисциплина и директивы (члену парламента) голосова\""
+  },
+  {
+    "type": "dup_example",
+    "word": "white",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "белый, белокожий",
+    "detail": "example.ru == translation: \"белый, белокожий\""
+  },
+  {
+    "type": "dup_example",
+    "word": "white",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "кофе с молоком или сливками",
+    "detail": "example.ru == translation: \"кофе с молоком или сливками\""
+  },
+  {
+    "type": "dup_example",
+    "word": "whole",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "все",
+    "detail": "example.ru == translation: \"все\""
+  },
+  {
+    "type": "dup_example",
+    "word": "whole",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "все",
+    "detail": "example.ru == translation: \"все\""
+  },
+  {
+    "type": "dup_example",
+    "word": "why",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "почему",
+    "detail": "example.ru == translation: \"почему\""
+  },
+  {
+    "type": "dup_example",
+    "word": "why",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "почему",
+    "detail": "example.ru == translation: \"почему\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wild",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "пустыня, дебри",
+    "detail": "example.ru == translation: \"пустыня, дебри\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wild",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "пустыня, дебри",
+    "detail": "example.ru == translation: \"пустыня, дебри\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wish",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "желать кому-либо добра (зла)",
+    "detail": "example.ru == translation: \"желать кому-либо добра (зла)\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "within",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "относиться к ведению, к петенции",
+    "fix_hint": "относиться к ведению, к компетенции",
+    "detail": "'петенци' -> 'компетенци'"
+  },
+  {
+    "type": "dup_example",
+    "word": "wood",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "бочка, бочонок (для вина)",
+    "detail": "example.ru == translation: \"бочка, бочонок (для вина)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wood",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "бочка, бочонок (для вина)",
+    "detail": "example.ru == translation: \"бочка, бочонок (для вина)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "wood",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: деревянные духовые инструменты",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: деревянные духовые инструменты\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "world",
+    "mid": 1,
+    "field": "example.en",
+    "old": "not of this world s",
+    "fix_hint": "not of this world",
+    "detail": "trailing \"s\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "world",
+    "mid": 8,
+    "field": "example.ru",
+    "old": "ишком",
+    "fix_hint": "слишком",
+    "detail": "'ишком' -> 'слишком'"
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "worse",
+    "mid": 1,
+    "field": "example.en",
+    "old": "he is none the worse for it a",
+    "fix_hint": "he is none the worse for it",
+    "detail": "trailing \"a\""
+  },
+  {
+    "type": "dup_example",
+    "word": "worship",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "ваша милость (при обращении к судье, мэру)",
+    "detail": "example.ru == translation: \"ваша милость (при обращении к судье, мэру)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "yourself",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "сам, сами",
+    "detail": "example.ru == translation: \"сам, сами\""
+  }
+]

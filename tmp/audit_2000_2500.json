@@ -1,0 +1,249 @@
+[
+  {
+    "type": "ocr_trailing",
+    "word": "ground",
+    "mid": 14,
+    "field": "example.ru",
+    "old": "из-за тумана ни один самолёт не мог подняться в воздух на аэродроме N",
+    "fix_hint": "из-за тумана ни один самолёт не мог подняться в воздух на аэродроме",
+    "detail": "trailing \"N\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "hand",
+    "mid": 25,
+    "field": "translation",
+    "old": "ишком легко уступить",
+    "fix_hint": "слишком легко уступить",
+    "detail": "pattern '\\bишком\\b' matched 'ишком'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "happen",
+    "mid": 2,
+    "field": "translation",
+    "old": "учайно) оказываться",
+    "fix_hint": "случайно) оказываться",
+    "detail": "pattern '\\bучайно\\b' matched 'учайно'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "happen",
+    "mid": 2,
+    "field": "translation",
+    "old": "учайно) оказываться",
+    "fix_hint": "случайно) оказываться",
+    "detail": "pattern '\\bучайн' matched 'учайн'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "happen",
+    "mid": 3,
+    "field": "translation",
+    "old": "учайно найти",
+    "fix_hint": "случайно найти",
+    "detail": "pattern '\\bучайно\\b' matched 'учайно'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "happen",
+    "mid": 3,
+    "field": "translation",
+    "old": "учайно найти",
+    "fix_hint": "случайно найти",
+    "detail": "pattern '\\bучайн' matched 'учайн'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "happen",
+    "mid": 4,
+    "field": "translation",
+    "old": "учайно натолкнуться, встретить",
+    "fix_hint": "случайно натолкнуться, встретить",
+    "detail": "pattern '\\bучайно\\b' matched 'учайно'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "happen",
+    "mid": 4,
+    "field": "translation",
+    "old": "учайно натолкнуться, встретить",
+    "fix_hint": "случайно натолкнуться, встретить",
+    "detail": "pattern '\\bучайн' matched 'учайн'"
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "have",
+    "mid": 17,
+    "field": "translation",
+    "old": "с последующим инфинитивом имеет модальное значение: быть должным, вынужденным (что-либо делать); I",
+    "fix_hint": "с последующим инфинитивом имеет модальное значение: быть должным, вынужденным (что-либо делать);",
+    "detail": "trailing letter \"I\""
+  },
+  {
+    "type": "dup_example",
+    "word": "have",
+    "mid": 18,
+    "field": "example.ru",
+    "old": "имущие и неимущие",
+    "detail": "example.ru == translation: \"имущие и неимущие\""
+  },
+  {
+    "type": "dup_example",
+    "word": "heaven",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "провидение, Бог",
+    "detail": "example.ru == translation: \"провидение, Бог\""
+  },
+  {
+    "type": "dup_example",
+    "word": "himself",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "сам",
+    "detail": "example.ru == translation: \"сам\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "home",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "ерство внутренних дел",
+    "fix_hint": "Министерство внутренних дел",
+    "detail": "'ерство' -> 'Министерство'"
+  },
+  {
+    "type": "dup_example",
+    "word": "home",
+    "mid": 15,
+    "field": "example.ru",
+    "old": "исходное положение",
+    "detail": "example.ru == translation: \"исходное положение\""
+  },
+  {
+    "type": "dup_example",
+    "word": "house",
+    "mid": 13,
+    "field": "example.ru",
+    "old": "работный дом",
+    "detail": "example.ru == translation: \"работный дом\""
+  },
+  {
+    "type": "dup_example",
+    "word": "household",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "королевский двор",
+    "detail": "example.ru == translation: \"королевский двор\""
+  },
+  {
+    "type": "dup_example",
+    "word": "humour",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "основные «соки» в организме человека (кровь, флегма, жёлчь, чёрная жёлчь или меланхолия)",
+    "detail": "example.ru == translation: \"основные «соки» в организме человека (кровь, флегма, жёлчь, \""
+  },
+  {
+    "type": "dup_example",
+    "word": "if",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "даже если (бы)",
+    "detail": "example.ru == translation: \"даже если (бы)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "if",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "даже если (бы)",
+    "detail": "example.ru == translation: \"даже если (бы)\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "image",
+    "mid": 10,
+    "field": "example.ru",
+    "old": "зеркальный эффект 2. v",
+    "fix_hint": "зеркальный эффект 2.",
+    "detail": "trailing \"v\""
+  },
+  {
+    "type": "dup_example",
+    "word": "inside",
+    "mid": 14,
+    "field": "example.ru",
+    "old": "в пределах",
+    "detail": "example.ru == translation: \"в пределах\""
+  },
+  {
+    "type": "dup_example",
+    "word": "inside",
+    "mid": 14,
+    "field": "example.ru",
+    "old": "в пределах",
+    "detail": "example.ru == translation: \"в пределах\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "instrument",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "епой полёт, полёт по приборам",
+    "fix_hint": "слепой полёт, полёт по приборам",
+    "detail": "'епой' -> 'слепой'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "insurance",
+    "mid": 1,
+    "field": "translation",
+    "old": "ахование",
+    "fix_hint": "страхование",
+    "detail": "pattern '\\bахование\\b' matched 'ахование'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "insurance",
+    "mid": 1,
+    "field": "translation",
+    "old": "ахование",
+    "fix_hint": "страхование",
+    "detail": "pattern '\\bаховани' matched 'аховани'"
+  },
+  {
+    "type": "dup_example",
+    "word": "intellectual",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: картин теллигенция",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: картин теллигенция\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "it",
+    "mid": 2,
+    "field": "example.en",
+    "old": "it's me, it is I",
+    "fix_hint": "it's me, it is",
+    "detail": "trailing \"I\""
+  },
+  {
+    "type": "dup_example",
+    "word": "itself",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "сам, само, сама",
+    "detail": "example.ru == translation: \"сам, само, сама\""
+  },
+  {
+    "type": "dup_example",
+    "word": "lady",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "леди (титул знатной дамы)",
+    "detail": "example.ru == translation: \"леди (титул знатной дамы)\""
+  }
+]

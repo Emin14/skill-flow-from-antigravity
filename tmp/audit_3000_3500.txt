@@ -1,0 +1,275 @@
+AUDIT 3001–3500
+============================================================
+
+
+──────────────────────────────────────────────────
+WORD: occasional
+PDF:  occasional [ ke  n l] a 1) случаю щийся время от времени, иногда 2) случайный, редкий; ~ visitor слу чайный посетитель 3) приуроченный к определённому событию; сделан ный для определённой цели; ~ ode ода на какоел. событие
+  [2] ocr_error | translation
+    OLD: учайный, редкий
+    FIX: случайный, редкий
+    NOTE: pattern '\bучайн' matched 'учайн'
+  [2] ocr_error | example.ru
+    OLD: учайный посетитель
+    FIX: случайный посетитель
+    NOTE: 'учайн' -> 'случайн'
+
+──────────────────────────────────────────────────
+WORD: odd
+PDF:  odd [ d] 1. a 1) необычный, странный, эксцентричный; how ~! как странно!;
+  [2] ocr_error | example.ru
+    OLD: учайная работа
+    FIX: случайная работа
+    NOTE: 'учайн' -> 'случайн'
+
+──────────────────────────────────────────────────
+WORD: often
+PDF:  often [  f n] adv часто; много раз; ~ and ~ весьма часто; more ~ than not очень часто, почти всегда; once too ~ слишком часто
+  [1] ocr_error | example.ru
+    OLD: ишком часто
+    FIX: слишком часто
+    NOTE: 'ишком' -> 'слишком'
+
+──────────────────────────────────────────────────
+WORD: old
+PDF:  old 1; 2) старший (в семье); my ~
+  [14] dup_example | example.ru
+    OLD: при англ. мн. ч.: старики
+    NOTE: example.ru == translation: "при англ. мн. ч.: старики"
+  [14] dup_example | example.ru
+    OLD: при англ. мн. ч.: старики
+    NOTE: example.ru == translation: "при англ. мн. ч.: старики"
+
+──────────────────────────────────────────────────
+WORD: once
+PDF:  once [wns] 1. adv 1) (один) раз; ~ again (или more) ещё раз; ~ and again а) несколько раз; б) иногда, изредка; ~ every day раз в день; ~ (and) for all раз (и) навсегда; ~ in a while (или way) иногда, изредка; ~ or twice несколько раз; more than ~ не раз, неоднократно;
+  [2] ocr_trailing | example.en
+    OLD: once (upon a time) s
+    FIX: once (upon a time)
+    NOTE: trailing "s"
+
+──────────────────────────────────────────────────
+WORD: one
+PDF:  one [wn] 1. num. card. 1) один; ~ hun
+  [3] dup_example | example.ru
+    OLD: я встречу тебя в час
+    NOTE: example.ru == translation: "я встречу тебя в час"
+  [3] dup_example | example.ru
+    OLD: я встречу тебя в час
+    NOTE: example.ru == translation: "я встречу тебя в час"
+
+──────────────────────────────────────────────────
+WORD: open
+PDF:  open [  p n] 1. a 1) открытый; in the ~
+  [12] dup_example | example.ru
+    OLD: беспалубное судно
+    NOTE: example.ru == translation: "беспалубное судно"
+
+──────────────────────────────────────────────────
+WORD: ordinary
+PDF:  ordinary [  :dn r ] 1. a 1) обычный, обыкновенный; ординарный; простой; in an ~ way при обычных обстоятель ствах; ~ people простые люди; ~ sea
+  [4] dup_example | example.ru
+    OLD: архиепископ, епископ и т. п., исполняющие обязанности судьи
+    NOTE: example.ru == translation: "архиепископ, епископ и т. п., исполняющие обязанности судьи"
+
+──────────────────────────────────────────────────
+WORD: ourselves
+PDF:  ourselves [ a  selvz] pron 1) refl. себя, ся; себе; we shall only harm ~ мы только повредим себе 2) emph. сами;
+  [2] dup_example | example.ru
+    OLD: сами
+    NOTE: example.ru == translation: "сами"
+
+──────────────────────────────────────────────────
+WORD: out
+PDF:  out [a t] 1. adv 1) вне, снаружи; нару жу; вон; передаётся тж. пристав кой вы; he is ~ он вышел, его нет до ма; the chicken is ~ цыплёнок вылу пился; the book is ~  книга вышла из печати; the eruption is ~ all over him сыпь выступила у него по всему телу; the floods are ~ река вышла из берегов; ~ a
+  [7] dup_example | example.ru
+    OLD: выездной матч
+    NOTE: example.ru == translation: "выездной матч"
+  [13] dup_example | example.ru
+    OLD: при англ. мн. ч.: оппозиция
+    NOTE: example.ru == translation: "при англ. мн. ч.: оппозиция"
+
+──────────────────────────────────────────────────
+WORD: overly
+PDF:  overly [  vl ] adv (обыкн. амер., шотл.) чрезмерно; ~ cautious слишком осто рожный
+  [1] ocr_error | translation
+    OLD: ишком осторожный
+    FIX: слишком осторожный
+    NOTE: pattern '\bишком\b' matched 'ишком'
+
+──────────────────────────────────────────────────
+WORD: oversee
+PDF:  oversee [  v si:] v (oversaw; overseen) 1) надзирать, наблюдать 2) подсмат ривать 3) случайно увидеть
+  [3] ocr_error | translation
+    OLD: учайно увидеть
+    FIX: случайно увидеть
+    NOTE: pattern '\bучайно\b' matched 'учайно'
+  [3] ocr_error | translation
+    OLD: учайно увидеть
+    FIX: случайно увидеть
+    NOTE: pattern '\bучайн' matched 'учайн'
+
+──────────────────────────────────────────────────
+WORD: pale
+PDF:  pale I [pe l] 1. n 1) частокол; ограда 2) кол; свая 3) граница, черта, пре делы; рамки (поведения); beyond (within) the ~ of smth. за пределами (в пределах) чегол. 4) геральд. ши рокая вертикальная полоса посре дине щита 5) ист. черта оседлости 6): the (English) P. ист. часть Ир ландии, подвластная
+  [6] dup_example | example.ru
+    OLD: часть ирландии, подвластная Англии
+    NOTE: example.ru == translation: "часть ирландии, подвластная Англии"
+
+──────────────────────────────────────────────────
+WORD: part
+PDF:  part [p:t] 1. n 1) часть, доля; for the
+  [12] dup_example | example.ru
+    OLD: часть речи
+    NOTE: example.ru == translation: "часть речи"
+  [12] dup_example | example.ru
+    OLD: часть речи
+    NOTE: example.ru == translation: "часть речи"
+
+──────────────────────────────────────────────────
+WORD: passion
+PDF:  passion [ pæ n] 1. n 1) страсть, стра стное увлечение (for — чемл., кемл.) 2) вспышка гнева; to fall (или to fly)
+  [6] dup_example | example.ru
+    OLD: Страсти Господни, Крестные муки
+    NOTE: example.ru == translation: "Страсти Господни, Крестные муки"
+
+──────────────────────────────────────────────────
+WORD: perfectly
+PDF:  perfectly [ p :f ktl ] adv 1) совершенно, вполне 2) отлично; ~ well отлично
+  [2] dup_example | example.ru
+    OLD: отлично
+    NOTE: example.ru == translation: "отлично"
+
+──────────────────────────────────────────────────
+WORD: persist
+PDF:  persist [p  s st] v 1) упорствовать, на стойчиво, упорно продолжать (in); he ~ed in his opinion он упорно стоял на своём 2) удерживаться, сохра няться, продолжать существовать; устоять; the tendency still ~s эта тен денция всё ещё существует
+  [2] ocr_trailing | example.ru
+    OLD: эта тенденция всё ещё существует persistence, -cy [pa'sistans, -si] n
+    FIX: эта тенденция всё ещё существует persistence, -cy [pa'sistans, -si]
+    NOTE: trailing "n"
+
+──────────────────────────────────────────────────
+WORD: pig
+PDF:  pig [p  ] 1. n 1) (молодая) свинья; подсвинок; поросёнок; in ~ супоро сая (о свинье) 2) свинина; поросяти на 3) разг. свинья, нахал 4) разг. не ряха, грязнуля 5) тех. болванка, чушка; брусок 6) сл. полицейский 7) долька, ломтик (апельсина) 8) ав. жарг. аэростат заграждения ♦ to
+  [11] dup_example | example.ru
+    OLD: жить тесно и неуютно, ютиться
+    NOTE: example.ru == translation: "жить тесно и неуютно, ютиться"
+
+──────────────────────────────────────────────────
+WORD: pill
+PDF:  pill I [p l] 1. n 1) пилюля; табле   2) (the ~) разг. противозачаточная пилюля, таблетка 3) разг. неприят ный человек 4) разг. ядро; пуля; ша рик; мяч; баллотировочный шар 5) pl бильярд ♦ a ~ to cure an earthquake жалкая полумера; a bitter ~ to
+  [2] dup_example | example.ru
+    OLD: противозачаточная пилюля, таблетка
+    NOTE: example.ru == translation: "противозачаточная пилюля, таблетка"
+
+──────────────────────────────────────────────────
+WORD: pink
+PDF:  pink I [p  k] 1. n 1) розовый цвет 2) бот. гвоздика 3) (the ~) верх, выс шая степень; in the ~ разг. в прекрас ном состоянии (о здоровье); the ~ of
+  [3] dup_example | example.ru
+    OLD: верх, высшая степень
+    NOTE: example.ru == translation: "верх, высшая степень"
+  [3] dup_example | example.ru
+    OLD: верх, высшая степень
+    NOTE: example.ru == translation: "верх, высшая степень"
+
+──────────────────────────────────────────────────
+WORD: place
+PDF:  place [ple s] 1. n 1) место; to give ~ to smb. уступить место комул.; to
+  [12] dup_example | example.ru
+    OLD: с точностью до одной стотысячной
+    NOTE: example.ru == translation: "с точностью до одной стотысячной"
+
+──────────────────────────────────────────────────
+WORD: pledge
+PDF:  pledge [pled ] 1. n 1) обет; обещание;
+  [6] dup_example | example.ru
+    OLD: дать зарок воздержания от спиртных напитков
+    NOTE: example.ru == translation: "дать зарок воздержания от спиртных напитков"
+
+──────────────────────────────────────────────────
+WORD: plus
+PDF:  plus [pl s] 1. n 1) знак плюс 2) доба вочное количество 3) преимущество 4) положительная величина; to total
+  [7] dup_example | example.ru
+    OLD: на приходе счёта
+    NOTE: example.ru == translation: "на приходе счёта"
+
+──────────────────────────────────────────────────
+WORD: poor
+PDF:  poor [p :] 1. a 1) бедный, неимущий, малоимущий 2) бедный (in — чемл.) 3) низкий, плохой, скверный (об уро жае; о качестве) 4) жалкий, невзрач ный 5) несчастный; ~ fellow! бедняга! 6) скудный, жалкий, плохой; ни чтожный; убогий; in my ~ opinion шутл. по моему скромному мнению; a ~ £ 1 a week жалкий
+  [9] dup_example | example.ru
+    OLD: при англ. мн. ч.: бедные, бедняки, беднота, неимущие
+    NOTE: example.ru == translation: "при англ. мн. ч.: бедные, бедняки, беднота, неимущие"
+
+──────────────────────────────────────────────────
+WORD: possible
+PDF:  possible [ p s bl] 1. a 1) возможный, вероятный; if ~ если это возможно; as
+  [4] dup_example | example.ru
+    OLD: возможное
+    NOTE: example.ru == translation: "возможное"
+  [4] dup_example | example.ru
+    OLD: возможное
+    NOTE: example.ru == translation: "возможное"
+
+──────────────────────────────────────────────────
+WORD: potential
+PDF:  potential [p  ten l] 1. n 1) возможность 2) потенциал 3) эл. потенциал, на пряжение 2. a 1) потенциальный; возможный 2) эл.: ~ difference разность потенци алов
+  [5] dup_example | example.ru
+    OLD: разность потенциалов
+    NOTE: example.ru == translation: "разность потенциалов"
+
+──────────────────────────────────────────────────
+WORD: present
+PDF:  present I [ preznt] 1. n 1) настоящее время; at ~ в данное время; for the ~ на этот раз, пока 2) юр.: these ~s сей документ; know all men by these ~s настоящим объявляется 3): those (here) ~ присутствующие 4) = ~ tense [см. 2, 4)] 2. a 1) присутствующий, имеющий ся налицо; to be ~ at присутствовать
+  [2] dup_example | example.ru
+    OLD: сей документ
+    NOTE: example.ru == translation: "сей документ"
+  [2] dup_example | example.ru
+    OLD: сей документ
+    NOTE: example.ru == translation: "сей документ"
+  [3] dup_example | example.ru
+    OLD: присутствующие
+    NOTE: example.ru == translation: "присутствующие"
+  [7] dup_example | example.ru
+    OLD: настоящее время
+    NOTE: example.ru == translation: "настоящее время"
+  [7] dup_example | example.ru
+    OLD: настоящее время
+    NOTE: example.ru == translation: "настоящее время"
+
+──────────────────────────────────────────────────
+WORD: pretty
+PDF:  pretty [ pr t ] 1. a 1) хорошенький, пре лестный, миловидный 2) приятный; хороший (тж. ирон.); a ~ business! хорошенькое дело! 3) ирон. значи тельный, изрядный; a ~ penny (или sum) кругленькая сумма ♦ to be
+  [4] dup_example | example.ru
+    OLD: моя прелесть! (в обращении)
+    NOTE: example.ru == translation: "моя прелесть! (в обращении)"
+
+──────────────────────────────────────────────────
+WORD: previous
+PDF:  previous [ pri:v  s] 1. a 1) предыдущий; предшествующий (to); the ~ day на кануне; the ~ night накануне вечером 2) преждевременный, поспешный, опрометчивый ♦ P. Examination пер вый экзамен на степень бакалавра (в  Кембриджском  университете); ~ question парл. вопрос о постановке на голосование глав
+  [3] dup_example | example.ru
+    OLD: до, прежде, ранее
+    NOTE: example.ru == translation: "до, прежде, ранее"
+
+──────────────────────────────────────────────────
+WORD: prior
+PDF:  prior [ pra  ] 1. a 1) прежний; предше ствующий 2) более важный, веский; a ~ claim более веская претензия 2. adv: ~ to раньше, прежде, до; ~ to my arrival до моего приезда 3. n настоятель, приор
+  [3] dup_example | example.ru
+    OLD: раньше, прежде, до
+    NOTE: example.ru == translation: "раньше, прежде, до"
+  [3] dup_example | example.ru
+    OLD: раньше, прежде, до
+    NOTE: example.ru == translation: "раньше, прежде, до"
+
+──────────────────────────────────────────────────
+WORD: protocol
+PDF:  protocol [ pr  t   k l] 1. n 1) дип. протокол; прелиминарные условия договора или соглашения; дополни тельное международное соглашение 2) правила дипломатического эти кета 3) протокол 4) (the P.) прото кольный отдел (министерства ино странных дел и т. п.) 2. v протоколировать, вести прото кол, зано
+  [4] dup_example | example.ru
+    OLD: протокольный отдел (министерства иностранных дел и т. п.)
+    NOTE: example.ru == translation: "протокольный отдел (министерства иностранных дел и т. п.)"
+
+
+============================================================
+SUMMARY: 500 entries, PDF found 488, issues 44
+  dup_example: 35
+  ocr_error: 7
+  ocr_trailing: 2

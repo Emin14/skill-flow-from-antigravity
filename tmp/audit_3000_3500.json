@@ -1,0 +1,363 @@
+[
+  {
+    "type": "ocr_error",
+    "word": "occasional",
+    "mid": 2,
+    "field": "translation",
+    "old": "учайный, редкий",
+    "fix_hint": "случайный, редкий",
+    "detail": "pattern '\\bучайн' matched 'учайн'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "occasional",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "учайный посетитель",
+    "fix_hint": "случайный посетитель",
+    "detail": "'учайн' -> 'случайн'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "odd",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "учайная работа",
+    "fix_hint": "случайная работа",
+    "detail": "'учайн' -> 'случайн'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "often",
+    "mid": 1,
+    "field": "example.ru",
+    "old": "ишком часто",
+    "fix_hint": "слишком часто",
+    "detail": "'ишком' -> 'слишком'"
+  },
+  {
+    "type": "dup_example",
+    "word": "old",
+    "mid": 14,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: старики",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: старики\""
+  },
+  {
+    "type": "dup_example",
+    "word": "old",
+    "mid": 14,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: старики",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: старики\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "once",
+    "mid": 2,
+    "field": "example.en",
+    "old": "once (upon a time) s",
+    "fix_hint": "once (upon a time)",
+    "detail": "trailing \"s\""
+  },
+  {
+    "type": "dup_example",
+    "word": "one",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "я встречу тебя в час",
+    "detail": "example.ru == translation: \"я встречу тебя в час\""
+  },
+  {
+    "type": "dup_example",
+    "word": "one",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "я встречу тебя в час",
+    "detail": "example.ru == translation: \"я встречу тебя в час\""
+  },
+  {
+    "type": "dup_example",
+    "word": "open",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "беспалубное судно",
+    "detail": "example.ru == translation: \"беспалубное судно\""
+  },
+  {
+    "type": "dup_example",
+    "word": "ordinary",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "архиепископ, епископ и т. п., исполняющие обязанности судьи",
+    "detail": "example.ru == translation: \"архиепископ, епископ и т. п., исполняющие обязанности судьи\""
+  },
+  {
+    "type": "dup_example",
+    "word": "ourselves",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "сами",
+    "detail": "example.ru == translation: \"сами\""
+  },
+  {
+    "type": "dup_example",
+    "word": "out",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "выездной матч",
+    "detail": "example.ru == translation: \"выездной матч\""
+  },
+  {
+    "type": "dup_example",
+    "word": "out",
+    "mid": 13,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: оппозиция",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: оппозиция\""
+  },
+  {
+    "type": "ocr_error",
+    "word": "overly",
+    "mid": 1,
+    "field": "translation",
+    "old": "ишком осторожный",
+    "fix_hint": "слишком осторожный",
+    "detail": "pattern '\\bишком\\b' matched 'ишком'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "oversee",
+    "mid": 3,
+    "field": "translation",
+    "old": "учайно увидеть",
+    "fix_hint": "случайно увидеть",
+    "detail": "pattern '\\bучайно\\b' matched 'учайно'"
+  },
+  {
+    "type": "ocr_error",
+    "word": "oversee",
+    "mid": 3,
+    "field": "translation",
+    "old": "учайно увидеть",
+    "fix_hint": "случайно увидеть",
+    "detail": "pattern '\\bучайн' matched 'учайн'"
+  },
+  {
+    "type": "dup_example",
+    "word": "pale",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "часть ирландии, подвластная Англии",
+    "detail": "example.ru == translation: \"часть ирландии, подвластная Англии\""
+  },
+  {
+    "type": "dup_example",
+    "word": "part",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "часть речи",
+    "detail": "example.ru == translation: \"часть речи\""
+  },
+  {
+    "type": "dup_example",
+    "word": "part",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "часть речи",
+    "detail": "example.ru == translation: \"часть речи\""
+  },
+  {
+    "type": "dup_example",
+    "word": "passion",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "Страсти Господни, Крестные муки",
+    "detail": "example.ru == translation: \"Страсти Господни, Крестные муки\""
+  },
+  {
+    "type": "dup_example",
+    "word": "perfectly",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "отлично",
+    "detail": "example.ru == translation: \"отлично\""
+  },
+  {
+    "type": "ocr_trailing",
+    "word": "persist",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "эта тенденция всё ещё существует persistence, -cy [pa'sistans, -si] n",
+    "fix_hint": "эта тенденция всё ещё существует persistence, -cy [pa'sistans, -si]",
+    "detail": "trailing \"n\""
+  },
+  {
+    "type": "dup_example",
+    "word": "pig",
+    "mid": 11,
+    "field": "example.ru",
+    "old": "жить тесно и неуютно, ютиться",
+    "detail": "example.ru == translation: \"жить тесно и неуютно, ютиться\""
+  },
+  {
+    "type": "dup_example",
+    "word": "pill",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "противозачаточная пилюля, таблетка",
+    "detail": "example.ru == translation: \"противозачаточная пилюля, таблетка\""
+  },
+  {
+    "type": "dup_example",
+    "word": "pink",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "верх, высшая степень",
+    "detail": "example.ru == translation: \"верх, высшая степень\""
+  },
+  {
+    "type": "dup_example",
+    "word": "pink",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "верх, высшая степень",
+    "detail": "example.ru == translation: \"верх, высшая степень\""
+  },
+  {
+    "type": "dup_example",
+    "word": "place",
+    "mid": 12,
+    "field": "example.ru",
+    "old": "с точностью до одной стотысячной",
+    "detail": "example.ru == translation: \"с точностью до одной стотысячной\""
+  },
+  {
+    "type": "dup_example",
+    "word": "pledge",
+    "mid": 6,
+    "field": "example.ru",
+    "old": "дать зарок воздержания от спиртных напитков",
+    "detail": "example.ru == translation: \"дать зарок воздержания от спиртных напитков\""
+  },
+  {
+    "type": "dup_example",
+    "word": "plus",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "на приходе счёта",
+    "detail": "example.ru == translation: \"на приходе счёта\""
+  },
+  {
+    "type": "dup_example",
+    "word": "poor",
+    "mid": 9,
+    "field": "example.ru",
+    "old": "при англ. мн. ч.: бедные, бедняки, беднота, неимущие",
+    "detail": "example.ru == translation: \"при англ. мн. ч.: бедные, бедняки, беднота, неимущие\""
+  },
+  {
+    "type": "dup_example",
+    "word": "possible",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "возможное",
+    "detail": "example.ru == translation: \"возможное\""
+  },
+  {
+    "type": "dup_example",
+    "word": "possible",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "возможное",
+    "detail": "example.ru == translation: \"возможное\""
+  },
+  {
+    "type": "dup_example",
+    "word": "potential",
+    "mid": 5,
+    "field": "example.ru",
+    "old": "разность потенциалов",
+    "detail": "example.ru == translation: \"разность потенциалов\""
+  },
+  {
+    "type": "dup_example",
+    "word": "present",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "сей документ",
+    "detail": "example.ru == translation: \"сей документ\""
+  },
+  {
+    "type": "dup_example",
+    "word": "present",
+    "mid": 2,
+    "field": "example.ru",
+    "old": "сей документ",
+    "detail": "example.ru == translation: \"сей документ\""
+  },
+  {
+    "type": "dup_example",
+    "word": "present",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "присутствующие",
+    "detail": "example.ru == translation: \"присутствующие\""
+  },
+  {
+    "type": "dup_example",
+    "word": "present",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "настоящее время",
+    "detail": "example.ru == translation: \"настоящее время\""
+  },
+  {
+    "type": "dup_example",
+    "word": "present",
+    "mid": 7,
+    "field": "example.ru",
+    "old": "настоящее время",
+    "detail": "example.ru == translation: \"настоящее время\""
+  },
+  {
+    "type": "dup_example",
+    "word": "pretty",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "моя прелесть! (в обращении)",
+    "detail": "example.ru == translation: \"моя прелесть! (в обращении)\""
+  },
+  {
+    "type": "dup_example",
+    "word": "previous",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "до, прежде, ранее",
+    "detail": "example.ru == translation: \"до, прежде, ранее\""
+  },
+  {
+    "type": "dup_example",
+    "word": "prior",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "раньше, прежде, до",
+    "detail": "example.ru == translation: \"раньше, прежде, до\""
+  },
+  {
+    "type": "dup_example",
+    "word": "prior",
+    "mid": 3,
+    "field": "example.ru",
+    "old": "раньше, прежде, до",
+    "detail": "example.ru == translation: \"раньше, прежде, до\""
+  },
+  {
+    "type": "dup_example",
+    "word": "protocol",
+    "mid": 4,
+    "field": "example.ru",
+    "old": "протокольный отдел (министерства иностранных дел и т. п.)",
+    "detail": "example.ru == translation: \"протокольный отдел (министерства иностранных дел и т. п.)\""
+  }
+]
