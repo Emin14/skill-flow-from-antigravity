@@ -1,0 +1,233 @@
+### 1. Headword/transcription leaks
+Количество форматов 'перевод + пробел + СЛОВО': 120
+- **a** (ID: 7): апостериори, из опыта, по опыту a
+- **all** (ID: 2): руки и ноги (человека); on all на четвереньках all
+- **band** (ID: 14): объединять(ся); собираться (ча сто band together) band
+- **bar** (ID: 23): барьер, отделяющий места членов палаты bar
+- **bass** (ID: 2): басовый, низкий; bass clef басо вый ключ; bass drum турецкий барабан bass
+- **bay** (ID: 9): преследовать, тра вить; загонять (зверя) bay
+- **bay** (ID: 12): в роли определения: bay rum лавровишневая вода (лосьон для волос) bay
+- **bell** (ID: 9): кричать, мычать bell
+- **blow** (ID: 25): (blew; blown) цвести blow
+- **bond** (ID: 17): крепостной bond
+- **boom** (ID: 15): жужжать, гудеть boom
+- **boss** (ID: 7): промах нуться, испортить дело boss
+- **bound** (ID: 16): адающий запором bound
+- **bush** (ID: 9): вставлять втулку bush
+- **but** (ID: 4): если (бы) не; как не; чтобы не; I cannot but.. не могу не..; I cannot but agree with you не могу не согласиться с вами; what could he do but confess? что ему оставалось делать, как не сознаться?; he would have fallen but
+- **card** (ID: 10): чесать, прочёсывать, кардо вать card
+- **cat** (ID: 11): в роли определения: cat skinner тракторист cat
+- **cent** (ID: 3): см. per cent
+- **club** (ID: 6): раи вать складчину (together, with) coal tar club
+- **coach** (ID: 12): картин структировать пилота по во время ночных полётов coach
+
+### 2. Grammar markers standalone
+Всего найдено: 160. Вот полный список:
+- **advanced** (ID: 1): p. от ad
+- **amazing** (ID: 1): p. от
+- **amusing** (ID: 1): p. от amuse
+- **annoyed** (ID: 1): p. от annoy
+- **annoying** (ID: 1): p. от annoy
+- **appealing** (ID: 1): p. от
+- **armed** (ID: 1): p. от
+- **associated** (ID: 1): p. от
+- **astonishing** (ID: 1): p. от astonish
+- **backing** (ID: 1): p. от
+- **balanced** (ID: 1): p. от
+- **beginning** (ID: 1): p. от begin
+- **being** (ID: 1): p. от be; being that так как
+- **blessing** (ID: 1): p. от bless
+- **bombing** (ID: 1): p. от
+- **bored** (ID: 1): p. от
+- **boring** (ID: 1): p. от
+- **breathing** (ID: 1): p. от breathe
+- **broken** (ID: 1): p. от
+- **building** (ID: 1): p. от
+- **charming** (ID: 1): p. от
+- **closed** (ID: 1): p. от
+- **clothing** (ID: 1): p. от clothe
+- **coloured** (ID: 1): p. от
+- **compelling** (ID: 1): p. от compel
+- **complicated** (ID: 1): p. от complicate
+- **concerned** (ID: 1): p. от con
+- **confused** (ID: 1): p. от confuse
+- **connected** (ID: 1): p. от connect
+- **convinced** (ID: 1): p. от con vince
+- **corresponding** (ID: 1): p. от correspond
+- **covered** (ID: 1): p. от
+- **crowded** (ID: 1): p. от
+- **cutting** (ID: 1): p. от
+- **dancing** (ID: 1): p. от
+- **dedicated** (ID: 1): p. от de dicate
+- **depressed** (ID: 1): p. от depress
+- **depressing** (ID: 1): p. от depress
+- **detailed** (ID: 1): p. от
+- **determined** (ID: 1): p. от determine
+- **disabled** (ID: 1): p. от disable
+- **disappointed** (ID: 1): p. от disappoint
+- **disappointing** (ID: 1): p. от disappoint
+- **drawing** (ID: 1): p. от
+- **driving** (ID: 1): p. от
+- **drunk** (ID: 1): p. от
+- **educated** (ID: 1): p. от edu cate
+- **embarrassed** (ID: 1): p. от embarrass
+- **embarrassing** (ID: 1): p. от embarrass
+- **ending** (ID: 1): p. от
+- **engaged** (ID: 1): p. от engage
+- **engaging** (ID: 1): p. от en gage
+- **engineering** (ID: 1): p. от
+- **entertaining** (ID: 1): p. от entertain
+- **exciting** (ID: 1): p. от excite
+- **experienced** (ID: 1): p. от
+- **farming** (ID: 1): p. от
+- **fascinating** (ID: 1): p. от fascinate
+- **feeling** (ID: 1): p. от
+- **fighting** (ID: 1): p. от
+- **finding** (ID: 1): p. от
+- **fixed** (ID: 1): p. от
+- **flying** (ID: 1): p. от
+- **folding** (ID: 1): p. от
+- **following** (ID: 1): p. от follow
+- **frightened** (ID: 1): p. от frighten
+- **frozen** (ID: 1): p. от freeze
+- **frustrated** (ID: 1): p. от frustrate
+- **gathering** (ID: 1): p. от
+- **handling** (ID: 1): p. от
+- **hearing** (ID: 1): p. от hear
+- **housing** (ID: 1): p. от
+- **inclined** (ID: 1): p. от
+- **including** (ID: 1): p. от include
+- **injured** (ID: 1): p. от injure
+- **intended** (ID: 1): p. от intend
+- **interested** (ID: 1): p. от
+- **interesting** (ID: 1): p. от
+- **intriguing** (ID: 1): p. от
+- **involved** (ID: 1): p.p. от involve
+- **isolated** (ID: 1): p. от isolate
+- **killing** (ID: 1): p. от
+- **landing** (ID: 1): pres.p. от land
+- **leading** (ID: 1): p. от
+- **learning** (ID: 1): p. от learn
+- **limited** (ID: 1): p. от
+- **living** (ID: 1): p. от
+- **making** (ID: 1): p. от
+- **manufacturing** (ID: 1): p. от
+- **marketing** (ID: 1): p. от
+- **married** (ID: 1): p. от marry
+- **meaning** (ID: 1): p. от
+- **meeting** (ID: 1): p. от
+- **mining** (ID: 1): p. от
+- **misleading** (ID: 1): p. от mislead
+- **missing** (ID: 1): p. от
+- **mixed** (ID: 1): p. от
+- **moving** (ID: 1): p. от
+- **neighbouring** (ID: 1): p. от
+- **offering** (ID: 1): p. от
+- **opening** (ID: 1): p. от
+- **opposed** (ID: 1): p. от oppose
+- **organized** (ID: 1): p. от or ganize
+- **overwhelming** (ID: 1): p. от overwhelm
+- **painting** (ID: 1): p. от
+- **parking** (ID: 1): p. от
+- **passing** (ID: 1): p. от
+- **pointed** (ID: 1): p. от
+- **prepared** (ID: 1): p. от prepare
+- **printing** (ID: 1): p. от
+- **proceeding** (ID: 1): p. от proceed
+- **pronounced** (ID: 1): p. от pronounce
+- **publishing** (ID: 1): p. от publish
+- **racing** (ID: 1): p. от
+- **rating** (ID: 1): p. от
+- **reading** (ID: 1): p. от
+- **reasoning** (ID: 1): p. от
+- **recording** (ID: 1): p. от
+- **related** (ID: 1): p. от relate
+- **relaxing** (ID: 1): p. от relax
+- **repeated** (ID: 1): p. от
+- **retired** (ID: 1): p. от
+- **ruling** (ID: 1): p. от
+- **running** (ID: 1): p. от
+- **sailing** (ID: 1): p. от
+- **saving** (ID: 1): p. от
+- **scared** (ID: 1): p. от
+- **scattered** (ID: 1): p. от scatter
+- **screening** (ID: 1): p. от
+- **setting** (ID: 1): p. от
+- **shaped** (ID: 1): p. от
+- **shipping** (ID: 1): p. от
+- **shocking** (ID: 1): p. от
+- **shooting** (ID: 1): p. от
+- **shopping** (ID: 1): p. от
+- **singing** (ID: 1): p. от
+- **sophisticated** (ID: 1): p. от sophisticate
+- **spelling** (ID: 1): p. от
+- **spoken** (ID: 1): p. от speak
+- **standing** (ID: 1): p. от
+- **stunning** (ID: 1): p. от stun
+- **suffering** (ID: 1): p. от suffer
+- **surprising** (ID: 1): p. от
+- **surrounding** (ID: 1): p. от surround
+- **teaching** (ID: 1): p. от teach
+- **thinking** (ID: 1): p. от think
+- **thrilled** (ID: 1): p. от
+- **timing** (ID: 1): p. от
+- **tired** (ID: 1): p. от
+- **trading** (ID: 1): p. от
+- **training** (ID: 1): p. от
+- **troubled** (ID: 1): p. от
+- **united** (ID: 1): p. от unite
+- **varied** (ID: 1): p. от vary
+- **voting** (ID: 1): p. от
+- **warming** (ID: 1): p. от
+- **washing** (ID: 1): p. от
+- **wedding** (ID: 1): p. от wed
+- **working** (ID: 1): p. от
+- **writing** (ID: 1): p. от write
+
+### 3. Clipped roots
+Исключив распространенные словарные слова, оставшихся (вероятно реальных) обрезанных корней: 170. Топ-30:
+- **angle** (ID: 6): ажать (рассказ, события)
+- **bag** (ID: 14): сбить (само лёт)
+- **blank** (ID: 12): белый круг ми шени; цель
+- **blend** (ID: 6): сти раться (о различиях)
+- **blow** (ID: 12): дуть (в свисток)
+- **break** (ID: 19): омить (сопротивление, волю); подорвать (си лы, здоровье, могущество)
+- **breathe** (ID: 5): дуть слегка (о ветре)
+- **brick** (ID: 3): авный парень, молодчина
+- **bright** (ID: 2): ясный (о звуке)
+- **bug** (ID: 5): сойти с ума
+- **build** (ID: 6): вить (гнёзда)
+- **cabin** (ID: 10): жить в хижине
+- **camp** (ID: 6): жить (где-либо) временно без всяких удобств camp out ночевать в палатках или на открытом воздухе
+- **capable** (ID: 2): умный
+- **careful** (ID: 5): омный
+- **carpet** (ID: 5): илать (цветами)
+- **carry** (ID: 16): нести на себе тяжесть, поддер живать (о колоннах и т. п.)
+- **chase** (ID: 6): иться
+- **church** (ID: 2): овный
+- **circuit** (ID: 4): сеть (театров и т. п.), принадлежащая одному владельцу
+- **clear** (ID: 6): ясный (об уме)
+- **clever** (ID: 1): умный
+- **club** (ID: 5): аться вместе
+- **clue** (ID: 2): нить (рассказа и т. п.); ход мыслей
+- **cluster** (ID: 7): расти пучками, гроздьями; roses clustered round the house вокруг дома росли кусты роз
+- **cluster** (ID: 8): аться группами, толпиться, тесниться; the children clustered round their teacher дети окружили учительницу; memories of the past cluster round this spot с этим местом связаны воспоминания про шлого
+- **coach** (ID: 5): ехать в карете
+- **command** (ID: 6): ный округ (в Анг лии)
+- **company** (ID: 2): гости
+- **compromise** (ID: 2): пойти на компромисс
+
+### 4. Dangling punctuation
+Все 9 случаев:
+- **border** (ID: 3): граничить (on, upon —
+- **call** (ID: 20): заходить (в порт — о судне; at —
+- **care** (ID: 4): заботиться (for, of, about —
+- **dispute** (ID: 3): спорить, дискутировать (with, against — с; on, about —
+- **fall** (ID: 22): впадать (о реке; into —
+- **fasten** (ID: 1): прикреплять, привязывать (to, upon, on —
+- **fire** (ID: 5): елять, производить выстрел (at, into —
+- **great** (ID: 13): (в степенях родства) пра-
+- **measure** (ID: 18): помериться силами (with, against —
+
+### 5. Phrasal verb bleeds
+Из первых 30 случаев 30 (100%) содержат английскую фразу внутри русского перевода.
