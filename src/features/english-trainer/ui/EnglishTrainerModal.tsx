@@ -330,6 +330,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
             register: [],
             synonyms: [],
             examples: currentCard?.examples || [],
+            phrases: currentCard?.phrases || [],
           }))
         );
 

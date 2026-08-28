@@ -507,6 +507,53 @@ def expand_tilde(text: str, base_word: str) -> str:
 
 ---
 
+### 6.17. Стандартизация глагольного управления и предлогов по стандарту Oxford (Prepositional Collocations & Pattern Headers)
+
+> **КРИТИЧЕСКИЙ РЕГЛАМЕНТ:**
+> 1. **Запрет сырых предлогов в русских скобках:** Категорически запрещено оставлять английские предлоги управления внутри русских пояснительных скобок через точку с запятой (например: `(в другую форму; into)`, `(правилам; with)`, `(принципам; to)`, `(внимание; from)`, `(насекомыми; with)`).
+> 2. **Форматирование по стандарту Oxford (Collocation Pattern):** Всякое грамматическое управление предлогом стандартизируется в виде компактного коллокационного заголовка в квадратных скобках `[глагол + предлог]` в начале строки `translation`:
+>    - `melt 6)` $\rightarrow$ `"translation": "[melt into] (незаметно) переходить (в другую форму)"`
+>    - `comply 2)` $\rightarrow$ `"translation": "[comply with] подчиняться (правилам)"`
+>    - `adhere 2)` $\rightarrow$ `"translation": "[adhere to] твёрдо держаться, придерживаться (чего-либо); оставаться верным (принципам и т. п.)"`
+>    - `distract 1)` $\rightarrow$ `"translation": "[distract from] отвлекать, рассеивать (внимание и т. п.)"`
+>    - `crawl 3)` $\rightarrow$ `"translation": "[crawl with] кишеть (насекомыми)"`
+>    - `empty 11)` $\rightarrow$ `"translation": "[empty into] впадать (о реке)"`
+>    - `equip 2)` $\rightarrow$ `"translation": "[equip with] давать (необходимые знания, образование и т. п.)"`
+>    - `inflict 1)` $\rightarrow$ `"translation": "[inflict upon] наносить (удар, рану); причинять (боль, страдание, убыток)"`
+> 3. **Чистота русского контекста:** Внутри круглых скобок сохраняется исключительно чистый русский смысловой контекст без английских служебных символов.
+
+---
+
+### 6.18. Разрешение и восстановление ссылок причастий (Participle Base Verb Restorations)
+
+> **КРИТИЧЕСКОЕ ПРАВИЛО:**
+> 1. Для всех словарных статей причастий (participles), у которых при оптическом распознавании была оборвана ссылка на исходный глагол (`"p. от"`, `"и p. p. от"`), **обязательно восстанавливается полный инфинитив исходного глагола по словарю Мюллера**:
+>    - `broken M1` $\rightarrow$ `"translation": "p. p. от break"`
+>    - `amazing M1` $\rightarrow$ `"translation": "pres. p. от amaze"`
+>    - `spoken M1` $\rightarrow$ `"translation": "p. p. от speak"`
+>    - `written M1` $\rightarrow$ `"translation": "pres. p. от write"`
+>    - `building M1` $\rightarrow$ `"translation": "pres. p. от build"`
+>    - `armed M1` $\rightarrow$ `"translation": "p. p. от arm"`
+>    - `closed M1` $\rightarrow$ `"translation": "p. p. от close"`
+>    - `covered M1` $\rightarrow$ `"translation": "p. p. от cover"`
+> 2. Запрещено оставлять пустые или оборванные грамматические маркеры без целевого глагола.
+
+---
+
+### 6.19. Ликвидация срезанных начальных букв и слогов (Clipped Initial Roots Restoration)
+
+> **КРИТИЧЕСКОЕ ПРАВИЛО:**
+> 1. Устранять типографские дефекты отсечения левого края строк в 3-колоночной верстке PDF, восстанавливая утраченные начальные приставки и согласные кластеры:
+>    - `абеть` $\rightarrow$ `слабеть` / `ослабеть` (`melt M5`, `ease M9`, `relax M3`, `weaken M2`)
+>    - `ать` $\rightarrow$ `собирать` (`collect M1`, `gather M1`, `harvest M5`, `compile M3`, `bunch M7`, `lift M19`, `mass M8`, `nut M9`, `pick M6`, `raise M3`)
+>    - `ать` $\rightarrow$ `искать` (`search M5`, `seek M1`, `quest M5`, `quest M6`, `pleasure M7`)
+>    - `ужебный` $\rightarrow$ `служебный` (`duty M3`, `duty M8`, `official M1`, `service M16`, `service M23`)
+>    - `усственная` $\rightarrow$ `искусственная` (`doctor M7`)
+>    - `авить` $\rightarrow$ `стравить` (`fly M35`)
+> 2. Каждое восстановление обязано быть верифицировано по тексту статьи в PDF первоисточника.
+
+---
+
 ## 7. Комплекс очистки текста и ликвидации OCR-дефектов (Zero-Artifact Policy)
 
 1. **Интеллектуальная склейка переносов слов:**

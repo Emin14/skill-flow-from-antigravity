@@ -163,7 +163,7 @@ export const MeaningSliderCard: React.FC<MeaningSliderCardProps> = ({
           </div>
         )}
 
-        {/* Fixed stable container: exactly 110px high, never jumps */}
+        {/* Fixed stable container: scrollable */}
         <div
           style={{
             marginTop: '6px',
@@ -212,7 +212,7 @@ export const MeaningSliderCard: React.FC<MeaningSliderCardProps> = ({
                 )}
               </div>
             ))
-          ) : (
+          ) : !((currentMeaning?.phrases && currentMeaning.phrases.length > 0) || (currentCard.phrases && currentCard.phrases.length > 0)) ? (
             <div
               style={{
                 height: '100%',
@@ -225,6 +225,69 @@ export const MeaningSliderCard: React.FC<MeaningSliderCardProps> = ({
               }}
             >
               (к этому значению нет примеров в словаре)
+            </div>
+          ) : null}
+
+          {/* Phrases Section */}
+          {((currentMeaning?.phrases && currentMeaning.phrases.length > 0) || (currentCard.phrases && currentCard.phrases.length > 0)) && (
+            <div style={{ marginTop: '4px', borderTop: currentMeaning?.examples?.length ? '1px dashed var(--color-border)' : 'none', paddingTop: '4px' }}>
+              <div style={{ fontSize: '11.5px', marginBottom: '3px' }}>
+                <span style={{ color: '#7c3aed', fontWeight: 800 }}>
+                  Фразы ({((currentMeaning?.phrases && currentMeaning.phrases.length > 0) ? currentMeaning.phrases : currentCard.phrases!).length}):
+                </span>
+              </div>
+              {((currentMeaning?.phrases && currentMeaning.phrases.length > 0) ? currentMeaning.phrases : currentCard.phrases!).map((p, pIdx) => (
+                <div key={p.id || pIdx} style={{ fontSize: '12px', marginBottom: '3px', lineHeight: 1.35 }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
+                    <span>• {renderHighlightedSentence(p.phrase, currentCard.word)}</span>
+                    {p.partOfSpeech && (
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          fontSize: '7.5px',
+                          fontWeight: 700,
+                          textTransform: 'lowercase',
+                          padding: '0.5px 3.5px',
+                          borderRadius: '3px',
+                          background: '#f3e8ff',
+                          border: '1px solid #e9d5ff',
+                          color: '#7c3aed',
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {p.partOfSpeech}
+                      </span>
+                    )}
+                    {p.register && p.register.map((reg, rIdx) => (
+                      <span
+                        key={rIdx}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          fontSize: '7.5px',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.02em',
+                          padding: '0.5px 3.5px',
+                          borderRadius: '3px',
+                          background: 'rgba(234, 179, 8, 0.10)',
+                          border: '1px solid rgba(234, 179, 8, 0.28)',
+                          color: '#ca8a04',
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {reg}
+                      </span>
+                    ))}
+                  </div>
+                  {p.translation && (
+                    <div style={{ color: 'var(--color-text-muted)', fontSize: '11px', marginTop: '2px' }}>
+                      {p.translation}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           )}
         </div>

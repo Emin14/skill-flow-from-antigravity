@@ -15,6 +15,16 @@ interface RawMeaning {
   register?: string[];
   synonyms?: string[];
   examples?: Array<{ en?: string; ru?: string; register?: string }>;
+  phrases?: RawPhrase[];
+}
+
+interface RawPhrase {
+  id?: number;
+  phrase?: string;
+  partOfSpeech?: string;
+  translation?: string;
+  register?: string[];
+  examples?: Array<{ en?: string; ru?: string; register?: string }>;
 }
 
 interface RawForm {
@@ -35,6 +45,7 @@ interface RawEntry {
   };
   topics?: string[];
   meanings?: RawMeaning[];
+  phrases?: RawPhrase[];
 }
 
 let cachedDictionary: OxfordWord[] | null = null;
@@ -128,7 +139,48 @@ function buildOxford5000(): OxfordWord[] {
               ...(ex.register ? { register: ex.register } : {}),
             }))
         : [],
+      phrases: Array.isArray(m.phrases)
+        ? m.phrases
+            .filter((p) => p && (p.phrase || p.translation))
+            .map((p, pIdx) => ({
+              id: p.id || pIdx + 1,
+              phrase: p.phrase || '',
+              partOfSpeech: p.partOfSpeech || '',
+              translation: p.translation || '',
+              register: p.register || [],
+              examples: Array.isArray(p.examples)
+                ? p.examples
+                    .filter((ex) => ex && ex.en)
+                    .map((ex) => ({
+                      en: ex.en!,
+                      ru: ex.ru || '',
+                      ...(ex.register ? { register: ex.register } : {}),
+                    }))
+                : [],
+            }))
+        : [],
     }));
+
+    const phrases = Array.isArray(entry.phrases)
+      ? entry.phrases
+          .filter((p) => p && (p.phrase || p.translation))
+          .map((p, pIdx) => ({
+            id: p.id || pIdx + 1,
+            phrase: p.phrase || '',
+            partOfSpeech: p.partOfSpeech || '',
+            translation: p.translation || '',
+            register: p.register || [],
+            examples: Array.isArray(p.examples)
+              ? p.examples
+                  .filter((ex) => ex && ex.en)
+                  .map((ex) => ({
+                    en: ex.en!,
+                    ru: ex.ru || '',
+                    ...(ex.register ? { register: ex.register } : {}),
+                  }))
+              : [],
+          }))
+      : [];
 
     return {
       id: `oxford-${String(idx + 1).padStart(4, '0')}`,
@@ -142,6 +194,7 @@ function buildOxford5000(): OxfordWord[] {
       translations,
       wordForms,
       examples,
+      phrases,
       collocations: [],
       wordFamily: [],
       synonyms: [],

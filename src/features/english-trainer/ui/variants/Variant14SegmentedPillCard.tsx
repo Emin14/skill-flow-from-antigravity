@@ -390,16 +390,13 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
             <div style={{ height: '1px', background: '#f1f5f9', margin: '2px 0 3px 0' }} />
           )}
 
-          {/* Examples Section with One-Tap Copy (Scrollable for all examples) */}
+          {/* Examples Section with One-Tap Copy */}
           {activeMeaning.examples && activeMeaning.examples.length > 0 && (
             <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '5px',
-                maxHeight: '115px',
-                overflowY: 'auto',
-                paddingRight: '4px',
               }}
             >
               {activeMeaning.examples.map((ex, i) => (
@@ -451,6 +448,90 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                   )}
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* Phrases Section (Rendered after examples, scrolling together) */}
+          {((activeMeaning.phrases && activeMeaning.phrases.length > 0) || (currentCard.phrases && currentCard.phrases.length > 0)) && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', marginTop: '2px' }}>
+              {/* Subtle Divider Line before Phrases */}
+              <div style={{ height: '1px', background: '#f1f5f9', margin: '2px 0 3px 0' }} />
+              <div style={{ fontSize: '11.5px', marginBottom: '1px' }}>
+                <span style={{ color: '#7c3aed', fontWeight: 800 }}>
+                  Фразы ({((activeMeaning.phrases && activeMeaning.phrases.length > 0) ? activeMeaning.phrases : currentCard.phrases!).length}):
+                </span>
+              </div>
+              {((activeMeaning.phrases && activeMeaning.phrases.length > 0) ? activeMeaning.phrases : currentCard.phrases!).map((p, pIdx) => {
+                const copyKey = 1000 + pIdx;
+                return (
+                  <div key={p.id || pIdx} style={{ fontSize: '12px', lineHeight: 1.35 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ color: '#09090b', fontWeight: 500, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
+                        <span>• {renderHighlightedSentence(p.phrase, currentCard.word)}</span>
+                        {p.partOfSpeech && (
+                          <span
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              fontSize: '7.5px',
+                              fontWeight: 700,
+                              textTransform: 'lowercase',
+                              padding: '0.5px 3.5px',
+                              borderRadius: '3px',
+                              background: '#f3e8ff',
+                              border: '1px solid #e9d5ff',
+                              color: '#7c3aed',
+                              lineHeight: 1.1,
+                            }}
+                          >
+                            {p.partOfSpeech}
+                          </span>
+                        )}
+                        {p.register && p.register.map((reg, rIdx) => (
+                          <span
+                            key={rIdx}
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              fontSize: '7.5px',
+                              fontWeight: 700,
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.02em',
+                              padding: '0.5px 3.5px',
+                              borderRadius: '3px',
+                              background: 'rgba(234, 179, 8, 0.10)',
+                              border: '1px solid rgba(234, 179, 8, 0.28)',
+                              color: '#ca8a04',
+                              lineHeight: 1.1,
+                            }}
+                          >
+                            {reg}
+                          </span>
+                        ))}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleCopy(p.phrase, copyKey)}
+                        style={{
+                          border: 'none',
+                          background: 'transparent',
+                          cursor: 'pointer',
+                          color: copiedIndex === copyKey ? '#16a34a' : '#a1a1aa',
+                          padding: '1px',
+                        }}
+                        title="Скопировать"
+                      >
+                        {copiedIndex === copyKey ? <Check size={12} /> : <Copy size={12} />}
+                      </button>
+                    </div>
+                    {p.translation && (
+                      <div style={{ color: '#4338ca', fontSize: '11px', paddingLeft: '10px', marginTop: '1px' }}>
+                        {p.translation}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>

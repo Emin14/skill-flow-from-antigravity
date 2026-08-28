@@ -41,6 +41,15 @@ export interface SentenceExample {
   register?: string;
 }
 
+export interface PhraseItem {
+  id?: number;
+  phrase: string;
+  partOfSpeech?: string;
+  translation: string;
+  register?: string[];
+  examples?: SentenceExample[];
+}
+
 export interface WordMeaningItem {
   id?: number;
   partOfSpeech: string;
@@ -49,6 +58,7 @@ export interface WordMeaningItem {
   register?: string[];
   synonyms?: string[];
   examples?: SentenceExample[];
+  phrases?: PhraseItem[];
 }
 
 export interface OxfordWord {
@@ -68,6 +78,7 @@ export interface OxfordWord {
   antonyms?: RelatedWord[];
   collocations: Collocation[];
   examples: SentenceExample[];
+  phrases?: PhraseItem[];
   lists?: {
     oxford3000?: boolean;
     oxford5000?: boolean;
