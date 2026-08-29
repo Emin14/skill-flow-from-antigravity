@@ -18,7 +18,7 @@ import {
   ChevronRight,
   Shuffle,
 } from 'lucide-react';
-import { CardVariantRenderer } from './variants';
+import { Variant14SegmentedPillCard } from './variants';
 import styles from './EnglishTrainerModal.module.css';
 
 interface EnglishTrainerModalProps {
@@ -391,52 +391,6 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
           </div>
         ) : currentCard ? (
           <div ref={cardContentRef} className={styles.card}>
-            {/* Temporary Random Words Quick Button Bar */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                background: 'rgba(99, 102, 241, 0.08)',
-                border: '1px dashed rgba(99, 102, 241, 0.4)',
-                borderRadius: '8px',
-                padding: '4px 8px',
-                marginBottom: '4px',
-                gap: '8px',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                <span style={{ fontSize: '13px' }}>🎲</span>
-                <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--color-primary, #6366f1)' }}>
-                  Случайные 5 слов {queue.length > 0 ? `(${currentIndex + 1}/${queue.length})` : ''}
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={handleLoadRandomWords}
-                disabled={isLoadingRandom}
-                style={{
-                  background: 'var(--color-primary, #6366f1)',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '6px',
-                  padding: '3px 8px',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  cursor: isLoadingRandom ? 'wait' : 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  transition: 'opacity 0.2s',
-                  opacity: isLoadingRandom ? 0.7 : 1,
-                }}
-                title="Дать новую порцию из 5 случайных слов"
-              >
-                <Shuffle size={12} className={isLoadingRandom ? styles.spinIcon : undefined} />
-                <span>{isLoadingRandom ? 'Загрузка...' : '5 новых слов'}</span>
-              </button>
-            </div>
-
             {/* Single Harmonious Top Ribbon with Fixed Height */}
             <div
               style={{
@@ -587,9 +541,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
             {/* Core Card Body */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
 
-              {/* Active Card Variant Component */}
-              <CardVariantRenderer
-                variantId={2}
+              {/* Master Word Card Component */}
+              <Variant14SegmentedPillCard
                 currentCard={currentCard}
                 meaningsList={meaningsList}
                 safeMeaningIndex={safeMeaningIndex}
