@@ -43,9 +43,8 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
 
   // Primary vs All filtering
   const primaryMeanings = meaningsList.filter((m) => m.primary);
-  const hasPrimaryDistinction = primaryMeanings.length > 0 && primaryMeanings.length < meaningsList.length;
   const secondaryCount = meaningsList.length - primaryMeanings.length;
-
+  const hasPrimaryDistinction = primaryMeanings.length > 0 && secondaryCount > 0;
   const displayedMeanings = (!showAllMeanings && hasPrimaryDistinction) ? primaryMeanings : meaningsList;
   const currentSafeIdx = Math.min(displayedMeanings.length - 1, Math.max(0, safeMeaningIndex));
   const activeMeaning = displayedMeanings[currentSafeIdx] || propMeaning;

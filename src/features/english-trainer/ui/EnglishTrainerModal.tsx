@@ -13,7 +13,6 @@ import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import {
   Check,
   X,
-  Volume2,
   ChevronLeft,
   ChevronRight,
   Plus,
@@ -312,6 +311,14 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     setIsAnswerRevealed(true);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      if (!isAnswerRevealed) {
+        handleRevealAnswer();
+      }
+    }
+  };
+
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       clearAutoTimer();
@@ -578,12 +585,17 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                       value={userInput}
                       disabled={isAnswerRevealed}
                       onChange={(e) => setUserInput(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' && !isAnswerRevealed) {
-                          handleRevealAnswer();
-                        }
-                      }}
+                      onKeyDown={handleKeyDown}
                     />
+                    {userInput.trim() && !isAnswerRevealed && (
+                      <button
+                        className={styles.clearInputBtn}
+                        onClick={() => setUserInput('')}
+                        title="Очистить"
+                      >
+                        ✕
+                      </button>
+                    )}
 
                     {isAnswerRevealed && isMatch !== null && (
                       <div
@@ -614,12 +626,12 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                       type="button"
                       onClick={handleRevealAnswer}
                       style={{
-                        padding: '11px 14px',
+                        padding: '11px 16px',
                         background: 'var(--color-accent)',
                         border: 'none',
                         color: '#ffffff',
                         borderRadius: '12px',
-                        fontSize: '13px',
+                        fontSize: '13.5px',
                         fontWeight: 700,
                         cursor: 'pointer',
                         display: 'flex',
