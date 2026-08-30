@@ -102,6 +102,17 @@ export interface SessionWordCard extends OxfordWord {
   isNew: boolean;
 }
 
+export interface LevelProgressItem {
+  level: CEFRLevel;
+  title: string;
+  total: number;
+  learned: number;
+  mastered: number;
+  percent: number;
+  isCurrent: boolean;
+  isCompleted: boolean;
+}
+
 export interface EnglishSessionResponse {
   todayStr: string;
   newWords: SessionWordCard[];
@@ -113,6 +124,8 @@ export interface EnglishSessionResponse {
   totalWords: number;
   streakDays: number;
   isCompletedToday: boolean;
+  levelStats?: Record<CEFRLevel, LevelProgressItem>;
+  currentLevel?: CEFRLevel;
 }
 
 export interface EnglishSettingsConfig {

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { prisma } from '@/shared/lib/prisma';
 import { getOxfordDictionary, SessionWordCard } from '@/entities/english';
 
 export const dynamic = 'force-dynamic';
@@ -13,8 +14,21 @@ export async function GET(request: Request) {
       return NextResponse.json({ words: [] });
     }
 
-    const shuffled = [...dictionary].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, count);
+    let progressList: any[] = [];
+    try {
+      progressList = await prisma.englishWordProgress.findMany();
+    } catch (e) {
+      console.warn('Prisma EnglishWordProgress fallback to empty:', e);
+    }
+    const learnedIds = new Set(
+      progressList.filter((p) => p.status !== 'NEW').map((p) => p.wordId)
+    );
+
+    // Pick unlearned words first
+    const unlearned = dictionary.filter((w) => !learnedIds.has(w.id));
+    const pool = unlearned.length > 0 ? unlearned : dictionary;
+
+    const selected = pool.slice(0, count);
 
     const sessionCards: SessionWordCard[] = selected.map((w) => ({
       ...w,
@@ -23,7 +37,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ words: sessionCards });
   } catch (error) {
-    console.error('Error fetching random English words:', error);
+    console.error('Error fetching extra English words:', error);
     return NextResponse.json({ words: [] }, { status: 500 });
   }
 }

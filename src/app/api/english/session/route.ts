@@ -4,9 +4,11 @@ import { getTodayStr, formatLocalDateStr } from '@/shared/lib/dateUtils';
 import {
   OxfordWord,
   SessionWordCard,
+  CEFRLevel,
   getOxfordDictionary,
   getOxfordDictionaryMap,
 } from '@/entities/english';
+import { subDays } from 'date-fns';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,6 +34,14 @@ function shuffleWithSeed<T>(array: T[], seedStr: string): T[] {
   }
   return arr;
 }
+
+const ALL_CEFR_LEVELS: { level: CEFRLevel; title: string }[] = [
+  { level: 'A1', title: 'Начальный (Beginner)' },
+  { level: 'A2', title: 'Элементарный (Elementary)' },
+  { level: 'B1', title: 'Средний (Intermediate)' },
+  { level: 'B2', title: 'Выше среднего (Upper-Intermediate)' },
+  { level: 'C1', title: 'Продвинутый (Advanced)' },
+];
 
 export async function GET() {
   const dictionary = getOxfordDictionary();
@@ -62,7 +72,7 @@ export async function GET() {
       console.warn('Prisma EnglishSettings fallback to default:', e);
     }
 
-    const activeLevels: string[] = settings
+    const activeLevels: CEFRLevel[] = settings
       ? JSON.parse(settings.activeLevels || '["A1","A2","B1","B2","C1"]')
       : ['A1', 'A2', 'B1', 'B2', 'C1'];
     const dailyTargetCount = settings?.dailyNewWords ?? 5;
@@ -87,7 +97,15 @@ export async function GET() {
       }
     };
 
-    // 1. Due reviews for today that have NOT yet been reviewed today
+    // 1. Calculate actual daily learned count for today
+    const todayReviewedWords = progressList.filter((p) => {
+      if (!p.lastReviewedAt) return false;
+      const lastReviewDateStr = getLocalReviewDate(p.lastReviewedAt);
+      return lastReviewDateStr === todayStr;
+    });
+    const dailyLearnedCount = todayReviewedWords.length;
+
+    // 2. Due reviews for today that have NOT yet been reviewed today
     const dueReviewsRaw = progressList.filter((p) => {
       if (p.status === 'NEW') return false;
       const lastReviewDateStr = getLocalReviewDate(p.lastReviewedAt);
@@ -118,38 +136,129 @@ export async function GET() {
       })
       .filter(Boolean) as SessionWordCard[];
 
-    // 2. 5 Rich Sample Words with diverse forms, multiple meanings, examples, and synonyms
-    const richSampleNames = ['break', 'catch', 'charge', 'bright', 'fly'];
-    const todayTargetWords: OxfordWord[] = [];
-    for (const name of richSampleNames) {
-      const found = dictionary.find((w) => w.word.toLowerCase() === name);
-      if (found) {
-        todayTargetWords.push(found);
-      }
-    }
+    // 3. Level-by-level stats & currentLevel determination
+    const levelStats: Record<string, any> = {};
+    let activeCurrentLevel: CEFRLevel = 'A1';
+    let currentLevelFound = false;
 
-    // Fallback if any not found
-    if (todayTargetWords.length < 5) {
-      for (const w of dictionary) {
-        if (todayTargetWords.length >= 5) break;
-        if (!todayTargetWords.some((tw) => tw.id === w.id)) {
-          todayTargetWords.push(w);
+    for (const item of ALL_CEFR_LEVELS) {
+      const lvl = item.level;
+      const lvlWords = dictionary.filter((w) => w.cefrLevel === lvl);
+      const total = lvlWords.length;
+
+      let learned = 0;
+      let mastered = 0;
+      for (const w of lvlWords) {
+        const p = progressMap.get(w.id);
+        if (p && p.status !== 'NEW') {
+          learned++;
+          if (p.status === 'MASTERED') {
+            mastered++;
+          }
         }
       }
+
+      const percent = total > 0 ? Math.round((learned / total) * 100) : 0;
+      const isCompleted = total > 0 && learned >= total;
+
+      if (!currentLevelFound && !isCompleted && activeLevels.includes(lvl)) {
+        activeCurrentLevel = lvl;
+        currentLevelFound = true;
+      }
+
+      levelStats[lvl] = {
+        level: lvl,
+        title: item.title,
+        total,
+        learned,
+        mastered,
+        percent,
+        isCurrent: false,
+        isCompleted,
+      };
     }
 
-    let dailyLearnedCount = 0;
-    const remainingNewWords: SessionWordCard[] = todayTargetWords.map((w) => ({
-      ...w,
-      isNew: true,
-    }));
+    if (!currentLevelFound) {
+      activeCurrentLevel = activeLevels[0] || 'A1';
+    }
 
+    if (levelStats[activeCurrentLevel]) {
+      levelStats[activeCurrentLevel].isCurrent = true;
+    }
+
+    // 4. New words selection (Pick in CEFR order A1 -> A2 -> B1 -> B2 -> C1, sorted by frequencyRank)
+    const neededNewCount = Math.max(0, dailyTargetCount - dailyLearnedCount);
+    let remainingNewWords: SessionWordCard[] = [];
+
+    if (neededNewCount > 0) {
+      const unlearnedWords: OxfordWord[] = [];
+
+      for (const lvl of ['A1', 'A2', 'B1', 'B2', 'C1'] as CEFRLevel[]) {
+        if (!activeLevels.includes(lvl)) continue;
+        const wordsInLevel = dictionary
+          .filter((w) => w.cefrLevel === lvl)
+          .filter((w) => {
+            const prog = progressMap.get(w.id);
+            return !prog || prog.status === 'NEW';
+          })
+          .sort((a, b) => (a.frequencyRank || 9999) - (b.frequencyRank || 9999));
+
+        unlearnedWords.push(...wordsInLevel);
+        if (unlearnedWords.length >= neededNewCount) break;
+      }
+
+      const selectedWords = unlearnedWords.slice(0, neededNewCount);
+      remainingNewWords = selectedWords.map((w) => ({
+        ...w,
+        isNew: true,
+      }));
+    }
+
+    // 5. Total Learned & Mastered counts
     const totalLearned = progressList.filter(
       (p) => p.status === 'LEARNING' || p.status === 'REVIEW' || p.status === 'MASTERED'
     ).length;
     const totalMastered = progressList.filter((p) => p.status === 'MASTERED').length;
 
-    const isCompletedToday = remainingNewWords.length === 0 && reviewWords.length === 0 && dailyLearnedCount > 0;
+    // 6. Streak calculation (requires daily quota completion)
+    const reviewsByDate = new Map<string, number>();
+    for (const p of progressList) {
+      const d = getLocalReviewDate(p.lastReviewedAt);
+      if (d) {
+        reviewsByDate.set(d, (reviewsByDate.get(d) || 0) + 1);
+      }
+    }
+
+    let streakDays = 0;
+    const isTodayGoalMet = dailyLearnedCount >= dailyTargetCount;
+    let checkDate = new Date();
+
+    if (isTodayGoalMet) {
+      while (true) {
+        const dateStr = formatLocalDateStr(checkDate);
+        const count = reviewsByDate.get(dateStr) || 0;
+        if (count >= dailyTargetCount || (dateStr === todayStr && isTodayGoalMet)) {
+          streakDays++;
+          checkDate = subDays(checkDate, 1);
+        } else {
+          break;
+        }
+      }
+    } else {
+      checkDate = subDays(checkDate, 1);
+      while (true) {
+        const dateStr = formatLocalDateStr(checkDate);
+        const count = reviewsByDate.get(dateStr) || 0;
+        if (count >= dailyTargetCount) {
+          streakDays++;
+          checkDate = subDays(checkDate, 1);
+        } else {
+          break;
+        }
+      }
+    }
+
+    const isCompletedToday = isTodayGoalMet && reviewWords.length === 0;
 
     return NextResponse.json({
       todayStr,
@@ -160,8 +269,10 @@ export async function GET() {
       totalLearned,
       totalMastered,
       totalWords: dictionary.length,
-      streakDays: totalLearned > 0 ? Math.max(1, Math.min(14, Math.ceil(totalLearned / 5))) : 0,
+      streakDays,
       isCompletedToday,
+      levelStats,
+      currentLevel: activeCurrentLevel,
     });
   } catch (error) {
     console.error('CRITICAL Error fetching English session:', error);

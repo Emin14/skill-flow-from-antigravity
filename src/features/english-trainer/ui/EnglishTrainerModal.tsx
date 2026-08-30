@@ -16,7 +16,7 @@ import {
   Volume2,
   ChevronLeft,
   ChevronRight,
-  Shuffle,
+  Plus,
 } from 'lucide-react';
 import { Variant14SegmentedPillCard } from './variants';
 import styles from './EnglishTrainerModal.module.css';
@@ -184,7 +184,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     // Check against all meanings in the card
     for (const m of card.meanings || []) {
       const translation = m.translation || '';
-      const subMeanings = translation.split(/[,/;]/).map((s) =>
+      const subMeanings = translation.split(/[,/;]/).map((s: string) =>
         s
           .trim()
           .toLowerCase()
@@ -203,7 +203,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     // Fallback check against translations
     for (const tr of card.translations || []) {
       for (const m of tr.meanings || []) {
-        const subMeanings = m.split(/[,/]/).map((s) =>
+        const subMeanings = m.split(/[,/]/).map((s: string) =>
           s
             .trim()
             .toLowerCase()
@@ -322,8 +322,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   const meaningsList: WordMeaningItem[] =
     currentCard?.meanings && currentCard.meanings.length > 0
       ? currentCard.meanings
-      : (currentCard?.translations || []).flatMap((t, tIdx) =>
-          (t.meanings || []).map((m, mIdx) => ({
+      : (currentCard?.translations || []).flatMap((t: any, tIdx: number) =>
+          (t.meanings || []).map((m: string, mIdx: number) => ({
             id: tIdx * 100 + mIdx + 1,
             partOfSpeech: t.partOfSpeech,
             translation: m,
@@ -354,12 +354,10 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
           <div className={styles.completedCard}>
             <div className={styles.celebrateEmoji}>🎉</div>
             <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0 }}>
-              {isFinished ? 'Круг завершен!' : 'Все слова на сегодня выучены!'}
+              Дневная норма выполнена!
             </h2>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>
-              {isFinished
-                ? 'Отличный прогресс! Вы прошли всю текущую сессию.'
-                : 'Вы выполнили дневную норму слов. Возвращайтесь завтра для закрепления.'}
+              Вы успешно прошли запланированные слова на сегодня. Возвращайтесь завтра для закрепления интервального повторения!
             </p>
             <button
               type="button"
@@ -367,7 +365,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
               onClick={handleLoadRandomWords}
               disabled={isLoadingRandom}
               style={{
-                background: 'var(--color-primary, #6366f1)',
+                background: 'var(--color-accent)',
                 color: '#fff',
                 marginBottom: '8px',
                 display: 'flex',
@@ -376,8 +374,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 gap: '6px',
               }}
             >
-              <Shuffle size={14} className={isLoadingRandom ? styles.spinIcon : undefined} />
-              <span>{isLoadingRandom ? 'Загрузка...' : '🎲 Взять 5 новых случайных слов'}</span>
+              <Plus size={15} />
+              <span>{isLoadingRandom ? 'Загрузка...' : 'Учить еще 5 слов'}</span>
             </button>
             <button
               className={styles.finishBtn}
@@ -386,7 +384,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 onClose();
               }}
             >
-              Закрыть
+              Завершить
             </button>
           </div>
         ) : currentCard ? (
@@ -432,35 +430,38 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 <ChevronLeft size={16} />
               </button>
 
-              {/* Center: Unified Harmonious Metadata Ribbon */}
+              {/* Middle: Frequency Rank + CEFR + Status + Topics */}
               <div
                 style={{
                   display: 'flex',
-                  gap: '5px',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flexWrap: 'nowrap',
+                  gap: '6px',
                   overflowX: 'auto',
                   scrollbarWidth: 'none',
                   flex: 1,
-                  padding: '0 4px',
+                  minWidth: 0,
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {/* Frequency Rank */}
-                <span
-                  style={{
-                    background: 'var(--color-surface-hover)',
-                    fontSize: '10.5px',
-                    fontWeight: 700,
-                    padding: '2px 6px',
-                    borderRadius: '5px',
-                    color: 'var(--color-text-muted)',
-                    border: '1px solid var(--color-border)',
-                    flexShrink: 0,
-                  }}
-                >
-                  #{currentCard.frequencyRank}
-                </span>
+                {currentCard.frequencyRank && (
+                  <span
+                    style={{
+                      background: 'var(--color-surface-hover)',
+                      border: '1px solid var(--color-border)',
+                      color: 'var(--color-text-secondary)',
+                      fontSize: '10.5px',
+                      fontWeight: 700,
+                      padding: '2px 6px',
+                      borderRadius: '5px',
+                      flexShrink: 0,
+                    }}
+                    title="Частотный ранг в Оксфордском словаре"
+                  >
+                    #{currentCard.frequencyRank}
+                  </span>
+                )}
 
                 {/* CEFR Level */}
                 <span
@@ -486,7 +487,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 )}
 
                 {/* Topic Badges */}
-                {currentCard.topics && currentCard.topics.map((t, idx) => (
+                {currentCard.topics && currentCard.topics.map((t: string, idx: number) => (
                   <span
                     key={idx}
                     style={{

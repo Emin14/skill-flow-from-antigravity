@@ -131,6 +131,87 @@ export const EnglishPage: React.FC = () => {
               )}
             </div>
           </div>
+
+          {/* CEFR Level Progression Ladder */}
+          {session?.levelStats && (
+            <div className={styles.ladderSection}>
+              <div className={styles.ladderHeader}>
+                <div className={styles.ladderTitleGroup}>
+                  <span style={{ fontSize: '18px' }}>🎯</span>
+                  <div>
+                    <h2 className={styles.ladderTitle}>Уровневая лестница CEFR (Oxford 5000)</h2>
+                    <p className={styles.ladderSubtitle}>Поэтапное освоение лексики от базового A1 до профессионального C1</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Grid of all 5 CEFR Levels */}
+              <div className={styles.levelCardsGrid}>
+                {(['A1', 'A2', 'B1', 'B2', 'C1'] as const).map((lvl) => {
+                  const stat = session.levelStats?.[lvl];
+                  if (!stat) return null;
+                  const isCurrent = stat.isCurrent;
+                  const isCompleted = stat.isCompleted;
+
+                  const badgeColors: Record<string, { bg: string; text: string; border: string; bar: string }> = {
+                    A1: { bg: 'var(--color-success-light)', text: 'var(--color-success)', border: 'var(--color-success-border)', bar: 'var(--color-success)' },
+                    A2: { bg: 'rgba(6, 182, 212, 0.12)', text: '#06b6d4', border: 'rgba(6, 182, 212, 0.3)', bar: '#06b6d4' },
+                    B1: { bg: 'var(--color-accent-light)', text: 'var(--color-accent-text)', border: 'var(--color-accent-border)', bar: 'var(--color-accent)' },
+                    B2: { bg: 'var(--color-warning-light)', text: 'var(--color-warning)', border: 'var(--color-warning-border)', bar: 'var(--color-warning)' },
+                    C1: { bg: 'rgba(168, 85, 247, 0.14)', text: '#a855f7', border: 'rgba(168, 85, 247, 0.35)', bar: '#a855f7' },
+                  };
+                  const colors = badgeColors[lvl] || badgeColors.A1;
+
+                  return (
+                    <div
+                      key={lvl}
+                      className={`
+                        ${styles.levelCardItem} 
+                        ${isCurrent ? styles.levelCardItemCurrent : ''}
+                        ${isCompleted ? styles.levelCardItemCompleted : ''}
+                      `}
+                    >
+                      <div className={styles.levelCardTop}>
+                        <span
+                          className={styles.levelItemBadge}
+                          style={{
+                            background: colors.bg,
+                            color: colors.text,
+                            border: `1px solid ${colors.border}`,
+                          }}
+                        >
+                          {lvl}
+                        </span>
+
+                        <span className={styles.levelItemStatus}>
+                          {isCompleted ? '✓ Пройден' : isCurrent ? '⚡ Изучается' : 'Ожидает'}
+                        </span>
+                      </div>
+
+                      <div className={styles.levelItemName}>
+                        {stat.title.split(' ')[0]}
+                      </div>
+
+                      <div className={styles.progressBarTrack} style={{ height: '6px' }}>
+                        <div
+                          className={styles.progressBarFill}
+                          style={{
+                            width: `${stat.percent}%`,
+                            background: colors.bar,
+                          }}
+                        />
+                      </div>
+
+                      <div className={styles.levelItemCounts}>
+                        <span>{stat.learned} / {stat.total}</span>
+                        <strong style={{ color: colors.text }}>{stat.percent}%</strong>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </>
       )}
 

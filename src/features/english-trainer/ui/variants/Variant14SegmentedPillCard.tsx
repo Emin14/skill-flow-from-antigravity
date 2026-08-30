@@ -744,7 +744,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               scrollbarWidth: 'thin',
             }}
           >
-            {cardPhrases.map((p, pIdx) => {
+            {cardPhrases.map((p: any, pIdx: number) => {
               const copyKey = 1000 + pIdx;
               return (
                 <div
@@ -780,7 +780,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                           {p.partOfSpeech}
                         </span>
                       )}
-                      {p.register && p.register.map((reg, rIdx) => (
+                      {p.register && p.register.map((reg: string, rIdx: number) => (
                         <span
                           key={rIdx}
                           style={{
