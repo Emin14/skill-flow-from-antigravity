@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useEnglishStore, speakEnglishWord } from '@/entities/english';
 import { EnglishTrainerModal } from '@/features/english-trainer';
+import { Check } from 'lucide-react';
 import styles from './EnglishPage.module.css';
 
 export const EnglishPage: React.FC = () => {
@@ -39,23 +40,28 @@ export const EnglishPage: React.FC = () => {
   const newCount = session?.newWords?.length || 0;
   const reviewCount = session?.reviewWords?.length || 0;
   const totalToday = newCount + reviewCount;
+  const isDoneToday = session?.isCompletedToday || (totalToday === 0 && (session?.dailyLearnedCount || 0) > 0);
 
   return (
     <div className={styles.container}>
-      {/* Top Header */}
+      {/* Top Banner (Pure Minimalist Hero Ribbon - exact match with Projects and Habits) */}
       <div className={styles.pageHeader}>
-        <div className={styles.titleArea}>
-          <span style={{ fontSize: '32px' }}>🇬🇧</span>
-          <div>
-            <h1 className={styles.pageTitle}>Английский язык</h1>
-            <p className={styles.subtitle}>Словарь Oxford 5000 (4 963 ключевых слова A1–C1)</p>
-          </div>
+        <div className={styles.headerTitleRow}>
+          <h2 className={styles.pageTitle}>🇬🇧 Английский язык</h2>
+          {totalToday > 0 && (
+            <span className={styles.headerBadge}>
+              План: {totalToday} слов
+            </span>
+          )}
+          {session && session.streakDays > 0 && (
+            <span className={styles.headerStreakBadge}>
+              🔥 {session.streakDays} дн.
+            </span>
+          )}
         </div>
-
-        <button className={styles.topActionBtn} onClick={() => setIsTrainerOpen(true)}>
-          <span>▶</span>
-          <span>Начать сессию ({totalToday})</span>
-        </button>
+        <p className={styles.subtitle}>
+          Словарь Oxford 5000: 4 963 ключевых слова A1–C1 по интервальной системе повторения (SRS).
+        </p>
       </div>
 
       {/* Tabs */}
@@ -64,7 +70,7 @@ export const EnglishPage: React.FC = () => {
           className={`${styles.tabBtn} ${activeTab === 'practice' ? styles.tabBtnActive : ''}`}
           onClick={() => setActiveTab('practice')}
         >
-          🔥 Тренировка и Статистика
+          📊 Статистика и Уровни
         </button>
         <button
           className={`${styles.tabBtn} ${activeTab === 'dictionary' ? styles.tabBtnActive : ''}`}
@@ -102,56 +108,23 @@ export const EnglishPage: React.FC = () => {
             </div>
           </div>
 
-          <div className={styles.practiceCard}>
-            <h3 className={styles.practiceTitle}>
-              План на сегодня: {totalToday > 0 ? `${totalToday} слов` : 'Все слова выучены! 🎉'}
-            </h3>
-            <p className={styles.practiceDesc}>
-              {totalToday > 0
-                ? `${newCount} новых слов + ${reviewCount} на повторение по интервальной системе (SRS).`
-                : `Вы успешно освоили сегодняшнюю норму (${session?.dailyLearnedCount || 0}/${session?.dailyTargetCount || 5} слов).`}
-            </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-              {totalToday > 0 ? (
-                <button className={styles.topActionBtn} onClick={() => setIsTrainerOpen(true)}>
-                  <span>▶</span>
-                  <span>Запустить тренировку</span>
-                </button>
-              ) : (
-                <button
-                  className={styles.topActionBtn}
-                  onClick={async () => {
-                    await useEnglishStore.getState().resetTodayProgress();
-                  }}
-                  style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
-                >
-                  <span>🔄</span>
-                  <span>Сбросить и пройти заново</span>
-                </button>
-              )}
-            </div>
-          </div>
-
           {/* CEFR Level Progression Ladder */}
           {session?.levelStats && (
             <div className={styles.ladderSection}>
               <div className={styles.ladderHeader}>
                 <div className={styles.ladderTitleGroup}>
-                  <span style={{ fontSize: '18px' }}>🎯</span>
-                  <div>
-                    <h2 className={styles.ladderTitle}>Уровневая лестница CEFR (Oxford 5000)</h2>
-                    <p className={styles.ladderSubtitle}>Поэтапное освоение лексики от базового A1 до профессионального C1</p>
-                  </div>
+                  <h3 className={styles.ladderTitle}>🎯 Уровневая лестница CEFR (Oxford 5000)</h3>
+                  <p className={styles.ladderSubtitle}>Поэтапное освоение лексики от базового A1 до профессионального C1</p>
                 </div>
               </div>
 
-              {/* Grid of all 5 CEFR Levels */}
-              <div className={styles.levelCardsGrid}>
+              <div className={styles.ladderRowsList}>
                 {(['A1', 'A2', 'B1', 'B2', 'C1'] as const).map((lvl) => {
                   const stat = session.levelStats?.[lvl];
                   if (!stat) return null;
                   const isCurrent = stat.isCurrent;
                   const isCompleted = stat.isCompleted;
+                  const isWaiting = !isCurrent && !isCompleted;
 
                   const badgeColors: Record<string, { bg: string; text: string; border: string; bar: string }> = {
                     A1: { bg: 'var(--color-success-light)', text: 'var(--color-success)', border: 'var(--color-success-border)', bar: 'var(--color-success)' },
@@ -166,45 +139,47 @@ export const EnglishPage: React.FC = () => {
                     <div
                       key={lvl}
                       className={`
-                        ${styles.levelCardItem} 
-                        ${isCurrent ? styles.levelCardItemCurrent : ''}
-                        ${isCompleted ? styles.levelCardItemCompleted : ''}
+                        ${styles.ladderRowItem}
+                        ${isWaiting ? styles.ladderRowItemWaiting : ''}
                       `}
                     >
-                      <div className={styles.levelCardTop}>
+                      <div className={styles.ladderRowLeft}>
                         <span
                           className={styles.levelItemBadge}
                           style={{
-                            background: colors.bg,
-                            color: colors.text,
-                            border: `1px solid ${colors.border}`,
+                            background: isWaiting ? 'var(--color-surface)' : colors.bg,
+                            color: isWaiting ? 'var(--color-text-muted)' : colors.text,
+                            border: `1px solid ${isWaiting ? 'var(--color-border)' : colors.border}`,
                           }}
                         >
                           {lvl}
                         </span>
-
-                        <span className={styles.levelItemStatus}>
-                          {isCompleted ? '✓ Пройден' : isCurrent ? '⚡ Изучается' : 'Ожидает'}
+                        <span className={styles.ladderRowTitle}>
+                          <span>{stat.title.split(' ')[0]}</span>
+                          {isCompleted && <Check size={13} style={{ color: 'var(--color-success)' }} />}
                         </span>
                       </div>
 
-                      <div className={styles.levelItemName}>
-                        {stat.title.split(' ')[0]}
+                      <div className={styles.ladderRowRight}>
+                        <div className={styles.ladderCountGroup}>
+                          <span className={styles.ladderCountLearned}>{stat.learned}</span>
+                          <span className={styles.ladderCountDivider}>/</span>
+                          <span className={styles.ladderCountTotal}>{stat.total}</span>
+                        </div>
+                        <span className={styles.ladderRowPercent} style={{ color: isWaiting ? 'var(--color-text-muted)' : colors.text }}>
+                          {stat.percent}%
+                        </span>
                       </div>
 
-                      <div className={styles.progressBarTrack} style={{ height: '6px' }}>
+                      {/* Underline Progress Bar */}
+                      <div className={styles.ladderRowBottomTrack}>
                         <div
-                          className={styles.progressBarFill}
+                          className={styles.ladderRowBottomFill}
                           style={{
                             width: `${stat.percent}%`,
                             background: colors.bar,
                           }}
                         />
-                      </div>
-
-                      <div className={styles.levelItemCounts}>
-                        <span>{stat.learned} / {stat.total}</span>
-                        <strong style={{ color: colors.text }}>{stat.percent}%</strong>
                       </div>
                     </div>
                   );

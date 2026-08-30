@@ -31,7 +31,7 @@
       {
         "id": 2,
         "partOfSpeech": "determiner",
-        "translation": "один (вместо числительного one)",
+        "translation": "один (в значении числительного)",
         "examples": [
           {
             "en": "it costs a pound",
@@ -89,7 +89,7 @@
       {
         "id": 6,
         "partOfSpeech": "determiner",
-        "translation": "употребляется перед счетными словами: a few, a little, a good many",
+        "translation": "употребляется перед счётными словами (a few, a little, a good many)",
         "examples": [
           {
             "en": "a few days",
@@ -15484,7 +15484,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "(с inf.)",
+        "translation": "для выражения следствия или цели (с инфинитивом)",
         "examples": [
           {
             "en": "be so good as to come",
@@ -15500,7 +15500,7 @@
         "id": 1,
         "phrase": "as... as...",
         "partOfSpeech": "noun",
-        "translation": "так же.. как",
+        "translation": "так же, как",
         "examples": [],
         "register": []
       },
@@ -94465,7 +94465,7 @@
       {
         "id": 25,
         "partOfSpeech": "verb",
-        "translation": "(обыкн. pass.) губить, убивать",
+        "translation": "губить, убивать",
         "examples": [],
         "register": [
           "разговорное"
@@ -150756,7 +150756,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "(употр. в pres. perf. pass.) обмануть; разочаровать",
+        "translation": "обмануть, подвести; разочаровать",
         "examples": [
           {
             "en": "you have been had",
@@ -150790,7 +150790,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "I have got = I have, you have got = you have, he has got = he has и т. д. (в разн. знач.)",
+        "translation": "иметь (в разговорной конструкции have got)",
         "examples": [
           {
             "en": "I have got no money about me",
@@ -151121,7 +151121,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "косв. п. him его, ему и т. д.; косв. п. употр. в разговорной речи вместо he",
+        "translation": "он (в косвенном падеже — him: его, ему)",
         "examples": [
           {
             "en": "she is taller than him",
@@ -160650,7 +160650,7 @@
         "id": 4,
         "phrase": "if anything",
         "partOfSpeech": "noun",
-        "translation": "если уж на то пошло, во всяком случае, скорее.. чем",
+        "translation": "если уж на то пошло, во всяком случае, скорее... чем",
         "examples": [],
         "register": []
       },
@@ -162520,7 +162520,7 @@
       {
         "id": 6,
         "partOfSpeech": "noun",
-        "translation": "при мн. ч. the ins: партия, находящаяся у власти",
+        "translation": "партия, находящаяся у власти (the ins)",
         "examples": [],
         "register": [
           "политика",
@@ -171680,7 +171680,7 @@
       },
       {
         "partOfSpeech": "pronoun",
-        "translation": "impers.",
+        "translation": "безличное местоимение (в роли формального подлежащего)",
         "examples": [
           {
             "en": "it is said",
@@ -171700,7 +171700,7 @@
       },
       {
         "partOfSpeech": "pronoun",
-        "translation": "в качестве подлежащего заменяет какое-либо подразумеваемое понятие: it (= the season) is winter теперь зима; it (= the distance) is 6 miles to Oxford до Оксфорда 6 миль; it (= the scenery) is very pleasant here здесь очень хорошо",
+        "translation": "в роли подлежащего заменяет подразумеваемое понятие (время, расстояние, погоду)",
         "examples": [
           {
             "en": "it is in vain",
@@ -171709,6 +171709,18 @@
           {
             "en": "it is easy to talk like that",
             "ru": "легко так говорить"
+          },
+          {
+            "en": "it is winter",
+            "ru": "теперь зима"
+          },
+          {
+            "en": "it is 6 miles to Oxford",
+            "ru": "до Оксфорда 6 миль"
+          },
+          {
+            "en": "it is very pleasant here",
+            "ru": "здесь очень хорошо"
           }
         ],
         "register": [],
@@ -171716,7 +171728,7 @@
       },
       {
         "partOfSpeech": "pronoun",
-        "translation": "в качестве до полнения образует вместе с глаголами (как переходными, так и непереходными) разговорные идио мы; напр.: to face",
+        "translation": "в роли дополнения образует с глаголами разговорные идиомы",
         "examples": [
           {
             "en": "to lord it",
@@ -186458,7 +186470,7 @@
     "meanings": [
       {
         "partOfSpeech": "adverb",
-        "translation": "похожий, подобный; это как раз то, чего от вас можно ожидать; it costs something like £50 это стоит Около 50 фунтов стерлингов",
+        "translation": "похожий, подобный",
         "examples": [
           {
             "en": "like question",
@@ -186475,6 +186487,14 @@
           {
             "en": "like nothing on earth",
             "ru": "ни на что не похожий, странный"
+          },
+          {
+            "en": "it is just like you",
+            "ru": "это как раз то, чего от вас можно ожидать"
+          },
+          {
+            "en": "it costs something like £50",
+            "ru": "это стоит около 50 фунтов стерлингов"
           }
         ],
         "register": [],
@@ -207646,7 +207666,7 @@
     "meanings": [
       {
         "partOfSpeech": "adjective",
-        "translation": "сравн. ст. от much 1 и",
+        "translation": "больше, более (сравнительная степень от much и many)",
         "examples": [],
         "register": [],
         "id": 1,
@@ -220700,7 +220720,7 @@
         "translation": "указывает на количество единиц измерения в",
         "examples": [
           {
-            "en": "",
+            "en": "a farm of 100 acres",
             "ru": "ферма площадью в 100 акров"
           },
           {
@@ -223141,7 +223161,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "употр. как слово-заместитель; во избежание повторения ранее упомянутого существительного; в знач. «человек»: he is the",
+        "translation": "слово-заместитель (во избежание повторения ранее упомянутого существительного)",
         "examples": [
           {
             "en": "I am through with this book, will you let me have another?",
@@ -342473,7 +342493,7 @@
       {
         "id": 3,
         "partOfSpeech": "pronoun",
-        "translation": "противополагается this",
+        "translation": "тот, та, то (в противоположность this)",
         "examples": [
           {
             "en": "this wine is better than that",
@@ -342536,7 +342556,7 @@
       {
         "id": 8,
         "partOfSpeech": "pronoun",
-        "translation": "часто = in (или on, at, for и т. п.) which",
+        "translation": "в который, в каком (в роли относительного местоимения)",
         "examples": [
           {
             "en": "the book that I spoke of",
@@ -342741,7 +342761,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "указывает на то, что данный предмет или лицо являются исключительными, наиболее подходящи ми, самыми лучшими и т. п.: (of all",
+        "translation": "указывает на исключительность или наивысшую степень качества предмета или лица («тот самый», лучший, единственный в своём роде)",
         "examples": [],
         "register": [],
         "id": 3,
@@ -342812,7 +342832,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "употр. при сравн. ст. со значением чем.. тем; тем",
+        "translation": "употр. при сравн. ст. со значением чем... тем; тем",
         "examples": [
           {
             "en": "the more the better",
@@ -348297,7 +348317,7 @@
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "указывает на пределы движения, расстояния, времени, количества, колебаний на, до; (from Saturday) to Monday (с субботы) до понедельника",
+        "translation": "указывает на пределы движения, расстояния, времени, количества, колебаний: на, до",
         "examples": [
           {
             "en": "to climb to the top",
@@ -348306,6 +348326,10 @@
           {
             "en": "he could 60",
             "ru": "ему можно дать от сорока до шестидесяти лет"
+          },
+          {
+            "en": "(from Saturday) to Monday",
+            "ru": "(с субботы) до понедельника"
           }
         ],
         "register": [],
@@ -348346,11 +348370,15 @@
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "указывает налицо, по отношению к которому или в интересах которого совершается действие: передаётся дат. падежом: a letter to a friend письмо другу",
+        "translation": "указывает на лицо, по отношению к которому совершается действие (передаётся дательным падежом)",
         "examples": [
           {
             "en": "a party was thrown to the children",
             "ru": "детям устроили праздник"
+          },
+          {
+            "en": "a letter to a friend",
+            "ru": "письмо другу"
           }
         ],
         "register": [],
@@ -348475,7 +348503,7 @@
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "под (аккомпане- toilet-table мент); в (сопровождении)",
+        "translation": "под (аккомпанемент); в (сопровождении)",
         "examples": [
           {
             "en": "to dance to music",
@@ -361414,7 +361442,7 @@
       {
         "id": 6,
         "partOfSpeech": "verb",
-        "translation": "повышать, увеличивать (цены: разг.)",
+        "translation": "повышать, увеличивать (цены)",
         "examples": [
           {
             "en": "to up prices",
@@ -373227,7 +373255,7 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "какой?; what of..? = what about..?",
+        "translation": "какой, что",
         "examples": [
           {
             "en": "what is it?",
@@ -373303,7 +373331,7 @@
       {
         "id": 2,
         "partOfSpeech": "pronoun",
-        "translation": "какой, что, сколько; do you know him what came yesterday? (неправ. вместо who) вы знаете человека, который приходил вчера?",
+        "translation": "какой, что, сколько",
         "examples": [
           {
             "en": "I don't know what she wants",
@@ -373320,6 +373348,10 @@
           {
             "en": "I know what to do",
             "ru": "я знаю, что нужно делать"
+          },
+          {
+            "en": "do you know him what came yesterday?",
+            "ru": "вы знаете человека, который приходил вчера?"
           }
         ],
         "register": [],
@@ -373718,7 +373750,7 @@
     "meanings": [
       {
         "partOfSpeech": "adverb",
-        "translation": "inter. когда?",
+        "translation": "когда?",
         "examples": [],
         "register": [],
         "id": 1,
