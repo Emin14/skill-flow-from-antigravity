@@ -154,10 +154,10 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
 
   // Focus input automatically
   useEffect(() => {
-    if (isOpen && !isAnswerRevealed && !isFinished) {
+    if (isOpen && isReviewWord && !isAnswerRevealed && !isFinished) {
       inputRef.current?.focus();
     }
-  }, [isOpen, currentIndex, isAnswerRevealed, isFinished]);
+  }, [isOpen, currentIndex, isReviewWord, isAnswerRevealed, isFinished]);
 
   // Close on Escape key press
   useEffect(() => {
@@ -490,9 +490,9 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                   <span
                     key={idx}
                     style={{
-                      background: '#f3e8ff',
-                      color: '#6b21a8',
-                      border: '1px solid #e9d5ff',
+                      background: 'rgba(168, 85, 247, 0.14)',
+                      color: '#a855f7',
+                      border: '1px solid rgba(168, 85, 247, 0.3)',
                       fontSize: '10px',
                       fontWeight: 700,
                       padding: '2px 7px',
@@ -505,10 +505,10 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 ))}
 
                 {/* Oxford 3000 / 5000 Lists */}
-                <span style={{ border: '1px solid #c7d2fe', color: '#3730a3', background: '#eef2ff', padding: '1px 5px', borderRadius: '5px', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>
+                <span style={{ border: '1px solid var(--color-accent-border)', color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', padding: '1px 5px', borderRadius: '5px', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>
                   3000
                 </span>
-                <span style={{ border: '1px solid #c7d2fe', color: '#3730a3', background: '#eef2ff', padding: '1px 5px', borderRadius: '5px', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>
+                <span style={{ border: '1px solid var(--color-accent-border)', color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', padding: '1px 5px', borderRadius: '5px', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>
                   5000
                 </span>
               </div>
@@ -554,93 +554,126 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                   triggerHapticFeedback('light');
                 }}
                 renderHighlightedSentence={renderHighlightedSentence}
+                isReviewWord={isReviewWord}
+                isAnswerRevealed={!isReviewWord ? true : isAnswerRevealed}
+                onRevealAnswer={handleRevealAnswer}
               />
 
-              {/* Input Section */}
-              <div className={styles.inputSection}>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  className={`
-                    ${styles.typeInput} 
-                    ${isAnswerRevealed && isMatch === true ? styles.typeInputCorrect : ''}
-                    ${isAnswerRevealed && isMatch === false ? styles.typeInputWrong : ''}
-                  `}
-                  placeholder="Проверьте себя: введите перевод (Enter)..."
-                  value={userInput}
-                  disabled={isAnswerRevealed}
-                  onChange={(e) => setUserInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !isAnswerRevealed) {
-                      handleRevealAnswer();
-                    }
-                  }}
-                />
+              {/* Input & Action Controls: Tailored by Mode */}
+              {isReviewWord ? (
+                /* REPEAT/REVIEW MODE (Active Recall) */
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {/* Self-check Input */}
+                  <div className={styles.inputSection}>
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      className={`
+                        ${styles.typeInput} 
+                        ${isAnswerRevealed && isMatch === true ? styles.typeInputCorrect : ''}
+                        ${isAnswerRevealed && isMatch === false ? styles.typeInputWrong : ''}
+                      `}
+                      placeholder="Введите перевод (или нажмите Enter)..."
+                      value={userInput}
+                      disabled={isAnswerRevealed}
+                      onChange={(e) => setUserInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !isAnswerRevealed) {
+                          handleRevealAnswer();
+                        }
+                      }}
+                    />
 
-                {isAnswerRevealed && isMatch !== null && (
-                  <div
-                    className={`
-                      ${styles.feedbackBadge}
-                      ${isMatch ? styles.feedbackCorrect : styles.feedbackIncorrect}
-                    `}
-                  >
-                    {isMatch ? (
-                      <>
-                        <Check size={15} strokeWidth={3} />
-                        <span>Отлично! Перевод совпал со значением</span>
-                      </>
-                    ) : (
-                      <>
-                        <X size={15} strokeWidth={3} />
-                        <span>Не совсем так. Сверьтесь со слайдером значений выше</span>
-                      </>
+                    {isAnswerRevealed && isMatch !== null && (
+                      <div
+                        className={`
+                          ${styles.feedbackBadge}
+                          ${isMatch ? styles.feedbackCorrect : styles.feedbackIncorrect}
+                        `}
+                      >
+                        {isMatch ? (
+                          <>
+                            <Check size={15} strokeWidth={3} />
+                            <span>Отлично! Перевод совпал со значением</span>
+                          </>
+                        ) : (
+                          <>
+                            <X size={15} strokeWidth={3} />
+                            <span>Не совсем так. Сверьтесь со слайдером значений выше</span>
+                          </>
+                        )}
+                      </div>
                     )}
                   </div>
-                )}
-              </div>
 
-              {/* Bottom Action Controls */}
-              {isReviewWord ? (
-                /* Repetition rating buttons */
-                <div className={styles.reviewRatingGrid}>
-                  <button
-                    className={`${styles.reviewRateBtn} ${styles.rateAgainBtn}`}
-                    onClick={() => handleReviewRating('again')}
-                    title="Не вспомнил слово"
-                  >
-                    <span className={styles.rateEmoji}>🔴</span>
-                    <span className={styles.rateText}>Не помню</span>
-                  </button>
+                  {/* Actions for Review Mode */}
+                  {!isAnswerRevealed ? (
+                    /* Step 1: Reveal Action */
+                    <button
+                      type="button"
+                      onClick={handleRevealAnswer}
+                      style={{
+                        padding: '11px 14px',
+                        background: 'var(--color-accent)',
+                        border: 'none',
+                        color: '#ffffff',
+                        borderRadius: '12px',
+                        fontSize: '13px',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '6px',
+                        boxShadow: 'var(--shadow-sm)',
+                        transition: 'all var(--transition-fast) ease',
+                      }}
+                    >
+                      <span>Показать ответ (Enter)</span>
+                    </button>
+                  ) : (
+                    /* Step 2: Spaced Repetition 4-Rating Buttons */
+                    <div className={styles.reviewRatingGrid}>
+                      <button
+                        className={`${styles.reviewRateBtn} ${styles.rateAgainBtn}`}
+                        onClick={() => handleReviewRating('again')}
+                        title="Не вспомнил слово"
+                      >
+                        <span className={styles.rateEmoji}>🔴</span>
+                        <span className={styles.rateText}>Не помню</span>
+                      </button>
 
-                  <button
-                    className={`${styles.reviewRateBtn} ${styles.rateHardBtn}`}
-                    onClick={() => handleReviewRating('hard')}
-                    title="Вспомнил с трудом"
-                  >
-                    <span className={styles.rateEmoji}>🟡</span>
-                    <span className={styles.rateText}>С трудом</span>
-                  </button>
+                      <button
+                        className={`${styles.reviewRateBtn} ${styles.rateHardBtn}`}
+                        onClick={() => handleReviewRating('hard')}
+                        title="Вспомнил с трудом"
+                      >
+                        <span className={styles.rateEmoji}>🟡</span>
+                        <span className={styles.rateText}>С трудом</span>
+                      </button>
 
-                  <button
-                    className={`${styles.reviewRateBtn} ${styles.rateGoodBtn}`}
-                    onClick={() => handleReviewRating('good')}
-                    title="Вспомнил нормально"
-                  >
-                    <span className={styles.rateEmoji}>🟢</span>
-                    <span className={styles.rateText}>Помню</span>
-                  </button>
+                      <button
+                        className={`${styles.reviewRateBtn} ${styles.rateGoodBtn}`}
+                        onClick={() => handleReviewRating('good')}
+                        title="Вспомнил нормально"
+                      >
+                        <span className={styles.rateEmoji}>🟢</span>
+                        <span className={styles.rateText}>Помню</span>
+                      </button>
 
-                  <button
-                    className={`${styles.reviewRateBtn} ${styles.rateEasyBtn}`}
-                    onClick={() => handleReviewRating('easy')}
-                    title="Вспомнил очень легко"
-                  >
-                    <span className={styles.rateEmoji}>🔵</span>
-                    <span className={styles.rateText}>Легко</span>
-                  </button>
+                      <button
+                        className={`${styles.reviewRateBtn} ${styles.rateEasyBtn}`}
+                        onClick={() => handleReviewRating('easy')}
+                        title="Вспомнил очень легко"
+                      >
+                        <span className={styles.rateEmoji}>🔵</span>
+                        <span className={styles.rateText}>Легко</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
               ) : (
-                /* Initial study mode: Clean 50/50 actions */
+                /* NEW WORD STUDY MODE (Pure Study & Learn) */
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '2px' }}>
                   <button
                     type="button"

@@ -14,4 +14,7 @@ export interface BaseWordCardProps {
   settings: EnglishSettingsConfig;
   onSelectMeaning: (index: number) => void;
   renderHighlightedSentence: (text: string, target: string) => React.ReactNode;
+  isReviewWord?: boolean;
+  isAnswerRevealed?: boolean;
+  onRevealAnswer?: () => void;
 }

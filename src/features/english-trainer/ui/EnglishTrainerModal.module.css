@@ -251,14 +251,16 @@
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md, 12px);
   padding: 11px 13px;
-  font-size: 14.5px;
+  font-size: 14px;
   color: var(--color-text-primary);
-  outline: none;
+  outline: none !important;
   transition: all var(--transition-fast) ease;
   -webkit-appearance: none;
 }
 
-.typeInput:focus {
+.typeInput:focus,
+.typeInput:focus-visible {
+  outline: none !important;
   border-color: var(--color-accent);
   box-shadow: 0 0 0 3px var(--color-accent-light);
 }

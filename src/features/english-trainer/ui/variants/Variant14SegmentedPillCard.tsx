@@ -3,12 +3,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { BaseWordCardProps } from './types';
 import { speakEnglishWord } from '@/entities/english';
-import { Volume2, ChevronLeft, ChevronRight, Copy, Check, Layers, Sparkles, ArrowUpRight, X } from 'lucide-react';
+import { Volume2, ChevronLeft, ChevronRight, Copy, Check, Layers, Sparkles, ArrowUpRight, X, Eye } from 'lucide-react';
 
 /**
  * Master Word Card: Variant 1 Layout with Variant 5 Phrases Modal Overlay
+ * - Fully adapted for both Light and Dark themes via CSS design tokens
  * - Guaranteed 100% stable fixed height across all words (Zero height jumps / layout shift)
- * - Fits effortlessly without modal scrollbars
+ * - Supports Active Recall Masking when repeating words (isReviewWord && !isAnswerRevealed)
  * - Inset meaning card with inner smooth scrolling for long examples
  * - External bottom chip with fixed-slot height for phrases overlay
  */
@@ -21,6 +22,9 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
   settings,
   onSelectMeaning,
   renderHighlightedSentence,
+  isReviewWord = false,
+  isAnswerRevealed = true,
+  onRevealAnswer,
 }) => {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [showAllMeanings, setShowAllMeanings] = useState<boolean>(false);
@@ -28,6 +32,8 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const activePillRef = useRef<HTMLButtonElement>(null);
   const forms = currentCard.wordForms || {};
+
+  const isMasked = isReviewWord && !isAnswerRevealed;
 
   const handleCopy = (text: string, index: number) => {
     navigator.clipboard?.writeText(text);
@@ -60,28 +66,28 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
   const renderFormsRow = () => {
     if (forms.verbForms && (forms.verbForms.past || forms.verbForms.pastParticiple || forms.verbForms.ing)) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: '#09090b', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-          {forms.verbForms.past && <span><strong style={{ color: '#2563eb', fontWeight: 800 }}>past:</strong> {forms.verbForms.past}</span>}
-          {forms.verbForms.past && forms.verbForms.pastParticiple && <span style={{ color: '#cbd5e1' }}>|</span>}
-          {forms.verbForms.pastParticiple && <span><strong style={{ color: '#2563eb', fontWeight: 800 }}>part.:</strong> {forms.verbForms.pastParticiple}</span>}
-          {(forms.verbForms.past || forms.verbForms.pastParticiple) && forms.verbForms.ing && <span style={{ color: '#cbd5e1' }}>|</span>}
-          {forms.verbForms.ing && <span><strong style={{ color: '#2563eb', fontWeight: 800 }}>-ing:</strong> {forms.verbForms.ing}</span>}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {forms.verbForms.past && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>past:</strong> {forms.verbForms.past}</span>}
+          {forms.verbForms.past && forms.verbForms.pastParticiple && <span style={{ color: 'var(--color-border)' }}>|</span>}
+          {forms.verbForms.pastParticiple && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>part.:</strong> {forms.verbForms.pastParticiple}</span>}
+          {(forms.verbForms.past || forms.verbForms.pastParticiple) && forms.verbForms.ing && <span style={{ color: 'var(--color-border)' }}>|</span>}
+          {forms.verbForms.ing && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>-ing:</strong> {forms.verbForms.ing}</span>}
         </div>
       );
     }
     if (forms.nounForms?.plural) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: '#09090b', fontWeight: 600, whiteSpace: 'nowrap' }}>
-          <span><strong style={{ color: '#2563eb', fontWeight: 800 }}>pl.:</strong> {forms.nounForms.plural}</span>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+          <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>pl.:</strong> {forms.nounForms.plural}</span>
         </div>
       );
     }
     if (forms.adjectiveForms?.comparative || forms.adjectiveForms?.superlative) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: '#09090b', fontWeight: 600, whiteSpace: 'nowrap' }}>
-          {forms.adjectiveForms.comparative && <span><strong style={{ color: '#2563eb', fontWeight: 800 }}>comp.:</strong> {forms.adjectiveForms.comparative}</span>}
-          {forms.adjectiveForms.comparative && forms.adjectiveForms.superlative && <span style={{ color: '#cbd5e1' }}>|</span>}
-          {forms.adjectiveForms.superlative && <span><strong style={{ color: '#2563eb', fontWeight: 800 }}>superl.:</strong> {forms.adjectiveForms.superlative}</span>}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+          {forms.adjectiveForms.comparative && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>comp.:</strong> {forms.adjectiveForms.comparative}</span>}
+          {forms.adjectiveForms.comparative && forms.adjectiveForms.superlative && <span style={{ color: 'var(--color-border)' }}>|</span>}
+          {forms.adjectiveForms.superlative && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>superl.:</strong> {forms.adjectiveForms.superlative}</span>}
         </div>
       );
     }
@@ -113,9 +119,9 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
             type="button"
             onClick={() => speakEnglishWord(currentCard.word, settings.accent)}
             style={{
-              border: 'none',
-              background: '#eff6ff',
-              color: '#2563eb',
+              border: '1px solid var(--color-accent-border)',
+              background: 'var(--color-accent-light)',
+              color: 'var(--color-accent-text)',
               borderRadius: '6px',
               width: '28px',
               height: '24px',
@@ -132,7 +138,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           </button>
 
           {/* Centered Headword */}
-          <span style={{ fontSize: '29px', fontWeight: 800, color: '#09090b', letterSpacing: '-0.4px', lineHeight: 1 }}>
+          <span style={{ fontSize: '29px', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.4px', lineHeight: 1 }}>
             {currentCard.word}
           </span>
 
@@ -141,9 +147,9 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
             type="button"
             onClick={() => handleCopy(currentCard.word, -1)}
             style={{
-              border: 'none',
-              background: copiedIndex === -1 ? '#f0fdf4' : '#f8fafc',
-              color: copiedIndex === -1 ? '#16a34a' : '#64748b',
+              border: '1px solid var(--color-border)',
+              background: copiedIndex === -1 ? 'var(--color-success-light)' : 'var(--color-surface-hover)',
+              color: copiedIndex === -1 ? 'var(--color-success)' : 'var(--color-text-muted)',
               borderRadius: '6px',
               width: '28px',
               height: '24px',
@@ -160,7 +166,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           </button>
         </div>
 
-        <span style={{ fontSize: '13.5px', color: '#71717a', fontFamily: 'serif', textAlign: 'center', lineHeight: '18px' }}>
+        <span style={{ fontSize: '13.5px', color: 'var(--color-text-muted)', fontFamily: 'serif', textAlign: 'center', lineHeight: '18px' }}>
           /{displayTranscription}/
         </span>
       </div>
@@ -170,7 +176,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         {formsNode || <span style={{ opacity: 0, fontSize: '10.5px' }}>—</span>}
       </div>
 
-      {/* 3. Horizontal Meaning Pills Track (Fixed 28px Height) with Quick-Switch Arrows [‹] [›] */}
+      {/* 3. Horizontal Meaning Pills Track with Quick-Switch Arrows [‹] [›] */}
       <div
         style={{
           height: '28px',
@@ -186,26 +192,26 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         {/* Left Arrow Button */}
         <button
           type="button"
-          disabled={currentSafeIdx === 0}
+          disabled={currentSafeIdx === 0 || isMasked}
           onClick={() => onSelectMeaning(Math.max(0, currentSafeIdx - 1))}
           style={{
-            border: '1px solid #e2e8f0',
-            background: currentSafeIdx === 0 ? '#fafafa' : '#ffffff',
-            color: currentSafeIdx === 0 ? '#d4d4d8' : '#2563eb',
-            width: '22px',
-            height: '22px',
-            borderRadius: '6px',
+            border: '1px solid var(--color-border)',
+            background: currentSafeIdx === 0 || isMasked ? 'var(--color-surface-hover)' : 'var(--color-surface)',
+            color: currentSafeIdx === 0 || isMasked ? 'var(--color-text-disabled)' : 'var(--color-accent-text)',
+            width: '25px',
+            height: '25px',
+            borderRadius: '7px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            cursor: currentSafeIdx === 0 ? 'default' : 'pointer',
+            cursor: currentSafeIdx === 0 || isMasked ? 'default' : 'pointer',
             padding: 0,
             flexShrink: 0,
             transition: 'all 0.15s ease',
           }}
           title="Предыдущее значение"
         >
-          <ChevronLeft size={13} />
+          <ChevronLeft size={16} />
         </button>
 
         {/* Scrollable Track */}
@@ -226,28 +232,29 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         >
           {displayedMeanings.map((m, i) => {
             const isSelected = i === currentSafeIdx;
-            const shortTr = m.translation?.split(/[,;]/)[0] || '';
+            const shortTr = isMasked ? `Смысл ${i + 1}` : (m.translation?.split(/[,;]/)[0] || '');
             return (
               <button
                 key={i}
                 ref={isSelected ? activePillRef : null}
                 type="button"
+                disabled={isMasked}
                 onClick={() => onSelectMeaning(i)}
                 style={{
-                  padding: '2px 8px',
+                  padding: '2px 9px',
                   borderRadius: '10px',
-                  border: isSelected ? '1.5px solid #2563eb' : '1px solid #e2e8f0',
-                  background: isSelected ? '#eff6ff' : '#f8fafc',
-                  color: isSelected ? '#2563eb' : '#475569',
-                  fontSize: '10.5px',
-                  fontWeight: isSelected ? 800 : 500,
-                  cursor: 'pointer',
+                  border: isSelected ? '1.5px solid var(--color-accent)' : '1px solid var(--color-border)',
+                  background: isSelected ? 'var(--color-accent-light)' : 'var(--color-surface-hover)',
+                  color: isSelected ? 'var(--color-accent-text)' : 'var(--color-text-secondary)',
+                  fontSize: '11.5px',
+                  fontWeight: isSelected ? 800 : 600,
+                  cursor: isMasked ? 'default' : 'pointer',
                   whiteSpace: 'nowrap',
                   flexShrink: 0,
                   transition: 'all 0.15s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  height: '22px',
+                  height: '24px',
                 }}
               >
                 {shortTr}
@@ -262,31 +269,32 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         {hasPrimaryDistinction && (
           <button
             type="button"
+            disabled={isMasked}
             onClick={() => {
               setShowAllMeanings(!showAllMeanings);
               onSelectMeaning(0);
             }}
             style={{
-              border: '1px solid #e2e8f0',
-              background: showAllMeanings ? '#eff6ff' : '#f8fafc',
-              color: showAllMeanings ? '#2563eb' : '#64748b',
-              fontSize: '9px',
+              border: '1px solid var(--color-border)',
+              background: showAllMeanings ? 'var(--color-accent-light)' : 'var(--color-surface-hover)',
+              color: showAllMeanings ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
+              fontSize: '9.5px',
               fontWeight: 700,
-              padding: '2px 6px',
+              padding: '2px 7px',
               borderRadius: '10px',
-              cursor: 'pointer',
+              cursor: isMasked ? 'default' : 'pointer',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '3px',
               lineHeight: 1,
               whiteSpace: 'nowrap',
               flexShrink: 0,
-              height: '22px',
+              height: '24px',
               transition: 'all 0.15s ease',
             }}
             title={showAllMeanings ? 'Показать основные значения' : `Показать все ${meaningsList.length} значений`}
           >
-            <Layers size={9} style={{ color: showAllMeanings ? '#2563eb' : '#94a3b8' }} />
+            <Layers size={9.5} style={{ color: showAllMeanings ? 'var(--color-accent-text)' : 'var(--color-text-muted)' }} />
             {showAllMeanings ? 'Основные' : `+${secondaryCount} доп.`}
           </button>
         )}
@@ -294,222 +302,315 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         {/* Right Arrow Button */}
         <button
           type="button"
-          disabled={currentSafeIdx === total - 1}
+          disabled={currentSafeIdx === total - 1 || isMasked}
           onClick={() => onSelectMeaning(Math.min(total - 1, currentSafeIdx + 1))}
           style={{
-            border: '1px solid #e2e8f0',
-            background: currentSafeIdx === total - 1 ? '#fafafa' : '#ffffff',
-            color: currentSafeIdx === total - 1 ? '#d4d4d8' : '#2563eb',
-            width: '22px',
-            height: '22px',
-            borderRadius: '6px',
+            border: '1px solid var(--color-border)',
+            background: currentSafeIdx === total - 1 || isMasked ? 'var(--color-surface-hover)' : 'var(--color-surface)',
+            color: currentSafeIdx === total - 1 || isMasked ? 'var(--color-text-disabled)' : 'var(--color-accent-text)',
+            width: '25px',
+            height: '25px',
+            borderRadius: '7px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            cursor: currentSafeIdx === total - 1 ? 'default' : 'pointer',
+            cursor: currentSafeIdx === total - 1 || isMasked ? 'default' : 'pointer',
             padding: 0,
             flexShrink: 0,
             transition: 'all 0.15s ease',
           }}
           title="Следующее значение"
         >
-          <ChevronRight size={13} />
+          <ChevronRight size={16} />
         </button>
       </div>
 
-      {/* 4. Inset Meaning Card: Fixed 180px Height with Internal Smooth Scroll for Long Examples */}
+      {/* 4. Inset Meaning Card: Fixed 180px Height (Masked state for Active Recall OR Revealed state) */}
       <div
         style={{
-          border: '1px solid #e2e8f0',
+          border: '1px solid var(--color-border)',
           borderRadius: '12px',
-          background: '#ffffff',
+          background: 'var(--color-surface-hover)',
           height: '180px',
           minHeight: '180px',
           maxHeight: '180px',
-          padding: '10px 14px 8px 14px',
+          padding: isMasked ? '12px' : '10px 14px 8px 14px',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start',
+          justifyContent: isMasked ? 'center' : 'flex-start',
           boxSizing: 'border-box',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        {/* Scrollable Content inside Card */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '4px',
-            overflowY: 'auto',
-            scrollbarWidth: 'thin',
-            height: '100%',
-            paddingRight: '2px',
-          }}
-        >
-          {/* Upper Section: POS Badge & Register Badge on the Left, Translation Centered */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', width: '100%' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '4px', marginBottom: '-1px' }}>
-              <span
+        {isMasked ? (
+          /* Active Recall Masked View: Prompt to remember translation */
+          <div
+            onClick={onRevealAnswer}
+            style={{
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              cursor: 'pointer',
+              userSelect: 'none',
+              textAlign: 'center',
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '50%',
+                background: 'var(--color-accent-light)',
+                border: '1px solid var(--color-accent-border)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--color-accent-text)',
+              }}
+            >
+              <Eye size={19} />
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+              <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+                Вспомните перевод слова
+              </span>
+              <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)' }}>
+                Напишите перевод ниже или нажмите кнопку
+              </span>
+            </div>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onRevealAnswer?.();
+              }}
+              style={{
+                background: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+                borderRadius: '8px',
+                padding: '5px 14px',
+                fontSize: '11.5px',
+                fontWeight: 700,
+                color: 'var(--color-accent-text)',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px',
+                transition: 'all 0.15s ease',
+                marginTop: '2px',
+              }}
+            >
+              <Eye size={13} />
+              <span>Показать ответ (Enter)</span>
+            </button>
+          </div>
+        ) : (
+          /* Revealed View: Full translation, synonyms, and context examples */
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px',
+              overflowY: 'auto',
+              scrollbarWidth: 'thin',
+              height: '100%',
+              paddingRight: '2px',
+            }}
+          >
+            {/* Upper Section: POS Badge & Register Badge on the Left, Translation Centered */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', width: '100%' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '4px', marginBottom: '-1px' }}>
+                <span
+                  style={{
+                    background: 'var(--color-accent-light)',
+                    color: 'var(--color-accent-text)',
+                    border: '1px solid var(--color-accent-border)',
+                    fontSize: '8px',
+                    fontWeight: 700,
+                    padding: '0 4px',
+                    borderRadius: '3px',
+                    textTransform: 'lowercase',
+                    lineHeight: '12px',
+                    display: 'inline-block',
+                  }}
+                >
+                  {activeMeaning.partOfSpeech || 'noun'}
+                </span>
+
+                {!activeMeaning.primary && (
+                  <span
+                    style={{
+                      background: 'var(--color-surface-active)',
+                      color: 'var(--color-text-muted)',
+                      border: '1px solid var(--color-border)',
+                      fontSize: '7.5px',
+                      fontWeight: 700,
+                      padding: '0 3px',
+                      borderRadius: '3px',
+                      textTransform: 'lowercase',
+                      lineHeight: '11px',
+                      display: 'inline-block',
+                    }}
+                    title="Дополнительное / вторичное значение"
+                  >
+                    доп.
+                  </span>
+                )}
+
+                {activeMeaning.register && activeMeaning.register.length > 0 && activeMeaning.register.map((reg, idx) => (
+                  <span
+                    key={idx}
+                    style={{
+                      background: 'var(--color-danger-light)',
+                      color: 'var(--color-danger)',
+                      border: '1px solid var(--color-danger-border)',
+                      fontSize: '7.5px',
+                      fontWeight: 700,
+                      padding: '0 3px',
+                      borderRadius: '3px',
+                      textTransform: 'lowercase',
+                      lineHeight: '11px',
+                      display: 'inline-block',
+                    }}
+                  >
+                    {reg}
+                  </span>
+                ))}
+              </div>
+
+              <div
                 style={{
-                  background: '#eff6ff',
-                  color: '#2563eb',
-                  border: '1px solid #bfdbfe',
-                  fontSize: '8px',
-                  fontWeight: 700,
-                  padding: '0 4px',
-                  borderRadius: '3px',
-                  textTransform: 'lowercase',
-                  lineHeight: '12px',
-                  display: 'inline-block',
+                  fontSize: '17.5px',
+                  fontWeight: 800,
+                  color: 'var(--color-text-primary)',
+                  lineHeight: 1.2,
+                  whiteSpace: 'nowrap',
+                  overflowX: 'auto',
+                  scrollbarWidth: 'none',
+                  width: '100%',
+                  textAlign: 'center',
+                  letterSpacing: '-0.2px',
                 }}
               >
-                {activeMeaning.partOfSpeech || 'noun'}
-              </span>
+                {activeMeaning.translation}
+              </div>
+            </div>
 
-              {!activeMeaning.primary && (
-                <span
-                  style={{
-                    background: '#f8fafc',
-                    color: '#64748b',
-                    border: '1px solid #e2e8f0',
-                    fontSize: '7.5px',
-                    fontWeight: 700,
-                    padding: '0 3px',
-                    borderRadius: '3px',
-                    textTransform: 'lowercase',
-                    lineHeight: '11px',
-                    display: 'inline-block',
-                  }}
-                  title="Дополнительное / вторичное значение"
-                >
-                  доп.
+            {/* Synonyms Section */}
+            {activeMeaning.synonyms && activeMeaning.synonyms.length > 0 && (
+              <div style={{ fontSize: '11.5px', marginTop: '3px', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <span style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>Синонимы: </span>
+                <span style={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>
+                  {activeMeaning.synonyms.join(', ')}
                 </span>
-              )}
+              </div>
+            )}
 
-              {activeMeaning.register && activeMeaning.register.length > 0 && activeMeaning.register.map((reg, idx) => (
-                <span
-                  key={idx}
-                  style={{
-                    background: '#fef2f2',
-                    color: '#dc2626',
-                    border: '1px solid #fecaca',
-                    fontSize: '7.5px',
-                    fontWeight: 700,
-                    padding: '0 3px',
-                    borderRadius: '3px',
-                    textTransform: 'lowercase',
-                    lineHeight: '11px',
-                    display: 'inline-block',
-                  }}
-                >
-                  {reg}
-                </span>
-              ))}
-            </div>
+            {/* Subtle Divider Line before Examples */}
+            {activeMeaning.examples && activeMeaning.examples.length > 0 && (
+              <div style={{ height: '1px', background: 'var(--color-border)', margin: '2px 0 3px 0' }} />
+            )}
 
-            <div
-              style={{
-                fontSize: '16px',
-                fontWeight: 800,
-                color: '#09090b',
-                lineHeight: 1.2,
-                whiteSpace: 'nowrap',
-                overflowX: 'auto',
-                scrollbarWidth: 'none',
-                width: '100%',
-                textAlign: 'center',
-              }}
-            >
-              {activeMeaning.translation}
-            </div>
-          </div>
-
-          {/* Synonyms Section */}
-          {activeMeaning.synonyms && activeMeaning.synonyms.length > 0 && (
-            <div style={{ fontSize: '11.5px', marginTop: '3px', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              <span style={{ color: '#2563eb', fontWeight: 800 }}>Синонимы: </span>
-              <span style={{ color: '#09090b', fontWeight: 500 }}>
-                {activeMeaning.synonyms.join(', ')}
-              </span>
-            </div>
-          )}
-
-          {/* Subtle Divider Line before Examples */}
-          {activeMeaning.examples && activeMeaning.examples.length > 0 && (
-            <div style={{ height: '1px', background: '#f1f5f9', margin: '2px 0 3px 0' }} />
-          )}
-
-          {/* Examples Section with One-Tap Copy */}
-          {activeMeaning.examples && activeMeaning.examples.length > 0 ? (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '5px',
-              }}
-            >
-              {activeMeaning.examples.map((ex, i) => (
-                <div key={i} style={{ fontSize: '12px', lineHeight: 1.35 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ color: '#09090b', fontWeight: 500, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap' }}>
-                      <span>• {renderHighlightedSentence(ex.en, currentCard.word)}</span>
-                      {ex.register && (
-                        <span
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            fontSize: '7.5px',
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.02em',
-                            padding: '0.5px 3.5px',
-                            borderRadius: '3px',
-                            background: 'rgba(234, 179, 8, 0.10)',
-                            border: '1px solid rgba(234, 179, 8, 0.28)',
-                            color: '#ca8a04',
-                            marginLeft: '4px',
-                            lineHeight: 1.1,
-                          }}
-                        >
-                          {ex.register}
-                        </span>
-                      )}
+            {/* Examples Section with One-Tap Copy */}
+            {activeMeaning.examples && activeMeaning.examples.length > 0 ? (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '5px',
+                }}
+              >
+                {activeMeaning.examples.map((ex, i) => (
+                  <div key={i} style={{ fontSize: '12px', lineHeight: 1.35 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ color: 'var(--color-text-primary)', fontWeight: 500, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <span>• {renderHighlightedSentence(ex.en, currentCard.word)}</span>
+                        {ex.register && (
+                          <span
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              fontSize: '7.5px',
+                              fontWeight: 700,
+                              textTransform: 'lowercase',
+                              padding: '0.5px 3.5px',
+                              borderRadius: '3px',
+                              background: 'var(--color-warning-light)',
+                              border: '1px solid var(--color-warning-border)',
+                              color: 'var(--color-warning)',
+                              marginLeft: '4px',
+                              lineHeight: 1.1,
+                            }}
+                          >
+                            {ex.register}
+                          </span>
+                        )}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleCopy(ex.en, i)}
+                        style={{
+                          border: 'none',
+                          background: 'transparent',
+                          cursor: 'pointer',
+                          color: copiedIndex === i ? 'var(--color-success)' : 'var(--color-text-muted)',
+                          padding: '1px',
+                        }}
+                        title="Скопировать"
+                      >
+                        {copiedIndex === i ? <Check size={11} /> : <Copy size={11} />}
+                      </button>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => handleCopy(ex.en, i)}
-                      style={{
-                        border: 'none',
-                        background: 'transparent',
-                        cursor: 'pointer',
-                        color: copiedIndex === i ? '#16a34a' : '#a1a1aa',
-                        padding: '1px',
-                      }}
-                      title="Скопировать"
-                    >
-                      {copiedIndex === i ? <Check size={11} /> : <Copy size={11} />}
-                    </button>
+                    {ex.ru && (
+                      <div style={{ color: 'var(--color-accent-text)', fontSize: '11px', paddingLeft: '8px', marginTop: '1px' }}>
+                        {ex.ru}
+                      </div>
+                    )}
                   </div>
-                  {ex.ru && (
-                    <div style={{ color: '#4338ca', fontSize: '11px', paddingLeft: '8px', marginTop: '1px' }}>
-                      {ex.ru}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div style={{ fontSize: '11px', color: '#94a3b8', fontStyle: 'italic', padding: '6px 0' }}>
-              (примеров к этому значению нет)
-            </div>
-          )}
-        </div>
+                ))}
+              </div>
+            ) : (
+              <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
+                (примеров к этому значению нет)
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* 5. Fixed 32px Slot for Phrases Button (Guarantees zero height jump across words) */}
       <div style={{ height: '32px', minHeight: '32px', maxHeight: '32px', width: '100%', boxSizing: 'border-box' }}>
-        {cardPhrases.length > 0 ? (
+        {isMasked ? (
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '0 12px',
+              borderRadius: '8px',
+              border: '1px dashed var(--color-border)',
+              background: 'var(--color-surface-hover)',
+              color: 'var(--color-text-muted)',
+              fontSize: '11px',
+              fontWeight: 500,
+              boxSizing: 'border-box',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <Sparkles size={12} color="var(--color-text-disabled)" />
+              <span>Фразы откроются после ответа</span>
+            </div>
+            <span style={{ fontSize: '10.5px', color: 'var(--color-text-disabled)' }}>🔒</span>
+          </div>
+        ) : cardPhrases.length > 0 ? (
           <button
             type="button"
             onClick={() => setIsOverlayOpen(true)}
@@ -521,36 +622,26 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               justifyContent: 'space-between',
               padding: '0 12px',
               borderRadius: '8px',
-              border: '1px solid #d8b4fe',
-              background: 'linear-gradient(90deg, #faf5ff 0%, #f3e8ff 100%)',
-              color: '#7e22ce',
+              border: '1px solid rgba(168, 85, 247, 0.45)',
+              background: 'linear-gradient(90deg, rgba(168, 85, 247, 0.12) 0%, rgba(147, 51, 234, 0.18) 100%)',
+              color: 'var(--color-text-primary)',
               cursor: 'pointer',
-              fontSize: '11.5px',
+              fontSize: '12px',
               fontWeight: 700,
               transition: 'all 0.15s ease',
               boxSizing: 'border-box',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={13} color="#a855f7" />
+              <Sparkles size={14} color="#a855f7" />
               <span>Фразовые глаголы к слову</span>
-              <span
-                style={{
-                  background: '#7e22ce',
-                  color: '#ffffff',
-                  fontSize: '9.5px',
-                  fontWeight: 800,
-                  padding: '1px 6px',
-                  borderRadius: '4px',
-                  lineHeight: 1,
-                }}
-              >
-                {cardPhrases.length}
+              <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+                ({cardPhrases.length})
               </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontSize: '11px', fontWeight: 700 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontSize: '11.5px', fontWeight: 700, color: '#a855f7' }}>
               <span>Посмотреть</span>
-              <ArrowUpRight size={13} />
+              <ArrowUpRight size={14} />
             </div>
           </button>
         ) : (
@@ -563,37 +654,37 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               justifyContent: 'space-between',
               padding: '0 12px',
               borderRadius: '8px',
-              border: '1px dashed #e2e8f0',
-              background: '#f8fafc',
-              color: '#94a3b8',
+              border: '1px dashed var(--color-border)',
+              background: 'var(--color-surface-hover)',
+              color: 'var(--color-text-muted)',
               fontSize: '11px',
               fontWeight: 500,
               boxSizing: 'border-box',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <Sparkles size={12} color="#cbd5e1" />
+              <Sparkles size={12} color="var(--color-text-disabled)" />
               <span>Фразовых выражений нет</span>
             </div>
-            <span style={{ fontSize: '10.5px', color: '#cbd5e1' }}>—</span>
+            <span style={{ fontSize: '10.5px', color: 'var(--color-text-disabled)' }}>—</span>
           </div>
         )}
       </div>
 
-      {/* 6. Absolute Modal Overlay for Phrases (Takes 0px extra layout height) */}
-      {isOverlayOpen && (
+      {/* 6. Absolute Modal Overlay for Phrases (Takes 0px extra layout height, Theme Adaptive) */}
+      {isOverlayOpen && !isMasked && (
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            background: '#ffffff',
+            background: 'var(--color-surface)',
             borderRadius: '12px',
-            border: '1.5px solid #a855f7',
+            border: '1.5px solid rgba(168, 85, 247, 0.5)',
             padding: '10px 12px',
             zIndex: 30,
             display: 'flex',
             flexDirection: 'column',
-            boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
+            boxShadow: 'var(--shadow-xl, 0 8px 30px rgba(0,0,0,0.3))',
           }}
         >
           {/* Overlay Header */}
@@ -602,38 +693,42 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              borderBottom: '1px solid #f3e8ff',
-              paddingBottom: '5px',
+              borderBottom: '1px solid var(--color-border)',
+              paddingBottom: '6px',
               marginBottom: '6px',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <Sparkles size={13} color="#9333ea" />
-              <span style={{ fontSize: '12px', fontWeight: 800, color: '#6b21a8' }}>
-                Фразовые глаголы ({cardPhrases.length})
+              <Sparkles size={15} color="#9333ea" />
+              <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
+                Фразовые глаголы к
               </span>
-              <span style={{ fontSize: '10.5px', color: '#a855f7', fontWeight: 600 }}>
-                к {currentCard.word}
+              <span style={{ fontSize: '13px', color: '#a855f7', fontWeight: 800 }}>
+                {currentCard.word}
+              </span>
+              <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontWeight: 500, marginLeft: '2px' }}>
+                ({cardPhrases.length})
               </span>
             </div>
             <button
               type="button"
               onClick={() => setIsOverlayOpen(false)}
               style={{
-                border: 'none',
-                background: '#f3e8ff',
-                color: '#6b21a8',
-                borderRadius: '50%',
-                width: '22px',
-                height: '22px',
+                border: '1px solid var(--color-border)',
+                background: 'var(--color-surface-hover)',
+                color: 'var(--color-text-primary)',
+                borderRadius: '7px',
+                width: '28px',
+                height: '28px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
+                transition: 'all 0.15s ease',
               }}
-              title="Закрыть"
+              title="Закрыть (Esc)"
             >
-              <X size={13} />
+              <X size={16} strokeWidth={2.5} />
             </button>
           </div>
 
@@ -645,7 +740,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               overflowY: 'auto',
               display: 'flex',
               flexDirection: 'column',
-              gap: '5px',
+              gap: '6px',
               scrollbarWidth: 'thin',
             }}
           >
@@ -655,30 +750,30 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                 <div
                   key={p.id || pIdx}
                   style={{
-                    fontSize: '11.5px',
-                    lineHeight: 1.35,
-                    background: '#faf5ff',
-                    padding: '5px 8px',
-                    borderRadius: '6px',
-                    border: '1px solid #f3e8ff',
+                    fontSize: '13px',
+                    lineHeight: 1.4,
+                    background: 'var(--color-surface-hover)',
+                    padding: '7px 10px',
+                    borderRadius: '8px',
+                    border: '1px solid var(--color-border)',
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ color: '#09090b', fontWeight: 600, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
+                    <div style={{ color: 'var(--color-text-primary)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap', gap: '5px' }}>
                       <span>• {renderHighlightedSentence(p.phrase, currentCard.word)}</span>
                       {p.partOfSpeech && (
                         <span
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            fontSize: '7.5px',
+                            fontSize: '8.5px',
                             fontWeight: 700,
                             textTransform: 'lowercase',
-                            padding: '0.5px 3.5px',
+                            padding: '1px 4.5px',
                             borderRadius: '3px',
-                            background: '#f3e8ff',
-                            border: '1px solid #e9d5ff',
-                            color: '#7c3aed',
+                            background: 'rgba(168, 85, 247, 0.15)',
+                            border: '1px solid rgba(168, 85, 247, 0.3)',
+                            color: '#c084fc',
                             lineHeight: 1.1,
                           }}
                         >
@@ -691,15 +786,14 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            fontSize: '7.5px',
+                            fontSize: '8.5px',
                             fontWeight: 700,
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.02em',
-                            padding: '0.5px 3.5px',
+                            textTransform: 'lowercase',
+                            padding: '1px 4.5px',
                             borderRadius: '3px',
-                            background: 'rgba(234, 179, 8, 0.10)',
-                            border: '1px solid rgba(234, 179, 8, 0.28)',
-                            color: '#ca8a04',
+                            background: 'var(--color-warning-light)',
+                            border: '1px solid var(--color-warning-border)',
+                            color: 'var(--color-warning)',
                             lineHeight: 1.1,
                           }}
                         >
@@ -714,17 +808,17 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                         border: 'none',
                         background: 'transparent',
                         cursor: 'pointer',
-                        color: copiedIndex === copyKey ? '#16a34a' : '#a1a1aa',
-                        padding: '1px',
-                        marginLeft: '5px',
+                        color: copiedIndex === copyKey ? 'var(--color-success)' : 'var(--color-text-muted)',
+                        padding: '2px',
+                        marginLeft: '6px',
                       }}
                       title="Скопировать"
                     >
-                      {copiedIndex === copyKey ? <Check size={11} /> : <Copy size={11} />}
+                      {copiedIndex === copyKey ? <Check size={13} strokeWidth={2.5} /> : <Copy size={13} />}
                     </button>
                   </div>
                   {p.translation && (
-                    <div style={{ color: '#6b21a8', fontSize: '10.5px', paddingLeft: '8px', marginTop: '1px' }}>
+                    <div style={{ color: 'var(--color-accent-text)', fontSize: '12px', paddingLeft: '10px', marginTop: '2px' }}>
                       {p.translation}
                     </div>
                   )}
