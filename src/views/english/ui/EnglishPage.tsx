@@ -13,10 +13,13 @@ export const EnglishPage: React.FC = () => {
     dictionaryWords,
     totalDictionaryWords,
     isLoadingDictionary,
+    isLoadingMoreDictionary,
+    hasMoreDictionary,
     fetchSession,
     fetchSettings,
     updateSettings,
     searchDictionary,
+    loadMoreDictionary,
   } = useEnglishStore();
 
   const [activeTab, setActiveTab] = useState<'practice' | 'dictionary' | 'settings'>('practice');
@@ -30,11 +33,35 @@ export const EnglishPage: React.FC = () => {
   useEffect(() => {
     fetchSession();
     fetchSettings();
-    searchDictionary('', 'ALL', 'ALL', 1);
-  }, [fetchSession, fetchSettings, searchDictionary]);
+  }, [fetchSession, fetchSettings]);
 
-  const handleFilterChange = (query: string, level: string, status: string) => {
-    searchDictionary(query, level, status, 1);
+  // Debounced search on query, level, or status change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      searchDictionary(searchQuery, selectedLevel, selectedStatus, 1);
+    }, 180);
+    return () => clearTimeout(timer);
+  }, [searchQuery, selectedLevel, selectedStatus, searchDictionary]);
+
+  const hasActiveFilters = searchQuery !== '' || selectedLevel !== 'ALL' || selectedStatus !== 'ALL';
+  const handleClearFilters = () => {
+    setSearchQuery('');
+    setSelectedLevel('ALL');
+    setSelectedStatus('ALL');
+  };
+
+  const renderStatusBadge = (status?: string) => {
+    switch (status) {
+      case 'LEARNING':
+        return <span className={`${styles.wordStatusBadge} ${styles.wordStatusLearning}`}>Изучается</span>;
+      case 'REVIEW':
+        return <span className={`${styles.wordStatusBadge} ${styles.wordStatusReview}`}>Повтор</span>;
+      case 'MASTERED':
+        return <span className={`${styles.wordStatusBadge} ${styles.wordStatusMastered}`}>Выучено ✓</span>;
+      case 'NEW':
+      default:
+        return <span className={`${styles.wordStatusBadge} ${styles.wordStatusNew}`}>Не начато</span>;
+    }
   };
 
   const newCount = session?.newWords?.length || 0;
@@ -199,19 +226,13 @@ export const EnglishPage: React.FC = () => {
               className={styles.searchInput}
               placeholder="Поиск по слову или переводу..."
               value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                handleFilterChange(e.target.value, selectedLevel, selectedStatus);
-              }}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
 
             <select
               className={styles.selectInput}
               value={selectedLevel}
-              onChange={(e) => {
-                setSelectedLevel(e.target.value);
-                handleFilterChange(searchQuery, e.target.value, selectedStatus);
-              }}
+              onChange={(e) => setSelectedLevel(e.target.value)}
             >
               <option value="ALL">Все уровни (CEFR)</option>
               <option value="A1">Уровень A1 (Начальный)</option>
@@ -224,10 +245,7 @@ export const EnglishPage: React.FC = () => {
             <select
               className={styles.selectInput}
               value={selectedStatus}
-              onChange={(e) => {
-                setSelectedStatus(e.target.value);
-                handleFilterChange(searchQuery, selectedLevel, e.target.value);
-              }}
+              onChange={(e) => setSelectedStatus(e.target.value)}
             >
               <option value="ALL">Все статусы</option>
               <option value="NEW">Не начато</option>
@@ -237,32 +255,72 @@ export const EnglishPage: React.FC = () => {
             </select>
           </div>
 
+          <div className={styles.filterSummaryRow}>
+            <span className={styles.filterCountText}>
+              Найдено слов: <strong>{totalDictionaryWords}</strong>
+            </span>
+            {hasActiveFilters && (
+              <button className={styles.clearFilterBtn} onClick={handleClearFilters}>
+                ✕ Сбросить фильтры
+              </button>
+            )}
+          </div>
+
           {isLoadingDictionary ? (
-            <div style={{ textAlign: 'center', color: '#94a3b8', padding: '40px' }}>Загрузка словаря...</div>
+            <div style={{ textAlign: 'center', color: 'var(--color-text-muted)', padding: '40px' }}>
+              Загрузка словаря...
+            </div>
+          ) : dictionaryWords.length === 0 ? (
+            <div className={styles.emptyStateBox}>
+              <span style={{ fontSize: '28px' }}>🔍</span>
+              <p>По вашему запросу ничего не найдено</p>
+              {hasActiveFilters && (
+                <button className={styles.clearFilterBtn} onClick={handleClearFilters}>
+                  Сбросить фильтры
+                </button>
+              )}
+            </div>
           ) : (
-            <div className={styles.wordsGrid}>
-              {dictionaryWords.map((w) => (
-                <div key={w.id} className={styles.wordCard}>
-                  <div className={styles.wordCardHeader}>
-                    <span className={styles.wordCardTitle}>{w.word}</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span className={styles.wordCardLevel}>{w.cefrLevel}</span>
-                      <button
-                        className={styles.miniAudioBtn}
-                        onClick={() => speakEnglishWord(w.word, settings.accent)}
-                        title="Озвучить"
-                      >
-                        🔊
-                      </button>
+            <>
+              <div className={styles.wordsGrid}>
+                {dictionaryWords.map((w) => (
+                  <div key={w.id} className={styles.wordCard}>
+                    <div className={styles.wordCardHeader}>
+                      <span className={styles.wordCardTitle}>{w.word}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span className={styles.wordCardLevel}>{w.cefrLevel}</span>
+                        {renderStatusBadge(w.status)}
+                        <button
+                          className={styles.miniAudioBtn}
+                          onClick={() => speakEnglishWord(w.word, settings.accent)}
+                          title="Озвучить"
+                        >
+                          🔊
+                        </button>
+                      </div>
+                    </div>
+                    <div className={styles.wordCardTranscription}>{w.transcription}</div>
+                    <div className={styles.wordCardTranslation}>
+                      {w.translations.map((t) => t.meanings.join(', ')).join(' • ')}
                     </div>
                   </div>
-                  <div className={styles.wordCardTranscription}>{w.transcription}</div>
-                  <div className={styles.wordCardTranslation}>
-                    {w.translations.map((t) => t.meanings.join(', ')).join(' • ')}
-                  </div>
+                ))}
+              </div>
+
+              {hasMoreDictionary && (
+                <div className={styles.loadMoreRow}>
+                  <button
+                    className={styles.loadMoreBtn}
+                    onClick={() => loadMoreDictionary(searchQuery, selectedLevel, selectedStatus)}
+                    disabled={isLoadingMoreDictionary}
+                  >
+                    {isLoadingMoreDictionary
+                      ? 'Загрузка...'
+                      : `Показать ещё (загружено ${dictionaryWords.length} из ${totalDictionaryWords})`}
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
         </>
       )}

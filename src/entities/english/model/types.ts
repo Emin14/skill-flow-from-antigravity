@@ -84,6 +84,7 @@ export interface OxfordWord {
     oxford5000?: boolean;
   };
   topics?: string[];
+  status?: WordStatus;
 }
 
 export interface EnglishWordProgressItem {

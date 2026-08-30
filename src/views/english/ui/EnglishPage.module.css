@@ -212,6 +212,36 @@
   font-size: 13px;
   color: var(--color-text-secondary);
   outline: none;
+  cursor: pointer;
+}
+
+.filterSummaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+  font-size: 12px;
+}
+
+.filterCountText {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.clearFilterBtn {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.clearFilterBtn:hover {
+  background: var(--color-accent-light);
 }
 
 /* Words List */
@@ -242,6 +272,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
 }
 
 .wordCardTitle {
@@ -251,13 +282,46 @@
 }
 
 .wordCardLevel {
-  background: var(--color-warning-light);
-  color: var(--color-warning);
-  border: 1px solid var(--color-warning-border);
-  font-size: 11px;
+  background: var(--color-surface-hover);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent-border);
+  font-size: 10.5px;
   font-weight: 700;
   padding: 1px 5px;
   border-radius: var(--radius-sm, 4px);
+}
+
+.wordStatusBadge {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 1.5px 6px;
+  border-radius: 4px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.wordStatusNew {
+  background: var(--color-surface-hover);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.wordStatusLearning {
+  background: var(--color-accent-light);
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent-border);
+}
+
+.wordStatusReview {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning-border);
+}
+
+.wordStatusMastered {
+  background: var(--color-success-light);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
 }
 
 .wordCardTranscription {
@@ -284,6 +348,40 @@
 
 .miniAudioBtn:hover {
   opacity: 1;
+}
+
+.loadMoreRow {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 20px 0;
+}
+
+.loadMoreBtn {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md, 10px);
+  padding: 9px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+}
+
+.loadMoreBtn:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-accent-border);
+  color: var(--color-accent);
+}
+
+.emptyStateBox {
+  text-align: center;
+  padding: 48px 16px;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Settings Form */

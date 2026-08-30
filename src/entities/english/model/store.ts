@@ -18,6 +18,9 @@ interface EnglishState {
   dictionaryWords: OxfordWord[];
   totalDictionaryWords: number;
   isLoadingDictionary: boolean;
+  isLoadingMoreDictionary: boolean;
+  hasMoreDictionary: boolean;
+  dictionaryPage: number;
 
   // Actions
   fetchSession: () => Promise<void>;
@@ -26,6 +29,7 @@ interface EnglishState {
   fetchSettings: () => Promise<void>;
   updateSettings: (newSettings: Partial<EnglishSettingsConfig>) => Promise<void>;
   searchDictionary: (query?: string, level?: string, status?: string, page?: number) => Promise<void>;
+  loadMoreDictionary: (query?: string, level?: string, status?: string) => Promise<void>;
   fetchRandomWords: (count?: number) => Promise<SessionWordCard[]>;
 }
 
@@ -47,6 +51,9 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
   dictionaryWords: [],
   totalDictionaryWords: 0,
   isLoadingDictionary: false,
+  isLoadingMoreDictionary: false,
+  hasMoreDictionary: false,
+  dictionaryPage: 1,
 
   fetchSession: async () => {
     set({ isLoadingSession: true, error: null });
@@ -155,11 +162,43 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
         set({
           dictionaryWords: data.words || [],
           totalDictionaryWords: data.total || 0,
+          dictionaryPage: page,
+          hasMoreDictionary: data.hasMore ?? false,
           isLoadingDictionary: false,
         });
       }
     } catch {
       set({ isLoadingDictionary: false });
+    }
+  },
+
+  loadMoreDictionary: async (query = '', level = 'ALL', status = 'ALL') => {
+    const { dictionaryPage, hasMoreDictionary, isLoadingMoreDictionary, dictionaryWords } = get();
+    if (!hasMoreDictionary || isLoadingMoreDictionary) return;
+
+    set({ isLoadingMoreDictionary: true });
+    try {
+      const nextPage = dictionaryPage + 1;
+      const params = new URLSearchParams({
+        q: query,
+        level,
+        status,
+        page: nextPage.toString(),
+        limit: '30',
+      });
+      const res = await fetch(`/api/english/dictionary?${params.toString()}`);
+      if (res.ok) {
+        const data = await res.json();
+        set({
+          dictionaryWords: [...dictionaryWords, ...(data.words || [])],
+          totalDictionaryWords: data.total || 0,
+          dictionaryPage: nextPage,
+          hasMoreDictionary: data.hasMore ?? false,
+          isLoadingMoreDictionary: false,
+        });
+      }
+    } catch {
+      set({ isLoadingMoreDictionary: false });
     }
   },
 

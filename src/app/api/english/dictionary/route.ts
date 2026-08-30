@@ -29,6 +29,29 @@ export async function GET(req: Request) {
         );
         return matchesWord || matchesTranslation;
       });
+
+      // Sort by search relevance
+      filtered.sort((a, b) => {
+        const aWord = a.word.toLowerCase();
+        const bWord = b.word.toLowerCase();
+
+        // 1. Exact match
+        if (aWord === q && bWord !== q) return -1;
+        if (bWord === q && aWord !== q) return 1;
+
+        // 2. Starts with query
+        if (aWord.startsWith(q) && !bWord.startsWith(q)) return -1;
+        if (bWord.startsWith(q) && !aWord.startsWith(q)) return 1;
+
+        // 3. Word matches before translation matches
+        const aMatchesWord = aWord.includes(q);
+        const bMatchesWord = bWord.includes(q);
+        if (aMatchesWord && !bMatchesWord) return -1;
+        if (!aMatchesWord && bMatchesWord) return 1;
+
+        // 4. Shorter word first
+        return aWord.length - bWord.length;
+      });
     }
 
     // Filter by CEFR Level
@@ -46,7 +69,10 @@ export async function GET(req: Request) {
 
     const total = filtered.length;
     const startIndex = (page - 1) * limit;
-    const paginatedWords = filtered.slice(startIndex, startIndex + limit);
+    const paginatedWords = filtered.slice(startIndex, startIndex + limit).map((w) => ({
+      ...w,
+      status: progressMap.get(w.id) || 'NEW',
+    }));
 
     return NextResponse.json({
       words: paginatedWords,
@@ -54,6 +80,7 @@ export async function GET(req: Request) {
       page,
       limit,
       totalPages: Math.ceil(total / limit),
+      hasMore: startIndex + limit < total,
     });
   } catch (error) {
     console.error('Error querying English dictionary:', error);
