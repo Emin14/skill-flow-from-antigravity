@@ -1,10 +1,18 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useEnglishStore, speakEnglishWord } from '@/entities/english';
+import { useEnglishStore, speakEnglishWord, CEFRLevel } from '@/entities/english';
 import { EnglishTrainerModal } from '@/features/english-trainer';
 import { Check } from 'lucide-react';
 import styles from './EnglishPage.module.css';
+
+const CEFR_LEVEL_INFOS: { level: CEFRLevel; title: string; count: number; badgeColor: { bg: string; text: string; border: string } }[] = [
+  { level: 'A1', title: 'Начальный', count: 906, badgeColor: { bg: 'var(--color-success-light)', text: 'var(--color-success)', border: 'var(--color-success-border)' } },
+  { level: 'A2', title: 'Элементарный', count: 797, badgeColor: { bg: 'rgba(6, 182, 212, 0.12)', text: '#06b6d4', border: 'rgba(6, 182, 212, 0.3)' } },
+  { level: 'B1', title: 'Средний', count: 700, badgeColor: { bg: 'var(--color-accent-light)', text: 'var(--color-accent-text)', border: 'var(--color-accent-border)' } },
+  { level: 'B2', title: 'Выше среднего', count: 1298, badgeColor: { bg: 'var(--color-warning-light)', text: 'var(--color-warning)', border: 'var(--color-warning-border)' } },
+  { level: 'C1', title: 'Продвинутый', count: 1279, badgeColor: { bg: 'rgba(168, 85, 247, 0.14)', text: '#a855f7', border: 'rgba(168, 85, 247, 0.35)' } },
+];
 
 export const EnglishPage: React.FC = () => {
   const {
@@ -48,6 +56,18 @@ export const EnglishPage: React.FC = () => {
     setSearchQuery('');
     setSelectedLevel('ALL');
     setSelectedStatus('ALL');
+  };
+
+  const handleToggleLevel = (lvl: CEFRLevel) => {
+    const current = settings.activeLevels || ['A1', 'A2', 'B1', 'B2', 'C1'];
+    let updated: CEFRLevel[];
+    if (current.includes(lvl)) {
+      if (current.length <= 1) return; // Keep at least 1 active level
+      updated = current.filter((l) => l !== lvl);
+    } else {
+      updated = [...current, lvl];
+    }
+    updateSettings({ activeLevels: updated });
   };
 
   const renderStatusBadge = (status?: string) => {
@@ -330,6 +350,45 @@ export const EnglishPage: React.FC = () => {
         <div className={styles.settingsCard}>
           <div className={styles.settingItem}>
             <div className={styles.settingLabel}>
+              Изучаемые уровни (CEFR)
+            </div>
+            <div className={styles.settingDesc}>
+              Отметьте уровни, из которых система будет брать новые слова в тренировки.
+            </div>
+            <div className={styles.checkboxLevelsList}>
+              {CEFR_LEVEL_INFOS.map((info) => {
+                const isActive = (settings.activeLevels || ['A1', 'A2', 'B1', 'B2', 'C1']).includes(info.level);
+                return (
+                  <div
+                    key={info.level}
+                    className={`${styles.checkboxLevelRow} ${isActive ? styles.checkboxLevelRowActive : ''}`}
+                    onClick={() => handleToggleLevel(info.level)}
+                  >
+                    <div className={styles.checkboxLevelLeft}>
+                      <div className={`${styles.checkboxSquare} ${isActive ? styles.checkboxSquareActive : ''}`}>
+                        {isActive && '✓'}
+                      </div>
+                      <span
+                        className={styles.compactLevelBadge}
+                        style={{
+                          background: isActive ? info.badgeColor.bg : 'var(--color-surface)',
+                          color: isActive ? info.badgeColor.text : 'var(--color-text-muted)',
+                          border: `1px solid ${isActive ? info.badgeColor.border : 'var(--color-border)'}`,
+                        }}
+                      >
+                        {info.level}
+                      </span>
+                      <span className={styles.compactLevelText}>{info.title}</span>
+                    </div>
+                    <span className={styles.compactLevelCount}>{info.count} слов</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className={styles.settingItem}>
+            <div className={styles.settingLabel}>
               Новых слов в день: <strong>{settings.dailyNewWords}</strong>
             </div>
             <div className={styles.settingDesc}>Рекомендуется 5–10 слов для стабильного прогресса.</div>
@@ -361,7 +420,7 @@ export const EnglishPage: React.FC = () => {
           <div className={styles.settingItem}>
             <div className={styles.settingLabel}>Акцент озвучки</div>
             <div style={{ display: 'flex', gap: '12px' }}>
-              <label style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <label style={{ color: 'var(--color-text-primary)', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                 <input
                   type="radio"
                   name="accent"
@@ -370,7 +429,7 @@ export const EnglishPage: React.FC = () => {
                 />
                 🇺🇸 Американский (US)
               </label>
-              <label style={{ color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <label style={{ color: 'var(--color-text-primary)', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
                 <input
                   type="radio"
                   name="accent"
@@ -380,6 +439,18 @@ export const EnglishPage: React.FC = () => {
                 🇬🇧 Британский (UK)
               </label>
             </div>
+          </div>
+
+          <div className={styles.settingItem}>
+            <div className={styles.settingLabel}>Автоматическая озвучка</div>
+            <label style={{ color: 'var(--color-text-primary)', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '13px' }}>
+              <input
+                type="checkbox"
+                checked={settings.autoPronounce}
+                onChange={(e) => updateSettings({ autoPronounce: e.target.checked })}
+              />
+              Озвучивать слово автоматически при показе карточки
+            </label>
           </div>
         </div>
       )}

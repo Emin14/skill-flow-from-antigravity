@@ -232,7 +232,8 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         >
           {displayedMeanings.map((m, i) => {
             const isSelected = i === currentSafeIdx;
-            const shortTr = isMasked ? `Смысл ${i + 1}` : (m.translation?.split(/[,;]/)[0] || '');
+            const rawTr = isMasked ? `Смысл ${i + 1}` : (m.translation?.split(/[,;]/)[0]?.trim() || '');
+            const shortTr = rawTr.length > 16 ? `${rawTr.slice(0, 16)}...` : rawTr;
             return (
               <button
                 key={i}
@@ -256,6 +257,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                   alignItems: 'center',
                   height: '24px',
                 }}
+                title={m.translation}
               >
                 {shortTr}
               </button>
@@ -568,7 +570,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                       </button>
                     </div>
                     {ex.ru && (
-                      <div style={{ color: 'var(--color-accent-text)', fontSize: '11px', paddingLeft: '8px', marginTop: '1px' }}>
+                      <div style={{ color: 'var(--color-text-secondary)', fontSize: '11.5px', paddingLeft: '8px', marginTop: '1.5px' }}>
                         {ex.ru}
                       </div>
                     )}
@@ -818,7 +820,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                     </button>
                   </div>
                   {p.translation && (
-                    <div style={{ color: 'var(--color-accent-text)', fontSize: '12px', paddingLeft: '10px', marginTop: '2px' }}>
+                    <div style={{ color: 'var(--color-text-secondary)', fontSize: '12px', paddingLeft: '10px', marginTop: '2px' }}>
                       {p.translation}
                     </div>
                   )}
