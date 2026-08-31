@@ -45,7 +45,7 @@ export const EnglishDailyWidget: React.FC = () => {
             </div>
             <p className={styles.statsSubtitle}>
               {isDone
-                ? `Выполнено за сегодня! (${session?.totalLearned || 0} слов всего)`
+                ? 'Отличная работа! • Следующие слова завтра'
                 : `Осталось: ${totalRemaining} слов • ~${Math.max(2, Math.ceil(totalRemaining * 0.5))} мин`}
             </p>
           </div>

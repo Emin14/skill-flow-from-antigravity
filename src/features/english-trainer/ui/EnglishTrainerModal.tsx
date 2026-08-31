@@ -232,10 +232,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     } else {
       setIsFinished(true);
       triggerHapticFeedback('success');
-      setTimeout(() => {
-        onClose();
-        fetchSession();
-      }, 1500);
+      fetchSession();
     }
   };
 
@@ -389,6 +386,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
               onClick={() => {
                 clearAutoTimer();
                 onClose();
+                fetchSession();
               }}
             >
               Завершить
