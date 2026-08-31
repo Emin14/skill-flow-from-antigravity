@@ -132,14 +132,14 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const touchStartYRef = useRef<number>(0);
   const touchCurrentYRef = useRef<number>(0);
 
-  const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
-    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const clientY = e.touches[0].clientY;
     touchStartYRef.current = clientY;
     touchCurrentYRef.current = clientY;
   };
 
-  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
-    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const clientY = e.touches[0].clientY;
     touchCurrentYRef.current = clientY;
     const deltaY = touchCurrentYRef.current - touchStartYRef.current;
 
@@ -425,11 +425,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
       >
         {/* Top Drag Handle */}
         <div
-          onMouseDown={handleTouchStart}
           onTouchStart={handleTouchStart}
-          onMouseMove={handleTouchMove}
           onTouchMove={handleTouchMove}
-          onMouseUp={handleTouchEnd}
           onTouchEnd={handleTouchEnd}
           style={{ width: '100%', cursor: 'grab', paddingBottom: '2px', touchAction: 'none' }}
         >

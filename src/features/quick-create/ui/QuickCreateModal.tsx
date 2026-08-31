@@ -224,15 +224,15 @@ export const QuickCreateModal: React.FC = () => {
     closeModal();
   };
 
-  const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
-    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const clientY = e.touches[0].clientY;
     startYRef.current = clientY;
     setIsDragging(true);
   };
 
-  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
+  const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging) return;
-    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    const clientY = e.touches[0].clientY;
     const deltaY = clientY - startYRef.current;
     if (deltaY > 0) setDragY(deltaY);
   };
@@ -266,9 +266,6 @@ export const QuickCreateModal: React.FC = () => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          onMouseDown={handleTouchStart}
-          onMouseMove={handleTouchMove}
-          onMouseUp={handleTouchEnd}
         >
           <div className={styles.dragHandleBar} />
         </div>
