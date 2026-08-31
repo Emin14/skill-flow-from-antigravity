@@ -445,7 +445,10 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
   onCompleteParent,
 }) => {
   const [isHeaderDragOver, setIsHeaderDragOver] = useState(false);
-  const [dropIndicator, setDropIndicator] = useState<{ targetTaskId: string; position: 'before' | 'after' } | null>(null);
+  const [dropIndicator, setDropIndicator] = useState<{
+    targetTaskId: string;
+    position: 'before' | 'after' | 'nest';
+  } | null>(null);
 
   const stageTaskIds = useMemo(() => new Set(tasksList.map((t) => t.id)), [tasksList]);
 
@@ -469,18 +472,31 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
     }
   };
 
-  const handleCardDragOver = (e: React.DragEvent, targetTaskId: string) => {
-    if (targetStatus !== 'Todo' || !onReorderTasks) return;
+  const handleCardDragOver = (e: React.DragEvent, targetTask: Task) => {
     e.preventDefault();
     e.stopPropagation();
+    e.dataTransfer.dropEffect = 'move';
 
     const rect = e.currentTarget.getBoundingClientRect();
     const offsetY = e.clientY - rect.top;
-    const isBefore = offsetY < rect.height / 2;
+    const height = rect.height;
+
+    let position: 'before' | 'after' | 'nest';
+    if (targetStatus === 'Todo' && onReorderTasks) {
+      if (offsetY < height * 0.25) {
+        position = 'before';
+      } else if (offsetY > height * 0.75) {
+        position = 'after';
+      } else {
+        position = 'nest';
+      }
+    } else {
+      position = 'nest';
+    }
 
     setDropIndicator({
-      targetTaskId,
-      position: isBefore ? 'before' : 'after',
+      targetTaskId: targetTask.id,
+      position,
     });
   };
 
@@ -491,8 +507,7 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
     }
   };
 
-  const handleCardDrop = (e: React.DragEvent, targetTaskId: string) => {
-    if (targetStatus !== 'Todo' || !onReorderTasks) return;
+  const handleCardDrop = (e: React.DragEvent, targetTask: Task) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -504,22 +519,31 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
     const currentIndicator = dropIndicator;
     setDropIndicator(null);
 
-    if (!draggedId || draggedId === targetTaskId) return;
+    if (!draggedId || draggedId === targetTask.id) return;
 
-    const currentIds = rootTasksInStage.map((t) => t.id);
-    if (!currentIds.includes(draggedId)) {
-      onDropOnSection(draggedId, 'Todo');
+    if (currentIndicator?.position === 'nest') {
+      if (onDropOnTask) {
+        onDropOnTask(draggedId, targetTask);
+      }
       return;
     }
 
-    const filteredIds = currentIds.filter((id) => id !== draggedId);
-    const targetIdx = filteredIds.indexOf(targetTaskId);
-    if (targetIdx === -1) return;
+    if (targetStatus === 'Todo' && onReorderTasks) {
+      const currentIds = rootTasksInStage.map((t) => t.id);
+      if (!currentIds.includes(draggedId)) {
+        onDropOnSection(draggedId, 'Todo');
+        return;
+      }
 
-    const insertIdx = currentIndicator?.position === 'after' ? targetIdx + 1 : targetIdx;
-    filteredIds.splice(insertIdx, 0, draggedId);
+      const filteredIds = currentIds.filter((id) => id !== draggedId);
+      const targetIdx = filteredIds.indexOf(targetTask.id);
+      if (targetIdx === -1) return;
 
-    onReorderTasks(filteredIds);
+      const insertIdx = currentIndicator?.position === 'after' ? targetIdx + 1 : targetIdx;
+      filteredIds.splice(insertIdx, 0, draggedId);
+
+      onReorderTasks(filteredIds);
+    }
   };
 
   const renderSubtasksRecursive = (parentId: string, depthLevel = 1, visited = new Set<string>()): React.ReactNode => {
@@ -540,12 +564,16 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
             showDragHandle={true}
             parentPathVariant={parentPathVariant}
             hideDateBadge={true}
+            isDropTarget={dropIndicator?.targetTaskId === subtask.id && dropIndicator.position === 'nest'}
             onToggleCheckbox={() => onToggleCheckbox(subtask)}
             onStatusChange={(nextStatus) => onStatusChange(subtask.id, nextStatus)}
             onDelete={() => onDelete(subtask.id)}
             onClick={() => onOpenCard(subtask)}
             onDropOnTask={onDropOnTask}
             onCompleteParent={() => onCompleteParent(subtask.id)}
+            onCardDragOver={(e) => handleCardDragOver(e, subtask)}
+            onCardDragLeave={handleCardDragLeave}
+            onCardDrop={(e) => handleCardDrop(e, subtask)}
           />
         </div>
         {renderSubtasksRecursive(subtask.id, depthLevel + 1, new Set(visited))}
@@ -583,12 +611,7 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
               {targetStatus === 'Todo' && isTarget && dropIndicator.position === 'before' && (
                 <div className={styles.dropIndicatorLine} />
               )}
-              <div
-                onDragOver={(e) => handleCardDragOver(e, task.id)}
-                onDragLeave={handleCardDragLeave}
-                onDrop={(e) => handleCardDrop(e, task.id)}
-                style={{ display: 'flex', flexDirection: 'column' }}
-              >
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <GlassmorphicTaskCard
                   task={task}
                   occurrenceDate={todayStr}
@@ -596,15 +619,16 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
                   showDragHandle={true}
                   parentPathVariant={parentPathVariant}
                   hideDateBadge={true}
+                  isDropTarget={isTarget && dropIndicator.position === 'nest'}
                   onToggleCheckbox={() => onToggleCheckbox(task)}
                   onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
                   onDelete={() => onDelete(task.id)}
                   onClick={() => onOpenCard(task)}
-                  onDropOnTask={targetStatus === 'Todo' ? undefined : onDropOnTask}
+                  onDropOnTask={onDropOnTask}
                   onCompleteParent={() => onCompleteParent(task.id)}
-                  onCardDragOver={targetStatus === 'Todo' ? (e) => handleCardDragOver(e, task.id) : undefined}
-                  onCardDragLeave={targetStatus === 'Todo' ? handleCardDragLeave : undefined}
-                  onCardDrop={targetStatus === 'Todo' ? (e) => handleCardDrop(e, task.id) : undefined}
+                  onCardDragOver={(e) => handleCardDragOver(e, task)}
+                  onCardDragLeave={handleCardDragLeave}
+                  onCardDrop={(e) => handleCardDrop(e, task)}
                 />
                 {renderSubtasksRecursive(task.id, 1)}
               </div>

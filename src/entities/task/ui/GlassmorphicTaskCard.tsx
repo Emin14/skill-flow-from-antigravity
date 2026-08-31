@@ -37,6 +37,7 @@ interface GlassmorphicTaskCardProps {
   onCardDragOver?: (e: React.DragEvent) => void;
   onCardDragLeave?: (e: React.DragEvent) => void;
   onCardDrop?: (e: React.DragEvent) => void;
+  isDropTarget?: boolean;
 }
 
 const renderParentPath = (path: Task[], variant: number = 4, catColor: string) => {
@@ -202,6 +203,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   onCardDragOver,
   onCardDragLeave,
   onCardDrop,
+  isDropTarget,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isJustDraggedRef = useRef<boolean>(false);
@@ -473,7 +475,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
       onDrop={handleTaskDrop}
       className={`${styles.taskCardWrapper} ${
         areAllSubtasksDone && !isDone ? styles.taskCardGlowContainer : ''
-      } ${isOverTarget ? styles.taskCardDropTarget : ''}`}
+      } ${isOverTarget || isDropTarget ? styles.taskCardDropTarget : ''}`}
     >
       {(swipeOffset < 0 || isSwipedLeft) && (
         <div
