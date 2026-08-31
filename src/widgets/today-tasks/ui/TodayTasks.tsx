@@ -31,7 +31,7 @@ interface TodayTasksProps {
 }
 
 export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, selectedDate, onDateChange }) => {
-  const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask, deleteTaskOccurrence } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, updateTaskStatus, toggleTaskStatus, updateTaskParent, deleteTask, deleteTaskOccurrence, reorderTasks } = useTaskStore();
   const {
     editingTask, detailTask, detailOccurrenceDate, smartTask,
     openEditModal, openDetailModal, openSmartModal,
@@ -65,40 +65,6 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
-  useEffect(() => {
-    registerPointerDropHandler((draggedTaskId, target) => {
-      if (target.type === 'status_tab' && target.status) {
-        if (target.status === 'Done') {
-          const task = tasks.find((t) => t.id === draggedTaskId);
-          if (task && isSmartRepeatTask(task)) {
-            const currentOcc = task.occurrences?.find((o) => o.date === activeDateStr);
-            if (currentOcc?.smartRating) {
-              updateTaskStatus(task.id, 'Done', currentOcc.smartRating, activeDateStr);
-            } else {
-              openSmartModal(task);
-            }
-            return;
-          }
-        }
-        updateTaskStatus(draggedTaskId, target.status, undefined, activeDateStr);
-        const statusLabel = target.status === 'Todo' ? 'План' : target.status === 'InProgress' ? 'В работе' : 'Выполнено';
-        useToastStore.getState().showToast(`Задача перенесена в колонку "${statusLabel}"`, 'info');
-      } else if (target.type === 'task_card' && target.taskId) {
-        updateTaskParent(draggedTaskId, target.taskId);
-      }
-    });
-  }, [activeDateStr, tasks, updateTaskStatus, updateTaskParent, openSmartModal]);
-
-  useEffect(() => { fetchTasks(); }, [fetchTasks]);
-
-  // Midnight auto-update: обновляет todayStr при смене суток
-  useMidnightRefresh(() => {
-    const fresh = getTodayStr();
-    setTodayStr(fresh);
-    if (onDateChange) onDateChange(fresh);
-    fetchTasks(true);
-  });
-
   // Tasks scheduled strictly for activeDateStr (EXCLUDING parent tasks with subtasks)
   const rawTodayTasks = useMemo(() => {
     return tasks.filter((t) => {
@@ -129,9 +95,66 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
     return t.status || 'Todo';
   }, [activeDateStr]);
 
-  const todoTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Todo'), [rawTodayTasks, getTaskStatusForToday]);
+  const todoTasks = useMemo(() => {
+    return rawTodayTasks
+      .filter((t) => getTaskStatusForToday(t) === 'Todo')
+      .sort((a, b) => {
+        const orderA = a.sortOrder ?? 999999;
+        const orderB = b.sortOrder ?? 999999;
+        if (orderA !== orderB) return orderA - orderB;
+        return (a.createdAt || '').localeCompare(b.createdAt || '');
+      });
+  }, [rawTodayTasks, getTaskStatusForToday]);
+
   const inProgressTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'InProgress'), [rawTodayTasks, getTaskStatusForToday]);
   const doneTasks = useMemo(() => rawTodayTasks.filter((t) => getTaskStatusForToday(t) === 'Done'), [rawTodayTasks, getTaskStatusForToday]);
+
+  useEffect(() => {
+    registerPointerDropHandler((draggedTaskId, target) => {
+      if (target.type === 'status_tab' && target.status) {
+        if (target.status === 'Done') {
+          const task = tasks.find((t) => t.id === draggedTaskId);
+          if (task && isSmartRepeatTask(task)) {
+            const currentOcc = task.occurrences?.find((o) => o.date === activeDateStr);
+            if (currentOcc?.smartRating) {
+              updateTaskStatus(task.id, 'Done', currentOcc.smartRating, activeDateStr);
+            } else {
+              openSmartModal(task);
+            }
+            return;
+          }
+        }
+        updateTaskStatus(draggedTaskId, target.status, undefined, activeDateStr);
+        const statusLabel = target.status === 'Todo' ? 'План' : target.status === 'InProgress' ? 'В работе' : 'Выполнено';
+        useToastStore.getState().showToast(`Задача перенесена в колонку "${statusLabel}"`, 'info');
+      } else if (target.type === 'task_card' && target.taskId) {
+        if (statusFilter === 'Todo') {
+          // Reorder tasks if dropped within Todo stage
+          const currentIds = todoTasks.map((t) => t.id);
+          if (currentIds.includes(draggedTaskId) && currentIds.includes(target.taskId)) {
+            const filteredIds = currentIds.filter((id) => id !== draggedTaskId);
+            const targetIdx = filteredIds.indexOf(target.taskId);
+            if (targetIdx !== -1) {
+              filteredIds.splice(targetIdx, 0, draggedTaskId);
+              reorderTasks(filteredIds);
+            }
+            return;
+          }
+        }
+        updateTaskParent(draggedTaskId, target.taskId);
+      }
+    });
+  }, [activeDateStr, tasks, todoTasks, statusFilter, updateTaskStatus, updateTaskParent, reorderTasks, openSmartModal]);
+
+  useEffect(() => { fetchTasks(); }, [fetchTasks]);
+
+  // Midnight auto-update: обновляет todayStr при смене суток
+  useMidnightRefresh(() => {
+    const fresh = getTodayStr();
+    setTodayStr(fresh);
+    if (onDateChange) onDateChange(fresh);
+    fetchTasks(true);
+  });
 
   // Exact math for progress bar widget
   const totalCount = rawTodayTasks.length;
@@ -311,6 +334,7 @@ export const TodayTasks: React.FC<TodayTasksProps> = ({ showDaySwitcher = true, 
               todayStr={activeDateStr}
               targetStatus="Todo"
               parentPathVariant={4}
+              onReorderTasks={(newIds) => reorderTasks(newIds)}
               onDropOnTask={handleDropOnTask}
               onDropOnSection={(taskId, status) => updateTaskStatus(taskId, status, undefined, activeDateStr)}
               onOpenCard={handleCardClick}
@@ -395,7 +419,8 @@ interface SingleBoardSectionProps {
   todayStr: string;
   targetStatus: TaskStatus;
   parentPathVariant?: number;
-  onDropOnTask: (draggedTaskId: string, targetParentTask: Task) => void;
+  onReorderTasks?: (orderedTaskIds: string[]) => void;
+  onDropOnTask?: (draggedTaskId: string, targetParentTask: Task) => void;
   onDropOnSection: (taskId: string, targetStatus: TaskStatus) => void;
   onOpenCard: (task: Task) => void;
   onToggleCheckbox: (task: Task) => void;
@@ -410,6 +435,7 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
   todayStr,
   targetStatus,
   parentPathVariant = 4,
+  onReorderTasks,
   onDropOnTask,
   onDropOnSection,
   onOpenCard,
@@ -419,6 +445,7 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
   onCompleteParent,
 }) => {
   const [isHeaderDragOver, setIsHeaderDragOver] = useState(false);
+  const [dropIndicator, setDropIndicator] = useState<{ targetTaskId: string; position: 'before' | 'after' } | null>(null);
 
   const stageTaskIds = useMemo(() => new Set(tasksList.map((t) => t.id)), [tasksList]);
 
@@ -426,12 +453,11 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
     return tasksList.filter((t) => !t.parentTaskId || !stageTaskIds.has(t.parentTaskId));
   }, [tasksList, stageTaskIds]);
 
-  const statusTitleText = targetStatus === 'Todo' ? '🕒 План' : targetStatus === 'InProgress' ? '⚡ В работе' : '✅ Выполнено';
-
   const handleHeaderDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsHeaderDragOver(false);
+    setDropIndicator(null);
     const taskId =
       (typeof window !== 'undefined' && window.__draggedTaskId) ||
       e.dataTransfer.getData('taskId') ||
@@ -441,6 +467,59 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
       const realId = found ? found.id : taskId;
       onDropOnSection(realId, targetStatus);
     }
+  };
+
+  const handleCardDragOver = (e: React.DragEvent, targetTaskId: string) => {
+    if (targetStatus !== 'Todo' || !onReorderTasks) return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const offsetY = e.clientY - rect.top;
+    const isBefore = offsetY < rect.height / 2;
+
+    setDropIndicator({
+      targetTaskId,
+      position: isBefore ? 'before' : 'after',
+    });
+  };
+
+  const handleCardDragLeave = (e: React.DragEvent) => {
+    const related = e.relatedTarget as Node | null;
+    if (!e.currentTarget.contains(related)) {
+      setDropIndicator(null);
+    }
+  };
+
+  const handleCardDrop = (e: React.DragEvent, targetTaskId: string) => {
+    if (targetStatus !== 'Todo' || !onReorderTasks) return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    const draggedId =
+      (typeof window !== 'undefined' && window.__draggedTaskId) ||
+      e.dataTransfer.getData('taskId') ||
+      e.dataTransfer.getData('text/plain');
+
+    const currentIndicator = dropIndicator;
+    setDropIndicator(null);
+
+    if (!draggedId || draggedId === targetTaskId) return;
+
+    const currentIds = rootTasksInStage.map((t) => t.id);
+    if (!currentIds.includes(draggedId)) {
+      onDropOnSection(draggedId, 'Todo');
+      return;
+    }
+
+    const filteredIds = currentIds.filter((id) => id !== draggedId);
+    const targetIdx = filteredIds.indexOf(targetTaskId);
+    if (targetIdx === -1) return;
+
+    const insertIdx = currentIndicator?.position === 'after' ? targetIdx + 1 : targetIdx;
+    filteredIds.splice(insertIdx, 0, draggedId);
+
+    onReorderTasks(filteredIds);
   };
 
   const renderSubtasksRecursive = (parentId: string, depthLevel = 1, visited = new Set<string>()): React.ReactNode => {
@@ -497,25 +576,41 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
           В этой колонке нет задач. Перетащите задачу сюда.
         </div>
       ) : (
-        rootTasksInStage.map((task) => (
-          <React.Fragment key={task.id}>
-            <GlassmorphicTaskCard
-              task={task}
-              occurrenceDate={todayStr}
-              allTasks={allTasks}
-              showDragHandle={true}
-              parentPathVariant={parentPathVariant}
-              hideDateBadge={true}
-              onToggleCheckbox={() => onToggleCheckbox(task)}
-              onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
-              onDelete={() => onDelete(task.id)}
-              onClick={() => onOpenCard(task)}
-              onDropOnTask={onDropOnTask}
-              onCompleteParent={() => onCompleteParent(task.id)}
-            />
-            {renderSubtasksRecursive(task.id, 1)}
-          </React.Fragment>
-        ))
+        rootTasksInStage.map((task) => {
+          const isTarget = dropIndicator?.targetTaskId === task.id;
+          return (
+            <React.Fragment key={task.id}>
+              {targetStatus === 'Todo' && isTarget && dropIndicator.position === 'before' && (
+                <div className={styles.dropIndicatorLine} />
+              )}
+              <div
+                onDragOver={(e) => handleCardDragOver(e, task.id)}
+                onDragLeave={handleCardDragLeave}
+                onDrop={(e) => handleCardDrop(e, task.id)}
+                style={{ display: 'flex', flexDirection: 'column' }}
+              >
+                <GlassmorphicTaskCard
+                  task={task}
+                  occurrenceDate={todayStr}
+                  allTasks={allTasks}
+                  showDragHandle={true}
+                  parentPathVariant={parentPathVariant}
+                  hideDateBadge={true}
+                  onToggleCheckbox={() => onToggleCheckbox(task)}
+                  onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
+                  onDelete={() => onDelete(task.id)}
+                  onClick={() => onOpenCard(task)}
+                  onDropOnTask={targetStatus === 'Todo' ? undefined : onDropOnTask}
+                  onCompleteParent={() => onCompleteParent(task.id)}
+                />
+                {renderSubtasksRecursive(task.id, 1)}
+              </div>
+              {targetStatus === 'Todo' && isTarget && dropIndicator.position === 'after' && (
+                <div className={styles.dropIndicatorLine} />
+              )}
+            </React.Fragment>
+          );
+        })
       )}
     </div>
   );

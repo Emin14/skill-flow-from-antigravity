@@ -32,6 +32,12 @@ export async function PUT(request: Request) {
       return NextResponse.json({ success: true, count });
     }
 
+    if (body.action === 'reorder') {
+      const { orderedTaskIds } = body;
+      await prismaTaskRepository.reorder(orderedTaskIds || []);
+      return NextResponse.json({ success: true });
+    }
+
     const { id, ...updates } = body;
     const updated = await prismaTaskRepository.update(id, updates);
     return NextResponse.json(updated);

@@ -44,4 +44,17 @@ export const taskApi = {
     const data = await res.json();
     return data.success;
   },
+
+  async reorder(orderedTaskIds: string[]): Promise<boolean> {
+    const res = await fetch('/api/tasks', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'reorder', orderedTaskIds }),
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to reorder tasks: ${res.statusText}`);
+    }
+    const data = await res.json();
+    return data.success;
+  },
 };

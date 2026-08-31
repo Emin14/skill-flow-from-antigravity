@@ -268,6 +268,7 @@ interface TaskState {
   completeRepetition: (id: string, smartRating?: SmartRating, occurrenceDate?: string) => Promise<void>;
   updateTargetRepetitions: (id: string, newTarget: number) => Promise<void>;
   updateTaskCategoryBatch: (oldCategory: string, newCategory: string) => Promise<void>;
+  reorderTasks: (orderedTaskIds: string[]) => Promise<void>;
 }
 
 const addDaysToDateStr = (dateStr: string, days: number): string => {
@@ -1453,6 +1454,28 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       });
     } catch (e) {
       console.warn('Failed to update categories batch on server', e);
+    }
+  },
+
+  reorderTasks: async (orderedTaskIds: string[]) => {
+    if (!orderedTaskIds || orderedTaskIds.length === 0) return;
+
+    // Optimistically update sortOrder in tasks state
+    set((state) => {
+      const idToIndex = new Map(orderedTaskIds.map((id, index) => [id, index]));
+      const updatedTasks = state.tasks.map((task) => {
+        if (idToIndex.has(task.id)) {
+          return { ...task, sortOrder: idToIndex.get(task.id)! };
+        }
+        return task;
+      });
+      return { tasks: updatedTasks };
+    });
+
+    try {
+      await taskApi.reorder(orderedTaskIds);
+    } catch (err) {
+      console.error('[useTaskStore.reorderTasks] Error reordering tasks:', err);
     }
   },
 }));

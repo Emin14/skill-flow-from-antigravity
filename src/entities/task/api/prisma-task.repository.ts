@@ -476,6 +476,22 @@ export class PrismaTaskRepository {
       return [];
     }
   }
+
+  async reorder(orderedTaskIds: string[]): Promise<void> {
+    if (typeof window !== 'undefined' || !orderedTaskIds || orderedTaskIds.length === 0) return;
+    try {
+      await prisma.$transaction(
+        orderedTaskIds.map((id, index) =>
+          prisma.task.update({
+            where: { id },
+            data: { sortOrder: index },
+          })
+        )
+      );
+    } catch (err) {
+      console.error('[prismaTaskRepository.reorder] Error reordering tasks:', err);
+    }
+  }
 }
 
 export const prismaTaskRepository = new PrismaTaskRepository();
