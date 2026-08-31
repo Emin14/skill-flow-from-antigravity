@@ -553,9 +553,17 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
     const children = allTasks.filter((t) => t.parentTaskId === parentId);
     if (children.length === 0) return null;
 
-    return children.map((subtask) => (
-      <React.Fragment key={subtask.id}>
-        <div className={styles.subtaskIndent} style={{ marginLeft: `${Math.min(depthLevel, 4) * 16}px` }}>
+    return children.map((subtask) => {
+      const isTarget = dropIndicator?.targetTaskId === subtask.id;
+      return (
+        <div
+          key={subtask.id}
+          className={styles.cardDragWrapper}
+          style={{ marginLeft: `${Math.min(depthLevel, 4) * 16}px` }}
+        >
+          {targetStatus === 'Todo' && isTarget && dropIndicator.position === 'before' && (
+            <div className={styles.dropIndicatorLineTop} />
+          )}
           <div className={styles.subtaskConnector} />
           <GlassmorphicTaskCard
             task={subtask}
@@ -564,7 +572,7 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
             showDragHandle={true}
             parentPathVariant={parentPathVariant}
             hideDateBadge={true}
-            isDropTarget={dropIndicator?.targetTaskId === subtask.id && dropIndicator.position === 'nest'}
+            isDropTarget={isTarget && dropIndicator.position === 'nest'}
             onToggleCheckbox={() => onToggleCheckbox(subtask)}
             onStatusChange={(nextStatus) => onStatusChange(subtask.id, nextStatus)}
             onDelete={() => onDelete(subtask.id)}
@@ -575,10 +583,13 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
             onCardDragLeave={handleCardDragLeave}
             onCardDrop={(e) => handleCardDrop(e, subtask)}
           />
+          {renderSubtasksRecursive(subtask.id, depthLevel + 1, new Set(visited))}
+          {targetStatus === 'Todo' && isTarget && dropIndicator.position === 'after' && (
+            <div className={styles.dropIndicatorLineBottom} />
+          )}
         </div>
-        {renderSubtasksRecursive(subtask.id, depthLevel + 1, new Set(visited))}
-      </React.Fragment>
-    ));
+      );
+    });
   };
 
   return (
@@ -607,35 +618,33 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
         rootTasksInStage.map((task) => {
           const isTarget = dropIndicator?.targetTaskId === task.id;
           return (
-            <React.Fragment key={task.id}>
+            <div key={task.id} className={styles.cardDragWrapper}>
               {targetStatus === 'Todo' && isTarget && dropIndicator.position === 'before' && (
-                <div className={styles.dropIndicatorLine} />
+                <div className={styles.dropIndicatorLineTop} />
               )}
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <GlassmorphicTaskCard
-                  task={task}
-                  occurrenceDate={todayStr}
-                  allTasks={allTasks}
-                  showDragHandle={true}
-                  parentPathVariant={parentPathVariant}
-                  hideDateBadge={true}
-                  isDropTarget={isTarget && dropIndicator.position === 'nest'}
-                  onToggleCheckbox={() => onToggleCheckbox(task)}
-                  onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
-                  onDelete={() => onDelete(task.id)}
-                  onClick={() => onOpenCard(task)}
-                  onDropOnTask={onDropOnTask}
-                  onCompleteParent={() => onCompleteParent(task.id)}
-                  onCardDragOver={(e) => handleCardDragOver(e, task)}
-                  onCardDragLeave={handleCardDragLeave}
-                  onCardDrop={(e) => handleCardDrop(e, task)}
-                />
-                {renderSubtasksRecursive(task.id, 1)}
-              </div>
+              <GlassmorphicTaskCard
+                task={task}
+                occurrenceDate={todayStr}
+                allTasks={allTasks}
+                showDragHandle={true}
+                parentPathVariant={parentPathVariant}
+                hideDateBadge={true}
+                isDropTarget={isTarget && dropIndicator.position === 'nest'}
+                onToggleCheckbox={() => onToggleCheckbox(task)}
+                onStatusChange={(nextStatus) => onStatusChange(task.id, nextStatus)}
+                onDelete={() => onDelete(task.id)}
+                onClick={() => onOpenCard(task)}
+                onDropOnTask={onDropOnTask}
+                onCompleteParent={() => onCompleteParent(task.id)}
+                onCardDragOver={(e) => handleCardDragOver(e, task)}
+                onCardDragLeave={handleCardDragLeave}
+                onCardDrop={(e) => handleCardDrop(e, task)}
+              />
+              {renderSubtasksRecursive(task.id, 1)}
               {targetStatus === 'Todo' && isTarget && dropIndicator.position === 'after' && (
-                <div className={styles.dropIndicatorLine} />
+                <div className={styles.dropIndicatorLineBottom} />
               )}
-            </React.Fragment>
+            </div>
           );
         })
       )}
