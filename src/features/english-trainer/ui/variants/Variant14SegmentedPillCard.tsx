@@ -31,6 +31,8 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
   const [isOverlayOpen, setIsOverlayOpen] = useState<boolean>(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const activePillRef = useRef<HTMLButtonElement>(null);
+  const meaningContentRef = useRef<HTMLDivElement>(null);
+  const translationTextRef = useRef<HTMLDivElement>(null);
   const forms = currentCard.wordForms || {};
 
   const isMasked = isReviewWord && !isAnswerRevealed;
@@ -61,6 +63,23 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
       });
     }
   }, [currentSafeIdx, showAllMeanings]);
+
+  // Reset scroll positions (both horizontal translation line and vertical examples container)
+  // whenever active meaning, word, or reveal state changes
+  useEffect(() => {
+    if (translationTextRef.current) {
+      translationTextRef.current.scrollLeft = 0;
+    }
+    if (meaningContentRef.current) {
+      meaningContentRef.current.scrollTop = 0;
+    }
+  }, [currentSafeIdx, currentCard.word, isAnswerRevealed]);
+
+  // Reset overlay and expanded meanings when word changes
+  useEffect(() => {
+    setIsOverlayOpen(false);
+    setShowAllMeanings(false);
+  }, [currentCard.word]);
 
   const renderFormsRow = () => {
     if (forms.verbForms && (forms.verbForms.past || forms.verbForms.pastParticiple || forms.verbForms.ing)) {
@@ -414,6 +433,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         ) : (
           /* Revealed View: Full translation, synonyms, and context examples */
           <div
+            ref={meaningContentRef}
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -486,6 +506,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               </div>
 
               <div
+                ref={translationTextRef}
                 style={{
                   fontSize: '17.5px',
                   fontWeight: 800,
