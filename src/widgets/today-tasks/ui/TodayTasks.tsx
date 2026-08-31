@@ -602,6 +602,9 @@ const SingleBoardSection: React.FC<SingleBoardSectionProps> = ({
                   onClick={() => onOpenCard(task)}
                   onDropOnTask={targetStatus === 'Todo' ? undefined : onDropOnTask}
                   onCompleteParent={() => onCompleteParent(task.id)}
+                  onCardDragOver={targetStatus === 'Todo' ? (e) => handleCardDragOver(e, task.id) : undefined}
+                  onCardDragLeave={targetStatus === 'Todo' ? handleCardDragLeave : undefined}
+                  onCardDrop={targetStatus === 'Todo' ? (e) => handleCardDrop(e, task.id) : undefined}
                 />
                 {renderSubtasksRecursive(task.id, 1)}
               </div>

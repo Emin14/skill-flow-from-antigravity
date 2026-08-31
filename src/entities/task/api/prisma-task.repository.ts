@@ -482,7 +482,7 @@ export class PrismaTaskRepository {
     try {
       await prisma.$transaction(
         orderedTaskIds.map((id, index) =>
-          prisma.task.update({
+          prisma.task.updateMany({
             where: { id },
             data: { sortOrder: index },
           })

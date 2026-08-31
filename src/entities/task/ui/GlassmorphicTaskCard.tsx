@@ -34,6 +34,9 @@ interface GlassmorphicTaskCardProps {
   onDropOnTask?: (draggedTaskId: string, targetParentTask: Task) => void;
   onCompleteParent?: () => void;
   onRescheduleToToday?: () => void;
+  onCardDragOver?: (e: React.DragEvent) => void;
+  onCardDragLeave?: (e: React.DragEvent) => void;
+  onCardDrop?: (e: React.DragEvent) => void;
 }
 
 const renderParentPath = (path: Task[], variant: number = 4, catColor: string) => {
@@ -196,6 +199,9 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   onDropOnTask,
   onCompleteParent,
   onRescheduleToToday,
+  onCardDragOver,
+  onCardDragLeave,
+  onCardDrop,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isJustDraggedRef = useRef<boolean>(false);
@@ -356,25 +362,43 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   };
 
   const handleTaskDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.dataTransfer.dropEffect = 'move';
-    setIsOverTarget(true);
+    if (onCardDragOver) {
+      onCardDragOver(e);
+      return;
+    }
+    if (onDropOnTask) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer.dropEffect = 'move';
+      setIsOverTarget(true);
+    }
   };
 
   const handleTaskDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsOverTarget(false);
+    if (onCardDragLeave) {
+      onCardDragLeave(e);
+      return;
+    }
+    if (onDropOnTask) {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsOverTarget(false);
+    }
   };
 
   const handleTaskDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsOverTarget(false);
-    const draggedTaskId = e.dataTransfer.getData('text/plain') || e.dataTransfer.getData('taskId') || window.__draggedTaskId;
-    if (draggedTaskId && draggedTaskId !== task.id && onDropOnTask) {
-      onDropOnTask(draggedTaskId, task);
+    if (onCardDrop) {
+      onCardDrop(e);
+      return;
+    }
+    if (onDropOnTask) {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsOverTarget(false);
+      const draggedTaskId = e.dataTransfer.getData('text/plain') || e.dataTransfer.getData('taskId') || window.__draggedTaskId;
+      if (draggedTaskId && draggedTaskId !== task.id) {
+        onDropOnTask(draggedTaskId, task);
+      }
     }
   };
 
