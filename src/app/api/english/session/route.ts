@@ -43,12 +43,17 @@ const ALL_CEFR_LEVELS: { level: CEFRLevel; title: string }[] = [
   { level: 'C1', title: 'Продвинутый (Advanced)' },
 ];
 
-export async function GET() {
+export async function GET(req: Request) {
   const dictionary = getOxfordDictionary();
   const dictionaryMap = getOxfordDictionaryMap();
 
   try {
-    const todayStr = getTodayStr();
+    const { searchParams } = new URL(req.url);
+    const clientDate = searchParams.get('clientDate');
+    const tzOffsetRaw = searchParams.get('tzOffset');
+    const tzOffsetMinutes = tzOffsetRaw !== null ? parseInt(tzOffsetRaw, 10) : null;
+
+    const todayStr = clientDate && clientDate.includes('-') ? clientDate.trim() : getTodayStr();
 
     let settings = null;
     try {
@@ -87,11 +92,18 @@ export async function GET() {
 
     const progressMap = new Map(progressList.map((p) => [p.wordId, p]));
 
-    // Helper to extract local YYYY-MM-DD from lastReviewedAt
+    // Helper to extract local YYYY-MM-DD from lastReviewedAt using client timezone offset
     const getLocalReviewDate = (lastReviewedAt: any): string | null => {
       if (!lastReviewedAt) return null;
       try {
-        return formatLocalDateStr(new Date(lastReviewedAt));
+        const d = new Date(lastReviewedAt);
+        if (tzOffsetMinutes !== null && !isNaN(tzOffsetMinutes)) {
+          // Client getTimezoneOffset() returns minutes to ADD to local time to get UTC
+          // localMs = UTC ms - tzOffsetMinutes * 60 * 1000
+          const localMs = d.getTime() - tzOffsetMinutes * 60 * 1000;
+          return new Date(localMs).toISOString().split('T')[0];
+        }
+        return formatLocalDateStr(d);
       } catch {
         return null;
       }

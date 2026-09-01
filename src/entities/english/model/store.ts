@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { getTodayStr } from '@/shared/lib/dateUtils';
 import {
   EnglishSessionResponse,
   EnglishSettingsConfig,
@@ -58,7 +59,9 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
   fetchSession: async () => {
     set({ isLoadingSession: true, error: null });
     try {
-      const res = await fetch('/api/english/session', { cache: 'no-store' });
+      const clientDate = typeof window !== 'undefined' ? getTodayStr() : '';
+      const tzOffset = typeof window !== 'undefined' ? new Date().getTimezoneOffset() : 0;
+      const res = await fetch(`/api/english/session?clientDate=${encodeURIComponent(clientDate)}&tzOffset=${tzOffset}`, { cache: 'no-store' });
       if (!res.ok) throw new Error('Failed to load English session');
       const data: EnglishSessionResponse = await res.json();
       set({ session: data, isLoadingSession: false });
@@ -104,8 +107,12 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
   resetTodayProgress: async () => {
     try {
       set({ isLoadingSession: true });
+      const clientDate = typeof window !== 'undefined' ? getTodayStr() : '';
+      const tzOffset = typeof window !== 'undefined' ? new Date().getTimezoneOffset() : 0;
       const res = await fetch('/api/english/reset-today', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clientDate, tzOffset }),
       });
       if (res.ok) {
         await get().fetchSession();

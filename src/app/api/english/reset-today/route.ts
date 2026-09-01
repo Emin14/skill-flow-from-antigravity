@@ -4,25 +4,53 @@ import { getTodayStr } from '@/shared/lib/dateUtils';
 
 export const dynamic = 'force-dynamic';
 
-export async function POST() {
+export async function POST(req: Request) {
   try {
-    const todayStr = getTodayStr();
+    let clientDate: string | null = null;
+    let tzOffsetMinutes: number | null = null;
+
+    try {
+      const body = await req.json();
+      clientDate = body?.clientDate || null;
+      tzOffsetMinutes = typeof body?.tzOffset === 'number' ? body.tzOffset : null;
+    } catch {
+      // Body might be empty
+    }
+
+    if (!clientDate) {
+      const { searchParams } = new URL(req.url);
+      clientDate = searchParams.get('clientDate');
+      const tzRaw = searchParams.get('tzOffset');
+      if (tzRaw) tzOffsetMinutes = parseInt(tzRaw, 10);
+    }
+
+    const todayStr = clientDate && clientDate.includes('-') ? clientDate.trim() : getTodayStr();
+
+    // Helper to extract local date
+    const getLocalReviewDate = (lastReviewedAt: any): string | null => {
+      if (!lastReviewedAt) return null;
+      try {
+        const d = new Date(lastReviewedAt);
+        if (tzOffsetMinutes !== null && !isNaN(tzOffsetMinutes)) {
+          const localMs = d.getTime() - tzOffsetMinutes * 60 * 1000;
+          return new Date(localMs).toISOString().split('T')[0];
+        }
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+      } catch {
+        return null;
+      }
+    };
 
     // Find all progress items updated or reviewed today
     const allProgress = await prisma.englishWordProgress.findMany();
     
     const todayReviewedIds = allProgress
       .filter((p) => {
-        if (!p.lastReviewedAt) return false;
-        try {
-          const d = new Date(p.lastReviewedAt);
-          const yyyy = d.getFullYear();
-          const mm = String(d.getMonth() + 1).padStart(2, '0');
-          const dd = String(d.getDate()).padStart(2, '0');
-          return `${yyyy}-${mm}-${dd}` === todayStr;
-        } catch {
-          return false;
-        }
+        const dStr = getLocalReviewDate(p.lastReviewedAt);
+        return dStr === todayStr;
       })
       .map((p) => p.wordId);
 
