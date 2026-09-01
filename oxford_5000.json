@@ -7529,7 +7529,7 @@
       {
         "id": 3,
         "partOfSpeech": "noun",
-        "translation": "ерок, лёгкое дуновение",
+        "translation": "ветерок, лёгкое дуновение",
         "examples": [],
         "register": [
           "ветеринария"
@@ -7703,16 +7703,6 @@
           "собирательное"
         ],
         "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "ционный, авиа",
-        "examples": [],
-        "register": [
-          "авиация"
-        ],
-        "primary": true
       }
     ],
     "forms": {
@@ -7732,7 +7722,7 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "линия",
+        "translation": "авиакомпания; авиалиния",
         "examples": [],
         "register": [
           "авиация"
@@ -7854,8 +7844,8 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "даже хотя, тем не менее",
+        "partOfSpeech": "conjunction",
+        "translation": "хотя, даже если, тем не менее",
         "examples": [
           {
             "en": "cj",
@@ -8133,7 +8123,7 @@
       {
         "id": 1,
         "partOfSpeech": "verb",
-        "translation": "выстраивать в лйнию, ставить в ряд; выравнивать",
+        "translation": "выстраивать в линию, ставить в ряд; выравнивать",
         "examples": [
           {
             "en": "to align the track",
@@ -8250,8 +8240,8 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "adverb",
-        "translation": "predic. одинаковый; похожий, подобный",
+        "partOfSpeech": "adjective",
+        "translation": "одинаковый, похожий, подобный",
         "examples": [],
         "register": [],
         "id": 1,
@@ -8259,7 +8249,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "точно так же, подобно, одинаково",
+        "translation": "одинаково, точно так же, подобно",
         "examples": [],
         "register": [],
         "id": 2,
@@ -9351,8 +9341,8 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "хотя, если бы даже; несмотря на то, что",
+        "partOfSpeech": "conjunction",
+        "translation": "хотя, даже если, несмотря на то что",
         "examples": [],
         "register": [],
         "primary": true
@@ -11111,7 +11101,7 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "determiner",
         "translation": "ещё один",
         "examples": [
           {
@@ -11124,7 +11114,7 @@
       },
       {
         "id": 2,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "determiner",
         "translation": "новый, ещё один, похожий",
         "examples": [
           {
@@ -11137,7 +11127,7 @@
       },
       {
         "id": 3,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "pronoun",
         "translation": "другой, отличный",
         "examples": [
           {
@@ -19999,7 +19989,7 @@
         "id": 1,
         "phrase": "to turn one's back on",
         "partOfSpeech": "verb",
-        "translation": "повернуться спиной к, бросить напроизвол судьбы",
+        "translation": "повернуться спиной к, бросить на произвол судьбы",
         "examples": [],
         "register": []
       },
@@ -43202,7 +43192,7 @@
       {
         "id": 5,
         "partOfSpeech": "verb",
-        "translation": "что нельзя исправить, то следует терпеть",
+        "translation": "справляться, переносить",
         "examples": [],
         "register": [
           "американский английский",
@@ -43267,7 +43257,7 @@
       },
       {
         "id": 12,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "быть законченным и готовым к употреблению",
         "examples": [],
         "register": [
@@ -95974,20 +95964,23 @@
       },
       {
         "id": 28,
-        "partOfSpeech": "adjective",
-        "translation": "(сердиться на кого-либо",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 29,
         "partOfSpeech": "verb",
-        "translation": "опускать, спускать сбивать (самолёт, человека) глотать осиливать, одолевать)",
+        "translation": "опускать, спускать; сбивать (самолёт, человека); глотать; одолевать",
         "examples": [],
         "register": [],
         "primary": true
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "have a down on",
+        "partOfSpeech": "verb",
+        "translation": "иметь зуб на кого-либо, относиться предвзято",
+        "register": [
+          "разговорное"
+        ],
+        "examples": []
       }
     ]
   },
@@ -117243,7 +117236,7 @@
       {
         "id": 22,
         "partOfSpeech": "verb",
-        "translation": "впадать (о реке; into —)",
+        "translation": "впадать (о реке: fall into)",
         "examples": [],
         "register": []
       },
@@ -123590,8 +123583,8 @@
         "primary": true
       },
       {
-        "partOfSpeech": "verb",
-        "translation": "хороший; прекрасный, превосходный (часто",
+        "partOfSpeech": "adjective",
+        "translation": "хороший, прекрасный, превосходный",
         "examples": [
           {
             "en": "to have a fine time",
@@ -124139,7 +124132,7 @@
       {
         "id": 5,
         "partOfSpeech": "verb",
-        "translation": "стрелять, производить выстрел (at, into —)",
+        "translation": "стрелять, производить выстрел (в кого-либо / что-либо)",
         "examples": [
           {
             "en": "to fire a gun",
@@ -136837,8 +136830,8 @@
         "primary": true
       },
       {
-        "partOfSpeech": "verb",
-        "translation": "мясо диких уток, куропаток, зайчатина и т. п.",
+        "partOfSpeech": "noun",
+        "translation": "дичь (мясо диких птиц или зверей)",
         "examples": [],
         "register": [
           "спортивное"
@@ -139002,22 +138995,6 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "(perf.",
-        "examples": [
-          {
-            "en": "c inf.)",
-            "ru": "быть обязанным, быть должным (что-либо сделать)"
-          },
-          {
-            "en": "I've got to call the doctor at once",
-            "ru": "я должен немедленно вызвать врача"
-          }
-        ],
-        "register": [],
-        "id": 19
-      },
-      {
-        "partOfSpeech": "verb",
         "translation": "(с последующим сложным дополнением — n или pron + inf.) заставить, убедить (кого-либо сделать что-либо)",
         "examples": [
           {
@@ -139030,7 +139007,7 @@
           }
         ],
         "register": [],
-        "id": 20
+        "id": 19
       },
       {
         "partOfSpeech": "verb",
@@ -139054,18 +139031,18 @@
           }
         ],
         "register": [],
+        "id": 20
+      },
+      {
+        "partOfSpeech": "verb",
+        "translation": "начать, приняться (за действие)",
+        "examples": [],
+        "register": [],
         "id": 21
       },
       {
         "partOfSpeech": "verb",
-        "translation": "(с последующим инфинитивом или герундием) означает начало или однократность действия: to",
-        "examples": [],
-        "register": [],
-        "id": 22
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "становиться, делаться",
+        "translation": "начать, приняться (get to work — приняться за работу, get talking — заговорить)",
         "examples": [
           {
             "en": "to get angry",
@@ -139081,7 +139058,7 @@
           }
         ],
         "register": [],
-        "id": 23
+        "id": 22
       },
       {
         "partOfSpeech": "verb",
@@ -139102,14 +139079,14 @@
           "разговорное",
           "устаревшее"
         ],
-        "id": 24
+        "id": 23
       },
       {
         "partOfSpeech": "noun",
         "translation": "приплод, потомство (у животных)",
         "examples": [],
         "register": [],
-        "id": 25
+        "id": 24
       },
       {
         "partOfSpeech": "noun",
@@ -139118,7 +139095,7 @@
         "register": [
           "жаргон"
         ],
-        "id": 26
+        "id": 25
       }
     ],
     "phrases": [
@@ -139198,7 +139175,7 @@
         "id": 9,
         "phrase": "get down",
         "partOfSpeech": "verb",
-        "translation": "спуститься, сойти; снять (с полки); проглатывать; записывать; засесть (за учение и т",
+        "translation": "спуститься, сойти; снять (с полки); проглатывать; записывать; засесть (за учение и т. д.)",
         "examples": [],
         "register": []
       },
@@ -139222,7 +139199,7 @@
         "id": 12,
         "phrase": "get off",
         "partOfSpeech": "verb",
-        "translation": "убежать; спастись, отделаться (от наказания и т",
+        "translation": "убежать; спастись, отделаться (от наказания и т. д.)",
         "examples": [],
         "register": [
           "разговорное"
@@ -139973,7 +139950,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "выходить (об окне, коридоре; into, (up)on, on to — на,; вести (о дороге)",
+        "translation": "выходить (об окне, двери: give into / onto); вести (о дороге)",
         "examples": [],
         "register": [],
         "id": 19
@@ -148528,7 +148505,7 @@
       {
         "id": 1,
         "partOfSpeech": "verb",
-        "translation": "случаться, происходить (to smb. — с кем-либо)",
+        "translation": "случаться, происходить (с кем-либо / чем-либо: happen to)",
         "examples": [
           {
             "en": "something must have happened",
@@ -157250,7 +157227,7 @@
       {
         "id": 6,
         "partOfSpeech": "noun",
-        "translation": "торговая) фирма",
+        "translation": "торговая фирма, компания, издательство",
         "examples": [],
         "register": [
           "торговля"
@@ -157494,7 +157471,7 @@
       {
         "id": 6,
         "partOfSpeech": "verb",
-        "translation": "убирать (хлеб); загонять (скот)",
+        "translation": "торговая фирма, компания, издательство",
         "examples": [],
         "register": [
           "сельскохозяйственное"
@@ -158885,7 +158862,7 @@
       {
         "id": 2,
         "partOfSpeech": "pronoun",
-        "translation": "имеет возвратное значение, напр.",
+        "translation": "в возвратном значении: сам, себе (I made it myself)",
         "examples": [
           {
             "en": "I laid me down",
@@ -176367,20 +176344,6 @@
         "register": [],
         "id": 5,
         "primary": true
-      },
-      {
-        "partOfSpeech": "noun",
-        "translation": "быть посвящённым в обстоятельства дела; быть осведомлённым",
-        "examples": [
-          {
-            "en": "to be in the know",
-            "ru": "быть в курсе дела"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ],
-        "id": 6
       }
     ],
     "phrases": [
@@ -176415,6 +176378,16 @@
         "examples": [],
         "register": [],
         "id": 4
+      },
+      {
+        "id": 5,
+        "phrase": "in the know",
+        "partOfSpeech": "adjective",
+        "translation": "осведомлённый, посвящённый в курс дела",
+        "register": [
+          "разговорное"
+        ],
+        "examples": []
       }
     ],
     "forms": {
@@ -185300,7 +185273,7 @@
         "id": 6,
         "phrase": "to see the light",
         "partOfSpeech": "verb",
-        "translation": "увидеть свет, родиться; выйти из печати; обратиться (в какую",
+        "translation": "увидеть свет, родиться; выйти из печати (see the light)",
         "register": [
           "идиома"
         ],
@@ -186466,7 +186439,7 @@
         "id": 7,
         "phrase": "on the line",
         "partOfSpeech": "noun",
-        "translation": "как раз посередине, на границе (между чем",
+        "translation": "как раз посередине, на границе (draw the line)",
         "register": [],
         "examples": []
       },
@@ -187468,7 +187441,7 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "adverb",
+        "partOfSpeech": "adjective",
         "translation": "маленький; небольшой",
         "examples": [
           {
@@ -187493,7 +187466,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "adverb",
+        "partOfSpeech": "adjective",
         "translation": "короткий (о времени, расстоянии)",
         "examples": [
           {
@@ -187506,7 +187479,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "adverb",
+        "partOfSpeech": "adjective",
         "translation": "малый, незначительный",
         "examples": [
           {
@@ -187519,7 +187492,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "adverb",
+        "partOfSpeech": "adjective",
         "translation": "мелочный, ограниченный; ничтожный",
         "examples": [
           {
@@ -187620,7 +187593,7 @@
         "id": 1,
         "phrase": "little by little",
         "partOfSpeech": "verb",
-        "translation": "небольшое количество; немногое, кое-что, пустяк",
+        "translation": "мало-помалу, постепенно, шаг за шагом",
         "examples": [
           {
             "en": "little or nothing",
@@ -187641,7 +187614,7 @@
         "id": 2,
         "phrase": "to go but a little way",
         "partOfSpeech": "verb",
-        "translation": "нехватать",
+        "translation": "не хватать",
         "examples": [],
         "register": []
       },
@@ -187660,7 +187633,7 @@
         "id": 4,
         "phrase": "little ones",
         "partOfSpeech": "noun",
-        "translation": "дети; детёныши;",
+        "translation": "малыши, детёныши",
         "register": [],
         "examples": []
       },
@@ -190940,7 +190913,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "(особ. участок (земли)",
+        "translation": "участок земли; партия (товаров), лот",
         "examples": [
           {
             "en": "across lots",
@@ -194973,7 +194946,7 @@
     "meanings": [
       {
         "partOfSpeech": "adjective",
-        "translation": "(more; много; to be one too many for smb..; быть сильнее, искуснее кого-либо; быть выше чьего-либо понимания; быть слишком трудным для кого-либо",
+        "translation": "многие, много (перед исчисляемыми существительными)",
         "examples": [
           {
             "en": "most) mhO-",
@@ -195035,6 +195008,18 @@
         "register": [],
         "id": 2,
         "primary": true
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "one too many",
+        "partOfSpeech": "adverb",
+        "translation": "слишком сложный, не по силам; лишний (о бокале алкоголя)",
+        "register": [
+          "идиома"
+        ],
+        "examples": []
       }
     ]
   },
@@ -197625,7 +197610,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "вопрос, дело; what's the",
+        "translation": "вопрос, дело, предмет обсуждения",
         "examples": [
           {
             "en": "it is a matter of common knowledge",
@@ -197726,7 +197711,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "гноиться matter of",
+        "translation": "гноиться, нарывать",
         "examples": [],
         "register": [],
         "id": 11,
@@ -197757,6 +197742,26 @@
         "examples": [],
         "register": [],
         "id": 3
+      },
+      {
+        "id": 4,
+        "phrase": "what's the matter?",
+        "partOfSpeech": "interjection",
+        "translation": "в чём дело?, что случилось?",
+        "register": [
+          "разговорное"
+        ],
+        "examples": []
+      },
+      {
+        "id": 5,
+        "phrase": "a matter of course",
+        "partOfSpeech": "noun",
+        "translation": "само собой разумеющееся дело, естественный порядок вещей",
+        "register": [
+          "идиома"
+        ],
+        "examples": []
       }
     ]
   },
@@ -201941,7 +201946,7 @@
         "id": 1,
         "phrase": "in the middle of",
         "partOfSpeech": "noun",
-        "translation": "в середине (чего",
+        "translation": "в середине, посреди (in the middle of)",
         "register": [],
         "examples": []
       }
@@ -202805,13 +202810,6 @@
       {
         "id": 5,
         "partOfSpeech": "noun",
-        "translation": "быть единодушным, придерживаться одного мнения",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
         "translation": "оставаться при своём мнении",
         "examples": [
           {
@@ -202842,7 +202840,7 @@
         "register": []
       },
       {
-        "id": 7,
+        "id": 6,
         "partOfSpeech": "noun",
         "translation": "внимание",
         "examples": [
@@ -202854,7 +202852,7 @@
         "register": []
       },
       {
-        "id": 8,
+        "id": 7,
         "partOfSpeech": "noun",
         "translation": "намерение, желание",
         "examples": [
@@ -202875,7 +202873,7 @@
         "primary": true
       },
       {
-        "id": 9,
+        "id": 8,
         "partOfSpeech": "noun",
         "translation": "дух, душа",
         "examples": [
@@ -202891,28 +202889,28 @@
         "register": []
       },
       {
-        "id": 10,
+        "id": 9,
         "partOfSpeech": "noun",
         "translation": "сколько голов, столько умов",
         "examples": [],
         "register": []
       },
       {
-        "id": 11,
+        "id": 10,
         "partOfSpeech": "noun",
         "translation": "решить(ся)",
         "examples": [],
         "register": []
       },
       {
-        "id": 12,
+        "id": 11,
         "partOfSpeech": "noun",
         "translation": "смириться с чем-либо",
         "examples": [],
         "register": []
       },
       {
-        "id": 13,
+        "id": 12,
         "partOfSpeech": "verb",
         "translation": "вы не будете возражать, если я закурю?",
         "examples": [
@@ -202936,7 +202934,7 @@
         "primary": true
       },
       {
-        "id": 14,
+        "id": 13,
         "partOfSpeech": "verb",
         "translation": "помнить",
         "examples": [
@@ -202953,7 +202951,7 @@
         "primary": true
       },
       {
-        "id": 15,
+        "id": 14,
         "partOfSpeech": "verb",
         "translation": "заботиться, заниматься (чем-либо); смотреть (за чем-либо)",
         "examples": [
@@ -202969,7 +202967,7 @@
         "register": []
       },
       {
-        "id": 16,
+        "id": 15,
         "partOfSpeech": "verb",
         "translation": "остерегаться, беречься",
         "examples": [
@@ -202981,39 +202979,51 @@
         "register": []
       },
       {
-        "id": 17,
+        "id": 16,
         "partOfSpeech": "verb",
         "translation": "ничего",
         "examples": [],
         "register": []
       },
       {
-        "id": 18,
+        "id": 17,
         "partOfSpeech": "verb",
         "translation": "неважно, не беспокойтесь, не беда",
         "examples": [],
         "register": []
       },
       {
-        "id": 19,
+        "id": 18,
         "partOfSpeech": "verb",
         "translation": "не останавливайтесь перед расходами",
         "examples": [],
         "register": []
       },
       {
-        "id": 20,
+        "id": 19,
         "partOfSpeech": "verb",
         "translation": "следить за собой, за своими словами, соблюдать осторожность",
         "examples": [],
         "register": []
       },
       {
-        "id": 21,
+        "id": 20,
         "partOfSpeech": "verb",
         "translation": "держиухо востро!",
         "examples": [],
         "register": []
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "of one mind",
+        "partOfSpeech": "adjective",
+        "translation": "единодушный, одного мнения",
+        "register": [
+          "идиома"
+        ],
+        "examples": []
       }
     ]
   },
@@ -208275,7 +208285,7 @@
     "meanings": [
       {
         "partOfSpeech": "adjective",
-        "translation": "(more",
+        "translation": "много, значительное количество",
         "examples": [
           {
             "en": "most)",
@@ -208383,7 +208393,7 @@
       {
         "phrase": "much of a muchness",
         "partOfSpeech": "noun",
-        "translation": "почти (одно; то же",
+        "translation": "почти одно и то же, без особой разницы (much the same)",
         "examples": [],
         "register": [],
         "id": 3
@@ -208902,89 +208912,42 @@
       {
         "id": 1,
         "partOfSpeech": "verb",
-        "translation": "полная форма",
-        "examples": [],
+        "translation": "должен, обязан (выражает необходимость или приказ)",
         "register": [],
+        "examples": [
+          {
+            "en": "you must do as you are told",
+            "ru": "вы должны делать так, как вам говорят"
+          }
+        ],
         "primary": true
       },
       {
         "id": 2,
         "partOfSpeech": "verb",
-        "translation": "вы должны делать так, как вам говорят",
+        "translation": "должно быть, вероятно (выражает высокую вероятность или логический вывод)",
+        "register": [],
         "examples": [
           {
-            "en": "if you must, you must",
-            "ru": "если надо, так надо"
-          },
-          {
-            "en": "what must be, will be",
-            "ru": "чему быть, того не миновать"
+            "en": "you must have heard of it",
+            "ru": "вы, должно быть, слышали об этом"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
         "id": 3,
-        "partOfSpeech": "verb",
-        "translation": "вы, должно быть, об этом слышали",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "verb",
-        "translation": "я должен ехать",
-        "examples": [],
+        "partOfSpeech": "noun",
+        "translation": "настоятельная необходимость, обязательное условие (a must)",
         "register": [
           "разговорное"
+        ],
+        "examples": [
+          {
+            "en": "this book is a must for students",
+            "ru": "эта книга обязательна к прочтению студентами"
+          }
         ]
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "настоятельная необходимость",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "verb",
-        "translation": "требование",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "verb",
-        "translation": "это обязательно нужно сделать",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "noun",
-        "translation": "плесень",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "noun",
-        "translation": "муст, виноградное сусло",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "noun",
-        "translation": "период «охоты» (у самцов слонов и верблюдов)",
-        "examples": [],
-        "register": []
       }
     ]
   },
@@ -209578,7 +209541,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "Имя; фамилия (тж. family name, surname)",
+        "translation": "имя; фамилия",
         "examples": [
           {
             "en": "by name",
@@ -209619,7 +209582,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "илия, род",
+        "translation": "фамилия, род, семья",
         "examples": [
           {
             "en": "the last of his name",
@@ -209786,7 +209749,7 @@
         "id": 1,
         "phrase": "to know by name",
         "partOfSpeech": "verb",
-        "translation": "знать по имени; знать лично каждого; знать понаслыш ке;",
+        "translation": "знать по имени; знать лично каждого; знать понаслышке",
         "register": [
           "идиома"
         ],
@@ -213369,8 +213332,13 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "дополнительный; new test (ещё один) дополнительный опыт",
-        "examples": [],
+        "translation": "дополнительный, ещё один",
+        "examples": [
+          {
+            "en": "new test",
+            "ru": "(ещё один) дополнительный опыт"
+          }
+        ],
         "register": [],
         "id": 6
       },
@@ -215684,7 +215652,7 @@
       {
         "id": 1,
         "partOfSpeech": "adverb",
-        "translation": "не, нет, ни (в соединении с вспомогательными и модальными глаголами принимает в речи форму n't [nt]; немало",
+        "translation": "не, нет, ни (в отрицательных предложениях)",
         "examples": [
           {
             "en": "I know not",
@@ -216666,7 +216634,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "just now; в настоящий момент; только что",
+        "translation": "прямо сейчас, в настоящий момент, только что",
         "examples": [],
         "register": [],
         "id": 3
@@ -216684,8 +216652,8 @@
         "id": 4
       },
       {
-        "partOfSpeech": "noun",
-        "translation": "когда, раз",
+        "partOfSpeech": "conjunction",
+        "translation": "теперь когда, раз уж",
         "examples": [
           {
             "en": "I need not stay, now you are here",
@@ -219736,14 +219704,14 @@
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "избавление: to",
+        "translation": "избавление, освобождение (off the hook)",
         "examples": [],
         "register": [],
         "id": 6
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "выклю чение, разъединение какого-либо аппарата или механизма",
+        "translation": "выключение, разъединение (аппарата или механизма)",
         "examples": [
           {
             "en": "the radio was off the whole day",
@@ -219824,7 +219792,7 @@
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "от клонение от нормы, привычного состояния",
+        "translation": "отклонение от нормы, привычного состояния",
         "examples": [
           {
             "en": "off one's food",
@@ -219844,7 +219812,7 @@
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "неуча стие в чём-либо",
+        "translation": "неучастие в чём-либо",
         "examples": [
           {
             "en": "he is off gambling",
@@ -219869,7 +219837,7 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "правый; борт ко рабля, обращённый к открытому морю",
+        "translation": "правый (борт корабля, обращённый к открытому морю)",
         "examples": [
           {
             "en": "the off hind leg",
@@ -220009,7 +219977,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "правая сторонаполя (противоположная той, на которой стоит бэтсмен; в крикете) 5. v",
+        "translation": "правая сторона поля (в крикете)",
         "examples": [],
         "register": [
           "разговорное",
@@ -220019,7 +219987,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "прекращать (переговоры и т. п.); идти на попятный",
         "examples": [],
         "register": [],
@@ -220067,7 +220035,7 @@
         "id": 4,
         "phrase": "off the point",
         "partOfSpeech": "noun",
-        "translation": "далеко от цели; не относящийся к делу;",
+        "translation": "далеко от цели; не относящийся к делу",
         "register": [],
         "examples": []
       }
@@ -222067,8 +222035,13 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "но; только; I would do it with pleasure",
-        "examples": [],
+        "translation": "но, только, однако",
+        "examples": [
+          {
+            "en": "I would do it with pleasure, only I have no time",
+            "ru": "я бы сделал это с удовольствием, только у меня нет времени"
+          }
+        ],
         "register": [
           "разговорное"
         ],
@@ -224199,7 +224172,7 @@
         "id": 7,
         "phrase": "order of the day",
         "partOfSpeech": "noun",
-        "translation": "повестка дня; мода, модное течение (в искусстве, литературе и т",
+        "translation": "порядок дня; мода, веяние времени (order of the day)",
         "register": [],
         "examples": []
       }
@@ -225538,7 +225511,7 @@
         "id": 6,
         "phrase": "to fill out",
         "partOfSpeech": "verb",
-        "translation": "заполнять(ся); расширять (",
+        "translation": "заполнять(ся), расширять(ся)",
         "register": [
           "идиома"
         ],
@@ -226793,7 +226766,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "указывает напромежуток времени, в течение которого происходило действие за, в течение",
+        "translation": "указывает на промежуток времени, в течение которого происходило действие: за, в течение",
         "examples": [
           {
             "en": "he packed over two hours",
@@ -226897,7 +226870,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "указывает на повсеместность или всеохватывающий характер действия или состояния: hills covered all",
+        "translation": "повсюду, везде (all over)",
         "examples": [
           {
             "en": "paint the wall over",
@@ -249932,8 +249905,8 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
-        "translation": "приятный; хороший (тж.",
+        "partOfSpeech": "adjective",
+        "translation": "приятный, симпатичный, хороший",
         "examples": [
           {
             "en": "a pretty business!",
@@ -278817,7 +278790,7 @@
       {
         "id": 3,
         "partOfSpeech": "noun",
-        "translation": "перейти улицу путь (к чему-либо), способ (достижения чего",
+        "translation": "путь (к чему-либо), способ (достижения цели)",
         "examples": [],
         "register": []
       },
@@ -278845,15 +278818,6 @@
       {
         "id": 6,
         "partOfSpeech": "noun",
-        "translation": "быть на гастролях, в турне",
-        "examples": [],
-        "register": [
-          "морской термин"
-        ]
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
         "translation": "последняя рюмка, выпиваемая перед уходом, «посошок»",
         "examples": [],
         "register": []
@@ -278864,7 +278828,7 @@
         "id": 1,
         "phrase": "no royal road to smth.",
         "partOfSpeech": "noun",
-        "translation": "нелёгкий способ достижения чего-либо; горн. штрек; железная ога; (обыкн",
+        "translation": "нелёгкий путь, тернистая дорога",
         "examples": [
           {
             "en": "pl).",
@@ -278876,6 +278840,14 @@
           "дорожное дело",
           "морской термин"
         ]
+      },
+      {
+        "id": 2,
+        "phrase": "on the road",
+        "partOfSpeech": "adverb",
+        "translation": "в дороге, в пути; на гастролях",
+        "register": [],
+        "examples": []
       }
     ]
   },
@@ -281669,11 +281641,11 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "около, приблизительно; he was ready to pay round £2000 он готов был заплатить примерно две тысячи фунтов",
+        "translation": "около, приблизительно, кругом",
         "examples": [
           {
-            "en": "it is round 5 o'clock",
-            "ru": "сейчас где-то около пяти часов"
+            "en": "he was ready to pay round £2000",
+            "ru": "он готов был заплатить около 2000 фунтов"
           }
         ],
         "register": [],
@@ -283331,7 +283303,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "употр. как глагол-связка: to run cold (по)холодеть; иссякать; волноваться (о море); возрастать (о ценах); разгораться (о страстях); истощаться, иссякать (о пище, деньгах и т. п.)",
+        "translation": "становиться, делаться (run dry — пересыхать, run cold — холодеть)",
         "examples": [
           {
             "en": "to run dry",
@@ -287856,7 +287828,7 @@
         "id": 1,
         "phrase": "of the old school",
         "partOfSpeech": "noun",
-        "translation": "старой школы (о произведениях искусства и т",
+        "translation": "старой школы, традиционный (of the old school)",
         "register": [],
         "examples": []
       },
@@ -291430,7 +291402,7 @@
       {
         "id": 6,
         "partOfSpeech": "verb",
-        "translation": "считать, находить; c inf.)",
+        "translation": "считать, находить (с инфинитивом)",
         "examples": [
           {
             "en": "to see good (or fit, proper, right)",
@@ -302718,15 +302690,15 @@
     "meanings": [
       {
         "partOfSpeech": "adverb",
-        "translation": "с пор",
+        "translation": "с тех пор",
         "examples": [
           {
             "en": "I have not seen him since",
-            "ru": "я его не видел с пор"
+            "ru": "я его не видел с тех пор"
           },
           {
             "en": "he has (or had) been healthy ever since",
-            "ru": "с пор он (всё время) был здоров"
+            "ru": "с тех пор он (всё время) был здоров"
           }
         ],
         "register": [
@@ -302766,8 +302738,8 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
-        "translation": "с пор как",
+        "partOfSpeech": "conjunction",
+        "translation": "с тех пор как",
         "examples": [],
         "register": [
           "техническое"
@@ -302776,7 +302748,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "conjunction",
         "translation": "так как, поскольку",
         "examples": [
           {
@@ -320221,7 +320193,7 @@
         "id": 9
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "государство",
         "examples": [],
         "register": [],
@@ -338195,7 +338167,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "ивная команда",
+        "translation": "спортивная команда",
         "examples": [],
         "register": [
           "спортивное"
@@ -338220,7 +338192,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "анда",
+        "translation": "команда (экипаж, состав)",
         "examples": [],
         "register": [
           "военное",
@@ -338238,7 +338210,7 @@
         "id": 5
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "объединяться в бригаду, команду и т. п.",
         "examples": [
           {
@@ -338252,14 +338224,14 @@
         "id": 6
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "запрягать",
         "examples": [],
         "register": [],
         "id": 7
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "быть погонщиком, возницей",
         "examples": [],
         "register": [],
@@ -346295,7 +346267,7 @@
         "id": 4,
         "phrase": "in good time",
         "partOfSpeech": "noun",
-        "translation": "точно, своевременно; заранее, заблаговременно;",
+        "translation": "точно, своевременно; заранее, заблаговременно",
         "register": [],
         "examples": []
       },
@@ -357940,7 +357912,7 @@
     "meanings": [
       {
         "partOfSpeech": "preposition",
-        "translation": "указывает наположение одного предмета ниже другого или на направление действия вниз под, ниже",
+        "translation": "под, ниже (указывает на нахождение ниже другого предмета или движение вниз)",
         "examples": [
           {
             "en": "under the chair",
@@ -357998,7 +357970,7 @@
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "указывает на нахождение в движении, процессе, осущест влении, определённом состоянии и т. п.",
+        "translation": "указывает на нахождение в процессе, осуществлении, определённом состоянии (under construction, under review)",
         "examples": [
           {
             "en": "the road is under repair",
@@ -363045,8 +363017,13 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "подчёркивает тождественность или противоположность: he used the very same words",
-        "examples": [],
+        "translation": "тот самый, точно такой же",
+        "examples": [
+          {
+            "en": "he used the very same words",
+            "ru": "он использовал точно те же слова"
+          }
+        ],
         "register": [],
         "id": 7
       },
@@ -363552,19 +363529,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "поле зрения, кругозор; we came in view of the bridge; мы увидели мост; нас стало видно с моста",
+        "translation": "вид, поле зрения, кругозор",
         "examples": [
           {
-            "en": "to pass from smb.'s view",
-            "ru": "скрыться из чьего-либо поля зрения"
-          },
-          {
-            "en": "out of view",
-            "ru": "вне поля зрения"
-          },
-          {
-            "en": "to burst (or to come) into view",
-            "ru": "внезапно появиться"
+            "en": "we came in view of the bridge",
+            "ru": "мы увидели мост (мост показался в поле зрения)"
           }
         ],
         "register": [],
@@ -370903,7 +370872,7 @@
       {
         "id": 18,
         "partOfSpeech": "adverb",
-        "translation": "ну чтоже, пусть будет так",
+        "translation": "ну что же, пусть будет так",
         "examples": [],
         "register": []
       },
@@ -370923,13 +370892,6 @@
       },
       {
         "id": 21,
-        "partOfSpeech": "adverb",
-        "translation": "девушка достаточно хорошо владеет французским языком, чтобы быть нашим переводчиком",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 22,
         "partOfSpeech": "adjective",
         "translation": "хороший",
         "examples": [
@@ -370949,7 +370911,7 @@
         "register": []
       },
       {
-        "id": 23,
+        "id": 22,
         "partOfSpeech": "adjective",
         "translation": "здоровый",
         "examples": [
@@ -370961,7 +370923,7 @@
         "register": []
       },
       {
-        "id": 24,
+        "id": 23,
         "partOfSpeech": "noun",
         "translation": "добро",
         "examples": [
@@ -370973,7 +370935,7 @@
         "register": []
       },
       {
-        "id": 25,
+        "id": 24,
         "partOfSpeech": "noun",
         "translation": "в роли определения к другому слову",
         "examples": [
@@ -370987,8 +370949,8 @@
         ]
       },
       {
-        "id": 26,
-        "partOfSpeech": "noun",
+        "id": 25,
+        "partOfSpeech": "interjection",
         "translation": "ну! (выражает удивление, уступку, согласие, ожидание и т. п.)",
         "examples": [
           {
@@ -371215,7 +371177,7 @@
       {
         "id": 18,
         "partOfSpeech": "adverb",
-        "translation": "ну чтоже, пусть будет так",
+        "translation": "ну что же, пусть будет так",
         "examples": [],
         "register": []
       },
@@ -371235,13 +371197,6 @@
       },
       {
         "id": 21,
-        "partOfSpeech": "adverb",
-        "translation": "девушка достаточно хорошо владеет французским языком, чтобы быть нашим переводчиком",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 22,
         "partOfSpeech": "adjective",
         "translation": "хороший",
         "examples": [
@@ -371262,7 +371217,7 @@
         "primary": true
       },
       {
-        "id": 23,
+        "id": 22,
         "partOfSpeech": "adjective",
         "translation": "здоровый",
         "examples": [
@@ -371275,7 +371230,7 @@
         "primary": true
       },
       {
-        "id": 24,
+        "id": 23,
         "partOfSpeech": "noun",
         "translation": "добро",
         "examples": [
@@ -371287,7 +371242,7 @@
         "register": []
       },
       {
-        "id": 25,
+        "id": 24,
         "partOfSpeech": "noun",
         "translation": "в роли определения к другому слову",
         "examples": [
@@ -371301,8 +371256,8 @@
         ]
       },
       {
-        "id": 26,
-        "partOfSpeech": "noun",
+        "id": 25,
+        "partOfSpeech": "interjection",
         "translation": "ну! (выражает удивление, уступку, согласие, ожидание и т. п.)",
         "examples": [
           {
@@ -372263,7 +372218,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "conjunction",
         "translation": "когда, в то время как, как только, тогда как",
         "examples": [
           {
@@ -372280,7 +372235,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "conjunction",
         "translation": "хотя, несмотря на, тогда как",
         "examples": [
           {
@@ -372293,7 +372248,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "conjunction",
         "translation": "если",
         "examples": [
           {
@@ -372650,8 +372605,8 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "verb",
-        "translation": "время, промежуток времени; в то время как",
+        "partOfSpeech": "conjunction",
+        "translation": "в то время как, пока, тогда как",
         "examples": [
           {
             "en": "a long while",
@@ -376475,7 +376430,7 @@
         "id": 5
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "conjunction",
         "translation": "если не; без того, чтобы",
         "examples": [],
         "register": [
@@ -380712,18 +380667,16 @@
         "examples": [],
         "register": [],
         "primary": true
-      },
+      }
+    ],
+    "phrases": [
       {
-        "id": 9,
-        "partOfSpeech": "noun",
-        "translation": "быть супоросой, стельной и пр. (о животных)",
-        "examples": [
-          {
-            "en": "with young",
-            "ru": "быть супоросой, стельной и пр. (о животных)"
-          }
-        ],
-        "register": []
+        "id": 1,
+        "phrase": "with young",
+        "partOfSpeech": "adjective",
+        "translation": "беременная, с детёнышем (о животных)",
+        "register": [],
+        "examples": []
       }
     ]
   },
