@@ -417,9 +417,9 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
         className={styles.modal}
         onClick={(e) => e.stopPropagation()}
         style={{
-          gap: '10px',
-          padding: '16px 20px',
-          maxHeight: '90vh',
+          gap: '8px',
+          padding: '12px 18px',
+          maxHeight: '92vh',
           overflowY: 'auto',
         }}
       >
@@ -438,17 +438,17 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '10px',
+            gap: '8px',
             width: '100%',
-            paddingBottom: '14px',
-            marginBottom: '6px',
+            paddingBottom: '10px',
+            marginBottom: '2px',
             borderBottom: '2px solid var(--color-border-hover, rgba(255, 255, 255, 0.16))',
           }}
         >
 
           {/* Ряд 1: Заголовок (слева) и Стрик (справа) */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
-            <h2 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0, lineHeight: 1.25, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1, minWidth: 0 }}>
+            <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0, lineHeight: 1.25, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1, minWidth: 0 }}>
               {masterTask.title}
             </h2>
 
@@ -476,7 +476,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
 
           {/* Ряд 2: Категория (слева) и Повтор (иконка) + Создано (справа) */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '12.5px', color: 'var(--color-text-muted)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '12px', color: 'var(--color-text-muted)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--color-accent-text)', fontWeight: 600 }}>
               <span>🏷</span>
               <span>{masterTask.category || 'Без категории'}</span>
@@ -545,12 +545,12 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               title="Редактировать параметры мастер-задачи"
               style={{
                 flex: 1,
-                height: '36px',
-                borderRadius: '10px',
+                height: '34px',
+                borderRadius: '9px',
                 background: 'var(--color-surface-hover)',
                 border: '1px solid var(--color-border)',
                 color: 'var(--color-text-primary)',
-                fontSize: '13px',
+                fontSize: '12.5px',
                 fontWeight: 600,
                 display: 'flex',
                 alignItems: 'center',
@@ -568,12 +568,12 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               title={masterTask.isRepeating ? 'Удалить все повторы этой задачи' : 'Удалить задачу'}
               style={{
                 flex: 1,
-                height: '36px',
-                borderRadius: '10px',
+                height: '34px',
+                borderRadius: '9px',
                 background: 'var(--color-surface-hover)',
                 border: '1px solid var(--color-border)',
                 color: '#ef4444',
-                fontSize: masterTask.isRepeating ? '12px' : '13px',
+                fontSize: masterTask.isRepeating ? '12px' : '12.5px',
                 fontWeight: 600,
                 display: 'flex',
                 alignItems: 'center',
@@ -590,8 +590,8 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
         {/* Описание (если есть) */}
         {masterTask.description && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', padding: '10px 12px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)' }}>
-            <p style={{ fontSize: '13px', color: 'var(--color-text-primary)', margin: 0, whiteSpace: 'pre-wrap' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', padding: '8px 10px', borderRadius: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)' }}>
+            <p style={{ fontSize: '12.5px', color: 'var(--color-text-primary)', margin: 0, whiteSpace: 'pre-wrap' }}>
               {masterTask.description}
             </p>
           </div>
@@ -599,7 +599,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
         {/* 2. Заметка */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', width: '100%' }}>
-          <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <label style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
             📝 Заметка:
           </label>
           <textarea
@@ -607,20 +607,21 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             onChange={(e) => handleNoteChange(e.target.value)}
             onBlur={handleNoteBlur}
             placeholder="Расскажите как прошла задача..."
-            rows={5}
+            rows={3}
             style={{
               width: '100%',
-              minHeight: '110px',
-              borderRadius: '10px',
+              height: '62px',
+              minHeight: '52px',
+              borderRadius: '9px',
               background: 'rgba(255, 255, 255, 0.04)',
               border: '1px solid var(--color-border)',
               color: 'var(--color-text-primary)',
-              fontSize: '13px',
-              padding: '10px 12px',
+              fontSize: '12.5px',
+              padding: '6px 10px',
               resize: 'vertical',
               fontFamily: 'inherit',
               outline: 'none',
-              lineHeight: 1.5,
+              lineHeight: 1.4,
             }}
           />
         </div>
