@@ -588,19 +588,12 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        {/* Описание / Ссылка (если есть) */}
-        {(masterTask.description || masterTask.link) && (
+        {/* Описание (если есть) */}
+        {masterTask.description && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', padding: '10px 12px', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)' }}>
-            {masterTask.description && (
-              <p style={{ fontSize: '13px', color: 'var(--color-text-primary)', margin: 0, whiteSpace: 'pre-wrap' }}>
-                {masterTask.description}
-              </p>
-            )}
-            {masterTask.link && (
-              <a href={masterTask.link} target="_blank" rel="noreferrer" style={{ fontSize: '12px', color: 'var(--color-accent-text)', textDecoration: 'underline', wordBreak: 'break-all' }}>
-                🔗 {masterTask.link}
-              </a>
-            )}
+            <p style={{ fontSize: '13px', color: 'var(--color-text-primary)', margin: 0, whiteSpace: 'pre-wrap' }}>
+              {masterTask.description}
+            </p>
           </div>
         )}
 
@@ -614,18 +607,20 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             onChange={(e) => handleNoteChange(e.target.value)}
             onBlur={handleNoteBlur}
             placeholder="Расскажите как прошла задача..."
-            rows={2}
+            rows={5}
             style={{
               width: '100%',
+              minHeight: '110px',
               borderRadius: '10px',
               background: 'rgba(255, 255, 255, 0.04)',
               border: '1px solid var(--color-border)',
               color: 'var(--color-text-primary)',
               fontSize: '13px',
-              padding: '8px 12px',
+              padding: '10px 12px',
               resize: 'vertical',
               fontFamily: 'inherit',
               outline: 'none',
+              lineHeight: 1.5,
             }}
           />
         </div>
