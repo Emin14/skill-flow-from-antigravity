@@ -607,17 +607,17 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             onChange={(e) => handleNoteChange(e.target.value)}
             onBlur={handleNoteBlur}
             placeholder="Расскажите как прошла задача..."
-            rows={3}
+            rows={4}
             style={{
               width: '100%',
-              height: '62px',
-              minHeight: '52px',
+              height: '84px',
+              minHeight: '60px',
               borderRadius: '9px',
               background: 'rgba(255, 255, 255, 0.04)',
               border: '1px solid var(--color-border)',
               color: 'var(--color-text-primary)',
               fontSize: '12.5px',
-              padding: '6px 10px',
+              padding: '7px 10px',
               resize: 'vertical',
               fontFamily: 'inherit',
               outline: 'none',
