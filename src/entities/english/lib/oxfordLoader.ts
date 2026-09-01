@@ -94,7 +94,7 @@ function buildOxford5000(): OxfordWord[] {
       for (const form of entry.forms) {
         if (!form.word) continue;
         const types = form.types || [];
-        if (types.includes('past')) {
+        if (types.includes('past') || types.includes('past_simple')) {
           if (!wordForms.verbForms) wordForms.verbForms = {};
           wordForms.verbForms.past = form.word;
         }
@@ -114,6 +114,25 @@ function buildOxford5000(): OxfordWord[] {
           if (!wordForms.adjectiveForms) wordForms.adjectiveForms = {};
           wordForms.adjectiveForms.superlative = form.word;
         }
+      }
+    } else if (entry.forms && typeof entry.forms === 'object') {
+      const f = entry.forms as any;
+      if (f.past_simple || f.past || f.past_participle) {
+        wordForms.verbForms = {
+          past: f.past_simple || f.past,
+          pastParticiple: f.past_participle,
+        };
+      }
+      if (f.plural) {
+        wordForms.nounForms = {
+          plural: f.plural,
+        };
+      }
+      if (f.comparative || f.superlative) {
+        wordForms.adjectiveForms = {
+          comparative: f.comparative,
+          superlative: f.superlative,
+        };
       }
     }
 
