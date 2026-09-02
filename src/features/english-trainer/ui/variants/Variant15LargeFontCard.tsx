@@ -8,10 +8,10 @@ import { useToastStore } from '@/shared/ui';
 import { Volume2, ChevronLeft, ChevronRight, Copy, Check, Sparkles, ArrowUpRight, X, Eye } from 'lucide-react';
 
 /**
- * Variant 2: Harmonious Large-Font Word Card
- * - Все шрифты менее 15px гармонично увеличены на 20-33% для максимальной читаемости.
- * - Микрошрифты (7.5px -> 10px, 8px -> 10.5px, 10.5px -> 12.5px, 11.5px -> 13.5px, 12px -> 14px).
- * - Сохранены все пропорции, бейджи, цвета и фиксированная сетка без сдвигов верстки.
+ * Variant 2: Balanced & Readable Word Card
+ * - Точечно увеличены именно примеры предложений (en: 13px, ru: 12px) и фразовые глаголы/фразы (13.5px / 12.5px).
+ * - Микро-увеличены бейджи части речи и регистра (8px -> 9px, 7.5px -> 8.5px) без громоздкости.
+ * - Сохранены исходная компактность, фиксированная высота 180px и идеальные пропорции карточки.
  */
 export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
   currentCard,
@@ -88,7 +88,7 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
   const renderFormsRow = () => {
     if (forms.verbForms && (forms.verbForms.past || forms.verbForms.pastParticiple || forms.verbForms.ing)) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '8px', fontSize: '12px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {forms.verbForms.past && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>past:</strong> {forms.verbForms.past}</span>}
           {forms.verbForms.past && forms.verbForms.pastParticiple && <span style={{ color: 'var(--color-border)' }}>|</span>}
           {forms.verbForms.pastParticiple && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>part.:</strong> {forms.verbForms.pastParticiple}</span>}
@@ -99,14 +99,14 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
     }
     if (forms.nounForms?.plural) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '8px', fontSize: '12px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
           <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>pl.:</strong> {forms.nounForms.plural}</span>
         </div>
       );
     }
     if (forms.adjectiveForms?.comparative || forms.adjectiveForms?.superlative) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '8px', fontSize: '12px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
           {forms.adjectiveForms.comparative && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>comp.:</strong> {forms.adjectiveForms.comparative}</span>}
           {forms.adjectiveForms.comparative && forms.adjectiveForms.superlative && <span style={{ color: 'var(--color-border)' }}>|</span>}
           {forms.adjectiveForms.superlative && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>superl.:</strong> {forms.adjectiveForms.superlative}</span>}
@@ -145,8 +145,8 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
               background: 'var(--color-accent-light)',
               color: 'var(--color-accent-text)',
               borderRadius: '6px',
-              width: '30px',
-              height: '26px',
+              width: '28px',
+              height: '24px',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -156,7 +156,7 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
             }}
             title="Озвучить слово"
           >
-            <Volume2 size={15} />
+            <Volume2 size={14} />
           </button>
 
           {/* Centered Headword */}
@@ -173,8 +173,8 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
               background: copiedIndex === -1 ? 'var(--color-success-light)' : 'var(--color-surface-hover)',
               color: copiedIndex === -1 ? 'var(--color-success)' : 'var(--color-text-muted)',
               borderRadius: '6px',
-              width: '30px',
-              height: '26px',
+              width: '28px',
+              height: '24px',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -184,26 +184,26 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
             }}
             title="Скопировать слово"
           >
-            {copiedIndex === -1 ? <Check size={14} strokeWidth={2.5} /> : <Copy size={14} />}
+            {copiedIndex === -1 ? <Check size={13} strokeWidth={2.5} /> : <Copy size={13} />}
           </button>
         </div>
 
-        <span style={{ fontSize: '15px', color: 'var(--color-text-muted)', fontFamily: 'serif', textAlign: 'center', lineHeight: '20px' }}>
+        <span style={{ fontSize: '13.5px', color: 'var(--color-text-muted)', fontFamily: 'serif', textAlign: 'center', lineHeight: '18px' }}>
           /{displayTranscription}/
         </span>
       </div>
 
-      {/* 2. Inline Grammar Forms Bar (Fixed Stable Height 22px) */}
-      <div style={{ height: '22px', minHeight: '22px', maxHeight: '22px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', boxSizing: 'border-box', overflow: 'hidden' }}>
-        {formsNode || <span style={{ opacity: 0, fontSize: '12px' }}>—</span>}
+      {/* 2. Inline Grammar Forms Bar (Fixed Stable Height 20px) */}
+      <div style={{ height: '20px', minHeight: '20px', maxHeight: '20px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', boxSizing: 'border-box', overflow: 'hidden' }}>
+        {formsNode || <span style={{ opacity: 0, fontSize: '10.5px' }}>—</span>}
       </div>
 
       {/* 3. Horizontal Meaning Pills Track with Quick-Switch Arrows [‹] [›] */}
       <div
         style={{
-          height: '30px',
-          minHeight: '30px',
-          maxHeight: '30px',
+          height: '28px',
+          minHeight: '28px',
+          maxHeight: '28px',
           display: 'flex',
           alignItems: 'center',
           gap: '4px',
@@ -221,12 +221,12 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
           }}
           disabled={currentSafeIdx === 0 || isMasked}
           style={{
-            width: '26px',
-            height: '26px',
+            width: '24px',
+            height: '24px',
             border: '1px solid var(--color-border)',
             background: currentSafeIdx === 0 || isMasked ? 'transparent' : 'var(--color-surface-hover)',
             color: currentSafeIdx === 0 || isMasked ? 'var(--color-text-disabled)' : 'var(--color-text-primary)',
-            borderRadius: '7px',
+            borderRadius: '6px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -237,7 +237,7 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
           }}
           title="Предыдущее значение"
         >
-          <ChevronLeft size={16} />
+          <ChevronLeft size={14} />
         </button>
 
         {/* Scrollable Pills Track */}
@@ -251,7 +251,7 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
             scrollbarWidth: 'none',
             flex: 1,
             height: '100%',
-            padding: '2px 0',
+            padding: '1px 0',
           }}
         >
           {displayedMeanings.map((m, idx) => {
@@ -268,9 +268,9 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                 }}
                 disabled={isMasked}
                 style={{
-                  height: '26px',
-                  padding: '0 11px',
-                  borderRadius: '13px',
+                  height: '24px',
+                  padding: '0 9px',
+                  borderRadius: '12px',
                   border: isCurrent
                     ? '1.5px solid var(--color-accent)'
                     : '1px solid var(--color-border)',
@@ -280,13 +280,13 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                   color: isCurrent
                     ? 'var(--color-accent-text)'
                     : 'var(--color-text-secondary)',
-                  fontSize: '13px',
+                  fontSize: '12px',
                   fontWeight: isCurrent ? 800 : 500,
                   whiteSpace: 'nowrap',
                   cursor: isMasked ? 'default' : 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '4px',
+                  gap: '3px',
                   transition: 'all 0.15s ease',
                   flexShrink: 0,
                 }}
@@ -307,13 +307,13 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                 onSelectMeaning(0);
               }}
               style={{
-                height: '24px',
-                padding: '0 8px',
-                borderRadius: '12px',
+                height: '22px',
+                padding: '0 7px',
+                borderRadius: '11px',
                 border: '1px dashed var(--color-border)',
                 background: showAllMeanings ? 'var(--color-accent-light)' : 'transparent',
                 color: showAllMeanings ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
-                fontSize: '11.5px',
+                fontSize: '10px',
                 fontWeight: 600,
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
@@ -337,12 +337,12 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
           }}
           disabled={currentSafeIdx === total - 1 || isMasked}
           style={{
-            width: '26px',
-            height: '26px',
+            width: '24px',
+            height: '24px',
             border: '1px solid var(--color-border)',
             background: currentSafeIdx === total - 1 || isMasked ? 'transparent' : 'var(--color-surface-hover)',
             color: currentSafeIdx === total - 1 || isMasked ? 'var(--color-text-disabled)' : 'var(--color-text-primary)',
-            borderRadius: '7px',
+            borderRadius: '6px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -353,19 +353,19 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
           }}
           title="Следующее значение"
         >
-          <ChevronRight size={16} />
+          <ChevronRight size={14} />
         </button>
       </div>
 
-      {/* 4. Inset Meaning Card: Fixed 188px Height */}
+      {/* 4. Inset Meaning Card: Fixed 180px Height */}
       <div
         style={{
           border: '1px solid var(--color-border)',
           borderRadius: '12px',
           background: 'var(--color-surface-hover)',
-          height: '188px',
-          minHeight: '188px',
-          maxHeight: '188px',
+          height: '180px',
+          minHeight: '180px',
+          maxHeight: '180px',
           padding: isMasked ? '12px' : '10px 14px 8px 14px',
           display: 'flex',
           flexDirection: 'column',
@@ -392,8 +392,8 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
           >
             <div
               style={{
-                width: '40px',
-                height: '40px',
+                width: '38px',
+                height: '38px',
                 borderRadius: '50%',
                 background: 'var(--color-accent-light)',
                 border: '1px solid var(--color-accent-border)',
@@ -403,14 +403,14 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                 color: 'var(--color-accent-text)',
               }}
             >
-              <Eye size={20} />
+              <Eye size={19} />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-              <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+              <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
                 Вспомните перевод слова
               </span>
-              <span style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>
+              <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
                 Напишите перевод ниже или нажмите кнопку
               </span>
             </div>
@@ -425,19 +425,19 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                 background: 'var(--color-surface)',
                 border: '1px solid var(--color-border)',
                 borderRadius: '8px',
-                padding: '6px 16px',
-                fontSize: '13px',
+                padding: '5px 14px',
+                fontSize: '12px',
                 fontWeight: 700,
                 color: 'var(--color-accent-text)',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '5px',
                 transition: 'all 0.15s ease',
                 marginTop: '2px',
               }}
             >
-              <Eye size={14} />
+              <Eye size={13} />
               <span>Показать ответ (Enter)</span>
             </button>
           </div>
@@ -448,7 +448,7 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '5px',
+              gap: '4px',
               overflowY: 'auto',
               scrollbarWidth: 'thin',
               height: '100%',
@@ -457,36 +457,38 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
           >
             {/* Upper Section: POS Badge & Register Badge on the Left, Translation Centered */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', marginBottom: '1px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '5px', marginBottom: '1px' }}>
+                {/* Micro-increased POS badge: 8px -> 9px */}
                 <span
                   style={{
                     background: 'var(--color-accent-light)',
                     color: 'var(--color-accent-text)',
                     border: '1px solid var(--color-accent-border)',
-                    fontSize: '10.5px',
+                    fontSize: '9px',
                     fontWeight: 700,
-                    padding: '1px 6px',
-                    borderRadius: '4px',
+                    padding: '0.5px 5px',
+                    borderRadius: '3.5px',
                     textTransform: 'lowercase',
-                    lineHeight: '15px',
+                    lineHeight: '13px',
                     display: 'inline-block',
                   }}
                 >
                   {activeMeaning.partOfSpeech || 'noun'}
                 </span>
 
+                {/* Micro-increased «доп.»: 7.5px -> 8.5px */}
                 {!activeMeaning.primary && (
                   <span
                     style={{
                       background: 'var(--color-surface-active)',
                       color: 'var(--color-text-muted)',
                       border: '1px solid var(--color-border)',
-                      fontSize: '10px',
+                      fontSize: '8.5px',
                       fontWeight: 700,
-                      padding: '1px 5px',
-                      borderRadius: '4px',
+                      padding: '0.5px 4px',
+                      borderRadius: '3.5px',
                       textTransform: 'lowercase',
-                      lineHeight: '14px',
+                      lineHeight: '12px',
                       display: 'inline-block',
                     }}
                     title="Дополнительное / вторичное значение"
@@ -495,6 +497,7 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                   </span>
                 )}
 
+                {/* Micro-increased register badge: 7.5px -> 8.5px */}
                 {activeMeaning.register && activeMeaning.register.length > 0 && activeMeaning.register.map((reg, idx) => (
                   <span
                     key={idx}
@@ -502,12 +505,12 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                       background: 'var(--color-danger-light)',
                       color: 'var(--color-danger)',
                       border: '1px solid var(--color-danger-border)',
-                      fontSize: '10px',
+                      fontSize: '8.5px',
                       fontWeight: 700,
-                      padding: '1px 5px',
-                      borderRadius: '4px',
+                      padding: '0.5px 4px',
+                      borderRadius: '3.5px',
                       textTransform: 'lowercase',
-                      lineHeight: '14px',
+                      lineHeight: '12px',
                       display: 'inline-block',
                     }}
                   >
@@ -519,10 +522,10 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
               <div
                 ref={translationTextRef}
                 style={{
-                  fontSize: '18px',
+                  fontSize: '17.5px',
                   fontWeight: 800,
                   color: 'var(--color-text-primary)',
-                  lineHeight: 1.25,
+                  lineHeight: 1.2,
                   whiteSpace: 'nowrap',
                   overflowX: 'auto',
                   scrollbarWidth: 'none',
@@ -537,7 +540,7 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
 
             {/* Synonyms Section */}
             {activeMeaning.synonyms && activeMeaning.synonyms.length > 0 && (
-              <div style={{ fontSize: '13.5px', marginTop: '3px', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div style={{ fontSize: '12px', marginTop: '3px', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <span style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>Синонимы: </span>
                 <span style={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>
                   {activeMeaning.synonyms.join(', ')}
@@ -547,20 +550,20 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
 
             {/* Subtle Divider Line before Examples */}
             {activeMeaning.examples && activeMeaning.examples.length > 0 && (
-              <div style={{ height: '1px', background: 'var(--color-border)', margin: '3px 0 4px 0' }} />
+              <div style={{ height: '1px', background: 'var(--color-border)', margin: '2px 0 3px 0' }} />
             )}
 
-            {/* Examples Section with One-Tap Copy */}
+            {/* Examples Section: Enhanced readability (en: 13px, ru: 12px) */}
             {activeMeaning.examples && activeMeaning.examples.length > 0 ? (
               <div
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '6px',
+                  gap: '5px',
                 }}
               >
                 {activeMeaning.examples.map((ex, i) => (
-                  <div key={i} style={{ fontSize: '14px', lineHeight: 1.4 }}>
+                  <div key={i} style={{ fontSize: '13px', lineHeight: 1.38 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ color: 'var(--color-text-primary)', fontWeight: 500, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap' }}>
                         <span>• {renderHighlightedSentence(ex.en, currentCard.word)}</span>
@@ -569,16 +572,16 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
-                              fontSize: '10px',
+                              fontSize: '8.5px',
                               fontWeight: 700,
                               textTransform: 'lowercase',
-                              padding: '1px 5px',
-                              borderRadius: '4px',
+                              padding: '0.5px 4px',
+                              borderRadius: '3.5px',
                               background: 'var(--color-warning-light)',
                               border: '1px solid var(--color-warning-border)',
                               color: 'var(--color-warning)',
-                              marginLeft: '5px',
-                              lineHeight: 1.2,
+                              marginLeft: '4px',
+                              lineHeight: 1.15,
                             }}
                           >
                             {ex.register}
@@ -593,15 +596,15 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                           background: 'transparent',
                           cursor: 'pointer',
                           color: copiedIndex === i ? 'var(--color-success)' : 'var(--color-text-muted)',
-                          padding: '2px',
+                          padding: '1px',
                         }}
                         title="Скопировать"
                       >
-                        {copiedIndex === i ? <Check size={13} strokeWidth={2.5} /> : <Copy size={13} />}
+                        {copiedIndex === i ? <Check size={12} strokeWidth={2.5} /> : <Copy size={12} />}
                       </button>
                     </div>
                     {ex.ru && (
-                      <div style={{ color: 'var(--color-text-secondary)', fontSize: '13px', paddingLeft: '8px', marginTop: '2px' }}>
+                      <div style={{ color: 'var(--color-text-secondary)', fontSize: '12px', paddingLeft: '8px', marginTop: '1.5px' }}>
                         {ex.ru}
                       </div>
                     )}
@@ -609,7 +612,7 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                 ))}
               </div>
             ) : (
-              <div style={{ fontSize: '12.5px', color: 'var(--color-text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
+              <div style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
                 (примеров к этому значению нет)
               </div>
             )}
@@ -617,8 +620,8 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
         )}
       </div>
 
-      {/* 5. Fixed 34px Slot for Phrases Button */}
-      <div style={{ height: '34px', minHeight: '34px', maxHeight: '34px', width: '100%', boxSizing: 'border-box' }}>
+      {/* 5. Fixed 32px Slot for Phrases Button */}
+      <div style={{ height: '32px', minHeight: '32px', maxHeight: '32px', width: '100%', boxSizing: 'border-box' }}>
         {isMasked ? (
           <div
             style={{
@@ -632,16 +635,16 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
               border: '1px dashed var(--color-border)',
               background: 'var(--color-surface-hover)',
               color: 'var(--color-text-muted)',
-              fontSize: '13px',
+              fontSize: '11.5px',
               fontWeight: 500,
               boxSizing: 'border-box',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={14} color="var(--color-text-disabled)" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <Sparkles size={12} color="var(--color-text-disabled)" />
               <span>Фразы откроются после ответа</span>
             </div>
-            <span style={{ fontSize: '12px', color: 'var(--color-text-disabled)' }}>🔒</span>
+            <span style={{ fontSize: '10.5px', color: 'var(--color-text-disabled)' }}>🔒</span>
           </div>
         ) : cardPhrases.length > 0 ? (
           <button
@@ -665,14 +668,14 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
             title="Открыть список фраз и идиом с этим словом"
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={14} color="#a855f7" />
-              <span style={{ fontSize: '13px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+              <Sparkles size={13} color="#a855f7" />
+              <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
                 Фразы и идиомы:
               </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px', fontWeight: 700, color: '#a855f7' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: 700, color: '#a855f7' }}>
               <span>{cardPhrases.length}</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={13} />
             </div>
           </button>
         ) : (
@@ -688,13 +691,13 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
               border: '1px dashed var(--color-border)',
               background: 'var(--color-surface-hover)',
               color: 'var(--color-text-muted)',
-              fontSize: '12.5px',
+              fontSize: '11.5px',
               boxSizing: 'border-box',
               opacity: 0.7,
             }}
           >
             <span>Фразы и идиомы</span>
-            <span style={{ fontSize: '12px', color: 'var(--color-text-disabled)' }}>—</span>
+            <span style={{ fontSize: '11px', color: 'var(--color-text-disabled)' }}>—</span>
           </div>
         )}
       </div>
@@ -730,14 +733,14 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={16} color="#a855f7" />
-              <span style={{ fontSize: '14.5px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
+              <Sparkles size={15} color="#a855f7" />
+              <span style={{ fontSize: '13.5px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
                 Фразы со словом
               </span>
-              <span style={{ fontSize: '14.5px', color: '#a855f7', fontWeight: 800 }}>
+              <span style={{ fontSize: '13.5px', color: '#a855f7', fontWeight: 800 }}>
                 {currentCard.word}
               </span>
-              <span style={{ fontSize: '13px', color: 'var(--color-text-muted)', fontWeight: 500, marginLeft: '2px' }}>
+              <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontWeight: 500, marginLeft: '2px' }}>
                 ({cardPhrases.length})
               </span>
             </div>
@@ -782,31 +785,31 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                 <div
                   key={p.id || pIdx}
                   style={{
-                    fontSize: '14px',
-                    lineHeight: 1.45,
+                    fontSize: '13.5px',
+                    lineHeight: 1.42,
                     background: 'var(--color-surface-hover)',
-                    padding: '8px 11px',
+                    padding: '7px 10px',
                     borderRadius: '8px',
                     border: '1px solid var(--color-border)',
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ color: 'var(--color-text-primary)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+                    <div style={{ color: 'var(--color-text-primary)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap', gap: '5px' }}>
                       <span>• {renderHighlightedSentence(p.phrase, currentCard.word)}</span>
                       {p.partOfSpeech && (
                         <span
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            fontSize: '10.5px',
+                            fontSize: '9px',
                             fontWeight: 700,
                             textTransform: 'lowercase',
-                            padding: '1px 5px',
+                            padding: '0.5px 4.5px',
                             borderRadius: '3px',
                             background: 'rgba(168, 85, 247, 0.15)',
                             border: '1px solid rgba(168, 85, 247, 0.3)',
                             color: '#c084fc',
-                            lineHeight: 1.2,
+                            lineHeight: 1.15,
                           }}
                         >
                           {p.partOfSpeech}
@@ -818,15 +821,15 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            fontSize: '10.5px',
+                            fontSize: '9px',
                             fontWeight: 700,
                             textTransform: 'lowercase',
-                            padding: '1px 5px',
+                            padding: '0.5px 4.5px',
                             borderRadius: '3px',
                             background: 'var(--color-warning-light)',
                             border: '1px solid var(--color-warning-border)',
                             color: 'var(--color-warning)',
-                            lineHeight: 1.2,
+                            lineHeight: 1.15,
                           }}
                         >
                           {reg}
@@ -846,11 +849,11 @@ export const Variant15LargeFontCard: React.FC<BaseWordCardProps> = ({
                       }}
                       title="Скопировать"
                     >
-                      {copiedIndex === copyKey ? <Check size={14} strokeWidth={2.5} /> : <Copy size={14} />}
+                      {copiedIndex === copyKey ? <Check size={13} strokeWidth={2.5} /> : <Copy size={13} />}
                     </button>
                   </div>
                   {p.translation && (
-                    <div style={{ color: 'var(--color-text-secondary)', fontSize: '13px', paddingLeft: '10px', marginTop: '2px' }}>
+                    <div style={{ color: 'var(--color-text-secondary)', fontSize: '12.5px', paddingLeft: '10px', marginTop: '2px' }}>
                       {p.translation}
                     </div>
                   )}
