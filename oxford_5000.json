@@ -182999,7 +182999,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "оставлять; нетрогать; пусть будет так",
+        "translation": "оставлять; не трогать; пусть будет так",
         "examples": [
           {
             "en": "let me (him) be, let me (him) alone",
@@ -183170,7 +183170,7 @@
         "id": 8,
         "phrase": "to let drop (or fall)",
         "partOfSpeech": "verb",
-        "translation": "ронять; нечаянно проронить (слово, замечание); опускать (перпендикуляр);",
+        "translation": "ронять; нечаянно проронить (слово, замечание); опускать (перпендикуляр)",
         "register": [
           "идиома"
         ],
@@ -198195,231 +198195,73 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "adjective",
-        "translation": "скупой, скаредный",
-        "examples": [],
-        "register": []
+        "partOfSpeech": "verb",
+        "translation": "значить, означать, иметь значение",
+        "register": [],
+        "examples": [
+          {
+            "en": "what does this word mean?",
+            "ru": "что означает это слово?"
+          }
+        ],
+        "primary": true
       },
       {
         "id": 2,
-        "partOfSpeech": "adjective",
-        "translation": "низкий, подлый, нечестный",
-        "examples": [],
-        "register": []
+        "partOfSpeech": "verb",
+        "translation": "подразумевать, иметь в виду",
+        "register": [],
+        "examples": [
+          {
+            "en": "I know what you mean",
+            "ru": "я понимаю, что вы имеете в виду"
+          }
+        ],
+        "primary": true
       },
       {
         "id": 3,
-        "partOfSpeech": "adjective",
-        "translation": "посредственный; плохой; слабый",
+        "partOfSpeech": "verb",
+        "translation": "намереваться, собираться",
+        "register": [],
         "examples": [
           {
-            "en": "no mean abilities",
-            "ru": "хорошие способности"
+            "en": "I meant to call you",
+            "ru": "я собирался позвонить тебе"
           }
-        ],
-        "register": []
+        ]
       },
       {
         "id": 4,
-        "partOfSpeech": "adjective",
-        "translation": "бедный, убогий, жалкий",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "adjective",
-        "translation": "низкого происхождения",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "adjective",
-        "translation": "скромный, смущающийся",
-        "examples": [],
-        "register": [
-          "разговорное",
-          "американский английский"
-        ]
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "adjective",
-        "translation": "чувствовать себя неловко",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "adjective",
-        "translation": "чувствовать себя нездоровым",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "noun",
-        "translation": "середина",
-        "examples": [
-          {
-            "en": "the golden (or happy) mean",
-            "ru": "золотая середина"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "adjective",
-        "translation": "средний; межень",
-        "examples": [
-          {
-            "en": "mean line",
-            "ru": "биссектриса"
-          },
-          {
-            "en": "mean time",
-            "ru": "среднее солнечное время"
-          },
-          {
-            "en": "mean water",
-            "ru": "нормальный уровень воды"
-          },
-          {
-            "en": "mean yield",
-            "ru": "средний урожай"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "adjective",
-        "translation": "тем временем",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "adjective",
-        "translation": "между тем",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "verb",
-        "translation": "намереваться; иметь в виду",
-        "examples": [
-          {
-            "en": "I didn't mean to offend you",
-            "ru": "я не хотел вас обидеть"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ],
-        "primary": true
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "verb",
-        "translation": "браться (за что-либо) серьёзно, решительно",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "verb",
-        "translation": "говорить всерьёз",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 16,
-        "partOfSpeech": "verb",
-        "translation": "иметь дурные намерения",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 17,
-        "partOfSpeech": "verb",
-        "translation": "предвещать дурное",
-        "examples": [
-          {
-            "en": "to mean well (ill)",
-            "ru": "иметь добрые (дурные) намерения"
-          },
-          {
-            "en": "he means well by us",
-            "ru": "он желает нам добра"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 18,
-        "partOfSpeech": "verb",
-        "translation": "думать, подразумевать; what do you mean by that?",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 19,
-        "partOfSpeech": "verb",
-        "translation": "что вы этим хотите сказать?",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 20,
-        "partOfSpeech": "verb",
-        "translation": "почему вы поступаете так?",
-        "examples": [
-          {
-            "en": "what did you mean by looking at me like that?",
-            "ru": "в чём дело? Почему ты на меня так посмотрел?"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 21,
         "partOfSpeech": "verb",
         "translation": "предназначать(ся)",
+        "register": [],
         "examples": [
           {
-            "en": "to mean it be used",
-            "ru": "предназначать (что-либо) для пользования"
+            "en": "it was meant for you",
+            "ru": "это предназначалось для тебя"
           }
-        ],
-        "register": []
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "mean well",
+        "partOfSpeech": "verb",
+        "translation": "иметь добрые намерения, желать добра",
+        "register": [],
+        "examples": []
       },
       {
-        "id": 22,
+        "id": 2,
+        "phrase": "mean business",
         "partOfSpeech": "verb",
-        "translation": "означать; предвещать",
-        "examples": [
-          {
-            "en": "this means trouble",
-            "ru": "это предвещает беду"
-          }
+        "translation": "браться всерьёз, не шутить",
+        "register": [
+          "идиома"
         ],
-        "register": []
-      },
-      {
-        "id": 23,
-        "partOfSpeech": "verb",
-        "translation": "значить, означать, иметь значение",
-        "examples": [],
-        "register": []
+        "examples": []
       }
     ]
   },
@@ -198436,229 +198278,47 @@
       {
         "id": 1,
         "partOfSpeech": "adjective",
-        "translation": "скупой, скаредный",
-        "examples": [],
+        "translation": "злой, недобрый, подлый, нечестный",
         "register": [],
+        "examples": [
+          {
+            "en": "don't be so mean to her",
+            "ru": "не будь таким злым по отношению к ней"
+          }
+        ],
         "primary": true
       },
       {
         "id": 2,
         "partOfSpeech": "adjective",
-        "translation": "низкий, подлый, нечестный",
-        "examples": [],
-        "register": [
-          "математика"
+        "translation": "скупой, жадный",
+        "register": [],
+        "examples": [
+          {
+            "en": "he is mean with money",
+            "ru": "он жалеет деньги, он скуп"
+          }
         ],
         "primary": true
       },
       {
         "id": 3,
         "partOfSpeech": "adjective",
-        "translation": "посредственный; плохой; слабый",
+        "translation": "средний (показатель, величина)",
+        "register": [],
         "examples": [
           {
-            "en": "no mean abilities",
-            "ru": "хорошие способности"
+            "en": "mean temperature",
+            "ru": "средняя температура"
           }
-        ],
-        "register": [
-          "математика"
         ]
       },
       {
         "id": 4,
         "partOfSpeech": "adjective",
         "translation": "бедный, убогий, жалкий",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "adjective",
-        "translation": "низкого происхождения",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "adjective",
-        "translation": "скромный, смущающийся",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "adjective",
-        "translation": "чувствовать себя неловко",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "adjective",
-        "translation": "чувствовать себя нездоровым",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "noun",
-        "translation": "середина",
-        "examples": [
-          {
-            "en": "the golden (or happy) mean",
-            "ru": "золотая середина"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "adjective",
-        "translation": "средний; межень",
-        "examples": [
-          {
-            "en": "mean line",
-            "ru": "биссектриса"
-          },
-          {
-            "en": "mean time",
-            "ru": "среднее солнечное время"
-          },
-          {
-            "en": "mean water",
-            "ru": "нормальный уровень воды"
-          },
-          {
-            "en": "mean yield",
-            "ru": "средний урожай"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "adjective",
-        "translation": "тем временем",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "adjective",
-        "translation": "между тем",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "verb",
-        "translation": "намереваться; иметь в виду",
-        "examples": [
-          {
-            "en": "I didn't mean to offend you",
-            "ru": "я не хотел вас обидеть"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "verb",
-        "translation": "браться (за что-либо) серьёзно, решительно",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "verb",
-        "translation": "говорить всерьёз",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 16,
-        "partOfSpeech": "verb",
-        "translation": "иметь дурные намерения",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 17,
-        "partOfSpeech": "verb",
-        "translation": "предвещать дурное",
-        "examples": [
-          {
-            "en": "to mean well (ill)",
-            "ru": "иметь добрые (дурные) намерения"
-          },
-          {
-            "en": "he means well by us",
-            "ru": "он желает нам добра"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 18,
-        "partOfSpeech": "verb",
-        "translation": "думать, подразумевать; what do you mean by that?",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 19,
-        "partOfSpeech": "verb",
-        "translation": "что вы этим хотите сказать?",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 20,
-        "partOfSpeech": "verb",
-        "translation": "почему вы поступаете так?",
-        "examples": [
-          {
-            "en": "what did you mean by looking at me like that?",
-            "ru": "в чём дело? Почему ты на меня так посмотрел?"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 21,
-        "partOfSpeech": "verb",
-        "translation": "предназначать(ся)",
-        "examples": [
-          {
-            "en": "to mean it be used",
-            "ru": "предназначать (что-либо) для пользования"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 22,
-        "partOfSpeech": "verb",
-        "translation": "означать; предвещать",
-        "examples": [
-          {
-            "en": "this means trouble",
-            "ru": "это предвещает беду"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 23,
-        "partOfSpeech": "verb",
-        "translation": "значить, означать, иметь значение",
-        "examples": [],
-        "register": []
+        "register": [],
+        "examples": []
       }
     ]
   },
@@ -198674,227 +198334,28 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "adjective",
-        "translation": "скупой, скаредный",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 2,
-        "partOfSpeech": "adjective",
-        "translation": "низкий, подлый, нечестный",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "adjective",
-        "translation": "посредственный; плохой; слабый",
-        "examples": [
-          {
-            "en": "no mean abilities",
-            "ru": "хорошие способности"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "adjective",
-        "translation": "бедный, убогий, жалкий",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "adjective",
-        "translation": "низкого происхождения",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "adjective",
-        "translation": "скромный, смущающийся",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "adjective",
-        "translation": "чувствовать себя неловко",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "adjective",
-        "translation": "чувствовать себя нездоровым",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 9,
         "partOfSpeech": "noun",
-        "translation": "середина",
+        "translation": "середина, средняя величина, среднее значение",
+        "register": [],
         "examples": [
           {
-            "en": "the golden (or happy) mean",
-            "ru": "золотая середина"
+            "en": "the mean of three and nine is six",
+            "ru": "среднее арифметическое трёх и девяти — шесть"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
-        "id": 10,
-        "partOfSpeech": "adjective",
-        "translation": "средний; межень",
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "золотая середина",
+        "register": [],
         "examples": [
           {
-            "en": "mean line",
-            "ru": "биссектриса"
-          },
-          {
-            "en": "mean time",
-            "ru": "среднее солнечное время"
-          },
-          {
-            "en": "mean water",
-            "ru": "нормальный уровень воды"
-          },
-          {
-            "en": "mean yield",
-            "ru": "средний урожай"
+            "en": "the golden mean",
+            "ru": "золотая середина"
           }
-        ],
-        "register": []
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "adjective",
-        "translation": "тем временем",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "adjective",
-        "translation": "между тем",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "verb",
-        "translation": "намереваться; иметь в виду",
-        "examples": [
-          {
-            "en": "I didn't mean to offend you",
-            "ru": "я не хотел вас обидеть"
-          }
-        ],
-        "register": [
-          "разговорное"
         ]
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "verb",
-        "translation": "браться (за что-либо) серьёзно, решительно",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "verb",
-        "translation": "говорить всерьёз",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 16,
-        "partOfSpeech": "verb",
-        "translation": "иметь дурные намерения",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 17,
-        "partOfSpeech": "verb",
-        "translation": "предвещать дурное",
-        "examples": [
-          {
-            "en": "to mean well (ill)",
-            "ru": "иметь добрые (дурные) намерения"
-          },
-          {
-            "en": "he means well by us",
-            "ru": "он желает нам добра"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 18,
-        "partOfSpeech": "verb",
-        "translation": "думать, подразумевать; what do you mean by that?",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 19,
-        "partOfSpeech": "verb",
-        "translation": "что вы этим хотите сказать?",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 20,
-        "partOfSpeech": "verb",
-        "translation": "почему вы поступаете так?",
-        "examples": [
-          {
-            "en": "what did you mean by looking at me like that?",
-            "ru": "в чём дело? Почему ты на меня так посмотрел?"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 21,
-        "partOfSpeech": "verb",
-        "translation": "предназначать(ся)",
-        "examples": [
-          {
-            "en": "to mean it be used",
-            "ru": "предназначать (что-либо) для пользования"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 22,
-        "partOfSpeech": "verb",
-        "translation": "означать; предвещать",
-        "examples": [
-          {
-            "en": "this means trouble",
-            "ru": "это предвещает беду"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 23,
-        "partOfSpeech": "verb",
-        "translation": "значить, означать, иметь значение",
-        "examples": [],
-        "register": []
       }
     ]
   },
@@ -243064,7 +242525,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "очко; перен. = заткнуть за пояс",
+        "translation": "очко, балл (в игре, спорте)",
         "examples": [
           {
             "en": "to give points to",
@@ -243219,7 +242680,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "говорить, свидетельствовать (to — o)",
+        "translation": "свидетельствовать, указывать (на что-либо: point to)",
         "examples": [],
         "register": [],
         "id": 20
@@ -243299,7 +242760,7 @@
         "id": 3,
         "phrase": "free from points",
         "partOfSpeech": "noun",
-        "translation": "ненормированный; румб; редька (оплетённый конец снасти); шнурок с наконечником (заменявший пуговицы); вершина горы; (гравировальная) игла, резец (гравёра); вид кружева; attr.:",
+        "translation": "бесталонный, отпускаемый без талонов (о товарах)",
         "examples": [
           {
             "en": "s verdict.",
@@ -243393,9 +242854,9 @@
         "id": 13
       },
       {
-        "phrase": "to the point a)",
+        "phrase": "to the point",
         "partOfSpeech": "noun",
-        "translation": "кстати, уместно",
+        "translation": "кстати, уместно, по существу",
         "examples": [],
         "register": [],
         "id": 14

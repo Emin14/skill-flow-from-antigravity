@@ -2,7 +2,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { BaseWordCardProps } from './types';
-import { speakEnglishWord } from '@/entities/english';
+import { speakEnglishWord, triggerHapticFeedback } from '@/entities/english';
+import { copyToClipboard } from '@/shared/lib/clipboard';
+import { useToastStore } from '@/shared/ui';
 import { Volume2, ChevronLeft, ChevronRight, Copy, Check, Layers, Sparkles, ArrowUpRight, X, Eye } from 'lucide-react';
 
 /**
@@ -37,10 +39,15 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
 
   const isMasked = isReviewWord && !isAnswerRevealed;
 
-  const handleCopy = (text: string, index: number) => {
-    navigator.clipboard?.writeText(text);
-    setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 1500);
+  const handleCopy = async (text: string, index: number) => {
+    if (!text) return;
+    const success = await copyToClipboard(text);
+    if (success) {
+      setCopiedIndex(index);
+      triggerHapticFeedback('light');
+      useToastStore.getState().showToast('Скопировано в буфер обмена', 'success', undefined, 2000);
+      setTimeout(() => setCopiedIndex(null), 1500);
+    }
   };
 
   // Primary vs All filtering
