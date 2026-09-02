@@ -10386,8 +10386,8 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "соединительный союз и",
+        "partOfSpeech": "conjunction",
+        "translation": "и (соединительный союз)",
         "examples": [
           {
             "en": "boys and girls",
@@ -10399,8 +10399,8 @@
       },
       {
         "id": 2,
-        "partOfSpeech": "noun",
-        "translation": "в сложных словах",
+        "partOfSpeech": "conjunction",
+        "translation": "и (в числительных и составных словах)",
         "examples": [
           {
             "en": "four and twenty",
@@ -10411,7 +10411,7 @@
             "ru": "сто двадцать"
           },
           {
-            "en": "giveandtake policy",
+            "en": "give-and-take policy",
             "ru": "политика взаимных уступок"
           }
         ],
@@ -10420,8 +10420,8 @@
       },
       {
         "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "противительный союза, но",
+        "partOfSpeech": "conjunction",
+        "translation": "а, но (противительный союз)",
         "examples": [
           {
             "en": "I shall go and you stay here",
@@ -10437,8 +10437,8 @@
       },
       {
         "id": 4,
-        "partOfSpeech": "noun",
-        "translation": "присоединяет инфинитив к сказуемому",
+        "partOfSpeech": "conjunction",
+        "translation": "и (присоединяет глагол цели или последствия: try and do it)",
         "examples": [
           {
             "en": "try and do it",
@@ -43130,155 +43130,45 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "verb",
-        "translation": "модальный недостаточный глагол",
-        "examples": [],
-        "register": []
+        "partOfSpeech": "noun",
+        "translation": "жестяная банка, консервная банка, бидон",
+        "register": [],
+        "examples": [
+          {
+            "en": "a can of soup",
+            "ru": "банка супа"
+          },
+          {
+            "en": "a can of soda",
+            "ru": "банка газировки"
+          }
+        ],
+        "primary": true
       },
       {
         "id": 2,
-        "partOfSpeech": "verb",
-        "translation": "мочь, быть в состоянии, иметь возможность; уметь",
+        "partOfSpeech": "noun",
+        "translation": "мусорный бак (trash can / garbage can)",
+        "register": [
+          "американский английский"
+        ],
         "examples": [
           {
-            "en": "I will do all I can",
-            "ru": "я сделаю всё, что могу"
-          },
-          {
-            "en": "I can speak French",
-            "ru": "я говорю (умею говорить) по-французски"
-          },
-          {
-            "en": "I cannot",
-            "ru": "я не могу"
-          },
-          {
-            "en": "I cannot away with this",
-            "ru": "терпеть этого не могу"
-          },
-          {
-            "en": "I cannot but",
-            "ru": "я не могу не"
+            "en": "put it in the garbage can",
+            "ru": "выброси это в мусорный бак"
           }
-        ],
-        "register": []
+        ]
       },
       {
         "id": 3,
         "partOfSpeech": "verb",
-        "translation": "мочь, иметь право",
-        "examples": [
-          {
-            "en": "you can go",
-            "ru": "вы свободны, можете идти"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "verb",
-        "translation": "неужели?",
-        "examples": [
-          {
-            "en": "she can't have done it!",
-            "ru": "не может быть, чтобы она это сделала!"
-          }
-        ],
-        "register": [
-          "сленг"
-        ]
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "verb",
-        "translation": "справляться, переносить",
-        "examples": [],
-        "register": [
-          "американский английский",
-          "сленг"
-        ]
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "бидон",
-        "examples": [],
+        "translation": "консервировать (в банках)",
         "register": [],
-        "primary": true
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
-        "translation": "жестяная коробка или банка",
-        "examples": [],
-        "register": [
-          "американский английский"
-        ],
-        "primary": true
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "noun",
-        "translation": "помойное ведро; ящик для мусора",
-        "examples": [],
-        "register": [
-          "американский английский",
-          "сленг"
-        ]
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "noun",
-        "translation": "лачуга в рабочем посёлке",
-        "examples": [],
-        "register": [
-          "сленг",
-          "американский английский"
-        ]
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "noun",
-        "translation": "банка консервов",
-        "examples": [],
-        "register": [
-          "американский английский",
-          "сленг"
-        ],
-        "primary": true
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "noun",
-        "translation": "тюрьма",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "verb",
-        "translation": "быть законченным и готовым к употреблению",
-        "examples": [],
-        "register": [
-          "американский английский",
-          "сленг"
-        ]
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "verb",
-        "translation": "консервировать (мясо, овощи, фрукты) отделаться (от кого-либо)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "noun",
-        "translation": "уволить посадить в тюрьму остановить(ся)",
-        "examples": [],
-        "register": [
-          "сленг"
+        "examples": [
+          {
+            "en": "canned peaches",
+            "ru": "консервированные персики"
+          }
         ]
       }
     ]
@@ -134429,11 +134319,11 @@
       {
         "id": 1,
         "partOfSpeech": "preposition",
-        "translation": "указывает напространственные отношения от, из, с (передаётся тж. приставками)",
+        "translation": "указывает на пространственные отношения: от, из, с",
         "examples": [
           {
             "en": "from St. Petersbourg",
-            "ru": "из СанктПетербурга"
+            "ru": "из Санкт-Петербурга"
           },
           {
             "en": "where is he coming from?",
@@ -134444,7 +134334,7 @@
             "ru": "мы находимся в двух часах пути оттуда"
           },
           {
-            "en": "we town",
+            "en": "we were 50 km from town",
             "ru": "мы были в 50 км от города"
           }
         ],
@@ -134617,7 +134507,7 @@
             "ru": "страдать от холода"
           },
           {
-            "en": "he died from bloodpoisoning",
+            "en": "he died from blood poisoning",
             "ru": "он умер от заражения крови"
           },
           {
@@ -150038,25 +149928,45 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "noun",
-        "translation": "мужчина, лицо мужского пола",
+        "id": 1,
+        "partOfSpeech": "pronoun",
+        "translation": "он (личное местоимение мужского рода)",
+        "register": [],
         "examples": [
           {
-            "en": "it is a he",
-            "ru": "это мальчик (о новорож дённом)"
+            "en": "he is a doctor",
+            "ru": "он врач"
+          },
+          {
+            "en": "where is he?",
+            "ru": "где он?"
           }
         ],
-        "register": [],
-        "id": 1,
         "primary": true
       },
       {
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "мужчина, лицо мужского пола; самец",
+        "register": [],
+        "examples": [
+          {
+            "en": "it is a he",
+            "ru": "это мальчик (о новорождённом)"
+          }
+        ]
+      },
+      {
+        "id": 3,
         "partOfSpeech": "noun",
         "translation": "водящий (в детской игре)",
-        "examples": [],
         "register": [],
-        "id": 2,
-        "primary": true
+        "examples": [
+          {
+            "en": "who is he?",
+            "ru": "кто водит?"
+          }
+        ]
       }
     ]
   },
@@ -173237,7 +173147,12 @@
       {
         "partOfSpeech": "adjective",
         "translation": "справедливый, беспристрастный",
-        "examples": [],
+        "examples": [
+          {
+            "en": "a just decision",
+            "ru": "справедливое решение"
+          }
+        ],
         "register": [],
         "id": 1,
         "primary": true
@@ -173275,7 +173190,12 @@
       {
         "partOfSpeech": "adverb",
         "translation": "точно, как раз, именно",
-        "examples": [],
+        "examples": [
+          {
+            "en": "just what I needed",
+            "ru": "как раз то, что мне было нужно"
+          }
+        ],
         "register": [],
         "id": 4,
         "primary": true
@@ -185324,171 +185244,91 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "adverb",
-        "translation": "похожий, подобный",
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "нравиться, любить, находить приятным",
+        "register": [],
         "examples": [
           {
-            "en": "like question",
-            "ru": "подобный вопрос"
+            "en": "I like music",
+            "ru": "мне нравится музыка"
           },
           {
-            "en": "in (a) like manner",
-            "ru": "подобным образом"
+            "en": "do you like coffee?",
+            "ru": "ты любишь кофе?"
+          }
+        ],
+        "primary": true
+      },
+      {
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "хотеть, желать (в вежливых оборотах would like)",
+        "register": [],
+        "examples": [
+          {
+            "en": "I would like a cup of tea",
+            "ru": "я бы хотел чашку чая"
+          },
+          {
+            "en": "would you like to join us?",
+            "ru": "не хотите ли присоединиться к нам?"
+          }
+        ],
+        "primary": true
+      },
+      {
+        "id": 3,
+        "partOfSpeech": "preposition",
+        "translation": "как, подобно (в сравнениях)",
+        "register": [],
+        "examples": [
+          {
+            "en": "he runs like a deer",
+            "ru": "он бежит как олень"
+          },
+          {
+            "en": "like father, like son",
+            "ru": "каков отец, таков и сын"
           },
           {
             "en": "it's just like you to do that",
             "ru": "это очень похоже на вас"
-          },
-          {
-            "en": "like nothing on earth",
-            "ru": "ни на что не похожий, странный"
-          },
-          {
-            "en": "it is just like you",
-            "ru": "это как раз то, чего от вас можно ожидать"
-          },
-          {
-            "en": "it costs something like £50",
-            "ru": "это стоит около 50 фунтов стерлингов"
           }
         ],
-        "register": [],
-        "id": 1,
         "primary": true
       },
       {
-        "partOfSpeech": "adverb",
-        "translation": "одинаковый; равный",
+        "id": 4,
+        "partOfSpeech": "adjective",
+        "translation": "похожий, подобный, одинаковый",
+        "register": [],
         "examples": [
+          {
+            "en": "in a like manner",
+            "ru": "подобным образом"
+          },
           {
             "en": "like sum",
             "ru": "равная сумма"
-          },
-          {
-            "en": "like dispositions",
-            "ru": "одинаковые характеры"
           }
-        ],
-        "register": [],
-        "id": 2,
-        "primary": true
+        ]
       },
       {
-        "partOfSpeech": "adverb",
-        "translation": "возможный; вероятный",
-        "examples": [
-          {
-            "en": "they are like to meet again",
-            "ru": "они, вероятно, ещё встретятся"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ],
-        "id": 3
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "подобно, так",
-        "examples": [
-          {
-            "en": "like so",
-            "ru": "вот так, таким образом"
-          }
-        ],
-        "register": [
-          "устаревшее"
-        ],
-        "id": 4
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "так сказать, как бы",
-        "examples": [
-          {
-            "en": "I had like to have fallen",
-            "ru": "я чуть не упал"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ],
-        "id": 5
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "возможно, вероятно",
-        "examples": [
-          {
-            "en": "like enough, as like as not",
-            "ru": "очень возможно"
-          },
-          {
-            "en": "very like",
-            "ru": "весьма вероятно"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ],
-        "id": 6
-      },
-      {
-        "partOfSpeech": "preposition",
-        "translation": "изо всех сил; сильно, чрезвычайно, ужасно",
-        "examples": [
-          {
-            "en": "like anything, like mad",
-            "ru": "стремительно"
-          },
-          {
-            "en": "do not talk like that",
-            "ru": "не говорите так"
-          },
-          {
-            "en": "to run like mad",
-            "ru": "бежать очень быстро, как угорелый"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ],
-        "id": 7,
-        "primary": true
-      },
-      {
+        "id": 5,
         "partOfSpeech": "noun",
-        "translation": "нечто подобное, равное, одинаковое",
+        "translation": "нечто подобное; пристрастия (likes and dislikes)",
+        "register": [],
         "examples": [
           {
             "en": "and the like",
             "ru": "и тому подобное"
           },
           {
-            "en": "did you ever hear the like?",
-            "ru": "слышали ли вы что-либо подобное?"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ],
-        "id": 8,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "noun",
-        "translation": "при мн. ч.: склонности, влечения; симпатии и антипатии",
-        "examples": [
-          {
             "en": "likes and dislikes",
-            "ru": "пристрастия и предубеждения"
+            "ru": "пристрастия и антипатии"
           }
-        ],
-        "register": [
-          "британское"
-        ],
-        "id": 9,
-        "primary": true
+        ]
       }
     ],
     "phrases": [
@@ -198116,9 +197956,22 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "косв. п. от I",
-        "examples": [],
+        "translation": "меня; мне; мной, обо мне (косвенный падеж от I)",
         "register": [],
+        "examples": [
+          {
+            "en": "tell me",
+            "ru": "скажи мне"
+          },
+          {
+            "en": "look at me",
+            "ru": "посмотри на меня"
+          },
+          {
+            "en": "he knows me",
+            "ru": "он знает меня"
+          }
+        ],
         "primary": true
       }
     ]
@@ -205935,7 +205788,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "сравн. ст. от",
+        "translation": "больше, в большей степени (наречие в сравнительной степени)",
         "examples": [],
         "register": [],
         "id": 4,
@@ -205994,7 +205847,7 @@
         "id": 1,
         "phrase": "he is no more",
         "partOfSpeech": "noun",
-        "translation": "его нет в ых",
+        "translation": "его нет в живых",
         "examples": [],
         "register": [
           "живопись"
@@ -208481,48 +208334,34 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "pronoun",
-        "translation": "употр. атрибутивно",
+        "partOfSpeech": "determiner",
+        "translation": "мой, моя, моё, мои (принадлежащий мне)",
+        "register": [],
         "examples": [
           {
-            "en": "my!, my aunt!, my eye(s)!, my stars!, my world!, my goodness!, my lands!",
-            "ru": "восклицания, выражающие удивление"
+            "en": "this is my book",
+            "ru": "это моя книга"
+          },
+          {
+            "en": "my name is Alex",
+            "ru": "меня зовут Алекс"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
         "id": 2,
-        "partOfSpeech": "pronoun",
-        "translation": "мой, моя, моё, мои; принадлежащий мне",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "pronoun",
-        "translation": "восклицания, выражающие удивление",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "pronoun",
-        "translation": "миледи",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "pronoun",
-        "translation": "милорд",
-        "examples": [],
-        "register": [],
-        "primary": true
+        "partOfSpeech": "interjection",
+        "translation": "батюшки!, боже мой!, вот это да! (выражает удивление: my!, my goodness!)",
+        "register": [
+          "разговорное"
+        ],
+        "examples": [
+          {
+            "en": "my, how you've grown!",
+            "ru": "батюшки, как ты вырос!"
+          }
+        ]
       }
     ],
     "phrases": [
@@ -220906,186 +220745,171 @@
     },
     "meanings": [
       {
+        "id": 1,
+        "partOfSpeech": "preposition",
+        "translation": "на (указывает на нахождение на поверхности или прикрепление)",
+        "register": [],
+        "examples": [
+          {
+            "en": "on the table",
+            "ru": "на столе"
+          },
+          {
+            "en": "on the wall",
+            "ru": "на стене"
+          },
+          {
+            "en": "on the floor",
+            "ru": "на полу"
+          }
+        ],
+        "primary": true
+      },
+      {
+        "id": 2,
+        "partOfSpeech": "preposition",
+        "translation": "в (указывает на дни недели, даты или праздники)",
+        "register": [],
+        "examples": [
+          {
+            "en": "on Monday",
+            "ru": "в понедельник"
+          },
+          {
+            "en": "on the 5th of May",
+            "ru": "пятого мая"
+          },
+          {
+            "en": "on my birthday",
+            "ru": "в мой день рождения"
+          }
+        ],
+        "primary": true
+      },
+      {
+        "id": 3,
+        "partOfSpeech": "preposition",
+        "translation": "по, о (указывает на тему книги, статьи, лекции)",
+        "register": [],
+        "examples": [
+          {
+            "en": "a book on history",
+            "ru": "книга по истории"
+          },
+          {
+            "en": "a lecture on art",
+            "ru": "лекция об искусстве"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "partOfSpeech": "preposition",
+        "translation": "по, на (указывает на средство связи или общественный транспорт)",
+        "register": [],
+        "examples": [
+          {
+            "en": "on the bus",
+            "ru": "в автобусе (на автобусе)"
+          },
+          {
+            "en": "on TV",
+            "ru": "по телевизору"
+          },
+          {
+            "en": "on the phone",
+            "ru": "по телефону"
+          }
+        ],
+        "primary": true
+      },
+      {
+        "id": 5,
         "partOfSpeech": "adverb",
-        "translation": "наличие какой-либо одежды на -л.",
+        "translation": "включён, работает (об аппарате, приборе, свете)",
+        "register": [],
+        "examples": [
+          {
+            "en": "the light is on",
+            "ru": "свет включён"
+          },
+          {
+            "en": "turn the TV on",
+            "ru": "включи телевизор"
+          }
+        ],
+        "primary": true
+      },
+      {
+        "id": 6,
+        "partOfSpeech": "adverb",
+        "translation": "дальше, вперёд (продолжая движение или действие)",
+        "register": [],
+        "examples": [
+          {
+            "en": "go on!",
+            "ru": "продолжай!"
+          },
+          {
+            "en": "walk on",
+            "ru": "идти дальше"
+          },
+          {
+            "en": "on and on",
+            "ru": "без остановки, непрерывно"
+          }
+        ],
+        "primary": true
+      },
+      {
+        "id": 7,
+        "partOfSpeech": "adverb",
+        "translation": "надетый, надет (об одежде, обуви)",
+        "register": [],
         "examples": [
           {
             "en": "she had a green hat on",
             "ru": "на ней была зелёная шляпа"
           },
           {
-            "en": "what had he on?",
-            "ru": "во что он был одет?"
+            "en": "put your coat on",
+            "ru": "надень пальто"
           }
-        ],
-        "register": [
-          "коммерческое"
-        ],
-        "id": 1,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "движение дальше, далее, вперёд",
-        "examples": [
-          {
-            "en": "to send one's luggage on",
-            "ru": "по слать багаж вперёд, заранее"
-          },
-          {
-            "en": "on and on",
-            "ru": "не останавливаясь"
-          }
-        ],
-        "register": [],
-        "id": 2,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "продолжение или развитие действия",
-        "examples": [
-          {
-            "en": "to walk on",
-            "ru": "продолжать идти"
-          }
-        ],
-        "register": [],
-        "id": 3
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "отправную точку или момент",
-        "examples": [
-          {
-            "en": "from this day on",
-            "ru": "с этого дня"
-          }
-        ],
-        "register": [],
-        "id": 4
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "идущие в театре (кинотеатре) пьесы (фильмы)",
-        "examples": [
-          {
-            "en": "on in",
-            "ru": "London this spring? какие пьесы идут этой весной в Лондоне?"
-          },
-          {
-            "en": "Macbeth is on tonight",
-            "ru": "сегодня идёт «Макбет»"
-          }
-        ],
-        "register": [],
-        "id": 5
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "приближение к какому-л. моменту к",
-        "examples": [
-          {
-            "en": "he is getting on in years",
-            "ru": "он стареет"
-          },
-          {
-            "en": "he is going on for thirty",
-            "ru": "ему скоро исполнится тридцать"
-          },
-          {
-            "en": "it is on for ten o'clock",
-            "ru": "время приближа ется к десяти (часам)"
-          }
-        ],
-        "register": [],
-        "id": 6
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "включение, соединение (об аппарате, механизме)",
-        "examples": [],
-        "register": [],
-        "id": 7
-      },
-      {
-        "partOfSpeech": "adjective",
-        "translation": "расположенная слева; та, на которой стоит бэтсмен (о стороне крикетного поля)",
-        "examples": [],
-        "register": [
-          "спортивное"
-        ],
-        "id": 8,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "adjective",
-        "translation": "знающий тайну, секрет",
-        "examples": [],
-        "register": [
-          "американский английский",
-          "разговорное"
-        ],
-        "id": 9,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "adjective",
-        "translation": "желающий принять участие (особ. в рискованном деле)",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ],
-        "id": 10
-      },
-      {
-        "partOfSpeech": "adjective",
-        "translation": "удачный, хороший",
-        "examples": [
-          {
-            "en": "it is one of my on days",
-            "ru": "я сегодня в хорошей форме"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ],
-        "id": 11
-      },
-      {
-        "partOfSpeech": "noun",
-        "translation": "левая сторона; часть поля, на которой стоит бэтсмен (в крикете)",
-        "examples": [],
-        "register": [
-          "спортивное"
-        ],
-        "id": 12
+        ]
       }
     ],
     "phrases": [
       {
         "id": 1,
-        "phrase": "on high",
-        "partOfSpeech": "preposition",
-        "translation": "вверху, на высоте",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 2,
         "phrase": "and so on",
         "partOfSpeech": "adverb",
         "translation": "и так далее",
-        "examples": [],
-        "register": []
+        "register": [],
+        "examples": []
       },
       {
-        "phrase": "to be on to smb.",
+        "id": 2,
+        "phrase": "on time",
         "partOfSpeech": "adverb",
-        "translation": "раскусить кого-либо",
-        "examples": [],
+        "translation": "вовремя, точно по расписанию",
         "register": [],
-        "id": 3
+        "examples": []
+      },
+      {
+        "id": 3,
+        "phrase": "on purpose",
+        "partOfSpeech": "adverb",
+        "translation": "нарочно, специально",
+        "register": [],
+        "examples": []
+      },
+      {
+        "id": 4,
+        "phrase": "on foot",
+        "partOfSpeech": "adverb",
+        "translation": "пешком",
+        "register": [],
+        "examples": []
       }
     ]
   },
@@ -224644,7 +224468,7 @@
     "meanings": [
       {
         "partOfSpeech": "adverb",
-        "translation": "вне, снаружи; наружу; вон; передаётся тж. приставкой вы-",
+        "translation": "вне, снаружи; наружу, вон (передаётся также приставкой вы-)",
         "examples": [
           {
             "en": "he is out",
@@ -224828,7 +224652,7 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "выездной матч",
+        "translation": "выездной, гостевой (о матче)",
         "examples": [],
         "register": [],
         "id": 7,
@@ -224922,7 +224746,7 @@
         "id": 1,
         "phrase": "she is out for compliments",
         "partOfSpeech": "noun",
-        "translation": "она напрашивается на плименты",
+        "translation": "она напрашивается на комплименты",
         "examples": [],
         "register": [
           "коммерция"
@@ -307043,7 +306867,12 @@
       {
         "partOfSpeech": "adverb",
         "translation": "тоже, также",
-        "examples": [],
+        "examples": [
+          {
+            "en": "I like music. — So do I",
+            "ru": "Я люблю музыку. — Я тоже"
+          }
+        ],
         "register": [],
         "id": 2,
         "primary": true
@@ -307214,7 +307043,7 @@
         "id": 6,
         "phrase": "and so on, and so forth",
         "partOfSpeech": "noun",
-        "translation": "и так далее, и тому подобное 2. conj; так что, ому",
+        "translation": "и так далее, и тому подобное",
         "examples": [],
         "register": [
           "поэтическое"
@@ -359310,7 +359139,7 @@
       {
         "id": 3,
         "partOfSpeech": "adverb",
-        "translation": "ёкший (о времени)",
+        "translation": "истёкший (о времени: time is up)",
         "examples": [
           {
             "en": "time is up",
@@ -368515,9 +368344,18 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "(косв. п. us) мы",
-        "examples": [],
+        "translation": "мы (личное местоимение 1-го лица множественного числа)",
         "register": [],
+        "examples": [
+          {
+            "en": "we are ready",
+            "ru": "мы готовы"
+          },
+          {
+            "en": "we live in London",
+            "ru": "мы живём в Лондоне"
+          }
+        ],
         "primary": true
       }
     ]
@@ -372869,23 +372707,19 @@
       {
         "id": 5,
         "partOfSpeech": "pronoun",
-        "translation": "биографический справочник современников",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "pronoun",
-        "translation": "биографический справочник умерших",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "pronoun",
         "translation": "как можно было бы сказать",
         "examples": [],
         "register": []
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "Who's Who",
+        "partOfSpeech": "noun",
+        "translation": "справочник «Кто есть кто»",
+        "register": [],
+        "examples": []
       }
     ]
   },
@@ -373798,204 +373632,78 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "воля; сила воли",
+        "partOfSpeech": "verb",
+        "translation": "вспомогательный глагол будущего времени (образует Future Simple: will do, will go)",
+        "register": [],
         "examples": [
           {
-            "en": "the will to live",
-            "ru": "воля к жизни"
+            "en": "I will call you tomorrow",
+            "ru": "я позвоню тебе завтра"
           },
           {
-            "en": "will can conquer habit ()",
-            "ru": "(дурную) привычку можно преодолеть силой воли"
-          },
-          {
-            "en": "to take the will for the deed",
-            "ru": "довольствоваться обещаниями"
+            "en": "it will rain",
+            "ru": "пойдёт дождь"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
         "id": 2,
-        "partOfSpeech": "noun",
-        "translation": "воля, твёрдое намерение; желание",
+        "partOfSpeech": "verb",
+        "translation": "модальный глагол волеизъявления, согласия или вежливой просьбы",
+        "register": [],
         "examples": [
           {
-            "en": "against one's will",
-            "ru": "против воли"
+            "en": "will you help me?",
+            "ru": "поможешь мне?, не поможешь ли ты мне?"
           },
           {
-            "en": "at will",
-            "ru": "по желанию, как угодно"
-          },
-          {
-            "en": "what is your will?",
-            "ru": "каково ваше желание?"
-          },
-          {
-            "en": "to have one's will",
-            "ru": "добиться своего"
-          },
-          {
-            "en": "a will of one's own",
-            "ru": "своеволие"
-          },
-          {
-            "en": "of one's own free will",
-            "ru": "добровольно, по собственному желанию"
+            "en": "I will do my best",
+            "ru": "я сделаю всё, что в моих силах"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
         "id": 3,
         "partOfSpeech": "noun",
-        "translation": "энергия, энтузиазм",
+        "translation": "воля, сила воли",
+        "register": [],
         "examples": [
           {
-            "en": "to work with a will",
-            "ru": "работать с энтузиазмом"
+            "en": "iron will",
+            "ru": "железная воля"
+          },
+          {
+            "en": "the will to live",
+            "ru": "воля к жизни"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
         "id": 4,
         "partOfSpeech": "noun",
-        "translation": "завещание",
-        "examples": [
-          {
-            "en": "to make (or to draw up) one's will",
-            "ru": "сделать завещание"
-          },
-          {
-            "en": "one's last will and testament",
-            "ru": "последняя воля (юридическая формула в завещании)"
-          }
-        ],
+        "translation": "завещание (last will and testament)",
         "register": [],
-        "primary": true
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "отношение (к кому-либо)",
         "examples": [
           {
-            "en": "good (ill) will",
-            "ru": "хорошее (плохое) отношение"
+            "en": "make a will",
+            "ru": "составить завещание"
           }
-        ],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "где хотение, там иумение",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
-        "translation": "было бы желание, а возможность найдётся",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "verb",
-        "translation": "проявлять волю; хотеть, желать",
-        "examples": [
-          {
-            "en": "let him do what he will",
-            "ru": "пусть он делает, что хочет"
-          },
-          {
-            "en": "he who wills success is halfway to it",
-            "ru": "воля к успеху есть залог успеха"
-          }
-        ],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "verb",
-        "translation": "заставлять, велеть, внушать",
-        "examples": [
-          {
-            "en": "to will oneself to fall asleep",
-            "ru": "заставить себя заснуть"
-          }
-        ],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "verb",
-        "translation": "завещать",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "verb",
-        "translation": "всегда бывают несчастные случаи",
-        "examples": [
-          {
-            "en": "he will smoke his pipe after dinner",
-            "ru": "после обеда он обыкновенно курит трубку"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "verb",
-        "translation": "модальный глагол выражает",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "verb",
-        "translation": "намерение, решимость, обещание (особ. в 1 л. ед. и мн. ч.)",
-        "examples": [
-          {
-            "en": "I will let you know",
-            "ru": "я непременно извещу вас"
-          }
-        ],
-        "register": [
-          "разговорное"
         ]
-      },
+      }
+    ],
+    "phrases": [
       {
-        "id": 14,
-        "partOfSpeech": "verb",
-        "translation": "предположение, вероятность",
-        "examples": [
-          {
-            "en": "you will be Mrs. Smith?",
-            "ru": "вы, вероятно, миссис Смит?"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "verb",
-        "translation": "будет сделано!",
-        "examples": [],
+        "id": 1,
+        "phrase": "where there's a will there's a way",
+        "partOfSpeech": "noun",
+        "translation": "где хотенье, там и уменье; было бы желание, а возможность найдётся",
         "register": [
-          "разговорное"
-        ]
+          "пословица"
+        ],
+        "examples": []
       }
     ]
   },
