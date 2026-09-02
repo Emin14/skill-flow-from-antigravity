@@ -17,7 +17,8 @@ import {
   ChevronRight,
   Plus,
 } from 'lucide-react';
-import { Variant14SegmentedPillCard } from './variants';
+import { Variant14SegmentedPillCard, Variant15LargeFontCard } from './variants';
+import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import styles from './EnglishTrainerModal.module.css';
 
 interface EnglishTrainerModalProps {
@@ -71,6 +72,20 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   const [isMatch, setIsMatch] = useState<boolean | null>(null);
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [isLoadingRandom, setIsLoadingRandom] = useState<boolean>(false);
+  const [cardVariant, setCardVariant] = useState<'1' | '2'>('1');
+
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEYS.ENGLISH_CARD_VARIANT);
+    if (saved === '1' || saved === '2') {
+      setCardVariant(saved);
+    }
+  }, []);
+
+  const handleSelectVariant = (v: '1' | '2') => {
+    setCardVariant(v);
+    localStorage.setItem(STORAGE_KEYS.ENGLISH_CARD_VARIANT, v);
+    triggerHapticFeedback('light');
+  };
 
   const handleLoadRandomWords = async () => {
     setIsLoadingRandom(true);
@@ -393,7 +408,69 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
             </button>
           </div>
         ) : currentCard ? (
-          <div ref={cardContentRef} className={styles.card}>
+          <>
+            {/* Variant Switcher Button Above Modal Card */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '4px',
+                padding: '3px 5px',
+                marginBottom: '6px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid var(--color-border)',
+                borderRadius: '12px',
+                alignSelf: 'center',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.25)',
+                userSelect: 'none',
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => handleSelectVariant('1')}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '4px 10px',
+                  borderRadius: '8px',
+                  fontSize: '11.5px',
+                  fontWeight: cardVariant === '1' ? 700 : 500,
+                  background: cardVariant === '1' ? 'var(--color-accent)' : 'transparent',
+                  color: cardVariant === '1' ? '#ffffff' : 'var(--color-text-muted)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                <span>Вариант 1 (Стандарт)</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSelectVariant('2')}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  padding: '4px 10px',
+                  borderRadius: '8px',
+                  fontSize: '11.5px',
+                  fontWeight: cardVariant === '2' ? 700 : 500,
+                  background: cardVariant === '2' ? 'var(--color-accent)' : 'transparent',
+                  color: cardVariant === '2' ? '#ffffff' : 'var(--color-text-muted)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                <span>Вариант 2 (Крупный шрифт)</span>
+              </button>
+            </div>
+
+            <div ref={cardContentRef} className={styles.card}>
             {/* Single Harmonious Top Ribbon with Fixed Height */}
             <div
               style={{
@@ -547,23 +624,42 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
             {/* Core Card Body */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
 
-              {/* Master Word Card Component */}
-              <Variant14SegmentedPillCard
-                currentCard={currentCard}
-                meaningsList={meaningsList}
-                safeMeaningIndex={safeMeaningIndex}
-                currentMeaning={currentMeaning}
-                displayTranscription={displayTranscription}
-                settings={settings}
-                onSelectMeaning={(idx) => {
-                  setMeaningIndex(idx);
-                  triggerHapticFeedback('light');
-                }}
-                renderHighlightedSentence={renderHighlightedSentence}
-                isReviewWord={isReviewWord}
-                isAnswerRevealed={!isReviewWord ? true : isAnswerRevealed}
-                onRevealAnswer={handleRevealAnswer}
-              />
+              {/* Master Word Card Component (Variant 1 or Variant 2) */}
+              {cardVariant === '2' ? (
+                <Variant15LargeFontCard
+                  currentCard={currentCard}
+                  meaningsList={meaningsList}
+                  safeMeaningIndex={safeMeaningIndex}
+                  currentMeaning={currentMeaning}
+                  displayTranscription={displayTranscription}
+                  settings={settings}
+                  onSelectMeaning={(idx) => {
+                    setMeaningIndex(idx);
+                    triggerHapticFeedback('light');
+                  }}
+                  renderHighlightedSentence={renderHighlightedSentence}
+                  isReviewWord={isReviewWord}
+                  isAnswerRevealed={!isReviewWord ? true : isAnswerRevealed}
+                  onRevealAnswer={handleRevealAnswer}
+                />
+              ) : (
+                <Variant14SegmentedPillCard
+                  currentCard={currentCard}
+                  meaningsList={meaningsList}
+                  safeMeaningIndex={safeMeaningIndex}
+                  currentMeaning={currentMeaning}
+                  displayTranscription={displayTranscription}
+                  settings={settings}
+                  onSelectMeaning={(idx) => {
+                    setMeaningIndex(idx);
+                    triggerHapticFeedback('light');
+                  }}
+                  renderHighlightedSentence={renderHighlightedSentence}
+                  isReviewWord={isReviewWord}
+                  isAnswerRevealed={!isReviewWord ? true : isAnswerRevealed}
+                  onRevealAnswer={handleRevealAnswer}
+                />
+              )}
 
               {/* Input & Action Controls: Tailored by Mode */}
               {isReviewWord ? (
@@ -734,6 +830,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
               )}
             </div>
           </div>
+          </>
         ) : null}
       </div>
     </div>
