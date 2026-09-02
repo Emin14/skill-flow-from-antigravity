@@ -5,6 +5,7 @@ import { BaseWordCardProps } from './types';
 import { speakEnglishWord, triggerHapticFeedback } from '@/entities/english';
 import { copyToClipboard } from '@/shared/lib/clipboard';
 import { Volume2, ChevronLeft, ChevronRight, Copy, Check, Layers, Sparkles, ArrowUpRight, X, Eye } from 'lucide-react';
+import styles from './Variant14SegmentedPillCard.module.css';
 
 /**
  * Master Word Card: Variant 14 Segmented Pill Card
@@ -649,59 +650,26 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           <button
             type="button"
             onClick={() => setIsOverlayOpen(true)}
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '0 12px',
-              borderRadius: '8px',
-              border: '1px solid rgba(168, 85, 247, 0.45)',
-              background: 'linear-gradient(90deg, rgba(168, 85, 247, 0.16) 0%, rgba(147, 51, 234, 0.24) 100%)',
-              color: '#ffffff',
-              cursor: 'pointer',
-              fontSize: '12px',
-              fontWeight: 700,
-              transition: 'all 0.15s ease',
-              boxSizing: 'border-box',
-            }}
+            className={styles.phrasesBtn}
             title="Открыть список фраз и идиом с этим словом"
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={14} color="#d8b4fe" />
-              <span style={{ color: '#ffffff', fontWeight: 600 }}>Фразовые глаголы к слову</span>
-              <span style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.8)', fontWeight: 600 }}>
+              <Sparkles size={14} className={styles.phrasesSparkles} />
+              <span className={styles.phrasesTitle}>Фразовые глаголы к слову</span>
+              <span className={styles.phrasesCount}>
                 ({cardPhrases.length})
               </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontSize: '11.5px', fontWeight: 700, color: '#d8b4fe' }}>
-              <span style={{ color: '#d8b4fe' }}>Посмотреть</span>
+            <div className={styles.phrasesAction}>
+              <span>Посмотреть</span>
               <ArrowUpRight size={14} />
             </div>
           </button>
         ) : (
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '0 12px',
-              borderRadius: '8px',
-              border: '1px dashed var(--color-border)',
-              background: 'var(--color-surface-hover)',
-              color: 'var(--color-text-muted)',
-              fontSize: '11.5px',
-              fontWeight: 500,
-              boxSizing: 'border-box',
-              opacity: 0.8,
-            }}
-          >
+          <div className={styles.phrasesEmpty}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <Sparkles size={12} color="var(--color-text-disabled)" />
-              <span style={{ color: '#ffffff' }}>Фразовых выражений нет</span>
+              <span className={styles.phrasesEmptyText}>Фразовых выражений нет</span>
             </div>
             <span style={{ fontSize: '10.5px', color: 'var(--color-text-disabled)' }}>—</span>
           </div>
