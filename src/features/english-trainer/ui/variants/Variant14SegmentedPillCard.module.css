@@ -88,3 +88,174 @@
 .phrasesEmptyText {
   color: var(--color-text-muted);
 }
+
+/* High-Contrast Luminous Tokens for Word Card Elements (Zero low-contrast blues) */
+
+/* Grammar Form Labels (past:, part.:, -ing:, pl.:, comp.:, superl.:) */
+.formLabel {
+  color: #facc15; /* Warm luminous amber/gold in dark mode */
+  font-weight: 800;
+}
+
+:global([data-theme='light']) .formLabel {
+  color: #b45309; /* Deep amber bronze in light mode */
+  font-weight: 800;
+}
+
+/* Synonyms Label */
+.synonymsLabel {
+  color: #facc15;
+  font-weight: 800;
+}
+
+:global([data-theme='light']) .synonymsLabel {
+  color: #b45309;
+  font-weight: 800;
+}
+
+/* Part of Speech Badge */
+.posBadge {
+  background: rgba(168, 85, 247, 0.18);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.38);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0.5px 5px;
+  border-radius: 3.5px;
+  text-transform: lowercase;
+  line-height: 13px;
+  display: inline-block;
+}
+
+:global([data-theme='light']) .posBadge {
+  background: rgba(126, 34, 206, 0.10);
+  color: #7e22ce;
+  border: 1px solid rgba(126, 34, 206, 0.25);
+}
+
+/* Audio speaker button */
+.audioBtn {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+  border-radius: 6px;
+  width: 28px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+.audioBtn:hover {
+  background: var(--color-surface-active);
+  color: var(--color-text-primary);
+}
+
+/* Meaning Pills */
+.pillBtn {
+  padding: 2px 9px;
+  border-radius: 10px;
+  font-size: 11.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+}
+
+.pillSelected {
+  border: 1.5px solid #a855f7;
+  background: rgba(168, 85, 247, 0.26);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+:global([data-theme='light']) .pillSelected {
+  border: 1.5px solid #7e22ce;
+  background: rgba(126, 34, 206, 0.12);
+  color: #581c87;
+  font-weight: 800;
+}
+
+.pillInactive {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-hover);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+/* Pinned Expander Pill */
+.expanderPill {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-hover);
+  color: var(--color-text-muted);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  height: 24px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.expanderPillActive {
+  background: rgba(168, 85, 247, 0.22);
+  border-color: rgba(168, 85, 247, 0.50);
+  color: #d8b4fe;
+}
+
+:global([data-theme='light']) .expanderPillActive {
+  background: rgba(126, 34, 206, 0.12);
+  border-color: rgba(126, 34, 206, 0.40);
+  color: #7e22ce;
+}
+
+/* Masked State (Active Recall Prompt) */
+.maskedEye {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #facc15;
+}
+
+:global([data-theme='light']) .maskedEye {
+  background: rgba(217, 119, 6, 0.10);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  color: #b45309;
+}
+
+.revealBtn {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #facc15;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+  margin-top: 2px;
+}
+
+:global([data-theme='light']) .revealBtn {
+  color: #b45309;
+}

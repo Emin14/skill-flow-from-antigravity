@@ -97,27 +97,27 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
     if (forms.verbForms && (forms.verbForms.past || forms.verbForms.pastParticiple || forms.verbForms.ing)) {
       return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-          {forms.verbForms.past && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>past:</strong> {forms.verbForms.past}</span>}
+          {forms.verbForms.past && <span><strong className={styles.formLabel}>past:</strong> {forms.verbForms.past}</span>}
           {forms.verbForms.past && forms.verbForms.pastParticiple && <span style={{ color: 'var(--color-border)' }}>|</span>}
-          {forms.verbForms.pastParticiple && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>part.:</strong> {forms.verbForms.pastParticiple}</span>}
+          {forms.verbForms.pastParticiple && <span><strong className={styles.formLabel}>part.:</strong> {forms.verbForms.pastParticiple}</span>}
           {(forms.verbForms.past || forms.verbForms.pastParticiple) && forms.verbForms.ing && <span style={{ color: 'var(--color-border)' }}>|</span>}
-          {forms.verbForms.ing && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>-ing:</strong> {forms.verbForms.ing}</span>}
+          {forms.verbForms.ing && <span><strong className={styles.formLabel}>-ing:</strong> {forms.verbForms.ing}</span>}
         </div>
       );
     }
     if (forms.nounForms?.plural) {
       return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
-          <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>pl.:</strong> {forms.nounForms.plural}</span>
+          <span><strong className={styles.formLabel}>pl.:</strong> {forms.nounForms.plural}</span>
         </div>
       );
     }
     if (forms.adjectiveForms?.comparative || forms.adjectiveForms?.superlative) {
       return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
-          {forms.adjectiveForms.comparative && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>comp.:</strong> {forms.adjectiveForms.comparative}</span>}
+          {forms.adjectiveForms.comparative && <span><strong className={styles.formLabel}>comp.:</strong> {forms.adjectiveForms.comparative}</span>}
           {forms.adjectiveForms.comparative && forms.adjectiveForms.superlative && <span style={{ color: 'var(--color-border)' }}>|</span>}
-          {forms.adjectiveForms.superlative && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>superl.:</strong> {forms.adjectiveForms.superlative}</span>}
+          {forms.adjectiveForms.superlative && <span><strong className={styles.formLabel}>superl.:</strong> {forms.adjectiveForms.superlative}</span>}
         </div>
       );
     }
@@ -148,23 +148,10 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           <button
             type="button"
             onClick={() => speakEnglishWord(currentCard.word, settings.accent)}
-            style={{
-              border: '1px solid var(--color-accent-border)',
-              background: 'var(--color-accent-light)',
-              color: 'var(--color-accent-text)',
-              borderRadius: '6px',
-              width: '28px',
-              height: '24px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              padding: 0,
-              transition: 'all 0.15s ease',
-            }}
-            title="Озвучить слово"
+            className={styles.audioBtn}
+            title={`Произнести (${settings.accent.toUpperCase()})`}
           >
-            <Volume2 size={14} />
+            <Volume2 size={15} />
           </button>
 
           {/* Centered Headword */}
@@ -227,7 +214,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           style={{
             border: '1px solid var(--color-border)',
             background: currentSafeIdx === 0 || isMasked ? 'var(--color-surface-hover)' : 'var(--color-surface)',
-            color: currentSafeIdx === 0 || isMasked ? 'var(--color-text-disabled)' : 'var(--color-accent-text)',
+            color: currentSafeIdx === 0 || isMasked ? 'var(--color-text-disabled)' : 'var(--color-text-primary)',
             width: '25px',
             height: '25px',
             borderRadius: '7px',
@@ -271,22 +258,8 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                 type="button"
                 disabled={isMasked}
                 onClick={() => onSelectMeaning(i)}
-                style={{
-                  padding: '2px 9px',
-                  borderRadius: '10px',
-                  border: isSelected ? '1.5px solid var(--color-accent)' : '1px solid var(--color-border)',
-                  background: isSelected ? 'var(--color-accent-light)' : 'var(--color-surface-hover)',
-                  color: isSelected ? 'var(--color-accent-text)' : 'var(--color-text-secondary)',
-                  fontSize: '11.5px',
-                  fontWeight: isSelected ? 800 : 600,
-                  cursor: isMasked ? 'default' : 'pointer',
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                  transition: 'all 0.15s ease',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  height: '24px',
-                }}
+                className={`${styles.pillBtn} ${isSelected ? styles.pillSelected : styles.pillInactive}`}
+                style={{ cursor: isMasked ? 'default' : 'pointer' }}
                 title={m.translation}
               >
                 {shortTr}
@@ -306,27 +279,11 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               setShowAllMeanings(!showAllMeanings);
               onSelectMeaning(0);
             }}
-            style={{
-              border: '1px solid var(--color-border)',
-              background: showAllMeanings ? 'var(--color-accent-light)' : 'var(--color-surface-hover)',
-              color: showAllMeanings ? 'var(--color-accent-text)' : 'var(--color-text-muted)',
-              fontSize: '9.5px',
-              fontWeight: 700,
-              padding: '2px 7px',
-              borderRadius: '10px',
-              cursor: isMasked ? 'default' : 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '3px',
-              lineHeight: 1,
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-              height: '24px',
-              transition: 'all 0.15s ease',
-            }}
+            className={`${styles.expanderPill} ${showAllMeanings ? styles.expanderPillActive : ''}`}
+            style={{ cursor: isMasked ? 'default' : 'pointer' }}
             title={showAllMeanings ? 'Показать основные значения' : `Показать все ${meaningsList.length} значений`}
           >
-            <Layers size={9.5} style={{ color: showAllMeanings ? 'var(--color-accent-text)' : 'var(--color-text-muted)' }} />
+            <Layers size={9.5} />
             {showAllMeanings ? 'Основные' : `+${secondaryCount} доп.`}
           </button>
         )}
@@ -339,7 +296,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           style={{
             border: '1px solid var(--color-border)',
             background: currentSafeIdx === total - 1 || isMasked ? 'var(--color-surface-hover)' : 'var(--color-surface)',
-            color: currentSafeIdx === total - 1 || isMasked ? 'var(--color-text-disabled)' : 'var(--color-accent-text)',
+            color: currentSafeIdx === total - 1 || isMasked ? 'var(--color-text-disabled)' : 'var(--color-text-primary)',
             width: '25px',
             height: '25px',
             borderRadius: '7px',
@@ -390,19 +347,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               userSelect: 'none',
             }}
           >
-            <div
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '50%',
-                background: 'var(--color-accent-light)',
-                border: '1px solid var(--color-accent-border)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--color-accent-text)',
-              }}
-            >
+            <div className={styles.maskedEye}>
               <Eye size={19} />
             </div>
 
@@ -421,21 +366,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                 e.stopPropagation();
                 onRevealAnswer?.();
               }}
-              style={{
-                background: 'var(--color-surface)',
-                border: '1px solid var(--color-border)',
-                borderRadius: '8px',
-                padding: '5px 14px',
-                fontSize: '12px',
-                fontWeight: 700,
-                color: 'var(--color-accent-text)',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '5px',
-                transition: 'all 0.15s ease',
-                marginTop: '2px',
-              }}
+              className={styles.revealBtn}
             >
               <Eye size={13} />
               <span>Показать ответ (Enter)</span>
@@ -459,20 +390,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', width: '100%' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '5px', marginBottom: '1px' }}>
                 {/* Micro-increased POS badge: 9px (from 8px) */}
-                <span
-                  style={{
-                    background: 'var(--color-accent-light)',
-                    color: 'var(--color-accent-text)',
-                    border: '1px solid var(--color-accent-border)',
-                    fontSize: '9px',
-                    fontWeight: 700,
-                    padding: '0.5px 5px',
-                    borderRadius: '3.5px',
-                    textTransform: 'lowercase',
-                    lineHeight: '13px',
-                    display: 'inline-block',
-                  }}
-                >
+                <span className={styles.posBadge}>
                   {activeMeaning.partOfSpeech || 'noun'}
                 </span>
 
@@ -541,7 +459,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
             {/* Synonyms Section */}
             {activeMeaning.synonyms && activeMeaning.synonyms.length > 0 && (
               <div style={{ fontSize: '12px', marginTop: '3px', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                <span style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>Синонимы: </span>
+                <span className={styles.synonymsLabel}>Синонимы: </span>
                 <span style={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>
                   {activeMeaning.synonyms.join(', ')}
                 </span>

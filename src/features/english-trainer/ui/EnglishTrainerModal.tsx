@@ -44,10 +44,7 @@ const renderHighlightedSentence = (text: string, target: string) => {
       return (
         <span
           key={index}
-          style={{
-            color: 'var(--color-accent-text)',
-            fontWeight: 600,
-          }}
+          className={styles.highlightedWord}
         >
           {part}
         </span>
@@ -495,26 +492,17 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 {currentCard.topics && currentCard.topics.map((t: string, idx: number) => (
                   <span
                     key={idx}
-                    style={{
-                      background: 'rgba(168, 85, 247, 0.14)',
-                      color: '#a855f7',
-                      border: '1px solid rgba(168, 85, 247, 0.3)',
-                      fontSize: '10px',
-                      fontWeight: 700,
-                      padding: '2px 7px',
-                      borderRadius: '10px',
-                      flexShrink: 0,
-                    }}
+                    className={styles.topicBadge}
                   >
                     {t}
                   </span>
                 ))}
 
                 {/* Oxford 3000 / 5000 Lists */}
-                <span style={{ border: '1px solid var(--color-accent-border)', color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', padding: '1px 5px', borderRadius: '5px', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>
+                <span className={styles.oxfordBadge}>
                   3000
                 </span>
-                <span style={{ border: '1px solid var(--color-accent-border)', color: 'var(--color-accent-text)', background: 'var(--color-accent-light)', padding: '1px 5px', borderRadius: '5px', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>
+                <span className={styles.oxfordBadge}>
                   5000
                 </span>
               </div>

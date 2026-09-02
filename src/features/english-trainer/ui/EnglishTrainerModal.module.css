@@ -142,11 +142,11 @@
 }
 
 .counterBadge {
-  background: var(--color-accent-light);
-  border: 1px solid var(--color-accent-border);
-  color: var(--color-accent-text);
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 3px 8px;
   border-radius: var(--radius-full, 9999px);
 }
@@ -159,6 +159,23 @@
   font-weight: 700;
   padding: 3px 6px;
   border-radius: var(--radius-sm, 6px);
+}
+
+.topicBadge {
+  background: rgba(168, 85, 247, 0.16);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+:global([data-theme='light']) .topicBadge {
+  background: rgba(126, 34, 206, 0.10);
+  color: #7e22ce;
+  border: 1px solid rgba(126, 34, 206, 0.25);
 }
 
 /* Word Title Section */
@@ -183,9 +200,9 @@
 }
 
 .audioBtn {
-  background: var(--color-accent-light);
-  border: 1px solid var(--color-accent-border);
-  color: var(--color-accent-text);
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -217,13 +234,50 @@
 }
 
 .cardTypePillReview {
-  background: rgba(99, 102, 241, 0.12);
-  color: var(--color-accent-text);
-  border: 1px solid var(--color-accent-border);
+  background: rgba(168, 85, 247, 0.15);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.35);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 2px 8px;
   border-radius: var(--radius-full, 9999px);
+}
+
+:global([data-theme='light']) .cardTypePillReview {
+  background: rgba(126, 34, 206, 0.10);
+  color: #7e22ce;
+  border: 1px solid rgba(126, 34, 206, 0.25);
+}
+
+/* Oxford 3000 / 5000 Badges */
+.oxfordBadge {
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+:global([data-theme='light']) .oxfordBadge {
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  color: #b45309;
+  background: rgba(217, 119, 6, 0.10);
+}
+
+/* Highlighted target word in example sentences */
+.highlightedWord {
+  color: #facc15;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.25);
+}
+
+:global([data-theme='light']) .highlightedWord {
+  color: #b45309;
+  font-weight: 700;
+  text-shadow: none;
 }
 
 .cardTypePillNew {
@@ -391,7 +445,7 @@
 .meanings {
   font-size: 14px;
   font-weight: 600;
-  color: var(--color-accent-text);
+  color: var(--color-text-primary);
 }
 
 .detailsBlock {
@@ -549,11 +603,16 @@
 }
 
 .rateGoodBtn {
-  border-color: var(--color-accent-border);
-  color: var(--color-accent-text);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
 }
 .rateGoodBtn:hover {
-  background: var(--color-accent-light);
+  background: rgba(56, 189, 248, 0.14);
+}
+
+:global([data-theme='light']) .rateGoodBtn {
+  border-color: rgba(2, 132, 199, 0.35);
+  color: #0284c7;
 }
 
 .rateEasyBtn {
@@ -738,15 +797,21 @@
 }
 
 .posBadge {
-  background: var(--color-accent-light);
-  border: 1px solid var(--color-accent-border);
-  color: var(--color-accent-text);
+  background: rgba(168, 85, 247, 0.18);
+  border: 1px solid rgba(168, 85, 247, 0.38);
+  color: #d8b4fe;
   font-size: 11.5px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 3px 9px;
   border-radius: 8px;
+}
+
+:global([data-theme='light']) .posBadge {
+  background: rgba(126, 34, 206, 0.10);
+  border: 1px solid rgba(126, 34, 206, 0.25);
+  color: #7e22ce;
 }
 
 .registerBadge {
@@ -805,7 +870,7 @@
 
 .sliderNavBtn:hover:not(:disabled) {
   background: var(--color-surface-active);
-  color: var(--color-accent-text);
+  color: var(--color-text-primary);
 }
 
 .sliderNavBtn:disabled {
@@ -824,7 +889,7 @@
 .meaningTranslation {
   font-size: 16.5px;
   font-weight: 700;
-  color: var(--color-accent-text);
+  color: var(--color-text-primary);
   line-height: 1.4;
   letter-spacing: -0.2px;
 }
