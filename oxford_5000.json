@@ -23980,16 +23980,24 @@
       {
         "id": 1,
         "partOfSpeech": "verb",
-        "translation": "быть, существовать",
+        "translation": "быть, существовать; являться (глагол-связка)",
         "register": [],
         "examples": [
           {
-            "en": "to be or not to be",
-            "ru": "быть или не быть"
+            "en": "I am a student",
+            "ru": "я студент (am — форма настоящего времени для 1-го лица: I)"
           },
           {
-            "en": "there is a book on the table",
-            "ru": "на столе лежит (есть) книга"
+            "en": "she is a doctor",
+            "ru": "она врач (is — форма настоящего времени для 3-го лица: he/she/it)"
+          },
+          {
+            "en": "they are ready",
+            "ru": "они готовы (are — форма настоящего времени для множественного числа и you/we/they)"
+          },
+          {
+            "en": "be quiet!",
+            "ru": "будь тише! / ведите себя тихо! (be — базовая форма в повелительном наклонении)"
           }
         ],
         "primary": true
@@ -24001,16 +24009,20 @@
         "register": [],
         "examples": [
           {
-            "en": "where are my books?",
-            "ru": "где мои книги?"
+            "en": "he was at home yesterday",
+            "ru": "он был дома вчера (was — форма прошедшего времени для единственного числа: I/he/she/it)"
           },
           {
-            "en": "he is in London now",
-            "ru": "он сейчас находится в Лондоне"
+            "en": "we were at the cinema last night",
+            "ru": "мы были в кино прошлым вечером (were — форма прошедшего времени для множественного числа: we/you/they)"
           },
           {
-            "en": "I have never been to Paris",
-            "ru": "я никогда не был в Париже"
+            "en": "I have been to London twice",
+            "ru": "я был в Лондоне дважды (been — 3-я форма / причастие после have в Present Perfect)"
+          },
+          {
+            "en": "if I were you, I would go",
+            "ru": "если бы я был на твоём месте, я бы пошёл (were — форма сослагательного наклонения для нереального условия)"
           }
         ],
         "primary": true
@@ -24018,20 +24030,24 @@
       {
         "id": 3,
         "partOfSpeech": "verb",
-        "translation": "являться, быть (глагол-связка)",
+        "translation": "вспомогательный глагол (образует времена Continuous и страдательный залог Passive)",
         "register": [],
         "examples": [
           {
-            "en": "he is a teacher",
-            "ru": "он учитель"
+            "en": "she is reading a book now",
+            "ru": "она читает книгу сейчас (is — вспомогательный глагол для времени Present Continuous)"
           },
           {
-            "en": "she is beautiful",
-            "ru": "она красивая"
+            "en": "the house was built in 2020",
+            "ru": "дом был построен в 2020 году (was — вспомогательный глагол прошедшего времени для страдательного залога Past Simple Passive)"
           },
           {
-            "en": "I am cold",
-            "ru": "мне холодно"
+            "en": "the car is being repaired right now",
+            "ru": "машину ремонтируют прямо сейчас (is being — форма Present Continuous Passive для длящегося пассивного действия)"
+          },
+          {
+            "en": "he is being very polite today",
+            "ru": "он ведёт себя очень вежливо сегодня (is being — временное поведение человека в данный момент)"
           }
         ],
         "primary": true
@@ -24039,16 +24055,16 @@
       {
         "id": 4,
         "partOfSpeech": "verb",
-        "translation": "стоить (о цене)",
+        "translation": "быть должным по плану или договорённости (модальный глагол be to)",
         "register": [],
         "examples": [
           {
-            "en": "how much is it?",
-            "ru": "сколько это стоит?"
+            "en": "we are to meet at 5 o'clock",
+            "ru": "мы должны встретиться в пять часов (are to — запланированная договорённость)"
           },
           {
-            "en": "it is ten dollars",
-            "ru": "это стоит десять долларов"
+            "en": "he was to arrive yesterday",
+            "ru": "он должен был приехать вчера (was to — план в прошлом)"
           }
         ],
         "primary": true
@@ -24056,48 +24072,32 @@
       {
         "id": 5,
         "partOfSpeech": "verb",
-        "translation": "происходить, случаться",
+        "translation": "стоить (о цене)",
         "register": [],
         "examples": [
           {
-            "en": "the party was yesterday",
-            "ru": "вечеринка была (проходила) вчера"
+            "en": "how much is it?",
+            "ru": "сколько это стоит? (is — для единственного числа it)"
           },
           {
-            "en": "the concert will be on Sunday",
-            "ru": "концерт состоится в воскресенье"
+            "en": "these shoes are fifty dollars",
+            "ru": "эти туфли стоят 50 долларов (are — для множественного числа shoes)"
           }
         ]
       },
       {
         "id": 6,
         "partOfSpeech": "verb",
-        "translation": "вспомогательный глагол (образует Continuous и пассивный залог)",
+        "translation": "происходить, случаться, состояться",
         "register": [],
         "examples": [
           {
-            "en": "I am reading a book",
-            "ru": "я читаю книгу"
+            "en": "the party was on Saturday",
+            "ru": "вечеринка была (состоялась) в субботу (was — прошедшее время)"
           },
           {
-            "en": "the letter was written yesterday",
-            "ru": "письмо было написано вчера"
-          }
-        ]
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "verb",
-        "translation": "быть должным по плану или договорённости (модальный глагол be to)",
-        "register": [],
-        "examples": [
-          {
-            "en": "we are to meet at 5 o'clock",
-            "ru": "мы должны встретиться в пять часов (по договорённости)"
-          },
-          {
-            "en": "I am to inform you",
-            "ru": "я должен известить вас"
+            "en": "the concert will be tomorrow",
+            "ru": "концерт состоится завтра (will be — будущее время после will)"
           }
         ]
       }
