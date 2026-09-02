@@ -4,16 +4,18 @@ import React, { useState, useRef, useEffect } from 'react';
 import { BaseWordCardProps } from './types';
 import { speakEnglishWord, triggerHapticFeedback } from '@/entities/english';
 import { copyToClipboard } from '@/shared/lib/clipboard';
-import { useToastStore } from '@/shared/ui';
 import { Volume2, ChevronLeft, ChevronRight, Copy, Check, Layers, Sparkles, ArrowUpRight, X, Eye } from 'lucide-react';
 
 /**
- * Master Word Card: Variant 1 Layout with Variant 5 Phrases Modal Overlay
+ * Master Word Card: Variant 14 Segmented Pill Card
  * - Fully adapted for both Light and Dark themes via CSS design tokens
  * - Guaranteed 100% stable fixed height across all words (Zero height jumps / layout shift)
  * - Supports Active Recall Masking when repeating words (isReviewWord && !isAnswerRevealed)
- * - Inset meaning card with inner smooth scrolling for long examples
- * - External bottom chip with fixed-slot height for phrases overlay
+ * - Russian short translation on horizontal pills with pinned expander
+ * - High readability for examples (en: 13px, ru: 12px) and phrasal verbs
+ * - Crisp white text for phrases and idioms button
+ * - Inset meaning card with inner smooth scrolling
+ * - Reliable copy with visual checkmark (no unwanted closing of overlay, no toast popup)
  */
 export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
   currentCard,
@@ -39,13 +41,15 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
 
   const isMasked = isReviewWord && !isAnswerRevealed;
 
-  const handleCopy = async (text: string, index: number) => {
+  const handleCopy = async (text: string, index: number, e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
     if (!text) return;
     const success = await copyToClipboard(text);
     if (success) {
       setCopiedIndex(index);
       triggerHapticFeedback('light');
-      useToastStore.getState().showToast('Скопировано в буфер обмена', 'success', undefined, 2000);
       setTimeout(() => setCopiedIndex(null), 1500);
     }
   };
@@ -91,7 +95,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
   const renderFormsRow = () => {
     if (forms.verbForms && (forms.verbForms.past || forms.verbForms.pastParticiple || forms.verbForms.ing)) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {forms.verbForms.past && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>past:</strong> {forms.verbForms.past}</span>}
           {forms.verbForms.past && forms.verbForms.pastParticiple && <span style={{ color: 'var(--color-border)' }}>|</span>}
           {forms.verbForms.pastParticiple && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>part.:</strong> {forms.verbForms.pastParticiple}</span>}
@@ -102,14 +106,14 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
     }
     if (forms.nounForms?.plural) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
           <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>pl.:</strong> {forms.nounForms.plural}</span>
         </div>
       );
     }
     if (forms.adjectiveForms?.comparative || forms.adjectiveForms?.superlative) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '10.5px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '6px', fontSize: '11px', color: 'var(--color-text-primary)', fontWeight: 600, whiteSpace: 'nowrap' }}>
           {forms.adjectiveForms.comparative && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>comp.:</strong> {forms.adjectiveForms.comparative}</span>}
           {forms.adjectiveForms.comparative && forms.adjectiveForms.superlative && <span style={{ color: 'var(--color-border)' }}>|</span>}
           {forms.adjectiveForms.superlative && <span><strong style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>superl.:</strong> {forms.adjectiveForms.superlative}</span>}
@@ -170,7 +174,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           {/* Copy Button (After word) */}
           <button
             type="button"
-            onClick={() => handleCopy(currentCard.word, -1)}
+            onClick={(e) => handleCopy(currentCard.word, -1, e)}
             style={{
               border: '1px solid var(--color-border)',
               background: copiedIndex === -1 ? 'var(--color-success-light)' : 'var(--color-surface-hover)',
@@ -201,7 +205,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         {formsNode || <span style={{ opacity: 0, fontSize: '10.5px' }}>—</span>}
       </div>
 
-      {/* 3. Horizontal Meaning Pills Track with Quick-Switch Arrows [‹] [›] */}
+      {/* 3. Horizontal Meaning Pills Track with Russian Translation and Quick-Switch Arrows [‹] [›] */}
       <div
         style={{
           height: '28px',
@@ -239,7 +243,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           <ChevronLeft size={16} />
         </button>
 
-        {/* Scrollable Track */}
+        {/* Scrollable Track with Russian Translations */}
         <div
           ref={scrollContainerRef}
           style={{
@@ -383,7 +387,6 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               gap: '8px',
               cursor: 'pointer',
               userSelect: 'none',
-              textAlign: 'center',
             }}
           >
             <div
@@ -406,7 +409,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-text-primary)' }}>
                 Вспомните перевод слова
               </span>
-              <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)' }}>
+              <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
                 Напишите перевод ниже или нажмите кнопку
               </span>
             </div>
@@ -422,7 +425,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                 border: '1px solid var(--color-border)',
                 borderRadius: '8px',
                 padding: '5px 14px',
-                fontSize: '11.5px',
+                fontSize: '12px',
                 fontWeight: 700,
                 color: 'var(--color-accent-text)',
                 cursor: 'pointer',
@@ -453,36 +456,38 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           >
             {/* Upper Section: POS Badge & Register Badge on the Left, Translation Centered */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0px', width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '4px', marginBottom: '-1px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '5px', marginBottom: '1px' }}>
+                {/* Micro-increased POS badge: 9px (from 8px) */}
                 <span
                   style={{
                     background: 'var(--color-accent-light)',
                     color: 'var(--color-accent-text)',
                     border: '1px solid var(--color-accent-border)',
-                    fontSize: '8px',
+                    fontSize: '9px',
                     fontWeight: 700,
-                    padding: '0 4px',
-                    borderRadius: '3px',
+                    padding: '0.5px 5px',
+                    borderRadius: '3.5px',
                     textTransform: 'lowercase',
-                    lineHeight: '12px',
+                    lineHeight: '13px',
                     display: 'inline-block',
                   }}
                 >
                   {activeMeaning.partOfSpeech || 'noun'}
                 </span>
 
+                {/* Micro-increased «доп.»: 8.5px (from 7.5px) */}
                 {!activeMeaning.primary && (
                   <span
                     style={{
                       background: 'var(--color-surface-active)',
                       color: 'var(--color-text-muted)',
                       border: '1px solid var(--color-border)',
-                      fontSize: '7.5px',
+                      fontSize: '8.5px',
                       fontWeight: 700,
-                      padding: '0 3px',
-                      borderRadius: '3px',
+                      padding: '0.5px 4px',
+                      borderRadius: '3.5px',
                       textTransform: 'lowercase',
-                      lineHeight: '11px',
+                      lineHeight: '12px',
                       display: 'inline-block',
                     }}
                     title="Дополнительное / вторичное значение"
@@ -491,6 +496,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                   </span>
                 )}
 
+                {/* Micro-increased register badge: 8.5px (from 7.5px) */}
                 {activeMeaning.register && activeMeaning.register.length > 0 && activeMeaning.register.map((reg, idx) => (
                   <span
                     key={idx}
@@ -498,12 +504,12 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                       background: 'var(--color-danger-light)',
                       color: 'var(--color-danger)',
                       border: '1px solid var(--color-danger-border)',
-                      fontSize: '7.5px',
+                      fontSize: '8.5px',
                       fontWeight: 700,
-                      padding: '0 3px',
-                      borderRadius: '3px',
+                      padding: '0.5px 4px',
+                      borderRadius: '3.5px',
                       textTransform: 'lowercase',
-                      lineHeight: '11px',
+                      lineHeight: '12px',
                       display: 'inline-block',
                     }}
                   >
@@ -533,7 +539,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
 
             {/* Synonyms Section */}
             {activeMeaning.synonyms && activeMeaning.synonyms.length > 0 && (
-              <div style={{ fontSize: '11.5px', marginTop: '3px', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div style={{ fontSize: '12px', marginTop: '3px', marginBottom: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <span style={{ color: 'var(--color-accent-text)', fontWeight: 800 }}>Синонимы: </span>
                 <span style={{ color: 'var(--color-text-primary)', fontWeight: 500 }}>
                   {activeMeaning.synonyms.join(', ')}
@@ -546,7 +552,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               <div style={{ height: '1px', background: 'var(--color-border)', margin: '2px 0 3px 0' }} />
             )}
 
-            {/* Examples Section with One-Tap Copy */}
+            {/* Examples Section: Enhanced readability (en: 13px, ru: 12px, register: 8.5px) */}
             {activeMeaning.examples && activeMeaning.examples.length > 0 ? (
               <div
                 style={{
@@ -556,7 +562,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                 }}
               >
                 {activeMeaning.examples.map((ex, i) => (
-                  <div key={i} style={{ fontSize: '12px', lineHeight: 1.35 }}>
+                  <div key={i} style={{ fontSize: '13px', lineHeight: 1.38 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ color: 'var(--color-text-primary)', fontWeight: 500, display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap' }}>
                         <span>• {renderHighlightedSentence(ex.en, currentCard.word)}</span>
@@ -565,16 +571,16 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                             style={{
                               display: 'inline-flex',
                               alignItems: 'center',
-                              fontSize: '7.5px',
+                              fontSize: '8.5px',
                               fontWeight: 700,
                               textTransform: 'lowercase',
-                              padding: '0.5px 3.5px',
-                              borderRadius: '3px',
+                              padding: '0.5px 4px',
+                              borderRadius: '3.5px',
                               background: 'var(--color-warning-light)',
                               border: '1px solid var(--color-warning-border)',
                               color: 'var(--color-warning)',
                               marginLeft: '4px',
-                              lineHeight: 1.1,
+                              lineHeight: 1.15,
                             }}
                           >
                             {ex.register}
@@ -583,7 +589,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                       </div>
                       <button
                         type="button"
-                        onClick={() => handleCopy(ex.en, i)}
+                        onClick={(e) => handleCopy(ex.en, i, e)}
                         style={{
                           border: 'none',
                           background: 'transparent',
@@ -593,11 +599,11 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                         }}
                         title="Скопировать"
                       >
-                        {copiedIndex === i ? <Check size={11} /> : <Copy size={11} />}
+                        {copiedIndex === i ? <Check size={12} strokeWidth={2.5} /> : <Copy size={12} />}
                       </button>
                     </div>
                     {ex.ru && (
-                      <div style={{ color: 'var(--color-text-secondary)', fontSize: '11.5px', paddingLeft: '8px', marginTop: '1.5px' }}>
+                      <div style={{ color: 'var(--color-text-secondary)', fontSize: '12px', paddingLeft: '8px', marginTop: '1.5px' }}>
                         {ex.ru}
                       </div>
                     )}
@@ -605,7 +611,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                 ))}
               </div>
             ) : (
-              <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
+              <div style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', fontStyle: 'italic', padding: '6px 0' }}>
                 (примеров к этому значению нет)
               </div>
             )}
@@ -613,7 +619,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         )}
       </div>
 
-      {/* 5. Fixed 32px Slot for Phrases Button (Guarantees zero height jump across words) */}
+      {/* 5. Fixed 32px Slot for Phrases Button (Crisp White Text) */}
       <div style={{ height: '32px', minHeight: '32px', maxHeight: '32px', width: '100%', boxSizing: 'border-box' }}>
         {isMasked ? (
           <div
@@ -628,7 +634,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               border: '1px dashed var(--color-border)',
               background: 'var(--color-surface-hover)',
               color: 'var(--color-text-muted)',
-              fontSize: '11px',
+              fontSize: '11.5px',
               fontWeight: 500,
               boxSizing: 'border-box',
             }}
@@ -652,24 +658,25 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               padding: '0 12px',
               borderRadius: '8px',
               border: '1px solid rgba(168, 85, 247, 0.45)',
-              background: 'linear-gradient(90deg, rgba(168, 85, 247, 0.12) 0%, rgba(147, 51, 234, 0.18) 100%)',
-              color: 'var(--color-text-primary)',
+              background: 'linear-gradient(90deg, rgba(168, 85, 247, 0.16) 0%, rgba(147, 51, 234, 0.24) 100%)',
+              color: '#ffffff',
               cursor: 'pointer',
               fontSize: '12px',
               fontWeight: 700,
               transition: 'all 0.15s ease',
               boxSizing: 'border-box',
             }}
+            title="Открыть список фраз и идиом с этим словом"
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Sparkles size={14} color="#a855f7" />
-              <span>Фразовые глаголы к слову</span>
-              <span style={{ fontSize: '11px', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+              <Sparkles size={14} color="#d8b4fe" />
+              <span style={{ color: '#ffffff', fontWeight: 600 }}>Фразовые глаголы к слову</span>
+              <span style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.8)', fontWeight: 600 }}>
                 ({cardPhrases.length})
               </span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontSize: '11.5px', fontWeight: 700, color: '#a855f7' }}>
-              <span>Посмотреть</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontSize: '11.5px', fontWeight: 700, color: '#d8b4fe' }}>
+              <span style={{ color: '#d8b4fe' }}>Посмотреть</span>
               <ArrowUpRight size={14} />
             </div>
           </button>
@@ -686,21 +693,22 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
               border: '1px dashed var(--color-border)',
               background: 'var(--color-surface-hover)',
               color: 'var(--color-text-muted)',
-              fontSize: '11px',
+              fontSize: '11.5px',
               fontWeight: 500,
               boxSizing: 'border-box',
+              opacity: 0.8,
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <Sparkles size={12} color="var(--color-text-disabled)" />
-              <span>Фразовых выражений нет</span>
+              <span style={{ color: '#ffffff' }}>Фразовых выражений нет</span>
             </div>
             <span style={{ fontSize: '10.5px', color: 'var(--color-text-disabled)' }}>—</span>
           </div>
         )}
       </div>
 
-      {/* 6. Absolute Modal Overlay for Phrases (Takes 0px extra layout height, Theme Adaptive) */}
+      {/* 6. Absolute Modal Overlay for Phrases (Safe from outside click closes, copy will NOT close) */}
       {isOverlayOpen && !isMasked && (
         <div
           style={{
@@ -728,11 +736,11 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <Sparkles size={15} color="#9333ea" />
+              <Sparkles size={15} color="#c084fc" />
               <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-text-primary)' }}>
                 Фразовые глаголы к
               </span>
-              <span style={{ fontSize: '13px', color: '#a855f7', fontWeight: 800 }}>
+              <span style={{ fontSize: '13px', color: '#c084fc', fontWeight: 800 }}>
                 {currentCard.word}
               </span>
               <span style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontWeight: 500, marginLeft: '2px' }}>
@@ -779,8 +787,8 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                 <div
                   key={p.id || pIdx}
                   style={{
-                    fontSize: '13px',
-                    lineHeight: 1.4,
+                    fontSize: '13.5px',
+                    lineHeight: 1.42,
                     background: 'var(--color-surface-hover)',
                     padding: '7px 10px',
                     borderRadius: '8px',
@@ -795,7 +803,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            fontSize: '8.5px',
+                            fontSize: '9px',
                             fontWeight: 700,
                             textTransform: 'lowercase',
                             padding: '1px 4.5px',
@@ -803,7 +811,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                             background: 'rgba(168, 85, 247, 0.15)',
                             border: '1px solid rgba(168, 85, 247, 0.3)',
                             color: '#c084fc',
-                            lineHeight: 1.1,
+                            lineHeight: 1.15,
                           }}
                         >
                           {p.partOfSpeech}
@@ -815,7 +823,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                           style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            fontSize: '8.5px',
+                            fontSize: '9px',
                             fontWeight: 700,
                             textTransform: 'lowercase',
                             padding: '1px 4.5px',
@@ -823,7 +831,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                             background: 'var(--color-warning-light)',
                             border: '1px solid var(--color-warning-border)',
                             color: 'var(--color-warning)',
-                            lineHeight: 1.1,
+                            lineHeight: 1.15,
                           }}
                         >
                           {reg}
@@ -832,7 +840,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                     </div>
                     <button
                       type="button"
-                      onClick={() => handleCopy(p.phrase, copyKey)}
+                      onClick={(e) => handleCopy(p.phrase, copyKey, e)}
                       style={{
                         border: 'none',
                         background: 'transparent',
@@ -847,7 +855,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
                     </button>
                   </div>
                   {p.translation && (
-                    <div style={{ color: 'var(--color-text-secondary)', fontSize: '12px', paddingLeft: '10px', marginTop: '2px' }}>
+                    <div style={{ color: 'var(--color-text-secondary)', fontSize: '12.5px', paddingLeft: '10px', marginTop: '2px' }}>
                       {p.translation}
                     </div>
                   )}
