@@ -588,38 +588,42 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {/* Self-check Input */}
                   <div className={styles.inputSection}>
-                    <input
-                      ref={inputRef}
-                      type="text"
-                      className={`
-                        ${styles.typeInput} 
-                        ${isMatch === true ? styles.typeInputCorrect : ''}
-                        ${isMatch === false ? styles.typeInputWrong : ''}
-                      `}
-                      placeholder="Введите перевод (или нажмите Enter)..."
-                      value={userInput}
-                      disabled={isAnswerRevealed}
-                      onChange={(e) => {
-                        setUserInput(e.target.value);
-                        if (isMatch !== null && !isAnswerRevealed) {
-                          setIsMatch(null);
-                        }
-                      }}
-                      onKeyDown={handleKeyDown}
-                    />
-                    {userInput.trim() && !isAnswerRevealed && (
-                      <button
-                        className={styles.clearInputBtn}
-                        onClick={() => {
-                          setUserInput('');
-                          if (isMatch !== null) setIsMatch(null);
-                          inputRef.current?.focus();
+                    <div style={{ position: 'relative', width: '100%', display: 'flex', alignItems: 'center' }}>
+                      <input
+                        ref={inputRef}
+                        type="text"
+                        className={`
+                          ${styles.typeInput} 
+                          ${isMatch === true ? styles.typeInputCorrect : ''}
+                          ${isMatch === false ? styles.typeInputWrong : ''}
+                        `}
+                        style={{ width: '100%', paddingRight: userInput.trim() ? '38px' : '13px' }}
+                        placeholder="Введите перевод (или нажмите Enter)..."
+                        value={userInput}
+                        disabled={isAnswerRevealed}
+                        onChange={(e) => {
+                          setUserInput(e.target.value);
+                          if (isMatch !== null && !isAnswerRevealed) {
+                            setIsMatch(null);
+                          }
                         }}
-                        title="Очистить"
-                      >
-                        ✕
-                      </button>
-                    )}
+                        onKeyDown={handleKeyDown}
+                      />
+                      {userInput.trim() && !isAnswerRevealed && (
+                        <button
+                          type="button"
+                          className={styles.clearInputBtn}
+                          onClick={() => {
+                            setUserInput('');
+                            if (isMatch !== null) setIsMatch(null);
+                            inputRef.current?.focus();
+                          }}
+                          title="Очистить ввод"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </div>
 
                     {isMatch !== null && (
                       <div
