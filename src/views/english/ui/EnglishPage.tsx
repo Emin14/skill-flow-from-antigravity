@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useEnglishStore, speakEnglishWord, CEFRLevel } from '@/entities/english';
-import { EnglishTrainerModal } from '@/features/english-trainer';
+import { useEnglishStore, speakEnglishWord, CEFRLevel, OxfordWord } from '@/entities/english';
+import { EnglishTrainerModal, WordDetailModal } from '@/features/english-trainer';
 import { Check } from 'lucide-react';
 import styles from './EnglishPage.module.css';
 
@@ -32,6 +32,7 @@ export const EnglishPage: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState<'practice' | 'dictionary' | 'settings'>('practice');
   const [isTrainerOpen, setIsTrainerOpen] = useState<boolean>(false);
+  const [selectedWordForModal, setSelectedWordForModal] = useState<OxfordWord | null>(null);
 
   // Search filters
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -303,28 +304,48 @@ export const EnglishPage: React.FC = () => {
           ) : (
             <>
               <div className={styles.wordsGrid}>
-                {dictionaryWords.map((w) => (
-                  <div key={w.id} className={styles.wordCard}>
-                    <div className={styles.wordCardHeader}>
-                      <span className={styles.wordCardTitle}>{w.word}</span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span className={styles.wordCardLevel}>{w.cefrLevel}</span>
-                        {renderStatusBadge(w.status)}
-                        <button
-                          className={styles.miniAudioBtn}
-                          onClick={() => speakEnglishWord(w.word, settings.accent)}
-                          title="Озвучить"
-                        >
-                          🔊
-                        </button>
+                {dictionaryWords.map((w) => {
+                  const primaryMeaning =
+                    w.meanings?.find((m) => m.primary)?.translation ||
+                    w.translations?.[0]?.meanings?.[0] ||
+                    '';
+
+                  return (
+                    <div
+                      key={w.id}
+                      className={styles.wordCard}
+                      onClick={() => setSelectedWordForModal(w)}
+                      title="Нажмите, чтобы открыть карточку слова и историю"
+                    >
+                      <div className={styles.wordCardHeader}>
+                        <div className={styles.wordTitleGroup}>
+                          <span className={styles.wordCardTitle}>{w.word}</span>
+                          {w.transcription && (
+                            <span className={styles.wordCardTranscription}>{w.transcription}</span>
+                          )}
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                          <span className={styles.wordCardLevel}>{w.cefrLevel}</span>
+                          {renderStatusBadge(w.status)}
+                          <button
+                            type="button"
+                            className={styles.miniAudioBtn}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              speakEnglishWord(w.word, settings.accent);
+                            }}
+                            title="Озвучить"
+                          >
+                            🔊
+                          </button>
+                        </div>
+                      </div>
+                      <div className={styles.wordCardTranslation} title={primaryMeaning}>
+                        {primaryMeaning}
                       </div>
                     </div>
-                    <div className={styles.wordCardTranscription}>{w.transcription}</div>
-                    <div className={styles.wordCardTranslation}>
-                      {w.translations.map((t) => t.meanings.join(', ')).join(' • ')}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {hasMoreDictionary && (
@@ -458,6 +479,13 @@ export const EnglishPage: React.FC = () => {
       <EnglishTrainerModal
         isOpen={isTrainerOpen}
         onClose={() => setIsTrainerOpen(false)}
+      />
+
+      <WordDetailModal
+        word={selectedWordForModal}
+        isOpen={Boolean(selectedWordForModal)}
+        onClose={() => setSelectedWordForModal(null)}
+        accent={settings.accent}
       />
     </div>
   );

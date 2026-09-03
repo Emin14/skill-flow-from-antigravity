@@ -157,3 +157,14 @@ model EnglishSettings {
   updatedAt        DateTime @default(now()) @updatedAt
 }
 
+model EnglishWordReviewLog {
+  id           String   @id @default(uuid())
+  wordId       String
+  rating       String   // 'again' | 'hard' | 'good' | 'easy' | 'already_know'
+  intervalDays Int
+  createdAt    DateTime @default(now())
+
+  @@index([wordId])
+  @@index([createdAt])
+}
+

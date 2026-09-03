@@ -98,6 +98,14 @@ export interface EnglishWordProgressItem {
   lastReviewedAt: string | null;
 }
 
+export interface EnglishWordReviewLogItem {
+  id: string;
+  wordId: string;
+  rating: ReviewRating;
+  intervalDays: number;
+  createdAt: string;
+}
+
 export interface SessionWordCard extends OxfordWord {
   progress?: EnglishWordProgressItem;
   isNew: boolean;

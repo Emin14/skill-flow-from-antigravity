@@ -247,7 +247,7 @@
 /* Words List */
 .wordsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 10px;
 }
 
@@ -258,14 +258,20 @@
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 6px;
+  min-height: 80px;
+  cursor: pointer;
+  user-select: none;
   transition: all var(--transition-fast, 0.15s) ease;
   box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.05));
 }
 
 .wordCard:hover {
   background: var(--color-surface-hover);
-  border-color: var(--color-accent-border);
+  border-color: var(--color-accent);
+  transform: translateY(-1.5px);
+  box-shadow: var(--shadow-md, 0 4px 14px rgba(0, 0, 0, 0.1));
 }
 
 .wordCardHeader {
@@ -275,10 +281,21 @@
   gap: 8px;
 }
 
+.wordTitleGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .wordCardTitle {
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 700;
   color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wordCardLevel {
@@ -289,6 +306,7 @@
   font-weight: 700;
   padding: 1px 5px;
   border-radius: var(--radius-sm, 4px);
+  flex-shrink: 0;
 }
 
 .wordStatusBadge {
@@ -298,6 +316,7 @@
   border-radius: 4px;
   text-transform: none;
   letter-spacing: normal;
+  flex-shrink: 0;
 }
 
 .wordStatusNew {
@@ -327,13 +346,19 @@
 .wordCardTranscription {
   font-size: 12px;
   color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wordCardTranslation {
   font-size: 13px;
-  color: var(--color-accent-text);
+  color: var(--color-text-secondary);
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .miniAudioBtn {

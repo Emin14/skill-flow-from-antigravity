@@ -122,6 +122,20 @@ export async function POST(req: Request) {
       };
     }
 
+    // Log review event for history timeline
+    try {
+      await prisma.englishWordReviewLog.create({
+        data: {
+          wordId,
+          rating,
+          intervalDays,
+          createdAt: today,
+        },
+      });
+    } catch (logErr) {
+      console.warn('Prisma create EnglishWordReviewLog error:', logErr);
+    }
+
     return NextResponse.json({ success: true, progress: updated });
   } catch (error) {
     console.error('CRITICAL Error submitting English word review:', error);
