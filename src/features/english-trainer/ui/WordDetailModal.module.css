@@ -43,7 +43,7 @@
 }
 
 .header {
-  padding: 18px 20px 14px;
+  padding: 16px 20px 14px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -130,39 +130,6 @@
   color: var(--color-text-primary);
 }
 
-/* Tabs */
-.tabsRow {
-  display: flex;
-  padding: 8px 20px 0;
-  gap: 8px;
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-surface);
-}
-
-.tabBtn {
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  padding: 8px 12px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.15s ease;
-}
-
-.tabBtn:hover {
-  color: var(--color-text-primary);
-}
-
-.tabBtnActive {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
-}
-
 .contentBody {
   padding: 18px 20px;
   overflow-y: auto;
@@ -178,7 +145,7 @@
   align-items: center;
   gap: 6px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
 }
 
 .pillBtn {
@@ -324,7 +291,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 6px;
 }
 
 .phrasesTitle {
@@ -354,136 +320,294 @@
   color: var(--color-text-primary);
 }
 
-/* History Tab */
-.historyStatsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-}
-
-.statItem {
-  background: var(--color-bg);
+/* Repeat Card (Matching RepeatsPage Section Exactly) */
+.repeatCardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 10px 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  margin-top: 4px;
+}
+
+.cardHeader {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 6px;
+  width: 100%;
 }
 
-.statItemLabel {
-  font-size: 11px;
-  color: var(--color-text-muted);
-  font-weight: 600;
-}
-
-.statItemValue {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-
-.timelineSection {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 6px;
-}
-
-.timelineTitle {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-text-secondary);
-}
-
-.timelineList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.timelineItem {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: 10px 12px;
+.line1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  width: 100%;
 }
 
-.timelineLeft {
+.repeatCardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-primary);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
-.ratingTag {
+.statusBadgeNext {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.line2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
   font-size: 11.5px;
+  color: var(--color-text-muted);
+}
+
+.categoryRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.catDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: var(--color-accent);
+}
+
+.categoryText {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-accent-text);
+}
+
+.repetitionCounter {
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+}
+
+.repetitionNum {
   font-weight: 700;
+  color: var(--color-accent-text);
+}
+
+/* Timeline Track */
+.timelineTrackContainer {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 14px 8px 12px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+:global([data-theme='light']) .timelineTrackContainer {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border);
+}
+
+.timelineTrack {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.stepColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.stepLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+  height: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.stepLabelCompleted {
+  color: var(--color-success);
+}
+
+.stepLabelNext {
+  color: var(--color-accent);
+}
+
+.stepLabelFuture {
+  color: var(--color-text-muted);
+}
+
+.connectorLine {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  right: 10px;
+  height: 3px;
+  z-index: 1;
+  display: flex;
+}
+
+.lineSegment {
+  flex: 1;
+  height: 3px;
+}
+
+.lineSegmentCompleted {
+  background-color: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success-border);
+}
+
+.lineSegmentFuture {
+  background-color: var(--color-border);
+}
+
+.nodeCircle {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  z-index: 5;
+  background-color: var(--color-surface);
+  user-select: none;
+}
+
+.nodeCompleted {
+  background-color: var(--color-success) !important;
+  border: 2px solid var(--color-success) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px var(--color-success-border);
+}
+
+.checkmarkIcon {
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+.smartRatingBadge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 13px;
+  line-height: 1;
+  z-index: 10;
+}
+
+.nodeNext {
+  background-color: var(--color-accent-light);
+  border: 2.5px solid var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-accent-light);
+}
+
+.pulseDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+.nodeFuture {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.emptyDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  opacity: 0.4;
+}
+
+.subLabel {
+  font-size: 10.5px;
+  font-weight: 500;
+  margin-top: 8px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.subLabelCompleted {
+  color: var(--color-text-muted);
+}
+
+.subLabelNext {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.subLabelFuture {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+/* History mini badges row */
+.recentHistoryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.historyPillsContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.historyMiniPill {
+  font-size: 11px;
+  font-weight: 600;
   padding: 3px 8px;
   border-radius: 6px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.ratingAgain {
-  background: var(--color-danger-light);
-  color: var(--color-danger);
-  border: 1px solid var(--color-danger-border);
-}
-
-.ratingHard {
-  background: var(--color-warning-light);
-  color: var(--color-warning);
-  border: 1px solid var(--color-warning-border);
-}
-
-.ratingGood {
-  background: var(--color-success-light);
-  color: var(--color-success);
-  border: 1px solid var(--color-success-border);
-}
-
-.ratingEasy {
-  background: rgba(59, 130, 246, 0.12);
-  color: #3b82f6;
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.ratingMastered {
-  background: rgba(168, 85, 247, 0.14);
-  color: #a855f7;
-  border: 1px solid rgba(168, 85, 247, 0.3);
-}
-
-.timelineDate {
-  font-size: 12px;
+.metaBadgeItem {
+  font-size: 11px;
   color: var(--color-text-muted);
-}
-
-.timelineInterval {
-  font-size: 12px;
   font-weight: 600;
-  color: var(--color-text-secondary);
-  background: var(--color-surface);
-  padding: 2px 7px;
-  border-radius: 6px;
-  border: 1px solid var(--color-border);
-}
-
-.emptyHistoryBox {
-  background: var(--color-bg);
-  border: 1px dashed var(--color-border);
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  color: var(--color-text-muted);
-  font-size: 13px;
 }

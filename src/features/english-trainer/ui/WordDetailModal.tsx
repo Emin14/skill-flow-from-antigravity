@@ -12,12 +12,7 @@ import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import {
   Volume2,
   X,
-  BookOpen,
-  History,
-  Flame,
-  AlertTriangle,
-  Calendar,
-  Zap,
+  RotateCw,
   Layers,
 } from 'lucide-react';
 import styles from './WordDetailModal.module.css';
@@ -29,18 +24,24 @@ interface WordDetailModalProps {
   accent?: 'us' | 'uk';
 }
 
+const MILESTONES = [
+  { label: '1д', target: 'День 1' },
+  { label: '3д', target: '+3д' },
+  { label: '7д', target: '+7д' },
+  { label: '14д', target: '+14д' },
+  { label: '30д', target: 'Mastered' },
+];
+
 export const WordDetailModal: React.FC<WordDetailModalProps> = ({
   word,
   isOpen,
   onClose,
   accent = 'us',
 }) => {
-  const [activeTab, setActiveTab] = useState<'meanings' | 'history'>('meanings');
   const [meaningIndex, setMeaningIndex] = useState(0);
   const [showAllMeanings, setShowAllMeanings] = useState(false);
   const [historyLogs, setHistoryLogs] = useState<EnglishWordReviewLogItem[]>([]);
   const [progress, setProgress] = useState<EnglishWordProgressItem | null>(null);
-  const [isLoadingHistory, setIsLoadingHistory] = useState(false);
 
   // Lock body scroll
   useEffect(() => {
@@ -55,7 +56,6 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
     if (isOpen && word) {
       setMeaningIndex(0);
       setShowAllMeanings(false);
-      setActiveTab('meanings');
       fetchWordHistory(word.id);
     }
   }, [isOpen, word?.id]);
@@ -73,7 +73,6 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
   }, [isOpen, onClose]);
 
   const fetchWordHistory = async (wordId: string) => {
-    setIsLoadingHistory(true);
     try {
       const res = await fetch(`/api/english/word-history?wordId=${encodeURIComponent(wordId)}`);
       if (res.ok) {
@@ -83,8 +82,6 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
       }
     } catch (err) {
       console.warn('Failed to load word history:', err);
-    } finally {
-      setIsLoadingHistory(false);
     }
   };
 
@@ -137,35 +134,32 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
     });
   };
 
-  // Format date helper
-  const formatDate = (isoString: string) => {
+  const formatDateShort = (isoString: string) => {
     try {
       const d = new Date(isoString);
       return new Intl.DateTimeFormat('ru-RU', {
         day: 'numeric',
         month: 'short',
-        hour: '2-digit',
-        minute: '2-digit',
       }).format(d);
     } catch {
       return isoString;
     }
   };
 
-  const renderRatingBadge = (rating: string) => {
+  const ratingToEmojiAndText = (rating: string) => {
     switch (rating) {
       case 'again':
-        return <span className={`${styles.ratingTag} ${styles.ratingAgain}`}>🔴 Не помню</span>;
+        return '🔴 Не помню';
       case 'hard':
-        return <span className={`${styles.ratingTag} ${styles.ratingHard}`}>🟡 Трудно</span>;
+        return '🟡 Трудно';
       case 'good':
-        return <span className={`${styles.ratingTag} ${styles.ratingGood}`}>🟢 Нормально</span>;
+        return '🟢 Нормально';
       case 'easy':
-        return <span className={`${styles.ratingTag} ${styles.ratingEasy}`}>🔵 Легко</span>;
+        return '🔵 Легко';
       case 'already_know':
-        return <span className={`${styles.ratingTag} ${styles.ratingMastered}`}>💎 Уже знаю</span>;
+        return '💎 Уже знаю';
       default:
-        return <span className={styles.ratingTag}>{rating}</span>;
+        return rating;
     }
   };
 
@@ -194,6 +188,9 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
       </span>
     );
   };
+
+  const repetitions = progress?.repetitions ?? 0;
+  const isMastered = progress?.status === 'MASTERED' || repetitions >= 5;
 
   return (
     <div
@@ -236,195 +233,230 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           </div>
         </div>
 
-        {/* Tabs Row */}
-        <div className={styles.tabsRow}>
-          <button
-            type="button"
-            className={`${styles.tabBtn} ${activeTab === 'meanings' ? styles.tabBtnActive : ''}`}
-            onClick={() => setActiveTab('meanings')}
-          >
-            <BookOpen size={15} />
-            <span>Значения и примеры</span>
-          </button>
-          <button
-            type="button"
-            className={`${styles.tabBtn} ${activeTab === 'history' ? styles.tabBtnActive : ''}`}
-            onClick={() => setActiveTab('history')}
-          >
-            <History size={15} />
-            <span>История повторений {historyLogs.length > 0 ? `(${historyLogs.length})` : ''}</span>
-          </button>
-        </div>
-
-        {/* Content Body */}
+        {/* Content Body - Seamless Scrollable Single View */}
         <div className={styles.contentBody}>
-          {activeTab === 'meanings' ? (
-            <>
-              {/* Meaning Pills Track */}
-              <div className={styles.meaningsTrack}>
-                {displayedMeanings.map((m, idx) => {
-                  const isSelected = idx === safeMeaningIndex;
-                  return (
-                    <button
-                      key={m.id || idx}
-                      type="button"
-                      className={`${styles.pillBtn} ${isSelected ? styles.pillBtnActive : ''}`}
-                      onClick={() => setMeaningIndex(idx)}
-                    >
-                      {m.translation.split(/[,;/]/)[0].trim() || `Значение ${idx + 1}`}
-                    </button>
-                  );
-                })}
+          {/* 1. Meaning Pills Track */}
+          <div className={styles.meaningsTrack}>
+            {displayedMeanings.map((m, idx) => {
+              const isSelected = idx === safeMeaningIndex;
+              return (
+                <button
+                  key={m.id || idx}
+                  type="button"
+                  className={`${styles.pillBtn} ${isSelected ? styles.pillBtnActive : ''}`}
+                  onClick={() => setMeaningIndex(idx)}
+                >
+                  {m.translation.split(/[,;/]/)[0].trim() || `Значение ${idx + 1}`}
+                </button>
+              );
+            })}
 
-                {hasPrimaryDistinction && (
-                  <button
-                    type="button"
-                    className={styles.expanderPill}
-                    onClick={() => {
-                      if (!showAllMeanings) {
-                        setShowAllMeanings(true);
-                        setMeaningIndex(primaryMeanings.length);
-                      } else {
-                        setShowAllMeanings(false);
-                        setMeaningIndex(0);
-                      }
-                    }}
-                  >
-                    <Layers size={11} />
-                    <span>{showAllMeanings ? 'Основные' : `+${secondaryCount} доп.`}</span>
-                  </button>
-                )}
-              </div>
+            {hasPrimaryDistinction && (
+              <button
+                type="button"
+                className={styles.expanderPill}
+                onClick={() => {
+                  if (!showAllMeanings) {
+                    setShowAllMeanings(true);
+                    setMeaningIndex(primaryMeanings.length);
+                  } else {
+                    setShowAllMeanings(false);
+                    setMeaningIndex(0);
+                  }
+                }}
+              >
+                <Layers size={11} />
+                <span>{showAllMeanings ? 'Основные' : `+${secondaryCount} доп.`}</span>
+              </button>
+            )}
+          </div>
 
-              {/* Active Meaning Detail */}
-              {activeMeaning && (
-                <div className={styles.meaningCard}>
-                  {activeMeaning.partOfSpeech && (
-                    <span className={styles.posBadge}>{activeMeaning.partOfSpeech}</span>
-                  )}
-                  <div className={styles.translationText}>{activeMeaning.translation}</div>
+          {/* 2. Active Meaning Card */}
+          {activeMeaning && (
+            <div className={styles.meaningCard}>
+              {activeMeaning.partOfSpeech && (
+                <span className={styles.posBadge}>{activeMeaning.partOfSpeech}</span>
+              )}
+              <div className={styles.translationText}>{activeMeaning.translation}</div>
 
-                  {activeMeaning.synonyms && activeMeaning.synonyms.length > 0 && (
-                    <div className={styles.synonymsRow}>
-                      <span className={styles.synonymsLabel}>Синонимы:</span>
-                      <span>{activeMeaning.synonyms.join(', ')}</span>
-                    </div>
-                  )}
-
-                  {/* Examples */}
-                  {activeMeaning.examples && activeMeaning.examples.length > 0 && (
-                    <div className={styles.examplesSection}>
-                      {activeMeaning.examples.map((ex, exIdx) => (
-                        <div key={exIdx} className={styles.exampleItem}>
-                          <div className={styles.exampleEn}>
-                            {renderHighlightedSentence(ex.en, word.word)}
-                          </div>
-                          {ex.ru && <div className={styles.exampleRu}>{ex.ru}</div>}
-                        </div>
-                      ))}
-                    </div>
-                  )}
+              {activeMeaning.synonyms && activeMeaning.synonyms.length > 0 && (
+                <div className={styles.synonymsRow}>
+                  <span className={styles.synonymsLabel}>Синонимы:</span>
+                  <span>{activeMeaning.synonyms.join(', ')}</span>
                 </div>
               )}
 
-              {/* Phrasal verbs / Idioms */}
-              {word.phrases && word.phrases.length > 0 && (
-                <div className={styles.phrasesSection}>
-                  <div className={styles.phrasesTitle}>Фразовые глаголы и идиомы:</div>
-                  {word.phrases.map((ph, phIdx) => (
-                    <div key={ph.id || phIdx} className={styles.phraseCard}>
-                      <span className={styles.phraseName}>{ph.phrase}</span>
-                      <span className={styles.phraseTranslation}>{ph.translation}</span>
+              {/* Examples */}
+              {activeMeaning.examples && activeMeaning.examples.length > 0 && (
+                <div className={styles.examplesSection}>
+                  {activeMeaning.examples.map((ex, exIdx) => (
+                    <div key={exIdx} className={styles.exampleItem}>
+                      <div className={styles.exampleEn}>
+                        {renderHighlightedSentence(ex.en, word.word)}
+                      </div>
+                      {ex.ru && <div className={styles.exampleRu}>{ex.ru}</div>}
                     </div>
                   ))}
                 </div>
               )}
-            </>
-          ) : (
-            /* History Tab */
-            <>
-              {/* Memory Summary Grid */}
-              <div className={styles.historyStatsGrid}>
-                <div className={styles.statItem}>
-                  <span className={styles.statItemLabel}>Текущий статус</span>
-                  <span className={styles.statItemValue}>{renderStatusBadge(progress?.status || word.status)}</span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statItemLabel}>Следующий повтор</span>
-                  <span className={styles.statItemValue}>
-                    {progress?.nextReviewDate ? (
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <Calendar size={13} />
-                        {progress.nextReviewDate}
-                      </span>
-                    ) : (
-                      'Не запланирован'
-                    )}
-                  </span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statItemLabel}>Серия повторов</span>
-                  <span className={styles.statItemValue} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <Flame size={14} color="#f97316" />
-                    {progress?.repetitions ?? 0} раз
-                  </span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statItemLabel}>Ошибок за всё время</span>
-                  <span className={styles.statItemValue} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <AlertTriangle size={14} color="#ef4444" />
-                    {progress?.errorCount ?? 0}
-                  </span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statItemLabel}>Интервал памяти</span>
-                  <span className={styles.statItemValue} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <Zap size={14} color="#eab308" />
-                    {progress?.intervalDays ?? 1} дн.
-                  </span>
-                </div>
-                <div className={styles.statItem}>
-                  <span className={styles.statItemLabel}>Фактор лёгкости (Ease)</span>
-                  <span className={styles.statItemValue}>
-                    {progress?.easeFactor ? progress.easeFactor.toFixed(2) : '2.50'}
-                  </span>
-                </div>
-              </div>
+            </div>
+          )}
 
-              {/* Timeline Section */}
-              <div className={styles.timelineSection}>
-                <div className={styles.timelineTitle}>Хроника повторений:</div>
+          {/* 3. Phrasal verbs / Idioms */}
+          {word.phrases && word.phrases.length > 0 && (
+            <div className={styles.phrasesSection}>
+              <div className={styles.phrasesTitle}>Фразовые глаголы и идиомы:</div>
+              {word.phrases.map((ph, phIdx) => (
+                <div key={ph.id || phIdx} className={styles.phraseCard}>
+                  <span className={styles.phraseName}>{ph.phrase}</span>
+                  <span className={styles.phraseTranslation}>{ph.translation}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
-                {isLoadingHistory ? (
-                  <div style={{ textAlign: 'center', color: 'var(--color-text-muted)', padding: '20px' }}>
-                    Загрузка истории...
-                  </div>
-                ) : historyLogs.length === 0 ? (
-                  <div className={styles.emptyHistoryBox}>
-                    <History size={24} opacity={0.6} />
-                    <span>Слово ещё не повторялось в интервальном тренажёре</span>
-                    <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)' }}>
-                      История начнёт заполняться, когда слово попадёт в тренировку
-                    </span>
+          {/* 4. Repetition History (In the exact style of the "Повторить" tasks section) */}
+          <div className={styles.repeatCardWrapper}>
+            <div className={styles.cardHeader}>
+              <div className={styles.line1}>
+                <span className={styles.repeatCardTitle}>
+                  <RotateCw size={15} color="var(--color-accent)" />
+                  Интервальное повторение
+                </span>
+
+                {progress?.nextReviewDate ? (
+                  <div className={styles.statusBadgeNext} title="Дата следующего повторения">
+                    📅 След. повтор: {progress.nextReviewDate}
                   </div>
                 ) : (
-                  <div className={styles.timelineList}>
-                    {historyLogs.map((log) => (
-                      <div key={log.id} className={styles.timelineItem}>
-                        <div className={styles.timelineLeft}>
-                          {renderRatingBadge(log.rating)}
-                          <span className={styles.timelineDate}>{formatDate(log.createdAt)}</span>
-                        </div>
-                        <span className={styles.timelineInterval}>
-                          {log.intervalDays === 1 ? '1 день' : `${log.intervalDays} дн.`}
-                        </span>
-                      </div>
-                    ))}
+                  <div className={styles.statusBadgeNext}>
+                    📅 Ещё не повторялось
                   </div>
                 )}
               </div>
-            </>
-          )}
+
+              <div className={styles.line2}>
+                <div className={styles.categoryRow}>
+                  <span className={styles.catDot} />
+                  <span className={styles.categoryText}>Oxford 5000 • Уровень {word.cefrLevel}</span>
+                </div>
+                <div className={styles.repetitionCounter}>
+                  <span className={styles.repetitionNum}>{isMastered ? 5 : repetitions}</span> из 5 повторений
+                </div>
+              </div>
+            </div>
+
+            {/* Timeline Track (Milestones line with circles) */}
+            <div className={styles.timelineTrackContainer}>
+              <div className={styles.timelineTrack}>
+                {/* Connector Line behind nodes */}
+                <div className={styles.connectorLine}>
+                  {[0, 1, 2, 3].map((idx) => {
+                    const isStepPassed = isMastered || repetitions > idx;
+                    return (
+                      <div
+                        key={idx}
+                        className={`${styles.lineSegment} ${
+                          isStepPassed ? styles.lineSegmentCompleted : styles.lineSegmentFuture
+                        }`}
+                      />
+                    );
+                  })}
+                </div>
+
+                {/* 5 Milestone Step Nodes */}
+                {MILESTONES.map((step, idx) => {
+                  const isCompleted = isMastered || repetitions > idx;
+                  const isNext = !isMastered && repetitions === idx;
+                  // Look for review log for this repetition step if available
+                  const logForStep = historyLogs[historyLogs.length - 1 - idx] || historyLogs[0];
+                  const ratingEmojiMap: Record<string, string> = {
+                    again: '🔴',
+                    hard: '🟡',
+                    good: '🟢',
+                    easy: '🔵',
+                    already_know: '💎',
+                  };
+                  const ratingEmoji = logForStep ? ratingEmojiMap[logForStep.rating] || '🟢' : '🟢';
+
+                  return (
+                    <div key={idx} className={styles.stepColumn}>
+                      <span
+                        className={`${styles.stepLabel} ${
+                          isCompleted
+                            ? styles.stepLabelCompleted
+                            : isNext
+                            ? styles.stepLabelNext
+                            : styles.stepLabelFuture
+                        }`}
+                      >
+                        {step.label}
+                      </span>
+
+                      <div
+                        className={`${styles.nodeCircle} ${
+                          isCompleted
+                            ? styles.nodeCompleted
+                            : isNext
+                            ? styles.nodeNext
+                            : styles.nodeFuture
+                        }`}
+                      >
+                        {isCompleted ? (
+                          <>
+                            <span className={styles.checkmarkIcon}>✓</span>
+                            {logForStep && (
+                              <span className={styles.smartRatingBadge} title={`Оценка: ${logForStep.rating}`}>
+                                {ratingEmoji}
+                              </span>
+                            )}
+                          </>
+                        ) : isNext ? (
+                          <span className={styles.pulseDot} />
+                        ) : (
+                          <span className={styles.emptyDot} />
+                        )}
+                      </div>
+
+                      <span
+                        className={`${styles.subLabel} ${
+                          isCompleted
+                            ? styles.subLabelCompleted
+                            : isNext
+                            ? styles.subLabelNext
+                            : styles.subLabelFuture
+                        }`}
+                      >
+                        {isCompleted
+                          ? (logForStep ? formatDateShort(logForStep.createdAt) : 'Выполнено')
+                          : isNext
+                          ? (progress?.nextReviewDate || 'Ожидает')
+                          : step.target}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Bottom mini row: Stats & Recent logs */}
+            <div className={styles.recentHistoryRow}>
+              <div className={styles.historyPillsContainer}>
+                {historyLogs.slice(0, 3).map((log) => (
+                  <span key={log.id} className={styles.historyMiniPill} title={`Интервал: ${log.intervalDays} дн.`}>
+                    <span>{ratingToEmojiAndText(log.rating)}</span>
+                    <span style={{ opacity: 0.7 }}>({formatDateShort(log.createdAt)})</span>
+                  </span>
+                ))}
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span className={styles.metaBadgeItem}>🔥 {repetitions}</span>
+                <span className={styles.metaBadgeItem}>⚠️ {progress?.errorCount ?? 0}</span>
+                <span className={styles.metaBadgeItem}>⚡ {progress?.easeFactor ? progress.easeFactor.toFixed(1) : '2.5'}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
