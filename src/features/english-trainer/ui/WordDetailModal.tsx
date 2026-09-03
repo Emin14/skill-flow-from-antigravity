@@ -25,13 +25,12 @@ interface WordDetailModalProps {
   accent?: 'us' | 'uk';
 }
 
-// 5 Step Milestones: Top shows Step #, Bottom shows Target Interval
 const MILESTONES = [
-  { stepNum: '1', targetInterval: '1д' },
-  { stepNum: '2', targetInterval: '+3д' },
-  { stepNum: '3', targetInterval: '+7д' },
-  { stepNum: '4', targetInterval: '+14д' },
-  { stepNum: '5', targetInterval: 'Mastered' },
+  { targetInterval: '1д' },
+  { targetInterval: '+3д' },
+  { targetInterval: '+7д' },
+  { targetInterval: '+14д' },
+  { targetInterval: 'Mastered' },
 ];
 
 const RATING_STYLES: Record<string, { bg: string; border: string; glow: string; label: string; emoji: string }> = {
@@ -215,7 +214,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
       }}
     >
       <div className={styles.modal}>
-        {/* 1. Header - Fixed Top */}
+        {/* 1. Header - Fixed Top with Word + Badges: [CEFR] [Status] [🔥 2/5] [⚠️ 0] [⚡ 2.8] [✕] */}
         <div className={styles.header}>
           <div>
             <div className={styles.wordTitleRow}>
@@ -237,6 +236,18 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           <div className={styles.headerActions}>
             <span className={styles.cefrBadge}>{word.cefrLevel}</span>
             {renderStatusBadge(word.status)}
+
+            {/* Repetition Stats Badges Lifted to Header */}
+            <span className={styles.headerStatBadge} title="Серия успешных повторений">
+              🔥 {repetitions}/5
+            </span>
+            <span className={styles.headerStatBadge} title="Ошибки / сбои памяти">
+              ⚠️ {progress?.errorCount ?? 0}
+            </span>
+            <span className={styles.headerStatBadge} title="Фактор лёгкости (Ease Factor)">
+              ⚡ {progress?.easeFactor ? progress.easeFactor.toFixed(1) : '2.5'}
+            </span>
+
             <button
               type="button"
               className={styles.closeBtn}
@@ -356,11 +367,11 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           )}
         </div>
 
-        {/* 4. PINNED REPETITION TRACK (At the bottom, always visible) */}
+        {/* 4. PINNED REPETITION TRACK (At the bottom, always visible - NO NUMBERS ABOVE CIRCLES) */}
         <div className={styles.pinnedRepeatFooter}>
           <div className={styles.timelineTrackContainer}>
             <div className={styles.timelineTrack}>
-              {/* Connector Line */}
+              {/* Connector Line behind circles */}
               <div className={styles.connectorLine}>
                 {[0, 1, 2, 3].map((idx) => {
                   const isStepPassed = isMastered || repetitions > idx;
@@ -375,7 +386,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
                 })}
               </div>
 
-              {/* 5 Milestone Step Nodes */}
+              {/* 5 Milestone Step Nodes - Clean Circles without Top Numbers */}
               {MILESTONES.map((step, idx) => {
                 const isCompleted = isMastered || repetitions > idx;
                 const isNext = !isMastered && repetitions === idx;
@@ -386,20 +397,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
 
                 return (
                   <div key={idx} className={styles.stepColumn}>
-                    {/* Top: Step Number (1, 2, 3, 4, 5) */}
-                    <span
-                      className={`${styles.stepLabel} ${
-                        isCompleted
-                          ? styles.stepLabelCompleted
-                          : isNext
-                          ? styles.stepLabelNext
-                          : styles.stepLabelFuture
-                      }`}
-                    >
-                      {step.stepNum}
-                    </span>
-
-                    {/* Circle: Colored in the rating color if completed */}
+                    {/* Circle: Colored in rating color if completed */}
                     <div
                       className={`${styles.nodeCircle} ${
                         isCompleted
@@ -420,10 +418,10 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
                       }
                       title={
                         isCompleted && logForStep
-                          ? `Повтор ${step.stepNum}: ${ratingInfo.label} (${formatDateShort(logForStep.createdAt)})`
+                          ? `Повтор ${idx + 1}: ${ratingInfo.label} (${formatDateShort(logForStep.createdAt)})`
                           : isNext
                           ? `Следующий повтор: ${progress?.nextReviewDate || 'Ожидает'}`
-                          : `Плановый повтор ${step.stepNum}`
+                          : `Плановый повтор ${idx + 1}`
                       }
                     >
                       {isCompleted ? (
@@ -464,23 +462,17 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
             </div>
           </div>
 
-          {/* Footer bottom meta row */}
-          <div className={styles.footerMetaRow}>
+          {/* Footer bottom: Recent ratings pill log */}
+          {historyLogs.length > 0 && (
             <div className={styles.recentRatingsGroup}>
-              {historyLogs.slice(0, 3).map((log) => (
+              {historyLogs.slice(0, 4).map((log) => (
                 <span key={log.id} className={styles.ratingMiniPill} title={`Интервал: ${log.intervalDays} дн.`}>
                   {ratingToEmoji(log.rating)}
                   <span style={{ opacity: 0.65 }}>({formatDateShort(log.createdAt)})</span>
                 </span>
               ))}
             </div>
-
-            <div className={styles.metaStatsGroup}>
-              <span title="Серия успешных повторов">🔥 {repetitions}/5</span>
-              <span title="Количество ошибок">⚠️ {progress?.errorCount ?? 0}</span>
-              <span title="Коэффициент легкости">⚡ {progress?.easeFactor ? progress.easeFactor.toFixed(1) : '2.5'}</span>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

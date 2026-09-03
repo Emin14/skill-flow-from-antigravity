@@ -25,7 +25,7 @@
   border-radius: var(--radius-xl, 18px);
   box-shadow: var(--shadow-xl, 0 16px 36px rgba(0, 0, 0, 0.35));
   width: 100%;
-  max-width: 540px;
+  max-width: 550px;
   max-height: min(680px, calc(100vh - 32px));
   height: min(640px, calc(100vh - 32px));
   display: flex;
@@ -46,13 +46,13 @@
   }
 }
 
-/* 1. Header: Fixed at top */
+/* 1. Header: Fixed at top with Word + Badges (CEFR, Status, 2/5, ⚠️ 0, ⚡ 2.8) */
 .header {
   padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   border-bottom: 1px solid var(--color-border);
   background: var(--color-surface);
   flex-shrink: 0;
@@ -64,6 +64,7 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .wordTitle {
@@ -103,7 +104,9 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   flex-shrink: 0;
 }
 
@@ -115,6 +118,20 @@
   border: 1px solid var(--color-border);
   background: var(--color-surface-hover);
   color: var(--color-accent-text);
+}
+
+.headerStatBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
 }
 
 .closeBtn {
@@ -376,7 +393,7 @@
   color: var(--color-text-primary);
 }
 
-/* 4. PINNED BOTTOM REPEAT FOOTER (ALWAYS VISIBLE, NO SCROLL) */
+/* 4. PINNED BOTTOM REPETITION TRACK: Clean Circles with Rating Colors */
 .pinnedRepeatFooter {
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
@@ -392,7 +409,7 @@
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: 8px 6px 8px;
+  padding: 12px 6px 10px;
   width: 100%;
   box-sizing: border-box;
   overflow-x: auto;
@@ -423,36 +440,9 @@
   flex: 1;
 }
 
-.stepLabel {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--color-text-muted);
-  margin-bottom: 6px;
-  height: 14px;
-  line-height: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s ease;
-}
-
-.stepLabelCompleted {
-  color: var(--color-text-secondary);
-}
-
-.stepLabelNext {
-  color: var(--color-accent);
-  font-weight: 800;
-}
-
-.stepLabelFuture {
-  color: var(--color-text-muted);
-  opacity: 0.6;
-}
-
 .connectorLine {
   position: absolute;
-  top: 30px;
+  top: 10px;
   left: 10px;
   right: 10px;
   height: 3px;
@@ -536,7 +526,7 @@
 }
 
 .subLabel {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
   margin-top: 6px;
   white-space: nowrap;
@@ -557,27 +547,21 @@
   opacity: 0.6;
 }
 
-/* Footer bottom meta row */
-.footerMetaRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 11px;
-}
-
+/* Recent ratings mini badges */
 .recentRatingsGroup {
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 6px;
   overflow-x: auto;
+  padding-top: 2px;
 }
 
 .ratingMiniPill {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 2px 6px;
-  border-radius: 5px;
+  padding: 2px 7px;
+  border-radius: 6px;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   color: var(--color-text-primary);
@@ -585,13 +569,4 @@
   align-items: center;
   gap: 3px;
   white-space: nowrap;
-}
-
-.metaStatsGroup {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--color-text-muted);
-  font-weight: 600;
-  flex-shrink: 0;
 }
