@@ -142146,7 +142146,7 @@
         "examples": [
           {
             "en": "to the good",
-            "ru": "напользу"
+            "ru": "на пользу"
           },
           {
             "en": "for the good of",
@@ -142180,8 +142180,13 @@
       },
       {
         "partOfSpeech": "interjection",
-        "translation": "до свидания!; прощайте!",
-        "examples": [],
+        "translation": "хорошо!, ладно!, отлично!",
+        "examples": [
+          {
+            "en": "Good! Let's do that",
+            "ru": "Отлично! Давайте так и сделаем"
+          }
+        ],
         "register": [],
         "id": 15
       }
@@ -152555,22 +152560,35 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "косв. падеж от she",
-        "examples": [],
+        "translation": "её, ей, ею, о ней (косвенный падеж от she)",
         "register": [],
+        "examples": [
+          {
+            "en": "I know her well",
+            "ru": "я хорошо её знаю"
+          },
+          {
+            "en": "tell her the truth",
+            "ru": "скажи ей правду"
+          }
+        ],
         "primary": true
       },
       {
         "id": 2,
-        "partOfSpeech": "pronoun",
-        "translation": "её, принадлежащий ей (употр. атрибутивно)",
+        "partOfSpeech": "determiner",
+        "translation": "её, свой (притяжательный детерминатив)",
+        "register": [],
         "examples": [
           {
             "en": "her bag",
             "ru": "её сумка"
+          },
+          {
+            "en": "her eyes",
+            "ru": "её глаза"
           }
         ],
-        "register": [],
         "primary": true
       }
     ]
@@ -153655,9 +153673,22 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "косв. падеж от he",
-        "examples": [],
+        "translation": "его, ему, им, о нём (косвенный падеж от he)",
         "register": [],
+        "examples": [
+          {
+            "en": "I saw him yesterday",
+            "ru": "я видел его вчера"
+          },
+          {
+            "en": "give it to him",
+            "ru": "отдай это ему"
+          },
+          {
+            "en": "we are proud of him",
+            "ru": "мы гордимся им"
+          }
+        ],
         "primary": true
       }
     ]
@@ -168746,7 +168777,7 @@
       {
         "id": 1,
         "partOfSpeech": "preposition",
-        "translation": "указывает на движение или направление внутрь, в сферу или область чего-либо в(о), на",
+        "translation": "в, внутрь (движение или направление внутрь)",
         "examples": [
           {
             "en": "to go into the house",
@@ -168783,7 +168814,7 @@
       {
         "id": 2,
         "partOfSpeech": "preposition",
-        "translation": "указывает на достижение какогол. предмета, столкновение с каким-либо предметом в(о)",
+        "translation": "в (столкновение или контакт: walk into)",
         "examples": [
           {
             "en": "to walk into smb., smth.",
@@ -168796,7 +168827,7 @@
       {
         "id": 3,
         "partOfSpeech": "preposition",
-        "translation": "указывает на движение во времени в, к; взгляд в будущее",
+        "translation": "в (движение во времени: looking into the future)",
         "examples": [
           {
             "en": "her reflections shifted into the past",
@@ -168813,7 +168844,7 @@
       {
         "id": 4,
         "partOfSpeech": "preposition",
-        "translation": "указывает на включение в категорию, список и т. п. в",
+        "translation": "в (включение в список, категорию)",
         "examples": [
           {
             "en": "to enter into a list",
@@ -168826,7 +168857,7 @@
       {
         "id": 5,
         "partOfSpeech": "preposition",
-        "translation": "указывает на переход в новую форму, иное качество или состояние в(о), на, до; приводить в порядок",
+        "translation": "в (переход в новое состояние или качество: turn into, divide into)",
         "examples": [
           {
             "en": "to turn water into ice",
@@ -213732,7 +213763,16 @@
         "id": 1,
         "partOfSpeech": "pronoun",
         "translation": "никто",
-        "examples": [],
+        "examples": [
+          {
+            "en": "no one knows",
+            "ru": "никто не знает"
+          },
+          {
+            "en": "there was no one there",
+            "ru": "там никого не было"
+          }
+        ],
         "register": [],
         "primary": true
       }
@@ -221383,7 +221423,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "conjunction",
         "translation": "но, только, однако",
         "examples": [
           {
@@ -224240,11 +224280,11 @@
           },
           {
             "en": "the other world",
-            "ru": "потусто ронний мир, «тот свет»"
+            "ru": "потусторонний мир, «тот свет»"
           },
           {
-            "en": "other days, other ways",
-            "ru": "другой, иной; other times"
+            "en": "other times, other manners",
+            "ru": "иные времена — иные нравы"
           },
           {
             "en": "other times, other manners",
@@ -224303,7 +224343,7 @@
           },
           {
             "en": "think of others",
-            "ru": "не будь эго истом"
+            "ru": "не будь эгоистом"
           },
           {
             "en": "some day (or some time) or other",
@@ -224441,10 +224481,19 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "pronoun",
-        "translation": "употр. атрибутивно",
-        "examples": [],
+        "partOfSpeech": "determiner",
+        "translation": "наш, наша, наше, наши (притяжательный детерминатив / местоимение)",
         "register": [],
+        "examples": [
+          {
+            "en": "this is our house",
+            "ru": "это наш дом"
+          },
+          {
+            "en": "our friends",
+            "ru": "наши друзья"
+          }
+        ],
         "primary": true
       }
     ]
@@ -226193,7 +226242,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "указывает на движение через что-либо, передаётся приставками пере-, вы-",
+        "translation": "через, пере- (движение через что-либо)",
         "examples": [
           {
             "en": "to jump over",
@@ -226231,7 +226280,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "указывает на доведение действия до конца; передаётся приставкой про-",
+        "translation": "про- (доведение действия до конца: think over, read over)",
         "examples": [
           {
             "en": "to read the story over",
@@ -340088,27 +340137,23 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "чем",
+        "partOfSpeech": "conjunction",
+        "translation": "чем, нежели",
+        "register": [],
         "examples": [
           {
             "en": "he is taller than you are",
-            "ru": "он выше вас"
+            "ru": "он выше тебя (вас)"
+          },
+          {
+            "en": "better late than never",
+            "ru": "лучше поздно, чем никогда"
           },
           {
             "en": "I'd rather stay than go",
-            "ru": "я предпочёл бы остаться"
+            "ru": "я предпочёл бы остаться, чем уйти"
           }
         ],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 2,
-        "partOfSpeech": "noun",
-        "translation": "некто иной, как",
-        "examples": [],
-        "register": [],
         "primary": true
       }
     ],
@@ -340116,10 +340161,10 @@
       {
         "id": 1,
         "phrase": "none other than",
-        "partOfSpeech": "noun",
-        "translation": "некто иной, как",
-        "examples": [],
-        "register": []
+        "partOfSpeech": "adverb",
+        "translation": "не кто иной, как",
+        "register": [],
+        "examples": []
       }
     ]
   },
@@ -356518,7 +356563,16 @@
       {
         "partOfSpeech": "numeral",
         "translation": "два",
-        "examples": [],
+        "examples": [
+          {
+            "en": "two hours",
+            "ru": "два часа"
+          },
+          {
+            "en": "two tickets",
+            "ru": "два билета"
+          }
+        ],
         "register": [],
         "id": 1,
         "primary": true
@@ -359921,9 +359975,22 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "косв. п. от we",
-        "examples": [],
+        "translation": "нас, нам, нами, о нас (косвенный падеж от we)",
         "register": [],
+        "examples": [
+          {
+            "en": "join us",
+            "ru": "присоединяйся к нам"
+          },
+          {
+            "en": "he told us the story",
+            "ru": "он рассказал нам историю"
+          },
+          {
+            "en": "wait for us",
+            "ru": "подожди нас"
+          }
+        ],
         "primary": true
       }
     ]
@@ -370052,299 +370119,94 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "колодец, водоём",
-        "examples": [],
+        "partOfSpeech": "adverb",
+        "translation": "хорошо, отлично; правильно",
         "register": [],
+        "examples": [
+          {
+            "en": "well done!",
+            "ru": "отлично сработано!"
+          },
+          {
+            "en": "she speaks English well",
+            "ru": "она хорошо говорит по-английски"
+          },
+          {
+            "en": "to behave well",
+            "ru": "хорошо вести себя"
+          }
+        ],
         "primary": true
       },
       {
         "id": 2,
-        "partOfSpeech": "noun",
-        "translation": "лестничная клетка",
-        "examples": [],
+        "partOfSpeech": "adverb",
+        "translation": "вполне, значительно, основательно",
         "register": [],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "источник",
-        "examples": [],
-        "register": [
-          "историческое"
-        ]
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "noun",
-        "translation": "минеральный источник",
-        "examples": [],
-        "register": [
-          "минералогия"
-        ]
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "курорт с минеральными водами",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "отстойник, зумпф",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
-        "translation": "места адвокатов (в английском суде)",
-        "examples": [],
-        "register": [
-          "устаревшее"
-        ]
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "noun",
-        "translation": "шахта лифта",
-        "examples": [],
-        "register": [
-          "горное дело"
-        ]
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "verb",
-        "translation": "хлынуть, бить ключом (часто well up, well out, well forth)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "adverb",
-        "translation": "хорошо; здорово!",
         "examples": [
-          {
-            "en": "well done!",
-            "ru": "отлично!"
-          },
-          {
-            "en": "she is well spoken of",
-            "ru": "у неё отличная репутация"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "adverb",
-        "translation": "как следует; хорошенько; основательно",
-        "examples": [
-          {
-            "en": "we ought to examine the results well",
-            "ru": "следует тщательно изучить результаты"
-          },
-          {
-            "en": "to talk well",
-            "ru": "наговориться вдоволь"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "adverb",
-        "translation": "хорошо, разумно, правильно",
-        "examples": [
-          {
-            "en": "to behave well",
-            "ru": "хорошо вести себя"
-          },
-          {
-            "en": "you can't well refuse to help him",
-            "ru": "у вас нет достаточных оснований отказать ему в помощи"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "adverb",
-        "translation": "совершенно, полностью",
-        "examples": [
-          {
-            "en": "he was well out of sight",
-            "ru": "он совсем исчез из виду"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "adverb",
-        "translation": "очень, значительно, далеко, вполне",
-        "examples": [
-          {
-            "en": "the work is well on",
-            "ru": "работа значительно продвинулась"
-          },
           {
             "en": "he is well past forty",
             "ru": "ему далеко за сорок"
           },
           {
+            "en": "the work is well on",
+            "ru": "работа значительно продвинулась"
+          },
+          {
             "en": "it may well be true",
-            "ru": "весьма возможно, что так оно и есть на самом деле"
-          },
-          {
-            "en": "this may well be so",
-            "ru": "это весьма вероятно"
+            "ru": "весьма возможно, что это правда"
           }
         ],
-        "register": []
+        "primary": true
       },
       {
-        "id": 15,
-        "partOfSpeech": "adverb",
-        "translation": "вдобавок",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 16,
-        "partOfSpeech": "adverb",
-        "translation": "так же как, а также",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 17,
-        "partOfSpeech": "adverb",
-        "translation": "заодно и",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 18,
-        "partOfSpeech": "adverb",
-        "translation": "ну что же, пусть будет так",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 19,
-        "partOfSpeech": "adverb",
-        "translation": "жалеть не стоит",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 20,
-        "partOfSpeech": "adverb",
-        "translation": "довольно хорошо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 21,
-        "partOfSpeech": "adjective",
-        "translation": "хороший",
-        "examples": [
-          {
-            "en": "all is well",
-            "ru": "всё в порядке, всё прекрасно"
-          },
-          {
-            "en": "all turned out well",
-            "ru": "всё сошло благополучно"
-          },
-          {
-            "en": "to be well out of smth",
-            "ru": "счастливо отделаться от чего-либо"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 22,
-        "partOfSpeech": "adjective",
-        "translation": "здоровый",
-        "examples": [
-          {
-            "en": "I am quite well",
-            "ru": "я совершенно здоров"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 23,
-        "partOfSpeech": "noun",
-        "translation": "добро",
-        "examples": [
-          {
-            "en": "I wish him well",
-            "ru": "я желаю ему добра"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 24,
-        "partOfSpeech": "noun",
-        "translation": "в роли определения к другому слову",
-        "examples": [
-          {
-            "en": "let well enough alone",
-            "ru": "от добра добра не ищут"
-          }
-        ],
-        "register": [
-          "американский английский"
-        ]
-      },
-      {
-        "id": 25,
+        "id": 3,
         "partOfSpeech": "interjection",
-        "translation": "ну! (выражает удивление, уступку, согласие, ожидание и т. п.)",
+        "translation": "ну!, итак, что ж (выражает удивление, уступку, паузу)",
+        "register": [],
         "examples": [
           {
-            "en": "well and good!",
-            "ru": "хорошо!, ладно!"
-          },
-          {
-            "en": "if you promise that, well and good",
-            "ru": "если вы обещаете это, тогда хорошо"
-          },
-          {
-            "en": "well, to be sure",
-            "ru": "вот тебе раз! well, what next? ну, а что дальше?"
+            "en": "well, let's start",
+            "ru": "ну что ж, давайте начнём"
           },
           {
             "en": "well, now tell me all about it",
-            "ru": "ну, теперь расскажите мне всё об этом"
+            "ru": "ну, теперь расскажи мне всё об этом"
+          },
+          {
+            "en": "well and good!",
+            "ru": "хорошо!, ладно!"
           }
         ],
-        "register": []
+        "primary": true
       }
     ],
     "phrases": [
       {
         "id": 1,
-        "phrase": "well up",
-        "partOfSpeech": "verb",
-        "translation": "знающий, толковый",
+        "phrase": "as well as",
+        "partOfSpeech": "conjunction",
+        "translation": "так же как и, наряду с",
+        "register": [],
         "examples": [
           {
-            "en": "he isn't well up in psychology",
-            "ru": "он не силён в психологии"
+            "en": "she knows English as well as French",
+            "ru": "она знает английский так же хорошо, как и французский"
           }
-        ],
-        "register": []
+        ]
+      },
+      {
+        "id": 2,
+        "phrase": "as well",
+        "partOfSpeech": "adverb",
+        "translation": "также, тоже",
+        "register": [],
+        "examples": [
+          {
+            "en": "can I come as well?",
+            "ru": "можно мне тоже пойти?"
+          }
+        ]
       }
     ]
   },
@@ -370361,297 +370223,78 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "колодец, водоём",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 2,
-        "partOfSpeech": "noun",
-        "translation": "лестничная клетка",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "источник",
-        "examples": [],
-        "register": [
-          "историческое"
-        ]
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "noun",
-        "translation": "минеральный источник",
-        "examples": [],
-        "register": [
-          "минералогия"
-        ]
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "курорт с минеральными водами",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "отстойник, зумпф",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
-        "translation": "места адвокатов (в английском суде)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "noun",
-        "translation": "шахта лифта",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "verb",
-        "translation": "хлынуть, бить ключом (часто well up, well out, well forth)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "adverb",
-        "translation": "хорошо; здорово!",
-        "examples": [
-          {
-            "en": "well done!",
-            "ru": "отлично!"
-          },
-          {
-            "en": "she is well spoken of",
-            "ru": "у неё отличная репутация"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "adverb",
-        "translation": "как следует; хорошенько; основательно",
-        "examples": [
-          {
-            "en": "we ought to examine the results well",
-            "ru": "следует тщательно изучить результаты"
-          },
-          {
-            "en": "to talk well",
-            "ru": "наговориться вдоволь"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "adverb",
-        "translation": "хорошо, разумно, правильно",
-        "examples": [
-          {
-            "en": "to behave well",
-            "ru": "хорошо вести себя"
-          },
-          {
-            "en": "you can't well refuse to help him",
-            "ru": "у вас нет достаточных оснований отказать ему в помощи"
-          }
-        ],
-        "register": [
-          "американский английский"
-        ]
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "adverb",
-        "translation": "совершенно, полностью",
-        "examples": [
-          {
-            "en": "he was well out of sight",
-            "ru": "он совсем исчез из виду"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "adverb",
-        "translation": "очень, значительно, далеко, вполне",
-        "examples": [
-          {
-            "en": "the work is well on",
-            "ru": "работа значительно продвинулась"
-          },
-          {
-            "en": "he is well past forty",
-            "ru": "ему далеко за сорок"
-          },
-          {
-            "en": "it may well be true",
-            "ru": "весьма возможно, что так оно и есть на самом деле"
-          },
-          {
-            "en": "this may well be so",
-            "ru": "это весьма вероятно"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "adverb",
-        "translation": "вдобавок",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 16,
-        "partOfSpeech": "adverb",
-        "translation": "так же как, а также",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 17,
-        "partOfSpeech": "adverb",
-        "translation": "заодно и",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 18,
-        "partOfSpeech": "adverb",
-        "translation": "ну что же, пусть будет так",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 19,
-        "partOfSpeech": "adverb",
-        "translation": "жалеть не стоит",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 20,
-        "partOfSpeech": "adverb",
-        "translation": "довольно хорошо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 21,
         "partOfSpeech": "adjective",
-        "translation": "хороший",
-        "examples": [
-          {
-            "en": "all is well",
-            "ru": "всё в порядке, всё прекрасно"
-          },
-          {
-            "en": "all turned out well",
-            "ru": "всё сошло благополучно"
-          },
-          {
-            "en": "to be well out of smth",
-            "ru": "счастливо отделаться от чего-либо"
-          }
-        ],
+        "translation": "здоровый, в добром здравии",
         "register": [],
-        "primary": true
-      },
-      {
-        "id": 22,
-        "partOfSpeech": "adjective",
-        "translation": "здоровый",
         "examples": [
           {
             "en": "I am quite well",
             "ru": "я совершенно здоров"
+          },
+          {
+            "en": "get well soon!",
+            "ru": "поправляйся скорее!"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
-        "id": 23,
-        "partOfSpeech": "noun",
-        "translation": "добро",
+        "id": 2,
+        "partOfSpeech": "adjective",
+        "translation": "хороший, благополучный",
+        "register": [],
         "examples": [
           {
-            "en": "I wish him well",
-            "ru": "я желаю ему добра"
+            "en": "all is well",
+            "ru": "всё хорошо, всё в порядке"
+          },
+          {
+            "en": "all turned out well",
+            "ru": "всё закончилось благополучно"
           }
         ],
-        "register": []
+        "primary": true
       },
       {
-        "id": 24,
+        "id": 3,
         "partOfSpeech": "noun",
-        "translation": "в роли определения к другому слову",
+        "translation": "колодец, скважина, источник",
+        "register": [],
         "examples": [
           {
-            "en": "let well enough alone",
-            "ru": "от добра добра не ищут"
+            "en": "oil well",
+            "ru": "нефтяная скважина"
+          },
+          {
+            "en": "water from the well",
+            "ru": "вода из колодца"
           }
         ],
-        "register": [
-          "американский английский"
+        "primary": true
+      },
+      {
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "хлынуть, бить ключом (часто well up)",
+        "register": [],
+        "examples": [
+          {
+            "en": "tears welled up in her eyes",
+            "ru": "слёзы навернулись на её глаза"
+          }
         ]
-      },
-      {
-        "id": 25,
-        "partOfSpeech": "interjection",
-        "translation": "ну! (выражает удивление, уступку, согласие, ожидание и т. п.)",
-        "examples": [
-          {
-            "en": "well and good!",
-            "ru": "хорошо!, ладно!"
-          },
-          {
-            "en": "if you promise that, well and good",
-            "ru": "если вы обещаете это, тогда хорошо"
-          },
-          {
-            "en": "well, to be sure",
-            "ru": "вот тебе раз! well, what next? ну, а что дальше?"
-          },
-          {
-            "en": "well, now tell me all about it",
-            "ru": "ну, теперь расскажите мне всё об этом"
-          }
-        ],
-        "register": []
       }
     ],
     "phrases": [
       {
         "id": 1,
-        "phrase": "well up",
+        "phrase": "let well alone",
         "partOfSpeech": "verb",
-        "translation": "знающий, толковый",
-        "examples": [
-          {
-            "en": "he isn't well up in psychology",
-            "ru": "он не силён в психологии"
-          }
+        "translation": "не трогай то, что и так хорошо работает; от добра добра не ищут",
+        "register": [
+          "пословица"
         ],
-        "register": []
+        "examples": []
       }
     ]
   },
