@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   OxfordWord,
   WordMeaningItem,
@@ -12,6 +12,8 @@ import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import {
   Volume2,
   X,
+  ChevronLeft,
+  ChevronRight,
   Layers,
 } from 'lucide-react';
 import styles from './WordDetailModal.module.css';
@@ -42,6 +44,9 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
   const [historyLogs, setHistoryLogs] = useState<EnglishWordReviewLogItem[]>([]);
   const [progress, setProgress] = useState<EnglishWordProgressItem | null>(null);
 
+  const activePillRef = useRef<HTMLButtonElement | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
   // Lock body scroll
   useEffect(() => {
     if (isOpen) {
@@ -70,6 +75,17 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
+
+  // Auto-scroll active pill into view
+  useEffect(() => {
+    if (activePillRef.current && scrollContainerRef.current) {
+      activePillRef.current.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'nearest',
+        block: 'nearest',
+      });
+    }
+  }, [meaningIndex, showAllMeanings]);
 
   const fetchWordHistory = async (wordId: string) => {
     try {
@@ -199,7 +215,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
       }}
     >
       <div className={styles.modal}>
-        {/* Header - Fixed top */}
+        {/* 1. Header - Fixed Top */}
         <div className={styles.header}>
           <div>
             <div className={styles.wordTitleRow}>
@@ -232,20 +248,32 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           </div>
         </div>
 
-        {/* Content Body - Scrollable Middle Area */}
-        <div className={styles.contentBody}>
-          {/* 1. Meaning Pills Track */}
-          <div className={styles.meaningsTrack}>
+        {/* 2. PINNED Meaning Pills Track with [‹] and [›] navigation - Always Visible Under Header */}
+        <div className={styles.meaningsTrackPinned}>
+          <button
+            type="button"
+            disabled={safeMeaningIndex === 0}
+            onClick={() => setMeaningIndex(Math.max(0, safeMeaningIndex - 1))}
+            className={styles.navArrowBtn}
+            title="Предыдущее значение"
+          >
+            <ChevronLeft size={16} />
+          </button>
+
+          <div ref={scrollContainerRef} className={styles.meaningsTrackScroll}>
             {displayedMeanings.map((m, idx) => {
               const isSelected = idx === safeMeaningIndex;
+              const rawTr = m.translation?.split(/[,;/]/)[0]?.trim() || `Значение ${idx + 1}`;
               return (
                 <button
                   key={m.id || idx}
+                  ref={isSelected ? activePillRef : null}
                   type="button"
                   className={`${styles.pillBtn} ${isSelected ? styles.pillBtnActive : ''}`}
                   onClick={() => setMeaningIndex(idx)}
+                  title={m.translation}
                 >
-                  {m.translation.split(/[,;/]/)[0].trim() || `Значение ${idx + 1}`}
+                  {rawTr}
                 </button>
               );
             })}
@@ -270,7 +298,20 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
             )}
           </div>
 
-          {/* 2. Active Meaning Card */}
+          <button
+            type="button"
+            disabled={safeMeaningIndex === displayedMeanings.length - 1}
+            onClick={() => setMeaningIndex(Math.min(displayedMeanings.length - 1, safeMeaningIndex + 1))}
+            className={styles.navArrowBtn}
+            title="Следующее значение"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+
+        {/* 3. Content Body - Scrollable Middle Area (Translations, Examples, Phrases) */}
+        <div className={styles.contentBody}>
+          {/* Active Meaning Card */}
           {activeMeaning && (
             <div className={styles.meaningCard}>
               {activeMeaning.partOfSpeech && (
@@ -301,7 +342,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
             </div>
           )}
 
-          {/* 3. Phrasal verbs / Idioms */}
+          {/* Phrasal verbs / Idioms */}
           {word.phrases && word.phrases.length > 0 && (
             <div className={styles.phrasesSection}>
               <div className={styles.phrasesTitle}>Фразовые глаголы и идиомы:</div>
@@ -315,12 +356,11 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           )}
         </div>
 
-        {/* ALWAYS VISIBLE PINNED REPETITION TRACK (At the bottom, no scrolling needed) */}
+        {/* 4. PINNED REPETITION TRACK (At the bottom, always visible) */}
         <div className={styles.pinnedRepeatFooter}>
-          {/* Milestone timeline track */}
           <div className={styles.timelineTrackContainer}>
             <div className={styles.timelineTrack}>
-              {/* Connector Line behind nodes */}
+              {/* Connector Line */}
               <div className={styles.connectorLine}>
                 {[0, 1, 2, 3].map((idx) => {
                   const isStepPassed = isMastered || repetitions > idx;
@@ -339,7 +379,6 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
               {MILESTONES.map((step, idx) => {
                 const isCompleted = isMastered || repetitions > idx;
                 const isNext = !isMastered && repetitions === idx;
-                // Match with review log if available
                 const logForStep = historyLogs[historyLogs.length - 1 - idx] || historyLogs[0];
                 const ratingEmojiMap: Record<string, string> = {
                   again: '🔴',
@@ -410,7 +449,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
             </div>
           </div>
 
-          {/* Footer bottom meta row: recent ratings and memory stats */}
+          {/* Footer bottom meta row */}
           <div className={styles.footerMetaRow}>
             <div className={styles.recentRatingsGroup}>
               {historyLogs.slice(0, 3).map((log) => (
