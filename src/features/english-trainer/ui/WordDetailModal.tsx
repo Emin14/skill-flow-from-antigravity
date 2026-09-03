@@ -214,14 +214,11 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
       }}
     >
       <div className={styles.modal}>
-        {/* 1. Header - Fixed Top with Word + Badges: [CEFR] [Status] [🔥 2/5] [⚠️ 0] [⚡ 2.8] [✕] */}
+        {/* 1. Header - Fixed Top: [Word] [Audio Button] [Transcription] ... [CEFR] [Status] [🔥 2/5] [⚠️ 0] [✕] */}
         <div className={styles.header}>
           <div>
             <div className={styles.wordTitleRow}>
               <span className={styles.wordTitle}>{word.word}</span>
-              {word.transcription && (
-                <span className={styles.transcription}>{word.transcription}</span>
-              )}
               <button
                 type="button"
                 className={styles.audioBtn}
@@ -230,6 +227,9 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
               >
                 <Volume2 size={15} />
               </button>
+              {word.transcription && (
+                <span className={styles.transcription}>{word.transcription}</span>
+              )}
             </div>
           </div>
 
@@ -237,15 +237,12 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
             <span className={styles.cefrBadge}>{word.cefrLevel}</span>
             {renderStatusBadge(word.status)}
 
-            {/* Repetition Stats Badges Lifted to Header */}
+            {/* Repetition Stats Badges */}
             <span className={styles.headerStatBadge} title="Серия успешных повторений">
               🔥 {repetitions}/5
             </span>
             <span className={styles.headerStatBadge} title="Ошибки / сбои памяти">
               ⚠️ {progress?.errorCount ?? 0}
-            </span>
-            <span className={styles.headerStatBadge} title="Фактор лёгкости (Ease Factor)">
-              ⚡ {progress?.easeFactor ? progress.easeFactor.toFixed(1) : '2.5'}
             </span>
 
             <button
@@ -367,7 +364,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           )}
         </div>
 
-        {/* 4. PINNED REPETITION TRACK (At the bottom, always visible - NO NUMBERS ABOVE CIRCLES) */}
+        {/* 4. PINNED REPETITION TRACK: Clearly highlighted with contrast card styling */}
         <div className={styles.pinnedRepeatFooter}>
           <div className={styles.timelineTrackContainer}>
             <div className={styles.timelineTrack}>
@@ -386,7 +383,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
                 })}
               </div>
 
-              {/* 5 Milestone Step Nodes - Clean Circles without Top Numbers */}
+              {/* 5 Milestone Step Nodes */}
               {MILESTONES.map((step, idx) => {
                 const isCompleted = isMastered || repetitions > idx;
                 const isNext = !isMastered && repetitions === idx;
@@ -411,7 +408,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
                           ? {
                               backgroundColor: ratingInfo.bg,
                               borderColor: ratingInfo.border,
-                              boxShadow: `0 0 10px ${ratingInfo.glow}`,
+                              boxShadow: `0 0 12px ${ratingInfo.glow}`,
                               color: '#ffffff',
                             }
                           : undefined

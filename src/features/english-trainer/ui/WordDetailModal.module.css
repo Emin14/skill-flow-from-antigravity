@@ -46,7 +46,7 @@
   }
 }
 
-/* 1. Header: Fixed at top with Word + Badges (CEFR, Status, 2/5, ⚠️ 0, ⚡ 2.8) */
+/* 1. Header: Fixed at top with Word + Audio + Transcription + Badges */
 .header {
   padding: 12px 18px;
   display: flex;
@@ -74,16 +74,10 @@
   letter-spacing: -0.02em;
 }
 
-.transcription {
-  font-size: 13.5px;
-  color: var(--color-text-muted);
-  font-family: var(--font-mono, monospace);
-}
-
 .audioBtn {
   background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
-  color: var(--color-text-primary);
+  color: var(--color-accent);
   width: 28px;
   height: 28px;
   border-radius: 8px;
@@ -94,11 +88,18 @@
   padding: 0;
   font-size: 13px;
   transition: all 0.15s ease;
+  flex-shrink: 0;
 }
 
 .audioBtn:hover {
   background: var(--color-surface-active);
-  transform: scale(1.05);
+  transform: scale(1.08);
+}
+
+.transcription {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono, monospace);
 }
 
 .headerActions {
@@ -393,31 +394,40 @@
   color: var(--color-text-primary);
 }
 
-/* 4. PINNED BOTTOM REPETITION TRACK: Clean Circles with Rating Colors */
+/* 4. PINNED BOTTOM REPETITION TRACK: Clearly highlighted, noticeable and separated */
 .pinnedRepeatFooter {
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  padding: 10px 18px 12px;
+  background: var(--color-bg);
+  border-top: 2px solid var(--color-border);
+  padding: 12px 18px 14px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
   box-sizing: border-box;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.15);
+}
+
+:global([data-theme='light']) .pinnedRepeatFooter {
+  background: #f1f5f9;
+  border-top-color: #cbd5e1;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
 }
 
 .timelineTrackContainer {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 12px 6px 10px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 14px;
+  padding: 12px 8px 10px;
   width: 100%;
   box-sizing: border-box;
   overflow-x: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 :global([data-theme='light']) .timelineTrackContainer {
-  background: var(--color-surface-hover);
-  border-color: var(--color-border);
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .timelineTrack {
@@ -442,17 +452,17 @@
 
 .connectorLine {
   position: absolute;
-  top: 10px;
+  top: 11px;
   left: 10px;
   right: 10px;
-  height: 3px;
+  height: 4px;
   z-index: 1;
   display: flex;
 }
 
 .lineSegment {
   flex: 1;
-  height: 3px;
+  height: 4px;
 }
 
 .lineSegmentCompleted {
@@ -466,13 +476,13 @@
 
 .nodeCircle {
   position: relative;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
   transition: all 0.2s ease;
   z-index: 5;
@@ -485,14 +495,14 @@
 .checkmarkIcon {
   color: #ffffff !important;
   font-weight: 800;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .smartRatingBadge {
   position: absolute;
-  top: -9px;
-  right: -9px;
-  font-size: 12px;
+  top: -10px;
+  right: -10px;
+  font-size: 13px;
   line-height: 1;
   z-index: 10;
 }
@@ -501,12 +511,12 @@
   background-color: var(--color-accent-light);
   border-color: var(--color-accent);
   color: var(--color-accent);
-  box-shadow: 0 0 10px var(--color-accent-light);
+  box-shadow: 0 0 12px var(--color-accent-light);
 }
 
 .pulseDot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: var(--color-accent);
 }
@@ -518,8 +528,8 @@
 }
 
 .emptyDot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: var(--color-text-muted);
   opacity: 0.4;
@@ -528,7 +538,7 @@
 .subLabel {
   font-size: 11px;
   font-weight: 600;
-  margin-top: 6px;
+  margin-top: 7px;
   white-space: nowrap;
   text-align: center;
 }
