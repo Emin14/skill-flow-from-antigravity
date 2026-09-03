@@ -16,6 +16,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Plus,
+  Eye,
 } from 'lucide-react';
 import { Variant14SegmentedPillCard } from './variants';
 import styles from './EnglishTrainerModal.module.css';
@@ -289,6 +290,26 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     advanceToNext();
   };
 
+  const handleCheckAnswer = () => {
+    const card = queue[currentIndex];
+    if (!card) return;
+
+    if (!userInput.trim()) {
+      handleRevealAnswer();
+      return;
+    }
+
+    const matched = checkAnswerMatch(userInput, card);
+    if (matched) {
+      setIsMatch(true);
+      setIsAnswerRevealed(true);
+      triggerHapticFeedback('success');
+    } else {
+      setIsMatch(false);
+      triggerHapticFeedback('error');
+    }
+  };
+
   const handleRevealAnswer = () => {
     const card = queue[currentIndex];
     if (!card) return;
@@ -308,7 +329,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       if (!isAnswerRevealed) {
-        handleRevealAnswer();
+        handleCheckAnswer();
       }
     }
   };
@@ -572,26 +593,35 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                       type="text"
                       className={`
                         ${styles.typeInput} 
-                        ${isAnswerRevealed && isMatch === true ? styles.typeInputCorrect : ''}
-                        ${isAnswerRevealed && isMatch === false ? styles.typeInputWrong : ''}
+                        ${isMatch === true ? styles.typeInputCorrect : ''}
+                        ${isMatch === false ? styles.typeInputWrong : ''}
                       `}
                       placeholder="Введите перевод (или нажмите Enter)..."
                       value={userInput}
                       disabled={isAnswerRevealed}
-                      onChange={(e) => setUserInput(e.target.value)}
+                      onChange={(e) => {
+                        setUserInput(e.target.value);
+                        if (isMatch !== null && !isAnswerRevealed) {
+                          setIsMatch(null);
+                        }
+                      }}
                       onKeyDown={handleKeyDown}
                     />
                     {userInput.trim() && !isAnswerRevealed && (
                       <button
                         className={styles.clearInputBtn}
-                        onClick={() => setUserInput('')}
+                        onClick={() => {
+                          setUserInput('');
+                          if (isMatch !== null) setIsMatch(null);
+                          inputRef.current?.focus();
+                        }}
                         title="Очистить"
                       >
                         ✕
                       </button>
                     )}
 
-                    {isAnswerRevealed && isMatch !== null && (
+                    {isMatch !== null && (
                       <div
                         className={`
                           ${styles.feedbackBadge}
@@ -603,10 +633,15 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                             <Check size={15} strokeWidth={3} />
                             <span>Отлично! Перевод совпал со значением</span>
                           </>
+                        ) : !isAnswerRevealed ? (
+                          <>
+                            <X size={15} strokeWidth={3} />
+                            <span>Пока не совпало. Попробуйте ещё раз или нажмите «Показать ответ»</span>
+                          </>
                         ) : (
                           <>
                             <X size={15} strokeWidth={3} />
-                            <span>Не совсем так. Сверьтесь со слайдером значений выше</span>
+                            <span>Не совсем так. Сверьтесь со значениями выше</span>
                           </>
                         )}
                       </div>
@@ -615,29 +650,86 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
 
                   {/* Actions for Review Mode */}
                   {!isAnswerRevealed ? (
-                    /* Step 1: Reveal Action */
-                    <button
-                      type="button"
-                      onClick={handleRevealAnswer}
-                      style={{
-                        padding: '11px 16px',
-                        background: 'var(--color-accent)',
-                        border: 'none',
-                        color: '#ffffff',
-                        borderRadius: '12px',
-                        fontSize: '13.5px',
-                        fontWeight: 700,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '6px',
-                        boxShadow: 'var(--shadow-sm)',
-                        transition: 'all var(--transition-fast) ease',
-                      }}
-                    >
-                      <span>Показать ответ (Enter)</span>
-                    </button>
+                    /* Step 1: Check or Reveal Action */
+                    <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+                      {userInput.trim() ? (
+                        <>
+                          <button
+                            type="button"
+                            onClick={handleCheckAnswer}
+                            style={{
+                              flex: 1,
+                              padding: '11px 16px',
+                              background: 'var(--color-accent)',
+                              border: 'none',
+                              color: '#ffffff',
+                              borderRadius: '12px',
+                              fontSize: '13.5px',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '6px',
+                              boxShadow: 'var(--shadow-sm)',
+                              transition: 'all var(--transition-fast) ease',
+                            }}
+                          >
+                            <Check size={16} strokeWidth={2.5} />
+                            <span>Проверить (Enter)</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleRevealAnswer}
+                            style={{
+                              padding: '11px 14px',
+                              background: 'var(--color-surface-hover)',
+                              border: '1px solid var(--color-border)',
+                              color: 'var(--color-text-secondary)',
+                              borderRadius: '12px',
+                              fontSize: '13px',
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '5px',
+                              transition: 'all var(--transition-fast) ease',
+                              whiteSpace: 'nowrap',
+                            }}
+                            title="Сдаться и посмотреть правильный перевод"
+                          >
+                            <Eye size={15} />
+                            <span>Показать ответ</span>
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={handleRevealAnswer}
+                          style={{
+                            width: '100%',
+                            padding: '11px 16px',
+                            background: 'var(--color-accent)',
+                            border: 'none',
+                            color: '#ffffff',
+                            borderRadius: '12px',
+                            fontSize: '13.5px',
+                            fontWeight: 700,
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '6px',
+                            boxShadow: 'var(--shadow-sm)',
+                            transition: 'all var(--transition-fast) ease',
+                          }}
+                        >
+                          <Eye size={16} />
+                          <span>Показать ответ (Enter)</span>
+                        </button>
+                      )}
+                    </div>
                   ) : (
                     /* Step 2: Spaced Repetition 4-Rating Buttons */
                     <div className={styles.reviewRatingGrid}>
