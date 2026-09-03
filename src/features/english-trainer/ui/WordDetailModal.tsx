@@ -12,7 +12,6 @@ import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import {
   Volume2,
   X,
-  RotateCw,
   Layers,
 } from 'lucide-react';
 import styles from './WordDetailModal.module.css';
@@ -25,7 +24,7 @@ interface WordDetailModalProps {
 }
 
 const MILESTONES = [
-  { label: '1д', target: 'День 1' },
+  { label: '1д', target: '1д' },
   { label: '3д', target: '+3д' },
   { label: '7д', target: '+7д' },
   { label: '14д', target: '+14д' },
@@ -146,7 +145,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
     }
   };
 
-  const ratingToEmojiAndText = (rating: string) => {
+  const ratingToEmoji = (rating: string) => {
     switch (rating) {
       case 'again':
         return '🔴 Не помню';
@@ -157,7 +156,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
       case 'easy':
         return '🔵 Легко';
       case 'already_know':
-        return '💎 Уже знаю';
+        return '💎 Знаю';
       default:
         return rating;
     }
@@ -200,7 +199,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
       }}
     >
       <div className={styles.modal}>
-        {/* Header */}
+        {/* Header - Fixed top */}
         <div className={styles.header}>
           <div>
             <div className={styles.wordTitleRow}>
@@ -233,7 +232,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           </div>
         </div>
 
-        {/* Content Body - Seamless Scrollable Single View */}
+        {/* Content Body - Scrollable Middle Area */}
         <div className={styles.contentBody}>
           {/* 1. Meaning Pills Track */}
           <div className={styles.meaningsTrack}>
@@ -314,147 +313,118 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
               ))}
             </div>
           )}
+        </div>
 
-          {/* 4. Repetition History (In the exact style of the "Повторить" tasks section) */}
-          <div className={styles.repeatCardWrapper}>
-            <div className={styles.cardHeader}>
-              <div className={styles.line1}>
-                <span className={styles.repeatCardTitle}>
-                  <RotateCw size={15} color="var(--color-accent)" />
-                  Интервальное повторение
-                </span>
-
-                {progress?.nextReviewDate ? (
-                  <div className={styles.statusBadgeNext} title="Дата следующего повторения">
-                    📅 След. повтор: {progress.nextReviewDate}
-                  </div>
-                ) : (
-                  <div className={styles.statusBadgeNext}>
-                    📅 Ещё не повторялось
-                  </div>
-                )}
-              </div>
-
-              <div className={styles.line2}>
-                <div className={styles.categoryRow}>
-                  <span className={styles.catDot} />
-                  <span className={styles.categoryText}>Oxford 5000 • Уровень {word.cefrLevel}</span>
-                </div>
-                <div className={styles.repetitionCounter}>
-                  <span className={styles.repetitionNum}>{isMastered ? 5 : repetitions}</span> из 5 повторений
-                </div>
-              </div>
-            </div>
-
-            {/* Timeline Track (Milestones line with circles) */}
-            <div className={styles.timelineTrackContainer}>
-              <div className={styles.timelineTrack}>
-                {/* Connector Line behind nodes */}
-                <div className={styles.connectorLine}>
-                  {[0, 1, 2, 3].map((idx) => {
-                    const isStepPassed = isMastered || repetitions > idx;
-                    return (
-                      <div
-                        key={idx}
-                        className={`${styles.lineSegment} ${
-                          isStepPassed ? styles.lineSegmentCompleted : styles.lineSegmentFuture
-                        }`}
-                      />
-                    );
-                  })}
-                </div>
-
-                {/* 5 Milestone Step Nodes */}
-                {MILESTONES.map((step, idx) => {
-                  const isCompleted = isMastered || repetitions > idx;
-                  const isNext = !isMastered && repetitions === idx;
-                  // Look for review log for this repetition step if available
-                  const logForStep = historyLogs[historyLogs.length - 1 - idx] || historyLogs[0];
-                  const ratingEmojiMap: Record<string, string> = {
-                    again: '🔴',
-                    hard: '🟡',
-                    good: '🟢',
-                    easy: '🔵',
-                    already_know: '💎',
-                  };
-                  const ratingEmoji = logForStep ? ratingEmojiMap[logForStep.rating] || '🟢' : '🟢';
-
+        {/* ALWAYS VISIBLE PINNED REPETITION TRACK (At the bottom, no scrolling needed) */}
+        <div className={styles.pinnedRepeatFooter}>
+          {/* Milestone timeline track */}
+          <div className={styles.timelineTrackContainer}>
+            <div className={styles.timelineTrack}>
+              {/* Connector Line behind nodes */}
+              <div className={styles.connectorLine}>
+                {[0, 1, 2, 3].map((idx) => {
+                  const isStepPassed = isMastered || repetitions > idx;
                   return (
-                    <div key={idx} className={styles.stepColumn}>
-                      <span
-                        className={`${styles.stepLabel} ${
-                          isCompleted
-                            ? styles.stepLabelCompleted
-                            : isNext
-                            ? styles.stepLabelNext
-                            : styles.stepLabelFuture
-                        }`}
-                      >
-                        {step.label}
-                      </span>
-
-                      <div
-                        className={`${styles.nodeCircle} ${
-                          isCompleted
-                            ? styles.nodeCompleted
-                            : isNext
-                            ? styles.nodeNext
-                            : styles.nodeFuture
-                        }`}
-                      >
-                        {isCompleted ? (
-                          <>
-                            <span className={styles.checkmarkIcon}>✓</span>
-                            {logForStep && (
-                              <span className={styles.smartRatingBadge} title={`Оценка: ${logForStep.rating}`}>
-                                {ratingEmoji}
-                              </span>
-                            )}
-                          </>
-                        ) : isNext ? (
-                          <span className={styles.pulseDot} />
-                        ) : (
-                          <span className={styles.emptyDot} />
-                        )}
-                      </div>
-
-                      <span
-                        className={`${styles.subLabel} ${
-                          isCompleted
-                            ? styles.subLabelCompleted
-                            : isNext
-                            ? styles.subLabelNext
-                            : styles.subLabelFuture
-                        }`}
-                      >
-                        {isCompleted
-                          ? (logForStep ? formatDateShort(logForStep.createdAt) : 'Выполнено')
-                          : isNext
-                          ? (progress?.nextReviewDate || 'Ожидает')
-                          : step.target}
-                      </span>
-                    </div>
+                    <div
+                      key={idx}
+                      className={`${styles.lineSegment} ${
+                        isStepPassed ? styles.lineSegmentCompleted : styles.lineSegmentFuture
+                      }`}
+                    />
                   );
                 })}
               </div>
+
+              {/* 5 Milestone Step Nodes */}
+              {MILESTONES.map((step, idx) => {
+                const isCompleted = isMastered || repetitions > idx;
+                const isNext = !isMastered && repetitions === idx;
+                // Match with review log if available
+                const logForStep = historyLogs[historyLogs.length - 1 - idx] || historyLogs[0];
+                const ratingEmojiMap: Record<string, string> = {
+                  again: '🔴',
+                  hard: '🟡',
+                  good: '🟢',
+                  easy: '🔵',
+                  already_know: '💎',
+                };
+                const ratingEmoji = logForStep ? ratingEmojiMap[logForStep.rating] || '🟢' : '🟢';
+
+                return (
+                  <div key={idx} className={styles.stepColumn}>
+                    <span
+                      className={`${styles.stepLabel} ${
+                        isCompleted
+                          ? styles.stepLabelCompleted
+                          : isNext
+                          ? styles.stepLabelNext
+                          : styles.stepLabelFuture
+                      }`}
+                    >
+                      {step.label}
+                    </span>
+
+                    <div
+                      className={`${styles.nodeCircle} ${
+                        isCompleted
+                          ? styles.nodeCompleted
+                          : isNext
+                          ? styles.nodeNext
+                          : styles.nodeFuture
+                      }`}
+                    >
+                      {isCompleted ? (
+                        <>
+                          <span className={styles.checkmarkIcon}>✓</span>
+                          {logForStep && (
+                            <span className={styles.smartRatingBadge} title={`Оценка: ${logForStep.rating}`}>
+                              {ratingEmoji}
+                            </span>
+                          )}
+                        </>
+                      ) : isNext ? (
+                        <span className={styles.pulseDot} />
+                      ) : (
+                        <span className={styles.emptyDot} />
+                      )}
+                    </div>
+
+                    <span
+                      className={`${styles.subLabel} ${
+                        isCompleted
+                          ? styles.subLabelCompleted
+                          : isNext
+                          ? styles.subLabelNext
+                          : styles.subLabelFuture
+                      }`}
+                    >
+                      {isCompleted
+                        ? (logForStep ? formatDateShort(logForStep.createdAt) : 'Пройдено')
+                        : isNext
+                        ? (progress?.nextReviewDate ? formatDateShort(progress.nextReviewDate) : 'Ожидает')
+                        : step.target}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Footer bottom meta row: recent ratings and memory stats */}
+          <div className={styles.footerMetaRow}>
+            <div className={styles.recentRatingsGroup}>
+              {historyLogs.slice(0, 3).map((log) => (
+                <span key={log.id} className={styles.ratingMiniPill} title={`Интервал: ${log.intervalDays} дн.`}>
+                  {ratingToEmoji(log.rating)}
+                  <span style={{ opacity: 0.65 }}>{formatDateShort(log.createdAt)}</span>
+                </span>
+              ))}
             </div>
 
-            {/* Bottom mini row: Stats & Recent logs */}
-            <div className={styles.recentHistoryRow}>
-              <div className={styles.historyPillsContainer}>
-                {historyLogs.slice(0, 3).map((log) => (
-                  <span key={log.id} className={styles.historyMiniPill} title={`Интервал: ${log.intervalDays} дн.`}>
-                    <span>{ratingToEmojiAndText(log.rating)}</span>
-                    <span style={{ opacity: 0.7 }}>({formatDateShort(log.createdAt)})</span>
-                  </span>
-                ))}
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span className={styles.metaBadgeItem}>🔥 {repetitions}</span>
-                <span className={styles.metaBadgeItem}>⚠️ {progress?.errorCount ?? 0}</span>
-                <span className={styles.metaBadgeItem}>⚡ {progress?.easeFactor ? progress.easeFactor.toFixed(1) : '2.5'}</span>
-              </div>
+            <div className={styles.metaStatsGroup}>
+              <span title="Серия успешных повторов">🔥 {repetitions}/5</span>
+              <span title="Количество ошибок">⚠️ {progress?.errorCount ?? 0}</span>
+              <span title="Коэффициент легкости">⚡ {progress?.easeFactor ? progress.easeFactor.toFixed(1) : '2.5'}</span>
             </div>
           </div>
         </div>
