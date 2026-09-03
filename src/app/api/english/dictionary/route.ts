@@ -15,7 +15,7 @@ export async function GET(req: Request) {
 
     // Load progress map
     const progressList = await prisma.englishWordProgress.findMany();
-    const progressMap = new Map(progressList.map((p) => [p.wordId, p.status]));
+    const progressMap = new Map(progressList.map((p) => [p.wordId, p]));
 
     const dictionary = getOxfordDictionary();
     let filtered = dictionary;
@@ -62,17 +62,21 @@ export async function GET(req: Request) {
     // Filter by User Learning Status
     if (status !== 'ALL') {
       filtered = filtered.filter((w) => {
-        const userStatus = progressMap.get(w.id) || 'NEW';
+        const userStatus = progressMap.get(w.id)?.status || 'NEW';
         return userStatus === status;
       });
     }
 
     const total = filtered.length;
     const startIndex = (page - 1) * limit;
-    const paginatedWords = filtered.slice(startIndex, startIndex + limit).map((w) => ({
-      ...w,
-      status: progressMap.get(w.id) || 'NEW',
-    }));
+    const paginatedWords = filtered.slice(startIndex, startIndex + limit).map((w) => {
+      const prog = progressMap.get(w.id);
+      return {
+        ...w,
+        status: prog?.status || 'NEW',
+        repetitions: prog?.repetitions ?? 0,
+      };
+    });
 
     return NextResponse.json({
       words: paginatedWords,

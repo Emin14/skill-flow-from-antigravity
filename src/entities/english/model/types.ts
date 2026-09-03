@@ -85,6 +85,7 @@ export interface OxfordWord {
   };
   topics?: string[];
   status?: WordStatus;
+  repetitions?: number;
 }
 
 export interface EnglishWordProgressItem {

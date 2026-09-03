@@ -71,18 +71,36 @@ export const EnglishPage: React.FC = () => {
     updateSettings({ activeLevels: updated });
   };
 
-  const renderStatusBadge = (status?: string) => {
-    switch (status) {
-      case 'LEARNING':
-        return <span className={`${styles.wordStatusBadge} ${styles.wordStatusLearning}`}>Изучается</span>;
-      case 'REVIEW':
-        return <span className={`${styles.wordStatusBadge} ${styles.wordStatusReview}`}>Повтор</span>;
-      case 'MASTERED':
-        return <span className={`${styles.wordStatusBadge} ${styles.wordStatusMastered}`}>Выучено ✓</span>;
-      case 'NEW':
-      default:
-        return <span className={`${styles.wordStatusBadge} ${styles.wordStatusNew}`}>Не начато</span>;
+  const renderStatusBadge = (status?: string, repetitions?: number) => {
+    const reps = repetitions ?? 0;
+    if (status === 'MASTERED' || reps >= 5) {
+      return (
+        <span
+          className={`${styles.wordStatusBadge} ${styles.wordStatusMastered}`}
+          title="Выучено (5 из 5 повторений)"
+        >
+          5/5 ✓
+        </span>
+      );
     }
+    if (reps > 0 || status === 'REVIEW' || status === 'LEARNING') {
+      return (
+        <span
+          className={`${styles.wordStatusBadge} ${styles.wordStatusReview}`}
+          title={`В процессе (${reps} из 5 повторений)`}
+        >
+          {reps}/5
+        </span>
+      );
+    }
+    return (
+      <span
+        className={`${styles.wordStatusBadge} ${styles.wordStatusNew}`}
+        title="Не начато (0 из 5 повторений)"
+      >
+        0/5
+      </span>
+    );
   };
 
   const newCount = session?.newWords?.length || 0;
@@ -326,7 +344,7 @@ export const EnglishPage: React.FC = () => {
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
                           <span className={styles.wordCardLevel}>{w.cefrLevel}</span>
-                          {renderStatusBadge(w.status)}
+                          {renderStatusBadge(w.status, w.repetitions)}
                           <button
                             type="button"
                             className={styles.miniAudioBtn}
