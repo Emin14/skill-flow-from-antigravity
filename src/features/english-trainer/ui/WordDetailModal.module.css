@@ -392,7 +392,7 @@
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: 10px 6px 8px;
+  padding: 8px 6px 8px;
   width: 100%;
   box-sizing: border-box;
   overflow-x: auto;
@@ -424,7 +424,7 @@
 }
 
 .stepLabel {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--color-text-muted);
   margin-bottom: 6px;
@@ -437,20 +437,22 @@
 }
 
 .stepLabelCompleted {
-  color: var(--color-success);
+  color: var(--color-text-secondary);
 }
 
 .stepLabelNext {
   color: var(--color-accent);
+  font-weight: 800;
 }
 
 .stepLabelFuture {
   color: var(--color-text-muted);
+  opacity: 0.6;
 }
 
 .connectorLine {
   position: absolute;
-  top: 29px;
+  top: 30px;
   left: 10px;
   right: 10px;
   height: 3px;
@@ -474,58 +476,54 @@
 
 .nodeCircle {
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: bold;
   transition: all 0.2s ease;
   z-index: 5;
   background-color: var(--color-surface);
   user-select: none;
-}
-
-.nodeCompleted {
-  background-color: var(--color-success) !important;
-  border: 2px solid var(--color-success) !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 8px var(--color-success-border);
+  border-width: 2px;
+  border-style: solid;
 }
 
 .checkmarkIcon {
   color: #ffffff !important;
   font-weight: 800;
+  font-size: 11px;
 }
 
 .smartRatingBadge {
   position: absolute;
   top: -9px;
   right: -9px;
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 1;
   z-index: 10;
 }
 
 .nodeNext {
   background-color: var(--color-accent-light);
-  border: 2px solid var(--color-accent);
+  border-color: var(--color-accent);
   color: var(--color-accent);
   box-shadow: 0 0 10px var(--color-accent-light);
 }
 
 .pulseDot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--color-accent);
 }
 
 .nodeFuture {
   background-color: var(--color-surface);
-  border: 1.5px solid var(--color-border);
+  border-color: var(--color-border);
   color: var(--color-text-muted);
 }
 
@@ -538,8 +536,8 @@
 }
 
 .subLabel {
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 10.5px;
+  font-weight: 600;
   margin-top: 6px;
   white-space: nowrap;
   text-align: center;

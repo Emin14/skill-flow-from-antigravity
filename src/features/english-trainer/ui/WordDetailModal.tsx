@@ -25,13 +25,22 @@ interface WordDetailModalProps {
   accent?: 'us' | 'uk';
 }
 
+// 5 Step Milestones: Top shows Step #, Bottom shows Target Interval
 const MILESTONES = [
-  { label: '1д', target: '1д' },
-  { label: '3д', target: '+3д' },
-  { label: '7д', target: '+7д' },
-  { label: '14д', target: '+14д' },
-  { label: '30д', target: 'Mastered' },
+  { stepNum: '1', targetInterval: '1д' },
+  { stepNum: '2', targetInterval: '+3д' },
+  { stepNum: '3', targetInterval: '+7д' },
+  { stepNum: '4', targetInterval: '+14д' },
+  { stepNum: '5', targetInterval: 'Mastered' },
 ];
+
+const RATING_STYLES: Record<string, { bg: string; border: string; glow: string; label: string; emoji: string }> = {
+  again: { bg: '#ef4444', border: '#dc2626', glow: 'rgba(239, 68, 68, 0.4)', label: 'Не помню', emoji: '🔴' },
+  hard: { bg: '#f59e0b', border: '#d97706', glow: 'rgba(245, 158, 11, 0.4)', label: 'Трудно', emoji: '🟡' },
+  good: { bg: '#10b981', border: '#059669', glow: 'rgba(16, 185, 129, 0.4)', label: 'Нормально', emoji: '🟢' },
+  easy: { bg: '#3b82f6', border: '#2563eb', glow: 'rgba(59, 130, 246, 0.4)', label: 'Легко', emoji: '🔵' },
+  already_know: { bg: '#a855f7', border: '#9333ea', glow: 'rgba(168, 85, 247, 0.4)', label: 'Знаю', emoji: '💎' },
+};
 
 export const WordDetailModal: React.FC<WordDetailModalProps> = ({
   word,
@@ -162,20 +171,8 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
   };
 
   const ratingToEmoji = (rating: string) => {
-    switch (rating) {
-      case 'again':
-        return '🔴 Не помню';
-      case 'hard':
-        return '🟡 Трудно';
-      case 'good':
-        return '🟢 Нормально';
-      case 'easy':
-        return '🔵 Легко';
-      case 'already_know':
-        return '💎 Знаю';
-      default:
-        return rating;
-    }
+    const found = RATING_STYLES[rating];
+    return found ? `${found.emoji} ${found.label}` : rating;
   };
 
   const renderStatusBadge = (status?: string) => {
@@ -206,6 +203,9 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
 
   const repetitions = progress?.repetitions ?? 0;
   const isMastered = progress?.status === 'MASTERED' || repetitions >= 5;
+
+  // Chronological logs (oldest first) to match step 1 -> step 2 -> step 3...
+  const chronologicalLogs = [...historyLogs].reverse();
 
   return (
     <div
@@ -379,18 +379,14 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
               {MILESTONES.map((step, idx) => {
                 const isCompleted = isMastered || repetitions > idx;
                 const isNext = !isMastered && repetitions === idx;
-                const logForStep = historyLogs[historyLogs.length - 1 - idx] || historyLogs[0];
-                const ratingEmojiMap: Record<string, string> = {
-                  again: '🔴',
-                  hard: '🟡',
-                  good: '🟢',
-                  easy: '🔵',
-                  already_know: '💎',
-                };
-                const ratingEmoji = logForStep ? ratingEmojiMap[logForStep.rating] || '🟢' : '🟢';
+
+                // Match with the chronological review log for this specific repetition
+                const logForStep = chronologicalLogs[idx] || (isCompleted ? historyLogs[0] : null);
+                const ratingInfo = logForStep ? RATING_STYLES[logForStep.rating] || RATING_STYLES.good : RATING_STYLES.good;
 
                 return (
                   <div key={idx} className={styles.stepColumn}>
+                    {/* Top: Step Number (1, 2, 3, 4, 5) */}
                     <span
                       className={`${styles.stepLabel} ${
                         isCompleted
@@ -400,24 +396,42 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
                           : styles.stepLabelFuture
                       }`}
                     >
-                      {step.label}
+                      {step.stepNum}
                     </span>
 
+                    {/* Circle: Colored in the rating color if completed */}
                     <div
                       className={`${styles.nodeCircle} ${
                         isCompleted
-                          ? styles.nodeCompleted
+                          ? ''
                           : isNext
                           ? styles.nodeNext
                           : styles.nodeFuture
                       }`}
+                      style={
+                        isCompleted
+                          ? {
+                              backgroundColor: ratingInfo.bg,
+                              borderColor: ratingInfo.border,
+                              boxShadow: `0 0 10px ${ratingInfo.glow}`,
+                              color: '#ffffff',
+                            }
+                          : undefined
+                      }
+                      title={
+                        isCompleted && logForStep
+                          ? `Повтор ${step.stepNum}: ${ratingInfo.label} (${formatDateShort(logForStep.createdAt)})`
+                          : isNext
+                          ? `Следующий повтор: ${progress?.nextReviewDate || 'Ожидает'}`
+                          : `Плановый повтор ${step.stepNum}`
+                      }
                     >
                       {isCompleted ? (
                         <>
                           <span className={styles.checkmarkIcon}>✓</span>
                           {logForStep && (
-                            <span className={styles.smartRatingBadge} title={`Оценка: ${logForStep.rating}`}>
-                              {ratingEmoji}
+                            <span className={styles.smartRatingBadge} title={`Оценка: ${ratingInfo.label}`}>
+                              {ratingInfo.emoji}
                             </span>
                           )}
                         </>
@@ -428,6 +442,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
                       )}
                     </div>
 
+                    {/* Bottom: Date when reviewed (e.g. 3 сен) OR interval when to review next (+3д, +7д...) */}
                     <span
                       className={`${styles.subLabel} ${
                         isCompleted
@@ -441,7 +456,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
                         ? (logForStep ? formatDateShort(logForStep.createdAt) : 'Пройдено')
                         : isNext
                         ? (progress?.nextReviewDate ? formatDateShort(progress.nextReviewDate) : 'Ожидает')
-                        : step.target}
+                        : step.targetInterval}
                     </span>
                   </div>
                 );
@@ -455,7 +470,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
               {historyLogs.slice(0, 3).map((log) => (
                 <span key={log.id} className={styles.ratingMiniPill} title={`Интервал: ${log.intervalDays} дн.`}>
                   {ratingToEmoji(log.rating)}
-                  <span style={{ opacity: 0.65 }}>{formatDateShort(log.createdAt)}</span>
+                  <span style={{ opacity: 0.65 }}>({formatDateShort(log.createdAt)})</span>
                 </span>
               ))}
             </div>
