@@ -752,7 +752,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                         title="Вспомнил с трудом"
                       >
                         <span className={styles.rateEmoji}>🟡</span>
-                        <span className={styles.rateText}>С трудом</span>
+                        <span className={styles.rateText}>Трудно</span>
                       </button>
 
                       <button
@@ -761,13 +761,13 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                         title="Вспомнил нормально"
                       >
                         <span className={styles.rateEmoji}>🟢</span>
-                        <span className={styles.rateText}>Помню</span>
+                        <span className={styles.rateText}>Нормально</span>
                       </button>
 
                       <button
                         className={`${styles.reviewRateBtn} ${styles.rateEasyBtn}`}
                         onClick={() => handleReviewRating('easy')}
-                        title="Вспомнил очень легко"
+                        title="Вспомнил легко"
                       >
                         <span className={styles.rateEmoji}>🔵</span>
                         <span className={styles.rateText}>Легко</span>
