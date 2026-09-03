@@ -46,40 +46,46 @@
   }
 }
 
-/* 1. Header: Fixed at top with Word + Audio + Transcription + Badges */
+/* 1. Header: 2-Line Layout */
 .header {
-  padding: 12px 18px;
+  padding: 14px 18px 12px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  flex-direction: column;
+  gap: 8px;
   border-bottom: 1px solid var(--color-border);
   background: var(--color-surface);
   flex-shrink: 0;
   box-sizing: border-box;
 }
 
-.wordTitleRow {
+/* Line 1: English Word + Audio on left, Close button on right */
+.headerTopLine {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.wordAndAudioRow {
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
-  min-width: 0;
 }
 
 .wordTitle {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .audioBtn {
   background: var(--color-surface-hover);
   border: 1px solid var(--color-border);
   color: var(--color-accent);
-  width: 28px;
-  height: 28px;
+  width: 27px;
+  height: 27px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -89,11 +95,42 @@
   font-size: 13px;
   transition: all 0.15s ease;
   flex-shrink: 0;
+  transform: translateY(1.5px); /* Micro lower as user requested */
 }
 
 .audioBtn:hover {
   background: var(--color-surface-active);
-  transform: scale(1.08);
+  transform: translateY(1.5px) scale(1.08);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.closeBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+/* Line 2: Transcription on left, Badges on right */
+.headerBottomLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .transcription {
@@ -102,13 +139,11 @@
   font-family: var(--font-mono, monospace);
 }
 
-.headerActions {
+.badgesGroup {
   display: flex;
   align-items: center;
   gap: 6px;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  flex-shrink: 0;
 }
 
 .cefrBadge {
@@ -133,26 +168,6 @@
   align-items: center;
   gap: 3px;
   white-space: nowrap;
-}
-
-.closeBtn {
-  background: none;
-  border: none;
-  color: var(--color-text-muted);
-  font-size: 18px;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.closeBtn:hover {
-  background: var(--color-surface-hover);
-  color: var(--color-text-primary);
 }
 
 /* 2. PINNED MEANING TRACK: Always clearly visible directly under header */

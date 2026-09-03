@@ -214,10 +214,14 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
       }}
     >
       <div className={styles.modal}>
-        {/* 1. Header - Fixed Top: [Word] [Audio Button] [Transcription] ... [CEFR] [Status] [🔥 2/5] [⚠️ 0] [✕] */}
+        {/* 1. Header - 2-Line Layout:
+               Line 1: [Word] [🔊 Audio] ... [✕ Close]
+               Line 2: [Transcription] ... [CEFR] [Status] [🔥 2/5] [⚠️ 0]
+        */}
         <div className={styles.header}>
-          <div>
-            <div className={styles.wordTitleRow}>
+          {/* Top Line */}
+          <div className={styles.headerTopLine}>
+            <div className={styles.wordAndAudioRow}>
               <span className={styles.wordTitle}>{word.word}</span>
               <button
                 type="button"
@@ -227,23 +231,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
               >
                 <Volume2 size={15} />
               </button>
-              {word.transcription && (
-                <span className={styles.transcription}>{word.transcription}</span>
-              )}
             </div>
-          </div>
-
-          <div className={styles.headerActions}>
-            <span className={styles.cefrBadge}>{word.cefrLevel}</span>
-            {renderStatusBadge(word.status)}
-
-            {/* Repetition Stats Badges */}
-            <span className={styles.headerStatBadge} title="Серия успешных повторений">
-              🔥 {repetitions}/5
-            </span>
-            <span className={styles.headerStatBadge} title="Ошибки / сбои памяти">
-              ⚠️ {progress?.errorCount ?? 0}
-            </span>
 
             <button
               type="button"
@@ -253,6 +241,26 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
             >
               <X size={18} />
             </button>
+          </div>
+
+          {/* Bottom Line */}
+          <div className={styles.headerBottomLine}>
+            {word.transcription ? (
+              <span className={styles.transcription}>{word.transcription}</span>
+            ) : <span />}
+
+            <div className={styles.badgesGroup}>
+              <span className={styles.cefrBadge}>{word.cefrLevel}</span>
+              {renderStatusBadge(word.status)}
+
+              {/* Repetition Stats Badges */}
+              <span className={styles.headerStatBadge} title="Серия успешных повторений">
+                🔥 {repetitions}/5
+              </span>
+              <span className={styles.headerStatBadge} title="Ошибки / сбои памяти">
+                ⚠️ {progress?.errorCount ?? 0}
+              </span>
+            </div>
           </div>
         </div>
 
