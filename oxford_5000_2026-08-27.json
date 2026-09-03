@@ -17198,8 +17198,8 @@
     "word": "at",
     "frequency_rank": 19,
     "cefr": "a1",
-    "phon_br": "/ət/",
-    "phon_n_am": "/ət/",
+    "phon_br": "/æt, ət/",
+    "phon_n_am": "/æt, ət/",
     "lists": {
       "oxford3000": true
     },
@@ -17207,31 +17207,28 @@
       {
         "id": 1,
         "partOfSpeech": "preposition",
-        "translation": "в пространственном значении указывает на; местонахождение в, на, у, при; движение в определённом направлении в, к, на; достижение места назначения к, в, на, до",
+        "translation": "у, в, на, при, к (местонахождение или направление)",
+        "register": [],
         "examples": [
           {
-            "en": "at Naples",
-            "ru": "в Неаполе"
+            "en": "at the window",
+            "ru": "у окна"
+          },
+          {
+            "en": "at home",
+            "ru": "дома"
           },
           {
             "en": "at a meeting",
             "ru": "на собрании"
           },
           {
-            "en": "at a depth of six feet",
-            "ru": "на глубине шести футов"
-          },
-          {
-            "en": "at the window",
-            "ru": "у окна"
+            "en": "at Naples",
+            "ru": "в Неаполе"
           },
           {
             "en": "at the hospital",
             "ru": "при больнице"
-          },
-          {
-            "en": "at home",
-            "ru": "дома"
           },
           {
             "en": "to throw a stone at smb.",
@@ -17242,17 +17239,21 @@
             "ru": "поезда приходят на конечную станцию каждые полчаса"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
         "id": 2,
         "partOfSpeech": "preposition",
-        "translation": "во временном значении указывает на; момент или период времени в, на; во время обеда; возраст в",
+        "translation": "в, на (время, момент, возраст)",
+        "register": [],
         "examples": [
           {
             "en": "at six o'clock",
             "ru": "в шесть часов"
+          },
+          {
+            "en": "at night",
+            "ru": "ночью"
           },
           {
             "en": "at dinnertime",
@@ -17263,37 +17264,25 @@
             "ru": "в конце урока"
           },
           {
-            "en": "at dawn",
-            "ru": "на заре"
-          },
-          {
-            "en": "at night",
-            "ru": "ночью"
-          },
-          {
             "en": "at present",
             "ru": "в настоящее время"
           },
           {
-            "en": "at an early age",
-            "ru": "в раннем возрасте"
-          },
-          {
-            "en": "at the age of 25, at 25 years of age",
+            "en": "at the age of 25",
             "ru": "в возрасте 25 лет"
           }
         ],
-        "register": [],
         "primary": true
       },
       {
         "id": 3,
         "partOfSpeech": "preposition",
-        "translation": "указывает на действие, занятие: за",
+        "translation": "за, в (действие, занятие)",
+        "register": [],
         "examples": [
           {
             "en": "at work",
-            "ru": "заработой"
+            "ru": "за работой, на работе"
           },
           {
             "en": "at breakfast",
@@ -17304,10 +17293,6 @@
             "ru": "в школе"
           },
           {
-            "en": "at court",
-            "ru": "в суде"
-          },
-          {
             "en": "at the piano",
             "ru": "за фортепиано"
           },
@@ -17316,52 +17301,41 @@
             "ru": "за рулём"
           },
           {
-            "en": "at one's studies",
-            "ru": "за занятиями"
-          },
-          {
-            "en": "what are you at now?",
-            "ru": "чем вы заняты теперь?, над чем работаете теперь?"
-          },
-          {
             "en": "he is at it again",
             "ru": "он снова взялся за это"
           }
         ],
-        "register": []
+        "primary": true
       },
       {
         "id": 4,
         "partOfSpeech": "preposition",
-        "translation": "указывает на состояние, положение в, на",
+        "translation": "на, в (состояние, положение)",
+        "register": [],
         "examples": [
-          {
-            "en": "at anchor",
-            "ru": "на якоре"
-          },
           {
             "en": "at war",
             "ru": "в состоянии войны"
           },
           {
             "en": "at peace",
-            "ru": "в мире"
+            "ru": "в мире, в согласии"
           },
           {
-            "en": "at watch",
-            "ru": "на посту"
+            "en": "at anchor",
+            "ru": "на якоре"
           },
           {
             "en": "at leisure",
             "ru": "на досуге"
           }
-        ],
-        "register": []
+        ]
       },
       {
         "id": 5,
         "partOfSpeech": "preposition",
-        "translation": "указывает на характер, способ действия в, с, на; передаётся тж. твор. падежом",
+        "translation": "в, с, на (образ или способ действия)",
+        "register": [],
         "examples": [
           {
             "en": "at a run",
@@ -17375,29 +17349,29 @@
             "en": "at a snail's pace",
             "ru": "черепашьим шагом"
           }
-        ],
-        "register": []
+        ]
       },
       {
         "id": 6,
         "partOfSpeech": "preposition",
-        "translation": "указывает на источник из, в",
+        "translation": "из, в (источник информации или сведений)",
+        "register": [],
         "examples": [
-          {
-            "en": "to get information at the fountainhead",
-            "ru": "получать сведения из первоисточника"
-          },
           {
             "en": "to find out the address at the information bureau",
             "ru": "узнать адрес в справочном бюро"
+          },
+          {
+            "en": "to get information at the fountainhead",
+            "ru": "получать сведения из первоисточника"
           }
-        ],
-        "register": []
+        ]
       },
       {
         "id": 7,
         "partOfSpeech": "preposition",
-        "translation": "указывает причину при, по, на; передаётся тж. твор. падежом",
+        "translation": "по, из-за, при (причина действия)",
+        "register": [],
         "examples": [
           {
             "en": "at smb.'s request",
@@ -17408,90 +17382,143 @@
             "ru": "удивляться чему-либо"
           },
           {
-            "en": "we are sad at hearing such news",
-            "ru": "мы огорчились, услышав такие новости"
-          },
-          {
             "en": "he was shocked at what he saw",
             "ru": "он был потрясён тем, что увидел"
           }
-        ],
-        "register": []
+        ]
       },
       {
         "id": 8,
         "partOfSpeech": "preposition",
-        "translation": "употр. в словосочетаниях, содержащих указание на количество, меру, цену при, на, по, с, в, за",
+        "translation": "по, за, при (цена, скорость, мера)",
+        "register": [],
         "examples": [
-          {
-            "en": "at high renumeration",
-            "ru": "за большое вознаграждение"
-          },
-          {
-            "en": "at three shillings a pound",
-            "ru": "по три шиллинга за фунт"
-          },
           {
             "en": "at a high price",
             "ru": "по высокой цене"
           },
           {
-            "en": "at",
+            "en": "at 70 km per hour",
             "ru": "со скоростью 70 км в час"
+          },
+          {
+            "en": "at high remuneration",
+            "ru": "за большое вознаграждение"
           }
-        ],
-        "register": []
+        ]
       },
       {
         "id": 9,
         "partOfSpeech": "preposition",
-        "translation": "указывает на сферу проявления способностей к",
+        "translation": "в, к (проявление способностей: good at, clever at)",
+        "register": [],
         "examples": [
-          {
-            "en": "clever at physics",
-            "ru": "способный к физике"
-          },
           {
             "en": "good at languages",
             "ru": "способный к языкам"
+          },
+          {
+            "en": "clever at physics",
+            "ru": "способный к физике"
           }
-        ],
-        "register": []
+        ]
       }
     ],
     "phrases": [
       {
         "id": 1,
-        "phrase": "at that",
+        "phrase": "at all",
         "partOfSpeech": "adverb",
-        "translation": "притом, к тому же; на том",
+        "translation": "совсем, вовсе, совершенно (обычно с отрицанием)",
+        "register": [],
         "examples": [
           {
-            "en": "she lost her handbag and a new one at that",
-            "ru": "она потеряла сумочку, да ещё новую к тому же"
+            "en": "not at all",
+            "ru": "вовсе нет; не за что"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "phrase": "at once",
+        "partOfSpeech": "adverb",
+        "translation": "сразу, тотчас, немедленно",
+        "register": [],
+        "examples": [
+          {
+            "en": "do it at once",
+            "ru": "сделай это немедленно"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "phrase": "at least",
+        "partOfSpeech": "adverb",
+        "translation": "по крайней мере, как минимум",
+        "register": [],
+        "examples": [
+          {
+            "en": "at least three times",
+            "ru": "как минимум три раза"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "phrase": "at last",
+        "partOfSpeech": "adverb",
+        "translation": "наконец, в конце концов",
+        "register": [],
+        "examples": [
+          {
+            "en": "at last we arrived",
+            "ru": "наконец-то мы приехали"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "phrase": "at first",
+        "partOfSpeech": "adverb",
+        "translation": "сначала, сперва, поначалу",
+        "register": [],
+        "examples": [
+          {
+            "en": "at first I didn't understand",
+            "ru": "сначала я не понял"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "phrase": "at that",
+        "partOfSpeech": "adverb",
+        "translation": "притом, к тому же; на этом",
+        "register": [],
+        "examples": [
+          {
+            "en": "she bought a car, and an expensive one at that",
+            "ru": "она купила машину, да ещё дорогую к тому же"
           },
           {
             "en": "let it go at that",
             "ru": "на том мы и покончим"
           }
-        ],
-        "register": []
+        ]
       },
       {
-        "id": 2,
-        "phrase": "at all",
+        "id": 7,
+        "phrase": "at home",
         "partOfSpeech": "adverb",
-        "translation": "совершенно, совсем",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 3,
-        "phrase": "let it go at that",
-        "partOfSpeech": "verb",
-        "translation": "на том мы и покончим",
-        "examples": [],
-        "register": []
+        "translation": "дома; непринуждённо, как дома",
+        "register": [],
+        "examples": [
+          {
+            "en": "make yourself at home",
+            "ru": "чувствуйте себя как дома"
+          }
+        ]
       }
     ]
   },
@@ -134319,7 +134346,7 @@
       {
         "id": 1,
         "partOfSpeech": "preposition",
-        "translation": "указывает на пространственные отношения: от, из, с",
+        "translation": "из, от, с (пространственное направление, отправной пункт)",
         "examples": [
           {
             "en": "from St. Petersbourg",
@@ -134344,7 +134371,7 @@
       {
         "id": 2,
         "partOfSpeech": "preposition",
-        "translation": "указывает на отправную точку, исходный пункт, предел с, от",
+        "translation": "с, от (исходная точка, начало отсчёта: from floor to ceiling)",
         "examples": [
           {
             "en": "from the beginning of the book",
@@ -134377,7 +134404,7 @@
       {
         "id": 3,
         "partOfSpeech": "preposition",
-        "translation": "указывает на временные отношения с, от, из",
+        "translation": "с, от, начиная с (время: from morning till night)",
         "examples": [
           {
             "en": "from the beginning of the century",
@@ -134421,7 +134448,7 @@
       {
         "id": 4,
         "partOfSpeech": "preposition",
-        "translation": "указывает на отнятие, изъятие, вычитание, разделение и т. п. у, из, с, от",
+        "translation": "у, из, от (отнятие, изъятие, разделение)",
         "examples": [
           {
             "en": "take the knife from the child",
@@ -134449,7 +134476,7 @@
       {
         "id": 5,
         "partOfSpeech": "preposition",
-        "translation": "указывает на освобождение от обязанностей, избавление от опасности и т. п. от",
+        "translation": "от, из (освобождение, защита, предохранение: save from)",
         "examples": [
           {
             "en": "to hide from smb.",
@@ -134480,7 +134507,7 @@
       {
         "id": 6,
         "partOfSpeech": "preposition",
-        "translation": "указывает на источник, происхождение от, из, по",
+        "translation": "из, от, по (источник информации: know from the papers)",
         "examples": [
           {
             "en": "I know it from the papers",
@@ -134500,7 +134527,7 @@
       {
         "id": 7,
         "partOfSpeech": "preposition",
-        "translation": "указывает на причину действия от, из",
+        "translation": "от, из-за, с (причина: suffer from cold)",
         "examples": [
           {
             "en": "to suffer from cold",
@@ -134524,7 +134551,7 @@
       {
         "id": 8,
         "partOfSpeech": "preposition",
-        "translation": "указывает на различие от, из",
+        "translation": "от (различие, отличие: tell A from B)",
         "examples": [
           {
             "en": "to tell real silk from its imitation",
@@ -134545,7 +134572,7 @@
       {
         "id": 9,
         "partOfSpeech": "preposition",
-        "translation": "указывает на изменение состояния из, с, от",
+        "translation": "из (изменение состояния)",
         "examples": [
           {
             "en": "from being a dull, indifferent boy he now became a vigorous youth",
@@ -134554,6 +134581,47 @@
         ],
         "register": [],
         "primary": true
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "from now on",
+        "partOfSpeech": "adverb",
+        "translation": "с этого момента, отныне, впредь",
+        "register": [],
+        "examples": [
+          {
+            "en": "from now on, be careful",
+            "ru": "отныне будь осторожен"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "phrase": "from time to time",
+        "partOfSpeech": "adverb",
+        "translation": "время от времени, периодически",
+        "register": [],
+        "examples": [
+          {
+            "en": "I visit them from time to time",
+            "ru": "я навещаю их время от времени"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "phrase": "from day to day",
+        "partOfSpeech": "adverb",
+        "translation": "изо дня в день, со дня на день",
+        "register": [],
+        "examples": [
+          {
+            "en": "living from day to day",
+            "ru": "живя одним днём (изо дня в день)"
+          }
+        ]
       }
     ]
   },
@@ -158731,7 +158799,7 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "я; косв. п. me меня, мне и т. д.; косв. п. употр. в разговорной речи тж. каким. п",
+        "translation": "я (личное местоимение 1-го лица единственного числа)",
         "examples": [
           {
             "en": "it's me",
@@ -158772,7 +158840,7 @@
       {
         "id": 2,
         "partOfSpeech": "pronoun",
-        "translation": "в возвратном значении: сам, себе (I made it myself)",
+        "translation": "сам, себе (в разговорно-усилительном значении: I laid me down)",
         "examples": [
           {
             "en": "I laid me down",
@@ -340500,7 +340568,7 @@
       {
         "id": 1,
         "partOfSpeech": "article",
-        "translation": "определённый артикль; выделяет конкретный предмет или лицо из категории однородных",
+        "translation": "определённый артикль (тот самый, конкретный предмет или лицо)",
         "register": [],
         "examples": [
           {
@@ -340509,7 +340577,7 @@
           },
           {
             "en": "I'll speak to the teacher",
-            "ru": "я поговорю с преподавателем (тем, который преподаёт в нашем классе)"
+            "ru": "я поговорю с преподавателем (тем самым, нашим)"
           }
         ],
         "primary": true
@@ -340517,7 +340585,7 @@
       {
         "id": 2,
         "partOfSpeech": "article",
-        "translation": "указывает на предмет, лицо или ситуацию, уже известные собеседникам из контекста или предшествующей речи",
+        "translation": "этот, данный (уже известный из контекста или ситуации)",
         "register": [],
         "examples": [
           {
@@ -340534,19 +340602,19 @@
       {
         "id": 3,
         "partOfSpeech": "article",
-        "translation": "подчёркивает исключительность, уникальность или наивысшее качество («тот самый», единственный в своём роде)",
+        "translation": "тот самый, лучший, идеальный (подчёркивает исключительность)",
         "register": [],
         "examples": [
           {
-            "en": "(of all the men I know) he is the man for the position",
-            "ru": "(из всех, кого я знаю,) он самый подходящий человек для этой должности"
+            "en": "he is the man for the position",
+            "ru": "он самый подходящий человек для этой должности"
           }
         ]
       },
       {
         "id": 4,
         "partOfSpeech": "article",
-        "translation": "придаёт существительному в единственном числе значение родового понятия или класса предметов в целом",
+        "translation": "родовое понятие (обозначает класс предметов в целом: the horse — лошадь)",
         "register": [],
         "examples": [
           {
@@ -340558,7 +340626,7 @@
       {
         "id": 5,
         "partOfSpeech": "article",
-        "translation": "употребляется с существительными, обозначающими уникальные, единственные в своём роде объекты и явления",
+        "translation": "с уникальными объектами (the Sun, the Moon, the Earth)",
         "register": [],
         "examples": [
           {
@@ -340578,7 +340646,7 @@
       {
         "id": 6,
         "partOfSpeech": "article",
-        "translation": "образует существительные из прилагательных со значением группы людей или обобщённого абстрактного понятия",
+        "translation": "с субстантивированными прилагательными (the poor — бедняки, the rich — богачи)",
         "register": [],
         "examples": [
           {
@@ -340598,7 +340666,7 @@
       {
         "id": 7,
         "partOfSpeech": "article",
-        "translation": "придаёт конкретному существительному обобщающее значение сферы деятельности, жанра или профессии",
+        "translation": "сфера деятельности, профессия (the stage — сцена, театр)",
         "register": [],
         "examples": [
           {
@@ -340614,7 +340682,7 @@
       {
         "id": 8,
         "partOfSpeech": "adverb",
-        "translation": "наречие; употребляется со сравнительной степенью прилагательных и наречий со значением: тем; чем... тем",
+        "translation": "тем... чем; чем... тем (со сравнительной степенью: the more the better)",
         "register": [],
         "examples": [
           {
@@ -340626,8 +340694,88 @@
             "ru": "чем меньше слов, тем лучше"
           },
           {
-            "en": "(so much) the worse for him",
+            "en": "so much the worse for him",
             "ru": "тем хуже для него"
+          }
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "at the same time",
+        "partOfSpeech": "adverb",
+        "translation": "в то же время, одновременно",
+        "register": [],
+        "examples": [
+          {
+            "en": "we arrived at the same time",
+            "ru": "мы приехали одновременно"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "phrase": "in the end",
+        "partOfSpeech": "adverb",
+        "translation": "в конце концов, в итоге",
+        "register": [],
+        "examples": [
+          {
+            "en": "in the end everything was fine",
+            "ru": "в итоге всё было хорошо"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "phrase": "by the way",
+        "partOfSpeech": "adverb",
+        "translation": "кстати, между прочим",
+        "register": [],
+        "examples": [
+          {
+            "en": "by the way, what is your name?",
+            "ru": "кстати, как вас зовут?"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "phrase": "on the other hand",
+        "partOfSpeech": "adverb",
+        "translation": "с другой стороны",
+        "register": [],
+        "examples": [
+          {
+            "en": "on the other hand, it is expensive",
+            "ru": "с другой стороны, это дорого"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "phrase": "all the same",
+        "partOfSpeech": "adverb",
+        "translation": "всё равно, тем не менее",
+        "register": [],
+        "examples": [
+          {
+            "en": "thanks all the same",
+            "ru": "всё равно спасибо"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "phrase": "the other day",
+        "partOfSpeech": "adverb",
+        "translation": "на днях, недавно",
+        "register": [],
+        "examples": [
+          {
+            "en": "I saw him the other day",
+            "ru": "я видел его на днях"
           }
         ]
       }
@@ -379883,8 +380031,8 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "pronoun",
-        "translation": "ваш, твой (употр. атрибутивно)",
+        "partOfSpeech": "determiner",
+        "translation": "твой, ваш (притяжательный детерминатив / местоимение)",
         "examples": [
           {
             "en": "your book",

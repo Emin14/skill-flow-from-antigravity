@@ -320,7 +320,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     }
   };
 
-  const meaningsList: WordMeaningItem[] =
+  const rawMeaningsList: WordMeaningItem[] =
     currentCard?.meanings && currentCard.meanings.length > 0
       ? currentCard.meanings
       : (currentCard?.translations || []).flatMap((t: any, tIdx: number) =>
@@ -334,6 +334,14 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
             phrases: currentCard?.phrases || [],
           }))
         );
+
+  // Stable sort: primary meanings first, then secondary / additional meanings
+  const primaryMeanings = rawMeaningsList.filter((m) => !!m.primary);
+  const secondaryMeanings = rawMeaningsList.filter((m) => !m.primary);
+  const meaningsList: WordMeaningItem[] =
+    primaryMeanings.length > 0
+      ? [...primaryMeanings, ...secondaryMeanings]
+      : rawMeaningsList;
 
   const safeMeaningIndex = Math.min(
     meaningIndex,

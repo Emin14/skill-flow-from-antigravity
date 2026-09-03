@@ -56,10 +56,16 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
   };
 
   // Primary vs All filtering
-  const primaryMeanings = meaningsList.filter((m) => m.primary);
-  const secondaryCount = meaningsList.length - primaryMeanings.length;
+  // Ensure stable sort: primary meanings first, then secondary meanings
+  const primaryMeanings = meaningsList.filter((m) => !!m.primary);
+  const secondaryMeanings = meaningsList.filter((m) => !m.primary);
+  const sortedMeanings = primaryMeanings.length > 0
+    ? [...primaryMeanings, ...secondaryMeanings]
+    : meaningsList;
+
+  const secondaryCount = secondaryMeanings.length;
   const hasPrimaryDistinction = primaryMeanings.length > 0 && secondaryCount > 0;
-  const displayedMeanings = (!showAllMeanings && hasPrimaryDistinction) ? primaryMeanings : meaningsList;
+  const displayedMeanings = (!showAllMeanings && hasPrimaryDistinction) ? primaryMeanings : sortedMeanings;
   const currentSafeIdx = Math.min(displayedMeanings.length - 1, Math.max(0, safeMeaningIndex));
   const activeMeaning = displayedMeanings[currentSafeIdx] || propMeaning;
   const total = displayedMeanings.length;
@@ -276,12 +282,20 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
             type="button"
             disabled={isMasked}
             onClick={() => {
-              setShowAllMeanings(!showAllMeanings);
-              onSelectMeaning(0);
+              if (!showAllMeanings) {
+                // Expanding to show secondary: immediately switch to first secondary meaning
+                setShowAllMeanings(true);
+                onSelectMeaning(primaryMeanings.length);
+              } else {
+                // Collapsing back to primary: immediately switch to first primary meaning
+                setShowAllMeanings(false);
+                onSelectMeaning(0);
+              }
+              triggerHapticFeedback('light');
             }}
             className={`${styles.expanderPill} ${showAllMeanings ? styles.expanderPillActive : ''}`}
             style={{ cursor: isMasked ? 'default' : 'pointer' }}
-            title={showAllMeanings ? 'Показать основные значения' : `Показать все ${meaningsList.length} значений`}
+            title={showAllMeanings ? 'Показать основные значения' : `Показать все ${sortedMeanings.length} значений`}
           >
             <Layers size={9.5} />
             {showAllMeanings ? 'Основные' : `+${secondaryCount} доп.`}
