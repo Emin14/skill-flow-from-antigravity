@@ -48,8 +48,8 @@ export class TaskMapper {
 
     // Derive scheduledDate, status, repeatStatus, completedAt, pomodorosCount for backward compatibility
     const firstTodoOcc = occurrences.find((o) => o.status === 'Todo') || occurrences[0];
-    const scheduledDate = firstTodoOcc.date;
-    const status = firstTodoOcc.status;
+    const scheduledDate = firstTodoOcc?.date || '';
+    const status = firstTodoOcc?.status || 'Todo';
     const repeatStatus: RepeatStatus = prismaTask.taskState === 'paused'
       ? 'Paused'
       : (prismaTask.taskState === 'completed' ? 'Completed' : 'Active');

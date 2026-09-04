@@ -511,7 +511,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       const {
         title,
         category = 'Без категории',
-        scheduledDate = today,
+        scheduledDate: inputScheduledDate,
         description = '',
         link = '',
         parentTaskId = null,
@@ -528,20 +528,32 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         excludeFromStats = false,
       } = titleOrParams;
 
+      const isDateExplicitlySet = inputScheduledDate !== undefined && inputScheduledDate !== null;
+      const cleanScheduledDate = isDateExplicitlySet ? inputScheduledDate.trim() : today;
+      const isAnytime = cleanScheduledDate === '' || cleanScheduledDate === 'anytime';
+
       const effectiveHasSubtasks = hasSubtasks;
       const effectiveIsRepeating = effectiveHasSubtasks ? false : (isRepeating && repetitionMode !== 'none');
       const effectiveMode: RepetitionMode = effectiveIsRepeating ? (repetitionMode === 'none' ? 'spaced' : repetitionMode) : 'none';
+
+      // Repeating tasks must have a valid scheduled start date (defaulting to today if not provided)
+      // Non-repeating tasks with cleared/empty date (isAnytime) should preserve scheduledDate as ''
+      const effectiveScheduledDate = effectiveIsRepeating
+        ? (isAnytime ? today : cleanScheduledDate)
+        : (isAnytime ? '' : cleanScheduledDate);
 
       const rawOccs: TaskOccurrence[] = [
         {
           id: uuidv4(),
           taskId,
-          date: scheduledDate || today,
+          date: effectiveScheduledDate,
           status: 'Todo',
         },
       ];
 
-      const normOccs = normalizeOccurrences(rawOccs, taskId);
+      const normOccs = effectiveScheduledDate
+        ? normalizeOccurrences(rawOccs, taskId)
+        : rawOccs;
 
       const derivedState: TaskDomainState | null = effectiveIsRepeating
         ? ((inputTaskState as TaskDomainState) || (customRepeatStatus === 'Paused' ? 'paused' : customRepeatStatus === 'Completed' ? 'completed' : 'active'))
@@ -553,7 +565,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         status: 'Todo',
         priority: 'P3',
         category,
-        scheduledDate: effectiveIsRepeating ? (normOccs[0]?.date || scheduledDate) : scheduledDate,
+        scheduledDate: effectiveIsRepeating ? (normOccs[0]?.date || effectiveScheduledDate) : effectiveScheduledDate,
         description,
         link,
         parentTaskId,
