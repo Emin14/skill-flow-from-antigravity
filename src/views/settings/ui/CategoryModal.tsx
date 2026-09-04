@@ -7,7 +7,7 @@ import { CategoryItem } from '@/entities/category/model/useCategoryStore';
 interface CategoryModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (name: string, color: string) => void;
+  onSave: (name: string, color: string, excludeFromStats: boolean) => void;
   categoryToEdit?: CategoryItem | null;
 }
 
@@ -32,15 +32,18 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
 }) => {
   const [name, setName] = useState('');
   const [selectedColor, setSelectedColor] = useState('#38bdf8');
+  const [excludeFromStats, setExcludeFromStats] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (categoryToEdit) {
       setName(categoryToEdit.name);
       setSelectedColor(categoryToEdit.color);
+      setExcludeFromStats(Boolean(categoryToEdit.excludeFromStats));
     } else {
       setName('');
       setSelectedColor('#38bdf8');
+      setExcludeFromStats(false);
     }
     setError('');
   }, [categoryToEdit, isOpen]);
@@ -53,7 +56,7 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
       setError('Введите название категории');
       return;
     }
-    onSave(name.trim(), selectedColor);
+    onSave(name.trim(), selectedColor, excludeFromStats);
     onClose();
   };
 
@@ -198,6 +201,53 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
                 );
               })}
             </div>
+          </div>
+
+          {/* Exclude From Stats Setting */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '10px 14px',
+              borderRadius: '12px',
+              backgroundColor: 'var(--color-surface-hover)',
+              border: '1px solid var(--color-border)',
+            }}
+          >
+            <label
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
+              title="Задачи этой категории по умолчанию не будут учитываться в статистике"
+            >
+              <input
+                type="checkbox"
+                checked={excludeFromStats}
+                onChange={(e) => setExcludeFromStats(e.target.checked)}
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  accentColor: 'var(--color-accent)',
+                  cursor: 'pointer',
+                }}
+              />
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+                  Не учитывать в статистике
+                </span>
+                <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
+                  (для бытовых категорий, рутины и покупок)
+                </span>
+              </div>
+            </label>
+            <span style={{ fontSize: '11px', fontWeight: 600, color: excludeFromStats ? 'var(--color-text-muted)' : 'var(--color-accent-text)' }}>
+              {excludeFromStats ? '☕ вне статистики' : '📊 в статистике'}
+            </span>
           </div>
 
           {/* Footer Action Buttons */}

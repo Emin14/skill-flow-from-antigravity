@@ -75,12 +75,12 @@ export const CategoriesSettingsTab: React.FC = () => {
     setSelectedCatId('');
   };
 
-  const handleSaveCategory = (name: string, color: string) => {
+  const handleSaveCategory = (name: string, color: string, excludeFromStats: boolean) => {
     if (editingCategory) {
-      updateCategory(editingCategory.id, name, color);
+      updateCategory(editingCategory.id, name, color, excludeFromStats);
       showToast(`Категория "${name}" обновлена`, 'success');
     } else {
-      addCategory(name, color);
+      addCategory(name, color, excludeFromStats);
       showToast(`Категория "${name}" создана`, 'success');
     }
   };
@@ -223,7 +223,7 @@ export const CategoriesSettingsTab: React.FC = () => {
                       transition: 'all 0.12s ease',
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
                       <div
                         style={{
                           width: '10px',
@@ -237,6 +237,11 @@ export const CategoriesSettingsTab: React.FC = () => {
                       <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {cat.name}
                       </span>
+                      {cat.excludeFromStats && (
+                        <span style={{ fontSize: '10px', color: 'var(--color-text-muted)', background: 'rgba(255,255,255,0.06)', padding: '1px 5px', borderRadius: '4px', border: '1px solid var(--color-border)', flexShrink: 0 }}>
+                          ☕ вне стат.
+                        </span>
+                      )}
                     </div>
 
                     {isSelected && <Check size={14} color="var(--color-accent-text)" />}
@@ -251,7 +256,7 @@ export const CategoriesSettingsTab: React.FC = () => {
         <button
           type="button"
           onClick={handleOpenEditModal}
-          title="Изменить название или цвет"
+          title="Изменить название, цвет или статус в статистике"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -299,6 +304,37 @@ export const CategoriesSettingsTab: React.FC = () => {
           <Trash2 size={15} />
         </button>
       </div>
+
+      {/* Category Stats Status Indicator Banner */}
+      {currentSelectedCat && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '8px 12px',
+            borderRadius: '10px',
+            backgroundColor: 'var(--color-surface-hover)',
+            border: '1px solid var(--color-border)',
+            fontSize: '12px',
+          }}
+        >
+          <span style={{ color: 'var(--color-text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <span>Учёт задач в статистике:</span>
+          </span>
+          <span
+            style={{
+              fontWeight: 600,
+              color: currentSelectedCat.excludeFromStats ? 'var(--color-text-muted)' : 'var(--color-accent-text)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}
+          >
+            {currentSelectedCat.excludeFromStats ? '☕ Не учитывать в статистике' : '📊 Учитывать в статистике'}
+          </span>
+        </div>
+      )}
 
       {/* Category Modal (Add / Rename / Color) */}
       <CategoryModal

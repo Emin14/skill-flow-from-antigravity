@@ -56,7 +56,12 @@ const mergeCategories = (baseList: CategoryItem[], incomingList: CategoryItem[])
     const key = item.name.trim().toLowerCase();
     const existing = map.get(key);
     if (existing) {
-      map.set(key, { ...existing, id: item.id || existing.id, color: item.color || existing.color });
+      map.set(key, {
+        ...existing,
+        id: item.id || existing.id,
+        color: item.color || existing.color,
+        excludeFromStats: item.excludeFromStats !== undefined ? item.excludeFromStats : existing.excludeFromStats,
+      });
     } else {
       map.set(key, item);
     }
@@ -98,8 +103,8 @@ interface CategoryState {
   categories: CategoryItem[];
   fetchCategories: () => Promise<void>;
   syncCategoriesWithTasks: (tasks: Task[]) => void;
-  addCategory: (name: string, color: string) => Promise<void>;
-  updateCategory: (id: string, name: string, color: string) => Promise<void>;
+  addCategory: (name: string, color: string, excludeFromStats?: boolean) => Promise<void>;
+  updateCategory: (id: string, name: string, color: string, excludeFromStats?: boolean) => Promise<void>;
   deleteCategory: (id: string) => Promise<void>;
   getCategoryByName: (name: string) => CategoryItem | undefined;
 }
@@ -170,7 +175,7 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
     }
   },
 
-  addCategory: async (name: string, color: string) => {
+  addCategory: async (name: string, color: string, excludeFromStats: boolean = false) => {
     const trimmed = name.trim();
     if (!trimmed) return;
     const existing = get().categories.find((c) => c.name.toLowerCase() === trimmed.toLowerCase());
@@ -187,6 +192,7 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
       id: `cat-${Date.now()}`,
       name: trimmed,
       color: color || getCategoryColor(trimmed),
+      excludeFromStats: Boolean(excludeFromStats),
     };
 
     const updated = [...get().categories, newCategory];
@@ -197,21 +203,26 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
       await fetch('/api/categories', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: trimmed, color: color || getCategoryColor(trimmed) }),
+        body: JSON.stringify({
+          name: trimmed,
+          color: color || getCategoryColor(trimmed),
+          excludeFromStats: Boolean(excludeFromStats),
+        }),
       });
     } catch (e) {
       console.warn('Failed to sync added category with DB', e);
     }
   },
 
-  updateCategory: async (id: string, name: string, color: string) => {
+  updateCategory: async (id: string, name: string, color: string, excludeFromStats?: boolean) => {
     const trimmed = name.trim();
     if (!trimmed) return;
 
     const oldCategory = get().categories.find((c) => c.id === id);
     const oldName = oldCategory ? oldCategory.name : null;
+    const effectiveExclude = excludeFromStats !== undefined ? excludeFromStats : Boolean(oldCategory?.excludeFromStats);
 
-    const updated = get().categories.map((c) => (c.id === id ? { ...c, name: trimmed, color } : c));
+    const updated = get().categories.map((c) => (c.id === id ? { ...c, name: trimmed, color, excludeFromStats: effectiveExclude } : c));
     set({ categories: updated });
     saveCategoriesToStorage(updated);
 
@@ -229,7 +240,7 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
       await fetch('/api/categories', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, name: trimmed, color }),
+        body: JSON.stringify({ id, name: trimmed, color, excludeFromStats: effectiveExclude }),
       });
     } catch (e) {
       console.warn('Failed to sync updated category with DB', e);

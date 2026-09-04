@@ -102,8 +102,9 @@ export const QuickCreateModal: React.FC = () => {
 
   const handleCategoryChange = (newCat: TaskCategory) => {
     setCategory(newCat);
+    const catObj = storeCategories.find((c) => c.name.trim().toLowerCase() === newCat.trim().toLowerCase());
     const isChore = /быт|рутин|дом|уборк|покупк/i.test(newCat);
-    if (isChore) {
+    if (catObj?.excludeFromStats || isChore) {
       setExcludeFromStats(true);
     }
   };
