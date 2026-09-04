@@ -305,34 +305,11 @@ export const CategoriesSettingsTab: React.FC = () => {
         </button>
       </div>
 
-      {/* Category Stats Status Indicator Banner */}
-      {currentSelectedCat && (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '8px 12px',
-            borderRadius: '10px',
-            backgroundColor: 'var(--color-surface-hover)',
-            border: '1px solid var(--color-border)',
-            fontSize: '12px',
-          }}
-        >
-          <span style={{ color: 'var(--color-text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-            <span>Учёт задач в статистике:</span>
-          </span>
-          <span
-            style={{
-              fontWeight: 600,
-              color: currentSelectedCat.excludeFromStats ? 'var(--color-text-muted)' : 'var(--color-accent-text)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-            }}
-          >
-            {currentSelectedCat.excludeFromStats ? '☕ Не учитывать в статистике' : '📊 Учитывать в статистике'}
-          </span>
+      {/* Minimal Category Stats Status Indicator */}
+      {currentSelectedCat?.excludeFromStats && (
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', color: 'var(--color-text-muted)', paddingLeft: '4px' }}>
+          <span>☕</span>
+          <span>Задачи этой категории по умолчанию не учитываются в статистике</span>
         </div>
       )}
 

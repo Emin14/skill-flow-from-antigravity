@@ -587,28 +587,19 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             </button>
           </div>
 
-          {/* Ряд: Учёт в статистике */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '7px 10px',
-              borderRadius: '9px',
-              background: 'var(--color-surface-hover)',
-              border: '1px solid var(--color-border)',
-              width: '100%',
-              boxSizing: 'border-box',
-              marginTop: '4px',
-            }}
-          >
+          {/* Минималистичный переключатель учёта в статистике */}
+          <div style={{ display: 'flex', alignItems: 'center', marginTop: '4px', padding: '2px 0' }}>
             <label
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
+                gap: '7px',
                 cursor: 'pointer',
                 userSelect: 'none',
+                fontSize: '12px',
+                fontWeight: 500,
+                color: masterTask.excludeFromStats ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+                transition: 'color 0.15s ease',
               }}
               title="Если отмечено, задача не попадает в графики статистики, сложного роста и отчеты"
             >
@@ -617,19 +608,16 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                 checked={Boolean(masterTask.excludeFromStats)}
                 onChange={(e) => updateTaskDetails(masterTask.id, { excludeFromStats: e.target.checked })}
                 style={{
-                  width: '16px',
-                  height: '16px',
+                  width: '14px',
+                  height: '14px',
                   accentColor: 'var(--color-accent)',
                   cursor: 'pointer',
+                  margin: 0,
                 }}
               />
-              <span style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
-                Не учитывать в статистике
-              </span>
+              <span>Не учитывать в статистике</span>
+              {masterTask.excludeFromStats && <span style={{ fontSize: '11px', opacity: 0.85 }}>☕</span>}
             </label>
-            <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
-              {masterTask.excludeFromStats ? '☕ вне статистики' : '📊 учитывается'}
-            </span>
           </div>
         </div>
 

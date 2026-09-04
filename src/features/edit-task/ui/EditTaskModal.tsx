@@ -566,7 +566,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               </div>
             </div>
 
-            {/* 4.5. Exclude From Stats Toggle */}
+            {/* 4.5. Exclude From Stats Toggle (Minimal) */}
             <div className={styles.excludeStatsRow}>
               <label className={styles.excludeStatsLabel} title="Если отмечено, задача не попадает в графики статистики, сложного роста и отчеты">
                 <input
@@ -576,10 +576,8 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   className={styles.excludeStatsCheckbox}
                 />
                 <span className={styles.excludeStatsTitle}>Не учитывать в статистике</span>
+                {excludeFromStats && <span className={styles.excludeStatsDot}>☕</span>}
               </label>
-              <span className={styles.excludeStatsHint}>
-                (для быта, рутины и напоминалок)
-              </span>
             </div>
 
             {/* 5. Next Line: Description / Notes */}

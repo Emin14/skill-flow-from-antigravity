@@ -203,25 +203,19 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
             </div>
           </div>
 
-          {/* Exclude From Stats Setting */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '10px 14px',
-              borderRadius: '12px',
-              backgroundColor: 'var(--color-surface-hover)',
-              border: '1px solid var(--color-border)',
-            }}
-          >
+          {/* Minimal Exclude From Stats Toggle */}
+          <div style={{ display: 'flex', alignItems: 'center', padding: '2px 0' }}>
             <label
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '10px',
+                gap: '8px',
                 cursor: 'pointer',
                 userSelect: 'none',
+                fontSize: '12.5px',
+                fontWeight: 500,
+                color: excludeFromStats ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+                transition: 'color 0.15s ease',
               }}
               title="Задачи этой категории по умолчанию не будут учитываться в статистике"
             >
@@ -230,24 +224,16 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
                 checked={excludeFromStats}
                 onChange={(e) => setExcludeFromStats(e.target.checked)}
                 style={{
-                  width: '16px',
-                  height: '16px',
+                  width: '14px',
+                  height: '14px',
                   accentColor: 'var(--color-accent)',
                   cursor: 'pointer',
+                  margin: 0,
                 }}
               />
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
-                  Не учитывать в статистике
-                </span>
-                <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
-                  (для бытовых категорий, рутины и покупок)
-                </span>
-              </div>
+              <span>Не учитывать в статистике</span>
+              {excludeFromStats && <span style={{ fontSize: '11px', opacity: 0.85 }}>☕</span>}
             </label>
-            <span style={{ fontSize: '11px', fontWeight: 600, color: excludeFromStats ? 'var(--color-text-muted)' : 'var(--color-accent-text)' }}>
-              {excludeFromStats ? '☕ вне статистики' : '📊 в статистике'}
-            </span>
           </div>
 
           {/* Footer Action Buttons */}
