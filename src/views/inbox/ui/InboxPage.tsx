@@ -202,7 +202,6 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   const [editText, setEditText] = useState<string>(item.text);
   const cardRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
-  const hasDraggedRef = React.useRef<boolean>(false);
 
   React.useEffect(() => {
     setEditText(item.text);
@@ -265,17 +264,16 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   }, [isEditing, editText, item.text]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (isEditing || e.targetTouches.length !== 1) return;
-    hasDraggedRef.current = false;
+    if (isEditing || e.touches.length > 1) return;
     gestureLockRef.current = 'none';
     setIsSwipingActive(false);
-    const touch = e.targetTouches[0];
+    const touch = e.touches[0];
     touchStartPos.current = { x: touch.clientX, y: touch.clientY };
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (isEditing || !touchStartPos.current || e.targetTouches.length !== 1) return;
-    const touch = e.targetTouches[0];
+    if (isEditing || !touchStartPos.current || e.touches.length > 1) return;
+    const touch = e.touches[0];
     const diffX = touch.clientX - touchStartPos.current.x;
     const diffY = touch.clientY - touchStartPos.current.y;
     const absX = Math.abs(diffX);
@@ -283,31 +281,22 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
 
     // Initial phase: determine user intention
     if (gestureLockRef.current === 'none') {
-      // Don't lock until user has moved finger at least 7px
-      if (absX < 7 && absY < 7) {
+      // Don't lock until user has moved finger at least 6px
+      if (absX < 6 && absY < 6) {
         return;
       }
 
-      // If vertical movement is dominant or comparable to horizontal:
-      // It is a vertical page scroll! Lock to vertical and ignore horizontal swipe completely.
-      if (absY >= absX || absX < 14) {
+      // If vertical movement is greater than horizontal:
+      // It is a page scroll! Lock to vertical.
+      if (absY > absX) {
         gestureLockRef.current = 'vertical';
         setSwipeOffset(0);
         setIsSwipingActive(false);
         return;
       } else {
-        // Horizontal movement is distinctly greater than vertical (absX > absY * 1.5)
-        if (absX > absY * 1.5) {
-          gestureLockRef.current = 'horizontal';
-          hasDraggedRef.current = true;
-          setIsSwipingActive(true);
-        } else {
-          // Ambiguous / diagonal: prioritize smooth page scrolling
-          gestureLockRef.current = 'vertical';
-          setSwipeOffset(0);
-          setIsSwipingActive(false);
-          return;
-        }
+        // Horizontal movement is dominant: Lock to horizontal swipe!
+        gestureLockRef.current = 'horizontal';
+        setIsSwipingActive(true);
       }
     }
 
@@ -318,7 +307,6 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
 
     // If locked to horizontal swipe, track finger with soft resistance
     if (gestureLockRef.current === 'horizontal') {
-      hasDraggedRef.current = true;
       let offset = diffX;
       const MAX_OFFSET = 105;
       if (offset > MAX_OFFSET) {
@@ -343,8 +331,8 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       const touch = e.changedTouches[0];
       const diffX = touch.clientX - touchStartPos.current.x;
 
-      // Deliberate swipe threshold: 75px
-      const SWIPE_THRESHOLD = 75;
+      // Responsive threshold for swipe action (55px)
+      const SWIPE_THRESHOLD = 55;
       if (diffX > SWIPE_THRESHOLD) {
         // Swiped right -> Triage
         handleTriage(item);
@@ -358,11 +346,6 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     setIsSwipingActive(false);
     touchStartPos.current = null;
     gestureLockRef.current = 'none';
-
-    // Prevent click on text from firing after ending a drag
-    setTimeout(() => {
-      hasDraggedRef.current = false;
-    }, 120);
   };
 
   const handleTouchCancel = () => {
@@ -370,7 +353,6 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     setIsSwipingActive(false);
     touchStartPos.current = null;
     gestureLockRef.current = 'none';
-    hasDraggedRef.current = false;
   };
 
   return (
@@ -466,15 +448,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         ) : (
           <>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div
-                className={styles.itemText}
-                onClick={() => {
-                  if (!hasDraggedRef.current && swipeOffset === 0) {
-                    onStartEdit();
-                  }
-                }}
-                title="Нажмите для редактирования"
-              >
+              <div className={styles.itemText}>
                 {item.text}
               </div>
               <div className={styles.itemMeta}>
@@ -489,21 +463,6 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
 
             {/* Quick Actions */}
             <div className={styles.itemActions}>
-              <button
-                type="button"
-                className={styles.triageBtn}
-                onTouchStart={(e) => e.stopPropagation()}
-                onTouchMove={(e) => e.stopPropagation()}
-                onTouchEnd={(e) => e.stopPropagation()}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleTriage(item);
-                }}
-                title="Разобрать запись в Задачу"
-              >
-                <Check size={13} />
-                <span className={styles.triageLabel}>Разобрать</span>
-              </button>
               <Button
                 variant="ghost"
                 size="sm"
@@ -537,23 +496,6 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
                 style={{ color: item.isPinned ? 'var(--color-accent)' : 'var(--color-text-muted)' }}
               >
                 📌
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className={styles.deleteBtn}
-                onTouchStart={(e) => e.stopPropagation()}
-                onTouchMove={(e) => e.stopPropagation()}
-                onTouchEnd={(e) => e.stopPropagation()}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  setSwipeOffset(0);
-                  deleteItem(item.id);
-                }}
-                title="Удалить мысль"
-              >
-                <Trash2 size={13} />
               </Button>
             </div>
           </>
