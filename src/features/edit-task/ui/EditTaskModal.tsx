@@ -566,6 +566,22 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               </div>
             </div>
 
+            {/* 4.5. Exclude From Stats Toggle */}
+            <div className={styles.excludeStatsRow}>
+              <label className={styles.excludeStatsLabel} title="Если отмечено, задача не попадает в графики статистики, сложного роста и отчеты">
+                <input
+                  type="checkbox"
+                  checked={excludeFromStats}
+                  onChange={(e) => setExcludeFromStats(e.target.checked)}
+                  className={styles.excludeStatsCheckbox}
+                />
+                <span className={styles.excludeStatsTitle}>Не учитывать в статистике</span>
+              </label>
+              <span className={styles.excludeStatsHint}>
+                (для быта, рутины и напоминалок)
+              </span>
+            </div>
+
             {/* 5. Next Line: Description / Notes */}
             <div>
               <textarea
@@ -584,22 +600,6 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 placeholder="🔗 Ссылка..."
                 style={{ height: '26px' }}
               />
-            </div>
-
-            {/* 7. Exclude From Stats Toggle */}
-            <div className={styles.excludeStatsRow}>
-              <label className={styles.excludeStatsLabel} title="Если отмечено, задача не попадает в графики статистики, сложного роста и отчеты">
-                <input
-                  type="checkbox"
-                  checked={excludeFromStats}
-                  onChange={(e) => setExcludeFromStats(e.target.checked)}
-                  className={styles.excludeStatsCheckbox}
-                />
-                <span className={styles.excludeStatsTitle}>Не учитывать в статистике</span>
-              </label>
-              <span className={styles.excludeStatsHint}>
-                (для быта, рутины и напоминалок)
-              </span>
             </div>
           </div>
 

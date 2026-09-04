@@ -586,6 +586,51 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               ❌ {masterTask.isRepeating ? 'Удалить все повторы' : 'Удалить'}
             </button>
           </div>
+
+          {/* Ряд: Учёт в статистике */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '7px 10px',
+              borderRadius: '9px',
+              background: 'var(--color-surface-hover)',
+              border: '1px solid var(--color-border)',
+              width: '100%',
+              boxSizing: 'border-box',
+              marginTop: '4px',
+            }}
+          >
+            <label
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
+              title="Если отмечено, задача не попадает в графики статистики, сложного роста и отчеты"
+            >
+              <input
+                type="checkbox"
+                checked={Boolean(masterTask.excludeFromStats)}
+                onChange={(e) => updateTaskDetails(masterTask.id, { excludeFromStats: e.target.checked })}
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  accentColor: 'var(--color-accent)',
+                  cursor: 'pointer',
+                }}
+              />
+              <span style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-primary)' }}>
+                Не учитывать в статистике
+              </span>
+            </label>
+            <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
+              {masterTask.excludeFromStats ? '☕ вне статистики' : '📊 учитывается'}
+            </span>
+          </div>
         </div>
 
         {/* Описание (если есть) */}

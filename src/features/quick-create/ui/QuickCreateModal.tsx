@@ -98,6 +98,15 @@ export const QuickCreateModal: React.FC = () => {
   const [afterCompletionDaysInput, setAfterCompletionDaysInput] = useState('3');
   const [weeklyDays, setWeeklyDays] = useState<number[]>([1, 2, 3, 4, 5]);
   const [hasSubtasks, setHasSubtasks] = useState(false);
+  const [excludeFromStats, setExcludeFromStats] = useState(false);
+
+  const handleCategoryChange = (newCat: TaskCategory) => {
+    setCategory(newCat);
+    const isChore = /быт|рутин|дом|уборк|покупк/i.test(newCat);
+    if (isChore) {
+      setExcludeFromStats(true);
+    }
+  };
 
   const handleToggleWeekday = (dayId: number) => {
     if (weeklyDays.includes(dayId)) {
@@ -120,6 +129,7 @@ export const QuickCreateModal: React.FC = () => {
       lockBodyScroll();
       setScheduledDate(getTodayStr());
       setDatePresetMode('today');
+      setExcludeFromStats(false);
     } else {
       unlockBodyScroll();
     }
@@ -213,6 +223,7 @@ export const QuickCreateModal: React.FC = () => {
       afterCompletionDays,
       weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
       hasSubtasks: false,
+      excludeFromStats,
     });
 
     setTitle('');
@@ -221,6 +232,7 @@ export const QuickCreateModal: React.FC = () => {
     setParentTaskId(null);
     setRepetitionMode('none');
     setAfterCompletionDaysInput('3');
+    setExcludeFromStats(false);
     closeModal();
   };
 
@@ -337,7 +349,7 @@ export const QuickCreateModal: React.FC = () => {
                 <select
                   className={styles.v2Select}
                   value={category}
-                  onChange={(e) => setCategory(e.target.value as TaskCategory)}
+                  onChange={(e) => handleCategoryChange(e.target.value as TaskCategory)}
                 >
                   {storeCategories.map((cat) => (
                     <option key={cat.id || cat.name} value={cat.name}>
@@ -493,6 +505,22 @@ export const QuickCreateModal: React.FC = () => {
                     : `Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено»`}
                 </span>
               </div>
+            </div>
+
+            {/* 4.5. Exclude From Stats Toggle */}
+            <div className={styles.excludeStatsRow}>
+              <label className={styles.excludeStatsLabel} title="Если отмечено, задача не попадает в графики статистики, сложного роста и отчеты">
+                <input
+                  type="checkbox"
+                  checked={excludeFromStats}
+                  onChange={(e) => setExcludeFromStats(e.target.checked)}
+                  className={styles.excludeStatsCheckbox}
+                />
+                <span className={styles.excludeStatsTitle}>Не учитывать в статистике</span>
+              </label>
+              <span className={styles.excludeStatsHint}>
+                (для быта, рутины и напоминалок)
+              </span>
             </div>
 
             {/* 5. Next Line: Description / Notes */}
