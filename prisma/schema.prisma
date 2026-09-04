@@ -39,6 +39,7 @@ model Task {
   spacedStepIndex     Int?
   currentIntervalDays Int?
   targetRepetitions   Int?
+  excludeFromStats    Boolean          @default(false)
   createdAt           DateTime         @default(now())
   updatedAt           DateTime         @default(now()) @updatedAt
   occurrences         TaskOccurrence[]
@@ -117,10 +118,11 @@ model InboxItem {
 }
 
 model Category {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  color     String
-  createdAt DateTime @default(now())
+  id               String   @id @default(uuid())
+  name             String   @unique
+  color            String
+  excludeFromStats Boolean  @default(false)
+  createdAt        DateTime @default(now())
 }
 
 model Achievement {

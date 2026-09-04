@@ -106,6 +106,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const [afterCompletionDaysInput, setAfterCompletionDaysInput] = useState('3');
   const [weeklyDays, setWeeklyDays] = useState<number[]>([1, 2, 3, 4, 5]);
   const [hasSubtasks, setHasSubtasks] = useState(false);
+  const [excludeFromStats, setExcludeFromStats] = useState(false);
 
   const handleToggleWeekday = (dayId: number) => {
     if (weeklyDays.includes(dayId)) {
@@ -141,22 +142,16 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
+  // Click outside to close active popover
   useEffect(() => {
-    if (openPopover === null) return;
-    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+    if (!openPopover) return;
+    const handleClickOutside = (e: MouseEvent) => {
       if (activePopoverRef.current && !activePopoverRef.current.contains(e.target as Node)) {
         setOpenPopover(null);
       }
     };
-    const timer = setTimeout(() => {
-      window.addEventListener('mousedown', handlePointerDown);
-      window.addEventListener('touchstart', handlePointerDown);
-    }, 0);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('mousedown', handlePointerDown);
-      window.removeEventListener('touchstart', handlePointerDown);
-    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [openPopover]);
 
   useEffect(() => {
@@ -183,6 +178,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
       setWeeklyDays([1, 2, 3, 4, 5]);
     }
     setHasSubtasks(!!task.hasSubtasks || tasks.some((t) => t.parentTaskId === task.id));
+    setExcludeFromStats(Boolean(task.excludeFromStats));
   }, [task, tasks]);
 
   if (!isOpen || !task) return null;
@@ -250,6 +246,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         afterCompletionDays,
         weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
         hasSubtasks,
+        excludeFromStats,
       });
     } else {
       const taskState = repeatStatus === 'Paused' ? 'paused' : (repeatStatus === 'Completed' ? 'completed' : 'active');
@@ -267,6 +264,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
         hasSubtasks,
         taskState: effectiveIsRepeating ? taskState : null,
+        excludeFromStats,
       });
     }
 
@@ -401,7 +399,15 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 <select
                   className={styles.v2Select}
                   value={category}
-                  onChange={(e) => setCategory(e.target.value as TaskCategory)}
+                  onChange={(e) => {
+                    const newCat = e.target.value as TaskCategory;
+                    setCategory(newCat);
+                    const catObj = storeCategories.find((c) => c.name.trim().toLowerCase() === newCat.trim().toLowerCase());
+                    const isChore = newCat.toLowerCase().includes('быт') || newCat.toLowerCase().includes('рутин');
+                    if (catObj?.excludeFromStats || isChore) {
+                      setExcludeFromStats(true);
+                    }
+                  }}
                 >
                   {storeCategories.map((cat) => (
                     <option key={cat.id || cat.name} value={cat.name}>
@@ -578,6 +584,22 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 placeholder="🔗 Ссылка..."
                 style={{ height: '26px' }}
               />
+            </div>
+
+            {/* 7. Exclude From Stats Toggle */}
+            <div className={styles.excludeStatsRow}>
+              <label className={styles.excludeStatsLabel} title="Если отмечено, задача не попадает в графики статистики, сложного роста и отчеты">
+                <input
+                  type="checkbox"
+                  checked={excludeFromStats}
+                  onChange={(e) => setExcludeFromStats(e.target.checked)}
+                  className={styles.excludeStatsCheckbox}
+                />
+                <span className={styles.excludeStatsTitle}>Не учитывать в статистике</span>
+              </label>
+              <span className={styles.excludeStatsHint}>
+                (для быта, рутины и напоминалок)
+              </span>
             </div>
           </div>
 

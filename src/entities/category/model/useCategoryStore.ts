@@ -7,6 +7,7 @@ export interface CategoryItem {
   name: string;
   color: string;
   isSystem?: boolean;
+  excludeFromStats?: boolean;
 }
 
 const DEFAULT_CATEGORIES: CategoryItem[] = [

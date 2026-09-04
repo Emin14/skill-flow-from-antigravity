@@ -205,6 +205,7 @@ export class PrismaTaskRepository {
           sortOrder: parseNumInt(task.sortOrder),
           topicId: effectiveTopicId,
           goalId: effectiveGoalId,
+          excludeFromStats: Boolean(task.excludeFromStats),
           createdAt: safeDate(task.createdAt) || new Date(),
           occurrences: {
             create: occurrencesData,
@@ -300,6 +301,10 @@ export class PrismaTaskRepository {
           } else {
             taskUpdateData.goalId = null;
           }
+        }
+
+        if (updates.excludeFromStats !== undefined) {
+          taskUpdateData.excludeFromStats = Boolean(updates.excludeFromStats);
         }
 
         await tx.task.update({

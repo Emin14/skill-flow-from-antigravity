@@ -243,6 +243,7 @@ export interface AddTaskParams {
   weeklyDays?: number[] | null;
   hasSubtasks?: boolean;
   targetRepetitions?: number;
+  excludeFromStats?: boolean;
 }
 
 interface TaskState {
@@ -524,6 +525,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         weeklyDays = null,
         hasSubtasks = false,
         targetRepetitions = 8,
+        excludeFromStats = false,
       } = titleOrParams;
 
       const effectiveHasSubtasks = hasSubtasks;
@@ -567,6 +569,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         hasSubtasks: effectiveHasSubtasks,
         targetRepetitions,
         repetitionsCount: 0,
+        excludeFromStats: Boolean(excludeFromStats),
         occurrences: normOccs,
         createdAt: new Date().toISOString(),
         pomodorosCount: 1,

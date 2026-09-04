@@ -87,6 +87,9 @@ const getCombinedCompletionEvents = (allTasks: Task[]): CompletionEvent[] => {
   const events: CompletionEvent[] = [];
 
   allTasks.forEach((t) => {
+    // Exclude tasks marked as excludeFromStats
+    if (t.excludeFromStats) return;
+
     // Exclude parent container tasks (matching Calendar Page filterCalendarVisibleTasks)
     const hasChildren = allTasks.some((sub) => sub.parentTaskId === t.id);
     if (t.hasSubtasks || hasChildren) return;
@@ -155,6 +158,9 @@ const getDaily30Stats = (allTasks: Task[]): Record<string, DayFullStats> => {
   }
 
   allTasks.forEach((t) => {
+    // Exclude tasks marked as excludeFromStats
+    if (t.excludeFromStats) return;
+
     // Exclude parent container tasks (matching Calendar Page filterCalendarVisibleTasks)
     const hasChildren = allTasks.some((sub) => sub.parentTaskId === t.id);
     if (t.hasSubtasks || hasChildren) return;
@@ -260,7 +266,7 @@ export const StatisticsPage: React.FC = () => {
       ).length;
 
       const todoCount = tasks.filter(
-        (t) => (t.category || 'Без категории').trim().toLowerCase() === cat.trim().toLowerCase() && t.status !== 'Done'
+        (t) => (t.category || 'Без категории').trim().toLowerCase() === cat.trim().toLowerCase() && t.status !== 'Done' && !t.excludeFromStats
       ).length;
 
       return {

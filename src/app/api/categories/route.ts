@@ -16,7 +16,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, color } = body;
+    const { name, color, excludeFromStats } = body;
 
     if (!name || !name.trim()) {
       return NextResponse.json({ error: 'Name is required' }, { status: 400 });
@@ -27,9 +27,11 @@ export async function POST(request: Request) {
       create: {
         name: name.trim(),
         color: color || '#38bdf8',
+        excludeFromStats: Boolean(excludeFromStats),
       },
       update: {
         color: color || '#38bdf8',
+        excludeFromStats: excludeFromStats !== undefined ? Boolean(excludeFromStats) : undefined,
       },
     });
 
@@ -43,7 +45,7 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
-    const { id, name, color } = body;
+    const { id, name, color, excludeFromStats } = body;
 
     if (!id && !name) {
       return NextResponse.json({ error: 'ID or Name is required' }, { status: 400 });
@@ -56,6 +58,7 @@ export async function PUT(request: Request) {
       data: {
         name: name ? name.trim() : undefined,
         color: color || undefined,
+        excludeFromStats: excludeFromStats !== undefined ? Boolean(excludeFromStats) : undefined,
       },
     });
 

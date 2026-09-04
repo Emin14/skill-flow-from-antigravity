@@ -65,6 +65,7 @@ export interface Task {
   afterCompletionDays?: number | null;
   weeklyDays?: number[] | null;
   spacedStepIndex?: number | null;
+  excludeFromStats?: boolean;
 
   occurrences?: TaskOccurrence[];
 

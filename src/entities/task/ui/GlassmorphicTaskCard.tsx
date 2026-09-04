@@ -563,6 +563,25 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
                   </span>
                 ))}
                 {task.isRepeating && !hideRepeatTag && <span className={styles.repeatTag}>• ↻ Повтор</span>}
+                {task.excludeFromStats && (
+                  <span
+                    style={{
+                      fontSize: '10px',
+                      padding: '1px 5px',
+                      borderRadius: '4px',
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      color: 'var(--color-text-muted)',
+                      border: '1px solid var(--color-border)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '3px',
+                      opacity: 0.8,
+                    }}
+                    title="Не учитывается в статистике"
+                  >
+                    ☕ вне статистики
+                  </span>
+                )}
                 {formattedLink && (
                   <a
                     href={formattedLink}

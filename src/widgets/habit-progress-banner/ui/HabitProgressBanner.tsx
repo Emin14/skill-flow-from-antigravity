@@ -29,6 +29,7 @@ export const HabitProgressBanner: React.FC<HabitProgressBannerProps> = ({ target
 
   // Strictly filter ALL tasks for TODAY / targetDate (both regular and repeating, excluding parent container tasks)
   const todayTasks = tasks.filter((t) => {
+    if (t.excludeFromStats) return false;
     const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
     if (t.hasSubtasks || hasChildren) return false;
 

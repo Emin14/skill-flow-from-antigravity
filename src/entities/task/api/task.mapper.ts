@@ -90,6 +90,7 @@ export class TaskMapper {
         }
       })(),
       spacedStepIndex: prismaTask.spacedStepIndex ?? null,
+      excludeFromStats: Boolean((prismaTask as any).excludeFromStats),
 
       occurrences,
 
