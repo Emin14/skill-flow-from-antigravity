@@ -18,6 +18,9 @@ export const InboxPage: React.FC = () => {
   const [quickInput, setQuickInput] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
 
+  // Single active editing item ID: only 1 thought can be edited at a time
+  const [editingItemId, setEditingItemId] = useState<string | null>(null);
+
   // Triage state: keep track of item and draft task
   const [triagingItem, setTriagingItem] = useState<InboxItem | null>(null);
   const [triagingTask, setTriagingTask] = useState<Task | null>(null);
@@ -31,12 +34,14 @@ export const InboxPage: React.FC = () => {
     e.preventDefault();
     if (!quickInput.trim()) return;
 
+    setEditingItemId(null);
     await addItem(quickInput.trim());
     setQuickInput('');
   };
 
   // Prepare triage draft without deleting inbox item yet
   const handleTriage = (item: InboxItem) => {
+    setEditingItemId(null);
     setTriagingItem(item);
     setTriagingTask({
       id: 'draft-' + item.id,
@@ -143,6 +148,9 @@ export const InboxPage: React.FC = () => {
             <InboxItemCard
               key={item.id}
               item={item}
+              isEditing={editingItemId === item.id}
+              onStartEdit={() => setEditingItemId(item.id)}
+              onCloseEdit={() => setEditingItemId(null)}
               handleTriage={handleTriage}
               updateItem={updateItem}
               togglePin={togglePin}
@@ -168,6 +176,9 @@ export const InboxPage: React.FC = () => {
 
 interface InboxItemCardProps {
   item: InboxItem;
+  isEditing: boolean;
+  onStartEdit: () => void;
+  onCloseEdit: () => void;
   handleTriage: (item: InboxItem) => void;
   updateItem: (id: string, text: string) => Promise<void>;
   togglePin: (id: string) => void;
@@ -176,6 +187,9 @@ interface InboxItemCardProps {
 
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
   item,
+  isEditing,
+  onStartEdit,
+  onCloseEdit,
   handleTriage,
   updateItem,
   togglePin,
@@ -183,14 +197,14 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
 }) => {
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editText, setEditText] = useState<string>(item.text);
+  const cardRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
   const hasDraggedRef = React.useRef<boolean>(false);
 
   React.useEffect(() => {
     setEditText(item.text);
-  }, [item.text]);
+  }, [item.text, isEditing]);
 
   React.useEffect(() => {
     if (isEditing && textareaRef.current) {
@@ -206,18 +220,18 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     const trimmed = editText.trim();
     if (!trimmed) {
       setEditText(item.text);
-      setIsEditing(false);
+      onCloseEdit();
       return;
     }
     if (trimmed !== item.text) {
       await updateItem(item.id, trimmed);
     }
-    setIsEditing(false);
+    onCloseEdit();
   };
 
   const handleCancel = () => {
     setEditText(item.text);
-    setIsEditing(false);
+    onCloseEdit();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -229,6 +243,24 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       handleCancel();
     }
   };
+
+  // Close and auto-save on click outside the active card
+  React.useEffect(() => {
+    if (!isEditing) return;
+
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (cardRef.current && !cardRef.current.contains(e.target as Node)) {
+        handleSave();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isEditing, editText, item.text]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     if (isEditing) return;
@@ -269,7 +301,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   };
 
   return (
-    <div className={styles.itemCardWrapper}>
+    <div ref={cardRef} className={styles.itemCardWrapper}>
       {/* Background Swipe Triage Action (Left side) - Only rendered when swiping right */}
       {!isEditing && swipeOffset > 0 && (
         <div
@@ -359,7 +391,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
                 className={styles.itemText}
                 onClick={() => {
                   if (!hasDraggedRef.current && swipeOffset === 0) {
-                    setIsEditing(true);
+                    onStartEdit();
                   }
                 }}
                 title="Нажмите для редактирования"
@@ -402,7 +434,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
                   e.stopPropagation();
                   e.preventDefault();
                   setSwipeOffset(0);
-                  setIsEditing(true);
+                  onStartEdit();
                 }}
                 title="Редактировать мысль"
                 style={{ color: 'var(--color-text-muted)' }}
