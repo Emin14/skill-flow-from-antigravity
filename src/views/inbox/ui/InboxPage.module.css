@@ -100,6 +100,113 @@
   color: var(--color-text-primary);
   line-height: 1.35;
   word-break: break-word;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  transition: background-color 0.15s ease;
+}
+
+.itemText:hover {
+  background-color: var(--color-surface-hover, rgba(255, 255, 255, 0.05));
+}
+
+.itemCardEditing {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 14px var(--color-accent-border, rgba(59, 130, 246, 0.2));
+  background-color: var(--color-surface);
+}
+
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.editTextarea {
+  width: 100%;
+  min-height: 38px;
+  background-color: var(--color-bg, rgba(0, 0, 0, 0.2));
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.editTextarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent-border, rgba(59, 130, 246, 0.2));
+}
+
+.editFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.editHint {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  user-select: none;
+}
+
+.editActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.saveBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  min-height: 28px;
+  border-radius: 8px;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.saveBtn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.cancelBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  min-height: 28px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cancelBtn:hover {
+  background-color: var(--color-surface-hover, rgba(255, 255, 255, 0.06));
+  color: var(--color-text-primary);
 }
 
 .itemMeta {

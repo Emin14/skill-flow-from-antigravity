@@ -7,13 +7,13 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { InboxHeaderWidget } from '@/widgets/inbox-header/ui/InboxHeaderWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
-import { Lightbulb } from 'lucide-react';
+import { Lightbulb, Pencil, Check, X } from 'lucide-react';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
 
 export const InboxPage: React.FC = () => {
-  const { items, isLoading, fetchItems, addItem, togglePin, deleteItem } = useInboxStore();
+  const { items, isLoading, fetchItems, addItem, updateItem, togglePin, deleteItem } = useInboxStore();
 
   const [quickInput, setQuickInput] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
@@ -144,6 +144,7 @@ export const InboxPage: React.FC = () => {
               key={item.id}
               item={item}
               handleTriage={handleTriage}
+              updateItem={updateItem}
               togglePin={togglePin}
               deleteItem={deleteItem}
             />
@@ -168,6 +169,7 @@ export const InboxPage: React.FC = () => {
 interface InboxItemCardProps {
   item: InboxItem;
   handleTriage: (item: InboxItem) => void;
+  updateItem: (id: string, text: string) => Promise<void>;
   togglePin: (id: string) => void;
   deleteItem: (id: string) => void;
 }
@@ -175,27 +177,80 @@ interface InboxItemCardProps {
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
   item,
   handleTriage,
+  updateItem,
   togglePin,
   deleteItem,
 }) => {
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [editText, setEditText] = useState<string>(item.text);
+  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+  const hasDraggedRef = React.useRef<boolean>(false);
+
+  React.useEffect(() => {
+    setEditText(item.text);
+  }, [item.text]);
+
+  React.useEffect(() => {
+    if (isEditing && textareaRef.current) {
+      textareaRef.current.focus();
+      const len = textareaRef.current.value.length;
+      textareaRef.current.setSelectionRange(len, len);
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [isEditing]);
+
+  const handleSave = async () => {
+    const trimmed = editText.trim();
+    if (!trimmed) {
+      setEditText(item.text);
+      setIsEditing(false);
+      return;
+    }
+    if (trimmed !== item.text) {
+      await updateItem(item.id, trimmed);
+    }
+    setIsEditing(false);
+  };
+
+  const handleCancel = () => {
+    setEditText(item.text);
+    setIsEditing(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSave();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      handleCancel();
+    }
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (isEditing) return;
+    hasDraggedRef.current = false;
     setTouchStartX(e.targetTouches[0].clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
+    if (isEditing || touchStartX === null) return;
     const currentX = e.targetTouches[0].clientX;
     const diff = currentX - touchStartX; // positive = swipe right, negative = swipe left
+
+    if (Math.abs(diff) > 8) {
+      hasDraggedRef.current = true;
+    }
 
     const clamped = Math.max(-100, Math.min(100, diff));
     setSwipeOffset(clamped);
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
+    if (isEditing || touchStartX === null) return;
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchEndX - touchStartX;
 
@@ -216,7 +271,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   return (
     <div className={styles.itemCardWrapper}>
       {/* Background Swipe Triage Action (Left side) - Only rendered when swiping right */}
-      {swipeOffset > 0 && (
+      {!isEditing && swipeOffset > 0 && (
         <div
           className={styles.triageSwipeAction}
           onClick={(e) => {
@@ -230,7 +285,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       )}
 
       {/* Background Swipe Delete Action (Right side) - Only rendered when swiping left */}
-      {swipeOffset < 0 && (
+      {!isEditing && swipeOffset < 0 && (
         <div
           className={styles.deleteSwipeAction}
           onClick={(e) => {
@@ -245,58 +300,135 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
 
       {/* Main Ultra-Slim Item Card */}
       <div
-        className={`${styles.itemCard} ${item.isPinned ? styles.itemCardPinned : ''}`}
-        style={{ transform: `translateX(${swipeOffset}px)` }}
+        className={`${styles.itemCard} ${item.isPinned ? styles.itemCardPinned : ''} ${isEditing ? styles.itemCardEditing : ''}`}
+        style={{ transform: isEditing ? 'none' : `translateX(${swipeOffset}px)` }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div className={styles.itemText}>{item.text}</div>
-          <div className={styles.itemMeta}>
-            {new Date(item.createdAt).toLocaleString('ru-RU', {
-              day: 'numeric',
-              month: 'short',
-              hour: '2-digit',
-              minute: '2-digit',
-            })}
+        {isEditing ? (
+          <div
+            className={styles.editContainer}
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            onTouchEnd={(e) => e.stopPropagation()}
+          >
+            <textarea
+              ref={textareaRef}
+              value={editText}
+              onChange={(e) => {
+                setEditText(e.target.value);
+                e.target.style.height = 'auto';
+                e.target.style.height = `${e.target.scrollHeight}px`;
+              }}
+              onKeyDown={handleKeyDown}
+              className={styles.editTextarea}
+              rows={1}
+              placeholder="Введите мысль..."
+            />
+            <div className={styles.editFooter}>
+              <span className={styles.editHint}>
+                Enter ↵ сохранить • Shift+Enter перенос • Esc отмена
+              </span>
+              <div className={styles.editActions}>
+                <button
+                  type="button"
+                  className={styles.saveBtn}
+                  onClick={handleSave}
+                  title="Сохранить (Enter)"
+                >
+                  <Check size={13} />
+                  <span>Готово</span>
+                </button>
+                <button
+                  type="button"
+                  className={styles.cancelBtn}
+                  onClick={handleCancel}
+                  title="Отмена (Esc)"
+                >
+                  <X size={13} />
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        ) : (
+          <>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div
+                className={styles.itemText}
+                onClick={() => {
+                  if (!hasDraggedRef.current && swipeOffset === 0) {
+                    setIsEditing(true);
+                  }
+                }}
+                title="Нажмите для редактирования"
+              >
+                {item.text}
+              </div>
+              <div className={styles.itemMeta}>
+                {new Date(item.createdAt).toLocaleString('ru-RU', {
+                  day: 'numeric',
+                  month: 'short',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </div>
+            </div>
 
-        {/* Quick Actions */}
-        <div className={styles.itemActions}>
-          <button
-            type="button"
-            className={styles.triageBtn}
-            onTouchStart={(e) => e.stopPropagation()}
-            onTouchMove={(e) => e.stopPropagation()}
-            onTouchEnd={(e) => e.stopPropagation()}
-            onClick={(e) => {
-              e.stopPropagation();
-              handleTriage(item);
-            }}
-            title="Разобрать запись в Задачу"
-          >
-            ✔ Разобрать
-          </button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onTouchStart={(e) => e.stopPropagation()}
-            onTouchMove={(e) => e.stopPropagation()}
-            onTouchEnd={(e) => e.stopPropagation()}
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              setSwipeOffset(0);
-              togglePin(item.id);
-            }}
-            title={item.isPinned ? 'Открепить' : 'Закрепить'}
-            style={{ color: item.isPinned ? 'var(--color-accent)' : 'var(--color-text-muted)' }}
-          >
-            📌
-          </Button>
-        </div>
+            {/* Quick Actions */}
+            <div className={styles.itemActions}>
+              <button
+                type="button"
+                className={styles.triageBtn}
+                onTouchStart={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                onTouchEnd={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleTriage(item);
+                }}
+                title="Разобрать запись в Задачу"
+              >
+                ✔ Разобрать
+              </button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onTouchStart={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                onTouchEnd={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setSwipeOffset(0);
+                  setIsEditing(true);
+                }}
+                title="Редактировать мысль"
+                style={{ color: 'var(--color-text-muted)' }}
+              >
+                <Pencil size={13} />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onTouchStart={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                onTouchEnd={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setSwipeOffset(0);
+                  togglePin(item.id);
+                }}
+                title={item.isPinned ? 'Открепить' : 'Закрепить'}
+                style={{ color: item.isPinned ? 'var(--color-accent)' : 'var(--color-text-muted)' }}
+              >
+                📌
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
