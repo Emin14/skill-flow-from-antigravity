@@ -7,7 +7,7 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { InboxHeaderWidget } from '@/widgets/inbox-header/ui/InboxHeaderWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
-import { Lightbulb, Pencil, Check, X } from 'lucide-react';
+import { Lightbulb, Pencil, Check, X, Trash2 } from 'lucide-react';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
@@ -196,7 +196,9 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   deleteItem,
 }) => {
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isSwipingActive, setIsSwipingActive] = useState<boolean>(false);
+  const touchStartPos = React.useRef<{ x: number; y: number } | null>(null);
+  const gestureLockRef = React.useRef<'none' | 'vertical' | 'horizontal'>('none');
   const [editText, setEditText] = useState<string>(item.text);
   const cardRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
@@ -263,41 +265,112 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   }, [isEditing, editText, item.text]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (isEditing) return;
+    if (isEditing || e.targetTouches.length !== 1) return;
     hasDraggedRef.current = false;
-    setTouchStartX(e.targetTouches[0].clientX);
+    gestureLockRef.current = 'none';
+    setIsSwipingActive(false);
+    const touch = e.targetTouches[0];
+    touchStartPos.current = { x: touch.clientX, y: touch.clientY };
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (isEditing || touchStartX === null) return;
-    const currentX = e.targetTouches[0].clientX;
-    const diff = currentX - touchStartX; // positive = swipe right, negative = swipe left
+    if (isEditing || !touchStartPos.current || e.targetTouches.length !== 1) return;
+    const touch = e.targetTouches[0];
+    const diffX = touch.clientX - touchStartPos.current.x;
+    const diffY = touch.clientY - touchStartPos.current.y;
+    const absX = Math.abs(diffX);
+    const absY = Math.abs(diffY);
 
-    if (Math.abs(diff) > 8) {
-      hasDraggedRef.current = true;
+    // Initial phase: determine user intention
+    if (gestureLockRef.current === 'none') {
+      // Don't lock until user has moved finger at least 7px
+      if (absX < 7 && absY < 7) {
+        return;
+      }
+
+      // If vertical movement is dominant or comparable to horizontal:
+      // It is a vertical page scroll! Lock to vertical and ignore horizontal swipe completely.
+      if (absY >= absX || absX < 14) {
+        gestureLockRef.current = 'vertical';
+        setSwipeOffset(0);
+        setIsSwipingActive(false);
+        return;
+      } else {
+        // Horizontal movement is distinctly greater than vertical (absX > absY * 1.5)
+        if (absX > absY * 1.5) {
+          gestureLockRef.current = 'horizontal';
+          hasDraggedRef.current = true;
+          setIsSwipingActive(true);
+        } else {
+          // Ambiguous / diagonal: prioritize smooth page scrolling
+          gestureLockRef.current = 'vertical';
+          setSwipeOffset(0);
+          setIsSwipingActive(false);
+          return;
+        }
+      }
     }
 
-    const clamped = Math.max(-100, Math.min(100, diff));
-    setSwipeOffset(clamped);
+    // If locked to vertical, do nothing and let page scroll naturally
+    if (gestureLockRef.current === 'vertical') {
+      return;
+    }
+
+    // If locked to horizontal swipe, track finger with soft resistance
+    if (gestureLockRef.current === 'horizontal') {
+      hasDraggedRef.current = true;
+      let offset = diffX;
+      const MAX_OFFSET = 105;
+      if (offset > MAX_OFFSET) {
+        offset = MAX_OFFSET + (offset - MAX_OFFSET) * 0.25;
+      } else if (offset < -MAX_OFFSET) {
+        offset = -MAX_OFFSET + (offset + MAX_OFFSET) * 0.25;
+      }
+      setSwipeOffset(offset);
+    }
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (isEditing || touchStartX === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchEndX - touchStartX;
-
-    if (diff > 45) {
-      // Swiped right -> Triage
-      handleTriage(item);
+    if (isEditing || !touchStartPos.current) {
+      touchStartPos.current = null;
+      gestureLockRef.current = 'none';
+      setIsSwipingActive(false);
       setSwipeOffset(0);
-    } else if (diff < -45) {
-      // Swiped left -> Delete
-      deleteItem(item.id);
-      setSwipeOffset(0);
-    } else {
-      setSwipeOffset(0);
+      return;
     }
-    setTouchStartX(null);
+
+    if (gestureLockRef.current === 'horizontal') {
+      const touch = e.changedTouches[0];
+      const diffX = touch.clientX - touchStartPos.current.x;
+
+      // Deliberate swipe threshold: 75px
+      const SWIPE_THRESHOLD = 75;
+      if (diffX > SWIPE_THRESHOLD) {
+        // Swiped right -> Triage
+        handleTriage(item);
+      } else if (diffX < -SWIPE_THRESHOLD) {
+        // Swiped left -> Delete
+        deleteItem(item.id);
+      }
+    }
+
+    setSwipeOffset(0);
+    setIsSwipingActive(false);
+    touchStartPos.current = null;
+    gestureLockRef.current = 'none';
+
+    // Prevent click on text from firing after ending a drag
+    setTimeout(() => {
+      hasDraggedRef.current = false;
+    }, 120);
+  };
+
+  const handleTouchCancel = () => {
+    setSwipeOffset(0);
+    setIsSwipingActive(false);
+    touchStartPos.current = null;
+    gestureLockRef.current = 'none';
+    hasDraggedRef.current = false;
   };
 
   return (
@@ -312,7 +385,8 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             setSwipeOffset(0);
           }}
         >
-          Разобрать
+          <Check size={16} />
+          <span>Разобрать</span>
         </div>
       )}
 
@@ -326,17 +400,22 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             setSwipeOffset(0);
           }}
         >
-          Удалить
+          <Trash2 size={16} />
+          <span>Удалить</span>
         </div>
       )}
 
       {/* Main Ultra-Slim Item Card */}
       <div
         className={`${styles.itemCard} ${item.isPinned ? styles.itemCardPinned : ''} ${isEditing ? styles.itemCardEditing : ''}`}
-        style={{ transform: isEditing ? 'none' : `translateX(${swipeOffset}px)` }}
+        style={{
+          transform: isEditing ? 'none' : swipeOffset !== 0 ? `translateX(${swipeOffset}px)` : undefined,
+          transition: isSwipingActive ? 'none' : undefined,
+        }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
       >
         {isEditing ? (
           <div
@@ -422,7 +501,8 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
                 }}
                 title="Разобрать запись в Задачу"
               >
-                ✔ Разобрать
+                <Check size={13} />
+                <span className={styles.triageLabel}>Разобрать</span>
               </button>
               <Button
                 variant="ghost"
@@ -457,6 +537,23 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
                 style={{ color: item.isPinned ? 'var(--color-accent)' : 'var(--color-text-muted)' }}
               >
                 📌
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className={styles.deleteBtn}
+                onTouchStart={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                onTouchEnd={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setSwipeOffset(0);
+                  deleteItem(item.id);
+                }}
+                title="Удалить мысль"
+              >
+                <Trash2 size={13} />
               </Button>
             </div>
           </>
