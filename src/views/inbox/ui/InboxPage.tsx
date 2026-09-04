@@ -21,6 +21,9 @@ export const InboxPage: React.FC = () => {
   // Single active editing item ID: only 1 thought can be edited at a time
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
 
+  // Single active opened swipe item ID (for reveal delete action)
+  const [swipedOpenItemId, setSwipedOpenItemId] = useState<string | null>(null);
+
   // Triage state: keep track of item and draft task
   const [triagingItem, setTriagingItem] = useState<InboxItem | null>(null);
   const [triagingTask, setTriagingTask] = useState<Task | null>(null);
@@ -35,6 +38,7 @@ export const InboxPage: React.FC = () => {
     if (!quickInput.trim()) return;
 
     setEditingItemId(null);
+    setSwipedOpenItemId(null);
     await addItem(quickInput.trim());
     setQuickInput('');
   };
@@ -42,6 +46,7 @@ export const InboxPage: React.FC = () => {
   // Prepare triage draft without deleting inbox item yet
   const handleTriage = (item: InboxItem) => {
     setEditingItemId(null);
+    setSwipedOpenItemId(null);
     setTriagingItem(item);
     setTriagingTask({
       id: 'draft-' + item.id,
@@ -149,8 +154,21 @@ export const InboxPage: React.FC = () => {
               key={item.id}
               item={item}
               isEditing={editingItemId === item.id}
-              onStartEdit={() => setEditingItemId(item.id)}
+              onStartEdit={() => {
+                setEditingItemId(item.id);
+                setSwipedOpenItemId(null);
+              }}
               onCloseEdit={() => setEditingItemId(null)}
+              isSwipedOpen={swipedOpenItemId === item.id}
+              onOpenSwipe={() => {
+                setSwipedOpenItemId(item.id);
+                setEditingItemId(null);
+              }}
+              onCloseSwipe={() => {
+                if (swipedOpenItemId === item.id) {
+                  setSwipedOpenItemId(null);
+                }
+              }}
               handleTriage={handleTriage}
               updateItem={updateItem}
               togglePin={togglePin}
@@ -179,17 +197,25 @@ interface InboxItemCardProps {
   isEditing: boolean;
   onStartEdit: () => void;
   onCloseEdit: () => void;
+  isSwipedOpen: boolean;
+  onOpenSwipe: () => void;
+  onCloseSwipe: () => void;
   handleTriage: (item: InboxItem) => void;
   updateItem: (id: string, text: string) => Promise<void>;
   togglePin: (id: string) => void;
   deleteItem: (id: string) => void;
 }
 
+const DELETE_ACTION_WIDTH = 88;
+
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
   item,
   isEditing,
   onStartEdit,
   onCloseEdit,
+  isSwipedOpen,
+  onOpenSwipe,
+  onCloseSwipe,
   handleTriage,
   updateItem,
   togglePin,
@@ -198,10 +224,23 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   const [swipeOffset, setSwipeOffset] = useState<number>(0);
   const [isSwipingActive, setIsSwipingActive] = useState<boolean>(false);
   const touchStartPos = React.useRef<{ x: number; y: number } | null>(null);
+  const initialOffsetRef = React.useRef<number>(0);
   const gestureLockRef = React.useRef<'none' | 'vertical' | 'horizontal'>('none');
   const [editText, setEditText] = useState<string>(item.text);
   const cardRef = React.useRef<HTMLDivElement>(null);
+  const deleteBtnRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+
+  // Sync swipeOffset with external isSwipedOpen state when not actively dragging
+  React.useEffect(() => {
+    if (!isSwipingActive) {
+      if (isSwipedOpen) {
+        setSwipeOffset(-DELETE_ACTION_WIDTH);
+      } else {
+        setSwipeOffset(0);
+      }
+    }
+  }, [isSwipedOpen, isSwipingActive]);
 
   React.useEffect(() => {
     setEditText(item.text);
@@ -245,7 +284,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     }
   };
 
-  // Close and auto-save on click outside the active card
+  // Close and auto-save on click outside the active editing card
   React.useEffect(() => {
     if (!isEditing) return;
 
@@ -263,12 +302,38 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     };
   }, [isEditing, editText, item.text]);
 
+  // Click outside / tap on card to close opened swipe action
+  React.useEffect(() => {
+    if (!isSwipedOpen) return;
+
+    const handleSwipeOutside = (e: MouseEvent | TouchEvent) => {
+      // If clicking inside the delete action button, let its onClick handle deletion
+      if (deleteBtnRef.current && deleteBtnRef.current.contains(e.target as Node)) {
+        return;
+      }
+      onCloseSwipe();
+    };
+
+    // Small timeout ensures touchend on the card doesn't immediately dismiss the open state
+    const timer = setTimeout(() => {
+      document.addEventListener('mousedown', handleSwipeOutside);
+      document.addEventListener('touchstart', handleSwipeOutside);
+    }, 60);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mousedown', handleSwipeOutside);
+      document.removeEventListener('touchstart', handleSwipeOutside);
+    };
+  }, [isSwipedOpen, onCloseSwipe]);
+
   const handleTouchStart = (e: React.TouchEvent) => {
     if (isEditing || e.touches.length > 1) return;
     gestureLockRef.current = 'none';
     setIsSwipingActive(false);
     const touch = e.touches[0];
     touchStartPos.current = { x: touch.clientX, y: touch.clientY };
+    initialOffsetRef.current = isSwipedOpen ? -DELETE_ACTION_WIDTH : 0;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -279,40 +344,28 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     const absX = Math.abs(diffX);
     const absY = Math.abs(diffY);
 
-    // Initial phase: determine user intention
     if (gestureLockRef.current === 'none') {
-      // Don't lock until user has moved finger at least 6px
-      if (absX < 6 && absY < 6) {
-        return;
-      }
+      if (absX < 6 && absY < 6) return;
 
-      // If vertical movement is greater than horizontal:
-      // It is a page scroll! Lock to vertical.
       if (absY > absX) {
         gestureLockRef.current = 'vertical';
-        setSwipeOffset(0);
-        setIsSwipingActive(false);
         return;
       } else {
-        // Horizontal movement is dominant: Lock to horizontal swipe!
         gestureLockRef.current = 'horizontal';
         setIsSwipingActive(true);
       }
     }
 
-    // If locked to vertical, do nothing and let page scroll naturally
-    if (gestureLockRef.current === 'vertical') {
-      return;
-    }
+    if (gestureLockRef.current === 'vertical') return;
 
-    // If locked to horizontal swipe, track finger with soft resistance
     if (gestureLockRef.current === 'horizontal') {
-      let offset = diffX;
-      const MAX_OFFSET = 105;
-      if (offset > MAX_OFFSET) {
-        offset = MAX_OFFSET + (offset - MAX_OFFSET) * 0.25;
-      } else if (offset < -MAX_OFFSET) {
-        offset = -MAX_OFFSET + (offset + MAX_OFFSET) * 0.25;
+      let offset = initialOffsetRef.current + diffX;
+      // Soft limits
+      if (offset > 105) {
+        offset = 105 + (offset - 105) * 0.25;
+      } else if (offset < -(DELETE_ACTION_WIDTH + 25)) {
+        const minLimit = -(DELETE_ACTION_WIDTH + 25);
+        offset = minLimit + (offset - minLimit) * 0.25;
       }
       setSwipeOffset(offset);
     }
@@ -323,33 +376,51 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       touchStartPos.current = null;
       gestureLockRef.current = 'none';
       setIsSwipingActive(false);
-      setSwipeOffset(0);
       return;
     }
 
     if (gestureLockRef.current === 'horizontal') {
       const touch = e.changedTouches[0];
-      const diffX = touch.clientX - touchStartPos.current.x;
+      const deltaX = touch.clientX - touchStartPos.current.x;
+      const finalOffset = initialOffsetRef.current + deltaX;
 
-      // Responsive threshold for swipe action (55px)
-      const SWIPE_THRESHOLD = 55;
-      if (diffX > SWIPE_THRESHOLD) {
-        // Swiped right -> Triage
+      // 1. Swiping right from closed: Triage!
+      if (initialOffsetRef.current === 0 && finalOffset > 55) {
         handleTriage(item);
-      } else if (diffX < -SWIPE_THRESHOLD) {
-        // Swiped left -> Delete
-        deleteItem(item.id);
+        setSwipeOffset(0);
+        onCloseSwipe();
+      }
+      // 2. Swiping left from closed: Reveal Delete Button!
+      else if (initialOffsetRef.current === 0 && finalOffset < -35) {
+        setSwipeOffset(-DELETE_ACTION_WIDTH);
+        onOpenSwipe();
+      }
+      // 3. Card was already open:
+      else if (initialOffsetRef.current === -DELETE_ACTION_WIDTH) {
+        // If swiped right by at least 25px, close it back
+        if (deltaX > 25) {
+          setSwipeOffset(0);
+          onCloseSwipe();
+        } else {
+          // Stay open
+          setSwipeOffset(-DELETE_ACTION_WIDTH);
+          onOpenSwipe();
+        }
+      }
+      // 4. Fallback: snap back to closed
+      else {
+        setSwipeOffset(0);
+        onCloseSwipe();
       }
     }
 
-    setSwipeOffset(0);
     setIsSwipingActive(false);
     touchStartPos.current = null;
     gestureLockRef.current = 'none';
   };
 
   const handleTouchCancel = () => {
-    setSwipeOffset(0);
+    setSwipeOffset(isSwipedOpen ? -DELETE_ACTION_WIDTH : 0);
     setIsSwipingActive(false);
     touchStartPos.current = null;
     gestureLockRef.current = 'none';
@@ -365,6 +436,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             e.stopPropagation();
             handleTriage(item);
             setSwipeOffset(0);
+            onCloseSwipe();
           }}
         >
           <Check size={16} />
@@ -372,15 +444,17 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         </div>
       )}
 
-      {/* Background Swipe Delete Action (Right side) - Only rendered when swiping left */}
-      {!isEditing && swipeOffset < 0 && (
+      {/* Background Swipe Delete Action (Right side) - Rendered when swiping left or locked open */}
+      {!isEditing && (swipeOffset < 0 || isSwipedOpen) && (
         <div
+          ref={deleteBtnRef}
           className={styles.deleteSwipeAction}
           onClick={(e) => {
             e.stopPropagation();
+            onCloseSwipe();
             deleteItem(item.id);
-            setSwipeOffset(0);
           }}
+          title="Нажмите для удаления"
         >
           <Trash2 size={16} />
           <span>Удалить</span>
@@ -398,6 +472,11 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchCancel}
+        onClick={() => {
+          if (isSwipedOpen) {
+            onCloseSwipe();
+          }
+        }}
       >
         {isEditing ? (
           <div
