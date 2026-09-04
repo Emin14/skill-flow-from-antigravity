@@ -76,7 +76,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
   }, [period]);
 
   const compoundData = useMemo(() => {
-    const validCats = categories.filter((c) => c.name.trim().toLowerCase() !== 'без категории');
+    const validCats = categories.filter((c) => !c.excludeFromStats);
     const sourceCats = validCats.length > 0 ? validCats : categories;
     const config = PERIOD_CONFIG[period];
 
