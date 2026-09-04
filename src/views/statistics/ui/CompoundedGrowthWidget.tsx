@@ -152,6 +152,52 @@ export const CompoundedGrowthWidget: React.FC = () => {
       };
     });
 
+    // If 'Без категории' was not in sourceCats and not explicitly excluded from stats,
+    // still count tasks without category towards totalDone
+    const hasNoCatInSource = sourceCats.some(
+      (c) => c.name.trim().toLowerCase() === 'без категории'
+    );
+    const isNoCategoryExcluded = categories.some(
+      (c) => c.name.trim().toLowerCase() === 'без категории' && c.excludeFromStats
+    );
+
+    if (!hasNoCatInSource && !isNoCategoryExcluded) {
+      const noCatTasks = tasks.filter(
+        (t) => !(t.category && t.category.trim()) || t.category.trim().toLowerCase() === 'без категории'
+      );
+      noCatTasks.forEach((t) => {
+        const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
+        if (t.hasSubtasks || hasChildren || t.excludeFromStats) return;
+
+        if (!t.isRepeating && t.status === 'Done') {
+          const dateStr = (t.completedAt ? formatLocalDateStr(new Date(t.completedAt)) : undefined) || t.scheduledDate;
+          if (dateStr && periodDateSet.has(dateStr)) {
+            totalDone += 1;
+          }
+        }
+
+        if (t.isRepeating && t.occurrences) {
+          t.occurrences.forEach((occ) => {
+            if (occ.status === 'Done' && occ.date && periodDateSet.has(occ.date)) {
+              totalDone += 1;
+            }
+          });
+        }
+
+        if (t.repetitionHistory) {
+          t.repetitionHistory.forEach((rec) => {
+            const isRecDone = rec.completed === true || (rec as any).status === 'Done';
+            if (isRecDone && rec.date && periodDateSet.has(rec.date)) {
+              const alreadyCounted = t.occurrences?.some((o) => o.date === rec.date && o.status === 'Done');
+              if (!alreadyCounted) {
+                totalDone += 1;
+              }
+            }
+          });
+        }
+      });
+    }
+
     const sortedList = list.sort((a, b) => {
       if (a.count > 0 && b.count === 0) return -1;
       if (a.count === 0 && b.count > 0) return 1;
@@ -161,12 +207,17 @@ export const CompoundedGrowthWidget: React.FC = () => {
       return 0;
     });
 
+    // Hide "Без категории" from the visible list in the widget while keeping its contribution to totalDone
+    const displayList = sortedList.filter(
+      (item) => item.name.trim().toLowerCase() !== 'без категории'
+    );
+
     const totalGainPercent = (totalDone * GAIN_PER_ACTION_PERCENT).toFixed(1);
     const targetTasks = config.targetDailyNorm;
     const targetPercent = `${(targetTasks * GAIN_PER_ACTION_PERCENT).toFixed(0)}%`;
 
     return {
-      list: sortedList,
+      list: displayList,
       totalDone,
       totalGainPercent,
       targetTasks,
