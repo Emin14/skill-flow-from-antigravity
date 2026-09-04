@@ -64528,14 +64528,14 @@
         "translation": "в роли определения к другому слову",
         "examples": [
           {
-            "en": "to be confind",
+            "en": "to be confined",
             "ru": "рожать",
             "register": [
               "устаревшее"
             ]
           },
           {
-            "en": "to be confind to bed (to one's room)",
+            "en": "to be confined to bed (to one's room)",
             "ru": "быть прикованным к постели (не выходить по болезни из комнаты)"
           }
         ],
@@ -107036,7 +107036,7 @@
         "translation": "следовать",
         "examples": [
           {
-            "en": "silence ensud",
+            "en": "silence ensued",
             "ru": "последовало молчание"
           }
         ],
@@ -107627,7 +107627,7 @@
         "translation": "давать право (to — на что-либо)",
         "examples": [
           {
-            "en": "to be entitld to smth.",
+            "en": "to be entitled to smth.",
             "ru": "иметь право на что-либо"
           }
         ],
@@ -119054,7 +119054,11 @@
         "examples": [
           {
             "en": "to fasten a nickname on smb.",
-            "ru": "давать кому-либо прозвище; 10); связывать (together, up, in); скреплять, укреплять, зажимать, свинчивать; сжимать, стискивать (руки, зубы)"
+            "ru": "дать кому-либо прозвище, прилепить кличку"
+          },
+          {
+            "en": "fasten a belt",
+            "ru": "застегнуть ремень"
           }
         ],
         "register": [],
@@ -119080,7 +119084,7 @@
       {
         "id": 3,
         "partOfSpeech": "verb",
-        "translation": "ремлять (взгляд, мысли и т. п. — on, upon)",
+        "translation": "устремлять (взгляд, мысли и т. п. — on, upon)",
         "examples": [
           {
             "en": "to fasten one's eyes on smb., smth.",
@@ -143286,7 +143290,7 @@
         "examples": [
           {
             "en": "Every Sunday we visit our grandparents.",
-            "ru": "Каждое воскресенье мы навещаем наших бабушку и дедушку"
+            "ru": "Каждое воскресенье мы навещаем наших бабушку и дедушку."
           }
         ],
         "register": [],
@@ -186485,7 +186489,7 @@
       {
         "id": 1,
         "partOfSpeech": "verb",
-        "translation": "засиживаться (on, over — над чем-либо); задерживаться (где-либо",
+        "translation": "засиживаться (on, over — над чем-либо); задерживаться (где-либо)",
         "examples": [],
         "register": [],
         "primary": true
@@ -186520,11 +186524,11 @@
       {
         "id": 5,
         "partOfSpeech": "verb",
-        "translation": "влачить жалкое существование, медленно умирать (тж.",
+        "translation": "влачить жалкое существование, медленно угасать (linger out)",
         "examples": [
           {
-            "en": "linger out",
-            "ru": "one's days или life)"
+            "en": "linger out one's days",
+            "ru": "доживать свои дни, влачить жалкое существование"
           }
         ],
         "register": [],
@@ -376073,7 +376077,7 @@
           },
           {
             "en": "to set smb. to work",
-            "ru": "дать работу, засадить заработу"
+            "ru": "дать работу, посадить за работу"
           },
           {
             "en": "to have one's work cut out for one",
@@ -376293,10 +376297,6 @@
         "translation": "отделывать; разрабатывать",
         "examples": [
           {
-            "en": "(past",
-            "ru": "и p. p. обыкн. wrought) обрабатывать"
-          },
-          {
             "en": "to work the soil",
             "ru": "обрабатывать почву"
           },
@@ -376313,10 +376313,6 @@
         "translation": "причинять, вызывать",
         "examples": [
           {
-            "en": "(past",
-            "ru": "и p. p. тж. wrought) причинять, вызывать"
-          },
-          {
             "en": "to work changes",
             "ru": "вызывать или производить изменения"
           },
@@ -376331,12 +376327,7 @@
       {
         "partOfSpeech": "verb",
         "translation": "месить; ковать",
-        "examples": [
-          {
-            "en": "(past",
-            "ru": "и p. p. обыкн. wrought) придавать определённую форму или консистенцию"
-          }
-        ],
+        "examples": [],
         "register": [],
         "id": 21
       },
@@ -376435,15 +376426,11 @@
         "examples": [
           {
             "en": "the dye works its way in",
-            "ru": "краска впитыва ется"
+            "ru": "краска впитывается"
           },
           {
             "en": "to work one's way",
             "ru": "прокладывать себе дорогу"
-          },
-          {
-            "en": "work through",
-            "ru": "и др.); пробиваться"
           }
         ],
         "register": [],
@@ -379620,14 +379607,18 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "твой",
+        "translation": "ваш, твой (абсолютная форма притяжательного местоимения)",
+        "register": [],
         "examples": [
           {
-            "en": "yours sincerely (or sincerely yours)",
-            "ru": "с искренним уважением (в письме)"
+            "en": "this book is yours",
+            "ru": "эта книга твоя (ваша)"
+          },
+          {
+            "en": "yours sincerely",
+            "ru": "искренне ваш, с уважением (в письме)"
           }
         ],
-        "register": [],
         "primary": true
       }
     ]
@@ -379645,7 +379636,7 @@
       {
         "id": 1,
         "partOfSpeech": "pronoun",
-        "translation": "себя, себе, собой, о себе; -ся",
+        "translation": "себя, себе, собой, о себе",
         "examples": [
           {
             "en": "look at yourself",
