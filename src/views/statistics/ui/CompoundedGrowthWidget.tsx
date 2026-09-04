@@ -21,6 +21,11 @@ const PERIOD_CONFIG: Record<
 
 const GAIN_PER_ACTION_PERCENT = 0.2;
 
+const normalizeCatName = (name?: string | null): string => {
+  const trimmed = name ? name.trim() : '';
+  return trimmed || 'Без категории';
+};
+
 export const CompoundedGrowthWidget: React.FC = () => {
   const { tasks } = useTaskStore();
   const categories = useCategoryStore((s) => s.categories);
@@ -76,11 +81,9 @@ export const CompoundedGrowthWidget: React.FC = () => {
   }, [period]);
 
   const compoundData = useMemo(() => {
-    const validCats = categories.filter((c) => !c.excludeFromStats);
-    const sourceCats = validCats.length > 0 ? validCats : categories;
     const config = PERIOD_CONFIG[period];
 
-    if (sourceCats.length === 0) {
+    if (categories.length === 0) {
       const demoDone = period === 'today' ? 4 : period === '7days' ? 24 : period === '30days' ? 95 : 820;
       return {
         list: [
@@ -95,6 +98,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
       };
     }
 
+    const sourceCats = categories.filter((c) => !c.excludeFromStats);
     let totalDone = 0;
 
     const list = sourceCats.map((cat, idx) => {
@@ -103,7 +107,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
       const catColor = cat.color || getCategoryColor(catName) || defaultColor;
 
       const catTasks = tasks.filter(
-        (t) => (t.category || 'Без категории').trim().toLowerCase() === catName.trim().toLowerCase()
+        (t) => normalizeCatName(t.category).toLowerCase() === catName.trim().toLowerCase()
       );
 
       let doneInPeriod = 0;
@@ -163,7 +167,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
 
     if (!hasNoCatInSource && !isNoCategoryExcluded) {
       const noCatTasks = tasks.filter(
-        (t) => !(t.category && t.category.trim()) || t.category.trim().toLowerCase() === 'без категории'
+        (t) => normalizeCatName(t.category).toLowerCase() === 'без категории'
       );
       noCatTasks.forEach((t) => {
         const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
