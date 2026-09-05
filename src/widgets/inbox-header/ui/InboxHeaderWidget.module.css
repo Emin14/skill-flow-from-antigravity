@@ -52,13 +52,15 @@
 .cleanInput {
   width: 100%;
   background: var(--color-surface-hover);
-  border: 1px solid var(--color-border);
+  border: 1.5px solid var(--color-border);
   border-radius: 12px;
   padding: 10px 14px;
   color: var(--widget-custom-text, var(--color-text-primary));
   font-size: 13.5px;
   outline: none;
-  transition: all 0.2s ease;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
   box-sizing: border-box;
 }
 
@@ -67,10 +69,12 @@
   opacity: 0.8;
 }
 
-.cleanInput:focus {
+.cleanInput:focus,
+.cleanInput:focus-visible {
+  outline: none !important;
   border-color: var(--widget-custom-accent, var(--color-accent));
   background: var(--color-surface-hover);
-  box-shadow: 0 0 12px var(--color-accent-light);
+  box-shadow: none !important;
 }
 
 :global([data-theme="light"]) .cleanInput {
@@ -83,8 +87,10 @@
   color: var(--color-text-muted);
 }
 
-:global([data-theme="light"]) .cleanInput:focus {
+:global([data-theme="light"]) .cleanInput:focus,
+:global([data-theme="light"]) .cleanInput:focus-visible {
+  outline: none !important;
   background: var(--color-surface);
   border-color: var(--widget-custom-accent, var(--color-accent));
-  box-shadow: 0 0 12px var(--color-accent-light);
+  box-shadow: none !important;
 }

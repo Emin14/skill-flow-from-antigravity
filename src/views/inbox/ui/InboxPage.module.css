@@ -134,9 +134,11 @@
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.editTextarea:focus {
+.editTextarea:focus,
+.editTextarea:focus-visible {
+  outline: none !important;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px var(--color-accent-border, rgba(59, 130, 246, 0.2));
+  box-shadow: none !important;
 }
 
 .editFooter {

@@ -25,7 +25,10 @@
   transition: border-color var(--transition-fast);
 }
 
-.input:focus {
+.input:focus,
+.input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
   border-color: var(--color-accent);
 }
 
