@@ -230,6 +230,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   const cardRef = React.useRef<HTMLDivElement>(null);
   const deleteBtnRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+  const hasMovedRef = React.useRef<boolean>(false);
 
   // Sync swipeOffset with external isSwipedOpen state when not actively dragging
   React.useEffect(() => {
@@ -367,6 +368,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     if (isEditing || e.touches.length > 1) return;
     gestureLockRef.current = 'none';
     setIsSwipingActive(false);
+    hasMovedRef.current = false;
     const touch = e.touches[0];
     touchStartPos.current = { x: touch.clientX, y: touch.clientY };
     initialOffsetRef.current = isSwipedOpen ? -DELETE_ACTION_WIDTH : 0;
@@ -380,10 +382,14 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     const absX = Math.abs(diffX);
     const absY = Math.abs(diffY);
 
+    if (absX > 6 || absY > 6) {
+      hasMovedRef.current = true;
+    }
+
     if (gestureLockRef.current === 'none') {
       if (absX < 6 && absY < 6) return;
 
-      if (absY > absX) {
+      if (absY > absX * 1.15) {
         gestureLockRef.current = 'vertical';
         return;
       } else {
@@ -427,7 +433,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         onCloseSwipe();
       }
       // 2. Swiping left from closed: Reveal Delete Button!
-      else if (initialOffsetRef.current === 0 && finalOffset < -35) {
+      else if (initialOffsetRef.current === 0 && finalOffset < -28) {
         setSwipeOffset(-DELETE_ACTION_WIDTH);
         onOpenSwipe();
       }
@@ -453,6 +459,9 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     setIsSwipingActive(false);
     touchStartPos.current = null;
     gestureLockRef.current = 'none';
+    setTimeout(() => {
+      hasMovedRef.current = false;
+    }, 150);
   };
 
   const handleTouchCancel = () => {
@@ -460,6 +469,9 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     setIsSwipingActive(false);
     touchStartPos.current = null;
     gestureLockRef.current = 'none';
+    setTimeout(() => {
+      hasMovedRef.current = false;
+    }, 150);
   };
 
   return (
@@ -509,6 +521,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchCancel}
         onClick={() => {
+          if (hasMovedRef.current) return;
           if (isSwipedOpen) {
             onCloseSwipe();
           }
@@ -581,11 +594,9 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
               <Button
                 variant="ghost"
                 size="sm"
-                onTouchStart={(e) => e.stopPropagation()}
-                onTouchMove={(e) => e.stopPropagation()}
-                onTouchEnd={(e) => e.stopPropagation()}
                 onClick={(e) => {
                   e.stopPropagation();
+                  if (hasMovedRef.current || isSwipingActive || swipeOffset !== 0) return;
                   e.preventDefault();
                   setSwipeOffset(0);
                   onStartEdit();
@@ -598,11 +609,9 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
               <Button
                 variant="ghost"
                 size="sm"
-                onTouchStart={(e) => e.stopPropagation()}
-                onTouchMove={(e) => e.stopPropagation()}
-                onTouchEnd={(e) => e.stopPropagation()}
                 onClick={(e) => {
                   e.stopPropagation();
+                  if (hasMovedRef.current || isSwipingActive || swipeOffset !== 0) return;
                   e.preventDefault();
                   setSwipeOffset(0);
                   togglePin(item.id);
