@@ -284,21 +284,57 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     }
   };
 
-  // Close and auto-save on click outside the active editing card
+  // Close and auto-save on tap/click outside the active editing card (without closing on scroll!)
   React.useEffect(() => {
     if (!isEditing) return;
 
-    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+    let touchStartPos: { x: number; y: number } | null = null;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        touchStartPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!touchStartPos) return;
+      const touch = e.changedTouches[0];
+      const diffX = Math.abs(touch.clientX - touchStartPos.x);
+      const diffY = Math.abs(touch.clientY - touchStartPos.y);
+      touchStartPos = null;
+
+      // If finger moved more than 8px, it was a scroll gesture, not a tap!
+      if (diffX > 8 || diffY > 8) {
+        return;
+      }
+
+      // If it was an intentional stationary tap outside the card:
       if (cardRef.current && !cardRef.current.contains(e.target as Node)) {
         handleSave();
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
+    const handleMouseDown = (e: MouseEvent) => {
+      // Ignore click on native browser scrollbar
+      if (e.clientX >= document.documentElement.clientWidth) {
+        return;
+      }
+      if (cardRef.current && !cardRef.current.contains(e.target as Node)) {
+        handleSave();
+      }
+    };
+
+    const timer = setTimeout(() => {
+      document.addEventListener('touchstart', handleTouchStart, { passive: true });
+      document.addEventListener('touchend', handleTouchEnd, { passive: true });
+      document.addEventListener('mousedown', handleMouseDown);
+    }, 60);
+
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
+      clearTimeout(timer);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('mousedown', handleMouseDown);
     };
   }, [isEditing, editText, item.text]);
 
