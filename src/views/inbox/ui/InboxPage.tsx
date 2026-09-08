@@ -7,7 +7,7 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { InboxHeaderWidget } from '@/widgets/inbox-header/ui/InboxHeaderWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
-import { Lightbulb, Pencil, Check, X, Trash2, Pin } from 'lucide-react';
+import { Lightbulb, Pencil, Check, X, Trash2, Pin, PinOff } from 'lucide-react';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
@@ -206,7 +206,7 @@ interface InboxItemCardProps {
   deleteItem: (id: string) => void;
 }
 
-const SWIPE_ACTIONS_WIDTH = 174;
+const SWIPE_ACTIONS_WIDTH = 216;
 
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
   item,
@@ -434,14 +434,14 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         onCloseSwipe();
       }
       // 2. Swiping left from closed: Reveal 3 Actions Menu!
-      else if (initialOffsetRef.current === 0 && finalOffset < -42) {
+      else if (initialOffsetRef.current === 0 && finalOffset < -45) {
         setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
         onOpenSwipe();
       }
       // 3. Card was already open:
       else if (initialOffsetRef.current === -SWIPE_ACTIONS_WIDTH) {
-        // If swiped right by at least 32px, close it back
-        if (deltaX > 32) {
+        // If swiped right by at least 35px, close it back
+        if (deltaX > 35) {
           setSwipeOffset(0);
           onCloseSwipe();
         } else {
@@ -527,11 +527,11 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         handleTriage(item);
         setSwipeOffset(0);
         onCloseSwipe();
-      } else if (initialOffsetRef.current === 0 && finalOffset < -42) {
+      } else if (initialOffsetRef.current === 0 && finalOffset < -45) {
         setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
         onOpenSwipe();
       } else if (initialOffsetRef.current === -SWIPE_ACTIONS_WIDTH) {
-        if (deltaX > 32) {
+        if (deltaX > 35) {
           setSwipeOffset(0);
           onCloseSwipe();
         } else {
@@ -583,7 +583,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             }}
             title={item.isPinned ? 'Открепить мысль' : 'Закрепить мысль'}
           >
-            <Pin size={16} />
+            {item.isPinned ? <PinOff size={15} /> : <Pin size={15} />}
             <span>{item.isPinned ? 'Открепить' : 'Закрепить'}</span>
           </button>
           <button
@@ -596,7 +596,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             }}
             title="Редактировать мысль"
           >
-            <Pencil size={16} />
+            <Pencil size={15} />
             <span>Изменить</span>
           </button>
           <button
@@ -609,7 +609,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             }}
             title="Удалить мысль"
           >
-            <Trash2 size={16} />
+            <Trash2 size={15} />
             <span>Удалить</span>
           </button>
         </div>
