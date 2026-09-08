@@ -7,7 +7,7 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { InboxHeaderWidget } from '@/widgets/inbox-header/ui/InboxHeaderWidget';
 import { getTodayStr } from '@/shared/lib/dateUtils';
-import { Lightbulb, Pencil, Check, X, Trash2 } from 'lucide-react';
+import { Lightbulb, Pencil, Check, X, Trash2, Pin } from 'lucide-react';
 import styles from './InboxPage.module.css';
 
 type FilterType = 'all' | 'today' | 'pinned';
@@ -206,7 +206,7 @@ interface InboxItemCardProps {
   deleteItem: (id: string) => void;
 }
 
-const DELETE_ACTION_WIDTH = 88;
+const SWIPE_ACTIONS_WIDTH = 174;
 
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
   item,
@@ -228,15 +228,16 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   const gestureLockRef = React.useRef<'none' | 'vertical' | 'horizontal'>('none');
   const [editText, setEditText] = useState<string>(item.text);
   const cardRef = React.useRef<HTMLDivElement>(null);
-  const deleteBtnRef = React.useRef<HTMLDivElement>(null);
+  const actionsMenuRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
   const hasMovedRef = React.useRef<boolean>(false);
+  const isMouseDownRef = React.useRef<boolean>(false);
 
   // Sync swipeOffset with external isSwipedOpen state when not actively dragging
   React.useEffect(() => {
     if (!isSwipingActive) {
       if (isSwipedOpen) {
-        setSwipeOffset(-DELETE_ACTION_WIDTH);
+        setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
       } else {
         setSwipeOffset(0);
       }
@@ -344,8 +345,8 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     if (!isSwipedOpen) return;
 
     const handleSwipeOutside = (e: MouseEvent | TouchEvent) => {
-      // If clicking inside the delete action button, let its onClick handle deletion
-      if (deleteBtnRef.current && deleteBtnRef.current.contains(e.target as Node)) {
+      // If clicking inside the actions menu, let its onClick handle the action
+      if (actionsMenuRef.current && actionsMenuRef.current.contains(e.target as Node)) {
         return;
       }
       onCloseSwipe();
@@ -371,7 +372,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     hasMovedRef.current = false;
     const touch = e.touches[0];
     touchStartPos.current = { x: touch.clientX, y: touch.clientY };
-    initialOffsetRef.current = isSwipedOpen ? -DELETE_ACTION_WIDTH : 0;
+    initialOffsetRef.current = isSwipedOpen ? -SWIPE_ACTIONS_WIDTH : 0;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -405,8 +406,8 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       // Soft limits
       if (offset > 105) {
         offset = 105 + (offset - 105) * 0.25;
-      } else if (offset < -(DELETE_ACTION_WIDTH + 25)) {
-        const minLimit = -(DELETE_ACTION_WIDTH + 25);
+      } else if (offset < -(SWIPE_ACTIONS_WIDTH + 25)) {
+        const minLimit = -(SWIPE_ACTIONS_WIDTH + 25);
         offset = minLimit + (offset - minLimit) * 0.25;
       }
       setSwipeOffset(offset);
@@ -432,20 +433,20 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         setSwipeOffset(0);
         onCloseSwipe();
       }
-      // 2. Swiping left from closed: Reveal Delete Button!
-      else if (initialOffsetRef.current === 0 && finalOffset < -28) {
-        setSwipeOffset(-DELETE_ACTION_WIDTH);
+      // 2. Swiping left from closed: Reveal 3 Actions Menu!
+      else if (initialOffsetRef.current === 0 && finalOffset < -42) {
+        setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
         onOpenSwipe();
       }
       // 3. Card was already open:
-      else if (initialOffsetRef.current === -DELETE_ACTION_WIDTH) {
-        // If swiped right by at least 25px, close it back
-        if (deltaX > 25) {
+      else if (initialOffsetRef.current === -SWIPE_ACTIONS_WIDTH) {
+        // If swiped right by at least 32px, close it back
+        if (deltaX > 32) {
           setSwipeOffset(0);
           onCloseSwipe();
         } else {
           // Stay open
-          setSwipeOffset(-DELETE_ACTION_WIDTH);
+          setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
           onOpenSwipe();
         }
       }
@@ -465,7 +466,84 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   };
 
   const handleTouchCancel = () => {
-    setSwipeOffset(isSwipedOpen ? -DELETE_ACTION_WIDTH : 0);
+    setSwipeOffset(isSwipedOpen ? -SWIPE_ACTIONS_WIDTH : 0);
+    setIsSwipingActive(false);
+    touchStartPos.current = null;
+    gestureLockRef.current = 'none';
+    setTimeout(() => {
+      hasMovedRef.current = false;
+    }, 150);
+  };
+
+  // Mouse drag support for desktop
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (isEditing || e.button !== 0) return;
+    isMouseDownRef.current = true;
+    gestureLockRef.current = 'none';
+    setIsSwipingActive(false);
+    hasMovedRef.current = false;
+    touchStartPos.current = { x: e.clientX, y: e.clientY };
+    initialOffsetRef.current = isSwipedOpen ? -SWIPE_ACTIONS_WIDTH : 0;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isEditing || !isMouseDownRef.current || !touchStartPos.current) return;
+    const diffX = e.clientX - touchStartPos.current.x;
+    const diffY = e.clientY - touchStartPos.current.y;
+    const absX = Math.abs(diffX);
+    const absY = Math.abs(diffY);
+
+    if (absX > 6 || absY > 6) {
+      hasMovedRef.current = true;
+    }
+
+    if (gestureLockRef.current === 'none') {
+      if (absX < 6) return;
+      gestureLockRef.current = 'horizontal';
+      setIsSwipingActive(true);
+    }
+
+    if (gestureLockRef.current === 'horizontal') {
+      let offset = initialOffsetRef.current + diffX;
+      if (offset > 105) {
+        offset = 105 + (offset - 105) * 0.25;
+      } else if (offset < -(SWIPE_ACTIONS_WIDTH + 25)) {
+        const minLimit = -(SWIPE_ACTIONS_WIDTH + 25);
+        offset = minLimit + (offset - minLimit) * 0.25;
+      }
+      setSwipeOffset(offset);
+    }
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (!isMouseDownRef.current) return;
+    isMouseDownRef.current = false;
+
+    if (gestureLockRef.current === 'horizontal' && touchStartPos.current) {
+      const deltaX = e.clientX - touchStartPos.current.x;
+      const finalOffset = initialOffsetRef.current + deltaX;
+
+      if (initialOffsetRef.current === 0 && finalOffset > 55) {
+        handleTriage(item);
+        setSwipeOffset(0);
+        onCloseSwipe();
+      } else if (initialOffsetRef.current === 0 && finalOffset < -42) {
+        setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
+        onOpenSwipe();
+      } else if (initialOffsetRef.current === -SWIPE_ACTIONS_WIDTH) {
+        if (deltaX > 32) {
+          setSwipeOffset(0);
+          onCloseSwipe();
+        } else {
+          setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
+          onOpenSwipe();
+        }
+      } else {
+        setSwipeOffset(0);
+        onCloseSwipe();
+      }
+    }
+
     setIsSwipingActive(false);
     touchStartPos.current = null;
     gestureLockRef.current = 'none';
@@ -492,20 +570,48 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         </div>
       )}
 
-      {/* Background Swipe Delete Action (Right side) - Rendered when swiping left or locked open */}
+      {/* Background Swipe Actions Menu (Right side: Pin, Edit, Delete) */}
       {!isEditing && (swipeOffset < 0 || isSwipedOpen) && (
-        <div
-          ref={deleteBtnRef}
-          className={styles.deleteSwipeAction}
-          onClick={(e) => {
-            e.stopPropagation();
-            onCloseSwipe();
-            deleteItem(item.id);
-          }}
-          title="Нажмите для удаления"
-        >
-          <Trash2 size={16} />
-          <span>Удалить</span>
+        <div ref={actionsMenuRef} className={styles.swipeActionsMenu}>
+          <button
+            type="button"
+            className={`${styles.swipeActionBtn} ${styles.swipeActionPin} ${item.isPinned ? styles.swipeActionPinned : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCloseSwipe();
+              togglePin(item.id);
+            }}
+            title={item.isPinned ? 'Открепить мысль' : 'Закрепить мысль'}
+          >
+            <Pin size={16} />
+            <span>{item.isPinned ? 'Открепить' : 'Закрепить'}</span>
+          </button>
+          <button
+            type="button"
+            className={`${styles.swipeActionBtn} ${styles.swipeActionEdit}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCloseSwipe();
+              onStartEdit();
+            }}
+            title="Редактировать мысль"
+          >
+            <Pencil size={16} />
+            <span>Изменить</span>
+          </button>
+          <button
+            type="button"
+            className={`${styles.swipeActionBtn} ${styles.swipeActionDelete}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCloseSwipe();
+              deleteItem(item.id);
+            }}
+            title="Удалить мысль"
+          >
+            <Trash2 size={16} />
+            <span>Удалить</span>
+          </button>
         </div>
       )}
 
@@ -520,6 +626,10 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchCancel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
         onClick={() => {
           if (hasMovedRef.current) return;
           if (isSwipedOpen) {
@@ -574,55 +684,27 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             </div>
           </div>
         ) : (
-          <>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div className={styles.itemText}>
-                {item.text}
-              </div>
-              <div className={styles.itemMeta}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div className={styles.itemText}>
+              {item.text}
+            </div>
+            <div className={styles.itemMeta}>
+              {item.isPinned && (
+                <span className={styles.pinnedBadge} title="Мысль закреплена">
+                  <Pin size={10} className={styles.pinnedBadgeIcon} />
+                  Закреплено
+                </span>
+              )}
+              <span className={styles.itemDate}>
                 {new Date(item.createdAt).toLocaleString('ru-RU', {
                   day: 'numeric',
                   month: 'short',
                   hour: '2-digit',
                   minute: '2-digit',
                 })}
-              </div>
+              </span>
             </div>
-
-            {/* Quick Actions */}
-            <div className={styles.itemActions}>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (hasMovedRef.current || isSwipingActive || swipeOffset !== 0) return;
-                  e.preventDefault();
-                  setSwipeOffset(0);
-                  onStartEdit();
-                }}
-                title="Редактировать мысль"
-                style={{ color: 'var(--color-text-muted)' }}
-              >
-                <Pencil size={13} />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (hasMovedRef.current || isSwipingActive || swipeOffset !== 0) return;
-                  e.preventDefault();
-                  setSwipeOffset(0);
-                  togglePin(item.id);
-                }}
-                title={item.isPinned ? 'Открепить' : 'Закрепить'}
-                style={{ color: item.isPinned ? 'var(--color-accent)' : 'var(--color-text-muted)' }}
-              >
-                📌
-              </Button>
-            </div>
-          </>
+          </div>
         )}
       </div>
     </div>

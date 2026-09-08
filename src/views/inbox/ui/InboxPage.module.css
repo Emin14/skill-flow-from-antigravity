@@ -204,45 +204,96 @@
 }
 
 .itemMeta {
-  font-size: 11px;
-  color: var(--color-text-muted);
-  margin-top: 2px;
-}
-
-.itemActions {
   display: flex;
   align-items: center;
   gap: 6px;
-  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
 }
 
-/* Swipe Delete Background Action (Right side) */
-.deleteSwipeAction {
+.pinnedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-accent);
+  background-color: var(--color-accent-subtle, rgba(59, 130, 246, 0.1));
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+
+.pinnedBadgeIcon {
+  stroke-width: 2.5;
+}
+
+.itemDate {
+  color: var(--color-text-muted);
+}
+
+/* Swipe Actions Menu (Right side: Pin, Edit, Delete) */
+.swipeActionsMenu {
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
-  width: 88px;
-  background-color: var(--color-danger, #ef4444);
-  color: #ffffff;
+  width: 174px;
+  display: flex;
+  align-items: stretch;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.swipeActionBtn {
+  flex: 1;
+  border: none;
+  outline: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
-  z-index: 1;
-  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 0 4px;
   user-select: none;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, filter 0.15s ease;
 }
 
-.deleteSwipeAction:hover,
-.deleteSwipeAction:active {
+.swipeActionBtn:hover {
+  filter: brightness(0.92);
+}
+
+.swipeActionBtn:active {
+  filter: brightness(0.85);
+}
+
+.swipeActionPin {
+  background-color: #4f46e5;
+}
+
+.swipeActionPinned {
+  background-color: #6366f1;
+}
+
+.swipeActionEdit {
+  background-color: #334155;
+}
+
+.swipeActionDelete {
+  background-color: var(--color-danger, #ef4444);
+}
+
+.swipeActionDelete:hover,
+.swipeActionDelete:active {
   background-color: #dc2626;
+  filter: none;
 }
 
 /* Swipe Triage Background Action (Left side) */
