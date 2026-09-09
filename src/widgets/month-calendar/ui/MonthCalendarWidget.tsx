@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Calendar, ChevronLeft, ChevronRight, Sun } from 'lucide-react';
+import { Task } from '@/entities/task/model/types';
 import styles from './MonthCalendarWidget.module.css';
 
 export interface MonthDayInfo {
@@ -22,6 +23,13 @@ interface MonthCalendarWidgetProps {
   onPrevMonth: () => void;
   onNextMonth: () => void;
   onGoToToday: () => void;
+  sizeVariant?: string;
+  compactHeight?: boolean;
+  mediumHeight?: boolean;
+  showTaskChips?: boolean;
+  dayTasksMap?: Map<string, Task[]>;
+  themeStyle?: string;
+  className?: string;
 }
 
 export const MonthCalendarWidget: React.FC<MonthCalendarWidgetProps> = ({
@@ -32,6 +40,13 @@ export const MonthCalendarWidget: React.FC<MonthCalendarWidgetProps> = ({
   onPrevMonth,
   onNextMonth,
   onGoToToday,
+  sizeVariant = 'size6',
+  compactHeight = false,
+  mediumHeight = false,
+  showTaskChips = false,
+  dayTasksMap,
+  themeStyle,
+  className = '',
 }) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
@@ -65,21 +80,39 @@ export const MonthCalendarWidget: React.FC<MonthCalendarWidgetProps> = ({
         const isSelected = d.dateStr === selectedDate;
         const hasTasks = d.tasksCount > 0;
         const isAllDone = hasTasks && d.doneCount === d.tasksCount;
+        const dayTasks = showTaskChips && dayTasksMap ? dayTasksMap.get(d.dateStr) || [] : [];
 
         return (
           <div
             key={d.dateStr}
-            className={`${styles.dateCell} ${!d.isCurrentMonth ? styles.dateCellOtherMonth : ''} ${
-              d.isToday ? styles.dateCellToday : ''
-            } ${isSelected ? styles.dateCellActive : ''}`}
+            className={`${styles.dateCell} ${showTaskChips ? styles.cellWithChips : ''} ${
+              !d.isCurrentMonth ? styles.dateCellOtherMonth : ''
+            } ${d.isToday ? styles.dateCellToday : ''} ${isSelected ? styles.dateCellActive : ''}`}
             onClick={() => onSelectDate(d.dateStr)}
           >
             <span className={styles.dayNum}>{d.dayNum}</span>
 
-            {hasTasks && (
-              <div className={styles.taskDots}>
-                <div className={`${styles.dot} ${isAllDone ? styles.dotDone : ''}`} />
+            {showTaskChips && dayTasks.length > 0 ? (
+              <div className={styles.chipContainer}>
+                {dayTasks.slice(0, 2).map((t) => (
+                  <div
+                    key={t.id}
+                    className={`${styles.taskChip} ${t.status === 'Done' ? styles.taskChipDone : ''}`}
+                    title={t.title}
+                  >
+                    {t.title}
+                  </div>
+                ))}
+                {dayTasks.length > 2 && (
+                  <div className={styles.taskChipMore}>+{dayTasks.length - 2}</div>
+                )}
               </div>
+            ) : (
+              hasTasks && (
+                <div className={styles.taskDots}>
+                  <div className={`${styles.dot} ${isAllDone ? styles.dotDone : ''}`} />
+                </div>
+              )
             )}
           </div>
         );
@@ -131,9 +164,16 @@ export const MonthCalendarWidget: React.FC<MonthCalendarWidgetProps> = ({
     </div>
   );
 
+  const activeSizeClass = compactHeight
+    ? styles.sizeCompact
+    : mediumHeight
+    ? styles.sizeMedium
+    : (styles[sizeVariant] || styles.size6);
+  const activeThemeClass = themeStyle ? styles[themeStyle] || '' : '';
+
   return (
     <div
-      className={`${styles.material3Container} ${styles.size6}`}
+      className={`${styles.material3Container} ${activeSizeClass} ${activeThemeClass} ${className}`}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >

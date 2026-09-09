@@ -238,6 +238,12 @@
   box-sizing: border-box;
 }
 
+@media (min-width: 860px) {
+  .dateCell {
+    max-height: 44px;
+  }
+}
+
 :global([data-theme="light"]) .dateCell {
   background: rgba(99, 102, 241, 0.06);
 }
@@ -499,3 +505,196 @@
 .size10 .dayNum {
   font-size: 12.5px;
 }
+
+/* ── COMPACT LOW-HEIGHT VARIANT (Variant #2: 28px) ── */
+.sizeCompact {
+  padding: 8px 12px !important;
+  gap: 6px !important;
+}
+.sizeCompact .monthHeaderRow {
+  padding: 0 2px;
+}
+.sizeCompact .monthTitleText {
+  font-size: 13.5px;
+}
+.sizeCompact .todayBtn {
+  padding: 3px 8px;
+  font-size: 11px;
+}
+.sizeCompact .navArrowBtn {
+  width: 24px;
+  height: 24px;
+}
+.sizeCompact .weekHeaderGrid {
+  font-size: 10.5px;
+  padding-bottom: 0;
+}
+.sizeCompact .calendarMatrixGrid {
+  gap: 3px;
+}
+.sizeCompact .dateCell {
+  aspect-ratio: auto !important;
+  height: 28px !important;
+  max-height: 28px !important;
+  padding: 2px 4px !important;
+  border-radius: 6px;
+  justify-content: center;
+}
+.sizeCompact .dayNum {
+  font-size: 11px;
+}
+.sizeCompact .dot {
+  width: 3.5px;
+  height: 3.5px;
+}
+
+/* ── MEDIUM COMPACT VARIANT (Variant #3: как 2 вариант, но ячейка чуть выше ~35px) ── */
+.sizeMedium {
+  padding: 10px 14px !important;
+  gap: 7px !important;
+}
+.sizeMedium .monthHeaderRow {
+  padding: 0 2px;
+}
+.sizeMedium .monthTitleText {
+  font-size: 14px;
+}
+.sizeMedium .todayBtn {
+  padding: 4px 9px;
+  font-size: 11.5px;
+}
+.sizeMedium .navArrowBtn {
+  width: 26px;
+  height: 26px;
+}
+.sizeMedium .weekHeaderGrid {
+  font-size: 11px;
+  padding-bottom: 2px;
+}
+.sizeMedium .calendarMatrixGrid {
+  gap: 4px;
+}
+.sizeMedium .dateCell {
+  aspect-ratio: auto !important;
+  height: 35px !important;
+  max-height: 35px !important;
+  padding: 3px 4px !important;
+  border-radius: 7px;
+  justify-content: center;
+}
+.sizeMedium .dayNum {
+  font-size: 11.5px;
+}
+.sizeMedium .dot {
+  width: 4px;
+  height: 4px;
+}
+
+/* ── NOTION / GCAL / ASANA TASK CHIPS INSIDE CALENDAR CELLS ── */
+.cellWithChips {
+  aspect-ratio: 1 !important;
+  min-height: 64px !important;
+  max-height: 80px !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  padding: 4px 6px !important;
+}
+.chipContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  margin-top: 2px;
+  overflow: hidden;
+}
+.taskChip {
+  display: block;
+  width: 100%;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 8.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--color-text-primary);
+  border-left: 2px solid #6366f1;
+  box-sizing: border-box;
+}
+.taskChipDone {
+  text-decoration: line-through;
+  opacity: 0.55;
+  background: rgba(16, 185, 129, 0.12);
+  border-left-color: #10b981;
+}
+.taskChipMore {
+  font-size: 8px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ── TASK MANAGER THEME ACCENTS ── */
+.themeTodoist {
+  border-color: rgba(228, 67, 50, 0.3) !important;
+}
+.themeTodoist .todayBtn {
+  background: rgba(228, 67, 50, 0.15) !important;
+  border-color: #e44332 !important;
+  color: #e44332 !important;
+}
+.themeTodoist .dateCellActive {
+  background: #e44332 !important;
+  border-color: #e44332 !important;
+  color: #ffffff !important;
+}
+
+.themeTicktick {
+  border-color: rgba(36, 137, 224, 0.3) !important;
+}
+.themeTicktick .todayBtn {
+  background: rgba(36, 137, 224, 0.15) !important;
+  border-color: #2489e0 !important;
+  color: #2489e0 !important;
+}
+.themeTicktick .dateCellActive {
+  background: #2489e0 !important;
+  border-color: #2489e0 !important;
+}
+
+.themeThings3 {
+  border-radius: 14px !important;
+  border-color: rgba(45, 127, 249, 0.2) !important;
+}
+.themeThings3 .dateCellActive {
+  background: #2d7ff9 !important;
+  border-radius: 50% !important;
+}
+
+.themeClickup {
+  border-color: rgba(123, 104, 238, 0.3) !important;
+}
+.themeClickup .todayBtn {
+  background: rgba(123, 104, 238, 0.15) !important;
+  border-color: #7b68ee !important;
+  color: #a78bfa !important;
+}
+.themeClickup .dateCellActive {
+  background: #7b68ee !important;
+  border-color: #7b68ee !important;
+}
+
+.themeMicrosoft {
+  border-color: rgba(0, 120, 212, 0.3) !important;
+}
+.themeMicrosoft .todayBtn {
+  background: rgba(0, 120, 212, 0.15) !important;
+  border-color: #0078d4 !important;
+  color: #38bdf8 !important;
+}
+.themeMicrosoft .dateCellActive {
+  background: #0078d4 !important;
+  border-color: #0078d4 !important;
+}
+

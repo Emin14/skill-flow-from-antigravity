@@ -14,9 +14,7 @@ import styles from './CalendarPage.module.css';
 
 const getNowDateStr = () => getTodayStr();
 
-
 const filterCalendarVisibleTasks = (allTasks: Task[], targetDateStr: string): Task[] => {
-  const tasksMap = new Map(allTasks.map((t) => [t.id, t]));
   return allTasks.filter((t) => {
     // Hide parent tasks with subtasks from Calendar view (Point 1 mandate)
     const hasChildren = allTasks.some((sub) => sub.parentTaskId === t.id);
@@ -51,16 +49,15 @@ export const CalendarPage: React.FC = () => {
     }
     return new Date();
   });
+
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
   const [detailOccurrenceDate, setDetailOccurrenceDate] = useState<string | undefined>(undefined);
   const [smartTask, setSmartTask] = useState<Task | null>(null);
 
-  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTaskOccurrence } = useTaskStore();
 
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskStatus, deleteTask, deleteTaskOccurrence } = useTaskStore();
-
-  // BUG-HIGH-08: Midnight auto-update timer
+  // Midnight auto-update timer
   useEffect(() => {
     fetchTasks();
     const interval = setInterval(() => {
@@ -139,11 +136,14 @@ export const CalendarPage: React.FC = () => {
     }
   };
 
-  // BUG-CRIT-07: Optimized O(N) dateStatsMap pass over tasks
+  const handleTaskClick = (task: Task, occDate?: string) => {
+    setDetailTask(task);
+    setDetailOccurrenceDate(occDate || selectedDate);
+  };
+
+  // Date stats map for dots & counters
   const dateStatsMap = useMemo(() => {
     const map = new Map<string, { total: number; done: number }>();
-    const tasksMap = new Map(tasks.map((t) => [t.id, t]));
-
     for (const t of tasks) {
       if (t.isRepeating && t.occurrences && t.occurrences.length > 0) {
         for (const occ of t.occurrences) {
@@ -156,7 +156,6 @@ export const CalendarPage: React.FC = () => {
         }
       } else {
         if (!t.scheduledDate || t.scheduledDate === '' || t.scheduledDate === 'anytime') continue;
-
         const existing = map.get(t.scheduledDate) || { total: 0, done: 0 };
         existing.total += 1;
         if (t.status === 'Done') {
@@ -168,6 +167,7 @@ export const CalendarPage: React.FC = () => {
     return map;
   }, [tasks]);
 
+  // Month days matrix
   const monthDays = useMemo(() => {
     const year = currentMonthDate.getFullYear();
     const month = currentMonthDate.getMonth();
@@ -202,31 +202,79 @@ export const CalendarPage: React.FC = () => {
     return days;
   }, [currentMonthDate, todayStr, dateStatsMap]);
 
+  // Tasks of selected day
   const selectedDayTasks = useMemo(() => {
     const list = filterCalendarVisibleTasks(tasks, selectedDate);
     return [...list].sort((a, b) => {
       const aDone = isTaskDoneOnDate(a, selectedDate);
       const bDone = isTaskDoneOnDate(b, selectedDate);
       if (aDone === bDone) return 0;
-      return aDone ? 1 : -1; // Uncompleted first (false < true)
+      return aDone ? 1 : -1;
     });
   }, [tasks, selectedDate]);
 
-  const monthTitleStr = currentMonthDate.toLocaleDateString('ru-RU', {
-    month: 'long',
-    year: 'numeric',
-  });
-
   const formattedSelectedDate = formatSelectedDateTitle(selectedDate);
 
-  const handleTaskClick = (task: Task, occDate?: string) => {
-    setDetailTask(task);
-    setDetailOccurrenceDate(occDate || selectedDate);
+  // Reusable task list renderer with subtask recursion
+  const renderTaskList = () => {
+    if (isLoading) {
+      return <div className={styles.emptyState}>Загрузка...</div>;
+    }
+
+    if (selectedDayTasks.length === 0) {
+      return <div className={styles.emptyState}>🌱 На этот день нет запланированных задач.</div>;
+    }
+
+    const renderSubtasksRecursive = (parentId: string, depthLevel = 1, visited = new Set<string>()): React.ReactNode => {
+      if (depthLevel > 10 || visited.has(parentId)) return null;
+      visited.add(parentId);
+
+      const children = tasks.filter((sub) => sub.parentTaskId === parentId);
+      if (children.length === 0) return null;
+
+      return children.map((subtask) => (
+        <React.Fragment key={subtask.id}>
+          <div style={{ marginLeft: `${Math.min(depthLevel, 4) * 16}px`, marginTop: '6px' }}>
+            <GlassmorphicTaskCard
+              task={subtask}
+              occurrenceDate={selectedDate}
+              allTasks={tasks}
+              showDragHandle={false}
+              hideDateBadge={true}
+              onToggleCheckbox={() => handleCheckboxToggle(subtask)}
+              onDelete={() => deleteTaskOccurrence(subtask.id, selectedDate)}
+              onClick={() => handleTaskClick(subtask)}
+            />
+          </div>
+          {renderSubtasksRecursive(subtask.id, depthLevel + 1, new Set(visited))}
+        </React.Fragment>
+      ));
+    };
+
+    return (
+      <div className={styles.taskList}>
+        {selectedDayTasks.map((t) => (
+          <React.Fragment key={t.id}>
+            <GlassmorphicTaskCard
+              task={t}
+              occurrenceDate={selectedDate}
+              allTasks={tasks}
+              showDragHandle={false}
+              hideDateBadge={true}
+              onToggleCheckbox={() => handleCheckboxToggle(t)}
+              onDelete={() => deleteTaskOccurrence(t.id, selectedDate)}
+              onClick={() => handleTaskClick(t)}
+            />
+            {renderSubtasksRecursive(t.id, 1)}
+          </React.Fragment>
+        ))}
+      </div>
+    );
   };
 
   return (
     <div className={styles.container}>
-      {/* 1. Monthly Calendar Widget (Material 3 Tonal Grid - Size #6 Winning Concept) */}
+      {/* Monthly Calendar Widget (Variant 3: Medium-Compact 35px height) */}
       <MonthCalendarWidget
         currentMonthDate={currentMonthDate}
         selectedDate={selectedDate}
@@ -236,6 +284,7 @@ export const CalendarPage: React.FC = () => {
         onPrevMonth={handlePrevMonth}
         onNextMonth={handleNextMonth}
         onGoToToday={handleGoToToday}
+        mediumHeight={true}
       />
 
       {/* Selected Day Agenda Header & Task List */}
@@ -251,60 +300,7 @@ export const CalendarPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Task List for Selected Date (Unified GlassmorphicTaskCard + Subtasks) */}
-        {isLoading ? (
-          <div className={styles.emptyState}>Загрузка...</div>
-        ) : selectedDayTasks.length === 0 ? (
-          <div className={styles.emptyState}>
-            🌱 На этот день нет запланированных задач.
-          </div>
-        ) : (
-          <div className={styles.taskList}>
-            {selectedDayTasks.map((t) => {
-              const renderSubtasksRecursive = (parentId: string, depthLevel = 1, visited = new Set<string>()): React.ReactNode => {
-                if (depthLevel > 10 || visited.has(parentId)) return null;
-                visited.add(parentId);
-
-                const children = tasks.filter((sub) => sub.parentTaskId === parentId);
-                if (children.length === 0) return null;
-
-                return children.map((subtask) => (
-                  <React.Fragment key={subtask.id}>
-                    <div style={{ marginLeft: `${Math.min(depthLevel, 4) * 16}px`, marginTop: '6px' }}>
-                      <GlassmorphicTaskCard
-                        task={subtask}
-                        occurrenceDate={selectedDate}
-                        allTasks={tasks}
-                        showDragHandle={false}
-                        hideDateBadge={true}
-                        onToggleCheckbox={() => handleCheckboxToggle(subtask)}
-                        onDelete={() => deleteTaskOccurrence(subtask.id, selectedDate)}
-                        onClick={() => handleTaskClick(subtask)}
-                      />
-                    </div>
-                    {renderSubtasksRecursive(subtask.id, depthLevel + 1, new Set(visited))}
-                  </React.Fragment>
-                ));
-              };
-
-              return (
-                <React.Fragment key={t.id}>
-                  <GlassmorphicTaskCard
-                    task={t}
-                    occurrenceDate={selectedDate}
-                    allTasks={tasks}
-                    showDragHandle={false}
-                    hideDateBadge={true}
-                    onToggleCheckbox={() => handleCheckboxToggle(t)}
-                    onDelete={() => deleteTaskOccurrence(t.id, selectedDate)}
-                    onClick={() => handleTaskClick(t)}
-                  />
-                  {renderSubtasksRecursive(t.id, 1)}
-                </React.Fragment>
-              );
-            })}
-          </div>
-        )}
+        {renderTaskList()}
       </div>
 
       {/* Edit Task Modal */}
