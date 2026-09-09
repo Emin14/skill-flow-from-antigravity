@@ -78,6 +78,20 @@ export const formatSelectedDateTitle = (dateStr: string): string => {
 };
 
 /**
+ * Возвращает короткое название дня недели на русском языке ('Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс')
+ * по строке даты 'YYYY-MM-DD' по локальному времени.
+ */
+export const getWeekdayShortFromDateStr = (dateStr: string): string => {
+  if (!dateStr || !dateStr.includes('-')) return '';
+  const parts = dateStr.split('-').map(Number);
+  if (parts.length !== 3) return '';
+  const d = new Date(parts[0], parts[1] - 1, parts[2]);
+  const dayOfWeek = d.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+  const map: Record<number, string> = { 1: 'Пн', 2: 'Вт', 3: 'Ср', 4: 'Чт', 5: 'Пт', 6: 'Сб', 0: 'Вс' };
+  return map[dayOfWeek] || '';
+};
+
+/**
  * Проверяет, относится ли задача к адаптивному Умному повтору (smart).
  * Только для таких задач при выполнении чекбоксом должна выпадать оценка сложности (SmartRatingModal).
  * Для интервального (spaced), по расписанию (schedule), через N дней (after_completion) окно НЕ выпадает.

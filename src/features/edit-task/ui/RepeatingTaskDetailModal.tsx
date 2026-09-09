@@ -6,7 +6,7 @@ import { Task } from '@/entities/task/model/types';
 import { SmartRating, formatWeeklyDays } from '@/shared/config/repetitionRules';
 import { useTaskStore, normalizeOccurrences } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
-import { getTodayStr, formatDateDisplay, formatLocalDateStr } from '@/shared/lib/dateUtils';
+import { getTodayStr, formatDateDisplay, formatLocalDateStr, isSmartRepeatTask } from '@/shared/lib/dateUtils';
 import { ChevronDown, ChevronUp, Calendar, Trash2, ExternalLink, CheckCircle2, Clock, Sparkles } from 'lucide-react';
 import { useToastStore } from '@/shared/ui';
 import styles from './EditTaskModal.module.css';
@@ -258,7 +258,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     : 'Без повтора';
 
   // Reusable Date Picker Component (Modern iOS / Glassmorphic Style)
-  const RenderDatePickerBadge = ({ styleOverride }: { styleOverride?: React.CSSProperties }) => (
+  const renderDatePickerBadge = (styleOverride?: React.CSSProperties) => (
     <div
       title="Нажмите, чтобы изменить дату этого экземпляра"
       style={{
@@ -302,113 +302,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
     </div>
   );
 
-  // Common Status Toggle / Repeat Status Badge Component
-  const RenderStatusBadge = ({ styleOverride }: { styleOverride?: React.CSSProperties }) => {
-    if (!masterTask.isRepeating) {
-      return (
-        <button
-          type="button"
-          onClick={handleToggleTodayOccurrence}
-          title="Нажмите, чтобы изменить статус задачи"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '5px',
-            padding: '3px 10px',
-            borderRadius: '7px',
-            fontSize: '12px',
-            fontWeight: 700,
-            cursor: 'pointer',
-            border: isTodayDone ? '1px solid var(--color-success-border)' : '1px solid var(--color-accent-border)',
-            background: isTodayDone ? 'var(--color-success-light)' : 'var(--color-accent-light)',
-            color: isTodayDone ? 'var(--color-success)' : 'var(--color-accent-text)',
-            transition: 'all 0.15s ease',
-            ...styleOverride,
-          }}
-        >
-          <CheckCircle2 size={13} />
-          <span>{isTodayDone ? 'Выполнено' : 'В ожидании'}</span>
-        </button>
-      );
-    }
-
-    const currentStatus = masterTask.repeatStatus || 'Active';
-    const statusInfo =
-      currentStatus === 'Paused'
-        ? { label: '⏸️ На паузе', bg: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.35)', color: '#f59e0b' }
-        : currentStatus === 'Completed'
-        ? { label: '✅ Завершено', bg: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.35)', color: '#818cf8' }
-        : { label: '▶️ В работе', bg: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.35)', color: '#10b981' };
-
-    return (
-      <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
-        <select
-          value={currentStatus}
-          onChange={(e) => updateRepeatStatus(masterTask.id, e.target.value as any)}
-          title="Нажмите, чтобы изменить статус повторения задачи"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            opacity: 0,
-            cursor: 'pointer',
-            zIndex: 10,
-          }}
-        >
-          <option value="Active">▶️ В работе (Активно)</option>
-          <option value="Paused">⏸️ На паузе</option>
-          <option value="Completed">✅ Завершено</option>
-        </select>
-        <button
-          type="button"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '5px',
-            padding: '3px 10px',
-            borderRadius: '7px',
-            fontSize: '12px',
-            fontWeight: 700,
-            cursor: 'pointer',
-            border: statusInfo.border,
-            background: statusInfo.bg,
-            color: statusInfo.color,
-            transition: 'all 0.15s ease',
-            pointerEvents: 'none',
-            ...styleOverride,
-          }}
-        >
-          <span>{statusInfo.label}</span>
-          <ChevronDown size={12} style={{ opacity: 0.8 }} />
-        </button>
-      </div>
-    );
-  };
-
-  // Common Action Buttons Toolbar
-  const RenderActionButtons = () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-      {masterTask.isRepeating && (
-        <>
-          {(masterTask.repeatStatus || 'Active') === 'Paused' ? (
-            <button onClick={() => updateRepeatStatus(masterTask.id, 'Active')} title="Возобновить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#10b981', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>▶️</button>
-          ) : (
-            <button onClick={() => updateRepeatStatus(masterTask.id, 'Paused')} title="Приостановить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.3)', color: '#f59e0b', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>⏸️</button>
-          )}
-
-          {(masterTask.repeatStatus || 'Active') === 'Completed' ? (
-            <button onClick={() => updateRepeatStatus(masterTask.id, 'Active')} title="Возобновить завершённое повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.3)', color: '#6366f1', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>🔄</button>
-          ) : (
-            <button onClick={() => updateRepeatStatus(masterTask.id, 'Completed')} title="Завершить повторение" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.15)', border: '1px solid rgba(99, 102, 241, 0.3)', color: '#6366f1', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✅</button>
-          )}
-        </>
-      )}
-
-      <button onClick={onClose} title="Закрыть" style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#ffffff', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>✕</button>
-    </div>
-  );
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -710,7 +603,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
         {/* РЯД: Дата (плашка) и Кнопка "Выполнить" на одной линии */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', marginTop: '4px' }}>
-          <RenderDatePickerBadge />
+          {renderDatePickerBadge()}
           <button
             type="button"
             onClick={handleToggleTodayOccurrence}

@@ -121,11 +121,10 @@ export const reconcileScheduledTaskOccurrences = (
     todoOccs.sort((a, b) => a.date.localeCompare(b.date));
     const earliestTodo = todoOccs[0];
 
+    const doneOnLatest = doneOccs.some((o) => o.date === latestScheduledDate);
+
     // If the earliest uncompleted occurrence was scheduled before the latest scheduled date that has already arrived
     if (earliestTodo.date < latestScheduledDate) {
-      // Check if there is already a Done occurrence on latestScheduledDate
-      const doneOnLatest = doneOccs.some((o) => o.date === latestScheduledDate);
-
       if (!doneOnLatest) {
         // Roll over the uncompleted occurrence to latestScheduledDate and drop older/stacked Todo occurrences
         const rolledOcc: TaskOccurrence = {
@@ -140,6 +139,23 @@ export const reconcileScheduledTaskOccurrences = (
         // Already done on latestScheduledDate, remove the obsolete Todo occurrence
         return { updatedOccurrences: doneOccs, hasChanges: true };
       }
+    } else if (
+      earliestTodo.date > latestScheduledDate &&
+      !doneOnLatest &&
+      latestScheduledDate <= todayStr &&
+      latestScheduledDate >= (doneOccs[doneOccs.length - 1]?.date || '')
+    ) {
+      // The uncompleted Todo was pushed too far into the future (e.g. by previous interval bugs),
+      // but a closer scheduled day (latestScheduledDate) has arrived and is not yet completed.
+      // Roll back to latestScheduledDate so the user can complete the occurrence on its proper day.
+      const rolledOcc: TaskOccurrence = {
+        ...earliestTodo,
+        date: latestScheduledDate,
+        status: 'Todo',
+      };
+      const newOccs = [...doneOccs.filter((o) => o.date !== latestScheduledDate), rolledOcc];
+      newOccs.sort((a, b) => a.date.localeCompare(b.date));
+      return { updatedOccurrences: newOccs, hasChanges: true };
     } else if (todoOccs.length > 1) {
       // Collapse redundant multiple Todo occurrences into the single latest one
       const latestTodo = todoOccs[todoOccs.length - 1];
@@ -377,17 +393,17 @@ export const calculateNextInterval = (
 ): { nextIntervalFloat: number; daysToAdd: number } => {
   const mode = task.repetitionMode || (task.isRepeating ? 'spaced' : 'none');
 
-  if (mode === 'none' && !smartRating) {
+  if (mode === 'none') {
     return { nextIntervalFloat: 0, daysToAdd: 0 };
   }
 
-  if (mode === 'spaced' && !smartRating) {
+  if (mode === 'spaced') {
     const index = Math.min(Math.max(0, newCount - 1), SPACED_INTERVAL_STEPS.length - 1);
     const days = SPACED_INTERVAL_STEPS[index] || 90;
     return { nextIntervalFloat: days, daysToAdd: days };
   }
 
-  if (mode === 'schedule' && !smartRating) {
+  if (mode === 'schedule') {
     const freq = task.scheduleFrequency || 'daily';
     let days = 1;
     if (freq === 'daily') days = 1;
@@ -397,13 +413,13 @@ export const calculateNextInterval = (
     return { nextIntervalFloat: days, daysToAdd: days };
   }
 
-  if (mode === 'after_completion' && !smartRating) {
+  if (mode === 'after_completion') {
     const days = Math.max(1, task.afterCompletionDays || 3);
     return { nextIntervalFloat: days, daysToAdd: days };
   }
 
-  if (mode === 'specific_days' && !smartRating) {
-    const days = task.weeklyDays || [1, 2, 3, 4, 5];
+  if (mode === 'specific_days') {
+    const days = task.weeklyDays && task.weeklyDays.length > 0 ? task.weeklyDays : [1, 2, 3, 4, 5];
     const base = fromDateStr || getTodayStr();
     const { daysToAdd } = getNextSpecificDayDate(base, days);
     return { nextIntervalFloat: daysToAdd, daysToAdd };
@@ -536,11 +552,20 @@ export const useTaskStore = create<TaskState>((set, get) => ({
       const effectiveIsRepeating = effectiveHasSubtasks ? false : (isRepeating && repetitionMode !== 'none');
       const effectiveMode: RepetitionMode = effectiveIsRepeating ? (repetitionMode === 'none' ? 'spaced' : repetitionMode) : 'none';
 
-      // Repeating tasks must have a valid scheduled start date (defaulting to today if not provided)
-      // Non-repeating tasks with cleared/empty date (isAnytime) should preserve scheduledDate as ''
-      const effectiveScheduledDate = effectiveIsRepeating
+      let effectiveScheduledDate = effectiveIsRepeating
         ? (isAnytime ? today : cleanScheduledDate)
         : (isAnytime ? '' : cleanScheduledDate);
+
+      if (effectiveIsRepeating && effectiveMode === 'specific_days') {
+        const days = weeklyDays && weeklyDays.length > 0 ? weeklyDays : [1, 2, 3, 4, 5];
+        const base = effectiveScheduledDate || today;
+        const parts = base.split('-').map(Number);
+        const baseD = parts.length === 3 ? new Date(parts[0], parts[1] - 1, parts[2]) : new Date();
+        const baseDayOfWeek = baseD.getDay();
+        if (!days.includes(baseDayOfWeek)) {
+          effectiveScheduledDate = getNextSpecificDayDate(base, days).nextDateStr;
+        }
+      }
 
       const rawOccs: TaskOccurrence[] = [
         {
@@ -808,8 +833,9 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           const isStopped = t.repeatStatus === 'Paused' || t.repeatStatus === 'Completed';
           if (!isStopped) {
             const doneCount = occs.filter((o) => o.status === 'Done').length;
-            const { daysToAdd } = calculateNextInterval(t, doneCount);
-            let nextDate = addDaysToDateStr(targetDate, daysToAdd);
+            const baseDate = targetDate > todayStr ? targetDate : todayStr;
+            const { daysToAdd } = calculateNextInterval(t, doneCount, undefined, baseDate);
+            let nextDate = addDaysToDateStr(baseDate, daysToAdd);
             if (nextDate < todayStr) {
               nextDate = todayStr;
             }
@@ -1033,8 +1059,14 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
         const targetStartDate = lastDoneOcc ? lastDoneOcc.date : todayStr;
         const doneCount = doneOccs.length;
-        const { daysToAdd } = calculateNextInterval(task, doneCount, task.lastSmartRating || undefined);
-        let nextDate = addDaysToDateStr(targetStartDate, daysToAdd);
+        const baseDate = targetStartDate > todayStr ? targetStartDate : todayStr;
+        const { daysToAdd } = calculateNextInterval(
+          task,
+          doneCount,
+          task.repetitionMode === 'smart' ? (task.lastSmartRating || undefined) : undefined,
+          baseDate
+        );
+        let nextDate = addDaysToDateStr(baseDate, daysToAdd);
 
         // Ensure next occurrence date is not in the past
         if (nextDate < todayStr) {

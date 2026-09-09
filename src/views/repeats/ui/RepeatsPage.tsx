@@ -6,7 +6,7 @@ import { useTaskStore } from '@/entities/task';
 import { Task } from '@/entities/task/model/types';
 import { HabitProgressHeaderWidget, HabitSortKey, HabitSortDirection, RepeatStatusFilter } from '@/widgets/habit-progress-header/ui/HabitProgressHeaderWidget';
 import { HabitSectionBannerWidget } from '@/widgets/habit-section-banner/ui/HabitSectionBannerWidget';
-import { getTodayStr } from '@/shared/lib/dateUtils';
+import { getTodayStr, getWeekdayShortFromDateStr, getNextSpecificDayDate } from '@/shared/lib/dateUtils';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
@@ -316,7 +316,7 @@ const RepeatNodeItem: React.FC<RepeatNodeItemProps> = ({ step, task, occDate, on
     }
   };
 
-  const handleEnd = (e: React.TouchEvent | React.MouseEvent) => {
+  const handleEnd = () => {
     if (!occDate) return;
     if (timerRef.current) {
       clearTimeout(timerRef.current);
@@ -476,13 +476,16 @@ export const TimelineRepeatCard: React.FC<{
 
   const steps: StepNode[] = useMemo(() => {
     const list: StepNode[] = [];
+    const days = (task.weeklyDays && task.weeklyDays.length > 0) ? task.weeklyDays : [1, 2, 3, 4, 5];
+
+    let lastKnownDate = occurrences[0]?.date || task.scheduledDate || todayStr;
+
     for (let i = 0; i < totalSteps; i++) {
       const isCompleted = i < completedCount;
       const isNext = i === completedCount;
       const isFuture = i > completedCount;
 
-      const label = defaultLabels[i] || `#${i}`;
-
+      let stepDate: string | undefined = undefined;
       let subLabel = '';
       let smartRatingEmoji: string | undefined = undefined;
 
@@ -490,19 +493,48 @@ export const TimelineRepeatCard: React.FC<{
         const occ = completedOccurrences[i];
         const rating = occ?.smartRating || task.lastSmartRating || 'normal';
         smartRatingEmoji = getSmartRatingEmoji(rating);
+
         if (occ?.date) {
-          subLabel = formatDateNumeric(occ.date);
+          stepDate = occ.date;
+          lastKnownDate = occ.date;
         } else if (task.completedAt) {
-          subLabel = formatDateNumeric(task.completedAt.split('T')[0]);
+          stepDate = task.completedAt.split('T')[0];
+          lastKnownDate = stepDate;
         } else if (task.createdAt) {
-          subLabel = formatDateNumeric(task.createdAt.split('T')[0]);
+          stepDate = task.createdAt.split('T')[0];
+          lastKnownDate = stepDate;
         } else if (task.scheduledDate) {
-          subLabel = formatDateNumeric(task.scheduledDate);
+          stepDate = task.scheduledDate;
+          lastKnownDate = stepDate;
         }
-      } else if (isNext && nextDateRaw) {
-        subLabel = formatDateNumeric(nextDateRaw);
-      } else if (occurrences[i]?.date) {
-        subLabel = formatDateNumeric(occurrences[i].date);
+
+        if (stepDate) {
+          subLabel = formatDateNumeric(stepDate);
+        }
+      } else if (isNext) {
+        if (nextDateRaw) {
+          stepDate = nextDateRaw;
+          lastKnownDate = nextDateRaw;
+          subLabel = formatDateNumeric(nextDateRaw);
+        }
+      } else if (isFuture) {
+        if (occurrences[i]?.date) {
+          stepDate = occurrences[i].date;
+          lastKnownDate = stepDate;
+          subLabel = formatDateNumeric(stepDate);
+        } else if (mode === 'specific_days' && lastKnownDate) {
+          const { nextDateStr } = getNextSpecificDayDate(lastKnownDate, days);
+          stepDate = nextDateStr;
+          lastKnownDate = nextDateStr;
+        }
+      }
+
+      let label = defaultLabels[i] || `#${i + 1}`;
+      if (mode === 'specific_days' && stepDate) {
+        const weekdayShort = getWeekdayShortFromDateStr(stepDate);
+        if (weekdayShort) {
+          label = weekdayShort;
+        }
       }
 
       list.push({
@@ -517,7 +549,7 @@ export const TimelineRepeatCard: React.FC<{
       });
     }
     return list;
-  }, [totalSteps, completedCount, completedOccurrences, nextDateRaw, isOverdue, mode, defaultLabels, task, occurrences]);
+  }, [totalSteps, completedCount, completedOccurrences, nextDateRaw, isOverdue, mode, defaultLabels, task, occurrences, todayStr]);
 
   const { numStr, textStr } = formatRepetitionCount(completedCount);
   const createdDateStr = task.createdAt ? formatDateNumeric(task.createdAt.split('T')[0]) : '';
