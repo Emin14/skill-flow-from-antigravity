@@ -43,7 +43,7 @@ def main():
                 def walk(value, path):
                     if isinstance(value, dict):
                         for key, child in value.items():
-                            if key in ('translation', 'en', 'ru'):
+                            if key in ('translation', 'en', 'ru', 'phrase'):
                                 assert isinstance(child, str), f'{path}.{key}: not a string'
                                 if key == 'translation':
                                     assert child.strip(), f'{path}: empty translation'
@@ -78,7 +78,7 @@ def main():
                 for key in change['path'][:-1]:
                     target = target[key]
                 key = change['path'][-1]
-                assert key in ('translation', 'en', 'ru'), 'non-text edit'
+                assert key in ('translation', 'en', 'ru', 'phrase'), 'non-text edit'
                 assert target[key] == change['before'], 'baseline mismatch'
                 assert isinstance(change['after'], str) and change['after'].strip(), 'invalid replacement'
                 target[key] = change['after']
