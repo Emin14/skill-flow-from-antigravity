@@ -206,7 +206,7 @@ interface InboxItemCardProps {
   deleteItem: (id: string) => void;
 }
 
-const SWIPE_ACTIONS_WIDTH = 216;
+const SWIPE_ACTIONS_WIDTH = 210;
 
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
   item,
@@ -227,26 +227,21 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   const initialOffsetRef = React.useRef<number>(0);
   const gestureLockRef = React.useRef<'none' | 'vertical' | 'horizontal'>('none');
   const [editText, setEditText] = useState<string>(item.text);
+  const [prevItemText, setPrevItemText] = useState<string>(item.text);
   const cardRef = React.useRef<HTMLDivElement>(null);
   const actionsMenuRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
   const hasMovedRef = React.useRef<boolean>(false);
   const isMouseDownRef = React.useRef<boolean>(false);
 
-  // Sync swipeOffset with external isSwipedOpen state when not actively dragging
-  React.useEffect(() => {
-    if (!isSwipingActive) {
-      if (isSwipedOpen) {
-        setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
-      } else {
-        setSwipeOffset(0);
-      }
-    }
-  }, [isSwipedOpen, isSwipingActive]);
-
-  React.useEffect(() => {
+  // Adjust state during render when prop changes
+  if (item.text !== prevItemText) {
+    setPrevItemText(item.text);
     setEditText(item.text);
-  }, [item.text, isEditing]);
+  }
+
+  // Derived effective offset without cascading render effects
+  const currentSwipeOffset = isSwipingActive ? swipeOffset : (isSwipedOpen ? -SWIPE_ACTIONS_WIDTH : 0);
 
   React.useEffect(() => {
     if (isEditing && textareaRef.current) {
@@ -258,7 +253,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     }
   }, [isEditing]);
 
-  const handleSave = async () => {
+  const handleSave = React.useCallback(async () => {
     const trimmed = editText.trim();
     if (!trimmed) {
       setEditText(item.text);
@@ -269,7 +264,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       await updateItem(item.id, trimmed);
     }
     onCloseEdit();
-  };
+  }, [editText, item.text, item.id, updateItem, onCloseEdit]);
 
   const handleCancel = () => {
     setEditText(item.text);
@@ -338,7 +333,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       document.removeEventListener('touchend', handleTouchEnd);
       document.removeEventListener('mousedown', handleMouseDown);
     };
-  }, [isEditing, editText, item.text]);
+  }, [isEditing, handleSave]);
 
   // Click outside / tap on card to close opened swipe action
   React.useEffect(() => {
@@ -383,12 +378,12 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     const absX = Math.abs(diffX);
     const absY = Math.abs(diffY);
 
-    if (absX > 6 || absY > 6) {
+    if (absX > 8 || absY > 8) {
       hasMovedRef.current = true;
     }
 
     if (gestureLockRef.current === 'none') {
-      if (absX < 6 && absY < 6) return;
+      if (absX < 8 && absY < 8) return;
 
       if (absY > absX * 1.15) {
         gestureLockRef.current = 'vertical';
@@ -493,12 +488,12 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
     const absX = Math.abs(diffX);
     const absY = Math.abs(diffY);
 
-    if (absX > 6 || absY > 6) {
+    if (absX > 8 || absY > 8) {
       hasMovedRef.current = true;
     }
 
     if (gestureLockRef.current === 'none') {
-      if (absX < 6) return;
+      if (absX < 8) return;
       gestureLockRef.current = 'horizontal';
       setIsSwipingActive(true);
     }
@@ -555,7 +550,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   return (
     <div ref={cardRef} className={styles.itemCardWrapper}>
       {/* Background Swipe Triage Action (Left side) - Only rendered when swiping right */}
-      {!isEditing && swipeOffset > 0 && (
+      {!isEditing && currentSwipeOffset > 0 && (
         <div
           className={styles.triageSwipeAction}
           onClick={(e) => {
@@ -571,19 +566,30 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       )}
 
       {/* Background Swipe Actions Menu (Right side: Pin, Edit, Delete) */}
-      {!isEditing && (swipeOffset < 0 || isSwipedOpen) && (
-        <div ref={actionsMenuRef} className={styles.swipeActionsMenu}>
+      {!isEditing && (currentSwipeOffset < 0 || isSwipedOpen) && (
+        <div
+          ref={actionsMenuRef}
+          className={styles.swipeActionsMenu}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchCancel}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+        >
           <button
             type="button"
-            className={`${styles.swipeActionBtn} ${styles.swipeActionPin} ${item.isPinned ? styles.swipeActionPinned : ''}`}
+            className={`${styles.swipeActionBtn} ${item.isPinned ? styles.swipeActionPinned : styles.swipeActionPin}`}
             onClick={(e) => {
               e.stopPropagation();
+              if (hasMovedRef.current || isSwipingActive) return;
               onCloseSwipe();
               togglePin(item.id);
             }}
             title={item.isPinned ? 'Открепить мысль' : 'Закрепить мысль'}
           >
-            {item.isPinned ? <PinOff size={15} /> : <Pin size={15} />}
+            {item.isPinned ? <PinOff size={16} /> : <Pin size={16} />}
             <span>{item.isPinned ? 'Открепить' : 'Закрепить'}</span>
           </button>
           <button
@@ -591,12 +597,13 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             className={`${styles.swipeActionBtn} ${styles.swipeActionEdit}`}
             onClick={(e) => {
               e.stopPropagation();
+              if (hasMovedRef.current || isSwipingActive) return;
               onCloseSwipe();
               onStartEdit();
             }}
             title="Редактировать мысль"
           >
-            <Pencil size={15} />
+            <Pencil size={16} />
             <span>Изменить</span>
           </button>
           <button
@@ -604,12 +611,13 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
             className={`${styles.swipeActionBtn} ${styles.swipeActionDelete}`}
             onClick={(e) => {
               e.stopPropagation();
+              if (hasMovedRef.current || isSwipingActive) return;
               onCloseSwipe();
               deleteItem(item.id);
             }}
             title="Удалить мысль"
           >
-            <Trash2 size={15} />
+            <Trash2 size={16} />
             <span>Удалить</span>
           </button>
         </div>
@@ -619,7 +627,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
       <div
         className={`${styles.itemCard} ${item.isPinned ? styles.itemCardPinned : ''} ${isEditing ? styles.itemCardEditing : ''}`}
         style={{
-          transform: isEditing ? 'none' : swipeOffset !== 0 ? `translateX(${swipeOffset}px)` : undefined,
+          transform: isEditing ? 'none' : currentSwipeOffset !== 0 ? `translateX(${currentSwipeOffset}px)` : undefined,
           transition: isSwipingActive ? 'none' : undefined,
         }}
         onTouchStart={handleTouchStart}
