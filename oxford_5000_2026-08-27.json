@@ -2915,36 +2915,6 @@
         "translation": "быть признательным (за что-либо); награждать (за услугу)",
         "examples": [],
         "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "verb",
-        "translation": "признание",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "verb",
-        "translation": "подтверждение; уведомление о получении; расписка",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "verb",
-        "translation": "благодарность; признательность",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "verb",
-        "translation": "официальное заявление",
-        "examples": [],
-        "register": [
-          "официальное"
-        ]
       }
     ]
   },
@@ -11767,15 +11737,7 @@
       {
         "id": 1,
         "partOfSpeech": "adverb",
-        "translation": "значение в контексте",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 2,
-        "partOfSpeech": "adverb",
-        "translation": "значение в контексте",
+        "translation": "см. anyhow, значения 1–2",
         "examples": [],
         "register": [],
         "primary": true
@@ -18769,14 +18731,14 @@
       {
         "id": 2,
         "partOfSpeech": "noun",
-        "translation": "обыкн. при мн. ч.",
+        "translation": "обыкн. при мн. ч.: власти",
         "examples": [
           {
             "en": "to apply to the authorities",
             "ru": "обратиться к властям"
           },
           {
-            "en": "the authorities)",
+            "en": "the authorities",
             "ru": "власти"
           }
         ],
@@ -32295,7 +32257,7 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "бомба; мина (миномёта); ручная граната",
         "examples": [
           {
@@ -32308,7 +32270,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "баллон (для сжатого воздуха, сжиженного газа)",
         "examples": [],
         "register": [],
@@ -32316,14 +32278,14 @@
         "primary": true
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "контейнер для радиоактивных материалов",
         "examples": [],
         "register": [],
         "id": 3
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "вулканическая бомба",
         "examples": [],
         "register": [
@@ -32332,7 +32294,7 @@
         "id": 4
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "много (большая сумма) денег",
         "examples": [
           {
@@ -32346,7 +32308,7 @@
         "id": 5
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "полный провал (спектакля и т. п.)",
         "examples": [],
         "register": [
@@ -32356,7 +32318,7 @@
         "id": 6
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "сигарета с марихуаной и т. п",
         "examples": [],
         "register": [
@@ -32408,48 +32370,6 @@
           "жаргон"
         ],
         "id": 11
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "бомбардировать",
-        "examples": [],
-        "register": [],
-        "id": 12
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "засыпать, донимать (вопросами)",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ],
-        "id": 13
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "бомбардировать, облучать частицами",
-        "examples": [],
-        "register": [
-          "физика"
-        ],
-        "id": 14
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "капрал артиллерии",
-        "examples": [],
-        "register": [],
-        "id": 15
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "бомбардир",
-        "examples": [],
-        "register": [
-          "американский английский",
-          "авиация"
-        ],
-        "id": 16
       }
     ],
     "phrases": [
@@ -68706,43 +68626,6 @@
         "register": [
           "живопись"
         ]
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "noun",
-        "translation": "разговорный",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "разговорчивый",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "диалоговый",
-        "examples": [
-          {
-            "en": "conversation mode",
-            "ru": "диалоговый режим"
-          },
-          {
-            "en": "good conversation",
-            "ru": "интересный собеседник"
-          }
-        ],
-        "register": [
-          "информатика",
-          "диалектное"
-        ]
       }
     ]
   },
@@ -103751,7 +103634,7 @@
     "meanings": [
       {
         "partOfSpeech": "adverb",
-        "translation": "ещё, кроме",
+        "translation": "с неопределёнными и вопросительными местоимениями: ещё, кроме",
         "examples": [
           {
             "en": "(c pron indef",
@@ -107742,24 +107625,6 @@
         "translation": "серия (телефильма, радиопостановки и т. п.)",
         "examples": [],
         "register": [],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "эпизодический",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "noun",
-        "translation": "случайный",
-        "examples": [],
-        "register": [
-          "жаргон"
-        ],
         "primary": true
       }
     ]
@@ -112438,35 +112303,16 @@
       {
         "id": 4,
         "partOfSpeech": "verb",
-        "translation": "в роли определения к другому слову",
+        "translation": "to be expecting: ожидать ребёнка, быть в положении",
         "examples": [
           {
             "en": "to be expecting",
             "ru": "эвф. ожидать ребёнка, быть в положении"
           }
         ],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "verb",
-        "translation": "ожидание",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "verb",
-        "translation": "предвкушение; надежда, упование",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "verb",
-        "translation": "вероятность",
-        "examples": [],
-        "register": []
+        "register": [
+          "эвфемизм"
+        ]
       }
     ]
   },
@@ -114974,32 +114820,6 @@
         "partOfSpeech": "adjective",
         "translation": "мифический, легендарный",
         "examples": [],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "adjective",
-        "translation": "фасад",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "adjective",
-        "translation": "наружность, внешний вид",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "adjective",
-        "translation": "(чисто) внешняя сторона (вопроса и т. п.); видимость",
-        "examples": [
-          {
-            "en": "he maintained a fabulous of contentment",
-            "ru": "он сделал вид, что вполне доволен"
-          }
-        ],
         "register": []
       }
     ]
@@ -117727,9 +117547,9 @@
     ],
     "phrases": [
       {
-        "phrase": "fancy man a)",
-        "partOfSpeech": "adjective",
-        "translation": "любовник",
+        "phrase": "fancy man",
+        "partOfSpeech": "noun",
+        "translation": "а) любовник; б) сл. сутенёр",
         "examples": [],
         "register": [],
         "id": 1
@@ -117851,7 +117671,7 @@
     "meanings": [
       {
         "partOfSpeech": "adjective",
-        "translation": "отдалённый, дальний",
+        "translation": "дальний, далёкий",
         "examples": [
           {
             "en": "farthest, furthest)",
@@ -120197,7 +120017,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "поддерживать; снабжать топливом, водой, сырьём (машину)",
+        "translation": "… (машину; into, to)",
         "examples": [
           {
             "en": "into, to) feed down",
@@ -122951,20 +122771,21 @@
         "id": 3
       },
       {
-        "phrase": "to find one's way a)",
+        "phrase": "to find one's way",
         "partOfSpeech": "verb",
-        "translation": "достигнуть",
-        "examples": [],
+        "translation": "достигнуть; проникнуть; пробраться",
+        "examples": [
+          {
+            "en": "to find one's way home",
+            "ru": "добраться домой"
+          },
+          {
+            "en": "how did it find its way into print?",
+            "ru": "как это попало в печать?"
+          }
+        ],
         "register": [],
         "id": 4
-      },
-      {
-        "phrase": "to find one's way home",
-        "partOfSpeech": "verb",
-        "translation": "добраться домой",
-        "examples": [],
-        "register": [],
-        "id": 5
       }
     ],
     "forms": {
@@ -128741,7 +128562,7 @@
       },
       {
         "partOfSpeech": "preposition",
-        "translation": "после; вследствие follow my",
+        "translation": "после; вследствие",
         "examples": [],
         "register": [],
         "id": 5,
@@ -131762,31 +131583,6 @@
         "id": 4,
         "partOfSpeech": "noun",
         "translation": "фракция",
-        "examples": [],
-        "register": [
-          "химия"
-        ]
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "дробный; частичный",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "незначительный",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
-        "translation": "фракционный",
         "examples": [],
         "register": [
           "химия"
@@ -143777,15 +143573,7 @@
       {
         "id": 2,
         "partOfSpeech": "noun",
-        "translation": "см. gridiron",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "значение в контексте",
+        "translation": "см. gridiron, значение 1",
         "examples": [],
         "register": [],
         "primary": true
@@ -152276,7 +152064,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "скрывать(ся); скрывать своё унижение",
+        "translation": "прятать(ся); скрывать(ся)",
         "examples": [
           {
             "en": "hid, hidden)",
@@ -152693,9 +152481,9 @@
         "id": 7
       },
       {
-        "phrase": "to run high a)",
+        "phrase": "to run high",
         "partOfSpeech": "adverb",
-        "translation": "страсти разгорелись",
+        "translation": "а) подыматься, вздыматься (о море); б) возбуждаться",
         "examples": [],
         "register": [],
         "id": 8
@@ -153628,15 +153416,7 @@
       {
         "id": 2,
         "partOfSpeech": "noun",
-        "translation": "см. hobbyhorse",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "значение в контексте",
+        "translation": "см. hobbyhorse, значение 1",
         "examples": [],
         "register": [],
         "primary": true
@@ -154772,9 +154552,9 @@
         "id": 1
       },
       {
-        "phrase": "to come home to a)",
+        "phrase": "to come home to",
         "partOfSpeech": "adverb",
-        "translation": "доходить (до сердца)",
+        "translation": "а) доходить (до сердца); найти отклик в душе; б) доходить (до сознания), быть понятным",
         "examples": [],
         "register": [],
         "id": 2
@@ -158929,7 +158709,7 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "predic. больной, нездоровый",
         "examples": [
           {
@@ -158946,8 +158726,8 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
-        "translation": "(worse, worst)",
+        "partOfSpeech": "adjective",
+        "translation": "дурной, плохой",
         "examples": [
           {
             "en": "worst)",
@@ -158967,8 +158747,8 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
-        "translation": "(worse, worst)",
+        "partOfSpeech": "adjective",
+        "translation": "злой, вредный, гибельный",
         "examples": [
           {
             "en": "worst)",
@@ -163505,7 +163285,7 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "adjective",
+        "partOfSpeech": "adverb",
         "translation": "принятый (в общество и т. п.); посвящённый (в тайну и т. п.)",
         "examples": [],
         "register": [],
@@ -163513,7 +163293,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "adverb",
         "translation": "начать, приступать, положить начало",
         "examples": [
           {
@@ -163526,7 +163306,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "adverb",
         "translation": "принимать в члены общества, клуба и т. п.",
         "examples": [],
         "register": [],
@@ -163534,7 +163314,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "verb",
+        "partOfSpeech": "adverb",
         "translation": "вводить (в должность и т. п.; обыкн. in, into); знакомить; посвящать (в тайну и т. п.; обыкн. in, into)",
         "examples": [],
         "register": [],
@@ -164671,7 +164451,7 @@
       {
         "id": 1,
         "partOfSpeech": "verb",
-        "translation": "настойчивость; упорство",
+        "translation": "настаивать (на чём-либо), настойчиво утверждать (on, upon)",
         "examples": [],
         "register": [],
         "primary": true
@@ -168839,7 +168619,7 @@
       {
         "id": 3,
         "partOfSpeech": "adjective",
-        "translation": "голубоватоили желтоватозелёный цвет",
+        "translation": "invisible green / голубовато- или желтовато-зелёный цвет",
         "examples": [],
         "register": [],
         "primary": true
@@ -168847,7 +168627,7 @@
       {
         "id": 4,
         "partOfSpeech": "adjective",
-        "translation": "ку-клукс-клан",
+        "translation": "the Invisible Empire / ку-клукс-клан",
         "examples": [],
         "register": [
           "американский английский"
@@ -177600,22 +177380,6 @@
         "examples": [],
         "register": [],
         "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "adjective",
-        "translation": "щедрый дар",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "adjective",
-        "translation": "щедрость",
-        "examples": [],
-        "register": [],
-        "primary": true
       }
     ]
   },
@@ -178896,7 +178660,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "свивать, вить (верёвки и т. п.) lay about: to",
+        "translation": "свивать, вить (верёвки и т. п.)",
         "examples": [
           {
             "en": "pass.",
@@ -180614,27 +180378,6 @@
           "устаревшее"
         ],
         "id": 4
-      },
-      {
-        "partOfSpeech": "adjective",
-        "translation": "учёный, эрудированный",
-        "examples": [
-          {
-            "en": "my learned friend",
-            "ru": "мой учёный коллега"
-          }
-        ],
-        "register": [],
-        "id": 5
-      },
-      {
-        "partOfSpeech": "adjective",
-        "translation": "учёный (о журнале, обществе и т. п.)",
-        "examples": [],
-        "register": [
-          "научное"
-        ],
-        "id": 6
       }
     ],
     "forms": {
@@ -185749,7 +185492,7 @@
       {
         "id": 1,
         "partOfSpeech": "verb",
-        "translation": "засиживаться (on, over — над чем-либо); задерживаться (где-либо)",
+        "translation": "… задерживаться (где-либо; about, round); терять время даром",
         "examples": [],
         "register": [],
         "primary": true
@@ -186853,244 +186596,29 @@
   {
     "word": "live",
     "frequency_rank": 234,
-    "cefr": "a1",
-    "phon_br": "/lɪv/",
-    "phon_n_am": "/lɪv/",
-    "lists": {
-      "oxford3000": true,
-      "oxford5000": true
-    },
-    "meanings": [
-      {
-        "id": 1,
-        "partOfSpeech": "verb",
-        "translation": "живой (не мёртвый)",
-        "examples": [
-          {
-            "en": "to live in a city",
-            "ru": "жить в городе"
-          },
-          {
-            "en": "to live to be eighty",
-            "ru": "дожить до восьмидесяти лет"
-          },
-          {
-            "en": "to live to see smth.",
-            "ru": "дожить до чего-либо"
-          }
-        ],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 2,
-        "partOfSpeech": "verb",
-        "translation": "питаться (чем-либо: on)",
-        "examples": [
-          {
-            "en": "to live on bread and water",
-            "ru": "питаться хлебом и водой"
-          },
-          {
-            "en": "to live on others",
-            "ru": "жить на чужие средства"
-          }
-        ],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "verb",
-        "translation": "живой, деятельный, энергичный, полный сил",
-        "examples": [
-          {
-            "en": "to live within one's income",
-            "ru": "жить по средствам"
-          },
-          {
-            "en": "to live beyond one's means",
-            "ru": "жить не по средствам"
-          }
-        ],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "verb",
-        "translation": "прожить, протянуть (о больном)",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "verb",
-        "translation": "быть полным жизни, наслаждаться жизнью",
-        "examples": [
-          {
-            "en": "to live every moment",
-            "ru": "наслаждаться каждым моментом"
-          }
-        ],
-        "register": [],
-        "primary": true
-      }
-    ],
-    "phrases": [
-      {
-        "id": 1,
-        "phrase": "live down",
-        "partOfSpeech": "verb",
-        "translation": "загладить, искупить (поведением, жизнью)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 2,
-        "phrase": "live in",
-        "partOfSpeech": "verb",
-        "translation": "жить по месту работы",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 3,
-        "phrase": "live off",
-        "partOfSpeech": "verb",
-        "translation": "жить за счёт (кого-либо / чего-либо)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 4,
-        "phrase": "live out",
-        "partOfSpeech": "verb",
-        "translation": "жить вне места работы; доживать (свой век)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "phrase": "live through",
-        "partOfSpeech": "verb",
-        "translation": "пережить, выдержать (испытание)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "phrase": "to live on air",
-        "partOfSpeech": "verb",
-        "translation": "питаться святым духом",
-        "examples": [],
-        "register": []
-      }
-    ]
-  },
-  {
-    "word": "live",
-    "frequency_rank": 234,
-    "cefr": "b1",
+    "cefr": "b2",
     "phon_br": "/laɪv/",
     "phon_n_am": "/laɪv/",
     "lists": {
-      "oxford3000": true,
       "oxford5000": true
     },
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "adjective",
-        "translation": "живой (не мёртвый)",
+        "partOfSpeech": "adverb",
+        "translation": "жить; существовать; обитать",
         "examples": [
           {
-            "en": "live fish",
-            "ru": "живая рыба"
+            "en": "the match was broadcast live",
+            "ru": "матч транслировался в прямом эфире"
           },
           {
-            "en": "live animals",
-            "ru": "живые животные"
+            "en": "to perform live",
+            "ru": "выступать вживую"
           }
         ],
         "register": [],
         "primary": true
-      },
-      {
-        "id": 2,
-        "partOfSpeech": "adjective",
-        "translation": "передающийся непосредственно с места действия (без предварительной записи)",
-        "examples": [
-          {
-            "en": "a live program",
-            "ru": "репортаж с места событий"
-          },
-          {
-            "en": "live broadcast",
-            "ru": "прямая трансляция"
-          }
-        ],
-        "register": [
-          "радио",
-          "телевидение"
-        ],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "adjective",
-        "translation": "живой, деятельный, энергичный, полный сил",
-        "examples": [
-          {
-            "en": "a live man",
-            "ru": "энергичный человек"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "adjective",
-        "translation": "жизненный; реальный; животрепещущий, актуальный",
-        "examples": [
-          {
-            "en": "a live issue",
-            "ru": "актуальный вопрос"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "adjective",
-        "translation": "горящий, тлеющий (уголь); свежий, сухой (пар)",
-        "examples": [
-          {
-            "en": "live coals",
-            "ru": "горящие угли"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "adjective",
-        "translation": "под напряжением (о проводе); заряженный (о мине, снаряде)",
-        "examples": [
-          {
-            "en": "a live wire",
-            "ru": "провод под напряжением"
-          },
-          {
-            "en": "live cartridge",
-            "ru": "боевой патрон"
-          }
-        ],
-        "register": [
-          "электротехника",
-          "военное"
-        ]
       }
     ]
   },
@@ -187107,7 +186635,36 @@
       {
         "id": 1,
         "partOfSpeech": "adverb",
-        "translation": "живой (не мёртвый)",
+        "translation": "жить; существовать; обитать",
+        "examples": [
+          {
+            "en": "the match was broadcast live",
+            "ru": "матч транслировался в прямом эфире"
+          },
+          {
+            "en": "to perform live",
+            "ru": "выступать вживую"
+          }
+        ],
+        "register": [],
+        "primary": true
+      }
+    ]
+  },
+  {
+    "word": "live",
+    "frequency_rank": 234,
+    "cefr": "b2",
+    "phon_br": "/laɪv/",
+    "phon_n_am": "/laɪv/",
+    "lists": {
+      "oxford5000": true
+    },
+    "meanings": [
+      {
+        "id": 1,
+        "partOfSpeech": "adverb",
+        "translation": "жить; существовать; обитать",
         "examples": [
           {
             "en": "the match was broadcast live",
@@ -187301,7 +186858,7 @@
         "id": 5
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "живой; живущий, существующий",
         "examples": [
           {
@@ -187315,7 +186872,7 @@
         "id": 6
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "очень похожий",
         "examples": [
           {
@@ -187327,25 +186884,11 @@
         "id": 7
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "живой (о языке)",
         "examples": [],
         "register": [],
         "id": 8
-      },
-      {
-        "partOfSpeech": "noun",
-        "translation": "жизненное пространство",
-        "examples": [],
-        "register": [],
-        "id": 9
-      },
-      {
-        "partOfSpeech": "noun",
-        "translation": "жилая площадь",
-        "examples": [],
-        "register": [],
-        "id": 10
       }
     ],
     "phrases": [
@@ -194149,7 +193692,7 @@
     "meanings": [
       {
         "partOfSpeech": "adjective",
-        "translation": "многие, много (перед исчисляемыми существительными)",
+        "translation": "многочисленные; многие",
         "examples": [
           {
             "en": "most) mhO-",
@@ -196470,7 +196013,7 @@
     "meanings": [
       {
         "partOfSpeech": "verb",
-        "translation": "1. n",
+        "translation": "мат",
         "examples": [
           {
             "en": "fool's mate",
@@ -196486,7 +196029,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "сделать",
+        "translation": "сделать мат",
         "examples": [],
         "register": [
           "математика"
@@ -202399,11 +201942,10 @@
   {
     "word": "minute",
     "frequency_rank": 873,
-    "cefr": "a1",
-    "phon_br": "/ˈmɪnɪt/",
-    "phon_n_am": "/ˈmɪnɪt/",
+    "cefr": "b2",
+    "phon_br": "/maɪˈnjuːt/",
+    "phon_n_am": "/maɪˈnjuːt/",
     "lists": {
-      "oxford3000": true,
       "oxford5000": true
     },
     "meanings": [
@@ -202494,16 +202036,6 @@
         "examples": [],
         "register": [],
         "id": 9
-      }
-    ],
-    "phrases": [
-      {
-        "id": 1,
-        "phrase": "up to the minute",
-        "partOfSpeech": "adjective",
-        "translation": "ультрасовременный",
-        "examples": [],
-        "register": []
       }
     ]
   },
@@ -228747,9 +228279,9 @@
     ],
     "phrases": [
       {
-        "phrase": "on paper a)",
+        "phrase": "on paper",
         "partOfSpeech": "noun",
-        "translation": "в письменной форме",
+        "translation": "а) в письменной форме; б) в теории",
         "examples": [],
         "register": [],
         "id": 1
@@ -234651,39 +234183,6 @@
         ],
         "register": [],
         "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "verb",
-        "translation": "упорство, настойчивость",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "verb",
-        "translation": "выносливость; живучесть",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "verb",
-        "translation": "постоянство; продолжительность",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "verb",
-        "translation": "сохранение эффекта после устранения причины, вызвавшей его",
-        "examples": [
-          {
-            "en": "persist of vision",
-            "ru": "инерция зрительного восприятия"
-          }
-        ],
-        "register": []
       }
     ]
   },
@@ -250926,18 +250425,6 @@
         ],
         "register": [],
         "primary": true
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "сомнительный",
-        "examples": [
-          {
-            "en": "problem child",
-            "ru": "трудный ребёнок problematic(al) [,prnbla'm®tik(l)] a проблематичный"
-          }
-        ],
-        "register": []
       }
     ]
   },
@@ -260055,14 +259542,20 @@
       {
         "partOfSpeech": "verb",
         "translation": "refl.",
-        "examples": [
-          {
-            "en": "to rage itself out",
-            "ru": "успокоиться, затихнуть (гл. обр. о буре)"
-          }
-        ],
+        "examples": [],
         "register": [],
         "id": 7
+      }
+    ],
+    "phrases": [
+      {
+        "phrase": "to rage itself out",
+        "translation": "успокоиться, затихнуть (гл. обр. о буре)",
+        "partOfSpeech": "verb",
+        "register": [
+          "refl."
+        ],
+        "examples": []
       }
     ]
   },
@@ -262240,9 +261733,9 @@
     "phrases": [
       {
         "id": 1,
-        "phrase": "in the raw a)",
+        "phrase": "in the raw",
         "partOfSpeech": "preposition",
-        "translation": "в чистом виде",
+        "translation": "а) в чистом виде; без прикрас; б) голый, обнажённый",
         "examples": [],
         "register": []
       }
@@ -277493,22 +276986,6 @@
           "морской термин",
           "британское"
         ]
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "разъезжать (о коммивояжёре)",
-        "examples": [],
-        "register": [
-          "американский английский"
-        ]
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "последняя рюмка, выпиваемая перед уходом, «посошок»",
-        "examples": [],
-        "register": []
       }
     ],
     "phrases": [
@@ -277535,6 +277012,18 @@
         "partOfSpeech": "adverb",
         "translation": "в дороге, в пути; на гастролях",
         "register": [],
+        "examples": []
+      },
+      {
+        "phrase": "on the road",
+        "translation": "разъезжать (о коммивояжёре)",
+        "partOfSpeech": "phrase",
+        "examples": []
+      },
+      {
+        "phrase": "one for the road",
+        "translation": "последняя рюмка, выпиваемая перед уходом, «посошок»",
+        "partOfSpeech": "phrase",
         "examples": []
       }
     ]
@@ -277928,20 +277417,6 @@
         ],
         "id": 6,
         "primary": true
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "пусковая установка",
-        "examples": [],
-        "register": [],
-        "id": 7
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "реактивный гранатомёт",
-        "examples": [],
-        "register": [],
-        "id": 8
       }
     ]
   },
@@ -284790,7 +284265,7 @@
         "examples": [
           {
             "en": "to rest satisfied",
-            "ru": "удовлетвориться"
+            "ru": "удовлетвориться; не предпринимать дальнейших шагов, не предъявлять новых требований"
           },
           {
             "en": "to satisfy the examiners",
@@ -284827,7 +284302,7 @@
       {
         "id": 5,
         "partOfSpeech": "verb",
-        "translation": "убеждать (of — в чём-либо)",
+        "translation": "убеждать (of — в чём-либо; that); рассеивать сомнения",
         "examples": [
           {
             "en": "to satisfy oneself",
@@ -295837,14 +295312,7 @@
       {
         "id": 4,
         "partOfSpeech": "noun",
-        "translation": "sheepskin",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "значение в контексте",
+        "translation": "см. sheepskin, значения 1–2",
         "examples": [],
         "register": []
       }
@@ -308210,7 +307678,7 @@
         "id": 2,
         "phrase": "something else",
         "partOfSpeech": "noun",
-        "translation": "что",
+        "translation": "что-нибудь другое; разг. нечто особенное, что-либо замечательное",
         "register": [],
         "examples": []
       }
@@ -312347,7 +311815,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "сущность, смысл; you don't",
+        "translation": "сущность, смысл",
         "examples": [
           {
             "en": "to take smth. in the wrong spirit",
@@ -335073,9 +334541,9 @@
     ],
     "phrases": [
       {
-        "phrase": "on tap a)",
+        "phrase": "on tap",
         "partOfSpeech": "noun",
-        "translation": "распивочно (о вине)",
+        "translation": "а) распивочно (о вине); б) готовый к немедленному употреблению, использованию; находящийся под рукой",
         "examples": [],
         "register": [],
         "id": 1
@@ -339390,13 +338858,6 @@
             "ru": "позывные (радио)"
           }
         ],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "значение в контексте",
-        "examples": [],
         "register": []
       }
     ]
@@ -346556,9 +346017,9 @@
       },
       {
         "id": 4,
-        "phrase": "to go over the top a)",
+        "phrase": "to go over the top",
         "partOfSpeech": "verb",
-        "translation": "идти в атаку",
+        "translation": "а) воен. идти в атаку; б) сделать решительный шаг; начать решительно действовать",
         "examples": [],
         "register": [
           "военное дело"
@@ -355460,7 +354921,7 @@
       {
         "id": 2,
         "partOfSpeech": "adjective",
-        "translation": "predic",
+        "translation": "не быть в состоянии (в предикативном употреблении)",
         "examples": [
           {
             "en": "to be unable",
@@ -371700,16 +371161,7 @@
         "primary": true
       }
     ],
-    "phrases": [
-      {
-        "id": 1,
-        "phrase": "he has sown his wild oats",
-        "partOfSpeech": "noun",
-        "translation": "он перебесился, остепенился",
-        "examples": [],
-        "register": []
-      }
-    ]
+    "phrases": []
   },
   {
     "word": "will",
@@ -374905,9 +374357,9 @@
       },
       {
         "id": 6,
-        "phrase": "work up (past",
+        "phrase": "work up",
         "partOfSpeech": "verb",
-        "translation": "обрабатывать; отделывать, придавать законченный вид; добиваться, завоёвывать",
+        "translation": "(past form wrought) обрабатывать; отделывать, придавать законченный вид; добиваться, завоёвывать",
         "examples": [],
         "register": []
       },
