@@ -561,8 +561,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
               </button>
             </div>
 
-            {/* Core Card Body */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {/* Core Card Body (Stable 434px height across review and new word modes) */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', minHeight: '434px', boxSizing: 'border-box' }}>
 
               {/* Master Word Card Component */}
               <Variant14SegmentedPillCard

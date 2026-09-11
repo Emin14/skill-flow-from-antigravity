@@ -344,7 +344,6 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           boxSizing: 'border-box',
           position: 'relative',
           overflow: 'hidden',
-          transition: 'height 0.2s ease, min-height 0.2s ease, max-height 0.2s ease',
         }}
       >
         {isMasked ? (
