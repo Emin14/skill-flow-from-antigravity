@@ -514,15 +514,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        {/* Описание (если есть) */}
-        {masterTask.description && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', padding: '8px 10px', borderRadius: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--color-border)' }}>
-            <p style={{ fontSize: '12.5px', color: 'var(--color-text-primary)', margin: 0, whiteSpace: 'pre-wrap' }}>
-              {masterTask.description}
-            </p>
-          </div>
-        )}
-
         {/* 2. Заметка */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', width: '100%' }}>
           <label style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
