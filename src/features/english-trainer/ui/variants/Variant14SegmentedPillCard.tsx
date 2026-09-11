@@ -328,15 +328,15 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
         </button>
       </div>
 
-      {/* 4. Inset Meaning Card: Fixed 180px Height (Masked state for Active Recall OR Revealed state) */}
+      {/* 4. Inset Meaning Card: Fixed 180px (Review) / 230px (New Word Study) Height */}
       <div
         style={{
           border: '1px solid var(--color-border)',
           borderRadius: '12px',
           background: 'var(--color-surface-hover)',
-          height: '180px',
-          minHeight: '180px',
-          maxHeight: '180px',
+          height: isReviewWord ? '180px' : '230px',
+          minHeight: isReviewWord ? '180px' : '230px',
+          maxHeight: isReviewWord ? '180px' : '230px',
           padding: isMasked ? '12px' : '10px 14px 8px 14px',
           display: 'flex',
           flexDirection: 'column',
@@ -344,6 +344,7 @@ export const Variant14SegmentedPillCard: React.FC<BaseWordCardProps> = ({
           boxSizing: 'border-box',
           position: 'relative',
           overflow: 'hidden',
+          transition: 'height 0.2s ease, min-height 0.2s ease, max-height 0.2s ease',
         }}
       >
         {isMasked ? (

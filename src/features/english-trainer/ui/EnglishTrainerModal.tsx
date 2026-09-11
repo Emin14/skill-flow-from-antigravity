@@ -655,7 +655,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                   {/* Actions for Review Mode */}
                   {!isAnswerRevealed ? (
                     /* Step 1: Check or Reveal Action */
-                    <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+                    <div style={{ display: 'flex', gap: '8px', width: '100%', height: '46px' }}>
                       {userInput.trim() ? (
                         <>
                           <button
@@ -663,7 +663,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                             onClick={handleCheckAnswer}
                             style={{
                               flex: 1,
-                              padding: '11px 16px',
+                              height: '46px',
+                              padding: '0 16px',
                               background: 'var(--color-accent)',
                               border: 'none',
                               color: '#ffffff',
@@ -677,6 +678,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                               gap: '6px',
                               boxShadow: 'var(--shadow-sm)',
                               transition: 'all var(--transition-fast) ease',
+                              boxSizing: 'border-box',
                             }}
                           >
                             <Check size={16} strokeWidth={2.5} />
@@ -686,7 +688,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                             type="button"
                             onClick={handleRevealAnswer}
                             style={{
-                              padding: '11px 14px',
+                              height: '46px',
+                              padding: '0 14px',
                               background: 'var(--color-surface-hover)',
                               border: '1px solid var(--color-border)',
                               color: 'var(--color-text-secondary)',
@@ -700,6 +703,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                               gap: '5px',
                               transition: 'all var(--transition-fast) ease',
                               whiteSpace: 'nowrap',
+                              boxSizing: 'border-box',
                             }}
                             title="Сдаться и посмотреть правильный перевод"
                           >
@@ -713,7 +717,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                           onClick={handleRevealAnswer}
                           style={{
                             width: '100%',
-                            padding: '11px 16px',
+                            height: '46px',
+                            padding: '0 16px',
                             background: 'var(--color-accent)',
                             border: 'none',
                             color: '#ffffff',
@@ -727,6 +732,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                             gap: '6px',
                             boxShadow: 'var(--shadow-sm)',
                             transition: 'all var(--transition-fast) ease',
+                            boxSizing: 'border-box',
                           }}
                         >
                           <Eye size={16} />
@@ -777,12 +783,13 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                 </div>
               ) : (
                 /* NEW WORD STUDY MODE (Pure Study & Learn) */
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '2px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', height: '46px' }}>
                   <button
                     type="button"
                     onClick={handleMarkAsLearned}
                     style={{
-                      padding: '11px 14px',
+                      height: '46px',
+                      padding: '0 14px',
                       background: 'var(--color-accent)',
                       border: 'none',
                       color: '#ffffff',
@@ -795,6 +802,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                       justifyContent: 'center',
                       gap: '6px',
                       boxShadow: 'var(--shadow-sm)',
+                      boxSizing: 'border-box',
                     }}
                     title="Отметить слово изученным на сегодня"
                   >
@@ -805,7 +813,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                     type="button"
                     onClick={handleAlreadyKnowWord}
                     style={{
-                      padding: '11px 14px',
+                      height: '46px',
+                      padding: '0 14px',
                       background: 'rgba(234, 179, 8, 0.12)',
                       border: '1.5px solid rgba(234, 179, 8, 0.4)',
                       color: '#eab308',
@@ -817,6 +826,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '6px',
+                      boxSizing: 'border-box',
                     }}
                     title="Я уже знаю это слово — убрать из очереди навсегда"
                   >
