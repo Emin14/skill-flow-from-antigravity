@@ -340,8 +340,24 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
         >
 
           {/* Ряд 1: Заголовок (слева) и Стрик (справа) */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0, lineHeight: 1.25, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1, minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
+            <h2
+              style={{
+                fontSize: '18px',
+                fontWeight: 800,
+                color: 'var(--color-text-primary)',
+                margin: 0,
+                lineHeight: 1.3,
+                wordBreak: 'break-word',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                flex: 1,
+                minWidth: 0,
+              }}
+            >
               {masterTask.title}
             </h2>
 
@@ -361,6 +377,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
                   gap: '4px',
                   userSelect: 'none',
                   flexShrink: 0,
+                  marginTop: '1px',
                 }}
               >
                 🔥 {streak} дн.

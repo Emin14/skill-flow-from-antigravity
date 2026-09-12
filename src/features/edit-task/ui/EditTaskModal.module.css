@@ -136,6 +136,34 @@
   box-shadow: none !important;
 }
 
+.titleInput {
+  width: 100%;
+  padding: 2px 4px 2px 4px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1.5px solid var(--color-border-hover, rgba(255, 255, 255, 0.2)) !important;
+  background-color: transparent !important;
+  color: var(--color-text-primary);
+  font-size: 15.5px !important;
+  font-weight: 600 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  height: 32px !important;
+  min-height: unset !important;
+  line-height: 1.35;
+  transition: border-color var(--transition-fast);
+}
+
+.titleInput:focus,
+.titleInput:focus-visible {
+  border: none !important;
+  border-bottom: 1.5px solid var(--color-accent) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 .compactTextarea {
   width: 100%;
   min-height: 36px;

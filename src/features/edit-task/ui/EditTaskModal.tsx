@@ -344,7 +344,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             {/* 1. Title Input */}
             <div>
               <Input
-                type="text" name="task_title_field" className={styles.selectInput}
+                type="text" name="task_title_field" className={styles.titleInput}
                 value={title} onChange={(e) => setTitle(e.target.value)}
                 placeholder="Название задачи..." required autoFocus
               />
