@@ -44,6 +44,13 @@ const formatDateTitleRu = (dateStr?: string) => {
   });
 };
 
+const RATING_LABELS: Record<SmartRating, { emoji: string; title: string }> = {
+  easy: { emoji: '😄', title: 'Легко' },
+  normal: { emoji: '🙂', title: 'Нормально' },
+  hard: { emoji: '😣', title: 'Сложно' },
+  again: { emoji: '❌', title: 'Не помню' },
+};
+
 export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> = ({
   task,
   occurrenceDate,
@@ -58,9 +65,11 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const [selectedRating, setSelectedRating] = useState<SmartRating | null>(null);
   const [sessionNote, setSessionNote] = useState<string>('');
   const [overrideDate, setOverrideDate] = useState<string | null>(null);
+  const [ratingRequiredError, setRatingRequiredError] = useState(false);
 
   useEffect(() => {
     setOverrideDate(null);
+    setRatingRequiredError(false);
   }, [task?.id, occurrenceDate, isOpen]);
 
   const masterTask = useMemo(() => {
@@ -120,6 +129,10 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   useEffect(() => {
     if (isOpen) {
       lockBodyScroll();
+      if (modalRef.current) {
+        modalRef.current.style.transform = '';
+        modalRef.current.style.transition = '';
+      }
     } else {
       unlockBodyScroll();
     }
@@ -129,36 +142,80 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   }, [isOpen]);
 
   const modalRef = useRef<HTMLDivElement>(null);
-  const touchStartYRef = useRef<number>(0);
-  const touchCurrentYRef = useRef<number>(0);
+  const isDraggingRef = useRef(false);
+  const startYRef = useRef<number>(0);
+  const startTimeRef = useRef<number>(0);
+  const currentDeltaYRef = useRef<number>(0);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const clientY = e.touches[0].clientY;
-    touchStartYRef.current = clientY;
-    touchCurrentYRef.current = clientY;
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.button !== 0) return;
+    isDraggingRef.current = true;
+    startYRef.current = e.clientY;
+    startTimeRef.current = Date.now();
+    currentDeltaYRef.current = 0;
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    const clientY = e.touches[0].clientY;
-    touchCurrentYRef.current = clientY;
-    const deltaY = touchCurrentYRef.current - touchStartYRef.current;
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current || !modalRef.current) return;
+    const deltaY = e.clientY - startYRef.current;
 
-    if (deltaY > 0 && modalRef.current) {
+    if (deltaY > 0) {
+      currentDeltaYRef.current = deltaY;
       modalRef.current.style.transform = `translateY(${deltaY}px)`;
+      modalRef.current.style.transition = 'none';
+    } else {
+      currentDeltaYRef.current = 0;
+      modalRef.current.style.transform = 'translateY(0)';
       modalRef.current.style.transition = 'none';
     }
   };
 
-  const handleTouchEnd = () => {
-    const deltaY = touchCurrentYRef.current - touchStartYRef.current;
-    if (deltaY > 100) {
-      onClose();
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
+
+    const deltaY = currentDeltaYRef.current;
+    const elapsed = Date.now() - startTimeRef.current;
+    const velocity = deltaY / Math.max(elapsed, 1);
+
+    if (deltaY > 60 || (deltaY > 25 && velocity > 0.3)) {
+      if (modalRef.current) {
+        modalRef.current.style.transition = 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)';
+        modalRef.current.style.transform = 'translateY(100%)';
+      }
+      setTimeout(() => {
+        onClose();
+      }, 180);
     } else if (modalRef.current) {
       modalRef.current.style.transform = 'translateY(0)';
       modalRef.current.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
     }
-    touchStartYRef.current = 0;
-    touchCurrentYRef.current = 0;
+    currentDeltaYRef.current = 0;
+  };
+
+  const handlePointerCancel = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
+    if (modalRef.current) {
+      modalRef.current.style.transform = 'translateY(0)';
+      modalRef.current.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+    }
+    currentDeltaYRef.current = 0;
   };
 
   if (!isOpen || !masterTask) return null;
@@ -225,6 +282,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   const handleRatingClick = (ratingKey: SmartRating) => {
     const newRating = selectedRating === ratingKey ? null : ratingKey;
     setSelectedRating(newRating);
+    setRatingRequiredError(false);
     if (masterTask) {
       updateOccurrenceRating(masterTask.id, newRating, activeOccDate);
     }
@@ -232,7 +290,18 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
   const handleToggleTodayOccurrence = async () => {
     if (!masterTask) return;
-    const ratingToUse = selectedRating || masterTask.lastSmartRating || 'normal';
+
+    const isSmart = isSmartRepeatTask(masterTask);
+    const effectiveRating = selectedRating || activeRating;
+
+    // For smart repeating tasks, rating selection is strictly required when marking as Done
+    if (isSmart && !isTodayDone && !effectiveRating) {
+      setRatingRequiredError(true);
+      useToastStore.getState().showToast('Пожалуйста, выберите оценку сложности перед выполнением', 'warning');
+      return;
+    }
+
+    const ratingToUse = effectiveRating || masterTask.lastSmartRating || 'normal';
     if (isTodayDone) {
       if (masterTask.isRepeating) {
         await toggleTaskStatus(masterTask.id, undefined, activeOccDate);
@@ -318,12 +387,24 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
       >
         {/* Top Drag Handle */}
         <div
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          style={{ width: '100%', cursor: 'grab', paddingBottom: '2px', touchAction: 'none' }}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerCancel}
+          style={{
+            width: '100%',
+            cursor: 'grab',
+            padding: '6px 0 12px 0',
+            minHeight: '30px',
+            touchAction: 'none',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            userSelect: 'none',
+            WebkitTapHighlightColor: 'transparent',
+          }}
         >
-          <div style={{ width: '36px', height: '4px', borderRadius: '2px', backgroundColor: 'var(--color-border)', margin: '0 auto' }} />
+          <div style={{ width: '42px', height: '5px', borderRadius: '3px', backgroundColor: 'var(--color-border-hover, rgba(255, 255, 255, 0.25))' }} />
         </div>
 
         {/* ─── HEADER SECTION (WITH PROMINENT DISTINCT BOTTOM DIVIDER LINE) ─── */}
@@ -339,50 +420,45 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           }}
         >
 
-          {/* Ряд 1: Заголовок (слева) и Стрик (справа) */}
-          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', width: '100%' }}>
+          {/* Ряд 1: Заголовок и Стрик с гармоничным обтеканием (первый ряд делит место со стриком, второй ряд на всю ширину) */}
+          <div style={{ width: '100%', display: 'flow-root' }}>
             <h2
               style={{
                 fontSize: '18px',
                 fontWeight: 800,
                 color: 'var(--color-text-primary)',
                 margin: 0,
-                lineHeight: 1.3,
+                lineHeight: 1.35,
                 wordBreak: 'break-word',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                flex: 1,
-                minWidth: 0,
               }}
             >
+              {masterTask.isRepeating && (
+                <span
+                  title={`Текущий стрик: ${streak} дн.`}
+                  style={{
+                    float: 'right',
+                    marginLeft: '10px',
+                    marginBottom: '2px',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    color: '#f59e0b',
+                    background: 'rgba(245, 158, 11, 0.15)',
+                    border: '1px solid rgba(245, 158, 11, 0.3)',
+                    padding: '2px 8px',
+                    borderRadius: '7px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    userSelect: 'none',
+                    lineHeight: 1.2,
+                    marginTop: '2px',
+                  }}
+                >
+                  🔥 {streak} дн.
+                </span>
+              )}
               {masterTask.title}
             </h2>
-
-            {masterTask.isRepeating && (
-              <span
-                title={`Текущий стрик: ${streak} дн.`}
-                style={{
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  color: '#f59e0b',
-                  background: 'rgba(245, 158, 11, 0.15)',
-                  border: '1px solid rgba(245, 158, 11, 0.3)',
-                  padding: '2px 8px',
-                  borderRadius: '7px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  userSelect: 'none',
-                  flexShrink: 0,
-                  marginTop: '1px',
-                }}
-              >
-                🔥 {streak} дн.
-              </span>
-            )}
           </div>
 
           {/* Ряд 2: Категория (слева) и Повтор (иконка) + Создано (справа) */}
@@ -584,10 +660,53 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', width: '100%' }}>
-          <label style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            💡 Оценка сложности:
-          </label>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+            width: '100%',
+            padding: ratingRequiredError ? '8px 10px' : '0',
+            borderRadius: '14px',
+            border: ratingRequiredError ? '1.5px solid var(--color-warning)' : '1.5px solid transparent',
+            backgroundColor: ratingRequiredError ? 'var(--color-warning-light)' : 'transparent',
+            transition: 'all 0.25s ease',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label
+              style={{
+                fontSize: '12.5px',
+                fontWeight: 600,
+                color: ratingRequiredError ? 'var(--color-warning)' : 'var(--color-text-secondary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              💡 Оценка сложности:
+              {isSmartRepeatTask(masterTask) && (
+                <span
+                  style={{
+                    fontSize: '10.5px',
+                    fontWeight: 600,
+                    color: ratingRequiredError ? 'var(--color-warning)' : 'var(--color-accent-text)',
+                    backgroundColor: ratingRequiredError ? 'rgba(245, 158, 11, 0.15)' : 'var(--color-accent-light)',
+                    padding: '2px 7px',
+                    borderRadius: '8px',
+                    border: ratingRequiredError ? '1px solid var(--color-warning-border)' : '1px solid var(--color-accent-border)',
+                  }}
+                >
+                  {ratingRequiredError ? '⚠️ обязательно' : 'обязательно для SM-2'}
+                </span>
+              )}
+            </label>
+            {ratingRequiredError && (
+              <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--color-warning)' }}>
+                Выберите оценку!
+              </span>
+            )}
+          </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', width: '100%' }}>
             {[
               { key: 'easy', emoji: '😄', title: 'Легко', color: 'var(--color-success)', bg: 'var(--color-success-light)', border: 'var(--color-success-border)' },
@@ -598,7 +717,30 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               const currentActive = selectedRating || activeRating;
               const isActive = currentActive === rating.key;
               return (
-                <button key={rating.key} type="button" onClick={() => handleRatingClick(rating.key as SmartRating)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', padding: '8px 4px', borderRadius: '12px', background: isActive ? rating.bg : 'rgba(255, 255, 255, 0.03)', border: isActive ? `1.5px solid ${rating.border}` : '1px solid var(--color-border)', cursor: 'pointer', transform: isActive ? 'scale(1.03)' : 'none', boxShadow: isActive ? `0 4px 14px ${rating.bg}` : 'none' }}>
+                <button
+                  key={rating.key}
+                  type="button"
+                  onClick={() => handleRatingClick(rating.key as SmartRating)}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '4px',
+                    padding: '8px 4px',
+                    borderRadius: '12px',
+                    background: isActive ? rating.bg : 'rgba(255, 255, 255, 0.03)',
+                    border: isActive
+                      ? `1.5px solid ${rating.border}`
+                      : ratingRequiredError
+                        ? '1.5px dashed var(--color-warning)'
+                        : '1px solid var(--color-border)',
+                    cursor: 'pointer',
+                    transform: isActive ? 'scale(1.03)' : 'none',
+                    boxShadow: isActive ? `0 4px 14px ${rating.bg}` : 'none',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
                   <span style={{ fontSize: '18px', lineHeight: 1 }}>{rating.emoji}</span>
                   <span style={{ fontSize: '11px', fontWeight: isActive ? 700 : 500, color: isActive ? rating.color : 'var(--color-text-muted)' }}>{rating.title}</span>
                 </button>
@@ -607,14 +749,13 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           </div>
         </div>
 
-
-
         {/* РЯД: Дата (плашка) и Кнопка "Выполнить" на одной линии */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', marginTop: '4px' }}>
           {renderDatePickerBadge()}
           <button
             type="button"
             onClick={handleToggleTodayOccurrence}
+            title={isSmartRepeatTask(masterTask) && !isTodayDone && !(selectedRating || activeRating) ? 'Выберите оценку сложности перед выполнением' : undefined}
             style={{
               flex: 1,
               height: '42px',
@@ -635,7 +776,13 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
             }}
           >
             <CheckCircle2 size={17} />
-            <span>{isTodayDone ? '✅ Выполнено' : '✨ Выполнить'}</span>
+            <span>
+              {isTodayDone
+                ? '✅ Выполнено'
+                : isSmartRepeatTask(masterTask) && (selectedRating || activeRating)
+                  ? `✨ Выполнить (${RATING_LABELS[selectedRating || activeRating!]?.emoji || ''} ${RATING_LABELS[selectedRating || activeRating!]?.title || ''})`
+                  : '✨ Выполнить'}
+            </span>
           </button>
         </div>
 

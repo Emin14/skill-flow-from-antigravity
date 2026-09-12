@@ -115,15 +115,10 @@
           {
             "en": "conversational mode",
             "ru": "диалоговый режим"
-          },
-          {
-            "en": "good conversation",
-            "ru": "интересный собеседник"
           }
         ],
         "register": [
-          "информатика",
-          "диалектное"
+          "информатика"
         ]
       }
     ]
@@ -332,7 +327,7 @@
         "translation": "сохранение эффекта после устранения причины, вызвавшей его",
         "examples": [
           {
-            "en": "persist of vision",
+            "en": "persistence of vision",
             "ru": "инерция зрительного восприятия"
           }
         ],
@@ -365,6 +360,17 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
+        "translation": "овсюг",
+        "examples": [],
+        "register": [
+          "ботаника"
+        ]
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "partOfSpeech": "verb",
         "translation": "он перебесился, остепенился",
         "examples": [
           {
@@ -372,7 +378,365 @@
             "ru": "он перебесился, остепенился"
           }
         ],
+        "register": [],
+        "phrase": "he has sown his wild oats"
+      }
+    ]
+  },
+  {
+    "word": "insistence",
+    "meanings": [
+      {
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "настойчивость; упорство",
+        "examples": [],
+        "register": [],
+        "primary": true
+      },
+      {
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "настойчивое требование",
+        "examples": [],
+        "register": [],
+        "primary": true
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "insist",
+        "report_case": "R06",
+        "pdf_pages": [
+          420
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ],
+    "aliases": [
+      "insistency"
+    ]
+  },
+  {
+    "word": "scare-head",
+    "meanings": [
+      {
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "сенсационный заголовок (в газете)",
+        "examples": [],
         "register": []
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "scared",
+        "report_case": "R07",
+        "pdf_pages": [
+          706,
+          707
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ],
+    "aliases": [
+      "scare-heading"
+    ]
+  },
+  {
+    "word": "conversationalist",
+    "meanings": [
+      {
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "мастер поговорить",
+        "examples": [
+          {
+            "en": "good conversationalist",
+            "ru": "интересный собеседник"
+          }
+        ],
+        "register": []
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "conversational",
+        "report_case": "R23",
+        "pdf_pages": [
+          179
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ]
+  },
+  {
+    "word": "cotton waste",
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "translation": "обтирочный материал",
+        "examples": [],
+        "register": [],
+        "id": 11
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "угар",
+        "examples": [],
+        "register": [],
+        "id": 12
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "cotton",
+        "report_case": "R33",
+        "pdf_pages": [
+          185
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ]
+  },
+  {
+    "word": "cotton wool",
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "translation": "хлопок-сырец",
+        "examples": [],
+        "register": [],
+        "id": 13
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "вата",
+        "examples": [],
+        "register": [],
+        "id": 14
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "cotton",
+        "report_case": "R33",
+        "pdf_pages": [
+          185
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ]
+  },
+  {
+    "word": "freshen",
+    "meanings": [
+      {
+        "partOfSpeech": "verb",
+        "translation": "свежеть (тж. freshen up; о ветре)",
+        "examples": [],
+        "register": [],
+        "id": 16
+      },
+      {
+        "partOfSpeech": "verb",
+        "translation": "освежать (в памяти)",
+        "examples": [],
+        "register": [],
+        "id": 18
+      },
+      {
+        "partOfSpeech": "verb",
+        "translation": "фришевать",
+        "examples": [],
+        "register": [
+          "техническое"
+        ],
+        "id": 19
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "fresh",
+        "report_case": "R34",
+        "pdf_pages": [
+          330
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ],
+    "phrases": [
+      {
+        "partOfSpeech": "verb",
+        "translation": "приводить себя в порядок",
+        "examples": [],
+        "register": [],
+        "id": 17,
+        "phrase": "to freshen oneself up"
+      }
+    ]
+  },
+  {
+    "word": "freshet",
+    "meanings": [
+      {
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "поток пресной воды, вливающийся в море",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "выход реки из берегов, половодье; паводок",
+        "examples": [],
+        "register": []
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "fresh",
+        "report_case": "R34",
+        "pdf_pages": [
+          330
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ]
+  },
+  {
+    "word": "modeller",
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "translation": "лепщик",
+        "examples": [],
+        "register": [],
+        "id": 13
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "модельщик",
+        "examples": [],
+        "register": [],
+        "id": 14
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "model",
+        "report_case": "R35",
+        "pdf_pages": [
+          513
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ],
+    "aliases": [
+      "modeler"
+    ]
+  },
+  {
+    "word": "modelling",
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "translation": "исполнение по модели",
+        "examples": [],
+        "register": [],
+        "id": 15
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "лепная работа",
+        "examples": [],
+        "register": [],
+        "id": 16
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "формовка",
+        "examples": [],
+        "register": [
+          "техническое"
+        ],
+        "id": 17
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "model",
+        "report_case": "R35",
+        "pdf_pages": [
+          513
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ],
+    "aliases": [
+      "modeling"
+    ]
+  },
+  {
+    "word": "tail end",
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "translation": "конец; хвост (процессии)",
+        "examples": [],
+        "register": [],
+        "id": 21
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "заключительная часть (of — чего-либо)",
+        "examples": [],
+        "register": [],
+        "id": 22
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "tail",
+        "report_case": "R36",
+        "pdf_pages": [
+          806
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
+      }
+    ]
+  },
+  {
+    "word": "follow my leader",
+    "meanings": [
+      {
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "детская игра «делай как я»",
+        "examples": [],
+        "register": []
+      }
+    ],
+    "provenance": [
+      {
+        "from_word": "following",
+        "report_case": "R51",
+        "pdf_pages": [
+          321
+        ],
+        "source": "Muller 2021",
+        "source_snapshot_sha256": "aba9a7e8d2ff79c896cb93f550d259d0e6936d3c98ad944086b2ea754dcd1225"
       }
     ]
   }

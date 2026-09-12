@@ -99,8 +99,10 @@
 
 /* Scrollable Fixed-Height Body Canvas */
 .modalBody {
-  /* overflow-y: auto;
-  overflow-x: hidden; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(88vh - 120px);
+  -webkit-overflow-scrolling: touch;
   padding-right: 2px;
   display: flex;
   flex-direction: column;
@@ -342,7 +344,8 @@
 /* Drag handle pill container for mobile bottom sheet gesture */
 .dragHandleArea {
   width: 100%;
-  padding: 4px 0 8px 0;
+  padding: 8px 0 14px 0;
+  min-height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -350,20 +353,25 @@
   touch-action: none;
   user-select: none;
   margin-top: -2px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dragHandleArea:active {
+  cursor: grabbing;
 }
 
 .dragHandleBar {
-  width: 38px;
-  height: 4px;
-  border-radius: 2px;
-  background-color: var(--color-border-hover);
+  width: 42px;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--color-border-hover, rgba(255, 255, 255, 0.25));
   transition: background-color 0.2s ease, width 0.2s ease;
 }
 
 .dragHandleArea:hover .dragHandleBar,
 .dragHandleArea:active .dragHandleBar {
-  background-color: var(--color-text-muted);
-  width: 46px;
+  background-color: var(--color-accent, #3b82f6);
+  width: 50px;
 }
 
 @keyframes slideUpSheet {
@@ -392,9 +400,13 @@
     border-bottom: none;
     border-left: none;
     border-right: none;
-    padding: 10px 14px calc(18px + env(safe-area-inset-bottom, 16px)) 14px;
+    padding: 6px 14px calc(18px + env(safe-area-inset-bottom, 16px)) 14px;
     animation: slideUpSheet 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .modalBody {
+    max-height: calc(90vh - 110px);
   }
 
   .splitGrid {

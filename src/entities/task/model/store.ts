@@ -290,9 +290,8 @@ interface TaskState {
 
 const addDaysToDateStr = (dateStr: string, days: number): string => {
   if (!dateStr || !dateStr.includes('-')) {
-    const today = new Date();
-    today.setDate(today.getDate() + days);
-    return today.toISOString().split('T')[0];
+    // If the input date string is invalid, return today (or technically we could advance it, but this fallback is rare)
+    return getTodayStr();
   }
   const parts = dateStr.split('-').map(Number);
   const d = new Date(parts[0], parts[1] - 1, parts[2]);
@@ -442,6 +441,47 @@ export const calculateNextInterval = (
 
   const daysToAdd = Math.max(1, Math.floor(nextFloat));
   return { nextIntervalFloat: nextFloat, daysToAdd };
+};
+
+/**
+ * Calculates the next occurrence date when an occurrence on baseDate is completed.
+ * If the calculated date falls in the past (< todayStr), it is clamped to todayStr
+ * (or the next valid day for specific_days). If today is already marked Done, it advances
+ * to the next interval from today.
+ */
+export const calculateNextOccurrenceDate = (
+  task: Task,
+  doneCount: number,
+  smartRating: SmartRating | undefined,
+  baseDate: string,
+  existingOccurrences: TaskOccurrence[] = [],
+  todayStr: string = getTodayStr()
+): string => {
+  const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating, baseDate);
+  let nextDate = addDaysToDateStr(baseDate, daysToAdd);
+
+  if (nextDate < todayStr) {
+    if (task.repetitionMode === 'specific_days') {
+      const days = task.weeklyDays && task.weeklyDays.length > 0 ? task.weeklyDays : [1, 2, 3, 4, 5];
+      const parts = todayStr.split('-').map(Number);
+      const todayDayOfWeek = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
+      if (days.includes(todayDayOfWeek)) {
+        nextDate = todayStr;
+      } else {
+        nextDate = getNextSpecificDayDate(todayStr, days).nextDateStr;
+      }
+    } else {
+      nextDate = todayStr;
+    }
+  }
+
+  // If the determined date is already completed in occurrences, advance past it from today
+  if (existingOccurrences.some((o) => o.date === nextDate && o.status === 'Done')) {
+    const { daysToAdd: advanceDays } = calculateNextInterval(task, doneCount, smartRating, todayStr);
+    nextDate = addDaysToDateStr(todayStr, advanceDays);
+  }
+
+  return nextDate;
 };
 
 export const useTaskStore = create<TaskState>((set, get) => ({
@@ -672,7 +712,7 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     }
 
     const nowIso = new Date().toISOString();
-    const todayStr = nowIso.split('T')[0];
+    const todayStr = getTodayStr();
     const targetDate = occurrenceDate || task.scheduledDate || todayStr;
 
     // REPEAT ARCHITECTURE: Occurrences Management (Variant A)
@@ -709,12 +749,14 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         const isStopped = task.repeatStatus === 'Paused' || task.repeatStatus === 'Completed';
         if (!isStopped) {
           const doneCount = occs.filter((o) => o.status === 'Done').length;
-          const baseDate = targetDate > todayStr ? targetDate : todayStr;
-          const { daysToAdd } = calculateNextInterval(task, doneCount, smartRating, baseDate);
-          let nextDate = addDaysToDateStr(baseDate, daysToAdd);
-          if (nextDate < todayStr) {
-            nextDate = todayStr;
-          }
+          const nextDate = calculateNextOccurrenceDate(
+            task,
+            doneCount,
+            smartRating,
+            targetDate,
+            occs,
+            todayStr
+          );
 
           // Remove any uncompleted Todo occurrences to ensure clean, non-stacking next repeat
           occs = occs.filter((o) => o.status === 'Done' || o.date === nextDate);
@@ -833,12 +875,14 @@ export const useTaskStore = create<TaskState>((set, get) => ({
           const isStopped = t.repeatStatus === 'Paused' || t.repeatStatus === 'Completed';
           if (!isStopped) {
             const doneCount = occs.filter((o) => o.status === 'Done').length;
-            const baseDate = targetDate > todayStr ? targetDate : todayStr;
-            const { daysToAdd } = calculateNextInterval(t, doneCount, undefined, baseDate);
-            let nextDate = addDaysToDateStr(baseDate, daysToAdd);
-            if (nextDate < todayStr) {
-              nextDate = todayStr;
-            }
+            const nextDate = calculateNextOccurrenceDate(
+              t,
+              doneCount,
+              undefined,
+              targetDate,
+              occs,
+              todayStr
+            );
             occs = occs.filter((o) => o.status === 'Done' || o.date <= targetDate || o.date === nextDate);
             if (!occs.some((o) => o.date === nextDate)) {
               occs.push({
@@ -1059,19 +1103,14 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
         const targetStartDate = lastDoneOcc ? lastDoneOcc.date : todayStr;
         const doneCount = doneOccs.length;
-        const baseDate = targetStartDate > todayStr ? targetStartDate : todayStr;
-        const { daysToAdd } = calculateNextInterval(
+        const nextDate = calculateNextOccurrenceDate(
           task,
           doneCount,
           task.repetitionMode === 'smart' ? (task.lastSmartRating || undefined) : undefined,
-          baseDate
+          targetStartDate,
+          normOccs,
+          todayStr
         );
-        let nextDate = addDaysToDateStr(baseDate, daysToAdd);
-
-        // Ensure next occurrence date is not in the past
-        if (nextDate < todayStr) {
-          nextDate = todayStr;
-        }
 
         normOccs.push({
           id: uuidv4(),

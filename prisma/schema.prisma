@@ -170,3 +170,20 @@ model EnglishWordReviewLog {
   @@index([createdAt])
 }
 
+model BacklogItem {
+  id          String   @id @default(uuid())
+  topic       String   // e.g. "Todo List", "Сайт заказа продуктов"
+  title       String   // Название фичи / идеи
+  description String?  // Подробные мысли, спецификация, чеклист
+  status      String   @default("idea") // 'idea' | 'backlog' | 'planned' | 'done'
+  priority    String?  @default("medium") // 'high' | 'medium' | 'low'
+  tags        String?  // JSON массив тегов, например '["UI", "MVP"]'
+  link        String?  // Ссылка на макет/документ/референс
+  sortOrder   Int?     @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  @@index([topic])
+  @@index([status])
+}
+

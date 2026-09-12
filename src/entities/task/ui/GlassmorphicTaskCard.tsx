@@ -232,12 +232,13 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   const formattedLink = formatExternalUrl(task.link || undefined);
 
   const todayStr = getTodayStr();
-  const showDateBadge = !hideDateBadge && task.scheduledDate && task.scheduledDate !== '' && task.scheduledDate !== 'anytime' && !isDone;
-  const isOverdue = Boolean(showDateBadge && task.scheduledDate && task.scheduledDate < todayStr);
-  const isToday = Boolean(showDateBadge && task.scheduledDate === todayStr);
+  const effectiveDate = occurrenceDate || task.scheduledDate;
+  const showDateBadge = !hideDateBadge && effectiveDate && effectiveDate !== '' && effectiveDate !== 'anytime' && (!isDone || Boolean(occurrenceDate));
+  const isOverdue = Boolean(showDateBadge && !isDone && effectiveDate < todayStr);
+  const isToday = Boolean(showDateBadge && effectiveDate === todayStr);
   const dateBadgeLabel = (() => {
-    if (!task.scheduledDate) return null;
-    const parts = task.scheduledDate.split('-');
+    if (!effectiveDate) return null;
+    const parts = effectiveDate.split('-');
     if (parts.length !== 3) return null;
     return `${parts[2]}.${parts[1]}`;
   })();

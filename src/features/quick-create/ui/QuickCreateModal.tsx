@@ -121,9 +121,11 @@ export const QuickCreateModal: React.FC = () => {
     }
   };
 
-  const [dragY, setDragY] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef(false);
   const startYRef = useRef(0);
+  const startTimeRef = useRef(0);
+  const currentDeltaYRef = useRef(0);
 
   useEffect(() => {
     if (isOpen) {
@@ -131,6 +133,10 @@ export const QuickCreateModal: React.FC = () => {
       setScheduledDate(getTodayStr());
       setDatePresetMode('today');
       setExcludeFromStats(false);
+      if (modalRef.current) {
+        modalRef.current.style.transform = '';
+        modalRef.current.style.transition = '';
+      }
     } else {
       unlockBodyScroll();
     }
@@ -237,28 +243,76 @@ export const QuickCreateModal: React.FC = () => {
     closeModal();
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    const clientY = e.touches[0].clientY;
-    startYRef.current = clientY;
-    setIsDragging(true);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    const clientY = e.touches[0].clientY;
-    const deltaY = clientY - startYRef.current;
-    if (deltaY > 0) setDragY(deltaY);
-  };
-
-  const handleTouchEnd = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    if (dragY > 90) {
-      setDragY(0);
-      closeModal();
-    } else {
-      setDragY(0);
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.button !== 0) return;
+    isDraggingRef.current = true;
+    startYRef.current = e.clientY;
+    startTimeRef.current = Date.now();
+    currentDeltaYRef.current = 0;
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      // ignore
     }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current || !modalRef.current) return;
+    const deltaY = e.clientY - startYRef.current;
+    if (deltaY > 0) {
+      currentDeltaYRef.current = deltaY;
+      modalRef.current.style.transform = `translateY(${deltaY}px)`;
+      modalRef.current.style.transition = 'none';
+    } else {
+      currentDeltaYRef.current = 0;
+      modalRef.current.style.transform = 'translateY(0)';
+      modalRef.current.style.transition = 'none';
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
+
+    const deltaY = currentDeltaYRef.current;
+    const elapsed = Date.now() - startTimeRef.current;
+    const velocity = deltaY / Math.max(elapsed, 1);
+
+    if (deltaY > 60 || (deltaY > 25 && velocity > 0.3)) {
+      if (modalRef.current) {
+        modalRef.current.style.transition = 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)';
+        modalRef.current.style.transform = 'translateY(100%)';
+      }
+      setTimeout(() => {
+        closeModal();
+      }, 180);
+    } else {
+      if (modalRef.current) {
+        modalRef.current.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+        modalRef.current.style.transform = 'translateY(0)';
+      }
+    }
+    currentDeltaYRef.current = 0;
+  };
+
+  const handlePointerCancel = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
+    if (modalRef.current) {
+      modalRef.current.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+      modalRef.current.style.transform = 'translateY(0)';
+    }
+    currentDeltaYRef.current = 0;
   };
 
   const catThemeColor = getCategoryColor(category);
@@ -266,19 +320,17 @@ export const QuickCreateModal: React.FC = () => {
   return (
     <div className={styles.overlay} onClick={closeModal}>
       <div
+        ref={modalRef}
         className={styles.modal}
-        style={{
-          transform: dragY > 0 ? `translateY(${dragY}px)` : undefined,
-          transition: isDragging ? 'none' : 'transform 0.22s ease-out',
-        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Swipe-Down Drag Handle */}
         <div
           className={styles.dragHandleArea}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerCancel}
         >
           <div className={styles.dragHandleBar} />
         </div>

@@ -17,6 +17,7 @@ const pathMetaMap: Record<string, PathMeta> = {
   '/today': { title: 'Сегодня', icon: '☀️' },
   '/english': { title: 'Английский', icon: '🇬🇧' },
   '/inbox': { title: 'Входящие', icon: '📥' },
+  '/backlog': { title: 'Идеи / Бэклог', icon: '💡' },
   '/calendar': { title: 'Календарь', icon: '📅' },
   '/overdue': { title: 'Просроченные', icon: '🚨' },
   '/projects': { title: 'Крупные задачи', icon: '📁' },
@@ -26,6 +27,7 @@ const pathMetaMap: Record<string, PathMeta> = {
   '/anytime': { title: 'В любое время', icon: '♾️' },
   '/statistics': { title: 'Статистика', icon: '📊' },
   '/review': { title: 'Итоги дня', icon: '🌙' },
+  '/tasks': { title: 'Все задачи', icon: '🔍' },
   '/settings': { title: 'Настройки', icon: '⚙️' },
 };
 

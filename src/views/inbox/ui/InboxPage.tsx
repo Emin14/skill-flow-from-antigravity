@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Typography, Button } from '@/shared/ui';
 import { useInboxStore, InboxItem } from '@/entities/inbox';
+import { useBacklogStore } from '@/entities/backlog';
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { InboxHeaderWidget } from '@/widgets/inbox-header/ui/InboxHeaderWidget';
@@ -14,6 +15,7 @@ type FilterType = 'all' | 'today' | 'pinned';
 
 export const InboxPage: React.FC = () => {
   const { items, isLoading, fetchItems, addItem, updateItem, togglePin, deleteItem } = useInboxStore();
+  const { addItem: addBacklogItem, items: backlogItems, fetchItems: fetchBacklogItems } = useBacklogStore();
 
   const [quickInput, setQuickInput] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
@@ -28,9 +30,58 @@ export const InboxPage: React.FC = () => {
   const [triagingItem, setTriagingItem] = useState<InboxItem | null>(null);
   const [triagingTask, setTriagingTask] = useState<Task | null>(null);
 
+  // Backlog transfer state
+  const [backlogTransferItem, setBacklogTransferItem] = useState<InboxItem | null>(null);
+  const [transferTopic, setTransferTopic] = useState('');
+  const [transferCustomTopic, setTransferCustomTopic] = useState('');
+  const [isTransferCustomTopic, setIsTransferCustomTopic] = useState(false);
+  const [transferTitle, setTransferTitle] = useState('');
+  const [isTransferring, setIsTransferring] = useState(false);
+
   useEffect(() => {
     fetchItems();
-  }, [fetchItems]);
+    fetchBacklogItems();
+  }, [fetchItems, fetchBacklogItems]);
+
+  const existingTopics = Array.from(new Set(backlogItems.map((b) => b.topic).filter(Boolean)));
+
+  const handleOpenBacklogTransfer = (item: InboxItem) => {
+    setBacklogTransferItem(item);
+    setTransferTitle(item.text);
+    if (existingTopics.length > 0) {
+      setTransferTopic(existingTopics[0]);
+      setIsTransferCustomTopic(false);
+      setTransferCustomTopic('');
+    } else {
+      setTransferTopic('');
+      setIsTransferCustomTopic(true);
+      setTransferCustomTopic('');
+    }
+  };
+
+  const handleConfirmBacklogTransfer = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!backlogTransferItem) return;
+    const finalTopic = (isTransferCustomTopic ? transferCustomTopic : transferTopic).trim();
+    if (!finalTopic || !transferTitle.trim()) return;
+
+    setIsTransferring(true);
+    try {
+      await addBacklogItem({
+        topic: finalTopic,
+        title: transferTitle.trim(),
+        description: '',
+        status: 'idea',
+        priority: 'medium',
+        tags: [],
+        link: '',
+      });
+      await deleteItem(backlogTransferItem.id);
+      setBacklogTransferItem(null);
+    } finally {
+      setIsTransferring(false);
+    }
+  };
 
   // Quick Capture (Enter -> Save)
   const handleQuickCapture = async (e: React.FormEvent) => {
@@ -170,6 +221,7 @@ export const InboxPage: React.FC = () => {
                 }
               }}
               handleTriage={handleTriage}
+              onSendToBacklog={handleOpenBacklogTransfer}
               updateItem={updateItem}
               togglePin={togglePin}
               deleteItem={deleteItem}
@@ -188,6 +240,118 @@ export const InboxPage: React.FC = () => {
         }}
         onSaveSuccess={handleSaveSuccess}
       />
+
+      {/* Backlog Transfer Modal */}
+      {backlogTransferItem && (
+        <div className={styles.transferModalOverlay} onClick={() => setBacklogTransferItem(null)}>
+          <div className={styles.transferModalCard} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.transferModalHeader}>
+              <div className={styles.transferModalTitle}>
+                <Lightbulb size={18} color="#8b5cf6" />
+                <span>Перенести в Идеи / Бэклог</span>
+              </div>
+              <button
+                type="button"
+                className={styles.transferModalCloseBtn}
+                onClick={() => setBacklogTransferItem(null)}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <form onSubmit={handleConfirmBacklogTransfer}>
+              <div className={styles.transferModalBody}>
+                <div className={styles.transferField}>
+                  <label className={styles.transferLabel}>Суть идеи / задачи:</label>
+                  <input
+                    type="text"
+                    className={styles.transferInput}
+                    value={transferTitle}
+                    onChange={(e) => setTransferTitle(e.target.value)}
+                    required
+                    placeholder="Что за идея или фича?"
+                  />
+                </div>
+
+                <div className={styles.transferField}>
+                  <label className={styles.transferLabel}>Тема / Приложение (бэклог):</label>
+                  {existingTopics.length > 0 && !isTransferCustomTopic ? (
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <select
+                        className={styles.transferSelect}
+                        value={transferTopic}
+                        onChange={(e) => {
+                          if (e.target.value === '__NEW__') {
+                            setIsTransferCustomTopic(true);
+                          } else {
+                            setTransferTopic(e.target.value);
+                          }
+                        }}
+                      >
+                        {existingTopics.map((top) => (
+                          <option key={top} value={top}>
+                            {top}
+                          </option>
+                        ))}
+                        <option value="__NEW__">+ Создать новую тему...</option>
+                      </select>
+                      <Button
+                        type="button"
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => setIsTransferCustomTopic(true)}
+                      >
+                        + Новая
+                      </Button>
+                    </div>
+                  ) : (
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <input
+                        type="text"
+                        className={styles.transferInput}
+                        placeholder="Напр: Todo List, Доставка продуктов..."
+                        value={transferCustomTopic}
+                        onChange={(e) => setTransferCustomTopic(e.target.value)}
+                        required
+                        autoFocus
+                      />
+                      {existingTopics.length > 0 && (
+                        <Button
+                          type="button"
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => setIsTransferCustomTopic(false)}
+                        >
+                          Выбрать из списка
+                        </Button>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.transferModalFooter}>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => setBacklogTransferItem(null)}
+                >
+                  Отмена
+                </Button>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="sm"
+                  disabled={isTransferring || !transferTitle.trim() || !(isTransferCustomTopic ? transferCustomTopic.trim() : transferTopic.trim())}
+                >
+                  {isTransferring ? 'Перенос...' : 'Перенести в бэклог'}
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -201,12 +365,13 @@ interface InboxItemCardProps {
   onOpenSwipe: () => void;
   onCloseSwipe: () => void;
   handleTriage: (item: InboxItem) => void;
+  onSendToBacklog: (item: InboxItem) => void;
   updateItem: (id: string, text: string) => Promise<void>;
   togglePin: (id: string) => void;
   deleteItem: (id: string) => void;
 }
 
-const SWIPE_ACTIONS_WIDTH = 210;
+const SWIPE_ACTIONS_WIDTH = 270;
 
 const InboxItemCard: React.FC<InboxItemCardProps> = ({
   item,
@@ -217,6 +382,7 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
   onOpenSwipe,
   onCloseSwipe,
   handleTriage,
+  onSendToBacklog,
   updateItem,
   togglePin,
   deleteItem,
@@ -591,6 +757,20 @@ const InboxItemCard: React.FC<InboxItemCardProps> = ({
           >
             {item.isPinned ? <PinOff size={16} /> : <Pin size={16} />}
             <span>{item.isPinned ? 'Открепить' : 'Закрепить'}</span>
+          </button>
+          <button
+            type="button"
+            className={`${styles.swipeActionBtn} ${styles.swipeActionBacklog}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (hasMovedRef.current || isSwipingActive) return;
+              onCloseSwipe();
+              onSendToBacklog(item);
+            }}
+            title="Перенести мысль в бэклог"
+          >
+            <Lightbulb size={16} />
+            <span>В бэклог</span>
           </button>
           <button
             type="button"
