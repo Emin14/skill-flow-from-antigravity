@@ -381,8 +381,9 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
         style={{
           gap: '8px',
           padding: '12px 18px',
-          maxHeight: '92vh',
+          maxHeight: '96vh',
           overflowY: 'auto',
+          scrollbarGutter: 'stable',
         }}
       >
         {/* Top Drag Handle */}
@@ -524,7 +525,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
           
           {/* Ссылки из описания (если есть) */}
           {masterTask.description && (
-            <div style={{ marginTop: '2px', marginBottom: '4px', width: '100%' }}>
+            <div style={{ marginTop: '0', width: '100%' }}>
               <LinksPreview text={masterTask.description} />
             </div>
           )}
