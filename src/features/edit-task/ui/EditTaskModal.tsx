@@ -12,6 +12,7 @@ import { getCategoryColor, getCategoryEmojiDot } from '@/shared/config/categoryC
 import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS, WEEKDAY_OPTIONS, formatWeeklyDays } from '@/shared/config/repetitionRules';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
+import { extractYoutubeTitle } from '@/shared/lib/urlUtils';
 import styles from './EditTaskModal.module.css';
 
 interface EditTaskModalProps {
@@ -138,6 +139,16 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     }
     return () => { unlockBodyScroll(); };
   }, [isOpen]);
+
+  useEffect(() => {
+    const checkLink = async () => {
+      if (link && !title) {
+        const fetchedTitle = await extractYoutubeTitle(link);
+        if (fetchedTitle && !title) setTitle(fetchedTitle);
+      }
+    };
+    checkLink();
+  }, [link]);
 
   useEffect(() => {
     if (!isOpen) return;

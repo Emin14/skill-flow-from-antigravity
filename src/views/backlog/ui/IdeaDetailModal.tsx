@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { BacklogItem, BacklogStatus, BacklogPriority } from '@/entities/backlog/model/types';
+import { extractYoutubeTitle } from '@/shared/lib/urlUtils';
 import { X, Trash2, ArrowRight, Check } from 'lucide-react';
 import styles from './IdeaDetailModal.module.css';
 
@@ -72,7 +73,15 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
     }
   }, [isOpen, item, existingTopics, initialTopic]);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    const checkLink = async () => {
+      if (link && !title) {
+        const fetchedTitle = await extractYoutubeTitle(link);
+        if (fetchedTitle && !title) setTitle(fetchedTitle);
+      }
+    };
+    checkLink();
+  }, [link]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

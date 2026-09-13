@@ -3755,11 +3755,11 @@
       {
         "id": 1,
         "partOfSpeech": "adjective",
-        "translation": "фактически существующий; действительный; подлинный; истинная скорость",
+        "translation": "фактически существующий; действительный; подлинный",
         "examples": [
           {
             "en": "actual speed",
-            "ru": "действительная скорость"
+            "ru": "действительная скорость; ав. истинная скорость"
           },
           {
             "en": "actual capital",
@@ -3778,9 +3778,7 @@
             "ru": "фактическое, существующее положение (дел)"
           }
         ],
-        "register": [
-          "авиация"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -6280,7 +6278,7 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "время после полудня; послеобеденное время; до свидания! (при расставании во второй половине дня)",
+        "translation": "время после полудня; послеобеденное время",
         "examples": [
           {
             "en": "in the afternoon",
@@ -6292,7 +6290,7 @@
           },
           {
             "en": "good afternoon!",
-            "ru": "добрый день!, здравствуйте (при встрече во второй половине дня)"
+            "ru": "добрый день!, здравствуйте (при встрече во второй половине дня); до свидания! (при расставании во второй половине дня)"
           },
           {
             "en": "in the afternoon of one's life",
@@ -12891,11 +12889,11 @@
       {
         "id": 2,
         "partOfSpeech": "verb",
-        "translation": "оценивать (по достоинству); понимать; я понимаю, в чём для вас трудность",
+        "translation": "оценивать (по достоинству); понимать",
         "examples": [
           {
             "en": "I appreciate your difficulty",
-            "ru": "я понимаю, как вам трудно"
+            "ru": "я понимаю, как вам трудно; я понимаю, в чём для вас трудность"
           }
         ],
         "register": [],
@@ -18029,7 +18027,7 @@
           },
           {
             "en": "your orders will be attended to",
-            "ru": "ваши приказания, заказы будут выполнены attendance 42"
+            "ru": "ваши приказания, заказы будут выполнены"
           }
         ],
         "register": []
@@ -20559,11 +20557,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "мешок; сумка; чемодан; перен. рассказать, выложить всё",
+        "translation": "мешок; сумка; чемодан",
         "examples": [
           {
             "en": "to empty the bag",
-            "ru": "опорожнить мешок, сумку"
+            "ru": "опорожнить мешок, сумку; перен. рассказать, выложить всё"
           }
         ],
         "register": [],
@@ -24172,7 +24170,7 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "ведь",
+        "translation": "медведь",
         "examples": [
           {
             "en": "polar bear",
@@ -24186,9 +24184,7 @@
             ]
           }
         ],
-        "register": [
-          "медицинское"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -31058,8 +31054,13 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "(р. р. blowed) проклинать; I'll be blowed",
-        "examples": [],
+        "translation": "(р. р. blowed) проклинать",
+        "examples": [
+          {
+            "en": "I'll be blowed if I know",
+            "ru": "провалиться мне на этом месте, если я знаю"
+          }
+        ],
         "register": [
           "жаргон"
         ],
@@ -34253,7 +34254,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "дно, днище; перен. быть неистощимым, неисчерпаемым",
+        "translation": "дно, днище",
         "examples": [
           {
             "en": "bottom up",
@@ -34261,7 +34262,7 @@
           },
           {
             "en": "to have no bottom",
-            "ru": "быть бездна, не иметь дна"
+            "ru": "быть без дна, не иметь дна; перен. быть неистощимым, неисчерпаемым"
           }
         ],
         "register": [],
@@ -42282,7 +42283,7 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "аппарат",
+        "translation": "фотоаппарат",
         "examples": [],
         "register": [
           "фотография"
@@ -42292,7 +42293,7 @@
       {
         "id": 2,
         "partOfSpeech": "noun",
-        "translation": "аппарат, кинокамера",
+        "translation": "киноаппарат, кинокамера",
         "examples": [],
         "register": [
           "кинематография"
@@ -42417,14 +42418,6 @@
         "translation": "убить, уничтожить",
         "examples": [],
         "register": []
-      },
-      {
-        "phrase": "to take into camp",
-        "partOfSpeech": "noun",
-        "translation": "убить, уничтожить",
-        "examples": [],
-        "register": [],
-        "id": 3
       }
     ]
   },
@@ -44488,11 +44481,11 @@
       {
         "id": 2,
         "partOfSpeech": "adjective",
-        "translation": "осторожный; вам следует принять меры предосторожности",
+        "translation": "осторожный",
         "examples": [
           {
             "en": "you can't be too careful",
-            "ru": "вам надо быть начеку"
+            "ru": "вам надо быть начеку; вам следует принять меры предосторожности"
           }
         ],
         "register": [],
@@ -45076,7 +45069,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "содержать, заключать; уносить; увлекать; сносить (ветром)",
+        "translation": "содержать, заключать",
         "examples": [
           {
             "en": "the book carries many tables",
@@ -45088,11 +45081,7 @@
           },
           {
             "en": "to carry conviction",
-            "ru": "убеждать, быть убедительным carry away"
-          },
-          {
-            "en": "to get carried away (by)",
-            "ru": "увлечься"
+            "ru": "убеждать, быть убедительным"
           },
           {
             "en": "carry back",
@@ -45103,7 +45092,7 @@
             "ru": "напоминать кому-либо прошлое"
           },
           {
-            "en": "to carry it off spiendidiy",
+            "en": "to carry it off splendidly",
             "ru": "великолепно справиться с этим"
           },
           {
@@ -45168,8 +45157,13 @@
         "id": 1,
         "phrase": "carry away",
         "partOfSpeech": "verb",
-        "translation": "уносить; увлекать",
-        "examples": [],
+        "translation": "уносить; увлекать; сносить (ветром)",
+        "examples": [
+          {
+            "en": "to get carried away (by)",
+            "ru": "увлечься"
+          }
+        ],
         "register": []
       },
       {
@@ -48248,7 +48242,7 @@
         "examples": [
           {
             "en": "peremptory challenge",
-            "ru": "отвод без указания причины (в уголовных change делах)"
+            "ru": "отвод без указания причины (в уголовных делах)"
           }
         ],
         "register": [
@@ -49192,15 +49186,15 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "глава (книги); перен. до самого конца; перен. точная ссылка на источник",
+        "translation": "глава (книги)",
         "examples": [
           {
             "en": "to the end of the chapter",
-            "ru": "до конца главы"
+            "ru": "до конца главы; перен. до самого конца"
           },
           {
             "en": "chapter and verse",
-            "ru": "глава и стих Библии"
+            "ru": "глава и стих Библии; перен. точная ссылка на источник"
           }
         ],
         "register": [],
@@ -51226,11 +51220,11 @@
       {
         "id": 3,
         "partOfSpeech": "noun",
-        "translation": "ребёнок; (неопытный) юнец; она уже не первой молодости",
+        "translation": "ребёнок; (неопытный) юнец",
         "examples": [
           {
             "en": "she is no chicken",
-            "ru": "она уже не ребёнок"
+            "ru": "она уже не ребёнок; она уже не первой молодости"
           },
           {
             "en": "spring chicken",
@@ -69918,7 +69912,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "угол, уголок; перен. совсем близко, рядом",
+        "translation": "угол, уголок",
         "examples": [
           {
             "en": "to cut off a corner",
@@ -69926,7 +69920,7 @@
           },
           {
             "en": "round the corner",
-            "ru": "за углом"
+            "ru": "за углом; перен. совсем близко, рядом"
           }
         ],
         "register": [
@@ -86214,11 +86208,11 @@
       {
         "id": 6,
         "partOfSpeech": "verb",
-        "translation": "проявлять(ся); он стал часто задумываться",
+        "translation": "проявлять(ся)",
         "examples": [
           {
             "en": "he has developed a tendency to brood",
-            "ru": "у него появилась привычка размышлять"
+            "ru": "у него появилась привычка размышлять; он стал часто задумываться"
           }
         ],
         "register": []
@@ -115578,7 +115572,7 @@
         "examples": [
           {
             "en": "my attempt has failed",
-            "ru": "моя faithfulness попытка не удалась"
+            "ru": "моя попытка не удалась"
           }
         ],
         "register": [],
@@ -118879,8 +118873,8 @@
         "translation": "недостаток, дефект",
         "examples": [
           {
-            "en": "fault with",
-            "ru": "smb., smth.; придираться к кому-либо, к чему-либо; бранить кого-либо; жаловаться на что-либо"
+            "en": "to find fault with smb., smth.",
+            "ru": "придираться к кому-либо, к чему-либо; бранить кого-либо; жаловаться на что-либо"
           }
         ],
         "register": [],
@@ -122470,7 +122464,7 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "дело",
+        "translation": "финансовое дело",
         "examples": [],
         "register": [
           "финансовое"
@@ -127070,9 +127064,11 @@
         "examples": [],
         "register": [],
         "primary": true
-      },
+      }
+    ],
+    "phrases": [
       {
-        "id": 2,
+        "id": 1,
         "partOfSpeech": "noun",
         "translation": "ложка дёгтя в бочке мёда",
         "examples": [],
@@ -127080,367 +127076,26 @@
           "разговорное",
           "сельскохозяйственное"
         ],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "самомнения ему не занимать стать",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "noun",
-        "translation": "он не дурак, его не проведёшь",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "ширинка (у брюк)",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "откидное полотнище палатки",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
-        "translation": "колосники",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "noun",
-        "translation": "полёт; расстояние полёта",
-        "examples": [
-          {
-            "en": "on the fly",
-            "ru": "на лету"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "noun",
-        "translation": "балансир",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "noun",
-        "translation": "крыло (ветряка)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "noun",
-        "translation": "длина (флага)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "noun",
-        "translation": "край (флага)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "verb",
-        "translation": "летать, пролетать",
-        "examples": [
-          {
-            "en": "to fly across the continent",
-            "ru": "лететь через (весь) континент"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "verb",
-        "translation": "пилотировать (самолёт)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "verb",
-        "translation": "переправлять пассажиров (или грузы) по воздуху",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 16,
-        "partOfSpeech": "verb",
-        "translation": "развевать(ся)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 17,
-        "partOfSpeech": "verb",
-        "translation": "улетать, исчезать (также перен.)",
-        "examples": [
-          {
-            "en": "it is late, we must fly",
-            "ru": "уже поздно, нам пора убираться"
-          },
-          {
-            "en": "the bird has flown",
-            "ru": "«птичка улетела», преступник скрылся"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 18,
-        "partOfSpeech": "verb",
-        "translation": "спасаться бегством",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 19,
-        "partOfSpeech": "verb",
-        "translation": "спешить",
-        "examples": [
-          {
-            "en": "the children flew to meet their mother",
-            "ru": "дети бросились, кинулись навстречу к матери"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 20,
-        "partOfSpeech": "verb",
-        "translation": "гонять голубей",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 21,
-        "partOfSpeech": "verb",
-        "translation": "нападать; набрасываться с бранью",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 22,
-        "partOfSpeech": "verb",
-        "translation": "соскочить с рукоятки (о молотке); перен. выйти из себя, вспылить",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 23,
-        "partOfSpeech": "verb",
-        "translation": "он как с цепи сорвался",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 24,
-        "partOfSpeech": "verb",
-        "translation": "распахнуть(ся)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 25,
-        "partOfSpeech": "verb",
-        "translation": "высоко заноситься, быть честолюбивым",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 26,
-        "partOfSpeech": "verb",
-        "translation": "нести флаг",
-        "examples": [],
-        "register": [
-          "морской термин"
-        ]
-      },
-      {
-        "id": 27,
-        "partOfSpeech": "verb",
-        "translation": "плавать под флагом",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 28,
-        "partOfSpeech": "verb",
-        "translation": "стекло разбилось вдребезги",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 29,
-        "partOfSpeech": "verb",
-        "translation": "бросать вызов кому-либо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 30,
-        "partOfSpeech": "verb",
-        "translation": "открыто не повиноваться кому-либо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 31,
-        "partOfSpeech": "verb",
-        "translation": "не считаться с кем-либо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 32,
-        "partOfSpeech": "verb",
-        "translation": "искушать судьбу",
-        "examples": [],
-        "register": [
-          "искусство"
-        ]
-      },
-      {
-        "id": 33,
-        "partOfSpeech": "verb",
-        "translation": "швырять(ся) деньгами",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 34,
-        "partOfSpeech": "verb",
-        "translation": "промотать деньги",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 35,
-        "partOfSpeech": "verb",
-        "translation": "стравить (противников), раззадорить",
-        "examples": [],
-        "register": [
-          "строительное"
-        ]
-      },
-      {
-        "id": 36,
-        "partOfSpeech": "verb",
-        "translation": "сбить кого-либо с ног, свалить кого-либо ударом на землю",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 37,
-        "partOfSpeech": "verb",
-        "translation": "расшвырять вещи",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 38,
-        "partOfSpeech": "verb",
-        "translation": "взяться за оружие",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 39,
-        "partOfSpeech": "verb",
-        "translation": "начать войну",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 40,
-        "partOfSpeech": "verb",
-        "translation": "броситься в чьи-либо объятия",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 41,
-        "partOfSpeech": "adjective",
-        "translation": "знающий, умный, осмотрительный",
-        "examples": [],
-        "register": []
-      }
-    ],
-    "phrases": [
-      {
-        "id": 1,
-        "phrase": "fly in",
-        "partOfSpeech": "verb",
-        "translation": "доставлять по воздуху",
-        "examples": [],
-        "register": []
+        "primary": true,
+        "phrase": "a fly in the ointment"
       },
       {
         "id": 2,
-        "phrase": "fly into",
-        "partOfSpeech": "verb",
-        "translation": "прийти (в ярость, в восторг); влететь (в комнату и т. п.)",
+        "partOfSpeech": "noun",
+        "translation": "самомнения ему не занимать стать",
         "examples": [],
-        "register": []
+        "register": [],
+        "phrase": "a fly on the wheel"
       },
       {
         "id": 3,
-        "phrase": "fly off",
-        "partOfSpeech": "verb",
-        "translation": "поспешно убегать; уклоняться; соскакивать, отлетать",
+        "partOfSpeech": "sentence",
+        "translation": "он не дурак, его не проведёшь",
         "examples": [],
-        "register": []
-      },
-      {
-        "id": 4,
-        "phrase": "fly out",
-        "partOfSpeech": "verb",
-        "translation": "вспылить, рассердиться (at — на)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 5,
-        "phrase": "fly over",
-        "partOfSpeech": "verb",
-        "translation": "перепрыгнуть, перемахнуть через",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 6,
-        "phrase": "fly round",
-        "partOfSpeech": "verb",
-        "translation": "кружиться, крутиться (о колесе)",
-        "examples": [],
-        "register": []
+        "register": [],
+        "phrase": "there are no flies on him"
       }
-    ],
-    "forms": {
-      "past_simple": "flew",
-      "past_participle": "flown"
-    }
+    ]
   },
   {
     "word": "fly2",
@@ -127466,6 +127121,10 @@
           {
             "en": "to fly across the continent",
             "ru": "лететь через весь континент"
+          },
+          {
+            "en": "to fly across the continent",
+            "ru": "лететь через (весь) континент"
           }
         ],
         "primary": true
@@ -127499,7 +127158,7 @@
       {
         "id": 4,
         "partOfSpeech": "verb",
-        "translation": "развеваться (о флаге)",
+        "translation": "развевать(ся); развеваться (о флаге)",
         "register": [],
         "examples": [
           {
@@ -127507,82 +127166,14 @@
             "ru": "флаги развевались"
           }
         ]
-      }
-    ],
-    "phrases": [
-      {
-        "id": 1,
-        "phrase": "fly away",
-        "partOfSpeech": "verb",
-        "translation": "улетать",
-        "register": [],
-        "examples": [
-          {
-            "en": "the bird flew away",
-            "ru": "птица улетела"
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "phrase": "fly into a rage",
-        "partOfSpeech": "verb",
-        "translation": "прийти в ярость, вспылить",
-        "register": [],
-        "examples": []
-      }
-    ],
-    "forms": {
-      "past_simple": "flew",
-      "past_participle": "flown"
-    }
-  },
-  {
-    "word": "fly3",
-    "frequency_rank": 1341,
-    "cefr": "c1",
-    "phon_br": "/flaɪ/",
-    "phon_n_am": "/flaɪ/",
-    "lists": {
-      "oxford5000": true
-    },
-    "meanings": [
-      {
-        "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "муха",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 2,
-        "partOfSpeech": "noun",
-        "translation": "ложка дёгтя в бочке мёда",
-        "examples": [],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "самомнения ему не занимать стать",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "noun",
-        "translation": "он не дурак, его не проведёшь",
-        "examples": [],
-        "register": []
       },
       {
         "id": 5,
         "partOfSpeech": "noun",
         "translation": "ширинка (у брюк)",
         "examples": [],
-        "register": []
+        "register": [],
+        "primary": true
       },
       {
         "id": 6,
@@ -127641,38 +127232,12 @@
       {
         "id": 13,
         "partOfSpeech": "verb",
-        "translation": "летать, пролетать",
-        "examples": [
-          {
-            "en": "to fly across the continent",
-            "ru": "лететь через (весь) континент"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "verb",
-        "translation": "пилотировать (самолёт)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "verb",
         "translation": "переправлять пассажиров (или грузы) по воздуху",
         "examples": [],
         "register": []
       },
       {
-        "id": 16,
-        "partOfSpeech": "verb",
-        "translation": "развевать(ся)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 17,
+        "id": 14,
         "partOfSpeech": "verb",
         "translation": "улетать, исчезать (также перен.)",
         "examples": [
@@ -127688,14 +127253,14 @@
         "register": []
       },
       {
-        "id": 18,
+        "id": 15,
         "partOfSpeech": "verb",
         "translation": "спасаться бегством",
         "examples": [],
         "register": []
       },
       {
-        "id": 19,
+        "id": 16,
         "partOfSpeech": "verb",
         "translation": "спешить",
         "examples": [
@@ -127705,171 +127270,32 @@
           }
         ],
         "register": []
-      },
-      {
-        "id": 20,
-        "partOfSpeech": "verb",
-        "translation": "гонять голубей",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 21,
-        "partOfSpeech": "verb",
-        "translation": "нападать; набрасываться с бранью",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 22,
-        "partOfSpeech": "verb",
-        "translation": "соскочить с рукоятки (о молотке); перен. выйти из себя, вспылить",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 23,
-        "partOfSpeech": "verb",
-        "translation": "он как с цепи сорвался",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 24,
-        "partOfSpeech": "verb",
-        "translation": "распахнуть(ся)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 25,
-        "partOfSpeech": "verb",
-        "translation": "высоко заноситься, быть честолюбивым",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 26,
-        "partOfSpeech": "verb",
-        "translation": "нести флаг",
-        "examples": [],
-        "register": [
-          "морской термин"
-        ]
-      },
-      {
-        "id": 27,
-        "partOfSpeech": "verb",
-        "translation": "плавать под флагом",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 28,
-        "partOfSpeech": "verb",
-        "translation": "стекло разбилось вдребезги",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 29,
-        "partOfSpeech": "verb",
-        "translation": "бросать вызов кому-либо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 30,
-        "partOfSpeech": "verb",
-        "translation": "открыто не повиноваться кому-либо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 31,
-        "partOfSpeech": "verb",
-        "translation": "не считаться с кем-либо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 32,
-        "partOfSpeech": "verb",
-        "translation": "искушать судьбу",
-        "examples": [],
-        "register": [
-          "искусство"
-        ]
-      },
-      {
-        "id": 33,
-        "partOfSpeech": "verb",
-        "translation": "швырять(ся) деньгами",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 34,
-        "partOfSpeech": "verb",
-        "translation": "промотать деньги",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 35,
-        "partOfSpeech": "verb",
-        "translation": "стравить (противников), раззадорить",
-        "examples": [],
-        "register": [
-          "строительное"
-        ]
-      },
-      {
-        "id": 36,
-        "partOfSpeech": "verb",
-        "translation": "сбить кого-либо с ног, свалить кого-либо ударом на землю",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 37,
-        "partOfSpeech": "verb",
-        "translation": "расшвырять вещи",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 38,
-        "partOfSpeech": "verb",
-        "translation": "взяться за оружие",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 39,
-        "partOfSpeech": "verb",
-        "translation": "начать войну",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 40,
-        "partOfSpeech": "verb",
-        "translation": "броситься в чьи-либо объятия",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 41,
-        "partOfSpeech": "adjective",
-        "translation": "знающий, умный, осмотрительный",
-        "examples": [],
-        "register": []
       }
     ],
     "phrases": [
       {
         "id": 1,
+        "phrase": "fly away",
+        "partOfSpeech": "verb",
+        "translation": "улетать",
+        "register": [],
+        "examples": [
+          {
+            "en": "the bird flew away",
+            "ru": "птица улетела"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "phrase": "fly into a rage",
+        "partOfSpeech": "verb",
+        "translation": "прийти в ярость, вспылить",
+        "register": [],
+        "examples": []
+      },
+      {
+        "id": 3,
         "phrase": "fly in",
         "partOfSpeech": "verb",
         "translation": "доставлять по воздуху",
@@ -127877,7 +127303,7 @@
         "register": []
       },
       {
-        "id": 2,
+        "id": 4,
         "phrase": "fly into",
         "partOfSpeech": "verb",
         "translation": "прийти (в ярость, в восторг); влететь (в комнату и т. п.)",
@@ -127885,7 +127311,7 @@
         "register": []
       },
       {
-        "id": 3,
+        "id": 5,
         "phrase": "fly off",
         "partOfSpeech": "verb",
         "translation": "поспешно убегать; уклоняться; соскакивать, отлетать",
@@ -127893,7 +127319,7 @@
         "register": []
       },
       {
-        "id": 4,
+        "id": 6,
         "phrase": "fly out",
         "partOfSpeech": "verb",
         "translation": "вспылить, рассердиться (at — на)",
@@ -127901,7 +127327,7 @@
         "register": []
       },
       {
-        "id": 5,
+        "id": 7,
         "phrase": "fly over",
         "partOfSpeech": "verb",
         "translation": "перепрыгнуть, перемахнуть через",
@@ -127909,18 +127335,170 @@
         "register": []
       },
       {
-        "id": 6,
+        "id": 8,
         "phrase": "fly round",
         "partOfSpeech": "verb",
         "translation": "кружиться, крутиться (о колесе)",
         "examples": [],
         "register": []
+      },
+      {
+        "id": 9,
+        "partOfSpeech": "verb",
+        "translation": "гонять голубей",
+        "examples": [],
+        "register": [],
+        "phrase": "to fly pigeons"
+      },
+      {
+        "id": 10,
+        "partOfSpeech": "verb",
+        "translation": "нападать; набрасываться с бранью",
+        "examples": [],
+        "register": [],
+        "phrase": "fly at"
+      },
+      {
+        "id": 11,
+        "partOfSpeech": "verb",
+        "translation": "соскочить с рукоятки (о молотке); перен. выйти из себя, вспылить",
+        "examples": [
+          {
+            "en": "he flew off the handle",
+            "ru": "он как с цепи сорвался"
+          }
+        ],
+        "register": [],
+        "phrase": "to fly off the handle"
+      },
+      {
+        "id": 12,
+        "partOfSpeech": "verb",
+        "translation": "распахнуть(ся)",
+        "examples": [],
+        "register": [],
+        "phrase": "to fly open"
+      },
+      {
+        "id": 13,
+        "partOfSpeech": "verb",
+        "translation": "высоко заноситься, быть честолюбивым",
+        "examples": [],
+        "register": [],
+        "phrase": "to fly high"
+      },
+      {
+        "id": 14,
+        "partOfSpeech": "verb",
+        "translation": "нести флаг; плавать под флагом",
+        "examples": [],
+        "register": [
+          "морской термин"
+        ],
+        "phrase": "to fly the flag"
+      },
+      {
+        "id": 15,
+        "partOfSpeech": "sentence",
+        "translation": "стекло разбилось вдребезги",
+        "examples": [],
+        "register": [],
+        "phrase": "the glass flew into pieces"
+      },
+      {
+        "id": 16,
+        "partOfSpeech": "verb",
+        "translation": "бросать вызов кому-либо; открыто не повиноваться кому-либо; не считаться с кем-либо",
+        "examples": [],
+        "register": [],
+        "phrase": "to fly in the face of smb."
+      },
+      {
+        "id": 17,
+        "partOfSpeech": "verb",
+        "translation": "искушать судьбу",
+        "examples": [],
+        "register": [
+          "искусство"
+        ],
+        "phrase": "to fly in the face of Providence"
+      },
+      {
+        "id": 18,
+        "partOfSpeech": "verb",
+        "translation": "швырять(ся) деньгами; промотать деньги",
+        "examples": [],
+        "register": [],
+        "phrase": "to make the money fly"
+      },
+      {
+        "id": 19,
+        "partOfSpeech": "verb",
+        "translation": "стравить (противников), раззадорить",
+        "examples": [],
+        "register": [
+          "строительное"
+        ],
+        "phrase": "to make the feathers fly"
+      },
+      {
+        "id": 20,
+        "partOfSpeech": "verb",
+        "translation": "сбить кого-либо с ног, свалить кого-либо ударом на землю",
+        "examples": [],
+        "register": [],
+        "phrase": "to send smb. flying"
+      },
+      {
+        "id": 21,
+        "partOfSpeech": "verb",
+        "translation": "расшвырять вещи",
+        "examples": [],
+        "register": [],
+        "phrase": "to send things flying"
+      },
+      {
+        "id": 22,
+        "partOfSpeech": "verb",
+        "translation": "взяться за оружие; начать войну",
+        "examples": [],
+        "register": [],
+        "phrase": "to fly to arms"
+      },
+      {
+        "id": 23,
+        "partOfSpeech": "verb",
+        "translation": "броситься в чьи-либо объятия",
+        "examples": [],
+        "register": [],
+        "phrase": "to fly to smb.'s arms"
       }
     ],
     "forms": {
       "past_simple": "flew",
       "past_participle": "flown"
     }
+  },
+  {
+    "word": "fly3",
+    "frequency_rank": 1341,
+    "cefr": "c1",
+    "phon_br": "/flaɪ/",
+    "phon_n_am": "/flaɪ/",
+    "lists": {
+      "oxford5000": true
+    },
+    "meanings": [
+      {
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "знающий, умный, осмотрительный",
+        "examples": [],
+        "register": [],
+        "primary": true
+      }
+    ],
+    "phrases": []
   },
   {
     "word": "flying",
@@ -131232,11 +130810,11 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "фундамент; основание, основа; положить начало чему-либо",
+        "translation": "фундамент; основание, основа",
         "examples": [
           {
             "en": "to lay the foundation(s) of smth.",
-            "ru": "заложить фундамент чего-либо"
+            "ru": "заложить фундамент чего-либо; положить начало чему-либо"
           }
         ],
         "register": [],
@@ -135440,15 +135018,17 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "достигать, добираться; нагонять; вторгаться, захватывать постепенно часть суши (о море); добиться (чьего-либо расположения)",
+        "translation": "достигать, добираться",
         "examples": [
           {
             "en": "to gain touch",
-            "ru": "установить соприкосновение (с противником)"
+            "ru": "установить соприкосновение (с противником)",
+            "register": "военное"
           },
           {
             "en": "to gain the rear of the enemy",
-            "ru": "выйти в тыл противника gain on"
+            "ru": "выйти в тыл противника",
+            "register": "военное"
           },
           {
             "en": "gain over",
@@ -135459,9 +135039,7 @@
             "ru": "= gain on"
           }
         ],
-        "register": [
-          "военное"
-        ],
+        "register": [],
         "id": 13
       }
     ],
@@ -135472,9 +135050,7 @@
         "partOfSpeech": "verb",
         "translation": "нагонять; вторгаться, захватывать постепенно часть суши (о море); добиться (чьего-либо расположения)",
         "examples": [],
-        "register": [
-          "военное"
-        ]
+        "register": []
       },
       {
         "id": 2,
@@ -144819,11 +144395,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "бдительность; осторожность; быть застигнутым врасплох",
+        "translation": "бдительность; осторожность",
         "examples": [
           {
             "en": "to be off guard",
-            "ru": "быть недостаточно бдительным"
+            "ru": "быть недостаточно бдительным; быть застигнутым врасплох"
           },
           {
             "en": "to be on (one's) guard",
@@ -151797,7 +151373,7 @@
             "ru": "она это сделала сама"
           },
           {
-            "en": "(all) by herself ()",
+            "en": "(all) by herself",
             "ru": "(совсем) одна, без чьей-либо помощи"
           }
         ],
@@ -151816,16 +151392,12 @@
           {
             "en": "she came to herself",
             "ru": "она пришла в себя"
+          },
+          {
+            "en": "she is not herself today",
+            "ru": "сегодня она сама не своя"
           }
         ],
-        "register": [],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "pronoun",
-        "translation": "сегодня она сама не своя",
-        "examples": [],
         "register": [],
         "primary": true
       }
@@ -151939,8 +151511,8 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "noun",
-        "translation": "от",
+        "partOfSpeech": "adjective",
+        "translation": "спрятанный; скрытый",
         "examples": [],
         "register": [],
         "primary": true
@@ -152432,11 +152004,22 @@
     "meanings": [
       {
         "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "привлекающий большое внимание общественности",
+        "examples": [],
+        "register": [],
+        "primary": true
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
         "partOfSpeech": "noun",
         "translation": "желание быть на виду, показать себя",
         "examples": [],
         "register": [],
-        "primary": true
+        "primary": true,
+        "phrase": "high profile"
       }
     ]
   },
@@ -155487,11 +155070,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "лошадь; конь; ехать верхом",
+        "translation": "лошадь; конь",
         "examples": [
           {
             "en": "to take horse",
-            "ru": "сесть на лошадь"
+            "ru": "сесть на лошадь; ехать верхом"
           },
           {
             "en": "riding horse",
@@ -170717,11 +170300,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "шутка; острота; это не шутка",
+        "translation": "шутка; острота",
         "examples": [
           {
             "en": "it is no joke",
-            "ru": "дело серьёзное"
+            "ru": "дело серьёзное; это не шутка"
           },
           {
             "en": "to have one's joke, to make a joke",
@@ -180761,15 +180344,15 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "нога (от бедра до ступни); устоять; перен. помочь кому-либо преодолеть препятствие, трудности",
+        "translation": "нога (от бедра до ступни)",
         "examples": [
           {
             "en": "to keep one's legs",
-            "ru": "прочно держаться на ногах"
+            "ru": "прочно держаться на ногах; устоять"
           },
           {
             "en": "to give smb. a leg up",
-            "ru": "помочь кому-либо взобраться, подсадить кого-либо"
+            "ru": "помочь кому-либо взобраться, подсадить кого-либо; перен. помочь кому-либо преодолеть препятствие, трудности"
           },
           {
             "en": "to run off one's legs",
@@ -181440,11 +181023,11 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "длина; врастяжку",
+        "translation": "длина",
         "examples": [
           {
             "en": "at full length",
-            "ru": "вовсю длину"
+            "ru": "во всю длину; врастяжку; со всеми подробностями"
           },
           {
             "en": "the horse won by three lengths",
@@ -181452,7 +181035,7 @@
           },
           {
             "en": "to fall all one's length",
-            "ru": "растянуться во весь рост со всеми подробностями"
+            "ru": "растянуться во весь рост"
           }
         ],
         "register": [],
@@ -182973,8 +182556,8 @@
             "ru": "завираться"
           },
           {
-            "en": "lie in",
-            "ru": "one's throat (или teeth) бесстыдно лгать"
+            "en": "to lie in one's throat (or teeth)",
+            "ru": "бесстыдно лгать"
           }
         ],
         "register": [],
@@ -184580,7 +184163,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "граница, предел; положить конец; переходить все границы",
+        "translation": "граница, предел",
         "examples": [
           {
             "en": "superior limit",
@@ -184592,7 +184175,7 @@
           },
           {
             "en": "to set the limit",
-            "ru": "устанавливать предел"
+            "ru": "устанавливать предел; положить конец"
           },
           {
             "en": "to go beyond the limit",
@@ -184600,7 +184183,7 @@
           },
           {
             "en": "to go the limit",
-            "ru": "впадать в крайность"
+            "ru": "впадать в крайность; переходить все границы"
           },
           {
             "en": "she is the limit",
@@ -186087,7 +185670,7 @@
       {
         "id": 1,
         "partOfSpeech": "adverb",
-        "translation": "буквальный, дословный",
+        "translation": "буквально, дословно",
         "examples": [],
         "register": [],
         "primary": true
@@ -186095,7 +185678,7 @@
       {
         "id": 2,
         "partOfSpeech": "adverb",
-        "translation": "точный",
+        "translation": "точно, в буквальном смысле",
         "examples": [],
         "register": [],
         "primary": true
@@ -187083,7 +186666,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "заряжать (оружие, плёнку в кинокаме- location ру)",
+        "translation": "заряжать (оружие, плёнку в кинокамеру)",
         "examples": [
           {
             "en": "load quickly!",
@@ -193838,11 +193421,9 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "а (географическая или звёздного неба)",
+        "translation": "карта (географическая или звёздного неба)",
         "examples": [],
-        "register": [
-          "карточный термин"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -193877,7 +193458,7 @@
       {
         "id": 1,
         "phrase": "map out",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "составлять план, планировать",
         "examples": [],
         "register": []
@@ -193908,7 +193489,7 @@
       },
       {
         "phrase": "to put on the map",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "прославить, сделать известным",
         "examples": [],
         "register": [],
@@ -193916,7 +193497,7 @@
       },
       {
         "phrase": "to put oneself on the map",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "появиться",
         "examples": [],
         "register": [],
@@ -199681,11 +199262,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "беспорядок; кутерьма, путаница; напортить; провалить всё дело",
+        "translation": "беспорядок; кутерьма, путаница",
         "examples": [
           {
             "en": "to make a mess of things",
-            "ru": "напутать"
+            "ru": "напутать; напортить; провалить всё дело"
           }
         ],
         "register": [],
@@ -200785,7 +200366,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "перехватывать (телеграфные, телефонные сообщения) milk and",
+        "translation": "перехватывать (телеграфные, телефонные сообщения)",
         "examples": [],
         "register": [
           "разговорное"
@@ -205067,7 +204648,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "движение; привести в движение (тж. перен.)",
+        "translation": "движение",
         "examples": [
           {
             "en": "in motion",
@@ -205075,7 +204656,7 @@
           },
           {
             "en": "to set (or to put) in motion",
-            "ru": "пустить"
+            "ru": "пустить; привести в движение (тж. перен.)"
           }
         ],
         "register": [],
@@ -209584,7 +209165,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "шея; получить хорошую взбучку; пострадать",
+        "translation": "шея",
         "examples": [
           {
             "en": "to break one's neck",
@@ -209592,7 +209173,7 @@
           },
           {
             "en": "to get it in the neck",
-            "ru": "получить по шее"
+            "ru": "получить по шее; получить хорошую взбучку; пострадать"
           }
         ],
         "register": [
@@ -210593,19 +210174,17 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "adjective",
-        "translation": "никто; вы оба не знаете",
+        "partOfSpeech": "pronoun",
+        "translation": "ни один (из двух); никто",
         "examples": [
           {
-            "en": "neg.",
-            "ru": "ни один (из двух)"
-          },
-          {
             "en": "neither of you knows",
-            "ru": "никто из вас не знает"
+            "ru": "никто из вас не знает; вы оба не знаете"
           }
         ],
-        "register": [],
+        "register": [
+          "отрицательное местоимение"
+        ],
         "id": 1,
         "primary": true
       },
@@ -215852,7 +215431,7 @@
         "id": 1,
         "phrase": "distance no object",
         "partOfSpeech": "noun",
-        "translation": "расстояние не имеет значения (в объвлениях) object 534",
+        "translation": "расстояние не имеет значения (в объявлениях)",
         "examples": [],
         "register": []
       }
@@ -223082,7 +222661,7 @@
     "meanings": [
       {
         "partOfSpeech": "adverb",
-        "translation": "иначе, иным способом; иным образом; подругому",
+        "translation": "иначе, иным способом; иным образом; по-другому",
         "examples": [
           {
             "en": "unless otherwise qualified",
@@ -248833,7 +248412,7 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "первоначальный, первичный; prime cost.-эк. себестоимость; перен. душа какого-либо дела",
+        "translation": "первоначальный, первичный",
         "examples": [
           {
             "en": "prime cause",
@@ -248841,11 +248420,16 @@
           },
           {
             "en": "prime mover",
-            "ru": "первичный двигатель"
+            "ru": "первичный двигатель; перен. душа какого-либо дела"
           },
           {
             "en": "prime number",
             "ru": "простое число"
+          },
+          {
+            "en": "prime cost",
+            "ru": "себестоимость",
+            "register": "политическая экономия"
           }
         ],
         "register": [
@@ -259695,11 +259279,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "дождь; перен. чтобы то ни было; при всех условиях",
+        "translation": "дождь",
         "examples": [
           {
             "en": "rain or shine",
-            "ru": "при любой погоде"
+            "ru": "при любой погоде; перен. что бы то ни было; при всех условиях"
           },
           {
             "en": "to be caught in the rain",
@@ -259782,7 +259366,7 @@
         "id": 2,
         "phrase": "it never rains but it pours",
         "partOfSpeech": "noun",
-        "translation": "= пришла беда — отворяй ворота rainbow 639",
+        "translation": "= пришла беда — отворяй ворота",
         "examples": [],
         "register": [
           "пословица"
@@ -269255,14 +268839,6 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "и p. p. от rend",
-        "examples": [],
-        "register": [],
-        "id": 1,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "noun",
         "translation": "дыра, прореха; прорезь; щель",
         "examples": [],
         "register": [],
@@ -269367,7 +268943,14 @@
         ],
         "id": 13
       }
-    ]
+    ],
+    "form_of": {
+      "lemma": "rend",
+      "types": [
+        "past_simple",
+        "past_participle"
+      ]
+    }
   },
   {
     "word": "rental",
@@ -279900,8 +279483,8 @@
     "word": "row2",
     "frequency_rank": 1726,
     "cefr": "a2",
-    "phon_br": "/rəʊ/",
-    "phon_n_am": "/rəʊ/",
+    "phon_br": "/raʊ/",
+    "phon_n_am": "/raʊ/",
     "lists": {
       "oxford3000": true
     },
@@ -279918,6 +279501,14 @@
           {
             "en": "to make (or kick up) a row",
             "ru": "поднимать шум, устраивать скандал"
+          },
+          {
+            "en": "to make a row",
+            "ru": "поднимать скандал, шум; протестовать"
+          },
+          {
+            "en": "what's the row?",
+            "ru": "в чём дело?"
           }
         ],
         "register": [
@@ -279928,11 +279519,15 @@
       {
         "id": 2,
         "partOfSpeech": "noun",
-        "translation": "ссора, перебранка; драка, скандал",
+        "translation": "ссора, перебранка; спор; драка, скандал; свалка",
         "examples": [
           {
             "en": "to kick up a row",
             "ru": "поднять скандал, учинить шум"
+          },
+          {
+            "en": "to have a row with smb",
+            "ru": "поссориться с кем-либо"
           }
         ],
         "register": [
@@ -279949,6 +279544,25 @@
           "разговорное"
         ],
         "primary": true
+      },
+      {
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "нагоняй",
+        "examples": [
+          {
+            "en": "to get into a row",
+            "ru": "получить нагоняй"
+          }
+        ],
+        "register": []
+      },
+      {
+        "id": 5,
+        "partOfSpeech": "verb",
+        "translation": "делать выговор; отчитывать",
+        "examples": [],
+        "register": []
       }
     ]
   },
@@ -279973,46 +279587,9 @@
         "primary": true
       },
       {
-        "id": 2,
-        "partOfSpeech": "noun",
-        "translation": "в ряд",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ],
-        "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "подряд",
-        "examples": [
-          {
-            "en": "two Sundays in a row",
-            "ru": "два воскресенья подряд"
-          },
-          {
-            "en": "in rows",
-            "ru": "рядами"
-          }
-        ],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
         "id": 4,
         "partOfSpeech": "noun",
         "translation": "ряд домов, улица",
-        "examples": [],
-        "register": [
-          "разговорное"
-        ]
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "трудная задача",
         "examples": [],
         "register": [
           "разговорное"
@@ -280055,77 +279632,6 @@
         "translation": "перевозить в лодке",
         "examples": [],
         "register": []
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "verb",
-        "translation": "«прокатить» кого-либо на выборах",
-        "examples": [],
-        "register": [
-          "американский английский",
-          "сленг"
-        ]
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "verb",
-        "translation": "нанести поражение",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "noun",
-        "translation": "шум, гвалт; протестовать",
-        "examples": [
-          {
-            "en": "to make a row",
-            "ru": "поднимать скандал, шум"
-          },
-          {
-            "en": "what's the row?",
-            "ru": "в чём дело?"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "noun",
-        "translation": "спор; ссора; свалка",
-        "examples": [
-          {
-            "en": "to have a row with smb",
-            "ru": "поссориться с кем-либо"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "noun",
-        "translation": "нагоняй",
-        "examples": [
-          {
-            "en": "to get into a row",
-            "ru": "получить нагоняй"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "verb",
-        "translation": "скандалить, шуметь",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 16,
-        "partOfSpeech": "verb",
-        "translation": "делать выговор; отчитывать",
-        "examples": [],
-        "register": []
       }
     ],
     "phrases": [
@@ -280152,6 +279658,47 @@
         "translation": "легко победить в гонке",
         "examples": [],
         "register": []
+      },
+      {
+        "id": 4,
+        "partOfSpeech": "adverb",
+        "translation": "в ряд; подряд",
+        "examples": [
+          {
+            "en": "two Sundays in a row",
+            "ru": "два воскресенья подряд"
+          },
+          {
+            "en": "in rows",
+            "ru": "рядами"
+          }
+        ],
+        "register": [
+          "разговорное"
+        ],
+        "primary": true,
+        "phrase": "in a row"
+      },
+      {
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "трудная задача",
+        "examples": [],
+        "register": [
+          "разговорное"
+        ],
+        "phrase": "a hard row to hoe"
+      },
+      {
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "«прокатить» кого-либо на выборах; нанести поражение",
+        "examples": [],
+        "register": [
+          "американский английский",
+          "сленг"
+        ],
+        "phrase": "to row smb. up Salt River"
       }
     ]
   },
@@ -286770,15 +286317,6 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "to screen well (badly); иметь успех (не иметь успеха) в; быть фотогеничным (нефотогеничным)",
-        "examples": [],
-        "register": [
-          "кинематография"
-        ],
-        "id": 14
-      },
-      {
-        "partOfSpeech": "verb",
         "translation": "просеивать, сортировать, грохотить",
         "examples": [],
         "register": [
@@ -286810,6 +286348,18 @@
           "специальный термин"
         ],
         "id": 18
+      }
+    ],
+    "phrases": [
+      {
+        "partOfSpeech": "verb",
+        "translation": "иметь успех (не иметь успеха) в кино; быть фотогеничным (нефотогеничным)",
+        "examples": [],
+        "register": [
+          "кинематография"
+        ],
+        "id": 1,
+        "phrase": "to screen well (badly)"
       }
     ]
   },
@@ -288000,8 +287550,8 @@
             "ru": "остаться сидеть"
           },
           {
-            "en": "to have (or to take)",
-            "ru": "а (or one's) seat садиться"
+            "en": "to have (or to take) a (or one's) seat",
+            "ru": "садиться"
           }
         ],
         "register": [],
@@ -288094,7 +287644,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "местонахождение; the liver is the seat of the disease, the disease has its",
+        "translation": "местонахождение",
         "examples": [
           {
             "en": "the seat of war",
@@ -288109,13 +287659,11 @@
             "ru": "корень зла"
           },
           {
-            "en": "seat in the liver",
+            "en": "the liver is the seat of the disease, the disease has its seat in the liver",
             "ru": "болезнь локализована в печени"
           }
         ],
-        "register": [
-          "театр"
-        ],
+        "register": [],
         "id": 8
       },
       {
@@ -292013,11 +291561,10 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "учать",
+        "translation": "случать",
         "examples": [],
         "register": [
-          "сельскохозяйственное",
-          "жаргон"
+          "сельскохозяйственное"
         ],
         "id": 14
       },
@@ -292030,28 +291577,10 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "клетневать serve for; годиться для чего-либо; служить в качестве чего-либо",
-        "examples": [
-          {
-            "en": "the bundle served him for a pillow",
-            "ru": "свёрток служил ему подушкой"
-          },
-          {
-            "en": "serve round",
-            "ru": "обносить кругом (блюда)"
-          },
-          {
-            "en": "serve with",
-            "ru": "подавать"
-          },
-          {
-            "en": "serve out",
-            "ru": "раздавать, распределять; отплатить; снабжать"
-          }
-        ],
+        "translation": "клетневать",
+        "examples": [],
         "register": [
-          "морской термин",
-          "разговорное"
+          "морской термин"
         ],
         "id": 16
       },
@@ -292110,6 +291639,27 @@
           "юридическое"
         ],
         "examples": []
+      },
+      {
+        "phrase": "serve for",
+        "translation": "годиться для чего-либо; служить в качестве чего-либо",
+        "partOfSpeech": "verb",
+        "examples": [
+          {
+            "en": "the bundle served him for a pillow",
+            "ru": "свёрток служил ему подушкой"
+          }
+        ],
+        "register": [],
+        "id": 6
+      },
+      {
+        "phrase": "serve with",
+        "translation": "подавать; снабжать",
+        "partOfSpeech": "verb",
+        "examples": [],
+        "register": [],
+        "id": 7
       }
     ]
   },
@@ -296331,7 +295881,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "судоходство shipping articles, ship's",
+        "translation": "судоходство",
         "examples": [],
         "register": [],
         "id": 3,
@@ -299309,25 +298859,11 @@
           },
           {
             "en": "out of my sight!",
-            "ru": "прочь с глаз моих! to lose sight of"
+            "ru": "прочь с глаз моих!"
           }
         ],
         "register": [],
         "primary": true
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "потерять из виду",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
-        "translation": "забыть, упустить из виду",
-        "examples": [],
-        "register": []
       },
       {
         "id": 8,
@@ -299371,75 +298907,37 @@
       {
         "id": 11,
         "partOfSpeech": "noun",
-        "translation": "делать из себя посмешище",
+        "translation": "смехотворное или неприглядное зрелище",
         "examples": [
           {
             "en": "you look a perfect sight!",
             "ru": "ну и вид у тебя!"
+          },
+          {
+            "en": "to make a sight of oneself",
+            "ru": "делать из себя посмешище"
           }
         ],
-        "register": []
+        "register": [
+          "разговорное"
+        ]
       },
       {
         "id": 12,
         "partOfSpeech": "noun",
-        "translation": "стоить больших денег",
+        "translation": "большое количество",
         "examples": [
           {
             "en": "a long sight better",
             "ru": "много лучше"
+          },
+          {
+            "en": "to cost a sight of money",
+            "ru": "стоить больших денег"
           }
         ],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "noun",
-        "translation": "с глаз долой — из сердца вон",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 14,
-        "partOfSpeech": "noun",
-        "translation": "отнюдь нет",
-        "examples": [],
         "register": [
-          "американский английский"
-        ]
-      },
-      {
-        "id": 15,
-        "partOfSpeech": "noun",
-        "translation": "за глаза",
-        "examples": [],
-        "register": [
-          "американский английский"
-        ]
-      },
-      {
-        "id": 16,
-        "partOfSpeech": "noun",
-        "translation": "с листа",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 17,
-        "partOfSpeech": "noun",
-        "translation": "переводить с листа",
-        "examples": [],
-        "register": [
-          "военное"
-        ]
-      },
-      {
-        "id": 18,
-        "partOfSpeech": "noun",
-        "translation": "стрелять без предупреждения",
-        "examples": [],
-        "register": [
-          "строительное"
+          "разговорное"
         ]
       },
       {
@@ -299457,6 +298955,66 @@
         "examples": [],
         "register": [],
         "primary": true
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "потерять из виду; забыть, упустить из виду",
+        "examples": [],
+        "register": [],
+        "phrase": "to lose sight of"
+      },
+      {
+        "id": 2,
+        "partOfSpeech": "sentence",
+        "translation": "с глаз долой — из сердца вон",
+        "examples": [],
+        "register": [],
+        "phrase": "out of sight out of mind"
+      },
+      {
+        "id": 3,
+        "partOfSpeech": "adverb",
+        "translation": "отнюдь нет",
+        "examples": [],
+        "register": [],
+        "phrase": "not by a long sight"
+      },
+      {
+        "id": 4,
+        "partOfSpeech": "adverb",
+        "translation": "за глаза",
+        "examples": [],
+        "register": [
+          "американский английский"
+        ],
+        "phrase": "sight unseen"
+      },
+      {
+        "id": 5,
+        "partOfSpeech": "adverb",
+        "translation": "с листа",
+        "examples": [],
+        "register": [],
+        "phrase": "at sight"
+      },
+      {
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "переводить с листа",
+        "examples": [],
+        "register": [],
+        "phrase": "to translate at sight"
+      },
+      {
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "стрелять без предупреждения",
+        "examples": [],
+        "register": [],
+        "phrase": "to shoot at (or on) sight"
       }
     ]
   },
@@ -303967,7 +303525,7 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "(обыкн. predic.)",
+        "translation": "отстающий (о часах; обычно в роли сказуемого)",
         "examples": [
           {
             "en": "the clock is 20 minutes slow",
@@ -305473,18 +305031,10 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "обманывать или обольщать неискренними речами snow under; провалить (огромным большинством)",
-        "examples": [
-          {
-            "en": "to be snowed under",
-            "ru": "быть заваленным (работой и т. п.)"
-          }
-        ],
+        "translation": "обманывать или обольщать неискренними речами",
+        "examples": [],
         "register": [
           "американский английский",
-          "железнодорожное",
-          "историческое",
-          "морской термин",
           "разговорное"
         ],
         "id": 8
@@ -306558,8 +306108,13 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "антивирусная программа",
-        "examples": [],
+        "translation": "программное обеспечение компьютера",
+        "examples": [
+          {
+            "en": "anti-virus software",
+            "ru": "антивирусная программа"
+          }
+        ],
         "register": [
           "информатика"
         ],
@@ -310053,7 +309608,7 @@
       {
         "id": 1,
         "partOfSpeech": "adverb",
-        "translation": "определенный, точный",
+        "translation": "конкретно, точно; специально",
         "examples": [
           {
             "en": "This book was written specifically for children.",
@@ -312960,7 +312515,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "увидеть, узнать; определить, опознать; I spotted his roguery as soon",
+        "translation": "увидеть, узнать; определить, опознать",
         "examples": [
           {
             "en": "to spot the cause of the trouble",
@@ -312969,6 +312524,10 @@
           {
             "en": "to spot the winner",
             "ru": "определить заранее будущего победителя в состязании"
+          },
+          {
+            "en": "I spotted his roguery as soon as I met him",
+            "ru": "я догадался о его мошенничестве, как только его увидел"
           }
         ],
         "register": [
@@ -319448,8 +319007,8 @@
             "ru": "держаться ближе к делу"
           },
           {
-            "en": "stick by",
-            "ru": "(или with, to) one's"
+            "en": "to stick by (or with, to) one's friends in trouble",
+            "ru": "не оставлять друзей в беде"
           }
         ],
         "register": [],
@@ -320588,11 +320147,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "камень; перен. выполнять тяжёлую работу; зарабатывать тяжёлым трудом",
+        "translation": "камень",
         "examples": [
           {
             "en": "to break stones",
-            "ru": "бить щебень"
+            "ru": "бить щебень; перен. выполнять тяжёлую работу; зарабатывать тяжёлым трудом"
           }
         ],
         "register": [],
@@ -327508,11 +327067,11 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "сватовство; ухаживание; to plead (или to press) one's",
+        "translation": "сватовство; ухаживание",
         "examples": [
           {
-            "en": "suit with",
-            "ru": "smb. добиваться чьей-либо благосклонности"
+            "en": "to plead (or to press) one's suit with smb.",
+            "ru": "добиваться чьей-либо благосклонности"
           }
         ],
         "register": [
@@ -334730,15 +334289,15 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "вкус (отличительная особенность пищи); to leave a bad (или a bitter)",
+        "translation": "вкус (отличительная особенность пищи)",
         "examples": [
           {
             "en": "this medicine has no taste",
             "ru": "это лекарство безвкусно"
           },
           {
-            "en": "taste in",
-            "ru": "the mouth оставить дурной вкус во рту; перен. оставить неприятное впечатление"
+            "en": "to leave a bad (or a bitter) taste in the mouth",
+            "ru": "оставить дурной вкус во рту; перен. оставить неприятное впечатление"
           }
         ],
         "register": [],
@@ -335765,7 +335324,11 @@
           },
           {
             "en": "television viewer",
-            "ru": "= televiewer; television receiver (или set) телевизор"
+            "ru": "= televiewer"
+          },
+          {
+            "en": "television receiver (or set)",
+            "ru": "телевизор"
           }
         ],
         "register": [
@@ -355582,19 +355145,6 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "от understand",
-        "examples": [
-          {
-            "en": "p. pr.",
-            "ru": "от understand"
-          }
-        ],
-        "register": [],
-        "id": 1,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "noun",
         "translation": "понимание",
         "examples": [
           {
@@ -355651,7 +355201,13 @@
         "id": 7,
         "primary": true
       }
-    ]
+    ],
+    "form_of": {
+      "lemma": "understand",
+      "types": [
+        "present_participle"
+      ]
+    }
   },
   {
     "word": "undertake",
@@ -358118,21 +357674,19 @@
         "register": [],
         "id": 1,
         "primary": true
-      },
+      }
+    ],
+    "phrases": [
       {
         "partOfSpeech": "noun",
-        "translation": "см. the",
-        "examples": [
-          {
-            "en": "(the usual)",
-            "ru": "см. the"
-          }
-        ],
+        "translation": "то, что обычно принято (говорить, делать)",
+        "examples": [],
         "register": [
           "разговорное"
         ],
-        "id": 2,
-        "primary": true
+        "id": 1,
+        "primary": true,
+        "phrase": "the usual"
       }
     ]
   },
@@ -364182,7 +363736,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "(часто warm to, warm toward); почувствовать симпатию, интерес (к кому-либо; чему-либо); разогревать(ся), подогревать(ся); воодушевлять(ся); разжигать; разминать(ся)",
+        "translation": "(часто warm to, warm toward); почувствовать симпатию, интерес (к кому-либо; чему-либо)",
         "examples": [
           {
             "en": "my heart warms to him",
@@ -364198,16 +363752,10 @@
           },
           {
             "en": "to warm to one's subject",
-            "ru": "увлечься проблемой warm up"
-          },
-          {
-            "en": "to warm up to smth.",
-            "ru": "проявить заинтересованность в чём-либо"
+            "ru": "увлечься проблемой"
           }
         ],
-        "register": [
-          "спортивное"
-        ],
+        "register": [],
         "id": 15
       }
     ],
@@ -364216,19 +363764,22 @@
         "id": 1,
         "phrase": "warm up",
         "partOfSpeech": "verb",
-        "translation": "разогревать(ся), подогревать(ся); воодушевлять(ся); разжигать",
-        "examples": [],
+        "translation": "разогревать(ся), подогревать(ся); воодушевлять(ся); разжигать; спорт. разминать(ся)",
+        "examples": [
+          {
+            "en": "to warm up to smth.",
+            "ru": "проявить заинтересованность в чём-либо"
+          }
+        ],
         "register": []
       },
       {
         "id": 2,
         "phrase": "to make things warm for smb.",
         "partOfSpeech": "verb",
-        "translation": "досаждать ул",
+        "translation": "досаждать кому-либо; сделать чьё-либо положение невыносимым",
         "examples": [],
-        "register": [
-          "коммерция"
-        ]
+        "register": []
       },
       {
         "id": 3,
@@ -364338,14 +363889,6 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "от warn",
-        "examples": [],
-        "register": [],
-        "id": 1,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "noun",
         "translation": "предупреждение; предостережение",
         "examples": [
           {
@@ -364396,7 +363939,13 @@
         "id": 6,
         "primary": true
       }
-    ]
+    ],
+    "form_of": {
+      "lemma": "warn",
+      "types": [
+        "present_participle"
+      ]
+    }
   },
   {
     "word": "warrant",
@@ -364924,7 +364473,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "излишняя трата; s идти коту под хвост",
+        "translation": "излишняя трата",
         "examples": [
           {
             "en": "oil waste",
@@ -364932,7 +364481,7 @@
           },
           {
             "en": "to run (or to go) to waste",
-            "ru": "быть потраченным попусту"
+            "ru": "быть потраченным попусту; ≈ идти коту под хвост"
           }
         ],
         "register": [],
@@ -368348,7 +367897,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "обмыть; промочить; промывать",
+        "translation": "обмыть",
         "examples": [
           {
             "en": "to wet a bargain",
@@ -368356,7 +367905,7 @@
           },
           {
             "en": "to wet one's whistle",
-            "ru": "промочить горло, выпить wet out"
+            "ru": "промочить горло, выпить"
           }
         ],
         "register": [
@@ -371729,7 +371278,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "крыло; ускорять",
+        "translation": "крыло",
         "examples": [
           {
             "en": "to take wing",
@@ -371741,7 +371290,7 @@
           },
           {
             "en": "to add (or to lend) wings",
-            "ru": "придавать крылья"
+            "ru": "придавать крылья; ускорять"
           }
         ],
         "register": [
@@ -375053,7 +374602,7 @@
           },
           {
             "en": "I like him none the worse for being outspoken",
-            "ru": "я ещё больше люблю его за искренность worse off"
+            "ru": "я ещё больше люблю его за искренность"
           }
         ],
         "register": [],
@@ -375079,6 +374628,14 @@
           "идиома"
         ],
         "examples": []
+      },
+      {
+        "phrase": "to be worse off",
+        "translation": "оказаться в более затруднительном положении",
+        "partOfSpeech": "verb",
+        "examples": [],
+        "register": [],
+        "id": 2
       }
     ]
   },
@@ -376382,15 +375939,15 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "ярд (= 3 футам или 914,4 мм); can you still buy cloth by the",
+        "translation": "ярд (= 3 футам или 914,4 мм)",
         "examples": [
           {
             "en": "by the yard",
             "ru": "в ярдах"
           },
           {
-            "en": "yard in",
-            "ru": "Britain? в Англии ещё мерят ткани на ярды?"
+            "en": "can you still buy cloth by the yard in Britain?",
+            "ru": "в Англии ещё мерят ткани на ярды?"
           }
         ],
         "register": [],

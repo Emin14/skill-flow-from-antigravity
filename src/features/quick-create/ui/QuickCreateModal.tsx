@@ -12,6 +12,7 @@ import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dat
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { getCategoryEmojiDot } from '@/shared/config/categoryColors';
 import { useQuickCreateModalStore } from '../model/quickCreateStore';
+import { extractYoutubeTitle } from '@/shared/lib/urlUtils';
 import styles from './QuickCreateModal.module.css';
 
 // ─── Shared glassmorphic styles ───────────────────────────────────────────────
@@ -142,6 +143,16 @@ export const QuickCreateModal: React.FC = () => {
     }
     return () => { unlockBodyScroll(); };
   }, [isOpen]);
+
+  useEffect(() => {
+    const checkLink = async () => {
+      if (link && !title) {
+        const fetchedTitle = await extractYoutubeTitle(link);
+        if (fetchedTitle && !title) setTitle(fetchedTitle);
+      }
+    };
+    checkLink();
+  }, [link]);
 
   useEffect(() => {
     if (!isOpen) return;
