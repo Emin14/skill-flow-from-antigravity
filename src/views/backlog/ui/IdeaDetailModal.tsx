@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { BacklogItem, BacklogStatus, BacklogPriority } from '@/entities/backlog/model/types';
-import { extractYoutubeTitle } from '@/shared/lib/urlUtils';
+import { extractLinkTitle } from '@/shared/lib/urlUtils';
 import { useToastStore } from '@/shared/ui';
 import { X, Trash2, ArrowRight, Check, Wand2 } from 'lucide-react';
 import styles from './IdeaDetailModal.module.css';
@@ -79,12 +79,12 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
     if (!link) return;
     setIsFetchingTitle(true);
     try {
-      const fetchedTitle = await extractYoutubeTitle(link);
+      const fetchedTitle = await extractLinkTitle(link);
       if (fetchedTitle) {
         setTitle(fetchedTitle);
         useToastStore.getState().showToast('Заголовок успешно загружен', 'success');
       } else {
-        useToastStore.getState().showToast('Не удалось получить заголовок (поддерживается только YouTube)', 'warning');
+        useToastStore.getState().showToast('Не удалось получить заголовок', 'warning');
       }
     } finally {
       setIsFetchingTitle(false);
@@ -270,7 +270,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                   style={{ padding: '0 12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   onClick={handleFetchTitle}
                   disabled={isFetchingTitle || !link}
-                  title="Вытянуть название (YouTube)"
+                  title="Автоматически получить название по ссылке"
                 >
                   <Wand2 size={16} />
                 </button>

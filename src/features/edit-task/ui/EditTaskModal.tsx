@@ -12,7 +12,7 @@ import { getCategoryColor, getCategoryEmojiDot } from '@/shared/config/categoryC
 import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS, WEEKDAY_OPTIONS, formatWeeklyDays } from '@/shared/config/repetitionRules';
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
-import { extractYoutubeTitle } from '@/shared/lib/urlUtils';
+import { extractLinkTitle } from '@/shared/lib/urlUtils';
 import { Wand2 } from 'lucide-react';
 import styles from './EditTaskModal.module.css';
 
@@ -147,12 +147,12 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     if (!link) return;
     setIsFetchingTitle(true);
     try {
-      const fetchedTitle = await extractYoutubeTitle(link);
+      const fetchedTitle = await extractLinkTitle(link);
       if (fetchedTitle) {
         setTitle(fetchedTitle);
         useToastStore.getState().showToast('Заголовок успешно загружен', 'success');
       } else {
-        useToastStore.getState().showToast('Не удалось получить заголовок (поддерживается только YouTube)', 'warning');
+        useToastStore.getState().showToast('Не удалось получить заголовок', 'warning');
       }
     } finally {
       setIsFetchingTitle(false);
@@ -680,7 +680,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 type="button"
                 onClick={handleFetchTitle}
                 disabled={isFetchingTitle || !link}
-                title="Автоматически заполнить название по ссылке (YouTube)"
+                title="Автоматически получить название по ссылке"
                 style={{
                   height: '26px',
                   padding: '0 10px',
