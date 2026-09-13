@@ -237,30 +237,35 @@ export const QuickCreateModal: React.FC = () => {
     const parsedDays = parseInt(afterCompletionDaysInput, 10);
     const afterCompletionDays = isNaN(parsedDays) || parsedDays < 1 ? 1 : parsedDays;
 
-    await addTask({
-      title: title.trim(),
-      category,
-      scheduledDate: scheduledDate.trim(),
-      description,
-      link,
-      parentTaskId,
-      isRepeating: repetitionMode !== 'none',
-      repetitionMode,
-      scheduleFrequency,
-      afterCompletionDays,
-      weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
-      hasSubtasks: false,
-      excludeFromStats,
-    });
+    try {
+      await addTask({
+        title: title.trim(),
+        category,
+        scheduledDate: scheduledDate.trim(),
+        description,
+        link,
+        parentTaskId,
+        isRepeating: repetitionMode !== 'none',
+        repetitionMode,
+        scheduleFrequency,
+        afterCompletionDays,
+        weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
+        hasSubtasks: false,
+        excludeFromStats,
+      });
 
-    setTitle('');
-    setDescription('');
-    setLink('');
-    setParentTaskId(null);
-    setRepetitionMode('none');
-    setAfterCompletionDaysInput('3');
-    setExcludeFromStats(false);
-    closeModal();
+      setTitle('');
+      setDescription('');
+      setLink('');
+      setParentTaskId(null);
+      setRepetitionMode('none');
+      setAfterCompletionDaysInput('3');
+      setExcludeFromStats(false);
+      closeModal();
+    } catch (error: any) {
+      console.error('Error creating task:', error);
+      useToastStore.getState().showToast(error.message || 'Ошибка при создании задачи', 'error');
+    }
   };
 
   const handlePointerDown = (e: React.PointerEvent) => {

@@ -21,7 +21,7 @@
   width: 100%;
   max-width: 520px;
   height: fit-content;
-  max-height: 88vh;
+  max-height: 95vh;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-xl);
@@ -101,12 +101,13 @@
 .modalBody {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: calc(88vh - 120px);
+  max-height: calc(95vh - 120px);
   -webkit-overflow-scrolling: touch;
   padding-right: 2px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
+  scrollbar-gutter: stable;
 }
 
 /* Shared Input Styles - Minimalist Bottom Line Style */
@@ -168,8 +169,9 @@
 
 .compactTextarea {
   width: 100%;
-  min-height: 36px;
-  height: 42px;
+  min-height: 42px;
+  height: auto;
+  resize: vertical;
   padding: 2px 4px 1px 4px;
   border-radius: 0;
   border: none;

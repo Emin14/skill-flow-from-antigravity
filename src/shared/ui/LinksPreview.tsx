@@ -20,7 +20,8 @@ export const LinksPreview: React.FC<LinksPreviewProps> = ({ text }) => {
         let displayUrl = url;
         try {
           const urlObj = new URL(url);
-          displayUrl = urlObj.hostname + (urlObj.pathname.length > 1 ? urlObj.pathname.substring(0, 15) + '...' : '');
+          // Полагаемся на CSS ellipsis, поэтому можно отдавать полный путь
+          displayUrl = urlObj.hostname + (urlObj.pathname.length > 1 ? urlObj.pathname : '');
         } catch(e) {}
         
         return (
@@ -31,6 +32,7 @@ export const LinksPreview: React.FC<LinksPreviewProps> = ({ text }) => {
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
             style={{
+              boxSizing: 'border-box',
               fontSize: '11px',
               color: 'var(--color-accent-text, #60a5fa)',
               background: 'rgba(96, 165, 250, 0.1)',
@@ -42,11 +44,14 @@ export const LinksPreview: React.FC<LinksPreviewProps> = ({ text }) => {
               gap: '4px',
               border: '1px solid rgba(96, 165, 250, 0.2)',
               transition: 'background 0.2s ease',
+              maxWidth: 'calc(33.333% - 6px)',
             }}
             title={url}
           >
-            <ExternalLink size={12} />
-            <span>{displayUrl}</span>
+            <ExternalLink size={12} style={{ flexShrink: 0 }} />
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>
+              {displayUrl}
+            </span>
           </a>
         );
       })}
