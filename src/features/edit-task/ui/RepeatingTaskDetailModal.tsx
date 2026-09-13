@@ -692,21 +692,6 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               }}
             >
               💡 Оценка сложности:
-              {isSmartRepeatTask(masterTask) && (
-                <span
-                  style={{
-                    fontSize: '10.5px',
-                    fontWeight: 600,
-                    color: ratingRequiredError ? 'var(--color-warning)' : 'var(--color-accent-text)',
-                    backgroundColor: ratingRequiredError ? 'rgba(245, 158, 11, 0.15)' : 'var(--color-accent-light)',
-                    padding: '2px 7px',
-                    borderRadius: '8px',
-                    border: ratingRequiredError ? '1px solid var(--color-warning-border)' : '1px solid var(--color-accent-border)',
-                  }}
-                >
-                  {ratingRequiredError ? '⚠️ обязательно' : 'обязательно для SM-2'}
-                </span>
-              )}
             </label>
             {ratingRequiredError && (
               <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--color-warning)' }}>
