@@ -169,10 +169,10 @@
 
 .compactTextarea {
   width: 100%;
-  min-height: 42px;
+  min-height: 80px;
   height: auto;
   resize: vertical;
-  padding: 2px 4px 1px 4px;
+  padding: 6px 4px 6px 4px;
   border-radius: 0;
   border: none;
   border-bottom: 1.5px solid var(--color-border-hover, rgba(255, 255, 255, 0.2));
@@ -184,7 +184,6 @@
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
-  resize: vertical;
   transition: border-color var(--transition-fast);
 }
 
