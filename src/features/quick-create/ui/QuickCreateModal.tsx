@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Input, CustomCategorySelect, useToastStore } from '@/shared/ui';
+import { Input, CustomCategorySelect, useToastStore, LinksPreview } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
@@ -602,6 +602,7 @@ export const QuickCreateModal: React.FC = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Описание задачи..."
               />
+              <LinksPreview text={description} />
             </div>
 
             {/* 6. Next Line: Link */}

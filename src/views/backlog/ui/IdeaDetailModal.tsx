@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { BacklogItem, BacklogStatus, BacklogPriority } from '@/entities/backlog/model/types';
 import { extractLinkTitle } from '@/shared/lib/urlUtils';
-import { useToastStore } from '@/shared/ui';
+import { useToastStore, LinksPreview } from '@/shared/ui';
 import { X, Trash2, ArrowRight, Check, Wand2 } from 'lucide-react';
 import styles from './IdeaDetailModal.module.css';
 
@@ -238,6 +238,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            <LinksPreview text={description} />
           </div>
 
           {/* Tags & Link Row */}

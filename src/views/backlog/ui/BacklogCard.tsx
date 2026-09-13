@@ -3,6 +3,7 @@
 import React from 'react';
 import { BacklogItem } from '@/entities/backlog/model/types';
 import { ExternalLink, ArrowRight, Trash2, Edit3, CheckCircle2 } from 'lucide-react';
+import { LinksPreview } from '@/shared/ui';
 import styles from './BacklogCard.module.css';
 
 interface BacklogCardProps {
@@ -80,9 +81,12 @@ export const BacklogCard: React.FC<BacklogCardProps> = ({
 
       {/* Description Snippet */}
       {item.description && (
-        <p className={styles.descriptionSnippet}>
-          {item.description}
-        </p>
+        <>
+          <p className={styles.descriptionSnippet}>
+            {item.description}
+          </p>
+          <LinksPreview text={item.description} />
+        </>
       )}
 
       {/* Tags Row */}
