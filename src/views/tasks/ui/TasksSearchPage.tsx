@@ -201,12 +201,7 @@ export const TasksSearchPage: React.FC = () => {
         return true;
       })
       .sort((a, b) => {
-        // 1. Uncompleted tasks ('Todo'/'InProgress') first, completed ('Done') at bottom
-        const aDone = a.status === 'Done' ? 1 : 0;
-        const bDone = b.status === 'Done' ? 1 : 0;
-        if (aDone !== bDone) return aDone - bDone;
-
-        // 2. Query relevance by title
+        // 1. Query relevance by title
         if (query) {
           const aTitle = a.task.title.toLowerCase();
           const bTitle = b.task.title.toLowerCase();
@@ -215,23 +210,23 @@ export const TasksSearchPage: React.FC = () => {
           if (aIdx !== -1 && bIdx !== -1 && aIdx !== bIdx) return aIdx - bIdx;
         }
 
-        // 3. For uncompleted: earliest due date first
-        if (aDone === 0) {
-          const aDate = a.occurrenceDate || '9999-99-99';
-          const bDate = b.occurrenceDate || '9999-99-99';
-          if (aDate !== bDate) return aDate.localeCompare(bDate);
-
-          const priorityWeight: Record<TaskPriority, number> = { P1: 1, P2: 2, P3: 3, P4: 4 };
-          const pA = priorityWeight[a.task.priority || 'P4'] ?? 4;
-          const pB = priorityWeight[b.task.priority || 'P4'] ?? 4;
-          if (pA !== pB) return pA - pB;
-          return a.task.title.localeCompare(b.task.title);
-        }
-
-        // 4. For completed: most recently completed first (descending date)
+        // 2. Date Descending (newest/future first)
         const aDate = a.occurrenceDate || a.completedAt?.split('T')[0] || '0000-00-00';
         const bDate = b.occurrenceDate || b.completedAt?.split('T')[0] || '0000-00-00';
         if (aDate !== bDate) return bDate.localeCompare(aDate);
+
+        // 3. Status: Uncompleted tasks ('Todo'/'InProgress') first within the same date
+        const aDone = a.status === 'Done' ? 1 : 0;
+        const bDone = b.status === 'Done' ? 1 : 0;
+        if (aDone !== bDone) return aDone - bDone;
+
+        // 4. Priority
+        const priorityWeight: Record<TaskPriority, number> = { P1: 1, P2: 2, P3: 3, P4: 4 };
+        const pA = priorityWeight[a.task.priority || 'P4'] ?? 4;
+        const pB = priorityWeight[b.task.priority || 'P4'] ?? 4;
+        if (pA !== pB) return pA - pB;
+
+        // 5. Title
         return a.task.title.localeCompare(b.task.title);
       });
   }, [allInstances, searchQuery, statusFilter, categoryFilter, dateFilter, priorityFilter, todayStr]);
