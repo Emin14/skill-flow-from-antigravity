@@ -8,7 +8,7 @@ import { useTaskStore, normalizeOccurrences } from '@/entities/task';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { getTodayStr, formatDateDisplay, formatLocalDateStr, isSmartRepeatTask } from '@/shared/lib/dateUtils';
 import { ChevronDown, ChevronUp, Calendar, Trash2, ExternalLink, CheckCircle2, Clock, Sparkles } from 'lucide-react';
-import { useToastStore } from '@/shared/ui';
+import { useToastStore, LinksPreview } from '@/shared/ui';
 import styles from './EditTaskModal.module.css';
 
 interface RepeatingTaskDetailModalProps {
@@ -521,7 +521,13 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
               </div>
             </div>
           )}
-
+          
+          {/* Ссылки из описания (если есть) */}
+          {masterTask.description && (
+            <div style={{ marginTop: '2px', marginBottom: '4px', width: '100%' }}>
+              <LinksPreview text={masterTask.description} />
+            </div>
+          )}
 
           {/* Ряд 4: Кнопки управления (Редактировать и Удалить) */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', marginTop: '2px' }}>
