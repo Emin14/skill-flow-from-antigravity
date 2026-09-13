@@ -13,6 +13,7 @@ import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS, WEEKDAY_
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { extractYoutubeTitle } from '@/shared/lib/urlUtils';
+import { Wand2 } from 'lucide-react';
 import styles from './EditTaskModal.module.css';
 
 interface EditTaskModalProps {
@@ -140,15 +141,23 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     return () => { unlockBodyScroll(); };
   }, [isOpen]);
 
-  useEffect(() => {
-    const checkLink = async () => {
-      if (link && !title) {
-        const fetchedTitle = await extractYoutubeTitle(link);
-        if (fetchedTitle && !title) setTitle(fetchedTitle);
+  const [isFetchingTitle, setIsFetchingTitle] = useState(false);
+
+  const handleFetchTitle = async () => {
+    if (!link) return;
+    setIsFetchingTitle(true);
+    try {
+      const fetchedTitle = await extractYoutubeTitle(link);
+      if (fetchedTitle) {
+        setTitle(fetchedTitle);
+        useToastStore.getState().showToast('Заголовок успешно загружен', 'success');
+      } else {
+        useToastStore.getState().showToast('Не удалось получить заголовок (поддерживается только YouTube)', 'warning');
       }
-    };
-    checkLink();
-  }, [link]);
+    } finally {
+      setIsFetchingTitle(false);
+    }
+  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -657,13 +666,38 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
             </div>
 
             {/* 6. Next Line: Link */}
-            <div>
-              <Input
-                type="url" name="task_link_field" className={styles.selectInput}
-                value={link} onChange={(e) => setLink(e.target.value)}
-                placeholder="🔗 Ссылка..."
-                style={{ height: '26px' }}
-              />
+            {/* 6. Next Line: Link */}
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <div style={{ flex: 1 }}>
+                <Input
+                  type="url" name="task_link_field" className={styles.selectInput}
+                  value={link} onChange={(e) => setLink(e.target.value)}
+                  placeholder="🔗 Ссылка..."
+                  style={{ height: '26px', width: '100%' }}
+                />
+              </div>
+              <button
+                type="button"
+                onClick={handleFetchTitle}
+                disabled={isFetchingTitle || !link}
+                title="Автоматически заполнить название по ссылке (YouTube)"
+                style={{
+                  height: '26px',
+                  padding: '0 10px',
+                  borderRadius: '10px',
+                  background: 'rgba(255,255,255,0.07)',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  color: 'var(--color-text)',
+                  cursor: isFetchingTitle || !link ? 'not-allowed' : 'pointer',
+                  opacity: isFetchingTitle || !link ? 0.5 : 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}
+              >
+                <Wand2 size={14} />
+              </button>
             </div>
           </div>
 

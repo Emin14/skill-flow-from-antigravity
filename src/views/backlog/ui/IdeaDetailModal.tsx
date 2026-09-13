@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { BacklogItem, BacklogStatus, BacklogPriority } from '@/entities/backlog/model/types';
 import { extractYoutubeTitle } from '@/shared/lib/urlUtils';
-import { X, Trash2, ArrowRight, Check } from 'lucide-react';
+import { useToastStore } from '@/shared/ui';
+import { X, Trash2, ArrowRight, Check, Wand2 } from 'lucide-react';
 import styles from './IdeaDetailModal.module.css';
 
 interface IdeaDetailModalProps {
@@ -45,6 +46,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
   const [tagsInput, setTagsInput] = useState('');
   const [link, setLink] = useState('');
   const [isSaving, setIsSaving] = useState(false);
+  const [isFetchingTitle, setIsFetchingTitle] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -73,15 +75,21 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
     }
   }, [isOpen, item, existingTopics, initialTopic]);
 
-  useEffect(() => {
-    const checkLink = async () => {
-      if (link && !title) {
-        const fetchedTitle = await extractYoutubeTitle(link);
-        if (fetchedTitle && !title) setTitle(fetchedTitle);
+  const handleFetchTitle = async () => {
+    if (!link) return;
+    setIsFetchingTitle(true);
+    try {
+      const fetchedTitle = await extractYoutubeTitle(link);
+      if (fetchedTitle) {
+        setTitle(fetchedTitle);
+        useToastStore.getState().showToast('Заголовок успешно загружен', 'success');
+      } else {
+        useToastStore.getState().showToast('Не удалось получить заголовок (поддерживается только YouTube)', 'warning');
       }
-    };
-    checkLink();
-  }, [link]);
+    } finally {
+      setIsFetchingTitle(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -247,13 +255,26 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
 
             <div className={styles.formGroup}>
               <label className={styles.label}>Ссылка на макет / референс</label>
-              <input
-                type="text"
-                className={styles.input}
-                placeholder="https://..."
-                value={link}
-                onChange={(e) => setLink(e.target.value)}
-              />
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <input
+                  type="text"
+                  className={styles.input}
+                  style={{ flex: 1 }}
+                  placeholder="https://..."
+                  value={link}
+                  onChange={(e) => setLink(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className={`${styles.btn} ${styles.btnSecondary}`}
+                  style={{ padding: '0 12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  onClick={handleFetchTitle}
+                  disabled={isFetchingTitle || !link}
+                  title="Вытянуть название (YouTube)"
+                >
+                  <Wand2 size={16} />
+                </button>
+              </div>
             </div>
           </div>
 
