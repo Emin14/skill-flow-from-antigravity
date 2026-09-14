@@ -124,6 +124,7 @@ export const QuickCreateModal: React.FC = () => {
   };
 
   const modalRef = useRef<HTMLDivElement>(null);
+  const isBackdropClickRef = useRef(false);
   const isDraggingRef = useRef(false);
   const startYRef = useRef(0);
   const startTimeRef = useRef(0);
@@ -343,7 +344,18 @@ export const QuickCreateModal: React.FC = () => {
   const catThemeColor = getCategoryColor(category);
 
   return (
-    <div className={styles.overlay} onClick={closeModal}>
+    <div
+      className={styles.overlay}
+      onMouseDown={(e) => {
+        isBackdropClickRef.current = e.target === e.currentTarget;
+      }}
+      onClick={(e) => {
+        if (isBackdropClickRef.current && e.target === e.currentTarget) {
+          closeModal();
+        }
+        isBackdropClickRef.current = false;
+      }}
+    >
       <div
         ref={modalRef}
         className={styles.modal}

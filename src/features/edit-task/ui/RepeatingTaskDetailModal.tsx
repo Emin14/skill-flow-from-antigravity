@@ -142,6 +142,7 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
   }, [isOpen]);
 
   const modalRef = useRef<HTMLDivElement>(null);
+  const isBackdropClickRef = useRef(false);
   const isDraggingRef = useRef(false);
   const startYRef = useRef<number>(0);
   const startTimeRef = useRef<number>(0);
@@ -373,7 +374,18 @@ export const RepeatingTaskDetailModal: React.FC<RepeatingTaskDetailModalProps> =
 
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div
+      className={styles.overlay}
+      onMouseDown={(e) => {
+        isBackdropClickRef.current = e.target === e.currentTarget;
+      }}
+      onClick={(e) => {
+        if (isBackdropClickRef.current && e.target === e.currentTarget) {
+          onClose();
+        }
+        isBackdropClickRef.current = false;
+      }}
+    >
       <div
         ref={modalRef}
         className={styles.modal}

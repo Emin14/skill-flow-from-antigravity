@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BacklogItem, BacklogStatus, BacklogPriority } from '@/entities/backlog/model/types';
 import { extractLinkTitle } from '@/shared/lib/urlUtils';
 import { useToastStore, LinksPreview } from '@/shared/ui';
@@ -47,6 +47,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
   const [link, setLink] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [isFetchingTitle, setIsFetchingTitle] = useState(false);
+  const isBackdropClickRef = useRef(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -119,7 +120,18 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
   };
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div
+      className={styles.overlay}
+      onMouseDown={(e) => {
+        isBackdropClickRef.current = e.target === e.currentTarget;
+      }}
+      onClick={(e) => {
+        if (isBackdropClickRef.current && e.target === e.currentTarget) {
+          onClose();
+        }
+        isBackdropClickRef.current = false;
+      }}
+    >
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className={styles.header}>
