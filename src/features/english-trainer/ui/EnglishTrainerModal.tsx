@@ -17,6 +17,7 @@ import {
   ChevronRight,
   Plus,
   Eye,
+  RotateCcw,
 } from 'lucide-react';
 import { Variant14SegmentedPillCard } from './variants';
 import styles from './EnglishTrainerModal.module.css';
@@ -156,63 +157,99 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     }
   }, [isOpen, currentIndex, isReviewWord, isAnswerRevealed, isFinished]);
 
-  // Close on Escape key press
+  // Close on Escape key press, or advance on Enter when answer is revealed without match
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         clearAutoTimer();
         onClose();
+      } else if (e.key === 'Enter' && isAnswerRevealed && isMatch !== true && !isFinished && isReviewWord) {
+        e.preventDefault();
+        const cardToRetry = queue[currentIndex];
+        if (!cardToRetry) return;
+        clearAutoTimer();
+        setQueue((prev) => [...prev, cardToRetry]);
+        setCurrentIndex((idx) => idx + 1);
+        setMeaningIndex(0);
+        setIsAnswerRevealed(false);
+        setUserInput('');
+        setIsMatch(null);
+        triggerHapticFeedback('light');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, isAnswerRevealed, isMatch, isFinished, isReviewWord, queue, currentIndex]);
 
   if (!isOpen) return null;
 
   const checkAnswerMatch = (input: string, card: SessionWordCard): boolean => {
-    const cleanInput = input
-      .trim()
-      .toLowerCase()
-      .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '');
+    const normalize = (str: string): string =>
+      str
+        .trim()
+        .toLowerCase()
+        .replace(/ё/g, 'е')
+        .replace(/[.,/#!$%^&*;:{}=\-_`~()«»"']/g, '')
+        .trim();
+
+    const cleanInput = normalize(input);
     if (!cleanInput) return false;
 
-    // Check against all meanings in the card
-    for (const m of card.meanings || []) {
-      const translation = m.translation || '';
-      const subMeanings = translation.split(/[,/;]/).map((s: string) =>
-        s
-          .trim()
-          .toLowerCase()
-          .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '')
-      );
+    const extractSubMeanings = (rawText: string): string[] => {
+      if (!rawText) return [];
+      const candidates = new Set<string>();
 
-      for (const sub of subMeanings) {
-        if (!sub) continue;
-        if (sub === cleanInput) return true;
+      // 1. Raw split by delimiters (original behavior)
+      for (const chunk of rawText.split(/[,/;]/)) {
+        const c = normalize(chunk);
+        if (c) candidates.add(c);
+      }
+
+      // 2. Strip parentheses completely (e.g. "я (личное местоимение...)" -> "я")
+      const withoutParens = rawText.replace(/\([^)]*\)/g, ' ');
+      for (const chunk of withoutParens.split(/[,/;]/)) {
+        const c = normalize(chunk);
+        if (c) candidates.add(c);
+      }
+
+      // 3. Merge parentheses contents as word affix (e.g. "ускорять(ся)" -> "ускоряться")
+      const mergedParens = rawText.replace(/[()]/g, '');
+      for (const chunk of mergedParens.split(/[,/;]/)) {
+        const c = normalize(chunk);
+        if (c) candidates.add(c);
+      }
+
+      return Array.from(candidates);
+    };
+
+    const matchCandidate = (sub: string): boolean => {
+      if (!sub) return false;
+      if (sub === cleanInput) return true;
+
+      // Fuzzy prefix match with length tolerance <= 2 (only for words of 3+ chars)
+      if (sub.length >= 3 && cleanInput.length >= 3) {
         if (sub.startsWith(cleanInput) || cleanInput.startsWith(sub)) {
           if (Math.abs(sub.length - cleanInput.length) <= 2) return true;
         }
+      }
+      return false;
+    };
+
+    // Check against all meanings in the card
+    for (const m of card.meanings || []) {
+      const candidates = extractSubMeanings(m.translation || '');
+      for (const sub of candidates) {
+        if (matchCandidate(sub)) return true;
       }
     }
 
     // Fallback check against translations
     for (const tr of card.translations || []) {
       for (const m of tr.meanings || []) {
-        const subMeanings = m.split(/[,/]/).map((s: string) =>
-          s
-            .trim()
-            .toLowerCase()
-            .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '')
-        );
-
-        for (const sub of subMeanings) {
-          if (!sub) continue;
-          if (sub === cleanInput) return true;
-          if (sub.startsWith(cleanInput) || cleanInput.startsWith(sub)) {
-            if (Math.abs(sub.length - cleanInput.length) <= 2) return true;
-          }
+        const candidates = extractSubMeanings(m);
+        for (const sub of candidates) {
+          if (matchCandidate(sub)) return true;
         }
       }
     }
@@ -254,6 +291,20 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
       setUserInput('');
       setIsMatch(null);
     }
+  };
+
+  const handleRetryLater = () => {
+    const cardToRetry = queue[currentIndex];
+    if (!cardToRetry) return;
+
+    clearAutoTimer();
+    setQueue((prev) => [...prev, cardToRetry]);
+    setCurrentIndex((idx) => idx + 1);
+    setMeaningIndex(0);
+    setIsAnswerRevealed(false);
+    setUserInput('');
+    setIsMatch(null);
+    triggerHapticFeedback('light');
   };
 
   const handleMarkAsLearned = () => {
@@ -740,8 +791,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                         </button>
                       )}
                     </div>
-                  ) : (
-                    /* Step 2: Spaced Repetition 4-Rating Buttons */
+                  ) : isMatch === true ? (
+                    /* Step 2: Spaced Repetition 4-Rating Buttons (only when user answered correctly) */
                     <div className={styles.reviewRatingGrid}>
                       <button
                         className={`${styles.reviewRateBtn} ${styles.rateAgainBtn}`}
@@ -779,6 +830,34 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                         <span className={styles.rateText}>Легко</span>
                       </button>
                     </div>
+                  ) : (
+                    /* Answer was revealed / surrendered: re-queue word to retry later in session */
+                    <button
+                      type="button"
+                      onClick={handleRetryLater}
+                      style={{
+                        width: '100%',
+                        height: '46px',
+                        padding: '0 16px',
+                        background: 'var(--color-accent)',
+                        border: 'none',
+                        color: '#ffffff',
+                        borderRadius: '12px',
+                        fontSize: '13.5px',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '7px',
+                        boxShadow: 'var(--shadow-sm)',
+                        transition: 'all var(--transition-fast) ease',
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <RotateCcw size={16} />
+                      <span>Понятно, спросить позже (Enter)</span>
+                    </button>
                   )}
                 </div>
               ) : (
