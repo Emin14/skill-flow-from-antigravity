@@ -6078,7 +6078,8 @@
           }
         ],
         "register": [],
-        "id": 1
+        "id": 1,
+        "primary": true
       },
       {
         "partOfSpeech": "preposition",
@@ -6102,10 +6103,11 @@
           }
         ],
         "register": [],
-        "id": 2
+        "id": 2,
+        "primary": true
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "preposition",
         "translation": "указывает на сходство с чем-либо или подражание чему-либо по, с, согласно",
         "examples": [
           {
@@ -6133,21 +6135,19 @@
         "id": 3
       },
       {
-        "partOfSpeech": "noun",
-        "translation": "указывает на внимание, заботу о -л. о, за",
+        "partOfSpeech": "preposition",
+        "translation": "указывает на внимание, заботу о ком-либо: о, за",
         "examples": [
           {
             "en": "to look after smb.",
-            "ru": "присматривать, заботиться о -л."
+            "ru": "присматривать, заботиться о ком-либо."
           },
           {
             "en": "to ask (or to inquire) after smb.",
-            "ru": "спрашивать, справляться о -л"
+            "ru": "спрашивать, справляться о ком-либо."
           }
         ],
-        "register": [
-          "коммерческое"
-        ],
+        "register": [],
         "id": 4
       },
       {
@@ -6172,7 +6172,8 @@
           }
         ],
         "register": [],
-        "id": 6
+        "id": 6,
+        "primary": true
       },
       {
         "partOfSpeech": "adverb",
@@ -6205,8 +6206,7 @@
           }
         ],
         "register": [],
-        "id": 9,
-        "primary": true
+        "id": 9
       },
       {
         "partOfSpeech": "adjective",
@@ -6218,8 +6218,7 @@
           }
         ],
         "register": [],
-        "id": 10,
-        "primary": true
+        "id": 10
       }
     ],
     "phrases": [
@@ -6695,8 +6694,13 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "(the aged) (при мн. ч.:) старики",
-        "examples": [],
+        "translation": "(при мн. ч.:) старики",
+        "examples": [
+          {
+            "en": "the aged",
+            "ru": "старики"
+          }
+        ],
         "register": [
           "собирательное",
           "британское"
@@ -10396,7 +10400,7 @@
       {
         "id": 4,
         "partOfSpeech": "conjunction",
-        "translation": "и (присоединяет глагол цели или последствия: try and do it)",
+        "translation": "и (присоединяет глагол цели или последствия)",
         "examples": [
           {
             "en": "try and do it",
@@ -15038,8 +15042,17 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "артикль; definite article (не-) определённый артикль",
-        "examples": [],
+        "translation": "артикль",
+        "examples": [
+          {
+            "en": "definite article",
+            "ru": "определённый артикль"
+          },
+          {
+            "en": "indefinite article",
+            "ru": "неопределённый артикль"
+          }
+        ],
         "register": [
           "грамматика"
         ],
@@ -17364,7 +17377,7 @@
       {
         "id": 9,
         "partOfSpeech": "preposition",
-        "translation": "в, к (проявление способностей: good at, clever at)",
+        "translation": "в, к (проявление способностей)",
         "register": [],
         "examples": [
           {
@@ -19209,13 +19222,10 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "ах. убыток от аварии судна; распределение убытка от аварии между владельцами (груза, судна)",
+        "translation": "страх. убыток от аварии судна; распределение убытка от аварии между владельцами (груза, судна)",
         "examples": [],
-        "register": [
-          "строительное"
-        ],
-        "id": 2,
-        "primary": true
+        "register": [],
+        "id": 2
       },
       {
         "partOfSpeech": "adjective",
@@ -19232,16 +19242,21 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "средний; average rate of profit.-эк. средняя норма прибыли",
+        "translation": "средний",
         "examples": [
           {
             "en": "average output",
             "ru": "средний выпуск (продукции)"
+          },
+          {
+            "en": "average rate of profit",
+            "ru": "средняя норма прибыли",
+            "register": [
+              "политическая экономия"
+            ]
           }
         ],
-        "register": [
-          "политика"
-        ],
+        "register": [],
         "id": 4,
         "primary": true
       },
@@ -29393,11 +29408,9 @@
         "id": 3,
         "phrase": "the B. Country",
         "partOfSpeech": "noun",
-        "translation": "чёрная ана, каменноугольный и железообрабатывающий район Стаффордшира и Уоркшира",
+        "translation": "чёрная страна, каменноугольный и железообрабатывающий район Стаффордшира и Уоркшира",
         "examples": [],
-        "register": [
-          "строительное дело"
-        ]
+        "register": []
       },
       {
         "id": 4,
@@ -31463,9 +31476,14 @@
       {
         "id": 10,
         "partOfSpeech": "noun",
-        "translation": "море, океан; небо (the blue)",
+        "translation": "море, океан; небо",
         "register": [],
-        "examples": []
+        "examples": [
+          {
+            "en": "the blue",
+            "ru": "море, океан; небо"
+          }
+        ]
       },
       {
         "id": 11,
@@ -31624,17 +31642,20 @@
       {
         "id": 3,
         "partOfSpeech": "noun",
-        "translation": "он; переплётная крышка",
+        "translation": "крышка переплёта",
         "examples": [],
-        "register": [
-          "карточный термин"
-        ]
+        "register": []
       },
       {
         "id": 4,
         "partOfSpeech": "noun",
-        "translation": "сцена, подмостки (обыкн. the boards)",
-        "examples": [],
+        "translation": "сцена, подмостки",
+        "examples": [
+          {
+            "en": "the boards",
+            "ru": "сцена, подмостки"
+          }
+        ],
         "register": []
       },
       {
@@ -33004,7 +33025,7 @@
       {
         "id": 8,
         "partOfSpeech": "noun",
-        "translation": "список пари (набегах)",
+        "translation": "список пари (на бегах)",
         "examples": [],
         "register": []
       },
@@ -33018,16 +33039,14 @@
       {
         "id": 10,
         "partOfSpeech": "noun",
-        "translation": "(роли в пьесе)",
+        "translation": "текст (оперы и т. п.); сценарий",
         "examples": [
           {
             "en": "to take smb. on the book",
-            "ru": "проверять чьё-либо знание роли по тексту придираться к словам"
+            "ru": "проверять чьё-либо знание роли по тексту; придираться к словам"
           }
         ],
-        "register": [
-          "текстильное"
-        ]
+        "register": []
       },
       {
         "id": 11,
@@ -44159,7 +44178,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "человек; «»",
+        "translation": "человек; «тип»",
         "examples": [
           {
             "en": "a cool card",
@@ -44171,8 +44190,7 @@
           }
         ],
         "register": [
-          "разговорное",
-          "типографское"
+          "разговорное"
         ],
         "id": 5
       },
@@ -45492,9 +45510,7 @@
             "ru": "это не так"
           }
         ],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -53305,9 +53321,7 @@
         "partOfSpeech": "noun",
         "translation": "рекламация",
         "examples": [],
-        "register": [
-          "искусство"
-        ],
+        "register": [],
         "id": 2,
         "primary": true
       },
@@ -53363,10 +53377,9 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "возбуждать о возмещении убытков",
+        "translation": "возбуждать иск о возмещении убытков",
         "examples": [],
         "register": [
-          "искусство",
           "юридическое"
         ],
         "id": 7
@@ -53720,11 +53733,10 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "корабля",
+        "translation": "тип корабля",
         "examples": [],
         "register": [
-          "морской термин",
-          "типографское"
+          "морской термин"
         ],
         "id": 12
       },
@@ -57396,9 +57408,7 @@
         "partOfSpeech": "noun",
         "translation": "накапливание",
         "examples": [],
-        "register": [
-          "собирательное"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -57432,8 +57442,7 @@
         "examples": [],
         "register": [
           "британское"
-        ],
-        "primary": true
+        ]
       }
     ]
   },
@@ -78641,7 +78650,7 @@
           },
           {
             "en": "day out",
-            "ru": "день, проведённый вне дома"
+            "ru": "день, проведённый вне дома; свободный день для прислуги"
           },
           {
             "en": "far in the day",
@@ -78669,7 +78678,7 @@
           },
           {
             "en": "first day (of the week)",
-            "ru": "воскресенье свободный день для прислуги"
+            "ru": "воскресенье"
           }
         ],
         "register": [],
@@ -78709,7 +78718,7 @@
         "translation": "рабочий день",
         "examples": [
           {
-            "en": "a sixhour day",
+            "en": "a six-hour day",
             "ru": "шестичасовой рабочий день"
           },
           {
@@ -78749,7 +78758,7 @@
       {
         "id": 5,
         "partOfSpeech": "noun",
-        "translation": "настоящее время, сегодняшний день (the day)",
+        "translation": "настоящее время, сегодняшний день",
         "examples": [
           {
             "en": "the issues of the day",
@@ -78758,6 +78767,10 @@
           {
             "en": "the present day",
             "ru": "сегодня, текущий день"
+          },
+          {
+            "en": "the day",
+            "ru": "сегодняшний день"
           }
         ],
         "register": []
@@ -112313,7 +112326,7 @@
       {
         "id": 4,
         "partOfSpeech": "verb",
-        "translation": "to be expecting: ожидать ребёнка, быть в положении",
+        "translation": "ожидать ребёнка, быть в положении",
         "examples": [
           {
             "en": "to be expecting",
@@ -112395,7 +112408,7 @@
           },
           {
             "en": "as expected",
-            "ru": "каки ожидалось"
+            "ru": "как и ожидалось"
           }
         ],
         "register": [],
@@ -120361,7 +120374,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "отношение, настроение; (часто при мн. ч.:) взгляд; враждебность; strong feeling(s) (глубокое) возмущение",
+        "translation": "отношение, настроение; (часто при мн. ч.:) взгляд; враждебность",
         "examples": [
           {
             "en": "the general feeling was against him",
@@ -120374,6 +120387,10 @@
           {
             "en": "ill feeling",
             "ru": "неприязнь, предубеждение"
+          },
+          {
+            "en": "strong feeling(s)",
+            "ru": "(глубокое) возмущение"
           }
         ],
         "register": [
@@ -128998,11 +129015,15 @@
       {
         "id": 3,
         "partOfSpeech": "noun",
-        "translation": "полиция (the force)",
+        "translation": "полиция",
         "examples": [
           {
             "en": "to join the police force",
             "ru": "поступить на службу в полицию"
+          },
+          {
+            "en": "the force",
+            "ru": "полиция"
           }
         ],
         "register": []
@@ -132631,11 +132652,15 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "Society of Friends «Общество друзей» (квакеры)",
+        "translation": "квакер",
         "examples": [
           {
             "en": "(F.)",
             "ru": "квакер"
+          },
+          {
+            "en": "Society of Friends",
+            "ru": "«Общество друзей» (квакеры)"
           }
         ],
         "register": [],
@@ -132986,7 +133011,7 @@
       {
         "id": 2,
         "partOfSpeech": "preposition",
-        "translation": "с, от (исходная точка, начало отсчёта: from floor to ceiling)",
+        "translation": "с, от (исходная точка, начало отсчёта)",
         "examples": [
           {
             "en": "from the beginning of the book",
@@ -133019,7 +133044,7 @@
       {
         "id": 3,
         "partOfSpeech": "preposition",
-        "translation": "с, от, начиная с (время: from morning till night)",
+        "translation": "с, от, начиная с (время)",
         "examples": [
           {
             "en": "from the beginning of the century",
@@ -133056,6 +133081,10 @@
           {
             "en": "from the (very) beginning",
             "ru": "с (самого) начала"
+          },
+          {
+            "en": "from morning till night",
+            "ru": "с утра до ночи"
           }
         ],
         "register": []
@@ -133122,7 +133151,7 @@
       {
         "id": 6,
         "partOfSpeech": "preposition",
-        "translation": "из, от, по (источник информации: know from the papers)",
+        "translation": "от, из, по (источник информации)",
         "examples": [
           {
             "en": "I know it from the papers",
@@ -133142,7 +133171,7 @@
       {
         "id": 7,
         "partOfSpeech": "preposition",
-        "translation": "от, из-за, с (причина: suffer from cold)",
+        "translation": "от, из-за, с (причина)",
         "examples": [
           {
             "en": "to suffer from cold",
@@ -133886,8 +133915,13 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "очень; full well (очень) хорошо",
-        "examples": [],
+        "translation": "очень",
+        "examples": [
+          {
+            "en": "full well",
+            "ru": "(очень) хорошо"
+          }
+        ],
         "register": [],
         "id": 12,
         "primary": true
@@ -137617,7 +137651,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "начать, приняться (get to work — приняться за работу, get talking — заговорить)",
+        "translation": "начать, приняться",
         "examples": [
           {
             "en": "to get angry",
@@ -137630,6 +137664,14 @@
           {
             "en": "to get dark",
             "ru": "темнеть"
+          },
+          {
+            "en": "get to work",
+            "ru": "приняться за работу"
+          },
+          {
+            "en": "get talking",
+            "ru": "заговорить"
           }
         ],
         "register": [],
@@ -139476,7 +139518,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "иметь хождение (о монете, пословице и т. п.); быть в обращении; переходить из в уста",
+        "translation": "иметь хождение (о монете, пословице и т. п.); быть в обращении; переходить из уст в уста",
         "examples": [
           {
             "en": "the story goes",
@@ -140216,7 +140258,7 @@
       {
         "phrase": "he went and did it",
         "partOfSpeech": "verb",
-        "translation": "он взяли сделал это",
+        "translation": "он взял и сделал это",
         "examples": [],
         "register": [],
         "id": 36
@@ -140251,7 +140293,7 @@
         "id": 40,
         "phrase": "go to",
         "partOfSpeech": "verb",
-        "translation": "доходить до (какого-либо предела); the price went as high as £100 цена дошла до 100 фунтов",
+        "translation": "доходить до (какого-либо предела)",
         "register": [],
         "examples": []
       }
@@ -147073,9 +147115,7 @@
             "ru": "очевидно, что-то случилось"
           }
         ],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -147092,9 +147132,7 @@
             "ru": "оказывается, я оставил деньги дома"
           }
         ],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -147102,9 +147140,7 @@
         "partOfSpeech": "verb",
         "translation": "случайно найти",
         "examples": [],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -147113,8 +147149,7 @@
         "translation": "случайно натолкнуться, встретить",
         "examples": [],
         "register": [
-          "разговорное",
-          "жаргон"
+          "разговорное"
         ],
         "primary": true
       }
@@ -151046,8 +151081,13 @@
         "id": 4,
         "phrase": "help on",
         "partOfSpeech": "verb",
-        "translation": "помогать; продвигать (дело); help me on with my overcoat помогите мне надеть пальто",
-        "examples": [],
+        "translation": "помогать; продвигать (дело)",
+        "examples": [
+          {
+            "en": "help me on with my overcoat",
+            "ru": "помогите мне надеть пальто"
+          }
+        ],
         "register": []
       },
       {
@@ -153241,7 +153281,7 @@
         "translation": "сдерживать, останавливать",
         "examples": [
           {
-            "en": "to hold one's holography tongue",
+            "en": "to hold one's tongue",
             "ru": "молчать"
           },
           {
@@ -153363,8 +153403,13 @@
         "id": 7,
         "phrase": "hold on",
         "partOfSpeech": "verb",
-        "translation": "держаться за что-либо; продолжать делать что-либо, упорствовать в чём-либо; hold on a minute! остановись на минутку!",
-        "examples": [],
+        "translation": "держаться за что-либо; продолжать делать что-либо, упорствовать в чём-либо",
+        "examples": [
+          {
+            "en": "hold on a minute!",
+            "ru": "остановись на минутку!"
+          }
+        ],
         "register": [
           "разговорное"
         ]
@@ -157446,7 +157491,7 @@
       {
         "id": 2,
         "partOfSpeech": "pronoun",
-        "translation": "сам, себе (в разговорно-усилительном значении: I laid me down)",
+        "translation": "сам, себе (в разговорно-усилительном значении)",
         "examples": [
           {
             "en": "I laid me down",
@@ -160104,8 +160149,13 @@
       {
         "id": 6,
         "partOfSpeech": "noun",
-        "translation": "партия, находящаяся у власти (the ins)",
-        "examples": [],
+        "translation": "партия, находящаяся у власти",
+        "examples": [
+          {
+            "en": "the ins",
+            "ru": "партия, находящаяся у власти"
+          }
+        ],
         "register": [
           "политика",
           "британское"
@@ -162518,11 +162568,15 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "информация, сообщения, сведения (on, about); “Information” «Справки» (вывеска)",
+        "translation": "информация, сообщения, сведения (on, about)",
         "examples": [
           {
             "en": "to turn in information",
             "ru": "дать сведения, информацию"
+          },
+          {
+            "en": "Information",
+            "ru": "«Справки» (вывеска)"
           }
         ],
         "register": [],
@@ -166851,7 +166905,7 @@
     "meanings": [
       {
         "partOfSpeech": "adjective",
-        "translation": "международный, интернациональный; international salute «салют нации» (21 выстрел)",
+        "translation": "международный, интернациональный",
         "examples": [
           {
             "en": "international law",
@@ -166860,11 +166914,16 @@
           {
             "en": "international civil servant",
             "ru": "сотрудник международной организации"
+          },
+          {
+            "en": "international salute",
+            "ru": "«салют нации» (21 выстрел)",
+            "register": [
+              "морской термин"
+            ]
           }
         ],
-        "register": [
-          "морской термин"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -167393,7 +167452,7 @@
       {
         "id": 3,
         "partOfSpeech": "preposition",
-        "translation": "в (движение во времени: looking into the future)",
+        "translation": "в (движение во времени)",
         "examples": [
           {
             "en": "her reflections shifted into the past",
@@ -172289,7 +172348,7 @@
         "examples": [
           {
             "en": "you may keep the book for a month",
-            "ru": "можете держать эту книгу kemp месяц"
+            "ru": "можете держать эту книгу месяц"
           },
           {
             "en": "to keep hold of smth.",
@@ -179540,8 +179599,13 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "класс (команды); А league классА",
-        "examples": [],
+        "translation": "класс (команды)",
+        "examples": [
+          {
+            "en": "A league",
+            "ru": "класс A"
+          }
+        ],
         "register": [
           "спортивное"
         ],
@@ -183402,7 +183466,7 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "(часто при мн. ч.:) светофор; green light. «зелёная улица»",
+        "translation": "(часто при мн. ч.:) светофор",
         "examples": [
           {
             "en": "to stop for the lights",
@@ -183411,13 +183475,17 @@
           {
             "en": "to cross (to drive) against the lights",
             "ru": "переходить (проезжать) на красный свет"
+          },
+          {
+            "en": "green light",
+            "ru": "«зелёная улица»",
+            "register": [
+              "американский английский",
+              "разговорное"
+            ]
           }
         ],
-        "register": [
-          "американский английский",
-          "разговорное",
-          "британское"
-        ],
+        "register": [],
         "id": 4
       },
       {
@@ -183796,7 +183864,7 @@
         "id": 6,
         "phrase": "to see the light",
         "partOfSpeech": "verb",
-        "translation": "увидеть свет, родиться; выйти из печати (see the light)",
+        "translation": "увидеть свет, родиться; выйти из печати",
         "register": [
           "идиома"
         ],
@@ -185944,7 +186012,7 @@
             "ru": "отдохните немного"
           },
           {
-            "en": "load little less (more) than",
+            "en": "a little less (more) than",
             "ru": "немного меньше (больше), чем"
           },
           {
@@ -185988,9 +186056,7 @@
             "ru": "знает понемногу обо всём"
           }
         ],
-        "register": [
-          "живопись"
-        ],
+        "register": [],
         "id": 7,
         "primary": true
       },
@@ -188022,7 +188088,7 @@
         "translation": "долгосрочный; длительный",
         "examples": [
           {
-            "en": "longterm bond (or note)",
+            "en": "long-term bond (or note)",
             "ru": "обязательство сроком не менее чем на два года"
           }
         ],
@@ -189915,12 +189981,10 @@
         "examples": [
           {
             "en": "to form a low opinion of smb.",
-            "ru": "составить себе плохое мнение о -л., быть невысокого мнения о -л"
+            "ru": "составить себе плохое мнение о ком-либо; быть невысокого мнения о ком-либо"
           }
         ],
-        "register": [
-          "коммерческое"
-        ],
+        "register": [],
         "id": 11
       },
       {
@@ -191756,7 +191820,7 @@
           },
           {
             "en": "to make oneself understood",
-            "ru": "объяснять- (ся) (на иностранном языке)"
+            "ru": "объяснять(ся) (на иностранном языке)"
           },
           {
             "en": "to make smth. grow",
@@ -192050,7 +192114,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "вид, форма, фасон, марка; стиль; , модель",
+        "translation": "вид, форма, фасон, марка; стиль; модель",
         "examples": [
           {
             "en": "do you like the make of that coat?",
@@ -199861,7 +199925,7 @@
         "id": 1,
         "phrase": "in the middle of",
         "partOfSpeech": "noun",
-        "translation": "в середине, посреди (in the middle of)",
+        "translation": "в середине, посреди",
         "register": [],
         "examples": []
       }
@@ -199960,8 +200024,13 @@
       {
         "id": 1,
         "partOfSpeech": "verb",
-        "translation": "past от may I: she said she might arrive at six она сказала, что может приехать в шесть",
-        "examples": [],
+        "translation": "past от may",
+        "examples": [
+          {
+            "en": "she said she might arrive at six",
+            "ru": "она сказала, что может приехать в шесть"
+          }
+        ],
         "register": [],
         "primary": true
       },
@@ -201681,7 +201750,8 @@
         "translation": "мелкий, мельчайший",
         "examples": [],
         "register": [],
-        "id": 1
+        "id": 1,
+        "primary": true
       },
       {
         "partOfSpeech": "adjective",
@@ -204625,8 +204695,13 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "в роли определения: mother tongue; родной язык; праязык",
-        "examples": [],
+        "translation": "в роли определения",
+        "examples": [
+          {
+            "en": "mother tongue",
+            "ru": "родной язык; праязык"
+          }
+        ],
         "register": [],
         "id": 3
       },
@@ -213696,7 +213771,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "знак (препинания: note of interrogation)",
+        "translation": "знак (препинания)",
         "examples": [
           {
             "en": "note of interrogation (exclamation)",
@@ -218521,9 +218596,7 @@
             "ru": "служебные обязанности"
           }
         ],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -221843,7 +221916,7 @@
         "id": 7,
         "phrase": "order of the day",
         "partOfSpeech": "noun",
-        "translation": "порядок дня; мода, веяние времени (order of the day)",
+        "translation": "порядок дня; мода, веяние времени",
         "register": [],
         "examples": []
       }
@@ -230622,11 +230695,15 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "прошлый, минувший; истекший; for some time past (за) последнее время",
+        "translation": "прошлый, минувший; истекший",
         "examples": [
           {
             "en": "his prime is past",
             "ru": "его молодость прошла"
+          },
+          {
+            "en": "for some time past",
+            "ru": "(за) последнее время"
           }
         ],
         "register": [],
@@ -242211,11 +242288,15 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "скудный, жалкий, плохой; ничтожный; убогий; a poor £ 1 a week жалкий фунт стерлингов в неделю",
+        "translation": "скудный, жалкий, плохой; ничтожный; убогий",
         "examples": [
           {
             "en": "in my poor opinion",
             "ru": "по моему скромному мнению"
+          },
+          {
+            "en": "a poor £ 1 a week",
+            "ru": "жалкий фунт стерлингов в неделю"
           }
         ],
         "register": [
@@ -243018,7 +243099,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "положе- postgraduate ние; должность",
+        "translation": "положение; должность",
         "examples": [],
         "register": [],
         "id": 5
@@ -251234,7 +251315,7 @@
           },
           {
             "en": "a full program",
-            "ru": "множество занятий, дели т. п"
+            "ru": "множество занятий, дел и т. п."
           }
         ],
         "register": [
@@ -257595,7 +257676,7 @@
             "ru": "об этом не может быть и речи"
           },
           {
-            "en": "it is merely a question of time quillet",
+            "en": "it is merely a question of time",
             "ru": "это уже только вопрос времени"
           },
           {
@@ -259861,11 +259942,15 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "в роли определения:.: range elevation установка прицела",
+        "translation": "в роли определения",
         "examples": [
           {
             "en": "range table",
             "ru": "таблица дальностей и прицелов"
+          },
+          {
+            "en": "range elevation",
+            "ru": "установка прицела"
           }
         ],
         "register": [
@@ -260658,7 +260743,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "соответственная часть; пропорция; коэффициент, степень, rattle-pated процент; доля",
+        "translation": "соответственная часть; пропорция; коэффициент, степень, процент; доля",
         "examples": [
           {
             "en": "mortality rate",
@@ -260859,8 +260944,13 @@
       {
         "id": 4,
         "partOfSpeech": "adverb",
-        "translation": "(в ответ на вопрос, предположение) конечно, да; ещё бы!; do you know him? — Rather! вы его знаете? — Да, конечно!",
-        "examples": [],
+        "translation": "(в ответ на вопрос, предположение) конечно, да; ещё бы!",
+        "examples": [
+          {
+            "en": "do you know him? — Rather!",
+            "ru": "вы его знаете? — Да, конечно!"
+          }
+        ],
         "register": [
           "разговорное"
         ],
@@ -270288,9 +270378,7 @@
             "ru": "его изыскания были плодотворными"
           }
         ],
-        "register": [
-          "британское"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -276712,7 +276800,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "причина опасности roll или провала",
+        "translation": "причина опасности",
         "examples": [],
         "register": [],
         "id": 6
@@ -280874,11 +280962,11 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "становиться, делаться (run dry — пересыхать, run cold — холодеть)",
+        "translation": "становиться, делаться",
         "examples": [
           {
             "en": "to run dry",
-            "ru": "высыхать"
+            "ru": "высыхать, пересыхать"
           },
           {
             "en": "to run mad",
@@ -280891,6 +280979,10 @@
           {
             "en": "to run low",
             "ru": "понижаться, опускаться"
+          },
+          {
+            "en": "run cold",
+            "ru": "холодеть"
           }
         ],
         "register": [],
@@ -285377,7 +285469,7 @@
         "id": 1,
         "phrase": "of the old school",
         "partOfSpeech": "noun",
-        "translation": "старой школы, традиционный (of the old school)",
+        "translation": "старой школы, традиционный",
         "register": [],
         "examples": []
       },
@@ -302402,7 +302494,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "сожительствовать, спать sling (with, together — с кем-либо)",
+        "translation": "сожительствовать, спать (with, together — с кем-либо)",
         "examples": [],
         "register": [],
         "id": 6
@@ -307566,8 +307658,13 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "образ, манера; after (или in) a sort; некоторым образом; в некоторой степени",
-        "examples": [],
+        "translation": "образ, манера",
+        "examples": [
+          {
+            "en": "after (or in) a sort",
+            "ru": "некоторым образом; в некоторой степени"
+          }
+        ],
         "register": [
           "устаревшее"
         ],
@@ -308358,7 +308455,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "разбивать на шпации; набирать в разрядку (часто space out) space out",
+        "translation": "разбивать на шпации; набирать в разрядку (часто space out)",
         "examples": [
           {
             "en": "to be spaced out.",
@@ -319738,7 +319835,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "запас; инвентарь; dead stock (мёртвый) инвентарь; под рукой",
+        "translation": "запас; инвентарь",
         "examples": [
           {
             "en": "word stock",
@@ -319750,7 +319847,7 @@
           },
           {
             "en": "in stock",
-            "ru": "в наличии (о товарах и т. п.)"
+            "ru": "в наличии (о товарах и т. п.); под рукой"
           },
           {
             "en": "out of stock",
@@ -319759,6 +319856,10 @@
           {
             "en": "to lay in stock",
             "ru": "делать запасы"
+          },
+          {
+            "en": "dead stock",
+            "ru": "(мёртвый) инвентарь"
           }
         ],
         "register": [],
@@ -337661,7 +337762,7 @@
       {
         "id": 4,
         "partOfSpeech": "article",
-        "translation": "родовое понятие (обозначает класс предметов в целом: the horse — лошадь)",
+        "translation": "родовое понятие (обозначает класс предметов в целом)",
         "register": [],
         "examples": [
           {
@@ -337673,7 +337774,7 @@
       {
         "id": 5,
         "partOfSpeech": "article",
-        "translation": "с уникальными объектами (the Sun, the Moon, the Earth)",
+        "translation": "с уникальными объектами",
         "register": [],
         "examples": [
           {
@@ -337693,7 +337794,7 @@
       {
         "id": 6,
         "partOfSpeech": "article",
-        "translation": "с субстантивированными прилагательными (the poor — бедняки, the rich — богачи)",
+        "translation": "с субстантивированными прилагательными",
         "register": [],
         "examples": [
           {
@@ -337707,18 +337808,22 @@
           {
             "en": "it is only a step from the sublime to the ridiculous",
             "ru": "от великого до смешного только один шаг"
+          },
+          {
+            "en": "the rich",
+            "ru": "богачи"
           }
         ]
       },
       {
         "id": 7,
         "partOfSpeech": "article",
-        "translation": "сфера деятельности, профессия (the stage — сцена, театр)",
+        "translation": "сфера деятельности, профессия",
         "register": [],
         "examples": [
           {
             "en": "the stage",
-            "ru": "театр, сценическая деятельность"
+            "ru": "сцена, театр, сценическая деятельность"
           },
           {
             "en": "the saddle",
@@ -337729,7 +337834,7 @@
       {
         "id": 8,
         "partOfSpeech": "adverb",
-        "translation": "тем... чем; чем... тем (со сравнительной степенью: the more the better)",
+        "translation": "тем... чем; чем... тем (со сравнительной степенью)",
         "register": [],
         "examples": [
           {
@@ -346192,8 +346297,13 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "tour of duty; стажировка; пребывание в должности; дежурство; наряд",
-        "examples": [],
+        "translation": "стажировка; пребывание в должности; дежурство; наряд",
+        "examples": [
+          {
+            "en": "tour of duty",
+            "ru": "стажировка; пребывание в должности; дежурство; наряд"
+          }
+        ],
         "register": [],
         "id": 7
       },
@@ -356278,7 +356388,7 @@
       {
         "id": 3,
         "partOfSpeech": "adverb",
-        "translation": "истёкший (о времени: time is up)",
+        "translation": "истёкший (о времени)",
         "examples": [
           {
             "en": "time is up",
@@ -358076,11 +358186,15 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "дорожить, ценить; I do not value that a brass farthing ≈ по-моему, это гроша ломаного не стоит",
+        "translation": "дорожить, ценить",
         "examples": [
           {
             "en": "he values himself on his knowledge",
             "ru": "он гордится своими знаниями"
+          },
+          {
+            "en": "I do not value that a brass farthing",
+            "ru": "≈ по-моему, это гроша ломаного не стоит"
           }
         ],
         "register": [],
@@ -369672,7 +369786,8 @@
           }
         ],
         "register": [],
-        "id": 1
+        "id": 1,
+        "primary": true
       },
       {
         "partOfSpeech": "adverb",
@@ -369684,7 +369799,8 @@
           }
         ],
         "register": [],
-        "id": 2
+        "id": 2,
+        "primary": true
       },
       {
         "partOfSpeech": "adverb",
@@ -369696,7 +369812,8 @@
           }
         ],
         "register": [],
-        "id": 3
+        "id": 3,
+        "primary": true
       },
       {
         "partOfSpeech": "interjection",
@@ -369751,16 +369868,14 @@
           }
         ],
         "register": [],
-        "id": 8,
-        "primary": true
+        "id": 8
       },
       {
         "partOfSpeech": "noun",
         "translation": "загадка, задача",
         "examples": [],
         "register": [],
-        "id": 9,
-        "primary": true
+        "id": 9
       }
     ]
   },
@@ -373870,7 +373985,7 @@
             "ru": "ни за что на свете"
           },
           {
-            "en": "not of this world s",
+            "en": "not of this world",
             "ru": "не от мира сего"
           },
           {
@@ -375327,7 +375442,8 @@
         "translation": "письмо; почерк; литературное произведение",
         "examples": [],
         "register": [],
-        "id": 1
+        "id": 1,
+        "primary": true
       },
       {
         "partOfSpeech": "noun",
@@ -375376,9 +375492,7 @@
             "ru": "списание суммы"
           }
         ],
-        "register": [
-          "коммерческое"
-        ],
+        "register": [],
         "id": 5,
         "primary": true
       },
