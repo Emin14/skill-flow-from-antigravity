@@ -23,11 +23,25 @@ export const normalizeOccurrences = (
   if (!occurrences || occurrences.length === 0) return [];
 
   const dateMap = new Map<string, TaskOccurrence>();
+  const noDateOccs: TaskOccurrence[] = [];
 
   for (const occ of occurrences) {
-    if (!occ || !occ.date) continue;
-    const dateStr = occ.date.trim();
-    if (!dateStr || !dateStr.includes('-')) continue;
+    if (!occ) continue;
+    const dateStr = (occ.date || '').trim();
+    if (!dateStr || !dateStr.includes('-')) {
+      noDateOccs.push({
+        id: occ.id || uuidv4(),
+        taskId: occ.taskId || taskId || '',
+        date: '',
+        status: occ.status || 'Todo',
+        completedAt: occ.completedAt || null,
+        smartRating: occ.smartRating,
+        pomodorosCount: occ.pomodorosCount,
+        activeMinutes: occ.activeMinutes,
+        note: occ.note || null,
+      });
+      continue;
+    }
 
     const existing = dateMap.get(dateStr);
 
@@ -71,10 +85,10 @@ export const normalizeOccurrences = (
     }
   }
 
-  const normalized = Array.from(dateMap.values());
+  const dated = Array.from(dateMap.values());
   // INVARIANT 2: Always sort strictly by date ascending
-  normalized.sort((a, b) => a.date.localeCompare(b.date));
-  return normalized;
+  dated.sort((a, b) => a.date.localeCompare(b.date));
+  return [...dated, ...noDateOccs];
 };
 
 /**
@@ -1045,16 +1059,36 @@ export const useTaskStore = create<TaskState>((set, get) => ({
     } else if (updates.scheduledDate !== undefined) {
       const cleanDate = (updates.scheduledDate || '').trim();
       updates.scheduledDate = cleanDate;
+      const existingOccs = task.occurrences || [];
       if (cleanDate === '' || cleanDate === 'anytime') {
-        const occs = (task.occurrences || []).map((o) =>
+        const occs = existingOccs.map((o) =>
           o.status === 'Todo' ? { ...o, date: '' } : o
         );
-        updates.occurrences = occs;
-      } else if (task.occurrences && task.occurrences.length > 0) {
-        const occs = task.occurrences.map((o) =>
-          o.status === 'Todo' ? { ...o, date: cleanDate } : o
-        );
-        updates.occurrences = occs;
+        updates.occurrences = occs.length > 0 ? occs : [
+          {
+            id: uuidv4(),
+            taskId: id,
+            date: '',
+            status: task.status || 'Todo',
+          },
+        ];
+      } else {
+        const hasTodo = existingOccs.some((o) => o.status === 'Todo');
+        if (hasTodo) {
+          updates.occurrences = existingOccs.map((o) =>
+            o.status === 'Todo' ? { ...o, date: cleanDate } : o
+          );
+        } else {
+          updates.occurrences = [
+            ...existingOccs,
+            {
+              id: uuidv4(),
+              taskId: id,
+              date: cleanDate,
+              status: task.status || 'Todo',
+            },
+          ];
+        }
       }
     } else if (updates.isRepeating && (!task.occurrences || task.occurrences.length === 0)) {
       const targetDate = updates.scheduledDate || task.scheduledDate || getTodayStr();

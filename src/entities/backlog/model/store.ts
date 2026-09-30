@@ -40,8 +40,8 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
       useToastStore.getState().showToast('Идея добавлена в бэклог', 'success');
       useActivityStore.getState().logActivity('task_created', `Добавлена идея в бэклог: "${dto.title}"`);
       return saved;
-    } catch (err) {
-      useToastStore.getState().showToast('Ошибка добавления идеи', 'error');
+    } catch (err: any) {
+      useToastStore.getState().showToast(err?.message || 'Ошибка добавления идеи', 'error');
       throw err;
     }
   },
@@ -57,9 +57,9 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
         items: state.items.map((i) => (i.id === id ? updated : i)),
       }));
       useToastStore.getState().showToast('Идея обновлена', 'success');
-    } catch (err) {
+    } catch (err: any) {
       set({ items: previous });
-      useToastStore.getState().showToast('Ошибка обновления идеи', 'error');
+      useToastStore.getState().showToast(err?.message || 'Ошибка обновления идеи', 'error');
       throw err;
     }
   },

@@ -341,6 +341,27 @@ export class PrismaTaskRepository {
               data: occData,
             });
           }
+        } else if (updates.scheduledDate !== undefined) {
+          // If scheduledDate was updated directly without passing explicit occurrences array
+          const cleanDate = (updates.scheduledDate || '').trim();
+          const todoOcc = existing.occurrences.find((o) => o.status === 'Todo');
+          if (todoOcc) {
+            await tx.taskOccurrence.update({
+              where: { id: todoOcc.id },
+              data: { date: cleanDate },
+            });
+          } else {
+            await tx.taskOccurrence.create({
+              data: {
+                id: uuidv4(),
+                taskId: id,
+                date: cleanDate,
+                status: 'Todo',
+                activeMinutes: 0,
+                pomodorosCount: 0,
+              },
+            });
+          }
         } else if (updates.isRepeating && existing.occurrences.length === 0) {
           // If updated to repeating and had 0 occurrences, create initial occurrence
           const defaultDate = updates.scheduledDate || new Date().toISOString().split('T')[0];

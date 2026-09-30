@@ -3,7 +3,10 @@ import { BacklogItem, CreateBacklogItemDto, UpdateBacklogItemDto } from '../mode
 export const backlogApi = {
   async getAll(): Promise<BacklogItem[]> {
     const res = await fetch('/api/backlog');
-    if (!res.ok) throw new Error(`Failed to fetch backlog items: ${res.statusText}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.error || `Failed to fetch backlog items: ${res.statusText}`);
+    }
     return res.json();
   },
 
@@ -13,7 +16,10 @@ export const backlogApi = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dto),
     });
-    if (!res.ok) throw new Error(`Failed to create backlog item: ${res.statusText}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.error || `Failed to create backlog item: ${res.statusText}`);
+    }
     return res.json();
   },
 
@@ -23,7 +29,10 @@ export const backlogApi = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, ...updates }),
     });
-    if (!res.ok) throw new Error(`Failed to update backlog item: ${res.statusText}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.error || `Failed to update backlog item: ${res.statusText}`);
+    }
     return res.json();
   },
 
@@ -31,7 +40,10 @@ export const backlogApi = {
     const res = await fetch(`/api/backlog?id=${encodeURIComponent(id)}`, {
       method: 'DELETE',
     });
-    if (!res.ok) throw new Error(`Failed to delete backlog item: ${res.statusText}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.error || `Failed to delete backlog item: ${res.statusText}`);
+    }
     const data = await res.json();
     return data.success;
   },
