@@ -27,6 +27,59 @@ interface IdeaDetailModalProps {
   onConvertToTask?: (id: string) => Promise<void>;
 }
 
+
+function TopicCombobox({ value, onChange, options }: { value: string; onChange: (v: string) => void; options: string[] }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const filtered = options.filter(o => o.toLowerCase().includes(value.toLowerCase()));
+  const exactMatch = options.some(o => o.toLowerCase() === value.toLowerCase());
+
+  return (
+    <div ref={wrapperRef} className={styles.comboboxWrapper}>
+      <input 
+         type="text" 
+         className={styles.input} 
+         value={value} 
+         onChange={e => onChange(e.target.value)}
+         onFocus={() => setIsOpen(true)}
+         placeholder="Выберите или введите новое..."
+      />
+      {isOpen && (filtered.length > 0 || !exactMatch) && (
+         <div className={styles.dropdown}>
+            {filtered.map(o => (
+               <div key={o} className={styles.dropdownItem} onMouseDown={(e) => {
+                  e.preventDefault();
+                  onChange(o);
+                  setIsOpen(false);
+               }}>
+                 {o}
+               </div>
+            ))}
+            {!exactMatch && value.trim() && (
+               <div className={styles.dropdownItem} style={{ fontStyle: 'italic', color: 'var(--color-accent-text)' }} onMouseDown={(e) => {
+                  e.preventDefault();
+                  setIsOpen(false);
+               }}>
+                 Новое: "{value}"
+               </div>
+            )}
+         </div>
+      )}
+    </div>
+  )
+}
+
 export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
   isOpen,
   item,
@@ -39,9 +92,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
 }) => {
   const [title, setTitle] = useState('');
   const [topic, setTopic] = useState('');
-  const [isCustomTopic, setIsCustomTopic] = useState(false);
-  const [customTopic, setCustomTopic] = useState('');
-  const [description, setDescription] = useState('');
+      const [description, setDescription] = useState('');
   const [status, setStatus] = useState<BacklogStatus>('idea');
   const [priority, setPriority] = useState<BacklogPriority>('medium');
   const [tagsInput, setTagsInput] = useState('');
@@ -79,8 +130,6 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
     if (item) {
       setTitle(item.title);
       setTopic(item.topic);
-      setIsCustomTopic(!existingTopics.includes(item.topic));
-      setCustomTopic(item.topic);
       setDescription(item.description || '');
       setStatus(item.status);
       setPriority(item.priority || 'medium');
@@ -90,8 +139,6 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
       const defaultTopic = initialTopic || (existingTopics.length > 0 ? existingTopics[0] : 'Общее');
       setTitle('');
       setTopic(defaultTopic);
-      setIsCustomTopic(false);
-      setCustomTopic('');
       setDescription('');
       setStatus('idea');
       setPriority('medium');
@@ -120,7 +167,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
     e.preventDefault();
     if (!title.trim()) return;
 
-    const finalTopic = isCustomTopic ? (customTopic.trim() || 'Общее') : topic;
+    const finalTopic = topic.trim() || 'Общее';
     const parsedTags = tagsInput
       .split(',')
       .map((t) => t.trim().replace(/^#/, ''))
@@ -162,7 +209,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
         {/* Header */}
         <div className={styles.header}>
           <h3 className={styles.title}>
-            <span>{item ? '✏️ Редактирование идеи' : '💡 Новая идея'}</span>
+            <span>{item ? '✏️ Редактирование идеи' : '💡 Новая заметка'}</span>
           </h3>
           <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Закрыть">
             <X size={18} />
@@ -170,75 +217,31 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className={styles.form}>
-          {/* Topic Selector */}
+                <form onSubmit={handleSubmit} className={styles.form}>
+          {/* Title - FIRST FIELD */}
           <div className={styles.formGroup}>
-            <label className={styles.label}>Тема / Приложение</label>
-            {!isCustomTopic ? (
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <select
-                  className={styles.select}
-                  style={{ flex: 1 }}
-                  value={topic}
-                  onChange={(e) => setTopic(e.target.value)}
-                >
-                  {existingTopics.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
-                <button
-                  type="button"
-                  className={`${styles.btn} ${styles.btnSecondary}`}
-                  onClick={() => {
-                    setIsCustomTopic(true);
-                    setCustomTopic('');
-                  }}
-                  title="Создать новую тему"
-                >
-                  + Новая
-                </button>
-              </div>
-            ) : (
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <input
-                  type="text"
-                  className={styles.input}
-                  style={{ flex: 1 }}
-                  placeholder="Например: Сайт заказа продуктов"
-                  value={customTopic}
-                  onChange={(e) => setCustomTopic(e.target.value)}
-                  autoFocus
-                />
-                {existingTopics.length > 0 && (
-                  <button
-                    type="button"
-                    className={`${styles.btn} ${styles.btnSecondary}`}
-                    onClick={() => setIsCustomTopic(false)}
-                  >
-                    Выбрать из списка
-                  </button>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* Title */}
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Суть идеи / фичи *</label>
+            <label className={styles.label}>Заголовок *</label>
             <input
               type="text"
               className={styles.input}
-              placeholder="Например: Сделать повтор заказа из истории в 1 клик"
+              placeholder="Заголовок заметки..."
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
+              autoFocus
             />
           </div>
 
-          {/* Status & Priority Row */}
+          {/* Category & Status Row */}
           <div className={styles.grid2}>
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Направление</label>
+              <TopicCombobox 
+                value={topic} 
+                onChange={setTopic} 
+                options={existingTopics} 
+              />
+            </div>
             <div className={styles.formGroup}>
               <label className={styles.label}>Статус</label>
               <select
@@ -247,14 +250,16 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                 onChange={(e) => setStatus(e.target.value as BacklogStatus)}
               >
                 <option value="idea">💡 Свежая мысль</option>
-                <option value="backlog">📋 В бэклоге</option>
                 <option value="planned">🚀 В планах</option>
                 <option value="done">✅ Реализовано</option>
               </select>
             </div>
+          </div>
 
+          {/* Priority & Tags Row */}
+          <div className={styles.grid2}>
             <div className={styles.formGroup}>
-              <label className={styles.label}>Приоритет / Польза</label>
+              <label className={styles.label}>Приоритет</label>
               <select
                 className={styles.select}
                 value={priority}
@@ -265,22 +270,6 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                 <option value="low">☕ Низкий</option>
               </select>
             </div>
-          </div>
-
-          {/* Description / Notes */}
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Заметки, логика и детали</label>
-            <textarea
-              className={styles.textarea}
-              placeholder="Опишите, как фича должна работать, критерии готовности, полезные мысли..."
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <LinksPreview text={description} />
-          </div>
-
-          {/* Tags & Link Row */}
-          <div className={styles.grid2}>
             <div className={styles.formGroup}>
               <label className={styles.label}>Теги (через запятую)</label>
               <input
@@ -291,29 +280,44 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                 onChange={(e) => setTagsInput(e.target.value)}
               />
             </div>
+          </div>
 
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Ссылка на макет / референс</label>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <input
-                  type="text"
-                  className={styles.input}
-                  style={{ flex: 1 }}
-                  placeholder="https://..."
-                  value={link}
-                  onChange={(e) => setLink(e.target.value)}
-                />
-                <button
-                  type="button"
-                  className={`${styles.btn} ${styles.btnSecondary}`}
-                  style={{ padding: '0 12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                  onClick={handleFetchTitle}
-                  disabled={isFetchingTitle || !link}
-                  title="Автоматически получить название по ссылке"
-                >
-                  <Wand2 size={16} />
-                </button>
-              </div>
+          {/* Description */}
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Описание</label>
+            <textarea
+              className={styles.textarea}
+              style={{ minHeight: '120px' }}
+              placeholder="Детали, заметки, критерии готовности..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <LinksPreview text={description} />
+          </div>
+
+          {/* Link Row */}
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Полезная ссылка</label>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <input
+                type="text"
+                className={styles.input}
+                style={{ flex: 1 }}
+                placeholder="https://..."
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+              />
+              <button
+                type="button"
+                className={`${styles.btn} ${styles.btnSecondary}`}
+                style={{ padding: '0 16px', display: 'flex', alignItems: 'center', gap: '6px' }}
+                onClick={handleFetchTitle}
+                disabled={isFetchingTitle || !link}
+                title="Автоматически получить название по ссылке"
+              >
+                <Wand2 size={16} />
+                <span>Загрузить название</span>
+              </button>
             </div>
           </div>
 
@@ -365,7 +369,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                 disabled={isSaving || !title.trim()}
               >
                 <Check size={14} />
-                <span>{item ? 'Сохранить' : 'Добавить'}</span>
+                <span>{item ? 'Сохранить' : 'Создать'}</span>
               </button>
             </div>
           </div>

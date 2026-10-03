@@ -111,6 +111,20 @@ export class PrismaBacklogRepository {
       throw err;
     }
   }
+
+  async renameTopic(oldTopic: string, newTopic: string): Promise<number> {
+    if (typeof window !== 'undefined') return 0;
+    try {
+      const result = await prisma.backlogItem.updateMany({
+        where: { topic: oldTopic },
+        data: { topic: newTopic.trim() }
+      });
+      return result.count;
+    } catch (err) {
+      console.error(`[PrismaBacklogRepository.renameTopic] Error renaming topic ${oldTopic} to ${newTopic}:`, err);
+      throw err;
+    }
+  }
 }
 
 export const prismaBacklogRepository = new PrismaBacklogRepository();

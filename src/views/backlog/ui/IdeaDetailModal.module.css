@@ -212,3 +212,10 @@
   background: var(--color-accent);
   color: #ffffff;
 }
+
+
+/* Custom Combobox */
+.comboboxWrapper { position: relative; }
+.dropdown { position: absolute; top: 100%; left: 0; right: 0; max-height: 200px; overflow-y: auto; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; margin-top: 4px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 4px; }
+.dropdownItem { padding: 8px 12px; font-size: 13px; color: var(--color-text-primary); cursor: pointer; border-radius: 6px; }
+.dropdownItem:hover { background: var(--color-surface-hover); }

@@ -16,6 +16,7 @@ interface BacklogState {
   updateItem: (id: string, updates: UpdateBacklogItemDto) => Promise<void>;
   deleteItem: (id: string) => Promise<void>;
   convertToTask: (id: string, targetDate?: string) => Promise<void>;
+  renameTopic: (oldTopic: string, newTopic: string) => Promise<void>;
 }
 
 export const useBacklogStore = create<BacklogState>((set, get) => ({
@@ -124,6 +125,20 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
     } catch (err) {
       console.error('Failed to convert idea to task:', err);
       useToastStore.getState().showToast('Ошибка создания задачи из идеи', 'error');
+    }
+  },
+
+  renameTopic: async (oldTopic: string, newTopic: string) => {
+    try {
+      await backlogApi.renameTopic(oldTopic, newTopic);
+      set((state) => ({
+        items: state.items.map(item => 
+          item.topic === oldTopic ? { ...item, topic: newTopic } : item
+        )
+      }));
+      useToastStore.getState().showToast('Направление переименовано', 'success');
+    } catch (err: any) {
+      useToastStore.getState().showToast(err.message || 'Ошибка при переименовании', 'error');
     }
   },
 }));

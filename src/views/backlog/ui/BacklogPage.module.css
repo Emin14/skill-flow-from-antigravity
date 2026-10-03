@@ -117,20 +117,13 @@
 }
 
 /* Topics Pill Bar */
-.topicsBar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: thin;
-}
+.topicsBar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 
 .topicsBar::-webkit-scrollbar {
   height: 4px;
 }
 
-.topicPill {
+.topicPill { flex-shrink: 0; white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -390,3 +383,21 @@
   margin: 0;
   max-width: 380px;
 }
+
+.iconAddBtn { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text-secondary); border-radius: 12px; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; }
+.iconAddBtn:hover { background: var(--color-accent); color: white; border-color: var(--color-accent); transform: scale(1.05); }
+
+.addTopicBtnMinimal { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 12px; background: transparent; border: 1.5px dashed var(--color-border); color: var(--color-text-muted); cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; }
+.addTopicBtnMinimal:hover { border-color: var(--color-accent); color: var(--color-accent); background: var(--color-accent-light); transform: scale(1.05); }
+
+@media (max-width: 600px) {
+  .controlsLeft { flex-wrap: wrap; }
+  .searchInputWrapper { min-width: 100%; }
+  .filterSelect { flex: 1; }
+  .topicsBar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .folderHead { font-size: 15px; padding: 14px 16px; }
+  .folderBody { padding: 8px; }
+}
+
+.topicSelect { flex: 1; padding: 10px 14px; border-radius: 12px; background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text-primary); font-size: 14px; font-weight: 500; outline: none; cursor: pointer; transition: all 0.2s ease; appearance: auto; }
+.topicSelect:focus { border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-accent-light); }

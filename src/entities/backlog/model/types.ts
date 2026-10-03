@@ -1,4 +1,4 @@
-export type BacklogStatus = 'idea' | 'backlog' | 'planned' | 'done';
+export type BacklogStatus = 'idea' | 'planned' | 'done';
 export type BacklogPriority = 'high' | 'medium' | 'low';
 
 export interface BacklogItem {

@@ -248,7 +248,7 @@ export const InboxPage: React.FC = () => {
             <div className={styles.transferModalHeader}>
               <div className={styles.transferModalTitle}>
                 <Lightbulb size={18} color="#8b5cf6" />
-                <span>Перенести в Идеи / Бэклог</span>
+                <span>Перенести в Заметки / Бэклог</span>
               </div>
               <button
                 type="button"

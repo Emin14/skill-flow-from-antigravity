@@ -16,7 +16,7 @@ const navItems: NavItem[] = [
   { label: 'Сегодня', href: '/today', icon: '☀️' },
   { label: 'Английский', href: '/english', icon: '🇬🇧' },
   { label: 'Входящие', href: '/inbox', icon: '📥' },
-  { label: 'Идеи / Бэклог', href: '/backlog', icon: '💡' },
+  { label: 'Заметки / Бэклог', href: '/backlog', icon: '💡' },
   { label: 'Крупные задачи', href: '/projects', icon: '📁' },
   { label: 'Просроченные', href: '/overdue', icon: '🚨' },
   { label: 'В любое время', href: '/anytime', icon: '♾️' },

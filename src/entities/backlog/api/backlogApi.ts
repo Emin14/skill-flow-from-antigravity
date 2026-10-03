@@ -47,4 +47,18 @@ export const backlogApi = {
     const data = await res.json();
     return data.success;
   },
+
+  async renameTopic(oldTopic: string, newTopic: string): Promise<number> {
+    const res = await fetch('/api/backlog/topics', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ oldTopic, newTopic }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.error || `Failed to rename topic: ${res.statusText}`);
+    }
+    const data = await res.json();
+    return data.count;
+  },
 };
