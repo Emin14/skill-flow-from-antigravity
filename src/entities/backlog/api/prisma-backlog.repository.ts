@@ -1,87 +1,43 @@
 import { prisma } from '@/shared/lib/prisma';
-import { Prisma } from '@prisma/client';
-import { v4 as uuidv4 } from 'uuid';
-import { BacklogItem, CreateBacklogItemDto, UpdateBacklogItemDto } from '../model/types';
+import type { Prisma } from '@prisma/client';
+import type { BacklogItem, CreateBacklogItemDto, UpdateBacklogItemDto } from '../model/types';
 import { BacklogMapper } from './backlog.mapper';
 
-export class PrismaBacklogRepository {
+async function resolveTopic(tx: Prisma.TransactionClient, topicId?: string, name?: string) {
+  if (topicId) return tx.backlogTopic.findUniqueOrThrow({ where: { id: topicId } });
+  const topicName = name?.trim() || 'Общее';
+  return tx.backlogTopic.upsert({ where: { name: topicName }, create: { name: topicName }, update: {} });
+}
+export const prismaBacklogRepository = {
   async getAll(): Promise<BacklogItem[]> {
-    if (typeof window !== 'undefined') return [];
-    try {
-      const list = await prisma.backlogItem.findMany({
-        orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
-      });
-      return list.map(BacklogMapper.toDto);
-    } catch (err) {
-      console.error('[PrismaBacklogRepository.getAll] Error:', err);
-      return [];
-    }
-  }
-
+    const list = await prisma.backlogItem.findMany({ include: { topicRecord: { select: { name: true } } }, orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }] });
+    return list.map(BacklogMapper.toDto);
+  },
   async getById(id: string): Promise<BacklogItem | null> {
-    if (typeof window !== 'undefined') return null;
-    try {
-      const item = await prisma.backlogItem.findUnique({
-        where: { id },
-      });
-      return item ? BacklogMapper.toDto(item) : null;
-    } catch {
-      return null;
-    }
-  }
-
+    const item = await prisma.backlogItem.findUnique({ where: { id }, include: { topicRecord: { select: { name: true } } } });
+    return item ? BacklogMapper.toDto(item) : null;
+  },
   async create(dto: CreateBacklogItemDto): Promise<BacklogItem> {
-    if (typeof window !== 'undefined') {
-      return {
-        id: uuidv4(),
-        topic: dto.topic,
-        title: dto.title,
-        description: dto.description || null,
-        status: dto.status || 'idea',
-        priority: dto.priority || 'medium',
-        tags: dto.tags || [],
-        link: dto.link || null,
-        sortOrder: 0,
-        createdAt: new Date().toISOString(),
-      };
-    }
-
-    const id = uuidv4();
-    try {
-      const result = await prisma.backlogItem.create({
-        data: {
-          id,
-          topic: dto.topic.trim() || 'Общее',
-          title: dto.title.trim() || 'Новая идея',
-          description: dto.description || null,
-          status: dto.status || 'idea',
-          priority: dto.priority || 'medium',
-          tags: dto.tags ? JSON.stringify(dto.tags) : null,
-          link: dto.link || null,
-          sortOrder: 0,
-        },
-      });
-      return BacklogMapper.toDto(result);
-    } catch (err) {
-      console.error('[PrismaBacklogRepository.create] Error:', err);
-      throw err;
-    }
-  }
-
+    return prisma.$transaction(async tx => {
+      const topic = await resolveTopic(tx, dto.topicId, dto.topic);
+      return BacklogMapper.toDto(await tx.backlogItem.create({ data: {
+        topicId: topic.id, topic: topic.name, title: dto.title.trim() || 'Новая заметка',
+        description: dto.description || null, status: dto.status || 'idea', priority: dto.priority || 'medium',
+        tags: dto.tags ? JSON.stringify(dto.tags) : null, link: dto.link || null, sortOrder: 0,
+      }, include: { topicRecord: { select: { name: true } } } }));
+    });
+  },
   async update(id: string, updates: UpdateBacklogItemDto): Promise<BacklogItem> {
-    if (typeof window !== 'undefined') {
-      return {
-        id,
-        topic: updates.topic || 'Общее',
-        title: updates.title || '',
-        status: updates.status || 'idea',
-        createdAt: new Date().toISOString(),
-      };
-    }
-
-    try {
-      const data: Prisma.BacklogItemUpdateInput = {};
-      if (updates.topic !== undefined) data.topic = updates.topic.trim();
+    return prisma.$transaction(async tx => {
+      const data: Prisma.BacklogItemUncheckedUpdateInput = {};
+      if (updates.topicId !== undefined || updates.topic !== undefined) {
+        const topic = await resolveTopic(tx, updates.topicId, updates.topic);
+        if (topic.archivedAt) {
+          const current = await tx.backlogItem.findUniqueOrThrow({ where: { id } });
+          if (current.topicId !== topic.id) throw new Error('Нельзя переносить заметки в архивную тему');
+        }
+        data.topicId = topic.id; data.topic = topic.name;
+      }
       if (updates.title !== undefined) data.title = updates.title.trim();
       if (updates.description !== undefined) data.description = updates.description;
       if (updates.status !== undefined) data.status = updates.status;
@@ -89,42 +45,10 @@ export class PrismaBacklogRepository {
       if (updates.tags !== undefined) data.tags = updates.tags ? JSON.stringify(updates.tags) : null;
       if (updates.link !== undefined) data.link = updates.link;
       if (updates.sortOrder !== undefined) data.sortOrder = updates.sortOrder;
-
-      const result = await prisma.backlogItem.update({
-        where: { id },
-        data,
-      });
-      return BacklogMapper.toDto(result);
-    } catch (err) {
-      console.error(`[PrismaBacklogRepository.update] Error updating backlog item ${id}:`, err);
-      throw err;
-    }
-  }
-
+      return BacklogMapper.toDto(await tx.backlogItem.update({ where: { id }, data, include: { topicRecord: { select: { name: true } } } }));
+    });
+  },
   async delete(id: string): Promise<boolean> {
-    if (typeof window !== 'undefined') return true;
-    try {
-      await prisma.backlogItem.delete({ where: { id } });
-      return true;
-    } catch (err) {
-      console.error(`[PrismaBacklogRepository.delete] Error deleting backlog item ${id}:`, err);
-      throw err;
-    }
-  }
-
-  async renameTopic(oldTopic: string, newTopic: string): Promise<number> {
-    if (typeof window !== 'undefined') return 0;
-    try {
-      const result = await prisma.backlogItem.updateMany({
-        where: { topic: oldTopic },
-        data: { topic: newTopic.trim() }
-      });
-      return result.count;
-    } catch (err) {
-      console.error(`[PrismaBacklogRepository.renameTopic] Error renaming topic ${oldTopic} to ${newTopic}:`, err);
-      throw err;
-    }
-  }
-}
-
-export const prismaBacklogRepository = new PrismaBacklogRepository();
+    await prisma.backlogItem.delete({ where: { id } }); return true;
+  },
+};

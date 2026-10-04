@@ -2,7 +2,7 @@ import { BacklogItem as PrismaBacklogItem } from '@prisma/client';
 import { BacklogItem, BacklogStatus, BacklogPriority } from '../model/types';
 
 export class BacklogMapper {
-  static toDto(raw: PrismaBacklogItem): BacklogItem {
+  static toDto(raw: PrismaBacklogItem & { topicRecord?: { name: string } }): BacklogItem {
     let tags: string[] = [];
     if (raw.tags) {
       try {
@@ -14,7 +14,8 @@ export class BacklogMapper {
 
     return {
       id: raw.id,
-      topic: raw.topic || 'Общее',
+      topic: raw.topicRecord?.name ?? raw.topic ?? 'Общее',
+      topicId: raw.topicId,
       title: raw.title,
       description: raw.description,
       status: (raw.status as BacklogStatus) || 'idea',

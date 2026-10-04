@@ -170,9 +170,22 @@ model EnglishWordReviewLog {
   @@index([createdAt])
 }
 
+model BacklogTopic {
+  id          String        @id @default(uuid())
+  name        String        @unique
+  description String?
+  sortOrder   Int           @default(0)
+  archivedAt  DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now()) @updatedAt
+  items       BacklogItem[]
+}
+
 model BacklogItem {
   id          String   @id @default(uuid())
   topic       String   // e.g. "Todo List", "Сайт заказа продуктов"
+  topicId     String
+  topicRecord BacklogTopic @relation(fields: [topicId], references: [id], onDelete: Restrict)
   title       String   // Название фичи / идеи
   description String?  // Подробные мысли, спецификация, чеклист
   status      String   @default("idea") // 'idea' | 'backlog' | 'planned' | 'done'
@@ -184,6 +197,7 @@ model BacklogItem {
   updatedAt   DateTime @default(now()) @updatedAt
 
   @@index([topic])
+  @@index([topicId])
   @@index([status])
 }
 

@@ -1,4 +1,4 @@
-import { BacklogItem, CreateBacklogItemDto, UpdateBacklogItemDto } from '../model/types';
+import { BacklogItem, BacklogTopic, SaveBacklogTopicDto, CreateBacklogItemDto, UpdateBacklogItemDto } from '../model/types';
 
 export const backlogApi = {
   async getAll(): Promise<BacklogItem[]> {
@@ -48,17 +48,22 @@ export const backlogApi = {
     return data.success;
   },
 
-  async renameTopic(oldTopic: string, newTopic: string): Promise<number> {
+  async getTopics(): Promise<BacklogTopic[]> {
+    const res = await fetch('/api/backlog/topics');
+    if (!res.ok) throw new Error('Не удалось загрузить темы');
+    return res.json();
+  },
+
+  async saveTopic(dto: SaveBacklogTopicDto, id?: string): Promise<BacklogTopic> {
     const res = await fetch('/api/backlog/topics', {
-      method: 'PUT',
+      method: id ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ oldTopic, newTopic }),
+      body: JSON.stringify({ ...dto, ...(id ? { id } : {}) }),
     });
     if (!res.ok) {
       const err = await res.json().catch(() => null);
-      throw new Error(err?.error || `Failed to rename topic: ${res.statusText}`);
+      throw new Error(err?.error || 'Не удалось сохранить тему');
     }
-    const data = await res.json();
-    return data.count;
+    return res.json();
   },
 };
