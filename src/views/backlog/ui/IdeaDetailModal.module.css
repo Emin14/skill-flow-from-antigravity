@@ -118,14 +118,18 @@
 
 .grid2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
-@media (max-width: 480px) {
-  .grid2 {
-    grid-template-columns: 1fr;
-  }
+.grid2 > * {
+  min-width: 0;
+}
+
+.grid2 input,
+.grid2 select {
+  width: 100%;
+  min-width: 0;
 }
 
 .select {
@@ -156,6 +160,14 @@
   align-items: center;
   gap: 8px;
   margin-left: auto;
+}
+
+.footerCentered {
+  justify-content: center;
+}
+
+.footerCentered .footerRight {
+  margin-left: 0;
 }
 
 .btn {

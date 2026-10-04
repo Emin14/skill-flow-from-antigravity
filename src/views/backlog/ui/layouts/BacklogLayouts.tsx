@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import type { BacklogItem, BacklogPriority, BacklogStatus } from '@/entities/backlog/model/types';
+import type { BacklogItem, BacklogTopic, BacklogPriority, BacklogStatus } from '@/entities/backlog/model/types';
 import {
   ArrowRight,
   Trash2,
@@ -11,14 +11,21 @@ import {
   Inbox,
   Plus,
   Edit2,
-  Check,
-  X,
+  Pin,
+  PinOff,
+  ExternalLink,
 } from 'lucide-react';
 import styles from './BacklogLayouts.module.css';
+import { isNotePinned, sortBacklogItems, type BacklogSortMode } from '../backlogSorting';
 
 export interface LayoutProps {
   items: BacklogItem[];
-  topics: string[];
+  topics: BacklogTopic[];
+  searchQuery?: string;
+  hideEmptyGroups?: boolean;
+  onEditTopic?: (topic: BacklogTopic) => void;
+  sortMode?: BacklogSortMode;
+  onPin?: (item: BacklogItem) => Promise<void>;
   totalCount: number;
   onEdit: (item: BacklogItem) => void;
   onDelete: (id: string) => void;
@@ -52,7 +59,7 @@ function prioLabel(p?: string | null) {
   return 'Средний';
 }
 function statusLabel(s: BacklogStatus) {
-  if (s === 'idea') return 'Мысль';
+  if (s === 'idea') return 'Новая заметка';
   if (s === 'planned') return 'В планах';
   return 'Готово';
 }
@@ -96,20 +103,16 @@ function Empty({ text = 'В этой проекции пока пусто' }: { 
 }
 
 export interface TopicGroup {
-  topic: string;
+  topic: BacklogTopic;
   list: BacklogItem[];
   done: number;
   active: number;
 }
 
-function topicGroups(items: BacklogItem[], topics: string[]): TopicGroup[] {
+function topicGroups(items: BacklogItem[], topics: BacklogTopic[], sortMode: BacklogSortMode): TopicGroup[] {
   return topics.map((t) => {
-    const list = items.filter((i) => i.topic === t);
-    const sortedList = [...list].sort((a, b) => {
-      if (a.status === 'done' && b.status !== 'done') return 1;
-      if (a.status !== 'done' && b.status === 'done') return -1;
-      return 0;
-    });
+    const list = items.filter((i) => i.topicId === t.id);
+    const sortedList = sortBacklogItems(list, sortMode);
     return {
       topic: t,
       list: sortedList,
@@ -129,6 +132,11 @@ function useOpenSections(keys: string[], defaultOpen: number) {
     const prev = prevKeysRef.current;
     if (prev.length === 0 && keys.length > 0) {
       setOpen(keys.slice(0, defaultOpen));
+    } else if (keys.length === 1 && (prev.length !== 1 || prev[0] !== keys[0])) {
+      setOpen(keys);
+    } else {
+      const added = keys.filter(key => !prev.includes(key));
+      if (added.length) setOpen(current => [...new Set([...current, ...added])]);
     }
     prevKeysRef.current = keys;
   }, [keys, defaultOpen]);
@@ -141,11 +149,25 @@ function useOpenSections(keys: string[], defaultOpen: number) {
 
 
 function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps }) {
+  const [isPinning, setIsPinning] = useState(false);
+  const suppressClickRef = useRef(false);
+  const pinPendingRef = useRef(false);
+  const pinned = isNotePinned(item);
+  const trimmedLink = item.link?.trim();
+  const formattedLink = trimmedLink ? (/^(https?:\/\/|mailto:)/i.test(trimmedLink) ? trimmedLink : `https://${trimmedLink}`) : null;
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [isVerticalScroll, setIsVerticalScroll] = useState(false);
   const [isSwipedLeft, setIsSwipedLeft] = useState(false);
+  const closeActions = () => { setSwipeOffset(0); setIsSwipedLeft(false); };
+  const handlePin = async () => {
+    if (pinPendingRef.current || !props.onPin) return;
+    pinPendingRef.current = true;
+    setIsPinning(true);
+    try { await props.onPin(item); closeActions(); }
+    finally { pinPendingRef.current = false; setIsPinning(false); }
+  };
   
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
@@ -159,6 +181,7 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
     const currentY = e.touches[0].clientY;
     const diffX = touchStartX - currentX;
     const diffY = touchStartY - currentY;
+    if (Math.abs(diffX) > 10) suppressClickRef.current = true;
 
     if (!isVerticalScroll && Math.abs(diffY) > 10 && Math.abs(diffY) > Math.abs(diffX)) {
       setIsVerticalScroll(true);
@@ -172,11 +195,7 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
       const newOffset = Math.min(0, Math.max(-100, -100 - diffX));
       setSwipeOffset(newOffset);
     } else {
-      if (diffX > 0 && diffX <= 100) {
-        setSwipeOffset(-diffX); // swiping left
-      } else if (diffX < 0 && diffX >= -80) {
-        setSwipeOffset(-diffX); // swiping right
-      }
+      setSwipeOffset(Math.max(-100, Math.min(80, -diffX)));
     }
   };
 
@@ -185,6 +204,7 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
     setTouchStartX(null);
     setTouchStartY(null);
 
+    if (suppressClickRef.current) window.setTimeout(() => { suppressClickRef.current = false; }, 350);
     if (!isVerticalScroll) {
       if (isSwipedLeft) {
         if (swipeOffset > -50) {
@@ -221,14 +241,17 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
       )}
       {(swipeOffset < 0 || isSwipedLeft) && (
         <div className={styles.swipeLeftActions}>
-          <button onClick={(e) => { e.stopPropagation(); props.onEdit(item); setSwipeOffset(0); setIsSwipedLeft(false); }} className={styles.swipeEditBtn}>Редакт.</button>
-          <button onClick={(e) => { e.stopPropagation(); if(confirm('Удалить?')) props.onDelete(item.id); }} className={styles.swipeDeleteBtn}><Trash2 size={16} /></button>
+          <button type="button" onClick={event => { event.stopPropagation(); void handlePin(); }} disabled={isPinning}
+            title={pinned ? 'Открепить заметку' : 'Закрепить заметку'} aria-label={pinned ? 'Открепить заметку' : 'Закрепить заметку'}
+            className={styles.swipePinBtn}>{pinned ? <PinOff size={16} /> : <Pin size={16} />}</button>
+          <button type="button" title="Удалить заметку" aria-label="Удалить заметку" onClick={(e) => { e.stopPropagation(); if(confirm('Удалить заметку?')) { props.onDelete(item.id); closeActions(); } }} className={styles.swipeDeleteBtn}><Trash2 size={16} /></button>
         </div>
       )}
       
       <div 
         className={`${styles.folderRow} ${item.status === 'done' ? styles.folderRowDone : ''}`} 
         onClick={() => {
+          if (suppressClickRef.current) return;
           if (swipeOffset !== 0 || isSwipedLeft) {
              setSwipeOffset(0);
              setIsSwipedLeft(false);
@@ -239,12 +262,44 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onTouchCancel={() => { closeActions(); setTouchStartX(null); setTouchStartY(null); suppressClickRef.current = false; }}
         style={{ transform: `translateX(${swipeOffset}px)`, transition: touchStartX ? 'none' : 'transform 0.2s ease' }}
       >
         <div className={styles.rowContent}>
           <div className={styles.rowTop}>
             <span className={styles.rowEmoji}>{statusEmoji}</span>
             <span className={styles.folderTitle}>{item.title}</span>
+            {formattedLink && (
+              <a
+                href={formattedLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={e => e.stopPropagation()}
+                onTouchStart={e => e.stopPropagation()}
+                className={styles.externalLink}
+                title={`Открыть ссылку: ${formattedLink}`}
+                aria-label={`Открыть ссылку: ${item.title}`}
+              >
+                <ExternalLink size={12} />
+              </a>
+            )}
+            {props.onPin && (
+              <button
+                type="button"
+                className={`${styles.pinBtn} ${pinned ? styles.pinBtnActive : ''}`}
+                title={pinned ? 'Открепить заметку' : 'Закрепить заметку'}
+                aria-label={pinned ? 'Открепить заметку' : 'Закрепить заметку'}
+                aria-pressed={pinned}
+                disabled={isPinning}
+                onTouchStart={e => e.stopPropagation()}
+                onClick={e => {
+                  e.stopPropagation();
+                  void handlePin();
+                }}
+              >
+                {pinned ? <PinOff size={14} /> : <Pin size={14} />}
+              </button>
+            )}
             <span className={styles.rowEmoji}>{prioEmoji}</span>
           </div>
           {(item.description || (item.tags && item.tags.length > 0)) && (
@@ -269,87 +324,63 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
 }
 
 function TopicFolder({ g, props, open, toggle }: { g: TopicGroup, props: LayoutProps, open: string[], toggle: (k: string) => void }) {
-  const isOpen = open.includes(g.topic);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(g.topic);
-
-  const handleRenameSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const newName = editValue.trim();
-    if (newName && newName !== g.topic && props.onRenameTopic) {
-      await props.onRenameTopic(g.topic, newName);
-    }
-    setIsEditing(false);
-  };
-
+  const isOpen = open.includes(g.topic.id);
   return (
     <section className={styles.folder}>
-      <div className={styles.folderHead} onClick={() => !isEditing && toggle(g.topic)}>
-        <span className={styles.folderIcon}>📁</span>
-        
-        {isEditing ? (
-          <form className={styles.renameForm} onSubmit={handleRenameSubmit} onClick={e => e.stopPropagation()}>
-            <input 
-              autoFocus 
-              className={styles.renameInput} 
-              value={editValue} 
-              onChange={e => setEditValue(e.target.value)} 
-              onKeyDown={e => { if (e.key === 'Escape') setIsEditing(false); }}
-            />
-            <button type="submit" className={styles.renameConfirmBtn} title="Сохранить"><Check size={14} /></button>
-            <button type="button" className={styles.renameCancelBtn} onClick={() => setIsEditing(false)} title="Отмена"><X size={14} /></button>
-          </form>
-        ) : (
-          <>
-            <strong>{g.topic}</strong>
-            {props.onRenameTopic && (
-              <button 
-                type="button" 
-                className={styles.renameBtn} 
-                onClick={(e) => { e.stopPropagation(); setIsEditing(true); setEditValue(g.topic); }}
-                title="Переименовать направление"
-              >
-                <span style={{ fontSize: '14px' }}>✏️</span>
-              </button>
-            )}
-          </>
-        )}
-
-        
+      <div className={styles.folderHead} onClick={() => toggle(g.topic.id)}>
+        <span className={styles.folderIcon}>{g.topic.archivedAt ? '🗃️' : '📁'}</span>
+        <strong>{g.topic.name}</strong>
+        {props.onEditTopic && <button type="button" className={styles.renameBtn}
+          onClick={event => { event.stopPropagation(); props.onEditTopic?.(g.topic); }}
+          title="Редактировать тему" aria-label={`Редактировать тему ${g.topic.name}`}>
+          <Edit2 size={14} />
+        </button>}
+        <span className={styles.folderTotalCount}>{g.list.length}</span>
         <span className={styles.folderCaret}>{isOpen ? '▾' : '▸'}</span>
       </div>
-      
-      {isOpen && (
-        <div className={styles.folderBody}>
-          {g.list.map((item) => (
-            <BacklogItemRow key={item.id} item={item} props={props} />
-          ))}
-          {g.list.length === 0 && <span className={styles.more}>Нет заметок в теме</span>}
-          
-          {props.onOpenCreate && (
-            <button type="button" className={styles.inlineAddTrigger} onClick={() => props.onOpenCreate && props.onOpenCreate(g.topic)}>
-              <Plus size={14} />
-              <span>Новая заметка в эту тему...</span>
-            </button>
-          )}
-        </div>
-      )}
+      {isOpen && <div className={styles.folderBody}>
+        {g.topic.description && <p className={styles.topicDescription}>{g.topic.description}</p>}
+        {g.topic.archivedAt && <span className={styles.more}>Тема в архиве</span>}
+        {g.list.map(item => <BacklogItemRow key={item.id} item={item} props={props} />)}
+        {g.list.length === 0 && <span className={styles.more}>Нет заметок в теме</span>}
+        {!g.topic.archivedAt && props.onOpenCreate && <button type="button" className={styles.inlineAddTrigger} onClick={() => props.onOpenCreate?.(g.topic.id)}>
+          <Plus size={14} /><span>Новая заметка в эту тему...</span>
+        </button>}
+      </div>}
     </section>
   );
 }
 
 export function TopicsClassicView(props: LayoutProps) {
   const { items, topics } = props;
-  const groups = topicGroups(items, topics);
-  const { open, toggle } = useOpenSections(topics, 3);
+  const groups = topicGroups(items, topics, props.sortMode ?? 'updated-desc').filter(group => !props.hideEmptyGroups || group.list.length > 0);
+  const { open, toggle } = useOpenSections(topics.map(topic => topic.id), 3);
+  const [searchSections, setSearchSections] = useState<{ query: string; closed: string[] }>({ query: '', closed: [] });
+  const query = props.searchQuery ?? '';
+  // A new query reveals every matching group without changing normal browsing's open state.
+  const visibleOpen = query
+    ? topics.map(topic => topic.id).filter(id => searchSections.query !== query || !searchSections.closed.includes(id))
+    : open;
+  const toggleSection = (topic: string) => {
+    if (!query) {
+      toggle(topic);
+      setSearchSections({ query: '', closed: [] });
+      return;
+    }
+    setSearchSections(previous => ({
+      query,
+      closed: previous.query !== query ? [topic] : previous.closed.includes(topic)
+        ? previous.closed.filter(key => key !== topic)
+        : [...previous.closed, topic],
+    }));
+  };
 
   if (!topics.length) return <Empty />;
 
   return (
     <div className={styles.folders}>
       {groups.map((g) => (
-        <TopicFolder key={g.topic} g={g} props={props} open={open} toggle={toggle} />
+        <TopicFolder key={g.topic.id} g={g} props={props} open={visibleOpen} toggle={toggleSection} />
       ))}
     </div>
   );

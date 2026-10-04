@@ -1,21 +1,23 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { BacklogItem, BacklogStatus, BacklogPriority } from '@/entities/backlog/model/types';
+import { BacklogItem, BacklogTopic, BacklogStatus, BacklogPriority } from '@/entities/backlog/model/types';
 import { extractLinkTitle } from '@/shared/lib/urlUtils';
 import { useToastStore, LinksPreview } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { X, Trash2, ArrowRight, Check, Wand2 } from 'lucide-react';
 import styles from './IdeaDetailModal.module.css';
+import { clearNoteDraft, readNoteDraft, writeNoteDraft, type NoteDraft } from './noteDraft';
 
 interface IdeaDetailModalProps {
   isOpen: boolean;
   item: BacklogItem | null;
-  existingTopics: string[];
+  existingTopics: BacklogTopic[];
   initialTopic?: string;
   onClose: () => void;
   onSave: (data: {
     topic: string;
+    topicId?: string;
     title: string;
     description: string;
     status: BacklogStatus;
@@ -24,7 +26,7 @@ interface IdeaDetailModalProps {
     link: string;
   }) => Promise<void>;
   onDelete?: (id: string) => Promise<void>;
-  onConvertToTask?: (id: string) => Promise<void>;
+  onConvertToTask?: (id: string, draft: NoteDraft) => void;
 }
 
 
@@ -71,7 +73,7 @@ function TopicCombobox({ value, onChange, options }: { value: string; onChange: 
                   e.preventDefault();
                   setIsOpen(false);
                }}>
-                 Новое: "{value}"
+                 Новое: &quot;{value}&quot;
                </div>
             )}
          </div>
@@ -92,6 +94,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
 }) => {
   const [title, setTitle] = useState('');
   const [topic, setTopic] = useState('');
+  const [topicId, setTopicId] = useState<string | undefined>();
       const [description, setDescription] = useState('');
   const [status, setStatus] = useState<BacklogStatus>('idea');
   const [priority, setPriority] = useState<BacklogPriority>('medium');
@@ -100,6 +103,8 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
   const [isSaving, setIsSaving] = useState(false);
   const [isFetchingTitle, setIsFetchingTitle] = useState(false);
   const isBackdropClickRef = useRef(false);
+  const draftSessionRef = useRef<{ key: string; baseline: NoteDraft; skipWrite: boolean; completed: boolean } | null>(null);
+  const [draftMessage, setDraftMessage] = useState('');
 
   useEffect(() => {
     if (isOpen) {
@@ -125,27 +130,63 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
   }, [isOpen, onClose]);
 
   useEffect(() => {
-    if (!isOpen) return;
-
-    if (item) {
-      setTitle(item.title);
-      setTopic(item.topic);
-      setDescription(item.description || '');
-      setStatus(item.status);
-      setPriority(item.priority || 'medium');
-      setTagsInput(item.tags ? item.tags.join(', ') : '');
-      setLink(item.link || '');
-    } else {
-      const defaultTopic = initialTopic || (existingTopics.length > 0 ? existingTopics[0] : 'Общее');
-      setTitle('');
-      setTopic(defaultTopic);
-      setDescription('');
-      setStatus('idea');
-      setPriority('medium');
-      setTagsInput('');
-      setLink('');
+    if (!isOpen) {
+      draftSessionRef.current = null;
+      return;
     }
+    const key = `backlog:note-draft:v1:${item?.id ?? 'new'}`;
+    if (draftSessionRef.current?.key === key) return;
+    const baseline: NoteDraft = {
+      title: item?.title ?? '',
+      topic: existingTopics.find(topic => topic.id === item?.topicId)?.name ?? item?.topic ?? initialTopic ?? 'Общее',
+      topicId: item?.topicId ?? existingTopics.find(topic => topic.name === (initialTopic ?? 'Общее'))?.id,
+      description: item?.description ?? '',
+      status: item?.status ?? 'idea',
+      priority: item?.priority ?? 'medium',
+      tagsInput: item?.tags?.join(', ') ?? '',
+      link: item?.link ?? '',
+    };
+    const restored = readNoteDraft(key);
+    const draft = restored ?? baseline;
+    draftSessionRef.current = { key, baseline, skipWrite: true, completed: false };
+    setTitle(draft.title);
+    setTopic(existingTopics.find(topic => topic.id === draft.topicId)?.name ?? draft.topic);
+    setTopicId(draft.topicId ?? existingTopics.find(topic => topic.name === draft.topic)?.id);
+    setDescription(draft.description);
+    setStatus(draft.status);
+    setPriority(draft.priority);
+    setTagsInput(draft.tagsInput);
+    setLink(draft.link);
+    setDraftMessage(restored ? 'Черновик восстановлен' : '');
   }, [isOpen, item, existingTopics, initialTopic]);
+
+  useEffect(() => {
+    const session = draftSessionRef.current;
+    if (!isOpen || !session || session.completed) return;
+    // Initialization and persistence run in the same commit; skip the old form values.
+    if (session.skipWrite) {
+      session.skipWrite = false;
+      return;
+    }
+    const draft: NoteDraft = { title, topic, topicId, description, status, priority, tagsInput, link };
+    if (JSON.stringify(draft) === JSON.stringify(session.baseline)) {
+      clearNoteDraft(session.key);
+      setDraftMessage('');
+      return;
+    }
+    const persisted = writeNoteDraft(session.key, draft);
+    setDraftMessage(persisted
+      ? 'Черновик сохранён на этом устройстве'
+      : 'Черновик сохранён только до перезагрузки страницы');
+  }, [isOpen, item?.id, title, topic, topicId, description, status, priority, tagsInput, link]);
+
+  const clearCurrentDraft = () => {
+    const session = draftSessionRef.current;
+    if (session) {
+      session.completed = true;
+      clearNoteDraft(session.key);
+    }
+  };
 
   const handleFetchTitle = async () => {
     if (!link) return;
@@ -178,12 +219,14 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
       await onSave({
         title: title.trim(),
         topic: finalTopic,
+        topicId,
         description: description.trim(),
         status,
         priority,
         tags: parsedTags,
         link: link.trim(),
       });
+      clearCurrentDraft();
       onClose();
     } finally {
       setIsSaving(false);
@@ -209,7 +252,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
         {/* Header */}
         <div className={styles.header}>
           <h3 className={styles.title}>
-            <span>{item ? '✏️ Редактирование идеи' : '💡 Новая заметка'}</span>
+            <span>{item ? '✏️ Редактирование заметки' : '💡 Новая заметка'}</span>
           </h3>
           <button type="button" className={styles.closeBtn} onClick={onClose} aria-label="Закрыть">
             <X size={18} />
@@ -232,14 +275,30 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
             />
           </div>
 
+          {/* Description */}
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Описание</label>
+            <textarea
+              className={styles.textarea}
+              style={{ minHeight: '120px' }}
+              placeholder="Детали, заметки, критерии готовности..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <LinksPreview text={description} />
+          </div>
+
           {/* Category & Status Row */}
           <div className={styles.grid2}>
             <div className={styles.formGroup}>
               <label className={styles.label}>Направление</label>
               <TopicCombobox 
                 value={topic} 
-                onChange={setTopic} 
-                options={existingTopics} 
+                onChange={value => {
+                  setTopic(value);
+                  setTopicId(existingTopics.find(topic => topic.name === value)?.id);
+                }}
+                options={existingTopics.filter(topic => !topic.archivedAt || topic.id === item?.topicId).map(topic => topic.name)}
               />
             </div>
             <div className={styles.formGroup}>
@@ -249,7 +308,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                 value={status}
                 onChange={(e) => setStatus(e.target.value as BacklogStatus)}
               >
-                <option value="idea">💡 Свежая мысль</option>
+                <option value="idea">💡 Новая заметка</option>
                 <option value="planned">🚀 В планах</option>
                 <option value="done">✅ Реализовано</option>
               </select>
@@ -282,19 +341,6 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
             </div>
           </div>
 
-          {/* Description */}
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Описание</label>
-            <textarea
-              className={styles.textarea}
-              style={{ minHeight: '120px' }}
-              placeholder="Детали, заметки, критерии готовности..."
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <LinksPreview text={description} />
-          </div>
-
           {/* Link Row */}
           <div className={styles.formGroup}>
             <label className={styles.label}>Полезная ссылка</label>
@@ -310,26 +356,27 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
               <button
                 type="button"
                 className={`${styles.btn} ${styles.btnSecondary}`}
-                style={{ padding: '0 16px', display: 'flex', alignItems: 'center', gap: '6px' }}
+                style={{ padding: '0 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
                 onClick={handleFetchTitle}
                 disabled={isFetchingTitle || !link}
                 title="Автоматически получить название по ссылке"
+                aria-label="Автоматически получить название по ссылке"
               >
-                <Wand2 size={16} />
-                <span>Загрузить название</span>
+                <Wand2 size={14} />
               </button>
             </div>
           </div>
 
           {/* Footer Actions */}
-          <div className={styles.footer}>
+          <div className={`${styles.footer} ${!item ? styles.footerCentered : ''}`}>
             {item && onDelete && (
               <button
                 type="button"
                 className={`${styles.btn} ${styles.btnDanger}`}
                 onClick={async () => {
-                  if (confirm('Удалить эту идею из бэклога?')) {
+                  if (confirm('Удалить эту заметку из бэклога?')) {
                     await onDelete(item.id);
+                    clearCurrentDraft();
                     onClose();
                   }
                 }}
@@ -344,11 +391,11 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                 <button
                   type="button"
                   className={`${styles.btn} ${styles.btnConvert}`}
-                  onClick={async () => {
-                    await onConvertToTask(item.id);
-                    onClose();
+                  onClick={() => {
+                    onConvertToTask(item.id, { title, topic, topicId, description, status, priority, tagsInput, link });
                   }}
-                  title="Создать задачу на сегодня в основном трекере"
+                  disabled={isSaving || !title.trim()}
+                  title="Открыть форму создания задачи"
                 >
                   <ArrowRight size={14} />
                   <span>В задачу</span>
@@ -360,7 +407,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                 className={`${styles.btn} ${styles.btnSecondary}`}
                 onClick={onClose}
               >
-                Отмена
+                Закрыть
               </button>
 
               <button
@@ -373,6 +420,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
               </button>
             </div>
           </div>
+          {draftMessage && <p role="status" style={{ margin: 0, fontSize: '12px', color: 'var(--color-text-muted)' }}>{draftMessage}</p>}
         </form>
       </div>
     </div>

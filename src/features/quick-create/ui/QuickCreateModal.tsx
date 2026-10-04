@@ -55,7 +55,13 @@ const hint: React.CSSProperties = {
 import { getCategoryColor } from '@/shared/config/categoryColors';
 
 export const QuickCreateModal: React.FC = () => {
-  const { isOpen, closeModal } = useQuickCreateModalStore();
+  const { isOpen, closeModal: closeStoreModal, options } = useQuickCreateModalStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submittingRef = useRef(false);
+  const conversionFormRef = useRef(false);
+  const closeModal = React.useCallback(() => {
+    if (!submittingRef.current) closeStoreModal();
+  }, [closeStoreModal]);
   const { addTask, tasks } = useTaskStore();
   const storeCategories = useCategoryStore((s) => s.categories);
   const [cardVariant, setCardVariant] = useState<'1' | '2'>('1');
@@ -136,15 +142,38 @@ export const QuickCreateModal: React.FC = () => {
       setScheduledDate(getTodayStr());
       setDatePresetMode('today');
       setExcludeFromStats(false);
+      if (options) {
+        conversionFormRef.current = true;
+        setTitle(options.initialData.title);
+        setDescription(options.initialData.description ?? '');
+        setLink(options.initialData.link ?? '');
+        setCategory(options.initialData.category ?? 'Без категории');
+        setParentTaskId(null);
+        setRepetitionMode('none');
+        setScheduleFrequency('daily');
+        setAfterCompletionDaysInput('3');
+        setWeeklyDays([1, 2, 3, 4, 5]);
+        setHasSubtasks(false);
+        setOpenPopover(null);
+      }
       if (modalRef.current) {
         modalRef.current.style.transform = '';
         modalRef.current.style.transition = '';
       }
     } else {
       unlockBodyScroll();
+      if (conversionFormRef.current) {
+        conversionFormRef.current = false;
+        setTitle('');
+        setDescription('');
+        setLink('');
+        setCategory('Без категории');
+        setParentTaskId(null);
+        setRepetitionMode('none');
+      }
     }
     return () => { unlockBodyScroll(); };
-  }, [isOpen]);
+  }, [isOpen, options]);
 
   const [isFetchingTitle, setIsFetchingTitle] = useState(false);
 
@@ -233,13 +262,15 @@ export const QuickCreateModal: React.FC = () => {
 
   const handleCreate = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (!title.trim()) return;
+    if (!title.trim() || submittingRef.current) return;
+    submittingRef.current = true;
+    setIsSubmitting(true);
 
     const parsedDays = parseInt(afterCompletionDaysInput, 10);
     const afterCompletionDays = isNaN(parsedDays) || parsedDays < 1 ? 1 : parsedDays;
 
     try {
-      await addTask({
+      const data = {
         title: title.trim(),
         category,
         scheduledDate: scheduledDate.trim(),
@@ -253,7 +284,9 @@ export const QuickCreateModal: React.FC = () => {
         weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
         hasSubtasks: false,
         excludeFromStats,
-      });
+      };
+      if (options) await options.onCreate(data);
+      else await addTask(data);
 
       setTitle('');
       setDescription('');
@@ -262,10 +295,13 @@ export const QuickCreateModal: React.FC = () => {
       setRepetitionMode('none');
       setAfterCompletionDaysInput('3');
       setExcludeFromStats(false);
-      closeModal();
+      closeStoreModal(true);
     } catch (error: any) {
       console.error('Error creating task:', error);
       useToastStore.getState().showToast(error.message || 'Ошибка при создании задачи', 'error');
+    } finally {
+      submittingRef.current = false;
+      setIsSubmitting(false);
     }
   };
 
@@ -660,11 +696,11 @@ export const QuickCreateModal: React.FC = () => {
 
           {/* ── Symmetrical Action Buttons ───────────────────────── */}
           <div className={styles.modalFooter}>
-            <button type="button" className={styles.cancelBtn} onClick={closeModal}>
+            <button type="button" className={styles.cancelBtn} onClick={closeModal} disabled={isSubmitting}>
               Отмена
             </button>
-            <button type="submit" className={styles.submitBtn}>
-              Создать ✓
+            <button type="submit" className={styles.submitBtn} disabled={isSubmitting || !title.trim()}>
+              {isSubmitting ? 'Создание...' : 'Создать ✓'}
             </button>
           </div>
         </form>

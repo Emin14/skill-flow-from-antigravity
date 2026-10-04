@@ -1,13 +1,18 @@
 import { create } from 'zustand';
-import { BacklogItem, CreateBacklogItemDto, UpdateBacklogItemDto } from './types';
+import { BacklogItem, BacklogTopic, SaveBacklogTopicDto, CreateBacklogItemDto, UpdateBacklogItemDto } from './types';
 import { backlogApi } from '../api/backlogApi';
 import { useToastStore } from '@/shared/ui';
 import { useTaskStore } from '@/entities/task';
 import { useActivityStore } from '@/entities/activity';
-import { getTodayStr } from '@/shared/lib/dateUtils';
+import type { AddTaskParams } from '@/entities/task/model/store';
+
+// Retain successful creations until deletion succeeds so a retry only removes the note.
+const createdConversions = new Set<string>();
+const pendingConversions = new Map<string, Promise<void>>();
 
 interface BacklogState {
   items: BacklogItem[];
+  topics: BacklogTopic[];
   isLoading: boolean;
   error: string | null;
 
@@ -15,20 +20,22 @@ interface BacklogState {
   addItem: (dto: CreateBacklogItemDto) => Promise<BacklogItem>;
   updateItem: (id: string, updates: UpdateBacklogItemDto) => Promise<void>;
   deleteItem: (id: string) => Promise<void>;
-  convertToTask: (id: string, targetDate?: string) => Promise<void>;
+  convertToTask: (id: string, data: AddTaskParams) => Promise<void>;
   renameTopic: (oldTopic: string, newTopic: string) => Promise<void>;
+  saveTopic: (dto: SaveBacklogTopicDto, id?: string) => Promise<BacklogTopic>;
 }
 
 export const useBacklogStore = create<BacklogState>((set, get) => ({
   items: [],
+  topics: [],
   isLoading: false,
   error: null,
 
   fetchItems: async () => {
     set({ isLoading: true, error: null });
     try {
-      const items = await backlogApi.getAll();
-      set({ items, isLoading: false });
+      const [items, topics] = await Promise.all([backlogApi.getAll(), backlogApi.getTopics()]);
+      set({ items, topics, isLoading: false });
     } catch (e) {
       set({ error: (e as Error).message, isLoading: false });
     }
@@ -38,11 +45,13 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
     try {
       const saved = await backlogApi.create(dto);
       set((state) => ({ items: [saved, ...state.items] }));
-      useToastStore.getState().showToast('Идея добавлена в бэклог', 'success');
-      useActivityStore.getState().logActivity('task_created', `Добавлена идея в бэклог: "${dto.title}"`);
+      const topics = await backlogApi.getTopics().catch(() => null);
+      if (topics) set({ topics });
+      useToastStore.getState().showToast('Заметка добавлена в бэклог', 'success');
+      useActivityStore.getState().logActivity('task_created', `Добавлена заметка в бэклог: "${dto.title}"`);
       return saved;
     } catch (err: any) {
-      useToastStore.getState().showToast(err?.message || 'Ошибка добавления идеи', 'error');
+      useToastStore.getState().showToast(err?.message || 'Ошибка добавления заметки', 'error');
       throw err;
     }
   },
@@ -57,10 +66,10 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
       set((state) => ({
         items: state.items.map((i) => (i.id === id ? updated : i)),
       }));
-      useToastStore.getState().showToast('Идея обновлена', 'success');
+      useToastStore.getState().showToast('Заметка обновлена', 'success');
     } catch (err: any) {
       set({ items: previous });
-      useToastStore.getState().showToast(err?.message || 'Ошибка обновления идеи', 'error');
+      useToastStore.getState().showToast(err?.message || 'Ошибка обновления заметки', 'error');
       throw err;
     }
   },
@@ -74,11 +83,12 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
     try {
       await backlogApi.delete(id);
       useToastStore.getState().showToast(
-        'Идея удалена',
+        'Заметка удалена',
         'undo',
         async () => {
           const restored = await backlogApi.create({
             topic: deletedItem.topic,
+            topicId: deletedItem.topicId,
             title: deletedItem.title,
             description: deletedItem.description,
             status: deletedItem.status,
@@ -87,58 +97,60 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
             link: deletedItem.link,
           });
           set((state) => ({ items: [restored, ...state.items] }));
-          useToastStore.getState().showToast('Идея восстановлена', 'success');
+          useToastStore.getState().showToast('Заметка восстановлена', 'success');
         }
       );
     } catch (err) {
       set({ items: previous });
-      useToastStore.getState().showToast('Ошибка удаления идеи', 'error');
+      useToastStore.getState().showToast('Ошибка удаления заметки', 'error');
     }
   },
 
-  convertToTask: async (id: string, targetDate?: string) => {
+  convertToTask: async (id: string, data: AddTaskParams) => {
+    const pending = pendingConversions.get(id);
+    if (pending) return pending;
     const item = get().items.find((i) => i.id === id);
     if (!item) return;
-
-    const effectiveDate = targetDate || getTodayStr();
-
+    const conversion = (async () => {
+      if (!createdConversions.has(id)) {
+        const taskPriority = item.priority === 'high' ? 'P1' : item.priority === 'low' ? 'P3' : 'P2';
+        await useTaskStore.getState().addTask(data, taskPriority);
+        createdConversions.add(id);
+      }
+      try {
+        // Conversion removes the source permanently; ordinary delete's undo would restore it.
+        await backlogApi.delete(id);
+      } catch {
+        throw new Error('Задача создана, но заметку не удалось удалить. Нажмите «Создать» ещё раз, чтобы завершить перенос без повторного создания задачи.');
+      }
+      set(state => ({ items: state.items.filter(note => note.id !== id) }));
+      createdConversions.delete(id);
+      useToastStore.getState().showToast('Заметка перенесена в задачи', 'success');
+    })();
+    pendingConversions.set(id, conversion);
     try {
-      // Create task in taskStore
-      const taskPriority: 'P1' | 'P2' | 'P3' = item.priority === 'high' ? 'P1' : item.priority === 'low' ? 'P3' : 'P2';
-      await useTaskStore.getState().addTask(
-        {
-          title: item.title,
-          description: item.description || undefined,
-          link: item.link || undefined,
-          category: item.topic || 'Без категории',
-          scheduledDate: effectiveDate,
-          isRepeating: false,
-        },
-        taskPriority
-      );
-
-      // Update backlog item status to 'planned'
-      await get().updateItem(id, { status: 'planned' });
-
-      useToastStore.getState().showToast('Идея превращена в задачу!', 'success');
-      useActivityStore.getState().logActivity('task_created', `Идея "${item.title}" взята в работу как задача`);
-    } catch (err) {
-      console.error('Failed to convert idea to task:', err);
-      useToastStore.getState().showToast('Ошибка создания задачи из идеи', 'error');
+      await conversion;
+    } finally {
+      pendingConversions.delete(id);
     }
   },
 
-  renameTopic: async (oldTopic: string, newTopic: string) => {
+  saveTopic: async (dto, id) => {
     try {
-      await backlogApi.renameTopic(oldTopic, newTopic);
-      set((state) => ({
-        items: state.items.map(item => 
-          item.topic === oldTopic ? { ...item, topic: newTopic } : item
-        )
+      const saved = await backlogApi.saveTopic(dto, id);
+      set(state => ({
+        topics: [...state.topics.filter(topic => topic.id !== saved.id), saved].sort((a, b) => a.sortOrder - b.sortOrder || a.name.localeCompare(b.name)),
+        items: state.items.map(item => item.topicId === saved.id ? { ...item, topic: saved.name } : item),
       }));
-      useToastStore.getState().showToast('Направление переименовано', 'success');
-    } catch (err: any) {
-      useToastStore.getState().showToast(err.message || 'Ошибка при переименовании', 'error');
+      useToastStore.getState().showToast(id ? 'Тема сохранена' : 'Тема создана', 'success');
+      return saved;
+    } catch (error) {
+      useToastStore.getState().showToast(error instanceof Error ? error.message : 'Не удалось сохранить тему', 'error');
+      throw error;
     }
+  },
+  renameTopic: async (oldTopic, newTopic) => {
+    const topic = get().topics.find(topic => topic.name === oldTopic);
+    if (topic) await get().saveTopic({ name: newTopic }, topic.id);
   },
 }));

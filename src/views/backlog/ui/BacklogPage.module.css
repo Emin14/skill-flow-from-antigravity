@@ -252,6 +252,47 @@
   gap: 6px;
 }
 
+.listPreferences {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hideDoneToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  color: var(--color-text-secondary);
+  font-size: 12.5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hideDoneToggle input { accent-color: var(--color-accent); }
+
+.resetFiltersBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 12.5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.resetFiltersBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
 .viewToggleBtn {
   width: 34px;
   height: 34px;
