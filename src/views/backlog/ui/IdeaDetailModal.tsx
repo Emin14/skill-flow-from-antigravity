@@ -403,14 +403,6 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
               )}
 
               <button
-                type="button"
-                className={`${styles.btn} ${styles.btnSecondary}`}
-                onClick={onClose}
-              >
-                Закрыть
-              </button>
-
-              <button
                 type="submit"
                 className={`${styles.btn} ${styles.btnPrimary}`}
                 disabled={isSaving || !title.trim()}

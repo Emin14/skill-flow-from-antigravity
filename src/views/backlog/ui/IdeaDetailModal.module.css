@@ -160,6 +160,7 @@
   align-items: center;
   gap: 8px;
   margin-left: auto;
+  min-width: 0;
 }
 
 .footerCentered {
@@ -182,6 +183,7 @@
   gap: 6px;
   transition: all 0.15s;
   border: 1px solid transparent;
+  min-width: 0;
 }
 
 .btnSecondary {
@@ -223,6 +225,46 @@
 .btnConvert:hover {
   background: var(--color-accent);
   color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 8px;
+  }
+
+  .modal {
+    padding: 16px;
+    border-radius: 14px;
+    gap: 14px;
+  }
+
+  .footer {
+    gap: 6px;
+  }
+
+  .footerRight {
+    flex: 1 1 auto;
+    gap: 6px;
+  }
+
+  .footerRight .btn {
+    flex: 1 1 0;
+    justify-content: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 11px;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .footer > .btn {
+    flex: 0 1 auto;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 11px;
+    gap: 4px;
+    white-space: nowrap;
+  }
 }
 
 
