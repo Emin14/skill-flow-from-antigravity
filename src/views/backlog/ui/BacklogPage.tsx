@@ -24,6 +24,7 @@ export const BacklogPage: React.FC = () => {
     deleteItem,
     convertToTask,
     saveTopic,
+    deleteTopic,
   } = useBacklogStore();
 
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
@@ -89,6 +90,7 @@ export const BacklogPage: React.FC = () => {
   const handleConvert = (id: string, draft?: NoteDraft) => {
     const source = items.find(item => item.id === id);
     if (!source || useQuickCreateModalStore.getState().isOpen) return;
+    const returnToEdit = Boolean(draft);
     const current = draft ?? readNoteDraft(`backlog:note-draft:v1:${id}`) ?? source;
     setIsModalOpen(false);
     useQuickCreateModalStore.getState().openModal('Task', {
@@ -106,8 +108,10 @@ export const BacklogPage: React.FC = () => {
         setModalItem(null);
       },
       onCancel: () => {
-        setModalItem(source);
-        setIsModalOpen(true);
+        if (returnToEdit) {
+          setModalItem(source);
+          setIsModalOpen(true);
+        }
       },
     });
   };
@@ -253,13 +257,13 @@ export const BacklogPage: React.FC = () => {
             }} />
             Показать архив тем
           </label>
+          {hasActiveFilters && (
+            <button type="button" className={styles.resetFiltersBtn} onClick={resetFilters}>
+              <X size={14} />
+              Сбросить фильтры
+            </button>
+          )}
         </div>
-        {hasActiveFilters && (
-          <button type="button" className={styles.resetFiltersBtn} onClick={resetFilters}>
-            <X size={14} />
-            Сбросить фильтры
-          </button>
-        )}
       </div>
 
       {/* Content */}
@@ -320,6 +324,10 @@ export const BacklogPage: React.FC = () => {
           if (saved.archivedAt && !showArchivedTopics && selectedTopic === saved.id) setSelectedTopic('all');
           if (!id) setSelectedTopic(saved.id);
           return saved;
+        }}
+        onDelete={async id => {
+          await deleteTopic(id);
+          if (selectedTopic === id) setSelectedTopic('all');
         }}
       />}
     </div>

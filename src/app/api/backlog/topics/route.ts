@@ -12,6 +12,7 @@ function errorResponse(error: unknown) {
   const code = (error as { code?: string })?.code;
   if (code === 'P2002') return NextResponse.json({ error: 'Тема с таким названием уже существует' }, { status: 409 });
   if (code === 'P2025') return NextResponse.json({ error: 'Тема не найдена' }, { status: 404 });
+  if (error instanceof Error && error.message.startsWith('Нельзя удалить тему')) return NextResponse.json({ error: error.message }, { status: 409 });
   console.error('[Backlog topics]', error);
   return NextResponse.json({ error: 'Не удалось сохранить или загрузить темы' }, { status: 500 });
 }
@@ -27,5 +28,13 @@ export async function PUT(request: Request) {
   try {
     const { id, ...data } = topicSchema.extend({ id: z.string().min(1) }).parse(await request.json());
     return NextResponse.json(await prismaBacklogTopicRepository.update(id, data));
+  } catch (error) { return errorResponse(error); }
+}
+export async function DELETE(request: Request) {
+  try {
+    const id = new URL(request.url).searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'Не указан идентификатор темы' }, { status: 400 });
+    await prismaBacklogTopicRepository.delete(id);
+    return NextResponse.json({ success: true });
   } catch (error) { return errorResponse(error); }
 }

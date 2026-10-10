@@ -23,6 +23,7 @@ interface BacklogState {
   convertToTask: (id: string, data: AddTaskParams) => Promise<void>;
   renameTopic: (oldTopic: string, newTopic: string) => Promise<void>;
   saveTopic: (dto: SaveBacklogTopicDto, id?: string) => Promise<BacklogTopic>;
+  deleteTopic: (id: string) => Promise<void>;
 }
 
 export const useBacklogStore = create<BacklogState>((set, get) => ({
@@ -146,6 +147,16 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
       return saved;
     } catch (error) {
       useToastStore.getState().showToast(error instanceof Error ? error.message : 'Не удалось сохранить тему', 'error');
+      throw error;
+    }
+  },
+  deleteTopic: async (id) => {
+    try {
+      await backlogApi.deleteTopic(id);
+      set(state => ({ topics: state.topics.filter(topic => topic.id !== id) }));
+      useToastStore.getState().showToast('Тема удалена', 'success');
+    } catch (error) {
+      useToastStore.getState().showToast(error instanceof Error ? error.message : 'Не удалось удалить тему', 'error');
       throw error;
     }
   },

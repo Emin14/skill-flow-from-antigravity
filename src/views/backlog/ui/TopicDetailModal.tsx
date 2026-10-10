@@ -1,15 +1,16 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Trash2 } from 'lucide-react';
 import type { BacklogTopic, SaveBacklogTopicDto } from '@/entities/backlog';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import styles from './IdeaDetailModal.module.css';
 
-export function TopicDetailModal({ topic, onClose, onSave }: {
+export function TopicDetailModal({ topic, onClose, onSave, onDelete }: {
   topic: BacklogTopic | null;
   onClose: () => void;
   onSave: (data: SaveBacklogTopicDto, id?: string) => Promise<BacklogTopic>;
+  onDelete?: (id: string) => Promise<void>;
 }) {
   const [name, setName] = useState(topic?.name ?? '');
   const [description, setDescription] = useState(topic?.description ?? '');
@@ -50,12 +51,21 @@ export function TopicDetailModal({ topic, onClose, onSave }: {
         }}>
           <label className={styles.formGroup}><span className={styles.label}>Название *</span><input className={styles.input} value={name} onChange={event => setName(event.target.value)} autoFocus required /></label>
           <label className={styles.formGroup}><span className={styles.label}>Описание</span><textarea className={styles.textarea} value={description} onChange={event => setDescription(event.target.value)} /></label>
-          <label className={styles.formGroup}><span className={styles.label}>Порядок (меньшие числа — выше)</span><input type="number" step="1" className={styles.input} value={sortOrder} onChange={event => setSortOrder(event.target.value)} required /></label>
-          {topic && <label><input type="checkbox" checked={archived} onChange={event => setArchived(event.target.checked)} /> В архиве — заметки сохраняются</label>}
+          <label className={styles.formGroup}><span className={styles.label}>Позиция в списке (чем меньше число, тем выше тема)</span><input type="number" step="1" className={styles.input} value={sortOrder} onChange={event => setSortOrder(event.target.value)} required /></label>
+          {topic && <label><input type="checkbox" checked={archived} onChange={event => setArchived(event.target.checked)} /> В архиве</label>}
           {error && <p role="alert">{error}</p>}
-          <div className={styles.footerRight}>
+          <div className={styles.footer}>
+            {topic && onDelete && <button type="button" className={`${styles.btn} ${styles.btnDanger}`} disabled={isSaving} onClick={async () => {
+              if (!confirm('Удалить эту тему? Тема удалится только если в ней нет заметок.')) return;
+              setIsSaving(true); setError('');
+              try { await onDelete(topic.id); onClose(); }
+              catch (error) { setError(error instanceof Error ? error.message : 'Не удалось удалить тему'); }
+              finally { setIsSaving(false); }
+            }}><Trash2 size={14} /><span>Удалить тему</span></button>}
+            <div className={styles.footerRight}>
             <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={close} disabled={isSaving}>Отмена</button>
             <button type="submit" className={`${styles.btn} ${styles.btnPrimary}`} disabled={isSaving || !name.trim()}>{isSaving ? 'Сохранение...' : topic ? 'Сохранить' : 'Создать тему'}</button>
+            </div>
           </div>
         </form>
       </div>

@@ -283,7 +283,7 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
                 <ExternalLink size={12} />
               </a>
             )}
-            {props.onPin && (
+            {props.onPin && pinned && (
               <button
                 type="button"
                 className={`${styles.pinBtn} ${pinned ? styles.pinBtnActive : ''}`}

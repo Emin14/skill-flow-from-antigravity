@@ -435,6 +435,8 @@
   .controlsLeft { flex-wrap: wrap; }
   .searchInputWrapper { min-width: 100%; }
   .filterSelect { flex: 1; }
+  .listPreferences { width: 100%; justify-content: space-between; }
+  .listPreferences > .hideDoneToggle:first-child { flex-basis: 100%; }
   .topicsBar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
   .folderHead { font-size: 15px; padding: 14px 16px; }
   .folderBody { padding: 8px; }

@@ -24,4 +24,10 @@ export const prismaBacklogTopicRepository = {
       ...(dto.archived !== undefined ? { archivedAt: dto.archived ? new Date() : null } : {}),
     } }));
   },
+  async delete(id: string): Promise<boolean> {
+    const topic = await prisma.backlogTopic.findUniqueOrThrow({ where: { id }, include: { _count: { select: { items: true } } } });
+    if (topic._count.items > 0) throw new Error('Нельзя удалить тему, в которой есть заметки. Переместите заметки или отправьте тему в архив.');
+    await prisma.backlogTopic.delete({ where: { id } });
+    return true;
+  },
 };

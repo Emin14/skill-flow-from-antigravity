@@ -5,7 +5,7 @@ import { BacklogItem, BacklogTopic, BacklogStatus, BacklogPriority } from '@/ent
 import { extractLinkTitle } from '@/shared/lib/urlUtils';
 import { useToastStore, LinksPreview } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
-import { X, Trash2, ArrowRight, Check, Wand2 } from 'lucide-react';
+import { X, Trash2, ArrowRight, Check, Wand2, ChevronDown } from 'lucide-react';
 import styles from './IdeaDetailModal.module.css';
 import { clearNoteDraft, readNoteDraft, writeNoteDraft, type NoteDraft } from './noteDraft';
 
@@ -32,6 +32,7 @@ interface IdeaDetailModalProps {
 
 function TopicCombobox({ value, onChange, options }: { value: string; onChange: (v: string) => void; options: string[] }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFiltering, setIsFiltering] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,8 +45,13 @@ function TopicCombobox({ value, onChange, options }: { value: string; onChange: 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const filtered = options.filter(o => o.toLowerCase().includes(value.toLowerCase()));
+  const filtered = (isFiltering ? options.filter(o => o.toLowerCase().includes(value.toLowerCase())) : options);
+  const visibleOptions = filtered.length > 0 ? filtered : options;
   const exactMatch = options.some(o => o.toLowerCase() === value.toLowerCase());
+  const selectFirstMatch = () => {
+    if (visibleOptions[0]) onChange(visibleOptions[0]);
+    setIsOpen(false);
+  };
 
   return (
     <div ref={wrapperRef} className={styles.comboboxWrapper}>
@@ -53,16 +59,45 @@ function TopicCombobox({ value, onChange, options }: { value: string; onChange: 
          type="text" 
          className={styles.input} 
          value={value} 
-         onChange={e => onChange(e.target.value)}
-         onFocus={() => setIsOpen(true)}
-         placeholder="Выберите или введите новое..."
+         onChange={e => {
+           setIsFiltering(true);
+           onChange(e.target.value);
+         }}
+         onFocus={() => {
+           setIsFiltering(false);
+           setIsOpen(true);
+         }}
+         onKeyDown={e => {
+           if (e.key === 'Escape') {
+             setIsOpen(false);
+           } else if (e.key === 'Enter' && isOpen) {
+             e.preventDefault();
+             selectFirstMatch();
+           }
+         }}
+         aria-label="Направление заметки"
+         placeholder="Выберите направление или введите новое..."
       />
-      {isOpen && (filtered.length > 0 || !exactMatch) && (
+      <button
+        type="button"
+        className={styles.comboboxToggle}
+        aria-label="Показать все направления"
+        onMouseDown={e => e.preventDefault()}
+        onClick={() => {
+          setIsFiltering(false);
+          setIsOpen(true);
+        }}
+      >
+        <ChevronDown size={16} aria-hidden="true" />
+      </button>
+      {isOpen && (visibleOptions.length > 0 || !exactMatch) && (
          <div className={styles.dropdown}>
-            {filtered.map(o => (
+            {visibleOptions.length > 0 && <div className={styles.dropdownHint}>Выберите направление</div>}
+            {visibleOptions.map(o => (
                <div key={o} className={styles.dropdownItem} onMouseDown={(e) => {
                   e.preventDefault();
                   onChange(o);
+                  setIsFiltering(false);
                   setIsOpen(false);
                }}>
                  {o}
@@ -71,9 +106,10 @@ function TopicCombobox({ value, onChange, options }: { value: string; onChange: 
             {!exactMatch && value.trim() && (
                <div className={styles.dropdownItem} style={{ fontStyle: 'italic', color: 'var(--color-accent-text)' }} onMouseDown={(e) => {
                   e.preventDefault();
+                  setIsFiltering(false);
                   setIsOpen(false);
                }}>
-                 Новое: &quot;{value}&quot;
+                 Создать новое: &quot;{value}&quot;
                </div>
             )}
          </div>
@@ -176,7 +212,7 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
     }
     const persisted = writeNoteDraft(session.key, draft);
     setDraftMessage(persisted
-      ? 'Черновик сохранён на этом устройстве'
+      ? ''
       : 'Черновик сохранён только до перезагрузки страницы');
   }, [isOpen, item?.id, title, topic, topicId, description, status, priority, tagsInput, link]);
 

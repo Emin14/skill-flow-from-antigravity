@@ -66,4 +66,12 @@ export const backlogApi = {
     }
     return res.json();
   },
+  async deleteTopic(id: string): Promise<boolean> {
+    const res = await fetch(`/api/backlog/topics?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.error || 'Не удалось удалить тему');
+    }
+    return (await res.json()).success;
+  },
 };
