@@ -2,31 +2,269 @@
   "description": "Журнал фактически применённых точечных исправлений словаря",
   "source_before": "oxford_5000_2026-08-27.json из Git HEAD",
   "entries": [
-    {"word":"to","path":"meanings[11].translation","before":"в закрытое положение (о двери: настежь или прикрыто)","after":"в закрытом положении (о двери); закрыт, прикрыт","reason":"Удалено противоречивое слово «настежь»; подтверждено значением to о закрытой двери."},
-    {"word":"to","path":"meanings[11].examples","before":[],"after":[{"en":"shut the door to","ru":"прикройте дверь"}],"reason":"Добавлен подтверждающий пример."},
-    {"word":"when","path":"meanings[1].examples","before":[],"after":[{"en":"When will she come?","ru":"Когда она придёт?"}],"reason":"Добавлен пример вопросительного наречия."},
-    {"word":"when","path":"meanings[2].examples","before":[{"en":"during the time when you were away","ru":"во время вашего отсутствия"}],"after":[{"en":"during the time when you were away","ru":"во время вашего отсутствия"},{"en":"I don't know when she will come","ru":"не знаю, когда она придёт"}],"reason":"Объединены два контекста значения «когда»."},
-    {"word":"when","path":"meanings[3]","before":{"translation":"когда","examples":[{"en":"I don't know when she will come","ru":"не знаю, когда она придёт"}]},"after":null,"reason":"Удалено дублирующее значение; пример перенесён в meanings[2].examples."},
-    {"word":"when","path":"meanings[6].translation","before":"время, дата","after":"время, момент","reason":"Уточнён перевод существительного the when."},
-    {"word":"game","path":"meanings[2].examples","before":[{"en":"gappy","ru":"соревнования"}],"after":[],"reason":"Удалён заголовок следующей статьи gappy, ошибочно попавший в пример game."},
-    {"word":"lead","path":"meanings[3..6].partOfSpeech","before":"verb","after":"noun","reason":"В оригинале это продолжение существительной статьи lead I."},
-    {"word":"lead","path":"meanings[7].partOfSpeech","before":"verb","after":"adjective","reason":"Атрибутивное значение «свинцовый» является прилагательным."},
-    {"word":"lead","path":"meanings[38].examples[4].ru","before":"to; постепенно подготовлять; наводить разговор на что-либо","after":"постепенно подготовлять; наводить разговор на что-либо","reason":"Удалён английский фрагмент, ошибочно попавший в русский перевод."},
-    {"word":"right","path":"meanings[13].examples[2].ru","before":"smb.; снискать чью-либо благосклонность; помириться с кем-либо","after":"снискать чью-либо благосклонность; помириться с кем-либо","reason":"Удалён английский фрагмент smb.; из русского перевода."},
-    {"word":"secure","path":"meanings[0].examples[1]","before":{"en":"secure about","ru":"(или as to)"},"after":{"en":"to feel secure about (or as to) the future","ru":"не беспокоиться о будущем"},"reason":"Восстановлен полный пример из оригинала."},
-    {"word":"who","path":"meanings[0].examples[2]","before":{"en":"whom ()","ru":"(или who) do you mean? кого вы имеете в виду?"},"after":{"en":"whom (or who) do you mean?","ru":"кого вы имеете в виду?"},"reason":"Удалён пустой фрагмент и восстановлено разделение en/ru."},
-    {"word":"favour","path":"meanings[2].examples[2].en","before":"he gained his position more by favour than by merit ()","after":"he gained his position more by favour than by merit","reason":"Удалены пустые скобки."},
-    {"word":"round","path":"meanings[0].examples[2]","before":{"en":"round back","ru":"(или shoulders) сутулость"},"after":{"en":"round back (or shoulders)","ru":"сутулость"},"reason":"Вариант shoulders перенесён в английский пример."},
-    {"word":"round","path":"meanings[0].examples[3]","before":{"en":"round hand","ru":"(или text) круглый почерк; рондо"},"after":{"en":"round hand (or text)","ru":"круглый почерк; рондо"},"reason":"Вариант text перенесён в английский пример."},
-    {"word":"stand","path":"meanings[27].examples[14].ru","before":"to; смело встречать; быть на высоте; перечить, прекословить","after":"смело встречать; быть на высоте; перечить, прекословить","reason":"Удалён английский фрагмент to; из русского перевода."},
-    {"word":"subject","path":"meanings[0].examples[3].en","before":"subject to ()","after":"subject to","reason":"Удалены пустые скобки."},
-    {"word":"mail","path":"meanings[6].partOfSpeech","before":"verb","after":"adjective","reason":"Значение «в роли определения: почтовый» является прилагательным."},
-    {"word":"mess","path":"meanings[10].partOfSpeech","before":"verb","after":"adjective","reason":"Значение «в роли определения: столовый» является прилагательным."},
-    {"word":"port","path":"meanings[2].partOfSpeech","before":"verb","after":"adjective","reason":"Значение «в роли определения: портовый» является прилагательным."},
-    {"word":"port","path":"meanings[6].partOfSpeech","before":"verb","after":"adjective","reason":"Значение «в роли определения: левый» является прилагательным."},
-    {"word":"prize","path":"meanings[8].partOfSpeech","before":"verb","after":"adjective","reason":"Значение «в роли определения: призовой» является прилагательным."},
-    {"word":"tank","path":"meanings[6].partOfSpeech","before":"verb","after":"adjective","reason":"Значение «в роли определения: танковый» является прилагательным."},
-    {"word":"third","path":"meanings[0].partOfSpeech","before":"number","after":"numeral","reason":"Приведено к общей структуре числительных словаря."},
-    {"word":"thousand","path":"meanings[0].partOfSpeech","before":"number","after":"numeral","reason":"Приведено к общей структуре числительных словаря."}
+    {
+      "word": "to",
+      "path": "meanings[11].translation",
+      "before": "в закрытое положение (о двери: настежь или прикрыто)",
+      "after": "в закрытом положении (о двери); закрыт, прикрыт",
+      "reason": "Удалено противоречивое слово «настежь»; подтверждено значением to о закрытой двери."
+    },
+    {
+      "word": "to",
+      "path": "meanings[11].examples",
+      "before": [],
+      "after": [
+        {
+          "en": "shut the door to",
+          "ru": "прикройте дверь"
+        }
+      ],
+      "reason": "Добавлен подтверждающий пример."
+    },
+    {
+      "word": "when",
+      "path": "meanings[1].examples",
+      "before": [],
+      "after": [
+        {
+          "en": "When will she come?",
+          "ru": "Когда она придёт?"
+        }
+      ],
+      "reason": "Добавлен пример вопросительного наречия."
+    },
+    {
+      "word": "when",
+      "path": "meanings[2].examples",
+      "before": [
+        {
+          "en": "during the time when you were away",
+          "ru": "во время вашего отсутствия"
+        }
+      ],
+      "after": [
+        {
+          "en": "during the time when you were away",
+          "ru": "во время вашего отсутствия"
+        },
+        {
+          "en": "I don't know when she will come",
+          "ru": "не знаю, когда она придёт"
+        }
+      ],
+      "reason": "Объединены два контекста значения «когда»."
+    },
+    {
+      "word": "when",
+      "path": "meanings[3]",
+      "before": {
+        "translation": "когда",
+        "examples": [
+          {
+            "en": "I don't know when she will come",
+            "ru": "не знаю, когда она придёт"
+          }
+        ]
+      },
+      "after": null,
+      "reason": "Удалено дублирующее значение; пример перенесён в meanings[2].examples."
+    },
+    {
+      "word": "when",
+      "path": "meanings[6].translation",
+      "before": "время, дата",
+      "after": "время, момент",
+      "reason": "Уточнён перевод существительного the when."
+    },
+    {
+      "word": "game",
+      "path": "meanings[2].examples",
+      "before": [
+        {
+          "en": "gappy",
+          "ru": "соревнования"
+        }
+      ],
+      "after": [],
+      "reason": "Удалён заголовок следующей статьи gappy, ошибочно попавший в пример game."
+    },
+    {
+      "word": "lead",
+      "path": "meanings[3..6].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "В оригинале это продолжение существительной статьи lead I."
+    },
+    {
+      "word": "lead",
+      "path": "meanings[7].partOfSpeech",
+      "before": "verb",
+      "after": "adjective",
+      "reason": "Атрибутивное значение «свинцовый» является прилагательным."
+    },
+    {
+      "word": "lead",
+      "path": "meanings[38].examples[4].ru",
+      "before": "to; постепенно подготовлять; наводить разговор на что-либо",
+      "after": "постепенно подготовлять; наводить разговор на что-либо",
+      "reason": "Удалён английский фрагмент, ошибочно попавший в русский перевод."
+    },
+    {
+      "word": "right",
+      "path": "meanings[13].examples[2].ru",
+      "before": "smb.; снискать чью-либо благосклонность; помириться с кем-либо",
+      "after": "снискать чью-либо благосклонность; помириться с кем-либо",
+      "reason": "Удалён английский фрагмент smb.; из русского перевода."
+    },
+    {
+      "word": "secure",
+      "path": "meanings[0].examples[1]",
+      "before": {
+        "en": "secure about",
+        "ru": "(или as to)"
+      },
+      "after": {
+        "en": "to feel secure about (or as to) the future",
+        "ru": "не беспокоиться о будущем"
+      },
+      "reason": "Восстановлен полный пример из оригинала."
+    },
+    {
+      "word": "who",
+      "path": "meanings[0].examples[2]",
+      "before": {
+        "en": "whom ()",
+        "ru": "(или who) do you mean? кого вы имеете в виду?"
+      },
+      "after": {
+        "en": "whom (or who) do you mean?",
+        "ru": "кого вы имеете в виду?"
+      },
+      "reason": "Удалён пустой фрагмент и восстановлено разделение en/ru."
+    },
+    {
+      "word": "favour",
+      "path": "meanings[2].examples[2].en",
+      "before": "he gained his position more by favour than by merit ()",
+      "after": "he gained his position more by favour than by merit",
+      "reason": "Удалены пустые скобки."
+    },
+    {
+      "word": "round",
+      "path": "meanings[0].examples[2]",
+      "before": {
+        "en": "round back",
+        "ru": "(или shoulders) сутулость"
+      },
+      "after": {
+        "en": "round back (or shoulders)",
+        "ru": "сутулость"
+      },
+      "reason": "Вариант shoulders перенесён в английский пример."
+    },
+    {
+      "word": "round",
+      "path": "meanings[0].examples[3]",
+      "before": {
+        "en": "round hand",
+        "ru": "(или text) круглый почерк; рондо"
+      },
+      "after": {
+        "en": "round hand (or text)",
+        "ru": "круглый почерк; рондо"
+      },
+      "reason": "Вариант text перенесён в английский пример."
+    },
+    {
+      "word": "stand",
+      "path": "meanings[27].examples[14].ru",
+      "before": "to; смело встречать; быть на высоте; перечить, прекословить",
+      "after": "смело встречать; быть на высоте; перечить, прекословить",
+      "reason": "Удалён английский фрагмент to; из русского перевода."
+    },
+    {
+      "word": "subject",
+      "path": "meanings[0].examples[3].en",
+      "before": "subject to ()",
+      "after": "subject to",
+      "reason": "Удалены пустые скобки."
+    },
+    {
+      "word": "mail",
+      "path": "meanings[6].partOfSpeech",
+      "before": "verb",
+      "after": "adjective",
+      "reason": "Значение «в роли определения: почтовый» является прилагательным."
+    },
+    {
+      "word": "mess",
+      "path": "meanings[10].partOfSpeech",
+      "before": "verb",
+      "after": "adjective",
+      "reason": "Значение «в роли определения: столовый» является прилагательным."
+    },
+    {
+      "word": "port",
+      "path": "meanings[2].partOfSpeech",
+      "before": "verb",
+      "after": "adjective",
+      "reason": "Значение «в роли определения: портовый» является прилагательным."
+    },
+    {
+      "word": "port",
+      "path": "meanings[6].partOfSpeech",
+      "before": "verb",
+      "after": "adjective",
+      "reason": "Значение «в роли определения: левый» является прилагательным."
+    },
+    {
+      "word": "prize",
+      "path": "meanings[8].partOfSpeech",
+      "before": "verb",
+      "after": "adjective",
+      "reason": "Значение «в роли определения: призовой» является прилагательным."
+    },
+    {
+      "word": "tank",
+      "path": "meanings[6].partOfSpeech",
+      "before": "verb",
+      "after": "adjective",
+      "reason": "Значение «в роли определения: танковый» является прилагательным."
+    },
+    {
+      "word": "third",
+      "path": "meanings[0].partOfSpeech",
+      "before": "number",
+      "after": "numeral",
+      "reason": "Приведено к общей структуре числительных словаря."
+    },
+    {
+      "word": "thousand",
+      "path": "meanings[0].partOfSpeech",
+      "before": "number",
+      "after": "numeral",
+      "reason": "Приведено к общей структуре числительных словаря."
+    },
+    {
+      "word": "blow",
+      "path": "meanings[id=20]",
+      "before": {
+        "partOfSpeech": "noun",
+        "translation": "несчастье, удар (судьбы)",
+        "examples": [],
+        "register": [
+          "разговорное"
+        ],
+        "id": 20
+      },
+      "after": null,
+      "reason": "В оригинале Muller статья blow I содержит значение «несчастье, удар (судьбы)» один раз (пункт 2). В JSON оно было продублировано как id 2 и id 20; id 20 также ошибочно имел register «разговорное». Удалён только дубликат, исходное значение id 2 сохранено.",
+      "files": [
+        "oxford_5000_2026-08-27.json",
+        "oxford_5000.json",
+        "src/data/oxford_5000.json"
+      ],
+      "timestamp": "2026-10-14T20:29:12.621151+00:00"
+    }
   ]
 }

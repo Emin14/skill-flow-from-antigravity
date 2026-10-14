@@ -1,257 +1,60 @@
-
-## to
-
---- to (было)
-+++ to (стало)
-@@ -199,7 +199,7 @@
-     {
-       "id": 12,
-       "partOfSpeech": "adverb",
--      "translation": "в закрытое положение (о двери: настежь или прикрыто)",
-+      "translation": "в закрытом положении (о двери); закрыт, прикрыт",
-       "register": [],
-       "examples": [
-         {
-
-## when
-
---- when (было)
-+++ when (стало)
-@@ -11,7 +11,12 @@
-     {
-       "partOfSpeech": "adverb",
-       "translation": "когда?",
--      "examples": [],
-+      "examples": [
-+        {
-+          "en": "When will she come?",
-+          "ru": "Когда она придёт?"
-+        }
-+      ],
-       "register": [],
-       "id": 1,
-       "primary": true
-@@ -23,23 +28,14 @@
-         {
-           "en": "during the time when you were away",
-           "ru": "во время вашего отсутствия"
--        }
--      ],
--      "register": [],
--      "id": 2,
--      "primary": true
--    },
--    {
--      "partOfSpeech": "adverb",
--      "translation": "когда",
--      "examples": [
-+        },
-         {
-           "en": "I don't know when she will come",
-           "ru": "не знаю, когда она придёт"
-         }
-       ],
-       "register": [],
--      "id": 3,
-+      "id": 2,
-       "primary": true
-     },
-     {
-@@ -86,7 +82,7 @@
-     },
-     {
-       "partOfSpeech": "noun",
--      "translation": "время, дата",
-+      "translation": "время, момент",
-       "examples": [
-         {
-           "en": "he told me the when and the why of it",
-
-## game
-
---- game (было)
-+++ game (стало)
-@@ -43,12 +43,7 @@
-     {
-       "partOfSpeech": "noun",
-       "translation": "при мн. ч.; игры",
--      "examples": [
--        {
--          "en": "gappy",
--          "ru": "соревнования"
--        }
--      ],
-+      "examples": [],
-       "register": [
-         "британское"
-       ],
-
-## lead
-
---- lead (было)
-+++ lead (стало)
-@@ -44,7 +44,7 @@
-       "id": 3
-     },
-     {
--      "partOfSpeech": "verb",
-+      "partOfSpeech": "noun",
-       "translation": "при мн. ч.: свинцовые полосы для покрытия крыши; покрытая свинцом крыша; плоская крыша",
-       "examples": [],
-       "register": [
-@@ -53,7 +53,7 @@
-       "id": 4
-     },
-     {
--      "partOfSpeech": "verb",
-+      "partOfSpeech": "noun",
-       "translation": "при мн. ч.: шпоны",
-       "examples": [],
-       "register": [
-@@ -63,7 +63,7 @@
-       "id": 5
-     },
-     {
--      "partOfSpeech": "verb",
-+      "partOfSpeech": "noun",
-       "translation": "грузило, отвес",
-       "examples": [],
-       "register": [],
-@@ -71,14 +71,14 @@
-       "primary": true
-     },
-     {
--      "partOfSpeech": "verb",
-+      "partOfSpeech": "noun",
-       "translation": "пломба",
-       "examples": [],
-       "register": [],
-       "id": 7
-     },
-     {
--      "partOfSpeech": "verb",
-+      "partOfSpeech": "adjective",
-       "translation": "в роли определения: свинцовый",
-       "examples": [],
-       "register": [],
-@@ -435,7 +435,7 @@
-         },
-         {
-           "en": "lead up",
--          "ru": "to; постепенно подготовлять; наводить разговор на что-либо"
-+          "ru": "постепенно подготовлять; наводить разговор на что-либо"
-         }
-       ],
-       "register": [
-
-## right
-
---- right (было)
-+++ right (стало)
-@@ -262,7 +262,7 @@
-         },
-         {
-           "en": "right with",
--          "ru": "smb.; снискать чью-либо благосклонность; помириться с кем-либо"
-+          "ru": "снискать чью-либо благосклонность; помириться с кем-либо"
-         },
-         {
-           "en": "to get (or to do) a sum right",
-
-## secure
-
---- secure (было)
-+++ secure (стало)
-@@ -17,8 +17,8 @@
-           "ru": "жить, ни о чём не заботясь"
-         },
-         {
--          "en": "secure about",
--          "ru": "(или as to)"
-+          "en": "to feel secure about (or as to) the future",
-+          "ru": "не беспокоиться о будущем"
-         }
-       ],
-       "register": [],
-
-## who
-
---- who (было)
-+++ who (стало)
-@@ -22,8 +22,8 @@
-           "ru": "кого вы видели?"
-         },
-         {
--          "en": "whom ()",
--          "ru": "(или who) do you mean? кого вы имеете в виду?"
-+          "en": "whom (or who) do you mean?",
-+          "ru": "кого вы имеете в виду?"
-         },
-         {
-           "en": "who did you give it to?",
-
-## favour
-
---- favour (было)
-+++ favour (стало)
-@@ -64,7 +64,7 @@
-       "translation": "пристрастие (к кому-либо); покровительство",
-       "examples": [
-         {
--          "en": "he gained his position more by favour than by merit ()",
-+          "en": "he gained his position more by favour than by merit",
-           "ru": "(скорее) не личные заслуги, а покровительство помогло ему достичь такого положения"
-         }
-       ],
-
-## round
-
---- round (было)
-+++ round (стало)
-@@ -21,12 +21,12 @@
-           "ru": "полукруглая арка"
-         },
-         {
--          "en": "round back",
--          "ru": "(или shoulders) сутулость"
--        },
--        {
--          "en": "round hand",
--          "ru": "(или text) круглый почерк; рондо"
-+          "en": "round back (or shoulders)",
-+          "ru": "сутулость"
-+        },
-+        {
-+          "en": "round hand (or text)",
-+          "ru": "круглый почерк; рондо"
-         }
-       ],
-       "register": [
-
-## stand
-
---- stand (было)
-+++ stand (стало)
-@@ -397,7 +397,7 @@
-         },
-         {
-           "en": "stand up",
--          "ru": "to; смело встречать; быть на высоте; перечить, прекословить"
-+          "ru": "смело встречать; быть на высоте; перечить, прекословить"
-         }
-       ],
-       "register": [
-
-## subject
-
---- subject (было)
-+++ subject (стало)
-@@ -26,7 +26,7 @@
-           "ru": "обсудить вопрос"
-         },
-         {
--          "en": "subject to ()",
-+          "en": "subject to",
-           "ru": "(употр. как adv) при условии, допуская, если"
-         }
-       ],
+diff --git a/oxford_5000.json b/oxford_5000.json
+index ac832da..5758377 100644
+--- a/oxford_5000.json
++++ b/oxford_5000.json
+@@ -31177,15 +31177,6 @@
+         "id": 19,
+         "primary": true
+       },
+-      {
+-        "partOfSpeech": "noun",
+-        "translation": "несчастье, удар (судьбы)",
+-        "examples": [],
+-        "register": [
+-          "разговорное"
+-        ],
+-        "id": 20
+-      },
+       {
+         "partOfSpeech": "verb",
+         "translation": "упустить, проворонить (шанс)",
+diff --git a/oxford_5000_2026-08-27.json b/oxford_5000_2026-08-27.json
+index ac832da..5758377 100644
+--- a/oxford_5000_2026-08-27.json
++++ b/oxford_5000_2026-08-27.json
+@@ -31177,15 +31177,6 @@
+         "id": 19,
+         "primary": true
+       },
+-      {
+-        "partOfSpeech": "noun",
+-        "translation": "несчастье, удар (судьбы)",
+-        "examples": [],
+-        "register": [
+-          "разговорное"
+-        ],
+-        "id": 20
+-      },
+       {
+         "partOfSpeech": "verb",
+         "translation": "упустить, проворонить (шанс)",
+diff --git a/src/data/oxford_5000.json b/src/data/oxford_5000.json
+index ac832da..5758377 100644
+--- a/src/data/oxford_5000.json
++++ b/src/data/oxford_5000.json
+@@ -31177,15 +31177,6 @@
+         "id": 19,
+         "primary": true
+       },
+-      {
+-        "partOfSpeech": "noun",
+-        "translation": "несчастье, удар (судьбы)",
+-        "examples": [],
+-        "register": [
+-          "разговорное"
+-        ],
+-        "id": 20
+-      },
+       {
+         "partOfSpeech": "verb",
+         "translation": "упустить, проворонить (шанс)",
