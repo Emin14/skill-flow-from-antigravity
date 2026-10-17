@@ -60,6 +60,11 @@ export interface Task {
   createdAt: string;
   updatedAt?: string;
   link?: string | null;
+  color?: string | null;
+  isProject?: boolean;
+  projectStatus?: 'planned' | 'active' | 'paused' | 'completed' | null;
+  projectPinned?: boolean;
+  projectArchivedAt?: string | null;
   topicId?: string | null;
   goalId?: string | null;
   afterCompletionDays?: number | null;

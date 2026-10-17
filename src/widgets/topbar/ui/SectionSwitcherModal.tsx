@@ -32,7 +32,7 @@ const SECTION_GROUPS: NavSectionGroup[] = [
   {
     groupTitle: 'Структура и цели',
     items: [
-      { label: 'Крупные задачи', href: '/projects', icon: '📁', description: 'Каталог проектов с подзадачами' },
+      { label: 'Проекты', href: '/projects', icon: '📁', description: 'Каталог проектов с подзадачами' },
       { label: 'Заметки / Бэклог', href: '/backlog', icon: '💡', description: 'Банк идей и фичей по проектам' },
       { label: 'Повторяющиеся', href: '/repeats', icon: '🔄', description: 'Регулярные привычки и рутины' },
       { label: 'Цели', href: '/goals', icon: '🎯', description: 'Главные жизненные ориентиры' },

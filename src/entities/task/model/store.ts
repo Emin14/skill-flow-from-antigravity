@@ -262,6 +262,11 @@ export interface AddTaskParams {
   scheduledDate?: string;
   description?: string;
   link?: string;
+  color?: string | null;
+  isProject?: boolean;
+  projectStatus?: 'planned' | 'active' | 'paused' | 'completed' | null;
+  projectPinned?: boolean;
+  projectArchivedAt?: string | null;
   parentTaskId?: string | null;
   topicId?: string | null;
   isRepeating?: boolean;
@@ -584,6 +589,11 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         scheduledDate: inputScheduledDate,
         description = '',
         link = '',
+        color = null,
+        isProject = false,
+        projectStatus = null,
+        projectPinned = false,
+        projectArchivedAt = null,
         parentTaskId = null,
         topicId = null,
         isRepeating = false,
@@ -647,6 +657,11 @@ export const useTaskStore = create<TaskState>((set, get) => ({
         scheduledDate: effectiveIsRepeating ? (normOccs[0]?.date || effectiveScheduledDate) : effectiveScheduledDate,
         description,
         link,
+        color,
+        isProject,
+        projectStatus,
+        projectPinned,
+        projectArchivedAt,
         parentTaskId,
         topicId,
         isRepeating: effectiveIsRepeating,

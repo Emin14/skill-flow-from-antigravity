@@ -20,7 +20,7 @@ const pathMetaMap: Record<string, PathMeta> = {
   '/backlog': { title: 'Заметки / Бэклог', icon: '💡' },
   '/calendar': { title: 'Календарь', icon: '📅' },
   '/overdue': { title: 'Просроченные', icon: '🚨' },
-  '/projects': { title: 'Крупные задачи', icon: '📁' },
+  '/projects': { title: 'Проекты', icon: '📁' },
   '/repeats': { title: 'Повторить', icon: '🔄' },
   '/goals': { title: 'Цели', icon: '🎯' },
   '/achievements': { title: 'Достижения', icon: '🏆' },

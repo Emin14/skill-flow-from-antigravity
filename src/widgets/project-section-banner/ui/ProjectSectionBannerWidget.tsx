@@ -19,7 +19,7 @@ export const ProjectSectionBannerWidget: React.FC = () => {
           boxSizing: 'border-box',
         }}
       >
-        <h2 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>🚀 Крупные задачи</h2>
+        <h2 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--color-text-primary)', margin: 0 }}>🚀 Проекты</h2>
         <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', margin: '2px 0 0 0', lineHeight: 1.4 }}>
           Каталог проектов: организуйте рабочие процессы с любой нужной глубиной вложенности подзадач.
         </p>

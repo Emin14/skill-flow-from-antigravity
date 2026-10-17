@@ -21,6 +21,11 @@ model Task {
   title               String
   description         String?
   link                String?
+  color               String?
+  isProject           Boolean          @default(false)
+  projectStatus       String?          // planned | active | paused | completed
+  projectPinned       Boolean          @default(false)
+  projectArchivedAt   DateTime?
   category            String
   tags                Tag[]            @relation("TaskTags")
   priority            String?          @default("P2")

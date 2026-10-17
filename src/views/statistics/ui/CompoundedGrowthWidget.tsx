@@ -114,7 +114,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
 
       catTasks.forEach((t) => {
         const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
-        if (t.hasSubtasks || hasChildren || t.excludeFromStats) return;
+        if (t.hasSubtasks || hasChildren || t.excludeFromStats || t.isRepeating) return;
 
         if (!t.isRepeating && t.status === 'Done') {
           const dateStr = (t.completedAt ? formatLocalDateStr(new Date(t.completedAt)) : undefined) || t.scheduledDate;
@@ -171,7 +171,7 @@ export const CompoundedGrowthWidget: React.FC = () => {
       );
       noCatTasks.forEach((t) => {
         const hasChildren = tasks.some((sub) => sub.parentTaskId === t.id);
-        if (t.hasSubtasks || hasChildren || t.excludeFromStats) return;
+        if (t.hasSubtasks || hasChildren || t.excludeFromStats || t.isRepeating) return;
 
         if (!t.isRepeating && t.status === 'Done') {
           const dateStr = (t.completedAt ? formatLocalDateStr(new Date(t.completedAt)) : undefined) || t.scheduledDate;

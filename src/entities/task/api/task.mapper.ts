@@ -44,7 +44,7 @@ export class TaskMapper {
     const lastSmartRating = (completedWithRating[0]?.smartRating as SmartRating) ?? null;
 
     // Compute dynamic hasSubtasks
-    const hasSubtasks = Boolean(prismaTask.subtasks && prismaTask.subtasks.length > 0);
+    const hasSubtasks = Boolean((prismaTask as any).isProject || (prismaTask.subtasks && prismaTask.subtasks.length > 0));
 
     // Derive scheduledDate, status, repeatStatus, completedAt, pomodorosCount for backward compatibility
     const firstTodoOcc = occurrences.find((o) => o.status === 'Todo') || occurrences[0];
@@ -76,6 +76,11 @@ export class TaskMapper {
       createdAt: prismaTask.createdAt instanceof Date ? prismaTask.createdAt.toISOString() : String(prismaTask.createdAt),
       updatedAt: prismaTask.updatedAt instanceof Date ? prismaTask.updatedAt.toISOString() : String(prismaTask.updatedAt),
       link: prismaTask.link || null,
+      color: (prismaTask as any).color || null,
+      isProject: Boolean((prismaTask as any).isProject),
+      projectStatus: ((prismaTask as any).projectStatus as Task['projectStatus']) ?? null,
+      projectPinned: Boolean((prismaTask as any).projectPinned),
+      projectArchivedAt: (prismaTask as any).projectArchivedAt ? new Date((prismaTask as any).projectArchivedAt).toISOString() : null,
       topicId: prismaTask.topicId || null,
       goalId: prismaTask.goalId || null,
       afterCompletionDays: prismaTask.afterCompletionDays ?? null,

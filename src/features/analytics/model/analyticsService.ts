@@ -65,10 +65,10 @@ export const analyticsService = {
     return {
       totalGoals: goals.length,
       totalTopics: topics.length,
-      totalTasks: tasks.length,
+      totalTasks: tasks.filter((t) => !t.isRepeating && !t.excludeFromStats && !t.hasSubtasks).length,
       completedTasks: tasks.reduce((sum, t) => {
-        if (!t.isRepeating) return t.status === 'Done' ? sum + 1 : sum;
-        return sum + (t.occurrences?.filter((o) => o.status === 'Done').length || 0);
+        if (t.isRepeating || t.excludeFromStats || t.hasSubtasks) return sum;
+        return t.status === 'Done' ? sum + 1 : sum;
       }, 0),
       totalMaterials: materials.length,
       completedMaterials: materials.filter((m) => m.isCompleted).length,
@@ -86,7 +86,7 @@ export const analyticsService = {
     return goals.map((goal) => {
       const goalTopics = topics.filter((t) => t.goalId === goal.id);
       const goalTopicIds = new Set(goalTopics.map((t) => t.id));
-      const goalTasks = tasks.filter((t) => t.goalId === goal.id || (t.topicId && goalTopicIds.has(t.topicId)));
+      const goalTasks = tasks.filter((t) => !t.isRepeating && !t.excludeFromStats && !t.hasSubtasks && (t.goalId === goal.id || (t.topicId && goalTopicIds.has(t.topicId))));
       const goalMaterials = materials.filter((m) => goalTopicIds.has(m.topicId));
 
       return {
@@ -107,7 +107,7 @@ export const analyticsService = {
     return topics.map((topic) => ({
       topic,
       progress: calculateTopicProgress(topic.id, topics, tasks, materials),
-      tasksCount: tasks.filter((t) => t.topicId === topic.id).length,
+      tasksCount: tasks.filter((t) => !t.isRepeating && !t.excludeFromStats && !t.hasSubtasks && t.topicId === topic.id).length,
       materialsCount: materials.filter((m) => m.topicId === topic.id).length,
     }));
   },
@@ -155,11 +155,8 @@ export const analyticsService = {
       const dayLabel = d.toLocaleDateString('ru-RU', { weekday: 'short' });
 
       const tasksDone = tasks.reduce((sum, t) => {
-        if (!t.isRepeating) {
-          return (t.status === 'Done' && (t.scheduledDate === dateStr || t.completedAt?.startsWith(dateStr))) ? sum + 1 : sum;
-        }
-        const doneCount = t.occurrences?.filter((o) => o.status === 'Done' && o.date === dateStr).length || 0;
-        return sum + doneCount;
+        if (t.isRepeating || t.excludeFromStats || t.hasSubtasks) return sum;
+        return (t.status === 'Done' && (t.scheduledDate === dateStr || t.completedAt?.startsWith(dateStr))) ? sum + 1 : sum;
       }, 0);
       const materialsDone = materials.filter((m) => m.isCompleted && m.completedAt?.startsWith(dateStr)).length;
       const fsrsReviewed = cards.filter((c) => c.lastReviewedAt?.startsWith(dateStr)).length;
@@ -182,7 +179,7 @@ export const analyticsService = {
     cards: RepeatCard[]
   ): AchievementItem[] {
     const completedGoals = goals.filter((g) => g.status === 'Completed' || calculateGoalProgress(g.id, [], tasks, materials) === 100).length;
-    const completedTasks = tasks.filter((t) => t.status === 'Done').length;
+    const completedTasks = tasks.filter((t) => !t.isRepeating && !t.excludeFromStats && !t.hasSubtasks && t.status === 'Done').length;
     const completedMaterials = materials.filter((m) => m.isCompleted).length;
     const totalRepetitions = cards.reduce((acc, c) => acc + c.repetitions, 0);
 

@@ -21,6 +21,7 @@ interface EditTaskModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSaveSuccess?: () => void;
+  isProject?: boolean;
 }
 
 
@@ -61,7 +62,7 @@ const hint: React.CSSProperties = {
 };
 
 
-export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess }) => {
+export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess, isProject = false }) => {
   const { addTask, updateTaskDetails, deleteTaskSeries, tasks } = useTaskStore();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [cardVariant, setCardVariant] = useState<'1' | '2'>('1');
@@ -101,6 +102,9 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
   const [datePresetMode, setDatePresetMode] = useState<'today' | 'tomorrow' | 'custom' | 'none'>('today');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
+  const [color, setColor] = useState('#6366f1');
+  const [projectStatus, setProjectStatus] = useState<'planned' | 'active' | 'paused' | 'completed'>('planned');
+  const [projectPinned, setProjectPinned] = useState(false);
   const [parentTaskId, setParentTaskId] = useState<string | null>(null);
   const [repetitionMode, setRepetitionMode] = useState<RepetitionMode>('none');
   const [repeatStatus, setRepeatStatus] = useState<RepeatStatus>('Active');
@@ -196,6 +200,9 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     else setDatePresetMode('custom');
     setDescription(task.description || '');
     setLink(task.link || '');
+    setColor(task.color || '#6366f1');
+    setProjectStatus(task.projectStatus || 'planned');
+    setProjectPinned(Boolean(task.projectPinned));
     setParentTaskId(task.parentTaskId || null);
     const mode = (task.repetitionMode as RepetitionMode) || (task.isRepeating ? 'spaced' : 'none');
     setRepetitionMode(mode);
@@ -265,36 +272,44 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
       await addTask({
         title: title.trim(),
         category,
-        scheduledDate: scheduledDate.trim(),
+        scheduledDate: isProject ? '' : scheduledDate.trim(),
         description,
         link,
-        parentTaskId,
-        isRepeating: effectiveIsRepeating,
-        repeatStatus: effectiveIsRepeating ? repeatStatus : undefined,
-        repetitionMode: effectiveMode,
-        scheduleFrequency,
-        afterCompletionDays,
-        weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
+        color: isProject ? color : undefined,
+        isProject: isProject ? true : undefined,
+        projectStatus: isProject ? projectStatus : undefined,
+        projectPinned: isProject ? projectPinned : undefined,
+        parentTaskId: isProject ? null : parentTaskId,
+        isRepeating: isProject ? false : effectiveIsRepeating,
+        repeatStatus: isProject ? undefined : (effectiveIsRepeating ? repeatStatus : undefined),
+        repetitionMode: isProject ? undefined : effectiveMode,
+        scheduleFrequency: isProject ? undefined : scheduleFrequency,
+        afterCompletionDays: isProject ? undefined : afterCompletionDays,
+        weeklyDays: isProject ? null : (repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null),
         hasSubtasks,
-        excludeFromStats,
+        ...(isProject ? {} : { excludeFromStats }),
       });
     } else {
       const taskState = repeatStatus === 'Paused' ? 'paused' : (repeatStatus === 'Completed' ? 'completed' : 'active');
       await updateTaskDetails(task.id, {
         title: title.trim(),
         category,
-        scheduledDate: scheduledDate.trim(),
+        scheduledDate: isProject ? '' : scheduledDate.trim(),
         description,
         link,
-        parentTaskId,
-        isRepeating: effectiveIsRepeating,
-        repetitionMode: effectiveMode,
-        scheduleFrequency,
-        afterCompletionDays,
-        weeklyDays: repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null,
+        color: isProject ? color : undefined,
+        isProject: isProject ? true : undefined,
+        projectStatus: isProject ? projectStatus : undefined,
+        projectPinned: isProject ? projectPinned : undefined,
+        parentTaskId: isProject ? null : parentTaskId,
+        isRepeating: isProject ? false : effectiveIsRepeating,
+        repetitionMode: isProject ? undefined : effectiveMode,
+        scheduleFrequency: isProject ? undefined : scheduleFrequency,
+        afterCompletionDays: isProject ? undefined : afterCompletionDays,
+        weeklyDays: isProject ? null : (repetitionMode === 'specific_days' ? (weeklyDays.length > 0 ? weeklyDays : [1]) : null),
         hasSubtasks,
-        taskState: effectiveIsRepeating ? taskState : null,
-        excludeFromStats,
+        taskState: isProject ? null : (effectiveIsRepeating ? taskState : null),
+        ...(isProject ? {} : { excludeFromStats }),
       });
     }
 
@@ -423,7 +438,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column' }}>
           <div className={styles.modalBody}>
             {/* Top-Right Dim Created Date */}
-            {task.createdAt && (
+            {!isProject && task.createdAt && (
               <div style={{ fontSize: '10.5px', color: 'var(--color-text-muted)', opacity: 0.55, textAlign: 'right', marginBottom: '2px' }}>
                 Создано: {new Date(task.createdAt).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
               </div>
@@ -434,12 +449,12 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               <Input
                 type="text" name="task_title_field" className={styles.titleInput}
                 value={title} onChange={(e) => setTitle(e.target.value)}
-                placeholder="Название задачи..." required autoFocus
+                placeholder={isProject ? 'Название проекта...' : 'Название задачи...'} required autoFocus
               />
             </div>
 
             {/* 2. Date Field with - / + Stepper & RenderNoDateButton */}
-            <div>
+            {!isProject && <div>
               <div className={styles.v2DateRow}>
                 <button
                   type="button"
@@ -479,10 +494,10 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   }}
                 />
               </div>
-            </div>
+            </div>}
 
-            {/* 3. Category & Parent Task (Side-by-Side 50% / 50%) */}
-            <div className={styles.formRow}>
+            {/* 3. Category & Project */}
+            {!isProject ? <div className={styles.formRow}>
               <div>
                 <select
                   className={styles.v2Select}
@@ -512,19 +527,47 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   value={parentTaskId || ''}
                   onChange={(e) => setParentTaskId(e.target.value || null)}
                 >
-                  <option value="">Без родительской задачи</option>
+                  <option value=""></option>
                   {possibleParents.map((pt) => (
                     <option key={pt.id} value={pt.id}>
                       📁 {pt.title}
                     </option>
                   ))}
                 </select>
-                <span style={hint}>Родительская задача</span>
+                <span style={hint}>Проект</span>
               </div>
-            </div>
+            </div> : <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-accent-text)', fontSize: '12px' }}>
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: color, boxShadow: `0 0 0 3px ${color}33` }} />
+              <span>Проект</span>
+            </div>}
+
+            {isProject && <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '2px' }}>
+              <label htmlFor="project-color" style={{ ...hint, margin: 0 }}>Цвет проекта</label>
+              <input
+                id="project-color"
+                type="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                title="Выбрать цвет проекта"
+                style={{ width: '42px', height: '28px', padding: '2px', borderRadius: '8px', border: '1px solid var(--color-border)', background: 'transparent', cursor: 'pointer' }}
+              />
+              <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>{color.toUpperCase()}</span>
+            </div>}
+
+            {isProject && <div className={styles.formRow}>
+              <div>
+                <select className={styles.v2Select} value={projectStatus} onChange={(e) => setProjectStatus(e.target.value as typeof projectStatus)}>
+                  <option value="planned">📋 Планируется</option>
+                  <option value="active">🚀 В работе</option>
+                  <option value="paused">⏸ На паузе</option>
+                  <option value="completed">✅ Завершён</option>
+                </select>
+                <span style={hint}>Статус проекта</span>
+              </div>
+            </div>}
 
             {/* 4. Repetition Mode & Frequency / Days (Side-by-Side 50% / 50% Fixed Width) + Mode Explanation Box */}
-            <div>
+            {!isProject && <div>
               <div className={styles.formRow}>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <select
@@ -652,10 +695,10 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                     : `Новое повторение создастся через ${afterCompletionDaysInput || 3} дн. после клика «Выполнено»`}
                 </span>
               </div>
-            </div>
+            </div>}
 
             {/* 4.5. Exclude From Stats Toggle (Minimal) */}
-            <div className={styles.excludeStatsRow}>
+            {!isProject && <div className={styles.excludeStatsRow}>
               <label className={styles.excludeStatsLabel} title="Если отмечено, задача не попадает в графики статистики, сложного роста и отчеты">
                 <input
                   type="checkbox"
@@ -666,15 +709,16 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 <span className={styles.excludeStatsTitle}>Не учитывать в статистике</span>
                 {excludeFromStats && <span className={styles.excludeStatsDot}>☕</span>}
               </label>
-            </div>
+            </div>}
 
             {/* 5. Next Line: Description / Notes */}
             <div>
+              <span style={{ ...hint, marginBottom: '3px' }}>{isProject ? 'Описание проекта' : 'Описание задачи'}</span>
               <textarea
                 className={styles.compactTextarea}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Описание задачи..."
+                placeholder={isProject ? 'Описание проекта...' : 'Описание задачи...'}
               />
               <LinksPreview text={description} />
             </div>
@@ -686,7 +730,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 <Input
                   type="url" name="task_link_field" className={styles.selectInput}
                   value={link} onChange={(e) => setLink(e.target.value)}
-                  placeholder="🔗 Ссылка..."
+                  placeholder={isProject ? '🔗 Ссылка на проект...' : '🔗 Ссылка...'}
                   style={{ height: '26px', width: '100%' }}
                 />
               </div>
@@ -721,7 +765,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               Отмена
             </button>
             <button type="submit" className={styles.submitBtn}>
-              Сохранить ✓
+              {task.id.startsWith('draft-') ? (isProject ? 'Создать проект ✓' : 'Создать задачу ✓') : 'Сохранить ✓'}
             </button>
           </div>
 

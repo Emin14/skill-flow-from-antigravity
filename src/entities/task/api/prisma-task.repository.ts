@@ -192,6 +192,11 @@ export class PrismaTaskRepository {
           category: (task.category && typeof task.category === 'string' && task.category.trim()) ? task.category.trim() : 'Без категории',
           description: task.description || null,
           link: task.link || null,
+          color: task.color || null,
+          isProject: Boolean(task.isProject || task.hasSubtasks),
+          projectStatus: task.projectStatus || null,
+          projectPinned: Boolean(task.projectPinned),
+          projectArchivedAt: task.projectArchivedAt ? safeDate(task.projectArchivedAt) : null,
           parentTaskId: effectiveParentId,
           isRepeating: effectiveIsRepeating,
           taskState: effectiveIsRepeating ? (task.taskState || 'active') : null,
@@ -249,6 +254,12 @@ export class PrismaTaskRepository {
         if (updates.category !== undefined) taskUpdateData.category = updates.category;
         if (updates.description !== undefined) taskUpdateData.description = updates.description;
         if (updates.link !== undefined) taskUpdateData.link = updates.link;
+        if (updates.color !== undefined) (taskUpdateData as any).color = updates.color || null;
+        if (updates.isProject !== undefined) (taskUpdateData as any).isProject = Boolean(updates.isProject);
+        if (updates.hasSubtasks === true) (taskUpdateData as any).isProject = true;
+        if (updates.projectStatus !== undefined) (taskUpdateData as any).projectStatus = updates.projectStatus || null;
+        if (updates.projectPinned !== undefined) (taskUpdateData as any).projectPinned = Boolean(updates.projectPinned);
+        if (updates.projectArchivedAt !== undefined) (taskUpdateData as any).projectArchivedAt = updates.projectArchivedAt ? safeDate(updates.projectArchivedAt) : null;
         if (updates.parentTaskId !== undefined) {
           if (updates.parentTaskId && typeof updates.parentTaskId === 'string' && updates.parentTaskId.trim()) {
             const cleanPId = updates.parentTaskId.trim();

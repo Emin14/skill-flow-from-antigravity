@@ -6,8 +6,8 @@ import { useTaskStore, GlassmorphicTaskCard, getAllDescendantTasks, isSubtaskDon
 import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
-import { getTodayStr, formatDateDisplay } from '@/shared/lib/dateUtils';
-import { ChevronDown, ChevronRight, Lightbulb, Sparkles } from 'lucide-react';
+import { getTodayStr } from '@/shared/lib/dateUtils';
+import { Archive, ArchiveRestore, ChevronDown, ChevronRight, Pin, PinOff, Plus, Sparkles, Trash2, X } from 'lucide-react';
 import { ProjectFilterTabsWidget, ProjectFilterType, ProjectProgressMode } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
 import { ProjectSectionBannerWidget } from '@/widgets/project-section-banner/ui/ProjectSectionBannerWidget';
 import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
@@ -18,11 +18,11 @@ import styles from './ProjectsPage.module.css';
 import { getCategoryColor } from '@/shared/config/categoryColors';
 
 export const ProjectsPage: React.FC = () => {
-  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskParent, updateTaskDetails, deleteTaskOccurrence } = useTaskStore();
+  const { tasks, isLoading, fetchTasks, toggleTaskStatus, updateTaskParent, updateTaskDetails, deleteTaskOccurrence, deleteTask } = useTaskStore();
   const [activeFilter, setActiveFilter] = useState<ProjectFilterType>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('projects-filter-key') as ProjectFilterType;
-      if (saved && ['all', 'active', 'completed', 'has_overdue'].includes(saved)) return saved;
+      if (saved && ['all', 'active', 'paused', 'completed', 'empty', 'archived'].includes(saved)) return saved;
     }
     return 'all';
   });
@@ -31,6 +31,8 @@ export const ProjectsPage: React.FC = () => {
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
+  const [deleteProjectTarget, setDeleteProjectTarget] = useState<Task | null>(null);
 
   const todayStr = useMemo(() => getTodayStr(), []);
 
@@ -59,6 +61,45 @@ export const ProjectsPage: React.FC = () => {
     localStorage.setItem('subtaskVariantId', String(id));
   };
 
+  const createProject = () => setEditingTask({
+    id: `draft-project-${Date.now()}`, title: '', description: '', link: '', status: 'Todo', priority: 'P3',
+    category: 'Без категории', scheduledDate: '', color: '#6366f1', isProject: true, projectStatus: 'planned', projectPinned: false, projectArchivedAt: null, createdAt: new Date().toISOString(),
+    isRepeating: false, hasSubtasks: true, targetRepetitions: 8, repetitionsCount: 0,
+    repetitionHistory: [], occurrences: [],
+  });
+
+  const createTaskInProject = (project: Task) => setEditingTask({
+    id: `draft-task-${Date.now()}`,
+    title: '',
+    description: '',
+    link: '',
+    status: 'Todo',
+    priority: 'P3',
+    category: 'Без категории',
+    scheduledDate: todayStr,
+    parentTaskId: project.id,
+    createdAt: new Date().toISOString(),
+    isRepeating: false,
+    hasSubtasks: false,
+    targetRepetitions: 8,
+    repetitionsCount: 0,
+    repetitionHistory: [],
+    occurrences: [],
+  });
+
+  const toggleProjectPin = async (project: Task) => {
+    await updateTaskDetails(project.id, { projectPinned: !project.projectPinned });
+  };
+
+  const toggleProjectArchive = async (project: Task) => {
+    await updateTaskDetails(project.id, { projectArchivedAt: project.projectArchivedAt ? null : new Date().toISOString() });
+  };
+
+  const deleteProject = async (project: Task, withTasks: boolean) => {
+    setDeleteProjectTarget(null);
+    await deleteTask(project.id, true, withTasks);
+  };
+
   useEffect(() => {
     registerPointerDropHandler((draggedTaskId, target) => {
       if (target.type === 'project_card' && target.projectId) {
@@ -79,12 +120,12 @@ export const ProjectsPage: React.FC = () => {
 
   // All parent tasks
   const allParentTasks = useMemo(() => {
-    return tasks.filter((t) => t.hasSubtasks || tasks.some((sub) => sub.parentTaskId === t.id));
+    return tasks.filter((t) => t.isProject || t.hasSubtasks || tasks.some((sub) => sub.parentTaskId === t.id));
   }, [tasks]);
 
   // Main / Parent tasks
   const projectTasks = useMemo(() => {
-    return tasks.filter((t) => !t.parentTaskId && (t.hasSubtasks || tasks.some((sub) => sub.parentTaskId === t.id)));
+    return tasks.filter((t) => !t.parentTaskId && (t.isProject || t.hasSubtasks || tasks.some((sub) => sub.parentTaskId === t.id)));
   }, [tasks]);
 
   // Expand all projects and sub-projects by default
@@ -125,16 +166,24 @@ export const ProjectsPage: React.FC = () => {
       const isCompleted = leafSubtasks.length > 0 && doneCount === leafSubtasks.length;
       const overdueCount = leafSubtasks.filter((t) => !t.isRepeating && t.scheduledDate && t.scheduledDate < todayStr && t.status !== 'Done').length;
 
-      if (activeFilter === 'active') return !isCompleted;
-      if (activeFilter === 'completed') return isCompleted;
-      if (activeFilter === 'has_overdue') return overdueCount > 0;
+      const status = project.projectStatus || (isCompleted ? 'completed' : 'planned');
+      const isArchived = Boolean(project.projectArchivedAt);
+      if (activeFilter === 'archived') return isArchived;
+      if (isArchived) return false;
+      if (activeFilter === 'active') return status === 'planned' || status === 'active';
+      if (activeFilter === 'paused') return status === 'paused';
+      if (activeFilter === 'completed') return status === 'completed' || isCompleted;
+      if (activeFilter === 'empty') return leafSubtasks.length === 0;
       return true;
     });
   }, [projectTasks, tasks, activeFilter, progressMode, todayStr]);
 
+  const sortedFilteredProjects = useMemo(() => [...filteredProjects].sort((a, b) => Number(Boolean(b.projectPinned)) - Number(Boolean(a.projectPinned))), [filteredProjects]);
+
   const handleDrop = async (e: React.DragEvent, targetProjectId: string) => {
     e.preventDefault();
     e.stopPropagation();
+    setDragOverProjectId(null);
     const draggedTaskId =
       e.dataTransfer.getData('taskId') ||
       (typeof window !== 'undefined' ? window.__draggedTaskId : null);
@@ -152,11 +201,13 @@ export const ProjectsPage: React.FC = () => {
     e.preventDefault();
     e.stopPropagation();
     e.dataTransfer.dropEffect = 'move';
+    setDragOverProjectId(targetProjectId);
   };
 
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    setDragOverProjectId(null);
   };
 
   const handleDropOnTask = async (draggedTaskId: string, targetTask: Task) => {
@@ -172,24 +223,6 @@ export const ProjectsPage: React.FC = () => {
       }
       return next;
     });
-  };
-
-  const handleExtendProjectDate = (project: Task, latestSubtaskDate: string | null) => {
-    if (!latestSubtaskDate) return;
-    let targetDate = latestSubtaskDate;
-    if (project.scheduledDate && targetDate <= project.scheduledDate) {
-      const parts = project.scheduledDate.split('-').map(Number);
-      const d = new Date(parts[0], parts[1] - 1, parts[2] + 30);
-      const year = d.getFullYear();
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-      const day = String(d.getDate()).padStart(2, '0');
-      targetDate = `${year}-${month}-${day}`;
-    }
-
-    updateTaskDetails(project.id, {
-      scheduledDate: targetDate,
-    });
-    useToastStore.getState().showToast(`Срок проекта "${project.title}" продлён до ${formatDateDisplay(targetDate)} 📅`, 'success');
   };
 
   const bannerStats = useMemo(() => {
@@ -222,6 +255,16 @@ export const ProjectsPage: React.FC = () => {
       {/* 0. Section Info Banner Widget with 19 UI Variants */}
       <ProjectSectionBannerWidget />
 
+      <div className={styles.projectToolbar}>
+        <div>
+          <h1 className={styles.projectPageTitle}>Проекты</h1>
+          <p className={styles.projectPageHint}>Создавайте проекты отдельно и добавляйте в них задачи.</p>
+        </div>
+        <Button variant="primary" size="sm" onClick={createProject}>
+          <Plus size={16} /> Новый проект
+        </Button>
+      </div>
+
       {/* 1. Original Filter Tabs Widget */}
       <ProjectFilterTabsWidget
         activeFilter={activeFilter}
@@ -232,46 +275,32 @@ export const ProjectsPage: React.FC = () => {
 
       {/* Projects List */}
       {isLoading ? (
-        <div className={styles.emptyState}>Загрузка крупных задач...</div>
+        <div className={styles.emptyState}>Загрузка проектов...</div>
       ) : filteredProjects.length === 0 ? (
         <div className={styles.emptyState}>
           {activeFilter === 'all' ? (
             <>
               <div style={{ color: 'var(--color-text-secondary)', marginBottom: '12px' }}>
-                📁 Крупных задач с подзадачами пока не найдено.
+                📁 Проектов пока нет.
               </div>
               <Button
                 variant="primary"
                 size="sm"
-                onClick={() => setEditingTask({
-                  id: '',
-                  title: '',
-                  status: 'Todo',
-                  priority: 'P3',
-                  category: 'Крупная задача',
-                  scheduledDate: todayStr,
-                  createdAt: new Date().toISOString(),
-                  isRepeating: false,
-                  hasSubtasks: true,
-                  targetRepetitions: 8,
-                  repetitionsCount: 0,
-                  repetitionHistory: [],
-                  occurrences: [],
-                })}
+                onClick={createProject}
               >
-                + Создать крупную задачу
+                + Создать проект
               </Button>
             </>
           ) : (
-            <div>Нет крупных задач по выбранному фильтру.</div>
+            <div>Нет проектов по выбранному фильтру.</div>
           )}
         </div>
       ) : (
         <div className={styles.projectList}>
-          {filteredProjects.map((project) => {
+          {sortedFilteredProjects.map((project) => {
             const catColor = getCategoryColor(project.category);
             const isOpen = openProjectIds.has(project.id);
-            const isDragOver = false;
+            const isDragOver = dragOverProjectId === project.id;
 
             // Subtasks sorted by nearest scheduled date ascending
             const descendants = getAllDescendantTasks(project.id, tasks);
@@ -288,27 +317,6 @@ export const ProjectsPage: React.FC = () => {
             const totalCount = descendants.length;
             const progressPercent = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0;
 
-            // Subtask Date > Project Date Warning Detection
-            // FIX Issue 1: Exclude auto-advancing future repeating occurrences from pushing latestSubtaskDate infinitely into future!
-            const subtaskDates = descendants
-              .map((t) => {
-                if (t.isRepeating) {
-                  const occs = t.occurrences || [];
-                  const activeOcc = occs.find((o) => o.status === 'Todo');
-                  return activeOcc ? activeOcc.date : t.scheduledDate;
-                }
-                return t.scheduledDate;
-              })
-              .filter((d): d is string => !!d && d.includes('-'));
-            subtaskDates.sort();
-            const latestSubtaskDate = subtaskDates.length > 0 ? subtaskDates[subtaskDates.length - 1] : null;
-
-            const hasDateMismatch = !!(
-              project.scheduledDate &&
-              latestSubtaskDate &&
-              latestSubtaskDate > project.scheduledDate
-            );
-
             return (
               <ProjectCardRenderer
                 key={project.id}
@@ -319,8 +327,6 @@ export const ProjectsPage: React.FC = () => {
                 doneCount={doneCount}
                 totalCount={totalCount}
                 progressPercent={progressPercent}
-                hasDateMismatch={hasDateMismatch}
-                latestSubtaskDate={latestSubtaskDate}
                 sortedSubtasks={sortedSubtasks}
                 subtaskVariantId={subtaskVariantId}
                 tasks={tasks}
@@ -333,7 +339,10 @@ export const ProjectsPage: React.FC = () => {
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, project.id)}
                 onDropOnTask={handleDropOnTask}
-                onFixDate={() => handleExtendProjectDate(project, latestSubtaskDate)}
+                onAddTask={() => createTaskInProject(project)}
+                onTogglePin={() => toggleProjectPin(project)}
+                onToggleArchive={() => toggleProjectArchive(project)}
+                onDelete={() => setDeleteProjectTarget(project)}
                 onToggleSubtask={(st) => toggleTaskStatus(st.id, undefined, st.scheduledDate || todayStr)}
                 onDeleteSubtask={(st) => deleteTaskOccurrence(st.id, st.scheduledDate || todayStr)}
                 onSelectSubtask={(st) => {
@@ -354,7 +363,22 @@ export const ProjectsPage: React.FC = () => {
         task={editingTask}
         isOpen={!!editingTask}
         onClose={() => setEditingTask(null)}
+        isProject={Boolean(editingTask && (editingTask.id.startsWith('draft-project-') || editingTask.isProject || editingTask.hasSubtasks || tasks.some(t => t.parentTaskId === editingTask.id)))}
       />
+
+      {deleteProjectTarget && (
+        <div className={styles.dialogOverlay} role="dialog" aria-modal="true">
+          <div className={styles.projectDialog}>
+            <button type="button" className={styles.dialogClose} onClick={() => setDeleteProjectTarget(null)} aria-label="Закрыть"><X size={18} /></button>
+            <h2>Удалить проект?</h2>
+            <p>Что сделать с задачами внутри проекта «{deleteProjectTarget.title}»?</p>
+            <div className={styles.dialogActions}>
+              <Button variant="secondary" size="sm" onClick={() => deleteProject(deleteProjectTarget, false)}>Удалить только проект</Button>
+              <Button variant="danger" size="sm" onClick={() => deleteProject(deleteProjectTarget, true)}>Удалить проект и задачи</Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Detail Modal */}
       <RepeatingTaskDetailModal
@@ -378,8 +402,6 @@ interface ProjectCardRendererProps {
   doneCount: number;
   totalCount: number;
   progressPercent: number;
-  hasDateMismatch: boolean;
-  latestSubtaskDate: string | null;
   sortedSubtasks: Task[];
   subtaskVariantId: SubtaskVariantId;
   tasks: Task[];
@@ -392,7 +414,10 @@ interface ProjectCardRendererProps {
   onDragLeave: (e: React.DragEvent) => void;
   onDrop: (e: React.DragEvent) => void;
   onDropOnTask: (draggedTaskId: string, targetTask: Task) => void;
-  onFixDate: () => void;
+  onAddTask: () => void;
+  onTogglePin: () => void;
+  onToggleArchive: () => void;
+  onDelete: () => void;
   onToggleSubtask: (t: Task) => void;
   onDeleteSubtask: (t: Task) => void;
   onSelectSubtask: (t: Task) => void;
@@ -406,8 +431,6 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   doneCount,
   totalCount,
   progressPercent,
-  hasDateMismatch,
-  latestSubtaskDate,
   sortedSubtasks,
   subtaskVariantId,
   tasks,
@@ -420,11 +443,75 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   onDragLeave,
   onDrop,
   onDropOnTask,
-  onFixDate,
+  onAddTask,
+  onTogglePin,
+  onToggleArchive,
+  onDelete,
   onToggleSubtask,
   onDeleteSubtask,
   onSelectSubtask,
 }) => {
+  const [swipeOffset, setSwipeOffset] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const [isVerticalScroll, setIsVerticalScroll] = useState(false);
+  const [isSwipedLeft, setIsSwipedLeft] = useState(false);
+  const isJustSwipedRef = useRef(false);
+  const swipeWidth = 246;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchStartY(e.targetTouches[0].clientY);
+    setIsVerticalScroll(false);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX === null || touchStartY === null) return;
+    const diffX = touchStartX - e.targetTouches[0].clientX;
+    const diffY = touchStartY - e.targetTouches[0].clientY;
+    if (!isVerticalScroll && Math.abs(diffY) > 6 && Math.abs(diffY) > Math.abs(diffX) && !isSwipedLeft) {
+      setIsVerticalScroll(true);
+      setSwipeOffset(0);
+      return;
+    }
+    if (isVerticalScroll) return;
+    if (isSwipedLeft) {
+      setSwipeOffset(Math.min(0, Math.max(-swipeWidth, -swipeWidth - diffX)));
+    } else if (diffX > 0) {
+      setSwipeOffset(-Math.min(swipeWidth, diffX));
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchStartY === null || isVerticalScroll) {
+      setTouchStartX(null);
+      setTouchStartY(null);
+      return;
+    }
+    const diff = touchStartX - (touchStartX + swipeOffset);
+    isJustSwipedRef.current = Math.abs(swipeOffset) > 20;
+    setTimeout(() => { isJustSwipedRef.current = false; }, 300);
+    if (isSwipedLeft) {
+      setIsSwipedLeft(false);
+      setSwipeOffset(0);
+    } else if (diff > 45 || swipeOffset < -45) {
+      setIsSwipedLeft(true);
+      setSwipeOffset(-swipeWidth);
+    } else {
+      setSwipeOffset(0);
+    }
+    setTouchStartX(null);
+    setTouchStartY(null);
+    setIsVerticalScroll(false);
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (isJustSwipedRef.current) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
   const radius = (36 - 3) / 2;
   const circumference = 2 * Math.PI * radius;
 
@@ -455,47 +542,34 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
     );
   };
 
-  const editBtn = (
-    <button
-      type="button"
-      onClick={(e) => {
-        e.stopPropagation();
-        onEdit(project);
-      }}
-      title="Редактировать проект"
-      style={{
-        background: 'var(--color-surface-hover)',
-        border: '1px solid var(--color-border)',
-        borderRadius: '8px',
-        color: 'var(--color-text-primary)',
-        width: '28px',
-        height: '28px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer',
-        fontSize: '12px',
-        flexShrink: 0,
-      }}
-    >
-      ✏️
-    </button>
-  );
-
   const chevronBtn = (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', flexShrink: 0 }}>
       {isOpen ? <ChevronDown size={20} color="var(--color-text-muted)" /> : <ChevronRight size={20} color="var(--color-text-muted)" />}
     </div>
   );
+  const projectColor = project.color || catColor;
 
   return (
-    <div
-      data-project-id={project.id}
-      className={`${styles.projectCardBase} ${isDragOver ? styles.dragOver : ''}`}
-      onDragOver={onDragOver}
-      onDragLeave={onDragLeave}
-      onDrop={onDrop}
-    >
+    <div className={styles.projectSwipeWrapper}>
+      <div className={styles.projectSwipeActions}>
+        <button type="button" onClick={onAddTask} title="Добавить задачу"><Plus size={16} /><span>Задача</span></button>
+        <button type="button" onClick={() => onEdit(project)} title="Редактировать проект"><span>✏️</span><span>Изменить</span></button>
+        <button type="button" onClick={onTogglePin} title={project.projectPinned ? 'Открепить' : 'Закрепить'}>{project.projectPinned ? <Pin size={16} fill="currentColor" /> : <PinOff size={16} />}<span>{project.projectPinned ? 'Открепить' : 'Закрепить'}</span></button>
+        <button type="button" onClick={onToggleArchive} title={project.projectArchivedAt ? 'Восстановить' : 'Архивировать'}>{project.projectArchivedAt ? <ArchiveRestore size={16} /> : <Archive size={16} />}<span>{project.projectArchivedAt ? 'Вернуть' : 'Архив'}</span></button>
+        <button type="button" onClick={onDelete} title="Удалить" className={styles.swipeDeleteButton}><Trash2 size={16} /><span>Удалить</span></button>
+      </div>
+      <div
+        data-project-id={project.id}
+        className={`${styles.projectCardBase} ${isDragOver ? styles.dragOver : ''}`}
+        style={{ transform: `translateX(${swipeOffset}px)`, position: 'relative', zIndex: 1 }}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onClick={handleCardClick}
+      >
       {/* Project Card Header */}
       <div
         className={styles.headerRow}
@@ -503,29 +577,41 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', flexWrap: 'nowrap', gap: '12px' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
+          <span
+            aria-label="Цвет проекта"
+            style={{ width: '10px', height: '10px', borderRadius: '50%', background: projectColor, boxShadow: `0 0 0 3px ${projectColor}33`, flexShrink: 0 }}
+          />
           <h2 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {project.title}
           </h2>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0, justifyContent: 'flex-end' }}>
+          <span style={{ fontSize: '10px', color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>
+            {project.projectStatus === 'active' ? '🚀 В работе' : project.projectStatus === 'paused' ? '⏸ Пауза' : project.projectStatus === 'completed' ? '✅ Завершён' : '📋 Планируется'}
+          </span>
           {totalCount > 0 && (
             <span style={{ fontSize: '11.5px', color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>
               {doneCount}/{totalCount}
             </span>
           )}
           {totalCount > 0 && renderCircleRing(36, 3)}
-          {editBtn}
           {chevronBtn}
         </div>
       </div>
 
-      {/* Date Mismatch Warning Banner */}
-      {hasDateMismatch && project.scheduledDate && latestSubtaskDate && (
-        <DateWarningBanner
-          projectDate={project.scheduledDate}
-          subtaskDate={latestSubtaskDate}
-          onFixDate={onFixDate}
-        />
+      {(project.description || project.link) && (
+        <div className={styles.projectMeta}>
+          {project.description && <p>{project.description}</p>}
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
+              🔗 Открыть ссылку
+            </a>
+          )}
+        </div>
+      )}
+
+      {isDragOver && (
+        <div className={styles.dropZone}>Перетащите сюда, чтобы добавить задачу в проект</div>
       )}
 
       {/* Collapsible Subtasks List */}
@@ -553,56 +639,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
           )}
         </div>
       )}
-    </div>
-  );
-};
-
-const DateWarningBanner: React.FC<{
-  projectDate: string;
-  subtaskDate: string;
-  onFixDate: () => void;
-}> = ({ projectDate, subtaskDate, onFixDate }) => {
-  return (
-    <div
-      style={{
-        margin: '8px 2px 4px 2px',
-        padding: '10px 14px',
-        borderRadius: '12px',
-        background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%)',
-        border: '1px solid rgba(245, 158, 11, 0.3)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: '12px',
-        boxSizing: 'border-box',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', minWidth: 0, flex: 1 }}>
-        <Lightbulb size={16} color="#f59e0b" style={{ flexShrink: 0 }} />
-        <span style={{ fontSize: '11.5px', color: 'var(--color-text-primary)', fontWeight: 600, lineHeight: 1.3 }}>
-          Проект: <strong style={{ color: '#f59e0b' }}>{formatDateDisplay(projectDate)}</strong> • Крайняя задача: <strong style={{ color: '#38bdf8' }}>{formatDateDisplay(subtaskDate)}</strong>
-        </span>
       </div>
-
-      <button
-        type="button"
-        onClick={onFixDate}
-        style={{
-          background: 'linear-gradient(135deg, #d97706, #f59e0b)',
-          border: 'none',
-          borderRadius: '8px',
-          color: '#ffffff',
-          fontWeight: 700,
-          fontSize: '11.5px',
-          padding: '4px 4px',
-          cursor: 'pointer',
-          whiteSpace: 'nowrap',
-          boxShadow: '0 2px 6px rgba(217, 119, 6, 0.3)',
-          flexShrink: 0,
-        }}
-      >
-        Продлить проект
-      </button>
     </div>
   );
 };
@@ -810,7 +847,6 @@ const RecursiveSubtaskList: React.FC<{
             onToggleCheckbox={() => onToggleSubtask(child)}
             onDelete={() => onDeleteSubtask(child)}
             onClick={() => onSelectSubtask(child)}
-            onDropOnTask={(draggedTaskId: string, targetTask: Task) => onDropOnTask(draggedTaskId, targetTask)}
           />
         );
       })}

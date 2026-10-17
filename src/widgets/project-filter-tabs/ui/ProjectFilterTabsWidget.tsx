@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export type ProjectFilterType = 'all' | 'active' | 'completed' | 'has_overdue';
+export type ProjectFilterType = 'all' | 'active' | 'paused' | 'completed' | 'empty' | 'archived';
 export type ProjectProgressMode = 'today' | 'all_time';
 
 interface ProjectFilterTabsWidgetProps {
@@ -16,7 +16,7 @@ const FILTER_ITEMS: { id: ProjectFilterType; label: string }[] = [
   { id: 'all', label: '🥞 Все' },
   { id: 'active', label: '🕒 Активные' },
   { id: 'completed', label: '🎯 Готово' },
-  { id: 'has_overdue', label: '⚠️ Просрочено' },
+  { id: 'empty', label: '📭 Без задач' },
 ];
 
 export const ProjectFilterTabsWidget: React.FC<ProjectFilterTabsWidgetProps> = ({
@@ -59,10 +59,12 @@ export const ProjectFilterTabsWidget: React.FC<ProjectFilterTabsWidgetProps> = (
             outline: 'none',
           }}
         >
-          <option value="all">🥞 Все задачи</option>
+          <option value="all">🥞 Все проекты</option>
           <option value="active">🔘 Активные</option>
+          <option value="paused">⏸ На паузе</option>
           <option value="completed">🎯 Завершенные</option>
-          <option value="has_overdue">⚠️ Просроченные</option>
+          <option value="empty">📭 Без задач</option>
+          <option value="archived">🗄 Архив</option>
         </select>
 
         {/* Mode Switcher: Today / All Time */}

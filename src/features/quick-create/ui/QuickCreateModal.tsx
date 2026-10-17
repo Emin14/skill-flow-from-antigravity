@@ -492,14 +492,14 @@ export const QuickCreateModal: React.FC = () => {
                   value={parentTaskId || ''}
                   onChange={(e) => setParentTaskId(e.target.value || null)}
                 >
-                  <option value="">Без родительской задачи</option>
+                  <option value=""></option>
                   {possibleParents.map((pt) => (
                     <option key={pt.id} value={pt.id}>
                       📁 {pt.title}
                     </option>
                   ))}
                 </select>
-                <span style={hint}>Родительская задача</span>
+                <span style={hint}>Проект</span>
               </div>
             </div>
 
