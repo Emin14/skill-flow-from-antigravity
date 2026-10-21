@@ -471,7 +471,7 @@ export const TasksSearchPage: React.FC = () => {
               extraMetaNode={renderExtraMeta(item)}
               onToggleCheckbox={() => handleToggleCheckbox(item)}
               onRescheduleToToday={
-                item.occurrenceDate && item.occurrenceDate < todayStr && item.status !== 'Done'
+                item.status !== 'Done' && item.occurrenceDate !== todayStr
                   ? () => rescheduleTaskToToday(item.task.id)
                   : undefined
               }

@@ -17,11 +17,11 @@ const NAV_ITEMS_LEFT: NavItemData[] = [
   { label: 'Сегодня', href: '/today', icon: '☀️' },
   { label: 'Входящие', href: '/inbox', icon: '📥' },
   { label: 'Проекты', href: '/projects', icon: '📁' },
-  { label: 'В любое время', href: '/anytime', icon: '♾️' },
+  { label: 'Все задачи', href: '/tasks', icon: '🔍' },
 ];
 
 const NAV_ITEMS_RIGHT: NavItemData[] = [
-  { label: 'Просроченные', href: '/overdue', icon: '🚨' },
+  { label: 'Заметки / Бэклог', href: '/backlog', icon: '💡' },
   { label: 'Повторить', href: '/repeats', icon: '🔄' },
   { label: 'Календарь', href: '/calendar', icon: '📅' },
   { label: 'Статистика', href: '/statistics', icon: '📊' },

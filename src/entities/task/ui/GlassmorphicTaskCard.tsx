@@ -9,6 +9,8 @@ import { GripVertical, Check, ExternalLink, Calendar } from 'lucide-react';
 import { startPointerDrag, cleanupPointerDrag } from '@/shared/lib/pointerDrag';
 import styles from './GlassmorphicTaskCard.module.css';
 
+const SWIPE_ACTIONS_WIDTH = 180;
+
 declare global {
   interface Window {
     __draggedTaskId?: string | null;
@@ -276,12 +278,12 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     }
 
     if (isSwipedLeft) {
-      const newOffset = Math.min(0, Math.max(-80, -80 - diffX));
+      const newOffset = Math.min(0, Math.max(-SWIPE_ACTIONS_WIDTH, -SWIPE_ACTIONS_WIDTH - diffX));
       setSwipeOffset(newOffset);
     } else {
-      if (diffX > 0 && diffX <= 80) {
+      if (diffX > 0 && diffX <= SWIPE_ACTIONS_WIDTH) {
         setSwipeOffset(-diffX);
-      } else if (diffX < 0 && diffX >= -80) {
+      } else if (diffX < 0 && diffX >= -SWIPE_ACTIONS_WIDTH) {
         setSwipeOffset(-diffX);
       }
     }
@@ -306,7 +308,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
       } else {
         if (diff > 45) {
           setIsSwipedLeft(true);
-          setSwipeOffset(-80);
+          setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
         } else if (diff < -45) {
           setSwipeOffset(0);
           if (onRescheduleToToday) {
@@ -479,14 +481,33 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
       } ${isOverTarget || isDropTarget ? styles.taskCardDropTarget : ''}`}
     >
       {(swipeOffset < 0 || isSwipedLeft) && (
-        <div
-          className={styles.deleteSwipeAction}
-          onClick={(e) => {
-            e.stopPropagation();
-            if (onDelete) onDelete();
-          }}
-        >
-          Удалить
+        <div className={styles.leftSwipeActions}>
+          {onRescheduleToToday && !isDone && !isToday && (
+            <button
+              type="button"
+              className={styles.todaySwipeAction}
+              onClick={(e) => {
+                e.stopPropagation();
+                onRescheduleToToday();
+                setIsSwipedLeft(false);
+                setSwipeOffset(0);
+              }}
+            >
+              На сегодня
+            </button>
+          )}
+          {onDelete && (
+            <button
+              type="button"
+              className={styles.deleteSwipeAction}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete();
+              }}
+            >
+              Удалить
+            </button>
+          )}
         </div>
       )}
 

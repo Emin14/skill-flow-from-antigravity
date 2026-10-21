@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Check, X } from 'lucide-react';
 import styles from './SectionSwitcherModal.module.css';
@@ -26,7 +25,6 @@ const SECTION_GROUPS: NavSectionGroup[] = [
       { label: 'Английский', href: '/english', icon: '🇬🇧', description: 'Словарь Oxford 3000 и карточки' },
       { label: 'Календарь', href: '/calendar', icon: '📅', description: 'Сетка расписания и недели' },
       { label: 'Входящие', href: '/inbox', icon: '📥', description: 'Быстрый сбор мыслей и идей' },
-      { label: 'Просроченные', href: '/overdue', icon: '🚨', description: 'Задачи, требующие внимания' },
     ],
   },
   {
@@ -37,7 +35,6 @@ const SECTION_GROUPS: NavSectionGroup[] = [
       { label: 'Повторяющиеся', href: '/repeats', icon: '🔄', description: 'Регулярные привычки и рутины' },
       { label: 'Цели', href: '/goals', icon: '🎯', description: 'Главные жизненные ориентиры' },
       { label: 'Достижения', href: '/achievements', icon: '🏆', description: 'Личный зал славы и рекорды' },
-      { label: 'В любое время', href: '/anytime', icon: '♾️', description: 'Задачи без жесткой привязки к дате' },
       { label: 'Все задачи', href: '/tasks', icon: '🔍', description: 'Поиск по всей базе задач и фильтры' },
     ],
   },

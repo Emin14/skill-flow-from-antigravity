@@ -18,8 +18,6 @@ const navItems: NavItem[] = [
   { label: 'Входящие', href: '/inbox', icon: '📥' },
   { label: 'Заметки / Бэклог', href: '/backlog', icon: '💡' },
   { label: 'Проекты', href: '/projects', icon: '📁' },
-  { label: 'Просроченные', href: '/overdue', icon: '🚨' },
-  { label: 'В любое время', href: '/anytime', icon: '♾️' },
   { label: 'Все задачи', href: '/tasks', icon: '🔍' },
   { label: 'Цели', href: '/goals', icon: '🎯' },
   { label: 'Достижения', href: '/achievements', icon: '🏆' },
