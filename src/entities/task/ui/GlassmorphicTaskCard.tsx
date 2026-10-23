@@ -3,7 +3,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { Checkbox } from '@/shared/ui';
 import { Task, TaskStatus } from '@/entities/task/model/types';
-import { getAllDescendantTasks, getTaskParentPath, isSubtaskDoneForProject } from '@/entities/task/model/store';
+import { getAllDescendantTasks, getTaskParentPath, isSubtaskDoneForProject, useTaskStore } from '@/entities/task/model/store';
 import { getTodayStr } from '@/shared/lib/dateUtils';
 import { GripVertical, Check, ExternalLink, Calendar } from 'lucide-react';
 import { startPointerDrag, cleanupPointerDrag } from '@/shared/lib/pointerDrag';
@@ -220,6 +220,8 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
   const [isOverTarget, setIsOverTarget] = useState<boolean>(false);
   const [isPromptDismissed, setIsPromptDismissed] = useState<boolean>(false);
   const [isTouchDragging, setIsTouchDragging] = useState<boolean>(false);
+  const [isProjectPickerOpen, setIsProjectPickerOpen] = useState(false);
+  const updateTaskParent = useTaskStore((state) => state.updateTaskParent);
 
   const currentOcc = useMemo(() => {
     if (!task.isRepeating) return null;
@@ -252,6 +254,15 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
     [descendantSubtasks, todayStr, progressMode]
   );
   const areAllSubtasksDone = isContainer && descendantSubtasks.length > 0 && doneSubtasksCount === descendantSubtasks.length;
+  const projectCandidates = useMemo(() => {
+    const descendantIds = new Set(descendantSubtasks.map((item) => item.id));
+    return allTasks.filter((candidate) =>
+      candidate.id !== task.id &&
+      !candidate.parentTaskId &&
+      !descendantIds.has(candidate.id) &&
+      (candidate.isProject || candidate.hasSubtasks || allTasks.some((item) => item.parentTaskId === candidate.id))
+    );
+  }, [allTasks, descendantSubtasks, task.id]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
@@ -311,21 +322,7 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
           setSwipeOffset(-SWIPE_ACTIONS_WIDTH);
         } else if (diff < -45) {
           setSwipeOffset(0);
-          if (onRescheduleToToday) {
-            onRescheduleToToday();
-          } else {
-            const currentStatus = currentOcc ? currentOcc.status : task.status;
-            let nextStatus: TaskStatus = 'Todo';
-            if (currentStatus === 'Todo') nextStatus = 'InProgress';
-            else if (currentStatus === 'InProgress') nextStatus = 'Done';
-            else if (currentStatus === 'Done') nextStatus = 'Todo';
-
-            if (onStatusChange) {
-              onStatusChange(nextStatus);
-            } else if (onToggleCheckbox) {
-              onToggleCheckbox();
-            }
-          }
+          setIsProjectPickerOpen(true);
         } else {
           setIsSwipedLeft(false);
           setSwipeOffset(0);
@@ -667,6 +664,38 @@ export const GlassmorphicTaskCard: React.FC<GlassmorphicTaskCardProps> = ({
           </div>
         )}
       </div>
+
+      {isProjectPickerOpen && (
+        <div className={styles.projectPickerOverlay} role="dialog" aria-modal="true" aria-label="Добавить в проект" onClick={() => setIsProjectPickerOpen(false)}>
+          <div className={styles.projectPicker} onClick={(event) => event.stopPropagation()}>
+            <div className={styles.projectPickerHeader}>
+              <h3>Добавить в проект</h3>
+              <button type="button" onClick={() => setIsProjectPickerOpen(false)} aria-label="Закрыть">×</button>
+            </div>
+            <p className={styles.projectPickerHint}>{task.title}</p>
+            {projectCandidates.length === 0 ? (
+              <div className={styles.projectPickerEmpty}>Проектов пока нет. Создайте проект в разделе «Проекты».</div>
+            ) : (
+              <div className={styles.projectPickerList}>
+                {projectCandidates.map((project) => (
+                  <button
+                    type="button"
+                    key={project.id}
+                    className={styles.projectPickerItem}
+                    onClick={async () => {
+                      await updateTaskParent(task.id, project.id);
+                      setIsProjectPickerOpen(false);
+                    }}
+                  >
+                    <span className={styles.projectPickerDot} style={{ background: project.color || 'var(--color-accent)' }} />
+                    <span>{project.title || 'Без названия'}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -260,9 +260,15 @@ export const ProjectsPage: React.FC = () => {
           <h1 className={styles.projectPageTitle}>Проекты</h1>
           <p className={styles.projectPageHint}>Создавайте проекты отдельно и добавляйте в них задачи.</p>
         </div>
-        <Button variant="primary" size="sm" onClick={createProject}>
-          <Plus size={16} /> Новый проект
-        </Button>
+        <button
+          type="button"
+          className={styles.projectAddBtn}
+          title="Новый проект"
+          aria-label="Новый проект"
+          onClick={createProject}
+        >
+          <Plus size={20} />
+        </button>
       </div>
 
       {/* 1. Original Filter Tabs Widget */}

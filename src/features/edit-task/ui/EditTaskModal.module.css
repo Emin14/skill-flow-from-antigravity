@@ -551,3 +551,153 @@
   line-height: 1;
   opacity: 0.85;
 }
+
+/* Project creation follows the same card form language as the note editor. */
+.projectModal {
+  max-width: 540px;
+  max-height: 90vh;
+  padding: 20px;
+  border-radius: 18px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.projectModal .dragHandleArea {
+  display: none;
+}
+
+.projectHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.projectTitle {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.projectCloseBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.projectCloseBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.projectModal .modalBody {
+  gap: 14px;
+  max-height: none;
+  overflow: visible;
+}
+
+.projectModal .titleInput,
+.projectModal .selectInput,
+.projectModal .v2Select,
+.projectModal .v2DateInput {
+  width: 100%;
+  height: 38px;
+  min-height: 38px;
+  padding: 0 12px !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 10px !important;
+  background: var(--color-surface-hover) !important;
+  color: var(--color-text-primary);
+  font-size: 13.5px;
+  font-weight: 400;
+  box-sizing: border-box;
+  box-shadow: none !important;
+}
+
+.projectModal .titleInput {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.projectModal .titleInput:focus,
+.projectModal .selectInput:focus,
+.projectModal .v2Select:focus {
+  border-color: var(--color-accent) !important;
+}
+
+.projectModal .compactTextarea {
+  min-height: 90px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface-hover);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.projectModal .compactTextarea:focus {
+  border-color: var(--color-accent);
+}
+
+.projectFieldLabel {
+  display: block;
+  margin: 0 0 6px;
+  padding-left: 0;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.projectIdentity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-accent-text);
+  font-size: 12px;
+}
+
+.projectColorRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.projectColorRow .projectFieldLabel {
+  margin: 0;
+}
+
+.projectModal .modalFooter {
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
+
+.projectModal .cancelBtn,
+.projectModal .submitBtn {
+  height: 36px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.projectModal .cancelBtn {
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+}
+
+.projectModal .submitBtn {
+  box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .projectModal {
+    padding: 16px;
+    border-radius: 14px;
+  }
+}

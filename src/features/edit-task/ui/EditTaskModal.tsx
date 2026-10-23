@@ -13,7 +13,7 @@ import { RepetitionMode, ScheduleFrequency, REPEAT_LABELS, FREQ_LABELS, WEEKDAY_
 import { getTodayStr, getTomorrowStr, formatDateDisplay } from '@/shared/lib/dateUtils';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { extractLinkTitle } from '@/shared/lib/urlUtils';
-import { Wand2 } from 'lucide-react';
+import { Wand2, X } from 'lucide-react';
 import styles from './EditTaskModal.module.css';
 
 interface EditTaskModalProps {
@@ -415,7 +415,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
     >
       <div
         ref={modalRef}
-        className={styles.modal}
+        className={`${styles.modal} ${isProject ? styles.projectModal : ''}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Swipe-Down Drag Handle */}
@@ -428,6 +428,15 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
         >
           <div className={styles.dragHandleBar} />
         </div>
+
+        {isProject && (
+          <div className={styles.projectHeader}>
+            <h3 className={styles.projectTitle}>📁 {task.id.startsWith('draft-') ? 'Новый проект' : 'Редактирование проекта'}</h3>
+            <button type="button" className={styles.projectCloseBtn} onClick={onClose} aria-label="Закрыть">
+              <X size={18} />
+            </button>
+          </div>
+        )}
 
         {/* Hidden date input for desktop showPicker() fallback */}
         <input type="date" ref={hiddenNativeInputRef} value={scheduledDate}
@@ -536,13 +545,13 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 </select>
                 <span style={hint}>Проект</span>
               </div>
-            </div> : <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-accent-text)', fontSize: '12px' }}>
+            </div> : <div className={styles.projectIdentity}>
               <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: color, boxShadow: `0 0 0 3px ${color}33` }} />
               <span>Проект</span>
             </div>}
 
-            {isProject && <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '2px' }}>
-              <label htmlFor="project-color" style={{ ...hint, margin: 0 }}>Цвет проекта</label>
+            {isProject && <div className={styles.projectColorRow}>
+              <label htmlFor="project-color" className={styles.projectFieldLabel}>Цвет проекта</label>
               <input
                 id="project-color"
                 type="color"
@@ -562,7 +571,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                   <option value="paused">⏸ На паузе</option>
                   <option value="completed">✅ Завершён</option>
                 </select>
-                <span style={hint}>Статус проекта</span>
+                <span className={styles.projectFieldLabel}>Статус проекта</span>
               </div>
             </div>}
 
@@ -713,7 +722,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
             {/* 5. Next Line: Description / Notes */}
             <div>
-              <span style={{ ...hint, marginBottom: '3px' }}>{isProject ? 'Описание проекта' : 'Описание задачи'}</span>
+              <span className={isProject ? styles.projectFieldLabel : undefined} style={isProject ? undefined : { ...hint, marginBottom: '3px' }}>{isProject ? 'Описание проекта' : 'Описание задачи'}</span>
               <textarea
                 className={styles.compactTextarea}
                 value={description}
@@ -725,13 +734,15 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
             {/* 6. Next Line: Link */}
             {/* 6. Next Line: Link */}
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div>
+              {isProject && <span className={styles.projectFieldLabel}>Полезная ссылка</span>}
+              <div style={{ display: 'flex', gap: '8px' }}>
               <div style={{ flex: 1 }}>
                 <Input
                   type="url" name="task_link_field" className={styles.selectInput}
                   value={link} onChange={(e) => setLink(e.target.value)}
                   placeholder={isProject ? '🔗 Ссылка на проект...' : '🔗 Ссылка...'}
-                  style={{ height: '26px', width: '100%' }}
+                  style={{ height: isProject ? '38px' : '26px', width: '100%' }}
                 />
               </div>
               <button
@@ -740,7 +751,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
                 disabled={isFetchingTitle || !link}
                 title="Автоматически получить название по ссылке"
                 style={{
-                  height: '26px',
+                  height: isProject ? '38px' : '26px',
                   padding: '0 10px',
                   borderRadius: '10px',
                   background: 'rgba(255,255,255,0.07)',
@@ -756,6 +767,7 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               >
                 <Wand2 size={14} />
               </button>
+              </div>
             </div>
           </div>
 
