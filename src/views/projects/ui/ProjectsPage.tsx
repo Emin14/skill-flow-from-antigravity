@@ -601,6 +601,18 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
             </span>
           )}
           {totalCount > 0 && renderCircleRing(36, 3)}
+          <button
+            type="button"
+            className={styles.projectHeaderAddBtn}
+            title="Добавить задачу в проект"
+            aria-label={`Добавить задачу в проект «${project.title}»`}
+            onClick={(event) => {
+              event.stopPropagation();
+              onAddTask();
+            }}
+          >
+            <Plus size={16} />
+          </button>
           {chevronBtn}
         </div>
       </div>
