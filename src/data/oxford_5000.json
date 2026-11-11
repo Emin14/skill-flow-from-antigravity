@@ -6239,7 +6239,7 @@
       {
         "id": 1,
         "phrase": "what is he after?",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "preposition",
         "translation": "что ему нужно?",
         "examples": [],
         "register": []
@@ -11580,7 +11580,7 @@
           },
           {
             "en": "I can't wait any longer",
-            "ru": "я не могу ждать больше ни минуты"
+            "ru": "я больше не могу ждать"
           }
         ]
       }
@@ -15409,7 +15409,7 @@
       {
         "id": 4,
         "partOfSpeech": "preposition",
-        "translation": "в качестве, в роли, как",
+        "translation": "в качестве, в роли",
         "register": [],
         "examples": [
           {
@@ -15432,10 +15432,6 @@
           {
             "en": "as big as an elephant",
             "ru": "такой же большой, как слон"
-          },
-          {
-            "en": "as soon as possible",
-            "ru": "как можно скорее"
           }
         ]
       },
@@ -15450,6 +15446,18 @@
             "ru": "как он ни хитёр, меня он не обманет"
           }
         ]
+      },
+      {
+        "id": 7,
+        "partOfSpeech": "pronoun",
+        "translation": "какой, который; что",
+        "examples": [
+          {
+            "en": "this is the same book as I lost",
+            "ru": "это такая же книга, как та, что я потерял"
+          }
+        ],
+        "register": []
       }
     ],
     "phrases": [
@@ -15492,6 +15500,14 @@
         "translation": "как обычно, как всегда",
         "register": [],
         "examples": []
+      },
+      {
+        "id": 6,
+        "phrase": "as soon as possible",
+        "partOfSpeech": "adverb",
+        "translation": "как можно скорее",
+        "examples": [],
+        "register": []
       }
     ]
   },
@@ -42906,8 +42922,7 @@
       }
     ],
     "forms": {
-      "past_simple": "could",
-      "past_participle": "could"
+      "past_simple": "could"
     }
   },
   {
@@ -71481,8 +71496,7 @@
     "form_of": {
       "lemma": "can",
       "types": [
-        "past_simple",
-        "past_participle"
+        "past_simple"
       ]
     }
   },
@@ -76537,7 +76551,7 @@
       {
         "id": 1,
         "phrase": "what cannot be cured must be endured",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "phrase",
         "translation": "≈ что нельзя исправить, то следует терпеть",
         "examples": [],
         "register": []
@@ -78614,7 +78628,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "срок, период; время, пора; современный; новейший",
+        "translation": "срок, период; время, пора",
         "examples": [
           {
             "en": "out of date",
@@ -93641,14 +93655,6 @@
       },
       {
         "id": 4,
-        "phrase": "have to do with",
-        "partOfSpeech": "verb",
-        "translation": "иметь отношение к, иметь дело с",
-        "register": [],
-        "examples": []
-      },
-      {
-        "id": 5,
         "phrase": "that will do",
         "partOfSpeech": "interjection",
         "translation": "хватит, достаточно, довольно",
@@ -93658,7 +93664,7 @@
         "examples": []
       },
       {
-        "id": 6,
+        "id": 5,
         "phrase": "well done!",
         "partOfSpeech": "interjection",
         "translation": "молодец!, отлично сработано!",
@@ -93668,7 +93674,7 @@
         "examples": []
       },
       {
-        "id": 7,
+        "id": 6,
         "phrase": "do someone a favour",
         "partOfSpeech": "verb",
         "translation": "оказать кому-либо услугу, сделать одолжение",
@@ -109443,7 +109449,7 @@
         "examples": [
           {
             "en": "even date",
-            "ru": "тоже число"
+            "ru": "чётная дата"
           }
         ],
         "register": [
@@ -124367,7 +124373,7 @@
       {
         "id": 1,
         "phrase": "F. Commoner",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "спикер (в палате общин до 1919 г.)",
         "examples": [],
         "register": []
@@ -124375,7 +124381,7 @@
       {
         "id": 2,
         "phrase": "F. Sea Lord",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "первый морской лорд, начальник главного морского штаба (Англии)",
         "examples": [],
         "register": [
@@ -133479,7 +133485,7 @@
             "ru": "откуда он?"
           },
           {
-            "en": "we are two hours journey from there",
+            "en": "we are two hours' journey from there",
             "ru": "мы находимся в двух часах пути оттуда"
           },
           {
@@ -133610,10 +133616,7 @@
           },
           {
             "en": "to release from duty",
-            "ru": "сменить на посту, заступить в наряд",
-            "register": [
-              "военное"
-            ]
+            "ru": "освободить от службы; сменить на посту"
           },
           {
             "en": "he was excused from digging",
@@ -137147,12 +137150,7 @@
         "id": 4,
         "partOfSpeech": "adjective",
         "translation": "общий, приблизительный, неточный",
-        "examples": [
-          {
-            "en": "general impression",
-            "ru": "общее впечатление"
-          }
-        ],
+        "examples": [],
         "register": [],
         "primary": true
       },
@@ -137861,7 +137859,7 @@
     "meanings": [
       {
         "partOfSpeech": "verb",
-        "translation": "получать; доставать, добывать",
+        "translation": "получать, приобретать; доставать, добывать, брать",
         "examples": [
           {
             "en": "we can get it for you",
@@ -137874,6 +137872,22 @@
           {
             "en": "to get advantage",
             "ru": "получить преимущество"
+          },
+          {
+            "en": "to get a new coat",
+            "ru": "купить новое пальто"
+          },
+          {
+            "en": "I get letters every day",
+            "ru": "я получаю письма ежедневно"
+          },
+          {
+            "en": "to get leave",
+            "ru": "получить, взять отпуск"
+          },
+          {
+            "en": "to get singing lessons",
+            "ru": "брать уроки пения"
           }
         ],
         "register": [],
@@ -137895,39 +137909,6 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "покупать, приобретать",
-        "examples": [
-          {
-            "en": "to get a new coat",
-            "ru": "купить новое пальто"
-          }
-        ],
-        "register": [],
-        "id": 3
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "получать; брать",
-        "examples": [
-          {
-            "en": "I get letters every day",
-            "ru": "я получаю письма ежедневно"
-          },
-          {
-            "en": "to get leave",
-            "ru": "получить, взять отпуск"
-          },
-          {
-            "en": "to get singing lessons",
-            "ru": "брать уроки пения"
-          }
-        ],
-        "register": [],
-        "id": 4,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "verb",
         "translation": "сесть, попасть (на поезд и т. п.)",
         "examples": [
           {
@@ -137937,11 +137918,45 @@
           }
         ],
         "register": [],
-        "id": 5
+        "id": 3
       },
-      {
-        "partOfSpeech": "verb",
-        "translation": "достигать, добиваться (from, out of)",
+{
+  "partOfSpeech": "verb",
+  "translation": "получать; брать",
+  "examples": [
+    {
+      "en": "I get letters every day",
+      "ru": "я получаю письма ежедневно"
+    },
+    {
+      "en": "to get leave",
+      "ru": "получить, взять отпуск"
+    },
+    {
+      "en": "to get singing lessons",
+      "ru": "брать уроки пения"
+    }
+  ],
+  "register": [],
+  "id": 4,
+  "primary": true
+},
+{
+  "partOfSpeech": "verb",
+  "translation": "сесть, попасть (на поезд и т. п.)",
+  "examples": [
+    {
+      "en": "We must get the next train.",
+      "ru": "Нам нужно сесть на следующий поезд.",
+      "origin": "generated"
+    }
+  ],
+  "register": [],
+  "id": 5
+},
+{
+  "partOfSpeech": "verb",
+  "translation": "достигать, добиваться (from, out of)",
         "examples": [
           {
             "en": "we couldn't get permission from him",
@@ -137953,7 +137968,8 @@
           }
         ],
         "register": [],
-        "id": 6
+        "id": 4,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -137967,7 +137983,8 @@
         "register": [
           "устаревшее"
         ],
-        "id": 7
+        "id": 5,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -137979,7 +137996,8 @@
           }
         ],
         "register": [],
-        "id": 8
+        "id": 6,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -137991,7 +138009,8 @@
           }
         ],
         "register": [],
-        "id": 9
+        "id": 7,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138007,7 +138026,8 @@
           }
         ],
         "register": [],
-        "id": 10
+        "id": 8,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138019,7 +138039,8 @@
           }
         ],
         "register": [],
-        "id": 11
+        "id": 9,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138031,7 +138052,8 @@
           }
         ],
         "register": [],
-        "id": 12
+        "id": 10,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138049,7 +138071,8 @@
         "register": [
           "разговорное"
         ],
-        "id": 13
+        "id": 11,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138067,7 +138090,7 @@
         "register": [
           "разговорное"
         ],
-        "id": 14,
+        "id": 12,
         "primary": true
       },
       {
@@ -138083,7 +138106,8 @@
         "register": [
           "разговорное"
         ],
-        "id": 15
+        "id": 13,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138097,7 +138121,8 @@
         "register": [
           "разговорное"
         ],
-        "id": 16
+        "id": 14,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138111,7 +138136,8 @@
         "register": [
           "разговорное"
         ],
-        "id": 17
+        "id": 15,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138120,7 +138146,20 @@
         "register": [
           "устаревшее"
         ],
-        "id": 18
+        "id": 16
+      },
+      {
+        "partOfSpeech": "verb",
+        "translation": "быть должным, быть обязанным (have got to)",
+        "examples": [
+          {
+            "en": "I've got to call the doctor at once",
+            "ru": "я должен немедленно вызвать врача"
+          }
+        ],
+        "register": [],
+        "id": 17,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138136,7 +138175,8 @@
           }
         ],
         "register": [],
-        "id": 19
+        "id": 18,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138160,24 +138200,34 @@
           }
         ],
         "register": [],
-        "id": 20
+        "id": 19,
+        "primary": true
       },
       {
-        "partOfSpeech": "verb",
-        "translation": "начать, приняться (за действие)",
-        "examples": [
-          {
-            "en": "Let us get to work.",
-            "ru": "Давайте начнём работать.",
-            "origin": "generated"
-          }
+  "partOfSpeech": "verb",
+  "translation": "начать, приняться за действие",
+  "examples": [
+    {
+      "en": "Let us get to work.",
+      "ru": "Давайте начнём работать.",
+      "origin": "generated"
+    },
+    {
+      "en": "get to work",
+      "ru": "приняться за работу"
+    },
+    {
+      "en": "get talking",
+      "ru": "заговорить"
+    }
         ],
         "register": [],
-        "id": 21
+        "id": 20,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
-        "translation": "начать, приняться",
+        "translation": "становиться, делаться (глагол-связка)",
         "examples": [
           {
             "en": "to get angry",
@@ -138190,18 +138240,11 @@
           {
             "en": "to get dark",
             "ru": "темнеть"
-          },
-          {
-            "en": "get to work",
-            "ru": "приняться за работу"
-          },
-          {
-            "en": "get talking",
-            "ru": "заговорить"
           }
         ],
         "register": [],
-        "id": 22
+        "id": 21,
+        "primary": true
       },
       {
         "partOfSpeech": "verb",
@@ -138222,7 +138265,8 @@
           "разговорное",
           "устаревшее"
         ],
-        "id": 23
+        "id": 22,
+        "primary": true
       },
       {
         "partOfSpeech": "noun",
@@ -138234,7 +138278,7 @@
           }
         ],
         "register": [],
-        "id": 24
+        "id": 23
       },
       {
         "partOfSpeech": "noun",
@@ -138248,7 +138292,7 @@
         "register": [
           "жаргон"
         ],
-        "id": 25
+        "id": 24
       }
     ],
     "phrases": [
@@ -141424,7 +141468,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "добро, благо; исправлять кого-либо",
+        "translation": "добро, благо; приносить пользу кому-либо",
         "examples": [
           {
             "en": "to do smb. good",
@@ -153273,7 +153317,7 @@
     "meanings": [
       {
         "id": 1,
-        "partOfSpeech": "pronoun",
+        "partOfSpeech": "determiner",
         "translation": "его, свой",
         "examples": [
           {
@@ -157089,16 +157133,20 @@
           },
           {
             "en": "how comes it?, how come?, how is it?",
-            "ru": "как это получается?, почему так выходит?"
+            "ru": "как это получается?, почему так выходит?",
+            "register": [
+              "разговорное"
+            ]
           },
           {
             "en": "how so?",
-            "ru": "как так?"
+            "ru": "как так?",
+            "register": [
+              "разговорное"
+            ]
           }
         ],
-        "register": [
-          "разговорное"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -157149,7 +157197,7 @@
         ]
       },
       {
-        "id": 14,
+        "id": 5,
         "partOfSpeech": "noun",
         "translation": "способ, метод",
         "examples": [
@@ -157158,7 +157206,9 @@
             "ru": "как это делается"
           }
         ],
-        "register": []
+        "register": [
+          "разговорное"
+        ]
       }
     ],
     "phrases": [
@@ -168220,7 +168270,7 @@
           },
           {
             "en": "to walk into the square",
-            "ru": "выйти на площадь"
+            "ru": "войти на площадь"
           },
           {
             "en": "to climb high into the mountains",
@@ -172790,7 +172840,7 @@
       {
         "id": 1,
         "phrase": "just about",
-        "partOfSpeech": "verb",
+        "partOfSpeech": "adverb",
         "translation": "почти что",
         "examples": [],
         "register": [
@@ -172800,7 +172850,7 @@
       {
         "id": 2,
         "phrase": "just in case",
-        "partOfSpeech": "verb",
+        "partOfSpeech": "adverb",
         "translation": "на всякий случай",
         "examples": [],
         "register": []
@@ -172816,7 +172866,7 @@
       {
         "phrase": "just like that",
         "partOfSpeech": "adverb",
-        "translation": "точно такой же",
+        "translation": "просто так; вот так",
         "examples": [],
         "register": [],
         "id": 4
@@ -184890,7 +184940,7 @@
       {
         "id": 1,
         "phrase": "what is he like?",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "что он собой представляет?, что он за человек?",
         "examples": [],
         "register": []
@@ -192963,7 +193013,7 @@
             "ru": "развиваться"
           },
           {
-            "en": "to make start",
+            "en": "to make a start",
             "ru": "начинать"
           },
           {
@@ -193008,7 +193058,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "есть",
+        "translation": "готовить, приготовлять",
         "examples": [
           {
             "en": "to make a good breakfast",
@@ -197522,34 +197572,38 @@
         "register": [
           "британское"
         ]
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "в роли определения к другому слову (майский)",
-        "examples": [
-          {
-            "en": "The May holidays begin next week.",
-            "ru": "Майские праздники начинаются на следующей неделе.",
-            "origin": "generated"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "noun",
-        "translation": "в роли определения к другому слову (первомайский)",
-        "examples": [
-          {
-            "en": "May Day celebrations filled the square.",
-            "ru": "Первомайские празднования заполнили площадь.",
-            "origin": "generated"
-          }
-        ],
-        "register": []
       }
-    ]
+    ],
+"phrases": [
+  {
+    "id": 1,
+    "phrase": "May Day",
+    "partOfSpeech": "noun",
+    "translation": "в роли определения к другому слову (майский)",
+    "examples": [
+      {
+        "en": "The May holidays begin next week.",
+        "ru": "Майские праздники начинаются на следующей неделе.",
+        "origin": "generated"
+      }
+    ],
+    "register": []
+  },
+  {
+    "id": 7,
+    "phrase": "May Day",
+    "partOfSpeech": "noun",
+    "translation": "Первомай; первомайский праздник",
+    "examples": [
+      {
+        "en": "May Day celebrations filled the square.",
+        "ru": "Первомайские празднования заполнили площадь.",
+        "origin": "moved from May.meanings[6].examples[0]"
+      }
+    ],
+    "register": []
+  }
+]
   },
   {
     "word": "may",
@@ -205417,7 +205471,7 @@
       {
         "id": 1,
         "phrase": "he is no more",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "его нет в живых",
         "examples": [],
         "register": []
@@ -205638,7 +205692,7 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "наибольший; большей частью",
+        "translation": "превосходная степень от much и many",
         "examples": [
           {
             "en": "most people",
@@ -205701,9 +205755,7 @@
             "ru": "самый красивый"
           }
         ],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "id": 6
       },
       {
@@ -207948,7 +208000,7 @@
         "examples": [
           {
             "en": "my, how you've grown!",
-            "ru": "батюшки, как ты вырос!"
+            "ru": "Батюшки, как ты вырос!"
           }
         ]
       }
@@ -212286,28 +212338,28 @@
         "register": [],
         "id": 9
       },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "недавно, только что",
-        "examples": [
-          {
-            "en": "We bought some new-laid eggs.",
-            "ru": "Мы купили несколько свежеснесённых яиц.",
-            "origin": "generated"
-          }
-        ],
-        "register": [],
-        "id": 10
-      },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "заново (устаревшее самостоятельное наречное употребление)",
-        "examples": [],
-        "register": [
-          "устаревшее"
-        ],
-        "id": 11
-      }
+{
+  "partOfSpeech": "adverb",
+  "translation": "недавно, только что",
+  "examples": [
+    {
+      "en": "We bought some new-laid eggs.",
+      "ru": "Мы купили несколько свежеснесённых яиц.",
+      "origin": "generated"
+    }
+  ],
+  "register": [],
+  "id": 10
+},
+{
+  "partOfSpeech": "adverb",
+  "translation": "заново (устаревшее самостоятельное наречное употребление)",
+  "examples": [],
+  "register": [
+    "устаревшее"
+  ],
+  "id": 11
+}
     ],
     "phrases": [
       {
@@ -214613,10 +214665,6 @@
             "ru": "довольно скверно"
           },
           {
-            "en": "isn't, don't, didn't, can't",
-            "ru": "сокращённые отрицательные формы"
-          },
-          {
             "en": "it is cold, is it not (or isn't it)?",
             "ru": "сокращённые отрицательные формы"
           }
@@ -214646,7 +214694,7 @@
       {
         "id": 1,
         "phrase": "not in the least",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "нисколько",
         "examples": [],
         "register": []
@@ -214654,7 +214702,7 @@
       {
         "id": 2,
         "phrase": "not on your life",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "ни в коем случае",
         "examples": [],
         "register": []
@@ -215587,25 +215635,25 @@
         "id": 2,
         "primary": true
       },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "прямо сейчас, в настоящий момент, только что",
-        "examples": [
-          {
-            "en": "The doctor is seeing her now.",
-            "ru": "Врач принимает её прямо сейчас.",
-            "origin": "generated"
-          }
-        ],
-        "register": [],
-        "id": 3
-      },
+{
+  "partOfSpeech": "adverb",
+  "translation": "прямо сейчас, в настоящий момент, только что",
+  "examples": [
+    {
+      "en": "The doctor is seeing her now.",
+      "ru": "Врач принимает её прямо сейчас.",
+      "origin": "generated"
+    }
+  ],
+  "register": [],
+  "id": 3
+},
       {
         "partOfSpeech": "adverb",
         "translation": "тогда, в то время (в повествовании)",
         "examples": [
           {
-            "en": "it was now clear that..",
+            "en": "it was now clear that ...",
             "ru": "тогда стало ясно, что"
           }
         ],
@@ -215646,7 +215694,7 @@
             "ru": "до сих пор"
           },
           {
-            "en": "as from now c",
+            "en": "as from now",
             "ru": "сего числа, с настоящего времени"
           },
           {
@@ -220793,7 +220841,7 @@
       {
         "id": 4,
         "partOfSpeech": "adjective",
-        "translation": "один, единственный; некий, один (о времени)",
+        "translation": "единственный; некий, определённый; однажды, в один из дней",
         "register": [],
         "examples": [
           {
@@ -224035,7 +224083,7 @@
       {
         "id": 1,
         "partOfSpeech": "determiner",
-        "translation": "наш, наша, наше, наши (притяжательный детерминатив / местоимение)",
+        "translation": "наш, наша, наше, наши (притяжательный детерминатив; ср. ours для самостоятельного употребления)",
         "register": [],
         "examples": [
           {
@@ -224355,7 +224403,7 @@
         "translation": "больше обычного",
         "examples": [
           {
-            "en": "out size",
+            "en": "outsize",
             "ru": "очень большой размер"
           }
         ],
@@ -224433,7 +224481,7 @@
       {
         "id": 1,
         "phrase": "she is out for compliments",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "она напрашивается на комплименты",
         "examples": [],
         "register": []
@@ -225725,7 +225773,7 @@
         "translation": "указывает на промежуток времени, в течение которого происходило действие: за, в течение",
         "examples": [
           {
-            "en": "he packed over two hours",
+            "en": "he packed for over two hours",
             "ru": "он собрался за два часа"
           },
           {
@@ -232063,33 +232111,6 @@
         ],
         "register": [],
         "id": 9
-      },
-      {
-        "partOfSpeech": "preposition",
-        "translation": "прибегать (к чему-либо), пользоваться (чем-либо)",
-        "examples": [],
-        "register": [],
-        "id": 10
-      },
-      {
-        "partOfSpeech": "preposition",
-        "translation": "использовать, израсходовать",
-        "examples": [
-          {
-            "en": "to feel pastd up",
-            "ru": "чувствовать себя совершенно обессиленным"
-          },
-          {
-            "en": "past up",
-            "ru": "израсходовать, использовать; истратить; истощать"
-          },
-          {
-            "en": "they past 10 tons of coal a month",
-            "ru": "они расходуют 10 тонн угля в месяц"
-          }
-        ],
-        "register": [],
-        "id": 11
       }
     ]
   },
@@ -234067,57 +234088,55 @@
             "ru": "говорят, что"
           }
         ],
-        "register": [
-          "британское"
-        ],
+        "register": [],
         "id": 2,
         "primary": true
       },
-      {
-        "partOfSpeech": "noun",
-        "translation": "(употр. как при мн. ч.:) свита; слуги; служащие, подчинённые",
-        "examples": [
-          {
-            "en": "The actor arrived with his people.",
-            "ru": "Актёр приехал со своей свитой.",
-            "origin": "generated"
-          }
-        ],
-        "register": [
-          "британское"
-        ],
-        "id": 3
-      },
-      {
-        "partOfSpeech": "noun",
-        "translation": "(употр. как при мн. ч.:) родные, родственники; родители (обыкн. my people, his people и т. п.)",
-        "examples": [
-          {
-            "en": "She is visiting her people this weekend.",
-            "ru": "В эти выходные она навещает родных.",
-            "origin": "generated"
-          }
-        ],
-        "register": [
-          "британское"
-        ],
-        "id": 4
-      },
-      {
-        "partOfSpeech": "noun",
-        "translation": "(употр. как при мн. ч.:) прихожане",
-        "examples": [
-          {
-            "en": "The people gathered after the service.",
-            "ru": "Прихожане собрались после службы.",
-            "origin": "generated"
-          }
-        ],
-        "register": [
-          "британское"
-        ],
-        "id": 5
-      },
+    {
+  "partOfSpeech": "noun",
+  "translation": "(употр. как при мн. ч.:) свита; слуги; служащие, подчинённые",
+  "examples": [
+    {
+      "en": "The actor arrived with his people.",
+      "ru": "Актёр приехал со своей свитой.",
+      "origin": "generated"
+    }
+  ],
+  "register": [
+    "британское"
+  ],
+  "id": 3
+},
+{
+  "partOfSpeech": "noun",
+  "translation": "(употр. как при мн. ч.:) родные, родственники; родители (обыкн. my people, his people и т. п.)",
+  "examples": [
+    {
+      "en": "She is visiting her people this weekend.",
+      "ru": "В эти выходные она навещает родных.",
+      "origin": "generated"
+    }
+  ],
+  "register": [
+    "британское"
+  ],
+  "id": 4
+},
+{
+  "partOfSpeech": "noun",
+  "translation": "(употр. как при мн. ч.:) прихожане",
+  "examples": [
+    {
+      "en": "The people gathered after the service.",
+      "ru": "Прихожане собрались после службы.",
+      "origin": "generated"
+    }
+  ],
+  "register": [
+    "британское"
+  ],
+  "id": 5
+},
       {
         "partOfSpeech": "noun",
         "translation": "(Р.). общественное обвинение, государство (как обвиняющая сторона на процессе)",
@@ -298860,20 +298879,20 @@
       "oxford3000": true
     },
     "meanings": [
-      {
-        "id": 1,
-        "partOfSpeech": "verb",
-        "translation": "вспомогательный глагол; служит для образования будущего в прошедшем в 1 л. ед. и мн. ч.: I",
-        "examples": [
-          {
-            "en": "I said I should be back by noon.",
-            "ru": "Я сказал, что вернусь к полудню.",
-            "origin": "generated"
-          }
-        ],
-        "register": [],
-        "primary": true
-      },
+{
+  "id": 1,
+  "partOfSpeech": "verb",
+  "translation": "вспомогательный глагол; образует будущее в прошедшем, обычно в 1-м лице: I should …",
+  "examples": [
+    {
+      "en": "I said I should be back by noon.",
+      "ru": "Я сказал, что вернусь к полудню.",
+      "origin": "generated"
+    }
+  ],
+  "register": [],
+  "primary": true
+},
       {
         "id": 2,
         "partOfSpeech": "verb",
@@ -306657,24 +306676,24 @@
       {
         "partOfSpeech": "adverb",
         "translation": "or so (после указания количества) приблизительно, около этого",
-        "examples": [
-          {
-            "en": "a day or so",
-            "ru": "денька два"
-          },
-          {
-            "en": "he must be forty or so",
-            "ru": "ему лет сорок или около того"
-          },
-          {
-            "en": "I tell you that so as to avoid trouble",
-            "ru": "я предупреждаю вас об этом, с тем чтобы избежать неприятностей"
-          },
-          {
-            "en": "so far as",
-            "ru": "настолько, насколько"
-          }
-        ],
+"examples": [
+  {
+    "en": "a day or so",
+    "ru": "денька два"
+  },
+  {
+    "en": "he must be forty or so",
+    "ru": "ему лет сорок или около того"
+  },
+  {
+    "en": "I tell you that so as to avoid trouble",
+    "ru": "я предупреждаю вас об этом, с тем чтобы избежать неприятностей"
+  },
+  {
+    "en": "so far as",
+    "ru": "настолько, насколько"
+  }
+],
         "register": [],
         "id": 6
       },
@@ -306706,7 +306725,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "conjunction",
+        "partOfSpeech": "adverb",
         "translation": "затем",
         "examples": [
           {
@@ -306723,7 +306742,7 @@
       {
         "id": 1,
         "phrase": "so to say",
-        "partOfSpeech": "verb",
+        "partOfSpeech": "adverb",
         "translation": "так сказать",
         "examples": [],
         "register": []
@@ -306731,7 +306750,7 @@
       {
         "id": 2,
         "phrase": "so be it",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "быть по сему",
         "examples": [],
         "register": []
@@ -306739,7 +306758,7 @@
       {
         "id": 3,
         "phrase": "so far",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "до сих пор",
         "examples": [],
         "register": []
@@ -306747,7 +306766,7 @@
       {
         "id": 4,
         "phrase": "so long!",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "interjection",
         "translation": "пока!, до свидания!",
         "examples": [],
         "register": [
@@ -306757,7 +306776,7 @@
       {
         "id": 5,
         "phrase": "so much for that",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "довольно (говорить) об этом",
         "examples": [],
         "register": []
@@ -306765,7 +306784,7 @@
       {
         "id": 6,
         "phrase": "and so on, and so forth",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "и так далее, и тому подобное",
         "examples": [],
         "register": [
@@ -340019,7 +340038,7 @@
         "id": 5
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "то время",
         "examples": [
           {
@@ -340249,7 +340268,7 @@
       },
       {
         "id": 3,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "то место (в сочетаниях с предлогами)",
         "register": [],
         "examples": [
@@ -341272,7 +341291,7 @@
             "ru": "я забыл запереть дверь"
           },
           {
-            "en": "I think how we were once friends",
+            "en": "I think of how we were once friends",
             "ru": "я вспоминаю о том, как мы когда-то дружили"
           },
           {
@@ -344278,9 +344297,7 @@
             "ru": "в свободное время"
           }
         ],
-        "register": [
-          "американский английский"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -361344,15 +361361,13 @@
             "ru": "он пришёл на следующий же день"
           }
         ],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "id": 6,
         "primary": true
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "тот самый, точно такой же",
+        "translation": "подчёркивает тождественность или противоположность: тот самый, точно такой же; прямо противоположный",
         "examples": [
           {
             "en": "he used the very same words",
@@ -364836,10 +364851,6 @@
           {
             "en": "let him want for nothing",
             "ru": "пусть он ни в чём не нуждается"
-          },
-          {
-            "en": "want for",
-            "ru": "нуждаться"
           }
         ],
         "register": [],
@@ -364858,21 +364869,6 @@
         "register": [],
         "id": 8,
         "primary": true
-      },
-      {
-        "partOfSpeech": "verb",
-        "translation": "требовать",
-        "examples": [
-          {
-            "en": "he is wanted by the police",
-            "ru": "его разыскивает полиция"
-          }
-        ],
-        "register": [
-          "американский английский",
-          "разговорное"
-        ],
-        "id": 9
       }
     ],
     "phrases": [
@@ -369721,7 +369717,7 @@
       },
       {
         "id": 2,
-        "partOfSpeech": "pronoun",
+        "partOfSpeech": "conjunction",
         "translation": "какой, что, сколько",
         "examples": [
           {
@@ -369736,14 +369732,16 @@
             "en": "he gave her what money he had",
             "ru": "он дал ей все деньги, какие у него были"
           },
-          {
-            "en": "I know what to do",
-            "ru": "я знаю, что нужно делать"
-          },
-          {
-            "en": "do you know the man who came yesterday?",
-            "ru": "вы знаете человека, который приходил вчера?"
-          }
+[
+  {
+    "en": "I know what to do",
+    "ru": "я знаю, что нужно делать"
+  },
+  {
+    "en": "do you know the man who came yesterday?",
+    "ru": "вы знаете человека, который приходил вчера?"
+  }
+]
         ],
         "register": [],
         "primary": true
@@ -370181,7 +370179,7 @@
           }
         ],
         "register": [],
-        "id": 4,
+        "id": 3,
         "primary": true
       },
       {
@@ -370194,7 +370192,7 @@
           }
         ],
         "register": [],
-        "id": 5,
+        "id": 4,
         "primary": true
       },
       {
@@ -370207,7 +370205,7 @@
           }
         ],
         "register": [],
-        "id": 6
+        "id": 5
       },
       {
         "partOfSpeech": "noun",
@@ -370223,7 +370221,7 @@
           }
         ],
         "register": [],
-        "id": 7
+        "id": 6
       }
     ]
   },
@@ -370341,26 +370339,26 @@
         "register": [],
         "id": 5
       },
-      {
-        "partOfSpeech": "adverb",
-        "translation": "где?; около какого места?; в каких краях?",
-        "examples": [
-          {
-            "en": "Where did you find the key?",
-            "ru": "Где ты нашёл ключ?",
-            "origin": "generated"
-          }
-        ],
-        "register": [],
-        "id": 6,
-        "primary": true
-      }
+{
+  "partOfSpeech": "adverb",
+  "translation": "где?; около какого места?; в каких краях?",
+  "examples": [
+    {
+      "en": "Where did you find the key?",
+      "ru": "Где ты нашёл ключ?",
+      "origin": "generated"
+    }
+  ],
+  "register": [],
+  "id": 6,
+  "primary": true
+}
     ],
     "phrases": [
       {
         "id": 1,
         "phrase": "where to",
-        "partOfSpeech": "verb",
+        "partOfSpeech": "adverb",
         "translation": "куда?",
         "examples": [],
         "register": []
@@ -370368,7 +370366,7 @@
       {
         "id": 2,
         "phrase": "ask her where she comes from?",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "conjunction",
         "translation": "спроси её, откуда она?",
         "examples": [],
         "register": []
