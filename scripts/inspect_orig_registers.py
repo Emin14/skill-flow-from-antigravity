@@ -4,7 +4,7 @@ import json
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     orig = json.load(f)
 
 reg_count = 0
@@ -16,6 +16,6 @@ for item in orig:
             if len(samples) < 20:
                 samples.append((item['word'], m))
 
-print(f"Total meanings with register in oxford_5000.json: {reg_count}")
+print(f"Total meanings with register in src/data/oxford_5000.json: {reg_count}")
 for w, m in samples:
     print(f"[{w}] register={m.get('register')} | translation={repr(m.get('translation'))}")

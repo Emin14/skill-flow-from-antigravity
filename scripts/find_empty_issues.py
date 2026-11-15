@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json, os, sys
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 data = json.load(open(oxford_path, 'r', encoding='utf-8'))
 
 empty_issues = []

@@ -54,7 +54,7 @@ def audit_file(path):
     print(f"Trailing single chars: {len(trailing_single_chars)}")
     print(f"Words with NO Russian translations at all: {len(no_russian_words)} -> {no_russian_words[:10]}")
 
-audit_file('oxford_5000.json')
+audit_file('src/data/oxford_5000.json')
 audit_file('tmp/muller_rebuild/oxford_5000.clean.json')
 audit_file('tmp/muller_rebuild/oxford_5000.rebuilt.json')
-audit_file('oxford_5000_updated.json')
+audit_file('src/data/oxford_5000.json')

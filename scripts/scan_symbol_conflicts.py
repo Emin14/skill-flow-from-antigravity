@@ -6,7 +6,7 @@ import json, re, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 parsed_index_path = 'scripts/parsed_index.json'
 
 with open(oxford_path, 'r', encoding='utf-8') as f:
@@ -23,7 +23,7 @@ symbols_to_check = {
     '~': 'U+007E (ASCII TILDE)'
 }
 
-print("1. Scanning oxford_5000_2026-08-27.json...")
+print("1. Scanning src/data/oxford_5000.json...")
 oxford_counts = {k: 0 for k in symbols_to_check}
 oxford_examples = {k: [] for k in symbols_to_check}
 

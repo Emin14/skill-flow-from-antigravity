@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Full comparative analysis of 100 random words from oxford_5000.json
+Full comparative analysis of 100 random words from src/data/oxford_5000.json
 across 3 sources of Muller Dictionary 2021:
 1. PDF 1: Мюллер В.К.,...-2021.a4.pdf
 2. DOCX 2: Мюллер В.К.,...-2021.a4.docx
@@ -29,7 +29,7 @@ print("1. LOADING AND INDEXING DATA SOURCES...")
 print("=" * 80)
 
 # 1. Oxford 5000
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
 # Collect unique words with their oxford meanings

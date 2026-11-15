@@ -4,13 +4,13 @@ Universal Multi-Register Cleaner Engine:
 1. Extracts multiple and comma-separated registers (e.g. "астр., геол.", "воен., мор.", "амер., разг.") from meanings and phrases.
 2. Cleans leading register abbreviations from definitions.
 3. Protects Russian roots (e.g. "из уст в уста", "моря", "собираться", "бухгалтер").
-4. Updates oxford_5000_2026-08-27.json.
+4. Updates src/data/oxford_5000.json.
 """
 import json, re, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
@@ -160,4 +160,4 @@ with open(oxford_path, 'w', encoding='utf-8') as f:
     json.dump(oxford_data, f, ensure_ascii=False, indent=2)
     f.write('\n')
 
-print("Saved oxford_5000_2026-08-27.json successfully!")
+print("Saved src/data/oxford_5000.json successfully!")

@@ -12,8 +12,8 @@ print("=" * 70)
 t0 = time.time()
 
 # 1. LOAD OXFORD 5000 DATASET
-print("\n[1/6] Loading existing oxford_5000.json...")
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+print("\n[1/6] Loading existing src/data/oxford_5000.json...")
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 print(f"Loaded {len(oxford_data)} words.")
 
@@ -374,9 +374,9 @@ if art_count == 0:
     print("\n✓ 100% CLEAN: Zero /accent, ¬, or ♦ artifacts across all 4,982 words!")
 
 # 7. SAVE DATASETS
-print("\n[6/6] Writing updated oxford_5000.json and src/data/oxford_5000.json...")
+print("\n[6/6] Writing updated src/data/oxford_5000.json and src/data/oxford_5000.json...")
 
-with open('oxford_5000.json', 'w', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(updated_oxford, f, ensure_ascii=False, indent=2)
 
 with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:

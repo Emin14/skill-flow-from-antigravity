@@ -4,7 +4,7 @@ Strip all invisible soft hyphens (\u00ad) across the entire JSON dataset.
 """
 import json, os, sys
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 with open(oxford_path, 'r', encoding='utf-8') as f:
     text = f.read()
 

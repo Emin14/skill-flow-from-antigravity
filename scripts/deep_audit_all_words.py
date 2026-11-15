@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Comprehensive Deep Audit of oxford_5000_2026-08-27.json:
+Comprehensive Deep Audit of src/data/oxford_5000.json:
 1. False phrases scanner (words where phrases were created without ♦ or ¬ in source text)
 2. English leaks in translation
 3. Missing hyphens / compound pronoun glitches
@@ -12,7 +12,7 @@ import json, re, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 parsed_index_path = 'scripts/parsed_index.json'
 
 with open(oxford_path, 'r', encoding='utf-8') as f:

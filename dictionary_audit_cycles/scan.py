@@ -3,7 +3,7 @@ import json,re,hashlib,collections
 from pathlib import Path
 root=Path(__file__).resolve().parent.parent
 out=Path(__file__).resolve().parent
-raw=(root/'oxford_5000_2026-08-27.json').read_bytes()
+raw=(root/'src/data/oxford_5000.json').read_bytes()
 data=json.loads(raw)
 text=(root/'tmp/muller_full_text.txt').read_text()
 heads=collections.defaultdict(list)

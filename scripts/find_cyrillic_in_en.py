@@ -6,7 +6,7 @@ import re
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-with open("oxford_5000.json", "r", encoding="utf-8") as f:
+with open("src/data/oxford_5000.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 cyr_in_en = []

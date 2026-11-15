@@ -8,7 +8,7 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 for fpath in glob.glob('*.json'):
-    if fpath == 'oxford_5000_2026-08-27.json': continue
+    if fpath == 'src/data/oxford_5000.json': continue
     try:
         data = json.load(open(fpath, 'r', encoding='utf-8'))
         if isinstance(data, list):

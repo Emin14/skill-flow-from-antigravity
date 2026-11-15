@@ -4,13 +4,13 @@ Universal False Phrases Cleaner:
 1. Keeps genuine phrasal verbs (verb + particle).
 2. Keeps genuine diamond idioms (present in raw ♦ text).
 3. Moves ALL regular noun/adjective/verb collocations (like 'accessible to bribery', 'quick to learn', 'rich in minerals', 'resistance to wear', 'area under crop', 'reduction in rank') into the appropriate meaning's examples!
-4. Updates oxford_5000_2026-08-27.json.
+4. Updates src/data/oxford_5000.json.
 """
 import json, re, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 parsed_index_path = 'scripts/parsed_index.json'
 
 with open(oxford_path, 'r', encoding='utf-8') as f:
@@ -106,4 +106,4 @@ with open(oxford_path, 'w', encoding='utf-8') as f:
     json.dump(oxford_data, f, ensure_ascii=False, indent=2)
     f.write('\n')
 
-print("Updated oxford_5000_2026-08-27.json successfully!")
+print("Updated src/data/oxford_5000.json successfully!")

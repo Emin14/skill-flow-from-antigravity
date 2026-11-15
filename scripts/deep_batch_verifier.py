@@ -370,7 +370,7 @@ def verify_batch_items(batch):
     return [verify_single_word(item) for item in batch if verify_single_word(item)]
 
 if __name__ == '__main__':
-    with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+    with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
         
     cross_orig = next(item for item in data if item['word'] == 'cross')

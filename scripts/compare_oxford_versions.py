@@ -4,7 +4,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford = json.load(f)
 
 with open('tmp/muller_rebuild/oxford_5000.rebuilt.json', 'r', encoding='utf-8') as f:
@@ -19,7 +19,7 @@ cl_map = {x['word']: x for x in clean}
 
 for w in ['give', 'afternoon', 'dispose', 'behalf', 'deliver', 'small']:
     print(f"\n{'='*30} WORD: {w} {'='*30}")
-    print("--- CURRENT oxford_5000.json ---")
+    print("--- CURRENT src/data/oxford_5000.json ---")
     if w in ox_map:
         for m in ox_map[w].get('meanings', [])[:6]:
             print(f"  [{m.get('id')}] POS: {m.get('partOfSpeech')}, tr: {repr(m.get('translation'))}, ex: {len(m.get('examples', []))}")

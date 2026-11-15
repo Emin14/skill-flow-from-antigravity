@@ -6,7 +6,7 @@ import re
 from deep_cleaner import clean_russian_text_deep
 
 sys.stdout.reconfigure(encoding='utf-8')
-data = json.load(open('oxford_5000_verified.json', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 cleaned_count = 0
 unbalanced_after = 0

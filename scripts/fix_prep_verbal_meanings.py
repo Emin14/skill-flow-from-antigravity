@@ -6,7 +6,7 @@ import json, re, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
@@ -44,4 +44,4 @@ with open(oxford_path, 'w', encoding='utf-8') as f:
     json.dump(oxford_data, f, ensure_ascii=False, indent=2)
     f.write('\n')
 
-print("Updated oxford_5000_2026-08-27.json successfully!")
+print("Updated src/data/oxford_5000.json successfully!")

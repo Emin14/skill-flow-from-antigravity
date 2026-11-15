@@ -6,7 +6,7 @@ import pymupdf
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
 oxford_map = {item['word']: item for item in oxford_data}
@@ -31,7 +31,7 @@ for w in equal_sign_words:
     if item:
         for m in item.get('meanings', []):
             if m.get('translation') in ['=', '1, 2'] or not any('\u0400' <= c <= '\u04FF' for c in m.get('translation', '')):
-                print(f"  [oxford_5000_updated.json] id={m['id']} POS={m['partOfSpeech']}: {repr(m['translation'])} | examples: {m.get('examples')}")
+                print(f"  [src/data/oxford_5000.json] id={m['id']} POS={m['partOfSpeech']}: {repr(m['translation'])} | examples: {m.get('examples')}")
     # Find in dictionary text
     m_dict = re.findall(r'(?m)^(' + re.escape(w) + r'[0-9\sI|V|X]*\s*\[[^\]\n]+(?:\]|j).*)$', full_text, flags=re.IGNORECASE)
     for md in m_dict[:3]:

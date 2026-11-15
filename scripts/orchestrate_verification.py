@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Orchestrator for Deep Batch Verification of oxford_5000_updated.json
+Orchestrator for Deep Batch Verification of src/data/oxford_5000.json
 Splits into batches of 25 words, verifies each word against dictionaries:
 - Deeply verifies and standardizes all register labels (биол., фин., мед., вчт., etc.)
 - Separates Phrasal Verbs (◼) and Idioms (◊) into phrases
@@ -21,7 +21,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 from deep_batch_verifier import verify_batch_items
 
 BATCH_SIZE = 25
-INPUT_FILE = 'oxford_5000_updated.json'
+INPUT_FILE = 'src/data/oxford_5000.json'
 OUTPUT_FILE = 'oxford_5000_updated_verified.json'
 PROGRESS_FILE = 'verification__updated_progress.json'
 

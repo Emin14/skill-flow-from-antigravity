@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Audit duplicate words in oxford_5000_2026-08-27.json and compare with original oxford_5000.json.
+Audit duplicate words in src/data/oxford_5000.json and compare with original src/data/oxford_5000.json.
 """
 import json, sys
 from collections import Counter
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 

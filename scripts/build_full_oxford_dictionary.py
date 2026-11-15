@@ -24,10 +24,10 @@ print("=== Starting Full Oxford 5000 Dictionary Generation (Meanings + Deduplica
 t0 = time.time()
 
 # 1. Load source Oxford 5000
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_list = json.load(f)
 
-print(f"Loaded {len(oxford_list)} words from oxford_5000.json.")
+print(f"Loaded {len(oxford_list)} words from src/data/oxford_5000.json.")
 
 # 2. Extract and index all entries from SamPolnAnglRysSlovar.pdf
 doc = pymupdf.open('SamPolnAnglRysSlovar.pdf')
@@ -264,8 +264,8 @@ for item in oxford_list:
     total_meanings_count += len(filtered_meanings)
     total_phrases_count += len(phrases_list)
 
-# 5. Write to oxford_5000_updated.json
-with open('oxford_5000_updated.json', 'w', encoding='utf-8') as f:
+# 5. Write to src/data/oxford_5000.json
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(updated_oxford, f, ensure_ascii=False, indent=2)
 
 print(f"=== Successfully processed {total_processed} words ===")

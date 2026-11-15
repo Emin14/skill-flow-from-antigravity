@@ -12,7 +12,7 @@ import sys
 import re
 
 sys.stdout.reconfigure(encoding='utf-8')
-data = json.load(open('oxford_5000_verified.json', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 print("=== 1. CHECK WORDS WITH ':' AS TRANSLATION ===")
 for it in data:

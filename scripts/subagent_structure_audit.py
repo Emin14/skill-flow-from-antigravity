@@ -245,4 +245,4 @@ def audit_structure_and_duplicates(filepath):
     return report
 
 if __name__ == '__main__':
-    audit_structure_and_duplicates('oxford_5000_updated.json')
+    audit_structure_and_duplicates('src/data/oxford_5000.json')

@@ -8,7 +8,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(".").resolve()
-OXFORD_PATH = ROOT / "oxford_5000.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
 
 with open(OXFORD_PATH, "r", encoding="utf-8") as f:
     data = json.load(f)

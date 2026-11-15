@@ -4,10 +4,10 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-print("Inspecting idioms/meanings in oxford_5000.json:")
+print("Inspecting idioms/meanings in src/data/oxford_5000.json:")
 count = 0
 for entry in data:
     for m in entry.get('meanings', []):

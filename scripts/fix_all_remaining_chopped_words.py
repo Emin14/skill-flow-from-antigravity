@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Fix all remaining chopped words in oxford_5000_2026-08-27.json.
+Fix all remaining chopped words in src/data/oxford_5000.json.
 """
 import json, os, sys, re
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 with open(oxford_path, 'r', encoding='utf-8') as f:
     data = json.load(f)
 

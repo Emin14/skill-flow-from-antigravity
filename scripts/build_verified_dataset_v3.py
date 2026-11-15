@@ -13,7 +13,7 @@ Master Verification & Assembly Script (v3.3)
   * Filters all stray plural markers from examples.
   * Automatically extracts and cleans leading register tags from translations into register array.
 - Generates:
-  * oxford_5000_verified.json
+  * src/data/oxford_5000.json
   * audit_report.json
   * changes.json
   * verification_report.json
@@ -49,8 +49,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 print("=== Starting Master Verification Pipeline (v3.3) ===")
 t0 = time.time()
 
-ORIGINAL_FILE = 'oxford_5000_updated.json'
-VERIFIED_FILE = 'oxford_5000_verified.json'
+ORIGINAL_FILE = 'src/data/oxford_5000.json'
+VERIFIED_FILE = 'src/data/oxford_5000.json'
 
 # Compute SHA-256 of original file
 with open(ORIGINAL_FILE, 'rb') as f:

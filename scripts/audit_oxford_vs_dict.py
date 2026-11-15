@@ -7,8 +7,8 @@ import unicodedata
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-print("1. Loading oxford_5000_updated.json...")
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+print("1. Loading src/data/oxford_5000.json...")
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_list = json.load(f)
 
 print(f"Loaded {len(oxford_list)} Oxford words.")

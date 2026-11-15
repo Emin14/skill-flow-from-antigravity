@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "records"
+  ],
+  "properties": {
+    "records": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "word",
+          "decision",
+          "reason",
+          "confidence"
+        ],
+        "properties": {
+          "word": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "изменить",
+              "оставить",
+              "review_required",
+              "принято без изменения"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "analysis": {
+            "type": "string"
+          },
+          "review_reason": {
+            "type": "string"
+          },
+          "before": {},
+          "after": {},
+          "evidence_ref": {
+            "type": "string"
+          },
+          "before_after_ref": {
+            "type": "string"
+          },
+          "entry_index": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "entry_index": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "searched_files": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              },
+              "search_results": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "file",
+                    "found",
+                    "query"
+                  ],
+                  "properties": {
+                    "file": {
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "boolean"
+                    },
+                    "query": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "string"
+                    },
+                    "locations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "page": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "line": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "quote": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "meanings": {
+            "type": "array"
+          },
+          "checks": {
+            "type": "array"
+          },
+          "example_reviews": {
+            "type": "array"
+          },
+          "issues": {
+            "type": "array"
+          },
+          "meaning_proposals": {
+            "type": "array"
+          },
+          "meaning_reviews": {
+            "type": "array"
+          }
+        }
+      }
+    }
+  }
+}

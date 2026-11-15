@@ -5,7 +5,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford = json.load(f)
 
 print(f"Total entries: {len(oxford)}")
@@ -52,7 +52,7 @@ for entry_idx, entry in enumerate(oxford):
             if '<' in en_ex or '>' in en_ex or '<' in ru_ex or '>' in ru_ex:
                 categories['html_tags_in_examples'].append((word, en_ex, ru_ex))
 
-print("=== ISSUE BREAKDOWN IN oxford_5000.json ===")
+print("=== ISSUE BREAKDOWN IN src/data/oxford_5000.json ===")
 for cat, items in categories.items():
     print(f"{cat:30}: {len(items)}")
 

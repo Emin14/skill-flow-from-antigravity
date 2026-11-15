@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Research script:
-1. Inspect the 7 duplicate words in oxford_5000_updated.json & oxford_5000_verified.json.
+1. Inspect the 7 duplicate words in src/data/oxford_5000.json & src/data/oxford_5000.json.
 2. Inspect born, boom, more, most.
 3. Identify all words that inherited meanings from base words due to stemming/fallback.
 4. Check exact POS and CEFR requirements for each of these words from Oxford 5000.
@@ -12,7 +12,7 @@ from collections import defaultdict
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-data = json.load(open('oxford_5000_verified.json', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 print("=== 1. DUPLICATE WORDS RESEARCH ===")
 word_indices = defaultdict(list)

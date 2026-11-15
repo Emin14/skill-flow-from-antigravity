@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Phrasal Verb Safety Audit & Dry-Run Analyzer:
-Inspects all 4982 words in oxford_5000_2026-08-27.json and parsed_index.json.
+Inspects all 4982 words in src/data/oxford_5000.json and parsed_index.json.
 Validates:
 1. Exact extraction of phrasal verbs from '¬' blocks into 'phrases' with partOfSpeech: 'verb'
 2. Preservation of all direct meanings in 'meanings'
@@ -15,7 +15,7 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 parsed_index_path = 'scripts/parsed_index.json'
 
 with open(oxford_path, 'r', encoding='utf-8') as f:

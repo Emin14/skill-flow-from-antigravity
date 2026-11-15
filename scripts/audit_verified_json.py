@@ -11,9 +11,9 @@ from parse_entry_meanings import is_headword_span, normalize_text_nfc
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-print("=== Running Deep Audit Scanner on oxford_5000_verified.json ===")
+print("=== Running Deep Audit Scanner on src/data/oxford_5000.json ===")
 
-with open('oxford_5000_verified.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 SUSPICIOUS_RU_START = re.compile(r'^(анс|мерческ|идическ|овое|отное|ой\/|ный |аться |ельба|ия |ость |ение |ание |ство |ный |ная |ное |ные |ого |ому |ых |им |ей |ом |е |а |л |р |с |м |я |=|£|\/|\?)')
@@ -54,7 +54,7 @@ for item in data:
         if SUSPICIOUS_RU_START.search(ph_ru) or len(ph_ru.strip()) <= 2 or ph_ru in ['=', '£', '/', '?', 'а', 'е', 'л', 'р', 'с', 'м', 'я']:
             findings['phrase_error'].append({'word': word, 'p_idx': p_idx, 'ph_en': ph_en, 'ph_ru': ph_ru})
 
-print(f"Audit Results on oxford_5000_verified.json:")
+print(f"Audit Results on src/data/oxford_5000.json:")
 print(f"  Structural errors: {len(findings['structural_error'])}")
 print(f"  Translation errors: {len(findings['translation_error'])}")
 print(f"  Example errors: {len(findings['example_error'])}")

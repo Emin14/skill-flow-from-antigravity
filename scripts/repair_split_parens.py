@@ -5,7 +5,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 fixed_ex_count = 0
@@ -54,13 +54,13 @@ for entry in data:
 
 print(f"Fixed {fixed_ex_count} split examples.")
 
-with open('oxford_5000.json', 'w', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
 with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
-with open('oxford_5000_verified.json', 'w', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
 print("Saved repaired files.")

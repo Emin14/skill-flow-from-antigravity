@@ -5,7 +5,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 def deep_clean_string(s: str) -> str:
@@ -59,13 +59,13 @@ for entry in data:
         m['id'] = idx
     entry['meanings'] = clean_meanings
 
-with open('oxford_5000.json', 'w', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
 with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
-with open('oxford_5000_verified.json', 'w', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
 print("Saved deep cleaned entries.")

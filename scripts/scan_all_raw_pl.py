@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Scan for all raw pl markers across oxford_5000_2026-08-27.json.
+Scan for all raw pl markers across src/data/oxford_5000.json.
 """
 import json, re, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 

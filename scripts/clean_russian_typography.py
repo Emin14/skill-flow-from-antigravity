@@ -3,7 +3,7 @@ import sys, re, json
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     words = json.load(f)
 
 # Common legit hyphen prefixes / suffixes in Russian
@@ -115,7 +115,7 @@ for test_w in ['catch', 'water', 'table', 'press', 'board', 'break', 'deal', 'fa
         for m in e['meanings'][:4]:
             print(f"  #{m['id']} [{m['partOfSpeech']}] {m['translation']}")
 
-with open('oxford_5000.json', 'w', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(words, f, ensure_ascii=False, indent=2)
 
 with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:

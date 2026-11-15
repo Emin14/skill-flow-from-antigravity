@@ -3,7 +3,7 @@ import sys, re, json
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     words = json.load(f)
 
 # Whitelist of valid Russian hyphen suffixes / prefixes / compounds
@@ -117,7 +117,7 @@ for w in words:
 
 print(f"Fixed {fixed_words} translations by removing spurious syllable hyphens.")
 
-with open('oxford_5000.json', 'w', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(words, f, ensure_ascii=False, indent=2)
 
 with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:

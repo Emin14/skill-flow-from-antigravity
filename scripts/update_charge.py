@@ -1,8 +1,8 @@
 import json
 import sys
 
-# Read source oxford_5000.json
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+# Read source src/data/oxford_5000.json
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 charge_meanings = [
@@ -209,8 +209,8 @@ if not found:
     print('Error: charge not found in dataset!')
     sys.exit(1)
 
-# Write to oxford_5000_updated.json
-with open('oxford_5000_updated.json', 'w', encoding='utf-8') as f:
+# Write to src/data/oxford_5000.json
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
-print('Successfully created oxford_5000_updated.json with updated charge meanings!')
+print('Successfully created src/data/oxford_5000.json with updated charge meanings!')

@@ -20,7 +20,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 print("=== Running Subagent 2, 3, 4 Deep PDF Verification ===")
 
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     json_data = {item['word']: item for item in json.load(f)}
 
 with open('audit_report_raw.json', 'r', encoding='utf-8') as f:

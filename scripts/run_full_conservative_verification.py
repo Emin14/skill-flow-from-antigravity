@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Conservative Verification and Correction Pipeline for oxford_5000_updated.json
-1. Reads original oxford_5000_updated.json (immutable baseline).
+Conservative Verification and Correction Pipeline for src/data/oxford_5000.json
+1. Reads original src/data/oxford_5000.json (immutable baseline).
 2. Parses exact dictionary entries from SamPolnAnglRysSlovar.pdf using parse_entry_meanings_v2.
 3. Performs conservative diff-based correction:
    - Fixes misplaced register tags from examples -> meaning level / Russian prefix restoration.
@@ -10,7 +10,7 @@ Conservative Verification and Correction Pipeline for oxford_5000_updated.json
 4. Generates:
    - audit_report.json (PASS 1 diagnostic)
    - changes.json (PASS 2 verified diffs)
-   - oxford_5000_verified.json (verified output)
+   - src/data/oxford_5000.json (verified output)
    - verification_report.json (PASS 3 final safety audit)
 """
 import sys
@@ -38,8 +38,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 print("=== Starting Conservative Verification Pipeline ===")
 t0 = time.time()
 
-ORIGINAL_FILE = 'oxford_5000_updated.json'
-VERIFIED_FILE = 'oxford_5000_verified.json'
+ORIGINAL_FILE = 'src/data/oxford_5000.json'
+VERIFIED_FILE = 'src/data/oxford_5000.json'
 
 # Compute SHA-256 of original file
 with open(ORIGINAL_FILE, 'rb') as f:

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Verification and QA script for oxford_5000.json
+Verification and QA script for src/data/oxford_5000.json
 """
 
 import json
@@ -11,14 +11,14 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 print("=== RUNNING FULL QA VERIFICATION ===")
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     root_data = json.load(f)
 
 with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     src_data = json.load(f)
 
 # 1. Check file synchronization
-with open('oxford_5000.json', 'rb') as f:
+with open('src/data/oxford_5000.json', 'rb') as f:
     root_md5 = hashlib.md5(f.read()).hexdigest()
 with open('src/data/oxford_5000.json', 'rb') as f:
     src_md5 = hashlib.md5(f.read()).hexdigest()

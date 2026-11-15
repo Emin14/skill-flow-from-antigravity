@@ -17,7 +17,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 print("Starting Full Phrasal Verb Extraction Pipeline...")
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 parsed_index_path = 'scripts/parsed_index.json'
 
 with open(oxford_path, 'r', encoding='utf-8') as f:

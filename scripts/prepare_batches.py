@@ -13,7 +13,7 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parent.parent
-OXFORD_PATH = ROOT / "oxford_5000.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
 MULLER_ARTICLES_PATH = ROOT / "tmp" / "muller_rebuild" / "articles.json"
 BATCHES_DIR = ROOT / "tmp" / "batches"
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Comprehensive Fixer for all 7 error pattern classes across oxford_5000_2026-08-27.json:
+Comprehensive Fixer for all 7 error pattern classes across src/data/oxford_5000.json:
 1. Reconstruct all chopped Russian roots (комната, строгий, сбивать с ног, etc.)
 2. Clean leading English fragments (of smth.;, to smth.;, etc.)
 3. Clean trailing hanging brackets and notes ([см. тж, (см. тж, ; часто, [часто)
@@ -14,7 +14,7 @@ import json, os, sys, re
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 with open(oxford_path, 'r', encoding='utf-8') as f:
     data = json.load(f)
 

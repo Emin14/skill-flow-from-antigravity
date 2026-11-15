@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Scan all words in oxford_5000_2026-08-27.json with phrases where raw text has NO ♦ and NO ¬.
+Scan all words in src/data/oxford_5000.json with phrases where raw text has NO ♦ and NO ¬.
 """
 import json, re, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 parsed_index_path = 'scripts/parsed_index.json'
 
 with open(oxford_path, 'r', encoding='utf-8') as f:

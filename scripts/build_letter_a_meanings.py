@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Build, deeply verify, and audit all words in Letter A for oxford_5000.json.
+Build, deeply verify, and audit all words in Letter A for src/data/oxford_5000.json.
 """
 
 import sys

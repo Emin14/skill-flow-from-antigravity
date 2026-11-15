@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Precision alignment and repair for oxford_5000.json
+Precision alignment and repair for src/data/oxford_5000.json
 Dry-run script to inspect changes and ensure zero regression.
 """
 import json
@@ -10,7 +10,7 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
 print("1. Loading datasets...")
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford = json.load(f)
 
 with open('tmp/muller_rebuild/articles.json', 'r', encoding='utf-8') as f:

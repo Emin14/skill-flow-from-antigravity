@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Precision Alignment and Repair Engine for oxford_5000.json
+Precision Alignment and Repair Engine for src/data/oxford_5000.json
 Cross-referenced against Muller 2021 (PDF 1, DOCX 2, PDF 3).
 """
 
@@ -14,8 +14,8 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parent.parent
-OXFORD_PATH = ROOT / "oxford_5000.json"
-APP_OXFORD_PATH = ROOT / "src" / "data" / "oxford_5000.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
+APP_OXFORD_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 MULLER_ARTICLES_PATH = ROOT / "tmp" / "muller_rebuild" / "articles.json"
 
 print("1. Loading datasets...")

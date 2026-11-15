@@ -23,8 +23,8 @@ print("================================================================")
 print("=== FINAL INDEPENDENT AUDIT & SAFETY VERIFICATION SUITE (v3) ===")
 print("================================================================")
 
-ORIG_FN = 'oxford_5000_updated.json'
-VERIF_FN = 'oxford_5000_verified.json'
+ORIG_FN = 'src/data/oxford_5000.json'
+VERIF_FN = 'src/data/oxford_5000.json'
 AUDIT_FN = 'audit_report.json'
 CHANGES_FN = 'changes.json'
 REPORT_FN = 'verification_report.json'

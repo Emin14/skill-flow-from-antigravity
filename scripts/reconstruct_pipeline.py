@@ -9,7 +9,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 from robust_dictionary_rebuilder import REGISTER_MAP, POS_MAP, extract_registers
 from run_batch_reconstructor import clean_hyphens_and_ocr, parse_full_raw_entry
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 

@@ -6,7 +6,7 @@ import time
 
 sys.stdout.reconfigure(encoding='utf-8', line_buffering=True)
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 print(f"Loaded {len(data)} entries.")

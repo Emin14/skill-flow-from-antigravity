@@ -20,10 +20,10 @@ if os.path.exists('scripts/evaluation_200_words_report.json'):
 print(f"Loaded {len(previous_checked)} previously checked words to exclude.")
 
 # 2. LOAD OXFORD 5000 DATASET
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
-print(f"Loaded {len(oxford_data)} words from oxford_5000.json.")
+print(f"Loaded {len(oxford_data)} words from src/data/oxford_5000.json.")
 
 # Filter candidate pool
 candidate_pool = [w for w in oxford_data if w.get('word', '').lower() not in previous_checked]

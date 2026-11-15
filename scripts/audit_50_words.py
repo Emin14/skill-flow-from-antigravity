@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Audit 50 random words from oxford_5000_2026-08-27.json against Muller 2021 PDF.
+Audit 50 random words from src/data/oxford_5000.json against Muller 2021 PDF.
 """
 import json
 import random
@@ -14,7 +14,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 print("Starting 50-word audit against Muller 2021 PDF...")
 
 # Load dataset
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 

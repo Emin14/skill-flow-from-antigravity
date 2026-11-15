@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Deep verification of the entire oxford_5000.json dataset.
+Deep verification of the entire src/data/oxford_5000.json dataset.
 """
 
 import json
@@ -12,8 +12,8 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(".").resolve()
-OXFORD_PATH = ROOT / "oxford_5000.json"
-APP_OXFORD_PATH = ROOT / "src" / "data" / "oxford_5000.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
+APP_OXFORD_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 
 with open(OXFORD_PATH, "r", encoding="utf-8") as f:
     data = json.load(f)

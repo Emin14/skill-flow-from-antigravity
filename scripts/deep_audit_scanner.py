@@ -2,7 +2,7 @@
 """
 Auditing Engine for Subagents 2, 3, 4, 5:
 - Fast indexed headword scanner across SamPolnAnglRysSlovar.pdf (pages 10-507).
-- Scans oxford_5000_updated.json for:
+- Scans src/data/oxford_5000.json for:
   1. Misplaced register in examples.
   2. Truncated words / missing prefixes in translations, examples, and phrases.
   3. Single-character or placeholder translations.
@@ -21,11 +21,11 @@ from parse_entry_meanings import is_headword_span, normalize_text_nfc
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-print("=== Starting Fast Indexed Deep Audit of oxford_5000_updated.json ===")
+print("=== Starting Fast Indexed Deep Audit of src/data/oxford_5000.json ===")
 t0 = time.time()
 
 # 1. Load JSON
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 print(f"Loaded {len(data)} words from JSON.")
 

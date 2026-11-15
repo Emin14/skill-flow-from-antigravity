@@ -8,7 +8,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 print("=== Running Full QA & Deduplication Verification ===")
 
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 print(f"Total entries: {len(data)}")

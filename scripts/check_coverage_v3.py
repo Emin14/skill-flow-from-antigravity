@@ -73,7 +73,7 @@ for e in entries:
         index_by_hw[base_hw] = []
     index_by_hw[base_hw].append((raw_hw, e))
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
 matched = []

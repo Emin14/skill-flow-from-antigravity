@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Build fromParsing.json from Muller 2021 PDF.
-Matches the structure of oxford_5000_verified.json.
+Matches the structure of src/data/oxford_5000.json.
 """
 
 from __future__ import annotations

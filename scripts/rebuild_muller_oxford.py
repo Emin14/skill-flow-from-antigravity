@@ -28,8 +28,8 @@ if hasattr(sys.stdout, "reconfigure"):
 ROOT = Path(__file__).resolve().parent.parent
 PDF_PATH = ROOT / "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf"
 FALLBACK_PDF_PATH = ROOT / "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf"
-OXFORD_PATH = ROOT / "oxford_5000.json"
-APP_OXFORD_PATH = ROOT / "src" / "data" / "oxford_5000.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
+APP_OXFORD_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 WORK_DIR = ROOT / "tmp" / "muller_rebuild"
 ARTICLE_CACHE = WORK_DIR / "articles.json"
 REPORT_PATH = WORK_DIR / "report.json"

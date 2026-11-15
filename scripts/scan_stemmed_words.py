@@ -62,7 +62,7 @@ for e in raw_entries:
         index_by_base[base_hw] = []
     index_by_base[base_hw].append((raw_hw_clean, e))
 
-data = json.load(open('oxford_5000_verified.json', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 direct_matches = []
 stem_matches = []

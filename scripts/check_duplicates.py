@@ -5,13 +5,13 @@ from collections import Counter
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
 word_counts = Counter(item['word'] for item in oxford_data)
 duplicates = {w: c for w, c in word_counts.items() if c > 1}
 
-print(f"Total entries in oxford_5000_updated.json: {len(oxford_data)}")
+print(f"Total entries in src/data/oxford_5000.json: {len(oxford_data)}")
 print(f"Unique words count: {len(word_counts)}")
 print(f"Duplicate words in JSON ({len(duplicates)}): {duplicates}")
 

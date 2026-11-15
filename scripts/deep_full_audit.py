@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Deep Full Audit across all 4980 words in oxford_5000_2026-08-27.json.
+Deep Full Audit across all 4980 words in src/data/oxford_5000.json.
 """
 import json, re, os, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 

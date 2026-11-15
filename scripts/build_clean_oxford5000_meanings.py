@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Rebuild and deeply clean meanings in oxford_5000.json from Muller 2021 dictionary.
+Rebuild and deeply clean meanings in src/data/oxford_5000.json from Muller 2021 dictionary.
 Removes 'primary' and 'synonyms'.
 """
 
@@ -15,8 +15,8 @@ from typing import Any, Iterable
 sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OXFORD_PATH = os.path.join(ROOT, 'oxford_5000.json')
-SRC_OXFORD_PATH = os.path.join(ROOT, 'src', 'data', 'oxford_5000.json')
+OXFORD_PATH = os.path.join(ROOT, 'src/data/oxford_5000.json')
+SRC_OXFORD_PATH = os.path.join(ROOT, 'src', 'data', 'src/data/oxford_5000.json')
 PDF2_ARTICLES_PATH = os.path.join(ROOT, 'tmp', 'muller_rebuild', 'pdf2_articles_styled.json')
 PDF1_ARTICLES_PATH = os.path.join(ROOT, 'tmp', 'muller_rebuild', 'articles.json')
 RUSSIAN_VOCAB_PATH = os.path.join(ROOT, 'tmp', 'muller_rebuild', 'russian_vocab.json')

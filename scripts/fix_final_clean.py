@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Final Verification & Repair for oxford_5000_updated_verified.json,
-oxford_5000_updated.json, and src/data/oxford_5000.json.
+src/data/oxford_5000.json, and src/data/oxford_5000.json.
 """
 
 import sys
@@ -98,7 +98,7 @@ for item in data:
 with open('oxford_5000_updated_verified.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
-shutil.copyfile('oxford_5000_updated_verified.json', 'oxford_5000_updated.json')
+shutil.copyfile('oxford_5000_updated_verified.json', 'src/data/oxford_5000.json')
 if os.path.exists('src/data/oxford_5000.json'):
     shutil.copyfile('oxford_5000_updated_verified.json', 'src/data/oxford_5000.json')
 

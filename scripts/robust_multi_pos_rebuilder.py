@@ -9,7 +9,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 from clean_all_examples_registers import REGISTER_MAP
 from extract_all_embedded_examples import expand_tilde
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 

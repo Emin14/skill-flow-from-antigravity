@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Pass 1 Full Dictionary Audit Engine:
-Performs 1-to-1 comparison of every meaning in oxford_5000_2026-08-27.json
+Performs 1-to-1 comparison of every meaning in src/data/oxford_5000.json
 against Mueller 2021 dictionary index (parsed_index.json).
 """
 import json, os, sys, re
@@ -9,7 +9,7 @@ import json, os, sys, re
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 with open(oxford_path, 'r', encoding='utf-8') as f:
     data = json.load(f)
 

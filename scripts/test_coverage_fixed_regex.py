@@ -77,7 +77,7 @@ for e in dict_entries:
 print(f"Unique base headwords: {len(dict_by_base)}")
 
 # Check Oxford words
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_list = json.load(f)
 
 matched_direct = 0

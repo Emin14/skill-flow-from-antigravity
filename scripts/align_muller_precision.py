@@ -22,8 +22,8 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(".").resolve()
-OXFORD_PATH = ROOT / "oxford_5000.json"
-APP_OXFORD_PATH = ROOT / "src" / "data" / "oxford_5000.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
+APP_OXFORD_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 PDF2_ARTICLES_PATH = ROOT / "tmp" / "muller_rebuild" / "pdf2_articles_styled.json"
 PDF1_ARTICLES_PATH = ROOT / "tmp" / "muller_rebuild" / "articles.json"
 RUSSIAN_VOCAB_PATH = ROOT / "tmp" / "muller_rebuild" / "russian_vocab.json"

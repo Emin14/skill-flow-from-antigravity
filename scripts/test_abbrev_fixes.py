@@ -10,7 +10,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford = json.load(f)
 
 with open('tmp/muller_rebuild/articles.json', 'r', encoding='utf-8') as f:

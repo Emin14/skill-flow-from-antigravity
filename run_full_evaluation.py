@@ -12,7 +12,7 @@ import pymupdf
 sys.stdout.reconfigure(encoding='utf-8')
 
 print("=== 1. Loading Oxford 5000 & Cambridge Learner (CLD) ===")
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_raw = json.load(f)
 
 with open('cld_english_russian.json', 'r', encoding='utf-8') as f:

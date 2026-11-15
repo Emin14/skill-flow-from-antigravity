@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Compare current working tree oxford_5000_2026-08-27.json against git HEAD
+Compare current working tree src/data/oxford_5000.json against git HEAD
 and analyze what changes were made and run deep quality audit.
 """
 import subprocess, json, sys, os
@@ -9,12 +9,12 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 # 1. Get git HEAD version
-print("Fetching git HEAD version of oxford_5000_2026-08-27.json...")
-head_json_str = subprocess.check_output(['git', 'show', 'HEAD:oxford_5000_2026-08-27.json'], encoding='utf-8')
+print("Fetching git HEAD version of src/data/oxford_5000.json...")
+head_json_str = subprocess.check_output(['git', 'show', 'HEAD:src/data/oxford_5000.json'], encoding='utf-8')
 head_data = json.loads(head_json_str)
 
 # 2. Get current working tree version
-with open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     current_data = json.load(f)
 
 head_map = {item['word']: item for item in head_data}

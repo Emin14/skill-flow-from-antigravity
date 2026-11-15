@@ -3,7 +3,7 @@ import json, re, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford = json.load(open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8'))
+oxford = json.load(open('src/data/oxford_5000.json', 'r', encoding='utf-8'))
 
 leaks_in_phrases = []
 

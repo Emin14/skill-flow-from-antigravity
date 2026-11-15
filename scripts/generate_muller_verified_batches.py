@@ -13,9 +13,9 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parent.parent
-OXFORD_PATH = ROOT / "oxford_5000.json"
-APP_OXFORD_PATH = ROOT / "src" / "data" / "oxford_5000.json"
-VERIFIED_PATH = ROOT / "oxford_5000_verified.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
+APP_OXFORD_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
+VERIFIED_PATH = ROOT / "src/data/oxford_5000.json"
 PROGRESS_PATH = ROOT / "verification_progress.json"
 MULLER_ARTICLES_PATH = ROOT / "tmp" / "muller_rebuild" / "articles.json"
 BATCHES_DIR = ROOT / "tmp" / "batches"

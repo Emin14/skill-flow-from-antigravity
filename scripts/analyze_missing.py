@@ -9,7 +9,7 @@ import pymupdf
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Let's inspect the 310 unmatched words and see how they appear in the PDF text
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
 doc = pymupdf.open('SamPolnAnglRysSlovar.pdf')

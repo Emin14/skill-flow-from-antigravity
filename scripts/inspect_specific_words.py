@@ -6,7 +6,7 @@ import pymupdf
 sys.stdout.reconfigure(encoding='utf-8')
 doc = pymupdf.open('SamPolnAnglRysSlovar.pdf')
 
-data = json.load(open('oxford_5000_verified.json', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 for w in ['ambassador', 'bat', 'bay', 'look']:
     for item in data:

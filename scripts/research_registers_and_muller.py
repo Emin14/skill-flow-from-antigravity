@@ -9,7 +9,7 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-data = json.load(open('oxford_5000_verified.json', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 REGISTER_PREFIXES = {
     r'^(?:юр|юрид)\.\s*': 'юриспруденция',

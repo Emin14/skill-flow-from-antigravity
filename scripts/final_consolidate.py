@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Final consolidation and verification of all 200 batches into oxford_5000_verified.json,
-oxford_5000.json, src/data/oxford_5000.json, and verification_progress.json.
+Final consolidation and verification of all 200 batches into src/data/oxford_5000.json,
+src/data/oxford_5000.json, src/data/oxford_5000.json, and verification_progress.json.
 """
 
 import json
@@ -15,10 +15,10 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 ROOT = Path(__file__).resolve().parent.parent
 BATCHES_DIR = ROOT / "tmp" / "batches"
-VERIFIED_PATH = ROOT / "oxford_5000_verified.json"
+VERIFIED_PATH = ROOT / "src/data/oxford_5000.json"
 PROGRESS_PATH = ROOT / "verification_progress.json"
-OXFORD_PATH = ROOT / "oxford_5000.json"
-APP_OXFORD_PATH = ROOT / "src" / "data" / "oxford_5000.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
+APP_OXFORD_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 
 print("1. Consolidating all 200 verified batches...")
 
@@ -89,11 +89,11 @@ assert ocr_artifacts == 0, f"Found {ocr_artifacts} OCR artifacts!"
 # 3. Save files
 print("3. Saving verified datasets and progress...")
 
-# Save oxford_5000_verified.json
+# Save src/data/oxford_5000.json
 with open(VERIFIED_PATH, 'w', encoding='utf-8') as f:
     json.dump(all_verified_words, f, ensure_ascii=False, indent=2)
 
-# Save oxford_5000.json
+# Save src/data/oxford_5000.json
 with open(OXFORD_PATH, 'w', encoding='utf-8') as f:
     json.dump(all_verified_words, f, ensure_ascii=False, indent=2)
 

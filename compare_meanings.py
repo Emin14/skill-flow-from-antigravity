@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Compare meanings from oxford_5000.json against two PDF sources:
+Compare meanings from src/data/oxford_5000.json against two PDF sources:
 1. Original: Мюллер В.К.,...-2021.a4.pdf
 2. Parsed:   Мюллер В.К.,...-2021 - спарсенное.pdf
 
@@ -15,11 +15,11 @@ import pymupdf  # fitz
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-# ── 1. Load oxford_5000.json ──────────────────────────────────────────────
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+# ── 1. Load src/data/oxford_5000.json ──────────────────────────────────────────────
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford = json.load(f)
 
-print(f"Loaded {len(oxford)} words from oxford_5000.json")
+print(f"Loaded {len(oxford)} words from src/data/oxford_5000.json")
 
 # Build a dict: word -> list of meanings (translation strings)
 word_meanings = {}
@@ -140,7 +140,7 @@ with open('comparison_100_words.json', 'w', encoding='utf-8') as f:
 import csv
 with open('comparison_100_words.csv', 'w', encoding='utf-8-sig', newline='') as f:
     writer = csv.writer(f)
-    writer.writerow(['Слово', 'Текущее (oxford_5000.json)', 'Оригинальный PDF (.a4.pdf)', 'Спарсенный PDF'])
+    writer.writerow(['Слово', 'Текущее (src/data/oxford_5000.json)', 'Оригинальный PDF (.a4.pdf)', 'Спарсенный PDF'])
     for r in results:
         writer.writerow([
             r['word'],

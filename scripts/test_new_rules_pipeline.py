@@ -16,7 +16,7 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 print("Loading datasets...")
-oxford_data = json.load(open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8'))
+oxford_data = json.load(open('src/data/oxford_5000.json', 'r', encoding='utf-8'))
 parsed_index = json.load(open('scripts/parsed_index.json', 'r', encoding='utf-8'))
 
 from parse_utils import REGISTER_MAP, POS_MAP

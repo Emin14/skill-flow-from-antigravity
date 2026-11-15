@@ -10,10 +10,10 @@ print("AUDIT: 200 RANDOM WORDS EVALUATION AGAINST MULLER 2021 PDF")
 print("=" * 70)
 
 # 1. LOAD OXFORD 5000 DATASET
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
-print(f"Loaded {len(oxford_data)} words from oxford_5000.json.")
+print(f"Loaded {len(oxford_data)} words from src/data/oxford_5000.json.")
 
 # 2. EXTRACT MULLER PDF
 pdf_path = 'Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf'

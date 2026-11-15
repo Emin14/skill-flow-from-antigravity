@@ -17,7 +17,7 @@ DOCX2_PATH = 'Мюллер В.К.,Александрова Т.Е.,Дворкин
 PDF3_PATH = 'Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf'
 
 print("1. Loading Oxford 5000...")
-with open('oxford_5000.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
 oxford_words = []

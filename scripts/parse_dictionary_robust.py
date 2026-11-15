@@ -85,7 +85,7 @@ for e in dict_entries:
 print(f"Indexed {len(dict_by_base)} unique base headwords.")
 
 # Let's test the Oxford 5000 match rate
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_list = json.load(f)
 
 matched_direct = 0

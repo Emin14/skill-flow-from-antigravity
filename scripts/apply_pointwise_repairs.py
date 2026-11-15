@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Precise Error Correction & Enrichment for oxford_5000_updated.json
+Precise Error Correction & Enrichment for src/data/oxford_5000.json
 Cross-referencing with SamPolnAnglRysSlovar - распарсенное.pdf (Doc2) and SamPolnAnglRysSlovar.pdf (Doc1)
 """
 
@@ -12,9 +12,9 @@ import copy
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-print("=== Starting Pointwise Repair of oxford_5000_updated.json ===")
+print("=== Starting Pointwise Repair of src/data/oxford_5000.json ===")
 
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 print(f"Loaded {len(data)} entries.")
@@ -279,7 +279,7 @@ print(f"Fixed dangling parens / typography: {fixed_parens_count}")
 print(f"Deduplicated repeated examples: {dedup_examples_count}")
 
 # Save repaired JSON
-with open('oxford_5000_updated.json', 'w', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(updated_entries, f, ensure_ascii=False, indent=2)
 
-print("\nSaved updated data to oxford_5000_updated.json")
+print("\nSaved updated data to src/data/oxford_5000.json")

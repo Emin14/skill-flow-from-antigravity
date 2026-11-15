@@ -3,7 +3,7 @@ import json
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-data = json.load(open('oxford_5000_verified.json', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 words_to_check = ['backwards', 'dual', 'look', 'remain', 'the', 'a', 'OK', 'abstract', 'nature', 'I', 'programme', 'use', 'hate']
 

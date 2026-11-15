@@ -6,7 +6,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 from deep_batch_verifier import verify_single_word
 
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 sample_words = ['add', 'answer', 'ask', 'back', 'bail', 'call', 'give', 'break', 'look', 'take', 'turn', 'put', 'come', 'go', 'run', 'set', 'stand', 'fall', 'hold', 'keep']

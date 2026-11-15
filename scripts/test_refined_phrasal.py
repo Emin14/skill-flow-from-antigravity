@@ -50,7 +50,7 @@ def is_phrasal_meaning(item_word, m):
     return False, None, None
 
 words = ['accountant', 'beer', 'depart', 'sue', 'cross', 'give', 'break']
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 for w_name in words:

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Batch Verification Engine for oxford_5000.json against Muller 2021.
+Batch Verification Engine for src/data/oxford_5000.json against Muller 2021.
 """
 
 import json

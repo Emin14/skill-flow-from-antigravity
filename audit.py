@@ -6,7 +6,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-input_file = r"d:\skill-flow-from-antigravity\oxford_5000_2026-08-27.json"
+input_file = r"d:\skill-flow-from-antigravity\src/data/oxford_5000.json"
 output_file = r"C:\Users\emina\.gemini\antigravity\brain\2a8f7be6-60aa-45df-8b7e-cf6edfda55ab\scratch\audit_findings.json"
 
 with open(input_file, 'r', encoding='utf-8') as f:

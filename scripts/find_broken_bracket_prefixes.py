@@ -4,7 +4,7 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-data = json.load(open('oxford_5000_verified.json', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 print("=== 1. FIND '(при) годный' OR SIMILAR PREFIXES WITH SPACE ===")
 pattern = re.compile(r'\(([а-яёА-ЯЁ]{1,5})\)\s+([а-яёА-ЯЁ]{3,})')

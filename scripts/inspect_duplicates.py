@@ -3,8 +3,8 @@ import json
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-ox_orig = json.load(open('oxford_5000.json', encoding='utf-8'))
-ox_upd = json.load(open('oxford_5000_updated.json', encoding='utf-8'))
+ox_orig = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
+ox_upd = json.load(open('src/data/oxford_5000.json', encoding='utf-8'))
 
 for idx in [2175, 2176, 2614, 2615, 2616, 2816, 2817, 4734, 4735, 4908, 4909, 4910, 4911]:
     o = ox_orig[idx]

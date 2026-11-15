@@ -7,7 +7,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 
 batches_dir = Path("tmp/batches")
-oxford_data = json.load(open("oxford_5000.json", "r", encoding="utf-8"))
+oxford_data = json.load(open("src/data/oxford_5000.json", "r", encoding="utf-8"))
 oxford_map = {item["word"]: item for item in oxford_data}
 
 total_words = 0
@@ -27,7 +27,7 @@ for b in range(151, 201):
         word_name = w["word"]
         orig = oxford_map.get(word_name)
         if not orig:
-            issues.append(f"Word {word_name} not found in oxford_5000.json")
+            issues.append(f"Word {word_name} not found in src/data/oxford_5000.json")
             continue
             
         # Check metadata preservation

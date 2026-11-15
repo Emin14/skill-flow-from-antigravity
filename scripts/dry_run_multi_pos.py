@@ -8,7 +8,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 from robust_multi_pos_rebuilder import parse_full_article
 
-oxford_path = os.path.abspath('oxford_5000_2026-08-27.json')
+oxford_path = os.path.abspath('src/data/oxford_5000.json')
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 

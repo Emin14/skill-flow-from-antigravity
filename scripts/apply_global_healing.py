@@ -17,7 +17,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 print("Starting Global Healing Pipeline...")
 
-oxford_path = 'oxford_5000_2026-08-27.json'
+oxford_path = 'src/data/oxford_5000.json'
 with open(oxford_path, 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 

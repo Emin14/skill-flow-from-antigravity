@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Full Muller Dictionary DOCX to JSON Parser
-Generates fromword.json matching oxford_5000_verified.json schema.
+Generates fromword.json matching src/data/oxford_5000.json schema.
 """
 
 import sys

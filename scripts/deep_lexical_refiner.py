@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-High-Precision Deep Lexical Refiner for oxford_5000.json against Muller 2021:
+High-Precision Deep Lexical Refiner for src/data/oxford_5000.json against Muller 2021:
 1. Register extraction & cleanup (60+ abbreviations -> register: [...])
 2. POS canonicalization and grammar form cleanup
 3. Multi-idiom block unpacking into discrete structured meanings
@@ -20,9 +20,9 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', line_buffering=True)
 
 ROOT = Path(__file__).resolve().parent.parent
-OXFORD_PATH = ROOT / "oxford_5000.json"
-APP_OXFORD_PATH = ROOT / "src" / "data" / "oxford_5000.json"
-VERIFIED_PATH = ROOT / "oxford_5000_verified.json"
+OXFORD_PATH = ROOT / "src/data/oxford_5000.json"
+APP_OXFORD_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
+VERIFIED_PATH = ROOT / "src/data/oxford_5000.json"
 PROGRESS_PATH = ROOT / "verification_progress.json"
 
 REGISTER_MAP = {
@@ -247,7 +247,7 @@ def process_single_entry(entry: dict) -> dict:
 
 def refine_all_dataset():
     t0 = time.time()
-    print("1. Loading oxford_5000.json...")
+    print("1. Loading src/data/oxford_5000.json...")
     with open(OXFORD_PATH, 'r', encoding='utf-8') as f:
         data = json.load(f)
         

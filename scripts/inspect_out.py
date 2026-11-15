@@ -3,7 +3,7 @@ import json, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-oxford = json.load(open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8'))
+oxford = json.load(open('src/data/oxford_5000.json', 'r', encoding='utf-8'))
 by_word = {x['word']: x for x in oxford}
 out_item = by_word.get('out')
 for m in out_item['meanings']:

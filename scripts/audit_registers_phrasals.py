@@ -5,10 +5,10 @@ import re
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-print(f"Checking {len(data)} words in oxford_5000_updated.json...")
+print(f"Checking {len(data)} words in src/data/oxford_5000.json...")
 
 # Check meanings where example 'en' is a phrasal verb matching translation or starting with the verb
 phrasal_in_meanings = []

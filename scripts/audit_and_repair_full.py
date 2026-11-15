@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Comprehensive Audit & Repair Script for oxford_5000_updated.json
+Comprehensive Audit & Repair Script for src/data/oxford_5000.json
 Verifies every word word-by-word against:
   1) SamPolnAnglRysSlovar - распарсенное.pdf (Doc2)
   2) SamPolnAnglRysSlovar.pdf (Doc1)
@@ -15,12 +15,12 @@ import pymupdf
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-print("=== Loading Dictionary PDFs and oxford_5000_updated.json ===")
+print("=== Loading Dictionary PDFs and src/data/oxford_5000.json ===")
 
-with open('oxford_5000_updated.json', 'r', encoding='utf-8') as f:
+with open('src/data/oxford_5000.json', 'r', encoding='utf-8') as f:
     oxford_data = json.load(f)
 
-print(f"Loaded {len(oxford_data)} words from oxford_5000_updated.json")
+print(f"Loaded {len(oxford_data)} words from src/data/oxford_5000.json")
 
 # Load Doc2 and Doc1 text
 doc2 = pymupdf.open('SamPolnAnglRysSlovar - распарсенное.pdf')

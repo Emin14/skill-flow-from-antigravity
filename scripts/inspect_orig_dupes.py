@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Inspect the raw entries in oxford_5000.json for the duplicate words.
+Inspect the raw entries in src/data/oxford_5000.json for the duplicate words.
 """
 import json, sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-orig_path = 'oxford_5000.json'
+orig_path = 'src/data/oxford_5000.json'
 orig_data = json.load(open(orig_path, 'r', encoding='utf-8'))
 
 dupe_words = ['house', 'it', 'live', 'march', 'may', 'minute', 'use', 'wind1', 'wind2', 'March', 'May']
