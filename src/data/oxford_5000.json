@@ -966,7 +966,7 @@
       {
         "id": 3,
         "partOfSpeech": "adverb",
-        "translation": "безусловно; безусловно",
+        "translation": "безусловно",
         "examples": [
           {
             "en": "absolutely!",
@@ -8829,7 +8829,7 @@
       {
         "id": 1,
         "phrase": "we have allowed for twenty people",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "мы были готовы встретить, принять двадцать человек",
         "examples": [],
         "register": []
@@ -38827,7 +38827,7 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "коричневый; бурый",
         "examples": [
           {
@@ -43947,7 +43947,7 @@
         "primary": true
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "в роли определения: capital goods; средства производства; капитальное имущество",
         "examples": [
           {
@@ -52357,7 +52357,7 @@
       {
         "id": 1,
         "phrase": "I cannot choose but go",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "мне необходимо пойти",
         "examples": [],
         "register": []
@@ -63050,9 +63050,7 @@
         "partOfSpeech": "noun",
         "translation": "компьютер; счётно-решающее устройство; (электронно-)вычислительная машина",
         "examples": [],
-        "register": [
-          "коммерческое"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -66822,7 +66820,7 @@
       },
       {
         "id": 7,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "строительный",
         "examples": [
           {
@@ -67218,7 +67216,7 @@
         "id": 10
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "в роли определения: контактный, связывающий",
         "examples": [
           {
@@ -67241,7 +67239,7 @@
         "id": 11
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "в роли определения к другому слову",
         "examples": [
           {
@@ -67704,7 +67702,7 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "predic. довольный",
+        "translation": "сказуемое: довольный",
         "examples": [],
         "register": [],
         "id": 8,
@@ -69490,9 +69488,7 @@
             "ru": "готовить обед"
           }
         ],
-        "register": [
-          "строительное"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -75129,9 +75125,7 @@
             "ru": "нести свой крест"
           }
         ],
-        "register": [
-          "строительное"
-        ]
+        "register": []
       },
       {
         "id": 5,
@@ -89105,7 +89099,7 @@
             "ru": "прямое попадание"
           },
           {
-            "en": "direct pointing.",
+            "en": "direct pointing",
             "ru": "прямая наводка"
           }
         ],
@@ -95371,9 +95365,7 @@
         "partOfSpeech": "verb",
         "translation": "запутывать след (о преследуемом звере); убегать обратно по собственным следам",
         "examples": [],
-        "register": [
-          "театр"
-        ]
+        "register": []
       },
       {
         "id": 2,
@@ -95381,9 +95373,7 @@
         "partOfSpeech": "verb",
         "translation": "подогнуть; загнуть внутрь",
         "examples": [],
-        "register": [
-          "кино"
-        ]
+        "register": []
       },
       {
         "id": 3,
@@ -121189,7 +121179,7 @@
           },
           {
             "en": "female insect",
-            "ru": "насекомоесамка"
+            "ru": "насекомое-самка"
           },
           {
             "en": "female suffrage",
@@ -128273,9 +128263,7 @@
         "partOfSpeech": "verb",
         "translation": "фокусировать(ся), помещать в фокусе; сфокусировать",
         "examples": [],
-        "register": [
-          "собирательное"
-        ],
+        "register": [],
         "id": 4,
         "primary": true
       },
@@ -133184,7 +133172,7 @@
             "ru": "верный слуга (по имени слуги в романе « Робинзон Крузо » Дефо)"
           },
           {
-            "en": "Good friday",
+            "en": "Good Friday",
             "ru": "Страстная пятница"
           }
         ],
@@ -158372,9 +158360,7 @@
         "partOfSpeech": "verb",
         "translation": "экономно вести хозяйство, экономить, беречь",
         "examples": [],
-        "register": [
-          "экономика"
-        ],
+        "register": [],
         "id": 2,
         "primary": true
       }
@@ -158532,9 +158518,7 @@
         "partOfSpeech": "noun",
         "translation": "мороженое",
         "examples": [],
-        "register": [
-          "морской термин"
-        ],
+        "register": [],
         "id": 2,
         "primary": true
       },
@@ -162505,12 +162489,13 @@
           },
           {
             "en": "individual fire",
-            "ru": "одиночный огонь"
+            "ru": "одиночный огонь",
+            "register": [
+              "военное"
+            ]
           }
         ],
-        "register": [
-          "военное"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -171148,7 +171133,7 @@
         "examples": [
           {
             "en": "the two estates join",
-            "ru": "эти два имения граничат друг с другом join up"
+            "ru": "эти два имения граничат друг с другом"
           },
           {
             "en": "(with)",
@@ -174543,7 +174528,7 @@
       {
         "phrase": "kids' stuff",
         "partOfSpeech": "noun",
-        "translation": "= и младенцу Ясно",
+        "translation": "= и младенцу ясно",
         "examples": [],
         "register": [
           "жаргон"
@@ -209694,7 +209679,7 @@
         "translation": "природа (при олицетворении — с прописной буквы)",
         "examples": [
           {
-            "en": "N.'s engineering",
+            "en": "nature's engineering",
             "ru": "работа сил природы"
           }
         ],
@@ -210201,7 +210186,7 @@
         "examples": [
           {
             "en": "nearly related",
-            "ru": "в близком родстве имеющий непосредственное отношение"
+            "ru": "близкородственный; имеющий непосредственное отношение"
           }
         ],
         "register": [],
@@ -214221,7 +214206,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "нормальный, образец, размер",
+        "translation": "нормальный тип, образец, размер",
         "examples": [],
         "register": [
           "типографское"
@@ -230377,7 +230362,7 @@
         "examples": [
           {
             "en": "particular about",
-            "ru": "what (или particular as to what)"
+            "ru": "разборчивый относительно чего-либо; привередливый в отношении чего-либо"
           }
         ],
         "register": [],
@@ -235979,7 +235964,7 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "сокр. от",
+        "translation": "сокр. от photograph",
         "examples": [],
         "register": [
           "разговорное"
@@ -267383,7 +267368,7 @@
         "examples": [
           {
             "en": "in the region of",
-            "ru": "поблизости, в районе (чего-либо) в сфере, в области приблизительно, около"
+            "ru": "поблизости; в районе чего-либо; в сфере, в области; приблизительно, около"
           }
         ],
         "register": [
@@ -309229,7 +309214,7 @@
       },
       {
         "phrase": "sort of",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "отчасти",
         "examples": [],
         "register": [],
@@ -309237,7 +309222,7 @@
       },
       {
         "phrase": "he sort of hinted",
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adverb",
         "translation": "он вроде бы намекнул",
         "examples": [],
         "register": [],
@@ -318546,11 +318531,11 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "но-морская база; авиабаза",
+        "translation": "военно-морская база; авиабаза",
         "examples": [
           {
             "en": "naval station",
-            "ru": "но-морская база; авиабаза"
+            "ru": "военно-морская база; авиабаза"
           }
         ],
         "register": [
@@ -326779,9 +326764,7 @@
         "partOfSpeech": "noun",
         "translation": "подданный",
         "examples": [],
-        "register": [
-          "грамматика"
-        ]
+        "register": []
       },
       {
         "id": 5,
@@ -326808,9 +326791,7 @@
         "partOfSpeech": "noun",
         "translation": "труп (для вскрытия)",
         "examples": [],
-        "register": [
-          "музыка"
-        ]
+        "register": []
       },
       {
         "id": 8,
@@ -342832,7 +342813,7 @@
         "examples": [
           {
             "en": "throughout the 19th century",
-            "ru": "через весь XIX век"
+            "ru": "на протяжении всего XIX века"
           }
         ],
         "register": [],
@@ -351252,7 +351233,7 @@
         "examples": [
           {
             "en": "light travels faster than sound",
-            "ru": "скорость света превышает скорость звука"
+            "ru": "свет распространяется быстрее звука"
           }
         ],
         "register": [],
