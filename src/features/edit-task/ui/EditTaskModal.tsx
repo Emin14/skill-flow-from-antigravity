@@ -21,6 +21,7 @@ interface EditTaskModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSaveSuccess?: () => void;
+  onDeleteProject?: (project: Task) => void;
   isProject?: boolean;
 }
 
@@ -62,7 +63,7 @@ const hint: React.CSSProperties = {
 };
 
 
-export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess, isProject = false }) => {
+export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onClose, onSaveSuccess, onDeleteProject, isProject = false }) => {
   const { addTask, updateTaskDetails, deleteTaskSeries, tasks } = useTaskStore();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [cardVariant, setCardVariant] = useState<'1' | '2'>('1');
@@ -773,8 +774,14 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
 
           {/* ── Action Buttons (Cancel + Save) ───── */}
           <div className={styles.modalFooter}>
-            <button type="button" className={styles.cancelBtn} onClick={onClose}>
-              Отмена
+            <button type="button" className={styles.cancelBtn} onClick={() => {
+              if (isProject && task && !task.id.startsWith('draft-') && onDeleteProject) {
+                onDeleteProject(task);
+              } else {
+                onClose();
+              }
+            }}>
+              {isProject && task && !task.id.startsWith('draft-') && onDeleteProject ? '🗑 Удалить проект' : 'Отмена'}
             </button>
             <button type="submit" className={styles.submitBtn}>
               {task.id.startsWith('draft-') ? (isProject ? 'Создать проект ✓' : 'Создать задачу ✓') : 'Сохранить ✓'}

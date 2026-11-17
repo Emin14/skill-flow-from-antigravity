@@ -371,6 +371,10 @@ export const ProjectsPage: React.FC = () => {
         task={editingTask}
         isOpen={!!editingTask}
         onClose={() => setEditingTask(null)}
+        onDeleteProject={(project) => {
+          setEditingTask(null);
+          setDeleteProjectTarget(project);
+        }}
         isProject={Boolean(editingTask && (editingTask.id.startsWith('draft-project-') || editingTask.isProject || editingTask.hasSubtasks || tasks.some(t => t.parentTaskId === editingTask.id)))}
       />
 
@@ -428,7 +432,6 @@ export const ProjectsPage: React.FC = () => {
             })()}
             <div className={styles.projectDetailActions}>
               <button type="button" className={styles.projectDetailEdit} onClick={() => { setEditingTask(detailProject); setDetailProject(null); }}>✏️ Изменить проект</button>
-              <button type="button" className={styles.projectDetailDanger} onClick={() => { setDeleteProjectTarget(detailProject); setDetailProject(null); }}>🗑 Удалить проект</button>
               <button type="button" className={styles.projectDetailSecondary} onClick={() => setDetailProject(null)}>Закрыть</button>
             </div>
           </section>
@@ -622,14 +625,19 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         onClick={() => toggleProjectOpen(project.id)}
         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', flexWrap: 'nowrap', gap: '12px' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }} onClick={(event) => { event.stopPropagation(); onOpenDetails(); }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
           <span
             aria-label="Цвет проекта"
             style={{ width: '10px', height: '10px', borderRadius: '50%', background: projectColor, boxShadow: `0 0 0 3px ${projectColor}33`, flexShrink: 0 }}
           />
-          <h2 style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <button
+            type="button"
+            className={styles.projectTitleClickable}
+            title="Открыть описание и ссылку проекта"
+            onClick={(event) => { event.stopPropagation(); onOpenDetails(); }}
+          >
             {project.title}
-          </h2>
+          </button>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0, justifyContent: 'flex-end' }}>
           <span style={{ fontSize: '10px', color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>
