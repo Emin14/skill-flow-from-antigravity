@@ -1,0 +1,64 @@
+{
+  "applied_count": 3,
+  "changes": [
+    {
+      "word": "phone",
+      "path": "meanings[1].translation",
+      "before": "фонема; звук речи",
+      "after": "звук речи",
+      "reason": "correct phone I source gloss; phoneme is a separate concept"
+    },
+    {
+      "word": "phone",
+      "path": "meanings[2]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "телефон",
+        "examples": [
+          {
+            "en": "on the phone",
+            "ru": "по телефону"
+          },
+          {
+            "en": "by/over the phone",
+            "ru": "по телефону"
+          }
+        ],
+        "register": [
+          "разговорное"
+        ],
+        "primary": true,
+        "id": 2
+      },
+      "reason": "restore missing phone II noun sense"
+    },
+    {
+      "word": "living",
+      "path": "meanings[9]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "современники",
+        "examples": [
+          {
+            "en": "the living",
+            "ru": "живущие, современные люди"
+          },
+          {
+            "en": "he is still in the land of the living",
+            "ru": "он ещё жив"
+          }
+        ],
+        "register": [],
+        "id": 9
+      },
+      "reason": "restore missing living II noun subsection"
+    }
+  ],
+  "deferred": [
+    "hold, press, record, lead, finish, ground, charge require full article reconstruction; road/average/action/answer/bring/evidence/follow/hold/meet/press/return/round/save/sound3/study duplicate-storage policy"
+  ],
+  "before_sha256": "4684035c6b41a8f1a5fe98c9db62a7b365d6fc7a9912302e5a6e733a7b3c03cc",
+  "after_sha256": "a98428d34d9e083b6f641ccf4532c3336ef5f042fed3be9c0927234c67e25ae6"
+}

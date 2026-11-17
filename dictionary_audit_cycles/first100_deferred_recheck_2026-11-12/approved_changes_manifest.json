@@ -1,0 +1,101 @@
+{
+  "scope": "first100_deferred_recheck_2026-11-12",
+  "applied_count": 7,
+  "changes": [
+    {
+      "word": "can1",
+      "path": "forms.past_participle",
+      "before": "could",
+      "after": null,
+      "reason": "can is a defective modal; could is not a past participle",
+      "source": "Muller 2021 can article: present can and past could, no participle"
+    },
+    {
+      "word": "people",
+      "path": "meanings[1].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "ordinary people senses are not specifically British",
+      "source": "Muller 2021 people article: these senses are unmarked"
+    },
+    {
+      "word": "people",
+      "path": "meanings[2].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "ordinary people senses are not specifically British",
+      "source": "Muller 2021 people article: these senses are unmarked"
+    },
+    {
+      "word": "people",
+      "path": "meanings[3].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "ordinary people senses are not specifically British",
+      "source": "Muller 2021 people article: these senses are unmarked"
+    },
+    {
+      "word": "people",
+      "path": "meanings[4].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "ordinary people senses are not specifically British",
+      "source": "Muller 2021 people article: these senses are unmarked"
+    },
+    {
+      "word": "very",
+      "path": "meanings[5].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "standard intensifying use is not slang",
+      "source": "Muller 2021 very article: ordinary intensifier before superlatives"
+    },
+    {
+      "word": "very",
+      "path": "meanings[6].translation",
+      "before": "тот самый, точно такой же",
+      "after": "подчёркивает тождественность или противоположность: тот самый, точно такой же; прямо противоположный",
+      "reason": "restore source-confirmed opposition use",
+      "source": "Muller 2021 very article: the very same / the very opposite"
+    }
+  ],
+  "kept_current": [
+    "of",
+    "I",
+    "have to",
+    "about",
+    "out pending phrase-level review",
+    "after",
+    "first",
+    "more",
+    "time",
+    "how",
+    "some",
+    "may",
+    "May",
+    "here",
+    "even"
+  ],
+  "still_review_required": [
+    "out phrase POS",
+    "after phrase POS",
+    "first generated/source boundaries",
+    "more near duplicates",
+    "time generated senses",
+    "some missing adverbial senses",
+    "how register scope",
+    "cure article boundary"
+  ],
+  "before_sha256": "2792a20d1b87a76a525d0243f4d934529e610fe1528f9b1171e633aa91788890",
+  "after_sha256": "782f78195efe11696f518919b3ed4cb2b879d3a821059c24e6fba6d29d3aaa46"
+}

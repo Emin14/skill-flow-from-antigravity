@@ -1,0 +1,526 @@
+[
+  {
+    "word": "make",
+    "meaning_index": 21,
+    "translation": "процесс становления; развитие",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "A new nation was on the make.",
+    "proposed_ru": "Новая нация находилась в процессе становления.",
+    "target_form": "make",
+    "origin": "generated",
+    "sense_explanation": "Словарное on the make включает формирование и развитие; субъект nation выбирает именно процесс становления.",
+    "translation_explanation": "Русский перевод передаёт контекст: Новая нация находилась в процессе становления.",
+    "contrast": "Не изготовление предмета, не карьеризм конкретного человека.",
+    "source_url": "https://www.merriam-webster.com/dictionary/on%20the%20make",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      106022,
+      106024
+    ],
+    "exact_short_quote": "in the process of forming, growing, or improving",
+    "decision": "candidate",
+    "note": "Редкое значение оборота; нужен критик, чтобы исключить карьеризм, особенно при неодушевлённом/коллективном субъекте.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "make",
+    "meaning_index": 22,
+    "translation": "склад характера",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "A man of his make would never betray a friend.",
+    "proposed_ru": "Человек с таким складом характера никогда не предаст друга.",
+    "target_form": "make",
+    "origin": "generated",
+    "sense_explanation": "Предложение of his make связано с моральной установкой верности другу.",
+    "translation_explanation": "Русский перевод передаёт контекст: Человек с таким складом характера никогда не предаст друга.",
+    "contrast": "Не физическое сложение: выбор характеризует поведение.",
+    "source_url": "https://www.collinsdictionary.com/dictionary/english/make",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      106023,
+      106024
+    ],
+    "exact_short_quote": "a man of this make",
+    "decision": "candidate",
+    "note": "Литературное/старое употребление, но словарная конструкция подтверждена.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "make",
+    "meaning_index": 23,
+    "translation": "конституция, сложение",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "He was a man of sturdy make.",
+    "proposed_ru": "Он был человеком крепкого сложения.",
+    "target_form": "make",
+    "origin": "generated",
+    "sense_explanation": "Sturdy непосредственно обозначает телосложение; of ... make — именная конструкция.",
+    "translation_explanation": "Русский перевод передаёт контекст: Он был человеком крепкого сложения.",
+    "contrast": "В отличие от предыдущего примера здесь физическая конституция, а не нравственные качества.",
+    "source_url": "https://www.merriam-webster.com/dictionary/make",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      106024,
+      106025
+    ],
+    "exact_short_quote": "the physical, mental, or moral constitution of a person",
+    "decision": "candidate",
+    "note": "Редкое литературное употребление, не обычный разговорный эквивалент build.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "make",
+    "meaning_index": 24,
+    "translation": "тасование",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "After the make, she cut the cards.",
+    "proposed_ru": "После тасования она сняла колоду.",
+    "target_form": "make",
+    "origin": "generated",
+    "sense_explanation": "Make — существительное с артиклем после after; последующий cut помещает его в карточную последовательность.",
+    "translation_explanation": "Русский перевод передаёт контекст: После тасования она сняла колоду.",
+    "contrast": "Не глагол «делать» и не объявление козыря; карты ещё готовятся к раздаче.",
+    "source_url": "https://www.merriam-webster.com/dictionary/make",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      106025,
+      106026
+    ],
+    "exact_short_quote": "the act of shuffling cards",
+    "decision": "candidate",
+    "note": "Редкая карточная терминология; английская дефиниция подтверждает самостоятельное noun.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "make",
+    "meaning_index": 25,
+    "translation": "объявление козыря",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "His no-trump make was risky.",
+    "proposed_ru": "Его объявление игры без козыря было рискованным.",
+    "target_form": "make",
+    "origin": "generated",
+    "sense_explanation": "Именная группа no-trump make прямо названа в историческом учебнике бриджа как declaration.",
+    "translation_explanation": "Русский перевод передаёт контекст: Его объявление игры без козыря было рискованным.",
+    "contrast": "Не тасование: no-trump определяет решение о козырях.",
+    "source_url": "https://www.gutenberg.org/files/51216/51216-h/51216-h.htm",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      106025,
+      106026
+    ],
+    "exact_short_quote": "a “no-trump” make",
+    "decision": "candidate",
+    "note": "Исторический бридж: source J. B. Elwell Advanced Bridge, chapter THE DECLARATION. Простая оригинальная фраза на подтверждённой конструкции.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "over",
+    "meaning_index": 14,
+    "translation": "излишек, приплата",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "The till showed an over of five pounds.",
+    "proposed_ru": "В кассе обнаружился излишек в пять фунтов.",
+    "target_form": "over",
+    "origin": "generated",
+    "sense_explanation": "An over of + amount — существительное в кассовом учёте для положительного расхождения.",
+    "translation_explanation": "Русский перевод передаёт контекст: В кассе обнаружился излишек в пять фунтов.",
+    "contrast": "Не предлог «свыше» и не крикетный over: определены касса и денежная разница.",
+    "source_url": "https://onlinehelp.ncrvoyix.com/Retail/Solutions/AdvancedStore/Release_6.8_R37/HTML/Topics/POS-Features/8-BackOffice/3-CashOffice/2-UnderstandTerms.htm",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      123040,
+      123041
+    ],
+    "exact_short_quote": "an over of $100.00",
+    "decision": "candidate",
+    "note": "Поставщик кассовой системы описывает именно noun over, а не leftover.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "over",
+    "meaning_index": 15,
+    "translation": "перелёт (снаряда)",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "The observer reported an over.",
+    "proposed_ru": "Наблюдатель сообщил о перелёте снаряда.",
+    "target_form": "over",
+    "origin": "generated",
+    "sense_explanation": "Artillery observer и an over дают военный noun для попадания за целью.",
+    "translation_explanation": "Русский перевод передаёт контекст: Наблюдатель сообщил о перелёте снаряда.",
+    "contrast": "Не перелёт самолёта и не предлог.",
+    "source_url": "https://www.collinsdictionary.com/us/dictionary/english/over",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      123041,
+      123042
+    ],
+    "exact_short_quote": "a shot that hits or explodes beyond the target",
+    "decision": "candidate",
+    "note": "Специальное военное значение; желательно уточнить артиллерийский контекст в соседнем предложении, если изолированная фраза кажется слишком короткой.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "over",
+    "meaning_index": 16,
+    "translation": "переход на приём",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": null,
+    "proposed_ru": null,
+    "target_form": null,
+    "origin": null,
+    "sense_explanation": "Современные словари относят радио Over к interjection/adverb, а canonical пометил noun.",
+    "translation_explanation": "Пока нет безопасной пары EN/RU.",
+    "contrast": "Нельзя демонстрировать междометие и считать это подтверждением noun без отдельного решения о POS.",
+    "source_url": "https://www.merriam-webster.com/dictionary/over",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      123041,
+      123042
+    ],
+    "exact_short_quote": "used on a two-way radio circuit",
+    "decision": "review_required",
+    "note": "Требуется роль 07/09 для исправления POS; можно затем дать сообщение «Can you hear me? Over.»",
+    "rejected_attempts": [
+      {
+        "en": "Can you hear me? Over.",
+        "ru": "Вы меня слышите? Приём.",
+        "problem": "Естественное радиоупотребление, но Over не noun при текущем canonical POS."
+      },
+      {
+        "en": "He announced an over.",
+        "ru": "Он объявил переход на приём.",
+        "problem": "Искусственная номинализация радиокоманды, не подтверждённая реальным употреблением."
+      }
+    ]
+  },
+  {
+    "word": "over",
+    "meaning_index": 17,
+    "translation": "верхний",
+    "partOfSpeech": "adjective",
+    "before_examples": [],
+    "proposed_en": null,
+    "proposed_ru": null,
+    "target_form": null,
+    "origin": null,
+    "sense_explanation": "Словарное adjective upper есть, но естественная самостоятельная определительная конструкция для учебного примера не найдена.",
+    "translation_explanation": "Пока нет безопасной пары EN/RU.",
+    "contrast": "Over shelf не равно upper shelf; замена на upper исключает изучаемое слово.",
+    "source_url": "https://www.merriam-webster.com/dictionary/over",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      123043,
+      123044
+    ],
+    "exact_short_quote": "upper",
+    "decision": "review_required",
+    "note": "В canonical это редкое adjective ошибочно/сомнительно имеет primary:true — требуется отдельная проверка primary.",
+    "rejected_attempts": [
+      {
+        "en": "The over shelf is empty.",
+        "ru": "Верхняя полка пуста.",
+        "problem": "Неестественное сочетание over shelf."
+      },
+      {
+        "en": "The upper shelf is empty.",
+        "ru": "Верхняя полка пуста.",
+        "problem": "Нет слова over; пример относится к upper."
+      }
+    ]
+  },
+  {
+    "word": "over",
+    "meaning_index": 18,
+    "translation": "вышестоящий",
+    "partOfSpeech": "adjective",
+    "before_examples": [],
+    "proposed_en": null,
+    "proposed_ru": null,
+    "target_form": null,
+    "origin": null,
+    "sense_explanation": "Superior rank обычно передаётся over- в сложениях или предлогом; standalone adjective «вышестоящий» не продемонстрировано.",
+    "translation_explanation": "Пока нет безопасной пары EN/RU.",
+    "contrast": "Over manager искусственно; senior manager не содержит over.",
+    "source_url": "https://www.collinsdictionary.com/us/dictionary/english/over",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      123043,
+      123044
+    ],
+    "exact_short_quote": "higher in authority, station, etc",
+    "decision": "review_required",
+    "note": "Не менять POS/значение автоматически. Нужен реальный исторический пример standalone adjective.",
+    "rejected_attempts": [
+      {
+        "en": "Ask the over manager.",
+        "ru": "Спроси вышестоящего руководителя.",
+        "problem": "Неестественное словосочетание."
+      },
+      {
+        "en": "The manager over him agreed.",
+        "ru": "Его вышестоящий руководитель согласился.",
+        "problem": "Over him — предложная группа, а не требуемое прилагательное."
+      }
+    ]
+  },
+  {
+    "word": "over",
+    "meaning_index": 19,
+    "translation": "излишний, избыточный",
+    "partOfSpeech": "adjective",
+    "before_examples": [],
+    "proposed_en": "She was three hours over for the week.",
+    "proposed_ru": "За неделю у неё набралось три лишних часа.",
+    "target_form": "over",
+    "origin": "generated",
+    "sense_explanation": "Постпозитивное adjective over с количеством часов указывает избыточные часы сверх нормы.",
+    "translation_explanation": "Русский перевод передаёт контекст: За неделю у неё набралось три лишних часа.",
+    "contrast": "Не upper/senior и не excessive prefix; словарь относит такой оборот именно к adjective extra.",
+    "source_url": "https://www.collinsdictionary.com/us/dictionary/english/over",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      123043,
+      123044
+    ],
+    "exact_short_quote": "to be three hours over for the week",
+    "decision": "candidate",
+    "note": "POS спорен между словарями: MW может трактовать over при количестве как adverb; требуется независимое решение.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "want",
+    "meaning_index": 3,
+    "translation": "необходимость (of — в чём-либо)",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "We felt the want of a doctor.",
+    "proposed_ru": "Мы ощущали необходимость во враче.",
+    "target_form": "want",
+    "origin": "generated",
+    "sense_explanation": "Felt the want of подчёркивает ощущаемую потребность в нужном специалисте; noun после the.",
+    "translation_explanation": "Русский перевод передаёт контекст: Мы ощущали необходимость во враче.",
+    "contrast": "Не глагол «хотеть», не бедность; нужда в конкретной помощи.",
+    "source_url": "https://www.collinsdictionary.com/dictionary/english/want",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      193795,
+      193796
+    ],
+    "exact_short_quote": "a sense of lack or need of something",
+    "decision": "candidate",
+    "note": "Смысл близок соседнему «недостаток». Перевод и контекст должны сохранить именно необходимость, а не голое отсутствие.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "go",
+    "meaning_index": 17,
+    "translation": "пройти, быть принятым, получить признание (о плане, проекте)",
+    "partOfSpeech": "verb",
+    "before_examples": [],
+    "proposed_en": "I'm afraid that plan won't go.",
+    "proposed_ru": "Боюсь, этот план не пройдёт.",
+    "target_form": "go",
+    "origin": "generated",
+    "sense_explanation": "Won’t go об идее означает неприемлемость/невозможность принятия, а не физическое движение.",
+    "translation_explanation": "Русский перевод передаёт контекст: Боюсь, этот план не пройдёт.",
+    "contrast": "Не go through committee, где добавлена частица through и возможна другая лексикализация.",
+    "source_url": "https://www.collinsdictionary.com/dictionary/english/go",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      76109,
+      76113
+    ],
+    "exact_short_quote": "to be acceptable or tolerated",
+    "decision": "candidate",
+    "note": "Разговорное употребление; источник подтверждает лексический смысл принятия, но точная оригинальная фраза должна пройти независимую проверку.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "go",
+    "meaning_index": 36,
+    "translation": "приступ, обострение (болезни)",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "He had a bad go of flu last winter.",
+    "proposed_ru": "Прошлой зимой он тяжело переболел гриппом.",
+    "target_form": "go",
+    "origin": "source",
+    "sense_explanation": "A bad go of flu — прямо подтверждённая словарная конструкция приступа/тяжёлого эпизода болезни.",
+    "translation_explanation": "Русский перевод передаёт контекст: Прошлой зимой он тяжело переболел гриппом.",
+    "contrast": "Не попытка и не порция: of flu задаёт заболевание.",
+    "source_url": "https://www.collinsdictionary.com/dictionary/english/go",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      76372,
+      76374
+    ],
+    "exact_short_quote": "he had a bad go of flu last winter",
+    "decision": "candidate",
+    "note": "Это source candidate, а не generated: sentence copied from Collins. Для применения origin надо source, RU — новый точный перевод.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "go",
+    "meaning_index": 37,
+    "translation": "порция (кушанья); глоток (вина)",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "He ordered a go of gin.",
+    "proposed_ru": "Он заказал порцию джина.",
+    "target_form": "go",
+    "origin": "generated",
+    "sense_explanation": "Исторический slang go значит drink/мерная порция спиртного; gin подтверждён словарём Farmer.",
+    "translation_explanation": "Русский перевод передаёт контекст: Он заказал порцию джина.",
+    "contrast": "Не современное have a go at: определённое количество напитка после ordered.",
+    "source_url": "https://wehd.com/farmer/Go.html",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      76372,
+      76374
+    ],
+    "exact_short_quote": "A drink; specifically a quartern of gin.",
+    "decision": "candidate",
+    "note": "Историческое сленговое употребление; не выдавать за современный обычный способ заказать напиток.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "even",
+    "meaning_index": 5,
+    "translation": "справедливый, беспристрастный",
+    "partOfSpeech": "adjective",
+    "before_examples": [],
+    "proposed_en": "They agreed to an even division of the money.",
+    "proposed_ru": "Они договорились о справедливом разделе денег.",
+    "target_form": "even",
+    "origin": "generated",
+    "sense_explanation": "Even division — подтверждённая словарём именная группа для just/impartial/fair; agreed задаёт распределение денег.",
+    "translation_explanation": "Русский перевод передаёт контекст: Они договорились о справедливом разделе денег.",
+    "contrast": "Не чётный номер и не гладкая поверхность.",
+    "source_url": "https://www.collinsdictionary.com/dictionary/english/even",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      60760,
+      60761
+    ],
+    "exact_short_quote": "an even division",
+    "decision": "candidate",
+    "note": "Even division также подразумевает равные доли; критик должен проверить отличие от соседнего «равный».",
+    "rejected_attempts": []
+  },
+  {
+    "word": "even",
+    "meaning_index": 9,
+    "translation": "как раз; точно",
+    "partOfSpeech": "adverb",
+    "before_examples": [],
+    "proposed_en": "It happened even as I expected.",
+    "proposed_ru": "Всё произошло именно так, как я ожидал.",
+    "target_form": "even",
+    "origin": "source",
+    "sense_explanation": "Even as означает точно так, как; сравнение с expected исключает удивление «даже».",
+    "translation_explanation": "Русский перевод передаёт контекст: Всё произошло именно так, как я ожидал.",
+    "contrast": "Не even John = даже Джон и не even number = чётный.",
+    "source_url": "https://www.collinsdictionary.com/dictionary/english/even",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      60765,
+      60767
+    ],
+    "exact_short_quote": "it happened even as I expected",
+    "decision": "candidate",
+    "note": "Source sentence Collins; не метить generated.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "even",
+    "meaning_index": 10,
+    "translation": "ровно",
+    "partOfSpeech": "adverb",
+    "before_examples": [],
+    "proposed_en": "The road ran even over the fields.",
+    "proposed_ru": "Дорога ровно тянулась через поля.",
+    "target_form": "even",
+    "origin": "source",
+    "sense_explanation": "Even после ran модифицирует направление/характер прохождения дороги, а не подлежащее.",
+    "translation_explanation": "Русский перевод передаёт контекст: Дорога ровно тянулась через поля.",
+    "contrast": "Не adjective The floor is even и не even = даже.",
+    "source_url": "https://www.collinsdictionary.com/dictionary/english/even",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      60766,
+      60767
+    ],
+    "exact_short_quote": "The road ran even over the fields",
+    "decision": "candidate",
+    "note": "Source sentence; устаревшее наречие. Canonical уже имеет register устаревшее. Перевод «ровно тянулась» — ровная линия дороги.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "May",
+    "meaning_index": 2,
+    "translation": "расцвет жизни",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": "She was still in the May of her life.",
+    "proposed_ru": "Она была ещё в расцвете жизни.",
+    "target_form": "May",
+    "origin": "generated",
+    "sense_explanation": "Поэтическое in the May of ... life уподобляет расцвет жизни весне.",
+    "translation_explanation": "Русский перевод передаёт контекст: Она была ещё в расцвете жизни.",
+    "contrast": "Не календарный месяц и не модальный may: noun с артиклем в именной группе.",
+    "source_url": "https://www.ahdictionary.com/word/search.html?q=may",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      108094,
+      108097
+    ],
+    "exact_short_quote": "The springtime of life; youth.",
+    "decision": "candidate",
+    "note": "Поэтическое употребление; canonical уже имеет register поэтическое. Модель конструкции также подтверждена Langenscheidt the May of his youth.",
+    "rejected_attempts": []
+  },
+  {
+    "word": "May",
+    "meaning_index": 3,
+    "translation": "при мн. ч.: майские экзамены (в Кембридже)",
+    "partOfSpeech": "noun",
+    "before_examples": [],
+    "proposed_en": null,
+    "proposed_ru": null,
+    "target_form": null,
+    "origin": null,
+    "sense_explanation": "Локальный Muller содержит historical Mays=examinations, но современный официальный Cambridge glossary относит Mays к гребным гонкам.",
+    "translation_explanation": "Пока нет безопасной пары EN/RU.",
+    "contrast": "Фраза Cambridge Mays begin не позволяет отличить экзамены от соревнований и учит современному неверному соответствию.",
+    "source_url": "https://glossary.lib.cam.ac.uk/term/mays",
+    "source_file": "tmp/muller_full_text.txt",
+    "source_lines": [
+      108096,
+      108098
+    ],
+    "exact_short_quote": "The May Races.",
+    "decision": "review_required",
+    "note": "Нужен датированный реальный пример Cambridge Mays об экзаменах; пока не найден. Не заполнять примером гребных гонок.",
+    "rejected_attempts": [
+      {
+        "en": "The Cambridge Mays begin in June.",
+        "ru": "Кембриджские майские экзамены начинаются в июне.",
+        "problem": "Современные Mays — гребные гонки; контекст не подтверждает экзамены."
+      },
+      {
+        "en": "He studied for the Mays.",
+        "ru": "Он готовился к майским экзаменам.",
+        "problem": "Правдоподобный исторический текст, но такого употребления в первичном источнике не найдено."
+      }
+    ]
+  }
+]

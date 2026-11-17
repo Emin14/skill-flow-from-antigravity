@@ -1,6 +1,6 @@
 import io, json, re
 
-data = json.load(io.open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8'))
+data = json.load(io.open('src/data/oxford_5000.json', 'r', encoding='utf-8'))
 pdf_text = io.open('tmp/muller_full_text.txt', 'r', encoding='utf-8').read()
 
 entries_500 = data[:500]

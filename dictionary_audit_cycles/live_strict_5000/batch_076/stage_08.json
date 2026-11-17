@@ -1,0 +1,972 @@
+[
+  {
+    "word": "thing",
+    "entry_index": 1501,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "вещь, предмет",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thing текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "нечто, кое-что",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thing текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "обыкн. при мн. ч.: дело, факт, случай, обстоятельство",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова thing текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "качество, свойство, особенность",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова thing текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "создание, существо",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова thing текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "образец; образчик",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова thing текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "нечто самое нужное, важное, подходящее, настоящее",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова thing текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thing отдельно проверены по всем 7 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "think",
+    "entry_index": 1502,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "думать, обдумывать (о ком-либо, чём-либо); мыслить",
+        "partOfSpeech": "verb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова think текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "считать, полагать",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова think текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "понимать, представлять себе",
+        "partOfSpeech": "verb",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова think текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "придумывать, находить",
+        "partOfSpeech": "verb",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова think текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "предполагать, допускать",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова think текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "подозревать, ожидать (каких-либо результатов)",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова think текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "помнить, вспоминать",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова think текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "постоянно думать, мечтать",
+        "partOfSpeech": "verb",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова think текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова think отдельно проверены по всем 8 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thinking",
+    "entry_index": 1503,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "размышление; поразмыслить",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thinking текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "мнение",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thinking текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "при мн. ч.: размышления; ход мыслей",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова thinking текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "мыслящий, разумный",
+        "partOfSpeech": "adjective",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова thinking текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thinking отдельно проверены по всем 4 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "third",
+    "entry_index": 1504,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "третий",
+        "partOfSpeech": "numeral",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова third текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "треть, третья часть",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова third текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "третье лицо (в грамматике)",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова third текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "третье лицо; третья сторона, свидетель",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова third текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова third отдельно проверены по всем 4 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thirsty",
+    "entry_index": 1505,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "томимый жаждой",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thirsty текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "иссохший (о почве)",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thirsty текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "жаждущий (for — чего-либо)",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова thirsty текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "вызывающий жажду",
+        "partOfSpeech": "adjective",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова thirsty текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thirsty отдельно проверены по всем 4 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thirteen",
+    "entry_index": 1506,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "тринадцать",
+        "partOfSpeech": "numeral",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thirteen текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thirteen отдельно проверены по всем 1 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thirty",
+    "entry_index": 1507,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "тридцать",
+        "partOfSpeech": "numeral",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thirty текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "тридцать (единиц, штук)",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thirty текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thirty отдельно проверены по всем 2 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "this",
+    "entry_index": 1508,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "этот, эта, это (указывает на близкий предмет или событие)",
+        "partOfSpeech": "determiner",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова this текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "это (самостоятельно в роли подлежащего или дополнения)",
+        "partOfSpeech": "pronoun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова this текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "так, настолько, до такой степени",
+        "partOfSpeech": "adverb",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова this текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова this отдельно проверены по всем 3 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thorough",
+    "entry_index": 1509,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "полный, совершенный; основательный",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thorough текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "доскональный, подробный; тщательный",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thorough текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "законченный, полный",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова thorough текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thorough отдельно проверены по всем 3 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thoroughly",
+    "entry_index": 1510,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "вполне, совершенно, до конца; основательно, тщательно",
+        "partOfSpeech": "adverb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thoroughly текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thoroughly отдельно проверены по всем 1 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "though",
+    "entry_index": 1511,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "хотя, несмотря на",
+        "partOfSpeech": "conjunction",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова though текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "даже, если бы, хотя бы",
+        "partOfSpeech": "conjunction",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова though текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "тем не менее; однако (же); всё-таки",
+        "partOfSpeech": "adverb",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова though текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова though отдельно проверены по всем 3 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thought",
+    "entry_index": 1512,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "мышление",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thought текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "размышление",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thought текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "забота; внимание",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова thought текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "мысль",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова thought текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "намерение",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова thought текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "обыкн. при мн. ч.: соображения, мысли, мнение",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова thought текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "в роли наречия: чуточка, чуточку (a thought)",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова thought текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thought отдельно проверены по всем 7 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thought-provoking",
+    "entry_index": 1513,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "наводящий на размышления, заставляющий задуматься",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thought-provoking текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thought-provoking отдельно проверены по всем 1 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thoughtful",
+    "entry_index": 1514,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "задумчивый, погружённый в размышления",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thoughtful текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "глубокий по мысли, содержательный (о книге и т. п.)",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thoughtful текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "заботливый, чуткий, внимательный (of — к другим)",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова thoughtful текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thoughtful отдельно проверены по всем 3 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thousand",
+    "entry_index": 1515,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "тысяча",
+        "partOfSpeech": "numeral",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thousand текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "тысяча",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thousand текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "множество, масса",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова thousand текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thousand отдельно проверены по всем 3 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "thread",
+    "entry_index": 1516,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "нитка; нить (тж. перен.)",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "при мн. ч.: одежда, тряпки",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "резьба, нарезка; шаг (винта)",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "жила провода",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "прожилок",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "в роли определения: нитяный; нитевидный",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "продевать нитку (в иголку)",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "нанизывать (бусы и т. п.)",
+        "partOfSpeech": "verb",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "заправлять нитью (ткацкий станок, швейную машину и т. п.)",
+        "partOfSpeech": "verb",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "заряжать аппарат кинолентой",
+        "partOfSpeech": "verb",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "пробираться; прокладывать путь",
+        "partOfSpeech": "verb",
+        "current_order": 11,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 12,
+        "id": 12,
+        "translation": "пронизывать, проходить красной нитью",
+        "partOfSpeech": "verb",
+        "current_order": 12,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 12 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 13,
+        "id": 13,
+        "translation": "вплетать, переплетать",
+        "partOfSpeech": "verb",
+        "current_order": 13,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 13 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 14,
+        "id": 14,
+        "translation": "нарезать (резьбу)",
+        "partOfSpeech": "verb",
+        "current_order": 14,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 14 слова thread текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова thread отдельно проверены по всем 14 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "threat",
+    "entry_index": 1517,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "угроза",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова threat текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "грозное предзнаменование",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова threat текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова threat отдельно проверены по всем 2 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "threaten",
+    "entry_index": 1518,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "грозить, угрожать (with — чем-либо)",
+        "partOfSpeech": "verb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова threaten текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "предвещать (беду и т. п.)",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова threaten текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова threaten отдельно проверены по всем 2 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "three",
+    "entry_index": 1519,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "три",
+        "partOfSpeech": "numeral",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова three текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "тройка",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова three текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "третий номер, размер",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова three текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "три очка",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова three текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова three отдельно проверены по всем 4 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "threshold",
+    "entry_index": 1520,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "порог",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова threshold текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "преддверие, отправной пункт, начало",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова threshold текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "порог (сознания)",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова threshold текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова threshold отдельно проверены по всем 3 значениям; доказанной перестановки нет.",
+    "confidence": 0.88
+  }
+]

@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a1a333-4027-7361-af49-56b9fd7b361d"}
+{"type":"turn.started"}
+{"type":"error","message":"{\"type\":\"error\",\"error\":{\"message\":\"Invalid schema for response_format 'codex_output_schema': 'schema.properties.records.items.required' is required to include every key in properties. Missing 'analysis'.\",\"type\":\"invalid_request_error\",\"param\":\"text.format.schema\",\"code\":\"invalid_json_schema\"},\"status\":400}"}
+{"type":"turn.failed","error":{"message":"{\"type\":\"error\",\"error\":{\"message\":\"Invalid schema for response_format 'codex_output_schema': 'schema.properties.records.items.required' is required to include every key in properties. Missing 'analysis'.\",\"type\":\"invalid_request_error\",\"param\":\"text.format.schema\",\"code\":\"invalid_json_schema\"},\"status\":400}"}}

@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-DATA=ROOT/'oxford_5000_2026-08-27.json'; MIRROR=ROOT/'src/data/oxford_5000.json'
+DATA=ROOT/'src/data/oxford_5000.json'; MIRROR=ROOT/'src/data/oxford_5000.json'
 OUT=ROOT/'tmp/new_structural_repairs.json'
 
 def m(e,i): return next(x for x in e['meanings'] if x['id']==i)

@@ -14260,7 +14260,7 @@
       },
       {
         "id": 3,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "армейский, относящийся к армии или принадлежащий армии",
         "examples": [
           {
@@ -24985,7 +24985,7 @@
       {
         "phrase": "bed of thorns",
         "partOfSpeech": "noun",
-        "translation": "тернистый путь",
+        "translation": "тернистый путь; неприятное, трудное положение",
         "examples": [],
         "register": [],
         "id": 4
@@ -25005,6 +25005,66 @@
         "examples": [],
         "register": [],
         "id": 6
+      },
+      {
+        "id": 7,
+        "phrase": "to go to bed",
+        "partOfSpeech": "verb",
+        "translation": "ложиться спать",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 8,
+        "phrase": "to take to one's bed",
+        "partOfSpeech": "verb",
+        "translation": "слечь в постель",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 9,
+        "phrase": "to keep to one's bed",
+        "partOfSpeech": "verb",
+        "translation": "хворать, лежать в постели",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 10,
+        "phrase": "to leave one's bed",
+        "partOfSpeech": "verb",
+        "translation": "выздороветь, встать с постели",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 11,
+        "phrase": "to die in one's bed",
+        "partOfSpeech": "verb",
+        "translation": "умереть собственной смертью",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 12,
+        "phrase": "to go to bed with the lamb and rise with the lark",
+        "partOfSpeech": "verb",
+        "translation": "ложиться засветло и вставать с петухами",
+        "examples": [],
+        "register": [
+          "идиома"
+        ]
+      },
+      {
+        "id": 13,
+        "phrase": "to get out of bed on the wrong side",
+        "partOfSpeech": "verb",
+        "translation": "встать с левой ноги, быть в плохом настроении",
+        "examples": [],
+        "register": [
+          "идиома"
+        ]
       }
     ]
   },
@@ -57470,6 +57530,30 @@
           "идиома"
         ],
         "examples": []
+      },
+      {
+        "id": 6,
+        "phrase": "cold war",
+        "partOfSpeech": "noun",
+        "translation": "холодная война",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 7,
+        "phrase": "cold truth",
+        "partOfSpeech": "noun",
+        "translation": "жестокая правда",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 8,
+        "phrase": "to throw cold water on a plan, proposal, etc.",
+        "partOfSpeech": "verb",
+        "translation": "охлаждать пыл, отрезвлять, обескураживать кого-либо",
+        "examples": [],
+        "register": []
       }
     ]
   },
@@ -62131,7 +62215,7 @@
       },
       {
         "partOfSpeech": "adverb",
-        "translation": "полный, заполненный",
+        "translation": "см. completely",
         "examples": [],
         "register": [
           "разговорное"
@@ -76013,14 +76097,35 @@
         "register": []
       },
       {
-        "id": 6,
         "partOfSpeech": "noun",
-        "translation": "крик, вой (животного, птицы); собачий лай",
+        "translation": "крик уличных разносчиков",
         "examples": [],
-        "register": []
+        "register": [],
+        "id": 6
       },
       {
-        "id": 7,
+        "partOfSpeech": "noun",
+        "translation": "звук, издаваемый животным",
+        "examples": [],
+        "register": [],
+        "id": 7
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "собачий лай",
+        "examples": [],
+        "register": [],
+        "id": 8
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "свора собак",
+        "examples": [],
+        "register": [],
+        "id": 9
+      },
+      {
+        "id": 10,
         "partOfSpeech": "verb",
         "translation": "кричать; вопить; восклицать",
         "examples": [
@@ -76037,7 +76142,7 @@
         "primary": true
       },
       {
-        "id": 8,
+        "id": 11,
         "partOfSpeech": "verb",
         "translation": "плакать, рыдать",
         "examples": [
@@ -76050,7 +76155,7 @@
         "primary": true
       },
       {
-        "id": 9,
+        "id": 12,
         "partOfSpeech": "verb",
         "translation": "выкрикивать, предлагать товар для продажи (об уличном разносчике)",
         "examples": [],
@@ -94053,7 +94158,7 @@
           },
           {
             "en": "dirty dog",
-            "ru": "дрянь, «свинья», «свинья»"
+            "ru": "дрянь, «свинья»"
           },
           {
             "en": "gay (or jolly) dog",
@@ -97786,8 +97891,8 @@
             "ru": "доводить до отчаяния"
           },
           {
-            "en": "drive out",
-            "ru": "of one's senses, to drive crazy сводить с ума"
+            "en": "to drive out of one's senses",
+            "ru": "сводить с ума"
           }
         ],
         "register": [],
@@ -97999,6 +98104,22 @@
         "examples": [],
         "register": [],
         "id": 6
+      },
+      {
+        "id": 7,
+        "phrase": "to put on a drive",
+        "partOfSpeech": "verb",
+        "translation": "начать кампанию",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 8,
+        "phrase": "a drive to raise funds",
+        "partOfSpeech": "noun",
+        "translation": "кампания по сбору средств",
+        "examples": [],
+        "register": []
       }
     ],
     "forms": {
@@ -101219,7 +101340,7 @@
         "examples": [
           {
             "en": "to eat well",
-            "ru": "иметь хороший аппетит иметь приятный вкус"
+            "ru": "иметь хороший аппетит; иметь приятный вкус"
           }
         ],
         "register": [],
@@ -101249,39 +101370,6 @@
         "register": [
           "разговорное"
         ],
-        "primary": true
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "verb",
-        "translation": "столоваться по месту работы",
-        "examples": [
-          {
-            "en": "eat in",
-            "ru": "питаться дома"
-          },
-          {
-            "en": "eat into",
-            "ru": "въедаться (о хим. веществах и т. п.)"
-          },
-          {
-            "en": "eat off",
-            "ru": "отъедать (о кислоте и т. п.)"
-          },
-          {
-            "en": "eat up",
-            "ru": "пожирать; растрачивать (состояние); поглощать; быстро покрывать какое-либо расстояние"
-          },
-          {
-            "en": "to eat away at one's nerves",
-            "ru": "действовать на нервы, изводить"
-          },
-          {
-            "en": "eaten up with pride",
-            "ru": "снедаемый гордостью"
-          }
-        ],
-        "register": [],
         "primary": true
       }
     ],
@@ -101326,11 +101414,27 @@
         "id": 5,
         "phrase": "to eat out of smb.'s hand",
         "partOfSpeech": "verb",
-        "translation": "безоговорочно подчиняться ул",
+        "translation": "безоговорочно подчиняться",
         "examples": [],
         "register": [
           "коммерция"
         ]
+      },
+      {
+        "id": 6,
+        "phrase": "to eat away at one's nerves",
+        "partOfSpeech": "verb",
+        "translation": "действовать на нервы, изводить",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 7,
+        "phrase": "eaten up with pride",
+        "partOfSpeech": "verb",
+        "translation": "снедаемый гордостью",
+        "examples": [],
+        "register": []
       }
     ],
     "forms": {
@@ -102301,7 +102405,7 @@
           },
           {
             "en": "with effect from today",
-            "ru": "вступающий в"
+            "ru": "вступающий в силу с сегодняшнего дня"
           },
           {
             "en": "to go (or to come) into effect, to take effect",
@@ -103347,7 +103451,7 @@
       },
       {
         "id": 4,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "избирательный, связанный с выборами",
         "examples": [
           {
@@ -111032,9 +111136,7 @@
         "partOfSpeech": "verb",
         "translation": "исключать",
         "examples": [],
-        "register": [
-          "искусство"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -111055,10 +111157,7 @@
             "ru": "все отправились, а Джон остался"
           }
         ],
-        "register": [
-          "юридическое",
-          "искусство"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -111076,12 +111175,10 @@
       },
       {
         "id": 5,
-        "partOfSpeech": "preposition",
+        "partOfSpeech": "conjunction",
         "translation": "(употр. как cj) если бы не",
         "examples": [],
-        "register": [
-          "устаревшее"
-        ]
+        "register": []
       },
       {
         "id": 6,
@@ -114940,7 +115037,7 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "глаз; Око; зрение",
+        "translation": "глаз; око; зрение",
         "examples": [],
         "register": [],
         "id": 1,
@@ -118734,6 +118831,14 @@
         "primary": true
       },
       {
+        "partOfSpeech": "verb",
+        "translation": "поститься",
+        "examples": [],
+        "register": [],
+        "primary": true,
+        "id": 2
+      },
+      {
         "partOfSpeech": "adjective",
         "translation": "скорый, быстрый",
         "examples": [
@@ -118754,7 +118859,7 @@
           "железнодорожное",
           "физика"
         ],
-        "id": 2,
+        "id": 3,
         "primary": true
       },
       {
@@ -118771,7 +118876,7 @@
           }
         ],
         "register": [],
-        "id": 3,
+        "id": 4,
         "primary": true
       },
       {
@@ -118798,7 +118903,7 @@
         "register": [
           "техническое"
         ],
-        "id": 4
+        "id": 5
       },
       {
         "partOfSpeech": "adjective",
@@ -118814,14 +118919,14 @@
           }
         ],
         "register": [],
-        "id": 5
+        "id": 6
       },
       {
         "partOfSpeech": "adverb",
         "translation": "быстро, часто; скоро",
         "examples": [],
         "register": [],
-        "id": 6,
+        "id": 7,
         "primary": true
       },
       {
@@ -118838,7 +118943,7 @@
           }
         ],
         "register": [],
-        "id": 7,
+        "id": 8,
         "primary": true
       },
       {
@@ -118846,7 +118951,7 @@
         "translation": "прожигать жизнь",
         "examples": [],
         "register": [],
-        "id": 8
+        "id": 9
       },
       {
         "partOfSpeech": "noun",
@@ -118855,7 +118960,7 @@
         "register": [
           "морской термин"
         ],
-        "id": 9,
+        "id": 10,
         "primary": true
       },
       {
@@ -118865,13 +118970,13 @@
         "register": [
           "горное дело"
         ],
-        "id": 10
+        "id": 11
       }
     ],
     "phrases": [
       {
         "phrase": "a fast prisoner",
-        "partOfSpeech": "verb",
+        "partOfSpeech": "adjective",
         "translation": "узник",
         "examples": [],
         "register": [],
@@ -119805,9 +119910,7 @@
             "ru": "в страхе за свою жизнь"
           }
         ],
-        "register": [
-          "строительное"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -119820,9 +119923,7 @@
             "ru": "как бы не так!, ни в коем случае!"
           }
         ],
-        "register": [
-          "разговорное"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -123732,8 +123833,7 @@
           }
         ],
         "register": [
-          "спортивное",
-          "финансы"
+          "спортивное"
         ],
         "primary": true
       },
@@ -135129,8 +135229,7 @@
           }
         ],
         "register": [
-          "разговорное",
-          "строительное"
+          "разговорное"
         ],
         "id": 2,
         "primary": true
@@ -143516,7 +143615,7 @@
     },
     "meanings": [
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "зелёный",
         "examples": [
           {
@@ -144540,11 +144639,11 @@
     "meanings": [
       {
         "partOfSpeech": "noun",
-        "translation": "земля; почва; грунт; перен. рушиться (о надежде и т. п.)",
+        "translation": "земля; почва; грунт",
         "examples": [
           {
             "en": "to fall to the ground",
-            "ru": "упасть"
+            "ru": "упасть; переносно — рушиться (о надежде и т. п.)"
           },
           {
             "en": "to take ground",
@@ -144657,7 +144756,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "дно моря; перен. дойти до сути дела, до фактов (в споре)",
+        "translation": "дно моря",
         "examples": [
           {
             "en": "to take the ground",
@@ -144665,7 +144764,7 @@
           },
           {
             "en": "to touch the ground",
-            "ru": "коснуться дна"
+            "ru": "коснуться дна; переносно — дойти до сути дела, до фактов (в споре)"
           }
         ],
         "register": [
@@ -151638,7 +151737,14 @@
     },
     "meanings": [
       {
-        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "ад",
+        "examples": [],
+        "register": [],
+        "id": 1
+      },
+      {
+        "id": 2,
         "partOfSpeech": "noun",
         "translation": "игорный дом, притон",
         "examples": [],
@@ -154134,6 +154240,15 @@
           "разговорное"
         ],
         "id": 22
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "мор. трюм",
+        "examples": [],
+        "register": [
+          "морское"
+        ],
+        "id": 23
       }
     ],
     "phrases": [
@@ -156153,7 +156268,7 @@
       },
       {
         "id": 3,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "госпитальный, больничный; санитарный",
         "examples": [],
         "register": [],
@@ -179595,8 +179710,8 @@
     "word": "lead",
     "frequency_rank": 516,
     "cefr": "a2",
-    "phon_br": "/liːd/",
-    "phon_n_am": "/liːd/",
+    "phon_br": "/liːd/, /led/",
+    "phon_n_am": "/liːd/, /led/",
     "lists": {
       "oxford3000": true
     },
@@ -179895,16 +180010,17 @@
           },
           {
             "en": "to lead for the prosecution (defence)",
-            "ru": "возглавлять обвинение (защиту)"
+            "ru": "возглавлять обвинение (защиту)",
+            "register": [
+              "юридическое"
+            ]
           },
           {
             "en": "to lead an orchestra",
             "ru": "руководить оркестром"
           }
         ],
-        "register": [
-          "юридическое"
-        ],
+        "register": [],
         "id": 30
       },
       {
@@ -180009,30 +180125,8 @@
       {
         "partOfSpeech": "verb",
         "translation": "опережать",
-        "examples": [
-          {
-            "en": "lead on",
-            "ru": "завлекать, увлекать"
-          },
-          {
-            "en": "lead out of",
-            "ru": "выходить, сообщаться (о комнатах)"
-          },
-          {
-            "en": "lead to",
-            "ru": "приводить к каким-либо результатам"
-          },
-          {
-            "en": "lead away",
-            "ru": "увлечь, увести"
-          },
-          {
-            "en": "lead up",
-            "ru": "постепенно подготовлять; наводить разговор на что-либо"
-          }
-        ],
+        "examples": [],
         "register": [
-          "разговорное",
           "техническое"
         ],
         "id": 39
@@ -180078,6 +180172,71 @@
         "examples": [],
         "register": [],
         "id": 5
+      },
+      {
+        "id": 6,
+        "phrase": "lead on",
+        "partOfSpeech": "verb",
+        "translation": "завлекать, увлекать",
+        "examples": [
+          {
+            "en": "lead on",
+            "ru": "завлекать, увлекать"
+          }
+        ],
+        "register": []
+      },
+      {
+        "id": 7,
+        "phrase": "lead out of",
+        "partOfSpeech": "verb",
+        "translation": "выходить, сообщаться (о комнатах)",
+        "examples": [
+          {
+            "en": "lead out of",
+            "ru": "выходить, сообщаться (о комнатах)"
+          }
+        ],
+        "register": []
+      },
+      {
+        "id": 8,
+        "phrase": "lead to",
+        "partOfSpeech": "verb",
+        "translation": "приводить к каким-либо результатам",
+        "examples": [
+          {
+            "en": "lead to",
+            "ru": "приводить к каким-либо результатам"
+          }
+        ],
+        "register": []
+      },
+      {
+        "id": 9,
+        "phrase": "lead away",
+        "partOfSpeech": "verb",
+        "translation": "увлечь, увести",
+        "examples": [
+          {
+            "en": "lead away",
+            "ru": "увлечь, увести"
+          }
+        ],
+        "register": []
+      },
+      {
+        "id": 10,
+        "phrase": "lead up to",
+        "partOfSpeech": "verb",
+        "translation": "постепенно подготовлять; наводить разговор на что-либо",
+        "examples": [
+          {
+            "en": "lead up to",
+            "ru": "постепенно подготовлять; наводить разговор на что-либо"
+          }
+        ],
+        "register": []
       }
     ],
     "forms": {
@@ -180500,6 +180659,26 @@
         "id": 2,
         "partOfSpeech": "noun",
         "translation": "листовка; тонкая брошюра",
+        "examples": [],
+        "register": [],
+        "primary": true
+      }
+    ]
+  },
+  {
+    "word": "league1",
+    "frequency_rank": 614,
+    "cefr": "b2",
+    "phon_br": "/liːɡ/",
+    "phon_n_am": "/liːɡ/",
+    "lists": {
+      "oxford3000": true
+    },
+    "meanings": [
+      {
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "лье, лига (мера длины)",
         "examples": [],
         "register": [],
         "primary": true
@@ -186565,9 +186744,7 @@
             "ru": "прислушиваться, стараться услышать"
           }
         ],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -186583,9 +186760,7 @@
         "partOfSpeech": "verb",
         "translation": "слушаться; уступать (просьбе, искушению)",
         "examples": [],
-        "register": [
-          "жаргон"
-        ],
+        "register": [],
         "primary": true
       }
     ],
@@ -186597,7 +186772,7 @@
         "translation": "подслушивать радиопередачу или разговор по телефону; слушать радиопередачу",
         "examples": [],
         "register": [
-          "военное дело"
+          "военное"
         ]
       }
     ]
@@ -190218,8 +190393,7 @@
           }
         ],
         "register": [
-          "военное",
-          "британское"
+          "военное"
         ]
       },
       {
@@ -196579,120 +196753,6 @@
           "военное"
         ],
         "primary": true
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
-        "translation": "состязание, матч",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 4,
-        "partOfSpeech": "noun",
-        "translation": "равносильный, достойный противник",
-        "examples": [
-          {
-            "en": "he is more than a match for me",
-            "ru": "он сильнее (искуснее и т. п.) меня"
-          },
-          {
-            "en": "to meet (or to find) one's match",
-            "ru": "встретить достойного противника"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 5,
-        "partOfSpeech": "noun",
-        "translation": "человек или вещь, подходящие под пару; ровня; пара",
-        "examples": [
-          {
-            "en": "he has no match",
-            "ru": "ему нет равного"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 6,
-        "partOfSpeech": "noun",
-        "translation": "брак; партия; выйти замуж",
-        "examples": [
-          {
-            "en": "he (she) is a good match",
-            "ru": "он (она) хорошая партия"
-          },
-          {
-            "en": "to make a match",
-            "ru": "жениться"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 7,
-        "partOfSpeech": "verb",
-        "translation": "подходить (под пару), соответствовать",
-        "examples": [
-          {
-            "en": "these colours don't match",
-            "ru": "эти цвета плохо сочетаются, не гармонируют"
-          },
-          {
-            "en": "a bonnet with ribbons to match",
-            "ru": "шляпа с подобранными (в тон) лентами"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 8,
-        "partOfSpeech": "verb",
-        "translation": "подбирать под пару, под стать, сочетать",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "verb",
-        "translation": "противопоставлять",
-        "examples": [
-          {
-            "en": "to match one's strength against smb. else's",
-            "ru": "помериться силами с кем-либо"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 10,
-        "partOfSpeech": "verb",
-        "translation": "противостоять; состязаться",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 11,
-        "partOfSpeech": "verb",
-        "translation": "выдавать замуж; (со)сватать",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 12,
-        "partOfSpeech": "verb",
-        "translation": "спаривать(ся), случать(ся)",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 13,
-        "partOfSpeech": "verb",
-        "translation": "выравнивать",
-        "examples": [],
-        "register": []
       }
     ]
   },
@@ -196709,31 +196769,12 @@
       {
         "id": 1,
         "partOfSpeech": "noun",
-        "translation": "спичка",
-        "examples": [
-          {
-            "en": "to strike a match",
-            "ru": "зажечь спичку"
-          }
-        ],
-        "register": []
-      },
-      {
-        "id": 2,
-        "partOfSpeech": "noun",
-        "translation": "огнепровод",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 3,
-        "partOfSpeech": "noun",
         "translation": "состязание, матч",
         "examples": [],
         "register": []
       },
       {
-        "id": 4,
+        "id": 2,
         "partOfSpeech": "noun",
         "translation": "равносильный, достойный противник",
         "examples": [
@@ -196749,7 +196790,7 @@
         "register": []
       },
       {
-        "id": 5,
+        "id": 3,
         "partOfSpeech": "noun",
         "translation": "человек или вещь, подходящие под пару; ровня; пара",
         "examples": [
@@ -196761,7 +196802,7 @@
         "register": []
       },
       {
-        "id": 6,
+        "id": 4,
         "partOfSpeech": "noun",
         "translation": "брак; партия; выйти замуж",
         "examples": [
@@ -196777,7 +196818,7 @@
         "register": []
       },
       {
-        "id": 7,
+        "id": 5,
         "partOfSpeech": "verb",
         "translation": "подходить (под пару), соответствовать",
         "examples": [
@@ -196794,7 +196835,7 @@
         "primary": true
       },
       {
-        "id": 8,
+        "id": 6,
         "partOfSpeech": "verb",
         "translation": "подбирать под пару, под стать, сочетать",
         "examples": [],
@@ -196802,7 +196843,7 @@
         "primary": true
       },
       {
-        "id": 9,
+        "id": 7,
         "partOfSpeech": "verb",
         "translation": "противопоставлять",
         "examples": [
@@ -196816,7 +196857,7 @@
         ]
       },
       {
-        "id": 10,
+        "id": 8,
         "partOfSpeech": "verb",
         "translation": "противостоять; состязаться",
         "examples": [],
@@ -196824,7 +196865,7 @@
         "primary": true
       },
       {
-        "id": 11,
+        "id": 9,
         "partOfSpeech": "verb",
         "translation": "выдавать замуж; (со)сватать",
         "examples": [],
@@ -196833,14 +196874,14 @@
         ]
       },
       {
-        "id": 12,
+        "id": 10,
         "partOfSpeech": "verb",
         "translation": "спаривать(ся), случать(ся)",
         "examples": [],
         "register": []
       },
       {
-        "id": 13,
+        "id": 11,
         "partOfSpeech": "verb",
         "translation": "выравнивать",
         "examples": [],
@@ -211923,7 +211964,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "передавать по - или телевизионной сети",
+        "translation": "передавать по радио- или телевизионной сети",
         "examples": [],
         "register": [
           "радио"
@@ -228987,7 +229028,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "бумажный пакет",
+        "translation": "пакетик; связка",
         "examples": [
           {
             "en": "a paper of needles",
@@ -229028,7 +229069,7 @@
       },
       {
         "partOfSpeech": "adjective",
-        "translation": "бумажный; проверка документации, письменных работ и т.п",
+        "translation": "бумажный; связанный с документами или письменной работой",
         "examples": [
           {
             "en": "paper work",
@@ -230934,7 +230975,7 @@
             "ru": "я видел (слышал), что происходило"
           },
           {
-            "en": "whether or not this comes to pass passing",
+            "en": "whether or not this comes to pass",
             "ru": "суждено ли этому случиться или нет"
           }
         ],
@@ -233189,7 +233230,7 @@
           },
           {
             "en": "to hold one's peace",
-            "ru": "молчать соблюдать спокойствие, порядок"
+            "ru": "молчать; соблюдать спокойствие, порядок"
           },
           {
             "en": "the peace",
@@ -233243,7 +233284,7 @@
           },
           {
             "en": "to make one's peace with smb.",
-            "ru": "мириться с кем-либо мирить(ся)"
+            "ru": "мириться с кем-либо; мирить(ся)"
           }
         ],
         "register": [],
@@ -236346,7 +236387,7 @@
         "id": 11
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "verb",
         "translation": "выбирать, выискивать",
         "examples": [
           {
@@ -236358,9 +236399,7 @@
             "ru": "выбирать дорогу (чтобы не поскользнуться, не споткнуться)"
           }
         ],
-        "register": [
-          "искусство"
-        ],
+        "register": [],
         "id": 12
       },
       {
@@ -236384,7 +236423,7 @@
       },
       {
         "partOfSpeech": "verb",
-        "translation": "клевать (о птицах)",
+        "translation": "клевать (зёрна)",
         "examples": [
           {
             "en": "pick over",
@@ -236395,9 +236434,7 @@
             "ru": "отрывать, сдирать; стрелять, тщательно прицеливаясь; подстрелить; перестрелять (одного за другим)"
           }
         ],
-        "register": [
-          "радио"
-        ],
+        "register": [],
         "id": 15
       },
       {
@@ -236515,9 +236552,7 @@
         "partOfSpeech": "noun",
         "translation": "картина; изображение; рисунок",
         "examples": [],
-        "register": [
-          "карточный термин"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -236917,7 +236952,7 @@
         "id": 6
       },
       {
-        "phrase": "a piece of in formation",
+        "phrase": "a piece of information",
         "partOfSpeech": "noun",
         "translation": "сообщение",
         "examples": [],
@@ -248636,30 +248671,8 @@
       {
         "partOfSpeech": "verb",
         "translation": "жать, выжимать штангу",
-        "examples": [
-          {
-            "en": "press for",
-            "ru": "добиваться (чего-либо)"
-          },
-          {
-            "en": "press forward",
-            "ru": "проталкиваться"
-          },
-          {
-            "en": "press on",
-            "ru": "спешить"
-          },
-          {
-            "en": "press to",
-            "ru": "понуждать"
-          },
-          {
-            "en": "press down",
-            "ru": "придавливать, прижимать; стремиться (к чему-либо)"
-          }
-        ],
+        "examples": [],
         "register": [
-          "разговорное",
           "спортивное"
         ],
         "id": 16
@@ -248715,36 +248728,28 @@
             "ru": "перен. использовать для"
           }
         ],
-        "register": [],
+        "register": [
+          "историческое"
+        ],
         "id": 21
       },
       {
         "partOfSpeech": "verb",
         "translation": "реквизировать",
         "examples": [],
-        "register": [],
+        "register": [
+          "историческое"
+        ],
         "id": 22
       },
       {
         "partOfSpeech": "noun",
-        "translation": "газетная вырезка",
+        "translation": "вербовка силой",
         "examples": [],
-        "register": [],
-        "id": 23
-      },
-      {
-        "partOfSpeech": "noun",
-        "translation": "в роли определения к другому слову",
-        "examples": [
-          {
-            "en": "press agency",
-            "ru": "газетное агентство; агентство печати"
-          }
-        ],
         "register": [
-          "полиграфия"
+          "историческое"
         ],
-        "id": 24
+        "id": 23
       }
     ],
     "phrases": [
@@ -248753,7 +248758,12 @@
         "phrase": "press down",
         "partOfSpeech": "verb",
         "translation": "придавливать, прижимать",
-        "examples": [],
+        "examples": [
+          {
+            "en": "press down",
+            "ru": "придавливать, прижимать"
+          }
+        ],
         "register": []
       },
       {
@@ -248761,7 +248771,12 @@
         "phrase": "press forward",
         "partOfSpeech": "verb",
         "translation": "проталкиваться",
-        "examples": [],
+        "examples": [
+          {
+            "en": "press forward",
+            "ru": "проталкиваться"
+          }
+        ],
         "register": []
       },
       {
@@ -248769,7 +248784,12 @@
         "phrase": "press on",
         "partOfSpeech": "verb",
         "translation": "спешить",
-        "examples": [],
+        "examples": [
+          {
+            "en": "press on",
+            "ru": "спешить"
+          }
+        ],
         "register": [
           "разговорное"
         ]
@@ -248783,6 +248803,61 @@
         "register": [
           "разговорное"
         ]
+      },
+      {
+        "id": 5,
+        "phrase": "press cutting / press clipping",
+        "partOfSpeech": "noun",
+        "translation": "газетная вырезка",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 6,
+        "phrase": "press agency",
+        "partOfSpeech": "noun",
+        "translation": "газетное агентство; агентство печати",
+        "examples": [
+          {
+            "en": "press agency",
+            "ru": "газетное агентство; агентство печати"
+          }
+        ],
+        "register": []
+      },
+      {
+        "id": 7,
+        "phrase": "press cutting agency",
+        "partOfSpeech": "noun",
+        "translation": "бюро вырезок",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 8,
+        "phrase": "press for",
+        "partOfSpeech": "verb",
+        "translation": "добиваться (чего-либо); стремиться (к чему-либо)",
+        "examples": [
+          {
+            "en": "press for",
+            "ru": "добиваться (чего-либо); стремиться (к чему-либо)"
+          }
+        ],
+        "register": []
+      },
+      {
+        "id": 9,
+        "phrase": "press to",
+        "partOfSpeech": "verb",
+        "translation": "понуждать",
+        "examples": [
+          {
+            "en": "press to",
+            "ru": "понуждать"
+          }
+        ],
+        "register": []
       }
     ]
   },
@@ -252374,7 +252449,7 @@
       },
       {
         "partOfSpeech": "noun",
-        "translation": "спортсменпрофессионал",
+        "translation": "спортсмен-профессионал",
         "examples": [],
         "register": [
           "спортивное"
@@ -259958,9 +260033,7 @@
         "partOfSpeech": "noun",
         "translation": "(искусственное) русло; быстроток, подводящий канал",
         "examples": [],
-        "register": [
-          "искусство"
-        ],
+        "register": [],
         "id": 5
       },
       {
@@ -260061,7 +260134,7 @@
       },
       {
         "phrase": "the Mongoloid race",
-        "partOfSpeech": "verb",
+        "partOfSpeech": "noun",
         "translation": "монголоидная раса; род",
         "examples": [],
         "register": [],
@@ -265427,11 +265500,11 @@
       {
         "id": 6,
         "partOfSpeech": "noun",
-        "translation": "держаться сути дела",
+        "translation": "придерживаться сути дела",
         "examples": [
           {
-            "en": "to travel out of the record",
-            "ru": "вводить что-либо, не относящееся к делу"
+            "en": "to keep to the record",
+            "ru": "придерживаться сути дела"
           }
         ],
         "register": [
@@ -265443,9 +265516,7 @@
         "partOfSpeech": "noun",
         "translation": "граммофонная пластинка; запись на граммофонной пластинке",
         "examples": [],
-        "register": [
-          "грамматика"
-        ]
+        "register": []
       },
       {
         "id": 8,
@@ -278232,8 +278303,7 @@
         "examples": [],
         "register": [
           "американский английский",
-          "жаргон",
-          "британское"
+          "жаргон"
         ],
         "id": 8
       },
@@ -278252,12 +278322,12 @@
         "translation": "при мн. ч.: груб. яйца",
         "examples": [],
         "register": [
-          "британское"
+          "грубое"
         ],
         "id": 10
       },
       {
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "в роли определения: горный; каменный",
         "examples": [],
         "register": [],
@@ -291627,7 +291697,7 @@
           },
           {
             "en": "to send to sleep",
-            "ru": "усыпить рассеять; разбросать; обратить в бегство отшвырнуть"
+            "ru": "усыпить"
           }
         ],
         "register": [],
@@ -300567,11 +300637,20 @@
         "id": 7
       },
       {
+        "partOfSpeech": "noun",
+        "translation": "след",
+        "examples": [],
+        "register": [
+          "американский английский"
+        ],
+        "id": 8
+      },
+      {
         "partOfSpeech": "verb",
         "translation": "подписывать(ся)",
         "examples": [],
         "register": [],
-        "id": 8,
+        "id": 9,
         "primary": true
       },
       {
@@ -300579,7 +300658,7 @@
         "translation": "выражать жестом; подавать знак (to — кому-либо)",
         "examples": [],
         "register": [],
-        "id": 9,
+        "id": 10,
         "primary": true
       },
       {
@@ -300603,7 +300682,7 @@
           "радио",
           "разговорное"
         ],
-        "id": 10
+        "id": 11
       }
     ],
     "phrases": [
@@ -301337,9 +301416,7 @@
         "partOfSpeech": "adjective",
         "translation": "простой, несложный",
         "examples": [],
-        "register": [
-          "просодия"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -301413,9 +301490,7 @@
             "ru": "простак"
           }
         ],
-        "register": [
-          "просодия"
-        ],
+        "register": [],
         "id": 5
       },
       {
@@ -301429,9 +301504,7 @@
         "partOfSpeech": "adjective",
         "translation": "простой, незнатный",
         "examples": [],
-        "register": [
-          "просодия"
-        ],
+        "register": [],
         "id": 7
       },
       {
@@ -301459,7 +301532,7 @@
       {
         "id": 1,
         "partOfSpeech": "adverb",
-        "translation": "то, легко",
+        "translation": "просто; легко",
         "examples": [
           {
             "en": "I did it quite simply",
@@ -302929,6 +303002,13 @@
         "id": 4
       },
       {
+        "partOfSpeech": "noun",
+        "translation": "клей; шлихта",
+        "examples": [],
+        "register": [],
+        "id": 5
+      },
+      {
         "partOfSpeech": "verb",
         "translation": "сортировать по величине",
         "examples": [
@@ -302941,7 +303021,7 @@
           "коммерческое",
           "разговорное"
         ],
-        "id": 5,
+        "id": 6,
         "primary": true
       },
       {
@@ -302949,7 +303029,7 @@
         "translation": "проклеивать; шлихтовать",
         "examples": [],
         "register": [],
-        "id": 6,
+        "id": 7,
         "primary": true
       }
     ],
@@ -317111,6 +317191,46 @@
         "translation": "противиться, сопротивляться",
         "register": [],
         "examples": []
+      },
+      {
+        "id": 17,
+        "phrase": "to come to a stand",
+        "partOfSpeech": "verb",
+        "translation": "остановиться",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 18,
+        "phrase": "to bring to a stand",
+        "partOfSpeech": "verb",
+        "translation": "остановить",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 19,
+        "phrase": "here I stand",
+        "partOfSpeech": "verb",
+        "translation": "вот моя точка зрения",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 20,
+        "phrase": "to stand well with somebody",
+        "partOfSpeech": "verb",
+        "translation": "быть в хороших отношениях с кем-либо; быть на хорошем счету у кого-либо",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 21,
+        "phrase": "stand up for",
+        "partOfSpeech": "verb",
+        "translation": "защищать, отстаивать",
+        "examples": [],
+        "register": []
       }
     ],
     "forms": {
@@ -322333,6 +322453,16 @@
         "register": [],
         "id": 14
       }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "to lay great store by",
+        "partOfSpeech": "verb",
+        "translation": "придавать большое значение; высоко ценить",
+        "examples": [],
+        "register": []
+      }
     ]
   },
   {
@@ -326060,9 +326190,7 @@
             "ru": "овощи"
           }
         ],
-        "register": [
-          "математика"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -326070,9 +326198,7 @@
         "partOfSpeech": "noun",
         "translation": "материя (особ. шерстяная)",
         "examples": [],
-        "register": [
-          "математика"
-        ],
+        "register": [],
         "id": 2,
         "primary": true
       },
@@ -335969,9 +336095,7 @@
             "ru": "небольшой налог, выплачиваемый по частям"
           }
         ],
-        "register": [
-          "американский английский"
-        ],
+        "register": [],
         "id": 1,
         "primary": true
       },
@@ -336013,9 +336137,7 @@
             "ru": "испытывать чьё-л. терпение"
           }
         ],
-        "register": [
-          "коммерческое"
-        ],
+        "register": [],
         "id": 4,
         "primary": true
       },
@@ -357343,7 +357465,7 @@
       },
       {
         "id": 9,
-        "partOfSpeech": "noun",
+        "partOfSpeech": "adjective",
         "translation": "профсоюзный",
         "examples": [
           {
@@ -361060,16 +361182,14 @@
       {
         "id": 3,
         "partOfSpeech": "noun",
-        "translation": "(перевода или оригинала)",
+        "translation": "текст (перевод или оригинал)",
         "examples": [
           {
             "en": "the Russian version of the treaty",
             "ru": "русский текст договора"
           }
         ],
-        "register": [
-          "текстильное"
-        ],
+        "register": [],
         "primary": true
       },
       {
@@ -364503,7 +364623,7 @@
         "examples": [
           {
             "en": "wall box",
-            "ru": "настенный (почтовый) Ящик"
+            "ru": "настенный (почтовый) ящик"
           }
         ],
         "register": [],
@@ -369716,19 +369836,15 @@
       },
       {
         "partOfSpeech": "pronoun",
-        "translation": "чтобы ни; чтобы там ни говорили..",
+        "translation": "что бы ни; что бы там ни говорили...",
         "examples": [
-          {
-            "en": "conj.",
-            "ru": "всё что"
-          },
           {
             "en": "I am right, whatever you think",
             "ru": "я прав, чтобы вы там ни думали"
           },
           {
             "en": "whatever the appearances..",
-            "ru": "как бы это ни выглядело со стороны..."
+            "ru": "я прав, что бы вы там ни думали"
           },
           {
             "en": "whatever the reason..",
@@ -377328,17 +377444,8 @@
         "id": 1,
         "phrase": "writing down",
         "partOfSpeech": "verb",
-        "translation": "писание",
-        "examples": [
-          {
-            "en": "at the present writing",
-            "ru": "в то время, когда пишутся эти строки"
-          },
-          {
-            "en": "in writing",
-            "ru": "в письменной форме"
-          }
-        ],
+        "translation": "записывание; запись",
+        "examples": [],
         "register": []
       },
       {

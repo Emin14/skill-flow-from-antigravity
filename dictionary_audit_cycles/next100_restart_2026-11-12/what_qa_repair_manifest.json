@@ -1,0 +1,27 @@
+{
+  "scope": "next100_restart_2026-11-12_what_qa_repair",
+  "changes": [
+    {
+      "word": "what",
+      "path": "meanings[1].examples[3]",
+      "before": [
+        {
+          "en": "I know what to do",
+          "ru": "я знаю, что нужно делать"
+        },
+        {
+          "en": "do you know the man who came yesterday?",
+          "ru": "вы знаете человека, который приходил вчера?"
+        }
+      ],
+      "after": {
+        "en": "I know what to do",
+        "ru": "я знаю, что нужно делать"
+      },
+      "reason": "repair malformed nested example left by earlier what cleanup; retain what example and remove who contamination",
+      "origin": "what article: removed who example; preserved I know what to do"
+    }
+  ],
+  "before_sha256": "742566a1ffdbe8a2ed4f4b7a8a309f998e8b61a3a0399ef391ac1eb78e7c5c9a",
+  "after_sha256": "b5b616574ce860577557e173f298cbf9d7a037425ec87f2fdc574acf5938a6b4"
+}

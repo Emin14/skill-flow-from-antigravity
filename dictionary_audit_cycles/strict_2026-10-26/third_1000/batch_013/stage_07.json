@@ -1,0 +1,2190 @@
+[
+  {
+    "word": "import",
+    "before": {
+      "word": "import",
+      "frequency_rank": 3456,
+      "cefr": "b1",
+      "phon_br": "/ˈɪmpɔːt/, /ɪmˈpɔːt/",
+      "phon_n_am": "/ˈɪmpɔːrt/, /ɪmˈpɔːrt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "импорт, ввоз",
+          "examples": [
+            {
+              "en": "import duty",
+              "ru": "импортная пошлина"
+            },
+            {
+              "en": "import licence",
+              "ru": "импортная лицензия"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "импортные, ввозимые товары",
+          "examples": [
+            {
+              "en": "imports and exports",
+              "ru": "ввоз и вывоз; статьи импорта и экспорта"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "импортировать, ввозить",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "вносить, привносить",
+          "examples": [
+            {
+              "en": "to import personal feelings",
+              "ru": "вкладывать личные чувства"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "смысл, значение, суть",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "важность, значительность",
+          "examples": [
+            {
+              "en": "a question of great import",
+              "ru": "очень важный вопрос"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "выражать, означать, подразумевать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "иметь значение, быть важным",
+          "examples": [
+            {
+              "en": "that does not import",
+              "ru": "это не имеет значения"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "import",
+      "frequency_rank": 3456,
+      "cefr": "b1",
+      "phon_br": "/ˈɪmpɔːt/, /ɪmˈpɔːt/",
+      "phon_n_am": "/ˈɪmpɔːrt/, /ɪmˈpɔːrt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "импорт, ввоз",
+          "examples": [
+            {
+              "en": "import duty",
+              "ru": "импортная пошлина"
+            },
+            {
+              "en": "import licence",
+              "ru": "импортная лицензия"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "импортные, ввозимые товары",
+          "examples": [
+            {
+              "en": "imports and exports",
+              "ru": "ввоз и вывоз; статьи импорта и экспорта"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "импортировать, ввозить",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "вносить, привносить",
+          "examples": [
+            {
+              "en": "to import personal feelings",
+              "ru": "вкладывать личные чувства"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "смысл, значение, суть",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "важность, значительность",
+          "examples": [
+            {
+              "en": "a question of great import",
+              "ru": "очень важный вопрос"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "выражать, означать, подразумевать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "иметь значение, быть важным",
+          "examples": [
+            {
+              "en": "that does not import",
+              "ru": "это не имеет значения"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для import before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "importance",
+    "before": {
+      "word": "importance",
+      "frequency_rank": 1847,
+      "cefr": "b1",
+      "phon_br": "/ɪmˈpɔːtns/",
+      "phon_n_am": "/ɪmˈpɔːrtns/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "важность, значительность",
+          "examples": [
+            {
+              "en": "a position of importance",
+              "ru": "ответственный пост"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "значение; придавать значение чему-либо",
+          "examples": [
+            {
+              "en": "to attach importance to smth.",
+              "ru": "считать что-либо важным"
+            },
+            {
+              "en": "of no importance",
+              "ru": "не имеющий значения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "важничанье, заносчивость",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "importance",
+      "frequency_rank": 1847,
+      "cefr": "b1",
+      "phon_br": "/ɪmˈpɔːtns/",
+      "phon_n_am": "/ɪmˈpɔːrtns/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "важность, значительность",
+          "examples": [
+            {
+              "en": "a position of importance",
+              "ru": "ответственный пост"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "значение; придавать значение чему-либо",
+          "examples": [
+            {
+              "en": "to attach importance to smth.",
+              "ru": "считать что-либо важным"
+            },
+            {
+              "en": "of no importance",
+              "ru": "не имеющий значения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "важничанье, заносчивость",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для importance before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "important",
+    "before": {
+      "word": "important",
+      "frequency_rank": 300,
+      "cefr": "a1",
+      "phon_br": "/ɪmˈpɔːtnt/",
+      "phon_n_am": "/ɪmˈpɔːrtnt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "важный, значительный, существенный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "важничающий, напыщенный",
+          "examples": [
+            {
+              "en": "to look important",
+              "ru": "напускать на себя важный вид"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "important",
+      "frequency_rank": 300,
+      "cefr": "a1",
+      "phon_br": "/ɪmˈpɔːtnt/",
+      "phon_n_am": "/ɪmˈpɔːrtnt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "важный, значительный, существенный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "важничающий, напыщенный",
+          "examples": [
+            {
+              "en": "to look important",
+              "ru": "напускать на себя важный вид"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для important before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "impose",
+    "before": {
+      "word": "impose",
+      "frequency_rank": 4101,
+      "cefr": "b2",
+      "phon_br": "/ɪmˈpəʊz/",
+      "phon_n_am": "/ɪmˈpəʊz/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "облагать (пошлиной, налогом и т. п.); налагать (обязательство)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "навязать(ся)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "обмануть; обманом продать, всучить",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "спускать (полосу); заключать (печатную форму)",
+          "examples": [],
+          "register": [
+            "полиграфия"
+          ],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "impose on",
+          "partOfSpeech": "verb",
+          "translation": "облагать (пошлиной, налогом и т. п.); налагать (обязательство)",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "after": {
+      "word": "impose",
+      "frequency_rank": 4101,
+      "cefr": "b2",
+      "phon_br": "/ɪmˈpəʊz/",
+      "phon_n_am": "/ɪmˈpəʊz/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "облагать (пошлиной, налогом и т. п.); налагать (обязательство)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "навязать(ся)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "обмануть; обманом продать, всучить",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "спускать (полосу); заключать (печатную форму)",
+          "examples": [],
+          "register": [
+            "полиграфия"
+          ],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "impose on",
+          "partOfSpeech": "verb",
+          "translation": "облагать (пошлиной, налогом и т. п.); налагать (обязательство)",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для impose before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "impossible",
+    "before": {
+      "word": "impossible",
+      "frequency_rank": 1272,
+      "cefr": "a2",
+      "phon_br": "/ɪmˈpɒsəbl/",
+      "phon_n_am": "/ɪmˈpɑːsəbl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "невозможный, невыполнимый",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "невероятный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "невыносимый, возмутительный",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "impossible",
+      "frequency_rank": 1272,
+      "cefr": "a2",
+      "phon_br": "/ɪmˈpɒsəbl/",
+      "phon_n_am": "/ɪmˈpɑːsəbl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "невозможный, невыполнимый",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "невероятный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "невыносимый, возмутительный",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для impossible before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "impress",
+    "before": {
+      "word": "impress",
+      "frequency_rank": 4073,
+      "cefr": "b2",
+      "phon_br": "/ɪmˈpres/",
+      "phon_n_am": "/ɪmˈpres/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "translation": "производить впечатление, поражать",
+          "partOfSpeech": "verb",
+          "examples": [
+            {
+              "en": "to impress smb. favourably",
+              "ru": "произвести благоприятное впечатление на кого-либо"
+            }
+          ],
+          "register": [],
+          "primary": true,
+          "id": 6
+        },
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "вербовать силой",
+          "examples": [],
+          "register": [
+            "военное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "реквизировать (имущество и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "translation": "отпечаток, оттиск",
+          "partOfSpeech": "noun",
+          "examples": [],
+          "register": [],
+          "primary": true,
+          "id": 3
+        },
+        {
+          "translation": "штемпель, печать",
+          "partOfSpeech": "noun",
+          "examples": [],
+          "register": [],
+          "primary": true,
+          "id": 4
+        },
+        {
+          "translation": "впечатление, след, отпечаток, печать чего-либо",
+          "partOfSpeech": "noun",
+          "examples": [
+            {
+              "en": "a work bearing an impress of genius",
+              "ru": "работа, носящая печать гения"
+            }
+          ],
+          "register": [],
+          "primary": true,
+          "id": 5
+        },
+        {
+          "translation": "внушать, внедрять, запечатлевать в сознании",
+          "partOfSpeech": "verb",
+          "examples": [
+            {
+              "en": "impress on him that he must...",
+              "ru": "внушите ему, что он должен..."
+            }
+          ],
+          "register": [],
+          "primary": true,
+          "id": 7
+        },
+        {
+          "translation": "отпечатывать, печатать",
+          "partOfSpeech": "verb",
+          "examples": [],
+          "register": [],
+          "primary": true,
+          "id": 8
+        },
+        {
+          "translation": "клеймить, штемпелевать, штамповать (on)",
+          "partOfSpeech": "verb",
+          "examples": [
+            {
+              "en": "to impress a mark upon smth.",
+              "ru": "оттиснуть, отпечатать знак на чём-либо"
+            }
+          ],
+          "register": [],
+          "primary": true,
+          "id": 9
+        }
+      ]
+    },
+    "after": {
+      "word": "impress",
+      "frequency_rank": 4073,
+      "cefr": "b2",
+      "phon_br": "/ɪmˈpres/",
+      "phon_n_am": "/ɪmˈpres/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "translation": "производить впечатление, поражать",
+          "partOfSpeech": "verb",
+          "examples": [
+            {
+              "en": "to impress smb. favourably",
+              "ru": "произвести благоприятное впечатление на кого-либо"
+            }
+          ],
+          "register": [],
+          "primary": true,
+          "id": 6
+        },
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "вербовать силой",
+          "examples": [],
+          "register": [
+            "военное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "реквизировать (имущество и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "translation": "отпечаток, оттиск",
+          "partOfSpeech": "noun",
+          "examples": [],
+          "register": [],
+          "primary": true,
+          "id": 3
+        },
+        {
+          "translation": "штемпель, печать",
+          "partOfSpeech": "noun",
+          "examples": [],
+          "register": [],
+          "primary": true,
+          "id": 4
+        },
+        {
+          "translation": "впечатление, след, отпечаток, печать чего-либо",
+          "partOfSpeech": "noun",
+          "examples": [
+            {
+              "en": "a work bearing an impress of genius",
+              "ru": "работа, носящая печать гения"
+            }
+          ],
+          "register": [],
+          "primary": true,
+          "id": 5
+        },
+        {
+          "translation": "внушать, внедрять, запечатлевать в сознании",
+          "partOfSpeech": "verb",
+          "examples": [
+            {
+              "en": "impress on him that he must...",
+              "ru": "внушите ему, что он должен..."
+            }
+          ],
+          "register": [],
+          "primary": true,
+          "id": 7
+        },
+        {
+          "translation": "отпечатывать, печатать",
+          "partOfSpeech": "verb",
+          "examples": [],
+          "register": [],
+          "primary": true,
+          "id": 8
+        },
+        {
+          "translation": "клеймить, штемпелевать, штамповать (on)",
+          "partOfSpeech": "verb",
+          "examples": [
+            {
+              "en": "to impress a mark upon smth.",
+              "ru": "оттиснуть, отпечатать знак на чём-либо"
+            }
+          ],
+          "register": [],
+          "primary": true,
+          "id": 9
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для impress before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "impressed",
+    "before": {
+      "word": "impressed",
+      "frequency_rank": 2568,
+      "cefr": "b2",
+      "phon_br": "/ɪmˈprest/",
+      "phon_n_am": "/ɪmˈprest/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "впечатленный кем или чем-либо",
+          "examples": [
+            {
+              "en": "I was very impressed by the show.",
+              "ru": "Я был очень впечатлён представлением"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "impressed",
+      "frequency_rank": 2568,
+      "cefr": "b2",
+      "phon_br": "/ɪmˈprest/",
+      "phon_n_am": "/ɪmˈprest/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "впечатленный кем или чем-либо",
+          "examples": [
+            {
+              "en": "I was very impressed by the show.",
+              "ru": "Я был очень впечатлён представлением"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для impressed before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "impression",
+    "before": {
+      "word": "impression",
+      "frequency_rank": 2539,
+      "cefr": "b1",
+      "phon_br": "/ɪmˈpreʃn/",
+      "phon_n_am": "/ɪmˈpreʃn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "впечатление",
+          "examples": [
+            {
+              "en": "strong impression",
+              "ru": "сильное впечатление"
+            },
+            {
+              "en": "to be under the impression",
+              "ru": "быть под впечатлением"
+            },
+            {
+              "en": "to make (or to produce) an impression",
+              "ru": "произвести впечатление"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "представление, мнение, предположение",
+          "examples": [
+            {
+              "en": "we are under the impression that nothing can be done at present",
+              "ru": "нам кажется, что сейчас ничего нельзя сделать"
+            },
+            {
+              "en": "a wrong impression",
+              "ru": "неверное представление"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "оттиск, отпечаток; слепок",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "печать, печатание; тиснение",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "издание (книги); перепечатка, допечатка (без изменений)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "тираж; завод",
+          "examples": [],
+          "register": [
+            "полиграфия"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "грунт, фон (картины)",
+          "examples": [],
+          "register": [
+            "живопись"
+          ]
+        }
+      ]
+    },
+    "after": {
+      "word": "impression",
+      "frequency_rank": 2539,
+      "cefr": "b1",
+      "phon_br": "/ɪmˈpreʃn/",
+      "phon_n_am": "/ɪmˈpreʃn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "впечатление",
+          "examples": [
+            {
+              "en": "strong impression",
+              "ru": "сильное впечатление"
+            },
+            {
+              "en": "to be under the impression",
+              "ru": "быть под впечатлением"
+            },
+            {
+              "en": "to make (or to produce) an impression",
+              "ru": "произвести впечатление"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "представление, мнение, предположение",
+          "examples": [
+            {
+              "en": "we are under the impression that nothing can be done at present",
+              "ru": "нам кажется, что сейчас ничего нельзя сделать"
+            },
+            {
+              "en": "a wrong impression",
+              "ru": "неверное представление"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "оттиск, отпечаток; слепок",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "печать, печатание; тиснение",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "издание (книги); перепечатка, допечатка (без изменений)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "тираж; завод",
+          "examples": [],
+          "register": [
+            "полиграфия"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "грунт, фон (картины)",
+          "examples": [],
+          "register": [
+            "живопись"
+          ]
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для impression before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "impressive",
+    "before": {
+      "word": "impressive",
+      "frequency_rank": 2133,
+      "cefr": "b1",
+      "phon_br": "/ɪmˈpresɪv/",
+      "phon_n_am": "/ɪmˈpresɪv/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "производящий глубокое впечатление; впечатляющий; выразительный",
+          "examples": [
+            {
+              "en": "impressive speech",
+              "ru": "яркая речь"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "impressive",
+      "frequency_rank": 2133,
+      "cefr": "b1",
+      "phon_br": "/ɪmˈpresɪv/",
+      "phon_n_am": "/ɪmˈpresɪv/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "производящий глубокое впечатление; впечатляющий; выразительный",
+          "examples": [
+            {
+              "en": "impressive speech",
+              "ru": "яркая речь"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для impressive before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "imprison",
+    "before": {
+      "word": "imprison",
+      "frequency_rank": 4955,
+      "cefr": "c1",
+      "phon_br": "/ɪmˈprɪzn/",
+      "phon_n_am": "/ɪmˈprɪzn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "заключать в тюрьму; лишать свободы",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "imprison",
+      "frequency_rank": 4955,
+      "cefr": "c1",
+      "phon_br": "/ɪmˈprɪzn/",
+      "phon_n_am": "/ɪmˈprɪzn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "заключать в тюрьму; лишать свободы",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для imprison before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "imprisonment",
+    "before": {
+      "word": "imprisonment",
+      "frequency_rank": 4193,
+      "cefr": "c1",
+      "phon_br": "/ɪmˈprɪznmənt/",
+      "phon_n_am": "/ɪmˈprɪznmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "заключение (в тюрьму); лишение свободы",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "imprisonment",
+      "frequency_rank": 4193,
+      "cefr": "c1",
+      "phon_br": "/ɪmˈprɪznmənt/",
+      "phon_n_am": "/ɪmˈprɪznmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "заключение (в тюрьму); лишение свободы",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для imprisonment before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "improve",
+    "before": {
+      "word": "improve",
+      "frequency_rank": 1253,
+      "cefr": "a1",
+      "phon_br": "/ɪmˈpruːv/",
+      "phon_n_am": "/ɪmˈpruːv/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "улучшать(ся); совершенствовать(ся)",
+          "examples": [
+            {
+              "en": "to improve in health",
+              "ru": "поправляться"
+            },
+            {
+              "en": "to improve in looks",
+              "ru": "выглядеть лучше"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "воспользоваться, использовать наилучшим образом",
+          "examples": [
+            {
+              "en": "to improve the occasion (or the opportunity)",
+              "ru": "использовать удобный случай"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "improve on",
+          "partOfSpeech": "phrasal verb",
+          "translation": "улучшать, усовершенствовать",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "improve",
+      "frequency_rank": 1253,
+      "cefr": "a1",
+      "phon_br": "/ɪmˈpruːv/",
+      "phon_n_am": "/ɪmˈpruːv/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "улучшать(ся); совершенствовать(ся)",
+          "examples": [
+            {
+              "en": "to improve in health",
+              "ru": "поправляться"
+            },
+            {
+              "en": "to improve in looks",
+              "ru": "выглядеть лучше"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "воспользоваться, использовать наилучшим образом",
+          "examples": [
+            {
+              "en": "to improve the occasion (or the opportunity)",
+              "ru": "использовать удобный случай"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "improve on",
+          "partOfSpeech": "phrasal verb",
+          "translation": "улучшать, усовершенствовать",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для improve before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "improvement",
+    "before": {
+      "word": "improvement",
+      "frequency_rank": 2069,
+      "cefr": "b1",
+      "phon_br": "/ɪmˈpruːvmənt/",
+      "phon_n_am": "/ɪmˈpruːvmənt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "улучшение, усовершенствование",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "мелиорация",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: удобства (в квартире, доме)",
+          "examples": [],
+          "register": [
+            "американизм",
+            "британское"
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: перестройка, перестановка (в квартире, доме)",
+          "examples": [],
+          "register": [
+            "американизм",
+            "британское"
+          ],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "improvement on",
+          "partOfSpeech": "noun",
+          "translation": "улучшение, усовершенствование",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "after": {
+      "word": "improvement",
+      "frequency_rank": 2069,
+      "cefr": "b1",
+      "phon_br": "/ɪmˈpruːvmənt/",
+      "phon_n_am": "/ɪmˈpruːvmənt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "улучшение, усовершенствование",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "мелиорация",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: удобства (в квартире, доме)",
+          "examples": [],
+          "register": [
+            "американизм",
+            "британское"
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: перестройка, перестановка (в квартире, доме)",
+          "examples": [],
+          "register": [
+            "американизм",
+            "британское"
+          ],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "improvement on",
+          "partOfSpeech": "noun",
+          "translation": "улучшение, усовершенствование",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для improvement before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "in",
+    "before": {
+      "word": "in",
+      "frequency_rank": 3,
+      "cefr": "a1",
+      "phon_br": "/ɪn/",
+      "phon_n_am": "/ɪn/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "preposition",
+          "translation": "в (указывает на нахождение внутри или в пределах)",
+          "examples": [
+            {
+              "en": "in the room",
+              "ru": "в комнате"
+            },
+            {
+              "en": "in London",
+              "ru": "в Лондоне"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "preposition",
+          "translation": "в, через, за (во времени)",
+          "examples": [
+            {
+              "en": "in May",
+              "ru": "в мае"
+            },
+            {
+              "en": "in two hours",
+              "ru": "через два часа"
+            },
+            {
+              "en": "in 1990",
+              "ru": "в 1990 году"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "preposition",
+          "translation": "в (указывает на состояние, форму, положение)",
+          "examples": [
+            {
+              "en": "in a hurry",
+              "ru": "в спешке"
+            },
+            {
+              "en": "in danger",
+              "ru": "в опасности"
+            },
+            {
+              "en": "in English",
+              "ru": "по-английски"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adverb",
+          "translation": "внутрь, дома, на месте",
+          "examples": [
+            {
+              "en": "come in!",
+              "ru": "войдите!"
+            },
+            {
+              "en": "is Mr Smith in?",
+              "ru": "мистер Смит дома?"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adjective",
+          "translation": "модный, популярный",
+          "examples": [
+            {
+              "en": "it's the in thing",
+              "ru": "это сейчас в моде"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "партия, находящаяся у власти",
+          "examples": [
+            {
+              "en": "the ins",
+              "ru": "партия, находящаяся у власти"
+            }
+          ],
+          "register": [
+            "политика",
+            "британское"
+          ]
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "ins and outs",
+          "partOfSpeech": "noun",
+          "translation": "все входы и выходы; детали, подробности",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "in and out",
+          "partOfSpeech": "adverb",
+          "translation": "туда и сюда, взад и вперёд",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "in",
+      "frequency_rank": 3,
+      "cefr": "a1",
+      "phon_br": "/ɪn/",
+      "phon_n_am": "/ɪn/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "preposition",
+          "translation": "в (указывает на нахождение внутри или в пределах)",
+          "examples": [
+            {
+              "en": "in the room",
+              "ru": "в комнате"
+            },
+            {
+              "en": "in London",
+              "ru": "в Лондоне"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "preposition",
+          "translation": "в, через, за (во времени)",
+          "examples": [
+            {
+              "en": "in May",
+              "ru": "в мае"
+            },
+            {
+              "en": "in two hours",
+              "ru": "через два часа"
+            },
+            {
+              "en": "in 1990",
+              "ru": "в 1990 году"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "preposition",
+          "translation": "в (указывает на состояние, форму, положение)",
+          "examples": [
+            {
+              "en": "in a hurry",
+              "ru": "в спешке"
+            },
+            {
+              "en": "in danger",
+              "ru": "в опасности"
+            },
+            {
+              "en": "in English",
+              "ru": "по-английски"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adverb",
+          "translation": "внутрь, дома, на месте",
+          "examples": [
+            {
+              "en": "come in!",
+              "ru": "войдите!"
+            },
+            {
+              "en": "is Mr Smith in?",
+              "ru": "мистер Смит дома?"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adjective",
+          "translation": "модный, популярный",
+          "examples": [
+            {
+              "en": "it's the in thing",
+              "ru": "это сейчас в моде"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "партия, находящаяся у власти",
+          "examples": [
+            {
+              "en": "the ins",
+              "ru": "партия, находящаяся у власти"
+            }
+          ],
+          "register": [
+            "политика",
+            "британское"
+          ]
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "ins and outs",
+          "partOfSpeech": "noun",
+          "translation": "все входы и выходы; детали, подробности",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "in and out",
+          "partOfSpeech": "adverb",
+          "translation": "туда и сюда, взад и вперёд",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для in before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "inability",
+    "before": {
+      "word": "inability",
+      "frequency_rank": 4074,
+      "cefr": "c1",
+      "phon_br": "/ˌɪnəˈbɪləti/",
+      "phon_n_am": "/ˌɪnəˈbɪləti/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "неспособность; невозможность",
+          "examples": [
+            {
+              "en": "inability to pay",
+              "ru": "неплатёжеспособность"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "inability",
+      "frequency_rank": 4074,
+      "cefr": "c1",
+      "phon_br": "/ˌɪnəˈbɪləti/",
+      "phon_n_am": "/ˌɪnəˈbɪləti/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "неспособность; невозможность",
+          "examples": [
+            {
+              "en": "inability to pay",
+              "ru": "неплатёжеспособность"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для inability before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "inadequate",
+    "before": {
+      "word": "inadequate",
+      "frequency_rank": 4353,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈædɪkwət/",
+      "phon_n_am": "/ɪnˈædɪkwət/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "не отвечающий требованиям; недостаточный; несоразмерный; неадекватный; неполноценный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "inadequate",
+      "frequency_rank": 4353,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈædɪkwət/",
+      "phon_n_am": "/ɪnˈædɪkwət/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "не отвечающий требованиям; недостаточный; несоразмерный; неадекватный; неполноценный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для inadequate before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "inappropriate",
+    "before": {
+      "word": "inappropriate",
+      "frequency_rank": 3864,
+      "cefr": "c1",
+      "phon_br": "/ˌɪnəˈprəʊpriət/",
+      "phon_n_am": "/ˌɪnəˈprəʊpriət/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "неуместный, неподходящий, несоответствующий",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "inappropriate",
+      "frequency_rank": 3864,
+      "cefr": "c1",
+      "phon_br": "/ˌɪnəˈprəʊpriət/",
+      "phon_n_am": "/ˌɪnəˈprəʊpriət/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "неуместный, неподходящий, несоответствующий",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для inappropriate before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "incentive",
+    "before": {
+      "word": "incentive",
+      "frequency_rank": 3937,
+      "cefr": "b2",
+      "phon_br": "/ɪnˈsentɪv/",
+      "phon_n_am": "/ɪnˈsentɪv/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "побуждение, стимул",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "побудительный, стимулирующий",
+          "examples": [
+            {
+              "en": "incentive wage",
+              "ru": "прогрессивная система заработной платы"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "incentive",
+      "frequency_rank": 3937,
+      "cefr": "b2",
+      "phon_br": "/ɪnˈsentɪv/",
+      "phon_n_am": "/ɪnˈsentɪv/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "побуждение, стимул",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "побудительный, стимулирующий",
+          "examples": [
+            {
+              "en": "incentive wage",
+              "ru": "прогрессивная система заработной платы"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для incentive before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "inch",
+    "before": {
+      "word": "inch",
+      "frequency_rank": 2070,
+      "cefr": "b2",
+      "phon_br": "/ɪntʃ/",
+      "phon_n_am": "/ɪntʃ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "дюйм (= 2,54 см)",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: высота, рост",
+          "examples": [
+            {
+              "en": "a man of your inches",
+              "ru": "человек вашего роста"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "небольшое количество, расстояние и т. п.",
+          "examples": [
+            {
+              "en": "not to yield an inch",
+              "ru": "не уступить ни на йоту"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "двигаться медленно или осторожно",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "inch by inch",
+          "partOfSpeech": "verb",
+          "translation": "малопомалу",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "he is every inch a soldier",
+          "partOfSpeech": "noun",
+          "translation": "он настоящий солдат",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "inch",
+      "frequency_rank": 2070,
+      "cefr": "b2",
+      "phon_br": "/ɪntʃ/",
+      "phon_n_am": "/ɪntʃ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "дюйм (= 2,54 см)",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: высота, рост",
+          "examples": [
+            {
+              "en": "a man of your inches",
+              "ru": "человек вашего роста"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "небольшое количество, расстояние и т. п.",
+          "examples": [
+            {
+              "en": "not to yield an inch",
+              "ru": "не уступить ни на йоту"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "двигаться медленно или осторожно",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "inch by inch",
+          "partOfSpeech": "verb",
+          "translation": "малопомалу",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "he is every inch a soldier",
+          "partOfSpeech": "noun",
+          "translation": "он настоящий солдат",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для inch before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "incidence",
+    "before": {
+      "word": "incidence",
+      "frequency_rank": 4659,
+      "cefr": "c1",
+      "phon_br": "/ˈɪnsɪdəns/",
+      "phon_n_am": "/ˈɪnsɪdəns/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "сфера действия, охват",
+          "examples": [
+            {
+              "en": "what is the incidence of the tax?",
+              "ru": "кто подлежит обложению этим налогом"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "падение, наклон, скос",
+          "examples": [
+            {
+              "en": "angle of incidence",
+              "ru": "угол падения"
+            }
+          ],
+          "register": [
+            "специальный термин"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "incidence",
+      "frequency_rank": 4659,
+      "cefr": "c1",
+      "phon_br": "/ˈɪnsɪdəns/",
+      "phon_n_am": "/ˈɪnsɪdəns/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "сфера действия, охват",
+          "examples": [
+            {
+              "en": "what is the incidence of the tax?",
+              "ru": "кто подлежит обложению этим налогом"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "падение, наклон, скос",
+          "examples": [
+            {
+              "en": "angle of incidence",
+              "ru": "угол падения"
+            }
+          ],
+          "register": [
+            "специальный термин"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для incidence before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  }
+]

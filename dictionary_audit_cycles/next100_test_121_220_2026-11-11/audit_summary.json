@@ -1,0 +1,48 @@
+{
+  "scope": "positions 121-220, five batches of 20",
+  "model": "gpt-5.6-sol low delegated; gpt-6.1-sol medium parent pending",
+  "canonical_changes": 0,
+  "metrics_reported": {
+    "entries": 100,
+    "meanings": 877,
+    "examples": 1304,
+    "source_searches": 23,
+    "high_confidence_candidates": 51,
+    "review_required": 21
+  },
+  "high_priority_candidates": [
+    "such: severe Russian OCR/concatenation corruption in an example",
+    "home: baseball steal home translated as steal a house",
+    "look: English dictionary fragment contaminates Russian example translation",
+    "last: malformed grammatical notes stored as translations",
+    "great: untranslated predic. abbreviation in translations",
+    "family: multiple OCR/segmentation contaminations in example translations",
+    "keep: OCR and translation defects in school/open and subsistence examples",
+    "free of: concrete semantic translation error",
+    "city/night: attributive senses stored as noun",
+    "name/book: missing article and wrong English word order",
+    "how? no; next batch includes play/god ambiguous source-boundary cases requiring review"
+  ],
+  "review_only_examples": [
+    "while noun/conjunction segmentation",
+    "man about town phrase contamination",
+    "second floor noun/verb boundary",
+    "found adjective/article contamination",
+    "against the grain idiomatic translation",
+    "play off / in play source reconstruction",
+    "company store historical sense",
+    "God bless you phrase boundary",
+    "away off duplicate phrase"
+  ],
+  "process_findings": [
+    "The normalized word-relative paths are much safer than batch-index paths.",
+    "The main recurring defects are OCR concatenation, untranslated editorial abbreviations, POS-vs-translation mismatch, and examples attached to the wrong sense.",
+    "Source-search counts vary widely; batch 3 searched 20 times while other batches searched 0-1 times, so the source-search metric needs a fixed definition.",
+    "Ambiguous source-boundary and historical cases were correctly left for review rather than guessed.",
+    "No canonical changes were made; final parent adjudication is required before applying candidates."
+  ],
+  "verification": {
+    "canonical_sha256": "9686489b90d13abf1b6ce3bc9e6f6f85b9c575a4b9ad6f7d3fd86caeb6271343",
+    "entry_count": 4980
+  }
+}

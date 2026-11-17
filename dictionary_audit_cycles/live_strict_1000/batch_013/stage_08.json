@@ -1,0 +1,785 @@
+[
+  {
+    "word": "applicant",
+    "entry_index": 241,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "претендент, кандидат",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова applicant, значение 1 (noun, «претендент, кандидат») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "проситель",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова applicant, значение 2 (noun, «проситель») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для applicant проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "application",
+    "entry_index": 242,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "заявление; прошение",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова application, значение 1 (noun, «заявление; прошение») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "прикладывание (горчичника, пластыря и т. п.)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова application, значение 2 (noun, «прикладывание (горчичника, пластыря и т. п.)») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "употребление (лекарства)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова application, значение 3 (noun, «употребление (лекарства)») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "применение; применимость",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова application, значение 4 (noun, «применение; применимость») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "прилежание, рвение, старание",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова application, значение 5 (noun, «прилежание, рвение, старание») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для application проверены все 5 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "apply",
+    "entry_index": 243,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "обращаться (for — за работой, помощью, справкой, разрешением и т. п.; to — к кому-либо)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова apply, значение 1 (verb, «обращаться (for — за работой, помощью, справкой, разрешением и т. п.; to — к кому-либо)») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "касаться, относиться; быть приемлемым",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова apply, значение 2 (verb, «касаться, относиться; быть приемлемым») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "verb",
+        "translation": "применять; употреблять",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова apply, значение 3 (verb, «применять; употреблять») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "прикладывать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова apply, значение 4 (verb, «прикладывать») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "verb",
+        "translation": "заниматься (чем-либо), направлять своё внимание (на что-либо)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова apply, значение 5 (verb, «заниматься (чем-либо), направлять своё внимание (на что-либо)») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для apply проверены все 5 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "appoint",
+    "entry_index": 244,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "назначать, определять",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appoint, значение 1 (verb, «назначать, определять») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "предписывать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appoint, значение 2 (verb, «предписывать») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "verb",
+        "translation": "снаряжать; оборудовать; устраивать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appoint, значение 3 (verb, «снаряжать; оборудовать; устраивать») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для appoint проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "appointment",
+    "entry_index": 245,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "свидание, условленная встреча",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appointment, значение 1 (noun, «свидание, условленная встреча») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "назначение, определение (на должность)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appointment, значение 2 (noun, «назначение, определение (на должность)») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "место, должность",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appointment, значение 3 (noun, «место, должность») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: оборудование; обстановка, мебель",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appointment, значение 4 (noun, «при мн. ч.: оборудование; обстановка, мебель») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "распределение наследственного имущества по доверенности",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appointment, значение 5 (noun, «распределение наследственного имущества по доверенности») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для appointment проверены все 5 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "appreciate",
+    "entry_index": 246,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "(высоко) ценить",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appreciate, значение 1 (verb, «(высоко) ценить») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "оценивать (по достоинству); понимать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appreciate, значение 2 (verb, «оценивать (по достоинству); понимать») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "verb",
+        "translation": "принимать во внимание",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appreciate, значение 3 (verb, «принимать во внимание») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "повышать(ся) в ценности",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appreciate, значение 4 (verb, «повышать(ся) в ценности») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для appreciate проверены все 4 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "appreciation",
+    "entry_index": 247,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "высокая оценка",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appreciation, значение 1 (noun, «высокая оценка») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "оценка (по достоинству)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appreciation, значение 2 (noun, «оценка (по достоинству)») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "понимание",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова appreciation, значение 3 (noun, «понимание») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "признательность",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова appreciation, значение 4 (noun, «признательность») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "благоприятный отзыв; положительная рецензия",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова appreciation, значение 5 (noun, «благоприятный отзыв; положительная рецензия») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "повышение ценности; вздорожание",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова appreciation, значение 6 (noun, «повышение ценности; вздорожание») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для appreciation проверены все 6 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "approach",
+    "entry_index": 248,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "приближение",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 1 (noun, «приближение») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "подступ, подход (тж. перен.); подъезжать к кому-либо",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 2 (noun, «подступ, подход (тж. перен.); подъезжать к кому-либо») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: авансы; попытки",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 3 (noun, «при мн. ч.: авансы; попытки») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "(обыкн. при мн. ч.:) подступ",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 4 (noun, «(обыкн. при мн. ч.:) подступ») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "заход на посадку",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 5 (noun, «заход на посадку») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "приближаться, подходить",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 6 (verb, «приближаться, подходить») проверено отдельно: текущий порядок 6 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "приближаться, быть почти равным, похожим",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 7 (verb, «приближаться, быть почти равным, похожим») проверено отдельно: текущий порядок 7 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "verb",
+        "translation": "делать предложения, начинать переговоры",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 8 (verb, «делать предложения, начинать переговоры») проверено отдельно: текущий порядок 8 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "verb",
+        "translation": "пытаться повлиять (на кого-либо)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова approach, значение 9 (verb, «пытаться повлиять (на кого-либо)») проверено отдельно: текущий порядок 9 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для approach проверены все 9 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "appropriate",
+    "entry_index": 249,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "подходящий, соответствующий (to, for)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appropriate, значение 1 (adjective, «подходящий, соответствующий (to, for)») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "присваивать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appropriate, значение 2 (verb, «присваивать») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "verb",
+        "translation": "предназначать; ассигновать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appropriate, значение 3 (verb, «предназначать; ассигновать») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для appropriate проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "appropriately",
+    "entry_index": 250,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adverb",
+        "translation": "надлежащим образом, подходящим образом",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова appropriately, значение 1 (adverb, «надлежащим образом, подходящим образом») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для appropriately проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "approval",
+    "entry_index": 251,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "одобрение; благоприятное мнение",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approval, значение 1 (noun, «одобрение; благоприятное мнение») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "утверждение; санкция",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approval, значение 2 (noun, «утверждение; санкция») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для approval проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "approve",
+    "entry_index": 252,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "одобрять",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approve, значение 1 (verb, «одобрять») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "утверждать (особ. постановление); санкционировать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approve, значение 2 (verb, «утверждать (особ. постановление); санкционировать») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "verb",
+        "translation": "показывать, проявлять себя",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approve, значение 3 (verb, «показывать, проявлять себя») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для approve проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "approximately",
+    "entry_index": 253,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adverb",
+        "translation": "приблизительно, приближённо, почти",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова approximately, значение 1 (adverb, «приблизительно, приближённо, почти») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для approximately проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "April",
+    "entry_index": 254,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "апрель",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова April, значение 1 (noun, «апрель») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "апрельский; перен. то смех, то слёзы",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова April, значение 2 (noun, «апрельский; перен. то смех, то слёзы») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для April проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "arbitrary",
+    "entry_index": 255,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "произвольный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова arbitrary, значение 1 (adjective, «произвольный») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "adjective",
+        "translation": "капризный, своевольный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова arbitrary, значение 2 (adjective, «капризный, своевольный») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "adjective",
+        "translation": "деспотический",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова arbitrary, значение 3 (adjective, «деспотический») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для arbitrary проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "architect",
+    "entry_index": 256,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "архитектор, зодчий",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова architect, значение 1 (noun, «архитектор, зодчий») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "творец, создатель",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова architect, значение 2 (noun, «творец, создатель») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для architect проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "architectural",
+    "entry_index": 257,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "архитектурный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова architectural, значение 1 (adjective, «архитектурный») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для architectural проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "architecture",
+    "entry_index": 258,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "архитектура, зодчество",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова architecture, значение 1 (noun, «архитектура, зодчество») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "архитектурный стиль",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова architecture, значение 2 (noun, «архитектурный стиль») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "строение, структура",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова architecture, значение 3 (noun, «строение, структура») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для architecture проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "archive",
+    "entry_index": 259,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "отправлять в архив",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова archive, значение 1 (verb, «отправлять в архив») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "помещать в архив, архивировать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова archive, значение 2 (verb, «помещать в архив, архивировать») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для archive проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "area",
+    "entry_index": 260,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "площадь, пространство",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова area, значение 1 (noun, «площадь, пространство») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "площадь",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова area, значение 2 (noun, «площадь») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "район; зона; край; область",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова area, значение 3 (noun, «район; зона; край; область») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "размах, сфера",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова area, значение 4 (noun, «размах, сфера») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "приямок перед входом и окнами полуподвала",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова area, значение 5 (noun, «приямок перед входом и окнами полуподвала») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для area проверены все 5 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  }
+]

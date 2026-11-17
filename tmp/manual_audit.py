@@ -1,5 +1,5 @@
 """
-Систематический ручной аудит первых 500 статей oxford_5000_2026-08-27.json
+Систематический ручной аудит первых 500 статей src/data/oxford_5000.json
 Прямое сравнение с PDF Мюллера по каждому слову.
 
 Для каждого слова:
@@ -16,7 +16,7 @@ import re
 import time
 from collections import defaultdict
 
-JSON_PATH  = "oxford_5000_2026-08-27.json"
+JSON_PATH  = "src/data/oxford_5000.json"
 PDF_TEXT   = "tmp/muller_full_text.txt"
 OUT_REPORT = "tmp/manual_audit_500.txt"
 OUT_JSON   = "tmp/manual_audit_500.json"

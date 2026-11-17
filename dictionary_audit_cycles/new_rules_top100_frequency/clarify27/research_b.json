@@ -1,0 +1,583 @@
+[
+  {
+    "word": "make",
+    "meaning_index0": 22,
+    "before_pos": "noun",
+    "before_translation": "склад характера",
+    "before_register": [],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "натура, нрав; склад характера человека",
+    "proposed_register": [],
+    "diagnosis": "meaning_correct_but_translation_needs_person_scope",
+    "reason": "POS noun верен. Источник говорит о mental/moral constitution человека; уточнение не даёт спутать со строением изделия или физическим сложением. Источники не помечают этот noun как obsolete, поэтому такую помету не выдумываю. Нейтральный современный пример именно этой редкой конструкции не подтверждён; make-up нельзя подставить вместо make.",
+    "sources": [
+      {
+        "url": "https://www.merriam-webster.com/dictionary/make",
+        "quote": "physical, mental, or moral constitution",
+        "reference": "noun2, web lines484–488",
+        "context": "Действующая статья различает физический и психический/моральный склад; не смешивать со структурой изделия и брендом."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 106022,
+        "line_end": 106024,
+        "quote": "становления; развитие 4) склад ха",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": null,
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.9,
+    "application_recommendation": "clarify_translation_only; do_not_generate_from_definition"
+  },
+  {
+    "word": "make",
+    "meaning_index0": 23,
+    "before_pos": "noun",
+    "before_translation": "конституция, сложение",
+    "before_register": [],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "телосложение; физическая конституция человека",
+    "proposed_register": [],
+    "diagnosis": "meaning_correct_but_physical_scope_unclear",
+    "reason": "Physical constitution в MW подтверждает телесное сложение, а не конституцию государства и не характер (соседний индекс22). Полезное значение сохранено и уточнено. Утверждать, что устаревшее, без явной пометы источника нельзя; подходящий современный нейтральный пример пока не засвидетельствован.",
+    "sources": [
+      {
+        "url": "https://www.merriam-webster.com/dictionary/make",
+        "quote": "physical, mental, or moral constitution",
+        "reference": "noun2, web lines484–488",
+        "context": "Действующая статья различает физический и психический/моральный склад; не смешивать со структурой изделия и брендом."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 106023,
+        "line_end": 106024,
+        "quote": "рактера 5) конституция, сложение",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": null,
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.9,
+    "application_recommendation": "clarify_translation_only; preserve_primary_until_role08"
+  },
+  {
+    "word": "make",
+    "meaning_index0": 24,
+    "before_pos": "noun",
+    "before_translation": "тасование",
+    "before_register": [
+      "карточный термин"
+    ],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "тасование карт; очередь тасовать карты",
+    "proposed_register": [
+      "карточный термин"
+    ],
+    "diagnosis": "noun_act_or_turn_missing_object_and_second_component",
+    "reason": "MW noun4 прямо охватывает и действие тасования, и очередь тасовать. Слово карты следует добавить для ясности. Современная конструкция make the board относится к глаголу и подготовке раздачи, а не автоматически доказывает существительное a make; поэтому новый пример для noun не сочиняется по глагольному источнику.",
+    "sources": [
+      {
+        "url": "https://www.merriam-webster.com/dictionary/make",
+        "quote": "the act of shuffling cards",
+        "reference": "noun4, web lines500–504",
+        "context": "Следом указано also: turn to shuffle."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 106025,
+        "line_end": 106026,
+        "quote": "6) карт. тасование 7) карт. объяв",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": null,
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.94,
+    "application_recommendation": "clarify_translation; retain_empty_example_until_attested_noun"
+  },
+  {
+    "word": "make",
+    "meaning_index0": 25,
+    "before_pos": "noun",
+    "before_translation": "объявление козыря",
+    "before_register": [
+      "карточный термин"
+    ],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "объявление козыря (в старой карточной терминологии)",
+    "proposed_register": [
+      "карточный термин",
+      "историческое"
+    ],
+    "diagnosis": "historical_term_not_same_as_current_bridge_make",
+    "reason": "Collins подтверждает старое именование козыря. Текущий ACBL определяет noun make как успешный контракт, а не объявление козыря: незаметно заменить одно другим нельзя. Старое полезное содержание сохраняется с указанием эпохи; новый текущий смысл возможен отдельным решением, а не подменой.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/make",
+        "quote": "the act of naming the trump",
+        "reference": "American noun79, web lines1656–1658",
+        "context": "Не содержит современного примера; историческая карточная ветвь."
+      },
+      {
+        "url": "https://www.acbl.org/learn/",
+        "quote": "a successful contract",
+        "reference": "glossary MAKE",
+        "context": "Современная карточная организация определяет другое карточное существительное."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 106025,
+        "line_end": 106026,
+        "quote": "ление козыря 8) вид, форма, фасон,",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": null,
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.88,
+    "application_recommendation": "retain_old_sense_with_historical_scope; new_current_sense_requires_separate_approval",
+    "suggested_current_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "(бридж) успешно выполненный контракт; контракт, который можно выполнить",
+      "register": [
+        "карточный термин"
+      ],
+      "example_en": "Four hearts would have been a make.",
+      "example_ru": "Контракт «четыре червы» был бы выполнен.",
+      "source_quote": "Five diamonds would have been a make.",
+      "source_url": "https://www.acbl.org/learn/",
+      "not_a_replacement_for_index25": true
+    }
+  },
+  {
+    "word": "over",
+    "meaning_index0": 15,
+    "before_pos": "noun",
+    "before_translation": "перелёт (снаряда)",
+    "before_register": [
+      "военное"
+    ],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "перелёт; разрыв снаряда за целью (при корректировке артиллерийского огня)",
+    "proposed_register": [
+      "военное"
+    ],
+    "diagnosis": "current_specialist_noun_not_generic_movement",
+    "reason": "Collins nounarmy и действующая официальная учебная публикация USMC подтверждают существительное OVER как результат пристрелки за целью. Уточняется, что речь о разрыве за целью, не о радиокоманде Over из соседнего индекса16.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/over",
+        "quote": "a shot that hits or explodes beyond the target",
+        "reference": "British noun37, web lines1028–1030",
+        "context": "Существительное army."
+      },
+      {
+        "url": "https://www.marines.mil/portals/1/publications/mcwp3_16_4.pdf",
+        "quote": "obtaining an OVER and a SHORT",
+        "reference": "Glossary: bracketing",
+        "context": "Официальная морская пехота США: исчисляемые результаты пристрелки."
+      },
+      {
+        "url": "https://www.marines.mil/portals/1/Publications/MCRP%203-10F.2%20Formerly%20MCWP%203-16.6.pdf?ver=2017-10-26-104057-337",
+        "quote": "An over spotting is a round that detonates beyond the target",
+        "reference": "range spotting diagram/glossary; official renamed publication2017",
+        "context": "Современная учебная артиллерийская процедура, не художественная старинная речь."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 123040,
+        "line_end": 123042,
+        "quote": "перелёт (снаряда) 3) радио переход",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": {
+      "en": "The artillery observer reported an over.",
+      "ru": "Артиллерийский наблюдатель сообщил о перелёте снаряда.",
+      "origin": "generated",
+      "target_form": "over",
+      "usage_status": "current_specialist",
+      "sense_explanation": "An over — один результат пристрелки за целью; subject artillery observer исключает радиоформулу и предлог.",
+      "translation_explanation": "Reported соответствует сообщил; artillery observer задаёт специалиста; перелёт снаряда передаёт technical noun, не действие перелететь.",
+      "contrast": "В соседнем индексе16 Over стоит отдельной репликой, а здесь после an это noun."
+    },
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.96,
+    "application_recommendation": "clarify_translation_and_add_example_after_independent_review"
+  },
+  {
+    "word": "over",
+    "meaning_index0": 16,
+    "before_pos": "noun",
+    "before_translation": "переход на приём",
+    "before_register": [
+      "радио"
+    ],
+    "before_examples": [],
+    "proposed_pos": "interjection",
+    "proposed_translation": "приём!; конец моей передачи, жду ответа (в радиосвязи)",
+    "proposed_register": [
+      "радио"
+    ],
+    "diagnosis": "incorrect_noun_for_radio_formula",
+    "reason": "Радиослово Over обозначает действие завершить собственную реплику и передать очередь собеседнику. Это convention/interjection, а не существительное an over. Collins American разделяет nounshot и interjectionradio; официальный TfL2024 подтверждает текущую радиопрактику. Не переводить как отбой: Out, в отличие от Over, не требует ответа.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/over",
+        "quote": "I have finished speaking for the moment",
+        "reference": "American interjection40, web lines1038–1046",
+        "context": "Далее please respond: used in radio communication."
+      },
+      {
+        "url": "https://content.tfl.gov.uk/combined-rule-book-updated-august-2024-copy.pdf",
+        "quote": "I have finished my message and I am expecting a reply.",
+        "reference": "Elizabeth Line rule book section5.4b, printedp19; updatedAugust2024",
+        "context": "Строка Over; отдельная строка Out означает no reply expected."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 123040,
+        "line_end": 123042,
+        "quote": "3) радио переход",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": {
+      "en": "Can you hear me? Over.",
+      "ru": "Вы меня слышите? Приём.",
+      "origin": "generated",
+      "target_form": "Over",
+      "usage_status": "current_specialist",
+      "sense_explanation": "Отдельная завершающая радиоформула Over после вопроса: отправитель ждёт ответ.",
+      "translation_explanation": "Can you hear me? — Вы меня слышите?; Over — Приём, не отбой и не переход на другую частоту.",
+      "contrast": "Не nounперелёт и не наречие снова: реплика-процедурная команда."
+    },
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.99,
+    "application_recommendation": "correct_pos_translation_and_add_modern_example"
+  },
+  {
+    "word": "over",
+    "meaning_index0": 17,
+    "before_pos": "adjective",
+    "before_translation": "верхний",
+    "before_register": [],
+    "before_examples": [],
+    "proposed_pos": "prefix",
+    "proposed_translation": "over- в составе сложных слов: над-, сверху; верхний, расположенный над чем-либо",
+    "proposed_register": [
+      "в составе сложных слов"
+    ],
+    "diagnosis": "unit_boundary_standalone_adjective_vs_combining_form",
+    "reason": "В Collins upper/outer встречается как adjectival legacy description, но статья over- отдельно документирует пространственное словообразование. Современный учебный пример должен демонстрировать явно объявленный prefix over-, а не ложное standalone over shelf. Это прозрачное уточнение единицы, не объявление overhead формой обычного самостоятельного over.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/over",
+        "quote": "indicating location or movement above",
+        "reference": "over- British prefix3, web lines755–759",
+        "context": "American combining form1a добавляет above/upper и пример overhead, web1070–1076."
+      },
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/overhead",
+        "quote": "She turned on the overhead light",
+        "reference": "COBUILD adjective example, web line228",
+        "context": "Современное overhead непосредственно показывает значение находящийся сверху/над головой."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 123043,
+        "line_end": 123046,
+        "quote": "4. a 1) верхний 2) вышестоящий",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": {
+      "en": "Please turn on the overhead light.",
+      "ru": "Пожалуйста, включи верхний свет.",
+      "origin": "generated",
+      "target_form": "overhead",
+      "target_unit": "over-",
+      "unit_type": "prefix",
+      "usage_status": "current",
+      "morphology_explanation": "over- + head: находящийся над головой; target_form является носителем префикса, а не словоформой over.",
+      "sense_explanation": "Over- выражает положение сверху, не чрезмерность и не превосходство ранга.",
+      "translation_explanation": "Overhead light — верхний свет; просьба turn on — включи.",
+      "contrast": "Не prepositionover с отдельным дополнением и не другое значение prefixover- «слишком»."
+    },
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.95,
+    "application_recommendation": "explicit_prefix_unit_required_before_compound_example; preserve_old_description_in_report"
+  },
+  {
+    "word": "over",
+    "meaning_index0": 18,
+    "before_pos": "adjective",
+    "before_translation": "вышестоящий",
+    "before_register": [],
+    "before_examples": [],
+    "proposed_pos": "prefix",
+    "proposed_translation": "over- в составе сложных слов: выше по рангу или власти; над-",
+    "proposed_register": [
+      "в составе сложных слов"
+    ],
+    "diagnosis": "higher_rank_is_productive_prefix_not_over_manager",
+    "reason": "Collins over- prefix2 прямо указывает superior rank; American combiningform1b даёт overlord. Нельзя превращать over him (preposition) в adjective или сочинять over manager. Корректная современная единица здесь — явно записанный префикс, который в overlord означает власть над другими.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/over",
+        "quote": "indicating superior rank",
+        "reference": "over- British prefix2, web lines749–753",
+        "context": "American combining form1b: superior/eminent, example overlord, web1078–1082."
+      },
+      {
+        "url": "https://www.merriam-webster.com/dictionary/overlord",
+        "quote": "one having great power or authority",
+        "reference": "sense2b, web lines48–54",
+        "context": "Есть currentexamples2026 с corporate overlords; не только средневековый титул."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 123043,
+        "line_end": 123046,
+        "quote": "4. a 1) верхний 2) вышестоящий",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": {
+      "en": "They jokingly called their boss an overlord.",
+      "ru": "Они в шутку называли своего начальника повелителем.",
+      "origin": "generated",
+      "target_form": "overlord",
+      "target_unit": "over-",
+      "unit_type": "prefix",
+      "usage_status": "current",
+      "morphology_explanation": "over- + lord; over- отмечает верховенство/более высокую власть. Это словообразование, не inflection слова over.",
+      "sense_explanation": "Современный шутливый контекст начальника исключает старинный обязательный феодальный контекст; prefix выражает authority, не excess.",
+      "translation_explanation": "Jokingly — в шутку; called — называли, а не звали по телефону; overlord — повелитель.",
+      "contrast": "Не upper в пространстве и не предлог over с лицом после него."
+    },
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.94,
+    "application_recommendation": "explicit_prefix_unit_required_before_compound_example"
+  },
+  {
+    "word": "go",
+    "meaning_index0": 36,
+    "before_pos": "noun",
+    "before_translation": "приступ, обострение (болезни)",
+    "before_register": [
+      "разговорное"
+    ],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "эпизод, приступ болезни (в сочетании a go of ...)",
+    "proposed_register": [
+      "британское",
+      "разговорное"
+    ],
+    "diagnosis": "current_colloquial_illness_episode_not_only_exacerbation",
+    "reason": "Bout/attack может быть самостоятельным эпизодом болезни, а не лишь обострением хронической болезни. Помимо Collins найдено реальное первичное авторское употребление2025, поэтому нельзя объявлять смысл устаревшим из-за редкости веб-совпадений. Пример тяжёлого эпизода гриппа соответствует именно illness, не попытке или ходу игры.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/go",
+        "quote": "a bout or attack (of an illness)",
+        "reference": "British noun68, web lines1060–1064",
+        "context": "Словарь даёт he had a bad go of flu last winter."
+      },
+      {
+        "url": "https://bushcraftuk.com/community/threads/positive-news.169172/page-2",
+        "quote": "It was a go of Flu started my weight loss journey",
+        "reference": "JohnFenna, original forum post#24,2025-12-23",
+        "context": "Современная первая-person реплика автора, а не цитата старого романа или переизданного словаря."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 76372,
+        "line_end": 76374,
+        "quote": "ступ, обострение (болезни) 7) разг.",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": {
+      "en": "He had a bad go of flu last winter.",
+      "ru": "Прошлой зимой он тяжело переболел гриппом.",
+      "origin": "source",
+      "target_form": "go",
+      "usage_status": "current",
+      "sense_explanation": "A bad go of flu обозначает тяжёлый эпизод гриппа, не попытку действия.",
+      "translation_explanation": "Had a bad go of flu естественно передаётся тяжело переболел гриппом; last winter — прошлой зимой.",
+      "contrast": "Не a go at trying и не игровая очередь: дополнение flu задаёт illness.",
+      "source_url": "https://www.collinsdictionary.com/dictionary/english/go",
+      "quote": "he had a bad go of flu last winter",
+      "normalization": "Initial capitalization and final period only."
+    },
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.96,
+    "application_recommendation": "clarify_episode_scope_and_add_current_example"
+  },
+  {
+    "word": "go",
+    "meaning_index0": 37,
+    "before_pos": "noun",
+    "before_translation": "порция (кушанья); глоток (вина)",
+    "before_register": [
+      "разговорное"
+    ],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "порция еды; порция или глоток напитка (устаревшее разговорное употребление)",
+    "proposed_register": [
+      "разговорное",
+      "устаревшее"
+    ],
+    "diagnosis": "dated_serving_sense_not_modern_trying_or_japanese_unit",
+    "reason": "Wiktionary прямо ставит dated у portion; литературное свидетельство1904 не служит разрешением добавить современный пример. Have a go of a drink сегодня могло бы значить попробовать, то есть соседнее значение попытка/проба, а японское gō=180ml — отдельный омоним. Никакой подмены ради заполнения examples.",
+    "sources": [
+      {
+        "url": "https://en.wiktionary.org/wiki/go",
+        "quote": "(dated) A portion",
+        "reference": "English noun13, web lines1934–1939",
+        "context": "Свидетельство EdithNesbit1904 с порциями мармелада; пометаdated относится к этому количественному значению."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 76373,
+        "line_end": 76375,
+        "quote": "порция (кушанья); глоток (вина)",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": null,
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.94,
+    "application_recommendation": "mark_dated_preserve_sense; no_contemporary_example"
+  },
+  {
+    "word": "even",
+    "meaning_index0": 10,
+    "before_pos": "adverb",
+    "before_translation": "ровно",
+    "before_register": [
+      "устаревшее"
+    ],
+    "before_examples": [],
+    "proposed_pos": "adverb",
+    "proposed_translation": "ровно, равномерно (устаревшее наречное употребление)",
+    "proposed_register": [
+      "устаревшее"
+    ],
+    "diagnosis": "already_correct_obsolete_register_not_pos_error",
+    "reason": "Muller уже помечает уст. ровно, а CollinsAmericanadverb12 прямо obsolete in an even manner. Это не ошибка OCR и не повод заменить на текущий adjective even или другое слово evenly. Можно лишь сделать границу употребления яснее в переводе; исходная register уже правильна.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/even",
+        "quote": "obsolete; in an even manner",
+        "reference": "American adverb12, web lines674–678",
+        "context": "Отдельно current adjectiveflat/level и другие adverbmeanings; они не являются этим устаревшим наречием."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 60763,
+        "line_end": 60767,
+        "quote": "раз; точно 3) уст. ровно",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": null,
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.99,
+    "application_recommendation": "retain_obsolete_meaning_and_register; no_modern_example_for_old_sense"
+  },
+  {
+    "word": "May",
+    "meaning_index0": 2,
+    "before_pos": "noun",
+    "before_translation": "расцвет жизни",
+    "before_register": [
+      "поэтическое"
+    ],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "юность; весна жизни (поэтический образ)",
+    "proposed_register": [
+      "поэтическое"
+    ],
+    "diagnosis": "poetic_youth_more_precise_than_general_peak_of_life",
+    "reason": "AHD имеет springtime of life; youth. Исходное расцветжизни может быть понято как пик карьеры или зрелости, а речь о юности/веснежизни. POS noun верен; нельзя подставлять May=месяц или современное youth вместо заголовочной лексемы. Поэтическая помета сохраняется; AHD не ставит obsolete, поэтому её не выдумываю.",
+    "sources": [
+      {
+        "url": "https://www.ahdictionary.com/word/search.html?q=may",
+        "quote": "The springtime of life; youth.",
+        "reference": "May noun2, web line60",
+        "context": "Это отдельная метафора, не календарный месяц и не цветок боярышника."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 108094,
+        "line_end": 108096,
+        "quote": "боярышника 3) поэт. расцвет жиз",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": null,
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.96,
+    "application_recommendation": "clarify_youth_scope_and_preserve_poetic_register; no_neutral_current_example_confirmed"
+  },
+  {
+    "word": "May",
+    "meaning_index0": 3,
+    "before_pos": "noun",
+    "before_translation": "при мн. ч.: майские экзамены (в Кембридже)",
+    "before_register": [
+      "британское"
+    ],
+    "before_examples": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "Mays (мн. ч.): межколледжские майские экзамены в Кембридже (историческое название)",
+    "proposed_register": [
+      "британское",
+      "историческое"
+    ],
+    "diagnosis": "historical_institutional_name_not_current_rowing_event",
+    "reason": "Первичный авторGardner описывает Inter-collegiate Examinations called Mays, проводимые в конце summerterm. Это не обозначение любых нынешних экзаменов и не соседние Mays-гонки. Добавить исторический регистр и точное институциональное имя, сохранив содержание. Современная фраза In the nineteenthcentury... была бы новым предложением о прошлом, а не современным употреблением этого значения; её не добавлять.",
+    "sources": [
+      {
+        "url": "https://www.gutenberg.org/files/53909/53909-h/53909-h.htm",
+        "quote": "Inter-collegiate Examinations popularly called Mays",
+        "reference": "AliceGardner1921, printedp42, HTMLlines274–275",
+        "context": "Первичный исторический рассказ бывшей преподавательницы и fellowNewnham."
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line_start": 108094,
+        "line_end": 108099,
+        "quote": "ни 4) pl майские экзамены (в Кем",
+        "line_counting": "raw UTF-8 bytes decoded and split only at LF, same numbering as rg -n"
+      }
+    ],
+    "modern_candidate": null,
+    "no_deletion": true,
+    "neighbor_meanings_checked": true,
+    "confidence": 0.98,
+    "application_recommendation": "mark_historical_preserve_meaning; do_not_replace_with_current_races_or_fake_current_exam_example"
+  }
+]

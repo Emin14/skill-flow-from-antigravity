@@ -1,0 +1,197 @@
+{
+  "applied_count": 10,
+  "changes": [
+    {
+      "word": "body",
+      "path": "meanings[12]",
+      "before": {
+        "partOfSpeech": "noun",
+        "translation": "придавать форму, воплощать; олицетворять",
+        "examples": [],
+        "register": [],
+        "id": 13
+      },
+      "after": null,
+      "reason": "remove duplicate verb stored as noun"
+    },
+    {
+      "word": "service",
+      "path": "meanings[20:24]",
+      "before": [
+        {
+          "partOfSpeech": "verb",
+          "translation": "зона обслуживания автомобилистов (с бензоколонкой, мастерской, кафетерием)",
+          "examples": [],
+          "register": [],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "зона вещания",
+          "examples": [],
+          "register": [
+            "радио"
+          ],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "служебный вход",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 23
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "чёрный ход",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "ботаника",
+            "военное"
+          ],
+          "id": 24
+        }
+      ],
+      "after": null,
+      "reason": "move contaminated compounds to confirmed phrase destinations"
+    },
+    {
+      "word": "data",
+      "path": "meanings[2]",
+      "before": {
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "(часто употр. как sing) данные; факты; сведения; информация",
+        "examples": [
+          {
+            "en": "data bank",
+            "ru": "банк данных",
+            "register": [
+              "информатика"
+            ]
+          }
+        ],
+        "register": [],
+        "primary": true
+      },
+      "after": null,
+      "reason": "remove duplicate general sense and retain data bank"
+    },
+    {
+      "word": "either",
+      "path": "meanings[new]",
+      "before": null,
+      "after": {
+        "id": 6,
+        "partOfSpeech": "conjunction",
+        "translation": "или; или... или...",
+        "examples": [
+          {
+            "en": "either... or...",
+            "ru": "или... или..."
+          },
+          {
+            "en": "either come in or go out",
+            "ru": "либо входите, либо выходите"
+          }
+        ],
+        "register": []
+      },
+      "reason": "add missing conjunction use"
+    },
+    {
+      "word": "box",
+      "path": "meanings[10]",
+      "before": "запирать; класть в ящик или коробку",
+      "after": {
+        "id": 11,
+        "partOfSpeech": "verb",
+        "translation": "запирать; класть в ящик или коробку; подавать (документ) в суд; подсачивать (дерево)",
+        "examples": [
+          {
+            "en": "box in",
+            "ru": "окружать; отгораживать, отделять перегородкой"
+          },
+          {
+            "en": "box off",
+            "ru": "отгораживать, отделять перегородкой"
+          },
+          {
+            "en": "box up",
+            "ru": "втискивать, запихивать; неумелыми действиями портить, путать дело"
+          }
+        ],
+        "register": [],
+        "primary": true
+      },
+      "reason": "add source-confirmed verb senses and phrasal constructions"
+    },
+    {
+      "word": "woman",
+      "path": "meanings[0].examples[1].ru",
+      "before": "женщина, умудрённая жизненным опытом",
+      "after": "женщина, умудрённая жизненным опытом; светская женщина",
+      "reason": "restore source equivalent"
+    },
+    {
+      "word": "white",
+      "path": "meanings[1]/[11].examples[new]",
+      "before": null,
+      "after": "white fury; white of the egg",
+      "reason": "add source-backed constructions"
+    },
+    {
+      "word": "age",
+      "path": "meanings[1].register",
+      "before": [
+        "разговорное",
+        "британское"
+      ],
+      "after": [
+        "разговорное"
+      ],
+      "reason": "remove unsupported British label"
+    },
+    {
+      "word": "future",
+      "path": "meanings[3].register",
+      "before": [
+        "коммерческое",
+        "британское"
+      ],
+      "after": [
+        "коммерческое"
+      ],
+      "reason": "remove unsupported British label"
+    },
+    {
+      "word": "future",
+      "path": "meanings[4].register",
+      "before": [
+        "коммерческое",
+        "британское"
+      ],
+      "after": [
+        "коммерческое"
+      ],
+      "reason": "remove unsupported British label"
+    }
+  ],
+  "deferred_structural": [
+    "court",
+    "job",
+    "body missing noun distillation sense",
+    "board",
+    "bit",
+    "age/aged boundary",
+    "arm",
+    "catch",
+    "matter",
+    "box phrase boundary"
+  ],
+  "before_sha256": "ac11fdf66c95726d6bede791a44e54b0f70993307943f8f85e27272130747e98",
+  "after_sha256": "624900b9890b2de8183f290f6d8944cd1f8a21fc61f37b5ddac4f961be3c92e1"
+}

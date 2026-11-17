@@ -1,0 +1,977 @@
+[
+  {
+    "word": "robot",
+    "decision": "review_required",
+    "analysis": "Финальная защита robot: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 3 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: robot: 3 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[1]",
+    "before_after_ref": "stage_07.before_after[1]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of robot (робот; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “robot” for «робот» in this example.\" Russian: \"В этом примере в глоссарии «robot» означает «робот».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of robot with a natural context that unambiguously expresses \"робот\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of robot (автомат; телемеханическое устройство; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “robot” for «автомат; телемеханическое устройство» in this example.\" Russian: \"В этом примере в глоссарии «robot» означает «автомат; телемеханическое устройство».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of robot with a natural context that unambiguously expresses \"автомат; телемеханическое устройство\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of robot (автоматический сигнал уличного движения; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “robot” for «автоматический сигнал уличного движения» in this example.\" Russian: \"В этом примере в глоссарии «robot» означает «автоматический сигнал уличного движения».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of robot with a natural context that unambiguously expresses \"автоматический сигнал уличного движения\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: robot: 3 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of robot with a natural context that unambiguously expresses \"робот\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of robot with a natural context that unambiguously expresses \"автомат; телемеханическое устройство\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of robot with a natural context that unambiguously expresses \"автоматический сигнал уличного движения\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "robust",
+    "decision": "review_required",
+    "analysis": "Финальная защита robust: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 4 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: robust: 4 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[2]",
+    "before_after_ref": "stage_07.before_after[2]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of robust (крепкий, здоровый; сильный; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “robust” to describe «крепкий, здоровый; сильный» here.\" Russian: \"Здесь в руководстве «robust» описывает значение «крепкий, здоровый; сильный».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of robust with a natural context that unambiguously expresses \"крепкий, здоровый; сильный\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of robust (здравый, ясный (об уме); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “robust” to describe «здравый, ясный (об уме)» here.\" Russian: \"Здесь в руководстве «robust» описывает значение «здравый, ясный (об уме)».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of robust with a natural context that unambiguously expresses \"здравый, ясный (об уме)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of robust (трудный, требующий усилий; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “robust” to describe «трудный, требующий усилий» here.\" Russian: \"Здесь в руководстве «robust» описывает значение «трудный, требующий усилий».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of robust with a natural context that unambiguously expresses \"трудный, требующий усилий\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of robust (твёрдый, не допускающий возражений (о заявлении и т. п.); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “robust” to describe «твёрдый, не допускающий возражений (о заявлении и т. п.)» here.\" Russian: \"Здесь в руководстве «robust» описывает значение «твёрдый, не допускающий возражений (о заявлении и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of robust with a natural context that unambiguously expresses \"твёрдый, не допускающий возражений (о заявлении и т. п.)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: robust: 4 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of robust with a natural context that unambiguously expresses \"крепкий, здоровый; сильный\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of robust with a natural context that unambiguously expresses \"здравый, ясный (об уме)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of robust with a natural context that unambiguously expresses \"трудный, требующий усилий\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of robust with a natural context that unambiguously expresses \"твёрдый, не допускающий возражений (о заявлении и т. п.)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "rock",
+    "decision": "review_required",
+    "analysis": "Финальная защита rock: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 15 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: rock: 15 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[3]",
+    "before_after_ref": "stage_07.before_after[3]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of rock (горная порода; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «горная порода» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «горная порода».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of rock with a natural context that unambiguously expresses \"горная порода\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of rock (скала, утёс; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «скала, утёс» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «скала, утёс».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of rock with a natural context that unambiguously expresses \"скала, утёс\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of rock (Гибралтар; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «Гибралтар» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «Гибралтар».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of rock with a natural context that unambiguously expresses \"Гибралтар\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of rock (камень; булыжник; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «камень; булыжник» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «камень; булыжник».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of rock with a natural context that unambiguously expresses \"камень; булыжник\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of rock (опора, нечто надёжное; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «опора, нечто надёжное» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «опора, нечто надёжное».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of rock with a natural context that unambiguously expresses \"опора, нечто надёжное\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of rock (причина опасности; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «причина опасности» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «причина опасности».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of rock with a natural context that unambiguously expresses \"причина опасности\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of rock (леденцовая карамель; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «леденцовая карамель» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «леденцовая карамель».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of rock with a natural context that unambiguously expresses \"леденцовая карамель\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of rock ((обыкн. при мн. ч.:). деньги; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «(обыкн. при мн. ч.:). деньги» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «(обыкн. при мн. ч.:). деньги».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of rock with a natural context that unambiguously expresses \"(обыкн. при мн. ч.:). деньги\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of rock (брильянт; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «брильянт» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «брильянт».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of rock with a natural context that unambiguously expresses \"брильянт\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Generated example for meaning 10 of rock (при мн. ч.: груб. яйца; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «при мн. ч.: груб. яйца» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «при мн. ч.: груб. яйца».\".",
+        "required_action": "Replace or confirm the example for meaning 10 of rock with a natural context that unambiguously expresses \"при мн. ч.: груб. яйца\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Generated example for meaning 11 of rock (в роли определения: горный; каменный; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «в роли определения: горный; каменный» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «в роли определения: горный; каменный».\".",
+        "required_action": "Replace or confirm the example for meaning 11 of rock with a natural context that unambiguously expresses \"в роли определения: горный; каменный\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Generated example for meaning 12 of rock (качание; колебание; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «качание; колебание» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «качание; колебание».\".",
+        "required_action": "Replace or confirm the example for meaning 12 of rock with a natural context that unambiguously expresses \"качание; колебание\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Generated example for meaning 13 of rock (рок-музыка, рок; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «рок-музыка, рок» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «рок-музыка, рок».\".",
+        "required_action": "Replace or confirm the example for meaning 13 of rock with a natural context that unambiguously expresses \"рок-музыка, рок\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Generated example for meaning 14 of rock (твёрдое основание; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «твёрдое основание» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «твёрдое основание».\".",
+        "required_action": "Replace or confirm the example for meaning 14 of rock with a natural context that unambiguously expresses \"твёрдое основание\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Generated example for meaning 15 of rock (нижний предел; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rock” for «нижний предел» in this example.\" Russian: \"В этом примере в глоссарии «rock» означает «нижний предел».\".",
+        "required_action": "Replace or confirm the example for meaning 15 of rock with a natural context that unambiguously expresses \"нижний предел\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: rock: 15 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of rock with a natural context that unambiguously expresses \"горная порода\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of rock with a natural context that unambiguously expresses \"скала, утёс\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of rock with a natural context that unambiguously expresses \"Гибралтар\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of rock with a natural context that unambiguously expresses \"камень; булыжник\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of rock with a natural context that unambiguously expresses \"опора, нечто надёжное\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of rock with a natural context that unambiguously expresses \"причина опасности\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of rock with a natural context that unambiguously expresses \"леденцовая карамель\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of rock with a natural context that unambiguously expresses \"(обыкн. при мн. ч.:). деньги\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of rock with a natural context that unambiguously expresses \"брильянт\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 10 of rock with a natural context that unambiguously expresses \"при мн. ч.: груб. яйца\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 11 of rock with a natural context that unambiguously expresses \"в роли определения: горный; каменный\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 12 of rock with a natural context that unambiguously expresses \"качание; колебание\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 13 of rock with a natural context that unambiguously expresses \"рок-музыка, рок\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 14 of rock with a natural context that unambiguously expresses \"твёрдое основание\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 15 of rock with a natural context that unambiguously expresses \"нижний предел\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "rocket",
+    "decision": "review_required",
+    "analysis": "Финальная защита rocket: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 5 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: rocket: 5 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[4]",
+    "before_after_ref": "stage_07.before_after[4]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of rocket (ракета; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rocket” for «ракета» in this example.\" Russian: \"В этом примере в глоссарии «rocket» означает «ракета».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of rocket with a natural context that unambiguously expresses \"ракета\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of rocket (ракетный двигатель; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rocket” for «ракетный двигатель» in this example.\" Russian: \"В этом примере в глоссарии «rocket» означает «ракетный двигатель».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of rocket with a natural context that unambiguously expresses \"ракетный двигатель\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of rocket (реактивный снаряд; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rocket” for «реактивный снаряд» in this example.\" Russian: \"В этом примере в глоссарии «rocket» означает «реактивный снаряд».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of rocket with a natural context that unambiguously expresses \"реактивный снаряд\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of rocket (стрелять ракетами; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rocket” means «стрелять ракетами» in this sentence.\" Russian: \"На уроке «rocket» в этом предложении означает: «стрелять ракетами».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of rocket with a natural context that unambiguously expresses \"стрелять ракетами\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of rocket (взмывать, взлетать; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rocket” means «взмывать, взлетать» in this sentence.\" Russian: \"На уроке «rocket» в этом предложении означает: «взмывать, взлетать».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of rocket with a natural context that unambiguously expresses \"взмывать, взлетать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: rocket: 5 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of rocket with a natural context that unambiguously expresses \"ракета\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of rocket with a natural context that unambiguously expresses \"ракетный двигатель\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of rocket with a natural context that unambiguously expresses \"реактивный снаряд\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of rocket with a natural context that unambiguously expresses \"стрелять ракетами\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of rocket with a natural context that unambiguously expresses \"взмывать, взлетать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "rod",
+    "decision": "review_required",
+    "analysis": "Финальная защита rod: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 7 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: rod: 7 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[5]",
+    "before_after_ref": "stage_07.before_after[5]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of rod (прут; стержень; брус; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rod” for «прут; стержень; брус» in this example.\" Russian: \"В этом примере в глоссарии «rod» означает «прут; стержень; брус».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of rod with a natural context that unambiguously expresses \"прут; стержень; брус\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of rod (жезл, скипетр (атрибут власти); перен. власть, сила; тирания; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rod” for «жезл, скипетр (атрибут власти); перен. власть, сила; тирания» in this example.\" Russian: \"В этом примере в глоссарии «rod» означает «жезл, скипетр (атрибут власти); перен. власть, сила; тирания».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of rod with a natural context that unambiguously expresses \"жезл, скипетр (атрибут власти); перен. власть, сила; тирания\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of rod (удочка; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rod” for «удочка» in this example.\" Russian: \"В этом примере в глоссарии «rod» означает «удочка».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of rod with a natural context that unambiguously expresses \"удочка\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of rod (мера длины род (= 5,029 м); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rod” for «мера длины род (= 5,029 м)» in this example.\" Russian: \"В этом примере в глоссарии «rod» означает «мера длины род (= 5,029 м)».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of rod with a natural context that unambiguously expresses \"мера длины род (= 5,029 м)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of rod (палочка (микроб); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rod” for «палочка (микроб)» in this example.\" Russian: \"В этом примере в глоссарии «rod» означает «палочка (микроб)».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of rod with a natural context that unambiguously expresses \"палочка (микроб)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of rod (палочка (сетчатой оболочки глаза); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rod” for «палочка (сетчатой оболочки глаза)» in this example.\" Russian: \"В этом примере в глоссарии «rod» означает «палочка (сетчатой оболочки глаза)».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of rod with a natural context that unambiguously expresses \"палочка (сетчатой оболочки глаза)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of rod (револьвер; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rod” for «револьвер» in this example.\" Russian: \"В этом примере в глоссарии «rod» означает «револьвер».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of rod with a natural context that unambiguously expresses \"револьвер\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: rod: 7 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of rod with a natural context that unambiguously expresses \"прут; стержень; брус\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of rod with a natural context that unambiguously expresses \"жезл, скипетр (атрибут власти); перен. власть, сила; тирания\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of rod with a natural context that unambiguously expresses \"удочка\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of rod with a natural context that unambiguously expresses \"мера длины род (= 5,029 м)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of rod with a natural context that unambiguously expresses \"палочка (микроб)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of rod with a natural context that unambiguously expresses \"палочка (сетчатой оболочки глаза)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of rod with a natural context that unambiguously expresses \"револьвер\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "role",
+    "decision": "review_required",
+    "analysis": "Финальная защита role: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: role: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[6]",
+    "before_after_ref": "stage_07.before_after[6]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of role (роль; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “role” for «роль» in this example.\" Russian: \"В этом примере в глоссарии «role» означает «роль».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of role with a natural context that unambiguously expresses \"роль\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: role: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of role with a natural context that unambiguously expresses \"роль\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "roll",
+    "decision": "review_required",
+    "analysis": "Финальная защита roll: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 22 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: roll: 22 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[7]",
+    "before_after_ref": "stage_07.before_after[7]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of roll (походка вразвалку; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «походка вразвалку» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «походка вразвалку».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of roll with a natural context that unambiguously expresses \"походка вразвалку\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of roll (раскат грома или голоса; грохот барабана; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «раскат грома или голоса; грохот барабана» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «раскат грома или голоса; грохот барабана».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of roll with a natural context that unambiguously expresses \"раскат грома или голоса; грохот барабана\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of roll (бочка, двойной переворот через крыло; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «бочка, двойной переворот через крыло» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «бочка, двойной переворот через крыло».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of roll with a natural context that unambiguously expresses \"бочка, двойной переворот через крыло\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of roll (свиток; свёрток (материи, бумаги и т. п.); связка (соломы); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «свиток; свёрток (материи, бумаги и т. п.); связка (соломы)» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «свиток; свёрток (материи, бумаги и т. п.); связка (соломы)».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of roll with a natural context that unambiguously expresses \"свиток; свёрток (материи, бумаги и т. п.); связка (соломы)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of roll (рулон; клубок; валик (причёска); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «рулон; клубок; валик (причёска)» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «рулон; клубок; валик (причёска)».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of roll with a natural context that unambiguously expresses \"рулон; клубок; валик (причёска)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of roll (скатка; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «скатка» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «скатка».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of roll with a natural context that unambiguously expresses \"скатка\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of roll (рулет (мясной и т. п.); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «рулет (мясной и т. п.)» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «рулет (мясной и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of roll with a natural context that unambiguously expresses \"рулет (мясной и т. п.)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of roll (булочка; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «булочка» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «булочка».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of roll with a natural context that unambiguously expresses \"булочка\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Generated example for meaning 10 of roll (катышек (масла, воска); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «катышек (масла, воска)» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «катышек (масла, воска)».\".",
+        "required_action": "Replace or confirm the example for meaning 10 of roll with a natural context that unambiguously expresses \"катышек (масла, воска)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Generated example for meaning 12 of roll (валок (прокатного стана); вал, барабан, цилиндр, ролик; вальцы; каток; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «валок (прокатного стана); вал, барабан, цилиндр, ролик; вальцы; каток» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «валок (прокатного стана); вал, барабан, цилиндр, ролик; вальцы; каток».\".",
+        "required_action": "Replace or confirm the example for meaning 12 of roll with a natural context that unambiguously expresses \"валок (прокатного стана); вал, барабан, цилиндр, ролик; вальцы; каток\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Generated example for meaning 13 of roll (завиток ионической капители; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «завиток ионической капители» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «завиток ионической капители».\".",
+        "required_action": "Replace or confirm the example for meaning 13 of roll with a natural context that unambiguously expresses \"завиток ионической капители\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Generated example for meaning 14 of roll (деньги, особ. пачка денег; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roll” for «деньги, особ. пачка денег» in this example.\" Russian: \"В этом примере в глоссарии «roll» означает «деньги, особ. пачка денег».\".",
+        "required_action": "Replace or confirm the example for meaning 14 of roll with a natural context that unambiguously expresses \"деньги, особ. пачка денег\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 16,
+        "problem": "Generated example for meaning 16 of roll (катать, скатывать (в шарик); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «катать, скатывать (в шарик)» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «катать, скатывать (в шарик)».\".",
+        "required_action": "Replace or confirm the example for meaning 16 of roll with a natural context that unambiguously expresses \"катать, скатывать (в шарик)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Generated example for meaning 18 of roll (укатывать (дорогу и т. п.); трамбовать (катком); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «укатывать (дорогу и т. п.); трамбовать (катком)» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «укатывать (дорогу и т. п.); трамбовать (катком)».\".",
+        "required_action": "Replace or confirm the example for meaning 18 of roll with a natural context that unambiguously expresses \"укатывать (дорогу и т. п.); трамбовать (катком)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 19,
+        "problem": "Generated example for meaning 19 of roll (раскатывать (тесто); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «раскатывать (тесто)» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «раскатывать (тесто)».\".",
+        "required_action": "Replace or confirm the example for meaning 19 of roll with a natural context that unambiguously expresses \"раскатывать (тесто)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 20,
+        "problem": "Generated example for meaning 20 of roll (прокатывать (металл); вальцевать, плющить; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «прокатывать (металл); вальцевать, плющить» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «прокатывать (металл); вальцевать, плющить».\".",
+        "required_action": "Replace or confirm the example for meaning 20 of roll with a natural context that unambiguously expresses \"прокатывать (металл); вальцевать, плющить\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 21,
+        "problem": "Generated example for meaning 21 of roll (испытывать бортовую качку; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «испытывать бортовую качку» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «испытывать бортовую качку».\".",
+        "required_action": "Replace or confirm the example for meaning 21 of roll with a natural context that unambiguously expresses \"испытывать бортовую качку\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 22,
+        "problem": "Generated example for meaning 22 of roll (идти покачиваясь или вразвалку (часто roll along); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «идти покачиваясь или вразвалку (часто roll along)» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «идти покачиваясь или вразвалку (часто roll along)».\".",
+        "required_action": "Replace or confirm the example for meaning 22 of roll with a natural context that unambiguously expresses \"идти покачиваясь или вразвалку (часто roll along)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Generated example for meaning 23 of roll (быть холмистым (о местности); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «быть холмистым (о местности)» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «быть холмистым (о местности)».\".",
+        "required_action": "Replace or confirm the example for meaning 23 of roll with a natural context that unambiguously expresses \"быть холмистым (о местности)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 24,
+        "problem": "Generated example for meaning 24 of roll (плавно течь, катить свои волны; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «плавно течь, катить свои волны» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «плавно течь, катить свои волны».\".",
+        "required_action": "Replace or confirm the example for meaning 24 of roll with a natural context that unambiguously expresses \"плавно течь, катить свои волны\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 25,
+        "problem": "Generated example for meaning 25 of roll (колыхаться (о море); накатываться (о волнах); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «колыхаться (о море); накатываться (о волнах)» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «колыхаться (о море); накатываться (о волнах)».\".",
+        "required_action": "Replace or confirm the example for meaning 25 of roll with a natural context that unambiguously expresses \"колыхаться (о море); накатываться (о волнах)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 27,
+        "problem": "Generated example for meaning 27 of roll (ограбить (беспомощную жертву); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roll” means «ограбить (беспомощную жертву)» in this sentence.\" Russian: \"На уроке «roll» в этом предложении означает: «ограбить (беспомощную жертву)».\".",
+        "required_action": "Replace or confirm the example for meaning 27 of roll with a natural context that unambiguously expresses \"ограбить (беспомощную жертву)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: roll: 22 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of roll with a natural context that unambiguously expresses \"походка вразвалку\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of roll with a natural context that unambiguously expresses \"раскат грома или голоса; грохот барабана\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of roll with a natural context that unambiguously expresses \"бочка, двойной переворот через крыло\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of roll with a natural context that unambiguously expresses \"свиток; свёрток (материи, бумаги и т. п.); связка (соломы)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of roll with a natural context that unambiguously expresses \"рулон; клубок; валик (причёска)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of roll with a natural context that unambiguously expresses \"скатка\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of roll with a natural context that unambiguously expresses \"рулет (мясной и т. п.)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of roll with a natural context that unambiguously expresses \"булочка\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 10 of roll with a natural context that unambiguously expresses \"катышек (масла, воска)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 12 of roll with a natural context that unambiguously expresses \"валок (прокатного стана); вал, барабан, цилиндр, ролик; вальцы; каток\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 13 of roll with a natural context that unambiguously expresses \"завиток ионической капители\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 14 of roll with a natural context that unambiguously expresses \"деньги, особ. пачка денег\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 16 of roll with a natural context that unambiguously expresses \"катать, скатывать (в шарик)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 18 of roll with a natural context that unambiguously expresses \"укатывать (дорогу и т. п.); трамбовать (катком)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 19 of roll with a natural context that unambiguously expresses \"раскатывать (тесто)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 20 of roll with a natural context that unambiguously expresses \"прокатывать (металл); вальцевать, плющить\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 21 of roll with a natural context that unambiguously expresses \"испытывать бортовую качку\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 22 of roll with a natural context that unambiguously expresses \"идти покачиваясь или вразвалку (часто roll along)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 23 of roll with a natural context that unambiguously expresses \"быть холмистым (о местности)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 24 of roll with a natural context that unambiguously expresses \"плавно течь, катить свои волны\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 25 of roll with a natural context that unambiguously expresses \"колыхаться (о море); накатываться (о волнах)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 27 of roll with a natural context that unambiguously expresses \"ограбить (беспомощную жертву)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "romance",
+    "decision": "review_required",
+    "analysis": "Финальная защита romance: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 10 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: romance: 10 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[8]",
+    "before_after_ref": "stage_07.before_after[8]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of romance (романские языки; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romance” for «романские языки» in this example.\" Russian: \"В этом примере в глоссарии «romance» означает «романские языки».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of romance with a natural context that unambiguously expresses \"романские языки\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of romance (романтика; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romance” for «романтика» in this example.\" Russian: \"В этом примере в глоссарии «romance» означает «романтика».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of romance with a natural context that unambiguously expresses \"романтика\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of romance (романтический эпизод, любовная история; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romance” for «романтический эпизод, любовная история» in this example.\" Russian: \"В этом примере в глоссарии «romance» означает «романтический эпизод, любовная история».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of romance with a natural context that unambiguously expresses \"романтический эпизод, любовная история\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of romance (роман (героического или любовного жанра; противоп. novel роман бытовой); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romance” for «роман (героического или любовного жанра; противоп. novel роман бытовой)» in this example.\" Russian: \"В этом примере в глоссарии «romance» означает «роман (героического или любовного жанра; противоп. novel роман бытовой)».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of romance with a natural context that unambiguously expresses \"роман (героического или любовного жанра; противоп. novel роман бытовой)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of romance (рыцарский роман (обыкн. в стихах); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romance” for «рыцарский роман (обыкн. в стихах)» in this example.\" Russian: \"В этом примере в глоссарии «romance» означает «рыцарский роман (обыкн. в стихах)».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of romance with a natural context that unambiguously expresses \"рыцарский роман (обыкн. в стихах)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of romance (выдумка, небылица; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romance” for «выдумка, небылица» in this example.\" Russian: \"В этом примере в глоссарии «romance» означает «выдумка, небылица».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of romance with a natural context that unambiguously expresses \"выдумка, небылица\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of romance (романс; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romance” for «романс» in this example.\" Russian: \"В этом примере в глоссарии «romance» означает «романс».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of romance with a natural context that unambiguously expresses \"романс\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of romance (преувеличивать; приукрашивать действительность; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “romance” means «преувеличивать; приукрашивать действительность» in this sentence.\" Russian: \"На уроке «romance» в этом предложении означает: «преувеличивать; приукрашивать действительность».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of romance with a natural context that unambiguously expresses \"преувеличивать; приукрашивать действительность\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of romance (выдумывать, фантазировать, сочинять; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “romance” means «выдумывать, фантазировать, сочинять» in this sentence.\" Russian: \"На уроке «romance» в этом предложении означает: «выдумывать, фантазировать, сочинять».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of romance with a natural context that unambiguously expresses \"выдумывать, фантазировать, сочинять\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Generated example for meaning 10 of romance (ухаживать (за кем-либо); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “romance” means «ухаживать (за кем-либо)» in this sentence.\" Russian: \"На уроке «romance» в этом предложении означает: «ухаживать (за кем-либо)».\".",
+        "required_action": "Replace or confirm the example for meaning 10 of romance with a natural context that unambiguously expresses \"ухаживать (за кем-либо)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: romance: 10 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of romance with a natural context that unambiguously expresses \"романские языки\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of romance with a natural context that unambiguously expresses \"романтика\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of romance with a natural context that unambiguously expresses \"романтический эпизод, любовная история\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of romance with a natural context that unambiguously expresses \"роман (героического или любовного жанра; противоп. novel роман бытовой)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of romance with a natural context that unambiguously expresses \"рыцарский роман (обыкн. в стихах)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of romance with a natural context that unambiguously expresses \"выдумка, небылица\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of romance with a natural context that unambiguously expresses \"романс\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of romance with a natural context that unambiguously expresses \"преувеличивать; приукрашивать действительность\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of romance with a natural context that unambiguously expresses \"выдумывать, фантазировать, сочинять\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 10 of romance with a natural context that unambiguously expresses \"ухаживать (за кем-либо)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "romantic",
+    "decision": "review_required",
+    "analysis": "Финальная защита romantic: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 5 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: romantic: 5 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[9]",
+    "before_after_ref": "stage_07.before_after[9]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of romantic (романтичный; романтический; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “romantic” to describe «романтичный; романтический» here.\" Russian: \"Здесь в руководстве «romantic» описывает значение «романтичный; романтический».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of romantic with a natural context that unambiguously expresses \"романтичный; романтический\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of romantic (фантастический (о проекте и т. п.); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “romantic” to describe «фантастический (о проекте и т. п.)» here.\" Russian: \"Здесь в руководстве «romantic» описывает значение «фантастический (о проекте и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of romantic with a natural context that unambiguously expresses \"фантастический (о проекте и т. п.)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of romantic (вымышленный, воображаемый; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “romantic” to describe «вымышленный, воображаемый» here.\" Russian: \"Здесь в руководстве «romantic» описывает значение «вымышленный, воображаемый».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of romantic with a natural context that unambiguously expresses \"вымышленный, воображаемый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of romantic (романтик; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romantic” for «романтик» in this example.\" Russian: \"В этом примере в глоссарии «romantic» означает «романтик».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of romantic with a natural context that unambiguously expresses \"романтик\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of romantic (при мн. ч.: высокопарные речи; выспренные чувства; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “romantic” for «при мн. ч.: высокопарные речи; выспренные чувства» in this example.\" Russian: \"В этом примере в глоссарии «romantic» означает «при мн. ч.: высокопарные речи; выспренные чувства».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of romantic with a natural context that unambiguously expresses \"при мн. ч.: высокопарные речи; выспренные чувства\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: romantic: 5 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of romantic with a natural context that unambiguously expresses \"романтичный; романтический\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of romantic with a natural context that unambiguously expresses \"фантастический (о проекте и т. п.)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of romantic with a natural context that unambiguously expresses \"вымышленный, воображаемый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of romantic with a natural context that unambiguously expresses \"романтик\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of romantic with a natural context that unambiguously expresses \"при мн. ч.: высокопарные речи; выспренные чувства\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "roof",
+    "decision": "review_required",
+    "analysis": "Финальная защита roof: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 5 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: roof: 5 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[10]",
+    "before_after_ref": "stage_07.before_after[10]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of roof (империал (дилижанса и т. п.); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roof” for «империал (дилижанса и т. п.)» in this example.\" Russian: \"В этом примере в глоссарии «roof» означает «империал (дилижанса и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of roof with a natural context that unambiguously expresses \"империал (дилижанса и т. п.)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of roof (потолок; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roof” for «потолок» in this example.\" Russian: \"В этом примере в глоссарии «roof» означает «потолок».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of roof with a natural context that unambiguously expresses \"потолок\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of roof (потолок (выработки); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roof” for «потолок (выработки)» in this example.\" Russian: \"В этом примере в глоссарии «roof» означает «потолок (выработки)».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of roof with a natural context that unambiguously expresses \"потолок (выработки)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of roof (максимальная цена; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “roof” for «максимальная цена» in this example.\" Russian: \"В этом примере в глоссарии «roof» означает «максимальная цена».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of roof with a natural context that unambiguously expresses \"максимальная цена\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of roof (крыть, настилать крышу; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “roof” means «крыть, настилать крышу» in this sentence.\" Russian: \"На уроке «roof» в этом предложении означает: «крыть, настилать крышу».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of roof with a natural context that unambiguously expresses \"крыть, настилать крышу\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: roof: 5 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of roof with a natural context that unambiguously expresses \"империал (дилижанса и т. п.)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of roof with a natural context that unambiguously expresses \"потолок\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of roof with a natural context that unambiguously expresses \"потолок (выработки)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of roof with a natural context that unambiguously expresses \"максимальная цена\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of roof with a natural context that unambiguously expresses \"крыть, настилать крышу\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "room",
+    "decision": "review_required",
+    "analysis": "Финальная защита room: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 3 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: room: 3 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[11]",
+    "before_after_ref": "stage_07.before_after[11]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of room (комната; номер (в гостинице); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “room” for «комната; номер (в гостинице)» in this example.\" Russian: \"В этом примере в глоссарии «room» означает «комната; номер (в гостинице)».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of room with a natural context that unambiguously expresses \"комната; номер (в гостинице)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of room (при мн. ч.: помещение; квартира; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “room” for «при мн. ч.: помещение; квартира» in this example.\" Russian: \"В этом примере в глоссарии «room» означает «при мн. ч.: помещение; квартира».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of room with a natural context that unambiguously expresses \"при мн. ч.: помещение; квартира\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of room (дать помещение, разместить (людей); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “room” means «дать помещение, разместить (людей)» in this sentence.\" Russian: \"На уроке «room» в этом предложении означает: «дать помещение, разместить (людей)».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of room with a natural context that unambiguously expresses \"дать помещение, разместить (людей)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: room: 3 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of room with a natural context that unambiguously expresses \"комната; номер (в гостинице)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of room with a natural context that unambiguously expresses \"при мн. ч.: помещение; квартира\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of room with a natural context that unambiguously expresses \"дать помещение, разместить (людей)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "root",
+    "decision": "review_required",
+    "analysis": "Финальная защита root: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 8 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: root: 8 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[12]",
+    "before_after_ref": "stage_07.before_after[12]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of root (саженец; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “root” for «саженец» in this example.\" Russian: \"В этом примере в глоссарии «root» означает «саженец».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of root with a natural context that unambiguously expresses \"саженец\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of root (при мн. ч.: корнеплоды; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “root” for «при мн. ч.: корнеплоды» in this example.\" Russian: \"В этом примере в глоссарии «root» означает «при мн. ч.: корнеплоды».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of root with a natural context that unambiguously expresses \"при мн. ч.: корнеплоды\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of root (прародитель, предок, основатель рода; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “root” for «прародитель, предок, основатель рода» in this example.\" Russian: \"В этом примере в глоссарии «root» означает «прародитель, предок, основатель рода».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of root with a natural context that unambiguously expresses \"прародитель, предок, основатель рода\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of root (отпрыск, потомок; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “root” for «отпрыск, потомок» in this example.\" Russian: \"В этом примере в глоссарии «root» означает «отпрыск, потомок».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of root with a natural context that unambiguously expresses \"отпрыск, потомок\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of root (корень; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “root” for «корень» in this example.\" Russian: \"В этом примере в глоссарии «root» означает «корень».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of root with a natural context that unambiguously expresses \"корень\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Generated example for meaning 11 of root (рыть землю рылом, подрывать корни (о свинье); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “root” means «рыть землю рылом, подрывать корни (о свинье)» in this sentence.\" Russian: \"На уроке «root» в этом предложении означает: «рыть землю рылом, подрывать корни (о свинье)».\".",
+        "required_action": "Replace or confirm the example for meaning 11 of root with a natural context that unambiguously expresses \"рыть землю рылом, подрывать корни (о свинье)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Generated example for meaning 12 of root (пустить корни; укоренять(ся); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “root” means «пустить корни; укоренять(ся)» in this sentence.\" Russian: \"На уроке «root» в этом предложении означает: «пустить корни; укоренять(ся)».\".",
+        "required_action": "Replace or confirm the example for meaning 12 of root with a natural context that unambiguously expresses \"пустить корни; укоренять(ся)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Generated example for meaning 14 of root (внедрять; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “root” means «внедрять» in this sentence.\" Russian: \"На уроке «root» в этом предложении означает: «внедрять».\".",
+        "required_action": "Replace or confirm the example for meaning 14 of root with a natural context that unambiguously expresses \"внедрять\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: root: 8 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of root with a natural context that unambiguously expresses \"саженец\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of root with a natural context that unambiguously expresses \"при мн. ч.: корнеплоды\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of root with a natural context that unambiguously expresses \"прародитель, предок, основатель рода\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of root with a natural context that unambiguously expresses \"отпрыск, потомок\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of root with a natural context that unambiguously expresses \"корень\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 11 of root with a natural context that unambiguously expresses \"рыть землю рылом, подрывать корни (о свинье)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 12 of root with a natural context that unambiguously expresses \"пустить корни; укоренять(ся)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 14 of root with a natural context that unambiguously expresses \"внедрять\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "rope",
+    "decision": "review_required",
+    "analysis": "Финальная защита rope: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 7 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: rope: 7 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[13]",
+    "before_after_ref": "stage_07.before_after[13]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of rope (лассо; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rope” for «лассо» in this example.\" Russian: \"В этом примере в глоссарии «rope» означает «лассо».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of rope with a natural context that unambiguously expresses \"лассо\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of rope (при мн. ч.: снасти, такелаж; оснастка; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rope” for «при мн. ч.: снасти, такелаж; оснастка» in this example.\" Russian: \"В этом примере в глоссарии «rope» означает «при мн. ч.: снасти, такелаж; оснастка».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of rope with a natural context that unambiguously expresses \"при мн. ч.: снасти, такелаж; оснастка\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of rope (в роли определения: канатный; верёвочный; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rope” for «в роли определения: канатный; верёвочный» in this example.\" Russian: \"В этом примере в глоссарии «rope» означает «в роли определения: канатный; верёвочный».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of rope with a natural context that unambiguously expresses \"в роли определения: канатный; верёвочный\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of rope (связаться друг с другом верёвкой (об альпинистах); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rope” means «связаться друг с другом верёвкой (об альпинистах)» in this sentence.\" Russian: \"На уроке «rope» в этом предложении означает: «связаться друг с другом верёвкой (об альпинистах)».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of rope with a natural context that unambiguously expresses \"связаться друг с другом верёвкой (об альпинистах)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of rope (тянуть на верёвке, канате; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rope” means «тянуть на верёвке, канате» in this sentence.\" Russian: \"На уроке «rope» в этом предложении означает: «тянуть на верёвке, канате».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of rope with a natural context that unambiguously expresses \"тянуть на верёвке, канате\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Generated example for meaning 10 of rope (ловить лассо, арканом; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rope” means «ловить лассо, арканом» in this sentence.\" Russian: \"На уроке «rope» в этом предложении означает: «ловить лассо, арканом».\".",
+        "required_action": "Replace or confirm the example for meaning 10 of rope with a natural context that unambiguously expresses \"ловить лассо, арканом\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Generated example for meaning 11 of rope (умышленно отставать, сдерживать лошадь (о жокее); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rope” means «умышленно отставать, сдерживать лошадь (о жокее)» in this sentence.\" Russian: \"На уроке «rope» в этом предложении означает: «умышленно отставать, сдерживать лошадь (о жокее)».\".",
+        "required_action": "Replace or confirm the example for meaning 11 of rope with a natural context that unambiguously expresses \"умышленно отставать, сдерживать лошадь (о жокее)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: rope: 7 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of rope with a natural context that unambiguously expresses \"лассо\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of rope with a natural context that unambiguously expresses \"при мн. ч.: снасти, такелаж; оснастка\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of rope with a natural context that unambiguously expresses \"в роли определения: канатный; верёвочный\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of rope with a natural context that unambiguously expresses \"связаться друг с другом верёвкой (об альпинистах)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of rope with a natural context that unambiguously expresses \"тянуть на верёвке, канате\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 10 of rope with a natural context that unambiguously expresses \"ловить лассо, арканом\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 11 of rope with a natural context that unambiguously expresses \"умышленно отставать, сдерживать лошадь (о жокее)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "rose",
+    "decision": "review_required",
+    "analysis": "Финальная защита rose: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 10 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: rose: 10 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[14]",
+    "before_after_ref": "stage_07.before_after[14]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of rose (розовый цвет; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rose” for «розовый цвет» in this example.\" Russian: \"В этом примере в глоссарии «rose» означает «розовый цвет».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of rose with a natural context that unambiguously expresses \"розовый цвет\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of rose (розетка; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rose” for «розетка» in this example.\" Russian: \"В этом примере в глоссарии «rose» означает «розетка».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of rose with a natural context that unambiguously expresses \"розетка\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of rose (сетка (душа или лейки); разбрызгиватель; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rose” for «сетка (душа или лейки); разбрызгиватель» in this example.\" Russian: \"В этом примере в глоссарии «rose» означает «сетка (душа или лейки); разбрызгиватель».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of rose with a natural context that unambiguously expresses \"сетка (душа или лейки); разбрызгиватель\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of rose (рожа, рожистое воспаление; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rose” for «рожа, рожистое воспаление» in this example.\" Russian: \"В этом примере в глоссарии «rose» означает «рожа, рожистое воспаление».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of rose with a natural context that unambiguously expresses \"рожа, рожистое воспаление\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of rose (лёгкая, приятная жизнь; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rose” for «лёгкая, приятная жизнь» in this example.\" Russian: \"В этом примере в глоссарии «rose» означает «лёгкая, приятная жизнь».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of rose with a natural context that unambiguously expresses \"лёгкая, приятная жизнь\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of rose (в жизни не одни только удовольствия; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rose” for «в жизни не одни только удовольствия» in this example.\" Russian: \"В этом примере в глоссарии «rose» означает «в жизни не одни только удовольствия».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of rose with a natural context that unambiguously expresses \"в жизни не одни только удовольствия\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of rose (по секрету, тайком; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rose” for «по секрету, тайком» in this example.\" Russian: \"В этом примере в глоссарии «rose» означает «по секрету, тайком».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of rose with a natural context that unambiguously expresses \"по секрету, тайком\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Generated example for meaning 10 of rose (втихомолку; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rose” for «втихомолку» in this example.\" Russian: \"В этом примере в глоссарии «rose» означает «втихомолку».\".",
+        "required_action": "Replace or confirm the example for meaning 10 of rose with a natural context that unambiguously expresses \"втихомолку\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Generated example for meaning 11 of rose (розовый; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “rose” to describe «розовый» here.\" Russian: \"Здесь в руководстве «rose» описывает значение «розовый».\".",
+        "required_action": "Replace or confirm the example for meaning 11 of rose with a natural context that unambiguously expresses \"розовый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Generated example for meaning 12 of rose (делать розовым, придавать розовый оттенок; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rose” means «делать розовым, придавать розовый оттенок» in this sentence.\" Russian: \"На уроке «rose» в этом предложении означает: «делать розовым, придавать розовый оттенок».\".",
+        "required_action": "Replace or confirm the example for meaning 12 of rose with a natural context that unambiguously expresses \"делать розовым, придавать розовый оттенок\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: rose: 10 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of rose with a natural context that unambiguously expresses \"розовый цвет\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of rose with a natural context that unambiguously expresses \"розетка\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of rose with a natural context that unambiguously expresses \"сетка (душа или лейки); разбрызгиватель\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of rose with a natural context that unambiguously expresses \"рожа, рожистое воспаление\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of rose with a natural context that unambiguously expresses \"лёгкая, приятная жизнь\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of rose with a natural context that unambiguously expresses \"в жизни не одни только удовольствия\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of rose with a natural context that unambiguously expresses \"по секрету, тайком\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 10 of rose with a natural context that unambiguously expresses \"втихомолку\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 11 of rose with a natural context that unambiguously expresses \"розовый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 12 of rose with a natural context that unambiguously expresses \"делать розовым, придавать розовый оттенок\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "rotate",
+    "decision": "review_required",
+    "analysis": "Финальная защита rotate: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 2 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: rotate: 2 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[15]",
+    "before_after_ref": "stage_07.before_after[15]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of rotate (вращать(ся); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rotate” means «вращать(ся)» in this sentence.\" Russian: \"На уроке «rotate» в этом предложении означает: «вращать(ся)».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of rotate with a natural context that unambiguously expresses \"вращать(ся)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of rotate (чередовать(ся); сменять(ся) по очереди; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rotate” means «чередовать(ся); сменять(ся) по очереди» in this sentence.\" Russian: \"На уроке «rotate» в этом предложении означает: «чередовать(ся); сменять(ся) по очереди».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of rotate with a natural context that unambiguously expresses \"чередовать(ся); сменять(ся) по очереди\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: rotate: 2 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of rotate with a natural context that unambiguously expresses \"вращать(ся)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of rotate with a natural context that unambiguously expresses \"чередовать(ся); сменять(ся) по очереди\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "rotation",
+    "decision": "review_required",
+    "analysis": "Финальная защита rotation: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: rotation: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[16]",
+    "before_after_ref": "stage_07.before_after[16]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of rotation (вращение; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rotation” for «вращение» in this example.\" Russian: \"В этом примере в глоссарии «rotation» означает «вращение».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of rotation with a natural context that unambiguously expresses \"вращение\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: rotation: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of rotation with a natural context that unambiguously expresses \"вращение\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "rough",
+    "decision": "review_required",
+    "analysis": "Финальная защита rough: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 16 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: rough: 16 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[17]",
+    "before_after_ref": "stage_07.before_after[17]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of rough (косматый, лохматый; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “rough” to describe «косматый, лохматый» here.\" Russian: \"Здесь в руководстве «rough» описывает значение «косматый, лохматый».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of rough with a natural context that unambiguously expresses \"косматый, лохматый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of rough (грубый, жёсткий (о ткани); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “rough” to describe «грубый, жёсткий (о ткани)» here.\" Russian: \"Здесь в руководстве «rough» описывает значение «грубый, жёсткий (о ткани)».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of rough with a natural context that unambiguously expresses \"грубый, жёсткий (о ткани)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of rough (терпкий; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “rough” to describe «терпкий» here.\" Russian: \"Здесь в руководстве «rough» описывает значение «терпкий».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of rough with a natural context that unambiguously expresses \"терпкий\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of rough (резкий, неприятный (о звуке); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “rough” to describe «резкий, неприятный (о звуке)» here.\" Russian: \"Здесь в руководстве «rough» описывает значение «резкий, неприятный (о звуке)».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of rough with a natural context that unambiguously expresses \"резкий, неприятный (о звуке)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of rough (беспокойный, криминогенный (о районе города и т. п.); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “rough” to describe «беспокойный, криминогенный (о районе города и т. п.)» here.\" Russian: \"Здесь в руководстве «rough» описывает значение «беспокойный, криминогенный (о районе города и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of rough with a natural context that unambiguously expresses \"беспокойный, криминогенный (о районе города и т. п.)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Generated example for meaning 12 of rough (суровый, лишённый комфорта (о жизни); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “rough” to describe «суровый, лишённый комфорта (о жизни)» here.\" Russian: \"Здесь в руководстве «rough» описывает значение «суровый, лишённый комфорта (о жизни)».\".",
+        "required_action": "Replace or confirm the example for meaning 12 of rough with a natural context that unambiguously expresses \"суровый, лишённый комфорта (о жизни)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 16,
+        "problem": "Generated example for meaning 16 of rough (неровность (местности); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rough” for «неровность (местности)» in this example.\" Russian: \"В этом примере в глоссарии «rough» означает «неровность (местности)».\".",
+        "required_action": "Replace or confirm the example for meaning 16 of rough with a natural context that unambiguously expresses \"неровность (местности)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "Generated example for meaning 17 of rough (буян, грубиян; хулиган, головорез; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rough” for «буян, грубиян; хулиган, головорез» in this example.\" Russian: \"В этом примере в глоссарии «rough» означает «буян, грубиян; хулиган, головорез».\".",
+        "required_action": "Replace or confirm the example for meaning 17 of rough with a natural context that unambiguously expresses \"буян, грубиян; хулиган, головорез\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Generated example for meaning 18 of rough (неровное поле (в гольфе); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rough” for «неровное поле (в гольфе)» in this example.\" Russian: \"В этом примере в глоссарии «rough» означает «неровное поле (в гольфе)».\".",
+        "required_action": "Replace or confirm the example for meaning 18 of rough with a natural context that unambiguously expresses \"неровное поле (в гольфе)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 20,
+        "problem": "Generated example for meaning 20 of rough (черновой набросок; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rough” for «черновой набросок» in this example.\" Russian: \"В этом примере в глоссарии «rough» означает «черновой набросок».\".",
+        "required_action": "Replace or confirm the example for meaning 20 of rough with a natural context that unambiguously expresses \"черновой набросок\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 21,
+        "problem": "Generated example for meaning 21 of rough (шип (в подкове); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “rough” for «шип (в подкове)» in this example.\" Russian: \"В этом примере в глоссарии «rough» означает «шип (в подкове)».\".",
+        "required_action": "Replace or confirm the example for meaning 21 of rough with a natural context that unambiguously expresses \"шип (в подкове)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Generated example for meaning 23 of rough (ерошить, лохматить; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rough” means «ерошить, лохматить» in this sentence.\" Russian: \"На уроке «rough» в этом предложении означает: «ерошить, лохматить».\".",
+        "required_action": "Replace or confirm the example for meaning 23 of rough with a natural context that unambiguously expresses \"ерошить, лохматить\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 24,
+        "problem": "Generated example for meaning 24 of rough (делать грубым, шероховатым; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rough” means «делать грубым, шероховатым» in this sentence.\" Russian: \"На уроке «rough» в этом предложении означает: «делать грубым, шероховатым».\".",
+        "required_action": "Replace or confirm the example for meaning 24 of rough with a natural context that unambiguously expresses \"делать грубым, шероховатым\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 25,
+        "problem": "Generated example for meaning 25 of rough (допускать грубость (особ. в футболе; тж. rough up); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rough” means «допускать грубость (особ. в футболе; тж. rough up)» in this sentence.\" Russian: \"На уроке «rough» в этом предложении означает: «допускать грубость (особ. в футболе; тж. rough up)».\".",
+        "required_action": "Replace or confirm the example for meaning 25 of rough with a natural context that unambiguously expresses \"допускать грубость (особ. в футболе; тж. rough up)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 26,
+        "problem": "Generated example for meaning 26 of rough (отделывать вчерне; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rough” means «отделывать вчерне» in this sentence.\" Russian: \"На уроке «rough» в этом предложении означает: «отделывать вчерне».\".",
+        "required_action": "Replace or confirm the example for meaning 26 of rough with a natural context that unambiguously expresses \"отделывать вчерне\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 27,
+        "problem": "Generated example for meaning 27 of rough (подковать на шипы; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “rough” means «подковать на шипы» in this sentence.\" Russian: \"На уроке «rough» в этом предложении означает: «подковать на шипы».\".",
+        "required_action": "Replace or confirm the example for meaning 27 of rough with a natural context that unambiguously expresses \"подковать на шипы\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: rough: 16 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of rough with a natural context that unambiguously expresses \"косматый, лохматый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of rough with a natural context that unambiguously expresses \"грубый, жёсткий (о ткани)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of rough with a natural context that unambiguously expresses \"терпкий\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of rough with a natural context that unambiguously expresses \"резкий, неприятный (о звуке)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of rough with a natural context that unambiguously expresses \"беспокойный, криминогенный (о районе города и т. п.)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 12 of rough with a natural context that unambiguously expresses \"суровый, лишённый комфорта (о жизни)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 16 of rough with a natural context that unambiguously expresses \"неровность (местности)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 17 of rough with a natural context that unambiguously expresses \"буян, грубиян; хулиган, головорез\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 18 of rough with a natural context that unambiguously expresses \"неровное поле (в гольфе)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 20 of rough with a natural context that unambiguously expresses \"черновой набросок\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 21 of rough with a natural context that unambiguously expresses \"шип (в подкове)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 23 of rough with a natural context that unambiguously expresses \"ерошить, лохматить\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 24 of rough with a natural context that unambiguously expresses \"делать грубым, шероховатым\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 25 of rough with a natural context that unambiguously expresses \"допускать грубость (особ. в футболе; тж. rough up)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 26 of rough with a natural context that unambiguously expresses \"отделывать вчерне\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 27 of rough with a natural context that unambiguously expresses \"подковать на шипы\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "roughly",
+    "decision": "review_required",
+    "analysis": "Финальная защита roughly: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 4 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: roughly: 4 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[18]",
+    "before_after_ref": "stage_07.before_after[18]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of roughly (неровно; adverb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The speaker uses “roughly” in the sense «неровно» here.\" Russian: \"Здесь говорящий употребляет «roughly» в значении «неровно».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of roughly with a natural context that unambiguously expresses \"неровно\" as adverb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of roughly (грубо; небрежно; adverb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The speaker uses “roughly” in the sense «грубо; небрежно» here.\" Russian: \"Здесь говорящий употребляет «roughly» в значении «грубо; небрежно».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of roughly with a natural context that unambiguously expresses \"грубо; небрежно\" as adverb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of roughly (бурно, резко; adverb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The speaker uses “roughly” in the sense «бурно, резко» here.\" Russian: \"Здесь говорящий употребляет «roughly» в значении «бурно, резко».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of roughly with a natural context that unambiguously expresses \"бурно, резко\" as adverb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of roughly (грубо, невежливо; adverb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The speaker uses “roughly” in the sense «грубо, невежливо» here.\" Russian: \"Здесь говорящий употребляет «roughly» в значении «грубо, невежливо».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of roughly with a natural context that unambiguously expresses \"грубо, невежливо\" as adverb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: roughly: 4 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of roughly with a natural context that unambiguously expresses \"неровно\" as adverb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of roughly with a natural context that unambiguously expresses \"грубо; небрежно\" as adverb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of roughly with a natural context that unambiguously expresses \"бурно, резко\" as adverb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of roughly with a natural context that unambiguously expresses \"грубо, невежливо\" as adverb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "round",
+    "decision": "review_required",
+    "analysis": "Финальная защита round: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 13 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: round: 13 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[19]",
+    "before_after_ref": "stage_07.before_after[19]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of round (полный, пухлый; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “round” to describe «полный, пухлый» here.\" Russian: \"Здесь в руководстве «round» описывает значение «полный, пухлый».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of round with a natural context that unambiguously expresses \"полный, пухлый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of round (крупный, значительный (о сумме); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “round” to describe «крупный, значительный (о сумме)» here.\" Russian: \"Здесь в руководстве «round» описывает значение «крупный, значительный (о сумме)».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of round with a natural context that unambiguously expresses \"крупный, значительный (о сумме)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of round (округлённый (о числах); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “round” to describe «округлённый (о числах)» here.\" Russian: \"Здесь в руководстве «round» описывает значение «округлённый (о числах)».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of round with a natural context that unambiguously expresses \"округлённый (о числах)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of round (закруглённый, законченный (о фразе); гладкий, плавный (о стиле); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “round” to describe «закруглённый, законченный (о фразе); гладкий, плавный (о стиле)» here.\" Russian: \"Здесь в руководстве «round» описывает значение «закруглённый, законченный (о фразе); гладкий, плавный (о стиле)».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of round with a natural context that unambiguously expresses \"закруглённый, законченный (о фразе); гладкий, плавный (о стиле)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Generated example for meaning 10 of round (мягкий, низкий, бархатистый (о голосе); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “round” to describe «мягкий, низкий, бархатистый (о голосе)» here.\" Russian: \"Здесь в руководстве «round» описывает значение «мягкий, низкий, бархатистый (о голосе)».\".",
+        "required_action": "Replace or confirm the example for meaning 10 of round with a natural context that unambiguously expresses \"мягкий, низкий, бархатистый (о голосе)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Generated example for meaning 11 of round (приятный (о вине); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “round” to describe «приятный (о вине)» here.\" Russian: \"Здесь в руководстве «round» описывает значение «приятный (о вине)».\".",
+        "required_action": "Replace or confirm the example for meaning 11 of round with a natural context that unambiguously expresses \"приятный (о вине)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Generated example for meaning 12 of round (фон. лабиализованный; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “round” to describe «фон. лабиализованный» here.\" Russian: \"Здесь в руководстве «round» описывает значение «фон. лабиализованный».\".",
+        "required_action": "Replace or confirm the example for meaning 12 of round with a natural context that unambiguously expresses \"фон. лабиализованный\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Generated example for meaning 13 of round (круг, окружность; очертание, контур; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “round” for «круг, окружность; очертание, контур» in this example.\" Russian: \"В этом примере в глоссарии «round» означает «круг, окружность; очертание, контур».\".",
+        "required_action": "Replace or confirm the example for meaning 13 of round with a natural context that unambiguously expresses \"круг, окружность; очертание, контур\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Generated example for meaning 14 of round (круговое движение; цикл; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “round” for «круговое движение; цикл» in this example.\" Russian: \"В этом примере в глоссарии «round» означает «круговое движение; цикл».\".",
+        "required_action": "Replace or confirm the example for meaning 14 of round with a natural context that unambiguously expresses \"круговое движение; цикл\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Generated example for meaning 18 of round (рейс, маршрут; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “round” for «рейс, маршрут» in this example.\" Russian: \"В этом примере в глоссарии «round» означает «рейс, маршрут».\".",
+        "required_action": "Replace or confirm the example for meaning 18 of round with a natural context that unambiguously expresses \"рейс, маршрут\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 24,
+        "problem": "Generated example for meaning 24 of round (игра, партия; тур; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “round” for «игра, партия; тур» in this example.\" Russian: \"В этом примере в глоссарии «round» означает «игра, партия; тур».\".",
+        "required_action": "Replace or confirm the example for meaning 24 of round with a natural context that unambiguously expresses \"игра, партия; тур\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 26,
+        "problem": "Generated example for meaning 26 of round (огибать, обходить кругом; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “round” means «огибать, обходить кругом» in this sentence.\" Russian: \"На уроке «round» в этом предложении означает: «огибать, обходить кругом».\".",
+        "required_action": "Replace or confirm the example for meaning 26 of round with a natural context that unambiguously expresses \"огибать, обходить кругом\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 27,
+        "problem": "Generated example for meaning 27 of round (округлять (число); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “round” means «округлять (число)» in this sentence.\" Russian: \"На уроке «round» в этом предложении означает: «округлять (число)».\".",
+        "required_action": "Replace or confirm the example for meaning 27 of round with a natural context that unambiguously expresses \"округлять (число)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: round: 13 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of round with a natural context that unambiguously expresses \"полный, пухлый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of round with a natural context that unambiguously expresses \"крупный, значительный (о сумме)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of round with a natural context that unambiguously expresses \"округлённый (о числах)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of round with a natural context that unambiguously expresses \"закруглённый, законченный (о фразе); гладкий, плавный (о стиле)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 10 of round with a natural context that unambiguously expresses \"мягкий, низкий, бархатистый (о голосе)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 11 of round with a natural context that unambiguously expresses \"приятный (о вине)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 12 of round with a natural context that unambiguously expresses \"фон. лабиализованный\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 13 of round with a natural context that unambiguously expresses \"круг, окружность; очертание, контур\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 14 of round with a natural context that unambiguously expresses \"круговое движение; цикл\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 18 of round with a natural context that unambiguously expresses \"рейс, маршрут\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 24 of round with a natural context that unambiguously expresses \"игра, партия; тур\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 26 of round with a natural context that unambiguously expresses \"огибать, обходить кругом\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 27 of round with a natural context that unambiguously expresses \"округлять (число)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "route",
+    "decision": "review_required",
+    "analysis": "Финальная защита route: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 2 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: route: 2 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[20]",
+    "before_after_ref": "stage_07.before_after[20]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of route (маршрут, курс, путь, дорога; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “route” for «маршрут, курс, путь, дорога» in this example.\" Russian: \"В этом примере в глоссарии «route» означает «маршрут, курс, путь, дорога».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of route with a natural context that unambiguously expresses \"маршрут, курс, путь, дорога\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of route (направлять по определённому маршруту; устанавливать маршрут; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “route” means «направлять по определённому маршруту; устанавливать маршрут» in this sentence.\" Russian: \"На уроке «route» в этом предложении означает: «направлять по определённому маршруту; устанавливать маршрут».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of route with a natural context that unambiguously expresses \"направлять по определённому маршруту; устанавливать маршрут\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: route: 2 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of route with a natural context that unambiguously expresses \"маршрут, курс, путь, дорога\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of route with a natural context that unambiguously expresses \"направлять по определённому маршруту; устанавливать маршрут\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  }
+]

@@ -1,0 +1,5488 @@
+{
+  "role": "07",
+  "role_file": "agent-roles/07-безопасное-улучшение-oxford.md",
+  "instructions": "# Агент безопасного улучшения Oxford\n\n## Зачем нужен\n\nОн решает, может ли найденный материал действительно улучшить словарь для русскоязычного изучающего английский язык.\n\n## Порядок работы\n\n1. Прочитать текущую запись из `src/data/oxford_5000.json`.\n2. Сравнить её с отчётом агента источников.\n3. Проверить, сохраняется ли полезная информация текущей записи.\n4. Проверить перевод, часть речи, омонимы, примеры и учебную понятность.\n5. Внести изменение только при доказанном улучшении.\n6. Если преимущество не доказано, оставить запись без изменения и объяснить причину.\n\n## Обязательные правила\n\n- изменять только `src/data/oxford_5000.json`;\n- сохранять старую и новую версии в отчёте;\n- не удалять существующие значения без явной причины;\n- не заменять хороший текст сырым OCR;\n- после изменений запускать `python3 final_qa_validation.py`.\n\n## Результат\n\nОтчёт должен содержать: слово, старый текст, новый текст, причину изменения, источник и решение `изменить` или `оставить`.\n\n## Уточнение значения/части речи (исполняемый контракт)\nЕсли требуется реальное уточнение, добавь meaning_proposals (список):\n{meaning_index: 1-based, before_meaning: полное текущее значение,\nafter_meaning: то же значение с исправленными translation/partOfSpeech/register,\nreason: конкретный вывод, sources: [{url или file, quote, location}]}.\nПолные before/after записи должны в точности отражать эти предложения.\nСохраняй id, primary, порядок и исходные examples. Не удаляй значение и не\nподменяй старый смысл соседним современным ради удобного примера. Если смысл\nдействительно устарел, уточни значение и регистр по источникам; старинный\nпример не добавляй. prefix/phrase допустимы только при доказанной единице\nупотребления; словообразовательный элемент не выдаётся за самостоятельное слово.\n",
+  "dataset_path": "src/data/oxford_5000.json",
+  "entries": [
+    {
+      "word": "number",
+      "frequency_rank": 196,
+      "cefr": "a1",
+      "phon_br": "/ˈnʌmbə(r)/",
+      "phon_n_am": "/ˈnʌmbər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "сумма, число, цифра",
+          "examples": [
+            {
+              "en": "science of numbers",
+              "ru": "арифметика"
+            }
+          ],
+          "register": [
+            "математика"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "число, количество",
+          "examples": [
+            {
+              "en": "a number of",
+              "ru": "некоторое количество"
+            },
+            {
+              "en": "in number",
+              "ru": "численно, количеством"
+            },
+            {
+              "en": "out of (or without) number",
+              "ru": "множество, без числа"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: большое количество; многочисленность",
+          "examples": [
+            {
+              "en": "numbers of people",
+              "ru": "много народу"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "номер",
+          "examples": [
+            {
+              "en": "motor car's number",
+              "ru": "номер автомашины"
+            },
+            {
+              "en": "call number",
+              "ru": "шифр (книги, плёнки и т. п.)"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "номер (программы)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "выпуск, номер, экземпляр (журнала и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "группа, компания",
+          "examples": [
+            {
+              "en": "among our number",
+              "ru": "из нашей среды"
+            }
+          ],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "число",
+          "examples": [],
+          "register": [
+            "грамматика"
+          ],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "что-либо заметное, бросающееся в глаза",
+          "examples": [
+            {
+              "en": "an attractive little number",
+              "ru": "очаровательная девчушка"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ритм, размер",
+          "examples": [],
+          "register": [
+            "просодия"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: стихи",
+          "examples": [],
+          "register": [
+            "просодия",
+            "британское"
+          ],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "причислять, зачислять",
+          "examples": [
+            {
+              "en": "to be numbered with",
+              "ru": "быть причисленным к"
+            }
+          ],
+          "register": [],
+          "id": 12,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "числиться, быть в числе (among, in)",
+          "examples": [],
+          "register": [],
+          "id": 13,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "нумеровать",
+          "examples": [],
+          "register": [],
+          "id": 14,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "насчитывать",
+          "examples": [
+            {
+              "en": "the population numbers 5000",
+              "ru": "население составляет 5000 человек"
+            }
+          ],
+          "register": [],
+          "id": 15,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "считать, пересчитывать",
+          "examples": [
+            {
+              "en": "his days are numbered",
+              "ru": "его дни сочтены"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "рассчитываться",
+          "examples": [
+            {
+              "en": "to number off",
+              "ru": "делать перекличку по номерам"
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "id": 17
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "in (great) numbers",
+          "partOfSpeech": "noun",
+          "translation": "в большом количестве; значительными силами",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 2,
+          "phrase": "back number",
+          "partOfSpeech": "noun",
+          "translation": "старый номер (газеты, журнала); нечто устаревшее; человек, отставший от жизни",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "word": "city",
+      "frequency_rank": 197,
+      "cefr": "a1",
+      "phon_br": "/ˈsɪti/",
+      "phon_n_am": "/ˈsɪti/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "большой, старинный город (в Англии); всякий более или менее значительный город с местным самоуправлением (в США)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "финансовые и коммерческие круги Лондона",
+          "examples": [
+            {
+              "en": "the C.",
+              "ru": "Сити, деловой квартал в центре Лондона"
+            }
+          ],
+          "register": [
+            "финансы"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "городской, муниципальный",
+          "examples": [
+            {
+              "en": "city council",
+              "ru": "муниципальный совет"
+            },
+            {
+              "en": "city hall",
+              "ru": "здание муниципалитета, ратуша",
+              "register": [
+                "американизм"
+              ]
+            },
+            {
+              "en": "city planning",
+              "ru": "планировка городов"
+            },
+            {
+              "en": "city water",
+              "ru": "вода из (городского) водопровода"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "(C.) attr.: С. man финансист, коммерсант, делец",
+          "examples": [
+            {
+              "en": "C. article",
+              "ru": "статья в газете по финансовым и коммерческим вопросам"
+            },
+            {
+              "en": "C. editor",
+              "ru": "редактор финансового отдела газеты амер. заведующий репортажем"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "City man",
+          "partOfSpeech": "noun",
+          "translation": "финансист, коммерсант, крупный делец (из лондонского Сити)",
+          "register": [
+            "британское",
+            "коммерческое"
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "word": "lot",
+      "frequency_rank": 198,
+      "cefr": "a1",
+      "phon_br": "/lɒt/",
+      "phon_n_am": "/lɑːt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "много, масса; многие",
+          "examples": [
+            {
+              "en": "a lot (of), lots of",
+              "ru": "уйма, много"
+            },
+            {
+              "en": "lots and lots of",
+              "ru": "громадное количество, масса"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "лот, вещь, продаваемая на аукционе или несколько предметов, продаваемых одновременно",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "жребий; участь, доля, судьба",
+          "examples": [
+            {
+              "en": "to cast (to draw) lots",
+              "ru": "бросать (тянуть) жребий"
+            },
+            {
+              "en": "to settle by lot",
+              "ru": "решить жеребьёвкой"
+            },
+            {
+              "en": "lot with",
+              "ru": "smb. связать, разделить (свою) судьбу с кем-либо; the lot fell upon (или came to) me жребий пал на меня"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "участок земли; партия (товаров), лот",
+          "examples": [
+            {
+              "en": "across lots",
+              "ru": "напрямик, кратчайшим путём"
+            },
+            {
+              "en": "parking lot",
+              "ru": "стоянка автомашин"
+            }
+          ],
+          "register": [
+            "американский английский"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "партия (изделий)",
+          "examples": [
+            {
+              "en": "we'll send you the textbooks in three different lots",
+              "ru": "мы пошлём вам учебники тремя отдельными партиями"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "группа, кучка (людей); компания",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "налог, пошлина",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "территория при киностудии",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делить, дробить на участки, части (часто lot out)",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "бросать жребий",
+          "examples": [],
+          "register": [
+            "редкое"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "сортировать; разбивать на партии (для аукционной продажи)",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "рассчитывать (on, upon — на что-либо)",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "разговорное"
+          ],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "гораздо, намного",
+          "examples": [],
+          "register": [
+            "медицинское"
+          ],
+          "id": 13,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "a bad lot",
+          "partOfSpeech": "noun",
+          "translation": "дурной, плохой человек",
+          "examples": [],
+          "register": [],
+          "id": 1
+        }
+      ]
+    },
+    {
+      "word": "name",
+      "frequency_rank": 199,
+      "cefr": "a1",
+      "phon_br": "/neɪm/",
+      "phon_n_am": "/neɪm/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "имя; фамилия",
+          "examples": [
+            {
+              "en": "by name",
+              "ru": "по имени"
+            },
+            {
+              "en": "in name only",
+              "ru": "только номинально"
+            },
+            {
+              "en": "in the name of common sense",
+              "ru": "во имя здравого смысла"
+            },
+            {
+              "en": "in the name of the law",
+              "ru": "именем закона"
+            },
+            {
+              "en": "in one's own name",
+              "ru": "от своего имени"
+            },
+            {
+              "en": "name down",
+              "ru": "for; выставить свою кандидатуру на (какой-либо пост); принять участие в (сборе денег и т. п.); подписаться под (воззванием и т. п.); without a name; безымянный; неподдающийся описанию (о поступке)"
+            },
+            {
+              "en": "Christian name, given name, first name",
+              "ru": "Имя; фамилия (тж. family name, surname); to know by name; знать по имени; знать лично каждого; знать понаслышке; by (или of, under)"
+            },
+            {
+              "en": "by (or of, under) the name of",
+              "ru": "под именем"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "фамилия, род, семья",
+          "examples": [
+            {
+              "en": "the last of his name",
+              "ru": "последний из рода"
+            }
+          ],
+          "register": [
+            "фамильярное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "(обыкн. при мн. ч.:) брань",
+          "examples": [
+            {
+              "en": "to call names",
+              "ru": "ругать(ся)"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "название, наименование, обозначение",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "(выдающийся) человек; личность",
+          "examples": [
+            {
+              "en": "the great names of history",
+              "ru": "исторические личности"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "репутация",
+          "examples": [
+            {
+              "en": "he has name for honesty",
+              "ru": "он известен своей честностью"
+            },
+            {
+              "en": "people of name",
+              "ru": "известные люди"
+            },
+            {
+              "en": "bad (or ill) name",
+              "ru": "плохая репутация"
+            },
+            {
+              "en": "to make (or to win) a good name for oneself",
+              "ru": "завоевать доброе имя"
+            }
+          ],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пустой звук",
+          "examples": [
+            {
+              "en": "there is only the name of friendship between them",
+              "ru": "их дружба — одно название"
+            },
+            {
+              "en": "virtuous in name",
+              "ru": "лицемер"
+            }
+          ],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "имя существительное",
+          "examples": [
+            {
+              "en": "common name",
+              "ru": "Имя нарицательное"
+            }
+          ],
+          "register": [
+            "грамматика"
+          ],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "называть, давать имя",
+          "examples": [
+            {
+              "en": "to name after, to name for",
+              "ru": "называть в честь (кого-либо)"
+            }
+          ],
+          "register": [
+            "американский английский"
+          ],
+          "id": 9,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "называть, обращаться по имени; перечислять поимённо",
+          "examples": [],
+          "register": [],
+          "id": 10,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "указывать, назначать",
+          "examples": [
+            {
+              "en": "to name the day",
+              "ru": "назначать день (особ. свадьбы)"
+            }
+          ],
+          "register": [],
+          "id": 11,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "упоминать; приводить в качестве примера",
+          "examples": [],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "назначать (на должность)",
+          "examples": [],
+          "register": [],
+          "id": 13,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "призывать к порядку",
+          "examples": [],
+          "register": [
+            "парламентское"
+          ],
+          "id": 14
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "to know by name",
+          "partOfSpeech": "verb",
+          "translation": "знать по имени; знать лично каждого; знать понаслышке",
+          "register": [
+            "идиома"
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "word": "night",
+      "frequency_rank": 200,
+      "cefr": "a1",
+      "phon_br": "/naɪt/",
+      "phon_n_am": "/naɪt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "ночь; вечер; всю ночь напролёт",
+          "examples": [
+            {
+              "en": "last night",
+              "ru": "вчера вечером"
+            },
+            {
+              "en": "night after night, night by night",
+              "ru": "каждую ночь"
+            },
+            {
+              "en": "at night",
+              "ru": "ночью"
+            },
+            {
+              "en": "by night",
+              "ru": "в течение ночи"
+            },
+            {
+              "en": "night fell",
+              "ru": "наступила ночь"
+            },
+            {
+              "en": "far into the night",
+              "ru": "далеко за полночь"
+            },
+            {
+              "en": "night out",
+              "ru": "ночь, проведённая вне дома (особ. в развлечениях)"
+            },
+            {
+              "en": "to have a night off",
+              "ru": "иметь свободный вечер"
+            },
+            {
+              "en": "all night (long)",
+              "ru": "в течение всей ночи"
+            },
+            {
+              "en": "o'(= on) nights",
+              "ru": "по ночам",
+              "register": [
+                "разговорное"
+              ]
+            },
+            {
+              "en": "to have a good (bad) night",
+              "ru": "хорошо (плохо) спать ночь"
+            },
+            {
+              "en": "to have a (or the) night out",
+              "ru": "прокутить всю ночь; под покровом ночи; выходной вечер прислуги; иметь выходной вечер (о прислуге)"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "темнота, мрак",
+          "examples": [
+            {
+              "en": "to go forth into the night",
+              "ru": "исчезнуть во мраке ночи"
+            },
+            {
+              "en": "the night of ignorance",
+              "ru": "полное невежество"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "ночной, вечерний",
+          "examples": [
+            {
+              "en": "night duty",
+              "ru": "ночное дежурство"
+            },
+            {
+              "en": "night stop",
+              "ru": "остановка на ночь (во время путешествия)"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "play",
+      "frequency_rank": 201,
+      "cefr": "a1",
+      "phon_br": "/pleɪ/",
+      "phon_n_am": "/pleɪ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "игра; забава",
+          "examples": [
+            {
+              "en": "to be at play",
+              "ru": "играть"
+            },
+            {
+              "en": "they are at play",
+              "ru": "они играют"
+            },
+            {
+              "en": "out of play",
+              "ru": "вне игры"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "манера игры, игра",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пьеса, драма; представление, спектакль",
+          "examples": [],
+          "register": [
+            "театр"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "действие, деятельность",
+          "examples": [
+            {
+              "en": "to bring (or to call) into play",
+              "ru": "приводить в действие, пускать в ход"
+            },
+            {
+              "en": "to come into play",
+              "ru": "начать действовать"
+            },
+            {
+              "en": "in full play",
+              "ru": "в действии, в разгаре"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "свобода, простор",
+          "examples": [
+            {
+              "en": "to give free play to one's imagination",
+              "ru": "дать полный простор своему воображению"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "движение",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "азартная игра",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "переливы, игра",
+          "examples": [
+            {
+              "en": "play of colours",
+              "ru": "переливы красок"
+            },
+            {
+              "en": "play of the waves",
+              "ru": "плеск волн"
+            }
+          ],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "зазор; игра; люфт; свободный ход; шатание (части механизма, прибора)",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "играть, резвиться, забавляться",
+          "examples": [
+            {
+              "en": "the cat plays with its tail",
+              "ru": "кошка играет со своим хвостом"
+            }
+          ],
+          "register": [],
+          "id": 10,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "играть на музыкальном инструменте",
+          "examples": [
+            {
+              "en": "he plays the violin",
+              "ru": "он играет на скрипке"
+            }
+          ],
+          "register": [],
+          "id": 11,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "исполнять (музыкальное произведение)",
+          "examples": [
+            {
+              "en": "the boy played a concerto",
+              "ru": "мальчик исполнял концерт"
+            }
+          ],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "приводить в действие, пускать",
+          "examples": [
+            {
+              "en": "to play a record",
+              "ru": "поставить пластинку"
+            },
+            {
+              "en": "the engine was played off",
+              "ru": "запустили мотор"
+            }
+          ],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "играть (в театре)",
+          "examples": [
+            {
+              "en": "she played Juliet",
+              "ru": "она играла роль Джульетты"
+            }
+          ],
+          "register": [
+            "кинематография"
+          ],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "давать представление (о труппе)",
+          "examples": [],
+          "register": [],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "играть роль (кого-либо), быть (кем-либо)",
+          "examples": [
+            {
+              "en": "to play the man",
+              "ru": "поступать, как подобает мужчине"
+            },
+            {
+              "en": "to play the fool",
+              "ru": "изображать дурачка"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "сыграть (шутку), разыграть",
+          "examples": [
+            {
+              "en": "he played a practical joke on us",
+              "ru": "он над нами подшутил"
+            }
+          ],
+          "register": [],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "играть в азартные игры",
+          "examples": [],
+          "register": [],
+          "id": 18,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "играть (на чём-либо), воспользоваться (чем-либо)",
+          "examples": [
+            {
+              "en": "to play in favour of smb., smth.",
+              "ru": "благоприятствовать кому-либо, чему-либо"
+            }
+          ],
+          "register": [],
+          "id": 19
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "играть (во что-либо, на что-либо), участвовать в игре",
+          "examples": [
+            {
+              "en": "to play tennis",
+              "ru": "играть в теннис"
+            },
+            {
+              "en": "I played him for championship",
+              "ru": "я играл с ним на звание чемпиона"
+            }
+          ],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подходить для игры, быть в хорошем состоянии",
+          "examples": [
+            {
+              "en": "the ground plays well",
+              "ru": "спортивная площадка в хорошем состоянии"
+            },
+            {
+              "en": "the piano plays well",
+              "ru": "у этого рояля хороший звук"
+            },
+            {
+              "en": "the drama plays well",
+              "ru": "эта драма очень сценична"
+            }
+          ],
+          "register": [],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "принимать в игру (игрока)",
+          "examples": [],
+          "register": [],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ходить (шашкой, картой)",
+          "examples": [],
+          "register": [],
+          "id": 23
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "отбивать, подавать (мяч)",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 24
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "порхать, носиться; танцевать",
+          "examples": [
+            {
+              "en": "butterflies play among flowers",
+              "ru": "среди цветов порхают бабочки"
+            }
+          ],
+          "register": [],
+          "id": 25
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "бить (о фонтане); переливаться, играть; мелькать",
+          "examples": [
+            {
+              "en": "lightning plays in the sky",
+              "ru": "в небе сверкает молния"
+            },
+            {
+              "en": "a smile played on his lips",
+              "ru": "на его губах играла улыбка"
+            }
+          ],
+          "register": [],
+          "id": 26
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "притворяться, прикидываться",
+          "examples": [],
+          "register": [],
+          "id": 27,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "направлять (свет и т. п.; on, over, along — на что-либо); обстреливать",
+          "examples": [
+            {
+              "en": "to play a searchlight upon a boat",
+              "ru": "направить прожектор на лодку"
+            },
+            {
+              "en": "to play guns upon the fort",
+              "ru": "обстреливать форт"
+            },
+            {
+              "en": "to play a hose",
+              "ru": "поливать водой из пожарного рукава"
+            }
+          ],
+          "register": [],
+          "id": 28
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "дать (время) (рыбе) хорошо клюнуть",
+          "examples": [],
+          "register": [],
+          "id": 29
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "поступать, действовать",
+          "examples": [
+            {
+              "en": "to play fair",
+              "ru": "поступать честно"
+            },
+            {
+              "en": "to play foul",
+              "ru": "поступать нечестно, жульничать"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 30
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "свободно владеть",
+          "examples": [
+            {
+              "en": "to play a good stick",
+              "ru": "хорошо драться на шпагах"
+            },
+            {
+              "en": "to play a good knife and fork",
+              "ru": "уписывать за обе щёки; есть с аппетитом"
+            }
+          ],
+          "register": [],
+          "id": 31
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "иметь люфт",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "разговорное",
+            "техническое"
+          ],
+          "id": 32
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "play along",
+          "partOfSpeech": "verb",
+          "translation": "подыгрывать, поддакивать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "play around",
+          "partOfSpeech": "verb",
+          "translation": "манипулировать, подтасовывать; заводить любовную интрижку",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 3,
+          "phrase": "play down",
+          "partOfSpeech": "verb",
+          "translation": "преуменьшать (что-либо)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "play off",
+          "partOfSpeech": "verb",
+          "translation": "натравливать (against — на)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "play on",
+          "partOfSpeech": "verb",
+          "translation": "играть (на чьих-либо чувствах)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "phrase": "play up",
+          "partOfSpeech": "verb",
+          "translation": "разыгрывать (кого-либо); капризничать, приставать; стараться играть как можно лучше; рекламировать; вести себя мужественно, героически",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ]
+        },
+        {
+          "id": 7,
+          "phrase": "play up to",
+          "partOfSpeech": "verb",
+          "translation": "подыгрывать; перен. подлизываться",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 8,
+          "phrase": "in play",
+          "partOfSpeech": "preposition",
+          "translation": "в шутку",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "to play upon words",
+          "partOfSpeech": "verb",
+          "translation": "каламбурить",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "phrase": "to play safe",
+          "partOfSpeech": "verb",
+          "translation": "действовать наверняка",
+          "examples": [],
+          "register": [],
+          "id": 10
+        },
+        {
+          "phrase": "to play ball",
+          "partOfSpeech": "verb",
+          "translation": "сотрудничать",
+          "examples": [],
+          "register": [],
+          "id": 11
+        }
+      ]
+    },
+    {
+      "word": "until",
+      "frequency_rank": 202,
+      "cefr": "a1",
+      "phon_br": "/ənˈtɪl/",
+      "phon_n_am": "/ənˈtɪl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "preposition",
+          "translation": "до тех пор пока; до (во времени или пространстве); вар. от till",
+          "examples": [
+            {
+              "en": "until tomorrow",
+              "ru": "до завтра"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "company",
+      "frequency_rank": 203,
+      "cefr": "a1",
+      "phon_br": "/ˈkʌmpəni/",
+      "phon_n_am": "/ˈkʌmpəni/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "общество; компания",
+          "examples": [
+            {
+              "en": "to bear (or to keep) smb. company",
+              "ru": "составлять кому-либо компанию, сопровождать кого-либо"
+            },
+            {
+              "en": "to keep company",
+              "ru": "ухаживать"
+            },
+            {
+              "en": "to keep company with smb",
+              "ru": "общаться, встречаться с кем-либо"
+            },
+            {
+              "en": "to keep good company",
+              "ru": "встречаться с хорошими людьми, бывать в хорошем обществе"
+            },
+            {
+              "en": "to keep bad company",
+              "ru": "водиться с плохими людьми"
+            },
+            {
+              "en": "to part company with smb",
+              "ru": "прекратить связь, знакомство с кем-либо"
+            },
+            {
+              "en": "he is good (poor) company",
+              "ru": "он интересный (скучный) собеседник"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "гости",
+          "examples": [
+            {
+              "en": "to receive a great deal of company",
+              "ru": "часто принимать гостей"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "труппа, ансамбль артистов",
+          "examples": [
+            {
+              "en": "stock company",
+              "ru": "постоянная труппа"
+            }
+          ],
+          "register": [
+            "коммерческое"
+          ]
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "экипаж (судна)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "ротный",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "фабричная лавка",
+          "examples": [
+            {
+              "en": "company union",
+              "ru": "«компанейский» профсоюз (организуемый предпринимателем для борьбы с независимыми профсоюзами)"
+            }
+          ],
+          "register": [
+            "военное"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "о присутствующих не говорят",
+          "examples": [],
+          "register": [
+            "военное"
+          ]
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "за компанию",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "noun",
+          "translation": "скажи мне, кто твой друг, и я скажу, кто ты",
+          "examples": [],
+          "register": [
+            "пословица"
+          ]
+        }
+      ]
+    },
+    {
+      "word": "few",
+      "frequency_rank": 204,
+      "cefr": "a1",
+      "phon_br": "/fjuː/",
+      "phon_n_am": "/fjuː/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "немногие, немного, мало",
+          "examples": [
+            {
+              "en": "few possessions",
+              "ru": "скудные пожитки"
+            },
+            {
+              "en": "he is a man of few words",
+              "ru": "он немногословен"
+            },
+            {
+              "en": "every few hours",
+              "ru": "каждые несколько часов"
+            },
+            {
+              "en": "his friends are few",
+              "ru": "у него мало друзей"
+            },
+            {
+              "en": "his visitors are few",
+              "ru": "у него гости редки"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "несколько",
+          "examples": [
+            {
+              "en": "quite a few",
+              "ru": "порядочное число, довольно много"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "незначительное число; почти ничего",
+          "examples": [
+            {
+              "en": "few could tell",
+              "ru": "мало кто мог сказать"
+            },
+            {
+              "en": "few if any",
+              "ru": "почти никто"
+            },
+            {
+              "en": "the few",
+              "ru": "меньшинство"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "not a few, a good few",
+          "partOfSpeech": "noun",
+          "translation": "порядочное число",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 1
+        }
+      ]
+    },
+    {
+      "word": "let",
+      "frequency_rank": 205,
+      "cefr": "a1",
+      "phon_br": "/let/",
+      "phon_n_am": "/let/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "verb",
+          "translation": "позволять, разрешать",
+          "examples": [
+            {
+              "en": "will you let me smoke?",
+              "ru": "вы разрешите мне курить?"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "позволять, разрешать; давать возможность",
+          "examples": [
+            {
+              "en": "to let a fire (go) out",
+              "ru": "дать огню потухнуть"
+            },
+            {
+              "en": "to let loose",
+              "ru": "выпустить, дать волю, свободу"
+            },
+            {
+              "en": "to let blood",
+              "ru": "пускать кровь"
+            },
+            {
+              "en": "to let oneself go",
+              "ru": "дать волю себе, своим чувствам"
+            },
+            {
+              "en": "to let smth. pass",
+              "ru": "не обратить внимания"
+            },
+            {
+              "en": "to let slip the chance",
+              "ru": "упустить случай"
+            },
+            {
+              "en": "to let smb. see",
+              "ru": "показать, дать понять кому-либо"
+            },
+            {
+              "en": "to let smb. know",
+              "ru": "дать знать, сообщить кому-либо"
+            },
+            {
+              "en": "to let things slide (or go hang)",
+              "ru": "не обращать внимания, относиться небрежно"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "оставлять; не трогать; пусть будет так",
+          "examples": [
+            {
+              "en": "let me (him) be, let me (him) alone",
+              "ru": "оставь(те) меня (его) в покое"
+            },
+            {
+              "en": "let my things alone",
+              "ru": "не трогай(те) моих вещей"
+            },
+            {
+              "en": "we'll let it go at that",
+              "ru": "на этом мы остановимся"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "сдавать внаём",
+          "examples": [
+            {
+              "en": "the house is to (be) let",
+              "ru": "дом сдаётся (надпись)"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "в повел. наклонении употребляется как вспомогательный глагол и выражает приглашение, приказание, разрешение, предположение, предостережение",
+          "examples": [
+            {
+              "en": "let you and me try now",
+              "ru": "давайте попробуем"
+            },
+            {
+              "en": "let him do it at once",
+              "ru": "пусть он сделает это немедленно"
+            },
+            {
+              "en": "let him do what he likes",
+              "ru": "пусть делает что хочет"
+            },
+            {
+              "en": "let AB be equal to CD",
+              "ru": "пусть (или допустим, что) AB равно"
+            },
+            {
+              "en": "to let oneself in",
+              "ru": "войти в дом"
+            },
+            {
+              "en": "to let oneself in for smth.",
+              "ru": "впутаться, ввязаться во что-либо"
+            },
+            {
+              "en": "(on)",
+              "ru": "дать доступ (к информации и т. п.)"
+            },
+            {
+              "en": "let down",
+              "ru": "опускать; разочаровать; подвести; покинуть в беде; унизить; уронить; повредить репутации; to let smb. down easily (или gently) пощадить чьё-л. самолюбие, отнестись мягко; удлинить (платье и т. п.); спустить (шину)"
+            },
+            {
+              "en": "let out",
+              "ru": "at.; драться; ругаться"
+            },
+            {
+              "en": "let up",
+              "ru": ".; обращаться (с кем-либо) более мягко, стать мягче; работать менее усердно, не надрываться"
+            },
+            {
+              "en": "let us go",
+              "ru": "идём(те)"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "разговорное",
+            "шутливое"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "сдача внаём",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "помеха; препятствие",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "let by",
+          "partOfSpeech": "verb",
+          "translation": "пропустить",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "let down",
+          "partOfSpeech": "verb",
+          "translation": "опускать; разочаровать; подвести; покинуть в беде; унизить; уронить; повредить репутации",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "let in",
+          "partOfSpeech": "verb",
+          "translation": "впускать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "let into",
+          "partOfSpeech": "verb",
+          "translation": "ввести; посвятить (в тайну и т. п.); ругать, бранить; избить",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "let off",
+          "partOfSpeech": "verb",
+          "translation": "разрядить ружьё, выстрелить; перен. выпалить (шутку и т. п.); отпустить без наказания, простить",
+          "examples": [],
+          "register": [
+            "шутливое"
+          ]
+        },
+        {
+          "id": 6,
+          "phrase": "let on",
+          "partOfSpeech": "verb",
+          "translation": "выдавать секрет; доносить на кого-либо; притворяться, делать вид",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 7,
+          "phrase": "let out",
+          "partOfSpeech": "verb",
+          "translation": "выпускать; проговориться, проболтаться; сделать шире, выпустить (о платье); сдавать внаём; давать напрокат (машину); снимать подозрение, реабилитировать; заканчиваться (о занятиях)",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "разговорное"
+          ]
+        },
+        {
+          "id": 8,
+          "phrase": "to let drop (or fall)",
+          "partOfSpeech": "verb",
+          "translation": "ронять; нечаянно проронить (слово, замечание); опускать (перпендикуляр)",
+          "register": [
+            "идиома"
+          ],
+          "examples": []
+        },
+        {
+          "id": 9,
+          "phrase": "let him try",
+          "partOfSpeech": "noun",
+          "translation": "пусть он попробует; пусть только попробует",
+          "register": [],
+          "examples": []
+        }
+      ],
+      "forms": {
+        "past_simple": "let",
+        "past_participle": "let"
+      }
+    },
+    {
+      "word": "real",
+      "frequency_rank": 206,
+      "cefr": "a1",
+      "phon_br": "/ˈriːəl/",
+      "phon_n_am": "/ˈriːəl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "действительный, настоящий, реальный, подлинный, истинный, неподдельный, несомненный",
+          "examples": [
+            {
+              "en": "the real state of affairs",
+              "ru": "действительное положение вещей"
+            },
+            {
+              "en": "the actor drank real wine on the stage",
+              "ru": "актёр пил настоящее вино на сцене"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "недвижимый (об имуществе)",
+          "examples": [
+            {
+              "en": "real property",
+              "ru": "недвижимость"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "объективно существующий; реальный",
+          "examples": [],
+          "register": [
+            "философия"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "вещественный; действительный",
+          "examples": [],
+          "register": [
+            "математика"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "действительность",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "очень, действительно, совсем",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "разговорное",
+            "шотландский английский"
+          ],
+          "id": 6
+        }
+      ]
+    },
+    {
+      "word": "different",
+      "frequency_rank": 207,
+      "cefr": "a1",
+      "phon_br": "/ˈdɪfrənt/",
+      "phon_n_am": "/ˈdɪfrənt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "другой, не такой; несходный; непохожий; отличный (from, to)",
+          "examples": [
+            {
+              "en": "this is different from what he said",
+              "ru": "это не соответствует тому, что он говорил"
+            },
+            {
+              "en": "that is quite different",
+              "ru": "это совсем другое дело"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "различный, разный",
+          "examples": [
+            {
+              "en": "a lot of different things",
+              "ru": "много разных вещей"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "необычный",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "thought",
+      "frequency_rank": 209,
+      "cefr": "a2",
+      "phon_br": "/θɔːt/",
+      "phon_n_am": "/θɔːt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "мышление",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "размышление",
+          "examples": [
+            {
+              "en": "(lost) in thought",
+              "ru": "погружённый в размышления"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "забота; внимание",
+          "examples": [
+            {
+              "en": "thank you for your kind thought of me",
+              "ru": "благодарю вас за внимание ко мне"
+            },
+            {
+              "en": "to take (or to show) thought for smb.",
+              "ru": "заботиться о ком-либо"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "мысль",
+          "examples": [
+            {
+              "en": "to read smb.'s thoughts",
+              "ru": "читать чьи-либо мысли"
+            },
+            {
+              "en": "to take thought",
+              "ru": "задуматься, опечалиться"
+            },
+            {
+              "en": "to collect (or to compose) one's thoughts",
+              "ru": "собраться с мыслями"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "намерение",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "обыкн. при мн. ч.: соображения, мысли, мнение",
+          "examples": [],
+          "register": [
+            "британское"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "в роли наречия: чуточка, чуточку (a thought)",
+          "examples": [
+            {
+              "en": "a thought more polite",
+              "ru": "чуть вежливей"
+            }
+          ],
+          "register": []
+        }
+      ],
+      "form_of": {
+        "lemma": "think",
+        "types": [
+          "past_simple",
+          "past_participle"
+        ]
+      }
+    },
+    {
+      "word": "however",
+      "frequency_rank": 210,
+      "cefr": "a1",
+      "phon_br": "/haʊˈevə(r)/",
+      "phon_n_am": "/haʊˈevər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "как бы ни",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "conjunction",
+          "translation": "однако, тем не менее, несмотря на (э)то",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "god",
+      "frequency_rank": 211,
+      "cefr": "a2",
+      "phon_br": "/ɡɒd/",
+      "phon_n_am": "/ɡɑːd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "бог, божество",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "Бог (в восклицаниях и пожеланиях)",
+          "examples": [
+            {
+              "en": "(G.)",
+              "ru": "Всевышний, Бог"
+            },
+            {
+              "en": "G. 's truth",
+              "ru": "истинная правда"
+            },
+            {
+              "en": "my G.!",
+              "ru": "Боже мой!"
+            },
+            {
+              "en": "by G.",
+              "ru": "ей-богу!"
+            },
+            {
+              "en": "G. Almighty",
+              "ru": "Боже Всемогущий"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "Боже мой! (восклицание, выражающее удивление)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "будьте здоровы (говорится чихнувшему)",
+          "examples": [
+            {
+              "en": "honest to G.",
+              "ru": "честное слово"
+            },
+            {
+              "en": "G. damn you!",
+              "ru": "будьте вы прокляты!"
+            }
+          ],
+          "register": [
+            "театр"
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "идол, кумир",
+          "examples": [
+            {
+              "en": "to make a god of smb",
+              "ru": "боготворить кого-либо"
+            }
+          ],
+          "register": [
+            "редкое"
+          ],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "публика галёрки",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "обожествлять; боготворить",
+          "examples": [],
+          "register": []
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "God bless you!",
+          "partOfSpeech": "interjection",
+          "translation": "храни вас Бог!, благослови вас Господь!",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "word": "government",
+      "frequency_rank": 212,
+      "cefr": "a2",
+      "phon_br": "/ˈɡʌvənmənt/",
+      "phon_n_am": "/ˈɡʌvərnmənt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "правление, управление",
+          "examples": [
+            {
+              "en": "local government",
+              "ru": "местное самоуправление"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "форма правления",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "правительство",
+          "examples": [
+            {
+              "en": "organs of government",
+              "ru": "органы государственного управления"
+            },
+            {
+              "en": "responsible government",
+              "ru": "ответственное министерство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "провинция (управляемая губернатором), штат",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "управление",
+          "examples": [],
+          "register": [
+            "грамматика"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "group",
+      "frequency_rank": 213,
+      "cefr": "a1",
+      "phon_br": "/ɡruːp/",
+      "phon_n_am": "/ɡruːp/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "группа",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "группировка, фракция",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: слои, круги (общества)",
+          "examples": [
+            {
+              "en": "business groups",
+              "ru": "деловые круги"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ансамбль популярной музыки",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "группа",
+          "examples": [],
+          "register": [
+            "авиация"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "радикал",
+          "examples": [],
+          "register": [
+            "химия"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "группировать(ся)",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подбирать гармонично краски, цвета",
+          "examples": [],
+          "register": [],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "классифицировать, распределять по группам",
+          "examples": [],
+          "register": [],
+          "id": 9
+        }
+      ]
+    },
+    {
+      "word": "public",
+      "frequency_rank": 214,
+      "cefr": "a2",
+      "phon_br": "/ˈpʌblɪk/",
+      "phon_n_am": "/ˈpʌblɪk/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "общественный; государственный",
+          "examples": [
+            {
+              "en": "public man",
+              "ru": "общественный деятель"
+            },
+            {
+              "en": "public office",
+              "ru": "государственное, муниципальное или общественное учреждение"
+            },
+            {
+              "en": "public opinion",
+              "ru": "общественное мнение"
+            },
+            {
+              "en": "public opinion poll",
+              "ru": "опрос населения по какому-либо вопросу"
+            },
+            {
+              "en": "public peace",
+              "ru": "общественный порядок"
+            },
+            {
+              "en": "public debt",
+              "ru": "государственный долг"
+            },
+            {
+              "en": "public officer (or official)",
+              "ru": "государственный служащий"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "публичный, общедоступный",
+          "examples": [
+            {
+              "en": "public library (lecture)",
+              "ru": "публичная библиотека (лекция)"
+            },
+            {
+              "en": "public road",
+              "ru": "большая дорога"
+            },
+            {
+              "en": "public transport",
+              "ru": "общественный транспорт"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "открытый, гласный",
+          "examples": [
+            {
+              "en": "public protest",
+              "ru": "открытый протест"
+            },
+            {
+              "en": "to give smth. public utterance",
+              "ru": "предать что-либо гласности"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "коммунальный; коммунальные услуги",
+          "examples": [
+            {
+              "en": "public service",
+              "ru": "коммунальные услуги"
+            },
+            {
+              "en": "public utilities",
+              "ru": "коммунальные сооружения, предприятия"
+            }
+          ],
+          "register": [
+            "коммерческое"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "народный, общенародный; гражданственность",
+          "examples": [
+            {
+              "en": "public ownership",
+              "ru": "общенародное достояние"
+            },
+            {
+              "en": "public spirit",
+              "ru": "дух патриотизма"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "народ",
+          "examples": [
+            {
+              "en": "the British public",
+              "ru": "английский народ"
+            }
+          ],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "публика; общественность",
+          "examples": [
+            {
+              "en": "to appeal to the public",
+              "ru": "обратиться, апеллировать к обществу"
+            },
+            {
+              "en": "in public",
+              "ru": "открыто, публично"
+            }
+          ],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "круг читателей; завсегдатаи",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 8
+        }
+      ]
+    },
+    {
+      "word": "top",
+      "frequency_rank": 215,
+      "cefr": "a2",
+      "phon_br": "/tɒp/",
+      "phon_n_am": "/tɑːp/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "верхушка, вершина (горы); макушка (головы, дерева)",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "верхний конец, верхняя поверхность; верх (экипажа, лестницы, страницы); крышка (кастрюли, банки); колпачок; верхний обрез (книги); с головы до пят",
+          "examples": [
+            {
+              "en": "top of milk",
+              "ru": "пенка молока"
+            },
+            {
+              "en": "from top to toe",
+              "ru": "с ног до головы"
+            },
+            {
+              "en": "from top to bottom",
+              "ru": "сверху донизу"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шпиль, купол",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "высшее, первое место; высокое положение",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "первый; человек, занимающий первое место",
+          "examples": [
+            {
+              "en": "he was top in maths",
+              "ru": "по математике он был лучшим учеником"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "блузка, джемпер, верх одежды или обуви",
+          "examples": [
+            {
+              "en": "pyjama top",
+              "ru": "пижамная куртка"
+            }
+          ],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "высшая степень; высшее напряжение",
+          "examples": [
+            {
+              "en": "at the top of one's voice",
+              "ru": "во весь голос"
+            },
+            {
+              "en": "at top speed",
+              "ru": "во весь опор"
+            }
+          ],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "(обыкн. при мн. ч.:) ботва (корнеплодов)",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: две старшие карты какой-либо масти (в бридже)",
+          "examples": [],
+          "register": [
+            "карточный термин",
+            "британское"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: отвороты (сапог); высокие сапоги с отворотами",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "кровля (выработки)",
+          "examples": [],
+          "register": [
+            "горное дело"
+          ],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "колошник",
+          "examples": [],
+          "register": [
+            "металлургия"
+          ],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "марс",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "верхний",
+          "examples": [
+            {
+              "en": "the top shelf",
+              "ru": "верхняя полка"
+            }
+          ],
+          "register": [],
+          "id": 14,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "наивысший, максимальный",
+          "examples": [
+            {
+              "en": "top speed",
+              "ru": "самая высшая скорость"
+            },
+            {
+              "en": "top price",
+              "ru": "самая высокая цена"
+            }
+          ],
+          "register": [],
+          "id": 15,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "самый главный",
+          "examples": [
+            {
+              "en": "top men",
+              "ru": "люди, занимающие самое высокое положение"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать (сверху); снабжать верхушкой, куполом и т. п.",
+          "examples": [
+            {
+              "en": "the mountain was topped with snow",
+              "ru": "вершина горы была покрыта снегом"
+            },
+            {
+              "en": "to top one's fruit",
+              "ru": "укладывать наверху лучшие фрукты"
+            }
+          ],
+          "register": [],
+          "id": 17,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обрезать верхушку (дерева и т. п.; тж. top up)",
+          "examples": [],
+          "register": [],
+          "id": 18,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "превосходить; быть во главе, быть первым",
+          "examples": [],
+          "register": [],
+          "id": 19
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "превышать; достигать какой-либо вершины, веса и т. п.",
+          "examples": [
+            {
+              "en": "he tops his father by a head",
+              "ru": "он на целую голову выше отца"
+            },
+            {
+              "en": "he tops six feet",
+              "ru": "он шести футов ростом"
+            }
+          ],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подняться на вершину; перевалить (через гору); перепрыгнуть (через что-либо)",
+          "examples": [],
+          "register": [],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать (новой краской и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать",
+          "examples": [
+            {
+              "en": "they topped off their dinner with fruit",
+              "ru": "в конце обеда им были поданы фрукты"
+            },
+            {
+              "en": "top off",
+              "ru": "отделывать; украшать; заканчивать, завершать"
+            }
+          ],
+          "register": [
+            "сельскохозяйственное"
+          ],
+          "id": 23
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "top off",
+          "partOfSpeech": "verb",
+          "translation": "отделывать; украшать; заканчивать, завершать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "top up",
+          "partOfSpeech": "verb",
+          "translation": "добавлять; доливать, досыпать (доверху); дозаправлять(ся)",
+          "examples": [],
+          "register": [
+            "автомобильное"
+          ]
+        },
+        {
+          "id": 3,
+          "phrase": "(a little bit) off the top",
+          "partOfSpeech": "noun",
+          "translation": "не в своём уме",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "to go over the top",
+          "partOfSpeech": "verb",
+          "translation": "а) воен. идти в атаку; б) сделать решительный шаг; начать решительно действовать",
+          "examples": [],
+          "register": [
+            "военное дело"
+          ]
+        },
+        {
+          "phrase": "to come to the top",
+          "partOfSpeech": "noun",
+          "translation": "занять видное положение",
+          "examples": [],
+          "register": [],
+          "id": 5
+        }
+      ]
+    },
+    {
+      "word": "business",
+      "frequency_rank": 216,
+      "cefr": "a1",
+      "phon_br": "/ˈbɪznəs/",
+      "phon_n_am": "/ˈbɪznəs/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "дело, занятие",
+          "examples": [
+            {
+              "en": "on business",
+              "ru": "по делу"
+            },
+            {
+              "en": "to be out of business",
+              "ru": "обанкротиться"
+            },
+            {
+              "en": "man of business",
+              "ru": "деловой человек"
+            },
+            {
+              "en": "the business of the day (or meeting)",
+              "ru": "повестка дня агент, поверенный"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "профессия",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "обязанность; право",
+          "examples": [
+            {
+              "en": "to make it one's business",
+              "ru": "считать своей обязанностью"
+            },
+            {
+              "en": "you had no business to do it",
+              "ru": "вы не имели основания, права это делать"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "дело, история",
+          "examples": [
+            {
+              "en": "I am sick of the whole business",
+              "ru": "мне вся эта история надоела"
+            }
+          ],
+          "register": [
+            "пренебрежительное"
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "торговое предприятие, фирма",
+          "examples": [],
+          "register": [
+            "торговля"
+          ]
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "бизнес; коммерческая деятельность",
+          "examples": [
+            {
+              "en": "to set up in business",
+              "ru": "начать торговое дело"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "(выгодная) сделка",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "действие, игра, мимика, жесты (не диалог)",
+          "examples": [],
+          "register": [
+            "театр"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "noun",
+          "translation": "практический, деловой; «капитаны» промышленности",
+          "examples": [
+            {
+              "en": "the business end",
+              "ru": "практическая, наиболее важная сторона дела"
+            },
+            {
+              "en": "business hours",
+              "ru": "часы торговли или приёма"
+            },
+            {
+              "en": "business executives",
+              "ru": "руководящий административный персонал"
+            },
+            {
+              "en": "business interests",
+              "ru": "деловой мир, деловые круги"
+            }
+          ],
+          "register": []
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "what is your business here?",
+          "partOfSpeech": "noun",
+          "translation": "что вам здесь надо?",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "it has done his business",
+          "partOfSpeech": "noun",
+          "translation": "это его доконало",
+          "examples": [],
+          "register": []
+        }
+      ]
+    }
+  ],
+  "source_search_sha256": "d7f439c5ec224eb497bca146ce410d29447f6da79645cd26c46e619163374fb5",
+  "prepared_source_search": {
+    "file": "source_search.json",
+    "helper": "source_search.py",
+    "instruction": "First run python3 source_search.py --packet source_search.json --limit 1. Avoid dumping the entire packet. For additional prepared hits use --packet source_search.json --word WORD --limit 3. All sources must still be checked; fetch full context whenever the first hit does not establish the sense. Cache files contain full page/paragraph text. Use python3 source_search.py --cache-file FILE --location N for context or --word WORD --limit N for lexical search. Every hit still needs semantic review. Do not repeat PDF extraction or environment discovery."
+  },
+  "source_inventory": [
+    {
+      "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+      "locations": 801
+    },
+    {
+      "file": "SamPolnAnglRysSlovar.pdf",
+      "locations": 801
+    },
+    {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": 321
+    },
+    {
+      "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+      "locations": 960
+    },
+    {
+      "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+      "locations": 110871
+    },
+    {
+      "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+      "locations": 960
+    },
+    {
+      "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+      "locations": 1329
+    },
+    {
+      "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+      "locations": 639
+    }
+  ],
+  "source_contract": "Search every file in source_inventory, including those omitted from the role markdown. PDF coordinates: page (one-based). DOCX coordinates: line (one-based XML paragraph index), not paragraph. Return short exact excerpts, not whole pages.",
+  "entries_are_compact_for_green": false,
+  "previous_outputs": {
+    "06": [
+      {
+        "word": "number",
+        "decision": "изменить",
+        "reason": "В значениях 3 и 11 помета pl обозначает множественное число. Значение 9 потеряло одушевлённое толкование, к которому относится пример an attractive little number. Остальные значения и обе выделенные фразы согласуются с основным изданием.",
+        "normalized": "Существительное: 1) мат. сумма, число, цифра; 2) число, количество; 3) мн. большое количество, многочисленность; 4) номер; 5) номер программы; 6) выпуск, номер, экземпляр; 7) группа, компания; 8) грам. число; 9) разг. что-либо заметное, бросающееся в глаза; кто-либо, привлекающий внимание, вызывающий симпатию; 10) прос. ритм, размер; 11) мн., прос. стихи. Глагол: причислять; числиться; нумеровать; насчитывать; считать, пересчитывать; воен. рассчитываться.",
+        "doubts": [
+          "«Сумма» подтверждается печатным текстом как математическое толкование. Краткие издания дают более узкий набор эквивалентов."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "number I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 299,
+                  "quote": "number I ['nʌmbə] n 1 число, количество"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "number I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 299,
+                  "quote": "number I [nmbə] n 1 число, количество"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "number",
+              "found": true,
+              "locations": [
+                {
+                  "page": 116,
+                  "quote": "number ['nömb@] 1 n 1) число ; коли чество"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "number, продолжение статьи",
+              "found": true,
+              "locations": [
+                {
+                  "page": 544,
+                  "quote": "1) мат. сумма, число, цифра"
+                },
+                {
+                  "page": 544,
+                  "quote": "~ множество, без числа 3) pl большое количество; многочисленность;"
+                },
+                {
+                  "page": 545,
+                  "quote": "ся в глаза; кто-л., привлекающий внимание, вызывающий симпатию; an attractive little ~ очаровательная девчушка 10) прос. ритм, размер 11) pl прос. стихи"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "number",
+              "found": true,
+              "locations": [
+                {
+                  "line": 64017,
+                  "quote": "number [´nnmb ] 1. n 1) мат. сум' ма"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "number, продолжение статьи",
+              "found": true,
+              "locations": [
+                {
+                  "page": 544,
+                  "quote": "1) мат. сумма, число, цифра"
+                },
+                {
+                  "page": 545,
+                  "quote": "10) прос. ритм, размер 11) pl прос. стихи"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "number",
+              "found": true,
+              "locations": [
+                {
+                  "page": 573,
+                  "quote": "number [nmbə] I n 1. чис ло"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "number",
+              "found": true,
+              "locations": [
+                {
+                  "page": 155,
+                  "quote": "number [ nmbə] 1. п 1) чис ло; количество"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "city",
+        "decision": "изменить",
+        "reason": "Во втором значении the City объединяет деловой квартал и финансово-коммерческие круги. В четвёртом City man служит атрибутивным примером, а у City editor две отдельные трактовки. Американская помета относится к заведующему репортажем, как отдельная помета амер. относится к city hall.",
+        "normalized": "Город (в английском и американском употреблении с уточнениями из статьи); the City — Сити, деловой квартал в центре Лондона; финансовые и коммерческие круги Лондона; атрибутивно — городской, муниципальный. Атрибутивные сочетания с City: City man — финансист, коммерсант, делец; City article — статья по финансовым и коммерческим вопросам; City editor — редактор финансового отдела газеты; амер. заведующий репортажем.",
+        "doubts": [
+          "«Крупный» в отдельной фразе City man отсутствует в рассмотренном месте основного издания. Атрибутивное употребление может храниться как функция существительного."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "city",
+              "found": true,
+              "locations": [
+                {
+                  "page": 85,
+                  "quote": "city ['sɪtɪ] n город; большой город"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "city",
+              "found": true,
+              "locations": [
+                {
+                  "page": 85,
+                  "quote": "city [siti] n город; большой город"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "city",
+              "found": true,
+              "locations": [
+                {
+                  "page": 36,
+                  "quote": "city ['sKtK] n (большо й) го род"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "city, the C., C. man, C. editor",
+              "found": true,
+              "locations": [
+                {
+                  "page": 146,
+                  "quote": "2): the C. Сити, деловой квартал в центре Лондона; финансовые и ком- мерческие круги Лондона"
+                },
+                {
+                  "page": 146,
+                  "quote": "4) (C.) attr.: С. man финансист, коммерсант, делец"
+                },
+                {
+                  "page": 146,
+                  "quote": "C. editor а) редактор финансового отдела газеты; б) амер. заведующий репортажем"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "city",
+              "found": true,
+              "locations": [
+                {
+                  "line": 15205,
+                  "quote": "city [´siti] n 1) большой'"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "city, C. editor",
+              "found": true,
+              "locations": [
+                {
+                  "page": 146,
+                  "quote": "C. editor а) редактор финансового отдела га зеты; б) амер. заведующий репор тажем"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "city",
+              "found": true,
+              "locations": [
+                {
+                  "page": 169,
+                  "quote": "city [siti] n го род"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "city",
+              "found": true,
+              "locations": [
+                {
+                  "page": 50,
+                  "quote": "city [siti] (большой) город"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "lot",
+        "decision": "изменить",
+        "reason": "В примере lot with обрезано начало и склеены два оборота. Земельный участок и партия изделий разведены в основном издании. У наречия нет медицинской пометы, а пример показывает форму a lot.",
+        "normalized": "Существительное: разг. много, масса, многие; аукционный лот; жребий, перен. участь, доля, судьба; особенно амер. участок земли; партия изделий; разг. группа, компания; налог, пошлина; территория при киностудии. Восстановить отдельно to cast (or to throw) in one's lot with somebody — связать, разделить свою судьбу с кем-либо и the lot fell upon (or came to) me — жребий пал на меня. Глагольные значения: дробить на участки; редк. бросать жребий; сортировать, разбивать на партии; амер. разг. рассчитывать на что-либо. Наречное a lot — гораздо, намного. A bad lot — дурной человек.",
+        "doubts": [
+          "В обоих SamPoln наречный омоним помечен как разговорный. В основном издании при этом значении стилистической пометы нет."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "lot II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 267,
+                  "quote": "lot II [lat] adv разг гораздо, намного"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "lot II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 267,
+                  "quote": "lot II [lɒt] adv разг гораздо, намного"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "lot",
+              "found": true,
+              "locations": [
+                {
+                  "page": 105,
+                  "quote": "lot [lÁt] n 1) жре бий 2) у часть; до ля"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "lot, жребий, участок, adv",
+              "found": true,
+              "locations": [
+                {
+                  "page": 480,
+                  "quote": "cast (или to throw) in one's ~ with smb. связать, разделить (свою) судьбу с кем-л.; the ~ fell upon (или came to) me жребий пал на меня"
+                },
+                {
+                  "page": 480,
+                  "quote": "4) (особ. амер.) участок (земли)"
+                },
+                {
+                  "page": 480,
+                  "quote": "3. adv гораздо, намного; a ~ better (more) гораздо лучше (больше)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "lot",
+              "found": true,
+              "locations": [
+                {
+                  "line": 56297,
+                  "quote": "lot [l t] 1. n 1) разг. мно'го"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "lot, наречное значение",
+              "found": true,
+              "locations": [
+                {
+                  "page": 480,
+                  "quote": "3. adv гораздо, намного; a ~ better (more) гораздо лучше (больше)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "lot",
+              "found": true,
+              "locations": [
+                {
+                  "page": 512,
+                  "quote": "lot [lɒt] I n 1. жре бий; пе рен. участь"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "lot",
+              "found": true,
+              "locations": [
+                {
+                  "page": 140,
+                  "quote": "lot [lɔt] 1) жребий 2) участь; доля"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "name",
+        "decision": "изменить",
+        "reason": "В первом значении восстановить границы примеров: to put one's name down for, without a name, Christian/given/first name, family name/surname, to know by name и by (or of, under) the name of. В значении 2 печатный текст даёт «фамилия, род» без фамильярной пометы. В 3 pl обозначает обычное множественное число. В 9 амер. относится к to name for.",
+        "normalized": "Существительное: имя; фамилия; фамилия, род; обычно мн. брань; название, наименование, обозначение; выдающийся человек, личность; репутация; пустой звук; грам. имя существительное. To put one's name down for — выставить кандидатуру, записаться для участия или подписаться в соответствующем контексте; without a name — безымянный; неподдающийся описанию о поступке. Глагол: давать имя; называть по имени, перечислять поимённо; указывать, назначать день; упоминать; назначать на должность; парл. призывать к порядку.",
+        "doubts": [
+          "He has name for honesty и «лицемер» при virtuous in name передают печатное чтение. Современную идиоматичность и буквальность этих примеров следует оценивать отдельно от реконструкции."
+        ],
+        "confidence": 0.98,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "name I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 290,
+                  "quote": "name I [neɪm] n 1 имя; фамилия"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "name I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 290,
+                  "quote": "name I [neim] n 1 имя; фамилия"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "name",
+              "found": true,
+              "locations": [
+                {
+                  "page": 113,
+                  "quote": "name [neKm] 1 n и мя; фами лия"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "name, put one's name down for, name for",
+              "found": true,
+              "locations": [
+                {
+                  "page": 526,
+                  "quote": "to put one's ~ down for а) выставить свою кандидатуру на"
+                },
+                {
+                  "page": 526,
+                  "quote": "without a ~ а) безымянный; б) неподдающийся описанию (о поступке)"
+                },
+                {
+                  "page": 526,
+                  "quote": "3) (обыкн. pl) брань; to call ~s ругать(ся)"
+                },
+                {
+                  "page": 527,
+                  "quote": "to ~ after, амер. to ~ for называть в честь (кого-л.)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "name",
+              "found": true,
+              "locations": [
+                {
+                  "line": 61857,
+                  "quote": "name [neim] 1. n 1) и'мя (тж. Christian"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "name, put one's name down for, name for",
+              "found": true,
+              "locations": [
+                {
+                  "page": 526,
+                  "quote": "to put one's ~ down for а) выставить свою кандидатур"
+                },
+                {
+                  "page": 527,
+                  "quote": "to ~ after, амер. to ~ for называть в честь"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "name",
+              "found": true,
+              "locations": [
+                {
+                  "page": 557,
+                  "quote": "name [neim] I n 1. на зва ние; имя"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "name",
+              "found": true,
+              "locations": [
+                {
+                  "page": 151,
+                  "quote": "name [neim] 1. n имя; фами лия"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "night",
+        "decision": "изменить",
+        "reason": "В первом значении «всю ночь напролёт» относится к all night (long), «под покровом ночи» к by night, а «выходной вечер прислуги» к night out. У to have a (or the) night out остаются два глагольных перевода. У at night в печати также есть «вечером». Остальные примеры и переносный смысл мрака согласуются со статьёй.",
+        "normalized": "1) Ночь; вечер. All night (long) — в течение всей ночи, всю ночь напролёт. At night — ночью, вечером. By night — в течение ночи, под покровом ночи. Night out — ночь вне дома, особенно в развлечениях; выходной вечер прислуги. To have a (or the) night out — прокутить всю ночь; иметь выходной вечер о прислуге. 2) Темнота, мрак. 3) Атрибутивно: ночной, вечерний.",
+        "doubts": [
+          "Далеко за полночь и выходной вечер прислуги сохраняют словарный перевод. Их применимость зависит от контекста и эпохи."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "night",
+              "found": true,
+              "locations": [
+                {
+                  "page": 294,
+                  "quote": "night [naɪt] n 1 ночь; good night!"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "night",
+              "found": true,
+              "locations": [
+                {
+                  "page": 294,
+                  "quote": "night [nait] n 1 ночь; good night!"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "night",
+              "found": true,
+              "locations": [
+                {
+                  "page": 115,
+                  "quote": "night [naKt] n ночь; ве чер"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "night, all night, by night, night out",
+              "found": true,
+              "locations": [
+                {
+                  "page": 536,
+                  "quote": "all ~ (long) в течение всей ночи; всю ночь напролёт; at ~ а) ночью; б) вечером; by ~ а) в течение ночи; б) под покровом ночи"
+                },
+                {
+                  "page": 536,
+                  "quote": "б) выходной вечер прислуги; to have a (или the) ~ out а) прокутить всю ночь; б) иметь выходной вечер (о прислуге)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "night",
+              "found": true,
+              "locations": [
+                {
+                  "line": 62936,
+                  "quote": "night [nait] n 1) ночь; ве'чер"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "night, by night",
+              "found": true,
+              "locations": [
+                {
+                  "page": 536,
+                  "quote": "by ~ а) в течение ночи; б) под покровом ночи"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "night",
+              "found": true,
+              "locations": [
+                {
+                  "page": 565,
+                  "quote": "night [nait] n 1. ночь; ве чер"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "night",
+              "found": true,
+              "locations": [
+                {
+                  "page": 153,
+                  "quote": "night [nait] ночь; вечер;"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "play",
+        "decision": "изменить",
+        "reason": "В значении 14 восстановить «играть (в кино, театре)». У 32 печать даёт тех. без амер. и разг. In play — наречное сочетание. У play around разг. стоит при любовной интрижке, у play up амер. при «рекламировать». У play off потеряна повторная партия после ничьей. Печатные примеры про мотор, рояль, драму, брандспойт и рыбу относятся к указанным в статье группам.",
+        "normalized": "Девять существительных значений соответствуют печати: игра, забава; манера игры; пьеса, спектакль; действие; простор; движение; азартная игра; переливы; тех. люфт. Глагольная часть различает игру и участие, музыку, запуск или воспроизведение, актёрскую игру в кино и театре, представление труппы, роль, розыгрыш, азартную игру, использование обстоятельств, пригодность для игры, выбор игрока, ход, действие с мячом, движение, световые и водяные эффекты, притворство, направление струи или света и обстрел, рыболовное употребление, поведение, владение и технический люфт. In play — в шутку. Play off — натравливать; сыграть повторную партию после ничьей. Play out: to be played out — выдыхаться.",
+        "doubts": [
+          "«Дать (время) (рыбе) хорошо клюнуть» подтверждено как печатное чтение. Его соответствие современному рыболовному употреблению отдельно не установлено. Выражение the engine was played off также подтверждается как печатный пример."
+        ],
+        "confidence": 0.98,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "play I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 330,
+                  "quote": "play I [pleɪ] n 1 пьеса, драма"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "play I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 330,
+                  "quote": "play I [plei] n 1 пьеса, драма"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "play",
+              "found": true,
+              "locations": [
+                {
+                  "page": 126,
+                  "quote": "play [pleK] 1 n 1) игра 2) пье са"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "play, игра в кино, люфт, play off, play up, in play",
+              "found": true,
+              "locations": [
+                {
+                  "page": 606,
+                  "quote": "5) играть (в кино, театре)"
+                },
+                {
+                  "page": 606,
+                  "quote": "23) тех. иметь люфт"
+                },
+                {
+                  "page": 606,
+                  "quote": "б) сыграть повторную партию после ничьей"
+                },
+                {
+                  "page": 606,
+                  "quote": "г) амер. рекламировать; д) вести себя мужественно, героически"
+                },
+                {
+                  "page": 606,
+                  "quote": "каламбур; in ~ в шутку"
+                },
+                {
+                  "page": 607,
+                  "quote": "to ~ safe действовать наверняка; to ~ ball сотрудничать"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "play",
+              "found": true,
+              "locations": [
+                {
+                  "line": 70587,
+                  "quote": "play [plei] 1. n 1) игра'; заба'ва"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "play, игра в кино, люфт, рыба",
+              "found": true,
+              "locations": [
+                {
+                  "page": 606,
+                  "quote": "5) играть (в кино, теат ре)"
+                },
+                {
+                  "page": 606,
+                  "quote": "23) тех. иметь люфт"
+                },
+                {
+                  "page": 606,
+                  "quote": "20) дать (время) (рыбе) хорошо клюнуть"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "play",
+              "found": true,
+              "locations": [
+                {
+                  "page": 632,
+                  "quote": "play [plei] I v 1. иг рать; рез вить ся"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "play",
+              "found": true,
+              "locations": [
+                {
+                  "page": 169,
+                  "quote": "play [plei] 1. n 1) игра 2) пьеса"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "until",
+        "decision": "изменить",
+        "reason": "В основном издании заголовок отсылает к till I, 1. Его первый грамматический раздел даёт предлог «до». Союзное «(до тех пор) пока (не)» подтверждают отдельные статьи till и until в сопоставляемых словарях. Пример until tomorrow иллюстрирует предлог.",
+        "normalized": "Печатное чтение основного издания: until = till I, 1. В записи разделить предлог «до» и союз «(до тех пор) пока (не)». Сведения об отсылке хранить отдельно от перевода.",
+        "doubts": [
+          "Формулировку «во времени или пространстве» и точный пример until tomorrow в статье основного издания подтверждённая отсылка не содержит. Явного пространственного примера в приведённых параллелях нет."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "until I, until II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 481,
+                  "quote": "until I [ən'tɪl] prep до"
+                },
+                {
+                  "page": 481,
+                  "quote": "until II [ən'tɪl] cj 1 (до тех пор) пока (не)"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "until I, until II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 481,
+                  "quote": "until I [əntil] prep до"
+                },
+                {
+                  "page": 481,
+                  "quote": "until II [əntil] cj 1 (до тех пор) пока (не)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "until",
+              "found": true,
+              "locations": [
+                {
+                  "page": 168,
+                  "quote": "until [ön'tKl] 1 prep до 2 conj пока не"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "until; till I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 870,
+                  "quote": "= till I, 1"
+                },
+                {
+                  "page": 827,
+                  "quote": "1 . prep 1) до; ~ then до тех пор"
+                },
+                {
+                  "page": 827,
+                  "quote": "2. cj (до тех пор) пока (не); wait ~ I come подожди, пока я приду"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "until",
+              "found": true,
+              "locations": [
+                {
+                  "line": 101593,
+                  "quote": "until [ n´til] = till I, 1"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "until; till I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 870,
+                  "quote": "= till I, 1"
+                },
+                {
+                  "page": 827,
+                  "quote": "2. cj (до тех пор) пока (не)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "until",
+              "found": true,
+              "locations": [
+                {
+                  "page": 870,
+                  "quote": "until [əntil]= till"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "until",
+              "found": true,
+              "locations": [
+                {
+                  "page": 236,
+                  "quote": "until [əntil] 1. prep до 2. conj пока не"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "company",
+        "decision": "изменить",
+        "reason": "Пропущены самостоятельные «товарищество, компания» и «рота». «Ротный» атрибутивно и с военной пометой. Company store и company union — разные сочетания, причём амер. относится к union. Разговорная помета при to keep company относится к «ухаживать». Последние три перевода принадлежат выражениям.",
+        "normalized": "Общество, компания; гости; ком. товарищество, компания; труппа, ансамбль артистов; экипаж судна; воен. рота; атриб., воен. ротный. Company store — фабричная лавка; company union — амер. «компанейский» профсоюз. Present company excepted — о присутствующих не говорят; for company — за компанию; a man is known by the company he keeps — посл. скажи мне, кто твой друг, и я скажу, кто ты.",
+        "doubts": [
+          "To receive a great deal of company передано в издании как «часто принимать гостей». Английское сочетание допускает и прочтение через количество гостей."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "company",
+              "found": true,
+              "locations": [
+                {
+                  "page": 94,
+                  "quote": "company ['kʌmpənɪ] n 1 эк общество, компания"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "company",
+              "found": true,
+              "locations": [
+                {
+                  "page": 94,
+                  "quote": "company [kmpəni] n 1 эк общество, компания"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "company",
+              "found": true,
+              "locations": [
+                {
+                  "page": 39,
+                  "quote": "company ['kömp@nK] n о бщество; компа ния"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "company, товарищество, рота, company store, company union",
+              "found": true,
+              "locations": [
+                {
+                  "page": 165,
+                  "quote": "3) ком. товарищество, компания 4) труппа, ансамбль артистов"
+                },
+                {
+                  "page": 165,
+                  "quote": "6) воен. рота 7) attr. воен. ротный 8) attr.: ~ store фабричная лавка; ~ union амер."
+                },
+                {
+                  "page": 165,
+                  "quote": "~ excepted о присутствующих не говорят; for ~ за компанию"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "company",
+              "found": true,
+              "locations": [
+                {
+                  "line": 17439,
+                  "quote": "company [´knmpani] n 1) о'бщество"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "company, товарищество, рота",
+              "found": true,
+              "locations": [
+                {
+                  "page": 165,
+                  "quote": "3) ком. товарищество, ком пания 4) труппа, ансамбль артистов"
+                },
+                {
+                  "page": 165,
+                  "quote": "6) воен. рота 7) attr. во ен. ротный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "company",
+              "found": true,
+              "locations": [
+                {
+                  "page": 186,
+                  "quote": "company [kmpəni] n 1. об ще ст во"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "company",
+              "found": true,
+              "locations": [
+                {
+                  "page": 55,
+                  "quote": "company [kmpəni] обще ство; компания"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "few",
+        "decision": "изменить",
+        "reason": "«Несколько» относится к a few. «Почти ничего» входит в перевод few if any, а самостоятельное толкование второго раздела — «незначительное число». В выражении not a few, a good few печать также даёт «добрая половина».",
+        "normalized": "1. a: few — немногие, немного, мало; a few — несколько. Quite a few — порядочное число, довольно много. 2. n по разметке издания: незначительное число; few could tell — мало кто мог сказать; few if any — почти никто, почти ничего; the few — меньшинство. Not a few, a good few — разг. порядочное число; добрая половина.",
+        "doubts": [
+          "Части речи в печатных источниках расходятся: основное издание даёт a и n, краткий курс — adv. «Добрая половина» контекстна и не задаёт фиксированной доли."
+        ],
+        "confidence": 0.98,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "few I, few II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 173,
+                  "quote": "few I [fju] n незначительное количество"
+                },
+                {
+                  "page": 173,
+                  "quote": "few II [fju] adj немногие, немного, мало"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "few I, few II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 173,
+                  "quote": "few II [fj] adj немногие, немного, мало"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "few",
+              "found": true,
+              "locations": [
+                {
+                  "page": 70,
+                  "quote": "few [fju:] adv 1) немно гие; немно го"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "a few, few if any, a good few",
+              "found": true,
+              "locations": [
+                {
+                  "page": 305,
+                  "quote": "(a ~) несколько"
+                },
+                {
+                  "page": 305,
+                  "quote": "~ if any почти никто; почти ничего; the ~ меньшинство"
+                },
+                {
+                  "page": 305,
+                  "quote": "разг. порядочное число; добрая половина"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "few",
+              "found": true,
+              "locations": [
+                {
+                  "line": 34917,
+                  "quote": "few [fju:] 1. a 1) немног' ие"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "a few, few if any",
+              "found": true,
+              "locations": [
+                {
+                  "page": 305,
+                  "quote": "(a ~) несколько"
+                },
+                {
+                  "page": 305,
+                  "quote": "~ if any почти никто; почти ничего; the ~ меньшинство"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "few",
+              "found": true,
+              "locations": [
+                {
+                  "page": 336,
+                  "quote": "few [fj] I adj 1. не мно гие"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "few",
+              "found": true,
+              "locations": [
+                {
+                  "page": 97,
+                  "quote": "few [fju:] 1) немногие; немно го, мало"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "let",
+        "decision": "изменить",
+        "reason": "Разделить «позволять, разрешать» и «пускать, давать, давать возможность». В примере let AB be equal to CD восстановить CD. У повелительной конструкции убрать пометы, занесённые из фразовых глаголов. Сдача внаём принадлежит let I без уст., а помеха и пропущенный глагол «мешать, препятствовать» — устаревшему let II.",
+        "normalized": "Let I: позволять; пускать, давать возможность; оставлять в покое; сдавать внаём; вспомогательная повелительная конструкция. Let AB be equal to CD — пусть AB равно CD; let him try — пусть он попробует, пусть только попробует. Существительное let I — сдача внаём. Let II, уст.: мешать, препятствовать; помеха, препятствие. Вынести фразовые примеры из повелительного значения: let down включает удлинение и спуск шины; let in (on) — дать доступ; let oneself in и let oneself in for имеют разные переводы; let off шутл. только при выпаливании шутки; let on помечено разг.; let out at — разг. драться, ругаться; let up (on) — разг. смягчаться или работать менее усердно. Амер. разг. при let out относится к окончанию занятий.",
+        "doubts": [
+          "Спортивное let «незасчитанная подача» найдено в SamPoln как отдельный омоним. Оно не входит в восстановленный блок let I–II основного издания."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "let1, let2",
+              "found": true,
+              "locations": [
+                {
+                  "page": 260,
+                  "quote": "let1 I [let] n аренда, сдача внаём"
+                },
+                {
+                  "page": 261,
+                  "quote": "let2 [let] n 1 спорт незасчитанная подача"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "let1, let2",
+              "found": true,
+              "locations": [
+                {
+                  "page": 260,
+                  "quote": "let1 I [let] n аренда, сдача внаём"
+                },
+                {
+                  "page": 261,
+                  "quote": "let2 [let] n 1 спорт незасчитанная подача"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "let",
+              "found": true,
+              "locations": [
+                {
+                  "page": 102,
+                  "quote": "let [let] v (let; let) 1) дава ть"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "let I, let II, AB равно CD, let out at",
+              "found": true,
+              "locations": [
+                {
+                  "page": 465,
+                  "quote": "2) пускать, давать, давать возможность"
+                },
+                {
+                  "page": 465,
+                  "quote": "~ AB be equal to CD пусть (или допустим, что) AB равно CD"
+                },
+                {
+                  "page": 465,
+                  "quote": "~ out at разг. а) драться; б) ругаться; ~ up (on) разг."
+                },
+                {
+                  "page": 465,
+                  "quote": "2. n сдача внаём let II [let] уст. 1. v (letted [-id], let) мешать, препятствовать 2. n помеха; препятствие"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "let AB be equal to CD",
+              "found": true,
+              "locations": [
+                {
+                  "line": 54654,
+                  "quote": "~ AB be equal to CD пусть (или допу'стим, что) AB равно' CD"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "let I, let II, let out at",
+              "found": true,
+              "locations": [
+                {
+                  "page": 465,
+                  "quote": "2. n сдача внаём let II [let] уст."
+                },
+                {
+                  "page": 465,
+                  "quote": "мешать, препятствовать 2. n помеха; препятствие"
+                },
+                {
+                  "page": 465,
+                  "quote": "~ out at разг. а) драться; б) ругаться"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "let1",
+              "found": true,
+              "locations": [
+                {
+                  "page": 498,
+                  "quote": "let1 [let] I v (letted, let) уст."
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "let",
+              "found": true,
+              "locations": [
+                {
+                  "page": 137,
+                  "quote": "let [let] (let; let) 1) давать; по зволять"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "real",
+        "decision": "review_required",
+        "reason": "Все шесть значений real I подтверждаются. Существительное употреблено с the. Последовательность «шотл., амер. разг.» следует сохранить при нормализации. В том же издании есть real II «реал», омоним с другим произношением.",
+        "normalized": "Real I: действительный, настоящий, реальный, подлинный, истинный, неподдельный, несомненный; недвижимый об имуществе; филос. объективно существующий; мат. вещественный, действительный; the real — действительность; наречие, шотл., амер. разг. — очень, действительно, совсем. Real II — реал, старая испанская монета.",
+        "doubts": [
+          "Печатная пунктуация позволяет читать «амер. разг.» как связку помет. Включение денежного омонима зависит от охвата записи с заданным произношением."
+        ],
+        "confidence": 0.98,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "real",
+              "found": true,
+              "locations": [
+                {
+                  "page": 360,
+                  "quote": "real [nəl] adj 1 действительный, реальный"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "real",
+              "found": true,
+              "locations": [
+                {
+                  "page": 360,
+                  "quote": "real [riəl] adj 1 действительный, реальный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "real",
+              "found": true,
+              "locations": [
+                {
+                  "page": 134,
+                  "quote": "real [rK@l] adj 1) действи тельный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "real I, real II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 659,
+                  "quote": "2. n (the ~) действительность"
+                },
+                {
+                  "page": 659,
+                  "quote": "3. adv шотл., амер. разг. очень, действительно, совсем"
+                },
+                {
+                  "page": 659,
+                  "quote": "real II [rei'a:l] n реал (старая испанская монета)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "real I",
+              "found": true,
+              "locations": [
+                {
+                  "line": 76164,
+                  "quote": "real I [ri l] 1. a 1) действи'тельный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "the real, наречное real, real II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 659,
+                  "quote": "(the ~) действительность"
+                },
+                {
+                  "page": 659,
+                  "quote": "3. adv шотл., амер. разг. очень"
+                },
+                {
+                  "page": 659,
+                  "quote": "реал (старая испан ская монета)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "real",
+              "found": true,
+              "locations": [
+                {
+                  "page": 682,
+                  "quote": "real [riəl] I adj 1. дей ст ви тель ный"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "real",
+              "found": true,
+              "locations": [
+                {
+                  "page": 182,
+                  "quote": "real [riəl] 1) действительный, настоящий"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "different",
+        "decision": "оставить",
+        "reason": "Три значения, управление from, to и все три примера согласуются с основным изданием. «Это не соответствует тому, что он говорил» передаёт контекстное различие, а «необычный» имеет отдельную разговорную помету.",
+        "normalized": "1) Другой, не такой; несходный, непохожий, отличный (from, to). 2) Различный, разный. 3) Разг. необычный.",
+        "doubts": [
+          "Поиск в школьном словаре не дал отдельной статьи в доступном тексте. Эта лакуна не влияет на совпадение двух PDF основного издания."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "different",
+              "found": true,
+              "locations": [
+                {
+                  "page": 128,
+                  "quote": "different ['dɪfrənt] adj 1 различный 2 иной, другой"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "different",
+              "found": true,
+              "locations": [
+                {
+                  "page": 128,
+                  "quote": "different [difrənt] adj 1 различный 2 иной, другой"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "different",
+              "found": true,
+              "locations": [
+                {
+                  "page": 54,
+                  "quote": "different ['dKfr@nt] adj 1) друго й 2) ра зный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "different",
+              "found": true,
+              "locations": [
+                {
+                  "page": 228,
+                  "quote": "несходный; непохожий; отличный (from, to)"
+                },
+                {
+                  "page": 228,
+                  "quote": "a lot of ~ things много разных вещей 3) разг. необычный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "different",
+              "found": true,
+              "locations": [
+                {
+                  "line": 25656,
+                  "quote": "different [´difrant] a 1) друго'й"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "different, необычный",
+              "found": true,
+              "locations": [
+                {
+                  "page": 228,
+                  "quote": "3) разг. необычный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "different",
+              "found": true,
+              "locations": [
+                {
+                  "page": 255,
+                  "quote": "different [difrənt] adj 1. дру гой"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "(?<!\\w)different(?!\\w)",
+              "found": false,
+              "result": "Точное отдельное слово в доступном тексте 639 страниц не найдено. Совпадения внутри indifferent исключены."
+            }
+          ]
+        }
+      },
+      {
+        "word": "thought",
+        "decision": "изменить",
+        "reason": "В 6 pl обозначает обычное множественное число. В 7 «чуточка» дано для a thought с уточнением об обычном наречном употреблении «чуточку». Примеры к мышлению, размышлению, вниманию и мысли согласуются со статьёй. Отдельный thought II подтверждает обе формы think.",
+        "normalized": "Thought I: мышление; размышление; забота, внимание; мысль; намерение; обычно мн. соображения, мысли, мнение; a thought — чуточка, обычно в роли наречия «чуточку», как в a thought more polite. Thought II: past и past participle от think.",
+        "doubts": [
+          "В репликах о заботе и при take thought сохранено печатное толкование. Для современной разметки a thought можно вынести в сочетания."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "thought I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 461,
+                  "quote": "thought I [θɔ:t] n 1 мышление 2 размышление"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "thought I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 461,
+                  "quote": "thought I [θɔ:t] n 1 мышление 2 размышление"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "thought I, thought II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 162,
+                  "quote": "thought I [Tþt] past и p p от think"
+                },
+                {
+                  "page": 162,
+                  "quote": "thought II [Tþt] n мысль; мышле ние"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "thought I, thought II, a thought",
+              "found": true,
+              "locations": [
+                {
+                  "page": 822,
+                  "quote": "6) обыкн. pl соображения, мысли, мнение"
+                },
+                {
+                  "page": 822,
+                  "quote": "7) (а ~) чуточка (обыкн. употр. как adv чуточку); a ~ more polite чуть вежливей"
+                },
+                {
+                  "page": 822,
+                  "quote": "thought II [0a:t] past и p. p. от think"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "thought I, thought II",
+              "found": true,
+              "locations": [
+                {
+                  "line": 96144,
+                  "quote": "thought I [θc:t] n 1) мыш' ление'"
+                },
+                {
+                  "line": 96177,
+                  "quote": "thought II [θc:t] past и p. p. от think"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "thought, pl, a thought",
+              "found": true,
+              "locations": [
+                {
+                  "page": 822,
+                  "quote": "pl соображения, мысли, мнение"
+                },
+                {
+                  "page": 822,
+                  "quote": "чуточка (обыкн. употр. как adv чуточку)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "thought",
+              "found": true,
+              "locations": [
+                {
+                  "page": 826,
+                  "quote": "thought [θt] n 1. мысль, мы ш ле -"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "thought I, thought II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 226,
+                  "quote": "thought I [θt] past и р. р. от think"
+                },
+                {
+                  "page": 226,
+                  "quote": "thought II [θt] мысль; мыш ление"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "however",
+        "decision": "изменить",
+        "reason": "Пропущено наречное «как, каким образом». Разговорная помета относится к нему. В основном издании «однако, тем не менее» стоит под cj без разговорной пометы.",
+        "normalized": "1. adv: 1) как бы ни; 2) разг. как, каким образом. 2. cj: однако, тем не менее, несмотря на (э)то.",
+        "doubts": [
+          "Краткий курс классифицирует «однако» как adv. При восстановлении текста используется cj основного издания."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "however I, however II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 223,
+                  "quote": "however I [hau'evə] adv 1 как бы ни; какой бы ни"
+                },
+                {
+                  "page": 223,
+                  "quote": "however II [hau'evə] cj тем не менее, однако"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "however I, however II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 223,
+                  "quote": "however I [haυevə] adv 1 как бы ни; какой бы ни"
+                },
+                {
+                  "page": 223,
+                  "quote": "however II [haυevə] cj тем не менее, однако"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "however",
+              "found": true,
+              "locations": [
+                {
+                  "page": 89,
+                  "quote": "however [haU'еv@] adv одна ко; всё-таки"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "however, adv, cj",
+              "found": true,
+              "locations": [
+                {
+                  "page": 394,
+                  "quote": "2) разг. как, каким образом 2. cj однако, тем не менее, несмотря на (э)то"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "however, разговорное наречие",
+              "found": true,
+              "locations": [
+                {
+                  "line": 45755,
+                  "quote": "however [haw´ev ] 1. adv 1) как бы ни"
+                },
+                {
+                  "line": 45756,
+                  "quote": "2) разг. как, каким' об' разом"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "however, adv, cj",
+              "found": true,
+              "locations": [
+                {
+                  "page": 394,
+                  "quote": "2) разг. как, каким образом 2. cj однако, тем не менее, несмотря на (э)то"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "however",
+              "found": true,
+              "locations": [
+                {
+                  "page": 422,
+                  "quote": "however [haevə] I adv как бы ни"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "(?<!\\w)however(?!\\w)",
+              "found": false,
+              "result": "Точное отдельное слово в доступном тексте 639 страниц не найдено."
+            }
+          ]
+        }
+      },
+      {
+        "word": "god",
+        "decision": "изменить",
+        "reason": "«Боже мой!» и «будьте здоровы!» в значениях 3–4 относятся к God bless you! и должны быть связаны с этой фразой. Honest to God и God damn you! — самостоятельные примеры. Театральная помета относится к множественному the gods; «редк.» относится к глаголу, а не к идолу или кумиру.",
+        "normalized": "1) Бог, божество; 2) God — Всевышний, Бог. God's truth — истинная правда; my God! — Боже мой!; by God — ей-богу!; God Almighty — Боже Всемогущий; God bless you! — разг. «Боже мой!» при удивлении, «будьте здоровы!» после чихания; honest to God — честное слово; God damn you! — будьте вы прокляты! 3) Идол, кумир. 4) Мн., театр. галёрка, раёк; публика галёрки. Глагол, редк. обожествлять, боготворить.",
+        "doubts": [
+          "Буквальное благопожелание «храни вас Бог» семантически возможно. В основном издании под God bless you! перечислены два разговорных эквивалента."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "god",
+              "found": true,
+              "locations": [
+                {
+                  "page": 199,
+                  "quote": "god [god] n 1 бог, божество"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "god",
+              "found": true,
+              "locations": [
+                {
+                  "page": 199,
+                  "quote": "god [gɒd] n 1 бог, божество"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "god",
+              "found": true,
+              "locations": [
+                {
+                  "page": 81,
+                  "quote": "god [gÁd] n Бог"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "god, G. bless you, театр., редк.",
+              "found": true,
+              "locations": [
+                {
+                  "page": 352,
+                  "quote": "G. bless you! разг. а) Боже мой! (восклицание, выражающее удивление); б) будьте здоровы (говорится чихнувшему)"
+                },
+                {
+                  "page": 352,
+                  "quote": "4) pl театр. галёрка, раёк; публика галёрки 2. v редк. обожествлять; боготворить"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "god",
+              "found": true,
+              "locations": [
+                {
+                  "line": 40021,
+                  "quote": "god [g d] 1. n 1) бог, божество' 2) (G.)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "G. bless you, театр., редк.",
+              "found": true,
+              "locations": [
+                {
+                  "page": 352,
+                  "quote": "G. bless you! разг. а) Боже мой!"
+                },
+                {
+                  "page": 352,
+                  "quote": "4) pl театр. галёрка, раёк"
+                },
+                {
+                  "page": 352,
+                  "quote": "2. v редк. обожествлять"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "god",
+              "found": true,
+              "locations": [
+                {
+                  "page": 382,
+                  "quote": "god [gɒd] n бог; идол, ку мир"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "god",
+              "found": true,
+              "locations": [
+                {
+                  "page": 108,
+                  "quote": "god [gɔd] Бог"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "government",
+        "decision": "оставить",
+        "reason": "Все пять значений совпадают с основной статьёй. Local government относится к управлению, а organs of government и responsible government стоят под «правительство». Территориальное и грамматическое значения даны отдельно.",
+        "normalized": "1) Правление, управление; local government — местное самоуправление. 2) Форма правления. 3) Правительство; organs of government — органы государственного управления; responsible government — ответственное министерство. 4) Провинция, управляемая губернатором, штат. 5) Грам. управление.",
+        "doubts": [
+          "«Ответственное министерство» и территориальный смысл подтверждаются как словарные чтения. Более краткие источники дают преимущественно «правительство». Школьная находка относится к статье reins."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "government",
+              "found": true,
+              "locations": [
+                {
+                  "page": 200,
+                  "quote": "government ['gʌvnmənt] n 1 правительство"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "government",
+              "found": true,
+              "locations": [
+                {
+                  "page": 200,
+                  "quote": "government [gvnmənt] n 1 правительство"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "government",
+              "found": true,
+              "locations": [
+                {
+                  "page": 81,
+                  "quote": "government ['göv@nm@nt] n прави тельство"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "government, responsible government, грам.",
+              "found": true,
+              "locations": [
+                {
+                  "page": 354,
+                  "quote": "local ~ местное самоуправление 2) форма правления"
+                },
+                {
+                  "page": 354,
+                  "quote": "responsible ~ ответственное министерство 4) провинция (управляемая губернатором), штат 5) грам. управление"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "government",
+              "found": true,
+              "locations": [
+                {
+                  "line": 40420,
+                  "quote": "government [´gnvnm nt] n 1) прав- лен' ие"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "government, грам.",
+              "found": true,
+              "locations": [
+                {
+                  "page": 354,
+                  "quote": "5) грам. управление"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "government",
+              "found": true,
+              "locations": [
+                {
+                  "page": 385,
+                  "quote": "government [gvənmənt] n 1. пра -"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "government",
+              "found": true,
+              "locations": [
+                {
+                  "page": 185,
+                  "quote": "the ~ of government бразды правления"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "group",
+        "decision": "изменить",
+        "reason": "В 3 убрать британскую помету: pl относится к форме groups и согласуется с business groups. В 5 восстановить конкретное «авиагруппа». Химическое и три глагольных толкования подтверждаются.",
+        "normalized": "Существительное: группа; группировка, фракция; мн. слои, круги общества (business groups — деловые круги); ансамбль популярной музыки; ав. авиагруппа; хим. радикал. Глагол: группировать(ся); подбирать гармонично краски, цвета; классифицировать, распределять по группам.",
+        "doubts": [],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "group I, group II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 204,
+                  "quote": "group I [gru:p] n 1 группа; кучка"
+                },
+                {
+                  "page": 204,
+                  "quote": "group II [gru:p] v 1 группировать(ся)"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "group I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 204,
+                  "quote": "group I [grp] n 1 группа; кучка"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "group",
+              "found": true,
+              "locations": [
+                {
+                  "page": 83,
+                  "quote": "group [gru:p] 1 n гру ппа 2 v группирова ть"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "group, pl, авиагруппа",
+              "found": true,
+              "locations": [
+                {
+                  "page": 361,
+                  "quote": "3) pl слои, круги (общества); business ~s деловые круги"
+                },
+                {
+                  "page": 361,
+                  "quote": "5) ав. авиагруппа 6) хим. радикал"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "group, авиагруппа",
+              "found": true,
+              "locations": [
+                {
+                  "line": 41341,
+                  "quote": "group [gru:p] 1. n 1) гру'ппа"
+                },
+                {
+                  "line": 41342,
+                  "quote": "5) ав. авиагруп' па 6) хим. радика'л"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "group, авиагруппа",
+              "found": true,
+              "locations": [
+                {
+                  "page": 361,
+                  "quote": "5) ав. авиагруппа 6) хим. радикал"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "group",
+              "found": true,
+              "locations": [
+                {
+                  "page": 391,
+                  "quote": "group [grp] I n 1. груп па"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "group",
+              "found": true,
+              "locations": [
+                {
+                  "page": 111,
+                  "quote": "group [gru:p] 1. п группа 2. v группировать"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "public",
+        "decision": "изменить",
+        "reason": "«Коммунальные услуги» и «гражданственность» относятся к public service/public utilities и public spirit соответственно. Коммерческая помета при «коммунальный» не подтверждается. Основное издание даёт разговорное существительное с отсылкой к public house. Приведённые примеры к остальным значениям согласуются с печатью.",
+        "normalized": "Прилагательное: общественный, государственный; публичный, общедоступный; открытый, гласный; коммунальный; народный, общенародный. Public utilities — коммунальные сооружения, предприятия; коммунальные услуги. Public spirit — дух патриотизма, гражданственность. Существительное: народ; публика, общественность; разг. см. public house — паб, пивная.",
+        "doubts": [
+          "«Круг читателей; завсегдатаи» не подтверждается как третье существительное значение основного издания. Возможное употребление в другом словаре или контексте остаётся отдельным вопросом. Печатный public road — «большая дорога», а public office переведён через учреждение."
+        ],
+        "confidence": 0.98,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "public I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 348,
+                  "quote": "public I ['pʌblɪk] n 1 народ 2 публика"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "public I",
+              "found": true,
+              "locations": [
+                {
+                  "page": 348,
+                  "quote": "public I [pblik] n 1 народ 2 публика"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "public",
+              "found": true,
+              "locations": [
+                {
+                  "page": 131,
+                  "quote": "public ['pöblKk] 1 adj публи чный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "public, public utilities, public spirit, public house",
+              "found": true,
+              "locations": [
+                {
+                  "page": 637,
+                  "quote": "~ utilities a) коммунальные сооружения, предприятия; б) коммунальные услуги"
+                },
+                {
+                  "page": 637,
+                  "quote": "~ spirit дух патриотизма; гражданственность"
+                },
+                {
+                  "page": 637,
+                  "quote": "3) разг. см. public house"
+                },
+                {
+                  "page": 637,
+                  "quote": "public house [,pлbiIk'haus] n паб, пивная"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "public",
+              "found": true,
+              "locations": [
+                {
+                  "line": 73921,
+                  "quote": "public [´pnblik] 1. a 1) обще'ственный"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "public, public spirit, public house",
+              "found": true,
+              "locations": [
+                {
+                  "page": 637,
+                  "quote": "~ spirit дух патрио тизма; гражданственность"
+                },
+                {
+                  "page": 637,
+                  "quote": "3) разг. см. public house"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "public",
+              "found": true,
+              "locations": [
+                {
+                  "page": 664,
+                  "quote": "public [pblik] I adj пуб лич ный"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "public",
+              "found": true,
+              "locations": [
+                {
+                  "page": 178,
+                  "quote": "public [ p blik] 1. а публич ный; общественный"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "top",
+        "decision": "изменить",
+        "reason": "«С головы до пят» относится к from top to toe. Пометы pl у ботвы, карт и сапог описывают число. У top off пример с обедом относится к завершению, а сельскохозяйственная помета — к отдельному «покрывать». Автомобильная помета у top up относится к дозаправке, военная у go over the top — к атаке. To come to the top — глагольный оборот. Отдельный top II «волчок» отсутствует в записи.",
+        "normalized": "Top I: верхушка, вершина, макушка; верх, верхняя поверхность, крышка и другие предметные значения; шпиль, купол; первое место и первый человек; верх одежды; высшая степень; во множественном числе ботва, старшие карты, отвороты или сапоги; горн. кровля; метал. колошник; мор. марс. Прилагательное: верхний; наивысший; главный. Глагол: покрывать сверху; обрезать верхушку; превосходить; превышать; подниматься на вершину или перепрыгивать; покрывать краской; с.-х. покрывать. Отдельно top off — отделывать, завершать; top up — добавлять, доливать, досыпать; авто дозаправлять(ся). Top II — волчок.",
+        "doubts": [
+          "«Во весь опор» и «самая высшая скорость» отражают печатную формулировку. Для he tops six feet «он шести футов ростом» сглаживает смысл превышения. (A little bit) off the top — идиоматическое описание состояния; выбор поля части речи зависит от схемы."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "top1 I, top2",
+              "found": true,
+              "locations": [
+                {
+                  "page": 466,
+                  "quote": "top1 I [tup] n 1 верхушка; макушка"
+                },
+                {
+                  "page": 466,
+                  "quote": "top2 [tup] n волчок (игрушка)"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "top1 I, top2",
+              "found": true,
+              "locations": [
+                {
+                  "page": 466,
+                  "quote": "top1 I [tɒp] n 1 верхушка; макушка"
+                },
+                {
+                  "page": 466,
+                  "quote": "top2 [tɒp] n волчок (игрушка)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "top",
+              "found": true,
+              "locations": [
+                {
+                  "page": 164,
+                  "quote": "top [tÁp] 1 n 1) верх 2) верши на"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "top I, top II, from top to toe, top off, top up",
+              "found": true,
+              "locations": [
+                {
+                  "page": 833,
+                  "quote": "from ~ to toe с ног до головы; с головы до пят"
+                },
+                {
+                  "page": 834,
+                  "quote": "(speed) во весь голос (опор)"
+                },
+                {
+                  "page": 834,
+                  "quote": "7) с.-х. покрывать"
+                },
+                {
+                  "page": 834,
+                  "quote": "~ off а) отделывать; украшать; б) заканчивать, завершать"
+                },
+                {
+                  "page": 834,
+                  "quote": "а) добавлять; доливать, досыпать (доверху); б) авто дозаправлять(ся)"
+                },
+                {
+                  "page": 834,
+                  "quote": "top II [top] n волчок (игрушка)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "top I, top II",
+              "found": true,
+              "locations": [
+                {
+                  "line": 97479,
+                  "quote": "top I [t p] 1. n 1) верхуш'"
+                },
+                {
+                  "line": 97607,
+                  "quote": "top II [t p] n волчо'к (игрушка)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "top, во весь опор, сельскохозяйственное значение, волчок",
+              "found": true,
+              "locations": [
+                {
+                  "page": 834,
+                  "quote": "(speed) во весь голос (опор)"
+                },
+                {
+                  "page": 834,
+                  "quote": "волчок (игрушка)"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "top1, top2",
+              "found": true,
+              "locations": [
+                {
+                  "page": 835,
+                  "quote": "top1 [tɒp] I n 1. вер хуш ка, вер ши на"
+                },
+                {
+                  "page": 835,
+                  "quote": "top2 [tɒp] n вол чок (иг руш ка)"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "top",
+              "found": true,
+              "locations": [
+                {
+                  "page": 229,
+                  "quote": "top [tɔp] 1. n 1) верх 2) вер шина"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "word": "business",
+        "decision": "изменить",
+        "reason": "«Агент, поверенный» — второе толкование man of business. У the business of the day (or meeting) остаётся «повестка дня». «Капитаны промышленности» относятся к business executives, а значение 9 — атрибутивное «практический, деловой». Торговая помета у значения 5 отсутствует в печатном тексте. Две вынесенные фразы передают печатные примеры.",
+        "normalized": "Business I: дело, занятие; профессия; обязанность, право; пренебр. дело, история; торговое предприятие, фирма; бизнес, коммерческая деятельность; выгодная сделка; театр. действие, игра, мимика, жесты; атриб. практический, деловой. Man of business — деловой человек; агент, поверенный. Business executives — руководящий административный персонал; «капитаны» промышленности. Business II, уст. — busyness, занятость, деловитость.",
+        "doubts": [
+          "«Обанкротиться» подтверждается как печатный перевод to be out of business. В другом контексте английское выражение может означать прекращение деятельности без указания причины. Включение устаревшего омонима business II зависит от охвата записи."
+        ],
+        "confidence": 0.99,
+        "source_evidence": {
+          "search_results": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "business",
+              "found": true,
+              "locations": [
+                {
+                  "page": 66,
+                  "quote": "business ['bɪznɪs] n 1 торговля, бизнес"
+                }
+              ]
+            },
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "business",
+              "found": true,
+              "locations": [
+                {
+                  "page": 66,
+                  "quote": "business [biznis] n 1 торговля, бизнес"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+              "query": "business",
+              "found": true,
+              "locations": [
+                {
+                  "page": 29,
+                  "quote": "business ['bKznKs] n де ло, заня тие; би знес"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "business I, man of business, business executives, business II",
+              "found": true,
+              "locations": [
+                {
+                  "page": 111,
+                  "quote": "the ~ of the day (или meeting) повестка дня"
+                },
+                {
+                  "page": 111,
+                  "quote": "man of ~ а) деловой человек; б) агент, поверенный"
+                },
+                {
+                  "page": 112,
+                  "quote": "9) attr. практический, деловой"
+                },
+                {
+                  "page": 112,
+                  "quote": "~ executives руководящий административный персонал; «капитаны» промышленности"
+                },
+                {
+                  "page": 112,
+                  "quote": "business II ['bizinas] уст. = busyness"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+              "query": "business I, man of business, business II",
+              "found": true,
+              "locations": [
+                {
+                  "line": 11123,
+                  "quote": "man of ~ а) делово'й челове'к; б) аге'нт, пове'ренный"
+                },
+                {
+                  "line": 11137,
+                  "quote": "business II [´bizin s] уст. = busyness"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "man of business, business executives",
+              "found": true,
+              "locations": [
+                {
+                  "page": 111,
+                  "quote": "а) деловой человек; б) агент, поверенный"
+                },
+                {
+                  "page": 112,
+                  "quote": "«капитаны» промышлен ности"
+                }
+              ]
+            },
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "business1, business2",
+              "found": true,
+              "locations": [
+                {
+                  "page": 133,
+                  "quote": "business1 [biznəs] n 1. де ло, за ня -"
+                },
+                {
+                  "page": 133,
+                  "quote": "business2 [biznəs] n за ня тость"
+                }
+              ]
+            },
+            {
+              "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+              "query": "business",
+              "found": true,
+              "locations": [
+                {
+                  "page": 42,
+                  "quote": "business [biznis] дело, заня тие; бизнес"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "wire_contract_version": 2,
+  "compact_stage07": "Omit before/after snapshots; scripts assemble them. For a meaning_proposal omit before_meaning and use edits [{op:'replace',path:'/translation',before:old,after:new}] instead of after_meaning, retaining meaning_index/reason/sources. For linked meaning+phrase changes use entry_proposals: exactly one group {reason,confidence,edits:[{op,path,before,after,reason,sources}]}, no meaning_proposals. Paths are zero-based RFC6901 /meanings/N/translation|partOfSpeech|register or /phrases/N/phrase|translation|partOfSpeech|register. New phrase: add /phrases/- with full phrase object, unique id and empty examples. No deletes, ID changes or example replacement. All related edits belong to one indivisible group.",
+  "issue_target_contract": "Issues require problem, required_action and either 1-based meaning_index or target. target is {kind:'meaning'|'phrase',index:1-based}, {kind:'field',path:existing RFC6901 path}, or {kind:'missing_meaning',description:specific missing sense}. Never use null meaning_index alone.",
+  "reference_contract": "All entries and previous outputs are complete. Copy before exactly from entries. Stage report meaning_index is one-based. Never invent references or hashes.",
+  "model_scope": {
+    "full_reasoning_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "pass_through_indices": [],
+    "instruction": "Проверь каждую запись содержательно. Механическая классификация не разрешает пропускать проверку смысла."
+  },
+  "output_contract": {
+    "records": 20,
+    "meaning_index_base": 1,
+    "allowed_decisions": [
+      "изменить",
+      "оставить",
+      "review_required",
+      "принято без изменения"
+    ],
+    "required_record_fields": [
+      "word",
+      "decision",
+      "reason",
+      "confidence"
+    ],
+    "field_types": {
+      "confidence": "JSON number in [0,1], e.g. 0.95; never a string or boolean",
+      "reason": "individual nonempty string"
+    },
+    "citation_contract": "PDF location requires page; DOCX location requires line (XML paragraph index). quote must contain at least 8 characters and match that location exactly apart from whitespace normalization. Never rewrite or combine disjoint source fragments into one quotation.",
+    "stage_specific_fields": "before, after, review_reason when review_required",
+    "word_order": [
+      "number",
+      "city",
+      "lot",
+      "name",
+      "night",
+      "play",
+      "until",
+      "company",
+      "few",
+      "let",
+      "real",
+      "different",
+      "thought",
+      "however",
+      "god",
+      "government",
+      "group",
+      "public",
+      "top",
+      "business"
+    ],
+    "output_path": "stage_07.json",
+    "do_not_edit_dataset": true
+  }
+}

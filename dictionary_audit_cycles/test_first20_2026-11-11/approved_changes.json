@@ -1,0 +1,50 @@
+{
+  "batch": "test_first20_2026-11-11",
+  "word": "of",
+  "decision": "applied",
+  "before_sha256": "55afa3ac77827e413ff0e1bb73bf8c3ae8a8e36fe7b8f7c82b574e9aa33fdfa0",
+  "after_sha256": "fb749e3559c7508dedc94773eae7605b70b6790e7a14aa17aae9e22ffe833f70",
+  "changes": [
+    {
+      "path": "meanings[2].examples[0].en",
+      "before": "in search of dictionary",
+      "after": "in search of a dictionary",
+      "reason": "Добавлен обязательный неопределённый артикль перед исчисляемым существительным dictionary.",
+      "evidence": "Мюллер 2021, локальная source-проверка статьи of; audit stage_06 quote at page 551 / DOCX line 64682."
+    },
+    {
+      "path": "meanings[11].examples[1].ru",
+      "before": "в 50 милях от Лондона",
+      "after": "в пределах 50 миль от Лондона",
+      "reason": "within 50 miles выражает предел расстояния, а не точное расстояние.",
+      "evidence": "Предыдущая независимая проверка слова of в new_rules_top100_frequency/recovery/batch_001/stage_10.json, issue meaning 12."
+    },
+    {
+      "path": "meanings[16].translation",
+      "before": "время (когда? в какое время?)",
+      "after": "по вечерам; в последнее время (of an evening; of late)",
+      "reason": "Уточнены два разных временных употребления без изменения структуры и id значения.",
+      "evidence": "Предыдущая независимая проверка слова of в new_rules_top100_frequency/recovery/batch_001/stage_10.json, issue meaning 17."
+    },
+    {
+      "path": "meanings[16].examples[0].ru",
+      "before": "вечером",
+      "after": "по вечерам",
+      "reason": "of an evening в данном употреблении обозначает обычное/повторяющееся время.",
+      "evidence": "Предыдущая независимая проверка слова of в new_rules_top100_frequency/clarify27/batch_001/stage_09.json, meaning 17."
+    },
+    {
+      "path": "meanings[16].examples[1].ru",
+      "before": "недавно",
+      "after": "в последнее время",
+      "reason": "of late точнее передаётся как в последнее время.",
+      "evidence": "Предыдущая независимая проверка слова of в new_rules_top100_frequency/clarify27/batch_001/stage_09.json, meaning 17."
+    }
+  ],
+  "verification": {
+    "final_qa_validation": "passed",
+    "errors": 0,
+    "entry_count": 4980,
+    "canonical_modified": true
+  }
+}

@@ -1,0 +1,201 @@
+[
+  {
+    "word": "operate",
+    "entry_index": 1,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated examples were checked against each verb sense; no unresolved mismatch remained.",
+    "confidence": 0.9
+  },
+  {
+    "word": "operation",
+    "entry_index": 2,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated examples distinguish process, surgery, military, finance, experiment, and action senses; accepted after review.",
+    "confidence": 0.9
+  },
+  {
+    "word": "operational",
+    "entry_index": 3,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "The generated operational example matches the adjective sense and is concise.",
+    "confidence": 0.9
+  },
+  {
+    "word": "operator",
+    "entry_index": 4,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated examples separate operator roles from the operating-surgeon and owner senses; accepted.",
+    "confidence": 0.9
+  },
+  {
+    "word": "opinion",
+    "entry_index": 5,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "The court-decision example is specific to the judicial sense and was accepted.",
+    "confidence": 0.9
+  },
+  {
+    "word": "opponent",
+    "entry_index": 6,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 1: создан generated example, но его соответствие этому переводу ещё не подтверждено. Значение 2: создан generated example, но его соответствие этому переводу ещё не подтверждено. Значение 3: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+    "confidence": 0.78,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 1: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+        "required_action": "Проверить английский пример и перевод для значения 1; исключить смешение с другими значениями."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Значение 2: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+        "required_action": "Проверить английский пример и перевод для значения 2; исключить смешение с другими значениями."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Значение 3: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+        "required_action": "Проверить английский пример и перевод для значения 3; исключить смешение с другими значениями."
+      }
+    ],
+    "review_reason": "Значение 1: создан generated example, но его соответствие этому переводу ещё не подтверждено. Значение 2: создан generated example, но его соответствие этому переводу ещё не подтверждено. Значение 3: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+    "required_action": "Проверить английский пример и перевод для значения 1; исключить смешение с другими значениями. Проверить английский пример и перевод для значения 2; исключить смешение с другими значениями. Проверить английский пример и перевод для значения 3; исключить смешение с другими значениями."
+  },
+  {
+    "word": "opportunity",
+    "entry_index": 7,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Existing source examples cover the only listed sense.",
+    "confidence": 0.9
+  },
+  {
+    "word": "oppose",
+    "entry_index": 8,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Examples distinguish opposing an object from opposing a policy or party.",
+    "confidence": 0.9
+  },
+  {
+    "word": "opposed",
+    "entry_index": 9,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated examples preserve the adjective senses of contrary and hostile.",
+    "confidence": 0.9
+  },
+  {
+    "word": "opposite",
+    "entry_index": 10,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "The preposition example is idiomatic and the other generated senses remain distinct.",
+    "confidence": 0.9
+  },
+  {
+    "word": "opposition",
+    "entry_index": 11,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated sentences distinguish resistance, contrast, and confrontation.",
+    "confidence": 0.9
+  },
+  {
+    "word": "opt",
+    "entry_index": 12,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "No generated example was needed because a source example exists.",
+    "confidence": 0.9
+  },
+  {
+    "word": "optical",
+    "entry_index": 13,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Source examples adequately cover the adjective sense.",
+    "confidence": 0.9
+  },
+  {
+    "word": "optimism",
+    "entry_index": 14,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated example directly expresses optimism without another target meaning.",
+    "confidence": 0.9
+  },
+  {
+    "word": "optimistic",
+    "entry_index": 15,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated example is simple and matches the adjective sense.",
+    "confidence": 0.9
+  },
+  {
+    "word": "option",
+    "entry_index": 16,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated examples distinguish a choice, an item chosen, nationality option, and financial option.",
+    "confidence": 0.9
+  },
+  {
+    "word": "or",
+    "entry_index": 17,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Source examples cover the conjunction.",
+    "confidence": 0.9
+  },
+  {
+    "word": "oral",
+    "entry_index": 18,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated examples distinguish spoken, dental, and oral-exam senses.",
+    "confidence": 0.9
+  },
+  {
+    "word": "orange",
+    "entry_index": 19,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "The dynasty example is specific to the proper-name sense.",
+    "confidence": 0.9
+  },
+  {
+    "word": "orchestra",
+    "entry_index": 20,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Generated examples distinguish ensemble, orchestra area, and ancient theatre orchestra.",
+    "confidence": 0.9
+  }
+]

@@ -1,5 +1,5 @@
 """
-Применение подтверждённых исправлений к oxford_5000_2026-08-27.json
+Применение подтверждённых исправлений к src/data/oxford_5000.json
 на основе прямого сравнения с PDF Мюллера 2021.
 
 Каждое исправление:
@@ -11,8 +11,8 @@ import io
 import json
 import copy
 
-JSON_PATH = "oxford_5000_2026-08-27.json"
-OUT_PATH  = "oxford_5000_2026-08-27.json"
+JSON_PATH = "src/data/oxford_5000.json"
+OUT_PATH  = "src/data/oxford_5000.json"
 BACKUP_CHECK = "oxford_5000_2026-08-27.backup.json"
 
 # ═══════════════════════════════════════════════════════════

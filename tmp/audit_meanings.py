@@ -4,7 +4,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_PATH = ROOT / "oxford_5000_2026-08-27.json"
+DATA_PATH = ROOT / "src/data/oxford_5000.json"
 INDEX_PATH = ROOT / "scripts" / "parsed_index.json"
 REPORT_PATH = ROOT / "tmp" / "meanings_audit_candidates.json"
 CHANGES_PATH = ROOT / "tmp" / "confirmed_soft_split_repairs.json"

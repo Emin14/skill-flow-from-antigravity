@@ -1,0 +1,1100 @@
+[
+  {
+    "word": "commercial",
+    "entry_index": 821,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "торговый, коммерческий; автобус",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commercial, значение 1 (adjective, «торговый, коммерческий; автобус») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "коммивояжёр, торговый представитель",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commercial, значение 2 (noun, «коммивояжёр, торговый представитель») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "коммерческая передача, реклама (на радио или ТВ)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commercial, значение 3 (noun, «коммерческая передача, реклама (на радио или ТВ)») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для commercial проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "commission",
+    "entry_index": 822,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "доверенность; полномочие",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 1 (noun, «доверенность; полномочие») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "комиссия; комитет",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 2 (noun, «комиссия; комитет») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "поручение; заказ (особ. художнику)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 3 (noun, «поручение; заказ (особ. художнику)») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "патент на офицерский чин или название мирового судьи",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 4 (noun, «патент на офицерский чин или название мирового судьи») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "комиссионная продажа",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 5 (noun, «комиссионная продажа») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "комиссионное вознаграждение",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 6 (noun, «комиссионное вознаграждение») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "noun",
+        "translation": "совершение (преступления и т. п.)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 7 (noun, «совершение (преступления и т. п.)») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "noun",
+        "translation": "вооружение; введение в строй судна; в полной готовности",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 8 (noun, «вооружение; введение в строй судна; в полной готовности») проверено отдельно: текущий порядок 8 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "verb",
+        "translation": "уполномочивать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 9 (verb, «уполномочивать») проверено отдельно: текущий порядок 9 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 10,
+        "id": 10,
+        "partOfSpeech": "verb",
+        "translation": "поручать; давать заказ (особ. художнику)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 10 (verb, «поручать; давать заказ (особ. художнику)») проверено отдельно: текущий порядок 10 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 11,
+        "id": 11,
+        "partOfSpeech": "verb",
+        "translation": "назначать на должность",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 11 (verb, «назначать на должность») проверено отдельно: текущий порядок 11 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 12,
+        "id": 12,
+        "partOfSpeech": "verb",
+        "translation": "подготавливать корабль к плаванию; укомплектовывать личным составом; назначать командира корабля",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commission, значение 12 (verb, «подготавливать корабль к плаванию; укомплектовывать личным составом; назначать командира корабля») проверено отдельно: текущий порядок 12 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для commission проверены все 12 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "commissioner",
+    "entry_index": 823,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "специальный уполномоченный, комиссар",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commissioner, значение 1 (noun, «специальный уполномоченный, комиссар») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "член комиссии",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commissioner, значение 2 (noun, «член комиссии») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для commissioner проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "commit",
+    "entry_index": 824,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "поручать, вверять",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commit, значение 1 (verb, «поручать, вверять») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "предавать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commit, значение 2 (verb, «предавать») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "verb",
+        "translation": "совершать (преступление и т. п.)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commit, значение 3 (verb, «совершать (преступление и т. п.)») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "связывать себя",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commit, значение 4 (verb, «связывать себя») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "verb",
+        "translation": "передавать законопроект в комиссию (парламента)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commit, значение 5 (verb, «передавать законопроект в комиссию (парламента)») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "фиксировать",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commit, значение 6 (verb, «фиксировать») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "вводить в дело",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова commit, значение 7 (verb, «вводить в дело») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для commit проверены все 7 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "commitment",
+    "entry_index": 825,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "обязательство",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commitment, значение 1 (noun, «обязательство») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "вручение, передача",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commitment, значение 2 (noun, «вручение, передача») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "передача законопроекта в комиссию",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commitment, значение 3 (noun, «передача законопроекта в комиссию») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "заключение под стражу",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commitment, значение 4 (noun, «заключение под стражу») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "совершение (преступления и т. п.)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commitment, значение 5 (noun, «совершение (преступления и т. п.)») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для commitment проверены все 5 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "committee",
+    "entry_index": 826,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "комитет",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова committee, значение 1 (noun, «комитет») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "комиссия",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова committee, значение 2 (noun, «комиссия») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "опекун",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова committee, значение 3 (noun, «опекун») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения к другому слову",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова committee, значение 4 (noun, «в роли определения к другому слову») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для committee проверены все 4 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "commodity",
+    "entry_index": 827,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "предмет потребления",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commodity, значение 1 (noun, «предмет потребления») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "часто при мн. ч.: товар",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commodity, значение 2 (noun, «часто при мн. ч.: товар») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "удобство",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commodity, значение 3 (noun, «удобство») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "товарный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commodity, значение 4 (noun, «товарный») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для commodity проверены все 4 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "common",
+    "entry_index": 828,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "общий",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 1 (adjective, «общий») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "adjective",
+        "translation": "простой, обыкновенный, рядовой; чёрная работа",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 2 (adjective, «простой, обыкновенный, рядовой; чёрная работа») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "adjective",
+        "translation": "общепринятый, распространённый",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 3 (adjective, «общепринятый, распространённый») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "adjective",
+        "translation": "общественный; публичный; общинный",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 4 (adjective, «общественный; публичный; общинный») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "adjective",
+        "translation": "простой, грубый; дурно сделанный (об одежде)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 5 (adjective, «простой, грубый; дурно сделанный (об одежде)») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "adjective",
+        "translation": "вульгарный, банальный",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 6 (adjective, «вульгарный, банальный») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "adjective",
+        "translation": "общий",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 7 (adjective, «общий») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "adjective",
+        "translation": "общий",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 8 (adjective, «общий») проверено отдельно: текущий порядок 8 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "noun",
+        "translation": "общинная земля; выгон; пустырь",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 9 (noun, «общинная земля; выгон; пустырь») проверено отдельно: текущий порядок 9 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 10,
+        "id": 10,
+        "partOfSpeech": "noun",
+        "translation": "право на общественное пользование землёй",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 10 (noun, «право на общественное пользование землёй») проверено отдельно: текущий порядок 10 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 11,
+        "id": 11,
+        "partOfSpeech": "noun",
+        "translation": "общее; обычное",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 11 (noun, «общее; обычное») проверено отдельно: текущий порядок 11 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 12,
+        "id": 12,
+        "partOfSpeech": "noun",
+        "translation": "здравый смысл",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова common, значение 12 (noun, «здравый смысл») проверено отдельно: текущий порядок 12 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для common проверены все 12 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "commonly",
+    "entry_index": 829,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adverb",
+        "translation": "обычно, обыкновенно",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commonly, значение 1 (adverb, «обычно, обыкновенно») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "adverb",
+        "translation": "дёшево, плохо",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова commonly, значение 2 (adverb, «дёшево, плохо») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для commonly проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "communicate",
+    "entry_index": 830,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "сообщать; передавать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова communicate, значение 1 (verb, «сообщать; передавать») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "сообщаться ; сноситься",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова communicate, значение 2 (verb, «сообщаться ; сноситься») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "verb",
+        "translation": "сообщаться, быть смежным (о комнатах и т. п.)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова communicate, значение 3 (verb, «сообщаться, быть смежным (о комнатах и т. п.)») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "причащать(ся)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова communicate, значение 4 (verb, «причащать(ся)») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для communicate проверены все 4 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "communication",
+    "entry_index": 831,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "передача, сообщение (мыслей, сведений и т. п.)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова communication, значение 1 (noun, «передача, сообщение (мыслей, сведений и т. п.)») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "сообщение, информация",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова communication, значение 2 (noun, «сообщение, информация») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "коммуникация; связь; средство сообщения (железная дорога, телеграф, телефони т. п.)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова communication, значение 3 (noun, «коммуникация; связь; средство сообщения (железная дорога, телеграф, телефони т. п.)») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "общение, средство общения; при мн. ч.: связи, контакты",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова communication, значение 4 (noun, «общение, средство общения; при мн. ч.: связи, контакты») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: коммуникации; коммуникационные линии",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова communication, значение 5 (noun, «при мн. ч.: коммуникации; коммуникационные линии») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "служащий для сообщения, связи",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова communication, значение 6 (noun, «служащий для сообщения, связи») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для communication проверены все 6 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "communist",
+    "entry_index": 832,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "коммунист",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова communist, значение 1 (noun, «коммунист») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "adjective",
+        "translation": "коммунистический",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова communist, значение 2 (adjective, «коммунистический») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для communist проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "community",
+    "entry_index": 833,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "местность, населённый пункт, округа; микрорайон; жители микрорайона",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова community, значение 1 (noun, «местность, населённый пункт, округа; микрорайон; жители микрорайона») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "группа лиц, объединённых какими-либо признаками; объединение, сообщество; детский городок",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова community, значение 2 (noun, «группа лиц, объединённых какими-либо признаками; объединение, сообщество; детский городок») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "общность",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова community, значение 3 (noun, «общность») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "община",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова community, значение 4 (noun, «община») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения к другому слову",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова community, значение 5 (noun, «в роли определения к другому слову») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "общественный",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова community, значение 6 (noun, «общественный») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для community проверены все 6 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "companion",
+    "entry_index": 834,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "товарищ",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 1 (noun, «товарищ») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "спутник; попутчик, случайный сосед (по вагону и т. п.)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 2 (noun, «спутник; попутчик, случайный сосед (по вагону и т. п.)») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "компаньон; компаньонка",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 3 (noun, «компаньон; компаньонка») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "собеседник",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 4 (noun, «собеседник») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "предмет, составляющий пару",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 5 (noun, «предмет, составляющий пару») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "кавалер ордена (низшей степени)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 6 (noun, «кавалер ордена (низшей степени)») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "noun",
+        "translation": "справочник",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 7 (noun, «справочник») проверено отдельно: текущий порядок 7 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "noun",
+        "translation": "судовой трап, сходни (на корабле)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 8 (noun, «судовой трап, сходни (на корабле)») проверено отдельно: текущий порядок 8 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения: парный",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 9 (noun, «в роли определения: парный») проверено отдельно: текущий порядок 9 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 10,
+        "id": 10,
+        "partOfSpeech": "verb",
+        "translation": "сопровождать",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 10 (verb, «сопровождать») проверено отдельно: текущий порядок 10 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 11,
+        "id": 11,
+        "partOfSpeech": "verb",
+        "translation": "быть компаньоном, спутником",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова companion, значение 11 (verb, «быть компаньоном, спутником») проверено отдельно: текущий порядок 11 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для companion проверены все 11 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "company",
+    "entry_index": 835,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "общество; компания",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 1 (noun, «общество; компания») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "гости",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 2 (noun, «гости») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "труппа, ансамбль артистов",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 3 (noun, «труппа, ансамбль артистов») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "экипаж (судна)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 4 (noun, «экипаж (судна)») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "ротный",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 5 (noun, «ротный») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "фабричная лавка",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 6 (noun, «фабричная лавка») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "noun",
+        "translation": "о присутствующих не говорят",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 7 (noun, «о присутствующих не говорят») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "noun",
+        "translation": "за компанию",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 8 (noun, «за компанию») проверено отдельно: текущий порядок 8 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "noun",
+        "translation": "скажи мне, кто твой друг, и я скажу, кто ты",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова company, значение 9 (noun, «скажи мне, кто твой друг, и я скажу, кто ты») проверено отдельно: текущий порядок 9 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для company проверены все 9 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "comparable",
+    "entry_index": 836,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "сравнимый; заслуживающий сравнения",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова comparable, значение 1 (adjective, «сравнимый; заслуживающий сравнения») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "adjective",
+        "translation": "сопоставимый",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова comparable, значение 2 (adjective, «сопоставимый») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для comparable проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "comparative",
+    "entry_index": 837,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "сравнительный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова comparative, значение 1 (adjective, «сравнительный») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "adjective",
+        "translation": "сравнительный; относительный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова comparative, значение 2 (adjective, «сравнительный; относительный») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "adjective",
+        "translation": "сравнительный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова comparative, значение 3 (adjective, «сравнительный») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "сравнительная степень",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова comparative, значение 4 (noun, «сравнительная степень») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для comparative проверены все 4 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "compare",
+    "entry_index": 838,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "verb",
+        "translation": "сравнивать, сличать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова compare, значение 1 (verb, «сравнивать, сличать») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "verb",
+        "translation": "сравнивать, ставить наравне",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова compare, значение 2 (verb, «сравнивать, ставить наравне») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "verb",
+        "translation": "сравниться; выдерживать сравнение",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова compare, значение 3 (verb, «сравниться; выдерживать сравнение») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "уподоблять",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова compare, значение 4 (verb, «уподоблять») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "вне всякого сравнения",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова compare, значение 5 (noun, «вне всякого сравнения») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для compare проверены все 5 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "comparison",
+    "entry_index": 839,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "сравнение",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова comparison, значение 1 (noun, «сравнение») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для comparison проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "compassion",
+    "entry_index": 840,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "жалость, сострадание; сочувствие",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова compassion, значение 1 (noun, «жалость, сострадание; сочувствие») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для compassion проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  }
+]

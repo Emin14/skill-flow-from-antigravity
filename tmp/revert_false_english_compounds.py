@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-R=Path(__file__).resolve().parents[1]; A=R/'oxford_5000_2026-08-27.json'; B=R/'src/data/oxford_5000.json'
+R=Path(__file__).resolve().parents[1]; A=R/'src/data/oxford_5000.json'; B=R/'src/data/oxford_5000.json'
 d=json.loads(A.read_text(encoding='utf8'))
 for e in d:
  for m in e['meanings']:

@@ -1,0 +1,23 @@
+{
+  "06": {
+    "records": 20,
+    "full_output_bytes": 82596,
+    "delta_output_bytes": 6529,
+    "reduction_percent": 92.1,
+    "exact_roundtrip": true
+  },
+  "08": {
+    "records": 20,
+    "full_output_bytes": 72771,
+    "delta_output_bytes": 11087,
+    "reduction_percent": 84.8,
+    "exact_roundtrip": true
+  },
+  "07_compatible_records": {
+    "records": 13,
+    "full_output_bytes": 91986,
+    "delta_output_bytes": 30239,
+    "reduction_percent": 67.1,
+    "exact_roundtrip": true
+  }
+}

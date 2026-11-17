@@ -1,0 +1,568 @@
+[
+  {
+    "word": "four",
+    "meaning_index": 4,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "при мн. ч.: строй по четыре",
+      "examples": [
+        {
+          "en": "form fours!",
+          "ru": "ряды вздвой!"
+        }
+      ],
+      "register": [
+        "военное",
+        "британское"
+      ],
+      "id": 5
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "при мн. ч.: строй по четыре",
+      "examples": [
+        {
+          "en": "form fours!",
+          "ru": "ряды вздвой!"
+        }
+      ],
+      "register": [
+        "военное"
+      ],
+      "id": 5
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "202beb63744684e06881b47703312cb8138ab25579d73264e031bf05204ff959",
+    "candidate_sha256": null,
+    "dataset_index": 1876
+  },
+  {
+    "word": "music",
+    "meaning_index": 0,
+    "before_meaning": {
+      "id": 1,
+      "partOfSpeech": "noun",
+      "translation": "музыка",
+      "examples": [
+        {
+          "en": "to music",
+          "ru": "под музыку"
+        }
+      ],
+      "register": [
+        "музыка"
+      ],
+      "primary": true
+    },
+    "after_meaning": {
+      "id": 1,
+      "partOfSpeech": "noun",
+      "translation": "музыка",
+      "examples": [
+        {
+          "en": "to music",
+          "ru": "под музыку"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "247590a34b9026efb3ff5026ab10dbb0e0f7552af2a000642e1222ba8fbc2b3c",
+    "candidate_sha256": null,
+    "dataset_index": 2890
+  },
+  {
+    "word": "music",
+    "meaning_index": 1,
+    "before_meaning": {
+      "id": 2,
+      "partOfSpeech": "noun",
+      "translation": "музыкальное произведение; музыкальные произведения",
+      "examples": [],
+      "register": [
+        "музыка"
+      ],
+      "primary": true
+    },
+    "after_meaning": {
+      "id": 2,
+      "partOfSpeech": "noun",
+      "translation": "музыкальное произведение; музыкальные произведения",
+      "examples": [
+        {
+          "en": "She wrote the music for the film.",
+          "ru": "Она написала музыку к фильму."
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "bec5f7653c43d839b835818f9c235c0150b73e1bbf48c3a968d1991f4369eb16",
+    "candidate_sha256": "25981e15811dc4a8d928b78c24d8926b606c3d5962fe2eb5c7d6a8f3800d8f36",
+    "dataset_index": 2890
+  },
+  {
+    "word": "believe",
+    "meaning_index": 3,
+    "before_meaning": {
+      "id": 4,
+      "partOfSpeech": "verb",
+      "translation": "думать, полагать; по-моему, так; да (в ответе); едва ли",
+      "examples": [
+        {
+          "en": "I believe so",
+          "ru": "кажется, так"
+        },
+        {
+          "en": "I believe not",
+          "ru": "думаю, что нет"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "after_meaning": {
+      "id": 4,
+      "partOfSpeech": "verb",
+      "translation": "думать, полагать",
+      "examples": [
+        {
+          "en": "I believe so",
+          "ru": "кажется, так"
+        },
+        {
+          "en": "I believe not",
+          "ru": "думаю, что нет"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "0f2c0b9d82d5739f3b3eae09a7f4d3ca76195f5692b5755e7dd7595534fadc32",
+    "candidate_sha256": null,
+    "dataset_index": 437
+  },
+  {
+    "word": "four",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "I have four pencils.",
+      "ru": "У меня четыре карандаша."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "6b48f7805016fcb228ef43f475b93adfa268c80ec1e1ee6581b3320d8f60658d",
+    "dataset_index": 1876
+  },
+  {
+    "word": "four",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "Write a four in the box.",
+      "ru": "Напиши в клетке четвёрку."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "d2127e862f24376cab48c30755b41fc17b10070a413bf3d0134cb66cc6ecd607",
+    "dataset_index": 1876
+  },
+  {
+    "word": "hard",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "It was a hard winter, with weeks of frost.",
+      "ru": "Зима была суровая, морозы держались неделями."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "85ffcf0e0c8db88277ed1675519ea9a5aab30d69ecf32567497244269261f19e",
+    "dataset_index": 2071
+  },
+  {
+    "word": "hard",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "Mia is a hard worker.",
+      "ru": "Миа — усердная работница."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "da0db7409e376912a0b43582a56eaf755ab2b798f5636081df4fd4d61004118c",
+    "dataset_index": 2071
+  },
+  {
+    "word": "hard",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "hard liquors",
+      "ru": "крепкие спиртные напитки"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "e4dcf116c7da6cbfba8a54dca1f1b004f45a5ceb26f15a358bcd4f9cb78c1181",
+    "dataset_index": 2071
+  },
+  {
+    "word": "hard",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "The detector measures hard X-rays.",
+      "ru": "Детектор измеряет жёсткое рентгеновское излучение."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "bf2ea1008cb8e3fad458f7591e23d59d94c6e0a621ee8541312bc1844f288d1c",
+    "dataset_index": 2071
+  },
+  {
+    "word": "hard",
+    "meaning_index": 13,
+    "before_examples": [],
+    "after_example": {
+      "en": "We have hard water, so soap doesn't lather well.",
+      "ru": "У нас жёсткая вода, поэтому мыло плохо пенится."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "f539774b3382270011780bd5270c58f4ae374deac08f800e108ddd7c0c8ee06e",
+    "dataset_index": 2071
+  },
+  {
+    "word": "support",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "After his father died, he was the sole support of his family.",
+      "ru": "После смерти отца он был единственным кормильцем семьи."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "68cd7b35d6bf9cfc690d810bb2f113eb3c6298fb60bfb7d904ef50e2e35194d7",
+    "dataset_index": 4345
+  },
+  {
+    "word": "support",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "Two pillars support the roof.",
+      "ru": "Крышу поддерживают две колонны."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "8a393a47f0e2de4a63a2509ba6ade2097d20288ed7c7bedcfd24c4a02dbbf21b",
+    "dataset_index": 4345
+  },
+  {
+    "word": "support",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "I support your decision.",
+      "ru": "Я поддерживаю твоё решение."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "9c64d08df62d4bb95959b36619343f76a5ffd3502a1443763531757af5486c1b",
+    "dataset_index": 4345
+  },
+  {
+    "word": "support",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "The evidence supports her account.",
+      "ru": "Доказательства подтверждают её рассказ."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "c47e129714d1c57d569e4013ec0539b0d280233545981e7880f849768f55b7a5",
+    "dataset_index": 4345
+  },
+  {
+    "word": "tell",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "Please don't tell anyone my secret.",
+      "ru": "Пожалуйста, никому не рассказывай мой секрет."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "a59925cf55aa9f1412f6762450c819dfeb86e8a4c8380cc7aae383e8d160104f",
+    "dataset_index": 4436
+  },
+  {
+    "word": "tell",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "Don't tell on me.",
+      "ru": "Не ябедничай на меня."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "4ae071cc32cf00675d17883dc1f9bb6b4abbdcf99391acfece353ed4bb49a809",
+    "dataset_index": 4436
+  },
+  {
+    "word": "tell",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "I'm telling you, it wasn't me.",
+      "ru": "Уверяю тебя, это был не я."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "8f2731f450763b102defc0034f40a5d5a91bfd97ad0ccc05c40d798bf1f3419b",
+    "dataset_index": 4436
+  },
+  {
+    "word": "set-up",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "The office has a simple set-up: one room for calls and one for meetings.",
+      "ru": "Офис устроен просто: одна комната для звонков, другая для встреч."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "b9919dd94adeb5ab7e0adb508af1e8d9c858a3b90c53e2946462edd6fdabd665",
+    "dataset_index": 3950
+  },
+  {
+    "word": "including",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "Five people came, including my sister.",
+      "ru": "Пришли пять человек, в том числе моя сестра."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "0502b35d2a2fe1753604e20e98fa9c6f108c579986ef90906933eac31414d939",
+    "dataset_index": 2264
+  },
+  {
+    "word": "power",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "She believes in a higher power.",
+      "ru": "Она верит в высшую силу."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "71021a13c64d0667bf67f63e342341484135283cb1f96eb46837f7a1182d66e6",
+    "dataset_index": 3346
+  },
+  {
+    "word": "power",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "Two batteries power the light.",
+      "ru": "Лампа питается от двух батареек."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "d5491bd2c607577ec4f117fbe5bbfd3114d0aa6edd173ea33be70f8e9380234a",
+    "dataset_index": 3346
+  },
+  {
+    "word": "stop",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "to come to a stop",
+      "ru": "остановиться"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "0a31c9f7fa3318ffc7b8588f2ba5ad674c763b3b9528d12e1dc835df770757d3",
+    "dataset_index": 4249
+  },
+  {
+    "word": "stop",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "We made a short stop in York on the way home.",
+      "ru": "По дороге домой мы ненадолго остановились в Йорке."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "e1c74c195ab549fb49a301572a70b05bb2f99afdec93e63ca90b7560fa1964f8",
+    "dataset_index": 4249
+  },
+  {
+    "word": "stop",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "After a brief stop, work resumed.",
+      "ru": "После короткого перерыва работа возобновилась."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "26994a509cc0a28ca0c2aefb25eaf9d1eb4c4dc7abdf0691a8398a4654aae2aa",
+    "dataset_index": 4249
+  },
+  {
+    "word": "stop",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "A door stop keeps the handle from hitting the wall.",
+      "ru": "Дверной ограничитель не даёт ручке удариться о стену."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "59aaea1b652c61f9a50d465a17030c41a28ba49021f6a96353bcbf2e3476909b",
+    "dataset_index": 4249
+  },
+  {
+    "word": "water",
+    "meaning_index": 11,
+    "before_examples": [],
+    "after_example": {
+      "en": "I water the plants every morning.",
+      "ru": "Я поливаю растения каждое утро."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "699289b5483a254acbab5d5df5724a99af35e39380863fe5595dbe90ed5404c7",
+    "dataset_index": 4838
+  },
+  {
+    "word": "water",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "We stopped to water the horses.",
+      "ru": "Мы остановились, чтобы напоить лошадей."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "973e7db39aba11b0e10562905e70df0fb9830beed10a1348ca84c971e6021e90",
+    "dataset_index": 4838
+  },
+  {
+    "word": "water",
+    "meaning_index": 15,
+    "before_examples": [],
+    "after_example": {
+      "en": "They watered the wine to make it less strong.",
+      "ru": "Они разбавили вино водой, чтобы оно было менее крепким."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "45f6f3ecc25659677f755a70caf556a50839c9f7e69763abde9108a8c62607d5",
+    "dataset_index": 4838
+  },
+  {
+    "word": "based",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "Our team is based in London.",
+      "ru": "Наша команда базируется в Лондоне."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "290387196011af7eb33a431a8ff2c631fe529119296c64287a7ee3f58da47b35",
+    "dataset_index": 395
+  },
+  {
+    "word": "believe",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "to believe in God",
+      "ru": "верить в Бога"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "d6a76686dd0d9140e888a23abd3932080e9be4d9145dbbb97c01f32384ef0ccc",
+    "dataset_index": 437
+  },
+  {
+    "word": "head",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "The head of the nail was bent.",
+      "ru": "Шляпка гвоздя погнулась."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "036dfb1c90581d9517dc8381dc8f7aa1fc07be3c40abcbde5512864bd43d0e6b",
+    "dataset_index": 2087
+  },
+  {
+    "word": "head",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "The beer had a thick head.",
+      "ru": "У пива была густая пена."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "9fd13b5ed30f67e09063d71c41f973cb3de243108535ea43288f497d2a0f6feb",
+    "dataset_index": 2087
+  },
+  {
+    "word": "head",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "She put another pillow at the head of the bed.",
+      "ru": "Она положила ещё одну подушку в изголовье кровати."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "465ddd8dc6ebb9694f3cf6de995cd15922b8a0b32906b12530c79606c8676fbd",
+    "dataset_index": 2087
+  },
+  {
+    "word": "head",
+    "meaning_index": 18,
+    "before_examples": [],
+    "after_example": {
+      "en": "I flipped the coin and it came up heads.",
+      "ru": "Я подбросил монету, и выпал орёл."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "3328fff75acc9b4105416e6e8ea9535524336dfa99b73f10a635e3c5b58176f5",
+    "dataset_index": 2087
+  },
+  {
+    "word": "head",
+    "meaning_index": 35,
+    "before_examples": [],
+    "after_example": {
+      "en": "The first section is headed “Getting Started”.",
+      "ru": "Первый раздел озаглавлен «Начало работы»."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "d9effff530fab5137f992f2062aafbcd188f567edf3cdcf702746bf35bae1f02",
+    "dataset_index": 2087
+  },
+  {
+    "word": "head",
+    "meaning_index": 36,
+    "before_examples": [],
+    "after_example": {
+      "en": "We're heading for the station.",
+      "ru": "Мы направляемся к вокзалу."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "67ce497f6db6fcc072ae6226075fd6530d184af11a0ce8eca851978955322455",
+    "dataset_index": 2087
+  },
+  {
+    "word": "head",
+    "meaning_index": 37,
+    "before_examples": [],
+    "after_example": {
+      "en": "She headed the ball into the net.",
+      "ru": "Она головой отправила мяч в сетку."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "4ee261369f5b11b62dc6f09197af7e5bc787c889e62a68489173412fd315ed8c",
+    "dataset_index": 2087
+  },
+  {
+    "word": "small",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "Only a small group came: three people.",
+      "ru": "Пришла небольшая группа — всего три человека."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "c5bca54eb7605f025c9fc1a51098d0235f51ff519c697f3c36de47a540613547",
+    "dataset_index": 4082
+  }
+]

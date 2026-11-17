@@ -1,0 +1,287 @@
+{
+  "scope": "next100_test_121_220_2026-11-11",
+  "decision": "applied_selected_high_confidence",
+  "count": 45,
+  "changes": [
+    {
+      "path": "such.meanings[0].examples[9].ru",
+      "before": "он так это сказал, что я не мог удержаться от смеха такой, как тот, который такой, чтобы так что",
+      "after": "он сказал это так, что я не мог удержаться от смеха",
+      "reason": "OCR/склейка"
+    },
+    {
+      "path": "home.meanings[7].examples[0].ru",
+      "before": "При двух аутах бегун с третьей базы попытался украсть дом.",
+      "after": "При двух аутах игрок с третьей базы попытался украсть домашнюю базу.",
+      "reason": "baseball steal home"
+    },
+    {
+      "path": "long.meanings[1].partOfSpeech",
+      "before": "adverb",
+      "after": "adjective",
+      "reason": "атрибутивное long"
+    },
+    {
+      "path": "last.meanings[0].translation",
+      "before": "превосх. ст. от late (прилагательное)",
+      "after": "последний; крайний по времени или порядку",
+      "reason": "повреждённая заметка"
+    },
+    {
+      "path": "last.meanings[8].translation",
+      "before": "превосх. ст. от late (наречие)",
+      "after": "последним; позже всех",
+      "reason": "повреждённая заметка"
+    },
+    {
+      "path": "life.meanings[9].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "life imprisonment attributive"
+    },
+    {
+      "path": "great.meanings[7].translation",
+      "before": "predic. опытный, искусный",
+      "after": "опытный, искусный",
+      "reason": "удаление predic."
+    },
+    {
+      "path": "great.meanings[8].translation",
+      "before": "predic. понимающий, разбирающийся",
+      "after": "понимающий, разбирающийся",
+      "reason": "удаление predic."
+    },
+    {
+      "path": "both.meanings[1].examples[1].ru",
+      "before": "он устали к тому же голоден",
+      "after": "он устал и к тому же голоден",
+      "reason": "согласование"
+    },
+    {
+      "path": "every.meanings[0].examples[0].ru",
+      "before": "всегда когда бы ни, каждый раз разг. без исключения; без колебания",
+      "after": "каждый раз",
+      "reason": "склейка глосс"
+    },
+    {
+      "path": "three.meanings[0].examples[0].ru",
+      "before": "трижды три; девятикратное ура",
+      "after": "трижды три",
+      "reason": "OCR-фрагмент"
+    },
+    {
+      "path": "come.meanings[2].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "come what may"
+    },
+    {
+      "path": "come.meanings[3].examples[4].ru",
+      "before": "не хватить не достигнуть цели не оправдать ожиданий",
+      "after": "не достигнуть цели; не оправдать ожиданий; не хватить",
+      "reason": "разделение списка"
+    },
+    {
+      "path": "part.meanings[17].examples[0].ru",
+      "before": "= part from; отдавать, передавать что-либо; отпускать (прислугу)",
+      "after": "расставаться с чем-либо; отдавать, передавать что-либо",
+      "reason": "part with"
+    },
+    {
+      "path": "better.meanings[1].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "I am better"
+    },
+    {
+      "path": "better.meanings[4].examples[0].ru",
+      "before": "получить повышение (по службе)",
+      "after": "совершенствовать себя; становиться лучше",
+      "reason": "better oneself"
+    },
+    {
+      "path": "form.meanings[3].examples[0].ru",
+      "before": "шестой (выпускной) класс",
+      "after": "старшие классы школы; обучение после 16 лет",
+      "reason": "sixth form"
+    },
+    {
+      "path": "find.meanings[9].examples[2].ru",
+      "before": "добраться до Истины",
+      "after": "узнать самому; выяснить самому",
+      "reason": "find out for oneself"
+    },
+    {
+      "path": "help.meanings[2].examples[0].ru",
+      "before": "бонна",
+      "after": "домашняя помощница; помощница по хозяйству",
+      "reason": "mother’s help"
+    },
+    {
+      "path": "little.meanings[5].translation",
+      "before": "с глаголами know, dream, think и т. п. совсем не",
+      "after": "с глаголами know, dream, think и т. п.: совсем не",
+      "reason": "пунктуация"
+    },
+    {
+      "path": "set.meanings[6].translation",
+      "before": "ановленный, назначенный, твёрдый",
+      "after": "установленный, назначенный, твёрдый",
+      "reason": "OCR"
+    },
+    {
+      "path": "set.meanings[6].register",
+      "before": [
+        "устаревшее"
+      ],
+      "after": [],
+      "reason": "обычное set"
+    },
+    {
+      "path": "since.meanings[0].register",
+      "before": [
+        "техническое"
+      ],
+      "after": [],
+      "reason": "общее since"
+    },
+    {
+      "path": "since.meanings[3].register",
+      "before": [
+        "техническое"
+      ],
+      "after": [],
+      "reason": "общее since"
+    },
+    {
+      "path": "during.meanings[0].examples[0].ru",
+      "before": "будущим летом",
+      "after": "предстоящим летом",
+      "reason": "coming summer"
+    },
+    {
+      "path": "end.meanings[7].examples[0].ru",
+      "before": "покончить с собой",
+      "after": "закончить жизнь; умереть (по контексту)",
+      "reason": "end one’s life"
+    },
+    {
+      "path": "place.meanings[0].translation",
+      "before": "место; уместный",
+      "after": "место",
+      "reason": "noun only"
+    },
+    {
+      "path": "again.meanings[0].examples[0].ru",
+      "before": "оправиться после болезни",
+      "after": "снова быть собой; снова прийти в норму",
+      "reason": "be oneself again"
+    },
+    {
+      "path": "school.meanings[7].examples[0].ru",
+      "before": "Вся школа приветственно закричала.",
+      "after": "Вся школа радостно приветствовала их.",
+      "reason": "whole school cheered"
+    },
+    {
+      "path": "family.meanings[0].examples[1].ru",
+      "before": "языковая семья человек знатного рода",
+      "after": "языковая семья",
+      "reason": "OCR"
+    },
+    {
+      "path": "family.meanings[2].examples[8].ru",
+      "before": "семейный круг амер. театр. галёрка; балкон",
+      "after": "семейный круг",
+      "reason": "OCR"
+    },
+    {
+      "path": "family.meanings[2].examples[9].ru",
+      "before": "фамилия имя, частое в роду",
+      "after": "фамилия",
+      "reason": "OCR"
+    },
+    {
+      "path": "keep.meanings[20].examples[0].ru",
+      "before": "сегодня в школе есть занятия",
+      "after": "сегодня школа работает",
+      "reason": "keep school"
+    },
+    {
+      "path": "keep.meanings[21].examples[0].ru",
+      "before": "заработать напро питание",
+      "after": "заработать себе на содержание",
+      "reason": "OCR"
+    },
+    {
+      "path": "keep.meanings[19].examples[0].ru",
+      "before": "где вы обретаетесь?",
+      "after": "где вы живёте?",
+      "reason": "современный перевод"
+    },
+    {
+      "path": "free.phrases[0].translation",
+      "before": "за пределами",
+      "after": "свободный от; лишённый",
+      "reason": "free of"
+    },
+    {
+      "path": "sure.phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "make sure"
+    },
+    {
+      "path": "ever.phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "ever so much"
+    },
+    {
+      "path": "must.meanings[2].examples[0].ru",
+      "before": "эта книга обязательна к прочтению студентами",
+      "after": "эта книга — обязательная к прочтению для студентов",
+      "reason": "a must"
+    },
+    {
+      "path": "city.meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "city compounds"
+    },
+    {
+      "path": "city.meanings[3].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive city"
+    },
+    {
+      "path": "night.meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "night compounds"
+    },
+    {
+      "path": "name.meanings[5].examples[0].en",
+      "before": "he has name for honesty",
+      "after": "he has a name for honesty",
+      "reason": "article"
+    },
+    {
+      "path": "book.meanings[14].examples[2].en",
+      "before": "to book seats reserved",
+      "after": "to book reserved seats",
+      "reason": "word order"
+    },
+    {
+      "path": "let.phrases[8].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "let him try"
+    }
+  ],
+  "before_sha256": "9686489b90d13abf1b6ce3bc9e6f6f85b9c575a4b9ad6f7d3fd86caeb6271343",
+  "after_sha256": "235a06013736c69421195b19b470949ee9160fbcaff5dc4fb1799db4d07c3427"
+}

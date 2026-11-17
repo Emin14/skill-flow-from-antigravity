@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "oxford_5000_2026-08-27.json"
-MIRROR = ROOT / "src" / "data" / "oxford_5000.json"
+DATA = ROOT / "src/data/oxford_5000.json"
+MIRROR = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 REPORT = ROOT / "tmp" / "new_user_confirmed_repairs.json"
 
 

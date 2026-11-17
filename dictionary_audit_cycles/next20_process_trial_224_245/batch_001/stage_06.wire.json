@@ -1,0 +1,2549 @@
+[
+  {
+    "word": "close",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "Три заголовка на с. 151 различают произношения и части речи. В статье прилагательное «закрытый» стоит отдельно от сочетания close vote, которое означает почти равное разделение голосов. Close translation иллюстрирует самостоятельное значение «точный». Close examination подтверждается изданиями 1 и 2. В целевой статье примеры к тщательности даны с investigation и reading, а к сомкнутому строю с column и order. To keep oneself close означает «держаться замкнуто», to keep a thing close — «держать в секрете», to keep or lie close — «прятаться». Пример с туманом иллюстрирует close about. Close down, in, out и up подтверждаются, но имеют неполные толкования или потерянные пометы.",
+    "normalized_print": "close I /kləʊs/ adj закрытый; близкий, интимный; близкий по месту или времени, тесный; облегающий, хорошо пригнанный; связный, без пропусков; плотный, густой; почти равный; точный; внимательный, тщательный, подробный; сжатый; спёртый, душный; уединённый, скрытый; замкнутый, молчаливый; строгий об изоляции; скупой. Adv близко; почти, приблизительно; коротко. Close II /kləʊz/ n конец, завершение; закрытие; муз. каденция, каданс. V закрывать(ся); заканчивать(ся); подходить близко, сближаться вплотную; эл. замыкать цепь; договариваться, принимать предложение. Close about окутывать, окружать; close down закрывать предприятие, прекращать работу или вещание, подавлять, мор. задраивать; close in приближаться, наступать, окружать, сокращаться о днях; close out амер. ликвидировать дело; close up сомкнуть ряды, закрывать особенно временно, закрываться о ране, заканчивать; close with вступать в борьбу или заключать сделку. Close III n огороженное место, часто вокруг собора; школьная площадка.",
+    "uncertainties": [
+      "Для close III целевой комплект передаёт конечное /z/, а заголовок источника 7 даёт /s/. Развести печатную транскрипцию издания и редакционное произношение после проверки оригинала.",
+      "Переулок-тупик, фонетическое значение и буквальное close thing не подтверждены целевыми статьями. «Опасное положение» в источнике 1 относится к close shave. Close at hand и keep a close eye on семантически приемлемы как отдельные сочетания. Примеры close by, stand close, close a book, close one's eyes, the meeting closed и at the close of the year приемлемы как редакционные."
+    ],
+    "issues": [
+      {
+        "target": {
+          "kind": "field",
+          "path": "/phon_br"
+        },
+        "problem": "Общая транскрипция дана только с /z/.",
+        "required_action": "Развести произношения прилагательного и наречия, глагола и существительных."
+      },
+      {
+        "meaning_index": 1,
+        "problem": "Close translation отнесено к значению «близкий».",
+        "required_action": "Связать с отдельным значением «точный»."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Смешаны «закрытый» и близкий результат голосования.",
+        "required_action": "Развести два значения."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Пример соответствует close about.",
+        "required_action": "Связать пример с «окутывать, окружать»."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "close1, close2, close shave",
+          "found": true,
+          "locations": [
+            {
+              "page": 88,
+              "quote": "close2 I [kləus] adj 1 близкий"
+            },
+            {
+              "page": 88,
+              "quote": "close examination тщательное обследование"
+            },
+            {
+              "page": 88,
+              "quote": "n разг опасное, рискованное положение"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "close1, close2",
+          "found": true,
+          "locations": [
+            {
+              "page": 88,
+              "quote": "close1 I [kləυz] n 1 конец 2 закрытие"
+            },
+            {
+              "page": 88,
+              "quote": "close2 I [kləυs] adj 1 близкий"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "close",
+          "found": true,
+          "locations": [
+            {
+              "page": 37,
+              "quote": "close II [kl@Us] adj 1) бли зкий 2) ду шный"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "close I–III, vote",
+          "found": true,
+          "locations": [
+            {
+              "page": 151,
+              "quote": "close I [klaus] 1. a 1) закрытый 2) близкий, интимный"
+            },
+            {
+              "page": 151,
+              "quote": "~ vote почти равное деление голосов"
+            },
+            {
+              "page": 151,
+              "quote": "close III [klauz] n 1) огороженное место (часто вокруг собора) 2) школьная площадка"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "close I–III",
+          "found": true,
+          "locations": [
+            {
+              "line": 15785,
+              "quote": "close I [kl ws] 1. a 1) закры'тый"
+            },
+            {
+              "line": 15787,
+              "quote": "~ translation то'чный перево'д"
+            },
+            {
+              "line": 15792,
+              "quote": "закры'тие 3) муз. каде'нция; ка- да'нс"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "close I–III, vote, out",
+          "found": true,
+          "locations": [
+            {
+              "page": 151,
+              "quote": "~ vote почти равное деление голосов"
+            },
+            {
+              "page": 151,
+              "quote": "~ out амер. ликвидировать (дело); ~ up а) сомкнуть ряды"
+            },
+            {
+              "page": 151,
+              "quote": "огороженное ме сто (часто вокруг собора) 2) школь ная площадка"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "close1, close2, close3",
+          "found": true,
+          "locations": [
+            {
+              "page": 174,
+              "quote": "close3 [kləs] n ого ро жен ное ме с то"
+            },
+            {
+              "page": 174,
+              "quote": "close2 [kləz] I v 1. за кры вать, кон -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "close I, close II",
+          "found": true,
+          "locations": [
+            {
+              "page": 51,
+              "quote": "close I [kləuz] 1. v закрывать (ся) 2. n конец"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "start",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Существительные 1–7 и глагольные значения 8–23 в основном следуют целевой статье. «Отправиться» относится к to make a start. Русский пример про пожар передаёт место его возникновения, хотя формулировку можно сделать яснее. Примеры о ссоре, теме разговора, работе, отправлении, испуге, движении и вспугивании согласуются со своими значениями. «Расходиться (о шве)» завершает нумерованные значения. Следом начинаются фразовые глаголы, чьи примеры и пометы ошибочно попали в значение о шве.",
+    "normalized_print": "Существительное «отправление; начало». To make a start — «начать; отправиться». Глагол «политься, хлынуть» и «расходиться (о шве)» без разговорной пометы. Start in разг. «начинать, приниматься» с примером «примитесь-ка за уборку комнаты». Start out «отправляться в путь», разг. «собираться сделать что-либо; начинать». Start up «вскакивать; появляться; пускать в ход». Start with «начать с того…; прежде всего; начинать с чего-либо», включая пример о шести первоначальных участниках. For a start «для начала, начнём с того, что».",
+    "uncertainties": [
+      "Разговорная помета относится к start in и к двум подзначениям start out. Сохранение отдельных помет внутри одной записи зависит от модели данных. Глагольное «литься» передаёт общий смысл, печатный вариант — «политься»."
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Глагол «отправиться» присоединён к существительному.",
+        "required_action": "Вернуть его в перевод to make a start."
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Шесть примеров и разговорная помета принадлежат соседнему блоку.",
+        "required_action": "Распределить примеры по start in, start out, start up и start with, исправив «примитесь-каза»."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 1
+        },
+        "problem": "Помета «охота» относится к to start a hare.",
+        "required_action": "Оставить только разговорную помету."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 2
+        },
+        "problem": "Авиационная помета относится к «взлетать».",
+        "required_action": "Снять её и учесть разговорное «начинать»."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 3
+        },
+        "problem": "Пропущено «пускать в ход».",
+        "required_action": "Восстановить значение с примером о запуске мотора."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "start I, start II",
+          "found": true,
+          "locations": [
+            {
+              "page": 434,
+              "quote": "start I [stɑt] n 1 начало; to make a start on smth"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "start I, start II",
+          "found": true,
+          "locations": [
+            {
+              "page": 434,
+              "quote": "start I [stt] n 1 начало; to make a start on smth"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "start",
+          "found": true,
+          "locations": [
+            {
+              "page": 154,
+              "quote": "start [st¸t] 1 v 1) начина ть 2) отправля ться"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "start, расходиться, start in",
+          "found": true,
+          "locations": [
+            {
+              "page": 773,
+              "quote": "отправление; начало; to make a ~ начать; отправиться"
+            },
+            {
+              "page": 773,
+              "quote": "16) расходиться (о шве) ­ ~ in разг. начинать, приниматься"
+            },
+            {
+              "page": 773,
+              "quote": "примитесь-ка за уборку комнаты"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "start",
+          "found": true,
+          "locations": [
+            {
+              "line": 90040,
+              "quote": "start [sta:t] 1. n 1) отправле'ние; нача-' ло; to make a ~ нача'ть; отпра'виться;"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "start, расходиться, start out, start with",
+          "found": true,
+          "locations": [
+            {
+              "page": 773,
+              "quote": "16) расходиться (о шве) ~ in разг. начинать, приниматься"
+            },
+            {
+              "page": 773,
+              "quote": "~ out а) отправляться в путь; б) разг."
+            },
+            {
+              "page": 773,
+              "quote": "~ with а): to ~ with начать с того...; прежде всего"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "start",
+          "found": true,
+          "locations": [
+            {
+              "page": 782,
+              "quote": "start [stt] I v 1. вздра ги вать, со -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "start",
+          "found": true,
+          "locations": [
+            {
+              "page": 213,
+              "quote": "start [stt] 1. v l) начинать 2) отправляться"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "system",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Все семь значений подтверждаются целевым изданием. В значении 2 повреждён оборот «дорог и т. п.». Political system — «государственный строй», а вопрос о методе передан правильно. System of axes — «система координат» в печатном переводе, хотя в более узком математическом контексте возможно «система осей».",
+    "normalized_print": "Система, устройство; сеть (дорог и т. п.); организм; система, метод; мир, вселенная; геол. система, формация; информ. система. Get a thing out of one's system — избавиться от навязчивой идеи, беспокойства.",
+    "uncertainties": [
+      "Источник 8 подтверждает перевод в русско-английском направлении. Он не устанавливает полный состав английской статьи."
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Утрачено «и», искажена форма «дорог».",
+        "required_action": "Восстановить «сеть (дорог и т. п.)»."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "system",
+          "found": true,
+          "locations": [
+            {
+              "page": 452,
+              "quote": "system ['sɪstɪm] n 1 система; способ; метод"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "system",
+          "found": true,
+          "locations": [
+            {
+              "page": 452,
+              "quote": "system [sistim] n 1 система; способ; метод"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "system",
+          "found": true,
+          "locations": [
+            {
+              "page": 160,
+              "quote": "system ['sKst@m] n систе ма"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "system, сеть",
+          "found": true,
+          "locations": [
+            {
+              "page": 804,
+              "quote": "сеть (дорог и т. п.) 3) организм 4) система; метод"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "system, сеть",
+          "found": true,
+          "locations": [
+            {
+              "line": 93970,
+              "quote": "2) сеть (дорог и т. п.)"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "system, сеть",
+          "found": true,
+          "locations": [
+            {
+              "page": 804,
+              "quote": "сеть (дорог и т. п.) 3) орга низм 4) система; метод"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "system",
+          "found": true,
+          "locations": [
+            {
+              "page": 810,
+              "quote": "system [sistəm] n 1. си с те ма"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "system",
+          "found": true,
+          "locations": [
+            {
+              "page": 437,
+              "quote": "система system"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "week",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "Целевая статья подтверждает все три значения. «В недельный срок» дано как второй перевод in a week. Saturday week и его русский перевод печатные, но фраза зависит от временной точки отсчёта. «Я сто лет вас не видел» — идиоматический перевод множественного for weeks. Печатное pl маркирует форму числа.",
+    "normalized_print": "Неделя; in a week — через неделю, в недельный срок. Шесть рабочих дней недели. Во мн. ч. «целая вечность»; I have not seen you for weeks — я сто лет вас не видел. A week of Sundays — семь недель; целая вечность. Week in, week out — беспрерывно.",
+    "uncertainties": [
+      "Источники 1 и 2 дают более широкое «рабочая неделя». Целевое издание прямо указывает шесть дней. Точная редакционная помета для Saturday week требует отдельного решения."
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Перевод сочетания помещён в заголовок значения существительного.",
+        "required_action": "Оставить «неделя» и отнести «в недельный срок» к in a week."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Помета «британское» не соответствует pl.",
+        "required_action": "Сохранить указание множественного числа и убрать неподтверждённую региональную помету."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "week",
+          "found": true,
+          "locations": [
+            {
+              "page": 496,
+              "quote": "week [wi:k] n 1 неделя; a week from today ровно через неделю"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "week",
+          "found": true,
+          "locations": [
+            {
+              "page": 496,
+              "quote": "week [wk] n 1 неделя; a week from today ровно через неделю"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "week",
+          "found": true,
+          "locations": [
+            {
+              "page": 174,
+              "quote": "week [wÖk] n неде ля"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "week, pl",
+          "found": true,
+          "locations": [
+            {
+              "page": 899,
+              "quote": "in a ~ через неделю; в недельный срок"
+            },
+            {
+              "page": 899,
+              "quote": "шесть рабочих дней недели 3) pl целая вечность"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "week",
+          "found": true,
+          "locations": [
+            {
+              "line": 104635,
+              "quote": "week [wi:k] n 1) недел' я; in a ~ че'рез"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "week, Saturday, pl",
+          "found": true,
+          "locations": [
+            {
+              "page": 899,
+              "quote": "he came back Saturday ~ в субботу была или будет неделя, как он вернулся"
+            },
+            {
+              "page": 899,
+              "quote": "шесть рабочих дней недели 3) pl целая вечность; I have not seen you for ~s я сто лет вас не видел"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "week",
+          "found": true,
+          "locations": [
+            {
+              "page": 894,
+              "quote": "week [wk] n не де ля"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "week",
+          "found": true,
+          "locations": [
+            {
+              "page": 243,
+              "quote": "week [wk] неделя"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "already",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Целевые PDF и DOCX дают единственное наречное «уже», как в записи. Примеров в записи нет. Источники 1 и 2 описывают дополнительные контекстные переводы в своих статьях.",
+    "normalized_print": "already adv уже.",
+    "uncertainties": [
+      "Гласные транскрипции извлечены с повреждениями. Цитаты подтверждают часть речи и перевод, а не региональные варианты IPA."
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "already",
+          "found": true,
+          "locations": [
+            {
+              "page": 24,
+              "quote": "already [ɔ:l'redɪ] adv 1 уже, ранее 2 ещё нет, ещё не"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "already",
+          "found": true,
+          "locations": [
+            {
+              "page": 24,
+              "quote": "already [lredi] adv 1 уже, ранее 2 ещё нет, ещё не"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "already",
+          "found": true,
+          "locations": [
+            {
+              "page": 14,
+              "quote": "already [þl'redK] adv уже"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "already",
+          "found": true,
+          "locations": [
+            {
+              "page": 35,
+              "quote": "already [a:l'redi] adv уже"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "already",
+          "found": true,
+          "locations": [
+            {
+              "line": 3022,
+              "quote": "already [c:l´redi] adv уже'"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "already",
+          "found": true,
+          "locations": [
+            {
+              "page": 35,
+              "quote": "already [ l red ] adv уже"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "already",
+          "found": true,
+          "locations": [
+            {
+              "page": 40,
+              "quote": "already [lredi] adv уже"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "already",
+          "found": true,
+          "locations": [
+            {
+              "page": 20,
+              "quote": "already [lredi] уже"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "anything",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Два местоименных значения и переводы вопроса о потере, отрицания и сходства с отцом подтверждаются. В русском отрицательном примере правильно «ничего». У take anything you like печатное «возьмите всё, что вам нравится» допустимо, хотя «возьмите что угодно из того, что вам нравится» точнее передаёт свободный выбор. Anything but в примерах имеет два перевода: «всё что угодно, только не» и «далеко не». Последний перевод ошибочно удвоен.",
+    "normalized_print": "Неопределённое местоимение. 1) Что-нибудь в вопросе; ничто, ничего в отрицании. 2) Что угодно, всё в утверждении. Anything but — всё что угодно, только не; далеко не. It is anything but clear — это далеко не ясно. Like anything разг. — изо всех сил; чрезвычайно. If anything — пожалуй, если хотите.",
+    "uncertainties": [
+      "Источники 1 и 2 также отмечают условные предложения. Источник 8 подтверждает русско-английское соответствие в сочетании с «что»."
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Повтор «далеко не» в последнем примере.",
+        "required_action": "Восстановить «это далеко не ясно»."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "anything",
+          "found": true,
+          "locations": [
+            {
+              "page": 28,
+              "quote": "anything ['enɪθɪŋ] pron 1 что-нибудь (в вопр и усл"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "anything",
+          "found": true,
+          "locations": [
+            {
+              "page": 28,
+              "quote": "anything [eniθiŋ] pron 1 что-нибудь (в вопр и усл"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "anything",
+          "found": true,
+          "locations": [
+            {
+              "page": 15,
+              "quote": "anything ['enKTKÎ] pron что -нибудь; что уго дно"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "anything, it is ~ but clear",
+          "found": true,
+          "locations": [
+            {
+              "page": 43,
+              "quote": "anything ['eni0ig] pron indef."
+            },
+            {
+              "page": 43,
+              "quote": "б) далеко не; it is ~ but clear это дале- kO не ясно"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "anything",
+          "found": true,
+          "locations": [
+            {
+              "line": 3832,
+              "quote": "he hasn't found ~ он ничего' не нашёл"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "anything, it is ~ but clear",
+          "found": true,
+          "locations": [
+            {
+              "page": 43,
+              "quote": "б) далеко не; it is ~ but clear это дале ко не ясно"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "anything",
+          "found": true,
+          "locations": [
+            {
+              "page": 54,
+              "quote": "anything [eniθiŋ] n, pron 1. что ни будь"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "anything",
+          "found": true,
+          "locations": [
+            {
+              "page": 463,
+              "quote": "что ~ anything; куда ~ anywhere"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "nothing",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Заголовок первого раздела — отрицательное местоимение «ничто, ничего». Neg. — помета. «Ничего кроме» относится к nothing but, как и пример о правде. Nothing else than и all to nothing находятся в местоименном разделе. Пустяки, небытие, ноль и математический ноль подтверждены как существительные. It differs nothing from относится к наречному «нисколько», а «просто-напросто» относится к nothing less than. Все пять поданных фраз подтверждаются, но наследуют неверную классификацию noun.",
+    "normalized_print": "1. Pron neg. ничто, ничего. Nothing but — только; ничего кроме. Nothing else than — не что иное, как. All to nothing — всё ни к чему. 2. N пустяки, мелочи; небытие, нереальность; ноль, пустое место; мат. ноль. 3. Adv нисколько, совсем нет. Nothing less than — прямо-таки, просто-напросто. There is nothing like — нет ничего лучше; to say nothing of — не говоря уже о; nothing very much — ничего особенного; to be for nothing in — не играть никакой роли, не оказывать влияния; there was nothing for it but to tell the truth — пришлось сказать правду.",
+    "uncertainties": [
+      "Издания по-разному распределяют «ноль», «пустяки» и «ничтожество». Восстановление следует нумерации целевого комплекта. Для фраз стоит отдельно определить, маркирует ли поле синтаксис всей фразы или исходную часть речи заголовка."
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Местоимение размечено как существительное, а помета и перевод сочетания попали в поля примера и значения.",
+        "required_action": "Восстановить pronoun и «ничто, ничего», вернуть «ничего кроме» к nothing but."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Второй перевод nothing less than оторван от сочетания.",
+        "required_action": "Отнести «просто-напросто» к примеру с nothing less than."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "nothing I–III",
+          "found": true,
+          "locations": [
+            {
+              "page": 298,
+              "quote": "nothing III ['nʌθɪŋ] pron ничего"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "nothing I–III",
+          "found": true,
+          "locations": [
+            {
+              "page": 298,
+              "quote": "nothing III [nθiŋ] pron ничего"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "nothing",
+          "found": true,
+          "locations": [
+            {
+              "page": 116,
+              "quote": "nothing ['nöTKÎ] pron ничто , ничего"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "nothing, pron neg., nothing less than",
+          "found": true,
+          "locations": [
+            {
+              "page": 543,
+              "quote": "1. pron neg. ничто, ничего; ~ but только; ничего кроме"
+            },
+            {
+              "page": 543,
+              "quote": "~ less than прямо-таки; прОсто-напросто ♦ there is ~ like нет ничего лучше"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "nothing, pron neg.",
+          "found": true,
+          "locations": [
+            {
+              "line": 63839,
+              "quote": "1. pron neg. ничто', ни- чего'; ~ but то'лько; ничего' кро'ме"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "nothing, pron neg., nothing less than",
+          "found": true,
+          "locations": [
+            {
+              "page": 543,
+              "quote": "1. pron neg. ничто, ни чего; ~ but только; ничего кроме"
+            },
+            {
+              "page": 543,
+              "quote": "~ less than прямотаки; простонапросто"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "nothing",
+          "found": true,
+          "locations": [
+            {
+              "page": 571,
+              "quote": "nothing [nθiŋ] I n 1. ни что, ни че -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "nothing",
+          "found": true,
+          "locations": [
+            {
+              "page": 155,
+              "quote": "nothing [nθiŋ] ничто, ничего"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "person",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Первые три значения и все примеры соответствуют статье. He has a fine person иллюстрирует внешность и звучит старомодно. In one's own person — «лично», not a single person — «ни единого человека, никого». В статье грамматическое лицо и юридическое лицо имеют отдельные номера. Зоологическое «особь» отсутствует в записи.",
+    "normalized_print": "1) Человек; личность, особа; субъект. 2) Внешность, облик. 3) Действующее лицо, персонаж. 4) Грам. лицо. 5) Юридическое лицо. 6) Зоол. особь.",
+    "uncertainties": [
+      "People — обычное множественное в значении «люди». Поле форм не отражает persons, возможное в формальном контексте. Целевая статья не устанавливает исчерпывающий список форм."
+    ],
+    "issues": [
+      {
+        "meaning_index": 4,
+        "problem": "Объединены два печатных значения и утрачен компонент «юридическое».",
+        "required_action": "Разделить грамматическое и юридическое употребления."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "зоологическое существительное «особь»"
+        },
+        "problem": "Пропущено шестое значение.",
+        "required_action": "Восстановить с зоологической пометой."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "person",
+          "found": true,
+          "locations": [
+            {
+              "page": 322,
+              "quote": "person ['pɜ:sn] n 1 человек; личность; особа; субъект"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "person",
+          "found": true,
+          "locations": [
+            {
+              "page": 322,
+              "quote": "person [p:sn] n 1 человек; личность; особа; субъект"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "person",
+          "found": true,
+          "locations": [
+            {
+              "page": 124,
+              "quote": "person [pÆ:sn] n лицо ; осо ба; челове к"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "person, грам. лицо, особь",
+          "found": true,
+          "locations": [
+            {
+              "page": 594,
+              "quote": "грам. лицо 5) юридическое лицо 6) зоол. особь"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "person",
+          "found": true,
+          "locations": [
+            {
+              "line": 69099,
+              "quote": "person [´p3:sn] n 1) челове'к; ли'чность, осо'ба; субъе'кт"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "person, грам. лицо, особь",
+          "found": true,
+          "locations": [
+            {
+              "page": 594,
+              "quote": "грам. лицо 5) юридическое лицо 6) зоол. особь"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "person",
+          "found": true,
+          "locations": [
+            {
+              "page": 620,
+              "quote": "person [pз:s(ə)n] n 1. ли цо"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "person",
+          "found": true,
+          "locations": [
+            {
+              "page": 167,
+              "quote": "person [p :sn] лицо; особа; человек"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "today",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "Все четыре толкования совпадают с целевым изданием. Печатная верстка ставит the writers of today после «сегодняшний день». По смыслу «современные писатели» относится к «наши дни, настоящее время». Источники 1 и 2 также выделяют два значения существительного.",
+    "normalized_print": "Adv 1) сегодня; 2) в наши дни, в настоящее время. N 1) сегодняшний день; 2) наши дни, настоящее время. В печати the writers of today — современные писатели помещено после n 1, по смыслу пример относится к n 2.",
+    "uncertainties": [
+      "Решение о переносе примера исходит из семантики, а не из расхождения между извлечениями."
+    ],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Пример означает «писатели нашего времени».",
+        "required_action": "Отнести его к значению 4 и зафиксировать исходное положение в печати."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "today I, today II",
+          "found": true,
+          "locations": [
+            {
+              "page": 465,
+              "quote": "today I [tə'deɪ] n 1 сегодняшний день 2 наши дни"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "today I, today II",
+          "found": true,
+          "locations": [
+            {
+              "page": 465,
+              "quote": "today I [tədei] n 1 сегодняшний день 2 наши дни"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "today",
+          "found": true,
+          "locations": [
+            {
+              "page": 163,
+              "quote": "today [t@'deK] adv сего дня"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "today, the writers of ~",
+          "found": true,
+          "locations": [
+            {
+              "page": 831,
+              "quote": "the writers of ~ современные писатели 2) наши дни, настоящее время"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "today",
+          "found": true,
+          "locations": [
+            {
+              "line": 97228,
+              "quote": "today [t ´dei] 1. adv 1) сего'дня 2) в на'- ши дни"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "today, the writers of ~",
+          "found": true,
+          "locations": [
+            {
+              "page": 831,
+              "quote": "the writers of ~ современные писатели 2) наши дни, настоящее время"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "today",
+          "found": true,
+          "locations": [
+            {
+              "page": 833,
+              "quote": "today [tədei] I adv 1. се го дня"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "today",
+          "found": true,
+          "locations": [
+            {
+              "page": 228,
+              "quote": "today [tədei] сегодня"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "so-called",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Целевой комплект подтверждает прилагательное «так называемый» без примеров и помет. Дефис сохранён в распарсенном PDF и DOCX. В исходном извлечении PDF слитная форма появляется и у соседних дефисных заголовков. Источники 1 и 2 дополнительно выделяют скептическое употребление.",
+    "normalized_print": "so-called a так называемый.",
+    "uncertainties": [
+      "«Якобы» и «с позволения сказать» подтверждены источниками 1–2 как отдельный оттенок. Его нет в целевой статье. Извлечённые транскрипции не устанавливают американский вариант."
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "so-called",
+          "found": true,
+          "locations": [
+            {
+              "page": 419,
+              "quote": "so-called [,səu'kɔld] adj 1 так называемый, именуемый"
+            },
+            {
+              "page": 419,
+              "quote": "с позволения сказать, якобы"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "so-called",
+          "found": true,
+          "locations": [
+            {
+              "page": 419,
+              "quote": "so-called [səυkld] adj 1 так называемый, именуемый"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "(?i)(?<!\\w)so[-\\s]*called(?![\\w-])",
+          "found": false,
+          "result": "Совпадений в извлечённом тексте не найдено."
+        },
+        {
+          "source_id": 4,
+          "query": "so-called",
+          "found": true,
+          "locations": [
+            {
+              "page": 751,
+              "quote": "so-called [,sau'ka:ld] a так называемый"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "so-called",
+          "found": true,
+          "locations": [
+            {
+              "line": 87225,
+              "quote": "so-called [˛s w´kc:ld] a так называ'е- мый"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "socalled",
+          "found": true,
+          "locations": [
+            {
+              "page": 751,
+              "quote": "a так называе мый soccer"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "socalled",
+          "found": true,
+          "locations": [
+            {
+              "page": 762,
+              "quote": "socalled [səkld] adj так на зы -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "(?i)(?<!\\w)so[-\\s]*called(?![\\w-])",
+          "found": false,
+          "result": "Совпадений в извлечённом тексте не найдено."
+        }
+      ]
+    }
+  },
+  {
+    "word": "change",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Состав основных существительных и глаголов почти полностью подтверждается. Social change относится к общему значению, техническая помета — к обмену воздуха и change gear. У колоколов указано обычное множественное число. «В роли определения» — конструкционная помета. Перевод change hands о новом владельце относится к примеру. All change! и no change for Oxford верно иллюстрируют пересадку. Примеры о цвете, лице, решении и переходе на другую сторону соответствуют статье. Автомобильные примеры оказались рядом с Луной в печати и ошибочно присоединены к Луне и порче в данных. Change into и change over подтверждены. To take the change out of a person — глагольная идиома.",
+    "normalized_print": "Общее n «перемена; изменение; сдвиг» без технической пометы. Change of air — «перемена обстановки»; тех. «обмен воздуха». Small change — «мелкие деньги, мелочь»; «что-то мелкое, незначительное». Трезвон, перезвон обычно во мн. ч. Change gear тех. — «механизм перемены направления движения». Глагольное change up/down образует отдельные автомобильные сочетания. Сохранить отдельно «переходить в новую фазу (о Луне)» и «скисать, прокисать; портиться».",
+    "uncertainties": [
+      "Печатное «переходить на большую или меньшую скорость» передаёт переключение передач. Современная редакционная формулировка может назвать передачу явно. Технический перевод change gear сохранён как чтение издания."
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Техническая помета перенесена с вложенного сочетания.",
+        "required_action": "Привязать её только к техническому переводу change of air."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Pl истолковано как региональная помета.",
+        "required_action": "Сохранить множественное число и убрать «британское»."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "Автомобильный пример относится к другой конструкции.",
+        "required_action": "Перенести к change up/down."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Автомобильные примеры дублируют фразы.",
+        "required_action": "Отделить их от порчи и скисания."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 8
+        },
+        "problem": "Второй перевод обрезан до «что».",
+        "required_action": "Восстановить «что-то мелкое, незначительное»."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "change I, change II",
+          "found": true,
+          "locations": [
+            {
+              "page": 79,
+              "quote": "change I [tʃeɪndʒ] n 1 изменение; change of air/scene перемена"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "change I, change II",
+          "found": true,
+          "locations": [
+            {
+              "page": 79,
+              "quote": "change I [tʃeind] n 1 изменение; change of air/scene перемена"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "change",
+          "found": true,
+          "locations": [
+            {
+              "page": 34,
+              "quote": "change [tSeKndZ] 1 v 1) меня ть(ся); ~ one’s mind переду мать"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "change, small change, change up/down",
+          "found": true,
+          "locations": [
+            {
+              "page": 134,
+              "quote": "small ~ а) мелкие деньги, мелочь; б) что-то мелкое, незначительное"
+            },
+            {
+              "page": 134,
+              "quote": "~ of air а) перемена обстановки; б) тех. обмен воздуха"
+            },
+            {
+              "page": 134,
+              "quote": "to ~ up (down) авто переходить на большую (меньшую) скорость"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "change",
+          "found": true,
+          "locations": [
+            {
+              "line": 13617,
+              "quote": "change [t∫eindy] 1. n 1) переме'на; из- менен' ие; сдвиг"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "change, small change, change up/down",
+          "found": true,
+          "locations": [
+            {
+              "page": 134,
+              "quote": "small ~ а) мелкие деньги, мелочь; б) чтото мелкое, не значительное"
+            },
+            {
+              "page": 134,
+              "quote": "~ down авто сбавлять скорость"
+            },
+            {
+              "page": 134,
+              "quote": "~ up авто переходить на более вы сокую скорость"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "change",
+          "found": true,
+          "locations": [
+            {
+              "page": 157,
+              "quote": "change [ein] I n 1. пе ре ме на"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "change",
+          "found": true,
+          "locations": [
+            {
+              "page": 47,
+              "quote": "change [tʃeind] 1. v менять (ся); ~ one’s mind переду мать"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "enough",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Все три раздела и шесть примеров подтверждаются целевой статьёй. Enough time обозначает достаточное время. Enough and to spare обозначает избыток, had enough of him — пресыщение. Strangely enough передаёт оценку говорящего, а well enough в двух примерах допускает разную степень усиления.",
+    "normalized_print": "A достаточный. N достаточное количество. Adv достаточно; довольно. Strangely enough — как это ни странно; you know well enough — вы отлично знаете; he did it well enough — он сделал это довольно хорошо.",
+    "uncertainties": [
+      "A и n сохранены как классификация издания. В современной грамматике возможны категории определителя и местоимения."
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "enough I–III",
+          "found": true,
+          "locations": [
+            {
+              "page": 155,
+              "quote": "enough I [ɪ'nʌf] n достаточное количество"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "enough I–III",
+          "found": true,
+          "locations": [
+            {
+              "page": 155,
+              "quote": "enough I [inf] n достаточное количество"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "enough",
+          "found": true,
+          "locations": [
+            {
+              "page": 64,
+              "quote": "enough [K'nöf] adv дово льно; доста точно"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "enough",
+          "found": true,
+          "locations": [
+            {
+              "page": 275,
+              "quote": "enough [i'nAf] 1. a достаточный; to have ~ time"
+            },
+            {
+              "page": 275,
+              "quote": "I've had ~ of him он мне надоел"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "enough",
+          "found": true,
+          "locations": [
+            {
+              "line": 31593,
+              "quote": "enough [i´nnf] 1. a доста'точный; to have ~ time"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "enough, well enough",
+          "found": true,
+          "locations": [
+            {
+              "page": 275,
+              "quote": "you know well ~ вы отлично знаете; he did it well ~ он сделал это довольно хорошо"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "enough",
+          "found": true,
+          "locations": [
+            {
+              "page": 304,
+              "quote": "enough [inf] I adj до ста точ ный"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "enough",
+          "found": true,
+          "locations": [
+            {
+              "page": 88,
+              "quote": "enough [inf] довольно; дос таточно"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "everything",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Все три значения, обе разговорные пометы и оба примера совпадают с целевой статьёй. «Масса, куча» — разговорное контекстное толкование. They gave me everything допускает также буквальное «они дали мне всё». Speed is everything обозначает решающую важность скорости.",
+    "normalized_print": "Неопределённое местоимение. 1) Всё. 2) Разг. масса, куча. 3) Разг. всё самое важное.",
+    "uncertainties": [
+      "Источник 8 подтверждает употребление в примере, а не деление на значения."
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "everything",
+          "found": true,
+          "locations": [
+            {
+              "page": 160,
+              "quote": "everything ['evrɪθɪŋ] pron 1 всё 2 разг всё самое важное"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "everything",
+          "found": true,
+          "locations": [
+            {
+              "page": 160,
+              "quote": "everything [evriθiŋ] pron 1 всё 2 разг всё самое важное"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "everything",
+          "found": true,
+          "locations": [
+            {
+              "page": 65,
+              "quote": "everything ['evrKTKÎ] pron всё"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "everything, speed is ~",
+          "found": true,
+          "locations": [
+            {
+              "page": 283,
+              "quote": "pron indef. 1) всё 2) разг. масса, куча"
+            },
+            {
+              "page": 283,
+              "quote": "всё самое важное; speed is ~ самое главное — это скорость"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "everything",
+          "found": true,
+          "locations": [
+            {
+              "line": 32552,
+              "quote": "everything [´evriθi ] pron indef. 1) всё"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "everything",
+          "found": true,
+          "locations": [
+            {
+              "page": 283,
+              "quote": "pron indef. 1) всё 2) разг. масса, куча"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "everything",
+          "found": true,
+          "locations": [
+            {
+              "page": 313,
+              "quote": "everything [evriθiŋ] pron 1. все"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "everything",
+          "found": true,
+          "locations": [
+            {
+              "page": 158,
+              "quote": "everything’s О.К. всё в поря дке"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "full",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Десять прилагательных и три наречных толкования подтверждаются. Примеры о зале, часе, нагрузке, наполнении, сытости, еде, занятости своими делами, расцвете сил, приливе и прямом попадании согласуются со значениями. Печатное full to overflowing (или to the brim) нормализовано в записи приемлемо. Текстильная помета стоит у отдельного full II «валять (сукно)». In full и to the full — отдельные сочетания в разделе n. To come to a full возникло при неверной подстановке заголовка вместо full stop. Full brother, full powers и full moon — именные сочетания.",
+    "normalized_print": "Full I a полный, целый; разг. сытый; обильный; изобилующий; поглощённый; дородный; широкий; переполненный; сл. поддатый; уст. достигший высшей степени. N в сочетаниях in full «полностью», to the full «в полной мере». Adv очень; вполне; как раз, прямо. V кроить широко, шить в сборку или складку. Full II v текст. валять (сукно). Под full stop: to come to a full stop — дойти до точки, зайти в тупик.",
+    "uncertainties": [
+      "Full up подтверждается с разговорной и предикативной пометами. В источнике 4 есть также to be on full time. Современное употребление «сытый» шире исторической разговорной пометы, которая подтверждается как печатная."
+    ],
+    "issues": [
+      {
+        "meaning_index": 14,
+        "problem": "Помета взята из отдельного full II.",
+        "required_action": "Снять её с full I и выделить «валять (сукно)» с текстильной пометой."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 5
+        },
+        "problem": "Обрезано ключевое stop.",
+        "required_action": "Восстановить to come to a full stop и указать источник под full stop."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 6
+        },
+        "problem": "To the full записано как пример in full.",
+        "required_action": "Развести два самостоятельных сочетания."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "full I–III",
+          "found": true,
+          "locations": [
+            {
+              "page": 189,
+              "quote": "full II [ful] adj 1 полный, наполненный"
+            },
+            {
+              "page": 189,
+              "quote": "in full полностью; to the full в полной мере"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "full I–III",
+          "found": true,
+          "locations": [
+            {
+              "page": 189,
+              "quote": "full II [fυl] adj 1 полный, наполненный"
+            },
+            {
+              "page": 189,
+              "quote": "in full полностью; to the full в полной мере"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "full",
+          "found": true,
+          "locations": [
+            {
+              "page": 76,
+              "quote": "full [fUl] adj по лный (чего-л)"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "full I, full II, full stop",
+          "found": true,
+          "locations": [
+            {
+              "page": 333,
+              "quote": "full II [ful] v текст. валять (сукно)"
+            },
+            {
+              "page": 333,
+              "quote": "full stop [,ful'stup] n тОчка ♦ to come to a ~ дойти до точки, зайти в тупик"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "full I, full II",
+          "found": true,
+          "locations": [
+            {
+              "line": 37964,
+              "quote": "v крои'ть широко' (платье); шить в сбо'рку, в скла'дку"
+            },
+            {
+              "line": 37965,
+              "quote": "full II [fwl] v текст. валя'ть (сукно)"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "full I, full II, full stop",
+          "found": true,
+          "locations": [
+            {
+              "page": 333,
+              "quote": "кроить широко (платье); шить в сборку, в складку"
+            },
+            {
+              "page": 333,
+              "quote": "v текст. валять (сукно)"
+            },
+            {
+              "page": 333,
+              "quote": "to come to a ~ дойти до точки, зайти в тупик"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "full1, full2",
+          "found": true,
+          "locations": [
+            {
+              "page": 364,
+              "quote": "full1 [fl] I adj 1. пол ный; це лый"
+            },
+            {
+              "page": 365,
+              "quote": "full2 [fl] v 1. текст. ва лять (сук -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "full",
+          "found": true,
+          "locations": [
+            {
+              "page": 104,
+              "quote": "full [ful] полный (чегол.)"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "live",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "В целевой статье live I имеет три нумерованных значения. Примеры о городе, возрасте, дожитии до события, пище, чужих средствах и жизни по средствам семантически корректны. Пример о городе представляет редакционную формулировку, а жить на чужие средства — финансовое употребление live on. «Прожить, протянуть (о больном)» стоит у live out. Live every moment допускает идиоматический перевод «наслаждаться каждым моментом», но самостоятельное значение 5 не подтверждено проверенной статьёй. Live down, in, off и through подтверждаются. Для live on air печать даёт «не иметь средств к существованию». Пропущен омограф live II.",
+    "normalized_print": "Live I /lɪv/ v жить, существовать, обитать; питаться или жить на средства (on); вести образ жизни. Live out — пережить; прожить, протянуть о больном; иметь жильё отдельно от места службы. Live up to — жить согласно принципам; быть достойным. Live on air — не иметь средств к существованию. Live II /laɪv/ a живой; передающийся непосредственно с места действия; деятельный; актуальный; горящий; действующий, боевой; под напряжением; переменный о нагрузке; яркий.",
+    "uncertainties": [
+      "Источники 1 и 2 дополнительно дают live /laɪv/ как наречие «в прямом эфире». Целевой комплект приводит прилагательное. «Питаться святым духом» допустимо как вольная идиоматическая адаптация."
+    ],
+    "issues": [
+      {
+        "meaning_index": 4,
+        "problem": "Толкование взято из live out.",
+        "required_action": "Привязать к соответствующему фразовому глаголу."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Редакционный пример представлен как отдельное печатное значение.",
+        "required_action": "Указать редакционное происхождение или отдельно подтвердить значение."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "live II /laɪv/, прилагательное «живой», «передаваемый в прямом эфире» и остальные значения омографа"
+        },
+        "problem": "Весь омограф пропущен.",
+        "required_action": "Восстановить с отдельным произношением."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "live1, live2",
+          "found": true,
+          "locations": [
+            {
+              "page": 265,
+              "quote": "live1 [lɪv] v 1 жить; существовать"
+            },
+            {
+              "page": 265,
+              "quote": "live2 II [laɪv] adv непосредственно, прямо; в прямом эфире"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "live1, live2",
+          "found": true,
+          "locations": [
+            {
+              "page": 265,
+              "quote": "live1 [liv] v 1 жить; существовать"
+            },
+            {
+              "page": 265,
+              "quote": "live2 II [laiv] adv непосредственно, прямо; в прямом эфире"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "live",
+          "found": true,
+          "locations": [
+            {
+              "page": 104,
+              "quote": "live [lKv] v жить"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "live I, live II, live out",
+          "found": true,
+          "locations": [
+            {
+              "page": 474,
+              "quote": "~ out а) пережить; б) прожить, протянуть (о больном)"
+            },
+            {
+              "page": 474,
+              "quote": "live II [laiv] a 1) живой 2) радио, тлв."
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "live I, live II, live out, live on air",
+          "found": true,
+          "locations": [
+            {
+              "line": 55653,
+              "quote": "~ out а) пережи'ть; б) прожи'ть, протя- ну'ть (о больном)"
+            },
+            {
+              "line": 55666,
+              "quote": "to ~ on air не име'ть средств к существова'нию"
+            },
+            {
+              "line": 55667,
+              "quote": "live II [laiv] a 1) живо'й"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "live I, live II",
+          "found": true,
+          "locations": [
+            {
+              "page": 474,
+              "quote": "a 1) живой 2) радио, тлв. передающийся непосредственно с места действия"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "live1, live2",
+          "found": true,
+          "locations": [
+            {
+              "page": 506,
+              "quote": "live1 [liv] v жить, су ще ст во вать"
+            },
+            {
+              "page": 506,
+              "quote": "live2 [liv] adj 1. жи вой"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "live",
+          "found": true,
+          "locations": [
+            {
+              "page": 138,
+              "quote": "live [liv] жить"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "making",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Все семь значений существительного подтверждаются, включая редкие «работа, ремесло», «форма» и «заработок». In the making переведено верно. В примере to have the makings of русский вариант использует безличный английский шаблон с подразумеваемым субъектом. У значений 5 и 6 стоит только pl, а у 7 — pl, амер., австрал., разг. Лишняя пунктуация в значении 7 появилась при разборе. Печатное to be the making передано верно, но вся фраза глагольная. Статья также имеет отдельную отсылку к причастию make.",
+    "normalized_print": "1. Pres. p. от make. 2. N создание, становление; производство, изготовление; работа, ремесло; форма; pl заработок; pl задатки; pl амер., австрал. разг. бумага и табак для свёртывания сигарет. To be the making — содействовать успеху.",
+    "uncertainties": [
+      "Источник 8 подтверждает только форму make — making в грамматическом разделе. Отсутствие совпадения в источнике 3 относится к извлечённому тексту."
+    ],
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Pl ошибочно дополнено британской пометой.",
+        "required_action": "Сохранить только указание множественного числа."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Британская помета не подтверждена.",
+        "required_action": "Сохранить указание множественного числа без региональной пометы."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Лишняя пунктуация и британская помета.",
+        "required_action": "Восстановить «при мн. ч.: бумага и табак для свёртывания сигарет» и три подтверждённые пометы."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "making",
+          "found": true,
+          "locations": [
+            {
+              "page": 272,
+              "quote": "making ['meɪkɪŋ] n 1 производство, изготовление"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "making",
+          "found": true,
+          "locations": [
+            {
+              "page": 272,
+              "quote": "making [meikiŋ] n 1 производство, изготовление"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "(?i)(?<!\\w)making(?!\\w)",
+          "found": false,
+          "result": "Совпадений в извлечённом тексте не найдено."
+        },
+        {
+          "source_id": 4,
+          "query": "making, makings",
+          "found": true,
+          "locations": [
+            {
+              "page": 489,
+              "quote": "5) pl заработок 6) pl задатки"
+            },
+            {
+              "page": 489,
+              "quote": "7) pl амер., австрал. разг. бумага и табак для свёртывания сигарет"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "making, makings",
+          "found": true,
+          "locations": [
+            {
+              "line": 57210,
+              "quote": "making [´meiki ] 1. pres. p. от make 1"
+            },
+            {
+              "line": 57212,
+              "quote": "7) pl амер., австрал. разг. бумаг' а и табак' для свёртывания сигаре'т"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "making, makings",
+          "found": true,
+          "locations": [
+            {
+              "page": 489,
+              "quote": "7) pl амер., австрал. разг. бумага и табак для свёртывания сигарет"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "making",
+          "found": true,
+          "locations": [
+            {
+              "page": 519,
+              "quote": "making [meikiŋ] n 1. со зда ние, ста -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "making",
+          "found": true,
+          "locations": [
+            {
+              "page": 554,
+              "quote": "make — making."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "point",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Основные существительные 1–16 и глаголы 17–26 в целом совпадают с целевой статьёй. Американская помета относится к exclamation point и «станция» соответственно, а у экстерьера стоит pl. Примеры о времени, смерти, отправлении, форе, тонкостях, чести, достоинствах, сути и оленьих рогах соответствуют значениям. Числовой пример в печати переводится «четыре и шесть десятых (4,6)». У «показывать пальцем» печать указывает at, to и также out; подмена английского примера на point out с русским комментарием [point at / to] делает его внутренне противоречивым. После «расшивать швы» идут два отдельных фразовых глагола. Free from points и points verdict принадлежат разным разделам. At point и in point — целые идиоматические сочетания. In point of функционирует как предложный оборот. Остальные поданные выражения в основном подтверждаются. At all points и carry one's point переданы неполно; «по существу» семантически подходит to the point, а в целевой статье также имеется «вплоть до (of)».",
+    "normalized_print": "У точки амер. относится к exclamation point; у «точка, место, пункт» амер. относится к «станция». У экстерьера — мн. ч. В продолжении n: воен. головной или тыльный дозор; ист. единица продовольственной или промтоварной карточки; мор. румб; мор. редька; ист. шнурок с наконечником; вершина горы; гравировальная игла или резец; вид кружева; attr. points verdict спорт. присуждение победы по очкам. Free from points — ненормированный. V 10 стр. расшивать швы. Point off — отделять точкой. Point out — указывать, показывать, обращать внимание.",
+    "uncertainties": [
+      "«Бесталонный, отпускаемый без талонов» семантически поясняет историческое ненормирование. Целевое чтение — «ненормированный». «Чинить (карандаш)» подтверждено как старое употребление русского глагола в смысле «очинять»."
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Американская помета охватывает всё значение.",
+        "required_action": "Ограничить помету сочетанием exclamation point."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Американская помета охватывает «точка, место, пункт».",
+        "required_action": "Ограничить её переводом «станция»."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Британская помета подменяет pl.",
+        "required_action": "Убрать её и сохранить множественное число у «экстерьер»."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "В примере смешаны point out и point at/to.",
+        "required_action": "Развести конструкции и сохранить отдельный point out."
+      },
+      {
+        "meaning_index": 26,
+        "problem": "Примеры относятся к соседним фразовым глаголам.",
+        "required_action": "Отделить point off и point out от строительного значения."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 3
+        },
+        "problem": "Смешаны карточное нормирование, морские значения и спортивный points verdict.",
+        "required_action": "Разделить историческую фразу и спортивное сочетание, восстановить points verdict."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "point I, point II",
+          "found": true,
+          "locations": [
+            {
+              "page": 332,
+              "quote": "point I [pɔɪnt] n 1 главное, суть, смысл; вопрос, дело"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "point I, point II",
+          "found": true,
+          "locations": [
+            {
+              "page": 332,
+              "quote": "point II [pɔint] v 1 (обыкн at, out, to) указывать"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "point",
+          "found": true,
+          "locations": [
+            {
+              "page": 126,
+              "quote": "point [pOKnt] 1 n 1) то чка 2) пункт; вопро с"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "point, free from ~s, ~s verdict",
+          "found": true,
+          "locations": [
+            {
+              "page": 610,
+              "quote": "free from ~s ненормированный 19) мор. румб"
+            },
+            {
+              "page": 610,
+              "quote": "~s verdict спорт. присуждение победы по очкам (в боксе и т. д.)"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "point, point off, point out",
+          "found": true,
+          "locations": [
+            {
+              "line": 71004,
+              "quote": "10) стр. расшива'ть швы ¬ ~ off"
+            },
+            {
+              "line": 71005,
+              "quote": "отделя'ть то'чкой; ~ out ука'зывать"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "point, ~s verdict, point off",
+          "found": true,
+          "locations": [
+            {
+              "page": 610,
+              "quote": "~s verdict спорт. при суждение победы по очкам (в боксе и т. д.)"
+            },
+            {
+              "page": 610,
+              "quote": "10) стр. расшивать швы ~ off отделять точкой; ~ out указывать"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "point",
+          "found": true,
+          "locations": [
+            {
+              "page": 637,
+              "quote": "point [pɔint] I n 1. точ ка, пункт"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "point",
+          "found": true,
+          "locations": [
+            {
+              "page": 170,
+              "quote": "point [pɔint] 1. п 1) точка 2) пункт; вопрос"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "read",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Чтение вслух и про себя, чтение до засыпания и до хрипоты относятся к основному глаголу. Музыкальная и парламентская пометы относятся к отдельным примерам. Для парламентского примера целевой текст действительно даёт «был предоставлен на обсуждение». Примеры толкования, загадки, карт, мыслей и гадания по руке подтверждаются. Гласить, показывать на приборе, снимать показания и изучать подтверждаются вместе с примерами. После информ. «считывать» идут фразовые глаголы. Read off и его пример разговорные; американская помета у read out касается исключения из организации. Read up и read with подтверждаются. Quiet read и разг. «чтиво» подтверждены. Прилагательное и обе прошедшие формы произносятся /red/.",
+    "normalized_print": "Read I /riːd/ v читать; толковать, объяснять; гласить; показывать о приборе; снимать показания; изучать; информ. считывать. Read off разг. объяснять, выражать; read out читать вслух, амер. исключать из организации; read up специально изучать; read with заниматься с кем-либо. Read between the lines — читать между строк. N чтение, время чтения; разг. чтиво. Read II /red/ past и p. p. от read I; a начитанный, сведущий, знающий, образованный.",
+    "uncertainties": [
+      "Печатное read off «объяснять, выражать» подтверждено как чтение статьи. Из него нельзя выводить полную современную семантику фразового глагола. Правописание форм в записи верно, отдельное произношение требуется на уровне формы или омографа."
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Пометы отдельных примеров распространены на «читать» целиком.",
+        "required_action": "Ограничить музыкальную помету пьесой, парламентскую — законопроектом."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Смешаны информатика и соседние фразовые глаголы.",
+        "required_action": "Оставить «считывать» с информатической пометой, распределить примеры по фразам."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 4
+        },
+        "problem": "Перевод оборван, строительная помета посторонняя.",
+        "required_action": "Восстановить «читать между строк» без строительной пометы."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Прилагательное наследует /riːd/ заголовка.",
+        "required_action": "Указать /red/ у прилагательного и прошедших форм."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "read I–III",
+          "found": true,
+          "locations": [
+            {
+              "page": 359,
+              "quote": "read II [red] adj (часто in) начитанный, сведущий"
+            },
+            {
+              "page": 359,
+              "quote": "read III [rid] v (read) 1 читать"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "read I–III",
+          "found": true,
+          "locations": [
+            {
+              "page": 359,
+              "quote": "read III [rd] v (read) 1 читать"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "read",
+          "found": true,
+          "locations": [
+            {
+              "page": 134,
+              "quote": "read [rÖd] v (read [red]; read [red]) чита ть"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "read I, read II, read off, between the lines",
+          "found": true,
+          "locations": [
+            {
+              "page": 658,
+              "quote": "информ. считывать ­ ~ off разг. объяснять, выражать"
+            },
+            {
+              "page": 658,
+              "quote": "to ~ between the lines читать между строк"
+            },
+            {
+              "page": 658,
+              "quote": "read II [red] 1. past и p. p. от read I, 1"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "read I, read II",
+          "found": true,
+          "locations": [
+            {
+              "line": 76047,
+              "quote": "read I [ri:d] 1. v (read) 1) читат' ь"
+            },
+            {
+              "line": 76127,
+              "quote": "read II [red] 1. past и p. p. от read I, 1"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "read I, read II, between the lines",
+          "found": true,
+          "locations": [
+            {
+              "page": 658,
+              "quote": "7) информ. считывать ~ off разг. объяснять, выражать"
+            },
+            {
+              "page": 658,
+              "quote": "между строк; to ~ the time"
+            },
+            {
+              "page": 658,
+              "quote": "read II [red] 1. past и p. p. от read I, 1"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "read1",
+          "found": true,
+          "locations": [
+            {
+              "page": 682,
+              "quote": "read1 [rd] I v (read) 1. чи тать"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "read",
+          "found": true,
+          "locations": [
+            {
+              "page": 182,
+              "quote": "read [r d] (read [red]; read [red]) читать"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "yet",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Все шесть наречных толкований, союзное значение и все приведённые примеры совпадают с целевой статьёй. В русском not yet запись «ещё не(т)» компактно объединяет «ещё не» и самостоятельное «ещё нет». As yet в приведённом контексте переводится «пока». В and yet сохранено уступительное значение «и всё же».",
+    "normalized_print": "Adv 1) ещё, всё ещё; 2) ещё, кроме того; 3) уже в вопросах; 4) даже, более; 5) до сих пор, когда-либо; 6) тем не менее, всё же, всё-таки. Cj однако, всё же, несмотря на это; но.",
+    "uncertainties": [
+      "And yet может классифицироваться как союзное сочетание. В целевом издании пример стоит при наречном значении 6."
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "yet I, yet II",
+          "found": true,
+          "locations": [
+            {
+              "page": 507,
+              "quote": "yet I [jet] adv 1 до сих пор; (пока) ещё; всё ещё"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "yet I, yet II",
+          "found": true,
+          "locations": [
+            {
+              "page": 507,
+              "quote": "yet I [jet] adv 1 до сих пор; (пока) ещё; всё ещё"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "yet",
+          "found": true,
+          "locations": [
+            {
+              "page": 177,
+              "quote": "yet [jet] 1 adv ещё; вдоба вок 2 conj одна ко"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "yet, adv, cj",
+          "found": true,
+          "locations": [
+            {
+              "page": 921,
+              "quote": "yet [jet] 1. adv 1) ещё, всё ещё"
+            },
+            {
+              "page": 921,
+              "quote": "2. cj однако, всё же, несмотря на это; но"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "yet",
+          "found": true,
+          "locations": [
+            {
+              "line": 106981,
+              "quote": "yet [jet] 1. adv 1) ещё, всё ещё; he has not come ~ он ещё не пришёл"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "yet, adv, cj",
+          "found": true,
+          "locations": [
+            {
+              "page": 921,
+              "quote": "yet [jet] 1. adv 1) ещё, всё ещё"
+            },
+            {
+              "page": 921,
+              "quote": "2. cj однако, всё же, несмотря на это; но"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "yet",
+          "found": true,
+          "locations": [
+            {
+              "page": 910,
+              "quote": "yet [jet] I adv 1. еще, все еще"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "yet",
+          "found": true,
+          "locations": [
+            {
+              "page": 248,
+              "quote": "yet [jet] 1. adv ещё; вдобавок 2. conj однако"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "bad",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Семь прилагательных и три существительных подтверждаются. Примеры о самочувствии, репутации, монете, брани, невезении, сожалении, вреде, порче, болезни и убытке согласуются с печатным текстом. To take the bad with the good имеет подтверждённый идиоматический перевод. При «гибель; разорение» пропущен to go to the bad. Bad blood включает неприязнь, а bad egg/hat/lot передаёт также «непутёвый, никудышный человек». Bad blood, bad fairy и bad form — именные сочетания. With a bad grace функционирует как наречный оборот.",
+    "normalized_print": "A (worse; worst) плохой, дурной, скверный; вредный; испорченный; разг. больной; безнравственный; сильный о боли и холоде, грубый об ошибке; юр. недействительный. N неудача, несчастье; гибель, разорение; убыток. Bad blood — ссора, неприязнь; bad egg/hat/lot разг. — мошенник, непутёвый, никудышный человек; bad fairy — злой гений; bad form — дурные манеры; bad man амер. — отчаянный человек, головорез; with a bad grace — неохотно. To go to the bad — пропасть, погибнуть; сбиться с пути истинного.",
+    "uncertainties": [
+      "Источники 1 и 2 дополнительно выделяют разговорное наречие bad. Целевая статья его не выделяет."
+    ],
+    "issues": [
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 1
+        },
+        "problem": "Потеряна «неприязнь» и неверно указана часть речи всей фразы.",
+        "required_action": "Восстановить «ссора; неприязнь» и именную классификацию."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 2
+        },
+        "problem": "«Ненадёжный» передаёт лишь часть печатного ряда.",
+        "required_action": "Восстановить «непутёвый, никудышный человек»."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 5
+        },
+        "problem": "Наречный оборот размечен как прилагательное.",
+        "required_action": "Указать наречное употребление."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "bad I–III, bad blood",
+          "found": true,
+          "locations": [
+            {
+              "page": 39,
+              "quote": "bad II [bæd] adj (worse; worst) 1 дурной"
+            },
+            {
+              "page": 40,
+              "quote": "bad blood ['bæd,blʌd] n вражда; ненависть"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "bad I–III, bad blood",
+          "found": true,
+          "locations": [
+            {
+              "page": 39,
+              "quote": "bad II [bd] adj (worse; worst) 1 дурной"
+            },
+            {
+              "page": 40,
+              "quote": "bad blood [bdbld] n вражда; ненависть"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "bad",
+          "found": true,
+          "locations": [
+            {
+              "page": 19,
+              "quote": "bad [b{d] adj 1) плохо й, нехоро ший"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "bad, bad blood, bad egg",
+          "found": true,
+          "locations": [
+            {
+              "page": 63,
+              "quote": "~ blood ссора; неприязнь; ~ egg (или hat, lot) разг. мошенник"
+            },
+            {
+              "page": 63,
+              "quote": "with a ~ grace неохотно"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "bad, bad blood",
+          "found": true,
+          "locations": [
+            {
+              "line": 5841,
+              "quote": "bad [bæd] 1. a (worse; worst)"
+            },
+            {
+              "line": 5844,
+              "quote": "~ blood ссо'ра; неприя'знь; ~ egg"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "bad, bad blood, bad egg",
+          "found": true,
+          "locations": [
+            {
+              "page": 63,
+              "quote": "~ blood ссора; неприязнь; ~ egg (или hat, lot) разг. мошенник; непу тёвый, никудышный человек"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "bad",
+          "found": true,
+          "locations": [
+            {
+              "page": 80,
+              "quote": "bad [bd] adj (worse; worst) 1. дур ной, пло хой, сквер ный"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "bad",
+          "found": true,
+          "locations": [
+            {
+              "page": 30,
+              "quote": "bad [bd] 1) плохой, нехоро ший; too ~! обидно"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,4694 @@
+[
+  {
+    "word": "latter",
+    "before": {
+      "word": "latter",
+      "frequency_rank": 1848,
+      "cefr": "c1",
+      "phon_br": "/ˈlætə(r)/",
+      "phon_n_am": "/ˈlætər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "последний (из двух названных; противоп. the former)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "недавний",
+          "examples": [
+            {
+              "en": "in these latter days",
+              "ru": "в наше время"
+            },
+            {
+              "en": "the latter half of the week",
+              "ru": "вторая половина недели"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "latter",
+      "frequency_rank": 1848,
+      "cefr": "c1",
+      "phon_br": "/ˈlætə(r)/",
+      "phon_n_am": "/ˈlætər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "последний (из двух названных; противоп. the former)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "недавний",
+          "examples": [
+            {
+              "en": "in these latter days",
+              "ru": "в наше время"
+            },
+            {
+              "en": "the latter half of the week",
+              "ru": "вторая половина недели"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для latter before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "laugh",
+    "before": {
+      "word": "laugh",
+      "frequency_rank": 1559,
+      "cefr": "a1",
+      "phon_br": "/lɑːf/",
+      "phon_n_am": "/læf/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "смех, хохот",
+          "examples": [
+            {
+              "en": "on the laugh",
+              "ru": "смеясь"
+            },
+            {
+              "en": "to have a good laugh at smb.",
+              "ru": "от души посмеяться над кем-либо"
+            },
+            {
+              "en": "to give a laugh",
+              "ru": "рассмеяться"
+            },
+            {
+              "en": "to raise a laugh",
+              "ru": "вызвать смех"
+            },
+            {
+              "en": "to have the laugh of (or on) smb.",
+              "ru": "высмеять того, кто смеялся над тобой"
+            },
+            {
+              "en": "to raise (or to turn) the laugh against smb.",
+              "ru": "поставить кого-либо в смешное положение"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шутка, смешной случай",
+          "examples": [
+            {
+              "en": "that's a laugh",
+              "ru": "ну и смехота"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "смеяться; рассмеяться",
+          "examples": [
+            {
+              "en": "to laugh at smb., smth.",
+              "ru": "смеяться над кем-либо, чем-либо"
+            },
+            {
+              "en": "to laugh to scorn",
+              "ru": "высмеять"
+            },
+            {
+              "en": "he laughed his pleasure",
+              "ru": "он рассмеялся от удовольствия"
+            },
+            {
+              "en": "to laugh oneself into fits (or convulsions)",
+              "ru": "смеяться до упаду"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "со смехом сказать, произнести",
+          "examples": [
+            {
+              "en": "he laughed lawsuit a reply",
+              "ru": "он ответил со смехом"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "высмеять",
+          "examples": [
+            {
+              "en": "laugh down",
+              "ru": "засмеять"
+            },
+            {
+              "en": "laugh off",
+              "ru": "отшутиться, отделаться смехом (от чего-либо)"
+            },
+            {
+              "en": "laugh over",
+              "ru": "обсуждать в шутливом тоне"
+            },
+            {
+              "en": "laugh away",
+              "ru": "рассеять, прогнать смехом (скуку, опасения); заглушить смехом (речь и т. п.)"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "laugh away",
+          "partOfSpeech": "verb",
+          "translation": "рассеять, прогнать смехом (скуку, опасения)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "laugh down",
+          "partOfSpeech": "verb",
+          "translation": "засмеять; заглушить смехом (речь и т. п.)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "laugh off",
+          "partOfSpeech": "verb",
+          "translation": "отшутиться, отделаться смехом (от чего-либо)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "laugh over",
+          "partOfSpeech": "verb",
+          "translation": "обсуждать в шутливом тоне",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "to laugh out of court",
+          "partOfSpeech": "verb",
+          "translation": "высмеять",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "laugh",
+      "frequency_rank": 1559,
+      "cefr": "a1",
+      "phon_br": "/lɑːf/",
+      "phon_n_am": "/læf/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "смех, хохот",
+          "examples": [
+            {
+              "en": "on the laugh",
+              "ru": "смеясь"
+            },
+            {
+              "en": "to have a good laugh at smb.",
+              "ru": "от души посмеяться над кем-либо"
+            },
+            {
+              "en": "to give a laugh",
+              "ru": "рассмеяться"
+            },
+            {
+              "en": "to raise a laugh",
+              "ru": "вызвать смех"
+            },
+            {
+              "en": "to have the laugh of (or on) smb.",
+              "ru": "высмеять того, кто смеялся над тобой"
+            },
+            {
+              "en": "to raise (or to turn) the laugh against smb.",
+              "ru": "поставить кого-либо в смешное положение"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шутка, смешной случай",
+          "examples": [
+            {
+              "en": "that's a laugh",
+              "ru": "ну и смехота"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "смеяться; рассмеяться",
+          "examples": [
+            {
+              "en": "to laugh at smb., smth.",
+              "ru": "смеяться над кем-либо, чем-либо"
+            },
+            {
+              "en": "to laugh to scorn",
+              "ru": "высмеять"
+            },
+            {
+              "en": "he laughed his pleasure",
+              "ru": "он рассмеялся от удовольствия"
+            },
+            {
+              "en": "to laugh oneself into fits (or convulsions)",
+              "ru": "смеяться до упаду"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "со смехом сказать, произнести",
+          "examples": [
+            {
+              "en": "he laughed lawsuit a reply",
+              "ru": "он ответил со смехом"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "высмеять",
+          "examples": [
+            {
+              "en": "laugh down",
+              "ru": "засмеять"
+            },
+            {
+              "en": "laugh off",
+              "ru": "отшутиться, отделаться смехом (от чего-либо)"
+            },
+            {
+              "en": "laugh over",
+              "ru": "обсуждать в шутливом тоне"
+            },
+            {
+              "en": "laugh away",
+              "ru": "рассеять, прогнать смехом (скуку, опасения); заглушить смехом (речь и т. п.)"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "laugh away",
+          "partOfSpeech": "verb",
+          "translation": "рассеять, прогнать смехом (скуку, опасения)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "laugh down",
+          "partOfSpeech": "verb",
+          "translation": "засмеять; заглушить смехом (речь и т. п.)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "laugh off",
+          "partOfSpeech": "verb",
+          "translation": "отшутиться, отделаться смехом (от чего-либо)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "laugh over",
+          "partOfSpeech": "verb",
+          "translation": "обсуждать в шутливом тоне",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "to laugh out of court",
+          "partOfSpeech": "verb",
+          "translation": "высмеять",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для laugh before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "laughter",
+    "before": {
+      "word": "laughter",
+      "frequency_rank": 3459,
+      "cefr": "a2",
+      "phon_br": "/ˈlɑːftə(r)/",
+      "phon_n_am": "/ˈlæftər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "смех, хохот",
+          "examples": [
+            {
+              "en": "shrill laughter",
+              "ru": "звонкий смех"
+            },
+            {
+              "en": "to roar with laughter",
+              "ru": "покатываться со смеху"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "laughter",
+      "frequency_rank": 3459,
+      "cefr": "a2",
+      "phon_br": "/ˈlɑːftə(r)/",
+      "phon_n_am": "/ˈlæftər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "смех, хохот",
+          "examples": [
+            {
+              "en": "shrill laughter",
+              "ru": "звонкий смех"
+            },
+            {
+              "en": "to roar with laughter",
+              "ru": "покатываться со смеху"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для laughter before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "launch",
+    "before": {
+      "word": "launch",
+      "frequency_rank": 1494,
+      "cefr": "b2",
+      "phon_br": "/lɔːntʃ/",
+      "phon_n_am": "/lɔːntʃ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "verb",
+          "translation": "бросать, метать",
+          "examples": [
+            {
+              "en": "to launch a blow",
+              "ru": "нанести удар"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "запускать (ракету и т. п.); выпускать (снаряд); катапультировать",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "спускать судно на воду",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "начинать, пускать в ход, предпринимать",
+          "examples": [
+            {
+              "en": "to launch an offensive",
+              "ru": "предпринять, начать наступление"
+            },
+            {
+              "en": "to launch an attack",
+              "ru": "начать атаку"
+            },
+            {
+              "en": "to launch a campaign",
+              "ru": "развернуть кампанию"
+            },
+            {
+              "en": "to launch a program",
+              "ru": "разработать программу"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "горячо высказать, разразиться",
+          "examples": [
+            {
+              "en": "to launch into an argument",
+              "ru": "пуститься в спор"
+            },
+            {
+              "en": "to launch smb. into business",
+              "ru": "помочь кому-либо сделать деловую карьеру"
+            },
+            {
+              "en": "to launch into eternity",
+              "ru": "отправить(ся) на тот свет"
+            },
+            {
+              "en": "to launch out on smth.",
+              "ru": "начать что-либо делать"
+            },
+            {
+              "en": "launch into",
+              "ru": "с жаром, энтузиазмом пуститься (во что-либо)"
+            }
+          ],
+          "register": [
+            "поэтическое"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "моторная лодка, катер",
+          "examples": [
+            {
+              "en": "pleasure launch",
+              "ru": "прогулочная лодка"
+            }
+          ],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "баркас",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "launch into",
+          "partOfSpeech": "verb",
+          "translation": "с жаром, энтузиазмом пуститься (во что-либо)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "launch out",
+          "partOfSpeech": "verb",
+          "translation": "пускаться (в путь, в предприятие)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "launch",
+      "frequency_rank": 1494,
+      "cefr": "b2",
+      "phon_br": "/lɔːntʃ/",
+      "phon_n_am": "/lɔːntʃ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "verb",
+          "translation": "бросать, метать",
+          "examples": [
+            {
+              "en": "to launch a blow",
+              "ru": "нанести удар"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "запускать (ракету и т. п.); выпускать (снаряд); катапультировать",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "спускать судно на воду",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "начинать, пускать в ход, предпринимать",
+          "examples": [
+            {
+              "en": "to launch an offensive",
+              "ru": "предпринять, начать наступление"
+            },
+            {
+              "en": "to launch an attack",
+              "ru": "начать атаку"
+            },
+            {
+              "en": "to launch a campaign",
+              "ru": "развернуть кампанию"
+            },
+            {
+              "en": "to launch a program",
+              "ru": "разработать программу"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "горячо высказать, разразиться",
+          "examples": [
+            {
+              "en": "to launch into an argument",
+              "ru": "пуститься в спор"
+            },
+            {
+              "en": "to launch smb. into business",
+              "ru": "помочь кому-либо сделать деловую карьеру"
+            },
+            {
+              "en": "to launch into eternity",
+              "ru": "отправить(ся) на тот свет"
+            },
+            {
+              "en": "to launch out on smth.",
+              "ru": "начать что-либо делать"
+            },
+            {
+              "en": "launch into",
+              "ru": "с жаром, энтузиазмом пуститься (во что-либо)"
+            }
+          ],
+          "register": [
+            "поэтическое"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "моторная лодка, катер",
+          "examples": [
+            {
+              "en": "pleasure launch",
+              "ru": "прогулочная лодка"
+            }
+          ],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "баркас",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "launch into",
+          "partOfSpeech": "verb",
+          "translation": "с жаром, энтузиазмом пуститься (во что-либо)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "launch out",
+          "partOfSpeech": "verb",
+          "translation": "пускаться (в путь, в предприятие)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для launch before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "law",
+    "before": {
+      "word": "law",
+      "frequency_rank": 284,
+      "cefr": "a2",
+      "phon_br": "/lɔː/",
+      "phon_n_am": "/lɔː/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "закон",
+          "examples": [
+            {
+              "en": "to go beyond the law",
+              "ru": "совершить противозаконный поступок"
+            },
+            {
+              "en": "to keep within the law",
+              "ru": "придерживаться закона"
+            },
+            {
+              "en": "in law",
+              "ru": "по закону, законно"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "право; юриспруденция",
+          "examples": [
+            {
+              "en": "merchant law",
+              "ru": "торговое право"
+            },
+            {
+              "en": "private law",
+              "ru": "гражданское право"
+            },
+            {
+              "en": "to read law",
+              "ru": "изучать право"
+            },
+            {
+              "en": "law and order",
+              "ru": "правопорядок"
+            },
+            {
+              "en": "to hold good in law",
+              "ru": "быть юридически обоснованным"
+            }
+          ],
+          "register": [
+            "юридическое"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "профессия юриста",
+          "examples": [
+            {
+              "en": "to practise law",
+              "ru": "быть юристом"
+            },
+            {
+              "en": "to follow the (or to go in for) law",
+              "ru": "избрать профессию юриста"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "(the law)",
+              "ru": "полиция, полицейский",
+              "register": [
+                "разговорное"
+              ]
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "суд, судебный процесс; начать судебный процесс",
+          "examples": [
+            {
+              "en": "to be at law with smb.",
+              "ru": "быть в тяжбе с кем-либо"
+            },
+            {
+              "en": "to go to law",
+              "ru": "подать в суд"
+            },
+            {
+              "en": "to take the law into one's own hands",
+              "ru": "расправиться без суда"
+            },
+            {
+              "en": "to have (or to take) the law of smb.",
+              "ru": "привлечь кого-либо к суду"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "закон (природы, научный)",
+          "examples": [
+            {
+              "en": "the law of gravity",
+              "ru": "закон всемирного тяготения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "правило",
+          "examples": [
+            {
+              "en": "the laws of tennis",
+              "ru": "правила игры в теннис"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "преимущество, предоставляемое противнику (в состязании и т. п.); перен. передышка; отсрочка; поблажка",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "noun",
+          "translation": "заповеди",
+          "examples": [],
+          "register": [
+            "религиозное"
+          ]
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "noun",
+          "translation": "законный; юридический; правовой; юридический факультет",
+          "examples": [
+            {
+              "en": "law school",
+              "ru": "юридическая школа"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "law",
+      "frequency_rank": 284,
+      "cefr": "a2",
+      "phon_br": "/lɔː/",
+      "phon_n_am": "/lɔː/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "закон",
+          "examples": [
+            {
+              "en": "to go beyond the law",
+              "ru": "совершить противозаконный поступок"
+            },
+            {
+              "en": "to keep within the law",
+              "ru": "придерживаться закона"
+            },
+            {
+              "en": "in law",
+              "ru": "по закону, законно"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "право; юриспруденция",
+          "examples": [
+            {
+              "en": "merchant law",
+              "ru": "торговое право"
+            },
+            {
+              "en": "private law",
+              "ru": "гражданское право"
+            },
+            {
+              "en": "to read law",
+              "ru": "изучать право"
+            },
+            {
+              "en": "law and order",
+              "ru": "правопорядок"
+            },
+            {
+              "en": "to hold good in law",
+              "ru": "быть юридически обоснованным"
+            }
+          ],
+          "register": [
+            "юридическое"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "профессия юриста",
+          "examples": [
+            {
+              "en": "to practise law",
+              "ru": "быть юристом"
+            },
+            {
+              "en": "to follow the (or to go in for) law",
+              "ru": "избрать профессию юриста"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "(the law)",
+              "ru": "полиция, полицейский",
+              "register": [
+                "разговорное"
+              ]
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "суд, судебный процесс; начать судебный процесс",
+          "examples": [
+            {
+              "en": "to be at law with smb.",
+              "ru": "быть в тяжбе с кем-либо"
+            },
+            {
+              "en": "to go to law",
+              "ru": "подать в суд"
+            },
+            {
+              "en": "to take the law into one's own hands",
+              "ru": "расправиться без суда"
+            },
+            {
+              "en": "to have (or to take) the law of smb.",
+              "ru": "привлечь кого-либо к суду"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "закон (природы, научный)",
+          "examples": [
+            {
+              "en": "the law of gravity",
+              "ru": "закон всемирного тяготения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "правило",
+          "examples": [
+            {
+              "en": "the laws of tennis",
+              "ru": "правила игры в теннис"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "преимущество, предоставляемое противнику (в состязании и т. п.); перен. передышка; отсрочка; поблажка",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "noun",
+          "translation": "заповеди",
+          "examples": [],
+          "register": [
+            "религиозное"
+          ]
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "noun",
+          "translation": "законный; юридический; правовой; юридический факультет",
+          "examples": [
+            {
+              "en": "law school",
+              "ru": "юридическая школа"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для law before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "lawn",
+    "before": {
+      "word": "lawn",
+      "frequency_rank": 3906,
+      "cefr": "c1",
+      "phon_br": "/lɔːn/",
+      "phon_n_am": "/lɔːn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "батист",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "лужайка, газон",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "lawn",
+      "frequency_rank": 3906,
+      "cefr": "c1",
+      "phon_br": "/lɔːn/",
+      "phon_n_am": "/lɔːn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "батист",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "лужайка, газон",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для lawn before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "lawsuit",
+    "before": {
+      "word": "lawsuit",
+      "frequency_rank": 3491,
+      "cefr": "c1",
+      "phon_br": "/ˈlɔːsuːt/",
+      "phon_n_am": "/ˈlɔːsuːt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "судебное дело; иск; тяжба",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "lawsuit",
+      "frequency_rank": 3491,
+      "cefr": "c1",
+      "phon_br": "/ˈlɔːsuːt/",
+      "phon_n_am": "/ˈlɔːsuːt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "судебное дело; иск; тяжба",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для lawsuit before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "lawyer",
+    "before": {
+      "word": "lawyer",
+      "frequency_rank": 1537,
+      "cefr": "a2",
+      "phon_br": "/ˈlɔɪə(r)/",
+      "phon_n_am": "/ˈlɔɪər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "адвокат",
+          "examples": [],
+          "register": [
+            "юридическое",
+            "историческое"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "lawyer",
+      "frequency_rank": 1537,
+      "cefr": "a2",
+      "phon_br": "/ˈlɔɪə(r)/",
+      "phon_n_am": "/ˈlɔɪər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "адвокат",
+          "examples": [],
+          "register": [
+            "юридическое",
+            "историческое"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для lawyer before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "lay",
+    "before": {
+      "word": "lay",
+      "frequency_rank": 1609,
+      "cefr": "b1",
+      "phon_br": "/leɪ/",
+      "phon_n_am": "/leɪ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "светский, мирской, недуховный",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "непрофессиональный",
+          "examples": [
+            {
+              "en": "lay opinion",
+              "ru": "мнение неспециалиста"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "некозырной",
+          "examples": [],
+          "register": [
+            "карточный термин"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "короткая песенка; короткая баллада",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пение птиц",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "класть, положить",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "неправ. ложиться",
+          "examples": [],
+          "register": [
+            "диалектное"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "класть яйца, нестись",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "примять (посевы); повалить",
+          "examples": [
+            {
+              "en": "to lay the dust",
+              "ru": "прибить пыль"
+            }
+          ],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "успокаивать",
+          "examples": [
+            {
+              "en": "to lay an apprehension",
+              "ru": "успокоить, рассеять опасения"
+            }
+          ],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "привести в определённое состояние, положение",
+          "examples": [
+            {
+              "en": "to lay open",
+              "ru": "открывать, обнажать, оставлять незащищённым"
+            },
+            {
+              "en": "to lay one's plans bare",
+              "ru": "раскрыть свои планы"
+            },
+            {
+              "en": "to lay oneself open to suspicions (accusation)",
+              "ru": "навлечь на себя подозрения (обвинение)"
+            }
+          ],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "приписывать (кому-либо что-либо); предъявлять; обвинять",
+          "examples": [
+            {
+              "en": "to lay claim",
+              "ru": "предъявлять права, притязания"
+            },
+            {
+              "en": "to lay damages at",
+              "ru": "взыскивать убыток с"
+            },
+            {
+              "en": "to lay an information against smb.",
+              "ru": "доносить на кого-л"
+            }
+          ],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "энергично браться (за что-либо)",
+          "examples": [
+            {
+              "en": "to lay to one's oars",
+              "ru": "налечь на вёсла"
+            }
+          ],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "(обыкн. pass) происходить, совершаться",
+          "examples": [],
+          "register": [],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "возлагать (надежды и т. п.); придавать (значение)",
+          "examples": [],
+          "register": [],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "накрывать, стелить",
+          "examples": [
+            {
+              "en": "to lay the table, to lay the cloth",
+              "ru": "накрыть на стол"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "предлагать пари, биться об заклад",
+          "examples": [
+            {
+              "en": "I lay ten dollars that he will not come",
+              "ru": "держу пари на десять долларов, что он не придёт"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "накладывать (краску); покрывать (слоем)",
+          "examples": [],
+          "register": [],
+          "id": 18
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "переспать (с женщиной)",
+          "examples": [],
+          "register": [
+            "грубое"
+          ],
+          "id": 19
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "прокладывать курс (корабля)",
+          "examples": [],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "свивать, вить (верёвки и т. п.)",
+          "examples": [
+            {
+              "en": "to be laid aside",
+              "ru": "быть выведенным из строя"
+            },
+            {
+              "en": "to be laid aside",
+              "ru": "быть прикованным к постели, дому"
+            },
+            {
+              "en": "lay by",
+              "ru": "откладывать"
+            },
+            {
+              "en": "to lay down the duties of office",
+              "ru": "отказаться от должности"
+            },
+            {
+              "en": "to lay down the law",
+              "ru": "устанавливать, формулировать закон"
+            },
+            {
+              "en": "lay in",
+              "ru": "запасать"
+            },
+            {
+              "en": "lay into",
+              "ru": "выпороть, всыпать"
+            },
+            {
+              "en": "to lay it on (thick)",
+              "ru": "преувеличивать"
+            },
+            {
+              "en": "to lay oneself out",
+              "ru": "стараться; напрягать все силы; выкладываться; из кожи вон лезть"
+            },
+            {
+              "en": "to lay up for repairs",
+              "ru": "поставить на ремонт"
+            },
+            {
+              "en": "to lay about one",
+              "ru": "наносить удары направо и налево"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "разговорное"
+          ],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "положение, расположение (чего-либо); направление; очертание (берега); рельеф",
+          "examples": [],
+          "register": [],
+          "id": 22,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "любовница, любовник",
+          "examples": [],
+          "register": [
+            "грубое"
+          ],
+          "id": 23,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "поприще, дело, работа",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 24
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пари",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 25
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "манекен (художника)",
+          "examples": [],
+          "register": [],
+          "id": 26
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "неправдоподобный персонаж; нереальный образ",
+          "examples": [],
+          "register": [],
+          "id": 27
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ничтожество; человек, лишённый индивидуальности или значения",
+          "examples": [],
+          "register": [],
+          "id": 28
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "lay aside",
+          "partOfSpeech": "verb",
+          "translation": "откладывать (в сторону); откладывать, приберегать; бросать, выбрасывать; отказываться; pass. быть выведенным из строя; pass. быть прикованным к постели, дому",
+          "examples": [],
+          "register": [
+            "грубое"
+          ]
+        },
+        {
+          "id": 2,
+          "phrase": "lay by",
+          "partOfSpeech": "verb",
+          "translation": "откладывать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "lay down",
+          "partOfSpeech": "verb",
+          "translation": "класть, укладывать; сложить (полномочия и т. п.), оставить (службу)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "lay in",
+          "partOfSpeech": "verb",
+          "translation": "запасать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "lay into",
+          "partOfSpeech": "verb",
+          "translation": "выпороть, всыпать",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 6,
+          "phrase": "lay off",
+          "partOfSpeech": "verb",
+          "translation": "освободить или снять с работы (гл. обр. временно); прекращать, переставать",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 7,
+          "phrase": "lay on",
+          "partOfSpeech": "verb",
+          "translation": "подводить, прокладывать (газ, электричество и т. п.); облагать (налогом); наносить (удары); накладывать (слой краски, штукатурки)",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 8,
+          "phrase": "lay out",
+          "partOfSpeech": "verb",
+          "translation": "выкладывать, выставлять; убрать и положить на стол (покойника); свалить, сбить с ног, вывести из строя; убить; планировать, разбивать (сад, участок); тратить деньги",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 9,
+          "phrase": "lay over",
+          "partOfSpeech": "verb",
+          "translation": "откладывать (заседание и т. п.); прервать путешествие; задержаться; покрывать (слоем чего-либо); превосходить; превышать; получить преимущество",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "разговорное"
+          ]
+        },
+        {
+          "id": 10,
+          "phrase": "lay up",
+          "partOfSpeech": "verb",
+          "translation": "откладывать, копить; выводить временно из строя (корабль и т. п.)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "to lay under obligation",
+          "partOfSpeech": "adjective",
+          "translation": "обязать",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "phrase": "to lay hands on",
+          "partOfSpeech": "adjective",
+          "translation": "схватывать, завладевать",
+          "examples": [],
+          "register": [],
+          "id": 12
+        },
+        {
+          "id": 13,
+          "phrase": "to lay oneself out",
+          "partOfSpeech": "verb",
+          "translation": "стараться; напрягать все силы; выкладываться; из кожи вон лезть (for; to + инфинитив)",
+          "examples": [
+            {
+              "en": "to lay oneself out",
+              "ru": "стараться; напрягать все силы; выкладываться; из кожи вон лезть"
+            }
+          ],
+          "register": []
+        }
+      ],
+      "forms": {
+        "past_simple": "laid",
+        "past_participle": "laid"
+      },
+      "form_of": {
+        "lemma": "lie",
+        "types": [
+          "past_simple"
+        ]
+      }
+    },
+    "after": {
+      "word": "lay",
+      "frequency_rank": 1609,
+      "cefr": "b1",
+      "phon_br": "/leɪ/",
+      "phon_n_am": "/leɪ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "светский, мирской, недуховный",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "непрофессиональный",
+          "examples": [
+            {
+              "en": "lay opinion",
+              "ru": "мнение неспециалиста"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "некозырной",
+          "examples": [],
+          "register": [
+            "карточный термин"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "короткая песенка; короткая баллада",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пение птиц",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "класть, положить",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "неправ. ложиться",
+          "examples": [],
+          "register": [
+            "диалектное"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "класть яйца, нестись",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "примять (посевы); повалить",
+          "examples": [
+            {
+              "en": "to lay the dust",
+              "ru": "прибить пыль"
+            }
+          ],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "успокаивать",
+          "examples": [
+            {
+              "en": "to lay an apprehension",
+              "ru": "успокоить, рассеять опасения"
+            }
+          ],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "привести в определённое состояние, положение",
+          "examples": [
+            {
+              "en": "to lay open",
+              "ru": "открывать, обнажать, оставлять незащищённым"
+            },
+            {
+              "en": "to lay one's plans bare",
+              "ru": "раскрыть свои планы"
+            },
+            {
+              "en": "to lay oneself open to suspicions (accusation)",
+              "ru": "навлечь на себя подозрения (обвинение)"
+            }
+          ],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "приписывать (кому-либо что-либо); предъявлять; обвинять",
+          "examples": [
+            {
+              "en": "to lay claim",
+              "ru": "предъявлять права, притязания"
+            },
+            {
+              "en": "to lay damages at",
+              "ru": "взыскивать убыток с"
+            },
+            {
+              "en": "to lay an information against smb.",
+              "ru": "доносить на кого-л"
+            }
+          ],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "энергично браться (за что-либо)",
+          "examples": [
+            {
+              "en": "to lay to one's oars",
+              "ru": "налечь на вёсла"
+            }
+          ],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "(обыкн. pass) происходить, совершаться",
+          "examples": [],
+          "register": [],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "возлагать (надежды и т. п.); придавать (значение)",
+          "examples": [],
+          "register": [],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "накрывать, стелить",
+          "examples": [
+            {
+              "en": "to lay the table, to lay the cloth",
+              "ru": "накрыть на стол"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "предлагать пари, биться об заклад",
+          "examples": [
+            {
+              "en": "I lay ten dollars that he will not come",
+              "ru": "держу пари на десять долларов, что он не придёт"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "накладывать (краску); покрывать (слоем)",
+          "examples": [],
+          "register": [],
+          "id": 18
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "переспать (с женщиной)",
+          "examples": [],
+          "register": [
+            "грубое"
+          ],
+          "id": 19
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "прокладывать курс (корабля)",
+          "examples": [],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "свивать, вить (верёвки и т. п.)",
+          "examples": [
+            {
+              "en": "to be laid aside",
+              "ru": "быть выведенным из строя"
+            },
+            {
+              "en": "to be laid aside",
+              "ru": "быть прикованным к постели, дому"
+            },
+            {
+              "en": "lay by",
+              "ru": "откладывать"
+            },
+            {
+              "en": "to lay down the duties of office",
+              "ru": "отказаться от должности"
+            },
+            {
+              "en": "to lay down the law",
+              "ru": "устанавливать, формулировать закон"
+            },
+            {
+              "en": "lay in",
+              "ru": "запасать"
+            },
+            {
+              "en": "lay into",
+              "ru": "выпороть, всыпать"
+            },
+            {
+              "en": "to lay it on (thick)",
+              "ru": "преувеличивать"
+            },
+            {
+              "en": "to lay oneself out",
+              "ru": "стараться; напрягать все силы; выкладываться; из кожи вон лезть"
+            },
+            {
+              "en": "to lay up for repairs",
+              "ru": "поставить на ремонт"
+            },
+            {
+              "en": "to lay about one",
+              "ru": "наносить удары направо и налево"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "разговорное"
+          ],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "положение, расположение (чего-либо); направление; очертание (берега); рельеф",
+          "examples": [],
+          "register": [],
+          "id": 22,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "любовница, любовник",
+          "examples": [],
+          "register": [
+            "грубое"
+          ],
+          "id": 23,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "поприще, дело, работа",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 24
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пари",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 25
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "манекен (художника)",
+          "examples": [],
+          "register": [],
+          "id": 26
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "неправдоподобный персонаж; нереальный образ",
+          "examples": [],
+          "register": [],
+          "id": 27
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ничтожество; человек, лишённый индивидуальности или значения",
+          "examples": [],
+          "register": [],
+          "id": 28
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "lay aside",
+          "partOfSpeech": "verb",
+          "translation": "откладывать (в сторону); откладывать, приберегать; бросать, выбрасывать; отказываться; pass. быть выведенным из строя; pass. быть прикованным к постели, дому",
+          "examples": [],
+          "register": [
+            "грубое"
+          ]
+        },
+        {
+          "id": 2,
+          "phrase": "lay by",
+          "partOfSpeech": "verb",
+          "translation": "откладывать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "lay down",
+          "partOfSpeech": "verb",
+          "translation": "класть, укладывать; сложить (полномочия и т. п.), оставить (службу)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "lay in",
+          "partOfSpeech": "verb",
+          "translation": "запасать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "lay into",
+          "partOfSpeech": "verb",
+          "translation": "выпороть, всыпать",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 6,
+          "phrase": "lay off",
+          "partOfSpeech": "verb",
+          "translation": "освободить или снять с работы (гл. обр. временно); прекращать, переставать",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 7,
+          "phrase": "lay on",
+          "partOfSpeech": "verb",
+          "translation": "подводить, прокладывать (газ, электричество и т. п.); облагать (налогом); наносить (удары); накладывать (слой краски, штукатурки)",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 8,
+          "phrase": "lay out",
+          "partOfSpeech": "verb",
+          "translation": "выкладывать, выставлять; убрать и положить на стол (покойника); свалить, сбить с ног, вывести из строя; убить; планировать, разбивать (сад, участок); тратить деньги",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "id": 9,
+          "phrase": "lay over",
+          "partOfSpeech": "verb",
+          "translation": "откладывать (заседание и т. п.); прервать путешествие; задержаться; покрывать (слоем чего-либо); превосходить; превышать; получить преимущество",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "разговорное"
+          ]
+        },
+        {
+          "id": 10,
+          "phrase": "lay up",
+          "partOfSpeech": "verb",
+          "translation": "откладывать, копить; выводить временно из строя (корабль и т. п.)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "to lay under obligation",
+          "partOfSpeech": "adjective",
+          "translation": "обязать",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "phrase": "to lay hands on",
+          "partOfSpeech": "adjective",
+          "translation": "схватывать, завладевать",
+          "examples": [],
+          "register": [],
+          "id": 12
+        },
+        {
+          "id": 13,
+          "phrase": "to lay oneself out",
+          "partOfSpeech": "verb",
+          "translation": "стараться; напрягать все силы; выкладываться; из кожи вон лезть (for; to + инфинитив)",
+          "examples": [
+            {
+              "en": "to lay oneself out",
+              "ru": "стараться; напрягать все силы; выкладываться; из кожи вон лезть"
+            }
+          ],
+          "register": []
+        }
+      ],
+      "forms": {
+        "past_simple": "laid",
+        "past_participle": "laid"
+      },
+      "form_of": {
+        "lemma": "lie",
+        "types": [
+          "past_simple"
+        ]
+      }
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для lay before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "layer",
+    "before": {
+      "word": "layer",
+      "frequency_rank": 2371,
+      "cefr": "b1",
+      "phon_br": "/ˈleɪə(r)/",
+      "phon_n_am": "/ˈleɪər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "слой, пласт; наслоение",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "отводок",
+          "examples": [],
+          "register": [
+            "ботаника"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "разрез (чертежа)",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "наслаивать, класть пластами",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "разводить отводками",
+          "examples": [],
+          "register": [
+            "ботаника"
+          ],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "кладчик, укладчик",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "несушка",
+          "examples": [
+            {
+              "en": "this hen is a good layer",
+              "ru": "эта курица хорошо несётся"
+            }
+          ],
+          "register": [],
+          "id": 7
+        }
+      ]
+    },
+    "after": {
+      "word": "layer",
+      "frequency_rank": 2371,
+      "cefr": "b1",
+      "phon_br": "/ˈleɪə(r)/",
+      "phon_n_am": "/ˈleɪər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "слой, пласт; наслоение",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "отводок",
+          "examples": [],
+          "register": [
+            "ботаника"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "разрез (чертежа)",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "наслаивать, класть пластами",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "разводить отводками",
+          "examples": [],
+          "register": [
+            "ботаника"
+          ],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "кладчик, укладчик",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "несушка",
+          "examples": [
+            {
+              "en": "this hen is a good layer",
+              "ru": "эта курица хорошо несётся"
+            }
+          ],
+          "register": [],
+          "id": 7
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для layer before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "layout",
+    "before": {
+      "word": "layout",
+      "frequency_rank": 3528,
+      "cefr": "c1",
+      "phon_br": "/ˈleɪaʊt/",
+      "phon_n_am": "/ˈleɪaʊt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "расположение; планировка; план, разбивка, разметка (сада и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "показ, выставка",
+          "examples": [
+            {
+              "en": "the layout of goods",
+              "ru": "выкладка товаров"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "макет (книги, газеты и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "оборудование; набор инструментов",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "угощение",
+          "examples": [
+            {
+              "en": "the dinner was a splendid layout",
+              "ru": "обед был великолепен"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "layout",
+      "frequency_rank": 3528,
+      "cefr": "c1",
+      "phon_br": "/ˈleɪaʊt/",
+      "phon_n_am": "/ˈleɪaʊt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "расположение; планировка; план, разбивка, разметка (сада и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "показ, выставка",
+          "examples": [
+            {
+              "en": "the layout of goods",
+              "ru": "выкладка товаров"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "макет (книги, газеты и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "оборудование; набор инструментов",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "угощение",
+          "examples": [
+            {
+              "en": "the dinner was a splendid layout",
+              "ru": "обед был великолепен"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для layout before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "lazy",
+    "before": {
+      "word": "lazy",
+      "frequency_rank": 2922,
+      "cefr": "a2",
+      "phon_br": "/ˈleɪzi/",
+      "phon_n_am": "/ˈleɪzi/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "ленивый",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "lazy",
+      "frequency_rank": 2922,
+      "cefr": "a2",
+      "phon_br": "/ˈleɪzi/",
+      "phon_n_am": "/ˈleɪzi/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "ленивый",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для lazy before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "lead",
+    "before": {
+      "word": "lead",
+      "frequency_rank": 516,
+      "cefr": "a2",
+      "phon_br": "/liːd/",
+      "phon_n_am": "/liːd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "свинец",
+          "examples": [
+            {
+              "en": "as heavy as lead",
+              "ru": "очень тяжёлый"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "графит, грифель",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "лот",
+          "examples": [
+            {
+              "en": "to heave (or to cast) the lead",
+              "ru": "бросать лот; измерять глубину лотом"
+            }
+          ],
+          "register": [
+            "морской термин"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: свинцовые полосы для покрытия крыши; покрытая свинцом крыша; плоская крыша",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: шпоны",
+          "examples": [],
+          "register": [
+            "полиграфия",
+            "британское"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "грузило, отвес",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пломба",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "в роли определения: свинцовый",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "освинцовывать, покрывать свинцом",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "разделять шпонами",
+          "examples": [],
+          "register": [
+            "полиграфия"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "руководство; инициатива; руководить",
+          "examples": [
+            {
+              "en": "to take the lead",
+              "ru": "взять на себя инициативу, выступить инициатором"
+            }
+          ],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пример; указания, директива",
+          "examples": [
+            {
+              "en": "to follow the lead of smb.",
+              "ru": "следовать чьему-либо примеру"
+            },
+            {
+              "en": "to give smb. a (or the) lead",
+              "ru": "поощрить, подбодрить кого-либо примером"
+            }
+          ],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "первое место, ведущее место в состязании",
+          "examples": [
+            {
+              "en": "to have a lead of three metres (five seconds)",
+              "ru": "опередить на три метра (на пять секунд)"
+            },
+            {
+              "en": "to gain (or to have) the lead",
+              "ru": "занять первое место"
+            }
+          ],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "разрыв между лидером и бегуном, идущим за ним",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ключ (к решению чего-либо); намёк",
+          "examples": [],
+          "register": [],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "поводок, привязь",
+          "examples": [],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "подводящий провод",
+          "examples": [],
+          "register": [
+            "электротехника"
+          ],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "главная роль или её исполнитель(ница)",
+          "examples": [],
+          "register": [
+            "кинематография",
+            "театр"
+          ],
+          "id": 18
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "газетная информация, помещённая на видном месте",
+          "examples": [],
+          "register": [],
+          "id": 19,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "краткое введение к газетной статье; вводная часть",
+          "examples": [],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ход (в картах); инициатива",
+          "examples": [],
+          "register": [
+            "карточный термин"
+          ],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "трубопровод; канал",
+          "examples": [],
+          "register": [],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "разводье (во льдах)",
+          "examples": [],
+          "register": [],
+          "id": 23
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "опережение, предварение (впуска пара и т. п.)",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 24
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шаг (спирали, винта); ход (поршня)",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 25
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "стрела, укосина",
+          "examples": [],
+          "register": [
+            "техническое",
+            "строительное"
+          ],
+          "id": 26
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "жила; золотоносный песок",
+          "examples": [],
+          "register": [
+            "геология"
+          ],
+          "id": 27
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "упреждение (при ведении огня по движущейся цели)",
+          "examples": [],
+          "register": [
+            "военное"
+          ],
+          "id": 28
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вести, приводить",
+          "examples": [
+            {
+              "en": "to lead a child by the hand",
+              "ru": "вести ребёнка за руку"
+            },
+            {
+              "en": "the path leads to the house",
+              "ru": "дорога ведёт к дому"
+            },
+            {
+              "en": "chance led him to London",
+              "ru": "случай привёл его в Лондон"
+            }
+          ],
+          "register": [],
+          "id": 29
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "руководить, управлять, командовать, возглавлять",
+          "examples": [
+            {
+              "en": "to lead an army",
+              "ru": "командовать армией"
+            },
+            {
+              "en": "to lead for the prosecution (defence)",
+              "ru": "возглавлять обвинение (защиту)"
+            },
+            {
+              "en": "to lead an orchestra",
+              "ru": "руководить оркестром"
+            }
+          ],
+          "register": [
+            "юридическое"
+          ],
+          "id": 30
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вести, проводить",
+          "examples": [
+            {
+              "en": "to lead a quiet life",
+              "ru": "вести спокойную жизнь"
+            }
+          ],
+          "register": [],
+          "id": 31
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быть, идти первым, опережать (в состязании); превосходить",
+          "examples": [
+            {
+              "en": "he leads all orators",
+              "ru": "он лучший оратор"
+            },
+            {
+              "en": "as a teacher he leads",
+              "ru": "он лучше всех других учителей"
+            }
+          ],
+          "register": [],
+          "id": 32
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ходить",
+          "examples": [
+            {
+              "en": "to lead hearts (spades, etc.)",
+              "ru": "ходить с червей (с пик и т. д.)"
+            }
+          ],
+          "register": [
+            "карточный термин"
+          ],
+          "id": 33
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "приводить (к чему-либо)",
+          "examples": [
+            {
+              "en": "to lead nowhere",
+              "ru": "ни к чему не приводить"
+            }
+          ],
+          "register": [],
+          "id": 34
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "приводить, склонять (к чему-либо), заставлять",
+          "examples": [
+            {
+              "en": "to lead smb. to do smth.",
+              "ru": "заставить кого-либо сделать что-либо"
+            },
+            {
+              "en": "curiosity led me to look again",
+              "ru": "любопытство заставило меня взглянуть снова"
+            },
+            {
+              "en": "what led you to think so?",
+              "ru": "что заставило вас так думать?"
+            }
+          ],
+          "register": [],
+          "id": 35
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "направлять удар (в боксе)",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 36
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "целиться в летящую птицу",
+          "examples": [],
+          "register": [
+            "охотничий термин"
+          ],
+          "id": 37
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "помещать на видном месте в газете",
+          "examples": [],
+          "register": [],
+          "id": 38
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "опережать",
+          "examples": [
+            {
+              "en": "lead on",
+              "ru": "завлекать, увлекать"
+            },
+            {
+              "en": "lead out of",
+              "ru": "выходить, сообщаться (о комнатах)"
+            },
+            {
+              "en": "lead to",
+              "ru": "приводить к каким-либо результатам"
+            },
+            {
+              "en": "lead away",
+              "ru": "увлечь, увести"
+            },
+            {
+              "en": "lead up",
+              "ru": "постепенно подготовлять; наводить разговор на что-либо"
+            }
+          ],
+          "register": [
+            "разговорное",
+            "техническое"
+          ],
+          "id": 39
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "blind lead",
+          "partOfSpeech": "verb",
+          "translation": "тупик",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "phrase": "to lead by the nose",
+          "partOfSpeech": "verb",
+          "translation": "водить на поводу",
+          "examples": [],
+          "register": [],
+          "id": 2
+        },
+        {
+          "phrase": "to lead smb. up the garden path",
+          "partOfSpeech": "verb",
+          "translation": "вводить в заблуждение",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "hail of lead",
+          "partOfSpeech": "verb",
+          "translation": "град пуль",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "phrase": "to get the lead",
+          "partOfSpeech": "verb",
+          "translation": "быть застреленным",
+          "examples": [],
+          "register": [],
+          "id": 5
+        }
+      ],
+      "forms": {
+        "past_simple": "led",
+        "past_participle": "led"
+      }
+    },
+    "after": {
+      "word": "lead",
+      "frequency_rank": 516,
+      "cefr": "a2",
+      "phon_br": "/liːd/",
+      "phon_n_am": "/liːd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "свинец",
+          "examples": [
+            {
+              "en": "as heavy as lead",
+              "ru": "очень тяжёлый"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "графит, грифель",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "лот",
+          "examples": [
+            {
+              "en": "to heave (or to cast) the lead",
+              "ru": "бросать лот; измерять глубину лотом"
+            }
+          ],
+          "register": [
+            "морской термин"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: свинцовые полосы для покрытия крыши; покрытая свинцом крыша; плоская крыша",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: шпоны",
+          "examples": [],
+          "register": [
+            "полиграфия",
+            "британское"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "грузило, отвес",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пломба",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "в роли определения: свинцовый",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "освинцовывать, покрывать свинцом",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "разделять шпонами",
+          "examples": [],
+          "register": [
+            "полиграфия"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "руководство; инициатива; руководить",
+          "examples": [
+            {
+              "en": "to take the lead",
+              "ru": "взять на себя инициативу, выступить инициатором"
+            }
+          ],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пример; указания, директива",
+          "examples": [
+            {
+              "en": "to follow the lead of smb.",
+              "ru": "следовать чьему-либо примеру"
+            },
+            {
+              "en": "to give smb. a (or the) lead",
+              "ru": "поощрить, подбодрить кого-либо примером"
+            }
+          ],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "первое место, ведущее место в состязании",
+          "examples": [
+            {
+              "en": "to have a lead of three metres (five seconds)",
+              "ru": "опередить на три метра (на пять секунд)"
+            },
+            {
+              "en": "to gain (or to have) the lead",
+              "ru": "занять первое место"
+            }
+          ],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "разрыв между лидером и бегуном, идущим за ним",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ключ (к решению чего-либо); намёк",
+          "examples": [],
+          "register": [],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "поводок, привязь",
+          "examples": [],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "подводящий провод",
+          "examples": [],
+          "register": [
+            "электротехника"
+          ],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "главная роль или её исполнитель(ница)",
+          "examples": [],
+          "register": [
+            "кинематография",
+            "театр"
+          ],
+          "id": 18
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "газетная информация, помещённая на видном месте",
+          "examples": [],
+          "register": [],
+          "id": 19,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "краткое введение к газетной статье; вводная часть",
+          "examples": [],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ход (в картах); инициатива",
+          "examples": [],
+          "register": [
+            "карточный термин"
+          ],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "трубопровод; канал",
+          "examples": [],
+          "register": [],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "разводье (во льдах)",
+          "examples": [],
+          "register": [],
+          "id": 23
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "опережение, предварение (впуска пара и т. п.)",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 24
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шаг (спирали, винта); ход (поршня)",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 25
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "стрела, укосина",
+          "examples": [],
+          "register": [
+            "техническое",
+            "строительное"
+          ],
+          "id": 26
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "жила; золотоносный песок",
+          "examples": [],
+          "register": [
+            "геология"
+          ],
+          "id": 27
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "упреждение (при ведении огня по движущейся цели)",
+          "examples": [],
+          "register": [
+            "военное"
+          ],
+          "id": 28
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вести, приводить",
+          "examples": [
+            {
+              "en": "to lead a child by the hand",
+              "ru": "вести ребёнка за руку"
+            },
+            {
+              "en": "the path leads to the house",
+              "ru": "дорога ведёт к дому"
+            },
+            {
+              "en": "chance led him to London",
+              "ru": "случай привёл его в Лондон"
+            }
+          ],
+          "register": [],
+          "id": 29
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "руководить, управлять, командовать, возглавлять",
+          "examples": [
+            {
+              "en": "to lead an army",
+              "ru": "командовать армией"
+            },
+            {
+              "en": "to lead for the prosecution (defence)",
+              "ru": "возглавлять обвинение (защиту)"
+            },
+            {
+              "en": "to lead an orchestra",
+              "ru": "руководить оркестром"
+            }
+          ],
+          "register": [
+            "юридическое"
+          ],
+          "id": 30
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вести, проводить",
+          "examples": [
+            {
+              "en": "to lead a quiet life",
+              "ru": "вести спокойную жизнь"
+            }
+          ],
+          "register": [],
+          "id": 31
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быть, идти первым, опережать (в состязании); превосходить",
+          "examples": [
+            {
+              "en": "he leads all orators",
+              "ru": "он лучший оратор"
+            },
+            {
+              "en": "as a teacher he leads",
+              "ru": "он лучше всех других учителей"
+            }
+          ],
+          "register": [],
+          "id": 32
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ходить",
+          "examples": [
+            {
+              "en": "to lead hearts (spades, etc.)",
+              "ru": "ходить с червей (с пик и т. д.)"
+            }
+          ],
+          "register": [
+            "карточный термин"
+          ],
+          "id": 33
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "приводить (к чему-либо)",
+          "examples": [
+            {
+              "en": "to lead nowhere",
+              "ru": "ни к чему не приводить"
+            }
+          ],
+          "register": [],
+          "id": 34
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "приводить, склонять (к чему-либо), заставлять",
+          "examples": [
+            {
+              "en": "to lead smb. to do smth.",
+              "ru": "заставить кого-либо сделать что-либо"
+            },
+            {
+              "en": "curiosity led me to look again",
+              "ru": "любопытство заставило меня взглянуть снова"
+            },
+            {
+              "en": "what led you to think so?",
+              "ru": "что заставило вас так думать?"
+            }
+          ],
+          "register": [],
+          "id": 35
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "направлять удар (в боксе)",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 36
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "целиться в летящую птицу",
+          "examples": [],
+          "register": [
+            "охотничий термин"
+          ],
+          "id": 37
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "помещать на видном месте в газете",
+          "examples": [],
+          "register": [],
+          "id": 38
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "опережать",
+          "examples": [
+            {
+              "en": "lead on",
+              "ru": "завлекать, увлекать"
+            },
+            {
+              "en": "lead out of",
+              "ru": "выходить, сообщаться (о комнатах)"
+            },
+            {
+              "en": "lead to",
+              "ru": "приводить к каким-либо результатам"
+            },
+            {
+              "en": "lead away",
+              "ru": "увлечь, увести"
+            },
+            {
+              "en": "lead up",
+              "ru": "постепенно подготовлять; наводить разговор на что-либо"
+            }
+          ],
+          "register": [
+            "разговорное",
+            "техническое"
+          ],
+          "id": 39
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "blind lead",
+          "partOfSpeech": "verb",
+          "translation": "тупик",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "phrase": "to lead by the nose",
+          "partOfSpeech": "verb",
+          "translation": "водить на поводу",
+          "examples": [],
+          "register": [],
+          "id": 2
+        },
+        {
+          "phrase": "to lead smb. up the garden path",
+          "partOfSpeech": "verb",
+          "translation": "вводить в заблуждение",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "hail of lead",
+          "partOfSpeech": "verb",
+          "translation": "град пуль",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "phrase": "to get the lead",
+          "partOfSpeech": "verb",
+          "translation": "быть застреленным",
+          "examples": [],
+          "register": [],
+          "id": 5
+        }
+      ],
+      "forms": {
+        "past_simple": "led",
+        "past_participle": "led"
+      }
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для lead before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "leader",
+    "before": {
+      "word": "leader",
+      "frequency_rank": 923,
+      "cefr": "a2",
+      "phon_br": "/ˈliːdə(r)/",
+      "phon_n_am": "/ˈliːdər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "руководитель, глава, лидер; вождь; командир",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "лидер",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "регент (хора); ведущий музыкант, первая скрипка (оркестра)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "дирижёр",
+          "examples": [],
+          "register": [
+            "американизм"
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "передовая (статья); первое (наиболее важное) сообщение в последних известиях",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "начальный или конечный ракорд",
+          "examples": [],
+          "register": [
+            "кинематограф"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "лидер палаты общин (член правительства, ответственный за прохождение через палату правительственных законопроектов)",
+          "examples": [
+            {
+              "en": "L. of the House",
+              "ru": "лидер палаты общин (член правительства, ответственный за прохождение через палату правительственных законопроектов)"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "главный побег, росток",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: пунктир, пунктирная линия",
+          "examples": [],
+          "register": [
+            "полиграфия",
+            "британское"
+          ]
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "noun",
+          "translation": "передняя лошадь (в упряжке)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 11,
+          "partOfSpeech": "noun",
+          "translation": "главная роль; ведущий актёр",
+          "examples": [],
+          "register": [
+            "театр",
+            "кинематограф"
+          ]
+        },
+        {
+          "id": 12,
+          "partOfSpeech": "noun",
+          "translation": "проводник",
+          "examples": [],
+          "register": [
+            "электротехника"
+          ]
+        },
+        {
+          "id": 13,
+          "partOfSpeech": "noun",
+          "translation": "товар, продаваемый по низкой цене для привлечения покупателей",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 14,
+          "partOfSpeech": "noun",
+          "translation": "водосточная труба",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "leader",
+      "frequency_rank": 923,
+      "cefr": "a2",
+      "phon_br": "/ˈliːdə(r)/",
+      "phon_n_am": "/ˈliːdər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "руководитель, глава, лидер; вождь; командир",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "лидер",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "регент (хора); ведущий музыкант, первая скрипка (оркестра)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "дирижёр",
+          "examples": [],
+          "register": [
+            "американизм"
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "передовая (статья); первое (наиболее важное) сообщение в последних известиях",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "начальный или конечный ракорд",
+          "examples": [],
+          "register": [
+            "кинематограф"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "лидер палаты общин (член правительства, ответственный за прохождение через палату правительственных законопроектов)",
+          "examples": [
+            {
+              "en": "L. of the House",
+              "ru": "лидер палаты общин (член правительства, ответственный за прохождение через палату правительственных законопроектов)"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "главный побег, росток",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: пунктир, пунктирная линия",
+          "examples": [],
+          "register": [
+            "полиграфия",
+            "британское"
+          ]
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "noun",
+          "translation": "передняя лошадь (в упряжке)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 11,
+          "partOfSpeech": "noun",
+          "translation": "главная роль; ведущий актёр",
+          "examples": [],
+          "register": [
+            "театр",
+            "кинематограф"
+          ]
+        },
+        {
+          "id": 12,
+          "partOfSpeech": "noun",
+          "translation": "проводник",
+          "examples": [],
+          "register": [
+            "электротехника"
+          ]
+        },
+        {
+          "id": 13,
+          "partOfSpeech": "noun",
+          "translation": "товар, продаваемый по низкой цене для привлечения покупателей",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 14,
+          "partOfSpeech": "noun",
+          "translation": "водосточная труба",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для leader before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "leadership",
+    "before": {
+      "word": "leadership",
+      "frequency_rank": 1295,
+      "cefr": "b2",
+      "phon_br": "/ˈliːdəʃɪp/",
+      "phon_n_am": "/ˈliːdərʃɪp/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "руководство, руководящая роль",
+          "examples": [
+            {
+              "en": "personal leadership",
+              "ru": "единоличное руководство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "превосходство (в какой-либо области)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "leadership",
+      "frequency_rank": 1295,
+      "cefr": "b2",
+      "phon_br": "/ˈliːdəʃɪp/",
+      "phon_n_am": "/ˈliːdərʃɪp/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "руководство, руководящая роль",
+          "examples": [
+            {
+              "en": "personal leadership",
+              "ru": "единоличное руководство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "превосходство (в какой-либо области)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для leadership before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "leading",
+    "before": {
+      "word": "leading",
+      "frequency_rank": 845,
+      "cefr": "b1",
+      "phon_br": "/ˈliːdɪŋ/",
+      "phon_n_am": "/ˈliːdɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "ведущий; руководящий; передовой, выдающийся",
+          "examples": [
+            {
+              "en": "leading article",
+              "ru": "передовая статья"
+            },
+            {
+              "en": "leading case",
+              "ru": "судебный прецедент"
+            },
+            {
+              "en": "the leading man (lady)",
+              "ru": "исполнитель(ница) главной роли"
+            },
+            {
+              "en": "leading light",
+              "ru": "выдающийся человек"
+            },
+            {
+              "en": "leading seaman",
+              "ru": "старший матрос"
+            },
+            {
+              "en": "leading ship",
+              "ru": "головной корабль"
+            },
+            {
+              "en": "leading writer",
+              "ru": "выдающийся писатель"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "двигательный, ходовой",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "руководство",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "указание, инструкция, директива",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "men of light and leading",
+          "partOfSpeech": "noun",
+          "translation": "признанные авторитеты",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "id": 2,
+          "phrase": "leading question",
+          "partOfSpeech": "noun",
+          "translation": "наводящий вопрос; основной вопрос",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "after": {
+      "word": "leading",
+      "frequency_rank": 845,
+      "cefr": "b1",
+      "phon_br": "/ˈliːdɪŋ/",
+      "phon_n_am": "/ˈliːdɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "ведущий; руководящий; передовой, выдающийся",
+          "examples": [
+            {
+              "en": "leading article",
+              "ru": "передовая статья"
+            },
+            {
+              "en": "leading case",
+              "ru": "судебный прецедент"
+            },
+            {
+              "en": "the leading man (lady)",
+              "ru": "исполнитель(ница) главной роли"
+            },
+            {
+              "en": "leading light",
+              "ru": "выдающийся человек"
+            },
+            {
+              "en": "leading seaman",
+              "ru": "старший матрос"
+            },
+            {
+              "en": "leading ship",
+              "ru": "головной корабль"
+            },
+            {
+              "en": "leading writer",
+              "ru": "выдающийся писатель"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "двигательный, ходовой",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "руководство",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "указание, инструкция, директива",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "men of light and leading",
+          "partOfSpeech": "noun",
+          "translation": "признанные авторитеты",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "id": 2,
+          "phrase": "leading question",
+          "partOfSpeech": "noun",
+          "translation": "наводящий вопрос; основной вопрос",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для leading before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "leaf",
+    "before": {
+      "word": "leaf",
+      "frequency_rank": 3005,
+      "cefr": "b1",
+      "phon_br": "/liːf/",
+      "phon_n_am": "/liːf/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "лист",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "листва",
+          "examples": [
+            {
+              "en": "fall of the leaf, leaf fall",
+              "ru": "листопад; осень; перен. закат жизни"
+            },
+            {
+              "en": "to come into leaf",
+              "ru": "покрываться листьями, распускаться"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "листовой табак; чайный лист",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "страница, лист (книги)",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "лист металла (особ. золота, серебра)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "створка (дверей); полотнище (ворот); опускная доска (стола); половинка (ширмы)",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения: листовой",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения: раздвижной",
+          "examples": [
+            {
+              "en": "leaf bridge",
+              "ru": "подъёмный, разводной мост"
+            }
+          ],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрываться листвой",
+          "examples": [
+            {
+              "en": "leaf out",
+              "ru": "покрываться листвой"
+            }
+          ],
+          "register": [],
+          "id": 10,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "перелистывать, листать (обыкн. leaf through, leaf over)",
+          "examples": [],
+          "register": [],
+          "id": 11,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "leaves without figs",
+          "partOfSpeech": "noun",
+          "translation": "пустые обещания",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "to turn over a new leaf",
+          "partOfSpeech": "verb",
+          "translation": "начать новую жизнь, исправиться",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "leaf litter",
+          "translation": "опавшие листья",
+          "partOfSpeech": "noun",
+          "examples": [
+            {
+              "en": "leaf litter",
+              "ru": "опавшие листья"
+            }
+          ],
+          "register": [],
+          "id": 3
+        }
+      ]
+    },
+    "after": {
+      "word": "leaf",
+      "frequency_rank": 3005,
+      "cefr": "b1",
+      "phon_br": "/liːf/",
+      "phon_n_am": "/liːf/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "лист",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "листва",
+          "examples": [
+            {
+              "en": "fall of the leaf, leaf fall",
+              "ru": "листопад; осень; перен. закат жизни"
+            },
+            {
+              "en": "to come into leaf",
+              "ru": "покрываться листьями, распускаться"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "листовой табак; чайный лист",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "страница, лист (книги)",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "лист металла (особ. золота, серебра)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "створка (дверей); полотнище (ворот); опускная доска (стола); половинка (ширмы)",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения: листовой",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения: раздвижной",
+          "examples": [
+            {
+              "en": "leaf bridge",
+              "ru": "подъёмный, разводной мост"
+            }
+          ],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрываться листвой",
+          "examples": [
+            {
+              "en": "leaf out",
+              "ru": "покрываться листвой"
+            }
+          ],
+          "register": [],
+          "id": 10,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "перелистывать, листать (обыкн. leaf through, leaf over)",
+          "examples": [],
+          "register": [],
+          "id": 11,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "leaves without figs",
+          "partOfSpeech": "noun",
+          "translation": "пустые обещания",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "to turn over a new leaf",
+          "partOfSpeech": "verb",
+          "translation": "начать новую жизнь, исправиться",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "leaf litter",
+          "translation": "опавшие листья",
+          "partOfSpeech": "noun",
+          "examples": [
+            {
+              "en": "leaf litter",
+              "ru": "опавшие листья"
+            }
+          ],
+          "register": [],
+          "id": 3
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для leaf before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "leaflet",
+    "before": {
+      "word": "leaflet",
+      "frequency_rank": 4934,
+      "cefr": "b2",
+      "phon_br": "/ˈliːflət/",
+      "phon_n_am": "/ˈliːflət/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "листочек, листик; молодой лист",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "листовка; тонкая брошюра",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "leaflet",
+      "frequency_rank": 4934,
+      "cefr": "b2",
+      "phon_br": "/ˈliːflət/",
+      "phon_n_am": "/ˈliːflət/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "листочек, листик; молодой лист",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "листовка; тонкая брошюра",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для leaflet before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "league",
+    "before": {
+      "word": "league",
+      "frequency_rank": 614,
+      "cefr": "b2",
+      "phon_br": "/liːɡ/",
+      "phon_n_am": "/liːɡ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "лига, союз",
+          "examples": [
+            {
+              "en": "in league with smb.",
+              "ru": "в союзе с кем-либо"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "класс (команды)",
+          "examples": [
+            {
+              "en": "A league",
+              "ru": "класс A"
+            }
+          ],
+          "register": [
+            "спортивное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "входить в союз; образовать союз; объединять(ся)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "league",
+      "frequency_rank": 614,
+      "cefr": "b2",
+      "phon_br": "/liːɡ/",
+      "phon_n_am": "/liːɡ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "лига, союз",
+          "examples": [
+            {
+              "en": "in league with smb.",
+              "ru": "в союзе с кем-либо"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "класс (команды)",
+          "examples": [
+            {
+              "en": "A league",
+              "ru": "класс A"
+            }
+          ],
+          "register": [
+            "спортивное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "входить в союз; образовать союз; объединять(ся)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для league before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "leak",
+    "before": {
+      "word": "leak",
+      "frequency_rank": 3492,
+      "cefr": "c1",
+      "phon_br": "/liːk/",
+      "phon_n_am": "/liːk/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "течь; утечка",
+          "examples": [
+            {
+              "en": "to start (or to spring) a leak",
+              "ru": "дать течь"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "утечка информации",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "пропускать воду, давать течь",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "просачиваться",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "просачиваться (об информации)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "неофициально давать сведения (прессе)",
+          "examples": [
+            {
+              "en": "leak out",
+              "ru": "просочиться; обнаружиться, стать известным"
+            }
+          ],
+          "register": [],
+          "id": 6
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "leak out",
+          "partOfSpeech": "verb",
+          "translation": "просочиться; обнаружиться, стать известным",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "leak",
+      "frequency_rank": 3492,
+      "cefr": "c1",
+      "phon_br": "/liːk/",
+      "phon_n_am": "/liːk/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "течь; утечка",
+          "examples": [
+            {
+              "en": "to start (or to spring) a leak",
+              "ru": "дать течь"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "утечка информации",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "пропускать воду, давать течь",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "просачиваться",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "просачиваться (об информации)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "неофициально давать сведения (прессе)",
+          "examples": [
+            {
+              "en": "leak out",
+              "ru": "просочиться; обнаружиться, стать известным"
+            }
+          ],
+          "register": [],
+          "id": 6
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "leak out",
+          "partOfSpeech": "verb",
+          "translation": "просочиться; обнаружиться, стать известным",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для leak before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  }
+]

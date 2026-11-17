@@ -6,7 +6,7 @@ from audit_meanings import DATA_PATH, INDEX_PATH, base_word, build_source_map
 from extract_source_confirmed_inline_examples import normal
 
 ROOT = Path(__file__).resolve().parents[1]
-MIRROR = ROOT / "src" / "data" / "oxford_5000.json"
+MIRROR = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 REPORT = ROOT / "tmp" / "source_confirmed_parenthetical_example_repairs.json"
 CYR = "А-Яа-яЁё"
 

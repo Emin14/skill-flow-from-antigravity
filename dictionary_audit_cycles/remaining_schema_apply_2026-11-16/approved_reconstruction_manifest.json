@@ -1,0 +1,201 @@
+{
+  "scope": "remaining_schema_apply_2026-11-16",
+  "applied_count": 6,
+  "changes": [
+    {
+      "word": "match1",
+      "path": "meanings[3:14]",
+      "before": [
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "состязание, матч",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "равносильный, достойный противник",
+          "examples": [
+            {
+              "en": "he is more than a match for me",
+              "ru": "он сильнее (искуснее и т. п.) меня"
+            },
+            {
+              "en": "to meet (or to find) one's match",
+              "ru": "встретить достойного противника"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "человек или вещь, подходящие под пару; ровня; пара",
+          "examples": [
+            {
+              "en": "he has no match",
+              "ru": "ему нет равного"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "брак; партия; выйти замуж",
+          "examples": [
+            {
+              "en": "he (she) is a good match",
+              "ru": "он (она) хорошая партия"
+            },
+            {
+              "en": "to make a match",
+              "ru": "жениться"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "подходить (под пару), соответствовать",
+          "examples": [
+            {
+              "en": "these colours don't match",
+              "ru": "эти цвета плохо сочетаются, не гармонируют"
+            },
+            {
+              "en": "a bonnet with ribbons to match",
+              "ru": "шляпа с подобранными (в тон) лентами"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "подбирать под пару, под стать, сочетать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "verb",
+          "translation": "противопоставлять",
+          "examples": [
+            {
+              "en": "to match one's strength against smb. else's",
+              "ru": "помериться силами с кем-либо"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "verb",
+          "translation": "противостоять; состязаться",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 11,
+          "partOfSpeech": "verb",
+          "translation": "выдавать замуж; (со)сватать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 12,
+          "partOfSpeech": "verb",
+          "translation": "спаривать(ся), случать(ся)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 13,
+          "partOfSpeech": "verb",
+          "translation": "выравнивать",
+          "examples": [],
+          "register": []
+        }
+      ],
+      "after": null,
+      "reason": "remove match II contamination from match I; destination is match2"
+    },
+    {
+      "word": "match2",
+      "path": "meanings[1:3]",
+      "before": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "спичка",
+          "examples": [
+            {
+              "en": "to strike a match",
+              "ru": "зажечь спичку"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "огнепровод",
+          "examples": [],
+          "register": []
+        }
+      ],
+      "after": null,
+      "reason": "remove match I contamination from match II; source article is match II"
+    },
+    {
+      "word": "size",
+      "path": "meanings[5]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "клей; шлихта",
+        "examples": [],
+        "register": [],
+        "id": 5
+      },
+      "reason": "restore missing size II noun homonym before its existing verb"
+    },
+    {
+      "word": "fast",
+      "path": "meanings[2]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "verb",
+        "translation": "поститься",
+        "examples": [],
+        "register": [],
+        "primary": true,
+        "id": 2
+      },
+      "reason": "restore source-confirmed fast I verb"
+    },
+    {
+      "word": "fast",
+      "path": "phrases[1].partOfSpeech",
+      "before": "verb",
+      "after": "adjective",
+      "reason": "a fast prisoner is adjectival"
+    },
+    {
+      "word": "election",
+      "path": "meanings[4].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "source marks election campaign as attributive"
+    }
+  ],
+  "deferred": [
+    "league I homonym; written form_of policy; drive/eat/tax remaining; whatever grammatical-marker example; stand/sleep/build duplicates; sign/cry/bed optional coverage; rock/speak/write/cold/except/eye/store source-boundary cases"
+  ],
+  "before_sha256": "5dbc8f3c34273efc95d71f0c37dadab1624369dbfb96edbb477377fef1104a7f",
+  "after_sha256": "994fe179d216f8efa4a2e609dba31e562b1c44c8b30d541a6ae28e213e5d82b9"
+}

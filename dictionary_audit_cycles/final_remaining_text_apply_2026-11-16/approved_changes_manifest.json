@@ -1,0 +1,41 @@
+{
+  "scope": "remaining_text_apply_2026-11-16",
+  "applied_count": 3,
+  "changes": [
+    {
+      "word": "whatever",
+      "path": "meanings[2].examples[1]",
+      "before": {
+        "en": "conj.",
+        "ru": "всё что"
+      },
+      "after": null,
+      "reason": "remove editorial grammatical marker stored as an English example"
+    },
+    {
+      "word": "drive",
+      "path": "meanings[16].examples[2]",
+      "before": {
+        "en": "drive out",
+        "ru": "of one's senses, to drive crazy сводить с ума"
+      },
+      "after": {
+        "en": "to drive out of one's senses",
+        "ru": "сводить с ума"
+      },
+      "reason": "restore complete source construction and remove OCR assembly contamination"
+    },
+    {
+      "word": "eat",
+      "path": "phrases[6].translation",
+      "before": "безоговорочно подчиняться ул",
+      "after": "безоговорочно подчиняться",
+      "reason": "remove truncated OCR tail"
+    }
+  ],
+  "deferred": [
+    "league I homonym; written policy; drive/eat broader construction mapping; stand/sign/cry/bed; duplicate storage; source-boundary rock/speak/write/cold/except/eye/store"
+  ],
+  "before_sha256": "994fe179d216f8efa4a2e609dba31e562b1c44c8b30d541a6ae28e213e5d82b9",
+  "after_sha256": "f3423d2ccb9efbe727ab8674188e310fb0225c8ae984a9914b8c7cabd406e566"
+}

@@ -7,7 +7,7 @@ import { Task } from '@/entities/task/model/types';
 import { EditTaskModal } from '@/features/edit-task/ui/EditTaskModal';
 import { RepeatingTaskDetailModal } from '@/features/edit-task/ui/RepeatingTaskDetailModal';
 import { getTodayStr } from '@/shared/lib/dateUtils';
-import { Archive, ArchiveRestore, ChevronDown, ChevronRight, Pin, PinOff, Plus, Sparkles, Trash2, X } from 'lucide-react';
+import { Archive, ArchiveRestore, ChevronDown, ChevronRight, ExternalLink, Link2, Pin, PinOff, Plus, Sparkles, Trash2, X } from 'lucide-react';
 import { ProjectFilterTabsWidget, ProjectFilterType, ProjectProgressMode } from '@/widgets/project-filter-tabs/ui/ProjectFilterTabsWidget';
 import { ProjectSectionBannerWidget } from '@/widgets/project-section-banner/ui/ProjectSectionBannerWidget';
 import { registerPointerDropHandler } from '@/shared/lib/pointerDrag';
@@ -31,6 +31,7 @@ export const ProjectsPage: React.FC = () => {
   const [openProjectIds, setOpenProjectIds] = useState<Set<string>>(new Set());
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [detailTask, setDetailTask] = useState<Task | null>(null);
+  const [detailProject, setDetailProject] = useState<Task | null>(null);
   const [dragOverProjectId, setDragOverProjectId] = useState<string | null>(null);
   const [deleteProjectTarget, setDeleteProjectTarget] = useState<Task | null>(null);
 
@@ -341,6 +342,7 @@ export const ProjectsPage: React.FC = () => {
                 progressMode={progressMode}
                 toggleProjectOpen={toggleProjectOpen}
                 onEdit={(taskToEdit) => setEditingTask(taskToEdit)}
+                onOpenDetails={() => setDetailProject(project)}
                 onDragOver={(e) => handleDragOver(e, project.id)}
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, project.id)}
@@ -396,6 +398,42 @@ export const ProjectsPage: React.FC = () => {
           setDetailTask(null);
         }}
       />
+
+      {detailProject && (
+        <div className={styles.projectDetailOverlay} role="dialog" aria-modal="true" aria-label={`О проекте «${detailProject.title}»`} onClick={() => setDetailProject(null)}>
+          <section className={styles.projectDetailSheet} onClick={(event) => event.stopPropagation()}>
+            <div className={styles.projectDetailHandle} />
+            <div className={styles.projectDetailHeader}>
+              <div className={styles.projectDetailTitleWrap}>
+                <span className={styles.projectDetailDot} style={{ background: detailProject.color || 'var(--color-accent)' }} />
+                <div>
+                  <h2>{detailProject.title || 'Без названия'}</h2>
+                  <span className={styles.projectDetailStatus}>{detailProject.projectStatus === 'active' ? '🚀 В работе' : detailProject.projectStatus === 'paused' ? '⏸ Пауза' : detailProject.projectStatus === 'completed' ? '✅ Завершён' : '📋 Планируется'}</span>
+                </div>
+              </div>
+              <button type="button" className={styles.projectDetailClose} onClick={() => setDetailProject(null)} aria-label="Закрыть"><X size={20} /></button>
+            </div>
+            {(() => {
+              const projectTasksForDetails = getAllDescendantTasks(detailProject.id, tasks);
+              const done = projectTasksForDetails.filter((task) => progressMode === 'all_time' ? task.status === 'Done' : isSubtaskDoneForProject(task, todayStr)).length;
+              const percent = projectTasksForDetails.length ? Math.round((done / projectTasksForDetails.length) * 100) : 0;
+              return <>
+                <div className={styles.projectDetailProgress}>
+                  <div className={styles.projectDetailProgressRow}><span>Прогресс</span><strong>{done} из {projectTasksForDetails.length}</strong></div>
+                  <div className={styles.projectDetailProgressTrack}><span style={{ width: `${percent}%`, background: detailProject.color || 'var(--color-accent)' }} /></div>
+                </div>
+                {detailProject.description && <div className={styles.projectDetailSection}><h3>Описание</h3><p className={styles.projectDetailDescription}>{detailProject.description}</p></div>}
+                {detailProject.link && <div className={styles.projectDetailSection}><h3>Ссылка</h3><a className={styles.projectDetailLink} href={detailProject.link} target="_blank" rel="noopener noreferrer"><Link2 size={16} /><span>{detailProject.link.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span><ExternalLink size={15} /></a></div>}
+              </>;
+            })()}
+            <div className={styles.projectDetailActions}>
+              <button type="button" className={styles.projectDetailEdit} onClick={() => { setEditingTask(detailProject); setDetailProject(null); }}>✏️ Изменить проект</button>
+              <button type="button" className={styles.projectDetailDanger} onClick={() => { setDeleteProjectTarget(detailProject); setDetailProject(null); }}>🗑 Удалить проект</button>
+              <button type="button" className={styles.projectDetailSecondary} onClick={() => setDetailProject(null)}>Закрыть</button>
+            </div>
+          </section>
+        </div>
+      )}
     </div>
   );
 };
@@ -416,6 +454,7 @@ interface ProjectCardRendererProps {
   progressMode?: ProjectProgressMode;
   toggleProjectOpen: (id: string) => void;
   onEdit: (t: Task) => void;
+  onOpenDetails: () => void;
   onDragOver: (e: React.DragEvent) => void;
   onDragLeave: (e: React.DragEvent) => void;
   onDrop: (e: React.DragEvent) => void;
@@ -445,6 +484,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   progressMode = 'today',
   toggleProjectOpen,
   onEdit,
+  onOpenDetails,
   onDragOver,
   onDragLeave,
   onDrop,
@@ -549,9 +589,9 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
   };
 
   const chevronBtn = (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', flexShrink: 0 }}>
+    <button type="button" aria-label={isOpen ? 'Свернуть проект' : 'Развернуть проект'} onClick={(event) => { event.stopPropagation(); toggleProjectOpen(project.id); }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '30px', height: '30px', flexShrink: 0, border: 0, background: 'transparent', padding: 0, cursor: 'pointer' }}>
       {isOpen ? <ChevronDown size={20} color="var(--color-text-muted)" /> : <ChevronRight size={20} color="var(--color-text-muted)" />}
-    </div>
+    </button>
   );
   const projectColor = project.color || catColor;
 
@@ -562,7 +602,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         <button type="button" onClick={() => onEdit(project)} title="Редактировать проект"><span>✏️</span><span>Изменить</span></button>
         <button type="button" onClick={onTogglePin} title={project.projectPinned ? 'Открепить' : 'Закрепить'}>{project.projectPinned ? <Pin size={16} fill="currentColor" /> : <PinOff size={16} />}<span>{project.projectPinned ? 'Открепить' : 'Закрепить'}</span></button>
         <button type="button" onClick={onToggleArchive} title={project.projectArchivedAt ? 'Восстановить' : 'Архивировать'}>{project.projectArchivedAt ? <ArchiveRestore size={16} /> : <Archive size={16} />}<span>{project.projectArchivedAt ? 'Вернуть' : 'Архив'}</span></button>
-        <button type="button" onClick={onDelete} title="Удалить" className={styles.swipeDeleteButton}><Trash2 size={16} /><span>Удалить</span></button>
+        <button type="button" onClick={onDelete} title="Удалить проект" aria-label={`Удалить проект «${project.title}»`} className={styles.swipeDeleteButton}><Trash2 size={16} /><span>Проект</span></button>
       </div>
       <div
         data-project-id={project.id}
@@ -582,7 +622,7 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         onClick={() => toggleProjectOpen(project.id)}
         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', flexWrap: 'nowrap', gap: '12px' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: 1 }} onClick={(event) => { event.stopPropagation(); onOpenDetails(); }}>
           <span
             aria-label="Цвет проекта"
             style={{ width: '10px', height: '10px', borderRadius: '50%', background: projectColor, boxShadow: `0 0 0 3px ${projectColor}33`, flexShrink: 0 }}
@@ -617,16 +657,6 @@ const ProjectCardRenderer: React.FC<ProjectCardRendererProps> = ({
         </div>
       </div>
 
-      {(project.description || project.link) && (
-        <div className={styles.projectMeta}>
-          {project.description && <p>{project.description}</p>}
-          {project.link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
-              🔗 Открыть ссылку
-            </a>
-          )}
-        </div>
-      )}
 
       {isDragOver && (
         <div className={styles.dropZone}>Перетащите сюда, чтобы добавить задачу в проект</div>

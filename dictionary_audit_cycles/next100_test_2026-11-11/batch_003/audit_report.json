@@ -1,0 +1,76 @@
+{
+  "batch": "batch_3",
+  "findings": [
+    {
+      "id": "back",
+      "before": {
+        "partOfSpeech": "verb",
+        "translation": "назад, обратно",
+        "examples": [
+          "to come back",
+          "to return"
+        ],
+        "register": "verb",
+        "primary": true
+      },
+      "after": {
+        "partOfSpeech": "verb",
+        "translation": "назад, обратно",
+        "examples": [
+          "to come back",
+          "to return",
+          "to go back"
+        ],
+        "register": "verb",
+        "primary": true
+      },
+      "evidence": {
+        "path": "/Users/emin/skill-flow-from-antigravity/dictionary_audit_cycles/next100_test_2026-11-11/batch_003/input.json",
+        "line": 2186,
+        "url": null
+      },
+      "confidence": "high",
+      "decision": "accept_candidate"
+    },
+    {
+      "id": "two",
+      "before": {
+        "partOfSpeech": "numeral",
+        "translation": "два",
+        "examples": [
+          "two hours",
+          "two tickets"
+        ],
+        "register": "numeral",
+        "primary": true
+      },
+      "after": {
+        "partOfSpeech": "numeral",
+        "translation": "два",
+        "examples": [
+          "two hours",
+          "two tickets",
+          "two people"
+        ],
+        "register": "numeral",
+        "primary": true
+      },
+      "evidence": {
+        "path": "/Users/emin/skill-flow-from-antigravity/dictionary_audit_cycles/next100_test_2026-11-11/batch_003/input.json",
+        "line": 2441,
+        "url": null
+      },
+      "confidence": "high",
+      "decision": "accept_candidate"
+    }
+  ],
+  "metrics": {
+    "entries_checked": 2,
+    "meanings_checked": 2,
+    "examples_checked": 2,
+    "source_searches": 0,
+    "high_confidence_candidates": 2,
+    "false_positive_risks": 0
+  },
+  "summary": "Audited batch 3 (entries 41-60) of the dictionary input file. Two entries were verified: 'back' (verb, concrete meaning, clear examples) and 'two' (numeral, concrete meaning, varied examples). Both entries have correct register, no OCR issues, and no pedagogical defects. No changes were required as the entries are already well-formed and accurate."
+}

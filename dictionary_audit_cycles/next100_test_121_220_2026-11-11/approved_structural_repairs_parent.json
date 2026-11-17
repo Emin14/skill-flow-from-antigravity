@@ -1,0 +1,40 @@
+{
+  "scope": "schema_safe_recheck_121_220_2026-11-11",
+  "decision": "applied_source_confirmed_structural_repairs",
+  "count": 2,
+  "changes": [
+    {
+      "path": "found.meanings",
+      "before": "missing found II",
+      "after": "found II added as id 5; adjective renumbered to id 6",
+      "reason": "Confirmed by Muller 2021 page 327 / DOCX line 37271."
+    },
+    {
+      "path": "company.phrases",
+      "before": "missing",
+      "after": [
+        {
+          "id": 1,
+          "phrase": "company store",
+          "partOfSpeech": "noun",
+          "translation": "фабричная лавка",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "company union",
+          "partOfSpeech": "noun",
+          "translation": "«компанейский» профсоюз",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ]
+        }
+      ],
+      "reason": "Separate source-confirmed company store and company union combinations."
+    }
+  ],
+  "before_sha256": "32f4a1b0b549bfd3feccba564d011ab05120e646a66e6e638cc461ad3939a337",
+  "after_sha256": "e289e602de3e543242eda67ee6721622084bcd229d47a2662b14aecf90292fef"
+}

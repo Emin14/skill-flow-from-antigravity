@@ -1,0 +1,52 @@
+{
+  "scope": "final_remaining_crosscheck_2026-11-12",
+  "applied_count": 3,
+  "changes": [
+    {
+      "word": "how",
+      "path": "meanings[0].register",
+      "before": [
+        "разговорное"
+      ],
+      "after": [],
+      "reason": "ordinary interrogative how is unmarked; colloquial marking belongs to specific idioms",
+      "source": "Muller 2021 how article"
+    },
+    {
+      "word": "how",
+      "path": "meanings[0].examples[how comes it?, how come?, how is it?].register",
+      "before": [],
+      "after": [
+        "разговорное"
+      ],
+      "reason": "scope colloquial register to the idiom rather than whole meaning",
+      "source": "Muller 2021 how article"
+    },
+    {
+      "word": "how",
+      "path": "meanings[0].examples[how so?].register",
+      "before": [],
+      "after": [
+        "разговорное"
+      ],
+      "reason": "scope colloquial register to the idiom rather than whole meaning",
+      "source": "Muller 2021 how article"
+    }
+  ],
+  "checked_and_kept": [
+    "out remaining phrases",
+    "after full article",
+    "first full article",
+    "more meanings and phrases",
+    "time meanings and phrases",
+    "cure homonym",
+    "May/may/here/even"
+  ],
+  "optional_future_review": [
+    "some source subuses omitted from broad learner grouping",
+    "additional source phrases for more and time",
+    "how do you do article ownership"
+  ],
+  "before_sha256": "799c68ba19915a4d9d03c3d7fed2a53afba5ff3f589346d5d59975e2f4542a33",
+  "after_sha256": "c065b07dea12f17453d11a7c2db67b7156ac102999f3884c7faf5dcb208b605c"
+}

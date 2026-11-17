@@ -1,0 +1,3814 @@
+[
+  {
+    "word": "do",
+    "entry_index": 1,
+    "before": {
+      "word": "do",
+      "frequency_rank": 18,
+      "cefr": "a1",
+      "phon_br": "/duː, də, dʊ/",
+      "phon_n_am": "/duː, də, dʊ/",
+      "forms": [
+        {
+          "word": "did",
+          "types": [
+            "past"
+          ]
+        },
+        {
+          "word": "done",
+          "types": [
+            "past_participle"
+          ]
+        }
+      ],
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "делать, выполнять, совершать",
+          "register": [],
+          "examples": [
+            {
+              "en": "what are you doing?",
+              "ru": "что ты делаешь?"
+            },
+            {
+              "en": "to do one's work",
+              "ru": "выполнять свою работу"
+            },
+            {
+              "en": "to do one's best",
+              "ru": "делать всё возможное"
+            }
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "подходить, годиться, устраивать",
+          "register": [],
+          "examples": [
+            {
+              "en": "this hat will do",
+              "ru": "эта шляпа подойдёт"
+            },
+            {
+              "en": "he will do for us",
+              "ru": "он нам подходит"
+            }
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "прибирать, приводить в порядок",
+          "register": [],
+          "examples": [
+            {
+              "en": "to do one's hair",
+              "ru": "причёсываться"
+            },
+            {
+              "en": "to do the room",
+              "ru": "убирать комнату"
+            }
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "готовить, варить, жарить (о еде)",
+          "register": [],
+          "examples": [
+            {
+              "en": "the potatoes will be done in 10 minutes",
+              "ru": "картошка будет готова через 10 минут"
+            },
+            {
+              "en": "I like meat well done",
+              "ru": "я люблю хорошо прожаренное мясо"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "поживать, чувствовать себя (в приветствиях)",
+          "register": [],
+          "examples": [
+            {
+              "en": "how do you do?",
+              "ru": "здравствуйте!"
+            },
+            {
+              "en": "how is he doing?",
+              "ru": "как его дела? (как он себя чувствует?)"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "verb",
+          "translation": "причинять, оказывать (пользу, вред)",
+          "register": [],
+          "examples": [
+            {
+              "en": "to do good",
+              "ru": "приносить пользу"
+            },
+            {
+              "en": "to do harm",
+              "ru": "причинять вред"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "осматривать (достопримечательности)",
+          "register": [
+            "разговорное"
+          ],
+          "examples": [
+            {
+              "en": "to do the city",
+              "ru": "осматривать город"
+            },
+            {
+              "en": "to do the museum",
+              "ru": "осматривать музей"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "вспомогательный глагол (вопросы и отрицания)",
+          "register": [],
+          "examples": [
+            {
+              "en": "do you speak English?",
+              "ru": "вы говорите по-английски?"
+            },
+            {
+              "en": "I don't know",
+              "ru": "я не знаю"
+            },
+            {
+              "en": "did you see him?",
+              "ru": "вы видели его?"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "verb",
+          "translation": "глагол-заместитель (во избежание повтора)",
+          "register": [],
+          "examples": [
+            {
+              "en": "he likes swimming and so do I",
+              "ru": "он любит плавать, и я тоже"
+            },
+            {
+              "en": "you know him better than I do",
+              "ru": "вы знаете его лучше, чем я"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "verb",
+          "translation": "усилительная частица (действительно, на самом деле)",
+          "register": [],
+          "examples": [
+            {
+              "en": "I do want to go",
+              "ru": "я действительно хочу пойти"
+            },
+            {
+              "en": "do come in!",
+              "ru": "пожалуйста, входите же!"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "partOfSpeech": "noun",
+          "translation": "вечеринка, праздник, приём",
+          "register": [
+            "разговорное"
+          ],
+          "examples": [
+            {
+              "en": "we've got a do tonight",
+              "ru": "у нас сегодня вечеринка"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "partOfSpeech": "noun",
+          "translation": "правила, предписания (в dos and don'ts)",
+          "register": [
+            "разговорное"
+          ],
+          "examples": [
+            {
+              "en": "dos and don'ts",
+              "ru": "правила поведения (что можно и чего нельзя делать)"
+            }
+          ]
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "do without",
+          "partOfSpeech": "verb",
+          "translation": "обходиться без",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 2,
+          "phrase": "do up",
+          "partOfSpeech": "verb",
+          "translation": "застёгивать; ремонтировать, приводить в порядок",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 3,
+          "phrase": "do away with",
+          "partOfSpeech": "verb",
+          "translation": "покончить с, уничтожить, отменить",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 4,
+          "phrase": "have to do with",
+          "partOfSpeech": "verb",
+          "translation": "иметь отношение к, иметь дело с",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 5,
+          "phrase": "that will do",
+          "partOfSpeech": "interjection",
+          "translation": "хватит, достаточно, довольно",
+          "register": [
+            "разговорное"
+          ],
+          "examples": []
+        },
+        {
+          "id": 6,
+          "phrase": "well done!",
+          "partOfSpeech": "interjection",
+          "translation": "молодец!, отлично сработано!",
+          "register": [
+            "разговорное"
+          ],
+          "examples": []
+        },
+        {
+          "id": 7,
+          "phrase": "do someone a favour",
+          "partOfSpeech": "verb",
+          "translation": "оказать кому-либо услугу, сделать одолжение",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "after": {
+      "word": "do",
+      "frequency_rank": 18,
+      "cefr": "a1",
+      "phon_br": "/duː, də, dʊ/",
+      "phon_n_am": "/duː, də, dʊ/",
+      "forms": [
+        {
+          "word": "did",
+          "types": [
+            "past"
+          ]
+        },
+        {
+          "word": "done",
+          "types": [
+            "past_participle"
+          ]
+        }
+      ],
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "делать, выполнять, совершать",
+          "register": [],
+          "examples": [
+            {
+              "en": "what are you doing?",
+              "ru": "что ты делаешь?"
+            },
+            {
+              "en": "to do one's work",
+              "ru": "выполнять свою работу"
+            },
+            {
+              "en": "to do one's best",
+              "ru": "делать всё возможное"
+            }
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "подходить, годиться, устраивать",
+          "register": [],
+          "examples": [
+            {
+              "en": "this hat will do",
+              "ru": "эта шляпа подойдёт"
+            },
+            {
+              "en": "he will do for us",
+              "ru": "он нам подходит"
+            }
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "прибирать, приводить в порядок",
+          "register": [],
+          "examples": [
+            {
+              "en": "to do one's hair",
+              "ru": "причёсываться"
+            },
+            {
+              "en": "to do the room",
+              "ru": "убирать комнату"
+            }
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "готовить, варить, жарить (о еде)",
+          "register": [],
+          "examples": [
+            {
+              "en": "the potatoes will be done in 10 minutes",
+              "ru": "картошка будет готова через 10 минут"
+            },
+            {
+              "en": "I like meat well done",
+              "ru": "я люблю хорошо прожаренное мясо"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "поживать, чувствовать себя (в приветствиях)",
+          "register": [],
+          "examples": [
+            {
+              "en": "how do you do?",
+              "ru": "здравствуйте!"
+            },
+            {
+              "en": "how is he doing?",
+              "ru": "как его дела? (как он себя чувствует?)"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "verb",
+          "translation": "причинять, оказывать (пользу, вред)",
+          "register": [],
+          "examples": [
+            {
+              "en": "to do good",
+              "ru": "приносить пользу"
+            },
+            {
+              "en": "to do harm",
+              "ru": "причинять вред"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "осматривать (достопримечательности)",
+          "register": [
+            "разговорное"
+          ],
+          "examples": [
+            {
+              "en": "to do the city",
+              "ru": "осматривать город"
+            },
+            {
+              "en": "to do the museum",
+              "ru": "осматривать музей"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "вспомогательный глагол (вопросы и отрицания)",
+          "register": [],
+          "examples": [
+            {
+              "en": "do you speak English?",
+              "ru": "вы говорите по-английски?"
+            },
+            {
+              "en": "I don't know",
+              "ru": "я не знаю"
+            },
+            {
+              "en": "did you see him?",
+              "ru": "вы видели его?"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "verb",
+          "translation": "глагол-заместитель (во избежание повтора)",
+          "register": [],
+          "examples": [
+            {
+              "en": "he likes swimming and so do I",
+              "ru": "он любит плавать, и я тоже"
+            },
+            {
+              "en": "you know him better than I do",
+              "ru": "вы знаете его лучше, чем я"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "verb",
+          "translation": "усилительная частица (действительно, на самом деле)",
+          "register": [],
+          "examples": [
+            {
+              "en": "I do want to go",
+              "ru": "я действительно хочу пойти"
+            },
+            {
+              "en": "do come in!",
+              "ru": "пожалуйста, входите же!"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "partOfSpeech": "noun",
+          "translation": "вечеринка, праздник, приём",
+          "register": [
+            "разговорное"
+          ],
+          "examples": [
+            {
+              "en": "we've got a do tonight",
+              "ru": "у нас сегодня вечеринка"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "partOfSpeech": "noun",
+          "translation": "правила, предписания (в dos and don'ts)",
+          "register": [
+            "разговорное"
+          ],
+          "examples": [
+            {
+              "en": "dos and don'ts",
+              "ru": "правила поведения (что можно и чего нельзя делать)"
+            }
+          ]
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "do without",
+          "partOfSpeech": "verb",
+          "translation": "обходиться без",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 2,
+          "phrase": "do up",
+          "partOfSpeech": "verb",
+          "translation": "застёгивать; ремонтировать, приводить в порядок",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 3,
+          "phrase": "do away with",
+          "partOfSpeech": "verb",
+          "translation": "покончить с, уничтожить, отменить",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 4,
+          "phrase": "have to do with",
+          "partOfSpeech": "verb",
+          "translation": "иметь отношение к, иметь дело с",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 5,
+          "phrase": "that will do",
+          "partOfSpeech": "interjection",
+          "translation": "хватит, достаточно, довольно",
+          "register": [
+            "разговорное"
+          ],
+          "examples": []
+        },
+        {
+          "id": 6,
+          "phrase": "well done!",
+          "partOfSpeech": "interjection",
+          "translation": "молодец!, отлично сработано!",
+          "register": [
+            "разговорное"
+          ],
+          "examples": []
+        },
+        {
+          "id": 7,
+          "phrase": "do someone a favour",
+          "partOfSpeech": "verb",
+          "translation": "оказать кому-либо услугу, сделать одолжение",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для do stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 54, 7, 7, 168; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "doctor",
+    "entry_index": 2,
+    "before": {
+      "word": "doctor",
+      "frequency_rank": 1015,
+      "cefr": "a1",
+      "phon_br": "/ˈdɒktə(r)/",
+      "phon_n_am": "/ˈdɑːktər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "врач, доктор",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "дантист; ветеринарный врач",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "доктор (учёная степень)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "мастер по ремонту",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "вспомогательный механизм",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "судовой повар",
+          "examples": [],
+          "register": [
+            "морской термин",
+            "жаргон"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "искусственная муха (употр. для ужения)",
+          "examples": [],
+          "register": [
+            "искусство"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "заниматься врачебной практикой; лечить",
+          "examples": [
+            {
+              "en": "to doctor oneself",
+              "ru": "лечиться"
+            }
+          ],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ремонтировать, чинить на скорую руку",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подделывать (документы)",
+          "examples": [],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "фальсифицировать (пищу, вино)",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "присуждать степень доктора",
+          "examples": [],
+          "register": [],
+          "id": 12
+        }
+      ]
+    },
+    "after": {
+      "word": "doctor",
+      "frequency_rank": 1015,
+      "cefr": "a1",
+      "phon_br": "/ˈdɒktə(r)/",
+      "phon_n_am": "/ˈdɑːktər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "врач, доктор",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "дантист; ветеринарный врач",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "доктор (учёная степень)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "мастер по ремонту",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "вспомогательный механизм",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "судовой повар",
+          "examples": [],
+          "register": [
+            "морской термин",
+            "жаргон"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "искусственная муха (употр. для ужения)",
+          "examples": [],
+          "register": [
+            "искусство"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "заниматься врачебной практикой; лечить",
+          "examples": [
+            {
+              "en": "to doctor oneself",
+              "ru": "лечиться"
+            }
+          ],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ремонтировать, чинить на скорую руку",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подделывать (документы)",
+          "examples": [],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "фальсифицировать (пищу, вино)",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "присуждать степень доктора",
+          "examples": [],
+          "register": [],
+          "id": 12
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для doctor stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 31, 25, 25, 1913; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "doctrine",
+    "entry_index": 3,
+    "before": {
+      "word": "doctrine",
+      "frequency_rank": 3894,
+      "cefr": "c1",
+      "phon_br": "/ˈdɒktrɪn/",
+      "phon_n_am": "/ˈdɑːktrɪn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "учение, доктрина",
+          "examples": [
+            {
+              "en": "doctrine of descent",
+              "ru": "теория происхождения видов"
+            }
+          ],
+          "register": [
+            "биологическое"
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "вера, догма",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "doctrine",
+      "frequency_rank": 3894,
+      "cefr": "c1",
+      "phon_br": "/ˈdɒktrɪn/",
+      "phon_n_am": "/ˈdɑːktrɪn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "учение, доктрина",
+          "examples": [
+            {
+              "en": "doctrine of descent",
+              "ru": "теория происхождения видов"
+            }
+          ],
+          "register": [
+            "биологическое"
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "вера, догма",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для doctrine stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 3 из 4 источников дали совпадение; локаторы 244, 244, 27687; 1 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "document",
+    "entry_index": 4,
+    "before": {
+      "word": "document",
+      "frequency_rank": 2030,
+      "cefr": "a2",
+      "phon_br": "/ˈdɒkjumənt/, /ˈdɒkjument/",
+      "phon_n_am": "/ˈdɑːkjumənt/, /ˈdɑːkjument/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "документ, свидетельство",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "подтверждать документами, документировать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "снабжать документами (особ. судовыми)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "document",
+      "frequency_rank": 2030,
+      "cefr": "a2",
+      "phon_br": "/ˈdɒkjumənt/, /ˈdɒkjument/",
+      "phon_n_am": "/ˈdɑːkjumənt/, /ˈdɑːkjument/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "документ, свидетельство",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "подтверждать документами, документировать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "снабжать документами (особ. судовыми)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для document stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 55, 55, 5059; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "documentary",
+    "entry_index": 5,
+    "before": {
+      "word": "documentary",
+      "frequency_rank": 2670,
+      "cefr": "b1",
+      "phon_br": "/ˌdɒkjuˈmentri/",
+      "phon_n_am": "/ˌdɑːkjuˈmentri/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "документальный",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "документальный фильм и т. п",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "documentary",
+      "frequency_rank": 2670,
+      "cefr": "b1",
+      "phon_br": "/ˌdɒkjuˈmentri/",
+      "phon_n_am": "/ˌdɑːkjuˈmentri/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "документальный",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "документальный фильм и т. п",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для documentary stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 244, 244, 27693; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "documentation",
+    "entry_index": 6,
+    "before": {
+      "word": "documentation",
+      "frequency_rank": 4008,
+      "cefr": "c1",
+      "phon_br": "/ˌdɒkjumenˈteɪʃn/",
+      "phon_n_am": "/ˌdɑːkjumenˈteɪʃn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "документация, подтверждение документами",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "снабжение (судна) документами",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "documentation",
+      "frequency_rank": 4008,
+      "cefr": "c1",
+      "phon_br": "/ˌdɒkjumenˈteɪʃn/",
+      "phon_n_am": "/ˌdɑːkjumenˈteɪʃn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "документация, подтверждение документами",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "снабжение (судна) документами",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для documentation stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 3 из 4 источников дали совпадение; локаторы 244, 244, 27695; 1 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "dog",
+    "entry_index": 7,
+    "before": {
+      "word": "dog",
+      "frequency_rank": 654,
+      "cefr": "a1",
+      "phon_br": "/dɒɡ/",
+      "phon_n_am": "/dɔːɡ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "собака, пёс",
+          "examples": [
+            {
+              "en": "Greater (Lesser) Dog",
+              "ru": "созвездие Большого (Малого) Пса"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "кобель; самец волка, лисы",
+          "examples": [
+            {
+              "en": "dog-wolf, dog-fox",
+              "ru": "кобель; самец волка, лисы"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "подлец, собака",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "парень (переводится по контексту)",
+          "examples": [
+            {
+              "en": "lucky dog",
+              "ru": "счастливец"
+            },
+            {
+              "en": "lazy dog",
+              "ru": "лентяй"
+            },
+            {
+              "en": "dirty dog",
+              "ru": "дрянь, «свинья», «свинья»"
+            },
+            {
+              "en": "gay (or jolly) dog",
+              "ru": "весельчак"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "легавый, стукач",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "жаргон",
+            "австралийский английский"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "собачка; гвоздодёр; останов",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "подставка для дров в камине",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "морская собака, колючая акула",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "задрайка",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: состязание борзых",
+          "examples": [],
+          "register": [
+            "разговорное",
+            "британское"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ходить по пятам, выслеживать",
+          "examples": [
+            {
+              "en": "dog smb.'s footsteps",
+              "ru": "ходить по пятам, выслеживать"
+            }
+          ],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "преследовать, травить",
+          "examples": [
+            {
+              "en": "dogged by misfortune",
+              "ru": "преследуемый несчастьями"
+            }
+          ],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "травить собаками",
+          "examples": [],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "задраивать",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 14
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "dog on it!",
+          "partOfSpeech": "verb",
+          "translation": "проклятие!",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "there is life in the old dog yet",
+          "partOfSpeech": "noun",
+          "translation": "есть ещё порох в пороховницах",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "a dog's life",
+          "partOfSpeech": "noun",
+          "translation": "собачья жизнь",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "let sleeping dogs lie",
+          "partOfSpeech": "noun",
+          "translation": "не тронь лихо, пока спит тихо",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "phrase": "dogs of war",
+          "partOfSpeech": "noun",
+          "translation": "ужасы войны, спутники войны",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "phrase": "a dog's age",
+          "partOfSpeech": "noun",
+          "translation": "долгое время",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "phrase": "to go to the dogs",
+          "partOfSpeech": "noun",
+          "translation": "гибнуть",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "phrase": "to help a lame dog over a stile",
+          "partOfSpeech": "noun",
+          "translation": "помочь кому-либо в беде",
+          "examples": [],
+          "register": [],
+          "id": 8
+        }
+      ]
+    },
+    "after": {
+      "word": "dog",
+      "frequency_rank": 654,
+      "cefr": "a1",
+      "phon_br": "/dɒɡ/",
+      "phon_n_am": "/dɔːɡ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "собака, пёс",
+          "examples": [
+            {
+              "en": "Greater (Lesser) Dog",
+              "ru": "созвездие Большого (Малого) Пса"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "кобель; самец волка, лисы",
+          "examples": [
+            {
+              "en": "dog-wolf, dog-fox",
+              "ru": "кобель; самец волка, лисы"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "подлец, собака",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "парень (переводится по контексту)",
+          "examples": [
+            {
+              "en": "lucky dog",
+              "ru": "счастливец"
+            },
+            {
+              "en": "lazy dog",
+              "ru": "лентяй"
+            },
+            {
+              "en": "dirty dog",
+              "ru": "дрянь, «свинья», «свинья»"
+            },
+            {
+              "en": "gay (or jolly) dog",
+              "ru": "весельчак"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "легавый, стукач",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "жаргон",
+            "австралийский английский"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "собачка; гвоздодёр; останов",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "подставка для дров в камине",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "морская собака, колючая акула",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "задрайка",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: состязание борзых",
+          "examples": [],
+          "register": [
+            "разговорное",
+            "британское"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ходить по пятам, выслеживать",
+          "examples": [
+            {
+              "en": "dog smb.'s footsteps",
+              "ru": "ходить по пятам, выслеживать"
+            }
+          ],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "преследовать, травить",
+          "examples": [
+            {
+              "en": "dogged by misfortune",
+              "ru": "преследуемый несчастьями"
+            }
+          ],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "травить собаками",
+          "examples": [],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "задраивать",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 14
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "dog on it!",
+          "partOfSpeech": "verb",
+          "translation": "проклятие!",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "there is life in the old dog yet",
+          "partOfSpeech": "noun",
+          "translation": "есть ещё порох в пороховницах",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "a dog's life",
+          "partOfSpeech": "noun",
+          "translation": "собачья жизнь",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "let sleeping dogs lie",
+          "partOfSpeech": "noun",
+          "translation": "не тронь лихо, пока спит тихо",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "phrase": "dogs of war",
+          "partOfSpeech": "noun",
+          "translation": "ужасы войны, спутники войны",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "phrase": "a dog's age",
+          "partOfSpeech": "noun",
+          "translation": "долгое время",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "phrase": "to go to the dogs",
+          "partOfSpeech": "noun",
+          "translation": "гибнуть",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "phrase": "to help a lame dog over a stile",
+          "partOfSpeech": "noun",
+          "translation": "помочь кому-либо в беде",
+          "examples": [],
+          "register": [],
+          "id": 8
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для dog stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 84, 84, 8101; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "dollar",
+    "entry_index": 8,
+    "before": {
+      "word": "dollar",
+      "frequency_rank": 1746,
+      "cefr": "a1",
+      "phon_br": "/ˈdɒlə(r)/",
+      "phon_n_am": "/ˈdɑːlər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "доллар (= 100 центам)",
+          "examples": [
+            {
+              "en": "the dollars",
+              "ru": "деньги, богатство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "долларовый",
+          "examples": [
+            {
+              "en": "dollar diplomacy",
+              "ru": "дипломатия доллара"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "dollar",
+      "frequency_rank": 1746,
+      "cefr": "a1",
+      "phon_br": "/ˈdɒlə(r)/",
+      "phon_n_am": "/ˈdɑːlər/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "доллар (= 100 центам)",
+          "examples": [
+            {
+              "en": "the dollars",
+              "ru": "деньги, богатство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "долларовый",
+          "examples": [
+            {
+              "en": "dollar diplomacy",
+              "ru": "дипломатия доллара"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для dollar stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 80, 80, 7658; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "domain",
+    "entry_index": 9,
+    "before": {
+      "word": "domain",
+      "frequency_rank": 2671,
+      "cefr": "c1",
+      "phon_br": "/dəˈmeɪn/",
+      "phon_n_am": "/dəʊˈmeɪn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "владение; имение; территория",
+          "examples": [
+            {
+              "en": "Eminent D.",
+              "ru": "суверенное право государства отчуждать частную собственность (за компенсацию)"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "область, сфера",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "domain",
+      "frequency_rank": 2671,
+      "cefr": "c1",
+      "phon_br": "/dəˈmeɪn/",
+      "phon_n_am": "/dəʊˈmeɪn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "владение; имение; территория",
+          "examples": [
+            {
+              "en": "Eminent D.",
+              "ru": "суверенное право государства отчуждать частную собственность (за компенсацию)"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "область, сфера",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для domain stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 246, 246, 28006; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "domestic",
+    "entry_index": 10,
+    "before": {
+      "word": "domestic",
+      "frequency_rank": 1490,
+      "cefr": "b2",
+      "phon_br": "/dəˈmestɪk/",
+      "phon_n_am": "/dəˈmestɪk/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "домашний; семейный",
+          "examples": [
+            {
+              "en": "domestic science",
+              "ru": "домоводство"
+            },
+            {
+              "en": "domestic appliances",
+              "ru": "предметы домашнего обихода"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "внутренний; отечественный",
+          "examples": [
+            {
+              "en": "domestic industry",
+              "ru": "отечественная промышленность"
+            },
+            {
+              "en": "domestic trade",
+              "ru": "внутренняя торговля"
+            },
+            {
+              "en": "domestic issue",
+              "ru": "внутриполитический вопрос"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "домашний, ручной (о животных)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "домоседливый, любящий семейную жизнь",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "прислуга",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: товары отечественного производства",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: простые хлопчатобумажные ткани",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "британское"
+          ],
+          "id": 7
+        }
+      ]
+    },
+    "after": {
+      "word": "domestic",
+      "frequency_rank": 1490,
+      "cefr": "b2",
+      "phon_br": "/dəˈmestɪk/",
+      "phon_n_am": "/dəˈmestɪk/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "домашний; семейный",
+          "examples": [
+            {
+              "en": "domestic science",
+              "ru": "домоводство"
+            },
+            {
+              "en": "domestic appliances",
+              "ru": "предметы домашнего обихода"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "внутренний; отечественный",
+          "examples": [
+            {
+              "en": "domestic industry",
+              "ru": "отечественная промышленность"
+            },
+            {
+              "en": "domestic trade",
+              "ru": "внутренняя торговля"
+            },
+            {
+              "en": "domestic issue",
+              "ru": "внутриполитический вопрос"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "домашний, ручной (о животных)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "домоседливый, любящий семейную жизнь",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "прислуга",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: товары отечественного производства",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: простые хлопчатобумажные ткани",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "британское"
+          ],
+          "id": 7
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для domestic stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 45, 45, 4022; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "dominance",
+    "entry_index": 11,
+    "before": {
+      "word": "dominance",
+      "frequency_rank": 4324,
+      "cefr": "c1",
+      "phon_br": "/ˈdɒmɪnəns/",
+      "phon_n_am": "/ˈdɑːmɪnəns/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "господство; влияние; преобладание",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "dominance",
+      "frequency_rank": 4324,
+      "cefr": "c1",
+      "phon_br": "/ˈdɒmɪnəns/",
+      "phon_n_am": "/ˈdɑːmɪnəns/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "господство; влияние; преобладание",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для dominance stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 3 из 4 источников дали совпадение; локаторы 246, 246, 28018; 1 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "dominant",
+    "entry_index": 12,
+    "before": {
+      "word": "dominant",
+      "frequency_rank": 2953,
+      "cefr": "b2",
+      "phon_br": "/ˈdɒmɪnənt/",
+      "phon_n_am": "/ˈdɑːmɪnənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "господствующий; доминирующий, преобладающий",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "возвышающийся (о скале и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "доминантный, доминирующий",
+          "examples": [],
+          "register": [
+            "биологическое"
+          ],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "доминанта, основной признак",
+          "examples": [],
+          "register": [
+            "специальный термин"
+          ],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "доминанта, пятая ступень диатонической гаммы",
+          "examples": [],
+          "register": [
+            "музыка"
+          ],
+          "id": 5,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "dominant",
+      "frequency_rank": 2953,
+      "cefr": "b2",
+      "phon_br": "/ˈdɒmɪnənt/",
+      "phon_n_am": "/ˈdɑːmɪnənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "господствующий; доминирующий, преобладающий",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "возвышающийся (о скале и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "доминантный, доминирующий",
+          "examples": [],
+          "register": [
+            "биологическое"
+          ],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "доминанта, основной признак",
+          "examples": [],
+          "register": [
+            "специальный термин"
+          ],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "доминанта, пятая ступень диатонической гаммы",
+          "examples": [],
+          "register": [
+            "музыка"
+          ],
+          "id": 5,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для dominant stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 246, 246, 28019; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "dominate",
+    "entry_index": 13,
+    "before": {
+      "word": "dominate",
+      "frequency_rank": 4232,
+      "cefr": "b2",
+      "phon_br": "/ˈdɒmɪneɪt/",
+      "phon_n_am": "/ˈdɑːmɪneɪt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "господствовать; властвовать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "иметь влияние (на кого-либо)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "доминировать, преобладать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "сдерживать, подавлять, овладевать",
+          "examples": [
+            {
+              "en": "to dominate one's emotions",
+              "ru": "владеть своими чувствами"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "возвышаться (над чем-либо)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "dominate",
+      "frequency_rank": 4232,
+      "cefr": "b2",
+      "phon_br": "/ˈdɒmɪneɪt/",
+      "phon_n_am": "/ˈdɑːmɪneɪt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "господствовать; властвовать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "иметь влияние (на кого-либо)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "доминировать, преобладать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "сдерживать, подавлять, овладевать",
+          "examples": [
+            {
+              "en": "to dominate one's emotions",
+              "ru": "владеть своими чувствами"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "возвышаться (над чем-либо)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для dominate stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 246, 246, 28021; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "donate",
+    "entry_index": 14,
+    "before": {
+      "word": "donate",
+      "frequency_rank": 3680,
+      "cefr": "b1",
+      "phon_br": "/dəʊˈneɪt/",
+      "phon_n_am": "/ˈdəʊneɪt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "дарить, жертвовать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "donate",
+      "frequency_rank": 3680,
+      "cefr": "b1",
+      "phon_br": "/dəʊˈneɪt/",
+      "phon_n_am": "/ˈdəʊneɪt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "дарить, жертвовать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для donate stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 246, 246, 28002; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "donation",
+    "entry_index": 15,
+    "before": {
+      "word": "donation",
+      "frequency_rank": 3830,
+      "cefr": "b2",
+      "phon_br": "/dəʊˈneɪʃn/",
+      "phon_n_am": "/dəʊˈneɪʃn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "передача в дар, дарение",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "дар, денежное пожертвование",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "donation duty",
+              "ru": "налог на дарственную передачу имущества"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "donation",
+      "frequency_rank": 3830,
+      "cefr": "b2",
+      "phon_br": "/dəʊˈneɪʃn/",
+      "phon_n_am": "/dəʊˈneɪʃn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "передача в дар, дарение",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "дар, денежное пожертвование",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "donation duty",
+              "ru": "налог на дарственную передачу имущества"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для donation stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 3 из 4 источников дали совпадение; локаторы 246, 246, 28003; 1 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "donor",
+    "entry_index": 16,
+    "before": {
+      "word": "donor",
+      "frequency_rank": 4095,
+      "cefr": "c1",
+      "phon_br": "/ˈdəʊnə(r)/",
+      "phon_n_am": "/ˈdəʊnər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "жертвователь",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "донор",
+          "examples": [],
+          "register": [
+            "медицинское"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "donor",
+      "frequency_rank": 4095,
+      "cefr": "c1",
+      "phon_br": "/ˈdəʊnə(r)/",
+      "phon_n_am": "/ˈdəʊnər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "жертвователь",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "донор",
+          "examples": [],
+          "register": [
+            "медицинское"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для donor stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 89, 89, 8728; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "door",
+    "entry_index": 17,
+    "before": {
+      "word": "door",
+      "frequency_rank": 690,
+      "cefr": "a1",
+      "phon_br": "/dɔː(r)/",
+      "phon_n_am": "/dɔːr/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "дверь; дверца; дверной проём",
+          "examples": [
+            {
+              "en": "front door",
+              "ru": "парадный вход"
+            },
+            {
+              "en": "to answer the door",
+              "ru": "открыть дверь (на стук или звонок)"
+            },
+            {
+              "en": "behind closed doors",
+              "ru": "за закрытыми дверями, тайно"
+            },
+            {
+              "en": "to close the door (up)on smb.",
+              "ru": "закрыть за кем-либо дверь"
+            },
+            {
+              "en": "to slam (or to shut) the door in smb.'s face",
+              "ru": "захлопнуть дверь перед самым носом кого-либо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "дом, квартира, помещение",
+          "examples": [
+            {
+              "en": "out of doors",
+              "ru": "на открытом воздухе, на улице"
+            },
+            {
+              "en": "to turn smb. out of doors",
+              "ru": "выставить за дверь, прогнать кого-либо"
+            },
+            {
+              "en": "next door",
+              "ru": "соседний дом"
+            },
+            {
+              "en": "next door to",
+              "ru": "по соседству, рядом; на границе чего-либо; почти"
+            },
+            {
+              "en": "he is next door to bankruptcy",
+              "ru": "он накануне разорения"
+            },
+            {
+              "en": "he lives next door (four doors off)",
+              "ru": "он живёт в соседнем доме (через 4 дома отсюда)"
+            },
+            {
+              "en": "within doors",
+              "ru": "= indoors"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "путь, дорога; сделать что-либо невозможным; сделать что-либо возможным",
+          "examples": [
+            {
+              "en": "a door to success",
+              "ru": "путь к успеху"
+            },
+            {
+              "en": "to close the door to (or upon) smth.",
+              "ru": "отрезать путь к чему-либо"
+            },
+            {
+              "en": "to open a door to (or for) smth.",
+              "ru": "открыть путь к чему-либо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "заслонка",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "дверной",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "door",
+      "frequency_rank": 690,
+      "cefr": "a1",
+      "phon_br": "/dɔː(r)/",
+      "phon_n_am": "/dɔːr/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "дверь; дверца; дверной проём",
+          "examples": [
+            {
+              "en": "front door",
+              "ru": "парадный вход"
+            },
+            {
+              "en": "to answer the door",
+              "ru": "открыть дверь (на стук или звонок)"
+            },
+            {
+              "en": "behind closed doors",
+              "ru": "за закрытыми дверями, тайно"
+            },
+            {
+              "en": "to close the door (up)on smb.",
+              "ru": "закрыть за кем-либо дверь"
+            },
+            {
+              "en": "to slam (or to shut) the door in smb.'s face",
+              "ru": "захлопнуть дверь перед самым носом кого-либо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "дом, квартира, помещение",
+          "examples": [
+            {
+              "en": "out of doors",
+              "ru": "на открытом воздухе, на улице"
+            },
+            {
+              "en": "to turn smb. out of doors",
+              "ru": "выставить за дверь, прогнать кого-либо"
+            },
+            {
+              "en": "next door",
+              "ru": "соседний дом"
+            },
+            {
+              "en": "next door to",
+              "ru": "по соседству, рядом; на границе чего-либо; почти"
+            },
+            {
+              "en": "he is next door to bankruptcy",
+              "ru": "он накануне разорения"
+            },
+            {
+              "en": "he lives next door (four doors off)",
+              "ru": "он живёт в соседнем доме (через 4 дома отсюда)"
+            },
+            {
+              "en": "within doors",
+              "ru": "= indoors"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "путь, дорога; сделать что-либо невозможным; сделать что-либо возможным",
+          "examples": [
+            {
+              "en": "a door to success",
+              "ru": "путь к успеху"
+            },
+            {
+              "en": "to close the door to (or upon) smth.",
+              "ru": "отрезать путь к чему-либо"
+            },
+            {
+              "en": "to open a door to (or for) smth.",
+              "ru": "открыть путь к чему-либо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "заслонка",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "дверной",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для door stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 40, 40, 3585; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "dose",
+    "entry_index": 18,
+    "before": {
+      "word": "dose",
+      "frequency_rank": 3068,
+      "cefr": "c1",
+      "phon_br": "/dəʊs/",
+      "phon_n_am": "/dəʊs/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "доза, приём",
+          "examples": [
+            {
+              "en": "lethal dose",
+              "ru": "смертельная доза"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "порция, доля",
+          "examples": [
+            {
+              "en": "to have a regular dose of smth.",
+              "ru": "принять что-либо в большом количестве"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ингредиент, прибавляемый к вину",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "венерическая болезнь, особ. гонорея",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "давать лекарство дозами; дозировать",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "прибавлять (спирт к вину)",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "dose",
+      "frequency_rank": 3068,
+      "cefr": "c1",
+      "phon_br": "/dəʊs/",
+      "phon_n_am": "/dəʊs/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "доза, приём",
+          "examples": [
+            {
+              "en": "lethal dose",
+              "ru": "смертельная доза"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "порция, доля",
+          "examples": [
+            {
+              "en": "to have a regular dose of smth.",
+              "ru": "принять что-либо в большом количестве"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ингредиент, прибавляемый к вину",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "венерическая болезнь, особ. гонорея",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "давать лекарство дозами; дозировать",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "прибавлять (спирт к вину)",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для dose stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 247, 247, 28213; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "dot",
+    "entry_index": 19,
+    "before": {
+      "word": "dot",
+      "frequency_rank": 3642,
+      "cefr": "b2",
+      "phon_br": "/dɒt/",
+      "phon_n_am": "/dɑːt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "точка",
+          "examples": [
+            {
+              "en": "dots and dashes",
+              "ru": "точки и тире (в азбуке Морзе)"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пятнышко",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "точка для удлинения предшествующей ноты",
+          "examples": [],
+          "register": [
+            "музыка"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "крошечная вещь",
+          "examples": [
+            {
+              "en": "a dot of a child",
+              "ru": "крошка, малютка"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ставить точки",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "отмечать пунктиром",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "усеивать, испещрять",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "треснуть, стукнуть",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 8
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "off one's dot",
+          "partOfSpeech": "noun",
+          "translation": "чокнутый",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 1
+        }
+      ]
+    },
+    "after": {
+      "word": "dot",
+      "frequency_rank": 3642,
+      "cefr": "b2",
+      "phon_br": "/dɒt/",
+      "phon_n_am": "/dɑːt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "точка",
+          "examples": [
+            {
+              "en": "dots and dashes",
+              "ru": "точки и тире (в азбуке Морзе)"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пятнышко",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "точка для удлинения предшествующей ноты",
+          "examples": [],
+          "register": [
+            "музыка"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "крошечная вещь",
+          "examples": [
+            {
+              "en": "a dot of a child",
+              "ru": "крошка, малютка"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ставить точки",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "отмечать пунктиром",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "усеивать, испещрять",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "треснуть, стукнуть",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 8
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "off one's dot",
+          "partOfSpeech": "noun",
+          "translation": "чокнутый",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 1
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для dot stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 194, 194, 21255; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  },
+  {
+    "word": "double",
+    "entry_index": 20,
+    "before": {
+      "word": "double",
+      "frequency_rank": 816,
+      "cefr": "a2",
+      "phon_br": "/ˈdʌbl/",
+      "phon_n_am": "/ˈdʌbl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "двойное количество",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "двойная порция спиртного",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "двойник",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "дубликат, дублет",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "прототип",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "дублёр",
+          "examples": [],
+          "register": [
+            "театр"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "актёр, исполняющий в пьесе две роли",
+          "examples": [],
+          "register": [
+            "театр"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: парные игры (напр., в теннисе)",
+          "examples": [
+            {
+              "en": "mixed doubles",
+              "ru": "игра смешанных пар (каждая из мужчины и женщины)"
+            }
+          ],
+          "register": [
+            "спортивное",
+            "британское"
+          ],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "крутой поворот (преследуемого зверя); петля (зайца)",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "изгиб (реки)",
+          "examples": [],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "хитрость",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "беглый шаг",
+          "examples": [
+            {
+              "en": "to advance at the double",
+              "ru": "наступать бегом"
+            },
+            {
+              "en": "at the double",
+              "ru": "мигом, бегом"
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "id": 12,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "двойной, сдвоенный; парный",
+          "examples": [
+            {
+              "en": "double chin",
+              "ru": "двойной подбородок"
+            },
+            {
+              "en": "double bed",
+              "ru": "двуспальная кровать"
+            }
+          ],
+          "register": [],
+          "id": 13,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "удвоенный; усиленный",
+          "examples": [
+            {
+              "en": "double whisky",
+              "ru": "двойное виски"
+            },
+            {
+              "en": "double brush",
+              "ru": "перен. язвительное замечание"
+            },
+            {
+              "en": "double speed",
+              "ru": "удвоенная скорость"
+            },
+            {
+              "en": "double feature.",
+              "ru": "представление по расширенной программе"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "разговорное",
+            "театр"
+          ],
+          "id": 14,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "махровый",
+          "examples": [],
+          "register": [
+            "ботаника"
+          ],
+          "id": 15,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "двоякий, двойной",
+          "examples": [],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "двойственный, двуличный; двусмысленный; двуличие, лицемерие",
+          "examples": [
+            {
+              "en": "double game",
+              "ru": "двойная игра"
+            }
+          ],
+          "register": [],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "удваивать(ся); сдваивать",
+          "examples": [
+            {
+              "en": "to double the work",
+              "ru": "сделать двойную работу"
+            },
+            {
+              "en": "to double for smth.",
+              "ru": "одновременно служить для чего-либо другого"
+            },
+            {
+              "en": "the indoors basketball court doubled for dances on weekends",
+              "ru": "баскетбольный зал по субботам использовался для танцев"
+            }
+          ],
+          "register": [],
+          "id": 18,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быть вдвое больше",
+          "examples": [],
+          "register": [],
+          "id": 19,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "складывать вдвое",
+          "examples": [],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "исполнять в пьесе две роли",
+          "examples": [
+            {
+              "en": "he's doubling the parts of a servant and a country labourer",
+              "ru": "он исполняет роль слуги и роль батрака"
+            }
+          ],
+          "register": [
+            "театр"
+          ],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "дублировать роль",
+          "examples": [],
+          "register": [
+            "театр"
+          ],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "замещать",
+          "examples": [],
+          "register": [],
+          "id": 23,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "дублировать",
+          "examples": [],
+          "register": [
+            "кинематография"
+          ],
+          "id": 24
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "запутывать след, делать петли (о преследуемом звере)",
+          "examples": [],
+          "register": [],
+          "id": 25
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делать изгиб (о реке)",
+          "examples": [],
+          "register": [],
+          "id": 26
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "огибать (мыс)",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 27
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "сжимать (кулак)",
+          "examples": [],
+          "register": [],
+          "id": 28
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "двигаться беглым шагом",
+          "examples": [
+            {
+              "en": "double in",
+              "ru": "подогнуть"
+            },
+            {
+              "en": "doubled up with pain",
+              "ru": "скрючившийся от боли"
+            },
+            {
+              "en": "his knees doubled up under him",
+              "ru": "колени у него подгибались"
+            },
+            {
+              "en": "double upon",
+              "ru": "обойти, окружить (неприятельский флот)"
+            },
+            {
+              "en": "double back",
+              "ru": "запутывать след (о преследуемом звере); убегать обратно по собственным следам; загнуть внутрь"
+            }
+          ],
+          "register": [
+            "военное",
+            "морской термин"
+          ],
+          "id": 29
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "вдвойне, вдвое",
+          "examples": [],
+          "register": [],
+          "id": 30,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "вдвоём",
+          "examples": [
+            {
+              "en": "to ride double",
+              "ru": "ехать вдвоём на одной лошади"
+            }
+          ],
+          "register": [],
+          "id": 31,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "double back",
+          "partOfSpeech": "verb",
+          "translation": "запутывать след (о преследуемом звере); убегать обратно по собственным следам",
+          "examples": [],
+          "register": [
+            "театр"
+          ]
+        },
+        {
+          "id": 2,
+          "phrase": "double in",
+          "partOfSpeech": "verb",
+          "translation": "подогнуть; загнуть внутрь",
+          "examples": [],
+          "register": [
+            "кино"
+          ]
+        },
+        {
+          "id": 3,
+          "phrase": "double up",
+          "partOfSpeech": "verb",
+          "translation": "скрючить(ся); сгибаться",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "he sees double",
+          "partOfSpeech": "noun",
+          "translation": "у него двоится в глазах (о пьяном)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "double",
+      "frequency_rank": 816,
+      "cefr": "a2",
+      "phon_br": "/ˈdʌbl/",
+      "phon_n_am": "/ˈdʌbl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "двойное количество",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "двойная порция спиртного",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "двойник",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "дубликат, дублет",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "прототип",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "дублёр",
+          "examples": [],
+          "register": [
+            "театр"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "актёр, исполняющий в пьесе две роли",
+          "examples": [],
+          "register": [
+            "театр"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: парные игры (напр., в теннисе)",
+          "examples": [
+            {
+              "en": "mixed doubles",
+              "ru": "игра смешанных пар (каждая из мужчины и женщины)"
+            }
+          ],
+          "register": [
+            "спортивное",
+            "британское"
+          ],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "крутой поворот (преследуемого зверя); петля (зайца)",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "изгиб (реки)",
+          "examples": [],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "хитрость",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "беглый шаг",
+          "examples": [
+            {
+              "en": "to advance at the double",
+              "ru": "наступать бегом"
+            },
+            {
+              "en": "at the double",
+              "ru": "мигом, бегом"
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "id": 12,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "двойной, сдвоенный; парный",
+          "examples": [
+            {
+              "en": "double chin",
+              "ru": "двойной подбородок"
+            },
+            {
+              "en": "double bed",
+              "ru": "двуспальная кровать"
+            }
+          ],
+          "register": [],
+          "id": 13,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "удвоенный; усиленный",
+          "examples": [
+            {
+              "en": "double whisky",
+              "ru": "двойное виски"
+            },
+            {
+              "en": "double brush",
+              "ru": "перен. язвительное замечание"
+            },
+            {
+              "en": "double speed",
+              "ru": "удвоенная скорость"
+            },
+            {
+              "en": "double feature.",
+              "ru": "представление по расширенной программе"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "разговорное",
+            "театр"
+          ],
+          "id": 14,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "махровый",
+          "examples": [],
+          "register": [
+            "ботаника"
+          ],
+          "id": 15,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "двоякий, двойной",
+          "examples": [],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "двойственный, двуличный; двусмысленный; двуличие, лицемерие",
+          "examples": [
+            {
+              "en": "double game",
+              "ru": "двойная игра"
+            }
+          ],
+          "register": [],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "удваивать(ся); сдваивать",
+          "examples": [
+            {
+              "en": "to double the work",
+              "ru": "сделать двойную работу"
+            },
+            {
+              "en": "to double for smth.",
+              "ru": "одновременно служить для чего-либо другого"
+            },
+            {
+              "en": "the indoors basketball court doubled for dances on weekends",
+              "ru": "баскетбольный зал по субботам использовался для танцев"
+            }
+          ],
+          "register": [],
+          "id": 18,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быть вдвое больше",
+          "examples": [],
+          "register": [],
+          "id": 19,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "складывать вдвое",
+          "examples": [],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "исполнять в пьесе две роли",
+          "examples": [
+            {
+              "en": "he's doubling the parts of a servant and a country labourer",
+              "ru": "он исполняет роль слуги и роль батрака"
+            }
+          ],
+          "register": [
+            "театр"
+          ],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "дублировать роль",
+          "examples": [],
+          "register": [
+            "театр"
+          ],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "замещать",
+          "examples": [],
+          "register": [],
+          "id": 23,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "дублировать",
+          "examples": [],
+          "register": [
+            "кинематография"
+          ],
+          "id": 24
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "запутывать след, делать петли (о преследуемом звере)",
+          "examples": [],
+          "register": [],
+          "id": 25
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делать изгиб (о реке)",
+          "examples": [],
+          "register": [],
+          "id": 26
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "огибать (мыс)",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 27
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "сжимать (кулак)",
+          "examples": [],
+          "register": [],
+          "id": 28
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "двигаться беглым шагом",
+          "examples": [
+            {
+              "en": "double in",
+              "ru": "подогнуть"
+            },
+            {
+              "en": "doubled up with pain",
+              "ru": "скрючившийся от боли"
+            },
+            {
+              "en": "his knees doubled up under him",
+              "ru": "колени у него подгибались"
+            },
+            {
+              "en": "double upon",
+              "ru": "обойти, окружить (неприятельский флот)"
+            },
+            {
+              "en": "double back",
+              "ru": "запутывать след (о преследуемом звере); убегать обратно по собственным следам; загнуть внутрь"
+            }
+          ],
+          "register": [
+            "военное",
+            "морской термин"
+          ],
+          "id": 29
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "вдвойне, вдвое",
+          "examples": [],
+          "register": [],
+          "id": 30,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "вдвоём",
+          "examples": [
+            {
+              "en": "to ride double",
+              "ru": "ехать вдвоём на одной лошади"
+            }
+          ],
+          "register": [],
+          "id": 31,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "double back",
+          "partOfSpeech": "verb",
+          "translation": "запутывать след (о преследуемом звере); убегать обратно по собственным следам",
+          "examples": [],
+          "register": [
+            "театр"
+          ]
+        },
+        {
+          "id": 2,
+          "phrase": "double in",
+          "partOfSpeech": "verb",
+          "translation": "подогнуть; загнуть внутрь",
+          "examples": [],
+          "register": [
+            "кино"
+          ]
+        },
+        {
+          "id": 3,
+          "phrase": "double up",
+          "partOfSpeech": "verb",
+          "translation": "скрючить(ся); сгибаться",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "he sees double",
+          "partOfSpeech": "noun",
+          "translation": "у него двоится в глазах (о пьяном)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для double stage_06 подтверждает наличие/отсутствие статьи, но не доказывает безопасного улучшения текущего перевода или примеров: 4 из 4 источников дали совпадение; локаторы 58, 75, 75, 7116; 0 источника(ов) сообщили отсутствие.",
+    "confidence": 0.91
+  }
+]

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 281, in <module>
+    raise SystemExit(main())
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 244, in main
+    run_worker(worker, stage, prompt, output)
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 58, in run_worker
+    expanded = expand_records(payload, json.loads(prompt.read_text()))
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/report_delta.py", line 74, in expand_records
+    record=patch(base,record['edits'])
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/report_delta.py", line 38, in patch
+    parent = parent[int(key)] if isinstance(parent, list) and re.fullmatch(r'0|[1-9][0-9]*', key) else parent[key]
+KeyError: 'meanings'

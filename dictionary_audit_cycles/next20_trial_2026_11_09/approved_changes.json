@@ -1,0 +1,2283 @@
+[
+  {
+    "word": "number",
+    "meaning_index": 2,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "при мн. ч.: большое количество; многочисленность",
+      "examples": [
+        {
+          "en": "numbers of people",
+          "ru": "много народу"
+        }
+      ],
+      "register": [
+        "британское"
+      ],
+      "id": 3
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "при мн. ч.: большое количество; многочисленность",
+      "examples": [
+        {
+          "en": "numbers of people",
+          "ru": "много народу"
+        }
+      ],
+      "register": [],
+      "id": 3
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "0d3a127f1bb4b458f6545d1cae9e5db4bc8b3b03c1502d6bb26354fff35cda39",
+    "candidate_sha256": null,
+    "dataset_index": 2995
+  },
+  {
+    "word": "city",
+    "meaning_index": 1,
+    "before_meaning": {
+      "id": 2,
+      "partOfSpeech": "noun",
+      "translation": "финансовые и коммерческие круги Лондона",
+      "examples": [
+        {
+          "en": "the C.",
+          "ru": "Сити, деловой квартал в центре Лондона"
+        }
+      ],
+      "register": [
+        "финансы"
+      ],
+      "primary": true
+    },
+    "after_meaning": {
+      "id": 2,
+      "partOfSpeech": "noun",
+      "translation": "the City — Сити, деловой квартал в центре Лондона; финансовые и коммерческие круги Лондона",
+      "examples": [
+        {
+          "en": "the C.",
+          "ru": "Сити, деловой квартал в центре Лондона"
+        }
+      ],
+      "register": [
+        "финансы"
+      ],
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "2119d45c284cb5d16e3736c9c81614b180acceed6aa5c3e3be8c42dce8fc1d66",
+    "candidate_sha256": null,
+    "dataset_index": 732
+  },
+  {
+    "word": "lot",
+    "meaning_index": 12,
+    "before_meaning": {
+      "partOfSpeech": "adverb",
+      "translation": "гораздо, намного",
+      "examples": [],
+      "register": [
+        "медицинское"
+      ],
+      "id": 13,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "adverb",
+      "translation": "гораздо, намного (в сочетании a lot)",
+      "examples": [
+        {
+          "en": "This is a lot nicer.",
+          "ru": "Это гораздо приятнее."
+        }
+      ],
+      "register": [],
+      "id": 13,
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "e5d3eddcac7a0d2d7a4127e7299d9732b4f704c8b43547114bcc2311b3a582ed",
+    "candidate_sha256": "a02fe181c7cfd19c0823e84670e07e4ffb624af38475b2835f2e58105bed1822",
+    "dataset_index": 2646
+  },
+  {
+    "word": "name",
+    "meaning_index": 2,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "(обыкн. при мн. ч.:) брань",
+      "examples": [
+        {
+          "en": "to call names",
+          "ru": "ругать(ся)"
+        }
+      ],
+      "register": [
+        "британское"
+      ],
+      "id": 3
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "(обыкн. при мн. ч.:) брань",
+      "examples": [
+        {
+          "en": "to call names",
+          "ru": "ругать(ся)"
+        }
+      ],
+      "register": [],
+      "id": 3
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "b554366daefa2c68004098110636b31664f8efb1c2cd844130b37afacc083697",
+    "candidate_sha256": null,
+    "dataset_index": 2902
+  },
+  {
+    "word": "name",
+    "meaning_index": 8,
+    "before_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "называть, давать имя",
+      "examples": [
+        {
+          "en": "to name after, to name for",
+          "ru": "называть в честь (кого-либо)"
+        }
+      ],
+      "register": [
+        "американский английский"
+      ],
+      "id": 9,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "называть, давать имя; name after и американское name for — называть в честь кого-либо",
+      "examples": [
+        {
+          "en": "to name after, to name for",
+          "ru": "называть в честь (кого-либо)"
+        }
+      ],
+      "register": [],
+      "id": 9,
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "9ac66668c0eb4ed473f500e3eb1a320d89cbce6c5fab59d334e88797608376b2",
+    "candidate_sha256": null,
+    "dataset_index": 2902
+  },
+  {
+    "word": "night",
+    "meaning_index": 0,
+    "before_meaning": {
+      "id": 1,
+      "partOfSpeech": "noun",
+      "translation": "ночь; вечер; всю ночь напролёт",
+      "examples": [
+        {
+          "en": "last night",
+          "ru": "вчера вечером"
+        },
+        {
+          "en": "night after night, night by night",
+          "ru": "каждую ночь"
+        },
+        {
+          "en": "at night",
+          "ru": "ночью"
+        },
+        {
+          "en": "by night",
+          "ru": "в течение ночи"
+        },
+        {
+          "en": "night fell",
+          "ru": "наступила ночь"
+        },
+        {
+          "en": "far into the night",
+          "ru": "далеко за полночь"
+        },
+        {
+          "en": "night out",
+          "ru": "ночь, проведённая вне дома (особ. в развлечениях)"
+        },
+        {
+          "en": "to have a night off",
+          "ru": "иметь свободный вечер"
+        },
+        {
+          "en": "all night (long)",
+          "ru": "в течение всей ночи"
+        },
+        {
+          "en": "o'(= on) nights",
+          "ru": "по ночам",
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "en": "to have a good (bad) night",
+          "ru": "хорошо (плохо) спать ночь"
+        },
+        {
+          "en": "to have a (or the) night out",
+          "ru": "прокутить всю ночь; под покровом ночи; выходной вечер прислуги; иметь выходной вечер (о прислуге)"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "after_meaning": {
+      "id": 1,
+      "partOfSpeech": "noun",
+      "translation": "ночь; вечер",
+      "examples": [
+        {
+          "en": "last night",
+          "ru": "вчера вечером"
+        },
+        {
+          "en": "night after night, night by night",
+          "ru": "каждую ночь"
+        },
+        {
+          "en": "at night",
+          "ru": "ночью"
+        },
+        {
+          "en": "by night",
+          "ru": "в течение ночи"
+        },
+        {
+          "en": "night fell",
+          "ru": "наступила ночь"
+        },
+        {
+          "en": "far into the night",
+          "ru": "далеко за полночь"
+        },
+        {
+          "en": "night out",
+          "ru": "ночь, проведённая вне дома (особ. в развлечениях)"
+        },
+        {
+          "en": "to have a night off",
+          "ru": "иметь свободный вечер"
+        },
+        {
+          "en": "all night (long)",
+          "ru": "в течение всей ночи"
+        },
+        {
+          "en": "o'(= on) nights",
+          "ru": "по ночам",
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "en": "to have a good (bad) night",
+          "ru": "хорошо (плохо) спать ночь"
+        },
+        {
+          "en": "to have a (or the) night out",
+          "ru": "прокутить всю ночь; под покровом ночи; выходной вечер прислуги; иметь выходной вечер (о прислуге)"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "17c7cc85631e1235788e806c6d0e68d2f46a24c5578d069f69345c8a11108532",
+    "candidate_sha256": null,
+    "dataset_index": 2951
+  },
+  {
+    "word": "company",
+    "meaning_index": 2,
+    "before_meaning": {
+      "id": 3,
+      "partOfSpeech": "noun",
+      "translation": "труппа, ансамбль артистов",
+      "examples": [
+        {
+          "en": "stock company",
+          "ru": "постоянная труппа"
+        }
+      ],
+      "register": [
+        "коммерческое"
+      ]
+    },
+    "after_meaning": {
+      "id": 3,
+      "partOfSpeech": "noun",
+      "translation": "труппа, ансамбль артистов",
+      "examples": [
+        {
+          "en": "stock company",
+          "ru": "постоянная труппа"
+        }
+      ],
+      "register": [
+        "театр"
+      ]
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "61da8f7e1330607f24da6f7cae8a533a24356417bb95a068736f1daaefb01117",
+    "candidate_sha256": null,
+    "dataset_index": 834
+  },
+  {
+    "word": "company",
+    "meaning_index": 4,
+    "before_meaning": {
+      "id": 5,
+      "partOfSpeech": "noun",
+      "translation": "ротный",
+      "examples": [],
+      "register": []
+    },
+    "after_meaning": {
+      "id": 5,
+      "partOfSpeech": "noun",
+      "translation": "ротный (company перед другим существительным)",
+      "examples": [
+        {
+          "en": "The company commander spoke to the recruits.",
+          "ru": "Ротный командир поговорил с новобранцами."
+        }
+      ],
+      "register": [
+        "военное"
+      ]
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "49d4814c0c738ac1bb3fe985dd4c1d0081d543471b6ef0cd165a9ed52fb70042",
+    "candidate_sha256": "9dad116e5678aa9c0c8fd85af80135ad89617ad195462ca236c33f6a4532099f",
+    "dataset_index": 834
+  },
+  {
+    "word": "let",
+    "meaning_index": 1,
+    "before_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "позволять, разрешать; давать возможность",
+      "examples": [
+        {
+          "en": "to let a fire (go) out",
+          "ru": "дать огню потухнуть"
+        },
+        {
+          "en": "to let loose",
+          "ru": "выпустить, дать волю, свободу"
+        },
+        {
+          "en": "to let blood",
+          "ru": "пускать кровь"
+        },
+        {
+          "en": "to let oneself go",
+          "ru": "дать волю себе, своим чувствам"
+        },
+        {
+          "en": "to let smth. pass",
+          "ru": "не обратить внимания"
+        },
+        {
+          "en": "to let slip the chance",
+          "ru": "упустить случай"
+        },
+        {
+          "en": "to let smb. see",
+          "ru": "показать, дать понять кому-либо"
+        },
+        {
+          "en": "to let smb. know",
+          "ru": "дать знать, сообщить кому-либо"
+        },
+        {
+          "en": "to let things slide (or go hang)",
+          "ru": "не обращать внимания, относиться небрежно"
+        }
+      ],
+      "register": [],
+      "id": 2,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "пускать, давать; позволять чему-либо произойти, давать возможность",
+      "examples": [
+        {
+          "en": "to let a fire (go) out",
+          "ru": "дать огню потухнуть"
+        },
+        {
+          "en": "to let loose",
+          "ru": "выпустить, дать волю, свободу"
+        },
+        {
+          "en": "to let blood",
+          "ru": "пускать кровь"
+        },
+        {
+          "en": "to let oneself go",
+          "ru": "дать волю себе, своим чувствам"
+        },
+        {
+          "en": "to let smth. pass",
+          "ru": "не обратить внимания"
+        },
+        {
+          "en": "to let slip the chance",
+          "ru": "упустить случай"
+        },
+        {
+          "en": "to let smb. see",
+          "ru": "показать, дать понять кому-либо"
+        },
+        {
+          "en": "to let smb. know",
+          "ru": "дать знать, сообщить кому-либо"
+        },
+        {
+          "en": "to let things slide (or go hang)",
+          "ru": "не обращать внимания, относиться небрежно"
+        }
+      ],
+      "register": [],
+      "id": 2,
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "742c8367186562147d56f5a6422d5d3713b36969762467caa9dd4b3d72480249",
+    "candidate_sha256": null,
+    "dataset_index": 2568
+  },
+  {
+    "word": "let",
+    "meaning_index": 5,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "сдача внаём",
+      "examples": [],
+      "register": [
+        "устаревшее"
+      ],
+      "id": 6,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "сдача внаём",
+      "examples": [
+        {
+          "en": "The landlord agreed to a six-month let.",
+          "ru": "Владелец согласился сдать жильё на шесть месяцев."
+        }
+      ],
+      "register": [],
+      "id": 6,
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "b624e3e5837fe374b8f26f7b30e1d742d6d71e06bd49f61586d04affc723422e",
+    "candidate_sha256": "6c4df55e5fe870c9edb8120084f074c6b358c516970d7259d741fd3bbdf9d0b9",
+    "dataset_index": 2568
+  },
+  {
+    "word": "let",
+    "meaning_index": 6,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "помеха; препятствие",
+      "examples": [],
+      "register": [],
+      "id": 7,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "помеха; препятствие",
+      "examples": [],
+      "register": [
+        "устаревшее"
+      ],
+      "id": 7,
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "66d300815163cd22529e23502aa9b69531df3d2fc0cce6fcd080f42786b91a42",
+    "candidate_sha256": null,
+    "dataset_index": 2568
+  },
+  {
+    "word": "real",
+    "meaning_index": 4,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "действительность",
+      "examples": [],
+      "register": [],
+      "id": 5
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "действительность (the real)",
+      "examples": [
+        {
+          "en": "The film blurs the line between the real and the imagined.",
+          "ru": "Фильм стирает границу между действительностью и воображаемым."
+        }
+      ],
+      "register": [],
+      "id": 5
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "c39d90a19b6f3027e03ffffa229bd5201c93af79df1121c378851e2f5c9c517a",
+    "candidate_sha256": "af664fc1f3ac9849a31d9a395402c372cd38a8742074c80a763f128a39845bac",
+    "dataset_index": 3590
+  },
+  {
+    "word": "thought",
+    "meaning_index": 5,
+    "before_meaning": {
+      "id": 6,
+      "partOfSpeech": "noun",
+      "translation": "обыкн. при мн. ч.: соображения, мысли, мнение",
+      "examples": [],
+      "register": [
+        "британское"
+      ]
+    },
+    "after_meaning": {
+      "id": 6,
+      "partOfSpeech": "noun",
+      "translation": "обыкн. при мн. ч.: соображения, мысли, мнение",
+      "examples": [
+        {
+          "en": "What are your thoughts on the new plan?",
+          "ru": "Что ты думаешь о новом плане?"
+        }
+      ],
+      "register": []
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "1685da20f0c809d5e0d4bc4408cc04f1d0661bce82b27eba813873c40b7cf904",
+    "candidate_sha256": "0864ec5fdb263b0a7aca2e0ab9699e761820891a1adb2bbcb73a8f14bb8a842a",
+    "dataset_index": 4511
+  },
+  {
+    "word": "god",
+    "meaning_index": 1,
+    "before_meaning": {
+      "id": 2,
+      "partOfSpeech": "noun",
+      "translation": "Бог (в восклицаниях и пожеланиях)",
+      "examples": [
+        {
+          "en": "(G.)",
+          "ru": "Всевышний, Бог"
+        },
+        {
+          "en": "G. 's truth",
+          "ru": "истинная правда"
+        },
+        {
+          "en": "my G.!",
+          "ru": "Боже мой!"
+        },
+        {
+          "en": "by G.",
+          "ru": "ей-богу!"
+        },
+        {
+          "en": "G. Almighty",
+          "ru": "Боже Всемогущий"
+        }
+      ],
+      "register": [
+        "разговорное"
+      ],
+      "primary": true
+    },
+    "after_meaning": {
+      "id": 2,
+      "partOfSpeech": "noun",
+      "translation": "Бог, Всевышний (God с прописной буквы; также в восклицаниях и пожеланиях)",
+      "examples": [
+        {
+          "en": "(G.)",
+          "ru": "Всевышний, Бог"
+        },
+        {
+          "en": "G. 's truth",
+          "ru": "истинная правда"
+        },
+        {
+          "en": "my G.!",
+          "ru": "Боже мой!"
+        },
+        {
+          "en": "by G.",
+          "ru": "ей-богу!"
+        },
+        {
+          "en": "G. Almighty",
+          "ru": "Боже Всемогущий"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "c90e5c496453214fb8e6698a53af0f7ed5eed7eba0a514c435d7ea44ffd8fd9a",
+    "candidate_sha256": null,
+    "dataset_index": 1988
+  },
+  {
+    "word": "god",
+    "meaning_index": 4,
+    "before_meaning": {
+      "id": 5,
+      "partOfSpeech": "noun",
+      "translation": "идол, кумир",
+      "examples": [
+        {
+          "en": "to make a god of smb",
+          "ru": "боготворить кого-либо"
+        }
+      ],
+      "register": [
+        "редкое"
+      ],
+      "primary": true
+    },
+    "after_meaning": {
+      "id": 5,
+      "partOfSpeech": "noun",
+      "translation": "идол, кумир",
+      "examples": [
+        {
+          "en": "to make a god of smb",
+          "ru": "боготворить кого-либо"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "3059c720de1fda19b6e6328ab7a4e9429e2143ba5bcc877c913b3d17016990b5",
+    "candidate_sha256": null,
+    "dataset_index": 1988
+  },
+  {
+    "word": "god",
+    "meaning_index": 5,
+    "before_meaning": {
+      "id": 6,
+      "partOfSpeech": "noun",
+      "translation": "публика галёрки",
+      "examples": [],
+      "register": []
+    },
+    "after_meaning": {
+      "id": 6,
+      "partOfSpeech": "noun",
+      "translation": "галёрка, раёк; публика галёрки (the gods)",
+      "examples": [
+        {
+          "en": "We watched the show from the gods.",
+          "ru": "Мы смотрели спектакль с галёрки."
+        }
+      ],
+      "register": [
+        "театр"
+      ]
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "b6cdfeb9d6d35af9ce4831cdf4d2556da70c23e3a7a4e0e63c8f0c227884774d",
+    "candidate_sha256": "ed1ddbe4cd66203d75b558cd55e1ed8edf2de0ad760a016c53b16037307bbc76",
+    "dataset_index": 1988
+  },
+  {
+    "word": "god",
+    "meaning_index": 6,
+    "before_meaning": {
+      "id": 7,
+      "partOfSpeech": "verb",
+      "translation": "обожествлять; боготворить",
+      "examples": [],
+      "register": []
+    },
+    "after_meaning": {
+      "id": 7,
+      "partOfSpeech": "verb",
+      "translation": "обожествлять; боготворить",
+      "examples": [],
+      "register": [
+        "редкое"
+      ]
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "d322d1602e58b625bced53da8a2be987b319fcfb1a4e364a0fec8b12bad0d8e6",
+    "candidate_sha256": null,
+    "dataset_index": 1988
+  },
+  {
+    "word": "group",
+    "meaning_index": 2,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "при мн. ч.: слои, круги (общества)",
+      "examples": [
+        {
+          "en": "business groups",
+          "ru": "деловые круги"
+        }
+      ],
+      "register": [
+        "британское"
+      ],
+      "id": 3
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "при мн. ч.: слои, круги (общества)",
+      "examples": [
+        {
+          "en": "business groups",
+          "ru": "деловые круги"
+        }
+      ],
+      "register": [],
+      "id": 3
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "054222063da538178200cedfb5e622cced7b0261782f8862718dd6ec7f8c9af1",
+    "candidate_sha256": null,
+    "dataset_index": 2033
+  },
+  {
+    "word": "group",
+    "meaning_index": 4,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "группа",
+      "examples": [],
+      "register": [
+        "авиация"
+      ],
+      "id": 5
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "авиагруппа",
+      "examples": [
+        {
+          "en": "The squadron is part of No 1 Group.",
+          "ru": "Эскадрилья входит в состав 1-й авиагруппы."
+        }
+      ],
+      "register": [
+        "авиация"
+      ],
+      "id": 5
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "546597b739b7f1b31873cb943e1e1f33098dc63f8b88d8214ca641e04a0168c7",
+    "candidate_sha256": "b7bce8e2467976185616e20999c13f8ae1259bd57ed24aad02ff5e83bcf1290d",
+    "dataset_index": 2033
+  },
+  {
+    "word": "public",
+    "meaning_index": 3,
+    "before_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "коммунальный; коммунальные услуги",
+      "examples": [
+        {
+          "en": "public service",
+          "ru": "коммунальные услуги"
+        },
+        {
+          "en": "public utilities",
+          "ru": "коммунальные сооружения, предприятия"
+        }
+      ],
+      "register": [
+        "коммерческое"
+      ],
+      "id": 4
+    },
+    "after_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "коммунальный; в сочетании public utilities — коммунальные услуги, предприятия коммунального хозяйства",
+      "examples": [
+        {
+          "en": "public service",
+          "ru": "коммунальные услуги"
+        },
+        {
+          "en": "public utilities",
+          "ru": "коммунальные сооружения, предприятия"
+        }
+      ],
+      "register": [],
+      "id": 4
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "e194834a84db8b5ce4e0e0ddbb3ee307fc6d901fcf59b0700c043db77fc18957",
+    "candidate_sha256": null,
+    "dataset_index": 3505
+  },
+  {
+    "word": "public",
+    "meaning_index": 4,
+    "before_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "народный, общенародный; гражданственность",
+      "examples": [
+        {
+          "en": "public ownership",
+          "ru": "общенародное достояние"
+        },
+        {
+          "en": "public spirit",
+          "ru": "дух патриотизма"
+        }
+      ],
+      "register": [],
+      "id": 5
+    },
+    "after_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "народный, общенародный; в сочетании public spirit — гражданственность, дух патриотизма",
+      "examples": [
+        {
+          "en": "public ownership",
+          "ru": "общенародное достояние"
+        },
+        {
+          "en": "public spirit",
+          "ru": "дух патриотизма"
+        }
+      ],
+      "register": [],
+      "id": 5
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "0ac77e6a5170e81965d26751ba5d1f02c14222e2df8786bf550adc6f24d3c3f3",
+    "candidate_sha256": null,
+    "dataset_index": 3505
+  },
+  {
+    "word": "top",
+    "before_entry": {
+      "word": "top",
+      "frequency_rank": 215,
+      "cefr": "a2",
+      "phon_br": "/tɒp/",
+      "phon_n_am": "/tɑːp/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "верхушка, вершина (горы); макушка (головы, дерева)",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "верхний конец, верхняя поверхность; верх (экипажа, лестницы, страницы); крышка (кастрюли, банки); колпачок; верхний обрез (книги); с головы до пят",
+          "examples": [
+            {
+              "en": "top of milk",
+              "ru": "пенка молока"
+            },
+            {
+              "en": "from top to toe",
+              "ru": "с ног до головы"
+            },
+            {
+              "en": "from top to bottom",
+              "ru": "сверху донизу"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шпиль, купол",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "высшее, первое место; высокое положение",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "первый; человек, занимающий первое место",
+          "examples": [
+            {
+              "en": "he was top in maths",
+              "ru": "по математике он был лучшим учеником"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "блузка, джемпер, верх одежды или обуви",
+          "examples": [
+            {
+              "en": "pyjama top",
+              "ru": "пижамная куртка"
+            }
+          ],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "высшая степень; высшее напряжение",
+          "examples": [
+            {
+              "en": "at the top of one's voice",
+              "ru": "во весь голос"
+            },
+            {
+              "en": "at top speed",
+              "ru": "во весь опор"
+            }
+          ],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "(обыкн. при мн. ч.:) ботва (корнеплодов)",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: две старшие карты какой-либо масти (в бридже)",
+          "examples": [],
+          "register": [
+            "карточный термин",
+            "британское"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: отвороты (сапог); высокие сапоги с отворотами",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "кровля (выработки)",
+          "examples": [],
+          "register": [
+            "горное дело"
+          ],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "колошник",
+          "examples": [],
+          "register": [
+            "металлургия"
+          ],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "марс",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "верхний",
+          "examples": [
+            {
+              "en": "the top shelf",
+              "ru": "верхняя полка"
+            }
+          ],
+          "register": [],
+          "id": 14,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "наивысший, максимальный",
+          "examples": [
+            {
+              "en": "top speed",
+              "ru": "самая высшая скорость"
+            },
+            {
+              "en": "top price",
+              "ru": "самая высокая цена"
+            }
+          ],
+          "register": [],
+          "id": 15,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "самый главный",
+          "examples": [
+            {
+              "en": "top men",
+              "ru": "люди, занимающие самое высокое положение"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать (сверху); снабжать верхушкой, куполом и т. п.",
+          "examples": [
+            {
+              "en": "the mountain was topped with snow",
+              "ru": "вершина горы была покрыта снегом"
+            },
+            {
+              "en": "to top one's fruit",
+              "ru": "укладывать наверху лучшие фрукты"
+            }
+          ],
+          "register": [],
+          "id": 17,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обрезать верхушку (дерева и т. п.; тж. top up)",
+          "examples": [],
+          "register": [],
+          "id": 18,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "превосходить; быть во главе, быть первым",
+          "examples": [],
+          "register": [],
+          "id": 19
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "превышать; достигать какой-либо вершины, веса и т. п.",
+          "examples": [
+            {
+              "en": "he tops his father by a head",
+              "ru": "он на целую голову выше отца"
+            },
+            {
+              "en": "he tops six feet",
+              "ru": "он шести футов ростом"
+            }
+          ],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подняться на вершину; перевалить (через гору); перепрыгнуть (через что-либо)",
+          "examples": [],
+          "register": [],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать (новой краской и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать",
+          "examples": [
+            {
+              "en": "they topped off their dinner with fruit",
+              "ru": "в конце обеда им были поданы фрукты"
+            },
+            {
+              "en": "top off",
+              "ru": "отделывать; украшать; заканчивать, завершать"
+            }
+          ],
+          "register": [
+            "сельскохозяйственное"
+          ],
+          "id": 23
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "top off",
+          "partOfSpeech": "verb",
+          "translation": "отделывать; украшать; заканчивать, завершать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "top up",
+          "partOfSpeech": "verb",
+          "translation": "добавлять; доливать, досыпать (доверху); дозаправлять(ся)",
+          "examples": [],
+          "register": [
+            "автомобильное"
+          ]
+        },
+        {
+          "id": 3,
+          "phrase": "(a little bit) off the top",
+          "partOfSpeech": "noun",
+          "translation": "не в своём уме",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "to go over the top",
+          "partOfSpeech": "verb",
+          "translation": "а) воен. идти в атаку; б) сделать решительный шаг; начать решительно действовать",
+          "examples": [],
+          "register": [
+            "военное дело"
+          ]
+        },
+        {
+          "phrase": "to come to the top",
+          "partOfSpeech": "noun",
+          "translation": "занять видное положение",
+          "examples": [],
+          "register": [],
+          "id": 5
+        }
+      ]
+    },
+    "after_entry": {
+      "word": "top",
+      "frequency_rank": 215,
+      "cefr": "a2",
+      "phon_br": "/tɒp/",
+      "phon_n_am": "/tɑːp/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "верхушка, вершина (горы); макушка (головы, дерева)",
+          "examples": [
+            {
+              "en": "the tops of the trees",
+              "ru": "верхушки деревьев"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "верхний конец, верхняя поверхность; верх (экипажа, лестницы, страницы); крышка (кастрюли, банки); колпачок; верхний обрез (книги)",
+          "examples": [
+            {
+              "en": "top of milk",
+              "ru": "пенка молока"
+            },
+            {
+              "en": "from top to toe",
+              "ru": "с ног до головы"
+            },
+            {
+              "en": "from top to bottom",
+              "ru": "сверху донизу"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шпиль, купол",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "высшее, первое место; высокое положение",
+          "examples": [
+            {
+              "en": "She's at the top of the leaderboard.",
+              "ru": "Она занимает первое место в таблице лидеров."
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "первый; человек, занимающий первое место",
+          "examples": [
+            {
+              "en": "he was top in maths",
+              "ru": "по математике он был лучшим учеником"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "блузка, джемпер, верх одежды или обуви",
+          "examples": [
+            {
+              "en": "pyjama top",
+              "ru": "пижамная куртка"
+            }
+          ],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "высшая степень; высшее напряжение",
+          "examples": [
+            {
+              "en": "at the top of one's voice",
+              "ru": "во весь голос"
+            },
+            {
+              "en": "at top speed",
+              "ru": "во весь опор"
+            }
+          ],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "(обыкн. при мн. ч.:) ботва (корнеплодов)",
+          "examples": [
+            {
+              "en": "Cut the tops off the carrots.",
+              "ru": "Срежьте у моркови ботву."
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: две старшие карты какой-либо масти (в бридже)",
+          "examples": [],
+          "register": [
+            "карточный термин",
+            "британское"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: отвороты (сапог); высокие сапоги с отворотами",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "кровля (выработки)",
+          "examples": [],
+          "register": [
+            "горное дело"
+          ],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "колошник",
+          "examples": [],
+          "register": [
+            "металлургия"
+          ],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "марс",
+          "examples": [
+            {
+              "en": "The sailor climbed into the fighting top.",
+              "ru": "Моряк поднялся на боевой марс."
+            }
+          ],
+          "register": [
+            "морской термин"
+          ],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "верхний",
+          "examples": [
+            {
+              "en": "the top shelf",
+              "ru": "верхняя полка"
+            }
+          ],
+          "register": [],
+          "id": 14,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "наивысший, максимальный",
+          "examples": [
+            {
+              "en": "top speed",
+              "ru": "самая высшая скорость"
+            },
+            {
+              "en": "top price",
+              "ru": "самая высокая цена"
+            }
+          ],
+          "register": [],
+          "id": 15,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "самый главный",
+          "examples": [
+            {
+              "en": "top men",
+              "ru": "люди, занимающие самое высокое положение"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать (сверху); снабжать верхушкой, куполом и т. п.",
+          "examples": [
+            {
+              "en": "the mountain was topped with snow",
+              "ru": "вершина горы была покрыта снегом"
+            },
+            {
+              "en": "to top one's fruit",
+              "ru": "укладывать наверху лучшие фрукты"
+            }
+          ],
+          "register": [],
+          "id": 17,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обрезать верхушку (дерева и т. п.; тж. top up)",
+          "examples": [
+            {
+              "en": "The crew topped the young trees to keep them short.",
+              "ru": "Рабочие обрезали верхушки молодых деревьев, чтобы те оставались низкими."
+            }
+          ],
+          "register": [],
+          "id": 18,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "превосходить; быть во главе, быть первым",
+          "examples": [
+            {
+              "en": "The song topped the charts.",
+              "ru": "Песня возглавила хит-парады."
+            }
+          ],
+          "register": [],
+          "id": 19
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "превышать; достигать какой-либо вершины, веса и т. п.",
+          "examples": [
+            {
+              "en": "he tops his father by a head",
+              "ru": "он на целую голову выше отца"
+            },
+            {
+              "en": "he tops six feet",
+              "ru": "он шести футов ростом"
+            }
+          ],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подняться на вершину; перевалить (через гору); перепрыгнуть (через что-либо)",
+          "examples": [
+            {
+              "en": "The cyclists topped the hill and began the descent.",
+              "ru": "Велосипедисты поднялись на вершину холма и начали спуск."
+            }
+          ],
+          "register": [],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать (новой краской и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать",
+          "examples": [
+            {
+              "en": "they topped off their dinner with fruit",
+              "ru": "в конце обеда им были поданы фрукты"
+            },
+            {
+              "en": "top off",
+              "ru": "отделывать; украшать; заканчивать, завершать"
+            }
+          ],
+          "register": [
+            "сельскохозяйственное"
+          ],
+          "id": 23
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "top off",
+          "partOfSpeech": "verb",
+          "translation": "отделывать; украшать; заканчивать, завершать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "top up",
+          "partOfSpeech": "verb",
+          "translation": "добавлять; доливать, досыпать (доверху); дозаправлять(ся) (об автомобиле)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "(a little bit) off the top",
+          "partOfSpeech": "noun",
+          "translation": "не в своём уме",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "to go over the top",
+          "partOfSpeech": "verb",
+          "translation": "а) воен. идти в атаку; б) сделать решительный шаг; начать решительно действовать",
+          "examples": [],
+          "register": [
+            "военное дело"
+          ]
+        },
+        {
+          "phrase": "to come to the top",
+          "partOfSpeech": "noun",
+          "translation": "занять видное положение",
+          "examples": [],
+          "register": [],
+          "id": 5
+        }
+      ]
+    },
+    "entry_review_sha256": "7bec7a44bd925a43c5886ee20a6d6c9afc00150036aed7e8f08cbd66f848c7f1",
+    "candidate_hashes": [
+      "4e5916a5646d805c01dad6c2d63bd2e19723ec42d0903162e5b105704a040e99",
+      "3c1119278d801afa8f5fe034656fb5ac76b247e1678eaccca0876115b8eb8e1e",
+      "94db374f8b9b996715db6929bc2ace1c896ea59b19daabb62dccac159f58ba4e",
+      "3beb12d9f06555c19cf087692429a04604f5ba4f0cd986fc462e23a5c60e1a21",
+      "a180b46fe4f5ecfea037f4347ced6cf68b579243e7129502c9728b2af58d9c7a",
+      "6339cdfcd55d5d2ddf8c9ac9386b66ac0711e34bbe75ea3bd15ecd4aba218d71",
+      "5d930de57dea826abe35f31130eeafda1ff04cd348f470438b5af7f45e202c80"
+    ],
+    "decision": "изменить",
+    "dataset_index": 4565
+  },
+  {
+    "word": "business",
+    "before_entry": {
+      "word": "business",
+      "frequency_rank": 216,
+      "cefr": "a1",
+      "phon_br": "/ˈbɪznəs/",
+      "phon_n_am": "/ˈbɪznəs/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "дело, занятие",
+          "examples": [
+            {
+              "en": "on business",
+              "ru": "по делу"
+            },
+            {
+              "en": "to be out of business",
+              "ru": "обанкротиться"
+            },
+            {
+              "en": "man of business",
+              "ru": "деловой человек"
+            },
+            {
+              "en": "the business of the day (or meeting)",
+              "ru": "повестка дня агент, поверенный"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "профессия",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "обязанность; право",
+          "examples": [
+            {
+              "en": "to make it one's business",
+              "ru": "считать своей обязанностью"
+            },
+            {
+              "en": "you had no business to do it",
+              "ru": "вы не имели основания, права это делать"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "дело, история",
+          "examples": [
+            {
+              "en": "I am sick of the whole business",
+              "ru": "мне вся эта история надоела"
+            }
+          ],
+          "register": [
+            "пренебрежительное"
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "торговое предприятие, фирма",
+          "examples": [],
+          "register": [
+            "торговля"
+          ]
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "бизнес; коммерческая деятельность",
+          "examples": [
+            {
+              "en": "to set up in business",
+              "ru": "начать торговое дело"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "(выгодная) сделка",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "действие, игра, мимика, жесты (не диалог)",
+          "examples": [],
+          "register": [
+            "театр"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "noun",
+          "translation": "практический, деловой; «капитаны» промышленности",
+          "examples": [
+            {
+              "en": "the business end",
+              "ru": "практическая, наиболее важная сторона дела"
+            },
+            {
+              "en": "business hours",
+              "ru": "часы торговли или приёма"
+            },
+            {
+              "en": "business executives",
+              "ru": "руководящий административный персонал"
+            },
+            {
+              "en": "business interests",
+              "ru": "деловой мир, деловые круги"
+            }
+          ],
+          "register": []
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "what is your business here?",
+          "partOfSpeech": "noun",
+          "translation": "что вам здесь надо?",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "it has done his business",
+          "partOfSpeech": "noun",
+          "translation": "это его доконало",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after_entry": {
+      "word": "business",
+      "frequency_rank": 216,
+      "cefr": "a1",
+      "phon_br": "/ˈbɪznəs/",
+      "phon_n_am": "/ˈbɪznəs/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "дело, занятие",
+          "examples": [
+            {
+              "en": "on business",
+              "ru": "по делу"
+            },
+            {
+              "en": "to be out of business",
+              "ru": "обанкротиться"
+            },
+            {
+              "en": "man of business",
+              "ru": "деловой человек"
+            },
+            {
+              "en": "the business of the day (or meeting)",
+              "ru": "повестка дня агент, поверенный"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "профессия",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "обязанность; право",
+          "examples": [
+            {
+              "en": "to make it one's business",
+              "ru": "считать своей обязанностью"
+            },
+            {
+              "en": "you had no business to do it",
+              "ru": "вы не имели основания, права это делать"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "дело, история",
+          "examples": [
+            {
+              "en": "I am sick of the whole business",
+              "ru": "мне вся эта история надоела"
+            }
+          ],
+          "register": [
+            "пренебрежительное"
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "торговое предприятие, фирма",
+          "examples": [
+            {
+              "en": "She runs a small business.",
+              "ru": "Она руководит небольшой фирмой."
+            }
+          ],
+          "register": [
+            "торговля"
+          ]
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "бизнес; коммерческая деятельность",
+          "examples": [
+            {
+              "en": "to set up in business",
+              "ru": "начать торговое дело"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "(выгодная) сделка",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "действие, игра, мимика, жесты (не диалог)",
+          "examples": [],
+          "register": [
+            "театр"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "noun",
+          "translation": "практический, деловой (business перед другим существительным)",
+          "examples": [
+            {
+              "en": "the business end",
+              "ru": "практическая, наиболее важная сторона дела"
+            },
+            {
+              "en": "business hours",
+              "ru": "часы торговли или приёма"
+            },
+            {
+              "en": "business executives",
+              "ru": "руководящий административный персонал"
+            },
+            {
+              "en": "business interests",
+              "ru": "деловой мир, деловые круги"
+            }
+          ],
+          "register": []
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "what is your business here?",
+          "partOfSpeech": "noun",
+          "translation": "что вам здесь надо?",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "it has done his business",
+          "partOfSpeech": "noun",
+          "translation": "это его доконало",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "business executives",
+          "partOfSpeech": "noun",
+          "translation": "руководители компаний, руководящий административный персонал; в контексте о крупных промышленниках — «капитаны» промышленности",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "entry_review_sha256": "27787ed9d01fb2ca9bde6b6437fd211c315096b6201de40b865c3544fa717c34",
+    "candidate_hashes": [
+      "0d38eea1a6b813bc0c3651f7295ef7dfc7dfa9148c5c79b8c5e2bc1fdb221a96"
+    ],
+    "decision": "изменить",
+    "dataset_index": 584
+  },
+  {
+    "word": "number",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "The show opened with a dance number.",
+      "ru": "Шоу началось с танцевального номера."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "8d1fb160bee0b5984d006c19ddce807ab00ce4d76b54c1bfc8d5b49a4ebe765a",
+    "dataset_index": 2995
+  },
+  {
+    "word": "number",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "the plural number",
+      "ru": "множественное число"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "1d5f578956cb9c1646203d0cf117e9e82080f3c68c2656efc9001b1c781bbc74",
+    "dataset_index": 2995
+  },
+  {
+    "word": "number",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "She numbers among the club's oldest members.",
+      "ru": "Она входит в число старейших членов клуба."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "0a425d1b0cf5c6939ea6a4da374d801da7156bf27a7f80936ee8018a99b31696",
+    "dataset_index": 2995
+  },
+  {
+    "word": "number",
+    "meaning_index": 13,
+    "before_examples": [],
+    "after_example": {
+      "en": "Please number the pages.",
+      "ru": "Пожалуйста, пронумеруйте страницы."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "f3e445af5d81a6d505a0a90bf724de3eb00549cdf5dc1ce70433d09efc6c1161",
+    "dataset_index": 2995
+  },
+  {
+    "word": "lot",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "She bid on the first lot.",
+      "ru": "Она сделала ставку на первый лот."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "efdc7c49caccfe64afd94a4a60e36b5c3a74396be4c91239b98577f5789ae16b",
+    "dataset_index": 2646
+  },
+  {
+    "word": "lot",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "They're a friendly lot.",
+      "ru": "Они дружелюбная компания."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "4358f44c49fc50ea62bd2179506d71f28f25f2ee5a7eb132c1c58e619e97509f",
+    "dataset_index": 2646
+  },
+  {
+    "word": "lot",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "They filmed the scene on the studio lot.",
+      "ru": "Они сняли сцену на территории киностудии."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "0ce74f9be59f7440bc225c313f6dbc53b4f855cbb401416bdce2c69ac41a30ae",
+    "dataset_index": 2646
+  },
+  {
+    "word": "lot",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "The developer lotted out the land for housing.",
+      "ru": "Застройщик разбил землю на участки под жильё."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "a1a7e41593c118c10846e028df7e1e63b66eb5b747652197c50468ff55832676",
+    "dataset_index": 2646
+  },
+  {
+    "word": "lot",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "The auction house lotted the donated books by subject.",
+      "ru": "Аукционный дом разбил подаренные книги на лоты по темам."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "2f806f5d2986af815a9ff506f84329526f307612bee2b66bc4cf4892036244c0",
+    "dataset_index": 2646
+  },
+  {
+    "word": "name",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "What's the name of this song?",
+      "ru": "Как называется эта песня?"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "324aba148552ff476dd82b38b4d0103f61e11fcf4638bc1cdc4d1ec5fd4d8724",
+    "dataset_index": 2902
+  },
+  {
+    "word": "name",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "Can you name all the players on the team?",
+      "ru": "Можешь назвать поимённо всех игроков команды?"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "680f4262c21c5f4ebeb5db41ca5a90acd67a9180a61ef81d759d9bbd60355d08",
+    "dataset_index": 2902
+  },
+  {
+    "word": "name",
+    "meaning_index": 11,
+    "before_examples": [],
+    "after_example": {
+      "en": "Can you name one reason to stay?",
+      "ru": "Можешь назвать одну причину остаться?"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "8674b1f1acf270bbf95163aa3208111d158daedcae53c045764dd5039de8a2d4",
+    "dataset_index": 2902
+  },
+  {
+    "word": "name",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "He was named the chairman.",
+      "ru": "Его назначили председателем."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "351a288e5d0cf66fe7e236472c2ed66287aba27172906c08e17bf58b2b85c42c",
+    "dataset_index": 2902
+  },
+  {
+    "word": "name",
+    "meaning_index": 13,
+    "before_examples": [],
+    "after_example": {
+      "en": "The Speaker named the member for disorderly conduct.",
+      "ru": "Спикер официально призвал депутата к порядку за нарушение правил поведения."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "d93e34b289a84abfa25da0582b05beb181ee8259da305a01d10c88c14917ae47",
+    "dataset_index": 2902
+  },
+  {
+    "word": "play",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "The team's play was more aggressive after halftime.",
+      "ru": "После перерыва команда стала играть агрессивнее."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "738a38956975ee191a0c68be1aa17960c501078a675173e6e58e58fcc675b87e",
+    "dataset_index": 3282
+  },
+  {
+    "word": "play",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "We saw a play last night.",
+      "ru": "Вчера вечером мы посмотрели спектакль."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "7579cde953ff07c42b2c081a9746e8a95d2ed12510522f6d5195b5b015b33a4b",
+    "dataset_index": 3282
+  },
+  {
+    "word": "play",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "She watched the play of his facial muscles.",
+      "ru": "Она наблюдала за движением мышц его лица."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "15b093a4e0377111c399ad9067fcc9d633aecc6335e7e52f3d5e94b19fd62b88",
+    "dataset_index": 3282
+  },
+  {
+    "word": "play",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "The casino tracks each player's slot machine play.",
+      "ru": "Казино отслеживает, как каждый игрок играет на игровых автоматах."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "44f06b675a2d83216edb5ba23791244521b9ff620e1d3afb979f814b8ca678f7",
+    "dataset_index": 3282
+  },
+  {
+    "word": "play",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "There's too much play in the steering wheel.",
+      "ru": "У рулевого колеса слишком большой люфт."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "ed7d7919e3bd39bed6ad445a3725feae213654a9c3a232864230a15cf9775a19",
+    "dataset_index": 3282
+  },
+  {
+    "word": "play",
+    "meaning_index": 17,
+    "before_examples": [],
+    "after_example": {
+      "en": "He played the slots at the casino.",
+      "ru": "Он играл на игровых автоматах в казино."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "d42283453a11b77ba2b454424ce7f26b196cd923455591f78be22e902a6bb409",
+    "dataset_index": 3282
+  },
+  {
+    "word": "play",
+    "meaning_index": 23,
+    "before_examples": [],
+    "after_example": {
+      "en": "She played the ball back over the net.",
+      "ru": "Она отбила мяч обратно через сетку."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "e90585dbd511b90c6ea5f3e5bb6e5e4b611a368313a69fdaec7f2f2689b05198",
+    "dataset_index": 3282
+  },
+  {
+    "word": "play",
+    "meaning_index": 26,
+    "before_examples": [],
+    "after_example": {
+      "en": "He played dumb when I asked about the mess.",
+      "ru": "Когда я спросил про беспорядок, он сделал вид, что ничего не понимает."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "5fc1201fa7374b2773daefacf713ad775af8245721494fa53cf8342100815a76",
+    "dataset_index": 3282
+  },
+  {
+    "word": "company",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "The ship's company gathered on deck.",
+      "ru": "Экипаж корабля собрался на палубе."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "27cb3a4162a1428b7f2a451b99c737e5248b7a40ec4c3c0d80f7a7b55fbd98b9",
+    "dataset_index": 834
+  },
+  {
+    "word": "real",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "Zero is a real number.",
+      "ru": "Ноль — действительное число."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "3294b0cfd6cec715492f2c803b995be3f5b7c0aab3629b9da2bc44b7743c2fea",
+    "dataset_index": 3590
+  },
+  {
+    "word": "real",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "It gets real cold here at night.",
+      "ru": "Ночью здесь становится очень холодно."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "364d990686cbae993b04eb1bab883251514db7a414298de0f3db91951d2eaa1e",
+    "dataset_index": 3590
+  },
+  {
+    "word": "however",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "However much it costs, we still need a new lock.",
+      "ru": "Сколько бы он ни стоил, нам всё равно нужен новый замок."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "1cbeeafbe55e979fdecd92fd3c112ac8a5969eaf410363aebaaa9adf5d628f55",
+    "dataset_index": 2180
+  },
+  {
+    "word": "god",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "They told a story about a god of the sea.",
+      "ru": "Они рассказали историю о боге моря."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "934940ebc78c736d62ec680bee13c0a8197a52131e92e04a1349bb28f293b233",
+    "dataset_index": 1988
+  },
+  {
+    "word": "government",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "parliamentary government",
+      "ru": "парламентская форма правления"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "ba7cd956efd92ddb4ae60edfcd106bde464004ceaa9e18cca78f26e7d75f221c",
+    "dataset_index": 1999
+  },
+  {
+    "word": "government",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "This chapter explains case government after prepositions.",
+      "ru": "В этой главе объясняется падежное управление после предлогов."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "d325c048f094480790e43111a0aaa9cc0618d67c603e3f128aaaa44fa3569fcf",
+    "dataset_index": 1999
+  },
+  {
+    "word": "group",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "a pop group",
+      "ru": "поп-группа"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "3583d595f9d30bdf1229b0e5a3f2a0db5bcc9efecfa4c314bbb49829bcaf6fac",
+    "dataset_index": 2033
+  },
+  {
+    "word": "group",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "The children grouped around the teacher.",
+      "ru": "Дети сгруппировались вокруг учителя."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "4a5226b811d03438cda6f313ee4c4dbd5879e0cd237e6158e8957a3654593e0c",
+    "dataset_index": 2033
+  },
+  {
+    "word": "group",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "We grouped the books by subject.",
+      "ru": "Мы распределили книги по темам."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "96c87da085c074f80994fb77afd386b92bad6b5311655c66fc484d96869217ab",
+    "dataset_index": 2033
+  }
+]

@@ -5,7 +5,7 @@ apply_fixes_batch2.py — надёжная версия через regex-пои�
 """
 import io, json, re
 
-JSON_PATH = "oxford_5000_2026-08-27.json"
+JSON_PATH = "src/data/oxford_5000.json"
 
 # Формат: (word, meaning_id, field, search_pattern_regex, replacement_func_or_str)
 # replacement: строка (точная замена) или callable(old) -> new

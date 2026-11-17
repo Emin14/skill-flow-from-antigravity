@@ -1,0 +1,3002 @@
+[
+  {
+    "word": "written",
+    "before": {
+      "word": "written",
+      "frequency_rank": 683,
+      "cefr": "b1",
+      "phon_br": "/ˈrɪtn/",
+      "phon_n_am": "/ˈrɪtn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "от write",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "form_of": {
+        "lemma": "write",
+        "types": [
+          "past_participle"
+        ]
+      }
+    },
+    "after": {
+      "word": "written",
+      "frequency_rank": 683,
+      "cefr": "b1",
+      "phon_br": "/ˈrɪtn/",
+      "phon_n_am": "/ˈrɪtn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "от write",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "form_of": {
+        "lemma": "write",
+        "types": [
+          "past_participle"
+        ]
+      }
+    },
+    "decision": "оставить",
+    "reason": "Для written сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "wrong",
+    "before": {
+      "word": "wrong",
+      "frequency_rank": 347,
+      "cefr": "a1",
+      "phon_br": "/rɒŋ/",
+      "phon_n_am": "/rɔːŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "неправда; неправильность, ошибочность, заблуждение; грешить",
+          "examples": [
+            {
+              "en": "to do wrong",
+              "ru": "заблуждаться"
+            },
+            {
+              "en": "to do wrong to smb.",
+              "ru": "быть несправедливым к кому-либо"
+            },
+            {
+              "en": "to be in the wrong",
+              "ru": "быть неправым"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "зло; несправедливость; обида",
+          "examples": [
+            {
+              "en": "to put smb. in the wrong",
+              "ru": "свалить вину на кого-либо"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "правонарушение",
+          "examples": [],
+          "register": [
+            "юридическое"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "неправильный, ошибочный",
+          "examples": [
+            {
+              "en": "the whole calculation is wrong",
+              "ru": "весь расчёт неверен"
+            },
+            {
+              "en": "my watch is wrong",
+              "ru": "мои часы не верны"
+            },
+            {
+              "en": "I can prove you wrong",
+              "ru": "я могу доказать, что вы неправы"
+            },
+            {
+              "en": "to be quite wrong",
+              "ru": "жестоко ошибаться"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "не тот (который нужен); несоответствующий",
+          "examples": [
+            {
+              "en": "at the wrong time",
+              "ru": "в неподходящее время"
+            },
+            {
+              "en": "he took the wrong street",
+              "ru": "он пошёл не по той улице"
+            },
+            {
+              "en": "to talk to the wrong man",
+              "ru": "обращаться не по адресу"
+            },
+            {
+              "en": "what's wrong with it?",
+              "ru": "почему это вам не нравится или не подходит?; что же тут такого?; почему бы не..."
+            },
+            {
+              "en": "what's wrong with a cup of coffee?",
+              "ru": "почему бы не выпить чашечку кофе?"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "дурной, противозаконный, безнравственный",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "неисправный",
+          "examples": [
+            {
+              "en": "something is wrong with the motor",
+              "ru": "мотор неисправен"
+            },
+            {
+              "en": "my liver is wrong",
+              "ru": "у меня что-то не в порядке с печенью"
+            }
+          ],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "неправильно, неверно",
+          "examples": [
+            {
+              "en": "I'm afraid you got me wrong",
+              "ru": "боюсь, вы меня не так поняли"
+            }
+          ],
+          "register": [],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вредить; причинять зло, обижать",
+          "examples": [],
+          "register": [],
+          "id": 9,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быть несправедливым (к кому-либо); приписывать дурные побуждения (кому-либо)",
+          "examples": [],
+          "register": [],
+          "id": 10,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "to get off on the wrong foot",
+          "partOfSpeech": "verb",
+          "translation": "произвести плохое впечатление",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "everything went wrong",
+          "partOfSpeech": "adjective",
+          "translation": "всё шло не так",
+          "examples": [],
+          "register": [],
+          "id": 2
+        }
+      ]
+    },
+    "after": {
+      "word": "wrong",
+      "frequency_rank": 347,
+      "cefr": "a1",
+      "phon_br": "/rɒŋ/",
+      "phon_n_am": "/rɔːŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "неправда; неправильность, ошибочность, заблуждение; грешить",
+          "examples": [
+            {
+              "en": "to do wrong",
+              "ru": "заблуждаться"
+            },
+            {
+              "en": "to do wrong to smb.",
+              "ru": "быть несправедливым к кому-либо"
+            },
+            {
+              "en": "to be in the wrong",
+              "ru": "быть неправым"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "зло; несправедливость; обида",
+          "examples": [
+            {
+              "en": "to put smb. in the wrong",
+              "ru": "свалить вину на кого-либо"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "правонарушение",
+          "examples": [],
+          "register": [
+            "юридическое"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "неправильный, ошибочный",
+          "examples": [
+            {
+              "en": "the whole calculation is wrong",
+              "ru": "весь расчёт неверен"
+            },
+            {
+              "en": "my watch is wrong",
+              "ru": "мои часы не верны"
+            },
+            {
+              "en": "I can prove you wrong",
+              "ru": "я могу доказать, что вы неправы"
+            },
+            {
+              "en": "to be quite wrong",
+              "ru": "жестоко ошибаться"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "не тот (который нужен); несоответствующий",
+          "examples": [
+            {
+              "en": "at the wrong time",
+              "ru": "в неподходящее время"
+            },
+            {
+              "en": "he took the wrong street",
+              "ru": "он пошёл не по той улице"
+            },
+            {
+              "en": "to talk to the wrong man",
+              "ru": "обращаться не по адресу"
+            },
+            {
+              "en": "what's wrong with it?",
+              "ru": "почему это вам не нравится или не подходит?; что же тут такого?; почему бы не..."
+            },
+            {
+              "en": "what's wrong with a cup of coffee?",
+              "ru": "почему бы не выпить чашечку кофе?"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "дурной, противозаконный, безнравственный",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "неисправный",
+          "examples": [
+            {
+              "en": "something is wrong with the motor",
+              "ru": "мотор неисправен"
+            },
+            {
+              "en": "my liver is wrong",
+              "ru": "у меня что-то не в порядке с печенью"
+            }
+          ],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "неправильно, неверно",
+          "examples": [
+            {
+              "en": "I'm afraid you got me wrong",
+              "ru": "боюсь, вы меня не так поняли"
+            }
+          ],
+          "register": [],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вредить; причинять зло, обижать",
+          "examples": [],
+          "register": [],
+          "id": 9,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быть несправедливым (к кому-либо); приписывать дурные побуждения (кому-либо)",
+          "examples": [],
+          "register": [],
+          "id": 10,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "to get off on the wrong foot",
+          "partOfSpeech": "verb",
+          "translation": "произвести плохое впечатление",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "everything went wrong",
+          "partOfSpeech": "adjective",
+          "translation": "всё шло не так",
+          "examples": [],
+          "register": [],
+          "id": 2
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для wrong сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yard",
+    "before": {
+      "word": "yard",
+      "frequency_rank": 1825,
+      "cefr": "b1",
+      "phon_br": "/jɑːd/",
+      "phon_n_am": "/jɑːrd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "ярд (= 3 футам или 914,4 мм)",
+          "examples": [
+            {
+              "en": "by the yard",
+              "ru": "в ярдах"
+            },
+            {
+              "en": "can you still buy cloth by the yard in Britain?",
+              "ru": "в Англии ещё мерят ткани на ярды?"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "рей",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "двор",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "лесной склад",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "сад",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "(the Y.) = Scotland Yard",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "загон",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "парк; сортировочная станция",
+          "examples": [],
+          "register": [
+            "железнодорожное"
+          ],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "загонять (скотину на двор)",
+          "examples": [],
+          "register": [],
+          "id": 9,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "yard",
+      "frequency_rank": 1825,
+      "cefr": "b1",
+      "phon_br": "/jɑːd/",
+      "phon_n_am": "/jɑːrd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "ярд (= 3 футам или 914,4 мм)",
+          "examples": [
+            {
+              "en": "by the yard",
+              "ru": "в ярдах"
+            },
+            {
+              "en": "can you still buy cloth by the yard in Britain?",
+              "ru": "в Англии ещё мерят ткани на ярды?"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "рей",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "двор",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "лесной склад",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "сад",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "(the Y.) = Scotland Yard",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "загон",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "парк; сортировочная станция",
+          "examples": [],
+          "register": [
+            "железнодорожное"
+          ],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "загонять (скотину на двор)",
+          "examples": [],
+          "register": [],
+          "id": 9,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yard сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yeah",
+    "before": {
+      "word": "yeah",
+      "frequency_rank": 362,
+      "cefr": "a1",
+      "phon_br": "/jeə/",
+      "phon_n_am": "/jeə/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "да",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "yeah",
+      "frequency_rank": 362,
+      "cefr": "a1",
+      "phon_br": "/jeə/",
+      "phon_n_am": "/jeə/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "да",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yeah сопоставлены before/after с canonical entry и stage_06: 2 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена. Не найдено: 2 источника.",
+    "confidence": 0.92
+  },
+  {
+    "word": "year",
+    "before": {
+      "word": "year",
+      "frequency_rank": 105,
+      "cefr": "a1",
+      "phon_br": "/jɪə(r)/",
+      "phon_n_am": "/jɪr/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "год; каждый год; год от году",
+          "examples": [
+            {
+              "en": "year in year out",
+              "ru": "из года в год"
+            },
+            {
+              "en": "from year to year, year by year, year after year",
+              "ru": "с каждым годом"
+            },
+            {
+              "en": "the year of grace",
+              "ru": "год нашей эры"
+            },
+            {
+              "en": "years (and years) ago",
+              "ru": "очень давно, целую вечность"
+            },
+            {
+              "en": "in the year of grace (or of our Lord) 1975",
+              "ru": "в 1975 году от Рождества Христова"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: возраст, годы",
+          "examples": [
+            {
+              "en": "he looks young for his years",
+              "ru": "он молодо выглядит для своих лет"
+            },
+            {
+              "en": "in years",
+              "ru": "пожилой"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "year",
+      "frequency_rank": 105,
+      "cefr": "a1",
+      "phon_br": "/jɪə(r)/",
+      "phon_n_am": "/jɪr/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "год; каждый год; год от году",
+          "examples": [
+            {
+              "en": "year in year out",
+              "ru": "из года в год"
+            },
+            {
+              "en": "from year to year, year by year, year after year",
+              "ru": "с каждым годом"
+            },
+            {
+              "en": "the year of grace",
+              "ru": "год нашей эры"
+            },
+            {
+              "en": "years (and years) ago",
+              "ru": "очень давно, целую вечность"
+            },
+            {
+              "en": "in the year of grace (or of our Lord) 1975",
+              "ru": "в 1975 году от Рождества Христова"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: возраст, годы",
+          "examples": [
+            {
+              "en": "he looks young for his years",
+              "ru": "он молодо выглядит для своих лет"
+            },
+            {
+              "en": "in years",
+              "ru": "пожилой"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для year сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yell",
+    "before": {
+      "word": "yell",
+      "frequency_rank": 4298,
+      "cefr": "c1",
+      "phon_br": "/jel/",
+      "phon_n_am": "/jel/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "пронзительный крик",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "возгласы одобрения, принятые в каждом колледже (выкрикиваемые на студенческих спортивных состязаниях)",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "занятный тип; смешная забавная вещица, штуковина",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "кричать, вопить",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "выкрикивать",
+          "examples": [
+            {
+              "en": "to yell out curses",
+              "ru": "изрыгать проклятия"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "yell",
+      "frequency_rank": 4298,
+      "cefr": "c1",
+      "phon_br": "/jel/",
+      "phon_n_am": "/jel/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "пронзительный крик",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "возгласы одобрения, принятые в каждом колледже (выкрикиваемые на студенческих спортивных состязаниях)",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "занятный тип; смешная забавная вещица, штуковина",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "кричать, вопить",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "выкрикивать",
+          "examples": [
+            {
+              "en": "to yell out curses",
+              "ru": "изрыгать проклятия"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yell сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yellow",
+    "before": {
+      "word": "yellow",
+      "frequency_rank": 1505,
+      "cefr": "a1",
+      "phon_br": "/ˈjeləʊ/",
+      "phon_n_am": "/ˈjeləʊ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "жёлтый",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "трусливый",
+          "examples": [
+            {
+              "en": "he has a yellow streak in him",
+              "ru": "он трусоват"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "завистливый, ревнивый, подозрительный (о взгляде и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "желтизна, жёлтый цвет",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "желток",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "трусость",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "желтеть",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "желтить",
+          "examples": [],
+          "register": [],
+          "id": 8,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "the yellow press",
+          "partOfSpeech": "noun",
+          "translation": "жёлтая пресса",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "phrase": "yellow flag",
+          "partOfSpeech": "noun",
+          "translation": "карантинный флаг",
+          "examples": [],
+          "register": [],
+          "id": 2
+        }
+      ]
+    },
+    "after": {
+      "word": "yellow",
+      "frequency_rank": 1505,
+      "cefr": "a1",
+      "phon_br": "/ˈjeləʊ/",
+      "phon_n_am": "/ˈjeləʊ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "жёлтый",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "трусливый",
+          "examples": [
+            {
+              "en": "he has a yellow streak in him",
+              "ru": "он трусоват"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "завистливый, ревнивый, подозрительный (о взгляде и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "желтизна, жёлтый цвет",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "желток",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "трусость",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "желтеть",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "желтить",
+          "examples": [],
+          "register": [],
+          "id": 8,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "the yellow press",
+          "partOfSpeech": "noun",
+          "translation": "жёлтая пресса",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "phrase": "yellow flag",
+          "partOfSpeech": "noun",
+          "translation": "карантинный флаг",
+          "examples": [],
+          "register": [],
+          "id": 2
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yellow сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yes",
+    "before": {
+      "word": "yes",
+      "frequency_rank": 264,
+      "cefr": "a1",
+      "phon_br": "/jes/",
+      "phon_n_am": "/jes/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "утверждение; согласие",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "yes",
+      "frequency_rank": 264,
+      "cefr": "a1",
+      "phon_br": "/jes/",
+      "phon_n_am": "/jes/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "утверждение; согласие",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yes сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yesterday",
+    "before": {
+      "word": "yesterday",
+      "frequency_rank": 1010,
+      "cefr": "a1",
+      "phon_br": "/ˈjestədeɪ/",
+      "phon_n_am": "/ˈjestərdeɪ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adverb",
+          "translation": "вчера",
+          "examples": [
+            {
+              "en": "yesterday morning",
+              "ru": "вчера утром"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "совсем недавно",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "вчерашний день",
+          "examples": [
+            {
+              "en": "yesterday's incident",
+              "ru": "вчерашний случай"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "yesterday",
+      "frequency_rank": 1010,
+      "cefr": "a1",
+      "phon_br": "/ˈjestədeɪ/",
+      "phon_n_am": "/ˈjestərdeɪ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adverb",
+          "translation": "вчера",
+          "examples": [
+            {
+              "en": "yesterday morning",
+              "ru": "вчера утром"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "совсем недавно",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "вчерашний день",
+          "examples": [
+            {
+              "en": "yesterday's incident",
+              "ru": "вчерашний случай"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yesterday сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yet",
+    "before": {
+      "word": "yet",
+      "frequency_rank": 238,
+      "cefr": "a2",
+      "phon_br": "/jet/",
+      "phon_n_am": "/jet/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "ещё, всё ещё",
+          "examples": [
+            {
+              "en": "he has not come yet",
+              "ru": "он ещё не пришёл"
+            },
+            {
+              "en": "not yet",
+              "ru": "ещё не(т)"
+            },
+            {
+              "en": "never yet",
+              "ru": "никогда ещё не"
+            },
+            {
+              "en": "yet more",
+              "ru": "ещё больше"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adverb",
+          "translation": "ещё, кроме того",
+          "examples": [
+            {
+              "en": "he has yet much to say",
+              "ru": "ему ещё многое надо сказать"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adverb",
+          "translation": "уже (в вопр. предложениях)",
+          "examples": [
+            {
+              "en": "need you go yet?",
+              "ru": "вам уже надо идти?"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adverb",
+          "translation": "даже; более",
+          "examples": [
+            {
+              "en": "this question is more important yet",
+              "ru": "этот вопрос даже важнее"
+            },
+            {
+              "en": "he will not accept help nor yet advice",
+              "ru": "он не примет ни помощи, ни даже совета"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adverb",
+          "translation": "до сих пор, когда-либо",
+          "examples": [
+            {
+              "en": "it is the largest specimen yet found",
+              "ru": "это самый крупный экземпляр из найденных до сих пор"
+            },
+            {
+              "en": "as yet",
+              "ru": "всё ещё, пока, до сих пор"
+            },
+            {
+              "en": "the scheme has worked well as yet",
+              "ru": "пока эта схема вполне себя оправдывает"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "adverb",
+          "translation": "тем не менее, всё же, всё-таки",
+          "examples": [
+            {
+              "en": "it is strange and yet true",
+              "ru": "это странно, но (тем не менее) верно"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "conjunction",
+          "translation": "однако, всё же, несмотря на это; но",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "yet",
+      "frequency_rank": 238,
+      "cefr": "a2",
+      "phon_br": "/jet/",
+      "phon_n_am": "/jet/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "ещё, всё ещё",
+          "examples": [
+            {
+              "en": "he has not come yet",
+              "ru": "он ещё не пришёл"
+            },
+            {
+              "en": "not yet",
+              "ru": "ещё не(т)"
+            },
+            {
+              "en": "never yet",
+              "ru": "никогда ещё не"
+            },
+            {
+              "en": "yet more",
+              "ru": "ещё больше"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adverb",
+          "translation": "ещё, кроме того",
+          "examples": [
+            {
+              "en": "he has yet much to say",
+              "ru": "ему ещё многое надо сказать"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adverb",
+          "translation": "уже (в вопр. предложениях)",
+          "examples": [
+            {
+              "en": "need you go yet?",
+              "ru": "вам уже надо идти?"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adverb",
+          "translation": "даже; более",
+          "examples": [
+            {
+              "en": "this question is more important yet",
+              "ru": "этот вопрос даже важнее"
+            },
+            {
+              "en": "he will not accept help nor yet advice",
+              "ru": "он не примет ни помощи, ни даже совета"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adverb",
+          "translation": "до сих пор, когда-либо",
+          "examples": [
+            {
+              "en": "it is the largest specimen yet found",
+              "ru": "это самый крупный экземпляр из найденных до сих пор"
+            },
+            {
+              "en": "as yet",
+              "ru": "всё ещё, пока, до сих пор"
+            },
+            {
+              "en": "the scheme has worked well as yet",
+              "ru": "пока эта схема вполне себя оправдывает"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "adverb",
+          "translation": "тем не менее, всё же, всё-таки",
+          "examples": [
+            {
+              "en": "it is strange and yet true",
+              "ru": "это странно, но (тем не менее) верно"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "conjunction",
+          "translation": "однако, всё же, несмотря на это; но",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yet сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yield",
+    "before": {
+      "word": "yield",
+      "frequency_rank": 3252,
+      "cefr": "c1",
+      "phon_br": "/jiːld/",
+      "phon_n_am": "/jiːld/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "сбор плодов, урожай",
+          "examples": [
+            {
+              "en": "a good yield of wheat",
+              "ru": "хороший урожай пшеницы"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "размер выработки; количество добытого или произведённого продукта; выход (продукции)",
+          "examples": [
+            {
+              "en": "milk yield",
+              "ru": "надой молока"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "доход; доходность",
+          "examples": [],
+          "register": [
+            "экономика"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "текучесть (металла)",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "производить, приносить, давать (плоды, урожай, доход)",
+          "examples": [
+            {
+              "en": "this land yields poorly",
+              "ru": "эта земля даёт плохой урожай"
+            },
+            {
+              "en": "to yield no results",
+              "ru": "не давать никаких результатов"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "сдавать(ся)",
+          "examples": [
+            {
+              "en": "to yield oneself prisoner",
+              "ru": "сдаться в плен"
+            }
+          ],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "уступать; соглашаться (на что-либо)",
+          "examples": [
+            {
+              "en": "to yield a point",
+              "ru": "сделать уступку (в споре)"
+            },
+            {
+              "en": "to yield to the advice",
+              "ru": "последовать совету"
+            },
+            {
+              "en": "to yield to none",
+              "ru": "не уступать никому (по красоте, доброте и т. п.)"
+            }
+          ],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "поддаваться; подаваться; пружинить",
+          "examples": [
+            {
+              "en": "the door yielded to a strong push",
+              "ru": "от сильного толчка дверь подалась"
+            },
+            {
+              "en": "the disease yields to treatment",
+              "ru": "эта болезнь поддаётся лечению"
+            }
+          ],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "уступить трибуну, прервать оратора",
+          "examples": [
+            {
+              "en": "Will Mr. N. yield?",
+              "ru": "Прошу разрешения прервать речь мистера Н."
+            },
+            {
+              "en": "to yield the floor",
+              "ru": "уступить трибуну, прервать оратора"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "парламентское",
+            "устаревшее"
+          ],
+          "id": 9
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "yield up",
+          "partOfSpeech": "verb",
+          "translation": "сдавать, уступая силе; передавать, отдавать; уступать",
+          "examples": [
+            {
+              "en": "to yield up a fort",
+              "ru": "сдать крепость"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "to yield up the ghost",
+          "partOfSpeech": "verb",
+          "translation": "отдать богу душу, умереть",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "yield",
+      "frequency_rank": 3252,
+      "cefr": "c1",
+      "phon_br": "/jiːld/",
+      "phon_n_am": "/jiːld/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "сбор плодов, урожай",
+          "examples": [
+            {
+              "en": "a good yield of wheat",
+              "ru": "хороший урожай пшеницы"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "размер выработки; количество добытого или произведённого продукта; выход (продукции)",
+          "examples": [
+            {
+              "en": "milk yield",
+              "ru": "надой молока"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "доход; доходность",
+          "examples": [],
+          "register": [
+            "экономика"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "текучесть (металла)",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "производить, приносить, давать (плоды, урожай, доход)",
+          "examples": [
+            {
+              "en": "this land yields poorly",
+              "ru": "эта земля даёт плохой урожай"
+            },
+            {
+              "en": "to yield no results",
+              "ru": "не давать никаких результатов"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "сдавать(ся)",
+          "examples": [
+            {
+              "en": "to yield oneself prisoner",
+              "ru": "сдаться в плен"
+            }
+          ],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "уступать; соглашаться (на что-либо)",
+          "examples": [
+            {
+              "en": "to yield a point",
+              "ru": "сделать уступку (в споре)"
+            },
+            {
+              "en": "to yield to the advice",
+              "ru": "последовать совету"
+            },
+            {
+              "en": "to yield to none",
+              "ru": "не уступать никому (по красоте, доброте и т. п.)"
+            }
+          ],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "поддаваться; подаваться; пружинить",
+          "examples": [
+            {
+              "en": "the door yielded to a strong push",
+              "ru": "от сильного толчка дверь подалась"
+            },
+            {
+              "en": "the disease yields to treatment",
+              "ru": "эта болезнь поддаётся лечению"
+            }
+          ],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "уступить трибуну, прервать оратора",
+          "examples": [
+            {
+              "en": "Will Mr. N. yield?",
+              "ru": "Прошу разрешения прервать речь мистера Н."
+            },
+            {
+              "en": "to yield the floor",
+              "ru": "уступить трибуну, прервать оратора"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "парламентское",
+            "устаревшее"
+          ],
+          "id": 9
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "yield up",
+          "partOfSpeech": "verb",
+          "translation": "сдавать, уступая силе; передавать, отдавать; уступать",
+          "examples": [
+            {
+              "en": "to yield up a fort",
+              "ru": "сдать крепость"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "to yield up the ghost",
+          "partOfSpeech": "verb",
+          "translation": "отдать богу душу, умереть",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yield сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "you",
+    "before": {
+      "word": "you",
+      "frequency_rank": 10,
+      "cefr": "a1",
+      "phon_br": "/ju/",
+      "phon_n_am": "/jə/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "pronoun",
+          "translation": "вы; ты",
+          "examples": [
+            {
+              "en": "you are right",
+              "ru": "вы правы"
+            },
+            {
+              "en": "how are you?",
+              "ru": "как поживаете?, как дела?"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "pronoun",
+          "translation": "вам, вас, вами, о вас; тебе, тебя, тобой, о тебе",
+          "examples": [
+            {
+              "en": "I see you",
+              "ru": "я вижу вас (тебя)"
+            },
+            {
+              "en": "I will give it to you",
+              "ru": "я дам это вам (тебе)"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "pronoun",
+          "translation": "человек, любой (в неопределённо-личном значении)",
+          "examples": [
+            {
+              "en": "you never can tell",
+              "ru": "никогда нельзя знать заранее"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "you",
+      "frequency_rank": 10,
+      "cefr": "a1",
+      "phon_br": "/ju/",
+      "phon_n_am": "/jə/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "pronoun",
+          "translation": "вы; ты",
+          "examples": [
+            {
+              "en": "you are right",
+              "ru": "вы правы"
+            },
+            {
+              "en": "how are you?",
+              "ru": "как поживаете?, как дела?"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "pronoun",
+          "translation": "вам, вас, вами, о вас; тебе, тебя, тобой, о тебе",
+          "examples": [
+            {
+              "en": "I see you",
+              "ru": "я вижу вас (тебя)"
+            },
+            {
+              "en": "I will give it to you",
+              "ru": "я дам это вам (тебе)"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "pronoun",
+          "translation": "человек, любой (в неопределённо-личном значении)",
+          "examples": [
+            {
+              "en": "you never can tell",
+              "ru": "никогда нельзя знать заранее"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для you сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "young",
+    "before": {
+      "word": "young",
+      "frequency_rank": 315,
+      "cefr": "a1",
+      "phon_br": "/jʌŋ/",
+      "phon_n_am": "/jʌŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "молодой, юный; юношеский; детёныши; птенчики; зверёныши",
+          "examples": [
+            {
+              "en": "he is young for his age",
+              "ru": "он молодо выглядит для своего возраста"
+            },
+            {
+              "en": "young man",
+              "ru": "молодой человек (также)"
+            },
+            {
+              "en": "my young man (lady)",
+              "ru": "мой возлюбленный (моя возлюбленная)"
+            },
+            {
+              "en": "young one's",
+              "ru": "дети"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "неопытный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "молодой, младший (для обозначения двух людей в одной семье, носящих одно и то же имя)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adjective",
+          "translation": "новый, недавний",
+          "examples": [
+            {
+              "en": "the night is yet young",
+              "ru": "ещё не поздно"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adjective",
+          "translation": "молодёжь",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "adjective",
+          "translation": "новые веяния или идеи",
+          "examples": [],
+          "register": [
+            "собирательное"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "молодёжь",
+          "examples": [
+            {
+              "en": "old and young",
+              "ru": "стар и млад"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "детёныши",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "with young",
+          "partOfSpeech": "adjective",
+          "translation": "беременная, с детёнышем (о животных)",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "after": {
+      "word": "young",
+      "frequency_rank": 315,
+      "cefr": "a1",
+      "phon_br": "/jʌŋ/",
+      "phon_n_am": "/jʌŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "молодой, юный; юношеский; детёныши; птенчики; зверёныши",
+          "examples": [
+            {
+              "en": "he is young for his age",
+              "ru": "он молодо выглядит для своего возраста"
+            },
+            {
+              "en": "young man",
+              "ru": "молодой человек (также)"
+            },
+            {
+              "en": "my young man (lady)",
+              "ru": "мой возлюбленный (моя возлюбленная)"
+            },
+            {
+              "en": "young one's",
+              "ru": "дети"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "неопытный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "молодой, младший (для обозначения двух людей в одной семье, носящих одно и то же имя)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adjective",
+          "translation": "новый, недавний",
+          "examples": [
+            {
+              "en": "the night is yet young",
+              "ru": "ещё не поздно"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adjective",
+          "translation": "молодёжь",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "adjective",
+          "translation": "новые веяния или идеи",
+          "examples": [],
+          "register": [
+            "собирательное"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "молодёжь",
+          "examples": [
+            {
+              "en": "old and young",
+              "ru": "стар и млад"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "noun",
+          "translation": "детёныши",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "with young",
+          "partOfSpeech": "adjective",
+          "translation": "беременная, с детёнышем (о животных)",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для young сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "youngster",
+    "before": {
+      "word": "youngster",
+      "frequency_rank": 4903,
+      "cefr": "c1",
+      "phon_br": "/ˈjʌŋstə(r)/",
+      "phon_n_am": "/ˈjʌŋstər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "мальчик, юноша; юнец",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "курсант второго курса военно-морского училища",
+          "examples": [],
+          "register": [
+            "американизм"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "youngster",
+      "frequency_rank": 4903,
+      "cefr": "c1",
+      "phon_br": "/ˈjʌŋstə(r)/",
+      "phon_n_am": "/ˈjʌŋstər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "мальчик, юноша; юнец",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "курсант второго курса военно-морского училища",
+          "examples": [],
+          "register": [
+            "американизм"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для youngster сопоставлены before/after с canonical entry и stage_06: 3 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена. Не найдено: 1 источника.",
+    "confidence": 0.92
+  },
+  {
+    "word": "your",
+    "before": {
+      "word": "your",
+      "frequency_rank": 29,
+      "cefr": "a1",
+      "phon_br": "/jɔː(r)/",
+      "phon_n_am": "/jʊr/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "determiner",
+          "translation": "твой, ваш (притяжательный детерминатив / местоимение)",
+          "examples": [
+            {
+              "en": "your book",
+              "ru": "твоя (ваша) книга"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "your",
+      "frequency_rank": 29,
+      "cefr": "a1",
+      "phon_br": "/jɔː(r)/",
+      "phon_n_am": "/jʊr/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "determiner",
+          "translation": "твой, ваш (притяжательный детерминатив / местоимение)",
+          "examples": [
+            {
+              "en": "your book",
+              "ru": "твоя (ваша) книга"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для your сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yours",
+    "before": {
+      "word": "yours",
+      "frequency_rank": 1353,
+      "cefr": "a2",
+      "phon_br": "/jɔːz/",
+      "phon_n_am": "/jərz/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "pronoun",
+          "translation": "ваш, твой (абсолютная форма притяжательного местоимения)",
+          "register": [],
+          "examples": [
+            {
+              "en": "this book is yours",
+              "ru": "эта книга твоя (ваша)"
+            },
+            {
+              "en": "yours sincerely",
+              "ru": "искренне ваш, с уважением (в письме)"
+            }
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "yours",
+      "frequency_rank": 1353,
+      "cefr": "a2",
+      "phon_br": "/jɔːz/",
+      "phon_n_am": "/jərz/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "pronoun",
+          "translation": "ваш, твой (абсолютная форма притяжательного местоимения)",
+          "register": [],
+          "examples": [
+            {
+              "en": "this book is yours",
+              "ru": "эта книга твоя (ваша)"
+            },
+            {
+              "en": "yours sincerely",
+              "ru": "искренне ваш, с уважением (в письме)"
+            }
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yours сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "yourself",
+    "before": {
+      "word": "yourself",
+      "frequency_rank": 413,
+      "cefr": "a1",
+      "phon_br": "/jɔːˈself/",
+      "phon_n_am": "/jɔːrˈself/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "pronoun",
+          "translation": "себя, себе, собой, о себе",
+          "examples": [
+            {
+              "en": "look at yourself",
+              "ru": "посмотри на себя"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "pronoun",
+          "translation": "сам, сами",
+          "examples": [
+            {
+              "en": "you told me so yourself",
+              "ru": "вы сами мне это сказали"
+            },
+            {
+              "en": "have you been all by yourself the whole day?",
+              "ru": "вы были одни целый день?"
+            },
+            {
+              "en": "you are sure to do it all by yourself",
+              "ru": "вы, конечно, можете сделать это без посторонней помощи"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "you are not quite yourself",
+          "partOfSpeech": "noun",
+          "translation": "вы не в своей тарелке",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "yourself",
+      "frequency_rank": 413,
+      "cefr": "a1",
+      "phon_br": "/jɔːˈself/",
+      "phon_n_am": "/jɔːrˈself/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "pronoun",
+          "translation": "себя, себе, собой, о себе",
+          "examples": [
+            {
+              "en": "look at yourself",
+              "ru": "посмотри на себя"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "pronoun",
+          "translation": "сам, сами",
+          "examples": [
+            {
+              "en": "you told me so yourself",
+              "ru": "вы сами мне это сказали"
+            },
+            {
+              "en": "have you been all by yourself the whole day?",
+              "ru": "вы были одни целый день?"
+            },
+            {
+              "en": "you are sure to do it all by yourself",
+              "ru": "вы, конечно, можете сделать это без посторонней помощи"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "you are not quite yourself",
+          "partOfSpeech": "noun",
+          "translation": "вы не в своей тарелке",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для yourself сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "youth",
+    "before": {
+      "word": "youth",
+      "frequency_rank": 1354,
+      "cefr": "b1",
+      "phon_br": "/juːθ/",
+      "phon_n_am": "/juːθ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "юность; молодость",
+          "examples": [
+            {
+              "en": "the fountain of youth",
+              "ru": "источник молодости"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "юноша",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "молодёжь",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "молодёжный",
+          "examples": [
+            {
+              "en": "youth culture",
+              "ru": "молодёжная культура"
+            },
+            {
+              "en": "youth organizations",
+              "ru": "молодёжные организации"
+            },
+            {
+              "en": "a youth festival",
+              "ru": "фестиваль молодёжи"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "youth",
+      "frequency_rank": 1354,
+      "cefr": "b1",
+      "phon_br": "/juːθ/",
+      "phon_n_am": "/juːθ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "юность; молодость",
+          "examples": [
+            {
+              "en": "the fountain of youth",
+              "ru": "источник молодости"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "юноша",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "молодёжь",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "молодёжный",
+          "examples": [
+            {
+              "en": "youth culture",
+              "ru": "молодёжная культура"
+            },
+            {
+              "en": "youth organizations",
+              "ru": "молодёжные организации"
+            },
+            {
+              "en": "a youth festival",
+              "ru": "фестиваль молодёжи"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для youth сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "zero",
+    "before": {
+      "word": "zero",
+      "frequency_rank": 1653,
+      "cefr": "a2",
+      "phon_br": "/ˈzɪərəʊ/",
+      "phon_n_am": "/ˈzɪrəʊ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "нуль, ничто",
+          "examples": [
+            {
+              "en": "to reduce to zero",
+              "ru": "свести на нет"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "нулевая точка; первая основная точка температурной шкалы",
+          "examples": [
+            {
+              "en": "below zero",
+              "ru": "ниже нуля"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "zero setting",
+              "ru": "установка прибора на нуль"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "решительный час",
+          "examples": [
+            {
+              "en": "zero hour",
+              "ru": "час начала атаки, выступления и т. п."
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "устанавливать (прибор и т. п.) на нуль",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 5,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "zero in (on)",
+          "partOfSpeech": "phrasal verb",
+          "translation": "прицеливаться; нацеливаться на (что-то); избрать мишенью",
+          "examples": [],
+          "register": [
+            "военное",
+            "разговорное"
+          ],
+          "id": 1
+        }
+      ]
+    },
+    "after": {
+      "word": "zero",
+      "frequency_rank": 1653,
+      "cefr": "a2",
+      "phon_br": "/ˈzɪərəʊ/",
+      "phon_n_am": "/ˈzɪrəʊ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "нуль, ничто",
+          "examples": [
+            {
+              "en": "to reduce to zero",
+              "ru": "свести на нет"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "нулевая точка; первая основная точка температурной шкалы",
+          "examples": [
+            {
+              "en": "below zero",
+              "ru": "ниже нуля"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "zero setting",
+              "ru": "установка прибора на нуль"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "решительный час",
+          "examples": [
+            {
+              "en": "zero hour",
+              "ru": "час начала атаки, выступления и т. п."
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "устанавливать (прибор и т. п.) на нуль",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 5,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "zero in (on)",
+          "partOfSpeech": "phrasal verb",
+          "translation": "прицеливаться; нацеливаться на (что-то); избрать мишенью",
+          "examples": [],
+          "register": [
+            "военное",
+            "разговорное"
+          ],
+          "id": 1
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для zero сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  },
+  {
+    "word": "zone",
+    "before": {
+      "word": "zone",
+      "frequency_rank": 1435,
+      "cefr": "b2",
+      "phon_br": "/zəʊn/",
+      "phon_n_am": "/zəʊn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "зона, пояс; полоса; район",
+          "examples": [
+            {
+              "en": "temperate zones",
+              "ru": "умеренные пояса"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "район отделения связи",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пояс, кушак",
+          "examples": [],
+          "register": [
+            "поэтическое",
+            "устаревшее"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения: зональный; поясной; региональный",
+          "examples": [
+            {
+              "en": "zone time",
+              "ru": "поясное время"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "опоясывать",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "разделять на зоны",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "устанавливать зональный тариф или зональные цены",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 7
+        }
+      ]
+    },
+    "after": {
+      "word": "zone",
+      "frequency_rank": 1435,
+      "cefr": "b2",
+      "phon_br": "/zəʊn/",
+      "phon_n_am": "/zəʊn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "зона, пояс; полоса; район",
+          "examples": [
+            {
+              "en": "temperate zones",
+              "ru": "умеренные пояса"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "район отделения связи",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пояс, кушак",
+          "examples": [],
+          "register": [
+            "поэтическое",
+            "устаревшее"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения: зональный; поясной; региональный",
+          "examples": [
+            {
+              "en": "zone time",
+              "ru": "поясное время"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "опоясывать",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "разделять на зоны",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "устанавливать зональный тариф или зональные цены",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 7
+        }
+      ]
+    },
+    "decision": "оставить",
+    "reason": "Для zone сопоставлены before/after с canonical entry и stage_06: 4 из 4 источников дали найденный фрагмент; доказанного улучшения нет, текущая запись сохранена.",
+    "confidence": 0.92
+  }
+]

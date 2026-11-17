@@ -1,0 +1,109 @@
+{
+  "scope": "review_remaining_121_220_2026-11-11",
+  "decision": "applied_confirmed_review_items",
+  "count": 12,
+  "changes": [
+    {
+      "path": "while.meanings[0].partOfSpeech",
+      "before": "conjunction",
+      "after": "noun",
+      "reason": "Examples are a long while/for a while noun uses."
+    },
+    {
+      "path": "while.meanings[0].translation",
+      "before": "в то время как, пока, тогда как",
+      "after": "время; промежуток времени",
+      "reason": "Align translation with noun examples."
+    },
+    {
+      "path": "while.meanings[0].register",
+      "before": [
+        "поэтическое"
+      ],
+      "after": [],
+      "reason": "These ordinary time expressions are not poetic."
+    },
+    {
+      "path": "man.phrases[0].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "Man about town is a noun phrase."
+    },
+    {
+      "path": "man.phrases[0].translation",
+      "before": "прийти в себя, быть в норме; держать себя в руках; прожигатель жизни",
+      "after": "светский человек; человек, ведущий активную светскую жизнь",
+      "reason": "Correct phrase-specific translation."
+    },
+    {
+      "path": "man.phrases[0].examples",
+      "before": [
+        {
+          "en": "man in (on) the street",
+          "ru": "заурядный человек, обыватель"
+        }
+      ],
+      "after": [
+        {
+          "en": "a man about town",
+          "ru": "светский человек"
+        }
+      ],
+      "reason": "Replace example belonging to man in/on the street with a phrase-specific example."
+    },
+    {
+      "path": "second.meanings[21].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "Floor-level second sense is a noun."
+    },
+    {
+      "path": "second.meanings[22].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "Floor-level second sense is a noun."
+    },
+    {
+      "path": "god.meanings[3].partOfSpeech",
+      "before": "noun",
+      "after": "interjection",
+      "reason": "God bless you is an interjectional expression."
+    },
+    {
+      "path": "god.meanings[3].translation",
+      "before": "будьте здоровы (говорится чихнувшему)",
+      "after": "God bless you!: «Боже мой!» (при удивлении); «будьте здоровы!» (после чихания)",
+      "reason": "Restore the phrase boundary documented in Muller 2021."
+    },
+    {
+      "path": "god.meanings[3].register",
+      "before": [
+        "театр"
+      ],
+      "after": [],
+      "reason": "The theatrical register belongs to the gods, not God bless you."
+    },
+    {
+      "path": "god.meanings[3].examples",
+      "before": [
+        {
+          "en": "honest to G.",
+          "ru": "честное слово"
+        },
+        {
+          "en": "G. damn you!",
+          "ru": "будьте вы прокляты!"
+        }
+      ],
+      "after": [
+        {
+          "en": "God bless you!",
+          "ru": "будьте здоровы!"
+        }
+      ],
+      "reason": "Replace unrelated honest to God/God damn you examples with the phrase-specific God bless you example."
+    }
+  ],
+  "before_sha256": "235a06013736c69421195b19b470949ee9160fbcaff5dc4fb1799db4d07c3427",
+  "after_sha256": "1faa3244a185405c338cd5aceed2046eb3ba12344460040f8210b331d68db5b1"
+}

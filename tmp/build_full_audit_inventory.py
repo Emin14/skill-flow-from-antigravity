@@ -1,7 +1,7 @@
 import json,re
 from collections import defaultdict
 from pathlib import Path
-R=Path(__file__).resolve().parents[1]; d=json.loads((R/'oxford_5000_2026-08-27.json').read_text(encoding='utf8')); out=defaultdict(list)
+R=Path(__file__).resolve().parents[1]; d=json.loads((R/'src/data/oxford_5000.json').read_text(encoding='utf8')); out=defaultdict(list)
 for e in d:
  for m in e['meanings']:
   t=m['translation']; key=(e['word'],m['id'])

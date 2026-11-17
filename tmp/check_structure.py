@@ -1,6 +1,6 @@
 import json, io
 
-data = json.load(open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8'))
+data = json.load(open('src/data/oxford_5000.json', 'r', encoding='utf-8'))
 out = io.open('tmp/structure_analysis.txt', 'w', encoding='utf-8')
 
 out.write('=== STRUCTURE ANALYSIS - FIRST 50 ENTRIES ===\n\n')

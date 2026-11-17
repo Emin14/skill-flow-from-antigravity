@@ -150,13 +150,6 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     }
   }, [isOpen, currentCard, settings.autoPronounce, settings.accent, isFinished]);
 
-  // Focus input automatically
-  useEffect(() => {
-    if (isOpen && isReviewWord && !isAnswerRevealed && !isFinished) {
-      inputRef.current?.focus();
-    }
-  }, [isOpen, currentIndex, isReviewWord, isAnswerRevealed, isFinished]);
-
   // Close on Escape key press, or advance on Enter when answer is revealed without match
   useEffect(() => {
     if (!isOpen) return;

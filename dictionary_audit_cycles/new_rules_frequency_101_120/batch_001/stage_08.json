@@ -1,0 +1,2447 @@
+[
+  {
+    "word": "may",
+    "decision": "review_required",
+    "reason": "Возможность и разрешение образуют базовую пару употреблений A2. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "В прогнозах may выражает вероятность события; это естественная отправная точка.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Просьбы с May I и разрешение с You may образуют отдельную учебную модель.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Пожелание с инверсией имеет ограниченную сферу и следует за возможностью и разрешением.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Смягчённое Who may… значительно менее универсально, чем обычный вопрос о вероятности.",
+        "before_primary": true,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Уступительная модель whoever … may be полезна после двух основных модальных значений.",
+        "before_primary": true,
+        "recommended_order": 5
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 108,
+          "quote": "may [meK] v (might) мочь"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 3, 4, 5."
+  },
+  {
+    "word": "here",
+    "decision": "review_required",
+    "reason": "Местонахождение, направление и предъявление предмета составляют начальный набор. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Указание места отвечает на where; устойчивое here and there не меняет приоритет ядра.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Come here указывает цель движения и заслуживает соседства с местным употреблением.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Here is/are используется при вручении и предъявлении, важном для бытового общения.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Повествовательная отметка момента опирается на перенос значения места.",
+        "before_primary": true,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Указание на присутствующего после именной группы требует отдельной разговорной конструкции.",
+        "before_primary": true,
+        "recommended_order": 5
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 87,
+          "quote": "here [hK@] adv 1) здесь, тут 2) сюда  ~ you"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 4, 5."
+  },
+  {
+    "word": "need",
+    "decision": "оставить",
+    "reason": "Необходимость, потребности и обычный смысловой глагол сохраняют учебный приоритет. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.91,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Исчисляемая или неисчисляемая необходимость лежит в основе конструкции a need for.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Множественное needs обозначает отдельные потребности и полезно для описания людей.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Нехватка описывает отсутствие ресурса и не должна обгонять общее need for.",
+        "before_primary": null,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Материальная нужда усваивается как ограниченное применение, например в in need.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Беда распознаётся прежде всего в устойчивом временном окружении.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Употребление с дополнением или инфинитивом относится к базовой модели need.",
+        "before_primary": true,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "При подлежащем, обозначающем вещь, выражается потребность в уходе или действии.",
+        "before_primary": true,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Непереходное бедствовать существенно уже обычного need с дополнением.",
+        "before_primary": null,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Модальные отрицательные и вопросительные формы удобнее вводить после смыслового глагола.",
+        "before_primary": null,
+        "recommended_order": 9
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 114,
+          "quote": "need [ni:d] 1 n на добность, потре бность;"
+        }
+      ]
+    }
+  },
+  {
+    "word": "really",
+    "decision": "оставить",
+    "reason": "Утверждение достоверности и реакция собеседника полезны уже на A1. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.91,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Really при утверждении подчёркивает действительность сказанного.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Самостоятельное Really? имеет интонацию реакции и оправданно идёт после обычного наречия.",
+        "before_primary": true,
+        "recommended_order": 2
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 134,
+          "quote": "really ['rK@lK] adv действи тельно, в са мом"
+        }
+      ]
+    }
+  },
+  {
+    "word": "right",
+    "decision": "review_required",
+    "reason": "Правильность ответа и направление нужны на A1; специализированные омонимические блоки сохраняются. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Абстрактное представление о справедливости поддерживает выражения о должном.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Право человека или группы даёт самостоятельную продуктивную модель a right to.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Необычная формулировка об истинном положении вещей нуждается в отдельной проверке грамматической классификации.",
+        "before_primary": null,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Множественное употребление о порядке связано с узкими конструкциями.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Справедливый поступок передаёт моральную оценку, отличимую от проверки факта.",
+        "before_primary": true,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Right answer и right number выражают правильность, одно из самых доступных употреблений.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Выбор нужного человека или предмета полезен в практических задачах.",
+        "before_primary": null,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Исправность и нормальное состояние лучше вводить после общеупотребительной оценки правильности.",
+        "before_primary": null,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Геометрическая прямизна требует предметного контекста.",
+        "before_primary": null,
+        "recommended_order": 9
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Right перед направлением обозначает движение прямо и полезно в инструкциях.",
+        "before_primary": true,
+        "recommended_order": 10
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Right away и right now дают частые бытовые временные модели.",
+        "before_primary": true,
+        "recommended_order": 11
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Полнота действия зависит от следующего слова и уместна после базовых моделей.",
+        "before_primary": null,
+        "recommended_order": 12
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Точное совпадение в right here или right on time опирается на уже освоенные указатели.",
+        "before_primary": null,
+        "recommended_order": 13
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Right после глагола в get it right передаёт правильность выполнения и полезно учащемуся.",
+        "before_primary": null,
+        "recommended_order": 14
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Надлежащее выполнение близко к правильности и не требует раннего самостоятельного акцента.",
+        "before_primary": null,
+        "recommended_order": 15
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Степенное very-подобное употребление зависит от регистра и сочетания.",
+        "before_primary": null,
+        "recommended_order": 16
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Исправление положения и выпрямление обозначаются отдельным глаголом с меньшим учебным приоритетом.",
+        "before_primary": true,
+        "recommended_order": 17
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Глагол о защите прав ограничен правовым или историческим контекстом.",
+        "before_primary": true,
+        "recommended_order": 18
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Существительное the right нужно для описания расположения.",
+        "before_primary": true,
+        "recommended_order": 19
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Политическое собирательное название требует отдельного тематического контекста.",
+        "before_primary": null,
+        "recommended_order": 20
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Определение правой стороны нужно для частей тела и маршрутов.",
+        "before_primary": true,
+        "recommended_order": 21
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Лицевая сторона материала относится к предметной лексике.",
+        "before_primary": null,
+        "recommended_order": 22
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Политическое прилагательное целесообразно держать рядом с другими смыслами направления без смешения.",
+        "before_primary": null,
+        "recommended_order": 23
+      },
+      {
+        "meaning_index": 24,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Turn right прямо обслуживает начальные инструкции о маршруте.",
+        "before_primary": null,
+        "recommended_order": 24
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 139,
+          "quote": "right [raKt] 1 adj 1) пра вильный, ве рный;"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 6, 7, 14, 17, 18, 24."
+  },
+  {
+    "word": "feel",
+    "decision": "оставить",
+    "reason": "Базовое физическое и эмоциональное восприятие изучается прежде специальных способов употребления. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.91,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Существительное об ощущении поддерживает описание свойств материалов.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "A feel for передаёт интуитивное понимание, отдельное от осязания.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Восприятие боли или тепла с прямым дополнением базово для A1.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Сочетание feel с прилагательным состояния необходимо в бытовом разговоре.",
+        "before_primary": true,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Намеренное ощупывание отличается от пассивного восприятия и идёт следом.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Feel that передаёт личную оценку; её удобно вводить после физического и эмоционального ядра.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Свойство поверхности с предметом в роли подлежащего изучается после описания состояния человека.",
+        "before_primary": null,
+        "recommended_order": 7
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 70,
+          "quote": "feel [fÖl] v (felt; felt) 1) чу вствовать"
+        }
+      ]
+    }
+  },
+  {
+    "word": "work",
+    "decision": "review_required",
+    "reason": "Профессия, занятие и работоспособность дают главные учебные применения. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Работа как занятие или труд нужна для повседневного описания обязанностей.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Исчисляемое произведение полезно для отличения от неисчисляемого труда.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Действие или поступок вне общих значений тяготеют к ограниченным сочетаниям.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Общественные работы образуют отдельную модель множественного числа.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Обработка требует указания материала или ремесла.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Рукоделие требует конкретной предметной обстановки.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Детали механизма обозначаются множественным works и нужны позже.",
+        "before_primary": null,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Строительное и инженерное употребление ориентировано на профессиональный контекст.",
+        "before_primary": null,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Деяния во множественном числе обычно требуют этического или религиозного контекста.",
+        "before_primary": null,
+        "recommended_order": 9
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Фортификационное употребление специализировано исторически и технически.",
+        "before_primary": null,
+        "recommended_order": 10
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Брожение в существительном не относится к обычному A1.",
+        "before_primary": null,
+        "recommended_order": 11
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Отдельная краткая глосса дублирует ядро без ясного критерия раннего показа.",
+        "before_primary": null,
+        "recommended_order": 12
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Определительное work зависит от следующего существительного.",
+        "before_primary": null,
+        "recommended_order": 13
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Глагол о труде передаёт базовую деятельность и сохраняет приоритет.",
+        "before_primary": true,
+        "recommended_order": 14
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Работа по профессии поддерживает частотные конструкции work as и work in.",
+        "before_primary": true,
+        "recommended_order": 15
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Стремление выражается вместе с направляющим дополнением вроде towards.",
+        "before_primary": null,
+        "recommended_order": 16
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Управление машиной или предприятием требует объектного контекста.",
+        "before_primary": null,
+        "recommended_order": 17
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Каузативное употребление о принуждении работника уже базового непереходного.",
+        "before_primary": true,
+        "recommended_order": 18
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Работа над поверхностью или материалом привязана к ремесленному объекту.",
+        "before_primary": null,
+        "recommended_order": 19
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Причинение обычно ограничено определёнными прямыми дополнениями.",
+        "before_primary": null,
+        "recommended_order": 20
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Месить или ковать подсказывает материал, поэтому сохраняется как специальное применение.",
+        "before_primary": null,
+        "recommended_order": 21
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Работоспособность механизма нужна для обычных вопросов и отрицаний о неисправности.",
+        "before_primary": null,
+        "recommended_order": 22
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Движение механизма или детали требует отдельного контекста, чтобы отличить его от работоспособности.",
+        "before_primary": null,
+        "recommended_order": 23
+      },
+      {
+        "meaning_index": 24,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Высвобождение задаётся результативной конструкцией work loose или work free.",
+        "before_primary": null,
+        "recommended_order": 24
+      },
+      {
+        "meaning_index": 25,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Вычисление удобно вводить при изучении характерного математического сочетания.",
+        "before_primary": null,
+        "recommended_order": 25
+      },
+      {
+        "meaning_index": 26,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Отработка обязательства отличается от труда в целом и ограничена объектом.",
+        "before_primary": null,
+        "recommended_order": 26
+      },
+      {
+        "meaning_index": 27,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Рукодельный глагол требует тематического контекста.",
+        "before_primary": null,
+        "recommended_order": 27
+      },
+      {
+        "meaning_index": 28,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Использование человека или ситуации в своих целях выводится из контекста.",
+        "before_primary": null,
+        "recommended_order": 28
+      },
+      {
+        "meaning_index": 29,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Эффективность метода или средства представляет продуктивное современное употребление.",
+        "before_primary": null,
+        "recommended_order": 29
+      },
+      {
+        "meaning_index": 30,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Брожение в роли глагола ограничено пищевым или технологическим описанием.",
+        "before_primary": null,
+        "recommended_order": 30
+      },
+      {
+        "meaning_index": 31,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Постепенное продвижение требует направления и дополняет пространственные модели.",
+        "before_primary": null,
+        "recommended_order": 31
+      },
+      {
+        "meaning_index": 32,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Обманный способ достижения требует специального контекста и не входит в ядро.",
+        "before_primary": null,
+        "recommended_order": 32
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 176,
+          "quote": "work [wÆ:k] 1 n 1) рабо та; труд"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 3, 18, 22, 29."
+  },
+  {
+    "word": "year",
+    "decision": "оставить",
+    "reason": "Календарный период и выражение возраста нужны в начальной речи. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.91,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Единица времени служит исходным значением календарных выражений.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Возраст выражается через years с числом в распространённой разговорной модели.",
+        "before_primary": true,
+        "recommended_order": 2
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 177,
+          "quote": "year [jK@] n год\r\nyearly ['jK@lK] 1 adj ежего дный 2 adv\r\nежего дно\r\nyeast [jÖst] n дро жжи\r\nyell [jel] 1 n пронзи"
+        }
+      ]
+    }
+  },
+  {
+    "word": "being",
+    "decision": "review_required",
+    "reason": "Существование и живое существо важнее отдельной абстрактной характеристики личности. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Существование лежит в основе устойчивых моделей о возникновении.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Human being задаёт ясный современный образец исчисляемого существительного.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Суть или вся личность выражается в более книжных оборотах и идёт после human being.",
+        "before_primary": true,
+        "recommended_order": 3
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 22,
+          "quote": "being ['bÖKÎ] n 1) существо 2) бытие ,"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 3."
+  },
+  {
+    "word": "day",
+    "decision": "оставить",
+    "reason": "Сутки, светлая часть суток и длительность работы сохраняют приоритет. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.91,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Сутки служат базой для календарных конструкций и называния даты.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Светлая часть суток противопоставляется night и вводится сразу после суток.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Рабочий день выражает длительность деятельности и полезен в бытовом разговоре.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Эпоха обычно выражается через days во множественном числе.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Современность опирается на закреплённое временное сочетание.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Период жизни и фразеология о смерти требуют более широкого контекста.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Праздничный или решающий день выделяется по определению и ситуации.",
+        "before_primary": null,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Победа доступна главным образом в выражениях с carry или win.",
+        "before_primary": null,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Геологическое значение относится к специализированной терминологии.",
+        "before_primary": null,
+        "recommended_order": 9
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 50,
+          "quote": "day [deK] n день; ~ оff выходно й день; the ~"
+        }
+      ]
+    }
+  },
+  {
+    "word": "too",
+    "decision": "review_required",
+    "reason": "Избыток и присоединение составляют продуктивное ядро A1. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Too с прилагательным или наречием передаёт превышение подходящей степени.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Усилительное «очень» требует отдельной интонации или сочетания и легко смешивается с избытком.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Присоединительное too в конце высказывания нужно для простых ответов.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Подтверждающее too связано с экспрессивным возражением и не входит в ядро.",
+        "before_primary": true,
+        "recommended_order": 4
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 164,
+          "quote": "too [tü] adv 1) та кже, то же; к тому же"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 2, 4."
+  },
+  {
+    "word": "before",
+    "decision": "review_required",
+    "reason": "Предшествование с наречием, предлогом и союзом составляет три базовые модели. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Наречие о прошлом допускает самостоятельную позицию без дополнения.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Направление вперёд имеет ограниченные сочетания и не ведёт учебный ряд.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Пространственная локализация здесь значительно менее продуктивна, чем временная.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Предлог с указанием времени связывает два временных ориентира.",
+        "before_primary": true,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Пространственное «перед» с before требует особого контекста.",
+        "before_primary": true,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Сравнительное предпочтение представляет узкую синтаксическую модель.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Нахождение перед судом или аудиторией зависит от официальной ситуации.",
+        "before_primary": true,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Ранг или превосходство зависит от контекста сопоставления.",
+        "before_primary": true,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "conjunction",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Союз с личной формой глагола даёт одну из основных моделей последовательности событий.",
+        "before_primary": null,
+        "recommended_order": 9
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 22,
+          "quote": "before [bK'fþ] 1 prep пе ред; до 2 adv"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 2, 3, 5, 7, 8, 9."
+  },
+  {
+    "word": "off",
+    "decision": "review_required",
+    "reason": "Удаление, снятие, отключение и время вне работы полезнее специализированных морских и спортивных значений. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Удаление в конструкции движения образует пространственное ядро.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Расстояние задаётся числовым выражением и опирается на идею удаления.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Отмена требует различать наречное окружение и устойчивые сочетания.",
+        "before_primary": null,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Отсутствие на работе регулярно описывают с be off.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Завершённость определяется глаголом и не требует раннего отдельного приоритета.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Освобождение от обязательства часто предъявлено через идиоматический образ крючка.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Отключение устройства представляет повседневное самостоятельное применение.",
+        "before_primary": null,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Отсутствие товара или возможности определяется специальным контекстом.",
+        "before_primary": null,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Снятие одежды с off нужно в бытовой лексике.",
+        "before_primary": null,
+        "recommended_order": 9
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Расстояние от ориентира учится после основного отделения; перенос требует отдельного разбора.",
+        "before_primary": null,
+        "recommended_order": 10
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Предлог в движении с поверхности выражает прозрачную пространственную модель.",
+        "before_primary": null,
+        "recommended_order": 11
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Отклонение от нормы требует уточняющего дополнения.",
+        "before_primary": null,
+        "recommended_order": 12
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Неучастие следует за более прозрачными пространственными моделями.",
+        "before_primary": null,
+        "recommended_order": 13
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Прилагательное дальности имеет ограниченный набор предметных сочетаний.",
+        "before_primary": true,
+        "recommended_order": 14
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Морской борт относится к специальной классификации сторон.",
+        "before_primary": true,
+        "recommended_order": 15
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Оценка вероятности опирается на отдельные устойчивые сочетания.",
+        "before_primary": null,
+        "recommended_order": 16
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Свободный день или час описывает распространённую ситуацию учёбы и работы.",
+        "before_primary": null,
+        "recommended_order": 17
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Боковое расположение зависит от предмета и не составляет отдельной начальной модели.",
+        "before_primary": null,
+        "recommended_order": 18
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Состояние отделённости изучается после самого действия снятия.",
+        "before_primary": null,
+        "recommended_order": 19
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Оценка слабого сезона или года тематически ограничена.",
+        "before_primary": null,
+        "recommended_order": 20
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Самочувствие требует устойчивого окружения и не первично для A1.",
+        "before_primary": null,
+        "recommended_order": 21
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Несвежесть относится преимущественно к состоянию пищи.",
+        "before_primary": null,
+        "recommended_order": 22
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Низкое качество требует отличения от несвежести и отклонения от нормы.",
+        "before_primary": null,
+        "recommended_order": 23
+      },
+      {
+        "meaning_index": 24,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Правая сторона в крикете зависит от позиции бэтсмена.",
+        "before_primary": null,
+        "recommended_order": 24
+      },
+      {
+        "meaning_index": 25,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Номинальное свободное время уже обычных day off и time off.",
+        "before_primary": true,
+        "recommended_order": 25
+      },
+      {
+        "meaning_index": 26,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Существительное о стороне поля остаётся специализированным термином.",
+        "before_primary": true,
+        "recommended_order": 26
+      },
+      {
+        "meaning_index": 27,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Прекращение переговоров требует проверки актуального употребления глагола.",
+        "before_primary": null,
+        "recommended_order": 27
+      },
+      {
+        "meaning_index": 28,
+        "partOfSpeech": "interjection",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Самостоятельная команда ограничена ситуативной или стилизованной речью.",
+        "before_primary": null,
+        "recommended_order": 28
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 117,
+          "quote": "off [O:f, Áf] 1 prep с, со; от; take the book ~"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 2, 4, 7, 9, 11, 14, 15, 17, 25, 26."
+  },
+  {
+    "word": "why",
+    "decision": "оставить",
+    "reason": "Вопрос о причине и встроенные вопросительные конструкции сохраняют центральное место. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.91,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Самостоятельный прямой вопрос о причине вводится первым.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Встроенный вопрос о причине полезен сразу после прямого вопроса.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Связь причины с предшествующим высказыванием закрепляет продуктивное наречное употребление.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "interjection",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Междометное удивление зависит от интонации и регистра.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "interjection",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Эмоциональный протест связан со стилистически маркированной репликой.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "interjection",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Нерешительность с why требует точной интонации и отдельной ситуации.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "interjection",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Аргументативное междометие удобно изучать после вопросительного why.",
+        "before_primary": null,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Существительное the why связано с метаязыковым обозначением причины.",
+        "before_primary": null,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Значение загадки остаётся на периферии и требует подтверждения современного употребления.",
+        "before_primary": null,
+        "recommended_order": 9
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 175,
+          "quote": "why [waK] 1 adv почему 2 int да ведь, но"
+        }
+      ]
+    }
+  },
+  {
+    "word": "still",
+    "decision": "review_required",
+    "reason": "Временное продолжение и уступка требуют раннего показа наряду с обычным прилагательным. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Неподвижность прилагательного полезна в коротких инструкциях и описаниях.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Тихая обстановка связана с неподвижностью, но описывает звук.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Неигристое вино требует конкретного контекста выбора напитка.",
+        "before_primary": null,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Безмолвие как существительное тяготеет к описательной прозе.",
+        "before_primary": true,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Статичный кадр относится к медиа и отделяется от тишины.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Рекламный кадр представляет более узкий профессиональный случай.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Переходный глагол о затихании имеет ограниченную стилистическую применимость.",
+        "before_primary": true,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Утоление жажды или другого состояния закреплено за отдельными объектами.",
+        "before_primary": true,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Непереходное успокаиваться изучается после обычных значений движения и времени.",
+        "before_primary": null,
+        "recommended_order": 9
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Наречное описание неподвижности нужно после более продуктивного временного still.",
+        "before_primary": true,
+        "recommended_order": 10
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Продолжение состояния до момента речи является центральным употреблением A1.",
+        "before_primary": true,
+        "recommended_order": 11
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Уступка связывает предложения и важна в современном тексте и разговоре.",
+        "before_primary": true,
+        "recommended_order": 12
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Усиление сравнения полезно после общего временного и уступительного наречия.",
+        "before_primary": null,
+        "recommended_order": 13
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Аппарат для перегонки принадлежит самостоятельному техническому омониму.",
+        "before_primary": null,
+        "recommended_order": 14
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Завод обозначается в производственном контексте и следует за аппаратом.",
+        "before_primary": null,
+        "recommended_order": 15
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Перегонка глаголом терминологична и не должна сближаться с «утихомиривать».",
+        "before_primary": null,
+        "recommended_order": 16
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 155,
+          "quote": "still I [stKl] 1 adj 1) ти хий 2) неподви жный"
+        },
+        {
+          "page": 155,
+          "quote": "still II [stKl] adv 1) до сих пор; всё ещё;"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 4, 7, 8, 10."
+  },
+  {
+    "word": "take",
+    "decision": "review_required",
+    "reason": "Взятие, транспорт, длительность, приём лекарства и перемещение человека или вещи нужны в начальном курсе. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Общий глагол взятия даёт физическое ядро.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Захват конкретного предмета близок к ядру и помогает отработать завершённое действие.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Аренда помещения опирается на специализированную ситуацию выбора жилья.",
+        "before_primary": null,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Поездка на транспорте образует основную бытовую модель take the bus.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Регулярное получение подписки требует тематического дополнения.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Выигрыш или получение определяется соревнованием и типом объекта.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Длительность действий с it takes регулярно нужна для планирования.",
+        "before_primary": true,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Приём лекарства естественно входит в базовые медицинские ситуации.",
+        "before_primary": null,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Воздействие лучше вводить вместе с закреплённой конструкцией.",
+        "before_primary": null,
+        "recommended_order": 9
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Перемещение людей или вещей выражается продуктивной моделью с направлением.",
+        "before_primary": null,
+        "recommended_order": 10
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Заболевание с take требует учёта конкретной современной конструкции.",
+        "before_primary": null,
+        "recommended_order": 11
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Измерение полезно в характерных сочетаниях, например с температурой.",
+        "before_primary": null,
+        "recommended_order": 12
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Интерпретация сказанного важна в разговоре, хотя идёт после конкретных действий.",
+        "before_primary": true,
+        "recommended_order": 13
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Реакция уточняется наречием или предлогом и следует за интерпретацией.",
+        "before_primary": null,
+        "recommended_order": 14
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Согласие зависит от предмета принятия и ситуации.",
+        "before_primary": null,
+        "recommended_order": 15
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Вычитание привязано к математической конструкции.",
+        "before_primary": null,
+        "recommended_order": 16
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Преодоление препятствия задаётся предметным, часто спортивным контекстом.",
+        "before_primary": null,
+        "recommended_order": 17
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Фотографирование с take a photo нужно при описании поездок и событий.",
+        "before_primary": null,
+        "recommended_order": 18
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Получившееся изображение следует различать с действием фотографа.",
+        "before_primary": null,
+        "recommended_order": 19
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Сексуальное употребление стилистически чувствительно и периферийно.",
+        "before_primary": null,
+        "recommended_order": 20
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Очарование часто передаётся пассивной конструкцией с отдельным дополнением.",
+        "before_primary": null,
+        "recommended_order": 21
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Ловля требует указания добычи и удобна после общего взятия.",
+        "before_primary": null,
+        "recommended_order": 22
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Добывание зависит от предметного контекста и близко к получению.",
+        "before_primary": null,
+        "recommended_order": 23
+      },
+      {
+        "meaning_index": 24,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Выбор маршрута выводится из конструкции с названием пути.",
+        "before_primary": null,
+        "recommended_order": 24
+      },
+      {
+        "meaning_index": 25,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Успех или увлечение требуют разных окружений, которым не нужен ранний общий акцент.",
+        "before_primary": null,
+        "recommended_order": 25
+      },
+      {
+        "meaning_index": 26,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Способность переносить обработку обычно раскрывается в техническом контексте.",
+        "before_primary": null,
+        "recommended_order": 26
+      },
+      {
+        "meaning_index": 27,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Гибель в сочетании с lives относится к устойчивому переходному обороту.",
+        "before_primary": null,
+        "recommended_order": 27
+      },
+      {
+        "meaning_index": 28,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Схватывание материала специализировано технически.",
+        "before_primary": null,
+        "recommended_order": 28
+      },
+      {
+        "meaning_index": 29,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Список сочетаний с существительными изучается через конкретные коллокации.",
+        "before_primary": null,
+        "recommended_order": 29
+      },
+      {
+        "meaning_index": 30,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Именной захват менее продуктивен для учащегося, чем глагольный.",
+        "before_primary": true,
+        "recommended_order": 30
+      },
+      {
+        "meaning_index": 31,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Кинематографический дубль современен, но тематически уже глагольного ядра.",
+        "before_primary": true,
+        "recommended_order": 31
+      },
+      {
+        "meaning_index": 32,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Театральный сбор требует предметной проверки и относится к профессиональной лексике.",
+        "before_primary": true,
+        "recommended_order": 32
+      },
+      {
+        "meaning_index": 33,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Выручка зависит от делового или разговорного окружения.",
+        "before_primary": null,
+        "recommended_order": 33
+      },
+      {
+        "meaning_index": 34,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Типографское значение связано со специальным производственным процессом.",
+        "before_primary": null,
+        "recommended_order": 34
+      },
+      {
+        "meaning_index": 35,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Улов выражает объём добычи и не относится к первым значениям.",
+        "before_primary": true,
+        "recommended_order": 35
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 160,
+          "quote": "take [teKk] v (took; taken) брать; взять; ~ off"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 4, 8, 10, 18, 30, 31, 32, 35."
+  },
+  {
+    "word": "many",
+    "decision": "оставить",
+    "reason": "Множественное количество остаётся центральным в определительной и самостоятельной позиции. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.91,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Количественное определение перед исчисляемыми существительными является базовой моделью.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Самостоятельное many и many of сохраняют учебную значимость, классификацию следует разбирать отдельно.",
+        "before_primary": true,
+        "recommended_order": 2
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 107,
+          "quote": "many ['menK] 1 adj мно гие; мно го; how ~?"
+        }
+      ]
+    }
+  },
+  {
+    "word": "call",
+    "decision": "review_required",
+    "reason": "Телефонная связь и называние входят в основное ядро наряду с окликом. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Оклик передаёт исходный смысл обращения голосом.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Крик птицы или животного тематически полезен после человеческого общения.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Манок требует охотничьего или наблюдательного контекста.",
+        "before_primary": null,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Позывной и сигнал инструмента относятся к специальным применениям.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Телефонный разговор нужен для make a call и get a call.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Вызов врача зависит от ситуации, отличимой от самого звонка.",
+        "before_primary": null,
+        "recommended_order": 6
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Краткий визит требует уточняющего окружения.",
+        "before_primary": null,
+        "recommended_order": 7
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Заход в порт относится к морской тематике.",
+        "before_primary": null,
+        "recommended_order": 8
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Публичный призыв обычно раскрывается через конструкцию call for.",
+        "before_primary": null,
+        "recommended_order": 9
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Спрос требует особой модели и не должен опережать телефонное значение.",
+        "before_primary": null,
+        "recommended_order": 10
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Требование платежа относится к финансовой лексике.",
+        "before_primary": null,
+        "recommended_order": 11
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Опцион требует отраслевого контекста и отличается от обычного требования.",
+        "before_primary": null,
+        "recommended_order": 12
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Обращение голосом образует базовый глагольный смысл.",
+        "before_primary": true,
+        "recommended_order": 13
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Назвать или дать имя нужно для бытовых представлений.",
+        "before_primary": true,
+        "recommended_order": 14
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Характеристика лица словом вводится после обычной модели называния.",
+        "before_primary": null,
+        "recommended_order": 15
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Звонок по телефону является одной из первых коммуникативных моделей.",
+        "before_primary": null,
+        "recommended_order": 16
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Пробуждение требует определённой ситуации и не входит в базовый набор.",
+        "before_primary": null,
+        "recommended_order": 17
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Созыв обычно относится к собраниям и официальным действиям.",
+        "before_primary": null,
+        "recommended_order": 18
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Визит с предлогом имеет стилистические и региональные ограничения.",
+        "before_primary": null,
+        "recommended_order": 19
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Заход судна относится к отдельной морской конструкции.",
+        "before_primary": null,
+        "recommended_order": 20
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Призыв к действию вводится через типичное предложное окружение.",
+        "before_primary": null,
+        "recommended_order": 21
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 30,
+          "quote": "call [kþl] 1 n 1) зов, о клик 2) (телефо нный)"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 2, 5, 16."
+  },
+  {
+    "word": "never",
+    "decision": "review_required",
+    "reason": "Базовое отрицание опыта и частотности идёт перед экспрессивными репликами. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Never выражает нулевую частотность и полезно при первом знакомстве с наречием.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Ни разу полезно как выражение отсутствия опыта, соседнее основному.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Усиление отрицания зависит от контекста и вводится после буквального значения.",
+        "before_primary": true,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Самостоятельная реплика удивления опирается на интонацию и ситуацию.",
+        "before_primary": true,
+        "recommended_order": 4
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 114,
+          "quote": "never ['nev@] adv никогда"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 3, 4."
+  },
+  {
+    "word": "make-up",
+    "decision": "review_required",
+    "reason": "Косметика и состав продуктивны в современной речи; вёрстка остаётся термином. Текущая последовательность сохраняет разграничение значений по частям речи и омонимам.",
+    "confidence": 0.88,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Косметика даёт ясную повседневную модель put on make-up.",
+        "before_primary": true,
+        "recommended_order": 1
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "предложить изменение",
+        "reason": "Вёрстка ограничена полиграфическим контекстом.",
+        "before_primary": true,
+        "recommended_order": 2
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Склад характера удобно объяснять через более общий состав.",
+        "before_primary": null,
+        "recommended_order": 3
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "предложить изменение",
+        "reason": "Состав группы или вещества выражает продуктивное современное переносное употребление.",
+        "before_primary": null,
+        "recommended_order": 4
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Выдумка требует различения существительного и глагола make up.",
+        "before_primary": null,
+        "recommended_order": 5
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Профессиональное название требует отдельной проверки современного употребления.",
+        "before_primary": null,
+        "recommended_order": 6
+      }
+    ],
+    "source_reference": {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": [
+        {
+          "page": 106,
+          "quote": "make-up ['meKköp] n макия ж"
+        }
+      ]
+    },
+    "review_reason": "Согласовать предлагаемые отметки primary по значениям: 2, 4."
+  }
+]

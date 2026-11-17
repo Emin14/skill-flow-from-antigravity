@@ -6,7 +6,7 @@ from pathlib import Path
 from audit_meanings import DATA_PATH
 
 ROOT = Path(__file__).resolve().parents[1]
-MIRROR_PATH = ROOT / "src" / "data" / "oxford_5000.json"
+MIRROR_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 OUT_PATH = ROOT / "tmp" / "inline_example_repairs.json"
 
 INLINE = re.compile(r"^\s*([A-Za-z][^;!?]*[!?])\s*(.*?)\s*$")

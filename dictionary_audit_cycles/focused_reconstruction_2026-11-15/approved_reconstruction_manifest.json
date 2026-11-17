@@ -1,0 +1,168 @@
+{
+  "applied_count": 6,
+  "changes": [
+    {
+      "word": "third",
+      "path": "meanings",
+      "before": [
+        {
+          "id": 1,
+          "partOfSpeech": "numeral",
+          "translation": "третий",
+          "examples": [
+            {
+              "en": "the third day",
+              "ru": "третий день"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "треть, третья часть",
+          "examples": [
+            {
+              "en": "a third of the population",
+              "ru": "треть населения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "третье лицо (в грамматике)",
+          "examples": [],
+          "register": [
+            "грамматика"
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "третье лицо; третья сторона, свидетель",
+          "examples": [
+            {
+              "en": "third party",
+              "ru": "третье лицо, третья сторона"
+            },
+            {
+              "en": "third person",
+              "ru": "третье лицо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "after": [
+        {
+          "id": 1,
+          "partOfSpeech": "numeral",
+          "translation": "третий",
+          "examples": [
+            {
+              "en": "the third day",
+              "ru": "третий день"
+            },
+            {
+              "en": "third person",
+              "ru": "третье лицо"
+            },
+            {
+              "en": "third party",
+              "ru": "третья сторона, свидетель"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "треть, третья часть",
+          "examples": [
+            {
+              "en": "a third of the population",
+              "ru": "треть населения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "третье число; терция",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "reason": "reconstruct numeral and noun blocks from Muller"
+    },
+    {
+      "word": "among",
+      "path": "meanings[3]",
+      "before": null,
+      "after": {
+        "id": 3,
+        "partOfSpeech": "preposition",
+        "translation": "из",
+        "examples": [
+          {
+            "en": "one among a thousand",
+            "ru": "один из тысячи"
+          }
+        ],
+        "register": [],
+        "primary": true
+      },
+      "reason": "add source-confirmed meaning"
+    },
+    {
+      "word": "major",
+      "path": "meanings[1]",
+      "before": null,
+      "after": {
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "майор",
+        "examples": [],
+        "register": [],
+        "primary": true
+      },
+      "reason": "add missing source homonym major I"
+    },
+    {
+      "word": "child",
+      "path": "meanings[5].examples[1].ru",
+      "before": "охрана детства; защита прав ребёнка",
+      "after": "охрана младенчества (или детства)",
+      "reason": "restore source translation child welfare"
+    },
+    {
+      "word": "bank3",
+      "path": "meanings[1].translation",
+      "before": "накреняться (о самолёте); делать крен",
+      "after": "делать вираж; накреняться",
+      "reason": "restore source bank I verb sense"
+    },
+    {
+      "word": "bank3",
+      "path": "meanings[2].translation",
+      "before": "рассчитывать, полагаться (на что-либо: bank on)",
+      "after": "полагаться на кого-либо, рассчитывать",
+      "reason": "align bank on construction"
+    }
+  ],
+  "deferred": [
+    "major/current source-aligned remainder; bring/happen/charge/report/whether; hold/press/record/lead/finish/ground/phone/living homonym reconstructions; road/average/certain duplicate storage"
+  ],
+  "before_sha256": "2b754d0c6c832a5f5ebbe79c6b03d58c8693396067e5a0b027252608abd5d5b8",
+  "after_sha256": "4684035c6b41a8f1a5fe98c9db62a7b365d6fc7a9912302e5a6e733a7b3c03cc"
+}

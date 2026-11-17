@@ -9,7 +9,7 @@
 import io
 import json
 
-data = json.load(io.open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8'))
+data = json.load(io.open('src/data/oxford_5000.json', 'r', encoding='utf-8'))
 pdf_text = io.open('tmp/muller_full_text.txt', 'r', encoding='utf-8').read()
 out = io.open('tmp/specific_checks.txt', 'w', encoding='utf-8')
 

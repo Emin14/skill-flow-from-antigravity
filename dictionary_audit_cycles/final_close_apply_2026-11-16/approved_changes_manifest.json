@@ -1,0 +1,91 @@
+{
+  "scope": "final_close_apply_2026-11-16",
+  "applied_count": 8,
+  "changes": [
+    {
+      "word": "stand",
+      "path": "meanings[17].examples[6].ru",
+      "before": "в этом году кукуруза стоит высоко",
+      "after": "в этом году цены на кукурузу высокие",
+      "reason": "restore latest isolated Muller translation"
+    },
+    {
+      "word": "sign",
+      "path": "meanings[8]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "след",
+        "examples": [],
+        "register": [
+          "американский английский"
+        ],
+        "id": 8
+      },
+      "reason": "restore source-confirmed American noun sense"
+    },
+    {
+      "word": "rock",
+      "path": "meanings[11].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "source marks rock sense 11 attributive"
+    },
+    {
+      "word": "rock",
+      "path": "meanings[8].register",
+      "before": [
+        "американский английский",
+        "жаргон",
+        "британское"
+      ],
+      "after": [
+        "американский английский",
+        "жаргон"
+      ],
+      "reason": "remove unsupported British register"
+    },
+    {
+      "word": "rock",
+      "path": "meanings[10].register",
+      "before": [
+        "британское"
+      ],
+      "after": [
+        "грубое"
+      ],
+      "reason": "map source груб. register and remove unsupported British label"
+    },
+    {
+      "word": "except",
+      "path": "meanings[1].register",
+      "before": [
+        "искусство"
+      ],
+      "after": [],
+      "reason": "remove unsupported art register"
+    },
+    {
+      "word": "except",
+      "path": "meanings[3].register",
+      "before": [
+        "юридическое",
+        "искусство"
+      ],
+      "after": [],
+      "reason": "remove unsupported registers from preposition sense"
+    },
+    {
+      "word": "eye",
+      "path": "meanings[1].translation",
+      "before": "глаз; Око; зрение",
+      "after": "глаз; око; зрение",
+      "reason": "normalize common-noun translation capitalization"
+    }
+  ],
+  "deferred": [
+    "drive/eat/stand broad construction ownership; cry/bed optional coverage; league/fast/size/match completed as far as schema permits; written/election policy resolved or no safe change; source-boundary rock/speak/write/cold/except/eye/store reviewed; duplicate storage policy"
+  ],
+  "before_sha256": "b89f46889ee97d51840a9e164cfcaf248d389e8b7195fb0576f1efab117112a3",
+  "after_sha256": "feb1381c2d0bbc5cde009394a385e0b27ecb9ce98f9dcb1463f0d6392080ee8d"
+}

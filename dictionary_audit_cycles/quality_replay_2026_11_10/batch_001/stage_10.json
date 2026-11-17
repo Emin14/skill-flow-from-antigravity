@@ -1,0 +1,4195 @@
+[
+  {
+    "word": "number",
+    "decision": "review_required",
+    "reason": "Сценический номер, грамматическое число и нумерация получили подходящие примеры. Два кандидата оставлены на доработку. Приоритет количества и номера обоснован учебной полезностью. Локальный SHA-256 пакета источников f6015563fb6ba319432316cec74c167322d2175905539828f426d3b93d3d99e1 отличается от заявленного d7f439c5ec224eb497bca146ce410d29447f6da79645cd26c46e619163374fb5. Это ограничение относится ко всей партии.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/0",
+    "before_after_ref": "#/previous_outputs/07/0",
+    "previous_review_refs": [
+      "#/previous_outputs/08/0",
+      "#/previous_outputs/09/0"
+    ],
+    "technical_qa": {
+      "scope": "Вся партия",
+      "command": "python3 final_qa_validation.py",
+      "result": "Запуск завершился ошибкой Errno 2. Скрипт и канонический JSON отсутствуют в рабочей папке. Git-репозиторий недоступен.",
+      "verified": "В 20 переданных записях заголовки уникальны, переводы заполнены. Файлы не редактировались.",
+      "unverified": "Валидность, 4 980 записей, переводы, символы и дубликаты в полном каноническом файле, состав изменений и Total errors found: 0."
+    },
+    "example_reviews": [
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "1533370526df17587b304859329faf3db3625b3848af98a2de563588da5081b9",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Number стоит после opening в прямом дополнении."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Танцоры репетируют отдельное выступление."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The opening number образует именную группу."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Rehearse the opening number естественно в сценической речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены танцоры, текущая репетиция и первый номер."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Репетиция объясняет сценическое прочтение."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Объект репетиции отличается от идентификатора и выпуска."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Opening number продуктивно обозначает начало сценической программы."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "62916c9b4e3f8456995ef3f56acd8a96ad6da644fdb66c3dff57629426cd8c92",
+        "verdict": "review_required",
+        "confidence": 0.9,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Number является вершиной группы с of the magazine."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Последовательность выпусков читается по latest и magazine."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The latest number является именным подлежащим."
+          },
+          "natural_english": {
+            "pass": false,
+            "reason": "В нейтральной журнальной речи latest number звучит книжно и заметно уступает latest issue."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Новый дизайн относится к обложке последнего номера."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Пример подаёт маркированную редакционную формулу как бытовую."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Обложка принадлежит отдельному выпуску."
+          },
+          "contemporary_usage": {
+            "pass": false,
+            "reason": "Back number подтверждает отдельное сочетание. Современный контекст latest number of the magazine не приложен."
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "5b7f7da0dc0bc4229d39ce4db35745c8d6341e6762513a164f3293d77506becb",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Number является объектом mark."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Singular и plural задают грамматическую категорию."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The number of each noun является именной группой."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Mark X as Y or Z естественно в инструкции к упражнению."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Укажите» сохраняет инструкцию и оба варианта ответа."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Два варианта раскрывают термин внутри фразы."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Классифицируется каждое существительное, количество слов не подсчитывают."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Лингвистический материал UNISA подтверждает number с singular и plural. [UNISA](https://w2.unisa.ac.za/CW/SITES/CORPORAT/DEFAULT/UNISA_OP/OER_UNIS/LINGUIST/GRAMMATI.HTM)"
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "080c805bf6c115c939d8d0cf5bde24ba2133521ebfbac2243f5d90df15257dc6",
+        "verdict": "rejected",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Numbered является причастием глагола number."
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "Is numbered among выражает причисление в пассиве, тогда как индекс 13 предназначен для самостоятельного непереходного употребления."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Is numbered образует глагольный пассив."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Numbered among the finalists звучит естественно в формальном перечне."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Входит в число» передаёт результирующую принадлежность."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Учащийся не увидит непереходную модель целевого значения."
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "Пассив повторяет модель to be numbered with из 12."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Numbered among сохраняется в формальных описаниях принадлежности."
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "candidate_sha256": "c154a8da718ecf44d5be8b9bef14a9c291b02ad2c8e8fc843dd991aa100f078f",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Number употреблён в начальной форме после please."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Страницам нужно присвоить номера перед печатью."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Number является переходным глаголом с объектом the pages."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Number the pages звучит как обычная редакционная инструкция."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Переданы просьба, отчёт и последовательность действий."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Знакомые действия раскрывают значение без специальной лексики."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Нумерация каждой страницы отличается от подсчёта страниц."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Модель number the pages употребительна при подготовке документов."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 3,
+        "proposal_sha256": "0d3a127f1bb4b458f6545d1cae9e5db4bc8b3b03c1502d6bb26354fff35cda39",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На с. 544 стоит pl."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Numbers of people допускает «много народу»."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Numbers остаётся множественным существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Множественное число и пример сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снятие региональной пометы устраняет ошибку чтения pl."
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "proposal_sha256": "1eda19f142f39b241e31ee5d9ba08c67eb04334a6071e18aba826d06fc5a9244",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На с. 545 прямо указан привлекающий внимание человек."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Предметное и личное прочтения разведены."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "В обоих случаях number является исчисляемым существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Предметное значение, разговорность и старая иллюстрация сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Восстановление личного референта допустимо отдельно от оценки фамильярного примера."
+          }
+        }
+      },
+      {
+        "meaning_index": 11,
+        "proposal_sha256": "be8cb73a0cdc4f244abc10b4c0506846a61a46f8e9e02303ec621d06e454fd05",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Фрагмент на с. 545 даёт pl и просодическую помету."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Стихи» соответствует печатному толкованию."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Речь о существительном во множественном числе."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Смысл, число и область сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Исправление пометы допустимо. Исторический статус значения подлежит отдельной проверке."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 6,
+        "problem": "Современная нейтральная модель с latest number не подтверждена.",
+        "required_action": "Роли 09 предъявить датированный контекст того же значения и обозначить регистр."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Пассив причисления дублирует 12.",
+        "required_action": "Роли 09 дать непереходную модель либо инициировать сверку границы значений 12–13."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Современный пример просодического размера отсутствует.",
+        "required_action": "Установить исторический статус значения."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Современный пример numbers «стихи» отсутствует.",
+        "required_action": "Установить исторический статус отдельно от снятия британской пометы."
+      },
+      {
+        "meaning_index": 16,
+        "problem": "His days are numbered иллюстрирует идиому, а обычный подсчёт остаётся без контекста.",
+        "required_action": "Развести идиому и буквальный глагол. Для 17 сверить «рассчитаться по порядку», для 4 обновить автомобильную формулу, для 2 уточнить регистр out of number. В 1 science of numbers подтверждает «числа», в 5–8 различены сценический номер, выпуск, группа и грамматическая категория. Population numbers 5000 переведено точно."
+      }
+    ]
+  },
+  {
+    "word": "city",
+    "decision": "review_required",
+    "reason": "Общий перевод «город» нужен. Правка статуса города и пример с attractions требуют доработки. Муниципальные сочетания подтверждают атрибутивное употребление существительного. Лондонские значения полезны после общего и муниципального.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/1",
+    "before_after_ref": "#/previous_outputs/07/1",
+    "previous_review_refs": [
+      "#/previous_outputs/08/1",
+      "#/previous_outputs/09/1"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "3938a5db9df7a4283a71cf3e358f9edcf30e8d90d513d174edf043b43e720c84",
+        "verdict": "rejected",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "City следует за артиклем и определением big."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Big city обозначает крупный населённый пункт."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "City является вершиной группы a big city."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Attractions of a big city естественно называет привлекательные стороны города."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "«Соблазны» добавляет оттенок искушения. Изолированный фрагмент допускает достопримечательности и привлекательные стороны."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Двусмысленное attractions даёт слишком узкую русскую опору."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Неопределённая группа a big city исключает лондонское имя."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Сочетание big city употребительно в современной речи о городах."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "37217ea97ab8a7692b2d5b0eb5ca272ec063d52a87e77cd6dcd9887ef6bed6dc",
+        "verdict": "review_required",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": false,
+            "reason": "Две цитаты подтверждают «город, большой город». Правила присвоения статуса они не устанавливают."
+          },
+          "translation_accuracy": {
+            "pass": false,
+            "reason": "Английская оговорка связывает официальный статус со старинностью, а американская формулирует слишком широкое правило о самоуправлении."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "City обозначает населённый пункт как существительное."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Общий смысл расширен, обе географические оговорки представлены."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Юридические уточнения нуждаются в отдельном подтверждении и более точной редакции."
+          }
+        }
+      },
+      {
+        "meaning_index": 2,
+        "proposal_sha256": "2119d45c284cb5d16e3736c9c81614b180acceed6aa5c3e3be8c42dce8fc1d66",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 146 перечисляет квартал и финансово-коммерческие круги."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Топоним и метонимическое прочтение явно разведены."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "The City является именной группой с собственным именем."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Финансовый референт сохранён, географический восстановлен."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Уточнение значения пригодно отдельно. Сокращённый старый пример требует самостоятельной правки."
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "proposal_sha256": "85b56a2bd690dd0a30d7b1f1bceaf1728fb8751af15bcdae411c151ef8d2e1db",
+        "verdict": "review_required",
+        "confidence": 0.97,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 146 подтверждает attr. и сочетание City man."
+          },
+          "translation_accuracy": {
+            "pass": false,
+            "reason": "Лондонская формулировка охватывает финансовое прочтение, но оставляет в строке американский city editor с другим референтом."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "City остаётся именным определением."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Перевод City man и оба чтения editor сохранены в тексте предложения."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Границы редакционных смыслов и капитализацию нужно согласовать с новым толкованием."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Ссылки не обосновывают критерии статуса city. В кандидате «соблазны» добавляют коннотацию.",
+        "required_action": "Роли 07 уточнить определение, роли 09 вернуть новый кандидат с отдельным хешем и нейтральным переводом."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "The C. остаётся словарным сокращением.",
+        "required_action": "В примерах раскрыть топоним с прописной буквы."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "У C. editor слиты британский финансовый редактор и американский редактор местных новостей. «Крупный» в City man не подтверждён.",
+        "required_action": "Развести референты, капитализацию и региональную помету, отдельно проверить усиление во фразе City man."
+      }
+    ]
+  },
+  {
+    "word": "lot",
+    "decision": "review_required",
+    "reason": "Четыре новых примера различают аукционный лот, компанию людей, территорию киностудии и степень сравнения. Количественное a lot of и наречное a lot полезны в начале. Жеребьёвка, товарная партия и земельный участок различимы, однако склейка и редкие значения требуют отдельного решения.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/2",
+    "before_after_ref": "#/previous_outputs/07/2",
+    "previous_review_refs": [
+      "#/previous_outputs/08/2",
+      "#/previous_outputs/09/2"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "e7f764eef58b51aaca27fe1c36aa19dfb090a85e50a094df4bf073e15d68c626",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Lot является вершиной группы the first lot."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Набор чашек образует одну единицу аукционной продажи."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The first lot является именным подлежащим."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "First lot at the auction естественно обозначает порядок продажи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Переданы первый лот, аукцион и набор чашек."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Пример показывает, как несколько предметов составляют лот."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Аукцион отличает лот от партии поставки."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Lot остаётся обычной единицей аукционного каталога."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "25e4e5d0e9bbad9af00e5575f98982000178c537903278458fdc5546c23c5fac",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Lot относится к собеседникам через you’re."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Говорящий характеризует всю группу как шумную."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "A noisy lot является именной частью сказуемого."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "You’re a noisy lot звучит естественно в британском разговоре."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Ну и шумная вы компания» сохраняет оценку и восклицание."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Прямое обращение показывает референт без лишнего контекста."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Noisy характеризует людей как коллектив, без оценки количества."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "A noisy lot сохраняется как британское разговорное обозначение группы."
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "062a25d0889de69d28b3e1f93d2d2cc04285dc6861ed5e983906c59aba899e1a",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Lot является вершиной сочетания studio lot."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Декорации строят на территории киностудии."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Studio lot является именной группой после on."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Build a set on the studio lot естественно в речи о съёмках."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены съёмочная группа, строительство декораций и место."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Crew и set помогают распознать киношный смысл."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Названа производственная территория студии."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Studio lot остаётся обычным сочетанием в описаниях кинопроизводства."
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "1100e9f8fdf8326146ad17aa88384e333af66ac77838ddfe3c04f28b9c613cc8",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Lot входит в целый усилитель a lot."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Усилитель выражает степень сравнения better."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "A lot выполняет наречную функцию при better."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "A lot better естественно как короткая сравнительная реплика."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Гораздо лучше» сохраняет степень и направление сравнения."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Фрагмент показывает артикль и позицию усилителя."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "После a lot стоит сравнительная форма, без of и счётного объекта."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "A lot перед сравнительной степенью продуктивно в современной речи."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 4,
+        "proposal_sha256": "4a619faeff44e5df24877159715295a94c725498056e564ca1bde4fd5892f8e2",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 480 даёт «особ. амер.» при земельном участке."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Участок земли» выделяет нужный референт."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "В parking lot слово остаётся существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Аукционный лот и товарная партия уже представлены в 2 и 5."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "«Особенно» сохраняет преимущественный характер регионального употребления."
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "proposal_sha256": "e5d3eddcac7a0d2d7a4127e7299d9732b4f704c8b43547114bcc2311b3a582ed",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 480 даёт adv и a lot better. СамПолный отмечает разговорность."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Гораздо, намного» точно описывает усиление сравнения."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Наречная функция отнесена к a lot целиком."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба русских эквивалента сохранены, медицинская помета была ошибочной."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Для нейтральной учебной подачи допустимо снять медицинскую помету. Sense_after совпадает."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Lot with обрезано и склеено с отдельной фразой о выпавшем жребии.",
+        "required_action": "Восстановить обе пары. Draw lots и settle by lot сохранить как модели жеребьёвки."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Налоговый смысл подтверждён печатью, современный контекст не найден.",
+        "required_action": "Установить период и сферу перед добавлением примера."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Lot out при межевании не подтверждено современным отраслевым контекстом.",
+        "required_action": "Проверить переходную конструкцию и её регистр."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Draw lots иллюстрирует существительное, а глагольная жеребьёвка остаётся без современного примера.",
+        "required_action": "Проверить датировку глагола lot в этом смысле."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Современная переходная модель аукционной разбивки не установлена.",
+        "required_action": "Найти отраслевой пример глагола со значением формирования лотов."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Современность lot on/upon «рассчитывать» не подтверждена.",
+        "required_action": "Сверить датированные американские употребления."
+      }
+    ]
+  },
+  {
+    "word": "name",
+    "decision": "review_required",
+    "reason": "Четыре новых примера различают название фильма, называние людей, приведение причин и назначение. Парламентский пример передаёт процедуру слишком общим русским оборотом. Личные имена и названия целесообразно показать первыми.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/3",
+    "before_after_ref": "#/previous_outputs/07/3",
+    "previous_review_refs": [
+      "#/previous_outputs/08/3",
+      "#/previous_outputs/09/3"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "481b846dd3107607a9a789096ff81b4fb6831b251682d6481fc2935dec0af883",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Name является вершиной the name of the film."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Спрашивают название фильма."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The name of the film является именной группой."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "What’s the name of the film? звучит как обычный вопрос."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Как называется фильм?» сохраняет предмет и цель вопроса."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткая модель переносится на книги и другие произведения."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Фильм имеет название, вопрос не касается личного имени."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "What’s the name of …? продуктивно в повседневной речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 10,
+        "candidate_sha256": "1ebe6eb1e19dea071e386384f4edc8c7e5514b002cfa55e33afe9c1230d9c3ea",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Name стоит после can и управляет the winners."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Вопрос просит назвать имена уже известных победителей."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Name является глаголом после модального can."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Can you name the winners? естественно как проверка знания."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Можешь» и «поимённо» передают просьбу идентифицировать людей."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Множественное winners проясняет перечисление людей."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Вопрос касается имён, а не присвоения имени или назначения."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Can you name …? употребительно при просьбе идентифицировать людей."
+          }
+        }
+      },
+      {
+        "meaning_index": 12,
+        "candidate_sha256": "7e78abbd8a04121b1270c0e2f5cc2d31e1b92e459ce01296c1a36dcbe348d36a",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Name является глагольной формой после can."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Three reasons требует привести доводы."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Name принимает прямое дополнение three reasons."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Can you name three reasons? естественно звучит в дискуссии."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены вопрос, три причины и цель остаться."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Число доводов делает задачу конкретной."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Причины приводят как примеры, без называния людей по имени."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Name three … остаётся продуктивной моделью запроса примеров."
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "f677010257b1ca8418ee98eaf1e9adbfa385f7f5446876d611aca8e95669e8c6",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Named является прошедшей формой name."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Совет объявляет женщину новым директором."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Named управляет her и предикативным дополнением as the new director."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Named her as the new director естественно для кадрового сообщения."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Совет, прошедшее действие и новая должность сохранены."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Board и director ясно задают назначение."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Присваивается должность, личное имя уже предполагается."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Name someone as director употребляется в современных кадровых сообщениях."
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "candidate_sha256": "4b65467fb251a9b63e67f41b3202490fcb9c73fb76e583ee05157efb44796dbf",
+        "verdict": "rejected",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Named является прошедшей формой заголовочного глагола."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Speaker, Member и причина нарушения задают дисциплинарную процедуру."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Named является переходным глаголом с объектом the member."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Конструкция name a Member for conduct соответствует парламентскому употреблению."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "«Призвал к порядку» читается как предупреждение. Naming является отдельной формальной мерой, которая может вести к отстранению."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Русская фраза скрывает различие между официальным naming и обычным замечанием."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Дисциплинарная мера отличима от простого называния имени."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Действующее описание процедуры различает предупреждение, удаление и naming. [Erskine May](https://erskinemay.parliament.uk/section/15292/proceedings-on-the-naming-of-a-member)"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 3,
+        "proposal_sha256": "b554366daefa2c68004098110636b31664f8efb1c2cd844130b37afacc083697",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 526 отмечает обычно pl без британского ограничения."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Брань» передаёт оскорбительные имена в конструкции."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Names остаётся существительным во множественном числе."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Форма и старый пример сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Региональную помету можно снять отдельно от уточнения направленности call someone names."
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "proposal_sha256": "9ac66668c0eb4ed473f500e3eb1a320d89cbce6c5fab59d334e88797608376b2",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 527 ставит амер. перед name for."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Именование и именование в честь кого-либо разведены."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Name в обеих моделях является переходным глаголом."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба оборота и региональное уточнение сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Помета ограничена конкретным вариантом управления."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Склеены put one's name down for, without a name, личные имена, фамилия и know by name. In name only и in the name of относятся к устойчивым моделям.",
+        "required_action": "Восстановить границы примеров и сохранить исходные обороты отдельно."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "The last of his name иллюстрирует род, фамильярность не подтверждена. Great names в 5 теряет great в переводе.",
+        "required_action": "Уточнить стилистику родового значения и сохранить оценку выдающихся людей."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "He has name for honesty и people of name стилистически слабы. В 7 «лицемер» добавляет вывод, в 8 common name не показывает современный термин common noun.",
+        "required_action": "Сверить регистр и восстановить точность переводов по отдельным контекстам."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Перевод кандидата не различает формальное naming и предупреждение.",
+        "required_action": "Ролям 07 и 09 согласовать точное толкование процедуры и вернуть новый пример с новым хешем."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 1
+        },
+        "problem": "Know by name не устанавливает личного знакомства или источника знания.",
+        "required_action": "Оставить дополнительные переводы только с контекстом."
+      }
+    ]
+  },
+  {
+    "word": "night",
+    "decision": "review_required",
+    "reason": "Удаление длительности из общего перевода обосновано. Во временном блоке обычные at night, night fell, night off и all night уместны. Атрибутивные night duty и night stop прозрачны. В переносном блоке и устойчивых сочетаниях остаются ошибки точности.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/4",
+    "before_after_ref": "#/previous_outputs/07/4",
+    "previous_review_refs": [
+      "#/previous_outputs/08/4",
+      "#/previous_outputs/09/4"
+    ],
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "17c7cc85631e1235788e806c6d0e68d2f46a24c5578d069f69345c8a11108532",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Статья даёт «ночь, вечер», а длительность помещает под all night."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Ночь, вечер» передаёт временное существительное."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Ночное время остаётся именным значением."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Значение длительности представлено переводом all night (long)."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Общий перевод можно очистить отдельно от ремонта склеенных примеров."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "By night и исторический выходной прислуги склеены с have a night out. Far into the night не задаёт полночь. «Прокутить всю ночь» добавляет характер и длительность. Last night допускает ночь и вечер, good/bad night требует контекста сна, o' nights стилистически ограничено.",
+        "required_action": "Разнести пары, разграничить историческое и современное чтения, сохранить all night как отдельную модель длительности."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Go forth не выражает исчезновения, а night of ignorance теряет метафору в «полном невежестве».",
+        "required_action": "Сохранить движение в первом примере и образ мрака во втором, сверить литературный регистр."
+      }
+    ]
+  },
+  {
+    "word": "play",
+    "decision": "review_required",
+    "reason": "Одобрены примеры пьесы, движения мышц, азартной игры в казино, люфта руля, выступлений труппы, карточного хода, действия с мячом и притворства. Группа правок 07 требует целостного пересмотра. Игра, спорт, музыка и сценическая роль подходят для начала статьи.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/5",
+    "before_after_ref": "#/previous_outputs/07/5",
+    "previous_review_refs": [
+      "#/previous_outputs/08/5",
+      "#/previous_outputs/09/5"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "6b19276d848ecc101a6470f7ef51e2ca472d66dbda27c26af04570ef6449f750",
+        "verdict": "rejected",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Play стоит после of."
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "Манеру обозначает style, play обозначает саму игру."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Play здесь неисчисляемое существительное."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "I like her style of play естественно в разговоре о спорте."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Её манера игры» точно передаёт всю группу style of play."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Фраза может ошибочно приписать значение style слову play."
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "Play соответствует общему игровому действию из 1."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Style of play употребительно в современных спортивных обсуждениях."
+          }
+        }
+      },
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "8ee89db5f0de2eeecfff0e0a9a03f6e343e79f60afdc298301551394174f383d",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Play является объектом read."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Читают текст пьесы до просмотра постановки."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The play является именной группой."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Read the play и saw it on stage образуют естественную последовательность."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены чтение, совместный просмотр и порядок событий."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Два действия ясно связывают текст и сцену."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Читаемый драматический текст отличим от игры."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Read a play и see it on stage обычны в современной речи о театре."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "e313ccb3aec011c069390d563695c4b0783055c776405208d004557d9a1b1894",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Play является вершиной группы the play of muscles."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Под кожей видны движения мышц."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The play of muscles является объектом see."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Play of muscles естественно для описательной прозы."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Было видно» передаёт could see, придаточное сохраняет движение."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Мышцы и кожа делают образ предметным."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Движение мышц отделено от оптических переливов и люфта."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Модель play of muscles сохраняется в современной описательной прозе."
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "6f7f72d57abad0dbb2dfba43368a3710e3a22a9575d7e37e86822b631e6b6cab",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Play является вершиной high-stakes play."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Казино и ставки однозначно задают азартную игру."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "High-stakes play является именным объектом offers."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Casino offers high-stakes play естественно в отраслевой речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Русский оборот сохраняет доступность игры и крупные ставки."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Casino даёт ясную опору для high-stakes."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Ставки отличают смысл от обычной игры и забавы."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "High-stakes play употребительно в современной речи о казино."
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "42332da276d2925e80324c9e93084cfbf72a52bb651b22eed6594502c35196e5",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Play является вершиной too much play."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Избыточный свободный ход руля является люфтом."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Much относится к неисчисляемому существительному."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Too much play in the steering wheel естественно при диагностике."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены рулевое колесо и превышение допустимого люфта."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Конкретная деталь проясняет механический термин."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Речь о зазоре механизма, без значения игры или выступления."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Руководство MOT использует steering play и free play при проверке руля. [DVSA](https://www.gov.uk/guidance/mot-inspection-manual-for-private-passenger-and-light-commercial-vehicles/2-steering)"
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "8eb72ee775a5b601b65a51ad4e23df996b3d9c9db29b92e1039213dd0bac4c6b",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Plays является формой третьего лица от play."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Труппа регулярно выступает в данном месте."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Plays употреблён непереходно с обстоятельствами."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The theatre company plays here естественно описывает расписание."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены труппа, место и повторение по пятницам."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Явное подлежащее задаёт сценическую деятельность."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Коллектив выступает, отдельная роль или произведение не названы."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Play here с названием выступающей труппы употребительно в современных афишах и речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 18,
+        "candidate_sha256": "eb6df698d91e64d51cc008ba68d833afc33549a1468478d4a58a69c9da53e011",
+        "verdict": "review_required",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Play является заголовочной глагольной формой."
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "For money допускает денежные ставки и игру за вознаграждение."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Play служит глаголом перед обстоятельством."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Play for money естественно при обоих денежных прочтениях."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "Русское «играть на деньги» выбирает ставки, хотя фрагмент сам по себе их не устанавливает."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "В учебной паре нет признака азартной игры."
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "Возможна обычная соревновательная игра за плату, близкая к 20."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Модель play for money употребительна, но нуждается в контексте ставок."
+          }
+        }
+      },
+      {
+        "meaning_index": 22,
+        "candidate_sha256": "ca472f839c6901bf5e96f2b81a72750be9ea52286127afa201449eaf136cf8e4",
+        "verdict": "rejected",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Played является прошедшей формой play."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Тренер задействовал игрока в финале."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Played является переходным глаголом с объектом player."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "A coach played a player in the final естественно для сообщения о составе."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "«На поле» добавляет тип площадки, которого английская фраза не задаёт."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Перевод создаёт ложное ограничение полевыми видами спорта."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Подлежащее-тренер включает игрока в состав, а не играет с ним."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Play someone in a match употребляется в современных сообщениях о составе."
+          }
+        }
+      },
+      {
+        "meaning_index": 23,
+        "candidate_sha256": "2133aac72a62e341f8925acd9068b2c3838a1da3442b40c43b286e32f2755d3a",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Played является прошедшей формой play."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Она делает ход конкретной картой."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Played управляет объектом an ace."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Played an ace on her first turn звучит естественно в карточном описании."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Переданы туз, первый ход и действующее лицо."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Карточное значение ясно по ace."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Назван отдельный ход внутри игры."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Play an ace остаётся обычной карточной конструкцией."
+          }
+        }
+      },
+      {
+        "meaning_index": 24,
+        "candidate_sha256": "f4cbcc5b22a31b732485ae5dea07ca6b73d6137510db0c9d1a226170fb5bb272",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Played является прошедшей формой play."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Мяч направлен обратно через сетку ответным действием."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Played является переходным глаголом с объектом the ball."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Played the ball back over the net естественно описывает розыгрыш."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Отбивание, обратное направление и сетка сохранены."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Ball, back и net делают действие ясным."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Объектом является мяч, в отличие от игры, соперника или карты."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Play the ball back употребляется в современной спортивной речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 27,
+        "candidate_sha256": "b4776d51410840ed7c3af3c7582b88077c70f8f39fa3bb88a09d58b9b3e267cc",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Played является прошедшей формой play."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Собака изображает состояние смерти."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Глагол played имеет предикативное дополнение dead."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The dog played dead естественно описывает трюк."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Пока не предложил» сохраняет временную границу и действие говорящего."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Собака и лакомство дают понятный контекст."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Имитируется состояние, сценический персонаж отсутствует."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Play dead продуктивно при описании поведения животных и людей."
+          }
+        }
+      }
+    ],
+    "entry_reviews": [
+      {
+        "proposal_sha256": "187c2c27701cde795d6846dbad308a67d340a74ee0b1238cccf3a18a664dea9c",
+        "verdict": "review_required",
+        "confidence": 0.96,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 606 подтверждает кино и театр, технический люфт, повторную партию и печатное in play «в шутку»."
+          },
+          "translation_accuracy": {
+            "pass": false,
+            "reason": "Повторная партия передаёт печатный частный случай. Современное спортивное play off требует разграничения решающей игры и переигровки. Для in play «в шутку» современный контекст отсутствует."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Глагольные смыслы сохранены, in play в приведённом толковании имеет обстоятельственную функцию."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Театр, люфт и стравливание сохранены. Добавлены кино и печатное спортивное чтение."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Группа неделима. Уверенность в правках 14 и 32 не распространяется на спорные фразовые решения."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Манеру в кандидате обозначает style.",
+        "required_action": "Роли 09 показать манеру или качество игры через сам play и вернуть новый хеш."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Play a record иллюстрирует воспроизведение, а engine was played off не подтверждён как современная модель запуска.",
+        "required_action": "Развести воспроизведение и засвидетельствованный старый запуск. Сверить современность второго."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Play for money без контекста допускает заработок.",
+        "required_action": "Роли 09 добавить однозначный контекст ставок."
+      },
+      {
+        "meaning_index": 22,
+        "problem": "В русском добавлено поле.",
+        "required_action": "Роли 09 убрать добавленный референт или согласованно уточнить вид спорта в новой паре."
+      },
+      {
+        "meaning_index": 29,
+        "problem": "Инструкция NPS описывает действия после поклёвки, а текущий перевод относится к моменту до неё. [NPS](https://www.nps.gov/grba/planyourvisit/fishing-frequently-asked-questions.htm)",
+        "required_action": "Развести вываживание и печатное чтение до добавления примера."
+      },
+      {
+        "meaning_index": 32,
+        "problem": "Современный источник подтверждает именное play, а глагольный люфт остаётся без подтверждения.",
+        "required_action": "Найти современный пример именно технического глагола либо определить статус значения."
+      },
+      {
+        "meaning_index": 21,
+        "problem": "Plays well у площадки, рояля и пьесы оценивает разные свойства. В 19 in favour of показывает благоприятствование, в 20 for championship требует артикля, в 28 guns upon и в 31 stick/knife and fork нуждаются в регистровой сверке.",
+        "required_action": "Уточнить переводы по конкретным объектам. Сохранить игру кошки, скрипку, исполнение концерта, Джульетту, practical joke, образные переливы, улыбку и play fair при подходящих значениях."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 4
+        },
+        "problem": "Связанный пакет включает неподтверждённое современное разграничение play off и in play. Play around и play up имеют пометы с ограниченной областью действия.",
+        "required_action": "Вернуть весь пакет 07 на доработку, сохранив печатные свидетельства, включая отдельное to be played out на с. 606."
+      }
+    ]
+  },
+  {
+    "word": "until",
+    "decision": "review_required",
+    "reason": "Until tomorrow — точный современный пример временного предлога. Перед придаточным until выполняет союзную функцию, подтверждённую отдельными статьями. Свидетельство из статьи till подтверждает модель, а его тильда относится к till.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/6",
+    "before_after_ref": "#/previous_outputs/07/6",
+    "previous_review_refs": [
+      "#/previous_outputs/08/6",
+      "#/previous_outputs/09/6"
+    ],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Предлог, союз, пространственное уточнение и отсылка слиты в одном переводе.",
+        "required_action": "Сохранить существующий индекс и until tomorrow у временного предлога. Пространственный предел проверить отдельно, отсылку вынести из толкования."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Временной союз until перед придаточным — «(до тех пор) пока (не)»"
+        },
+        "problem": "Союзного значения и связанного кандидата в схеме нет.",
+        "required_action": "Создать отдельное значение и передать роли 09 на подбор собственного примера с until."
+      }
+    ]
+  },
+  {
+    "word": "company",
+    "decision": "review_required",
+    "reason": "Примеры экипажа и командира роты пригодны. В статье отсутствуют основные самостоятельные значения коммерческой фирмы и роты. Общественное значение покрывает keep someone company и good company, а «ухаживать» и количество гостей требуют отдельных оговорок.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/7",
+    "before_after_ref": "#/previous_outputs/07/7",
+    "previous_review_refs": [
+      "#/previous_outputs/08/7",
+      "#/previous_outputs/09/7"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "86591b63fd086c3471a7a76489a84598114ffe25f3914e7717fe9b4ca8052274",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Company является вершиной ship’s company."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Притяжательная группа называет экипаж судна."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Company употреблено как коллективное существительное."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Ship’s company естественно звучит в морской речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Экипаж корабля» сохраняет состав и принадлежность."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткий фрагмент прямо задаёт морской референт."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Корабельный экипаж отличается от фирмы, гостей и роты."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Ship’s company сохраняется в современной морской речи, особенно военной."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "42f85c97e91e8d19e7e87ed0e83c70239a3126816204e2bfa533c99ffb4274ad",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Company определяет commander."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Должность относится к роте и передаётся словом «ротный»."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Company является атрибутивным существительным."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The company commander called a meeting звучит естественно."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены командир роты, созыв и совещание."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Commander раскрывает военный смысл сочетания."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Company указывает уровень воинской должности."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Руководство армии США употребляет company commander как действующее название должности. [US Army](https://api.army.mil/e2/c/downloads/2023/01/31/e5b70b4b/22-04.pdf)"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 3,
+        "proposal_sha256": "61da8f7e1330607f24da6f7cae8a533a24356417bb95a068736f1daaefb01117",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 165 отделяет коммерческое товарищество от труппы."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Труппа, ансамбль» и stock company в театральном контексте совместимы."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Company остаётся коллективным существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Смысл и старый пример сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Театральная помета исправляет ошибочную коммерческую классификацию."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "proposal_sha256": "49d4814c0c738ac1bb3fe985dd4c1d0081d543471b6ef0cd165a9ed52fb70042",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 165 прямо даёт attr. воен. «ротный»."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Ротный» подходит к модели company commander."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Английское слово остаётся именным определением."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Перевод сохранён, функция уточнена."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Военная помета уместна. Sense_after совпадает с предложением 07."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Коммерческая организация — фирма, компания"
+        },
+        "problem": "В записи представлен общественный смысл, а основной деловой отсутствует.",
+        "required_action": "Добавить самостоятельное значение с новым идентификатором и примером."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Воинское подразделение — рота"
+        },
+        "problem": "Атрибутивное «ротный» не покрывает самостоятельную роту.",
+        "required_action": "Добавить самостоятельное существительное с военной пометой."
+      },
+      {
+        "meaning_index": 1,
+        "problem": "Разговорная помета охватывает общественный смысл целиком. Keep company «ухаживать» требует датировки, part company допускает простое расхождение. В 2 a great deal of company не задаёт частоту напрямую.",
+        "required_action": "Привязать помету к нужному обороту и уточнить количество гостей в 2."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Company store и company union смешаны под военной пометой.",
+        "required_action": "Развести два сочетания с сохранением перевода профсоюза."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Перевод принадлежит present company excepted.",
+        "required_action": "Связать его с полной формулой и убрать военную помету."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "«За компанию» относится к for company.",
+        "required_action": "Перенести к сочетанию и сверить оттенок «ради компании» по контексту."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Русский текст является переводом пословицы целиком.",
+        "required_action": "Восстановить полное английское высказывание."
+      }
+    ]
+  },
+  {
+    "word": "few",
+    "decision": "review_required",
+    "reason": "Контраст few и a few установлен. Quite a few точно переведено как усиленное количество, но простое «несколько» по нему не видно. Самостоятельное few в few could tell и the few требует согласованной грамматической разметки.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/8",
+    "before_after_ref": "#/previous_outputs/07/8",
+    "previous_review_refs": [
+      "#/previous_outputs/08/8",
+      "#/previous_outputs/09/8"
+    ],
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 2,
+        "proposal_sha256": "5cad427888a63f20c9135794360d2f7ad78a57ec5b0c838793d16560e86d9627",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 305 связывает «несколько» именно с a few."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Несколько» передаёт неусиленное a few."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Adjective согласуется с принятой здесь словарной разметкой атрибутивного few."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Quite a few и его отдельный усиленный перевод сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Уточнение формы допустимо. Простая модель всё ещё требует отдельного учебного примера."
+          }
+        }
+      },
+      {
+        "meaning_index": 3,
+        "proposal_sha256": "4557d9fddc756a1231a248d12474005c84491889d70537e613f82dcbfbb97e1f",
+        "verdict": "review_required",
+        "confidence": 0.96,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 305 подтверждает few if any и the few, СамПолный даёт малое количество."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Немногие, малое число» точнее, а «почти ничего» привязано к усиленной конструкции."
+          },
+          "part_of_speech_accuracy": {
+            "pass": false,
+            "reason": "Few could tell показывает самостоятельный квантификатор. Словарное noun не объясняет его функцию во всех сохранённых примерах."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Исходные количественные эквиваленты и все примеры сохранены."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Сначала согласовать схему для самостоятельного few и отдельно для the few."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "«Скудные пожитки» добавляет оценку, visitors are few смещено к частоте. Every few hours обозначает интервал, а man of few words и friends are few показывают малое количество.",
+        "required_action": "Уточнить контекст количества и периодичности, сохранив обе модели."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "У примера quite a few значение «довольно много».",
+        "required_action": "Роли 09 дать отдельную модель простого a few, сохранив усиленное сочетание."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Схема noun не различает самостоятельное few и the few.",
+        "required_action": "Согласовать разметку. Для few if any сохранять счётность, а not a few и a good few показывать без фиксированной доли."
+      }
+    ]
+  },
+  {
+    "word": "let",
+    "decision": "review_required",
+    "reason": "Именной пример аренды современен и совпадает с предложением 07. Разрешение, допущение и побуждение пригодны как основные модели. Побудительный блок содержит повреждённый перевод и посторонние фразовые примеры. Помета устаревания у препятствия подтверждается.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/9",
+    "before_after_ref": "#/previous_outputs/07/9",
+    "previous_review_refs": [
+      "#/previous_outputs/08/9",
+      "#/previous_outputs/09/9"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "bb240334fe0581b176bbd8069c7835e5e9e8a6a1d22ef401112a8ab048284ea7",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Let является вершиной a three-month let."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Договорённость касается сдачи на определённый срок."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Артикль и определение срока показывают счётное существительное."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Agree on a three-month let естественно в британском контексте аренды."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены договорённость и срок. «Жильё» раскрывает обычный референт такого найма."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Срок и артикль показывают именную арендную модель."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Фраза обозначает договорённость о сдаче, в отличие от глагола в объявлении."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Муниципальный материал прямо употребляет short let и duration of the let. [Newham](https://www.newham.gov.uk/downloads/file/5759/newham-private-rented-property-licensing-faqs)"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 2,
+        "proposal_sha256": "742c8367186562147d56f5a6422d5d3713b36969762467caa9dd4b3d72480249",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 465 прямо даёт «пускать, давать, давать возможность»."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Формулировка передаёт допущение процесса и выпуск."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Let остаётся глаголом в let a fire go out и let loose."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Разрешение сохраняется в 1, возможность и примеры остаются в 2."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Разделение помогает отличить допущение от просьбы о разрешении."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "proposal_sha256": "d0f9e0455e22a4ea34629fdad716702b08c5672f23ecad00d6a9a676e9a6d107",
+        "verdict": "review_required",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Математическая конструкция подтверждает формальное допущение, соседние пометы относятся к другим оборотам."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Пусть», «давайте», «допустим» передают основные функции."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Описана глагольная модель с дополнением и bare infinitive."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Все функции и материалы примеров сохранены."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Обновлённое описание оставляет под собой примеры других конструкций и неполное равенство."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "proposal_sha256": "b624e3e5837fe374b8f26f7b30e1d742d6d71e06bd49f61586d04affc723422e",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На с. 465 сдача предшествует началу устаревшего омонима."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Сдача внаём» соответствует существительному об аренде."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "A let является существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Арендный перевод и идентификатор сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Современное употребление подтверждено, sense_after совпадает."
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "proposal_sha256": "66d300815163cd22529e23502aa9b69531df3d2fc0cce6fcd080f42786b91a42",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 465 ставит «уст.» у всего let II."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Помеха, препятствие» передаёт именной омоним."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Источник отделяет n от устаревшего v."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба эквивалента сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Историческая помета допустима без старинного примера."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "В переводе равенства нет CD, в приглашении опущено now. Let oneself in, let in for, let in on, let down, let out at и let up on являются другими моделями.",
+        "required_action": "Восстановить пропуски, вынести фразовые глаголы и сохранить побудительные примеры, включая let him try."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Самостоятельного современного примера «препятствие» нет. Without let or hindrance является особой формулой.",
+        "required_action": "Сохранить историческую помету. Рассмотреть формулу отдельно при подтверждении её современного правового употребления."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "The house is to (be) let смешивает объявление и сообщение о намерении. В 2 go hang требует стилистической сверки, а в 3 let be/alone и let it go at that различаются по функции.",
+        "required_action": "Развести варианты по контексту. У let off и let out ограничить пометы конкретными чтениями, у let into и let on сверить управление и редкие переводы."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Спортивное let — незасчитанная подача; отдельно исторический глагол let — мешать"
+        },
+        "problem": "Подтверждены разные омонимы. Общие формы let/let относятся к основному глаголу.",
+        "required_action": "Рассмотреть отдельные записи с собственными пометами и формами."
+      }
+    ]
+  },
+  {
+    "word": "real",
+    "decision": "изменить",
+    "reason": "Четыре кандидата различают объективное существование, математическое прилагательное, субстантивированное the real и разговорное усиление. Уточнение формы the real одобрено вместе с связанным примером. Real state of affairs, real wine и real property переводятся по своим контекстам.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/10",
+    "before_after_ref": "#/previous_outputs/07/10",
+    "previous_review_refs": [
+      "#/previous_outputs/08/10",
+      "#/previous_outputs/09/10"
+    ],
+    "doubts": [
+      "Связь американской и разговорной помет остаётся ограничением плоской схемы. Денежный омоним с другим произношением требует отдельного решения об охвате."
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "77b0718f24f901f88ee15aa3978d15fa8f73e835ea19f0f0dc17238027cd852e",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Real является предикативной формой после are."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Противопоставление exist only in the mind задаёт объективное существование."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Real является прилагательным в именной части сказуемого."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Are real or exist only in the mind естественно противопоставляет два статуса."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранён вопрос, существование объектов не утверждается."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Контраст раскрывает философский смысл без специального термина."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Обсуждается существование объектов, а не подлинность экземпляра."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Real versus existing only in the mind естественно в современном обсуждении онтологии."
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "879b8bbb37ac58ad731516dcf78eb0d8b971a824375f880d98a5457d679f5e1f",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Real определяет number."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Ноль классифицируется как действительное число."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Real является атрибутивным прилагательным."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Zero is a real number звучит как обычное математическое утверждение."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Ноль и математический класс переданы точно."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Известное число облегчает освоение термина."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Real обозначает класс чисел, без оценки их подлинности."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "OpenStax использует термин real numbers в современной классификации чисел. [OpenStax](https://openstax.org/books/contemporary-mathematics/pages/3-6-real-numbers)"
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "13cfd05f2f37e02656cd4176980ba2599aadf5e4941ae37a9fd39a269ad5e20e",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Real входит в субстантивированное the real."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "The real противопоставлено воображаемому как действительность."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The real занимает именную позицию, сохраняя субстантивированную форму."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Blur the line between the real and the imagined естественно в критике фильма."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены фильм, стирание границы и обе стороны контраста."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Параллельные формы наглядно показывают роль артикля."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Real употреблено без определяемого существительного."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "The real and the imagined употребляется в современной критике искусства."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "7e7cd0f639964241d4c9e54c12c408614ede1bd5891767c72fe2989db5a71379",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Real стоит непосредственно перед good."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Real усиливает оценку вкуса."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Форма real выполняет функцию наречия степени."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Tastes real good естественно в неформальной американской речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Очень вкусный» сохраняет вкусовую оценку и её степень."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Разговорная помета помогает отличить форму от формального употребления."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Real относится к good, а не к супу как подлинному объекту."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Real good остаётся живым американским разговорным усилением."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 5,
+        "proposal_sha256": "c39d90a19b6f3027e03ffffa229bd5201c93af79df1121c378851e2f5c9c517a",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 659 фиксирует именно the real при «действительность»."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Действительность» передаёт сферу реального."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Субстантивированная форма занимает именную позицию."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Исходный перевод сохранён, артикль добавлен как часть модели."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Пример демонстрирует требуемую форму, sense_after совпадает."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word": "different",
+    "decision": "изменить",
+    "reason": "Одобрен пример оценочной необычности. Общие «другой» и «разный» сохраняют приоритет. Different from what he said допускает «не соответствует» при противоречии, quite different допускает «совсем другое дело» при соответствующем референте, а a lot of different things точно передаёт разнообразие.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/11",
+    "before_after_ref": "#/previous_outputs/07/11",
+    "previous_review_refs": [
+      "#/previous_outputs/08/11",
+      "#/previous_outputs/09/11"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "280c9b982b8afc51d383062ef202fefd6bb5d8982c08332c27a7d4bde290a5b6",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Different стоит после is."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Оценка заметной шляпы без выраженного сравнения естественно подразумевает необычность."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Different является предикативным прилагательным."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "That hat is certainly different звучит как естественная оценочная реплика."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«И правда необычная» передаёт усиление без добавления одобрения или осуждения."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Конкретный предмет показывает разговорный оценочный оттенок."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "В реплике отсутствуют сравниваемый предмет и множественный набор разновидностей."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Предикативное certainly different остаётся современной разговорной оценкой."
+          }
+        }
+      }
+    ],
+    "doubts": [
+      "Оценочное прочтение зависит от интонации и предполагаемого контекста. Буквальное сравнение возможно при ранее названном образце."
+    ]
+  },
+  {
+    "word": "thought",
+    "decision": "review_required",
+    "reason": "Мышление, намерение и запрашиваемое мнение получили подходящие примеры. Отсылка к формам think корректна. Современность a thought «чуточку» и ряда моделей заботы и размышления требует отдельной проверки.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/12",
+    "before_after_ref": "#/previous_outputs/07/12",
+    "previous_review_refs": [
+      "#/previous_outputs/08/12",
+      "#/previous_outputs/09/12"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "117d92a5ada4c9637d6cca4b63654a3e9cb8891368bfc4240b58e6aa3f29201e",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Thought является вершиной human thought."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Язык формирует мышление как общую деятельность."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Human thought является неисчисляемым существительным в позиции объекта."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Language shapes human thought естественно звучит в обсуждении мышления."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены язык, формирование и человеческое мышление."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткое предложение понятно без дополнительной терминологии."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Речь о мышлении вообще, без конкретной мысли или акта размышления."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Human thought остаётся употребительным сочетанием в дискуссиях о мышлении."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "4c0da75117ec061383221c63b2dc35bd09b864fb276b0a0f82c2812274da5458",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Thought стоит в конструкции had no thought of."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Подлежащее и собственное действие leaving задают отсутствие намерения уйти."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "No thought является именным дополнением had."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Had no thought of leaving естественно в повествовательном регистре."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Не собиралась» сохраняет отрицание намерения и не утверждает исход."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Конструкция короткая и раскрывает намерение через действие."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Здесь обсуждается возможный собственный поступок, без просьбы высказать мнение."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Have no thought of doing сохраняется в современной повествовательной речи, с книжным оттенком."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "397b02e91fbd4db1256a1d532736959c8968b08758de73a8af17412a537ae96f",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Thoughts является множественным числом thought."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Вопрос просит мнение о плане."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Your thoughts является именной группой."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "What are your thoughts on the plan? естественно запрашивает отзыв."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Что вы думаете» сохраняет вопрос и тему без лишней оценки."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Пример даёт переносимую модель thoughts on."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Запрашивается оценка конкретного плана, а не отдельная мысль."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "What are your thoughts on …? регулярно используется для запроса обратной связи."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 6,
+        "proposal_sha256": "1685da20f0c809d5e0d4bc4408cc04f1d0661bce82b27eba813873c40b7cf904",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 822 даёт «обыкн. pl» без региональной пометы."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Соображения и мнение соответствуют модели thoughts on."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Thoughts является существительным во множественном числе."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Все эквиваленты и указание на число сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снятие британской пометы обосновано, sense_after совпадает."
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "proposal_sha256": "5ea2dba058ca3a3bd28a663ad0c80b5a6c54900626a89c03c0c8e65e84157762",
+        "verdict": "review_required",
+        "confidence": 0.97,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 822 подтверждает «чуточку» и наречную функцию оборота."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Чуточку, немного» передаёт ослабление сравнения."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Описание различает именную основу и наречную функцию a thought."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Сохранены именной эквивалент, наречный эквивалент и пример."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "«Обычно» при отсутствии регистрового ограничения может внушить современную продуктивность, которая не установлена."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Kind thought of me и take/show thought for требуют современной регистровой опоры. Kind в переводе ослаблено.",
+        "required_action": "Сверить заботу и внимание с датированными контекстами."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Read и collect one's thoughts естественны. Take thought «опечалиться» и compose one's thoughts нуждаются в отдельной датировке.",
+        "required_action": "Развести регистры и сохранить обычные read/collect. В 2 различить in thought и lost in thought."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "A thought more polite засвидетельствовано как печатное чтение, современный статус не установлен.",
+        "required_action": "Роли 07 уточнить регистр и область употребления прежде, чем менять толкование."
+      }
+    ]
+  },
+  {
+    "word": "however",
+    "decision": "review_required",
+    "reason": "Уступительный фрагмент одобрен. Для связующего «однако» снятие разговорной пометы подтверждено, но предложение 07 сохраняет спорную классификацию conjunction. Вопросительный усилитель составляет отдельное употребление.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/13",
+    "before_after_ref": "#/previous_outputs/07/13",
+    "previous_review_refs": [
+      "#/previous_outputs/08/13",
+      "#/previous_outputs/09/13"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "b0055b785f1c63fe3aa79ad4c798f7d873426a3f8117888e4b79410dbe3f70c3",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "However входит в however much it costs."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Уступительное придаточное допускает любую цену."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "However определяет степень much в уступительной модели."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "However much it costs является естественным придаточным фрагментом."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Как бы дорого это ни стоило» сохраняет уступку и стоимость."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Фрагмент даёт обе части модели, степень и придаточное."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "However связано с much, без функции отдельного связующего слова."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Уступительная модель however much сохраняется в современной речи. [Chicago Manual of Style](https://www.chicagomanualofstyle.org/qanda/data/faq/topics/Usage/faq0270.html)"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 2,
+        "proposal_sha256": "ae4dd76d04ca88a7b55b1b6428f5cd90d1a38a54400e26d32a22de677b25f7b8",
+        "verdict": "review_required",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 394 помещает разг. при вопросительном значении, перед отдельным cj."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Однако, тем не менее» точно передаёт связующую функцию."
+          },
+          "part_of_speech_accuracy": {
+            "pass": false,
+            "reason": "Современное связующее however обособляется как наречие. Разметка conjunction создаёт неверную аналогию с but. [Cambridge](https://dictionary.cambridge.org/us/dictionary/english/however)"
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Все исходные русские эквиваленты сохранены."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Связующую функцию нужно согласовать с учебной разметкой и примером пунктуации."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Связующее наречие сохраняет помету conjunction, подходящего связанного кандидата нет.",
+        "required_action": "Роли 07 согласовать POS. Роли 09 затем дать пример с корректным разделением предложений."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Вопросительное however — «как же, каким образом»"
+        },
+        "problem": "Усилительное вопросительное употребление отсутствует.",
+        "required_action": "Рассмотреть отдельное наречное значение и его регистр."
+      }
+    ]
+  },
+  {
+    "word": "god",
+    "decision": "review_required",
+    "reason": "Нарицательное божество и театральная галёрка получили пригодные примеры. Галёрка как место подтверждена современным театром, современность чтения о её публике остаётся отдельным вопросом. Для восклицаний, чихания и редкого глагола нужна структурная и регистровая сверка.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/14",
+    "before_after_ref": "#/previous_outputs/07/14",
+    "previous_review_refs": [
+      "#/previous_outputs/08/14",
+      "#/previous_outputs/09/14"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "3e6f595e0c9aedb01f6bacb3394491812e0b346a56d918fcf3531a5914dd4f22",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "God употреблено со строчной в its own god."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Каждой реке соответствует своё божество."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "God является счётным существительным после притяжательного определения."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Each river has its own god естественно в мифологическом рассказе."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены рамка истории, распределение по рекам и принадлежность."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Each и own наглядно показывают нарицательность."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Речь о множестве возможных божеств, без собственного имени God."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Its own god естественно в современных пересказах мифов и художественных историях."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "9e32fc6a5d6fd41d7347c1ff03005286930c04ccbbe0bf9cf4a2f8ee6f405a7e",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Gods является множественной формой god в the gods."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Seats were up in обозначает места на верхнем ярусе."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The gods является именной группой после in."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Seats up in the gods естественно в британской театральной речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены наши места и их расположение на галёрке."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Seats и up раскрывают театральный референт."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Места для зрителей отделяют театральное значение от божеств и кумиров."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Действующий театр называет верхние ярусы The Gods. [Leeds Heritage Theatres](https://leedsheritagetheatres.com/your-visit/a-guide-to-our-auditoriums/)"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 2,
+        "proposal_sha256": "c90e5c496453214fb8e6698a53af0f7ed5eed7eba0a514c435d7ea44ffd8fd9a",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Строка 40021 различает god и помету прописного G., краткий курс даёт «Бог»."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Бог, Всевышний» покрывает имя и употребление в формулах."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "God остаётся собственным именем внутри восклицаний."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Восклицания и пожелания сохранены как контексты."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Прописная буква и снятие общей разговорной пометы обоснованы. Примеры с G. требуют отдельной правки."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "proposal_sha256": "3059c720de1fda19b6e6328ab7a4e9429e2143ba5bcc877c913b3d17016990b5",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 382 подтверждает идола и кумира, с. 352 ставит «редк.» при глаголе."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Переносный смысл согласуется с make a god of someone."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "В a god слово является существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба перевода и старый оборот сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снятие редкой пометы устраняет перенос с другого POS."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "proposal_sha256": "b6cdfeb9d6d35af9ce4831cdf4d2556da70c23e3a7a4e0e63c8f0c227884774d",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 352 фиксирует верхний ярус и его публику."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Галёрка, раёк» обозначает место, «публика» сохраняет метонимию источника."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "The gods является множественным существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Публика сохранена, место и театральная помета добавлены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Sense_after совпадает. Одобрение примера распространяется на пространственный смысл."
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "proposal_sha256": "d322d1602e58b625bced53da8a2be987b319fcfb1a4e364a0fec8b12bad0d8e6",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 352 прямо маркирует глагол как редкий."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Обожествлять, боготворить» соответствует переходному глаголу."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "В источнике дан отдельный v."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба русских глагола сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Помета редкости обоснована печатным свидетельством, современный пример оценивается отдельно."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "G. и G. 's содержат словарное сокращение и разрыв притяжательной формы.",
+        "required_action": "Раскрыть God в формулах, сверить регистр God's truth, My God!, by God и God Almighty."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Самостоятельное восклицание и удивлённое чтение God bless you! смешаны с именным значением.",
+        "required_action": "Развести конструкции и проверить современность удивлённого чтения."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Honest to God и God damn you не иллюстрируют реплику после чихания.",
+        "required_action": "Перенести оба примера в свои выражения, при God bless you сохранить благопожелание и отдельно указать чихание."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Современные godded и godding в нужном смысле не подтверждены.",
+        "required_action": "Установить датировку и область употребления глагола перед подбором примера."
+      }
+    ]
+  },
+  {
+    "word": "government",
+    "decision": "review_required",
+    "reason": "Форма правления и падежное управление получили подходящие примеры. Government как правительство целесообразно поставить первым. Local government допускает местное самоуправление и местные органы власти. Территориальный смысл и перевод responsible government нуждаются в отдельной контекстной проверке.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/15",
+    "before_after_ref": "#/previous_outputs/07/15",
+    "previous_review_refs": [
+      "#/previous_outputs/08/15",
+      "#/previous_outputs/09/15"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "5715bf1cb4eced3f676a7aa9d99cf3aaf966ab6446ed2df4d100836c72bf0137",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Government входит в forms of government."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Сравниваются типы устройства власти двух стран."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Government является существительным после of."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Have different forms of government естественно в описании стран."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены две страны и различие форм правления."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Сравнение стран раскрывает политический смысл."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Сравниваются системы, без перечисления составов правительств."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Forms of government остаётся обычным современным общественно-политическим сочетанием."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "8552c5739d2c87a7bce9bc8f915d25574523006136bdd8d69299016b497f2446",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Government является вершиной case government."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Падеж зависит от управляющих глаголов и предлогов."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Case government является именным объектом compares."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Compares case government by verbs and prepositions естественно в лингвистическом описании."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены сравнение в главе, падежное управление и обе части речи."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Case, verbs и prepositions однозначно задают область."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Грамматические зависимости исключают политическое прочтение."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Современное типологическое исследование употребляет government для падежного управления адпозициями. [University of Surrey](https://openresearch.surrey.ac.uk/esploro/outputs/journalArticle/The-typology-of-government-by-adpositions/991154295902346?institution=44SUR_INST)"
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Organs of government может охватывать органы власти шире кабинета. «Ответственное министерство» сужает responsible government до исторического прочтения.",
+        "required_action": "Сверить конституционный контекст и границы обоих примеров."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Печатное «провинция, штат» не устанавливает современную продуктивность.",
+        "required_action": "Проверить исторические административные названия и регистр без подстановки governorate."
+      }
+    ]
+  },
+  {
+    "word": "group",
+    "decision": "review_required",
+    "reason": "Приняты общая группа, музыкальная группа, авиагруппа, образование группы и классификация. Внутрипартийная группа сама по себе не доказывает формальную фракцию. Химический и цветовой смыслы требуют отдельной проверки.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/16",
+    "before_after_ref": "#/previous_outputs/07/16",
+    "previous_review_refs": [
+      "#/previous_outputs/08/16",
+      "#/previous_outputs/09/16"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "6323c400ae6768cb8569892c7be010c5ce10567e7bc6cf04423c255ebbe8fce8",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Group является вершиной group of friends."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Сочетание называет группу людей, связанных дружбой."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Group является существительным с дополнением of friends."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Group of friends естественно как словарный фрагмент."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Компания друзей» сохраняет состав и характер группы."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Модель group of легко переносится на другие группы."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Друзья не задают политическую или музыкальную организацию."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Group of friends общеупотребительно в современной речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "ca4acd9881508d4a5eae34b1f0518e9355c72645990a0504f68080c048fecb26",
+        "verdict": "rejected",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Group является вершиной a small group."
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "Общая позиция внутри партии допускает временную группу и не устанавливает фракцию."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "A small group является именным подлежащим."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "A small group within the party opposed the reform звучит естественно."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "«Фракция» добавляет организационный статус, которого нет в английском."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Пара учит выводить формальную фракцию из одного контекста несогласия."
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "Английское group допускает обычную группу из 1."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Group within the party нормально в современном политическом описании."
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "5a85bb3d6874bac62d2110cd4df75216327c16f64625cbe9d8ee4caa20cc5a5e",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Group является вершиной a pop group."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Pop указывает на коллектив популярной музыки."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "A pop group является именной группой с артиклем."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "A pop group естественно называет коллектив."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Поп-группа» сохраняет музыкальный жанр и коллектив."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Определение pop раскрывает смысл в коротком фрагменте."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Музыкальный жанр отделяет коллектив от общей группы."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Pop group употребляется в современных описаниях исполнителей."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "7e4a429add21de44ff2352f7e5a9b96231dd9b22c1c990155f71e0639d97d680",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Group является вершиной an RAF group."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Служба в RAF задаёт авиационное формирование."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Group употреблено как счётное существительное после an."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Serves in an RAF group естественно в описании места службы."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены субъект, служба и принадлежность формирования к RAF."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Русский текст раскрывает аббревиатуру и вид формирования."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Это структурная единица военно-воздушных сил."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "RAF официально употребляет Group в названиях действующих формирований. [RAF](https://www.raf.mod.uk/our-organisation/groups/no-1-group/)"
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "530ec1a001c3b07dda2b73d309d1bfab9441ca7d8ca284cc7bb32406fafe28d3",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Grouped является прошедшей формой group."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Дети сами образуют группу вокруг стола."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Grouped употреблён непереходно с around."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The children grouped around the table естественно описывает расположение."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены дети, образование группы и положение вокруг стола."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Пространственная опора помогает понять возвратный перевод."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Участники собираются вместе без сортировки по признаку."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Group around остаётся употребительной моделью пространственного объединения."
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "653266a94c26bf2ce79558bddd9b4ee01373cdf27b8f9f64c078a939232d9052",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Grouped является прошедшей формой group."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Книги распределяют в группы по теме."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Grouped управляет прямым дополнением the books."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Grouped the books by topic естественно для описания сортировки."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены субъект, книги и тематический критерий."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "By topic показывает переносимую модель классификации."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Критерий группировки отличает пример от простого сбора вокруг точки."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Group items by a feature продуктивно в инструкциях и описаниях."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 3,
+        "proposal_sha256": "054222063da538178200cedfb5e622cced7b0261782f8862718dd6ec7f8c9af1",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 361 даёт pl без британского ограничения."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Круги» допустимо при социальном прочтении groups."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Groups остаётся множественным существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Указание на число, перевод и старый пример сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снять ошибочную помету можно отдельно от уточнения двусмысленного business groups."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "proposal_sha256": "546597b739b7f1b31873cb943e1e1f33098dc63f8b88d8214ca641e04a0168c7",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 361 даёт «авиагруппа», RAF подтверждает современный организационный термин."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Авиагруппа» конкретизирует отраслевое формирование."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Group остаётся существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Авиационная область сохранена, перевод уточнён."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Sense_after совпадает, авиационная помета соответствует кандидату."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Кандидат не устанавливает формальную фракцию.",
+        "required_action": "Роли 09 предъявить контекст с явной организационной функцией и новым хешем."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Business groups может обозначать группы компаний и объединения бизнеса.",
+        "required_action": "Дать контекст, в котором «деловые круги» однозначно."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Group атомов и свободный радикал требуют терминологического различения.",
+        "required_action": "Уточнить современный химический смысл до выбора примера."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Группировка цветов не влечёт гармоничного подбора.",
+        "required_action": "Подтвердить эстетический смысл источником либо пересмотреть самостоятельность значения."
+      }
+    ]
+  },
+  {
+    "word": "public",
+    "decision": "review_required",
+    "reason": "Переводы public utilities и public spirit следует привязать к сочетаниям. Общественный и общедоступный смыслы и the public подходят для начала статьи. Сохраняются ошибки контекста в public office, public road, public ownership и the British public.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/17",
+    "before_after_ref": "#/previous_outputs/07/17",
+    "previous_review_refs": [
+      "#/previous_outputs/08/17",
+      "#/previous_outputs/09/17"
+    ],
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 4,
+        "proposal_sha256": "e194834a84db8b5ce4e0e0ddbb3ee307fc6d901fcf59b0700c043db77fc18957",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 637 привязывает услуги и предприятия к utilities."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Коммунальный» остаётся прилагательным, именные эквиваленты отнесены к сочетанию."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Public в utilities является определением."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Услуги и предприятия сохранены, сооружения остаются в старом примере."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снятие коммерческой пометы обосновано. Public service требует отдельной контекстной сверки."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "proposal_sha256": "0ac77e6a5170e81965d26751ba5d1f02c14222e2df8786bf550adc6f24d3c3f3",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 637 даёт «гражданственность» и «дух патриотизма» под public spirit."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Гражданственность» передаёт общественную направленность сочетания. Патриотизм сохраняется как контекстный эквивалент."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Public остаётся определением при ownership и spirit."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Сохранены народный, общенародный и оба перевода сочетания."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Привязка исправляет границу перевода. Старые контекстные примеры оцениваются отдельно."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Public office часто означает должность, пример даёт только учреждение. Public man требует регистровой сверки. Public opinion, opinion poll, debt, peace и official передают разные общественные и государственные сочетания.",
+        "required_action": "Развести должность и учреждение, сохранить удачные сочетания при своих контекстах."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Public road не задаёт размер. Library и lecture имеют разные типичные русские формы, а public transport переведено точно.",
+        "required_action": "Уточнить дорогу общего пользования и отдельно показать библиотеку и открытую лекцию."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Give public utterance допускает публичное высказывание без раскрытия тайны. Public protest соответствует открытости.",
+        "required_action": "Ограничить «предать гласности» подходящим контекстом."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Public service не всегда коммунальная услуга.",
+        "required_action": "Развести государственную службу, общественные и коммунальные услуги по контексту."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Public ownership обозначает форму собственности, а «достояние» меняет её на объект или ценность.",
+        "required_action": "Уточнить ownership и сохранять «патриотизм» у public spirit только при опоре на контекст."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "British сужено до «английский». В 7 appeal to the public точно показывает общественность, in public функционирует как обстоятельство.",
+        "required_action": "Сохранить британский референт и разметить устойчивое in public отдельно при структурной правке."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Reading public поддерживает контекстное «круг читателей». «Завсегдатаи» отдельно не подтверждено, отсылка к пабу выражает другой смысл.",
+        "required_action": "Установить самостоятельность и регистр чтений прежде, чем менять или объединять строку."
+      }
+    ]
+  },
+  {
+    "word": "top",
+    "decision": "review_required",
+    "reason": "Приняты вершина горы, лидерство в лиге, ботва, морской марс, обрезка дерева и сравнительное превосходство. Горный и металлургический кандидаты требуют уточнения перевода или контекста. В примере движения модель topped the hill оставлена на дополнительную проверку. Связанный пакет 07 допустим целиком.",
+    "confidence": 0.97,
+    "evidence_ref": "#/previous_outputs/06/18",
+    "before_after_ref": "#/previous_outputs/07/18",
+    "previous_review_refs": [
+      "#/previous_outputs/08/18",
+      "#/previous_outputs/09/18"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "0bbea39ef59d82b659f489a6d5c90e27178c0b39db555f0ad9a6a27ec871764d",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Top является вершиной группы the top of the mountain."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Достигнута вершина горы."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The top of the mountain является именным объектом reached."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Reached the top of the mountain естественно описывает восхождение."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены совместное действие, достижение вершины и время до обеда."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Гора раскрывает конкретный пространственный смысл."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Это вершина рельефа, без крышки, рейтинга или верхней поверхности предмета."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Reach the top of a mountain остаётся обычной моделью описания восхождений."
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "3756626546a63afa18e4badb1b21341113b349af82d04c577ed787c365829cd2",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Top является вершиной the top of the league."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "At the top of the league означает лидерство в таблице."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The top является именной группой после at."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The team is at the top of the league естественно для спортивной сводки."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены команда, лига и текущее первое место."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "League даёт ясную опору для рейтингового смысла."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Обозначена позиция, а не человек или физическая верхушка."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "At the top of the league регулярно употребляется в спортивной речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "fe157489d0b168f765ae7521b094e217d8690d0e358d6b060072581ff842d124",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Tops является множественным числом top."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "У моркови срезают надземную зелень."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The tops является именным объектом cut."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Cut the tops off the carrots естественно в кулинарной инструкции."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Срежьте ботву» сохраняет действие и часть растения."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Морковь позволяет легко распознать значение."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Срезаемая часть является ботвой, а не верхним срезом корнеплода."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Carrot tops употребляется в современной кулинарной и садовой речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 11,
+        "candidate_sha256": "283a1b329e70b5208eed8a596c61b64f59fd481e4bf0c67ece0e3b2d5af9d256",
+        "verdict": "rejected",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Top стоит в именной группе the top of the mine passage."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Внутри выработки верхняя поверхность является кровлей."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Top является существительным в позиции объекта checked."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Checked the top for loose rock естественно в описании осмотра выработки."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "Loose rock означает незакреплённые или отслоившиеся куски породы. «Непрочная порода» описывает свойство материала."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Неточный перевод цели проверки мешает пониманию профессионального контекста."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Подземный проход выделяет горную кровлю."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Отраслевой глоссарий прямо определяет top как mine roof. [Alabama Mining Association](https://alabamamining.org/mining-terms/)"
+          }
+        }
+      },
+      {
+        "meaning_index": 12,
+        "candidate_sha256": "4c64c39482c54a374b145f0c1d2e715c2e6ed4d19f2d9b6fdca5d558edf491fb",
+        "verdict": "rejected",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Top является вершиной furnace top."
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "Газ и датчики не определяют тип печи, а «колошник» требует доменного контекста."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Furnace top является именной группой после at."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Monitor gas temperature at the furnace top грамматически и технически естественно."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "«Доменной» добавляет тип печи, которого нет в английском предложении."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Пара внушает слишком широкое соответствие furnace top и «колошник»."
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "Без типа печи возможно обычное пространственное «верх печи»."
+          },
+          "contemporary_usage": {
+            "pass": false,
+            "reason": "Приведённый PDF перенаправляется на главную страницу. Доступный материал подтверждает blast-furnace top gas, но точная конструкция из ссылки 09 не проверена. [Primetals](https://magazine.primetals.com/app/uploads/2021/02/Metals-Magazine9-1-2020.pdf)"
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "65aef434a280e567dcd1e6865eafb8e1ecd809763f247964361707a912425624",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Top является вершиной mizzen fighting top."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Названа боевая площадка на бизань-мачте."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The mizzen fighting top является именным объектом inspected."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Inspected the mizzen fighting top during the refit естественно в морском контексте."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены осмотр, экипаж, ремонт и вид марса."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Сочетание раскрывает конструкцию и конкретную мачту."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Названа площадка, а не верхняя точка мачты."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Отчёт о реставрации употребляет именно mizzen fighting top для реального объекта. [USS Constitution Museum](https://ussconstitutionmuseum.org/2015/06/18/up-up-and-away/)"
+          }
+        }
+      },
+      {
+        "meaning_index": 18,
+        "candidate_sha256": "3c3a98ed0d89effbc77fddb7088d56bd828e6434474d0a2acb94df2c3bf63398",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Topped является прошедшей формой top."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Чтобы держать дерево ниже проводов, его верхушку обрезали."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Topped управляет объектом the tree."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Topped the tree естественно называет данный способ обрезки."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены обрезка и её цель, успешность не утверждается отдельно."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Высота проводов объясняет направление действия."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Верхушку удаляют, в отличие от покрытия дерева сверху."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Современный материал по расчистке линий употребляет topping trees, описывая известный способ обрезки. [Penn State Extension](https://extension.psu.edu/pruning-for-utility-line-clearance)"
+          }
+        }
+      },
+      {
+        "meaning_index": 19,
+        "candidate_sha256": "786cfa7cd131bb81279bd8e55df99556ffea385aa4c0a168bc4eefa822d2897d",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Tops является формой третьего лица от top."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Картина превосходит все картины из прежнего опыта говорящего."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Tops является переходным глаголом с объектом all I have ever seen."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Tops all I have ever seen грамматично и естественно в усиленном сравнении."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Лучше всех» сохраняет превосходство, «когда-либо видел» сохраняет опыт."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Сравнение с уже виденными картинами раскрывает глагол."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Оценка качества не задаёт числового порога из 20."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Переходное top в смысле превзойти сохраняется в современных оценочных сравнениях."
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "candidate_sha256": "82f55433eebfc77f9dcbde9d8ba470cb4d444c9bf3dea3a724d95242aa128887",
+        "verdict": "review_required",
+        "confidence": 0.9,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Topped является прошедшей формой top."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Вид деревни внизу задаёт достижение вершины или гребня."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Topped является переходным глаголом с объектом the hill."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Topped the hill допустимо в описательной повествовательной речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Переданы достижение вершины и последующее наблюдение деревни внизу."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Книжная модель движения подана как обычная без контекстной или регистровой опоры."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Герои движутся по рельефу, без покрытия или количественного сравнения."
+          },
+          "contemporary_usage": {
+            "pass": false,
+            "reason": "Современный датированный пример именно top a hill в значении движения не приложен."
+          }
+        }
+      }
+    ],
+    "entry_reviews": [
+      {
+        "proposal_sha256": "7bec7a44bd925a43c5886ee20a6d6c9afc00150036aed7e8f08cbd66f848c7f1",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 833 связывает перевод с from top to toe, с. 834 ограничивает автомобильную помету дозаправкой."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Отдельное top получает предметные переводы, top up сохраняет общее пополнение и дозаправку."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Именное top и глагольное top up сохраняют свои функции."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Идиоматический смысл остаётся в «с ног до головы», все чтения top up сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Одобрены именно три связанные операции. Исправление to come to the top в этот пакет не входит."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Шпиль и купол засвидетельствованы, самостоятельный современный референт top не показан.",
+        "required_action": "Проверить датировку и найти контекст, где top обозначает конструкцию целиком."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "He was top in maths предикативно показывает первенство, а именное значение лица не подтверждает. В 6 pyjama top шире куртки, в 7 at top speed относится к атрибутивному употреблению.",
+        "required_action": "Согласовать разметку, уточнить перевод одежды и перенести скоростной пример к 15, где «самая высшая» избыточно."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Пример ботвы пригоден, британская помета требует отдельной правки. У 9 и 10 pl также не подтверждает британское ограничение, современных примеров точных специальных референтов нет.",
+        "required_action": "Сверить пометы и датировать карточное и обувное значения отдельно."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Loose rock переведено как «непрочная порода».",
+        "required_action": "Роли 09 исправить перевод цели осмотра и вернуть новый хеш."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "В русском добавлена доменная печь.",
+        "required_action": "Роли 09 дать двуязычный доменный контекст и доступное отраслевое свидетельство."
+      },
+      {
+        "meaning_index": 20,
+        "problem": "He tops six feet выражает превышение. В 16 top men шире «самый главный», в 17 выкладка фруктов требует регистровой проверки. Top up в 18 подтверждено печатью, его современность не установлена.",
+        "required_action": "Восстановить превышение, уточнить статусное прилагательное и отдельно проверить старые глагольные сочетания."
+      },
+      {
+        "meaning_index": 21,
+        "problem": "Модель topped the hill не имеет датированной современной опоры в переданном материале.",
+        "required_action": "Роли 09 подтвердить конструкцию в современном повествовательном контексте."
+      },
+      {
+        "meaning_index": 22,
+        "problem": "Покрытие краской не получило современного примера с top. В 23 два примера top off относятся к завершению, а русский перевод ужина меняет агента.",
+        "required_action": "Проверить глагольное покрытие и сельскохозяйственный смысл отдельно, а примеры завершения перенести к top off с сохранением агента."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 4
+        },
+        "problem": "Военный и переносный смыслы go over the top не разведены. Off the top «не в своём уме» требует датировки, to come to the top требует глагольной разметки.",
+        "required_action": "Развести пометы и проверить современное значение чрезмерности."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Top — волчок, игрушка"
+        },
+        "problem": "Омоним подтверждён с тем же произношением и отсутствует в записи.",
+        "required_action": "Рассмотреть отдельное именное значение с новым идентификатором."
+      }
+    ]
+  },
+  {
+    "word": "business",
+    "decision": "review_required",
+    "reason": "Приняты примеры конкретной фирмы и сценического действия. Кандидаты для профессии и сделки не выделяют заявленные значения достаточно ясно. Связанная правка business executives сохраняет старый материал. Коммерческую деятельность и счётную фирму разумно показать перед общим «делом».",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/19",
+    "before_after_ref": "#/previous_outputs/07/19",
+    "previous_review_refs": [
+      "#/previous_outputs/08/19",
+      "#/previous_outputs/09/19"
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "3b3aeb0a9732efe485041074fcddde54349c92eecf69cd9f1445774723714383",
+        "verdict": "review_required",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Business является вершиной her business."
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "Writing books показывает занятие, но не выделяет профессию по сравнению с делом или коммерческой деятельностью."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Her business является именным подлежащим."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Her business is writing books допустимо при описании её дела."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "«Её профессия» выбирает одно из возможных прочтений и делает его определённым."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Фраза может приучить переводить всякое her business как профессию."
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "Общее занятие из 1 и коммерческая деятельность из 6 остаются возможными."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Her business is writing books возможно в современной речи о профессиональном деле."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "60e73cda88ecdd1122c4c3c2081799d23a1872776dec84499f9da5c7144499ca",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Business является вершиной a small business."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Покупают конкретную фирму, торгующую мебелью."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "A small business является исчисляемым именным объектом bought."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Bought a small business that sells … естественно описывает приобретение."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены покупка, размер фирмы и продажа офисной мебели."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Артикль и покупка делают счётный смысл прозрачным."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Объект покупки является организацией, а не всей коммерческой деятельностью."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Buy a small business употребительно в современной деловой речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "e7fe306db4a72addef4405ad0e3d8212db2c7e44a110b9fab027993cb08cda2e",
+        "verdict": "rejected",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Business входит в good business."
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "Сделку обозначает buying those shares. Good business характеризует покупку как выгодное дело."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Business является неисчисляемым существительным в именной части."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Turned out to be good business естественно оценивает решение."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "На уровне всего предложения «оказалась выгодной сделкой» передаёт итоговую оценку покупки."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Фраза не показывает, что business самостоятельно именует сделку."
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "Оценка коммерческой целесообразности совместима со значениями дела и бизнеса."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Good business остаётся современной оценкой выгодного решения."
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "8e351d0cfab87865acd7233fee2d7c3419e741e2e1541164dd82f28625b0f84f",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Business является вершиной stage business."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Действие со шляпой представляет сценическую работу с реквизитом."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Some stage business является неисчисляемым именным объектом added."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Added some stage business with a hat естественно в постановочной речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены режиссёр, добавление действия и шляпа."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Реквизит поясняет термин без дополнительного сюжета."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Stage и действие со шляпой выделяют сценическую, а не коммерческую деятельность."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Исследование постановочной работы использует stage business для физических действий актёра. [Middle Tennessee State University](https://jewlscholar.mtsu.edu/server/api/core/bitstreams/17d08c48-949a-4442-8d02-163a52e0355b/content)"
+          }
+        }
+      }
+    ],
+    "entry_reviews": [
+      {
+        "proposal_sha256": "27787ed9d01fb2ca9bde6b6437fd211c315096b6201de40b865c3544fa717c34",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "С. 112 отделяет attr. «практический, деловой» от executives и «капитанов промышленности»."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Руководители компаний» даёт общий эквивалент, капитаны промышленности сохранены как частный контекст."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Business остаётся именным определением, executives является вершиной новой именной группы."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Перенесённый перевод сохранён во фразе, старые примеры и две фразы остаются."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Обе операции составляют единый перенос. Одобрение относится ко всему пакету."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "«Агент, поверенный» приклеено к повестке дня. Out of business не устанавливает банкротство. On business переведено уместно, make it one's business и no business to do показывают обязанность и право.",
+        "required_action": "Восстановить границы man of business и business of the day, обобщить out of business с сохранением контекстного банкротства."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Кандидат не отделяет профессию от занятия или коммерческого дела.",
+        "required_action": "Роли 09 дать различающий контекст либо вернуть вопрос о границе смысла роли 07."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Торговая помета сужает фирму. В 6 set up in business не обязательно относится к торговле, а в 4 неодобрение может исходить из sick of.",
+        "required_action": "Использовать подтверждение на с. 112 и развести область помет и контекстных переводов."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Сделку в кандидате задаёт вся покупка, а good business выражает оценку.",
+        "required_action": "Роли 09 подтвердить самостоятельное употребление business с референтом сделки либо вернуть смысл на пересмотр."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Business interests может обозначать интересы или активы. Business end и business hours требуют предметных переводов.",
+        "required_action": "Сверить контексты примеров отдельно от одобренного переноса business executives."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 2
+        },
+        "problem": "Современность it has done his business не установлена. У what is your business here? разметка noun относится к слову внутри полного вопроса.",
+        "required_action": "Сверить датированный контекст идиомы и разметку обоих высказываний. Устаревший омоним business II рассматривать отдельно."
+      }
+    ]
+  }
+]

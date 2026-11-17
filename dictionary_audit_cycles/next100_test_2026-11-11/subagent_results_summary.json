@@ -1,0 +1,63 @@
+{
+  "scope": "100 entries, five batches of 20, positions 21-120",
+  "model": {
+    "delegated": "gpt-5.6-sol",
+    "delegated_reasoning": "low",
+    "parent": "gpt-6.1-sol",
+    "parent_reasoning": "medium"
+  },
+  "canonical_changes": 0,
+  "batch_reports": [
+    {"batch":"batch_001","entries":20,"meanings":69,"examples_reported":161,"source_searches":2,"high_confidence_reported":9,"review_required_reported":1,"status":"completed"},
+    {"batch":"batch_002","entries":20,"meanings":146,"examples_reported":292,"source_searches":2,"high_confidence_reported":17,"review_required_reported":7,"status":"completed"},
+    {"batch":"batch_003","entries":20,"meanings":114,"examples_reported":221,"source_searches":6,"high_confidence_reported":6,"review_required_reported":0,"status":"completed"},
+    {"batch":"batch_004","entries":20,"meanings":193,"examples_reported":315,"source_searches":1,"high_confidence_reported":12,"review_required_reported":1,"status":"completed"},
+    {"batch":"batch_005","entries":20,"meanings":232,"examples_reported":397,"source_searches":3,"high_confidence_reported":8,"review_required_reported":1,"status":"completed"}
+  ],
+  "aggregated_reported_metrics": {
+    "entries":100,
+    "meanings":754,
+    "examples":1386,
+    "source_searches":14,
+    "high_confidence_candidates":52,
+    "review_required":10
+  },
+  "preflight_metrics": {
+    "entries":100,
+    "meanings":754,
+    "meaning_examples":1350,
+    "phrases":303,
+    "meanings_without_examples":51
+  },
+  "adjudication": {
+    "status":"pending_parent_review",
+    "reason":"Subagent outputs contain count inconsistencies and several proposed POS values outside the canonical POS contract. No candidate was auto-applied.",
+    "obvious_candidate_classes":[
+      "English/Russian contamination such as so as to inside a Russian translation",
+      "duplicate examples",
+      "clear translation errors such as within 50 miles translated as an exact distance",
+      "obvious OCR/spelling defects such as St. Petersbourg",
+      "examples whose English and Russian meanings clearly disagree",
+      "offensive or obsolete wording in pedagogical examples"
+    ],
+    "requires_manual_review":[
+      "POS changes to labels not present in canonical schema",
+      "deleting or merging meanings",
+      "register removal without exact source evidence",
+      "splitting conflated senses",
+      "changes where source page/line evidence is weak or machine-readable evidence is absent"
+    ]
+  },
+  "process_findings":[
+    "Preflight and subagents count examples differently: 1350 meaning examples vs 1386 reported examples.",
+    "Reported high-confidence/review counts do not always equal the number of listed findings.",
+    "Some agents propose POS labels outside the canonical schema; a schema gate must reject these before parent review.",
+    "Local source extraction needs stable page/line anchors; several reports cite only a PDF entry without precise coordinates.",
+    "Automated contamination, duplicate-example, malformed-English, unsupported-register, and offensive-content scans should run before semantic agents.",
+    "The parent model should review only normalized candidate records, not raw prose findings."
+  ],
+  "verification": {
+    "subagents_modified_canonical": false,
+    "final_qa_required_after_any_future_apply": true
+  }
+}

@@ -782,29 +782,31 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
           </div>
 
           {/* Bottom Centered Red Text Delete Button (Screenshot Style) */}
-          <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '10px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
-            <button
-              type="button"
-              onClick={() => setShowDeleteConfirm(true)}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#ef4444',
-                fontSize: '13px',
-                fontWeight: 600,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                cursor: 'pointer',
-                padding: '6px 12px',
-                borderRadius: '8px',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              <span style={{ fontSize: '13px' }}>❌</span>
-              <span>{task?.isRepeating ? 'Удалить задачу со всеми повторениями' : 'Удалить задачу'}</span>
-            </button>
-          </div>
+          {!isProject && (
+            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '10px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+              <button
+                type="button"
+                onClick={() => setShowDeleteConfirm(true)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#ef4444',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  cursor: 'pointer',
+                  padding: '6px 12px',
+                  borderRadius: '8px',
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                <span style={{ fontSize: '13px' }}>❌</span>
+                <span>{task?.isRepeating ? 'Удалить задачу со всеми повторениями' : 'Удалить задачу'}</span>
+              </button>
+            </div>
+          )}
         </form>
 
         {/* Small Delete Confirmation Sub-Modal Dialog */}

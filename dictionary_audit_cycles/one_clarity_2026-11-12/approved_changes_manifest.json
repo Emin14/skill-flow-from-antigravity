@@ -1,0 +1,15 @@
+{
+  "scope": "one_clarity_2026-11-12",
+  "changes": [
+    {
+      "word": "one",
+      "path": "meanings[3].translation",
+      "before": "один, единственный; некий, один (о времени)",
+      "after": "единственный; некий, определённый; однажды, в один из дней",
+      "reason": "clarify attributive/determiner use without merging it with numeral one",
+      "source_origin": "Muller 2021 one article: adjective meanings единственный; какой-то; one day"
+    }
+  ],
+  "before_sha256": "6d1b67de88fcf3e9820d4dd7c8fafb599a7c8188d5593fbb54489a05f2583689",
+  "after_sha256": "61cf91fdd5202d3916b9649339468ec8cfc0468685c60d8e026872c937369c37"
+}

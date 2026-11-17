@@ -1,0 +1,116 @@
+{
+  "scope": "final_structural_close_2026-11-16",
+  "applied_count": 3,
+  "changes": [
+    {
+      "word": "eat",
+      "path": "phrases[new]",
+      "before": "source constructions in contaminated meaning",
+      "after": [
+        {
+          "id": 6,
+          "phrase": "to eat away at one's nerves",
+          "partOfSpeech": "verb",
+          "translation": "действовать на нервы, изводить",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 7,
+          "phrase": "eaten up with pride",
+          "partOfSpeech": "verb",
+          "translation": "снедаемый гордостью",
+          "examples": [],
+          "register": []
+        }
+      ],
+      "reason": "preserve source-confirmed constructions before removing contaminated standalone meaning"
+    },
+    {
+      "word": "eat",
+      "path": "meanings[5]",
+      "before": {
+        "id": 5,
+        "partOfSpeech": "verb",
+        "translation": "столоваться по месту работы",
+        "examples": [
+          {
+            "en": "eat in",
+            "ru": "питаться дома"
+          },
+          {
+            "en": "eat into",
+            "ru": "въедаться (о хим. веществах и т. п.)"
+          },
+          {
+            "en": "eat off",
+            "ru": "отъедать (о кислоте и т. п.)"
+          },
+          {
+            "en": "eat up",
+            "ru": "пожирать; растрачивать (состояние); поглощать; быстро покрывать какое-либо расстояние"
+          },
+          {
+            "en": "to eat away at one's nerves",
+            "ru": "действовать на нервы, изводить"
+          },
+          {
+            "en": "eaten up with pride",
+            "ru": "снедаемый гордостью"
+          }
+        ],
+        "register": [],
+        "primary": true
+      },
+      "after": null,
+      "reason": "remove fifth standalone meaning; source article has four numbered headword meanings"
+    },
+    {
+      "word": "cry",
+      "path": "meanings[6]",
+      "before": {
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "крик, вой (животного, птицы); собачий лай",
+        "examples": [],
+        "register": []
+      },
+      "after": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "крик уличных разносчиков",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "звук, издаваемый животным",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "собачий лай",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "свора собак",
+          "examples": [],
+          "register": [],
+          "id": 9
+        }
+      ],
+      "reason": "split conflated noun sense at source boundaries: vendor cry, animal sound, dog bark, pack of dogs"
+    }
+  ],
+  "deferred": [
+    "drive broader construction mapping; stand/sign/bed optional coverage; league and other homonym policy completed where representable; duplicate-storage policy; source-boundary cases rock/speak/write/cold/except/eye/store"
+  ],
+  "before_sha256": "feb1381c2d0bbc5cde009394a385e0b27ecb9ce98f9dcb1463f0d6392080ee8d",
+  "after_sha256": "ad33d69e6a9995089566206f18f97de47b3655fa523f136014cde45d0c16caaa"
+}

@@ -1,0 +1,2463 @@
+{
+  "scope": [
+    "press",
+    "lead",
+    "ground"
+  ],
+  "path_convention": "zero-based JSON array paths inside complete word before/after records",
+  "before_sha256": "220bd50a3bb585c6dbf03b313f2d1149436e14c886d6664844ccc15f9eada026",
+  "after_sha256": "7e45730a6b96101ddf851d49daf443f8a41c515d5fe57ce943766a7dae1eeb76",
+  "structural_changes": [
+    {
+      "word": "ground",
+      "path": [],
+      "before": {
+        "word": "ground",
+        "frequency_rank": 582,
+        "cefr": "a2",
+        "phon_br": "/ɡraʊnd/",
+        "phon_n_am": "/ɡraʊnd/",
+        "lists": {
+          "oxford3000": true
+        },
+        "meanings": [
+          {
+            "partOfSpeech": "noun",
+            "translation": "земля; почва; грунт; перен. рушиться (о надежде и т. п.)",
+            "examples": [
+              {
+                "en": "to fall to the ground",
+                "ru": "упасть"
+              },
+              {
+                "en": "to take ground",
+                "ru": "приземлиться"
+              }
+            ],
+            "register": [],
+            "id": 1,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "местность; область; расстояние",
+            "examples": [
+              {
+                "en": "to cover ground",
+                "ru": "покрыть расстояние"
+              },
+              {
+                "en": "to cover much ground",
+                "ru": "быть широким (об исследовании и т. п.)"
+              }
+            ],
+            "register": [],
+            "id": 2,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "основание, мотив",
+            "examples": [],
+            "register": [],
+            "id": 3
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "участок земли; спортивная площадка",
+            "examples": [
+              {
+                "en": "sports ground",
+                "ru": "участок земли; спортивная площадка"
+              }
+            ],
+            "register": [],
+            "id": 4
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "плац; аэродром; полигон",
+            "examples": [],
+            "register": [],
+            "id": 5
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "при мн. ч.: сад, парк при доме",
+            "examples": [],
+            "register": [
+              "британское"
+            ],
+            "id": 6
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "база, основа (для договорённости и т. п.)",
+            "examples": [
+              {
+                "en": "on firm ground",
+                "ru": "на прочной основе"
+              }
+            ],
+            "register": [],
+            "id": 7
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "грунт, фон",
+            "examples": [],
+            "register": [
+              "живопись"
+            ],
+            "id": 8
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "тема",
+            "examples": [],
+            "register": [
+              "музыка"
+            ],
+            "id": 9
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "при мн. ч.: осадок, гуща",
+            "examples": [],
+            "register": [
+              "британское"
+            ],
+            "id": 10
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "заземление",
+            "examples": [],
+            "register": [
+              "электротехника"
+            ],
+            "id": 11
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "дно моря; перен. дойти до сути дела, до фактов (в споре)",
+            "examples": [
+              {
+                "en": "to take the ground",
+                "ru": "сесть на мель"
+              },
+              {
+                "en": "to touch the ground",
+                "ru": "коснуться дна"
+              }
+            ],
+            "register": [
+              "морской термин"
+            ],
+            "id": 12
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "пол (комнаты и т. п.)",
+            "examples": [],
+            "register": [],
+            "id": 13
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "запрещать полёты, отстранять от полётов",
+            "examples": [
+              {
+                "en": "the fog grounded all aircraft at N airfield",
+                "ru": "из-за тумана ни один самолёт не мог подняться в воздух на аэродроме N"
+              }
+            ],
+            "register": [
+              "авиация"
+            ],
+            "id": 14,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "приземляться, заставить приземлиться",
+            "examples": [],
+            "register": [
+              "авиация"
+            ],
+            "id": 15,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "посадить на мель; сесть на мель",
+            "examples": [],
+            "register": [
+              "морской термин"
+            ],
+            "id": 16
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "обучать основам предмета",
+            "examples": [],
+            "register": [],
+            "id": 17
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "основывать; обосновывать",
+            "examples": [],
+            "register": [],
+            "id": 18
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "заземлять",
+            "examples": [],
+            "register": [
+              "электротехника"
+            ],
+            "id": 19,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "класть, опускать(ся) на землю",
+            "examples": [
+              {
+                "en": "to ground arms",
+                "ru": "складывать оружие, сдаваться"
+              }
+            ],
+            "register": [],
+            "id": 20,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "грунтовать",
+            "examples": [],
+            "register": [],
+            "id": 21
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "мездрить (кожу)",
+            "examples": [],
+            "register": [],
+            "id": 22
+          }
+        ],
+        "phrases": [
+          {
+            "phrase": "to give ground",
+            "partOfSpeech": "verb",
+            "translation": "отступать",
+            "examples": [],
+            "register": [],
+            "id": 1
+          },
+          {
+            "phrase": "to go to ground",
+            "partOfSpeech": "verb",
+            "translation": "скрываться в норе (о лисе)",
+            "examples": [],
+            "register": [],
+            "id": 2
+          },
+          {
+            "id": 3,
+            "phrase": "to break new ground",
+            "partOfSpeech": "verb",
+            "translation": "распахивать землю, поднимать целину; начинать новое дело, прокладывать новые пути",
+            "register": [
+              "идиома"
+            ],
+            "examples": []
+          },
+          {
+            "id": 4,
+            "phrase": "on the grounds of",
+            "partOfSpeech": "noun",
+            "translation": "по причине, на основании; под предлогом",
+            "register": [],
+            "examples": []
+          }
+        ],
+        "form_of": {
+          "lemma": "grind",
+          "types": [
+            "past_simple",
+            "past_participle"
+          ]
+        }
+      },
+      "after": {
+        "word": "ground",
+        "frequency_rank": 582,
+        "cefr": "a2",
+        "phon_br": "/ɡraʊnd/",
+        "phon_n_am": "/ɡraʊnd/",
+        "lists": {
+          "oxford3000": true
+        },
+        "meanings": [
+          {
+            "partOfSpeech": "noun",
+            "translation": "земля; почва; грунт",
+            "examples": [
+              {
+                "en": "to fall to the ground",
+                "ru": "упасть; переносно — рушиться (о надежде и т. п.)"
+              },
+              {
+                "en": "to take ground",
+                "ru": "приземлиться"
+              }
+            ],
+            "register": [],
+            "id": 1,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "местность; область; расстояние",
+            "examples": [
+              {
+                "en": "to cover ground",
+                "ru": "покрыть расстояние"
+              },
+              {
+                "en": "to cover much ground",
+                "ru": "быть широким (об исследовании и т. п.)"
+              }
+            ],
+            "register": [],
+            "id": 2,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "основание, мотив",
+            "examples": [],
+            "register": [],
+            "id": 3
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "участок земли; спортивная площадка",
+            "examples": [
+              {
+                "en": "sports ground",
+                "ru": "участок земли; спортивная площадка"
+              }
+            ],
+            "register": [],
+            "id": 4
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "плац; аэродром; полигон",
+            "examples": [],
+            "register": [],
+            "id": 5
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "при мн. ч.: сад, парк при доме",
+            "examples": [],
+            "register": [
+              "британское"
+            ],
+            "id": 6
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "база, основа (для договорённости и т. п.)",
+            "examples": [
+              {
+                "en": "on firm ground",
+                "ru": "на прочной основе"
+              }
+            ],
+            "register": [],
+            "id": 7
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "грунт, фон",
+            "examples": [],
+            "register": [
+              "живопись"
+            ],
+            "id": 8
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "тема",
+            "examples": [],
+            "register": [
+              "музыка"
+            ],
+            "id": 9
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "при мн. ч.: осадок, гуща",
+            "examples": [],
+            "register": [
+              "британское"
+            ],
+            "id": 10
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "заземление",
+            "examples": [],
+            "register": [
+              "электротехника"
+            ],
+            "id": 11
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "дно моря",
+            "examples": [
+              {
+                "en": "to take the ground",
+                "ru": "сесть на мель"
+              },
+              {
+                "en": "to touch the ground",
+                "ru": "коснуться дна; переносно — дойти до сути дела, до фактов (в споре)"
+              }
+            ],
+            "register": [
+              "морской термин"
+            ],
+            "id": 12
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "пол (комнаты и т. п.)",
+            "examples": [],
+            "register": [],
+            "id": 13
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "запрещать полёты, отстранять от полётов",
+            "examples": [
+              {
+                "en": "the fog grounded all aircraft at N airfield",
+                "ru": "из-за тумана ни один самолёт не мог подняться в воздух на аэродроме N"
+              }
+            ],
+            "register": [
+              "авиация"
+            ],
+            "id": 14,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "приземляться, заставить приземлиться",
+            "examples": [],
+            "register": [
+              "авиация"
+            ],
+            "id": 15,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "посадить на мель; сесть на мель",
+            "examples": [],
+            "register": [
+              "морской термин"
+            ],
+            "id": 16
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "обучать основам предмета",
+            "examples": [],
+            "register": [],
+            "id": 17
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "основывать; обосновывать",
+            "examples": [],
+            "register": [],
+            "id": 18
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "заземлять",
+            "examples": [],
+            "register": [
+              "электротехника"
+            ],
+            "id": 19,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "класть, опускать(ся) на землю",
+            "examples": [
+              {
+                "en": "to ground arms",
+                "ru": "складывать оружие, сдаваться"
+              }
+            ],
+            "register": [],
+            "id": 20,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "грунтовать",
+            "examples": [],
+            "register": [],
+            "id": 21
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "мездрить (кожу)",
+            "examples": [],
+            "register": [],
+            "id": 22
+          }
+        ],
+        "phrases": [
+          {
+            "phrase": "to give ground",
+            "partOfSpeech": "verb",
+            "translation": "отступать",
+            "examples": [],
+            "register": [],
+            "id": 1
+          },
+          {
+            "phrase": "to go to ground",
+            "partOfSpeech": "verb",
+            "translation": "скрываться в норе (о лисе)",
+            "examples": [],
+            "register": [],
+            "id": 2
+          },
+          {
+            "id": 3,
+            "phrase": "to break new ground",
+            "partOfSpeech": "verb",
+            "translation": "распахивать землю, поднимать целину; начинать новое дело, прокладывать новые пути",
+            "register": [
+              "идиома"
+            ],
+            "examples": []
+          },
+          {
+            "id": 4,
+            "phrase": "on the grounds of",
+            "partOfSpeech": "noun",
+            "translation": "по причине, на основании; под предлогом",
+            "register": [],
+            "examples": []
+          }
+        ],
+        "form_of": {
+          "lemma": "grind",
+          "types": [
+            "past_simple",
+            "past_participle"
+          ]
+        }
+      }
+    },
+    {
+      "word": "lead",
+      "path": [],
+      "before": {
+        "word": "lead",
+        "frequency_rank": 516,
+        "cefr": "a2",
+        "phon_br": "/liːd/",
+        "phon_n_am": "/liːd/",
+        "lists": {
+          "oxford3000": true
+        },
+        "meanings": [
+          {
+            "partOfSpeech": "noun",
+            "translation": "свинец",
+            "examples": [
+              {
+                "en": "as heavy as lead",
+                "ru": "очень тяжёлый"
+              }
+            ],
+            "register": [],
+            "id": 1,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "графит, грифель",
+            "examples": [],
+            "register": [],
+            "id": 2,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "лот",
+            "examples": [
+              {
+                "en": "to heave (or to cast) the lead",
+                "ru": "бросать лот; измерять глубину лотом"
+              }
+            ],
+            "register": [
+              "морской термин"
+            ],
+            "id": 3
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "при мн. ч.: свинцовые полосы для покрытия крыши; покрытая свинцом крыша; плоская крыша",
+            "examples": [],
+            "register": [
+              "британское"
+            ],
+            "id": 4
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "при мн. ч.: шпоны",
+            "examples": [],
+            "register": [
+              "полиграфия",
+              "британское"
+            ],
+            "id": 5
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "грузило, отвес",
+            "examples": [],
+            "register": [],
+            "id": 6,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "пломба",
+            "examples": [],
+            "register": [],
+            "id": 7
+          },
+          {
+            "partOfSpeech": "adjective",
+            "translation": "в роли определения: свинцовый",
+            "examples": [],
+            "register": [],
+            "id": 8
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "освинцовывать, покрывать свинцом",
+            "examples": [],
+            "register": [
+              "техническое"
+            ],
+            "id": 9
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "разделять шпонами",
+            "examples": [],
+            "register": [
+              "полиграфия"
+            ],
+            "id": 10
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "руководство; инициатива; руководить",
+            "examples": [
+              {
+                "en": "to take the lead",
+                "ru": "взять на себя инициативу, выступить инициатором"
+              }
+            ],
+            "register": [],
+            "id": 11
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "пример; указания, директива",
+            "examples": [
+              {
+                "en": "to follow the lead of smb.",
+                "ru": "следовать чьему-либо примеру"
+              },
+              {
+                "en": "to give smb. a (or the) lead",
+                "ru": "поощрить, подбодрить кого-либо примером"
+              }
+            ],
+            "register": [],
+            "id": 12
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "первое место, ведущее место в состязании",
+            "examples": [
+              {
+                "en": "to have a lead of three metres (five seconds)",
+                "ru": "опередить на три метра (на пять секунд)"
+              },
+              {
+                "en": "to gain (or to have) the lead",
+                "ru": "занять первое место"
+              }
+            ],
+            "register": [],
+            "id": 13
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "разрыв между лидером и бегуном, идущим за ним",
+            "examples": [],
+            "register": [
+              "спортивное"
+            ],
+            "id": 14
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "ключ (к решению чего-либо); намёк",
+            "examples": [],
+            "register": [],
+            "id": 15
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "поводок, привязь",
+            "examples": [],
+            "register": [],
+            "id": 16
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "подводящий провод",
+            "examples": [],
+            "register": [
+              "электротехника"
+            ],
+            "id": 17
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "главная роль или её исполнитель(ница)",
+            "examples": [],
+            "register": [
+              "кинематография",
+              "театр"
+            ],
+            "id": 18
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "газетная информация, помещённая на видном месте",
+            "examples": [],
+            "register": [],
+            "id": 19,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "краткое введение к газетной статье; вводная часть",
+            "examples": [],
+            "register": [],
+            "id": 20
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "ход (в картах); инициатива",
+            "examples": [],
+            "register": [
+              "карточный термин"
+            ],
+            "id": 21
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "трубопровод; канал",
+            "examples": [],
+            "register": [],
+            "id": 22
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "разводье (во льдах)",
+            "examples": [],
+            "register": [],
+            "id": 23
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "опережение, предварение (впуска пара и т. п.)",
+            "examples": [],
+            "register": [
+              "техническое"
+            ],
+            "id": 24
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "шаг (спирали, винта); ход (поршня)",
+            "examples": [],
+            "register": [
+              "техническое"
+            ],
+            "id": 25
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "стрела, укосина",
+            "examples": [],
+            "register": [
+              "техническое",
+              "строительное"
+            ],
+            "id": 26
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "жила; золотоносный песок",
+            "examples": [],
+            "register": [
+              "геология"
+            ],
+            "id": 27
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "упреждение (при ведении огня по движущейся цели)",
+            "examples": [],
+            "register": [
+              "военное"
+            ],
+            "id": 28
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "вести, приводить",
+            "examples": [
+              {
+                "en": "to lead a child by the hand",
+                "ru": "вести ребёнка за руку"
+              },
+              {
+                "en": "the path leads to the house",
+                "ru": "дорога ведёт к дому"
+              },
+              {
+                "en": "chance led him to London",
+                "ru": "случай привёл его в Лондон"
+              }
+            ],
+            "register": [],
+            "id": 29
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "руководить, управлять, командовать, возглавлять",
+            "examples": [
+              {
+                "en": "to lead an army",
+                "ru": "командовать армией"
+              },
+              {
+                "en": "to lead for the prosecution (defence)",
+                "ru": "возглавлять обвинение (защиту)"
+              },
+              {
+                "en": "to lead an orchestra",
+                "ru": "руководить оркестром"
+              }
+            ],
+            "register": [
+              "юридическое"
+            ],
+            "id": 30
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "вести, проводить",
+            "examples": [
+              {
+                "en": "to lead a quiet life",
+                "ru": "вести спокойную жизнь"
+              }
+            ],
+            "register": [],
+            "id": 31
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "быть, идти первым, опережать (в состязании); превосходить",
+            "examples": [
+              {
+                "en": "he leads all orators",
+                "ru": "он лучший оратор"
+              },
+              {
+                "en": "as a teacher he leads",
+                "ru": "он лучше всех других учителей"
+              }
+            ],
+            "register": [],
+            "id": 32
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "ходить",
+            "examples": [
+              {
+                "en": "to lead hearts (spades, etc.)",
+                "ru": "ходить с червей (с пик и т. д.)"
+              }
+            ],
+            "register": [
+              "карточный термин"
+            ],
+            "id": 33
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "приводить (к чему-либо)",
+            "examples": [
+              {
+                "en": "to lead nowhere",
+                "ru": "ни к чему не приводить"
+              }
+            ],
+            "register": [],
+            "id": 34
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "приводить, склонять (к чему-либо), заставлять",
+            "examples": [
+              {
+                "en": "to lead smb. to do smth.",
+                "ru": "заставить кого-либо сделать что-либо"
+              },
+              {
+                "en": "curiosity led me to look again",
+                "ru": "любопытство заставило меня взглянуть снова"
+              },
+              {
+                "en": "what led you to think so?",
+                "ru": "что заставило вас так думать?"
+              }
+            ],
+            "register": [],
+            "id": 35
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "направлять удар (в боксе)",
+            "examples": [],
+            "register": [
+              "спортивное"
+            ],
+            "id": 36
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "целиться в летящую птицу",
+            "examples": [],
+            "register": [
+              "охотничий термин"
+            ],
+            "id": 37
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "помещать на видном месте в газете",
+            "examples": [],
+            "register": [],
+            "id": 38
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "опережать",
+            "examples": [
+              {
+                "en": "lead on",
+                "ru": "завлекать, увлекать"
+              },
+              {
+                "en": "lead out of",
+                "ru": "выходить, сообщаться (о комнатах)"
+              },
+              {
+                "en": "lead to",
+                "ru": "приводить к каким-либо результатам"
+              },
+              {
+                "en": "lead away",
+                "ru": "увлечь, увести"
+              },
+              {
+                "en": "lead up",
+                "ru": "постепенно подготовлять; наводить разговор на что-либо"
+              }
+            ],
+            "register": [
+              "разговорное",
+              "техническое"
+            ],
+            "id": 39
+          }
+        ],
+        "phrases": [
+          {
+            "phrase": "blind lead",
+            "partOfSpeech": "noun",
+            "translation": "тупик",
+            "examples": [],
+            "register": [],
+            "id": 1
+          },
+          {
+            "phrase": "to lead by the nose",
+            "partOfSpeech": "verb",
+            "translation": "водить на поводу",
+            "examples": [],
+            "register": [],
+            "id": 2
+          },
+          {
+            "phrase": "to lead smb. up the garden path",
+            "partOfSpeech": "verb",
+            "translation": "вводить в заблуждение",
+            "examples": [],
+            "register": [],
+            "id": 3
+          },
+          {
+            "phrase": "hail of lead",
+            "partOfSpeech": "noun",
+            "translation": "град пуль",
+            "examples": [],
+            "register": [],
+            "id": 4
+          },
+          {
+            "phrase": "to get the lead",
+            "partOfSpeech": "noun",
+            "translation": "быть застреленным",
+            "examples": [],
+            "register": [],
+            "id": 5
+          }
+        ],
+        "forms": {
+          "past_simple": "led",
+          "past_participle": "led"
+        }
+      },
+      "after": {
+        "word": "lead",
+        "frequency_rank": 516,
+        "cefr": "a2",
+        "phon_br": "/liːd/, /led/",
+        "phon_n_am": "/liːd/, /led/",
+        "lists": {
+          "oxford3000": true
+        },
+        "meanings": [
+          {
+            "partOfSpeech": "noun",
+            "translation": "свинец",
+            "examples": [
+              {
+                "en": "as heavy as lead",
+                "ru": "очень тяжёлый"
+              }
+            ],
+            "register": [],
+            "id": 1,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "графит, грифель",
+            "examples": [],
+            "register": [],
+            "id": 2,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "лот",
+            "examples": [
+              {
+                "en": "to heave (or to cast) the lead",
+                "ru": "бросать лот; измерять глубину лотом"
+              }
+            ],
+            "register": [
+              "морской термин"
+            ],
+            "id": 3
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "при мн. ч.: свинцовые полосы для покрытия крыши; покрытая свинцом крыша; плоская крыша",
+            "examples": [],
+            "register": [
+              "британское"
+            ],
+            "id": 4
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "при мн. ч.: шпоны",
+            "examples": [],
+            "register": [
+              "полиграфия",
+              "британское"
+            ],
+            "id": 5
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "грузило, отвес",
+            "examples": [],
+            "register": [],
+            "id": 6,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "пломба",
+            "examples": [],
+            "register": [],
+            "id": 7
+          },
+          {
+            "partOfSpeech": "adjective",
+            "translation": "в роли определения: свинцовый",
+            "examples": [],
+            "register": [],
+            "id": 8
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "освинцовывать, покрывать свинцом",
+            "examples": [],
+            "register": [
+              "техническое"
+            ],
+            "id": 9
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "разделять шпонами",
+            "examples": [],
+            "register": [
+              "полиграфия"
+            ],
+            "id": 10
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "руководство; инициатива; руководить",
+            "examples": [
+              {
+                "en": "to take the lead",
+                "ru": "взять на себя инициативу, выступить инициатором"
+              }
+            ],
+            "register": [],
+            "id": 11
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "пример; указания, директива",
+            "examples": [
+              {
+                "en": "to follow the lead of smb.",
+                "ru": "следовать чьему-либо примеру"
+              },
+              {
+                "en": "to give smb. a (or the) lead",
+                "ru": "поощрить, подбодрить кого-либо примером"
+              }
+            ],
+            "register": [],
+            "id": 12
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "первое место, ведущее место в состязании",
+            "examples": [
+              {
+                "en": "to have a lead of three metres (five seconds)",
+                "ru": "опередить на три метра (на пять секунд)"
+              },
+              {
+                "en": "to gain (or to have) the lead",
+                "ru": "занять первое место"
+              }
+            ],
+            "register": [],
+            "id": 13
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "разрыв между лидером и бегуном, идущим за ним",
+            "examples": [],
+            "register": [
+              "спортивное"
+            ],
+            "id": 14
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "ключ (к решению чего-либо); намёк",
+            "examples": [],
+            "register": [],
+            "id": 15
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "поводок, привязь",
+            "examples": [],
+            "register": [],
+            "id": 16
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "подводящий провод",
+            "examples": [],
+            "register": [
+              "электротехника"
+            ],
+            "id": 17
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "главная роль или её исполнитель(ница)",
+            "examples": [],
+            "register": [
+              "кинематография",
+              "театр"
+            ],
+            "id": 18
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "газетная информация, помещённая на видном месте",
+            "examples": [],
+            "register": [],
+            "id": 19,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "краткое введение к газетной статье; вводная часть",
+            "examples": [],
+            "register": [],
+            "id": 20
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "ход (в картах); инициатива",
+            "examples": [],
+            "register": [
+              "карточный термин"
+            ],
+            "id": 21
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "трубопровод; канал",
+            "examples": [],
+            "register": [],
+            "id": 22
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "разводье (во льдах)",
+            "examples": [],
+            "register": [],
+            "id": 23
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "опережение, предварение (впуска пара и т. п.)",
+            "examples": [],
+            "register": [
+              "техническое"
+            ],
+            "id": 24
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "шаг (спирали, винта); ход (поршня)",
+            "examples": [],
+            "register": [
+              "техническое"
+            ],
+            "id": 25
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "стрела, укосина",
+            "examples": [],
+            "register": [
+              "техническое",
+              "строительное"
+            ],
+            "id": 26
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "жила; золотоносный песок",
+            "examples": [],
+            "register": [
+              "геология"
+            ],
+            "id": 27
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "упреждение (при ведении огня по движущейся цели)",
+            "examples": [],
+            "register": [
+              "военное"
+            ],
+            "id": 28
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "вести, приводить",
+            "examples": [
+              {
+                "en": "to lead a child by the hand",
+                "ru": "вести ребёнка за руку"
+              },
+              {
+                "en": "the path leads to the house",
+                "ru": "дорога ведёт к дому"
+              },
+              {
+                "en": "chance led him to London",
+                "ru": "случай привёл его в Лондон"
+              }
+            ],
+            "register": [],
+            "id": 29
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "руководить, управлять, командовать, возглавлять",
+            "examples": [
+              {
+                "en": "to lead an army",
+                "ru": "командовать армией"
+              },
+              {
+                "en": "to lead for the prosecution (defence)",
+                "ru": "возглавлять обвинение (защиту)",
+                "register": [
+                  "юридическое"
+                ]
+              },
+              {
+                "en": "to lead an orchestra",
+                "ru": "руководить оркестром"
+              }
+            ],
+            "register": [],
+            "id": 30
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "вести, проводить",
+            "examples": [
+              {
+                "en": "to lead a quiet life",
+                "ru": "вести спокойную жизнь"
+              }
+            ],
+            "register": [],
+            "id": 31
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "быть, идти первым, опережать (в состязании); превосходить",
+            "examples": [
+              {
+                "en": "he leads all orators",
+                "ru": "он лучший оратор"
+              },
+              {
+                "en": "as a teacher he leads",
+                "ru": "он лучше всех других учителей"
+              }
+            ],
+            "register": [],
+            "id": 32
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "ходить",
+            "examples": [
+              {
+                "en": "to lead hearts (spades, etc.)",
+                "ru": "ходить с червей (с пик и т. д.)"
+              }
+            ],
+            "register": [
+              "карточный термин"
+            ],
+            "id": 33
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "приводить (к чему-либо)",
+            "examples": [
+              {
+                "en": "to lead nowhere",
+                "ru": "ни к чему не приводить"
+              }
+            ],
+            "register": [],
+            "id": 34
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "приводить, склонять (к чему-либо), заставлять",
+            "examples": [
+              {
+                "en": "to lead smb. to do smth.",
+                "ru": "заставить кого-либо сделать что-либо"
+              },
+              {
+                "en": "curiosity led me to look again",
+                "ru": "любопытство заставило меня взглянуть снова"
+              },
+              {
+                "en": "what led you to think so?",
+                "ru": "что заставило вас так думать?"
+              }
+            ],
+            "register": [],
+            "id": 35
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "направлять удар (в боксе)",
+            "examples": [],
+            "register": [
+              "спортивное"
+            ],
+            "id": 36
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "целиться в летящую птицу",
+            "examples": [],
+            "register": [
+              "охотничий термин"
+            ],
+            "id": 37
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "помещать на видном месте в газете",
+            "examples": [],
+            "register": [],
+            "id": 38
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "опережать",
+            "examples": [],
+            "register": [
+              "техническое"
+            ],
+            "id": 39
+          }
+        ],
+        "phrases": [
+          {
+            "phrase": "blind lead",
+            "partOfSpeech": "noun",
+            "translation": "тупик",
+            "examples": [],
+            "register": [],
+            "id": 1
+          },
+          {
+            "phrase": "to lead by the nose",
+            "partOfSpeech": "verb",
+            "translation": "водить на поводу",
+            "examples": [],
+            "register": [],
+            "id": 2
+          },
+          {
+            "phrase": "to lead smb. up the garden path",
+            "partOfSpeech": "verb",
+            "translation": "вводить в заблуждение",
+            "examples": [],
+            "register": [],
+            "id": 3
+          },
+          {
+            "phrase": "hail of lead",
+            "partOfSpeech": "noun",
+            "translation": "град пуль",
+            "examples": [],
+            "register": [],
+            "id": 4
+          },
+          {
+            "phrase": "to get the lead",
+            "partOfSpeech": "noun",
+            "translation": "быть застреленным",
+            "examples": [],
+            "register": [],
+            "id": 5
+          },
+          {
+            "id": 6,
+            "phrase": "lead on",
+            "partOfSpeech": "verb",
+            "translation": "завлекать, увлекать",
+            "examples": [
+              {
+                "en": "lead on",
+                "ru": "завлекать, увлекать"
+              }
+            ],
+            "register": []
+          },
+          {
+            "id": 7,
+            "phrase": "lead out of",
+            "partOfSpeech": "verb",
+            "translation": "выходить, сообщаться (о комнатах)",
+            "examples": [
+              {
+                "en": "lead out of",
+                "ru": "выходить, сообщаться (о комнатах)"
+              }
+            ],
+            "register": []
+          },
+          {
+            "id": 8,
+            "phrase": "lead to",
+            "partOfSpeech": "verb",
+            "translation": "приводить к каким-либо результатам",
+            "examples": [
+              {
+                "en": "lead to",
+                "ru": "приводить к каким-либо результатам"
+              }
+            ],
+            "register": []
+          },
+          {
+            "id": 9,
+            "phrase": "lead away",
+            "partOfSpeech": "verb",
+            "translation": "увлечь, увести",
+            "examples": [
+              {
+                "en": "lead away",
+                "ru": "увлечь, увести"
+              }
+            ],
+            "register": []
+          },
+          {
+            "id": 10,
+            "phrase": "lead up to",
+            "partOfSpeech": "verb",
+            "translation": "постепенно подготовлять; наводить разговор на что-либо",
+            "examples": [
+              {
+                "en": "lead up to",
+                "ru": "постепенно подготовлять; наводить разговор на что-либо"
+              }
+            ],
+            "register": []
+          }
+        ],
+        "forms": {
+          "past_simple": "led",
+          "past_participle": "led"
+        }
+      }
+    },
+    {
+      "word": "press",
+      "path": [],
+      "before": {
+        "word": "press",
+        "frequency_rank": 574,
+        "cefr": "b1",
+        "phon_br": "/pres/",
+        "phon_n_am": "/pres/",
+        "lists": {
+          "oxford3000": true
+        },
+        "meanings": [
+          {
+            "partOfSpeech": "noun",
+            "translation": "надавливание",
+            "examples": [
+              {
+                "en": "give it a slight press",
+                "ru": "слегка нажмите"
+              }
+            ],
+            "register": [],
+            "id": 1,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "пресс",
+            "examples": [],
+            "register": [],
+            "id": 2,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "жим, выжим штанги",
+            "examples": [],
+            "register": [
+              "спортивное"
+            ],
+            "id": 3
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "давка; свалка",
+            "examples": [],
+            "register": [],
+            "id": 4
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "спешка",
+            "examples": [
+              {
+                "en": "there is a great press of work",
+                "ru": "много неотложной работы"
+              }
+            ],
+            "register": [],
+            "id": 5
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "жать, нажимать, прижимать",
+            "examples": [],
+            "register": [],
+            "id": 6,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "гладить (утюгом)",
+            "examples": [],
+            "register": [],
+            "id": 7,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "давить, выдавливать, выжимать",
+            "examples": [
+              {
+                "en": "to press home",
+                "ru": "выжать до конца, до отказа"
+              }
+            ],
+            "register": [
+              "техническое"
+            ],
+            "id": 8
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "прессовать; выдавливать, штамповать",
+            "examples": [],
+            "register": [],
+            "id": 9
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "торопить, требовать немедленных действий",
+            "examples": [
+              {
+                "en": "time presses",
+                "ru": "время не терпит"
+              },
+              {
+                "en": "nothing remains that presses",
+                "ru": "больше не осталось ничего спешного"
+              }
+            ],
+            "register": [],
+            "id": 10
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "настаивать",
+            "examples": [
+              {
+                "en": "to press the words",
+                "ru": "настаивать на буквальном значении слов"
+              },
+              {
+                "en": "to press questions",
+                "ru": "настойчиво допытываться"
+              }
+            ],
+            "register": [],
+            "id": 11
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "теснить(ся)",
+            "examples": [
+              {
+                "en": "press round, press up",
+                "ru": "теснить(ся)"
+              }
+            ],
+            "register": [],
+            "id": 12
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "(часто pass.) стеснять, затруднять; очень торопиться",
+            "examples": [
+              {
+                "en": "hard pressed",
+                "ru": "в трудном положении"
+              },
+              {
+                "en": "to be pressed for money",
+                "ru": "испытывать денежные затруднения"
+              },
+              {
+                "en": "to be pressed for time",
+                "ru": "располагать незначительным временем"
+              }
+            ],
+            "register": [],
+            "id": 13
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "навязывать",
+            "examples": [],
+            "register": [],
+            "id": 14
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "тревожить, угнетать, тяготить",
+            "examples": [],
+            "register": [],
+            "id": 15
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "жать, выжимать штангу",
+            "examples": [
+              {
+                "en": "press for",
+                "ru": "добиваться (чего-либо)"
+              },
+              {
+                "en": "press forward",
+                "ru": "проталкиваться"
+              },
+              {
+                "en": "press on",
+                "ru": "спешить"
+              },
+              {
+                "en": "press to",
+                "ru": "понуждать"
+              },
+              {
+                "en": "press down",
+                "ru": "придавливать, прижимать; стремиться (к чему-либо)"
+              }
+            ],
+            "register": [
+              "разговорное",
+              "спортивное"
+            ],
+            "id": 16
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "печатный станок",
+            "examples": [],
+            "register": [],
+            "id": 17,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "печать, печатание",
+            "examples": [
+              {
+                "en": "to correct the press",
+                "ru": "править подписную корректуру"
+              }
+            ],
+            "register": [],
+            "id": 18,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "печать, пресса",
+            "examples": [
+              {
+                "en": "to have a good press",
+                "ru": "получить благоприятные отзывы в прессе"
+              }
+            ],
+            "register": [],
+            "id": 19
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "типография",
+            "examples": [],
+            "register": [
+              "типографское"
+            ],
+            "id": 20
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "вербовать силой, насильно",
+            "examples": [
+              {
+                "en": "to press into the service of",
+                "ru": "перен. использовать для"
+              }
+            ],
+            "register": [],
+            "id": 21
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "реквизировать",
+            "examples": [],
+            "register": [],
+            "id": 22
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "газетная вырезка",
+            "examples": [],
+            "register": [],
+            "id": 23
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "в роли определения к другому слову",
+            "examples": [
+              {
+                "en": "press agency",
+                "ru": "газетное агентство; агентство печати"
+              }
+            ],
+            "register": [
+              "полиграфия"
+            ],
+            "id": 24
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "вербовка силой",
+            "examples": [],
+            "register": [
+              "историческое"
+            ],
+            "id": 25
+          }
+        ],
+        "phrases": [
+          {
+            "id": 1,
+            "phrase": "press down",
+            "partOfSpeech": "verb",
+            "translation": "придавливать, прижимать",
+            "examples": [],
+            "register": []
+          },
+          {
+            "id": 2,
+            "phrase": "press forward",
+            "partOfSpeech": "verb",
+            "translation": "проталкиваться",
+            "examples": [],
+            "register": []
+          },
+          {
+            "id": 3,
+            "phrase": "press on",
+            "partOfSpeech": "verb",
+            "translation": "спешить",
+            "examples": [],
+            "register": [
+              "разговорное"
+            ]
+          },
+          {
+            "id": 4,
+            "phrase": "press out",
+            "partOfSpeech": "verb",
+            "translation": "выжимать; заутюживать (складку и т. п.)",
+            "examples": [],
+            "register": [
+              "разговорное"
+            ]
+          }
+        ]
+      },
+      "after": {
+        "word": "press",
+        "frequency_rank": 574,
+        "cefr": "b1",
+        "phon_br": "/pres/",
+        "phon_n_am": "/pres/",
+        "lists": {
+          "oxford3000": true
+        },
+        "meanings": [
+          {
+            "partOfSpeech": "noun",
+            "translation": "надавливание",
+            "examples": [
+              {
+                "en": "give it a slight press",
+                "ru": "слегка нажмите"
+              }
+            ],
+            "register": [],
+            "id": 1,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "пресс",
+            "examples": [],
+            "register": [],
+            "id": 2,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "жим, выжим штанги",
+            "examples": [],
+            "register": [
+              "спортивное"
+            ],
+            "id": 3
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "давка; свалка",
+            "examples": [],
+            "register": [],
+            "id": 4
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "спешка",
+            "examples": [
+              {
+                "en": "there is a great press of work",
+                "ru": "много неотложной работы"
+              }
+            ],
+            "register": [],
+            "id": 5
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "жать, нажимать, прижимать",
+            "examples": [],
+            "register": [],
+            "id": 6,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "гладить (утюгом)",
+            "examples": [],
+            "register": [],
+            "id": 7,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "давить, выдавливать, выжимать",
+            "examples": [
+              {
+                "en": "to press home",
+                "ru": "выжать до конца, до отказа"
+              }
+            ],
+            "register": [
+              "техническое"
+            ],
+            "id": 8
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "прессовать; выдавливать, штамповать",
+            "examples": [],
+            "register": [],
+            "id": 9
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "торопить, требовать немедленных действий",
+            "examples": [
+              {
+                "en": "time presses",
+                "ru": "время не терпит"
+              },
+              {
+                "en": "nothing remains that presses",
+                "ru": "больше не осталось ничего спешного"
+              }
+            ],
+            "register": [],
+            "id": 10
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "настаивать",
+            "examples": [
+              {
+                "en": "to press the words",
+                "ru": "настаивать на буквальном значении слов"
+              },
+              {
+                "en": "to press questions",
+                "ru": "настойчиво допытываться"
+              }
+            ],
+            "register": [],
+            "id": 11
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "теснить(ся)",
+            "examples": [
+              {
+                "en": "press round, press up",
+                "ru": "теснить(ся)"
+              }
+            ],
+            "register": [],
+            "id": 12
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "(часто pass.) стеснять, затруднять; очень торопиться",
+            "examples": [
+              {
+                "en": "hard pressed",
+                "ru": "в трудном положении"
+              },
+              {
+                "en": "to be pressed for money",
+                "ru": "испытывать денежные затруднения"
+              },
+              {
+                "en": "to be pressed for time",
+                "ru": "располагать незначительным временем"
+              }
+            ],
+            "register": [],
+            "id": 13
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "навязывать",
+            "examples": [],
+            "register": [],
+            "id": 14
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "тревожить, угнетать, тяготить",
+            "examples": [],
+            "register": [],
+            "id": 15
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "жать, выжимать штангу",
+            "examples": [],
+            "register": [
+              "спортивное"
+            ],
+            "id": 16
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "печатный станок",
+            "examples": [],
+            "register": [],
+            "id": 17,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "печать, печатание",
+            "examples": [
+              {
+                "en": "to correct the press",
+                "ru": "править подписную корректуру"
+              }
+            ],
+            "register": [],
+            "id": 18,
+            "primary": true
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "печать, пресса",
+            "examples": [
+              {
+                "en": "to have a good press",
+                "ru": "получить благоприятные отзывы в прессе"
+              }
+            ],
+            "register": [],
+            "id": 19
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "типография",
+            "examples": [],
+            "register": [
+              "типографское"
+            ],
+            "id": 20
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "вербовать силой, насильно",
+            "examples": [
+              {
+                "en": "to press into the service of",
+                "ru": "перен. использовать для"
+              }
+            ],
+            "register": [
+              "историческое"
+            ],
+            "id": 21
+          },
+          {
+            "partOfSpeech": "verb",
+            "translation": "реквизировать",
+            "examples": [],
+            "register": [
+              "историческое"
+            ],
+            "id": 22
+          },
+          {
+            "partOfSpeech": "noun",
+            "translation": "вербовка силой",
+            "examples": [],
+            "register": [
+              "историческое"
+            ],
+            "id": 23
+          }
+        ],
+        "phrases": [
+          {
+            "id": 1,
+            "phrase": "press down",
+            "partOfSpeech": "verb",
+            "translation": "придавливать, прижимать",
+            "examples": [
+              {
+                "en": "press down",
+                "ru": "придавливать, прижимать"
+              }
+            ],
+            "register": []
+          },
+          {
+            "id": 2,
+            "phrase": "press forward",
+            "partOfSpeech": "verb",
+            "translation": "проталкиваться",
+            "examples": [
+              {
+                "en": "press forward",
+                "ru": "проталкиваться"
+              }
+            ],
+            "register": []
+          },
+          {
+            "id": 3,
+            "phrase": "press on",
+            "partOfSpeech": "verb",
+            "translation": "спешить",
+            "examples": [
+              {
+                "en": "press on",
+                "ru": "спешить"
+              }
+            ],
+            "register": [
+              "разговорное"
+            ]
+          },
+          {
+            "id": 4,
+            "phrase": "press out",
+            "partOfSpeech": "verb",
+            "translation": "выжимать; заутюживать (складку и т. п.)",
+            "examples": [],
+            "register": [
+              "разговорное"
+            ]
+          },
+          {
+            "id": 5,
+            "phrase": "press cutting / press clipping",
+            "partOfSpeech": "noun",
+            "translation": "газетная вырезка",
+            "examples": [],
+            "register": []
+          },
+          {
+            "id": 6,
+            "phrase": "press agency",
+            "partOfSpeech": "noun",
+            "translation": "газетное агентство; агентство печати",
+            "examples": [
+              {
+                "en": "press agency",
+                "ru": "газетное агентство; агентство печати"
+              }
+            ],
+            "register": []
+          },
+          {
+            "id": 7,
+            "phrase": "press cutting agency",
+            "partOfSpeech": "noun",
+            "translation": "бюро вырезок",
+            "examples": [],
+            "register": []
+          },
+          {
+            "id": 8,
+            "phrase": "press for",
+            "partOfSpeech": "verb",
+            "translation": "добиваться (чего-либо); стремиться (к чему-либо)",
+            "examples": [
+              {
+                "en": "press for",
+                "ru": "добиваться (чего-либо); стремиться (к чему-либо)"
+              }
+            ],
+            "register": []
+          },
+          {
+            "id": 9,
+            "phrase": "press to",
+            "partOfSpeech": "verb",
+            "translation": "понуждать",
+            "examples": [
+              {
+                "en": "press to",
+                "ru": "понуждать"
+              }
+            ],
+            "register": []
+          }
+        ]
+      }
+    }
+  ],
+  "contamination_moves": [
+    {
+      "word": "press",
+      "origin": "separate press cutting/press clipping and press agency articles; press cutting agency translation was lost in an earlier repair",
+      "destination": [
+        "press.phrases: press cutting / press clipping",
+        "press.phrases: press agency",
+        "press.phrases: press cutting agency"
+      ],
+      "action": "moved compounds; restored source-confirmed press cutting agency",
+      "evidence": {
+        "file": "tmp/muller_full_text.txt",
+        "lines": [
+          141603,
+          141621
+        ],
+        "quote": "press agency [\u0003pres\u0007e\u0006d\u0010\u000fns\u0006] n газет\nное агентство; агентство печати\npress agent [\u0003pres\u0007e\u0006d\u0010\u000fnt] n агент по\nпечати и рекламе\npress bed [\u0003presbed] n складная кро\nвать (убирающаяся в шкаф)\npress box [\u0003presb\u0011ks] n места для\nпредставителей печати (на состяза\nниях, спектаклях и т. п.)\npress button [\u0003pres\u0007b\u0018tn] = push button\npress clipping [\u0003pres\u0007kl\u0006p\u0006\u0016] = press\ncutting\npress conference [\u0003pres\u0007k\u0011nfr\u000fns] n\nпрессконференция\npress corrector [\u0003presk\u0005\u0007rekt\u0005] n кор\nректор\npress cutting [\u0003pres\u0007k\u0018t\u0006\u0016] n 1) газет\nная вырезка 2) attr.: ~ agency бюро\nвырезок"
+      }
+    },
+    {
+      "word": "press",
+      "origin": "press I phrasal block pasted under sports meaning id 16; striving gloss incorrectly attached to press down",
+      "destination": [
+        "press.phrases: press for",
+        "press.phrases: press forward",
+        "press.phrases: press on",
+        "press.phrases: press to",
+        "press.phrases: press down"
+      ],
+      "action": "moved all five examples; restored striving gloss to press for; none discarded",
+      "evidence": {
+        "file": "tmp/muller_full_text.txt",
+        "lines": [
+          141584,
+          141590
+        ],
+        "quote": "(on) 11) спорт. жать, выжимать\nштангу ¬ ~ down придавливать, при\nжимать; ~ for добиваться (чегол.);\nстремиться (к чемул.); ~ forward\nпроталкиваться; ~ on разг. спешить;\n~ out а) выжимать; б) заутюживать\n(складку и т. п.); ~ to понуждать"
+      }
+    },
+    {
+      "word": "lead",
+      "origin": "lead II phrasal tail pasted under technical verb опережать",
+      "destination": [
+        "lead.phrases: lead on",
+        "lead.phrases: lead out of",
+        "lead.phrases: lead to",
+        "lead.phrases: lead away",
+        "lead.phrases: lead up to"
+      ],
+      "action": "moved all five examples; lead up restored to source construction lead up to",
+      "evidence": {
+        "file": "tmp/muller_full_text.txt",
+        "lines": [
+          104936,
+          104947
+        ],
+        "quote": "8) спорт. направлять удар (в боксе)\n9) охот. целиться в летящую птицу\n10) помещать на видном месте в га\nзете 11) тех. опережать ¬ ~ away\nувлечь, увести; ~ off а) начинать,\nкласть начало; открывать (прения,\nбал); б) разг. выйти из себя; ~ on за\nвлекать, увлекать; ~ out of выхо\nдить, сообщаться (о комнатах);\n~ to приводить к какимл. результа\nтам; ~ up to а) постепенно подготов\nлять; б) наводить разговор на чтол."
+      }
+    },
+    {
+      "word": "ground",
+      "origin": "ground II noun sense 1; figurative gloss belongs to to fall to the ground",
+      "destination": "ground.meanings[0].examples: to fall to the ground",
+      "action": "moved figurative gloss; literal and figurative meanings retained",
+      "evidence": {
+        "file": "tmp/muller_full_text.txt",
+        "lines": [
+          81977,
+          81983
+        ],
+        "quote": "ground II [\u0003ra\bnd] 1. n 1) земля; поч\nва; грунт; to fall to the ~ упасть; пе\nрен. рушиться (о надежде и т. п.);\nto take ~ приземлиться; to break\nnew ~ а) распахивать землю, подни\nмать целину; б) начинать новое\nдело, прокладывать новые пути"
+      }
+    },
+    {
+      "word": "ground",
+      "origin": "ground II noun sense 12; figurative gloss belongs to to touch the ground",
+      "destination": "ground.meanings[11].examples: to touch the ground",
+      "action": "moved figurative gloss; no sense removed",
+      "evidence": {
+        "file": "tmp/muller_full_text.txt",
+        "lines": [
+          81997,
+          82000
+        ],
+        "quote": "ление 12) дно моря; to take the ~\nмор. сесть на мель; to touch the ~\nкоснуться дна; перен. дойти до сути\nдела, до фактов (в споре) 13) пол"
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "file": "tmp/muller_full_text.txt",
+      "lines": [
+        104858,
+        104877
+      ],
+      "quote": "lead I [led] 1. n 1) свинец; as heavy\nas ~ очень тяжёлый 2) графит, гри\nфель 3) мор. лот; to heave (или to\n\n<<<PAGE461>>>\nlead\n447\nleak\ncast) the ~ мор. бросать лот; изме\nрять глубину лотом 4) pl свинцовые\nполосы для покрытия крыши; по\nкрытая свинцом крыша; плоская\nкрыша 5) pl полигр. шпоны 6) грузи\nло, отвес 7) пломба 8) attr. свинцо\nвый ♦ hail of ~ град пуль; to get the\n~ быть застреленным\n2. v 1) тех. освинцовывать, покры\nвать свинцом 2) полигр. разделять\nшпонами\nlead II [li:d] 1. n 1) руководство; ини"
+    },
+    {
+      "file": "tmp/muller_full_text.txt",
+      "lines": [
+        104914,
+        104918
+      ],
+      "quote": "2) руководить, управлять, коман\nдовать, возглавлять; to ~ an army\nкомандовать армией; to ~ for the\nprosecution (defence) юр. возглавлять\nобвинение (защиту); to ~ an orchestra"
+    },
+    {
+      "file": "tmp/muller_full_text.txt",
+      "lines": [
+        81975,
+        81977
+      ],
+      "quote": "ground I [\u0003ra\bnd] past и р. р. от\ngrind 2\nground II [\u0003ra\bnd] 1. n 1) земля; поч"
+    },
+    {
+      "file": "tmp/muller_full_text.txt",
+      "lines": [
+        141598,
+        141602
+      ],
+      "quote": "press III [pres] ист. 1. v 1) вербовать\nсилой, насильно; to ~ into the service\nof перен. использовать для 2) рекви\nзировать\n2. n вербовка силой"
+    }
+  ],
+  "decisions": [
+    {
+      "word": "ground",
+      "decision": "keep top-level form_of",
+      "reason": "Source explicitly confirms ground I as past/past participle of grind; loader does not suppress lexical meanings via form_of. Do not delete a valid relation."
+    },
+    {
+      "word": "lead",
+      "decision": "preserve flat schema and both homonym pronunciations",
+      "reason": "Existing schema has no per-meaning homonym identity; no new fields or headwords added."
+    },
+    {
+      "scope": "duplicate example/phrase storage",
+      "decision": "keep when example actually illustrates its meaning; move only proven misplaced examples",
+      "reason": "Redundant lookup paths alone are not a defect."
+    }
+  ],
+  "not_claimed": "No formal multi-role audit report certification; final QA validates structure only."
+}

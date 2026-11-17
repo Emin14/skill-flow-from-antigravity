@@ -1,0 +1,4380 @@
+[
+  {
+    "word": "may",
+    "decision": "review_required",
+    "reason": "Permission and likelihood have clear modern bilingual examples; optative and concessive clauses need their own register and syntax review.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [may] source_evidence and stage_09.json [may] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [may] and stage_07.json [may] before/after; stage_09.json [may] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Инверсия may theirs be выражает пожелание, но конструкция с притяжательным местоимением книжная.",
+        "required_action": "Mark the formal optative register and compare a contemporary well-wish using may plus an explicit subject."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Who may that be грамматично, но редкое смягчение не стоит выдавать за нейтральный вопрос.",
+        "required_action": "Label the interrogative may as marked and contrast uncertainty with request for permission."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "В уступительном whoever he may be нужна запятая перед главным предложением, а в have no right естественно единственное число.",
+        "required_action": "Punctuate the concessive subordinate clause, change the right construction to singular, and re-evaluate the generic subjunctive label."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 3,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Пожелание с инверсией имеет ограниченную сферу и следует за возможностью и разрешением."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Смягчённое Who may… значительно менее универсально, чем обычный вопрос о вероятности."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Уступительная модель whoever … may be полезна после двух основных модальных значений."
+      }
+    ]
+  },
+  {
+    "word": "here",
+    "decision": "review_required",
+    "reason": "Restricting разбросанно to here and there repairs the definition; the arrival formula and witness sentence still require separate corrections.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [here] source_evidence and stage_09.json [here] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [here] and stage_07.json [here] before/after; stage_09.json [here] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "21fc4e3528367d7c9b72ee187d2a80577adb17a65025ed35325b5756b8f4c386",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "The cited adv entry marks здесь, тут before the separate combination ~ and there."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "The rewrite limits scattered distribution to the combination that actually carries it."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "The headword stays adverbial both alone and within the expression."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Both original location equivalents and both quoted combinations remain intact."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Approve scoped clarification and review a standalone example separately."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Оба примера содержат here в сочетании со словами места. Самостоятельное «здесь» не показано, а «разбросанно» передаётся всей фразой here and there.",
+        "required_action": "Add a separately reviewed contextual example of standalone locative here while keeping both phrase examples."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Here you are и Here we are объединены под «вот, пожалуйста», хотя второе часто сообщает, что говорящие прибыли. Again в отдельном примере потеряно.",
+        "required_action": "Separate arrival and handing-over formulae, and provide an equivalent that preserves again."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Here выделяет присутствующего друга, но в переводе исчезает accident, а «всё собственными глазами» расширяет исходный смысл.",
+        "required_action": "Give the postnominal construction explicitly and translate the friend as a witness to the accident."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 4,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Повествовательная отметка момента опирается на перенос значения места."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Указание на присутствующего после именной группы требует отдельной разговорной конструкции."
+      }
+    ]
+  },
+  {
+    "word": "need",
+    "decision": "review_required",
+    "reason": "Lexical requirement and modal necessity work in distinct constructions; the shortage and privation glosses lack a contemporary illustration.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [need] source_evidence and stage_09.json [need] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [need] and stage_07.json [need] before/after; stage_09.json [need] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Современное need обозначает потребность или необходимость, даже если она вызвана дефицитом. Для отдельного смысла нехватки требуется доказать заменимость shortage без смены отношений.",
+        "required_action": "Seek present-day nominal need meaning shortage rather than a requirement. If unavailable, assess a historical label or consolidation with #1."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Be in need означает нуждаться; без контекста неясно, что речь именно о бедности.",
+        "required_action": "Supply a material hardship context in which in need signals poverty and contrast it with #1."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Значение проявляется в именной части what he needs, но «заслуживает» меняет потребность на оценку. Сюжет о взбучке малополезен как базовый пример.",
+        "required_action": "Replace the thrashing scenario with a neutral lexical need with an object, retaining necessity in Russian."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Бедность выражается конструкцией be in need или suffer hardship. В современном самостоятельном глаголе need бедствие остаётся домыслом, нужно проверить исторический статус.",
+        "required_action": "Locate a dated citation for intransitive need meaning suffer privation and classify its register."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Need not have done означает, что действие было лишним, а «не следовало» выражает осуждение.",
+        "required_action": "Re-translate both negatives, including the unnecessary completed action expressed by need not have done."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 3,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Нехватка описывает отсутствие ресурса и не должна обгонять общее need for."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Материальная нужда усваивается как ограниченное применение, например в in need."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Беда распознаётся прежде всего в устойчивом временном окружении."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Непереходное бедствовать существенно уже обычного need с дополнением."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Модальные отрицательные и вопросительные формы удобнее вводить после смыслового глагола."
+      }
+    ]
+  },
+  {
+    "word": "really",
+    "decision": "review_required",
+    "reason": "The room comparison confirms a claim cleanly; the existing reaction group mixes an emphatic phrase with a discourse response.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [really] source_evidence and stage_09.json [really] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [really] and stage_07.json [really] before/after; stage_09.json [really] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "8758ddfb649d769d9c395818432950041748a15a56cdc0f408afdc158e106caf",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "really directly precedes is"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "warmer with the door closed confirms an observation"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "really modifies the copular assertion"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "emphasis before stressed is is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "действительно preserves the assertion and comparative"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "observable temperature contrast clarifies the emphasis"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "declarative confirmation, no surprised reply"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "emphatic really is is everyday speech"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Really and truly усиливает утверждение и не показывает реакцию на реплику; самостоятельное Really? может выражать удивление, а «вы так думаете?» сужает его до сомнения.",
+        "required_action": "Separate statement intensification from the response token and give distinct translations for surprise and doubt."
+      }
+    ],
+    "primary_recommendations": []
+  },
+  {
+    "word": "right",
+    "decision": "review_required",
+    "reason": "Political collective, lateral knee and fabric-face examples disambiguate right; the proposed closure sentence and several historical or misclassified constructions still need work.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [right] source_evidence and stage_09.json [right] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [right] and stage_07.json [right] before/after; stage_09.json [right] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 11,
+        "candidate_sha256": "5f0b3a3a5a88924343d7a711067ff789b7e63e53faf1ca980611d3165fa2c0d9",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "right intensifies away"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "promise places fetching the towel immediately"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "right modifies away in an adverbial unit"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "bring you a clean towel right away is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "сразу же conveys immediacy and clean towel remains"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "clear service encounter illustrates the whole chunk"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "away here contributes to immediate timing, not direction"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "right away remains a routine promise of quick action"
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "caf86c1ca825d5b209481246fb8dd04e1c7cf16fb6e7b211f0485cde62147c1e",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "right follows closes as manner modifier"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "proper closure and correct closure are the same reading here"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "right adverbially modifies closes"
+          },
+          "natural_english": {
+            "pass": false,
+            "reason": "lid closes right is conversational American English, but the unqualified model is less idiomatic than closes properly"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "как следует renders successful closure"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "cannot teach a distinction with #14 from this context"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "closes correctly is indistinguishable from closes right"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "flat adverb right is current in conversational American English"
+          }
+        }
+      },
+      {
+        "meaning_index": 20,
+        "candidate_sha256": "19976c8b484b1aca09f0170d2327ed40e4c9e406b9a8ae810fcd8e1279275f9a",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "the right is the political collective"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "gaining seats identifies a political bloc"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "the right is nominal subject of gained"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "gained seats in elections is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "дополнительные места preserves gained seats"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "elections make the collective referent clear"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "no spatial direction in an electoral result"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "the right is current political reporting usage"
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "candidate_sha256": "9e843360b88a61c4097fca696c27c09d075ff212fe87a34db431471ba957ec8f",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "right identifies the lateral knee"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "knee pain on stairs locates the side of the body"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "right attributively modifies knee"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "my right knee hurts is ordinary"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "правое колено and stair-climbing condition retained"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "body part makes the left/right opposition explicit"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "neither correct nor suitable is plausible for a painful knee"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "right knee is ordinary present-day anatomy vocabulary"
+          }
+        }
+      },
+      {
+        "meaning_index": 22,
+        "candidate_sha256": "b37f6e5f9903691cfac4424603a9baeeea74d794b43a0033cd4ccacdf180d604",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "right modifies sides of fabric pieces"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "pinning right sides together places visible surfaces inward"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "right is attributive before sides"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "right sides together is a standard sewing instruction"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "сколите булавками accurately specifies pin and лицевыми distinguishes surfaces"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "instruction gives action and paired fabric pieces"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "both pieces have a right face, so no left-right direction"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "standard current dressmaking formula right sides together"
+          }
+        }
+      },
+      {
+        "meaning_index": 23,
+        "candidate_sha256": "57bb7280b153e0567d3279147ee1ca5234652ce02c6d4c95a9cddf520febf2be",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "right is the predicative political descriptor in right of center"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "tax policy positions the views on an ideological scale"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "right is predicative with of center complement"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "views are right of center is natural US English"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "правее центра avoids implying reactionary views"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "tax context makes ideological positioning easy to recover"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "no collective noun or direction of movement"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "right of center remains ordinary political terminology"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "To do somebody right устаревает; by rights современнее в смысле «по справедливости, по идее».",
+        "required_action": "Retain an attested modern fairness construction and explicitly label historical to do someone right if preserved."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Under a right in international law содержит отдельное право, которое растворилось в общих «нормах».",
+        "required_action": "Translate under a right with the specific right retained and fix the space before the semicolon in the gloss."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Rights — существительное множественного числа, вопреки помете adjective.",
+        "required_action": "Confirm the plural noun and date the rights of the case before proposing a POS and register correction."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Set to rights показывает исправление порядка; голое be to rights редкое и не годится как современный образец.",
+        "required_action": "Verify both bare be to rights and set to rights and identify which construction encodes putting things in order."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "To do what is right обозначает этически правильное действие; «скажите мне» в переводе вопроса о времени добавлено.",
+        "required_action": "Separate ethical conduct from correctness and remove the added imperative in the time question translation."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "If it's all right with you выражает согласие, не здоровье; голое Are you right now? неоднозначно и без регионального контекста непонятно.",
+        "required_action": "Sort health, agreement and restoration examples by actual use, and contextualize or retire Are you right now."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "«Под прямым углом» обычно соответствует at a right angle; the предполагает уже определённый угол или правильный наклон.",
+        "required_action": "Use an explicitly geometric context with a right angle and check whether the line gloss is separately justified."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Right with без сказуемого не демонстрирует «снискать благосклонность»; get it right не обязательно «понять», если выполняют задание.",
+        "required_action": "Supply complete context for right with and distinguish understanding something from doing it correctly."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "proper closure and correct closure are the same reading here lid closes right is conversational American English, but the unqualified model is less idiomatic than closes properly cannot teach a distinction with #14 from this context closes correctly is indistinguishable from closes right",
+        "required_action": "Test whether #15 is distinct from #14 before soliciting another example."
+      },
+      {
+        "meaning_index": 16,
+        "problem": "Right well звучит диалектно или старомодно, его нельзя обобщить на нейтральное «очень».",
+        "required_action": "Attest the intensifier in its actual dialect or period before choosing a register label."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "To right the oppressed книжное; обычное right a wrong исправляет несправедливость и не управляет человеком.",
+        "required_action": "Establish whether a modern transitive right plus person supports advocacy and assign a register if retained."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 3,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Необычная формулировка об истинном положении вещей нуждается в отдельной проверке грамматической классификации."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Множественное употребление о порядке связано с узкими конструкциями."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Right answer и right number выражают правильность, одно из самых доступных употреблений."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Выбор нужного человека или предмета полезен в практических задачах."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Исправность и нормальное состояние лучше вводить после общеупотребительной оценки правильности."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Геометрическая прямизна требует предметного контекста."
+      },
+      {
+        "meaning_index": 12,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Полнота действия зависит от следующего слова и уместна после базовых моделей."
+      },
+      {
+        "meaning_index": 13,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Точное совпадение в right here или right on time опирается на уже освоенные указатели."
+      },
+      {
+        "meaning_index": 14,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Right после глагола в get it right передаёт правильность выполнения и полезно учащемуся."
+      },
+      {
+        "meaning_index": 15,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Надлежащее выполнение близко к правильности и не требует раннего самостоятельного акцента."
+      },
+      {
+        "meaning_index": 16,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Степенное very-подобное употребление зависит от регистра и сочетания."
+      },
+      {
+        "meaning_index": 17,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Исправление положения и выпрямление обозначаются отдельным глаголом с меньшим учебным приоритетом."
+      },
+      {
+        "meaning_index": 18,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Глагол о защите прав ограничен правовым или историческим контекстом."
+      },
+      {
+        "meaning_index": 20,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Политическое собирательное название требует отдельного тематического контекста."
+      },
+      {
+        "meaning_index": 22,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Лицевая сторона материала относится к предметной лексике."
+      },
+      {
+        "meaning_index": 23,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Политическое прилагательное целесообразно держать рядом с другими смыслами направления без смешения."
+      },
+      {
+        "meaning_index": 24,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Turn right прямо обслуживает начальные инструкции о маршруте."
+      }
+    ]
+  },
+  {
+    "word": "feel",
+    "decision": "review_required",
+    "reason": "The tactile, emotional and opinion senses are distinguishable; the existing Russian example of feeling good intensifies the English.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [feel] source_evidence and stage_09.json [feel] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [feel] and stage_07.json [feel] before/after; stage_09.json [feel] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "By feel естественно для осязания; cold to the feel звучит менее привычно, чем cold to the touch.",
+        "required_action": "Assess whether to the feel needs register information and preserve by feel as the unmarked model."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Good обычно «хорошо»; «отлично» усиливает степень.",
+        "required_action": "Match the degree of good in the Russian example unless stronger English is supplied."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Намеренное ощупывание отличается от пассивного восприятия и идёт следом."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Feel that передаёт личную оценку; её удобно вводить после физического и эмоционального ядра."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Свойство поверхности с предметом в роли подлежащего изучается после описания состояния человека."
+      }
+    ]
+  },
+  {
+    "word": "work",
+    "decision": "review_required",
+    "reason": "Examples such as work the dough and drainage works provide clear contexts; other candidates blur effort, processing or strategic engagement, and the employment sense includes a derogatory historical comparison.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [work] source_evidence and stage_09.json [work] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [work] and stage_07.json [work] before/after; stage_09.json [work] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "7fea2879e38d3a81267c6a866a895e2164261d41fd8d3500947145dec7c68501",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "work is the mass noun after more"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "metal needing work can mean any further effort, with fit merely indicating purpose"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "more work occupies nominal object position after needs"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "needs more work before it will fit is natural"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "деталь introduces a distinct object absent from the English metal subject"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "no operation such as machining or shaping identifies processing"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "effort or unfinished task remains equally plausible"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "needs more work is common current English"
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "2b9d2beead07b78936a39274298e1053630df2aa6695e54ce267f9ed169a8ed9",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "her work denotes an object she sets down"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "needle threading implies a sewing project under way"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "work is noun object of put down"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "put her work down and threaded a new needle reads naturally"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "new modifies needle in the English and the Russian correctly attaches it to иглу, but рукоделие as the object set down sounds less idiomatic than шитьё"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "needle gives enough context to infer the activity"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "physical project, not occupation, is put down"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "using work for the piece at hand remains current in craft contexts"
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "c6e68ce1a631d2209cbe8c56d634f257dd330af3b1ec88763f78d3a737e110a6",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "works is plural in drainage works"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "road closure points to infrastructure construction"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "plural noun controls are under way"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "drainage works are under way is normal civil-works wording"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "работы по устройству водоотвода conveys the works and purpose"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "traffic diversion context makes the construction obvious"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "drainage isolates construction rather than artworks"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "drainage works remains current infrastructure vocabulary"
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "f6c0674224c2afdc2fb7e0d10371ecee0bf0bf4830f13eb646a4152f7f57839a",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "works is the noun in works of charity"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "charity identifies beneficial deeds"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "plural works is direct object of funds"
+          },
+          "natural_english": {
+            "pass": false,
+            "reason": "funds works of charity is stiff and reads like a translation of charitable projects"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "благотворительные дела tracks the intended deeds"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "financing projects risks teaching works as programmes or paid output"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "funds evokes projects rather than acts done by someone"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "works of charity is still available in formal moral discourse"
+          }
+        }
+      },
+      {
+        "meaning_index": 10,
+        "candidate_sha256": "3459944d06a09cc5ad77d7fb0e4dd7b73b5d4179fcd310ef71d201fa7183e26f",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "defensive works names plural physical installations"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "ditch and earthen bank instantiate fortifications"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "works is head of subject and included takes the list"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "outer defensive works is natural in site descriptions"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "внешние укрепления accurately captures the collective structures"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "examples of structures make the term inferable"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "bank and ditch are defenses, not ongoing building works"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Historic England uses defensive works to classify standing fortification features today"
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "0af92a4fbf4809a0c217c64326a6a5ea031f92d557bd34a875e4c885a561a950",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "work occurs with in plus professional field"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "public health identifies the speaker's profession"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "finite lexical verb heads I work"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "I work in public health is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "сфера общественного здравоохранения preserves work domain"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "short self-introduction gives a clear usage pattern"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "field complement distinguishes it from operating machinery or functioning"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "I work in plus field is a standard contemporary introduction"
+          }
+        }
+      },
+      {
+        "meaning_index": 17,
+        "candidate_sha256": "c9534f3926525d46b3ba279148470f495942e9e1673149d6b9a1aaf2fdd65634",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "work takes the lift as its object"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "button press activates equipment"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "transitive verb with apparatus object"
+          },
+          "natural_english": {
+            "pass": false,
+            "reason": "work the lift suggests operate or manage it and sounds forced for a passenger pressing a single button"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Russian imperative retains the instruction and activation goal"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "single-button context better models operate or use for learners"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "button steers interpretation away from employment"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "work controls remains current, but work the lift here is marked"
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "candidate_sha256": "5a3d5ff0539f7bc3e412d92ed465301f549df7e97b0bf32d09cc02830dd649bb",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "imperative Work targets dough"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "hands and smoothness imply kneading"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "verb directly governs dough"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "work the dough until smooth is a normal recipe instruction"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "месите and на ощупь preserve process and endpoint"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "hands and resulting texture clarify the operation"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "dough rules out operation of equipment or solving problems"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "work the dough is established current cooking English"
+          }
+        }
+      },
+      {
+        "meaning_index": 24,
+        "candidate_sha256": "984f29de9429212b8c2e8b7b762e05c5d6e09f35abd053749b62276a22a3043b",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "worked occurs in the resultative work loose"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "knot and fingernails show gradual loosening"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "verb worked takes object knot and complement loose"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "worked the knot loose with her fingernails is natural"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "распустила implies full untying, while worked loose says it was loosened"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "gradual physical effort is well illustrated"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "resultative loose distinguishes freeing from kneading or fabrication"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "work an object loose is current manual-action phrasing"
+          }
+        }
+      },
+      {
+        "meaning_index": 25,
+        "candidate_sha256": "1f5c2e5a85e30c922bfa055b7e6f08c0ce8b3cbefc13e50f8e784cf2aff98d85",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "work takes problem as object"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "first problem then the rest evokes solving an exercise"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "bare verb follows Let's"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "work a problem is idiomatic chiefly in US educational usage"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "решим задачу is natural in the instructional context"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "sequencing practice problems signals the relevant activity"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "no work out particle or occupation sense is needed"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "work a problem remains used in American classrooms"
+          }
+        }
+      },
+      {
+        "meaning_index": 27,
+        "candidate_sha256": "5271c7b71d14b421591429099a2c3142252a2197d445c16d350ea5f15eebc4d8",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "works occurs with in cross-stitch"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "pictures on linen identify embroidery"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "works is finite verb with technique complement"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "works in cross-stitch is natural craft vocabulary"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "вышивает крестиком preserves the medium and linen"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "pictures on linen make the technique concrete"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "cross-stitch identifies craft instead of a professional sector"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "work in cross-stitch remains a current description of a maker's technique"
+          }
+        }
+      },
+      {
+        "meaning_index": 28,
+        "candidate_sha256": "32cf25fcb8d096f3d086fcf6cdaa90eeae70d7e76c8f57100ca447e05f2ef2dc",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "worked appears in the idiom work the room"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "networking fits strategic use of the gathering"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "transitive verb governs room metonymically"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "worked the room and handing out cards sound natural"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "обошёл зал keeps motion and omits engaging people to one's advantage"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Russian leads learner to equate work the room with physical circulation"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "the bilingual pair does not isolate exploitation or strategic engagement"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "work the room is contemporary networking idiom"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "At work upon smth. книжное, а work cut out обозначает трудность или большой объём задачи, не обязательно множество дел.",
+        "required_action": "Distinguish workload from difficulty in work cut out and document at work upon as marked if retained."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Wild work без контекста не читается как один дикий поступок.",
+        "required_action": "Find a complete, dated context confirming an individual deed for wild work or re-evaluate the gloss."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Russian example repeats the grammatical meta-label before общественные работы.",
+        "required_action": "Remove the meta-text from the Russian public works example, leaving the grammatical note in the definition."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "metal needing work can mean any further effort, with fit merely indicating purpose деталь introduces a distinct object absent from the English metal subject no operation such as machining or shaping identifies processing effort or unfinished task remains equally plausible",
+        "required_action": "Request a processing example with a named operation, the same referent throughout, and an independently approved translation."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "new modifies needle in the English and the Russian correctly attaches it to иглу, but рукоделие as the object set down sounds less idiomatic than шитьё",
+        "required_action": "Ask for a natural Russian reference to the sewing piece that can be physically put down."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "funds works of charity is stiff and reads like a translation of charitable projects financing projects risks teaching works as programmes or paid output funds evokes projects rather than acts done by someone",
+        "required_action": "Use a current formal context where people perform the deeds, distinguishing this from funding projects."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Ферментационные материалы используют fermentation, а work рядом с ним называет работу людей. Подтвердить отдельно современное имя процесса, прежде чем добавлять пример.",
+        "required_action": "Verify a modern noun naming fermentation itself, or document the historical use for separate review."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Сочетания с work — атрибутивные существительные; workhorse обычно слитное и имеет переносные применения.",
+        "required_action": "Distinguish literal and figurative workhorse, and check contemporary spelling and scope of workstation."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Ряд сравнений содержит оскорбительную расистскую лексику; её не следует предъявлять как нейтральные варианты. Work towards указывает на движение к цели, а не только содействие.",
+        "required_action": "Replace the racist comparison list with a neutral contemporary example and translate work towards as movement toward a goal."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "work the lift suggests operate or manage it and sounds forced for a passenger pressing a single button single-button context better models operate or use for learners",
+        "required_action": "Use a current machine-operation collocation with actual controls or sustained operation."
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Употребление о подёргивании лица книжное, полезно лишь с пометой.",
+        "required_action": "Cite modern descriptive usage or add a literary register note to the facial movement sense."
+      },
+      {
+        "meaning_index": 24,
+        "problem": "распустила implies full untying, while worked loose says it was loosened",
+        "required_action": "Match the degree of loosening in Russian before requesting renewed approval."
+      },
+      {
+        "meaning_index": 26,
+        "problem": "Work one's passage обозначает работу в обмен на проезд; отдельно выписанное work out не иллюстрирует этот смысл.",
+        "required_action": "Keep work one's passage separate and establish a complete example for any gloss retained under work out."
+      },
+      {
+        "meaning_index": 28,
+        "problem": "обошёл зал keeps motion and omits engaging people to one's advantage Russian leads learner to equate work the room with physical circulation the bilingual pair does not isolate exploitation or strategic engagement",
+        "required_action": "Use a context and translation that both express strategic engagement or exploitation, and reassess whether the idiom belongs here."
+      },
+      {
+        "meaning_index": 30,
+        "problem": "В документах виноделов must ferments, а yeast works обычно означает, что дрожжи действуют. Нужна отдельная современная аттестация глагола со значением процесса.",
+        "required_action": "Seek a modern fermentation source that predicates work of the substance and specifically means ferment."
+      },
+      {
+        "meaning_index": 32,
+        "problem": "Устаревшее коммерческое значение требует отдельного пересмотра. Нынешние сочетания с work передают манипулирование человеком или поиск способа, а обман приходится выражать другими словами.",
+        "required_action": "Establish whether deception is lexical rather than inferred from context, and assess historical register."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 3,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Действие или поступок вне общих значений тяготеют к ограниченным сочетаниям."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Общественные работы образуют отдельную модель множественного числа."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Обработка требует указания материала или ремесла."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Рукоделие требует конкретной предметной обстановки."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Детали механизма обозначаются множественным works и нужны позже."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Строительное и инженерное употребление ориентировано на профессиональный контекст."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Деяния во множественном числе обычно требуют этического или религиозного контекста."
+      },
+      {
+        "meaning_index": 10,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Фортификационное употребление специализировано исторически и технически."
+      },
+      {
+        "meaning_index": 11,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Брожение в существительном не относится к обычному A1."
+      },
+      {
+        "meaning_index": 12,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Отдельная краткая глосса дублирует ядро без ясного критерия раннего показа."
+      },
+      {
+        "meaning_index": 13,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Определительное work зависит от следующего существительного."
+      },
+      {
+        "meaning_index": 16,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Стремление выражается вместе с направляющим дополнением вроде towards."
+      },
+      {
+        "meaning_index": 17,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Управление машиной или предприятием требует объектного контекста."
+      },
+      {
+        "meaning_index": 18,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Каузативное употребление о принуждении работника уже базового непереходного."
+      },
+      {
+        "meaning_index": 19,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Работа над поверхностью или материалом привязана к ремесленному объекту."
+      },
+      {
+        "meaning_index": 20,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Причинение обычно ограничено определёнными прямыми дополнениями."
+      },
+      {
+        "meaning_index": 21,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Месить или ковать подсказывает материал, поэтому сохраняется как специальное применение."
+      },
+      {
+        "meaning_index": 22,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Работоспособность механизма нужна для обычных вопросов и отрицаний о неисправности."
+      },
+      {
+        "meaning_index": 23,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Движение механизма или детали требует отдельного контекста, чтобы отличить его от работоспособности."
+      },
+      {
+        "meaning_index": 24,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Высвобождение задаётся результативной конструкцией work loose или work free."
+      },
+      {
+        "meaning_index": 25,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Вычисление удобно вводить при изучении характерного математического сочетания."
+      },
+      {
+        "meaning_index": 26,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Отработка обязательства отличается от труда в целом и ограничена объектом."
+      },
+      {
+        "meaning_index": 27,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Рукодельный глагол требует тематического контекста."
+      },
+      {
+        "meaning_index": 28,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Использование человека или ситуации в своих целях выводится из контекста."
+      },
+      {
+        "meaning_index": 29,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Эффективность метода или средства представляет продуктивное современное употребление."
+      },
+      {
+        "meaning_index": 30,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Брожение в роли глагола ограничено пищевым или технологическим описанием."
+      },
+      {
+        "meaning_index": 31,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Постепенное продвижение требует направления и дополняет пространственные модели."
+      },
+      {
+        "meaning_index": 32,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Обманный способ достижения требует специального контекста и не входит в ядро."
+      }
+    ]
+  },
+  {
+    "word": "year",
+    "decision": "review_required",
+    "reason": "Calendar and plural age meanings remain distinct; the repeat-versus-progression contrast in the year expressions and historical dating formula need attention.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [year] source_evidence and stage_09.json [year] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [year] and stage_07.json [year] before/after; stage_09.json [year] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Year by year допускает «с каждым годом», но year after year обычно «из года в год»; year of grace — историческая формула датировки.",
+        "required_action": "Split incremental year by year from repetitive year after year, and label religious dating formulae."
+      }
+    ],
+    "primary_recommendations": []
+  },
+  {
+    "word": "being",
+    "decision": "review_required",
+    "reason": "The in being clarification restores the noun boundary; the canonical creation example still contains a Russian verb error.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [being] source_evidence and stage_09.json [being] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [being] and stage_07.json [being] before/after; stage_09.json [being] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "8bfe000526fa5d7904f701c6dca44a192866e6bc559e0614533735b3893b3fe6",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "The cited noun entry explicitly puts живущий and существующий after in ~."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "The paraphrase correctly distinguishes abstract existence from an expression about what exists."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "The standalone headword remains a noun and the gloss flags the prepositional construction."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Бытие, существование and жизнь remain and no examples are removed."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Approve definition clarification while separately flagging the erroneous call into being example."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Call into being значит вызвать к жизни или создать; «взывать» ошибочно. «Живущий» для in being слишком узко.",
+        "required_action": "Correct the взывать typo and preserve living or existing according to the subject of in being."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Русская идиома «до мозга костей» близка по интенсивности; английское to the very roots of one's being книжное.",
+        "required_action": "Distinguish essence from the gloss плоть и кровь and mark the literary whole-being example."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 3,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Суть или вся личность выражается в более книжных оборотах и идёт после human being."
+      }
+    ]
+  },
+  {
+    "word": "day",
+    "decision": "review_required",
+    "reason": "The basic time examples work; the day-based historical conventions, life-span idioms and mining gloss need separate evidence.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [day] source_evidence and stage_09.json [day] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [day] and stage_07.json [day] before/after; stage_09.json [day] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "В астрономическом примере утверждение про полдень требует исторической оговорки. Far in the day и прислуга в day out не показывают обычный современный оборот.",
+        "required_action": "Separate current solar and historical astronomical or nautical day conventions and resolve dated idioms individually."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "By day современно; at day, before day и between two days в нужных значениях нельзя подавать как обычные варианты.",
+        "required_action": "Keep by day and check dated attestations of standalone day for dawn and between two days for night."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "In these latter days не обязательно «в последнее время», а days of yore намеренно архаизирует рассказ.",
+        "required_action": "Mark days of yore as deliberately archaizing and correct the latter days translation in context."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "The present day denotes the current era in this sense, whereas сегодня suggests the calendar date.",
+        "required_action": "Translate the present day as the present time where intended and distinguish the duplicated calendar gloss."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "His days are numbered говорит об оставшемся времени, а не просто о счастливой поре; he will see his better days yet звучит неестественно как общий образец.",
+        "required_action": "Move verbal translations into the relevant expressions and replace the unnatural better days example with contextual evidence."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Сокращённое D. скрывает форму слова; May Day и Victory Day зависят от традиции и страны.",
+        "required_action": "Expand all Day abbreviations and use cultural context to identify the individual holidays."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Нужно установить современный термин для земной поверхности или ближайшего к ней пласта. Daylight как горный термин или to daylight не доказывают отдельное существительное day.",
+        "required_action": "Find contemporary technical evidence for bare noun day, distinct from daylight, or document historical terminology."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Эпоха обычно выражается через days во множественном числе."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Современность опирается на закреплённое временное сочетание."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Период жизни и фразеология о смерти требуют более широкого контекста."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Праздничный или решающий день выделяется по определению и ситуации."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Победа доступна главным образом в выражениях с carry или win."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Геологическое значение относится к специализированной терминологии."
+      }
+    ]
+  },
+  {
+    "word": "too",
+    "decision": "review_required",
+    "reason": "Too bad and only too glad demonstrate emphatic degree; the excess example contains a stray character and the invitation loses additive too.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [too] source_evidence and stage_09.json [too] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [too] and stage_07.json [too] before/after; stage_09.json [too] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "После скобок в it is too much (of a good thing) s стоит лишняя s; «хорошенького понемножку» передаёт мораль, а не структуру оборота.",
+        "required_action": "Remove the stray s and translate the actual excess construction with context."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "В «не придёте ли вы?» пропущено «тоже».",
+        "required_action": "Restore additive too in the Russian invitation."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 2,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Усилительное «очень» требует отдельной интонации или сочетания и легко смешивается с избытком."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Подтверждающее too связано с экспрессивным возражением и не входит в ядро."
+      }
+    ]
+  },
+  {
+    "word": "before",
+    "decision": "review_required",
+    "reason": "The window instruction illustrates finite subordination; bare spatial before remains unestablished for the neighboring adverb group.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [before] source_evidence and stage_09.json [before] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [before] and stage_07.json [before] before/after; stage_09.json [before] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "67425174e4bc712839c407636c42acc3dec9c338402aa837c18578f13356800a",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "before precedes you leave"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "checking is required prior to departure"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "before introduces finite subordinate clause"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "check that the window is closed before you leave is natural"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "прежде чем уйти conveys same subject and ordering"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "common instruction makes ordering explicit"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "you leave is a clause rather than a nominal preposition complement"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "productive contemporary temporal subordination"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Go before без объекта или контекста неоднозначно; «пройдите вперёд» обычно go ahead.",
+        "required_action": "Distinguish spatial leadership from precedence using a complete, contemporary example."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Модель before us естественна для пространственного смысла, но это предлог. Для самостоятельного наречия современный читатель слышит «раньше». Нужно проверить часть речи и современность голого пространственного before.",
+        "required_action": "Find a spatial adverb use without an overt object and determine whether it duplicates #2."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "I love him before myself книжное; текущий перевод сохраняет сравнение, но не показывает современную модель.",
+        "required_action": "Attest present-day comparative ranking usage or mark the examples as historical/literary as appropriate."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 2,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Направление вперёд имеет ограниченные сочетания и не ведёт учебный ряд."
+      },
+      {
+        "meaning_index": 3,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Пространственная локализация здесь значительно менее продуктивна, чем временная."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Пространственное «перед» с before требует особого контекста."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Сравнительное предпочтение представляет узкую синтаксическую модель."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Нахождение перед судом или аудиторией зависит от официальной ситуации."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Ранг или превосходство зависит от контекста сопоставления."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Союз с личной формой глагола даёт одну из основных моделей последовательности событий."
+      }
+    ]
+  },
+  {
+    "word": "off",
+    "decision": "review_required",
+    "reason": "Boot removal and the missing-key idiom are teachable; cricket orientation, cancellation and dated time-off examples need separate grammatical treatment.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [off] source_evidence and stage_09.json [off] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [off] and stage_07.json [off] before/after; stage_09.json [off] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "965e3bacf2ce93961f680a0c1b167c58aa987b2470a16cb16f54f4785d99275c",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "off occurs in off the hook"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "discovered key frees addressee from blame"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "off heads prepositional phrase with the hook as complement"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "you're off the hook is natural informal English"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "больше не придётся за это отвечать fits released responsibility"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "found key explains why liability ends"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "figurative release excludes physical separation"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "off the hook is current informal idiom"
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "b8d2af7b3161c9eead3ee47281529d73018f7e1c50293ea5a5620ac6e35549a5",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "off is the separable particle in take boots off"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "boots are removed at entry"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "particle follows direct object, fitting traditional adverb label"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "take your muddy boots off at the door is natural"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "снимите грязные сапоги у двери is faithful"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "mud explains removal and teaches particle placement"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "clothing object distinguishes removing from leaving"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take an item off is a productive everyday construction"
+          }
+        }
+      },
+      {
+        "meaning_index": 20,
+        "candidate_sha256": "da1ba7b6b7226462fbf0c0374b991586fc6c043f7bf31950510230f6cd5d4b1d",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "off modifies year in off year"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "contrast with normal apple harvest selects a weak year"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "off is adjective in nominal phrase"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "this was an off year is natural after an output benchmark"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "неурожайным captures lowered crop yield"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "apple context pins down a specialized contextual reading"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "annual yield excludes time away from work"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "off year is current in discussing crop and business results"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Cut off supplies и break off negotiations показывают частицы глагольных сочетаний; the concert is off показывает другое синтаксическое употребление.",
+        "required_action": "Separate verb particles from predicative cancellation and correct the case of the gloss."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Polish off значит доделать или прикончить, а не отполировать; остальные частицы выражают доведение действия до конца.",
+        "required_action": "Correct polish off to finish something, preserving its completive aspect."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "В переводе первой фразы пропущено подлежащее «радио».",
+        "required_action": "Restore radio as the subject in the Russian example."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Off one's food описывает плохой аппетит; off one's balance обычно off balance. He is off smoking без ситуации может быть понят как «ушёл покурить».",
+        "required_action": "Verify off smoking in context and use off balance for balance unless the possessive form is attested."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "He is off gambling двусмысленно, в частности «ушёл играть».",
+        "required_action": "Use a context confirming abstention and ruling out went off to gamble."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "An off road выглядит как разрыв off-road и не является ясным современным образцом «отдалённой дороги».",
+        "required_action": "Check whether off-road or a road off another road was intended, and revise the POS and gloss accordingly."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Off hind leg относится к традиционной ориентации в конной лексике; the off side без контекста смешивается с термином крикета.",
+        "required_action": "Separate equestrian right-hand convention from nautical seaward orientation, with a source for each."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "An off day часто означает неудачный день; для выходного естественно a day off.",
+        "required_action": "Distinguish a day off from an off day and verify the intended adjective with off hours."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Off street без дефиса требует контекста, а off issue не является обычным способом сказать «второстепенный вопрос».",
+        "required_action": "Use complete contemporary examples and separate street location from the proposed secondary-issue gloss."
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Off-grade обычно через дефис при определяемом существительном; отдельно выписанное off grade плохо показывает конструкцию.",
+        "required_action": "Show an attributive quality example with the correct spelling and domain."
+      },
+      {
+        "meaning_index": 24,
+        "problem": "Off side подтверждено, но направление зависит от стойки бьющего. Нужно сначала исправить фиксированную правую сторону и уточнить отношение к бьющему по правилам MCC.",
+        "required_action": "Correct field orientation relative to batting stance and cite the formal cricket definition."
+      },
+      {
+        "meaning_index": 25,
+        "problem": "In one's off без дополнения time или hours не следует давать как современную норму.",
+        "required_action": "Find modern standalone noun off meaning time off or restrict the entry to an attested expression."
+      },
+      {
+        "meaning_index": 26,
+        "problem": "Правила MCC подтверждают off side относительно стойки, но это не безусловно правая часть поля. Для отдельного существительного нужно отдельно засвидетельствовать современное the off и исправить ориентацию.",
+        "required_action": "Document bare nominal the off and correct fixed-right wording against the cricket rules."
+      },
+      {
+        "meaning_index": 27,
+        "problem": "Отмена естественно выражается call off или be off. В них off частица или предикативное слово, а самостоятельный глагол off не называет прекращение переговоров.",
+        "required_action": "Verify independent verbal off for cancellation or reclassify call off and be off under their actual constructions."
+      },
+      {
+        "meaning_index": 28,
+        "problem": "To off it без контекста непонятно и не служит обычным современным эквивалентом «смыться».",
+        "required_action": "Use an attested standalone interjection or move to off it out of the interjection sense after source verification."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 2,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Расстояние задаётся числовым выражением и опирается на идею удаления."
+      },
+      {
+        "meaning_index": 3,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Отмена требует различать наречное окружение и устойчивые сочетания."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Отсутствие на работе регулярно описывают с be off."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Завершённость определяется глаголом и не требует раннего отдельного приоритета."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Освобождение от обязательства часто предъявлено через идиоматический образ крючка."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Отключение устройства представляет повседневное самостоятельное применение."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Отсутствие товара или возможности определяется специальным контекстом."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Снятие одежды с off нужно в бытовой лексике."
+      },
+      {
+        "meaning_index": 10,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Расстояние от ориентира учится после основного отделения; перенос требует отдельного разбора."
+      },
+      {
+        "meaning_index": 11,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Предлог в движении с поверхности выражает прозрачную пространственную модель."
+      },
+      {
+        "meaning_index": 12,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Отклонение от нормы требует уточняющего дополнения."
+      },
+      {
+        "meaning_index": 13,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Неучастие следует за более прозрачными пространственными моделями."
+      },
+      {
+        "meaning_index": 14,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Прилагательное дальности имеет ограниченный набор предметных сочетаний."
+      },
+      {
+        "meaning_index": 15,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Морской борт относится к специальной классификации сторон."
+      },
+      {
+        "meaning_index": 16,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Оценка вероятности опирается на отдельные устойчивые сочетания."
+      },
+      {
+        "meaning_index": 17,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Свободный день или час описывает распространённую ситуацию учёбы и работы."
+      },
+      {
+        "meaning_index": 18,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Боковое расположение зависит от предмета и не составляет отдельной начальной модели."
+      },
+      {
+        "meaning_index": 19,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Состояние отделённости изучается после самого действия снятия."
+      },
+      {
+        "meaning_index": 20,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Оценка слабого сезона или года тематически ограничена."
+      },
+      {
+        "meaning_index": 21,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Самочувствие требует устойчивого окружения и не первично для A1."
+      },
+      {
+        "meaning_index": 22,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Несвежесть относится преимущественно к состоянию пищи."
+      },
+      {
+        "meaning_index": 23,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Низкое качество требует отличения от несвежести и отклонения от нормы."
+      },
+      {
+        "meaning_index": 24,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Правая сторона в крикете зависит от позиции бэтсмена."
+      },
+      {
+        "meaning_index": 25,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Номинальное свободное время уже обычных day off и time off."
+      },
+      {
+        "meaning_index": 26,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Существительное о стороне поля остаётся специализированным термином."
+      },
+      {
+        "meaning_index": 27,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Прекращение переговоров требует проверки актуального употребления глагола."
+      },
+      {
+        "meaning_index": 28,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Самостоятельная команда ограничена ситуативной или стилизованной речью."
+      }
+    ]
+  },
+  {
+    "word": "why",
+    "decision": "review_required",
+    "reason": "Direct and embedded questions remain distinguishable by syntax; the proposed interjection cannot separate two surprise readings.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [why] source_evidence and stage_09.json [why] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [why] and stage_07.json [why] before/after; stage_09.json [why] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "2e143580d83f430be3e9ce68dee47b10b2af11a36384ead5b3366e19c5c4b4a3",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "why is detached by a comma"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "speaker reacts in surprise at mistaken belief"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "initial interjection, no interrogative syntax"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Why, I thought is intelligible and expressive, with a somewhat dated flavor"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Да я думал is natural colloquial protest"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "current wording cannot distinguish it from #4 surprise at recognition"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "surprise at unexpected information also fits #4, already illustrated by Why, it is Jones"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "initial why survives as a marked expressive formula"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "«Почему бы вам не пойти?» убирает I can think of no reason и превращает утверждение в предложение.",
+        "required_action": "Translate the claim that there is no reason not to go, preserving the speaker perspective."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Восклицательное Why, it is Jones! уже выражает удивление, поэтому граница с соседним значением 5 требует уточнения.",
+        "required_action": "Define a boundary with #5 by discourse function or consolidate the overlapping surprise readings."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "current wording cannot distinguish it from #4 surprise at recognition surprise at unexpected information also fits #4, already illustrated by Why, it is Jones",
+        "required_action": "Return the candidate until protest or impatience can be contrasted with the surprise in #4 and objection in #7."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "«Как вам сказать?» добавляет колебание, тогда как Why, yes скорее подчёркивает реакцию.",
+        "required_action": "Confirm that hesitation is lexical rather than due to I think so, and avoid inserting hesitation in Russian."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Современное the why означает объяснение или причину. Даже если причина неизвестна, это не отдельное обозначение загадки. Нужно перепроверить словарную границу.",
+        "required_action": "Require a modern use denoting the puzzle itself as opposed to its explanation or cause."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Междометное удивление зависит от интонации и регистра."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Эмоциональный протест связан со стилистически маркированной репликой."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Нерешительность с why требует точной интонации и отдельной ситуации."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Аргументативное междометие удобно изучать после вопросительного why."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Существительное the why связано с метаязыковым обозначением причины."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Значение загадки остаётся на периферии и требует подтверждения современного употребления."
+      }
+    ]
+  },
+  {
+    "word": "still",
+    "decision": "review_required",
+    "reason": "The wine, ongoing-state and cinema examples are distinct; the scarf command duplicates adjectival keep still and the distillation-related senses need modern evidence.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [still] source_evidence and stage_09.json [still] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [still] and stage_07.json [still] before/after; stage_09.json [still] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "ee1ab262df07b6eb64048ffe10e47103858194cdb7536c000c31915c9f285532",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "still modifies white wine"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "ordering wine selects absence of carbonation"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "attributive adjective within noun phrase"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "a still white wine is natural hospitality language"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "белое неигристое вино preserves wine type"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "order gives a practical choice context"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "wine type rules out motionlessness"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "still wine is standard contemporary beverage labeling"
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "07bca3c12070547fdb47d2dfaff589d9d52f619461274cf853fb7358a4165b8a",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "a still is a countable noun"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "final scene identifies a film image"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "still heads object of included"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "a still from the final scene is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "кадр из финальной сцены preserves origin"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "article reproducing a film image makes the sense clear"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "the context identifies a scene image without a promotional function"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "film journalism routinely refers to a still from a scene"
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "4d349ba3da90a6def58c08adbb811d076698c5accfef3c0c4c9faf99ae14ab3c",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "still heads publicity still"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "studio releases a photo to promote the unreleased film"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "a publicity still is noun phrase object"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "released a publicity still is ordinary film publicity wording"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "рекламный кадр retains publicity purpose and до выхода timing"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "studio and release schedule give concrete cues"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "publicity distinguishes the image from an ordinary reproduced film frame"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Library of Congress uses publicity stills as a live cataloguing category"
+          }
+        }
+      },
+      {
+        "meaning_index": 10,
+        "candidate_sha256": "d53103866bb7e6a84fb18600d08f2bbaea301418049e930b048f4b3c4de27eff",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "still follows hold"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "scarf tying requires staying motionless"
+          },
+          "part_of_speech": {
+            "pass": false,
+            "reason": "hold still naturally uses a predicative adjective like keep still in #1"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Hold still while I tie your scarf is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "не шевелись preserves imperative and simultaneity"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "physical reason is clear but does not teach adverbial modification"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "indistinguishable from the adjectival keep still already in #1"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "hold still is routine contemporary instruction"
+          }
+        }
+      },
+      {
+        "meaning_index": 11,
+        "candidate_sha256": "dd8c91697143aa7b85ace7b381eb99620d70e843571ab22f4b665f22d475166f",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "still appears before open"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "asks if the café remains open"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "temporal adverb modifies the state open"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Is the café still open is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "ещё открыто preserves continuing state"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "question shows practical use during opening hours"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "no concessive link or absence of movement"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "still open is routine current speech"
+          }
+        }
+      },
+      {
+        "meaning_index": 12,
+        "candidate_sha256": "558c35e5147242092c2787b05aa646fdac7afb5674a0967826b85c9d0dca6026",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "still heads the second sentence"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "walk happens despite rain"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "sentence adverb links propositions"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Still, we decided to walk is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "и всё же preserves concession"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "short two-sentence contrast is transparent"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "still does not mark continuing rain"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "initial Still is current prose and conversation"
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "candidate_sha256": "18d59764d862cfb571efad096e9a03a8cfa1bcf9b38525993615b5a1581799d2",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "the copper still is the apparatus"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "gin production and copper point to distillation"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "still is a noun object of showed"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "the copper still used to make the gin is natural"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "перегонный аппарат conveys device and gin production"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "tour context makes specialized vocabulary understandable"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "a copper object excludes silence and photographs"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "copper still is contemporary distillery terminology"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 6,
+        "proposal_sha256": "f4a9966cd0d95410c11451dbe0e58b12b6a960f4cd226c3447d600e51896c992",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "The cited cinema gloss includes рекламный кадр and the Library of Congress usage confirms publicity still as a specialized term."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Фотоснимок для рекламы фильма makes the purpose and medium explicit."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "A still remains a count noun in the cinema sense."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "The old gloss remains verbatim and no register or examples are removed."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Approve the clarification alongside the separately reviewed publicity example."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Stand still обычно «стоять неподвижно», тогда как «остановиться» сообщает переход к неподвижности.",
+        "required_action": "Distinguish maintaining a stance from coming to a stop in Russian."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "To still a child шире «унять, успокоить»; «убаюкать» добавляет засыпание.",
+        "required_action": "Translate calming without introducing sleep unless the context does."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Tempest и непереходное still литературны; фраза не служит образцом нейтрального употребления.",
+        "required_action": "Check current intransitive uses separately from literary tempest and add the supported register."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "hold still naturally uses a predicative adjective like keep still in #1 physical reason is clear but does not teach adverbial modification indistinguishable from the adjectival keep still already in #1",
+        "required_action": "Resolve adjective versus adverb with an independently attested manner construction or consolidate with #1."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Устройство может метонимически обозначать производство, но обычное a still — аппарат. Нужна современная аттестация значения завода как отдельного объекта.",
+        "required_action": "Cite an unambiguous current place or producer use of a still rather than its apparatus."
+      },
+      {
+        "meaning_index": 16,
+        "problem": "Для дистилляции теперь употребляется distil или distill, тогда как still как глагол означает успокаивать. Помета «живопись» требует проверки по источнику.",
+        "required_action": "Verify old distillation and proposed artistic register independently and only add a label supported by evidence."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 3,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Неигристое вино требует конкретного контекста выбора напитка."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Безмолвие как существительное тяготеет к описательной прозе."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Статичный кадр относится к медиа и отделяется от тишины."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Рекламный кадр представляет более узкий профессиональный случай."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Переходный глагол о затихании имеет ограниченную стилистическую применимость."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Утоление жажды или другого состояния закреплено за отдельными объектами."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Непереходное успокаиваться изучается после обычных значений движения и времени."
+      },
+      {
+        "meaning_index": 10,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Наречное описание неподвижности нужно после более продуктивного временного still."
+      },
+      {
+        "meaning_index": 13,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Усиление сравнения полезно после общего временного и уступительного наречия."
+      },
+      {
+        "meaning_index": 14,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Аппарат для перегонки принадлежит самостоятельному техническому омониму."
+      },
+      {
+        "meaning_index": 15,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Завод обозначается в производственном контексте и следует за аппаратом."
+      },
+      {
+        "meaning_index": 16,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Перегонка глаголом терминологична и не должна сближаться с «утихомиривать»."
+      }
+    ]
+  },
+  {
+    "word": "take",
+    "decision": "review_required",
+    "reason": "Rental, time, arithmetic and film examples fit distinct constructions; carrying a backpack along cannot independently establish seizure.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [take] source_evidence and stage_09.json [take] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [take] and stage_07.json [take] before/after; stage_09.json [take] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "9d012cfe22eca31064aafc04c960ab45a1b6b43410a4190e171f7ea17693b61b",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "took is past of take"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "hand clasp gives ordinary physical grasp"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "transitive verb with hand object"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "took my hand as we crossed is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "взяла меня за руку conveys same event and overlap"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "familiar safety context illustrates grasp"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "grasping a hand is neither transport nor capture"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take someone's hand remains everyday English"
+          }
+        }
+      },
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "22d9dd9c51ce3853509c7447a8f44cec980b4995dc0a22dfaeea8e9686813d80",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "took is past of take"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "with them frames carrying belongings away, not an independent act of capture"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "took governs backpack as verb"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "took the backpack with them is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "захватили с собой faithfully renders carrying it along"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "example trains take something with you and does not show a distinct acquisition sense"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "fits #10 relocation just as naturally; Russian захватили alone does not establish a separate sense"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take something with you is thoroughly current"
+          }
+        }
+      },
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "43148c33b5802bb00c5918591332cee81f6b59c750435f401dc493a00c216085",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "took is take in rental sense"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "rent paid in advance establishes temporary tenancy"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "takes flat as object with duration"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "took a flat for the summer is natural British English"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "сняли квартиру and заранее paid match"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "rent removes ambiguity about acquisition"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "tenancy differs from taking a route or carrying things"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take a flat remains available in British rental contexts"
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "b0777b1e90c44d9ce9d685e2190ef0e529fa39ba263a06a4148c8fe7c8e0be24",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "take governs the Sunday paper"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "still and recurring edition imply subscription"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "finite verb in do-question"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Do you still take the Sunday paper is established British usage"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "всё ещё выписываете preserves continuing subscription"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "weekly edition helps signal recurring delivery"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "paper title and habitual still exclude one-off purchase as default"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "home-delivery take a paper remains current though print subscriptions have declined"
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "fe19c553c1b41e1de3f993c8c02cfbc8927d99ff027591e34b099ebc1e48e0be",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "takes is third-person singular"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "forty minutes measures required time"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "takes is finite with duration complement"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The bus ride takes forty minutes is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "занимает сорок минут accurately renders duration"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "duration is explicit and easy to infer"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "bus ride is subject, so this does not mean choose transport"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take plus duration is routine contemporary English"
+          }
+        }
+      },
+      {
+        "meaning_index": 16,
+        "candidate_sha256": "014ecfbbc195f4bedc7d02fca10507b32e34ee68d4737b90421adc15fb52c96f",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "take occurs in take X from Y"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "numbers and result establish subtraction"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "transitive verb with source complement"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "take three from ten is natural instructional wording"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "вычесть три из десяти preserves operand order"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "equation provides a clear check"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "numbers and seven exclude physical removal"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take X from Y remains current classroom arithmetic"
+          }
+        }
+      },
+      {
+        "meaning_index": 18,
+        "candidate_sha256": "32be85e8602e623cac74008b76201fdffcb36aa6f665cd4a356c8337be784fb0",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "take occurs in take a picture"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "photo request by lake shows photographing"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "bare verb after could"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "take a picture of us is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "сфотографировать нас accurately renders activity"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "straightforward tourist request"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "picture object denotes making a photo, not transporting one"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take a picture is ordinary contemporary English"
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "candidate_sha256": "d472f9b4f3f554d9c47d5a889b39eac875cdb5b4a7d670396a0f4d40965887f4",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "taken is participle in be taken with"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "quite and charming cottage yield attraction"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "passive-derived predicate with with complement matches listed verb use"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "quite taken with is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "очаровал and очень retain degree and affected subject"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "cottage makes emotional response concrete"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "with rather than by distinguishes this from physical taking"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "be taken with remains current expressive English"
+          }
+        }
+      },
+      {
+        "meaning_index": 22,
+        "candidate_sha256": "2b6063f270efc35c524eaf19662389883563c357d4384cffaa8152f466e7ab67",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "take is predation verb"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "owls capturing prey gives ловить"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "take directly governs prey nouns"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "owls take small birds is natural wildlife usage"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "а не только мышей conveys as well as mice"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "predator and two prey categories locate sense"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "animal prey differs from winning or taking belongings"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take prey remains current wildlife terminology"
+          }
+        }
+      },
+      {
+        "meaning_index": 26,
+        "candidate_sha256": "726f2a0a7eec89430e7354dac036171702a734a82c3973c9ededcd8094fdf57e",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "takes is the finite form"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "cotton accepts dye during processing"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "transitive verb governs dye and evenly marks manner"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "this cotton takes dye evenly is natural textile wording"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "окрашивается равномерно preserves result and material"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "dye gives a concrete treatment example"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "material absorbs dye, neither tolerating punishment nor occupying time"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take dye is current in textile and craft discussions"
+          }
+        }
+      },
+      {
+        "meaning_index": 31,
+        "candidate_sha256": "a6fdf028faa6de604e11404a8a07ea137173feb320253abf8e399412826ff978",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "take heads second take"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "director selects a recorded attempt"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "count noun object of kept"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "kept the second take is natural filming wording"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "второй дубль is exact in context"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "ordinal shows repeated attempts"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "director and scene rule out revenue or opinion"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "take is standard contemporary production terminology"
+          }
+        }
+      },
+      {
+        "meaning_index": 32,
+        "candidate_sha256": "249188d6520c6875c7f99238b4a30286f25654dea57980a3215faeca9e9388c8",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "take is head of box office take"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "theatre and musical premiere identify gross ticket receipts"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun heads subject of doubled"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "box office take doubled is natural trade reporting"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "кассовые сборы and удвоились convey amount and change"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "theatre context and premiere make the amount inferable"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "box office limits general receipts to ticket sales"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "box office take remains used in current entertainment coverage"
+          }
+        }
+      },
+      {
+        "meaning_index": 33,
+        "candidate_sha256": "bf7d246735ac436c621cf5ef64d8ad6ab367e040319fdbf445efb09c5fc7232e",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "take heads the day's take"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "stallholders count sales receipts"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun object of counted"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "counted the day's take is natural commercial speech"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "дневная выручка preserves receipts, without implying profit"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "market and closing time clarify the measure"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "no cinema or ticket sales context"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "the day's take is current informal business vocabulary"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "with them frames carrying belongings away, not an independent act of capture example trains take something with you and does not show a distinct acquisition sense fits #10 relocation just as naturally; Russian захватили alone does not establish a separate sense",
+        "required_action": "Define seizure or acquisition against #1 grasp and #10 transport, and request a candidate without a with them frame."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Слово «оспа» добавлено переводом, а исходный пример говорит, что прививка не прижилась.",
+        "required_action": "Retain vaccination as the subject in Russian and distinguish successful establishment from generic effect."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Перевод theatre оборван после «в».",
+        "required_action": "Restore the missing theatre destination and keep take something with you in this transport group."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Take cold устаревает; be taken ill всё ещё употребительно в британском английском.",
+        "required_action": "Separate dated take cold from current British be taken ill."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "I take it живо для предположения; Do you take me? в смысле «понимаете?» звучит старомодно.",
+        "required_action": "Keep the inference example and verify the understanding question in its actual register."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Accepting an offer and refusing to tolerate treatment represent different constructions with take.",
+        "required_action": "Separate accepting an offer from tolerating bad treatment and align the definition with both before retaining them together."
+      },
+      {
+        "meaning_index": 19,
+        "problem": "He does not take well без контекста фотографии двусмысленно; современнее he doesn't photograph well.",
+        "required_action": "Verify contemporary photographic middle-voice use and mark it if restricted."
+      },
+      {
+        "meaning_index": 20,
+        "problem": "Немаркированное take с человеком обозначает сопровождение или захват. Старое сексуальное употребление двусмысленно и требует проверки регистра и точной семантики согласия.",
+        "required_action": "Document register, agent and consent implications in the source before deciding how to retain this historical-looking gloss."
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Take coal обычно не сообщает, добыли ли уголь или просто забрали; нужен источник для «добывать».",
+        "required_action": "Find a mining example that entails extracting or acquiring coal and distinguishes it from transporting it."
+      },
+      {
+        "meaning_index": 25,
+        "problem": "Took his fancy значит «пришлась ему по душе», а не «завладела воображением»; the play didn't take редкое и требует контекста.",
+        "required_action": "Translate fancy as liking and obtain context for a production becoming successful."
+      },
+      {
+        "meaning_index": 28,
+        "problem": "Take о схватывании материала требует подтверждения в актуальной строительной терминологии. Привычные set и harden описывают именно нужную стадию, а take имеет более широкое значение «сработать».",
+        "required_action": "Attest take specifically meaning harden or set of material in the named contemporary trade."
+      },
+      {
+        "meaning_index": 29,
+        "problem": "Take vote требует артикля, а take a vote означает провести голосование. Take a tan не стоит подавать как обычное «загореть»; часть конструкций представляет коллокации, а не фразовые глаголы.",
+        "required_action": "Correct take a vote, verify take a tan and distinguish verb-plus-noun collocations from the actual phrasal verb take after."
+      },
+      {
+        "meaning_index": 30,
+        "problem": "Примеры с a take естественно читаются как дубль, взгляд или добыча. Современное существительное для захвата территории — capture или taking. Нужна аттестация существительного именно в этом значении.",
+        "required_action": "Find nominal take meaning the act of capture, independent of haul or recorded attempt."
+      },
+      {
+        "meaning_index": 31,
+        "problem": "Second take denotes a recording attempt, while кинокадр can misleadingly mean a single frame.",
+        "required_action": "Verify whether кинокадр misleads by implying one frame, while retaining the accepted дубль example."
+      },
+      {
+        "meaning_index": 34,
+        "problem": "Историческое значение порции набора требует современного источника о практике ручного набора. В цифровой вёрстке a take без пояснения не обозначает задание наборщику.",
+        "required_action": "Check historical composing-room sources and present-day hand-setting documentation for the unit of work."
+      },
+      {
+        "meaning_index": 35,
+        "problem": "NOAA разграничивает catch как количество пойманной рыбы и take как регулируемый акт изъятия или взаимодействия с защищёнными видами. Нужно отдельно подтвердить предметное «улов» в актуальном употреблении.",
+        "required_action": "Require take denoting the amount of fish caught, rather than the regulatory action of taking fish."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 3,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Аренда помещения опирается на специализированную ситуацию выбора жилья."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Поездка на транспорте образует основную бытовую модель take the bus."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Регулярное получение подписки требует тематического дополнения."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Выигрыш или получение определяется соревнованием и типом объекта."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Приём лекарства естественно входит в базовые медицинские ситуации."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Воздействие лучше вводить вместе с закреплённой конструкцией."
+      },
+      {
+        "meaning_index": 10,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Перемещение людей или вещей выражается продуктивной моделью с направлением."
+      },
+      {
+        "meaning_index": 11,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Заболевание с take требует учёта конкретной современной конструкции."
+      },
+      {
+        "meaning_index": 12,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Измерение полезно в характерных сочетаниях, например с температурой."
+      },
+      {
+        "meaning_index": 14,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Реакция уточняется наречием или предлогом и следует за интерпретацией."
+      },
+      {
+        "meaning_index": 15,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Согласие зависит от предмета принятия и ситуации."
+      },
+      {
+        "meaning_index": 16,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Вычитание привязано к математической конструкции."
+      },
+      {
+        "meaning_index": 17,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Преодоление препятствия задаётся предметным, часто спортивным контекстом."
+      },
+      {
+        "meaning_index": 18,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Фотографирование с take a photo нужно при описании поездок и событий."
+      },
+      {
+        "meaning_index": 19,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Получившееся изображение следует различать с действием фотографа."
+      },
+      {
+        "meaning_index": 20,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Сексуальное употребление стилистически чувствительно и периферийно."
+      },
+      {
+        "meaning_index": 21,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Очарование часто передаётся пассивной конструкцией с отдельным дополнением."
+      },
+      {
+        "meaning_index": 22,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Ловля требует указания добычи и удобна после общего взятия."
+      },
+      {
+        "meaning_index": 23,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Добывание зависит от предметного контекста и близко к получению."
+      },
+      {
+        "meaning_index": 24,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Выбор маршрута выводится из конструкции с названием пути."
+      },
+      {
+        "meaning_index": 25,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Успех или увлечение требуют разных окружений, которым не нужен ранний общий акцент."
+      },
+      {
+        "meaning_index": 26,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Способность переносить обработку обычно раскрывается в техническом контексте."
+      },
+      {
+        "meaning_index": 27,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Гибель в сочетании с lives относится к устойчивому переходному обороту."
+      },
+      {
+        "meaning_index": 28,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Схватывание материала специализировано технически."
+      },
+      {
+        "meaning_index": 29,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Список сочетаний с существительными изучается через конкретные коллокации."
+      },
+      {
+        "meaning_index": 30,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Именной захват менее продуктивен для учащегося, чем глагольный."
+      },
+      {
+        "meaning_index": 31,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Кинематографический дубль современен, но тематически уже глагольного ядра."
+      },
+      {
+        "meaning_index": 32,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Театральный сбор требует предметной проверки и относится к профессиональной лексике."
+      },
+      {
+        "meaning_index": 33,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Выручка зависит от делового или разговорного окружения."
+      },
+      {
+        "meaning_index": 34,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Типографское значение связано со специальным производственным процессом."
+      },
+      {
+        "meaning_index": 35,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Улов выражает объём добычи и не относится к первым значениям."
+      }
+    ]
+  },
+  {
+    "word": "many",
+    "decision": "review_required",
+    "reason": "The count-quantifier examples remain useful; the quantity phrases and the many should not all be treated as ordinary nouns.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [many] source_evidence and stage_09.json [many] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [many] and stage_07.json [many] before/after; stage_09.json [many] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "A good many и a great many работают как квантификаторы; the many может обозначать массу людей. Единая помета noun не описывает все три конструкции.",
+        "required_action": "Classify many in the two quantity phrases separately from the many and note the possible determiner use in #1."
+      }
+    ],
+    "primary_recommendations": []
+  },
+  {
+    "word": "call",
+    "decision": "review_required",
+    "reason": "The phone, bird, lure and option examples are independently distinct; the capital contribution wording and ambiguous wake-up example need revision.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [call] source_evidence and stage_09.json [call] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [call] and stage_07.json [call] before/after; stage_09.json [call] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "12a4e0a2f6da12caa46ec2bdb89d3d961edeedbfc15f1d8a6aa26f8be75d1582",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "a call names an audible human utterance"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "quoted dinner announcement is an attention-getting call"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun is object of heard"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "a call from the kitchen is natural"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "оклик and dinner announcement preserve human voice and intent"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "direct speech clarifies meaning"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "no phone device, animal, or instrument"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "hear a call from a room is current usage"
+          }
+        }
+      },
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "a7ba3e2c9208d8e98603205190452d2d3722f2b851e6d9858b58c39cde49f4f1",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "call is noun in call of an owl"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "owl establishes avian vocalisation"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun heads object of heard"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "call of an owl in the woods is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "крик совы preserves natural sound"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "animal and forest remove ambiguity"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "no device or human caller is present"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "bird call is contemporary field and general vocabulary"
+          }
+        }
+      },
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "180aacc7aa8fc0f675a7f99cf0649a6ca1b06734e6328395ca9fb22122b8cd58",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "call is object of into with duck as qualifier"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "blowing into it identifies a physical decoy instrument"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "count noun duck call follows a"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "blew into a duck call is idiomatic in hunting context"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "утиный манок renders device and purpose"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "luring explains why the hunter uses it"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "the device, not the emitted sound, can be blown into"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Ducks Unlimited describes air going through a duck call in practical instruction"
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "c2d80d54ae01cdeb61e8e61e7148e6dc8c44b8e871b6ce1b0f6ba5b76b1768d3",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "call is head of bugle call"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "ceremony begins on instrument signal"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun subject of signalled"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "a bugle call signalled is natural despite repetition of signal idea"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "сигнал горна accurately identifies instrument"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "ceremonial action makes cue function explicit"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "bugle distinguishes signal from phone or bird sounds"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "US Army ceremonial guidance uses bugle call for transmitted commands"
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "af8f371d6005c1a99b518acb693c1488a1eb979d52b5a4a08130ebe94edb682a",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "call follows possessive your"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "silent phone explains missed ringing"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun object of missed"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "missed your call is conversational English"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "пропустил твой звонок and беззвучный режим are accurate"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "phone context makes this accessible"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "missed implies incoming phone contact, not a visit"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "missed your call is routine current messaging language"
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "a131cab2027f52d7ae551b90e96ec5eaa1bc12594efafb5e952459f071e4f486",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "call is noun in out on a call"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "doctor visiting patient at home makes service visit clear"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun object of on"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "out on a call is natural service vocabulary"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "уехал по вызову к пациенту на дом captures the errand"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "visit destination distinguishes medical dispatch"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "the doctor is out responding, rather than speaking by phone"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "out on a call remains current in mobile service professions"
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "a2992d6b2a02abfcfc95eb552351f9600a117516e4a3738802394df74c92eddb",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "call appears as noun in issued a call for"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "mayor solicits volunteers publicly"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "call is noun object of issued"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "issued a call for volunteers is natural public messaging"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "призвал добровольцев captures appeal without word-for-word structure"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "volunteer activity makes purpose clear"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "not a command to pay or a private phone call"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "call for volunteers remains current civic usage"
+          }
+        }
+      },
+      {
+        "meaning_index": 11,
+        "candidate_sha256": "053604fb0e42c84e24ad33e72b3d63792de5096cfa424b90e3cfa0b1ecd67059",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "call is noun in capital call"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "payment deadline signals an enforceable funding request"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "call heads object of issued"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "issued a capital call is natural fund language"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "выставил требование о внесении взноса со сроком оплаты is awkward and does not communicate committed capital"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "unexplained capital call and payment due do not teach commitment underlying the request"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "funding call with payment due excludes a right to buy shares"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Brookfield glossary documents capital calls to collect investor contributions"
+          }
+        }
+      },
+      {
+        "meaning_index": 12,
+        "candidate_sha256": "2bb9857dacaa79bdc9bd8a119f4515e56d879a93d4d18b2d2f4ef0f0ec7e6118",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "call is a count noun after bought"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "fixed-price right to purchase shares identifies call option"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "call is object of bought with explanatory relative clause"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "bought a call is standard trading language"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "даёт право купить акции preserves optionality and fixed price"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "relative clause defines the contract in plain terms"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "purchase right distinguishes option from a payment demand"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "SEBI material uses buying a Call option in a modern investment document"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 10,
+        "problem": "No call for — нет причины или необходимости; a great call for smth. может означать спрос, а не личную сильную потребность.",
+        "required_action": "Separate reason or justification from demand for something and verify the great call for construction."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "выставил требование о внесении взноса со сроком оплаты is awkward and does not communicate committed capital unexplained capital call and payment due do not teach commitment underlying the request",
+        "required_action": "Explain the previously committed funding in the English context and make the Russian payment notice idiomatic."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Call names — устойчивый оборот об оскорблениях, а не нейтральное присвоение имени.",
+        "required_action": "Move calling people names to its idiomatic context if retained under the entry."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "Call somebody at seven по умолчанию означает позвонить. Для пробуждения требуется контекст или wake-up call.",
+        "required_action": "Require a wake-up context that excludes a phone call or identify the historical or regional use."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 2,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Крик птицы или животного тематически полезен после человеческого общения."
+      },
+      {
+        "meaning_index": 3,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Манок требует охотничьего или наблюдательного контекста."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Позывной и сигнал инструмента относятся к специальным применениям."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Телефонный разговор нужен для make a call и get a call."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Вызов врача зависит от ситуации, отличимой от самого звонка."
+      },
+      {
+        "meaning_index": 7,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Краткий визит требует уточняющего окружения."
+      },
+      {
+        "meaning_index": 8,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Заход в порт относится к морской тематике."
+      },
+      {
+        "meaning_index": 9,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Публичный призыв обычно раскрывается через конструкцию call for."
+      },
+      {
+        "meaning_index": 10,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Спрос требует особой модели и не должен опережать телефонное значение."
+      },
+      {
+        "meaning_index": 11,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Требование платежа относится к финансовой лексике."
+      },
+      {
+        "meaning_index": 12,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Опцион требует отраслевого контекста и отличается от обычного требования."
+      },
+      {
+        "meaning_index": 15,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Характеристика лица словом вводится после обычной модели называния."
+      },
+      {
+        "meaning_index": 16,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Звонок по телефону является одной из первых коммуникативных моделей."
+      },
+      {
+        "meaning_index": 17,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Пробуждение требует определённой ситуации и не входит в базовый набор."
+      },
+      {
+        "meaning_index": 18,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Созыв обычно относится к собраниям и официальным действиям."
+      },
+      {
+        "meaning_index": 19,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Визит с предлогом имеет стилистические и региональные ограничения."
+      },
+      {
+        "meaning_index": 20,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Заход судна относится к отдельной морской конструкции."
+      },
+      {
+        "meaning_index": 21,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Призыв к действию вводится через типичное предложное окружение."
+      }
+    ]
+  },
+  {
+    "word": "never",
+    "decision": "review_required",
+    "reason": "Absolute frequency and prior experience are clear; the historical negative constructions and incredulous example need more precise register treatment.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [never] source_evidence and stage_09.json [never] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [never] and stage_07.json [never] before/after; stage_09.json [never] exact per-meaning examples and candidates",
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "«Заранее» добавлено к one never knows, хотя само выражение передано по смыслу.",
+        "required_action": "Translate the idiom without adding a particular time reference."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Never a word, never a one и be it never so large книжны или архаичны; never fear — устойчивая формула утешения.",
+        "required_action": "Mark the historical intensifiers individually and retain the current formula never fear where appropriate."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Фраза выражает недоверие к предположению, но такая конструкция книжная и мало помогает с обычным never.",
+        "required_action": "Verify contemporary surprise constructions and label older negative syntax."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 3,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Усиление отрицания зависит от контекста и вводится после буквального значения."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Самостоятельная реплика удивления опирается на интонацию и ситуацию."
+      }
+    ]
+  },
+  {
+    "word": "make-up",
+    "decision": "review_required",
+    "reason": "Character and team composition provide distinct contemporary examples; the print and backstage compounds need clearer scope and evidence.",
+    "confidence": 0.94,
+    "evidence_ref": "stage_06.json [make-up] source_evidence and stage_09.json [make-up] checks with candidate source searches",
+    "before_after_ref": "input_10.json entries [make-up] and stage_07.json [make-up] before/after; stage_09.json [make-up] exact per-meaning examples and candidates",
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "11ebdf18e1911105e8d3f74ab15bb0e58e12789ebce503855cedd398fe57f1bf",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "make-up heads the possessive noun phrase"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "patience is a stable character trait"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun complement of part of"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "part of her make-up is natural British spelling and usage"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "частью её характера accurately renders disposition"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "familiar character trait anchors abstract sense"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "individual trait differs from membership of a group"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "personal make-up remains current in descriptive prose"
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "ec6a0467c940693e177552326c839cfaf20ae952989ffecfcc0a721b17bd9269",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "make-up is noun modified by of the team"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "two designers joining shows member composition"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "noun subject of changed"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "make-up of the team changed is idiomatic"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "состав команды and new members preserve the relation"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "concrete staffing change makes composition visible"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "team membership rules out personality and cosmetics"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "make-up of a group is ordinary current British English"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 6,
+        "proposal_sha256": "7eda0a35078c46bbd0784ff2e5d92d7f9469bdadbc36b4d4c24e07ffe637685e",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "The source supports верстальщик only under the full compound make-up man, listed after its theatrical meaning."
+          },
+          "translation_accuracy": {
+            "pass": false,
+            "reason": "В полиграфии — верстальщик sits as a bare alternative and still invites reading make-up itself as a person."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Attributive noun in both compounds is consistent with the source attr. label."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Both original examples and the professional gloss remain present."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Return for explicit compound scope and documented contemporary status of the trade title."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "A rich make-up звучит неидиоматично; русский перевод передаёт сильную степень, для которой обычно heavy make-up.",
+        "required_action": "Use a contemporary cosmetics collocation and align the Russian degree of application."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Источники по современной работе с газетой употребляют layout, а найденные page make-up требуют датировать исходный текст. Нужна новая аттестация вёрстки как процесса, отдельно от общего устройства полосы.",
+        "required_action": "Find contemporary print-production evidence naming the page layout process itself and date the source."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Для современной выдумки употребляют something made up или a fabrication. Частица up с глаголом не подтверждает одноимённое существительное make-up.",
+        "required_action": "Find a current noun use distinct from the verb make up or record the dated sense for reassessment."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "В полиграфии — верстальщик sits as a bare alternative and still invites reading make-up itself as a person. Return for explicit compound scope and documented contemporary status of the trade title. Existing make-up room and make-up man examples only illustrate the cosmetics compounds.",
+        "required_action": "Bind both professional translations to the entire make-up man compound and separate it from make-up room, with evidence for the print use's current register."
+      }
+    ],
+    "primary_recommendations": [
+      {
+        "meaning_index": 2,
+        "before_primary": true,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Вёрстка ограничена полиграфическим контекстом."
+      },
+      {
+        "meaning_index": 3,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Склад характера удобно объяснять через более общий состав."
+      },
+      {
+        "meaning_index": 4,
+        "before_primary": null,
+        "recommended_primary": true,
+        "assessment": "Supported as a pedagogical recommendation by the sense context; recorded for separate primary-flag review.",
+        "role08_reason": "Состав группы или вещества выражает продуктивное современное переносное употребление."
+      },
+      {
+        "meaning_index": 5,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Выдумка требует различения существительного и глагола make up."
+      },
+      {
+        "meaning_index": 6,
+        "before_primary": null,
+        "recommended_primary": false,
+        "assessment": "Defer primary classification until the listed issue for this sense is resolved.",
+        "role08_reason": "Профессиональное название требует отдельной проверки современного употребления."
+      }
+    ]
+  }
+]

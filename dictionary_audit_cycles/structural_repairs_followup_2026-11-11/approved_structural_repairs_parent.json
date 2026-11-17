@@ -1,0 +1,63 @@
+{
+  "scope": "structural_repairs_followup_2026-11-11",
+  "changes": [
+    {
+      "word": "date",
+      "path": "meanings[1].translation",
+      "before": "срок, период; время, пора; современный; новейший",
+      "after": "срок, период; время, пора",
+      "reason": "remove adjective gloss incorrectly attached to noun date sense"
+    },
+    {
+      "word": "general",
+      "path": "meanings[3].examples",
+      "before": {
+        "en": "general impression",
+        "ru": "общее впечатление"
+      },
+      "after": "removed",
+      "reason": "duplicate example already correctly placed in meaning 1"
+    },
+    {
+      "word": "past",
+      "path": "meanings[9:11]",
+      "before": [
+        {
+          "partOfSpeech": "preposition",
+          "translation": "прибегать (к чему-либо), пользоваться (чем-либо)",
+          "examples": [],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "использовать, израсходовать",
+          "examples": [
+            {
+              "en": "to feel pastd up",
+              "ru": "чувствовать себя совершенно обессиленным"
+            },
+            {
+              "en": "past up",
+              "ru": "израсходовать, использовать; истратить; истощать"
+            },
+            {
+              "en": "they past 10 tons of coal a month",
+              "ru": "они расходуют 10 тонн угля в месяц"
+            }
+          ],
+          "register": [],
+          "id": 11
+        }
+      ],
+      "after": [],
+      "reason": "remove contaminated paste/past-up material; Muller source ends after past preposition sense 4"
+    }
+  ],
+  "unresolved": [
+    "outside: no source-confirmed structural defect remains; retained current senses",
+    "past: phrase-level reconstruction of any missing idioms intentionally not invented"
+  ],
+  "before_sha256": "f6349497d5f95fd1fcdba2d3e83fc3202a83b6639e353cdfa0f6f4578a61d802",
+  "after_sha256": "4a9561900c6cda62917d285d6fa652445adda9e6ec4091a190446386893bcb89"
+}

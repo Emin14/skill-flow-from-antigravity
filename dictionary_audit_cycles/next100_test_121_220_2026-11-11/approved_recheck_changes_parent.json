@@ -1,0 +1,56 @@
+{
+  "scope": "recheck_remaining_121_220_2026-11-11",
+  "decision": "applied_confirmed_items",
+  "count": 5,
+  "changes": [
+    {
+      "path": "play.phrases[in play].partOfSpeech",
+      "before": "preposition",
+      "after": "adverb",
+      "reason": "In play is an adverbial fixed phrase."
+    },
+    {
+      "path": "play.phrases[play off].translation",
+      "before": "натравливать (against — на)",
+      "after": "натравливать (against — на); играть дополнительный матч после ничьей",
+      "reason": "Restore the source-confirmed play-off sense."
+    },
+    {
+      "path": "away.meanings[4].examples",
+      "before": [
+        {
+          "en": "to give away",
+          "ru": "подарить"
+        },
+        {
+          "en": "away off",
+          "ru": "далеко",
+          "register": [
+            "американизм"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "en": "to give away",
+          "ru": "подарить"
+        }
+      ],
+      "reason": "Away off is already represented in phrases; remove duplicate cross-level example."
+    },
+    {
+      "path": "against.meanings[0].translation",
+      "before": "противоположное направление или положение против; перен. против шерсти",
+      "after": "против; навстречу",
+      "reason": "Keep the general prepositional translation separate from the idiom."
+    },
+    {
+      "path": "against.meanings[0].examples[1].ru",
+      "before": "против волокна или шерсти",
+      "after": "против шерсти; против общепринятого",
+      "reason": "Make the idiomatic sense explicit for learners."
+    }
+  ],
+  "before_sha256": "1faa3244a185405c338cd5aceed2046eb3ba12344460040f8210b331d68db5b1",
+  "after_sha256": "32f4a1b0b549bfd3feccba564d011ab05120e646a66e6e638cc461ad3939a337"
+}

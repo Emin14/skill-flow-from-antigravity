@@ -1,0 +1,992 @@
+[
+  {
+    "word": "merge",
+    "entry_index": 1,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "сливать(ся), соединять(ся)",
+        "partOfSpeech": "verb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова merge текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "поглощать",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова merge текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для merge отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "merger",
+    "entry_index": 2,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "слияние, объединение (компаний, предприятий)",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова merger текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "поглощение",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова merger текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для merger отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "merit",
+    "entry_index": 3,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "заслуга",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова merit текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "достоинство",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова merit текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "при мн. ч.: качества",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова merit текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "заслужить, быть достойным",
+        "partOfSpeech": "verb",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова merit текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для merit отдельно сопоставлены все 4 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "mess",
+    "entry_index": 4,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "беспорядок; кутерьма, путаница",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "неприятность",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "грязь, экскременты (домашних животных)",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "производить беспорядок; пачкать, грязнить",
+        "partOfSpeech": "verb",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "портить дело (часто mess up)",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "испражняться",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "группа людей, питающихся за общим столом",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "общий стол, общее питание (в армии и флоте)",
+        "partOfSpeech": "noun",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "столовая (в учебном заведении); старшинская кают-компания",
+        "partOfSpeech": "noun",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "блюдо, кушанье; похлёбка",
+        "partOfSpeech": "noun",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "болтушка, месиво (для животных)",
+        "partOfSpeech": "noun",
+        "current_order": 11,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 12,
+        "id": 12,
+        "translation": "в роли определения: столовый",
+        "partOfSpeech": "verb",
+        "current_order": 12,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 12 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 13,
+        "id": 13,
+        "translation": "обедать совместно, за общим столом, столоваться вместе (with, together)",
+        "partOfSpeech": "verb",
+        "current_order": 13,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 13 слова mess текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для mess отдельно сопоставлены все 13 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "message",
+    "entry_index": 5,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "сообщение, донесение; письмо; послание; проповедь",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова message текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "официальное правительственное послание; послание президента конгрессу",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова message текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "поручение; миссия",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова message текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "идея (книги и т. п.)",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова message текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "посылать сообщение, донесение",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова message текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "передавать сигналами, сигнализировать",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова message текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "телеграфировать",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова message текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для message отдельно сопоставлены все 7 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "metal",
+    "entry_index": 6,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "расплавленное стекло, стекломасса",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "при мн. ч.: рельсы",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "щебень",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "балласт",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "гарт",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "в роли определения: металлический",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "покрывать, обшивать металлом",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "мостить, шоссировать щебнем",
+        "partOfSpeech": "verb",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "балластировать",
+        "partOfSpeech": "verb",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова metal текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для metal отдельно сопоставлены все 9 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "metaphor",
+    "entry_index": 7,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "метафора",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова metaphor текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для metaphor отдельно сопоставлены все 1 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "method",
+    "entry_index": 8,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "метод, способ; приём",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова method текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "при мн. ч.: методика (наука)",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова method текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "система; порядок",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова method текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "классификация",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова method текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для method отдельно сопоставлены все 4 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "methodology",
+    "entry_index": 9,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "методология",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова methodology текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для methodology отдельно сопоставлены все 1 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "metre",
+    "entry_index": 10,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "метр (мера)",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова metre текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "размер, ритм, метр (в стихосложении, музыке)",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова metre текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для metre отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "middle",
+    "entry_index": 11,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "середина",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова middle текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "талия",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова middle текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "медиальный или средний залог",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова middle текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "подача мяча в центр поля (футбол)",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова middle текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "средний",
+        "partOfSpeech": "adjective",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова middle текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "поместить в середину",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова middle текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "подать мяч на середину поля (в футболе)",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова middle текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для middle отдельно сопоставлены все 7 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "midnight",
+    "entry_index": 12,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "полночь",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова midnight текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "непроглядная тьма",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова midnight текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "полуночный; полночный",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова midnight текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для midnight отдельно сопоставлены все 3 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "midst",
+    "entry_index": 13,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "середина",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова midst текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "см. amid",
+        "partOfSpeech": "preposition",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова midst текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для midst отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "might",
+    "entry_index": 14,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "past от may",
+        "partOfSpeech": "verb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова might текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "модальный глагол: выражает сомнение, предположение, неуверенность",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова might текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "модальный глагол: выражает просьбу в вежливой форме",
+        "partOfSpeech": "verb",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова might текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "выражает желательность или упрёк",
+        "partOfSpeech": "verb",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова might текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "вспомогательный глагол (сослагательное наклонение: мог бы)",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова might текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для might отдельно сопоставлены все 5 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "migration",
+    "entry_index": 15,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "миграция; переселение",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова migration текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "перелёт (птиц)",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова migration текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для migration отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "mild",
+    "entry_index": 16,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "тихий, мягкий, кроткий (о человеке)",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова mild текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "мягкий; умеренный",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова mild текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "неострый (о пище); слабый (о пиве, лекарстве, табаке и т. п.)",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова mild текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для mild отдельно сопоставлены все 3 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "mile",
+    "entry_index": 17,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "миля",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова mile текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "в тысячу раз легче (лучше)",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова mile текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "неподалёку, вблизи",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова mile текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "быть очевидным, бросаться в глаза",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова mile текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для mile отдельно сопоставлены все 4 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "militant",
+    "entry_index": 18,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "активный, боевой",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова militant текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "воинствующий, воинственный",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова militant текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "борец, активист",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова militant текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "боец",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова militant текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для militant отдельно сопоставлены все 4 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "military",
+    "entry_index": 19,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "военный, воинский",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова military текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "военщина",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова military текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "войска, военная сила",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова military текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "(без артикля) груб. солдатня; солдафоны",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова military текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для military отдельно сопоставлены все 4 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "militia",
+    "entry_index": 20,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "народное ополчение; милиционная армия (в Англии)",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова militia текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "милиция",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова militia текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для militia отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  }
+]

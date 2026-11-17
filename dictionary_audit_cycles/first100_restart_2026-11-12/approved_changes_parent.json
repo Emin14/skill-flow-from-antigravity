@@ -1,0 +1,534 @@
+{
+  "scope": "first100_restart_2026-11-12",
+  "target_count": 98,
+  "excluded_recently_repaired": [
+    "as",
+    "get",
+    "one",
+    "what"
+  ],
+  "applied_count": 55,
+  "changes": [
+    {
+      "word": "his",
+      "path": "meanings[0].partOfSpeech",
+      "before": "pronoun",
+      "after": "determiner",
+      "reason": "attributive possessive"
+    },
+    {
+      "word": "there",
+      "path": "meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "locative adverb"
+    },
+    {
+      "word": "time",
+      "path": "meanings[0].register",
+      "before": [
+        "американский английский"
+      ],
+      "after": [],
+      "reason": "ordinary basic sense"
+    },
+    {
+      "word": "then",
+      "path": "meanings[5].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "by then/since then"
+    },
+    {
+      "word": "very",
+      "path": "meanings[6].register",
+      "before": [],
+      "after": [],
+      "reason": "standard intensifier"
+    },
+    {
+      "word": "most",
+      "path": "meanings[5].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "grammatical superlative"
+    },
+    {
+      "word": "much",
+      "path": "meanings[1].register",
+      "before": [],
+      "after": [],
+      "reason": "ordinary quantifier"
+    },
+    {
+      "word": "our",
+      "path": "meanings[0].translation",
+      "before": "наш, наша, наше, наши (притяжательный детерминатив / местоимение)",
+      "after": "наш, наша, наше, наши (притяжательный детерминатив; ср. ours для самостоятельного употребления)",
+      "reason": "clarify attributive possessive"
+    },
+    {
+      "word": "good",
+      "path": "meanings[13].translation",
+      "before": "добро, благо; исправлять кого-либо",
+      "after": "добро, благо; приносить пользу кому-либо",
+      "reason": "do somebody good means benefit"
+    },
+    {
+      "word": "now",
+      "path": "meanings[2].translation",
+      "before": "прямо сейчас, в настоящий момент, только что",
+      "after": "прямо сейчас, в настоящий момент",
+      "reason": "remove unsupported just-now gloss"
+    },
+    {
+      "word": "make",
+      "path": "meanings[16].translation",
+      "before": "есть",
+      "after": "готовить, приготовлять",
+      "reason": "make a meal means prepare"
+    },
+    {
+      "word": "think",
+      "path": "meanings[5].translation",
+      "before": "считать; не видеть ничего плохого",
+      "after": "подозревать, ожидать (каких-либо результатов)",
+      "reason": "example expresses suspect/expect"
+    },
+    {
+      "word": "where",
+      "path": "meanings[5].translation",
+      "before": "где?; около какого места?; в каких краях?",
+      "after": "где и когда; обстоятельства",
+      "reason": "plural where/when construction"
+    },
+    {
+      "word": "should",
+      "path": "meanings[0].translation",
+      "before": "вспомогательный глагол; служит для образования будущего в прошедшем в 1 л. ед. и мн. ч.: I",
+      "after": "вспомогательный глагол; образует будущее в прошедшем, обычно в 1-м лице: I should …",
+      "reason": "repair truncated translation"
+    },
+    {
+      "word": "most",
+      "path": "meanings[1].translation",
+      "before": "наибольший; большей частью",
+      "after": "превосходная степень от much и many",
+      "reason": "repair truncated translation"
+    },
+    {
+      "word": "from",
+      "path": "meanings[0].examples[2].en",
+      "before": "we are two hours journey from there",
+      "after": "we are two hours' journey from there",
+      "reason": "possessive apostrophe"
+    },
+    {
+      "word": "into",
+      "path": "meanings[0].examples[2].ru",
+      "before": "выйти на площадь",
+      "after": "войти на площадь",
+      "reason": "direction into"
+    },
+    {
+      "word": "make",
+      "path": "meanings[13].examples[5].en",
+      "before": "to make start",
+      "after": "to make a start",
+      "reason": "article required"
+    },
+    {
+      "word": "over",
+      "path": "meanings[2].examples[0].en",
+      "before": "he packed over two hours",
+      "after": "he packed for over two hours",
+      "reason": "duration requires for"
+    },
+    {
+      "word": "think",
+      "path": "meanings[6].examples[1].en",
+      "before": "I think how we were once friends",
+      "after": "I think of how we were once friends",
+      "reason": "think of construction"
+    },
+    {
+      "word": "any",
+      "path": "meanings[3].examples[1].ru",
+      "before": "я не могу ждать больше ни минуты",
+      "after": "я больше не могу ждать",
+      "reason": "avoid invented one-minute detail"
+    },
+    {
+      "word": "out",
+      "path": "meanings[9].examples[0].en",
+      "before": "out size",
+      "after": "outsize",
+      "reason": "compound spelling"
+    },
+    {
+      "word": "even",
+      "path": "meanings[1].examples[0].ru",
+      "before": "тоже число",
+      "after": "чётная дата",
+      "reason": "even date means numerically even date"
+    },
+    {
+      "word": "from",
+      "path": "meanings[4].examples[1]",
+      "before": {
+        "ru": "сменить на посту, заступить в наряд",
+        "register": [
+          "военное"
+        ]
+      },
+      "after": {
+        "ru": "освободить от службы; сменить на посту"
+      },
+      "reason": "correct translation and misplaced register"
+    },
+    {
+      "word": "my",
+      "path": "meanings[1].examples[0].ru",
+      "before": "батюшки, как ты вырос!",
+      "after": "Батюшки, как ты вырос!",
+      "reason": "sentence capitalization"
+    },
+    {
+      "word": "now",
+      "path": "meanings[3].examples[0].en",
+      "before": "it was now clear that..",
+      "after": "it was now clear that ...",
+      "reason": "editorial/OCR contamination"
+    },
+    {
+      "word": "now",
+      "path": "meanings[5].examples[4].en",
+      "before": "as from now c",
+      "after": "as from now",
+      "reason": "editorial/OCR contamination"
+    },
+    {
+      "word": "not",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "adverbial idiom"
+    },
+    {
+      "word": "not",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "adverbial idiom"
+    },
+    {
+      "word": "just",
+      "path": "phrases[0].partOfSpeech",
+      "before": "verb",
+      "after": "adverb",
+      "reason": "adverbial phrase"
+    },
+    {
+      "word": "just",
+      "path": "phrases[1].partOfSpeech",
+      "before": "verb",
+      "after": "adverb",
+      "reason": "adverbial phrase"
+    },
+    {
+      "word": "like",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "predicative adjective"
+    },
+    {
+      "word": "where",
+      "path": "phrases[0].partOfSpeech",
+      "before": "verb",
+      "after": "adverb",
+      "reason": "interrogative adverb"
+    },
+    {
+      "word": "where",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "conjunction",
+      "reason": "embedded clause"
+    },
+    {
+      "word": "just",
+      "path": "phrases[3].translation",
+      "before": "точно такой же",
+      "after": "просто так; вот так",
+      "reason": "correct phrase meaning"
+    },
+    {
+      "word": "so",
+      "path": "examples[I tell you that so as to avoid trouble]",
+      "before": {
+        "en": "I tell you that so as to avoid trouble",
+        "ru": "я предупреждаю вас об этом, с тем чтобы избежать неприятностей"
+      },
+      "after": null,
+      "reason": "separate construction contamination",
+      "origin": "belongs to distinct construction"
+    },
+    {
+      "word": "so",
+      "path": "examples[so far as]",
+      "before": {
+        "en": "so far as",
+        "ru": "настолько, насколько"
+      },
+      "after": null,
+      "reason": "separate construction contamination",
+      "origin": "belongs to distinct construction"
+    },
+    {
+      "word": "so",
+      "path": "meanings[8].partOfSpeech",
+      "before": "conjunction",
+      "after": "adverb",
+      "reason": "and so to bed"
+    },
+    {
+      "word": "so",
+      "path": "phrases[0].partOfSpeech",
+      "before": "verb",
+      "after": "adverb",
+      "reason": "phrase POS"
+    },
+    {
+      "word": "so",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "phrase POS"
+    },
+    {
+      "word": "so",
+      "path": "phrases[2].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "phrase POS"
+    },
+    {
+      "word": "so",
+      "path": "phrases[3].partOfSpeech",
+      "before": "noun",
+      "after": "interjection",
+      "reason": "phrase POS"
+    },
+    {
+      "word": "so",
+      "path": "phrases[4].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "phrase POS"
+    },
+    {
+      "word": "so",
+      "path": "phrases[5].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "phrase POS"
+    },
+    {
+      "word": "do",
+      "path": "phrases[3]",
+      "before": {
+        "id": 4,
+        "phrase": "have to do with",
+        "partOfSpeech": "verb",
+        "translation": "иметь отношение к, иметь дело с",
+        "register": [],
+        "examples": []
+      },
+      "after": null,
+      "reason": "duplicate belongs under have",
+      "origin": "retained under have article"
+    },
+    {
+      "word": "not",
+      "path": "meanings[0].examples[4]",
+      "before": {
+        "en": "isn't, don't, didn't, can't",
+        "ru": "сокращённые отрицательные формы"
+      },
+      "after": null,
+      "reason": "contraction list is not a usable example",
+      "origin": "contraction morphology belongs to auxiliary entries"
+    },
+    {
+      "word": "new",
+      "path": "meanings[9]",
+      "before": {
+        "partOfSpeech": "adverb",
+        "translation": "недавно, только что",
+        "examples": [
+          {
+            "en": "We bought some new-laid eggs.",
+            "ru": "Мы купили несколько свежеснесённых яиц.",
+            "origin": "generated"
+          }
+        ],
+        "register": [],
+        "id": 10
+      },
+      "after": null,
+      "reason": "new-laid is adjectival, not standalone adverb",
+      "origin": "generated contamination; no destination confirmed"
+    },
+    {
+      "word": "want",
+      "path": "meanings[6].examples[1]",
+      "before": {
+        "en": "want for",
+        "ru": "нуждаться"
+      },
+      "after": null,
+      "reason": "fragment belongs to phrase construction"
+    },
+    {
+      "word": "want",
+      "path": "meanings[8]",
+      "before": {
+        "partOfSpeech": "verb",
+        "translation": "требовать",
+        "examples": [
+          {
+            "en": "he is wanted by the police",
+            "ru": "его разыскивает полиция"
+          }
+        ],
+        "register": [
+          "американский английский",
+          "разговорное"
+        ],
+        "id": 9
+      },
+      "after": null,
+      "reason": "exact duplicate police-wanted meaning"
+    },
+    {
+      "word": "May",
+      "path": "meanings[5]",
+      "before": {
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения к другому слову (майский)",
+        "examples": [
+          {
+            "en": "The May holidays begin next week.",
+            "ru": "Майские праздники начинаются на следующей неделе.",
+            "origin": "generated"
+          }
+        ],
+        "register": []
+      },
+      "after": null,
+      "reason": "ordinary attributive use is not separate sense",
+      "origin": "generated May holidays example"
+    },
+    {
+      "word": "May",
+      "path": "meanings[6]",
+      "before": {
+        "id": 7,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения к другому слову (первомайский)",
+        "examples": [
+          {
+            "en": "May Day celebrations filled the square.",
+            "ru": "Первомайские празднования заполнили площадь.",
+            "origin": "generated"
+          }
+        ],
+        "register": []
+      },
+      "after": null,
+      "reason": "May Day belongs in phrase inventory",
+      "origin": "moved to May Day phrase"
+    },
+    {
+      "word": "May",
+      "path": "phrases[new]",
+      "before": null,
+      "after": {
+        "id": 1,
+        "phrase": "May Day",
+        "partOfSpeech": "noun",
+        "translation": "Первомай; первомайский праздник",
+        "examples": [
+          {
+            "en": "May Day celebrations filled the square.",
+            "ru": "Первомайские празднования заполнили площадь.",
+            "origin": "moved from May.meanings[6].examples[0]"
+          }
+        ],
+        "register": []
+      },
+      "reason": "move lexical compound from pseudo-sense"
+    },
+    {
+      "word": "could",
+      "path": "form_of.types",
+      "before": [
+        "past_simple",
+        "past_participle"
+      ],
+      "after": [
+        "past_simple"
+      ],
+      "reason": "could is preterite, not participle"
+    },
+    {
+      "word": "when",
+      "path": "meanings[*].id",
+      "before": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "after": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "reason": "restore sequential IDs"
+    },
+    {
+      "word": "how",
+      "path": "meanings[*].id",
+      "before": [
+        1,
+        2,
+        3,
+        4,
+        14
+      ],
+      "after": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "reason": "restore sequential IDs"
+    }
+  ],
+  "deferred_review": [
+    "of cure example; I/me paradigm; have to forms; can forms; about; out phrase POS; after; first; more; time generated senses; people; how register; some; May botanical nuance; may modal nuance; here; very duplicate sense; even adverb sense"
+  ],
+  "before_sha256": "61cf91fdd5202d3916b9649339468ec8cfc0468685c60d8e026872c937369c37",
+  "after_sha256": "2792a20d1b87a76a525d0243f4d934529e610fe1528f9b1171e633aa91788890"
+}

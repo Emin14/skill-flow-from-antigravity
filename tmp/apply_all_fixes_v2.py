@@ -13,7 +13,7 @@ apply_all_fixes_v2.py — БЕЗОПАСНАЯ версия.
 """
 import io, json, re, time
 
-JSON_PATH = "oxford_5000_2026-08-27.json"
+JSON_PATH = "src/data/oxford_5000.json"
 
 # ═══════════════════════════════════════════════════════════
 # OCR regex-паттерны — ТОЛЬКО для кириллических полей

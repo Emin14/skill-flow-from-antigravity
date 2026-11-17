@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-DATA=ROOT/'oxford_5000_2026-08-27.json'
+DATA=ROOT/'src/data/oxford_5000.json'
 MIRROR=ROOT/'src/data/oxford_5000.json'
 OUT=ROOT/'tmp/cleanup_remaining_confirmed_inline_pairs.json'
 

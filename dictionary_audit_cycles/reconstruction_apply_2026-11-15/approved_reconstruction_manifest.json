@@ -1,0 +1,203 @@
+{
+  "applied_count": 13,
+  "changes": [
+    {
+      "word": "court",
+      "path": "meanings[2]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "площадка для игр; корт",
+        "examples": [],
+        "register": [],
+        "id": 2
+      },
+      "reason": "restore missing Muller noun sense"
+    },
+    {
+      "word": "court",
+      "path": "meanings[3]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "двор",
+        "examples": [],
+        "register": [],
+        "id": 3
+      },
+      "reason": "restore missing Muller noun sense"
+    },
+    {
+      "word": "court",
+      "path": "meanings[4]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "двор (короля и т. п.)",
+        "examples": [],
+        "register": [],
+        "id": 4
+      },
+      "reason": "restore missing Muller noun sense"
+    },
+    {
+      "word": "court",
+      "path": "meanings[5]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "ухаживание",
+        "examples": [],
+        "register": [],
+        "id": 5
+      },
+      "reason": "restore missing Muller noun sense"
+    },
+    {
+      "word": "court",
+      "path": "meanings[6]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "правление (предприятия)",
+        "examples": [],
+        "register": [
+          "американский английский"
+        ],
+        "id": 6
+      },
+      "reason": "restore missing Muller noun sense"
+    },
+    {
+      "word": "body",
+      "path": "meanings[13]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "перегонный куб, реторта",
+        "examples": [],
+        "register": [],
+        "id": 13
+      },
+      "reason": "restore missing Muller noun sense"
+    },
+    {
+      "word": "board",
+      "path": "meanings[6]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "широкая выработка в угольном пласте",
+        "examples": [],
+        "register": [
+          "горное дело"
+        ],
+        "id": 6
+      },
+      "reason": "restore missing Muller board I noun sense"
+    },
+    {
+      "word": "board",
+      "path": "meanings[7]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "галс",
+        "examples": [
+          {
+            "en": "to make boards",
+            "ru": "лавировать"
+          }
+        ],
+        "register": [
+          "морской термин"
+        ],
+        "id": 7
+      },
+      "reason": "restore missing Muller board I noun sense"
+    },
+    {
+      "word": "bit",
+      "path": "meanings[5]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "удила; мундштук",
+        "examples": [
+          {
+            "en": "to draw bit",
+            "ru": "натянуть поводья, вожжи"
+          },
+          {
+            "en": "to take the bit between or in one's teeth",
+            "ru": "закусить удила"
+          }
+        ],
+        "register": [],
+        "id": 5
+      },
+      "reason": "restore missing Muller bit II noun or bit IV sense"
+    },
+    {
+      "word": "bit",
+      "path": "meanings[6]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "режущий край инструмента; лезвие",
+        "examples": [],
+        "register": [],
+        "id": 6
+      },
+      "reason": "restore missing Muller bit II noun or bit IV sense"
+    },
+    {
+      "word": "bit",
+      "path": "meanings[7]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "бур; бурав; зубило",
+        "examples": [],
+        "register": [],
+        "id": 7
+      },
+      "reason": "restore missing Muller bit II noun or bit IV sense"
+    },
+    {
+      "word": "bit",
+      "path": "meanings[8]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "бородка ключа",
+        "examples": [],
+        "register": [],
+        "id": 8
+      },
+      "reason": "restore missing Muller bit II noun or bit IV sense"
+    },
+    {
+      "word": "bit",
+      "path": "meanings[11]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "двоичный знак в вычислительных машинах",
+        "examples": [],
+        "register": [
+          "вычислительная техника"
+        ],
+        "id": 11
+      },
+      "reason": "restore missing Muller bit IV computing sense"
+    }
+  ],
+  "not_applied": [
+    "job lowercase homonyms: schema/entry-boundary reconstruction remains unresolved",
+    "love register scope",
+    "while duplicate representation"
+  ],
+  "before_sha256": "624900b9890b2de8183f290f6d8944cd1f8a21fc61f37b5ddac4f961be3c92e1",
+  "after_sha256": "1b33d79b51b046481ea36036bb96b0a82159debadfa7e2c9a3e259fb17988659"
+}

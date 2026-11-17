@@ -1,0 +1,3391 @@
+[
+  {
+    "word": "overlook",
+    "entry_index": 121,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "не заметить, проглядеть; не обратить внимания; упускать из виду, не учитывать; игнорировать",
+        "partOfSpeech": "verb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова overlook текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "обозревать; смотреть сверху (на что-либо)",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова overlook текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "возвышаться (над городом, местностью и т. п.)",
+        "partOfSpeech": "verb",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова overlook текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "выходить на, в",
+        "partOfSpeech": "verb",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова overlook текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "надзирать; смотреть (за чем-либо)",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова overlook текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "сглазить",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова overlook текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова overlook отдельно проверены по всем 6 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "translation": "не заметить, проглядеть; не обратить внимания; упускать из виду, не учитывать; игнорировать",
+        "examples_checked": 1,
+        "problem": "Проверено значение 1 слова overlook: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "translation": "обозревать; смотреть сверху (на что-либо)",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова overlook: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "translation": "возвышаться (над городом, местностью и т. п.)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова overlook: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The castle overlooks the valley.",
+          "ru": "Замок возвышается над долиной.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «возвышаться (над городом, местностью и т. п.)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "translation": "выходить на, в",
+        "examples_checked": 1,
+        "problem": "Проверено значение 4 слова overlook: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "translation": "надзирать; смотреть (за чем-либо)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 5 слова overlook: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "She oversees the evening shift.",
+          "ru": "Она надзирает за вечерней сменой.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «надзирать; смотреть (за чем-либо)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "translation": "сглазить",
+        "examples_checked": 0,
+        "problem": "Проверено значение 6 слова overlook: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "They feared that the old charm would overlook the child.",
+          "ru": "Они боялись, что старый сглаз причинит ребёнку вред.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «сглазить».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "overly",
+    "entry_index": 122,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "чрезмерно",
+        "partOfSpeech": "adverb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова overly текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова overly отдельно проверены по всем 1 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "translation": "чрезмерно",
+        "examples_checked": 1,
+        "problem": "Проверено значение 1 слова overly: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "overnight",
+    "entry_index": 123,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "ночной, продолжающийся всю ночь",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова overnight текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "происходивший накануне вечером или ночью",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова overnight текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "с вечера (и всю ночь); всю ночь",
+        "partOfSpeech": "adverb",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова overnight текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "быстро, скоро; вдруг, неожиданно",
+        "partOfSpeech": "adverb",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова overnight текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова overnight отдельно проверены по всем 4 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "ночной, продолжающийся всю ночь",
+        "examples_checked": 1,
+        "problem": "Проверено значение 1 слова overnight: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "происходивший накануне вечером или ночью",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова overnight: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "translation": "с вечера (и всю ночь); всю ночь",
+        "examples_checked": 1,
+        "problem": "Проверено значение 3 слова overnight: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "translation": "быстро, скоро; вдруг, неожиданно",
+        "examples_checked": 1,
+        "problem": "Проверено значение 4 слова overnight: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "overseas",
+    "entry_index": 124,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "заморский, заокеанский; заграничный",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова overseas текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "за морем, через море; за границей, за границу",
+        "partOfSpeech": "adverb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова overseas текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова overseas отдельно проверены по всем 2 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "заморский, заокеанский; заграничный",
+        "examples_checked": 3,
+        "problem": "Проверено значение 1 слова overseas: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "translation": "за морем, через море; за границей, за границу",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова overseas: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "oversee",
+    "entry_index": 125,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "надзирать, наблюдать",
+        "partOfSpeech": "verb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова oversee текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "подсматривать",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова oversee текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "случайно увидеть",
+        "partOfSpeech": "verb",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова oversee текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова oversee отдельно проверены по всем 3 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "translation": "надзирать, наблюдать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова oversee: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "A supervisor oversees the laboratory.",
+          "ru": "Руководитель наблюдает за лабораторией.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «надзирать, наблюдать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "translation": "подсматривать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 2 слова oversee: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "He quietly oversaw the meeting through the open door.",
+          "ru": "Он тайком наблюдал за собранием через открытую дверь.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «подсматривать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "translation": "случайно увидеть",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова oversee: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "I oversaw my former teacher at the station.",
+          "ru": "Я случайно увидел своего бывшего учителя на вокзале.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «случайно увидеть».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "overturn",
+    "entry_index": 126,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "поражение; ниспровержение; свержение; переворот",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова overturn текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "опрокидывать(ся); падать",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова overturn текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "ниспровергать, свергать",
+        "partOfSpeech": "verb",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова overturn текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "уничтожать; опровергать",
+        "partOfSpeech": "verb",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова overturn текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова overturn отдельно проверены по всем 4 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "поражение; ниспровержение; свержение; переворот",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова overturn: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The election defeat was a major overturn for the party.",
+          "ru": "Поражение на выборах стало большим переворотом для партии.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «поражение; ниспровержение; свержение; переворот».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "translation": "опрокидывать(ся); падать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 2 слова overturn: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The strong wind overturned the boat.",
+          "ru": "Сильный ветер опрокинул лодку.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «опрокидывать(ся); падать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "translation": "ниспровергать, свергать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова overturn: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The court overturned the unfair decision.",
+          "ru": "Суд сверг несправедливое решение.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «ниспровергать, свергать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "translation": "уничтожать; опровергать",
+        "examples_checked": 1,
+        "problem": "Проверено значение 4 слова overturn: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "overwhelm",
+    "entry_index": 127,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "овладевать, переполнять (о чувстве)",
+        "partOfSpeech": "verb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова overwhelm текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "потрясать, ошеломлять, поражать",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова overwhelm текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "забрасывать (вопросами и т. п.)",
+        "partOfSpeech": "verb",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова overwhelm текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "заваливать",
+        "partOfSpeech": "verb",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова overwhelm текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "заливать, затоплять",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова overwhelm текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "подавлять; сокрушать, разбивать (неприятеля)",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова overwhelm текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "губить, разорять",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова overwhelm текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова overwhelm отдельно проверены по всем 7 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "translation": "овладевать, переполнять (о чувстве)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова overwhelm: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "A wave of relief overwhelmed her.",
+          "ru": "Её переполнила волна облегчения.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «овладевать, переполнять (о чувстве)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "translation": "потрясать, ошеломлять, поражать",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова overwhelm: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "translation": "забрасывать (вопросами и т. п.)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова overwhelm: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The reporter overwhelmed the minister with questions.",
+          "ru": "Репортёр забросал министра вопросами.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «забрасывать (вопросами и т. п.)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "translation": "заваливать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 4 слова overwhelm: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The inbox was overwhelmed with messages.",
+          "ru": "Почтовый ящик был завален сообщениями.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «заваливать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "translation": "заливать, затоплять",
+        "examples_checked": 0,
+        "problem": "Проверено значение 5 слова overwhelm: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The spring floods overwhelmed the fields.",
+          "ru": "Весеннее наводнение залило поля.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «заливать, затоплять».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "translation": "подавлять; сокрушать, разбивать (неприятеля)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 6 слова overwhelm: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The larger army overwhelmed the defenders.",
+          "ru": "Более крупная армия сокрушила защитников.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «подавлять; сокрушать, разбивать (неприятеля)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "translation": "губить, разорять",
+        "examples_checked": 0,
+        "problem": "Проверено значение 7 слова overwhelm: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The debt overwhelmed the small business.",
+          "ru": "Долги разорили небольшой бизнес.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «губить, разорять».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "overwhelming",
+    "entry_index": 128,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "непреодолимый",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова overwhelming текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "подавляющий",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова overwhelming текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "несметный",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова overwhelming текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова overwhelming отдельно проверены по всем 3 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "непреодолимый",
+        "examples_checked": 1,
+        "problem": "Проверено значение 1 слова overwhelming: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "подавляющий",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова overwhelming: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "translation": "несметный",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова overwhelming: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The charity received an overwhelming number of letters.",
+          "ru": "Благотворительная организация получила несметное количество писем.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «несметный».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "owe",
+    "entry_index": 129,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "быть должным (кому-либо); быть в долгу (перед кем-либо)",
+        "partOfSpeech": "verb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова owe текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "быть обязанным",
+        "partOfSpeech": "verb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова owe текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова owe отдельно проверены по всем 2 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "translation": "быть должным (кому-либо); быть в долгу (перед кем-либо)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова owe: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "I owe my sister twenty euros.",
+          "ru": "Я должен сестре двадцать евро.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «быть должным (кому-либо); быть в долгу (перед кем-либо)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "translation": "быть обязанным",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова owe: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "own",
+    "entry_index": 130,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "свой собственный",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова own текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "собственный, оригинальный",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова own текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "родной",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова own текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "любимый",
+        "partOfSpeech": "adjective",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова own текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "владеть; иметь, обладать",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова own текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "признавать(ся); откровенно признаваться; безропотно подчиняться",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова own текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова own отдельно проверены по всем 6 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "свой собственный",
+        "examples_checked": 4,
+        "problem": "Проверено значение 1 слова own: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "собственный, оригинальный",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова own: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "translation": "родной",
+        "examples_checked": 1,
+        "problem": "Проверено значение 3 слова own: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "translation": "любимый",
+        "examples_checked": 1,
+        "problem": "Проверено значение 4 слова own: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "translation": "владеть; иметь, обладать",
+        "examples_checked": 1,
+        "problem": "Проверено значение 5 слова own: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "translation": "признавать(ся); откровенно признаваться; безропотно подчиняться",
+        "examples_checked": 4,
+        "problem": "Проверено значение 6 слова own: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "owner",
+    "entry_index": 131,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "владелец; собственник, хозяин",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова owner текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "в роли определения к другому слову",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова owner текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова owner отдельно проверены по всем 2 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "владелец; собственник, хозяин",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова owner: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The owner of the shop greeted us.",
+          "ru": "Владелец магазина поприветствовал нас.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «владелец; собственник, хозяин».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения к другому слову",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова owner: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "ownership",
+    "entry_index": 132,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "собственность; владение",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова ownership текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "право собственности",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова ownership текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова ownership отдельно проверены по всем 2 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "собственность; владение",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова ownership: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The document proves ownership of the land.",
+          "ru": "Документ подтверждает владение землёй.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «собственность; владение».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "право собственности",
+        "examples_checked": 0,
+        "problem": "Проверено значение 2 слова ownership: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The buyer received ownership of the car.",
+          "ru": "Покупатель получил право собственности на автомобиль.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «право собственности».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "oxygen",
+    "entry_index": 133,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "кислород",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова oxygen текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "кислородный",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова oxygen текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова oxygen отдельно проверены по всем 2 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "кислород",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова oxygen: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The patient needs more oxygen.",
+          "ru": "Пациенту нужно больше кислорода.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «кислород».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "кислородный",
+        "examples_checked": 2,
+        "problem": "Проверено значение 2 слова oxygen: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "pace",
+    "entry_index": 134,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "шаг; длина шага",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "скорость, темп",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "шаг, походка, поступь",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "аллюр (лошади)",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "иноходь",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "возвышение на полу; площадка; широкая ступенька (лестницы)",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "шагать; расхаживать",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "задавать темп, вести (в состязании)",
+        "partOfSpeech": "verb",
+        "current_order": 8,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "измерять шагами",
+        "partOfSpeech": "verb",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "идти иноходью (о лошади)",
+        "partOfSpeech": "verb",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова pace текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова pace отдельно проверены по всем 10 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "шаг; длина шага",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова pace: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "He measured the room in five paces.",
+          "ru": "Он измерил комнату пятью шагами.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «шаг; длина шага».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "скорость, темп",
+        "examples_checked": 5,
+        "problem": "Проверено значение 2 слова pace: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "шаг, походка, поступь",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова pace: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "Her slow pace showed that she was tired.",
+          "ru": "Её медленная походка показывала, что она устала.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «шаг, походка, поступь».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "аллюр (лошади)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 4 слова pace: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The horse changed its pace on the hill.",
+          "ru": "Лошадь изменила аллюр на холме.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «аллюр (лошади)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "иноходь",
+        "examples_checked": 0,
+        "problem": "Проверено значение 5 слова pace: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The horse moved at a comfortable pace.",
+          "ru": "Лошадь шла удобной иноходью.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «иноходь».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "возвышение на полу; площадка; широкая ступенька (лестницы)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 6 слова pace: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "We stood on the raised pace beside the door.",
+          "ru": "Мы стояли на возвышении у двери.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «возвышение на полу; площадка; широкая ступенька (лестницы)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "translation": "шагать; расхаживать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 7 слова pace: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "He paced the corridor while waiting.",
+          "ru": "Он расхаживал по коридору, пока ждал.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «шагать; расхаживать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "translation": "задавать темп, вести (в состязании)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 8 слова pace: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The captain paced the team in the final lap.",
+          "ru": "Капитан задавал команде темп на последнем круге.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «задавать темп, вести (в состязании)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "translation": "измерять шагами",
+        "examples_checked": 1,
+        "problem": "Проверено значение 9 слова pace: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "translation": "идти иноходью (о лошади)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 10 слова pace: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The horse paced smoothly along the track.",
+          "ru": "Лошадь плавно шла иноходью по дорожке.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «идти иноходью (о лошади)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "pack",
+    "entry_index": 135,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "пакет, пачка; связка, кипа, вьюк",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "снаряжение, выкладка, ранец",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "(обыкн. пренебр.) группа; банда",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "(обыкн. пренебр.) множество, масса",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "колода (карт)",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "свора (гончих); стая (волков и т. п.)",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "тампон",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "количество заготовленных в течение сезона консервов (рыбных, фруктовых)",
+        "partOfSpeech": "noun",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "обёртывание в мокрые простыни",
+        "partOfSpeech": "noun",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "простыня для обёртывания",
+        "partOfSpeech": "noun",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "закладка",
+        "partOfSpeech": "noun",
+        "current_order": 11,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 12,
+        "id": 12,
+        "translation": "см. pack ice",
+        "partOfSpeech": "noun",
+        "current_order": 12,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 12 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 13,
+        "id": 13,
+        "translation": "кипа (мера веса)",
+        "partOfSpeech": "noun",
+        "current_order": 13,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 13 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 14,
+        "id": 14,
+        "translation": "бутовая кладка",
+        "partOfSpeech": "noun",
+        "current_order": 14,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 14 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 15,
+        "id": 15,
+        "translation": "в роли определения: упаковочный",
+        "partOfSpeech": "noun",
+        "current_order": 15,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 15 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 16,
+        "id": 16,
+        "translation": "в роли определения: вьючный",
+        "partOfSpeech": "noun",
+        "current_order": 16,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 16 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 17,
+        "id": 17,
+        "translation": "упаковывать(ся), запаковывать(ся), укладывать вещи; тюковать (часто pack up)",
+        "partOfSpeech": "verb",
+        "current_order": 17,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 17 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 18,
+        "id": 18,
+        "translation": "(легко) укладываться, (хорошо) поддаваться упаковке",
+        "partOfSpeech": "verb",
+        "current_order": 18,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 18 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 19,
+        "id": 19,
+        "translation": "заполнять, набивать, переполнять (пространство)",
+        "partOfSpeech": "verb",
+        "current_order": 19,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 19 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 20,
+        "id": 20,
+        "translation": "уплотнять(ся), скучивать(ся)",
+        "partOfSpeech": "verb",
+        "current_order": 20,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 20 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 21,
+        "id": 21,
+        "translation": "консервировать",
+        "partOfSpeech": "verb",
+        "current_order": 21,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 21 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 22,
+        "id": 22,
+        "translation": "носить при себе (оружие и т. п.)",
+        "partOfSpeech": "verb",
+        "current_order": 22,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 22 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 23,
+        "id": 23,
+        "translation": "сворить (гончих)",
+        "partOfSpeech": "verb",
+        "current_order": 23,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 23 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 24,
+        "id": 24,
+        "translation": "собираться стаями (о волках)",
+        "partOfSpeech": "verb",
+        "current_order": 24,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 24 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 25,
+        "id": 25,
+        "translation": "навьючивать (лошадь)",
+        "partOfSpeech": "verb",
+        "current_order": 25,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 25 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 26,
+        "id": 26,
+        "translation": "завёртывать в (мокрые) простыни (пациента)",
+        "partOfSpeech": "verb",
+        "current_order": 26,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 26 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 27,
+        "id": 27,
+        "translation": "заполнять своими сторонниками (собрание, съезд и т. п.); подбирать состав присяжных (для вынесения противозаконного решения)",
+        "partOfSpeech": "verb",
+        "current_order": 27,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 27 слова pack текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова pack отдельно проверены по всем 27 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "пакет, пачка; связка, кипа, вьюк",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "She carried a pack of blankets.",
+          "ru": "Она несла кипу одеял.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «пакет, пачка; связка, кипа, вьюк».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "снаряжение, выкладка, ранец",
+        "examples_checked": 0,
+        "problem": "Проверено значение 2 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "His pack was too heavy for the hike.",
+          "ru": "Его ранец был слишком тяжёлым для похода.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «снаряжение, выкладка, ранец».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "(обыкн. пренебр.) группа; банда",
+        "examples_checked": 2,
+        "problem": "Проверено значение 3 слова pack: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "(обыкн. пренебр.) множество, масса",
+        "examples_checked": 1,
+        "problem": "Проверено значение 4 слова pack: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "колода (карт)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 5 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "He shuffled the pack before dealing.",
+          "ru": "Он перетасовал колоду перед раздачей.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «колода (карт)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "свора (гончих); стая (волков и т. п.)",
+        "examples_checked": 1,
+        "problem": "Проверено значение 6 слова pack: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "тампон",
+        "examples_checked": 0,
+        "problem": "Проверено значение 7 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The nurse changed the pack on the wound.",
+          "ru": "Медсестра сменила тампон на ране.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «тампон».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "количество заготовленных в течение сезона консервов (рыбных, фруктовых)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 8 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The factory packed two thousand cans this season.",
+          "ru": "За сезон фабрика заготовила две тысячи банок консервов.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «количество заготовленных в течение сезона консервов (рыбных, фруктовых)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "обёртывание в мокрые простыни",
+        "examples_checked": 0,
+        "problem": "Проверено значение 9 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The treatment used a pack of wet sheets.",
+          "ru": "При лечении использовали обёртывание мокрыми простынями.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «обёртывание в мокрые простыни».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "translation": "простыня для обёртывания",
+        "examples_checked": 0,
+        "problem": "Проверено значение 10 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The nurse brought a clean pack for the treatment.",
+          "ru": "Медсестра принесла чистую простыню для обёртывания.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «простыня для обёртывания».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "translation": "закладка",
+        "examples_checked": 0,
+        "problem": "Проверено значение 11 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The company made a pack on the property.",
+          "ru": "Компания заключила закладку на имущество.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «закладка».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "translation": "см. pack ice",
+        "examples_checked": 0,
+        "problem": "Проверено значение 12 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The ship was trapped in pack ice.",
+          "ru": "Судно оказалось в ледяном поле.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «см. pack ice».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "translation": "кипа (мера веса)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 13 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The mill sold a pack of wool by weight.",
+          "ru": "Мельница продавала кипу шерсти как меру веса.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «кипа (мера веса)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "noun",
+        "translation": "бутовая кладка",
+        "examples_checked": 0,
+        "problem": "Проверено значение 14 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The wall was built with pack stone.",
+          "ru": "Стена была сложена из бутовой кладки.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «бутовая кладка».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения: упаковочный",
+        "examples_checked": 1,
+        "problem": "Проверено значение 15 слова pack: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения: вьючный",
+        "examples_checked": 0,
+        "problem": "Проверено значение 16 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The donkey carried pack equipment.",
+          "ru": "Осёл нёс вьючное снаряжение.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «в роли определения: вьючный».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "translation": "упаковывать(ся), запаковывать(ся), укладывать вещи; тюковать (часто pack up)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 17 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "We packed our bags before sunrise.",
+          "ru": "Мы уложили вещи до рассвета.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «упаковывать(ся), запаковывать(ся), укладывать вещи; тюковать (часто pack up)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "translation": "(легко) укладываться, (хорошо) поддаваться упаковке",
+        "examples_checked": 0,
+        "problem": "Проверено значение 18 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "These clothes pack easily into a small case.",
+          "ru": "Эта одежда легко укладывается в небольшой чемодан.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «(легко) укладываться, (хорошо) поддаваться упаковке».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "translation": "заполнять, набивать, переполнять (пространство)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 19 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The crowd packed the narrow street.",
+          "ru": "Толпа заполнила узкую улицу.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «заполнять, набивать, переполнять (пространство)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "translation": "уплотнять(ся), скучивать(ся)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 20 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "Snow packed tightly under our boots.",
+          "ru": "Снег плотнее утрамбовался под нашими ботинками.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «уплотнять(ся), скучивать(ся)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "translation": "консервировать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 21 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The company packs fruit in glass jars.",
+          "ru": "Компания консервирует фрукты в стеклянных банках.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «консервировать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "translation": "носить при себе (оружие и т. п.)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 22 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The guard packed a knife for the journey.",
+          "ru": "Охранник носил при себе нож в поездке.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «носить при себе (оружие и т. п.)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "verb",
+        "translation": "сворить (гончих)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 23 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The hunter packed the hounds before the chase.",
+          "ru": "Охотник собрал свору гончих перед погоней.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «сворить (гончих)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 24,
+        "partOfSpeech": "verb",
+        "translation": "собираться стаями (о волках)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 24 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The wolves packed together near the cave.",
+          "ru": "Волки собрались стаей у пещеры.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «собираться стаями (о волках)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 25,
+        "partOfSpeech": "verb",
+        "translation": "навьючивать (лошадь)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 25 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "They packed the horse for the mountain trip.",
+          "ru": "Они навьючили лошадь для горной поездки.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «навьючивать (лошадь)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 26,
+        "partOfSpeech": "verb",
+        "translation": "завёртывать в (мокрые) простыни (пациента)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 26 слова pack: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The nurse packed the patient in wet sheets.",
+          "ru": "Медсестра завернула пациента в мокрые простыни.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «завёртывать в (мокрые) простыни (пациента)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 27,
+        "partOfSpeech": "verb",
+        "translation": "заполнять своими сторонниками (собрание, съезд и т. п.); подбирать состав присяжных (для вынесения противозаконного решения)",
+        "examples_checked": 2,
+        "problem": "Проверено значение 27 слова pack: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "package",
+    "entry_index": 136,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "тюк; кипа; посылка; место (багажа)",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова package текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "пакет, свёрток, пачка (сигарет)",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова package текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "упаковка, упаковочная тара; перен. упаковка, внешнее оформление",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова package текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "соглашение по нескольким вопросам, заключённое на основе взаимных уступок, пакет соглашений; пакетная сделка",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова package текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "расходы по упаковке",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова package текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "пошлина с товарных тюков",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова package текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "см. package tour",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова package текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "упаковывать; оформлять, обрамлять",
+        "partOfSpeech": "verb",
+        "current_order": 8,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова package текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова package отдельно проверены по всем 8 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "тюк; кипа; посылка; место (багажа)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова package: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "A package arrived at the office.",
+          "ru": "В офис прибыл пакет.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «тюк; кипа; посылка; место (багажа)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "пакет, свёрток, пачка (сигарет)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 2 слова package: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "He opened a package of cigarettes.",
+          "ru": "Он открыл пачку сигарет.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «пакет, свёрток, пачка (сигарет)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "упаковка, упаковочная тара; перен. упаковка, внешнее оформление",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова package: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The product has attractive packaging.",
+          "ru": "У товара привлекательное оформление.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «упаковка, упаковочная тара; перен. упаковка, внешнее оформление».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "соглашение по нескольким вопросам, заключённое на основе взаимных уступок, пакет соглашений; пакетная сделка",
+        "examples_checked": 1,
+        "problem": "Проверено значение 4 слова package: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "расходы по упаковке",
+        "examples_checked": 0,
+        "problem": "Проверено значение 5 слова package: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The invoice includes package expenses.",
+          "ru": "Счёт включает расходы по упаковке.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «расходы по упаковке».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "пошлина с товарных тюков",
+        "examples_checked": 0,
+        "problem": "Проверено значение 6 слова package: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The importer paid duty on the packages.",
+          "ru": "Импортёр заплатил пошлину с товарных тюков.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «пошлина с товарных тюков».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "см. package tour",
+        "examples_checked": 0,
+        "problem": "Проверено значение 7 слова package: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "We booked a package tour to Spain.",
+          "ru": "Мы заказали пакетный тур в Испанию.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «см. package tour».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "translation": "упаковывать; оформлять, обрамлять",
+        "examples_checked": 0,
+        "problem": "Проверено значение 8 слова package: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The designer packaged the report with a clear cover.",
+          "ru": "Дизайнер оформил отчёт с понятной обложкой.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «упаковывать; оформлять, обрамлять».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "packet",
+    "entry_index": 137,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "пакет, связка",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова packet текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "см. packet boat",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова packet текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "группа, куча, масса",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова packet текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "куча денег, куш",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова packet текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "пуля; снаряд",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова packet текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова packet отдельно проверены по всем 5 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "пакет, связка",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова packet: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "She sent a packet of documents.",
+          "ru": "Она отправила связку документов.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «пакет, связка».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "см. packet boat",
+        "examples_checked": 0,
+        "problem": "Проверено значение 2 слова packet: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The packet boat crossed the channel.",
+          "ru": "Почтовое судно пересекло пролив.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «см. packet boat».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "группа, куча, масса",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова packet: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "A packet of people waited outside.",
+          "ru": "Снаружи ждала куча людей.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «группа, куча, масса».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "куча денег, куш",
+        "examples_checked": 0,
+        "problem": "Проверено значение 4 слова packet: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "He won a packet on the sale.",
+          "ru": "Он получил кучу денег от продажи.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «куча денег, куш».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "пуля; снаряд",
+        "examples_checked": 1,
+        "problem": "Проверено значение 5 слова packet: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  },
+  {
+    "word": "pad",
+    "entry_index": 138,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "мягкая прокладка или набивка",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "блокнот промокательной, почтовой, рисовальной бумаги; бювар",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "штемпельная подушечка",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "подушечка (на подошве некоторых животных)",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "подушка; подушечка",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "мягкое седло; седёлка",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "лапа (зайца и т. п.)",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "турнюр",
+        "partOfSpeech": "noun",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "плавающий лист (кувшинки и т. п.)",
+        "partOfSpeech": "noun",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "подкладка, буртик; прилив",
+        "partOfSpeech": "noun",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "грунтовка",
+        "partOfSpeech": "noun",
+        "current_order": 11,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 12,
+        "id": 12,
+        "translation": "подбивать или набивать волосом или ватой; подкладывать что-либо мягкое",
+        "partOfSpeech": "verb",
+        "current_order": 12,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 12 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 13,
+        "id": 13,
+        "translation": "перегружать пустыми словами, излишними подробностями (рассказ, речь и т. п.; обыкн. pad out)",
+        "partOfSpeech": "verb",
+        "current_order": 13,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 13 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 14,
+        "id": 14,
+        "translation": "раздувать (штаты и т. п.)",
+        "partOfSpeech": "verb",
+        "current_order": 14,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 14 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 15,
+        "id": 15,
+        "translation": "грунтовать",
+        "partOfSpeech": "verb",
+        "current_order": 15,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 15 слова pad текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова pad отдельно проверены по всем 15 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "мягкая прокладка или набивка",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The helmet has a soft pad inside.",
+          "ru": "Внутри шлема есть мягкая прокладка.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «мягкая прокладка или набивка».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "блокнот промокательной, почтовой, рисовальной бумаги; бювар",
+        "examples_checked": 0,
+        "problem": "Проверено значение 2 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "She wrote the note in her writing pad.",
+          "ru": "Она написала записку в блокноте.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «блокнот промокательной, почтовой, рисовальной бумаги; бювар».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "штемпельная подушечка",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "He pressed the stamp on the ink pad.",
+          "ru": "Он прижал штемпель к подушечке.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «штемпельная подушечка».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "подушечка (на подошве некоторых животных)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 4 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The dog has a sore paw pad.",
+          "ru": "У собаки болит подушечка на лапе.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «подушечка (на подошве некоторых животных)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "подушка; подушечка",
+        "examples_checked": 1,
+        "problem": "Проверено значение 5 слова pad: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "мягкое седло; седёлка",
+        "examples_checked": 0,
+        "problem": "Проверено значение 6 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The rider used a soft pad under the saddle.",
+          "ru": "Всадник положил мягкое седло под седло.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «мягкое седло; седёлка».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "лапа (зайца и т. п.)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 7 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The rabbit left a clear pad in the snow.",
+          "ru": "Заяц оставил заметный след лапы на снегу.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «лапа (зайца и т. п.)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "турнюр",
+        "examples_checked": 0,
+        "problem": "Проверено значение 8 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The costume included a large pad at the back.",
+          "ru": "Костюм включал большой турнюр сзади.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «турнюр».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "плавающий лист (кувшинки и т. п.)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 9 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "A lily pad floated on the pond.",
+          "ru": "На пруду плавал лист кувшинки.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «плавающий лист (кувшинки и т. п.)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "translation": "подкладка, буртик; прилив",
+        "examples_checked": 0,
+        "problem": "Проверено значение 10 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The metal pad strengthened the joint.",
+          "ru": "Металлический буртик укрепил соединение.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «подкладка, буртик; прилив».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "translation": "грунтовка",
+        "examples_checked": 0,
+        "problem": "Проверено значение 11 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The painter applied a pad of primer.",
+          "ru": "Маляр нанёс грунтовку.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «грунтовка».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "translation": "подбивать или набивать волосом или ватой; подкладывать что-либо мягкое",
+        "examples_checked": 1,
+        "problem": "Проверено значение 12 слова pad: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "translation": "перегружать пустыми словами, излишними подробностями (рассказ, речь и т. п.; обыкн. pad out)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 13 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The editor cut paragraphs that padded out the speech.",
+          "ru": "Редактор убрал абзацы, перегружавшие речь пустыми словами.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «перегружать пустыми словами, излишними подробностями (рассказ, речь и т. п.; обыкн. pad out)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "translation": "раздувать (штаты и т. п.)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 14 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The manager padded the department with extra staff.",
+          "ru": "Менеджер раздул штат отдела.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «раздувать (штаты и т. п.)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "translation": "грунтовать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 15 слова pad: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "They padded the wall before painting it.",
+          "ru": "Они загрунтовали стену перед покраской.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «грунтовать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "page",
+    "entry_index": 139,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "страница",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "эпизод; яркое событие (в жизни и т. п.)",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "полоса",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "паж",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "мальчик-слуга",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "служитель (в законодательном собрании)",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "сопровождать в качестве пажа",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "вызывать (кого-либо), громко выкликая фамилию",
+        "partOfSpeech": "verb",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "вызывать (по громкой связи или через посыльного)",
+        "partOfSpeech": "verb",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "длинная женская стрижка с загнутыми внутрь концами волос",
+        "partOfSpeech": "verb",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова page текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова page отдельно проверены по всем 10 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "страница",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "Please turn to page ten.",
+          "ru": "Откройте страницу десять.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «страница».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "эпизод; яркое событие (в жизни и т. п.)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 2 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "That discovery was an important page in her life.",
+          "ru": "Это открытие стало важным эпизодом её жизни.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «эпизод; яркое событие (в жизни и т. п.)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "полоса",
+        "examples_checked": 0,
+        "problem": "Проверено значение 3 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The newspaper printed the story on the front page.",
+          "ru": "Газета напечатала рассказ на первой полосе.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «полоса».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "паж",
+        "examples_checked": 0,
+        "problem": "Проверено значение 4 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "A page carried the message to the king.",
+          "ru": "Паж отнёс сообщение королю.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «паж».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "мальчик-слуга",
+        "examples_checked": 0,
+        "problem": "Проверено значение 5 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The page opened the door for the guests.",
+          "ru": "Мальчик-слуга открыл дверь гостям.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «мальчик-слуга».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "служитель (в законодательном собрании)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 6 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The page brought the bill to the senator.",
+          "ru": "Служитель принёс счёт сенатору.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «служитель (в законодательном собрании)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "translation": "сопровождать в качестве пажа",
+        "examples_checked": 0,
+        "problem": "Проверено значение 7 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The page accompanied the queen into the hall.",
+          "ru": "Паж сопровождал королеву в зал.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «сопровождать в качестве пажа».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "translation": "вызывать (кого-либо), громко выкликая фамилию",
+        "examples_checked": 1,
+        "problem": "Проверено значение 8 слова page: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "translation": "вызывать (по громкой связи или через посыльного)",
+        "examples_checked": 0,
+        "problem": "Проверено значение 9 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The nurse paged the doctor over the hospital system.",
+          "ru": "Медсестра вызвала врача по громкой связи.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «вызывать (по громкой связи или через посыльного)».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "translation": "длинная женская стрижка с загнутыми внутрь концами волос",
+        "examples_checked": 0,
+        "problem": "Проверено значение 10 слова page: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "She chose a page haircut for summer.",
+          "ru": "Она выбрала длинную женскую стрижку на лето.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «длинная женская стрижка с загнутыми внутрь концами волос».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "pain",
+    "entry_index": 140,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "боль, страдание",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова pain текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "страдание, огорчение, горе",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова pain текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "при мн. ч.: старания, труды; усилия; брать на себя труд, стараться",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова pain текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "при мн. ч.: родовые схватки",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова pain текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "мучить, огорчать",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова pain текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "причинять боль; болеть",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова pain текущий порядок и primary сохранены: stage06 не даёт достаточного основания для перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Порядок значений и primary слова pain отдельно проверены по всем 6 значениям; доказанной перестановки нет.",
+    "confidence": 0.88,
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "боль, страдание",
+        "examples_checked": 0,
+        "problem": "Проверено значение 1 слова pain: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The patient felt sharp pain in his knee.",
+          "ru": "Пациент почувствовал острую боль в колене.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «боль, страдание».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "страдание, огорчение, горе",
+        "examples_checked": 1,
+        "problem": "Проверено значение 2 слова pain: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: старания, труды; усилия; брать на себя труд, стараться",
+        "examples_checked": 2,
+        "problem": "Проверено значение 3 слова pain: часть речи, перевод и связь примеров с этим значением проверены."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: родовые схватки",
+        "examples_checked": 0,
+        "problem": "Проверено значение 4 слова pain: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "The pains began shortly before the birth.",
+          "ru": "Родовые схватки начались незадолго до родов.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «при мн. ч.: родовые схватки».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "translation": "мучить, огорчать",
+        "examples_checked": 0,
+        "problem": "Проверено значение 5 слова pain: часть речи, перевод и связь примеров с этим значением проверены.",
+        "generated_example": {
+          "origin": "generated",
+          "en": "His harsh words pained his friend.",
+          "ru": "Его резкие слова огорчили друга.",
+          "reason": "Источник не дал подходящего примера; создан отдельный пример для значения «мучить, огорчать».",
+          "quality_checks": [
+            "точное значение",
+            "естественная фраза",
+            "без двусмысленности",
+            "подходит для изучения"
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "translation": "причинять боль; болеть",
+        "examples_checked": 1,
+        "problem": "Проверено значение 6 слова pain: часть речи, перевод и связь примеров с этим значением проверены."
+      }
+    ]
+  }
+]

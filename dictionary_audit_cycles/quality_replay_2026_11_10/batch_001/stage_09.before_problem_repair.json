@@ -1,0 +1,3421 @@
+[
+  {
+    "word": "number",
+    "decision": "review_required",
+    "reason": "В начало вынести 2 и 4, среди глаголов — 14. Эти три значения сделать primary. Просодические 10–11 требуют проверки современного употребления.",
+    "confidence": 0.97,
+    "source_evidence_ref": "#/previous_outputs/06/0",
+    "previous_review_refs": [
+      "#/previous_outputs/07/0",
+      "#/previous_outputs/08/0"
+    ],
+    "doubts": [
+      "SHA-256 локального пакета f6015563fb6ba319432316cec74c167322d2175905539828f426d3b93d3d99e1 отличается от заявленного. Для всей партии прежние доказательства сохранены по ссылкам, новые результаты относятся к доступному локальному кэшу. Отсутствие совпадения относится к выполненному запросу и извлечённому тексту."
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "сумма, число, цифра",
+        "examples_checked": 1,
+        "problem": "Science of numbers называет область изучения чисел и передано как «арифметика». Для «сумма» или «цифра» этот пример недостаточен."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "число, количество",
+        "examples_checked": 3,
+        "problem": "A number of вводит неопределённое количество, in number описывает численность. Out of (or without) number выражает неисчислимость и требует отдельной регистровой проверки."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: большое количество; многочисленность",
+        "examples_checked": 1,
+        "problem": "Numbers of people допускает «много народу». Множественное число видно в numbers. Британскую помету снять по 07."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "номер",
+        "examples_checked": 2,
+        "problem": "Motor car’s number передаёт номер автомобиля, но для учебного употребления нужна современная региональная формулировка. Call number — библиотечный шифр экземпляра или единицы хранения."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "номер (программы)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The dancers are rehearsing the opening number.",
+          "ru": "Танцоры репетируют первый номер программы.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "number",
+          "target_form": "number",
+          "unit_type": "word",
+          "reason": "Репетиция делает сценическое значение однозначным.",
+          "sense_explanation": "Opening number — отдельный танцевальный номер в начале программы.",
+          "translation_explanation": "Первый номер программы передаёт opening number, «репетируют» сохраняет текущее действие.",
+          "contrast": "Объект репетиции — выступление, а не порядковая метка.",
+          "usage_status": "current",
+          "contemporary_explanation": "Opening number — обычное название вступительного выступления в сценической программе.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "opening number",
+              "result": "Нет совпадений."
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "номер (программы)",
+              "result": "Только толкование.",
+              "location": {
+                "page": 544
+              },
+              "quote": "5) номер (программы)"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "выпуск, номер, экземпляр (журнала и т. п.)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The latest number of the magazine has a new cover design.",
+          "ru": "У последнего номера журнала новый дизайн обложки.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "number",
+          "target_form": "number",
+          "unit_type": "word",
+          "reason": "Показывает отдельный выпуск периодического издания.",
+          "sense_explanation": "Latest number of the magazine обозначает последний выпущенный номер.",
+          "translation_explanation": "Новый дизайн относится к обложке именно последнего номера.",
+          "contrast": "Это выпуск, а не цифра на обложке.",
+          "usage_status": "current",
+          "contemporary_explanation": "Number of the magazine сохраняется в редакционной речи, хотя issue более обычно.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "latest number",
+              "result": "Нет совпадений. Back number в статье обозначает старый выпуск."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "группа, компания",
+        "examples_checked": 1,
+        "problem": "Among our number обозначает принадлежность к группе. «В числе наших» ближе к конструкции, чем «из нашей среды» без контекста."
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "число",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "In this exercise, mark the number of each noun as singular or plural.",
+          "ru": "В этом упражнении укажите число каждого существительного — единственное или множественное.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "number",
+          "target_form": "number",
+          "unit_type": "word",
+          "reason": "Два варианта ответа раскрывают термин в самом предложении.",
+          "sense_explanation": "Singular и plural называют значения грамматической категории number.",
+          "translation_explanation": "«Укажите» передаёт mark, оба варианта сохранены.",
+          "contrast": "Требуется грамматическая характеристика, а не подсчёт существительных.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Number продолжает обозначать грамматическую категорию в описании морфологии.",
+          "contemporary_sources": [
+            {
+              "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/8E7069C5730FD35A380B5B86392F0293/S0305000901004767a.pdf/div-class-title-learning-a-morphological-system-without-a-default-the-polish-genitive-div.pdf",
+              "quote": "Polish nominal inflections conflate two grammatical categories: case and number.",
+              "context": "Лингвистическое исследование, где number противопоставлено case."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "грам. число",
+              "result": "Термин без примера.",
+              "location": {
+                "page": 544
+              },
+              "quote": "8) грам. число"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "что-либо заметное, бросающееся в глаза",
+        "examples_checked": 1,
+        "problem": "«Очаровательная девчушка» требует одушевлённой трактовки из 07. Вне контекста attractive little number может описывать и вещь, а о человеке звучит фамильярно."
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "translation": "ритм, размер",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Печатное толкование на с. 545 подтверждено. Современная конструкция с самостоятельным number в значении стихотворного размера не подтверждена. Вынести на проверку исторического регистра.",
+        "rejected_attempts": [
+          {
+            "en": "The poem has a steady number.",
+            "ru": "У стихотворения ровный ритм.",
+            "problem": "Современный читатель не распознает стихотворный ритм по steady number."
+          },
+          {
+            "en": "The poet changes the number in the last line.",
+            "ru": "В последней строке поэт меняет размер.",
+            "problem": "Number читается как числовая величина или номер."
+          }
+        ]
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: стихи",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 545 фиксирует просодическое множественное. Поиски poetic numbers, in smooth numbers и lively numbers по восьми кэшам совпадений не дали. Требуется проверка исторического употребления.",
+        "rejected_attempts": [
+          {
+            "en": "She read her latest numbers aloud.",
+            "ru": "Она прочитала вслух свои последние стихи.",
+            "problem": "Вероятнее прочтение «цифры» или «номера»."
+          },
+          {
+            "en": "He wrote a few numbers for the occasion.",
+            "ru": "Он написал к случаю несколько стихотворений.",
+            "problem": "Понимается как музыкальные номера."
+          }
+        ]
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "translation": "причислять, зачислять",
+        "examples_checked": 1,
+        "problem": "Пассив be numbered with означает «быть причисленным к». «Зачислять» в административном смысле этот фрагмент не показывает."
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "translation": "числиться, быть в числе (among, in)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "She is numbered among the finalists.",
+          "ru": "Она входит в число финалистов.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "number",
+          "target_form": "numbered",
+          "unit_type": "word",
+          "reason": "Статус финалиста раскрывает принадлежность к определённому кругу.",
+          "sense_explanation": "Пассив is numbered among описывает текущее место в группе.",
+          "translation_explanation": "«Входит в число» сохраняет состояние и не вводит действующее лицо.",
+          "contrast": "Здесь не описано присвоение номера или подсчёт финалистов.",
+          "usage_status": "current",
+          "contemporary_explanation": "Numbered among употребляется в формальных перечнях и описаниях принадлежности.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "numbered among",
+              "result": "Подтверждает модель, но русский перевод исходной цитаты передаёт предположение о гибели.",
+              "location": {
+                "page": 25
+              },
+              "quote": "he was numbered among the dead его считали погибшим"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "translation": "нумеровать",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Please number the pages before you print the report.",
+          "ru": "Пожалуйста, пронумеруйте страницы, прежде чем печатать отчёт.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "number",
+          "target_form": "number",
+          "unit_type": "word",
+          "reason": "Страницы — знакомый объект нумерации.",
+          "sense_explanation": "Number the pages требует присвоить страницам порядковые номера.",
+          "translation_explanation": "Перевод сохраняет просьбу и порядок действий.",
+          "contrast": "Просьба касается оформления каждой страницы, а не подсчёта страниц.",
+          "usage_status": "current",
+          "contemporary_explanation": "Так формулируют обычную инструкцию по оформлению документа.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "number the pages",
+              "result": "Нет совпадений."
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "~ the pages",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "translation": "насчитывать",
+        "examples_checked": 1,
+        "problem": "Population numbers 5000 сообщает численность. «Человек» естественно раскрывает единицу счёта в русском."
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "translation": "считать, пересчитывать",
+        "examples_checked": 1,
+        "problem": "His days are numbered — идиома о скором конце. Перевод точен для идиомы, учебный пример обычного счёта отсутствует."
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "translation": "рассчитываться",
+        "examples_checked": 1,
+        "problem": "Number off — расчёт по порядку. «Перекличка» может ошибочно предполагать, что номера вызывает командир."
+      }
+    ],
+    "phrase_review": "In (great) numbers функционирует как обстоятельство, а «значительными силами» требует контекста. У back number обычное учебное прочтение — старый выпуск. Переносные прочтения сохранить отдельно с проверкой регистра."
+  },
+  {
+    "word": "city",
+    "decision": "изменить",
+    "reason": "Оставить 1 и 3 основными в этом порядке. Лондонские 2 и 4 вторичны. В 1 дать общий перевод, в 2 и 4 раскрыть сокращения.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/1",
+    "previous_review_refs": [
+      "#/previous_outputs/07/1",
+      "#/previous_outputs/08/1"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "большой, старинный город (в Англии); всякий более или менее значительный город с местным самоуправлением (в США)",
+        "examples_checked": 0,
+        "candidate_example": {
+          "en": "attractions of a big city",
+          "ru": "соблазны большого города",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "city",
+          "target_form": "city",
+          "unit_type": "word",
+          "sense_after": {
+            "id": 1,
+            "partOfSpeech": "noun",
+            "translation": "город, обычно крупный; в Англии также старинный город с официальным статусом city, в США — город с местным самоуправлением",
+            "examples": [],
+            "register": [],
+            "primary": true
+          },
+          "sense_explanation": "Big city обозначает город как населённый пункт. Размер явно задаётся big.",
+          "translation_explanation": "В контексте статьи attractions прочитано как соблазны, то есть привлекательные стороны жизни в большом городе.",
+          "contrast": "Не требуется финансовый или лондонский референт.",
+          "usage_status": "current",
+          "contemporary_explanation": "Big city остаётся обычной моделью в рассказах о городской жизни.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "big city",
+              "result": "Подходит в статье attraction.",
+              "location": {
+                "page": 36
+              },
+              "quote": "attractions of a big city соблазны большого города"
+            }
+          ]
+        },
+        "problem": "Первичный перевод «город» нужен без обязательной древности или местного самоуправления. Юридическое уточнение 07 о статусе следует читать как дополнительное, без ограничения старинными городами."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "финансовые и коммерческие круги Лондона",
+        "examples_checked": 1,
+        "problem": "The C. раскрыть как the City. Русский пример описывает место, а текущее толкование — финансовые круги. Сохранить оба референта."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "городской, муниципальный",
+        "examples_checked": 4,
+        "problem": "City council — совет, city hall — здание администрации в данном прочтении, city planning — городское планирование, city water — вода из городской сети. Английское city в каждом сочетании остаётся существительным-определением."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "(C.) attr.: С. man финансист, коммерсант, делец",
+        "examples_checked": 2,
+        "problem": "Раскрыть City article и City editor. Финансовое прочтение editor и американский редактор местных новостей требуют отдельных переводов и раздельной капитализации по контексту."
+      }
+    ],
+    "phrase_review": "City man относится к лондонскому Сити. «Крупный» цитатой 06 не подтверждён. Приоритет ниже общеучебных сочетаний."
+  },
+  {
+    "word": "lot",
+    "decision": "review_required",
+    "reason": "Сделать основными 1 и 13, затем показать 4. Глагольные 9–12 и налоговое 7 требуют проверки узких употреблений. Сохранить раздельно участок, аукционный лот и партию товара.",
+    "confidence": 0.96,
+    "source_evidence_ref": "#/previous_outputs/06/2",
+    "previous_review_refs": [
+      "#/previous_outputs/07/2",
+      "#/previous_outputs/08/2"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "много, масса; многие",
+        "examples_checked": 2,
+        "problem": "A lot of и lots of обозначают большое количество. Lots and lots of — явное усиление, которое оправдывает «громадное количество»."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "лот, вещь, продаваемая на аукционе или несколько предметов, продаваемых одновременно",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The first lot at the auction was a set of cups.",
+          "ru": "Первым лотом на аукционе был набор чашек.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "lot",
+          "target_form": "lot",
+          "unit_type": "word",
+          "reason": "Набор показывает, что лот может объединять предметы.",
+          "sense_explanation": "At the auction и first lot задают единицу аукционной продажи.",
+          "translation_explanation": "Сохранены порядок лота и его содержимое.",
+          "contrast": "Порядок аукциона исключает прочтение «партия поставки».",
+          "usage_status": "current",
+          "contemporary_explanation": "Lot — обычное слово в современных аукционных каталогах.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "auction lot",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "жребий; участь, доля, судьба",
+        "examples_checked": 3,
+        "problem": "Cast/draw lots — бросать/тянуть жребий. Settle by lot — решить жеребьёвкой. Lot with оборвано: восстановить cast in one’s lot with somebody и отдельно the lot fell upon me, как в 06."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "участок земли; партия (товаров), лот",
+        "examples_checked": 2,
+        "problem": "Across lots — идти напрямую через участки. Parking lot — стоянка. Оба согласуются с земельным значением 07, товарная партия относится к 5."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "партия (изделий)",
+        "examples_checked": 1,
+        "problem": "Three different lots — три отдельные партии в поставке учебников. Русский перевод сохраняет число партий и действие отправки."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "группа, кучка (людей); компания",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "You’re a noisy lot!",
+          "ru": "Ну и шумная вы компания!",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "lot",
+          "target_form": "lot",
+          "unit_type": "word",
+          "reason": "Прямое обращение делает группу людей явным референтом.",
+          "sense_explanation": "A noisy lot — именная характеристика собеседников как группы.",
+          "translation_explanation": "Восклицание и «шумная компания» сохраняют разговорную оценку.",
+          "contrast": "Говорящий характеризует группу, не оценивает её численность.",
+          "usage_status": "current",
+          "contemporary_explanation": "A noisy lot — живое британское разговорное сочетание.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "noisy lot",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "налог, пошлина",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Точное толкование есть на с. 480 нового Мюллера. Совпадение на с. 146 SamPoln относится к duty. Современный налоговый контекст с lot не подтверждён.",
+        "rejected_attempts": [
+          {
+            "en": "The town collected a lot from each household.",
+            "ru": "Город взимал пошлину с каждого домохозяйства.",
+            "problem": "A lot читается как «много», название налога не распознаётся."
+          },
+          {
+            "en": "They had to pay the lot before trading.",
+            "ru": "Перед началом торговли им пришлось уплатить пошлину.",
+            "problem": "Pay the lot означает уплатить всё, название сбора отсутствует."
+          }
+        ]
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "территория при киностудии",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The crew built the set on the studio lot.",
+          "ru": "Съёмочная группа построила декорации на территории киностудии.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "lot",
+          "target_form": "lot",
+          "unit_type": "word",
+          "reason": "Съёмочная группа и декорации задают отраслевой референт.",
+          "sense_explanation": "Studio lot — территория киностудии, на которой разместили декорации.",
+          "translation_explanation": "Built the set означает построили декорации, место действия сохранено.",
+          "contrast": "Это территория киностудии как производственная площадка, а не участок на продажу.",
+          "usage_status": "current",
+          "contemporary_explanation": "Studio lot — обычное название территории студии в современной речи о съёмках.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "studio lot",
+              "result": "Нет совпадений. Статья на с. 480 даёт толкование без примера."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "translation": "делить, дробить на участки, части (часто lot out)",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Поиск lotted out по всем кэшам не дал совпадений. Для современного глагола о межевании нужен отраслевой контекст с тем же значением.",
+        "rejected_attempts": [
+          {
+            "en": "They lotted out the land into plots.",
+            "ru": "Они разделили землю на участки.",
+            "problem": "Именно современная конструкция lot out … into не подтверждена."
+          },
+          {
+            "en": "They lotted the farm for sale.",
+            "ru": "Они разделили ферму на участки для продажи.",
+            "problem": "В контексте продажи возможна разбивка на аукционные лоты."
+          }
+        ]
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "translation": "бросать жребий",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 480 помечает самостоятельный глагол как редкий. Draw lots на с. 1290 большого Мюллера подтверждает именную конструкцию, а не этот глагол.",
+        "rejected_attempts": [
+          {
+            "en": "They lotted to decide who went first.",
+            "ru": "Они бросили жребий, чтобы решить, кто пойдёт первым.",
+            "problem": "Современное непереходное lotted в этой модели не подтверждено."
+          },
+          {
+            "en": "The two teams lotted for the first turn.",
+            "ru": "Команды бросили жребий за право первого хода.",
+            "problem": "Lot for не подтверждено в современной речи об играх."
+          }
+        ]
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "translation": "сортировать; разбивать на партии (для аукционной продажи)",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 480 даёт глагольное толкование. Lotted the в кэше отсутствует, совпадения lotting включают производные от allot и plot. В открытой выдаче не подтверждена переходная конструкция для готового учебного примера.",
+        "rejected_attempts": [
+          {
+            "en": "The auctioneer lotted the furniture before the sale.",
+            "ru": "Аукционист разбил мебель на лоты перед продажей.",
+            "problem": "Требуется современное подтверждение переходного lotted."
+          },
+          {
+            "en": "We’ll lot the dishes in sets of six.",
+            "ru": "Мы разобьём посуду на партии по шесть предметов.",
+            "problem": "Без аукциона смысл смещается к обычной упаковке."
+          }
+        ]
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "translation": "рассчитывать (on, upon — на что-либо)",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "При lot on совпадения кэша не подтвердили современную глагольную конструкцию, lot upon не найдено. Сохранить толкование до проверки датировки.",
+        "rejected_attempts": [
+          {
+            "en": "I was lotting on your help.",
+            "ru": "Я рассчитывал на твою помощь.",
+            "problem": "Не подтверждён современный американский контекст."
+          },
+          {
+            "en": "Don’t lot upon an early reply.",
+            "ru": "Не рассчитывай на скорый ответ.",
+            "problem": "Современная продуктивность оборота с upon не установлена."
+          }
+        ]
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "adverb",
+        "translation": "гораздо, намного",
+        "examples_checked": 0,
+        "candidate_example": {
+          "en": "a lot better",
+          "ru": "гораздо лучше",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "lot",
+          "target_form": "lot",
+          "unit_type": "word",
+          "sense_after": {
+            "partOfSpeech": "adverb",
+            "translation": "гораздо, намного (в сочетании a lot)",
+            "examples": [],
+            "register": [],
+            "id": 13,
+            "primary": true
+          },
+          "sense_explanation": "A lot усиливает сравнительное better.",
+          "translation_explanation": "«Гораздо» передаёт степень сравнения без добавочного оттенка.",
+          "contrast": "Усилитель относится к better, а не к числу предметов.",
+          "usage_status": "current",
+          "contemporary_explanation": "A lot перед сравнительной степенью — обычная современная модель.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "a ~ better",
+              "result": "Тильда раскрыта как lot. Выбран первый из двух параллельных вариантов.",
+              "location": {
+                "page": 480
+              },
+              "quote": "a ~ better (more) гораздо лучше (больше)"
+            }
+          ]
+        }
+      }
+    ],
+    "phrase_review": "A bad lot может обозначать неприятного или дурного человека. Не смешивать с bad lot как партией некачественного товара."
+  },
+  {
+    "word": "name",
+    "decision": "изменить",
+    "reason": "Первые значения — 1, 4, 9 и 10, все primary. Восстановить границы склеенных примеров и отделить грамматическое и парламентское употребления.",
+    "confidence": 0.97,
+    "source_evidence_ref": "#/previous_outputs/06/3",
+    "previous_review_refs": [
+      "#/previous_outputs/07/3",
+      "#/previous_outputs/08/3"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "имя; фамилия",
+        "examples_checked": 8,
+        "problem": "By name — «по имени», in name only — «только номинально», in the name of common sense — «во имя здравого смысла», in the name of the law — «именем закона», in one’s own name — «от своего имени». Name down восстановить как put one’s name down for и отделить without a name. Christian/given/first name — личное имя. Family name/surname и know by name вынести из того же русского поля. By/of/under the name of требуют отдельных контекстов для «по имени» и «под именем»."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "фамилия, род, семья",
+        "examples_checked": 1,
+        "problem": "The last of his name относится к роду. На с. 526 нового Мюллера «2) фамилия, род; the last of his ~ последний из рода» без фамильярной пометы. Оборот стилистически отмечен, primary снять."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "(обыкн. при мн. ч.:) брань",
+        "examples_checked": 1,
+        "problem": "Call someone names — «обзывать кого-либо». «Ругаться» теряет направленность оскорбления. Региональную помету снять по 07."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "название, наименование, обозначение",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "What’s the name of the film?",
+          "ru": "Как называется фильм?",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "name",
+          "target_form": "name",
+          "unit_type": "word",
+          "reason": "Простой вопрос показывает название произведения.",
+          "sense_explanation": "The name of the film — название фильма, name служит существительным.",
+          "translation_explanation": "Русский вопрос естественно передаёт ту же просьбу назвать фильм.",
+          "contrast": "Речь о названии произведения, без личного имени или фамилии.",
+          "usage_status": "current",
+          "contemporary_explanation": "What’s the name of …? — обычная современная вопросительная модель.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "name of the film",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "(выдающийся) человек; личность",
+        "examples_checked": 1,
+        "problem": "Great names of history — «выдающиеся личности в истории». Текущий перевод опускает оценочное great."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "репутация",
+        "examples_checked": 4,
+        "problem": "He has name for honesty и people of name слабы как современные образцы. Bad name передаёт дурную репутацию, а make/win a good name — приобретение хорошей репутации. В нейтральном курсе предпочтительна форма bad name без ill."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "пустой звук",
+        "examples_checked": 2,
+        "problem": "Дружба «только по названию» сохраняет контраст между названием и действительностью. Virtuous in name — «добродетельный лишь номинально». «Лицемер» добавляет характеристику поведения."
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "имя существительное",
+        "examples_checked": 1,
+        "problem": "Common name вне исторического грамматического контекста означает общеупотребительное название. Современный учебный термин для имени нарицательного — common noun. Снять primary, проверить историческую помету."
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "translation": "называть, давать имя",
+        "examples_checked": 1,
+        "problem": "Name after и американское name for показывают именование в честь кого-либо. Ограничить американскую помету второй конструкцией."
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "translation": "называть, обращаться по имени; перечислять поимённо",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Can you name the winners?",
+          "ru": "Можешь назвать победителей поимённо?",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "name",
+          "target_form": "name",
+          "unit_type": "word",
+          "reason": "Множественное winners даёт естественный контекст для перечисления имён.",
+          "sense_explanation": "Name the winners означает сообщить имена победителей.",
+          "translation_explanation": "«Поимённо» раскрывает требуемый способ назвать людей, вопросительная форма сохранена.",
+          "contrast": "Победители уже определены, им не дают новые имена и не назначают их.",
+          "usage_status": "current",
+          "contemporary_explanation": "Name + обозначение людей — обычная модель запроса об их личности.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "name the winners",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "translation": "указывать, назначать",
+        "examples_checked": 1,
+        "problem": "Name the day задаёт дату. Уточнение о свадьбе уместно как типичный контекст оборота. Снять primary."
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "translation": "упоминать; приводить в качестве примера",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Can you name three reasons to stay?",
+          "ru": "Можешь привести три причины остаться?",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "name",
+          "target_form": "name",
+          "unit_type": "word",
+          "reason": "Пример отделяет приведение причин от называния людей по имени.",
+          "sense_explanation": "Name three reasons — перечислить три довода.",
+          "translation_explanation": "«Привести» точно передаёт просьбу сформулировать причины.",
+          "contrast": "Причины перечисляют, им не дают имён.",
+          "usage_status": "current",
+          "contemporary_explanation": "Name three … естественно в вопросах, где просят перечислить примеры.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "name three",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "translation": "назначать (на должность)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The board named her as the new director.",
+          "ru": "Совет назначил её новым директором.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "name",
+          "target_form": "named",
+          "unit_type": "word",
+          "reason": "Совет и новая должность задают контекст назначения.",
+          "sense_explanation": "Named her as the new director сообщает решение органа о должности.",
+          "translation_explanation": "«Назначил» передаёт действие совета, «новым директором» сохраняет должность.",
+          "contrast": "Назначение касается должности, а не имени человека.",
+          "usage_status": "current",
+          "contemporary_explanation": "Name someone as director — обычная модель объявления кадрового решения.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "named her as",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "translation": "призывать к порядку",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The Speaker named the member for disorderly conduct.",
+          "ru": "Спикер официально призвал депутата к порядку за нарушение регламента.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "name",
+          "target_form": "named",
+          "unit_type": "word",
+          "reason": "Представляет действие спикера как парламентскую процедуру.",
+          "sense_explanation": "Named с объектом member и причиной disorderly conduct обозначает официальную дисциплинарную меру.",
+          "translation_explanation": "«Официально» раскрывает процедурный характер, причина сохраняется.",
+          "contrast": "Спикер применяет меру за нарушение, а не просто сообщает имя депутата.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Термин используется в действующем описании дисциплинарной процедуры Палаты общин.",
+          "contemporary_sources": [
+            {
+              "url": "https://erskinemay.parliament.uk/IndexTerm/30342/speaker-commons-names-a-member",
+              "quote": "When a Member is named by the Speaker for grossly disorderly conduct",
+              "context": "Erskine May, описание полномочий председательствующего и процедуры по Standing Order No 43."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "призывать к порядку",
+              "result": "Парламентское толкование без примера.",
+              "location": {
+                "page": 527
+              },
+              "quote": "6) парл. призывать к порядку"
+            }
+          ]
+        }
+      }
+    ],
+    "phrase_review": "Know by name — «знать по имени». Личное знакомство и знание понаслышке могут следовать из контекста, но само сочетание их не кодирует."
+  },
+  {
+    "word": "night",
+    "decision": "изменить",
+    "reason": "Порядок 1, 3, 2. Primary оставить у времени и продуктивного определения. Исправить границы night out и by night.",
+    "confidence": 0.99,
+    "source_evidence_ref": "#/previous_outputs/06/4",
+    "previous_review_refs": [
+      "#/previous_outputs/07/4",
+      "#/previous_outputs/08/4"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "ночь; вечер; всю ночь напролёт",
+        "examples_checked": 12,
+        "problem": "Last night — «вчера вечером» или «прошлой ночью». Night after night — «ночь за ночью», night by night — «каждую ночь» по контексту. At night — «ночью», by night — «по ночам», «под покровом ночи» в подходящем контексте. Night fell передано точно. Far into the night — «до глубокой ночи», полночь не указана. Night out обычно «вечер вне дома», night off — «свободный вечер». All night (long) передаёт всю ночь напролёт, эту длительность убрать из общего толкования. O’(= on) nights сохранить только как словарную форму с пояснением, учебный вариант — on nights. Good/bad night означает хороший/плохой сон в подходящем контексте. В have a (or the) night out склеены перевод by night, исторический смысл о прислуге и современный выход вечером. «Прокутить всю ночь» добавляет характер и длительность развлечения."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "темнота, мрак",
+        "examples_checked": 2,
+        "problem": "Go forth into the night — «выйти в ночь», исчезновение добавлено. Night of ignorance — «мрак невежества». «Полное невежество» опускает метафору."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "ночной, вечерний",
+        "examples_checked": 2,
+        "problem": "Night duty — ночное дежурство, night stop — остановка на ночь. Night перед существительным выполняет атрибутивную функцию."
+      }
+    ]
+  },
+  {
+    "word": "play",
+    "decision": "review_required",
+    "reason": "Основные 10, 20, 11, 1, 3, 14 и 12. Воспроизведение записи выделить из 13 после проверки. Несколько старых и отраслевых толкований требуют самостоятельной проверки.",
+    "confidence": 0.96,
+    "source_evidence_ref": "#/previous_outputs/06/5",
+    "previous_review_refs": [
+      "#/previous_outputs/07/5",
+      "#/previous_outputs/08/5"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "игра; забава",
+        "examples_checked": 3,
+        "problem": "To be at play и they are at play иллюстрируют игру как занятие. Out of play описывает спортивный статус, часто о мяче «вне игры»."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "манера игры, игра",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "I like her style of play.",
+          "ru": "Мне нравится её манера игры.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "play",
+          "unit_type": "word",
+          "reason": "Короткий контекст явно указывает на манеру игры.",
+          "sense_explanation": "Style of play описывает то, как игрок ведёт игру.",
+          "translation_explanation": "«Манера игры» передаёт style of play без добавления оценки мастерства.",
+          "contrast": "Оценивается стиль, а не сам факт участия.",
+          "usage_status": "current",
+          "contemporary_explanation": "Style of play употребляется в спортивных обсуждениях.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "style of play",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "пьеса, драма; представление, спектакль",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "I read the play before we saw it on stage.",
+          "ru": "Я прочитал пьесу до того, как мы увидели её на сцене.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "play",
+          "unit_type": "word",
+          "reason": "Сопоставляет текст пьесы и её постановку.",
+          "sense_explanation": "Read the play означает прочитать драматическое произведение.",
+          "translation_explanation": "Различие между чтением и последующим просмотром сохранено.",
+          "contrast": "Текст читают, поэтому это пьеса, а не игра или только представление.",
+          "usage_status": "current",
+          "contemporary_explanation": "Read a play употребляется при обсуждении театра и литературы.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "to go to the ~ идти в театр",
+              "result": "Источник даёт поход в театр, выбранное учебное прочтение текста требует другого контекста.",
+              "location": {
+                "page": 606
+              },
+              "quote": "to go to the ~ идти в театр"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "действие, деятельность",
+        "examples_checked": 3,
+        "problem": "Bring/call into play — приводить в действие, come into play — вступать в действие, in full play — действовать в полной мере или быть в разгаре. Эти переводы относятся к целым оборотам."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "свобода, простор",
+        "examples_checked": 1,
+        "problem": "Free play to one’s imagination — свобода воображения. «Дать полный простор» естественно передаёт всю конструкцию."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "движение",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "You could see the play of muscles under the skin.",
+          "ru": "Было видно, как под кожей двигаются мышцы.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "play",
+          "unit_type": "word",
+          "reason": "Наблюдаемое движение мышц раскрывает конкретный образ.",
+          "sense_explanation": "The play of muscles описывает чередующиеся движения под кожей.",
+          "translation_explanation": "Русское придаточное передаёт то же движение и его видимость.",
+          "contrast": "Наблюдаются мышцы, без световых переливов и механического люфта.",
+          "usage_status": "current",
+          "contemporary_explanation": "Play of muscles остаётся употребительным в описательной прозе.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "play of the muscles",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "азартная игра",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The casino offers high-stakes play.",
+          "ru": "В казино можно играть по крупным ставкам.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "play",
+          "unit_type": "word",
+          "reason": "Казино и ставки явно задают азартную игру.",
+          "sense_explanation": "Play — неисчисляемое существительное, объект offers, с характеристикой high-stakes.",
+          "translation_explanation": "Русский глагольный оборот передаёт возможность игры и размер ставок.",
+          "contrast": "Денежные ставки отличают значение от свободной игры.",
+          "usage_status": "current",
+          "contemporary_explanation": "High-stakes play употребляется при описании игры в казино.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "high-stakes play",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "переливы, игра",
+        "examples_checked": 2,
+        "problem": "Play of colours — переливы красок. Play of the waves передаёт игру или движение волн. «Плеск» конкретизирует возможный эффект и зависит от контекста."
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "зазор; игра; люфт; свободный ход; шатание (части механизма, прибора)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "There’s too much play in the steering wheel.",
+          "ru": "У рулевого колеса слишком большой люфт.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "play",
+          "unit_type": "word",
+          "reason": "Рулевое колесо показывает механический свободный ход.",
+          "sense_explanation": "Play — свободное перемещение руля до передачи движения колёсам.",
+          "translation_explanation": "Too much соответствует «слишком большой», руль сохранён.",
+          "contrast": "Это свободное движение детали механизма, а не обычное движение в пространстве.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Руководство по техосмотру предписывает проверять и измерять этот люфт.",
+          "contemporary_sources": [
+            {
+              "url": "https://www.gov.uk/guidance/mot-inspection-manual-for-private-passenger-and-light-commercial-vehicles/2-steering",
+              "quote": "Check the amount of free play at the rim of the steering wheel.",
+              "context": "Действующее руководство MOT, раздел 2.3 Steering play."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "люфт; свободный ход",
+              "result": "Технический ряд без примера.",
+              "location": {
+                "page": 606
+              },
+              "quote": "люфт; свободный ход; шатание (части механизма, прибора)"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "translation": "играть, резвиться, забавляться",
+        "examples_checked": 1,
+        "problem": "Кошка играет со своим хвостом. With its tail однозначно указывает предмет игры и соответствует переводу."
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "translation": "играть на музыкальном инструменте",
+        "examples_checked": 1,
+        "problem": "Play the violin — играть на скрипке. Хороший пример с названием инструмента в позиции прямого дополнения."
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "translation": "исполнять (музыкальное произведение)",
+        "examples_checked": 1,
+        "problem": "A concerto — произведение. «Исполнял концерт» допустимо в музыкальном контексте, который отличает жанр произведения от мероприятия."
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "translation": "приводить в действие, пускать",
+        "examples_checked": 2,
+        "problem": "Play a record — поставить или воспроизвести пластинку. The engine was played off подтверждено печатным источником, современная применимость к запуску двигателя не установлена."
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "translation": "играть (в театре)",
+        "examples_checked": 1,
+        "problem": "She played Juliet — «она играла Джульетту». Может относиться и к экранной, и к театральной роли, как в предложении 07."
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "translation": "давать представление (о труппе)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The theatre company plays here every Friday.",
+          "ru": "Труппа даёт здесь представления каждую пятницу.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "plays",
+          "unit_type": "word",
+          "reason": "Подлежащее указывает на труппу, обстоятельства — на место и расписание.",
+          "sense_explanation": "Plays описывает регулярные выступления коллектива.",
+          "translation_explanation": "Русский перевод сохраняет место, частоту и исполнителя.",
+          "contrast": "Глагол непереходный и не называет отдельную роль или пьесу.",
+          "usage_status": "current",
+          "contemporary_explanation": "Play с обстоятельством места и подлежащим, обозначающим труппу, пригодно для современных афиш.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "played at the theatre",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "translation": "играть роль (кого-либо), быть (кем-либо)",
+        "examples_checked": 2,
+        "problem": "Play the man связано с историческим представлением о должном мужском поведении. Play the fool — «валять дурака» или «изображать дурачка» в зависимости от намерения."
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "translation": "сыграть (шутку), разыграть",
+        "examples_checked": 1,
+        "problem": "A practical joke on us — розыгрыш, направленный на нас. «Он нас разыграл» точнее общего «подшутил»."
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "translation": "играть в азартные игры",
+        "examples_checked": 0,
+        "candidate_example": {
+          "en": "play for money",
+          "ru": "играть на деньги",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "play",
+          "unit_type": "word",
+          "sense_explanation": "For money указывает на денежные ставки в словарной паре.",
+          "translation_explanation": "«На деньги» сохраняет обстоятельство игры.",
+          "contrast": "В контексте исходной статьи речь о ставках, хотя вне него возможен заработок игрой.",
+          "usage_status": "current",
+          "contemporary_explanation": "Play for money — современная модель описания игры с денежными ставками.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "play for money",
+              "result": "Совпадает по значению в русской статье о деньгах.",
+              "location": {
+                "page": 568
+              },
+              "quote": "игра́ть на ~ play for money"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "translation": "играть (на чём-либо), воспользоваться (чем-либо)",
+        "examples_checked": 1,
+        "problem": "Play in favour of передаёт благоприятствование. Для использования эмоций или ситуации нужен контекст play on или другой отдельной конструкции."
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "translation": "играть (во что-либо, на что-либо), участвовать в игре",
+        "examples_checked": 2,
+        "problem": "Play tennis показывает вид спорта. В I played him for championship требуется the championship, а him естественно перевести «против него» в контексте соревнования."
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "translation": "подходить для игры, быть в хорошем состоянии",
+        "examples_checked": 3,
+        "problem": "Ground plays well — на площадке удобно играть. Piano plays well может означать удобство игры и отклик, «хороший звук» сужает. Drama plays well — пьеса хорошо работает на сцене, это оценка исполнения или постановочности."
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "translation": "принимать в игру (игрока)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The coach played our youngest player in the final.",
+          "ru": "Тренер выпустил на поле нашего самого молодого игрока в финале.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "played",
+          "unit_type": "word",
+          "reason": "Тренер выступает субъектом решения о составе.",
+          "sense_explanation": "Played с прямым дополнением player означает задействовал игрока.",
+          "translation_explanation": "«Выпустил на поле» естественно передаёт включение в игру при полевом спортивном прочтении.",
+          "contrast": "Подлежащее — тренер, он не играет против этого участника.",
+          "usage_status": "current",
+          "contemporary_explanation": "Тренеры регулярно описывают состав моделью play someone in a match.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "played our best",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "verb",
+        "translation": "ходить (шашкой, картой)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "She played an ace on her first turn.",
+          "ru": "Первым ходом она пошла с туза.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "played",
+          "unit_type": "word",
+          "reason": "Туз и очередность хода обозначают действие картой.",
+          "sense_explanation": "Played an ace описывает розыгрыш конкретной карты.",
+          "translation_explanation": "«Первым ходом» сохраняет on her first turn.",
+          "contrast": "Игрок делает отдельный ход, а не начинает играть в игру вообще.",
+          "usage_status": "current",
+          "contemporary_explanation": "Play an ace употребляется в современных карточных играх.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "played an ace",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 24,
+        "partOfSpeech": "verb",
+        "translation": "отбивать, подавать (мяч)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "She played the ball back over the net.",
+          "ru": "Она отбила мяч обратно через сетку.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "played",
+          "unit_type": "word",
+          "reason": "Направление обратно через сетку проясняет ответное действие.",
+          "sense_explanation": "Played the ball back — обработала и направила мяч обратно.",
+          "translation_explanation": "В этом контексте «отбила» сохраняет ответный удар, направление передано явно.",
+          "contrast": "Прямое дополнение обозначает мяч, а не вид спорта или соперника.",
+          "usage_status": "current",
+          "contemporary_explanation": "Play the ball с указанием направления используется в современном спортивном описании.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "played the ball",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 25,
+        "partOfSpeech": "verb",
+        "translation": "порхать, носиться; танцевать",
+        "examples_checked": 1,
+        "problem": "Бабочки среди цветов допускают образное «порхают». «Танцевать» этим примером отдельно не подтверждается."
+      },
+      {
+        "meaning_index": 26,
+        "partOfSpeech": "verb",
+        "translation": "бить (о фонтане); переливаться, играть; мелькать",
+        "examples_checked": 2,
+        "problem": "Lightning plays — молния сверкает, a smile played — улыбка играла. Оба относятся к видимым эффектам. Фонтан в примерах не показан."
+      },
+      {
+        "meaning_index": 27,
+        "partOfSpeech": "verb",
+        "translation": "притворяться, прикидываться",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The dog played dead until I offered it a treat.",
+          "ru": "Собака притворялась мёртвой, пока я не предложил ей лакомство.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "play",
+          "target_form": "played",
+          "unit_type": "word",
+          "reason": "Поведение собаки и лакомство задают имитацию состояния.",
+          "sense_explanation": "Played dead — изображала состояние смерти.",
+          "translation_explanation": "Until передано пределом «пока … не», действие предложения лакомства сохранено.",
+          "contrast": "Собака прикидывается мёртвой, театральной роли нет.",
+          "usage_status": "current",
+          "contemporary_explanation": "Play dead — живой оборот при описании поведения животных и людей.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "play dead",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 28,
+        "partOfSpeech": "verb",
+        "translation": "направлять (свет и т. п.; on, over, along — на что-либо); обстреливать",
+        "examples_checked": 3,
+        "problem": "Searchlight upon a boat — направить луч прожектора на лодку. Guns upon the fort — обстреливать форт, современность оборота проверить. Play a hose — направить струю из рукава, «пожарного» зависит от контекста."
+      },
+      {
+        "meaning_index": 29,
+        "partOfSpeech": "verb",
+        "translation": "дать (время) (рыбе) хорошо клюнуть",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 606 подтверждает печатный перевод. В актуальной инструкции NPS «Play a fish as rapidly as possible.» относится к действиям с уже подсечённой рыбой. Нужна отдельная правка значения перед добавлением такого примера. https://www.nps.gov/grba/planyourvisit/fishing-frequently-asked-questions.htm",
+        "rejected_attempts": [
+          {
+            "en": "Play the fish before it takes the bait.",
+            "ru": "Дайте рыбе хорошо клюнуть.",
+            "problem": "Before it takes the bait противоречит подтверждённому действию после поклёвки."
+          },
+          {
+            "en": "She played the fish before bringing it to the net.",
+            "ru": "Она вываживала рыбу, прежде чем подвести её к подсачеку.",
+            "problem": "Современное вываживание не соответствует текущему переводу."
+          }
+        ]
+      },
+      {
+        "meaning_index": 30,
+        "partOfSpeech": "verb",
+        "translation": "поступать, действовать",
+        "examples_checked": 2,
+        "problem": "Play fair и play foul — устойчивые оценки поведения. Play fair подходит современному курсу, play foul стоит проверить по контексту, поскольку foul может отсылать к нарушению правил игры."
+      },
+      {
+        "meaning_index": 31,
+        "partOfSpeech": "verb",
+        "translation": "свободно владеть",
+        "examples_checked": 2,
+        "problem": "A good stick в печати связано с фехтованием. A good knife and fork означает хороший аппетит, а не свободное владение предметом. Оба оборота требуют проверки исторического регистра."
+      },
+      {
+        "meaning_index": 32,
+        "partOfSpeech": "verb",
+        "translation": "иметь люфт",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Техническая помета подтверждена на с. 606. Современное руководство MOT подтверждает существительное play, но не данный глагол. Нужна независимая от именного примера проверка перехода к глаголу.",
+        "rejected_attempts": [
+          {
+            "en": "The shaft plays in its housing.",
+            "ru": "Вал люфтит в корпусе.",
+            "problem": "Фраза возможна по аналогии, современное техническое употребление глагола не подтверждено."
+          },
+          {
+            "en": "The bearing plays from side to side.",
+            "ru": "Подшипник имеет поперечный люфт.",
+            "problem": "Возможен смысл намеренного перемещения. Подтверждённая техническая модель использует has play."
+          }
+        ]
+      }
+    ],
+    "phrase_review": "Play along — подыгрывать или поддерживать видимость. Play around развести по манипулированию и интрижке, разг. в цитате относится ко второй. Play down — преуменьшать. Play off — стравливать и отдельно разыгрывать решающую игру. Play on — использовать чувства или слабости. Play up требует отдельных контекстов для капризов, преувеличенного подчёркивания и старых толкований, помета амер. ограничена одним толкованием в источнике. Play up to — заискивать. In play «в шутку» — наречное сочетание, спортивное прочтение отдельное. Play upon words — каламбурить. Play safe — не рисковать. Play ball — сотрудничать в переносном употреблении. На с. 606 точное «~ out: to be ~ed out выдыхаться;» подтверждает отдельный оборот."
+  },
+  {
+    "word": "until",
+    "decision": "review_required",
+    "reason": "Сохранить 1 как основной временной предлог и добавить отдельно основной союз. Пространственное значение остаётся непроверенным.",
+    "confidence": 0.99,
+    "source_evidence_ref": "#/previous_outputs/06/6",
+    "previous_review_refs": [
+      "#/previous_outputs/07/6",
+      "#/previous_outputs/08/6"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "translation": "до тех пор пока; до (во времени или пространстве); вар. от till",
+        "examples_checked": 1,
+        "problem": "Until tomorrow — «до завтра», tomorrow задаёт временной предел. Союз проверять в отдельной строке с придаточным. При разделении функций использовать свидетельство «wait ~ I come подожди, пока я приду» из статьи till на с. 827 только как подтверждение модели, а не как дословную цитату с until."
+      }
+    ]
+  },
+  {
+    "word": "company",
+    "decision": "review_required",
+    "reason": "Добавить основное «компания, фирма» перед 1. У 2 и 4 снять primary. Выделить роту и перенести 6–9 в сочетания с сохранением подтверждённых переводов.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/7",
+    "previous_review_refs": [
+      "#/previous_outputs/07/7",
+      "#/previous_outputs/08/7"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "общество; компания",
+        "examples_checked": 7,
+        "problem": "Bear/keep someone company — составлять компанию. Keep company «ухаживать» имеет собственную разговорную помету в печати и требует проверки современности. Keep company with — общаться, keep good/bad company — общаться с хорошими/дурными людьми, part company with — расстаться или разойтись, good/poor company — приятный/скучный собеседник по контексту."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "гости",
+        "examples_checked": 1,
+        "problem": "A great deal of company непосредственно передаёт количество гостей. «Часто принимать» допустимо только при контекстном прочтении через частоту."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "труппа, ансамбль артистов",
+        "examples_checked": 1,
+        "problem": "Stock company — постоянная театральная труппа в данном прочтении. Коммерческую помету заменить по 07."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "экипаж (судна)",
+        "examples_checked": 0,
+        "candidate_example": {
+          "en": "ship’s company",
+          "ru": "экипаж корабля",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "company",
+          "target_form": "company",
+          "unit_type": "word",
+          "sense_explanation": "Притяжательная форма ship’s указывает, что company — экипаж судна.",
+          "translation_explanation": "«Экипаж корабля» сохраняет коллектив и принадлежность.",
+          "contrast": "Это команда корабля, а не коммерческая компания.",
+          "usage_status": "current",
+          "contemporary_explanation": "Ship’s company употребляется для обозначения экипажа корабля, особенно военного.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "ship’s company",
+              "result": "Подходит. Из двух английских вариантов выбран company.",
+              "location": {
+                "page": 403
+              },
+              "quote": "ship’s company/crew экипаж корабля"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "ротный",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The company commander called a meeting.",
+          "ru": "Ротный командир созвал совещание.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "company",
+          "target_form": "company",
+          "unit_type": "word",
+          "sense_after": {
+            "id": 5,
+            "partOfSpeech": "noun",
+            "translation": "ротный (company перед другим существительным)",
+            "examples": [],
+            "register": [
+              "военное"
+            ]
+          },
+          "reason": "Показывает атрибутивное company в прозрачном военном сочетании.",
+          "sense_explanation": "Company определяет commander как командира роты.",
+          "translation_explanation": "«Ротный» сохраняет атрибутивную функцию, «созвал» передаёт called.",
+          "contrast": "Слово определяет должность, отдельным подлежащим «рота» здесь не служит.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Company commander — действующее наименование должности в армейских руководствах.",
+          "contemporary_sources": [
+            {
+              "url": "https://api.army.mil/e2/c/downloads/2023/01/31/e5b70b4b/22-04.pdf",
+              "quote": "Company commander experiences and skillsets vary.",
+              "context": "Руководство армии США о руководстве подразделениями ротного уровня."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "ротный",
+              "result": "Нужный подпункт без примера.",
+              "location": {
+                "page": 165
+              },
+              "quote": "7) attr. воен. ротный"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "фабричная лавка",
+        "examples_checked": 1,
+        "problem": "Company union — профсоюз, организованный или контролируемый работодателем. Фабричная лавка — company store. Перенести обе пары в отдельные сочетания, военная помета ошибочна."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "о присутствующих не говорят",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Современный оборот относится к фразе present company excepted, подтверждённой в SamPoln на с. 94 и новом Мюллере на с. 165. Добавление примера к существительному закрепит ошибочную разметку. После переноса использовать полную реплику.",
+        "rejected_attempts": [
+          {
+            "en": "Company excepted, the staff were rude.",
+            "ru": "Если не считать присутствующих, персонал был груб.",
+            "problem": "Усечена устойчивая формула present company excepted."
+          },
+          {
+            "en": "Present company excepted, of course.",
+            "ru": "Присутствующих это, конечно, не касается.",
+            "problem": "Хороший пример для отдельной фразы, не значение company как существительного."
+          }
+        ]
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "за компанию",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Новый Мюллер с. 165 подтверждает for company. Значение относится к целому предложному сочетанию, американская помета не подтверждена.",
+        "rejected_attempts": [
+          {
+            "en": "She came company.",
+            "ru": "Она пришла за компанию.",
+            "problem": "Существительное не выполняет эту функцию без конструкции."
+          },
+          {
+            "en": "She came along for company.",
+            "ru": "Она пошла с нами за компанию.",
+            "problem": "Перевод добавляет «с нами». При точном переводе пример всё равно относится к фразе for company."
+          }
+        ]
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "скажи мне, кто твой друг, и я скажу, кто ты",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 165 подтверждает полную пословицу. Для существительного company это контекст значения 1, а русский перевод относится ко всему высказыванию.",
+        "rejected_attempts": [
+          {
+            "en": "You’re known by your company.",
+            "ru": "Скажи мне, кто твой друг, и я скажу, кто ты.",
+            "problem": "Your company допускает коммерческое прочтение, а русский текст — целая пословица."
+          },
+          {
+            "en": "A man is known by the company he keeps.",
+            "ru": "Скажи мне, кто твой друг, и я скажу, кто ты.",
+            "problem": "Подходит для отдельной пословицы, не для самостоятельного значения существительного."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "few",
+    "decision": "изменить",
+    "reason": "Сохранить порядок few, a few, самостоятельное few. Показать a few отдельным коротким примером при следующем редактировании примеров, поскольку quite a few сейчас демонстрирует усилитель.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/8",
+    "previous_review_refs": [
+      "#/previous_outputs/07/8",
+      "#/previous_outputs/08/8"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "немногие, немного, мало",
+        "examples_checked": 5,
+        "problem": "Few possessions — «мало вещей», «скудные пожитки» добавляет оценку. Man of few words — немногословный человек. Every few hours показывает интервалы «каждые несколько часов». Friends are few — друзей мало, visitors are few — посетителей мало, «гости редки» смещает к частоте."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "несколько",
+        "examples_checked": 1,
+        "problem": "Quite a few означает довольно много. Перевод оборота верен, но он не иллюстрирует простое a few в значении «несколько»."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "незначительное число; почти ничего",
+        "examples_checked": 3,
+        "problem": "Few could tell — мало кто мог сказать. Few if any — почти никто или почти ни одного по контексту. The few — немногие или меньшинство. Грамматическую разметку самостоятельного количественного слова проверить отдельно."
+      }
+    ],
+    "phrase_review": "A good few — довольно много. Not a few имеет тот же количественный эффект, но регистр и синтаксические модели полезно показать раздельно. Ни одна форма не указывает определённую долю."
+  },
+  {
+    "word": "let",
+    "decision": "review_required",
+    "reason": "Основные 1, 2 и 5. Арендные 4 и 6 вторичны. Историческое 7 хранить отдельно, а фразовые примеры вывести из побудительной конструкции.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/9",
+    "previous_review_refs": [
+      "#/previous_outputs/07/9",
+      "#/previous_outputs/08/9"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "translation": "позволять, разрешать",
+        "examples_checked": 1,
+        "problem": "Will you let me smoke? правильно показывает let + объект + инфинитив без to и передаёт вопрос о разрешении."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "translation": "позволять, разрешать; давать возможность",
+        "examples_checked": 9,
+        "problem": "Let a fire go out — дать огню погаснуть, go оставить в учебном варианте. Let loose — выпустить или дать волю. Let blood — пускать кровь. Let oneself go в данном прочтении — дать себе волю. Let something pass — оставить без внимания или пропустить. Let slip the chance — упустить возможность. Let someone see/know — дать увидеть/понять и сообщить соответственно. Let things slide — пустить дела на самотёк, go hang требует отдельной регистровой проверки."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "translation": "оставлять; не трогать; пусть будет так",
+        "examples_checked": 3,
+        "problem": "Let me/him be или alone — оставить меня/его в покое. Let my things alone — не трогать мои вещи. Let it go at that — закончить обсуждение на этом."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "translation": "сдавать внаём",
+        "examples_checked": 1,
+        "problem": "To let — британская формула объявления. The house is to be let может сообщать намерение сдать дом. Скобки смешивают два чтения."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "translation": "в повел. наклонении употребляется как вспомогательный глагол и выражает приглашение, приказание, разрешение, предположение, предостережение",
+        "examples_checked": 11,
+        "problem": "Let you and me try now включает now, в переводе потеряно «сейчас». Let him do it at once и let him do what he likes показывают приказ и допущение. В AB равно CD восстановить CD. Let us go — побуждение по контексту, в разговоре предложение чаще Let’s go. Let oneself in — впустить себя, let oneself in for — ввязаться. (On) восстановить как let someone in on something. Многозначное let down вынести из 5 и отделить let someone down gently. Let out + at и let up + on восстановить как отдельные обороты по 06."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "сдача внаём",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "We agreed on a three-month let.",
+          "ru": "Мы договорились о сдаче жилья на три месяца.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "let",
+          "target_form": "let",
+          "unit_type": "word",
+          "sense_after": {
+            "partOfSpeech": "noun",
+            "translation": "сдача внаём",
+            "examples": [],
+            "register": [],
+            "id": 6,
+            "primary": true
+          },
+          "reason": "Срок показывает сдачу на определённый период.",
+          "sense_explanation": "A three-month let — договорённость о сдаче жилья на три месяца.",
+          "translation_explanation": "Договорённость и срок сохранены, «жильё» раскрывает подразумеваемый предмет найма.",
+          "contrast": "Let здесь счётное существительное, а не глагол объявления to let.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Именное let применяется в действующих правилах краткосрочной аренды.",
+          "contemporary_sources": [
+            {
+              "url": "https://www.newham.gov.uk/downloads/file/5759/newham-private-rented-property-licensing-faqs",
+              "quote": "the duration of the let is less than 90 days per year",
+              "context": "Муниципальное руководство о лицензировании частной аренды. Let обозначает период сдачи."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "short let",
+              "result": "Нет совпадений, с. 465 подтверждает именное толкование."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "помеха; препятствие",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Устаревший омоним подтверждён на с. 465, там же есть формула without ~ or hindrance. Она не делает существительное продуктивным в современном общем языке.",
+        "rejected_attempts": [
+          {
+            "en": "They crossed without let or hindrance.",
+            "ru": "Они прошли беспрепятственно.",
+            "problem": "Историко-правовая формула требует самостоятельного регистра и современного подтверждения."
+          },
+          {
+            "en": "The delay was a let to our plans.",
+            "ru": "Задержка помешала нашим планам.",
+            "problem": "Самостоятельное a let в таком значении современному читателю непрозрачно."
+          }
+        ]
+      }
+    ],
+    "phrase_review": "Let by — пропустить мимо, let in — впустить, let down — опустить или подвести, разнести остальные смыслы. Let into — впустить или посвятить, ругань и избиение требуют проверки отдельного оборота. У let off разделить выстрел и освобождение от наказания, шутливую помету ограничить нужным прочтением. Let on — выдать или сделать вид с проверкой управления. Let out — выпуск, разглашение, расширение одежды, аренда и окончание занятий требуют разных моделей и помет. Let drop/fall — уронить, обронить, в геометрии опустить. Let him try — побудительное высказывание. Формы основного глагола let/let корректны, спортивный let и исторический глагол рассматривать отдельно."
+  },
+  {
+    "word": "real",
+    "decision": "изменить",
+    "reason": "Основным оставить 1. Затем показать разговорное 6 и имущественное 2. Философское, математическое и субстантивированное употребления оставить вторичными.",
+    "confidence": 0.97,
+    "source_evidence_ref": "#/previous_outputs/06/10",
+    "previous_review_refs": [
+      "#/previous_outputs/07/10",
+      "#/previous_outputs/08/10"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "действительный, настоящий, реальный, подлинный, истинный, неподдельный, несомненный",
+        "examples_checked": 2,
+        "problem": "Real state of affairs — фактическое положение дел. Real wine — настоящее вино. Оба перевода точны для своих контекстов, «несомненный» отдельно не показан."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "недвижимый (об имуществе)",
+        "examples_checked": 1,
+        "problem": "Real property — недвижимость. Русское существительное переводит всё сочетание, а real обозначает имущественную категорию. Снять primary."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "translation": "объективно существующий; реальный",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The question is whether these objects are real or exist only in the mind.",
+          "ru": "Вопрос в том, существуют ли эти объекты объективно или только в сознании.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "real",
+          "target_form": "real",
+          "unit_type": "word",
+          "reason": "Прямое противопоставление раскрывает философский смысл.",
+          "sense_explanation": "Предикативное real противопоставлено exist only in the mind.",
+          "translation_explanation": "«Существуют объективно» передаёт первую часть противопоставления без утверждения, что объекты действительно существуют.",
+          "contrast": "Вопрос об онтологическом статусе, а не о подлинности вещи.",
+          "usage_status": "current",
+          "contemporary_explanation": "Противопоставление real и only in the mind естественно в современном общем обсуждении философских вопросов.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "объективно существующий",
+              "result": "Толкование без примера.",
+              "location": {
+                "page": 659
+              },
+              "quote": "3) филос. объективно существующий; реальный"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "translation": "вещественный; действительный",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Zero is a real number.",
+          "ru": "Ноль — действительное число.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "real",
+          "target_form": "real",
+          "unit_type": "word",
+          "reason": "Простой пример определённого математического класса.",
+          "sense_explanation": "Real определяет вид числа в классификации чисел.",
+          "translation_explanation": "Zero передано как «ноль», real number — термин «действительное число».",
+          "contrast": "Здесь не оценивают подлинность числа.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Real number используется в современных учебниках алгебры.",
+          "contemporary_sources": [
+            {
+              "url": "https://openstax.org/books/contemporary-mathematics/pages/3-6-real-numbers",
+              "quote": "Real numbers are the rational and irrational numbers combined.",
+              "context": "Современный учебник математики, раздел определения и распознавания действительных чисел."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "real number",
+              "result": "Нет совпадений. С. 659 подтверждает математическое толкование."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "действительность",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The film blurs the line between the real and the imagined.",
+          "ru": "Фильм стирает границу между действительностью и воображаемым.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "real",
+          "target_form": "real",
+          "unit_type": "word",
+          "sense_after": {
+            "partOfSpeech": "noun",
+            "translation": "действительность (the real)",
+            "examples": [],
+            "register": [],
+            "id": 5
+          },
+          "reason": "Параллельные абстрактные категории показывают употребление с артиклем.",
+          "sense_explanation": "The real субстантивировано и обозначает сферу действительного.",
+          "translation_explanation": "Граница между действительностью и воображаемым сохраняет обе стороны контраста.",
+          "contrast": "Real не определяет следующее существительное и не является названием монеты.",
+          "usage_status": "current",
+          "contemporary_explanation": "The real and the imagined — естественное противопоставление в современной критике искусства.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "the real and",
+              "result": "Нет совпадений. Форма the real подтверждена на с. 659."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adverb",
+        "translation": "очень, действительно, совсем",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "This soup tastes real good.",
+          "ru": "Этот суп очень вкусный.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "real",
+          "target_form": "real",
+          "unit_type": "word",
+          "reason": "Показывает разговорный усилитель перед прилагательным.",
+          "sense_explanation": "Real усиливает good, а tastes задаёт оценку вкуса.",
+          "translation_explanation": "«Очень вкусный» сохраняет степень и вкусовое впечатление.",
+          "contrast": "Real относится к good, а не к подлинности супа.",
+          "usage_status": "current",
+          "contemporary_explanation": "Real good употребляется в современной неформальной американской речи.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "real good",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      }
+    ],
+    "doubts": [
+      "Разметка «шотл., амер. разг.» требует сохранения области действия помет. Денежный real с другим произношением рассматривать отдельно."
+    ]
+  },
+  {
+    "word": "different",
+    "decision": "изменить",
+    "reason": "Оставить 1 и 2 основными в исходном порядке. У оценочного 3 снять primary и показать контекст, который поддерживает необычность.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/11",
+    "previous_review_refs": [
+      "#/previous_outputs/07/11",
+      "#/previous_outputs/08/11"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "другой, не такой; несходный; непохожий; отличный (from, to)",
+        "examples_checked": 2,
+        "problem": "Different from what he said — «это отличается от того, что он сказал». «Не соответствует» уместно при противоречии. Quite different — «совсем другое», «дело» зависит от референта."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "различный, разный",
+        "examples_checked": 1,
+        "problem": "A lot of different things описывает разнообразие вещей. «Много разных вещей» передаёт количество и различие."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "translation": "необычный",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "That hat is certainly different.",
+          "ru": "Шляпа и правда необычная.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "different",
+          "target_form": "different",
+          "unit_type": "word",
+          "reason": "Оценочная реплика о заметной вещи раскрывает необычность.",
+          "sense_explanation": "Предикативное different с certainly без дополнения звучит как оценка необычного вида.",
+          "translation_explanation": "«И правда» передаёт усиление, без добавления одобрения или осуждения.",
+          "contrast": "Собеседник не сравнивает две явно названные шляпы.",
+          "usage_status": "current",
+          "contemporary_explanation": "Оценочное That’s certainly different употребляется в современных разговорных реакциях.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "разг. необычный",
+              "result": "Толкование different без примера.",
+              "location": {
+                "page": 228
+              },
+              "quote": "3) разг. необычный"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "thought",
+    "decision": "изменить",
+    "reason": "Первыми поставить 4 и 2 как основные, затем 6, 1, 5, 3 и 7. Сохранить отдельную ссылку на формы think.",
+    "confidence": 0.97,
+    "source_evidence_ref": "#/previous_outputs/06/12",
+    "previous_review_refs": [
+      "#/previous_outputs/07/12",
+      "#/previous_outputs/08/12"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "мышление",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Language shapes human thought.",
+          "ru": "Язык формирует человеческое мышление.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "thought",
+          "target_form": "thought",
+          "unit_type": "word",
+          "reason": "Human thought обозначает мышление как деятельность.",
+          "sense_explanation": "Неисчисляемое thought относится к человеческому мышлению в целом.",
+          "translation_explanation": "Shapes передано как «формирует» без добавления конкретного механизма.",
+          "contrast": "Не названа отдельная мысль или идея.",
+          "usage_status": "current",
+          "contemporary_explanation": "Human thought остаётся обычным сочетанием в современной речи о мышлении.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "human thought",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "размышление",
+        "examples_checked": 1,
+        "problem": "Lost in thought — «погружённый в размышления». Скобки скрывают разницу между in thought и полной идиоматической конструкцией lost in thought."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "забота; внимание",
+        "examples_checked": 2,
+        "problem": "Kind thought of me выражает внимание ко мне, kind опущено в русском в пользу естественности. Take/show thought for передаёт заботу по печати, но оба варианта требуют современного контекста перед учебным использованием."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "мысль",
+        "examples_checked": 3,
+        "problem": "Read someone’s thoughts и collect one’s thoughts естественно переданы как «читать мысли» и «собраться с мыслями». Compose one’s thoughts и take thought в значениях «задуматься», «опечалиться» требуют проверки регистра и отдельной подачи."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "намерение",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "She had no thought of leaving.",
+          "ru": "Она не собиралась уходить.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "thought",
+          "target_form": "thought",
+          "unit_type": "word",
+          "reason": "Модель no thought of с собственным действием показывает отсутствие намерения.",
+          "sense_explanation": "Had no thought of leaving описывает отсутствие плана уйти.",
+          "translation_explanation": "«Не собиралась» сохраняет отсутствие намерения без утверждения, что она осталась.",
+          "contrast": "Глагол leaving обозначает её возможное действие, а не мнение о чужом уходе.",
+          "usage_status": "current",
+          "contemporary_explanation": "Have no thought of doing something сохраняется в современной повествовательной речи.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "no thought of leaving",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "обыкн. при мн. ч.: соображения, мысли, мнение",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "What are your thoughts on the plan?",
+          "ru": "Что вы думаете об этом плане?",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "thought",
+          "target_form": "thoughts",
+          "unit_type": "word",
+          "sense_after": {
+            "id": 6,
+            "partOfSpeech": "noun",
+            "translation": "обыкн. при мн. ч.: соображения, мысли, мнение",
+            "examples": [],
+            "register": []
+          },
+          "reason": "Просьба об отзыве показывает мнение в форме thoughts.",
+          "sense_explanation": "Your thoughts on the plan — соображения адресата о плане.",
+          "translation_explanation": "Русский глагольный вопрос естественно передаёт просьбу высказать мнение.",
+          "contrast": "On the plan задаёт тему оценки, без значения отдельной внезапной мысли.",
+          "usage_status": "current",
+          "contemporary_explanation": "What are your thoughts on …? — обычный современный запрос обратной связи.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "your thoughts on",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "в роли наречия: чуточка, чуточку (a thought)",
+        "examples_checked": 1,
+        "problem": "A thought more polite — «чуть вежливее». Смысл передаёт сочетание a thought целиком. Сохранить пример как ограниченный по употреблению и проверить датировку до выбора современной пометы."
+      }
+    ]
+  },
+  {
+    "word": "however",
+    "decision": "review_required",
+    "reason": "Порядок 2, 1, оба primary. Связующее 2 требует грамматической правки до принятия примера. Усилительное вопросительное употребление рассмотреть отдельно.",
+    "confidence": 0.99,
+    "source_evidence_ref": "#/previous_outputs/06/13",
+    "previous_review_refs": [
+      "#/previous_outputs/07/13",
+      "#/previous_outputs/08/13"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "translation": "как бы ни",
+        "examples_checked": 0,
+        "candidate_example": {
+          "en": "however much it costs",
+          "ru": "как бы дорого это ни стоило",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "however",
+          "target_form": "however",
+          "unit_type": "word",
+          "sense_explanation": "However much вводит уступительное придаточное о любой возможной цене.",
+          "translation_explanation": "«Как бы дорого … ни» передаёт неограниченную степень стоимости.",
+          "contrast": "Здесь however входит в придаточное и не служит отдельным связующим «однако».",
+          "usage_status": "current",
+          "contemporary_explanation": "However much + подлежащее и глагол — продуктивная современная уступительная модель.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "however much it costs",
+              "result": "Найден подходящий фрагмент.",
+              "location": {
+                "page": 223
+              },
+              "quote": "however much it costs как бы дорого это ни стоило"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "conjunction",
+        "translation": "однако, тем не менее, несмотря на (э)то",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Современный короткий пример с «однако» возможен, но он демонстрирует связующее наречие. Точная версия 07 снимает разговорную помету и сохраняет conjunction. Пример принять после независимой правки POS, чтобы не учить соединять предложения одной запятой.",
+        "rejected_attempts": [
+          {
+            "en": "It was raining. However, we went out.",
+            "ru": "Шёл дождь. Однако мы вышли.",
+            "problem": "Современная фраза показывает обособленное связующее наречие, несовместимое с текущей разметкой conjunction."
+          },
+          {
+            "en": "It was raining, however we went out.",
+            "ru": "Шёл дождь, однако мы вышли.",
+            "problem": "Одна запятая между самостоятельными английскими предложениями даёт ошибочную учебную модель."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "god",
+    "decision": "review_required",
+    "reason": "Сохранить 1 и 2 основными с различением регистра буквы. Исправить привязку восклицаний, отделить театральное множественное и редкий глагол.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/14",
+    "previous_review_refs": [
+      "#/previous_outputs/07/14",
+      "#/previous_outputs/08/14"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "бог, божество",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "In the story, each river has its own god.",
+          "ru": "В этой истории у каждой реки есть своё божество.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "god",
+          "target_form": "god",
+          "unit_type": "word",
+          "reason": "Контекст вымышленной истории показывает нарицательное божество.",
+          "sense_explanation": "Each river и its own god предполагают отдельных богов.",
+          "translation_explanation": "Русский текст сохраняет вымышленный контекст и распределение по рекам.",
+          "contrast": "Строчное god с its own обозначает одно из божеств, без функции собственного имени.",
+          "usage_status": "current",
+          "contemporary_explanation": "A god и one’s own god употребляются в современных рассказах о мифах и вымышленных мирах.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "god of war",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "Бог (в восклицаниях и пожеланиях)",
+        "examples_checked": 5,
+        "problem": "(G.) — указание на прописную, его раскрыть в толковании. God’s truth убрать OCR-пробел и проверить регистр. My God! — «Боже мой!», by God — «ей-богу!», God Almighty — «Бог Всемогущий» или «Боже Всемогущий» при обращении. Функции формул различаются."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "Боже мой! (восклицание, выражающее удивление)",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "В печатном подпункте это чтение God bless you!. Самостоятельное God! или My God! потребует разметки восклицательного употребления. Современный пример к существительному с данным русским эквивалентом создаст смешение функций.",
+        "rejected_attempts": [
+          {
+            "en": "Oh my God, you’re here!",
+            "ru": "Боже мой, ты здесь!",
+            "problem": "Современная реплика подходит для восклицательного оборота, а не отдельного именного значения."
+          },
+          {
+            "en": "God bless you! I didn’t expect to see you.",
+            "ru": "Боже мой! Я не ожидал тебя увидеть.",
+            "problem": "Благопожелание современный читатель не обязан понимать как возглас удивления."
+          }
+        ]
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "будьте здоровы (говорится чихнувшему)",
+        "examples_checked": 2,
+        "problem": "Honest to God — «честное слово», God damn you! — проклятие. Оба не относятся к чиханию. Перенести к своим оборотам, а перевод о чихании — к God bless you!."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "идол, кумир",
+        "examples_checked": 1,
+        "problem": "Make a god of someone — «боготворить кого-либо». Смысл существительного внутри оборота сохранён. Снять редкую помету по 07 и primary по 08."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "публика галёрки",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Our seats were up in the gods.",
+          "ru": "Наши места были наверху, на галёрке.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "god",
+          "target_form": "gods",
+          "unit_type": "word",
+          "sense_after": {
+            "id": 6,
+            "partOfSpeech": "noun",
+            "translation": "галёрка, раёк; публика галёрки (the gods)",
+            "examples": [],
+            "register": [
+              "театр"
+            ]
+          },
+          "reason": "Показывает подтверждённое современное значение мест на галёрке.",
+          "sense_explanation": "Seats up in the gods обозначает места на самом верхнем ярусе.",
+          "translation_explanation": "«Наверху, на галёрке» сохраняет физическое расположение.",
+          "contrast": "Это места в театре. Пример не доказывает самостоятельное современное прочтение «публика галёрки».",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Действующий британский театр называет так верхние зрительские ярусы.",
+          "contemporary_sources": [
+            {
+              "url": "https://leedsheritagetheatres.com/your-visit/a-guide-to-our-auditoriums/",
+              "quote": "Colloquially known as ‘The Gods’.",
+              "context": "Руководство для зрителей Leeds Grand Theatre, подраздел Balcony and Upper Balcony."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "публика галёрки",
+              "result": "Два театральных референта без примера.",
+              "location": {
+                "page": 352
+              },
+              "quote": "4) pl театр. галёрка, раёк; публика галёрки"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "translation": "обожествлять; боготворить",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 352 подтверждает редкий глагол, но godded и godding не найдены в восьми кэшах. Нужна проверка современного регистра, прежде чем давать пример.",
+        "rejected_attempts": [
+          {
+            "en": "They godded their leader.",
+            "ru": "Они обожествляли своего вождя.",
+            "problem": "Современная форма и переходная модель не подтверждены."
+          },
+          {
+            "en": "Fans were godding the singer.",
+            "ru": "Поклонники боготворили певца.",
+            "problem": "Современный контекст не делает редкий глагол естественным."
+          }
+        ]
+      }
+    ],
+    "phrase_review": "God bless you! сохранить как благопожелание и добавить контекст после чихания. Печатное удивлённое прочтение сохранить в доказательствах до отдельной регистровой проверки."
+  },
+  {
+    "word": "government",
+    "decision": "review_required",
+    "reason": "Поставить 3 и 1 первыми и оставить основными. У 2, 4 и 5 снять primary. Территориальное употребление требует датировки.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/15",
+    "previous_review_refs": [
+      "#/previous_outputs/07/15",
+      "#/previous_outputs/08/15"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "правление, управление",
+        "examples_checked": 1,
+        "problem": "Local government — местное самоуправление или органы местной власти, в зависимости от контекста. Текущий перевод подходит институциональному смыслу управления."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "форма правления",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The two countries have different forms of government.",
+          "ru": "В этих двух странах разные формы правления.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "government",
+          "target_form": "government",
+          "unit_type": "word",
+          "reason": "Сравнение стран раскрывает устройство власти.",
+          "sense_explanation": "Forms of government обозначает типы политического устройства.",
+          "translation_explanation": "Сохранено сравнение двух стран без указания конкретных политических систем.",
+          "contrast": "Сравниваются формы правления, а не составы кабинетов.",
+          "usage_status": "current",
+          "contemporary_explanation": "Form of government — обычное современное сочетание в обсуждении государственного устройства.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "form of government",
+              "result": "Найдено подходящее сочетание. Полное предложение с контрастом стран создано для учебной записи.",
+              "location": {
+                "page": 780
+              },
+              "quote": "~ правле́ния/организа́ции form of government/organization"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "правительство",
+        "examples_checked": 2,
+        "problem": "Organs of government — органы государственной власти или управления, потенциально шире кабинета. Responsible government — конституционный термин об ответственности правительства перед представительным органом. «Ответственное министерство» требует исторического контекста."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "провинция (управляемая губернатором), штат",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 354 подтверждает толкование, но не его современную территориальную продуктивность. Названия исторических административных единиц следует проверить отдельно, governorate не подставлять вместо government.",
+        "rejected_attempts": [
+          {
+            "en": "The road crosses two governments.",
+            "ru": "Дорога проходит через две провинции.",
+            "problem": "Современный читатель скорее поймёт governments как правительства."
+          },
+          {
+            "en": "The empire was divided into governments.",
+            "ru": "Империя делилась на губернии.",
+            "problem": "Без указания исторической системы это неподтверждённая адаптация и потенциальное фактическое утверждение."
+          }
+        ]
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "управление",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The chapter compares case government by verbs and prepositions.",
+          "ru": "В главе сопоставляется падежное управление глаголов и предлогов.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "government",
+          "target_form": "government",
+          "unit_type": "word",
+          "reason": "Явно задаёт языковое явление через падеж и части речи.",
+          "sense_explanation": "Case government означает требование определённого падежа зависимого слова.",
+          "translation_explanation": "Перевод сохраняет предмет сравнения и оба типа управляющих слов.",
+          "contrast": "Это грамматическая зависимость, без политического значения.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Government употребляется в современной типологии для описания падежных требований.",
+          "contemporary_sources": [
+            {
+              "url": "https://openresearch.surrey.ac.uk/esploro/outputs/journalArticle/The-typology-of-government-by-adpositions/991154295902346?institution=44SUR_INST",
+              "quote": "The typology of government by adpositions",
+              "context": "Заглавие современного исследования о падежах, управляемых адпозициями."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "грам. управление",
+              "result": "Толкование без примера.",
+              "location": {
+                "page": 354
+              },
+              "quote": "5) грам. управление"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "group",
+    "decision": "review_required",
+    "reason": "Первые и основные 1 и 7, затем музыкальное 4 и политическое 2. Авиагруппу показать по предложению 07. Химический и цветовой переводы требуют проверки границ.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/16",
+    "previous_review_refs": [
+      "#/previous_outputs/07/16",
+      "#/previous_outputs/08/16"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "группа",
+        "examples_checked": 0,
+        "candidate_example": {
+          "en": "group of friends",
+          "ru": "компания друзей",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "group",
+          "target_form": "group",
+          "unit_type": "word",
+          "sense_explanation": "Of friends называет членов группы.",
+          "translation_explanation": "«Компания друзей» передаёт группу людей, связанных дружбой.",
+          "contrast": "Референт — обычная группа людей, не фракция или музыкальный коллектив.",
+          "usage_status": "current",
+          "contemporary_explanation": "Group of friends — частотное сочетание в современной бытовой речи.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "group of friends",
+              "result": "Подходит, русский перевод раскрывает объект из контекста статьи.",
+              "location": {
+                "page": 608
+              },
+              "quote": "(группа людей) group of friends, party"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "группировка, фракция",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "A small group within the party opposed the reform.",
+          "ru": "Небольшая фракция внутри партии выступила против реформы.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "group",
+          "target_form": "group",
+          "unit_type": "word",
+          "reason": "Внутрипартийный контекст и общая позиция задают политическое прочтение.",
+          "sense_explanation": "Group within the party обозначает политически выделяемую часть партии.",
+          "translation_explanation": "«Фракция» подходит при организованном прочтении группы, «выступила против» сохраняет позицию.",
+          "contrast": "Участников объединяет позиция внутри партии, а не случайное нахождение вместе.",
+          "usage_status": "current",
+          "contemporary_explanation": "Group within the party употребляется в современном политическом описании.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "reform group",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: слои, круги (общества)",
+        "examples_checked": 1,
+        "problem": "Business groups допускает «деловые круги», но также «группы компаний» и отдельные объединения бизнеса. Нужен контекст для первого прочтения. Британская помета возникла из pl."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "ансамбль популярной музыки",
+        "examples_checked": 0,
+        "candidate_example": {
+          "en": "a pop group",
+          "ru": "поп-группа",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "group",
+          "target_form": "group",
+          "unit_type": "word",
+          "sense_explanation": "Pop прямо указывает на музыкальный коллектив.",
+          "translation_explanation": "«Поп-группа» сохраняет тип коллектива и музыкальную сферу.",
+          "contrast": "Речь об исполнителях популярной музыки, не о группе вообще.",
+          "usage_status": "current",
+          "contemporary_explanation": "Pop group употребляется в современных описаниях исполнителей.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "pop group",
+              "result": "Подходит, найдено в русской части словаря.",
+              "location": {
+                "page": 545
+              },
+              "quote": "~ ансамбль a pop group; a rock/jazz band"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "группа",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "She serves in an RAF group.",
+          "ru": "Она служит в авиагруппе Королевских ВВС.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "group",
+          "target_form": "group",
+          "unit_type": "word",
+          "sense_after": {
+            "partOfSpeech": "noun",
+            "translation": "авиагруппа",
+            "examples": [],
+            "register": [
+              "авиация"
+            ],
+            "id": 5
+          },
+          "reason": "Военная служба и RAF задают организационную единицу авиации.",
+          "sense_explanation": "Group обозначает структурное объединение в составе военно-воздушных сил.",
+          "translation_explanation": "«Авиагруппа» передаёт тип подразделения, Королевские ВВС раскрывают RAF.",
+          "contrast": "Это служебная организационная единица, не произвольная группа людей или самолётов.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Group входит в актуальную организационную терминологию RAF.",
+          "contemporary_sources": [
+            {
+              "url": "https://www.raf.mod.uk/our-organisation/groups/no-1-group/",
+              "quote": "Air Officer Commanding Number 1 Group",
+              "context": "Официальная страница RAF об авиагруппе и её командовании."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+              "query": "авиагруппа",
+              "result": "Перевод без примера.",
+              "location": {
+                "page": 361
+              },
+              "quote": "5) ав. авиагруппа"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "радикал",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 361 подтверждает печатный перевод. Современное group в составе молекулы обычно передают как «группа», а свободный радикал требует отдельного терминологического различения.",
+        "rejected_attempts": [
+          {
+            "en": "The molecule contains a methyl group.",
+            "ru": "Молекула содержит метильную группу.",
+            "problem": "Иллюстрирует группу атомов в молекуле. Перевод через свободный радикал меняет химический смысл."
+          },
+          {
+            "en": "The reaction produces a free group.",
+            "ru": "В результате реакции образуется свободный радикал.",
+            "problem": "Free group не является названием свободного радикала."
+          }
+        ]
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "translation": "группировать(ся)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The children grouped around the table.",
+          "ru": "Дети сгруппировались вокруг стола.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "group",
+          "target_form": "grouped",
+          "unit_type": "word",
+          "reason": "Непереходный глагол показывает образование группы в пространстве.",
+          "sense_explanation": "Grouped around описывает, как дети собрались в одном месте.",
+          "translation_explanation": "Русская возвратная форма сохраняет самостоятельное действие и положение вокруг стола.",
+          "contrast": "Детей не распределяют по категориям.",
+          "usage_status": "current",
+          "contemporary_explanation": "Group around употребляется при описании того, как люди или предметы располагаются вокруг центра.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "group around",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "translation": "подбирать гармонично краски, цвета",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 361 подтверждает печатный перевод без примера. Современная модель с group обычно описывает группировку уже выбранных цветов. Снять primary и проверить самостоятельность значения.",
+        "rejected_attempts": [
+          {
+            "en": "She grouped the colours by shade.",
+            "ru": "Она сгруппировала цвета по оттенкам.",
+            "problem": "Классификация по оттенку не означает гармоничный подбор."
+          },
+          {
+            "en": "The designer grouped the colours for the room.",
+            "ru": "Дизайнер гармонично подобрал цвета для комнаты.",
+            "problem": "«Гармонично подобрал» вводит эстетический критерий, которого нет в английском."
+          }
+        ]
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "translation": "классифицировать, распределять по группам",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "We grouped the books by topic.",
+          "ru": "Мы распределили книги по темам.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "group",
+          "target_form": "grouped",
+          "unit_type": "word",
+          "reason": "By topic задаёт явное основание классификации.",
+          "sense_explanation": "Grouped the books by topic — распределили книги по тематическим группам.",
+          "translation_explanation": "Перевод сохраняет действие и критерий.",
+          "contrast": "Это сортировка по признаку, а не простое собирание в одном месте.",
+          "usage_status": "current",
+          "contemporary_explanation": "Group items by a shared feature — обычная современная инструкция.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar.pdf",
+              "query": "grouped by",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "public",
+    "decision": "review_required",
+    "reason": "Основные 2, 1 и 7. В 4 и 5 переводы целых сочетаний привязать к ним по 07. У 8 проверить, существует ли самостоятельное значение для обеих частей перевода.",
+    "confidence": 0.97,
+    "source_evidence_ref": "#/previous_outputs/06/17",
+    "previous_review_refs": [
+      "#/previous_outputs/07/17",
+      "#/previous_outputs/08/17"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "общественный; государственный",
+        "examples_checked": 7,
+        "problem": "Public man — общественный деятель, стилистика требует проверки. Public office часто должность, учреждение только по контексту. Public opinion — общественное мнение, opinion poll — опрос общественного мнения. Public peace — общественный порядок, public debt — государственный долг. Public officer/official — должностное лицо или служащий по контексту."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "публичный, общедоступный",
+        "examples_checked": 3,
+        "problem": "Public library и public lecture лучше развести на библиотеку и открытую лекцию. Public road — дорога общего пользования, размер не задан. Public transport — общественный транспорт, доступный пассажирам."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "translation": "открытый, гласный",
+        "examples_checked": 2,
+        "problem": "Public protest — открытый или публичный протест. Give something public utterance относится к публичному высказыванию. «Предать гласности» подходит при раскрытии ранее неизвестного."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "translation": "коммунальный; коммунальные услуги",
+        "examples_checked": 2,
+        "problem": "Public utilities может означать услуги, предприятия или инфраструктуру. Public service без контекста допускает общественную услугу или государственную службу. Коммерческую помету снять."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "translation": "народный, общенародный; гражданственность",
+        "examples_checked": 2,
+        "problem": "Public ownership — общественная или государственная собственность по контексту. Public spirit — гражданственность, забота об общем благе. «Дух патриотизма» сужает это до отношения к стране."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "народ",
+        "examples_checked": 1,
+        "problem": "The British public — британская общественность или население Великобритании. «Английский народ» географически уже."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "публика; общественность",
+        "examples_checked": 2,
+        "problem": "Appeal to the public показывает обращение к общественности. In public — обстоятельство «публично», полезно показать отдельно."
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "круг читателей; завсегдатаи",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "Reading public в восьми кэшах не найдено, но возможно как современная контекстная реализация «публика». «Завсегдатаи» отдельно не подтверждено. Отсылка public house на с. 637 относится к пабу и не заменяет эту строку.",
+        "rejected_attempts": [
+          {
+            "en": "The magazine has a loyal reading public.",
+            "ru": "У журнала есть круг преданных читателей.",
+            "problem": "Современный контекст подтверждает readership как разновидность публики, не самостоятельное разговорное значение со вторым переводом."
+          },
+          {
+            "en": "The pub’s public came back every Friday.",
+            "ru": "Завсегдатаи паба возвращались каждую пятницу.",
+            "problem": "The pub’s public не обозначает завсегдатаев идиоматически."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "top",
+    "decision": "review_required",
+    "reason": "Основные 2, 1, 14, 4 и 15. Предметные и технические смыслы вторичны. Исправить склейки и отделить волчок. Для ряда редких значений нужен точный контекст перед добавлением.",
+    "confidence": 0.97,
+    "source_evidence_ref": "#/previous_outputs/06/18",
+    "previous_review_refs": [
+      "#/previous_outputs/07/18",
+      "#/previous_outputs/08/18"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "верхушка, вершина (горы); макушка (головы, дерева)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "We reached the top of the mountain before lunch.",
+          "ru": "Мы добрались до вершины горы до обеда.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "top",
+          "unit_type": "word",
+          "reason": "Гора даёт конкретный и знакомый референт.",
+          "sense_explanation": "The top of the mountain — вершина горы.",
+          "translation_explanation": "Reached и before lunch сохраняют достижение и временной предел.",
+          "contrast": "Это географическая вершина, а не верхняя поверхность вещи.",
+          "usage_status": "current",
+          "contemporary_explanation": "Reach the top of a mountain — обычное сочетание в рассказе о восхождении.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "top of the mountain",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "верхний конец, верхняя поверхность; верх (экипажа, лестницы, страницы); крышка (кастрюли, банки); колпачок; верхний обрез (книги); с головы до пят",
+        "examples_checked": 3,
+        "problem": "Top of milk может обозначать верхний слой молока или сливки. «Пенка» зависит от контекста. From top to toe — с головы до пят, from top to bottom — сверху донизу. Перевод первого оборота убрать из самостоятельного толкования."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "шпиль, купол",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 833 даёт эти переводы без примера. Контексты с top of the spire показывают верх шпиля, а не шпиль. Нужен пример, где top самостоятельно обозначает указанную конструкцию.",
+        "rejected_attempts": [
+          {
+            "en": "They repaired the top of the spire.",
+            "ru": "Они отремонтировали шпиль.",
+            "problem": "Исчезла разница между верхом шпиля и шпилем целиком."
+          },
+          {
+            "en": "The church has a copper top.",
+            "ru": "У церкви медный купол.",
+            "problem": "Top не задаёт форму купола."
+          }
+        ]
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "высшее, первое место; высокое положение",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The team is at the top of the league.",
+          "ru": "Команда занимает первое место в лиге.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "top",
+          "unit_type": "word",
+          "reason": "Лига задаёт рейтинг, а top — лидирующую позицию.",
+          "sense_explanation": "At the top of the league означает нахождение на первом месте в таблице.",
+          "translation_explanation": "Сохранены команда, лига и текущее положение.",
+          "contrast": "Это место в рейтинге, а не пространственная вершина или конкретный человек.",
+          "usage_status": "current",
+          "contemporary_explanation": "At the top of the league регулярно употребляется в спортивных сообщениях.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "top of the league",
+              "result": "Нет совпадений. В статье есть отдельная модель come out on ~."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "первый; человек, занимающий первое место",
+        "examples_checked": 1,
+        "problem": "He was top in maths — он был первым по математике. «Лучшим учеником» допустимо в школьном контексте. Предикативное top не доказывает именную разметку человека."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "блузка, джемпер, верх одежды или обуви",
+        "examples_checked": 1,
+        "problem": "Pyjama top — верх пижамы или пижамная куртка, если это куртка. Пример подтверждает верхнюю часть одежды."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "высшая степень; высшее напряжение",
+        "examples_checked": 2,
+        "problem": "At the top of one’s voice — во весь голос. At top speed — на полной скорости. Второй пример содержит атрибутивное top и относится к 15."
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "(обыкн. при мн. ч.:) ботва (корнеплодов)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Cut the tops off the carrots.",
+          "ru": "Срежьте ботву у моркови.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "tops",
+          "unit_type": "word",
+          "reason": "Короткая инструкция связывает ботву с корнеплодом.",
+          "sense_explanation": "Tops — надземная зелень моркови, которую срезают.",
+          "translation_explanation": "«Срежьте» передаёт cut off, «ботва» естественно употребляется как собирательное.",
+          "contrast": "Речь о листьях и стеблях, а не о верхних концах корнеплодов.",
+          "usage_status": "current",
+          "contemporary_explanation": "Tops для зелени корнеплодов употребляется в современных кулинарных и садовых инструкциях.",
+          "source_searches": [
+            {
+              "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+              "query": "beet tops",
+              "result": "Подтверждает именную модель, полный пример создан для моркови.",
+              "location": {
+                "page": 940
+              },
+              "quote": "(свек лы) beet tops"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: две старшие карты какой-либо масти (в бридже)",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 834 подтверждает карточное толкование и pl без британской пометы. Современное tops в бридже не удалось привязать именно к двум старшим картам масти, а не к более общей группе старших карт или результату розыгрыша.",
+        "rejected_attempts": [
+          {
+            "en": "I have both tops in hearts.",
+            "ru": "У меня обе старшие карты червей.",
+            "problem": "Употребление tops в этой точной карточной конструкции требует подтверждения."
+          },
+          {
+            "en": "She led one of her tops.",
+            "ru": "Она пошла одной из своих двух старших карт.",
+            "problem": "Число два и масть из EN не следуют."
+          }
+        ]
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: отвороты (сапог); высокие сапоги с отворотами",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 834 даёт pl без британской пометы. Boot tops не найдено в кэшах. Современный контекст именно для отворотов или целых сапог не установлен.",
+        "rejected_attempts": [
+          {
+            "en": "Mud covered his boot tops.",
+            "ru": "Грязь покрыла отвороты его сапог.",
+            "problem": "Boot tops может обозначать верх голенищ, отвороты не следуют."
+          },
+          {
+            "en": "He put on his tops.",
+            "ru": "Он надел высокие сапоги с отворотами.",
+            "problem": "Современный читатель не узнает тип сапог без специального контекста."
+          }
+        ]
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "translation": "кровля (выработки)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The crew checked the top of the mine passage for loose rock.",
+          "ru": "Рабочие проверили, нет ли в кровле выработки непрочной породы.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "top",
+          "unit_type": "word",
+          "reason": "Шахтный проход и проверка породы задают кровлю выработки.",
+          "sense_explanation": "Top of the mine passage — верхняя поверхность подземной выработки.",
+          "translation_explanation": "Checked … for loose rock передаёт цель осмотра без утверждения, что породу нашли.",
+          "contrast": "Это верх подземного прохода, а не поверхность над шахтой.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Горное учебное руководство называет top синонимом roof и употребляет top of a mine passage.",
+          "contemporary_sources": [
+            {
+              "url": "https://stacks.cdc.gov/view/cdc/216027/cdc_216027_DS1.pdf",
+              "quote": "a low place in the top of a mine passage",
+              "context": "Глоссарий для обучения шахтёров, статья Roll и определение Roof в соседней строке."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "кровля (выработки)",
+              "result": "Термин без примера.",
+              "location": {
+                "page": 834
+              },
+              "quote": "11) горн. кровля (выработки)"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "translation": "колошник",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The sensors monitor gas temperature at the furnace top.",
+          "ru": "Датчики контролируют температуру газа на колошнике доменной печи.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "top",
+          "unit_type": "word",
+          "reason": "Газовый контроль задаёт верхнюю рабочую часть доменной печи.",
+          "sense_explanation": "Furnace top в доменном контексте — колошник.",
+          "translation_explanation": "Контроль температуры сохранён. «Доменной» раскрывает отраслевой референт, для английского предложения нужен этот контекст.",
+          "contrast": "Речь о части доменной печи, а не об общем обозначении верха.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Производитель оборудования употребляет furnace top в документации по доменному газу и загрузке.",
+          "contemporary_sources": [
+            {
+              "url": "https://www.primetals.com/fileadmin/user_upload/content/01_portfolio/1_ironmaking/blast-furnace/ABOVE_BURDEN_PROBE_-_TEMPERATURE_AND_GAS_MONITORING.pdf",
+              "quote": "thereby controlling the furnace top",
+              "context": "Техническое описание зонда для контроля газа и температуры в верхней части доменной печи."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "колошник",
+              "result": "В статье top дано толкование без примера.",
+              "location": {
+                "page": 834
+              },
+              "quote": "12) метал. колошник"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "translation": "марс",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The crew inspected the mizzen fighting top during the refit.",
+          "ru": "Во время ремонта команда осмотрела боевой марс бизань-мачты.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "top",
+          "unit_type": "word",
+          "reason": "Осмотр такелажной конструкции сохраняет профессиональный контекст.",
+          "sense_explanation": "Mizzen fighting top — площадка на бизань-мачте парусного корабля.",
+          "translation_explanation": "Осмотр при ремонте и конкретная мачта сохранены.",
+          "contrast": "Top — площадка, а не верхняя точка мачты.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Реставраторы употребляют термин для существующей конструкции, которую осматривают и демонтируют.",
+          "contemporary_sources": [
+            {
+              "url": "https://ussconstitutionmuseum.org/2015/06/18/up-up-and-away/",
+              "quote": "After being swung away from Constitution, the fighting top is guided",
+              "context": "Отчёт участников демонтажа марса во время реставрации USS Constitution."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "мор. марс",
+              "result": "Толкование без примера.",
+              "location": {
+                "page": 834
+              },
+              "quote": "13) мор. марс"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "adjective",
+        "translation": "верхний",
+        "examples_checked": 1,
+        "problem": "The top shelf — «верхняя полка». Атрибутивная позиция и пространственный перевод согласуются."
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "adjective",
+        "translation": "наивысший, максимальный",
+        "examples_checked": 2,
+        "problem": "Top speed — максимальная скорость, «самая высшая» избыточно. Top price — самая высокая цена, перевод подходит."
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "adjective",
+        "translation": "самый главный",
+        "examples_checked": 1,
+        "problem": "Top men — люди, занимающие ведущие позиции. «Самый главный» слишком узок для нескольких ведущих лиц."
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "translation": "покрывать (сверху); снабжать верхушкой, куполом и т. п.",
+        "examples_checked": 2,
+        "problem": "Mountain was topped with snow — снег лежал на вершине, перевод точен. To top one’s fruit в печати описывает выкладку лучших фруктов сверху, этот специальный смысл нуждается в современном контексте."
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "translation": "обрезать верхушку (дерева и т. п.; тж. top up)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "They topped the tree to keep it below the power lines.",
+          "ru": "Они обрезали верхушку дерева, чтобы оно оставалось ниже линий электропередачи.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "topped",
+          "unit_type": "word",
+          "reason": "Цель обрезки делает направление действия ясным.",
+          "sense_explanation": "Topped the tree означает срезали его верхнюю часть.",
+          "translation_explanation": "Цель сохранить высоту ниже проводов передана без утверждения об эффективности обрезки.",
+          "contrast": "Верхушку удаляют, дерево ничем не покрывают. Вариант top up этот пример не подтверждает.",
+          "usage_status": "current",
+          "contemporary_explanation": "Top a tree употребляется в современной речи об обрезке деревьев.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "top the tree",
+              "result": "Нет совпадений. С. 834 подтверждает толкование без примера."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "translation": "превосходить; быть во главе, быть первым",
+        "examples_checked": 0,
+        "candidate_example": {
+          "en": "This picture tops all I have ever seen.",
+          "ru": "Эта картина лучше всех, что я когда-либо видел.",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "tops",
+          "unit_type": "word",
+          "sense_explanation": "Tops all сравнивает картину со всеми ранее увиденными и ставит её выше.",
+          "translation_explanation": "«Лучше всех» передаёт оценочное превосходство, опыт говорящего сохранён.",
+          "contrast": "Нет числового порога, как в значении 20.",
+          "usage_status": "current",
+          "contemporary_explanation": "Top сохраняет оценочную модель превосходства, например в сравнении работ или выступлений.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "this picture ~s all",
+              "result": "Подходит, тильда раскрыта как top.",
+              "location": {
+                "page": 834
+              },
+              "quote": "this picture ~s all I have ever seen"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "translation": "превышать; достигать какой-либо вершины, веса и т. п.",
+        "examples_checked": 2,
+        "problem": "Tops his father by a head — выше отца на голову. Tops six feet — выше шести футов, текущий перевод теряет превышение."
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "translation": "подняться на вершину; перевалить (через гору); перепрыгнуть (через что-либо)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "We topped the hill and saw the village below.",
+          "ru": "Мы поднялись на вершину холма и увидели внизу деревню.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "top",
+          "target_form": "topped",
+          "unit_type": "word",
+          "reason": "Вид вниз показывает достижение вершины.",
+          "sense_explanation": "Topped the hill означает достигли гребня или вершины при движении.",
+          "translation_explanation": "Подъём и последующее наблюдение сохранены, спуск не добавлен.",
+          "contrast": "Глагол движения, а не покрытие холма или превышение числа.",
+          "usage_status": "current",
+          "contemporary_explanation": "Top a hill встречается в современной описательной речи о маршрутах.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "top the hill",
+              "result": "Нет совпадений."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "translation": "покрывать (новой краской и т. п.)",
+        "examples_checked": 0,
+        "review_required": true,
+        "no_candidate_reason": "С. 834 даёт толкование без примера. Поиск topped with paint не дал совпадений. Для точного значения нужно подтверждение употребления top при нанесении покрытия, без подмены словом topcoat.",
+        "rejected_attempts": [
+          {
+            "en": "They topped the wall with paint.",
+            "ru": "Они покрыли стену краской.",
+            "problem": "Английская конструкция наводит на обработку верха стены и не подтверждает покрытие всей поверхности."
+          },
+          {
+            "en": "The panel was topped with fresh paint.",
+            "ru": "Панель покрыли свежей краской.",
+            "problem": "Нужна проверка современного технического употребления top в этом значении."
+          }
+        ]
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "verb",
+        "translation": "покрывать",
+        "examples_checked": 2,
+        "problem": "Topped off their dinner with fruit — «они завершили обед фруктами». Текущий перевод вводит подачу фруктов кем-то другим. Top off в обоих примерах относится к завершению или отделке. Сельскохозяйственное «покрывать» с. 834 подтверждает отдельно, предмет действия и современность не установлены."
+      }
+    ],
+    "phrase_review": "Top off — завершать, отделывать в зависимости от объекта. Top up — пополнять, доливать, дозаправлять с раздельными пометами. На с. 834 есть «(a little bit) off the ~ не в своём уме» и «to come to the ~ занять видное положение». Первый оборот требует современной проверки, второй — глагольной разметки. Go over the top развести по военному и переносным смыслам, проверить современное «переборщить» отдельно. На с. 834 подпункты 8–10 имеют pl, британская помета там не подтверждена."
+  },
+  {
+    "word": "business",
+    "decision": "изменить",
+    "reason": "Основные 6, 5, 1 в этом порядке. В 1 и 9 восстановить границы переводов. Сделку и театральное действие показать как вторичные употребления.",
+    "confidence": 0.98,
+    "source_evidence_ref": "#/previous_outputs/06/19",
+    "previous_review_refs": [
+      "#/previous_outputs/07/19",
+      "#/previous_outputs/08/19"
+    ],
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "дело, занятие",
+        "examples_checked": 4,
+        "problem": "On business — по делу или по работе. Out of business — прекратить деятельность, банкротство зависит от причины. Man of business — деловой человек, в другом печатном прочтении агент или поверенный. The business of the day/meeting — повестка дня, приклеенный перевод перенести к man of business."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "профессия",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Her business is writing books for children.",
+          "ru": "Её профессия — писать книги для детей.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "business",
+          "target_form": "business",
+          "unit_type": "word",
+          "reason": "Конкретная работа раскрывает профессиональное занятие.",
+          "sense_explanation": "Her business здесь означает то, чем она занимается профессионально.",
+          "translation_explanation": "Написание книг и их адресат сохранены. «Профессия» передаёт профессиональное прочтение business.",
+          "contrast": "Подлежащее описывает занятие человека, а не отдельную фирму.",
+          "usage_status": "current",
+          "contemporary_explanation": "Her business is + форма на -ing остаётся возможным способом назвать род работы. Без контекста возможен коммерческий оттенок.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "in the business of",
+              "result": "Нет совпадений. С. 111 подтверждает отдельное «профессия» без примера."
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "обязанность; право",
+        "examples_checked": 2,
+        "problem": "Make it one’s business — взять за правило или считать своей обязанностью. Had no business to do it — не имели права или оснований, уместен оттенок неодобрения."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "дело, история",
+        "examples_checked": 1,
+        "problem": "Sick of the whole business — «мне вся эта история надоела». Отрицательная оценка прямо следует из sick of, поэтому помета не обязана распространяться на все употребления business «дело»."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "торговое предприятие, фирма",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "They bought a small business that sells office furniture.",
+          "ru": "Они купили небольшую фирму, которая продаёт офисную мебель.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "business",
+          "target_form": "business",
+          "unit_type": "word",
+          "reason": "Покупка предприятия показывает счётное значение и сохраняет торговый контекст текущего перевода.",
+          "sense_explanation": "A small business — конкретная фирма, которая выступает объектом покупки.",
+          "translation_explanation": "Сохранены покупка, размер фирмы и предмет торговли.",
+          "contrast": "Куплена отдельная фирма, речь не о коммерческой деятельности в целом.",
+          "usage_status": "current",
+          "contemporary_explanation": "Buy a small business — обычная современная модель при описании покупки фирмы.",
+          "source_searches": [
+            {
+              "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+              "query": "small business",
+              "result": "Найдено короткое сочетание на с. 622. Для однозначного счётного прочтения добавлен контекст покупки."
+            },
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "торговое предприятие, фирма",
+              "result": "Толкование без пометы торг.",
+              "location": {
+                "page": 112
+              },
+              "quote": "5) торговое предприятие, фирма"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "бизнес; коммерческая деятельность",
+        "examples_checked": 1,
+        "problem": "Set up in business — начать собственное дело. «Торговое» сужает общий смысл до торговли."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "(выгодная) сделка",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "Buying those shares turned out to be good business.",
+          "ru": "Покупка этих акций оказалась выгодной сделкой.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "business",
+          "target_form": "business",
+          "unit_type": "word",
+          "reason": "Одна конкретная покупка задаёт сделку, оценка good — выгодность.",
+          "sense_explanation": "Good business оценивает единичное приобретение как выгодное.",
+          "translation_explanation": "«Оказалась» передаёт turned out, покупка и выгодность сохранены.",
+          "contrast": "Оценивается сделка, а не фирма или отрасль.",
+          "usage_status": "current",
+          "contemporary_explanation": "Good business употребляется как оценка выгодного решения. Предложение не содержит инвестиционной рекомендации.",
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "(выгодная) сделка",
+              "result": "Толкование без примера.",
+              "location": {
+                "page": 112
+              },
+              "quote": "7) (выгодная) сделка"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "действие, игра, мимика, жесты (не диалог)",
+        "examples_checked": 0,
+        "generated_example": {
+          "en": "The director added some stage business with a hat.",
+          "ru": "Режиссёр добавил сценическое действие со шляпой.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "business",
+          "target_form": "business",
+          "unit_type": "word",
+          "reason": "Реквизит задаёт физическое действие актёра.",
+          "sense_explanation": "Stage business обозначает небольшое сценическое действие с предметом.",
+          "translation_explanation": "Сохранены добавление действия режиссёром и предмет, реплика не подразумевается.",
+          "contrast": "Это действие в постановке, а не коммерческая сторона театра.",
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Stage business употребляется при документировании действий актёра на современных репетициях.",
+          "contemporary_sources": [
+            {
+              "url": "https://jewlscholar.mtsu.edu/server/api/core/bitstreams/17d08c48-949a-4442-8d02-163a52e0355b/content",
+              "quote": "any tasks, known as stage business, they accomplish",
+              "context": "Исследование работы постановочной части, с. 52, описание разметки движений и действий актёров."
+            }
+          ],
+          "source_searches": [
+            {
+              "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+              "query": "мимика, жесты",
+              "result": "Театральное толкование без примера.",
+              "location": {
+                "page": 112
+              },
+              "quote": "8) театр. действие, игра, мимика, жесты (не диалог)"
+            }
+          ]
+        }
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "практический, деловой; «капитаны» промышленности",
+        "examples_checked": 4,
+        "problem": "Business end — рабочая часть инструмента или существенная часть дела в конкретном контексте. Business hours — рабочие часы, часы приёма или работы. Business executives — руководители компаний, «капитаны промышленности» только в особом контексте. Business interests — деловые интересы, активы или деловые круги по контексту. Сохранить атрибутивную функцию существительного."
+      }
+    ],
+    "phrase_review": "What is your business here? — целый вопрос, «что вам здесь надо?» может передавать резкий тон. It has done his business сохранено в печатном свидетельстве, современность оборота не установлена. Business executives как отдельную фразу оценить совместно с правкой 9. Устаревшее business II рассматривать отдельно."
+  }
+]

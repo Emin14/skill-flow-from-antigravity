@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 215, in <module>
+    raise SystemExit(main())
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 181, in main
+    run_worker(worker, stage, prompt, output)
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 44, in run_worker
+    raise RuntimeError(f"worker {role} failed ({result.returncode}):\n{result.stdout}\n{result.stderr}")
+RuntimeError: worker 06 failed (1):
+
+Traceback (most recent call last):
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/codex_worker_adapter.py", line 46, in <module>
+    if __name__=='__main__': raise SystemExit(main())
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/codex_worker_adapter.py", line 39, in main
+    if result.returncode: raise RuntimeError(f'Codex worker failed: {result.stdout}\n{result.stderr}')
+RuntimeError: Codex worker failed: {"type":"thread.started","thread_id":"01a1a333-ad33-76a1-98a5-d5eab2fde8c8"}
+{"type":"turn.started"}
+{"type":"error","message":"You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at Nov 4th, 2026 2:12 AM."}
+{"type":"turn.failed","error":{"message":"You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at Nov 4th, 2026 2:12 AM."}}
+
+2026-11-03T20:57:15.319487Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-03T20:57:15.319501Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-03T20:57:15.323015Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-03T20:57:15.581369Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-03T20:57:15.581376Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-03T20:57:16.373682Z  WARN codex_core::session::startup_prewarm: startup websocket prewarm setup failed: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at Nov 4th, 2026 2:12 AM.
+
+

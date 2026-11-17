@@ -1,0 +1,3583 @@
+[
+  {
+    "word": "another",
+    "decision": "изменить",
+    "reason": "Добавочное и альтернативное значения следует показывать раньше уподобления. Пример another one не показывает самостоятельного местоименного употребления; для него предложен отдельный пример.",
+    "confidence": 0.97,
+    "before_ref": "#/entries/0",
+    "source_evidence_ref": "#/previous_outputs/06/0/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/0",
+    "priority_review_ref": "#/previous_outputs/08/0",
+    "after": {
+      "recommended_order": [
+        1,
+        3,
+        2
+      ],
+      "primary_by_meaning_index": {
+        "1": true,
+        "2": false,
+        "3": true
+      }
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "determiner",
+        "translation": "ещё один",
+        "examples_checked": 1,
+        "problem": "Another cup of tea? — естественное сокращённое предложение ещё одной чашки. «Хотите» раскрывает обычный речевой смысл вопроса; «ещё чашку» передаёт добавочность."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "determiner",
+        "translation": "новый, ещё один, похожий",
+        "examples_checked": 1,
+        "problem": "Another Shakespeare обозначает человека, сопоставимого с Шекспиром, а не дополнительного самого Шекспира. «Новоявленный» может добавлять иронию; для нейтральной подачи лучше «новый Шекспир». Значение вторичное."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "pronoun",
+        "translation": "другой, отличный",
+        "examples_checked": 1,
+        "problem": "В another one слово another определяет one. Русский перевод верен, но заявленную самостоятельную местоименную модель этот пример непосредственно не показывает. Слово «отличный» необходимо пояснить как «отличающийся, иной», чтобы исключить прочтение «превосходный».",
+        "generated_example": {
+          "en": "This cup is broken. Please give me another.",
+          "ru": "Эта чашка разбита. Пожалуйста, дайте мне другую.",
+          "origin": "generated",
+          "before_examples": [
+            {
+              "en": "I don't like this bag, give me another one",
+              "ru": "мне не нравится эта сумка, дайте мне другую"
+            }
+          ],
+          "target_lemma": "another",
+          "target_form": "another",
+          "unit_type": "word",
+          "sense_explanation": "Another самостоятельно заменяет существительное cup после give me; речь о другой чашке взамен разбитой.",
+          "translation_explanation": "Broken передано словом «разбита», please — «пожалуйста», another — самостоятельным «другую»; дополнительных обстоятельств нет.",
+          "contrast": "Разбитая чашка заменяется другой; контекст не предлагает дополнительную чашку к уже используемой и не уподобляет человека известной личности.",
+          "reason": "Показывает именно местоименную модель без one.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "another; статья на странице 40",
+              "result": "Проверенный исходный пример содержит another one; самостоятельного местоименного примера в этом фрагменте нет. Поиски во всех восьми файлах сохранены в source_evidence_ref."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Самостоятельное another после give me — обычное современное обозначение замены ранее названного исчисляемого предмета."
+        }
+      }
+    ],
+    "phrases_review": "Отдельных phrases нет.",
+    "doubts": [
+      "Сохраняются ограничения предыдущих отчётов, включая отсутствие визуальной сверки.",
+      "Новый пример не является цитатой источника."
+    ]
+  },
+  {
+    "word": "own",
+    "decision": "изменить",
+    "reason": "Главные значения собственности и владения понятны, но перевод примера о шитье теряет одежду. Ласковое обращение ошибочно представлено как обычное прилагательное; редкие признательные конструкции и значение own up о подчинении требуют отдельной проверки.",
+    "confidence": 0.97,
+    "before_ref": "#/entries/1",
+    "source_evidence_ref": "#/previous_outputs/06/1/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/1",
+    "priority_review_ref": "#/previous_outputs/08/1",
+    "after": {
+      "recommended_order": [
+        1,
+        5,
+        2,
+        3,
+        6,
+        4
+      ],
+      "primary_meaning_indices": [
+        1,
+        5,
+        2
+      ],
+      "accept_stage07_meaning_proposals": [
+        6
+      ],
+      "example_translation_edits": [
+        {
+          "meaning_index": 1,
+          "example_index": 3,
+          "before": {
+            "en": "to make one's own clothes",
+            "ru": "шить для себя"
+          },
+          "after": {
+            "en": "to make one's own clothes",
+            "ru": "самому шить себе одежду"
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "свой собственный",
+        "examples_checked": 4,
+        "problem": "For its own sake выражает самоценность правды; name your own price — самостоятельно выбранную цену; his own man — независимость. Эти три перевода объясняют конструкции. В to make one's own clothes перевод «шить для себя» не называет одежду и слабо показывает самостоятельное изготовление; предложено уточнение."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "собственный, оригинальный",
+        "examples_checked": 1,
+        "problem": "His own idea подчёркивает авторство идеи. «Его собственная идея» верно; «оригинальный» здесь следует понимать как самостоятельно придуманный, а не обязательно необычный."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "translation": "родной",
+        "examples_checked": 1,
+        "problem": "My own father усиливает связь с собственным отцом. «Мой родной отец» допустимо, однако own само по себе не устанавливает биологическое родство в противопоставлении усыновлению; полезно пояснение «мой собственный отец»."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "translation": "любимый",
+        "examples_checked": 1,
+        "problem": "Farewell, my own — ласковое субстантивированное обращение с литературным оттенком. Это не обычное современное прилагательное «любимый» перед существительным. Primary следует снять; значение сохранить до решения о регистре и части речи.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "translation": "владеть; иметь, обладать",
+        "examples_checked": 1,
+        "problem": "To own lands непосредственно обозначает владение землёй. Множественное lands имеет более официальный оттенок, чем бытовое land, но ошибки значения нет; это главное глагольное значение."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "translation": "признавать(ся); откровенно признаваться; безропотно подчиняться",
+        "examples_checked": 4,
+        "problem": "Принимается уточнение 07 «признавать(ся)»: own a child — признание ребёнка своим, own one's faults — признание недостатков, own to something/the theft — признание в чём-либо/краже. Подчинение сюда не относится. Own a child и own to the theft нельзя подавать как нейтральные начальные модели без проверки современного регистра; own one's faults допускает современное формальное употребление.",
+        "review_required": true
+      }
+    ],
+    "phrases_review": [
+      {
+        "phrase_index": 1,
+        "problem": "Own up обычно означает признаться в проступке. «Безропотно подчиняться» подтверждено старым словарным фрагментом, но его современность не установлена; не включать в современные учебные примеры до проверки.",
+        "review_required": true
+      },
+      {
+        "phrase_index": 2,
+        "problem": "I have nothing of my own — целое предложение; исправление POS на sentence из 07 принимается. «У меня нет ничего своего» точнее сохраняет own, чем одно «у меня ничего нет»."
+      },
+      {
+        "phrase_index": 3,
+        "problem": "Come into one's own — глагольная идиома о признании достоинств или раскрытии возможностей. «Получить должное» слишком неопределённо; рекомендуется пояснение «получить заслуженное признание; проявить свои достоинства»."
+      },
+      {
+        "phrase_index": 4,
+        "problem": "Исправить hold ing на holding. Holding his own означает, что состояние больного не ухудшается, он держится; «борется с недугом» не показывает это ограничение. Рекомендуемый перевод: «состояние больного остаётся стабильным; больной держится»."
+      }
+    ],
+    "doubts": [
+      "Американская транскрипция и визуальная сверка остаются нерешёнными вопросами предыдущих этапов.",
+      "Подтверждение старым словарём не устанавливает современность ласкового own и подчинительного own up."
+    ]
+  },
+  {
+    "word": "under",
+    "decision": "review_required",
+    "reason": "Основные предложные значения полезны, но несколько примеров не подходят для современной учебной подачи. Для движения вниз найден подтверждённый пример. Остальные пустые самостоятельные значения требуют индивидуального пересмотра: их нельзя заполнять производными с under- или неоднозначными конструкциями.",
+    "confidence": 0.95,
+    "before_ref": "#/entries/2",
+    "source_evidence_ref": "#/previous_outputs/06/2/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/2",
+    "priority_review_ref": "#/previous_outputs/08/2",
+    "after": {
+      "recommended_order": [
+        1,
+        8,
+        4,
+        3,
+        5,
+        2,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "primary_meaning_indices": [
+        1,
+        8,
+        4,
+        3
+      ],
+      "accept_stage07_meaning_proposals": [
+        15
+      ],
+      "formatting": "Отделить пояснения от переводов двоеточиями; сохранить содержание исходных значений до независимого решения."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "translation": "под, ниже (указывает на нахождение ниже другого предмета или движение вниз)",
+        "examples_checked": 3,
+        "problem": "Under the chair и under one's feet показывают положение под предметом, put the suitcase under the table — направление помещения под стол. Русские падежи правильно различают положение и движение."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "preposition",
+        "translation": "указывает на нахождение под бременем, тяжестью чего-либо под",
+        "examples_checked": 2,
+        "problem": "Under the load показывает давление груза, broke down under the burden of sorrow — переносное подавляющее воздействие горя. «Горе сломило его» сохраняет смысл, хотя меняет синтаксис; ошибок привязки нет."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "preposition",
+        "translation": "указывает на пребывание под властью, контролем, командованием под",
+        "examples_checked": 3,
+        "problem": "Work under a professor показывает руководство; England under the Stuarts — правление династии. An office under Government — старое институциональное выражение; «государственная служба» допустимо лишь в этом контексте, но пример слаб для современного общего обучения.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "preposition",
+        "translation": "указывает на нахождение в процессе, осуществлении, определённом состоянии (under construction, under review)",
+        "examples_checked": 3,
+        "problem": "Under repair и under consideration обозначают текущие процессы, under arrest — правовой статус. Все три перевода передают соответствующее состояние без добавления завершённости."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "preposition",
+        "translation": "указывает на условия, обстоятельства, при которых совершается действие при, под, на",
+        "examples_checked": 8,
+        "problem": "Fire, arms, penalty, cover, assumed name, mask и protection дают узнаваемые модели обстоятельств, вооружённости, угрозы, прикрытия и защиты. Under the necessity of something не равно общему «под давлением каких-либо обстоятельств»: речь о необходимости чего-либо. Эту пару следует уточнить отдельно; прочие семь пар содержательно приемлемы.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "preposition",
+        "translation": "указывает на соответствие, согласованность по",
+        "examples_checked": 4,
+        "problem": "Under the agreement/law выражает основание действия. Under right in international law не является прозрачной современной английской конструкцией; буквальная находка не делает её хорошим примером. Operate under a principle также менее обычное учебное сочетание, чем действие на основании закона. Первые два примера оставить основными, последние два вынести на проверку.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "preposition",
+        "translation": "указывает на включение в графу, параграф, пункт и т. п. под, к",
+        "examples_checked": 2,
+        "problem": "Falls under the head of grammar и goes under point five показывают отнесение к категории или пункту. Переводы передают классификацию; head в первом примере означает рубрику, а не голову."
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "preposition",
+        "translation": "указывает на меньшую степень, более низкую цену, на меньший возраст и т. п. ниже, меньше",
+        "examples_checked": 5,
+        "problem": "Under two hundred, under five и under cost показывают количественный, возрастной и ценовой предел. В примере о времени необходимо редакционное in: I cannot reach the village in under two hours. В under certain age нужен артикль: under a certain age. Эти исправления нельзя объявлять восстановленной цитатой без изображения.",
+        "example_edits": [
+          {
+            "example_index": 3,
+            "before": {
+              "en": "I cannot reach the village under two hours",
+              "ru": "я не могу добраться до деревни меньше, чем за два часа"
+            },
+            "after": {
+              "en": "I cannot reach the village in under two hours",
+              "ru": "Я не могу добраться до деревни меньше чем за два часа."
+            },
+            "origin": "editorial_correction"
+          },
+          {
+            "example_index": 4,
+            "before": {
+              "en": "under certain age",
+              "ru": "не достигший определённого возраста"
+            },
+            "after": {
+              "en": "under a certain age",
+              "ru": "не достигший определённого возраста"
+            },
+            "origin": "editorial_correction"
+          }
+        ]
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "preposition",
+        "translation": "указывает на использование площади, участка земли в определённых целях под",
+        "examples_checked": 1,
+        "problem": "A field under clover означает поле, занятое посевом клевера. Перевод «засеянное клевером» конкретно раскрывает использование площади; это аграрное употребление, не самостоятельное «внизу»."
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adverb",
+        "translation": "ниже, вниз",
+        "examples_checked": 0,
+        "problem": "Найден короткий пример движения под поверхность воды; перевод требует пояснения результата «затонуть», а не механической подстановки «вниз».",
+        "candidate_example": {
+          "en": "the ship went under",
+          "ru": "корабль затонул",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "under",
+          "target_form": "under",
+          "unit_type": "word",
+          "sense_explanation": "Went under обозначает движение судна вниз под поверхность воды; under употреблено без выраженного именного дополнения.",
+          "translation_explanation": "«Затонул» естественно передаёт целую конструкцию went under; это не значение одного went.",
+          "contrast": "Показано движение вниз, а не статическое местонахождение «внизу» и не количественный предел.",
+          "reason": "Источник даёт однозначную модель самостоятельного under.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "under; страница 476",
+              "result": "Найдено: the ship went under — корабль затонул."
+            }
+          ],
+          "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+          "location": {
+            "page": 476
+          },
+          "quote": "the ship went under\nкорабль затонул",
+          "usage_status": "current",
+          "contemporary_explanation": "Go under в буквальном описании тонущего судна остаётся обычной современной конструкцией; исторического обращения или устаревшего управления здесь нет."
+        }
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "adverb",
+        "translation": "внизу",
+        "examples_checked": 0,
+        "problem": "Для отдельного статического «внизу» не получен достаточно однозначный современный пример без невыраженного дополнения или перехода к значению погружения.",
+        "rejected_attempts": [
+          {
+            "en": "The cat stayed under.",
+            "ru": "Кошка оставалась внизу.",
+            "problem": "Английское under требует контекста предмета или укрытия; русский перевод не передаёт отношения «под чем-то»."
+          },
+          {
+            "en": "The boat was under.",
+            "ru": "Лодка была внизу.",
+            "problem": "Английское предложение скорее означает нахождение под водой; «внизу» недостаточно и сближает пример со значением 10."
+          }
+        ],
+        "no_candidate_reason": "Нужно уточнить границу статического самостоятельного under и его перевод; две формулировки дают неопределённое дополнение либо другой более конкретный смысл.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "adjective",
+        "translation": "нижний",
+        "examples_checked": 0,
+        "problem": "Словарное прилагательное подтверждено, но современную самостоятельную атрибутивную модель необходимо отделить от prefix under-.",
+        "rejected_attempts": [
+          {
+            "en": "The under shelf is empty.",
+            "ru": "Нижняя полка пуста.",
+            "problem": "Обычный современный выбор здесь lower/bottom; получился искусственный перенос русского перевода."
+          },
+          {
+            "en": "The underclothes are dry.",
+            "ru": "Нижнее бельё сухое.",
+            "problem": "Underclothes — отдельное производное слово; это не форма самостоятельного under."
+          }
+        ],
+        "no_candidate_reason": "Не установлена современная конструкция именно самостоятельного прилагательного; подстановка lower или производного нарушила бы контракт.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "adjective",
+        "translation": "низший, нижестоящий, подчинённый",
+        "examples_checked": 0,
+        "problem": "Нельзя незаметно заменить самостоятельное under элементом сложного слова.",
+        "rejected_attempts": [
+          {
+            "en": "He is an under officer.",
+            "ru": "Он младший офицер.",
+            "problem": "Сочетание требует историко-терминологического подтверждения и не годится как нейтральная современная модель."
+          },
+          {
+            "en": "She is an undersecretary.",
+            "ru": "Она заместитель министра.",
+            "problem": "Undersecretary иллюстрирует морфологический элемент under-, а не самостоятельное прилагательное under."
+          }
+        ],
+        "no_candidate_reason": "Обе попытки выходят за подтверждённое современное самостоятельное употребление; требуется отдельное решение о POS и, возможно, prefix.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "adjective",
+        "translation": "меньший, ниже установленной нормы",
+        "examples_checked": 0,
+        "problem": "Обычные современные конструкции с пределом используют другое синтаксическое оформление, чем заявленное самостоятельное прилагательное.",
+        "rejected_attempts": [
+          {
+            "en": "The payment is under.",
+            "ru": "Платёж ниже установленной нормы.",
+            "problem": "Без указанного предела английское предложение неполно и не выражает русский перевод."
+          },
+          {
+            "en": "The meat is underdone.",
+            "ru": "Мясо недожарено.",
+            "problem": "Underdone — производное слово; нельзя выдавать его за форму under."
+          }
+        ],
+        "no_candidate_reason": "Не получена самостоятельная современная конструкция без пропущенного предела или подмены производным.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "translation": "арт. недолёт",
+        "examples_checked": 0,
+        "problem": "Принимается отделение артиллерийской пометы по 07. Точный современный термин и его исчисляемость не подтверждены современным профессиональным употреблением.",
+        "rejected_attempts": [
+          {
+            "en": "The shot was an under.",
+            "ru": "Выстрел дал недолёт.",
+            "problem": "Без современного артиллерийского подтверждения нельзя рекомендовать an under как действующий термин."
+          },
+          {
+            "en": "The gunner corrected the under.",
+            "ru": "Наводчик исправил недолёт.",
+            "problem": "Повторяет неподтверждённое терминологическое управление; корректность нельзя вывести из одной русской глоссы."
+          }
+        ],
+        "no_candidate_reason": "Не установлена современная артиллерийская конструкция; обе попытки искусственно вводят термин в предложение.",
+        "review_required": true
+      }
+    ],
+    "phrases_review": "To bring under — глагольное выражение; исправление POS из 07 принимается. Перевод «подчинять» подтверждён, но выражению нужен контекст объекта и проверки современного регистра.",
+    "doubts": [
+      "Все восемь источников проверены лексическим поиском; положительные и отрицательные свидетельства предыдущих этапов сохраняются по ссылке.",
+      "Редкие самостоятельные значения не преобразованы в prefix автоматически.",
+      "Визуальная сверка и современное профессиональное подтверждение артиллерийского существительного не выполнены."
+    ]
+  },
+  {
+    "word": "during",
+    "decision": "изменить",
+    "reason": "Перевод и preposition верны. В дополнительном источнике найден подходящий короткий временной пример, поэтому пустой examples можно заполнить подтверждённым материалом.",
+    "confidence": 0.98,
+    "before_ref": "#/entries/3",
+    "source_evidence_ref": "#/previous_outputs/06/3/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/3",
+    "priority_review_ref": "#/previous_outputs/08/3",
+    "after": {
+      "primary_meaning_indices": [
+        1
+      ],
+      "change": "Добавить предложенный source-пример после независимой проверки."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "translation": "в течение, в продолжение; во время",
+        "examples_checked": 0,
+        "problem": "В основной статье примера нет; SamPoln даёт конкретный период без грамматически ошибочной пометы adv.",
+        "candidate_example": {
+          "en": "during the coming summer",
+          "ru": "будущим летом",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "during",
+          "target_form": "during",
+          "unit_type": "word",
+          "sense_explanation": "During вводит именную группу the coming summer и указывает период, в пределах которого происходит событие.",
+          "translation_explanation": "Coming summer передано «будущим летом»; русский творительный времени естественно передаёт during без лишнего утверждения «всё лето».",
+          "contrast": "Это время внутри периода, а не конечный срок by или длительность, выраженная for.",
+          "reason": "Короткое сочетание показывает управление предлога и конкретный временной период.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "during",
+              "result": "На странице 146 найдено during the coming summer."
+            },
+            {
+              "file": "source_cache_3.json",
+              "query": "during; страница 259",
+              "result": "Статья содержит перевод, но не содержит примеров."
+            }
+          ],
+          "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+          "location": {
+            "page": 146
+          },
+          "quote": "during the coming\nsummer будущим летом",
+          "usage_status": "current",
+          "contemporary_explanation": "During с определённым названием сезона и coming — обычное современное временное сочетание без исторического значения."
+        }
+      }
+    ],
+    "doubts": [
+      "Сохраняется расхождение adv/prep в кратком источнике; синтаксис подтверждает preposition.",
+      "Остальные результаты поиска во всех восьми файлах сохранены в source_evidence_ref."
+    ]
+  },
+  {
+    "word": "game",
+    "decision": "review_required",
+    "reason": "Принимаются исправления помет и учебного порядка. Для настольной игры, соревнований и мяса дичи предложены примеры; самостоятельные значения счёта, замысла и смелости требуют более точных границ. Примеры об охоте необходимо отделять от переносных выражений.",
+    "confidence": 0.96,
+    "before_ref": "#/entries/4",
+    "source_evidence_ref": "#/previous_outputs/06/4/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/4",
+    "priority_review_ref": "#/previous_outputs/08/4",
+    "after": {
+      "recommended_order": [
+        1,
+        2,
+        5,
+        3,
+        6,
+        4,
+        9,
+        8,
+        7,
+        11,
+        10,
+        12,
+        13
+      ],
+      "primary_meaning_indices": [
+        1,
+        2,
+        5
+      ],
+      "accept_stage07_meaning_proposals": [
+        1,
+        3,
+        7,
+        9,
+        11,
+        13
+      ],
+      "homonym_groups": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        [
+          12,
+          13
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "игра; перен. поступать благородно",
+        "examples_checked": 2,
+        "problem": "Play the game — играть по правилам, с возможным переносным поведением честно; play a good/poor game — хорошо/плохо играть. Глагольный перевод «поступать благородно» относится к целому выражению, как уточняет 07."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "игра; партия; гейм",
+        "examples_checked": 1,
+        "problem": "A game of tennis понятно как отдельная игра в теннис. Однако tennis game может также обозначать гейм внутри сета; «партия» не должна скрывать это различие."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.; игры",
+        "examples_checked": 0,
+        "problem": "Принимается уточнение 07 о соревнованиях во множественном числе и снятие британской пометы.",
+        "generated_example": {
+          "en": "The opening ceremony of the Games starts tonight.",
+          "ru": "Церемония открытия Игр начинается сегодня вечером.",
+          "origin": "generated",
+          "before_examples": [],
+          "sense_after": {
+            "partOfSpeech": "noun",
+            "translation": "во множественном числе: соревнования; игры",
+            "examples": [],
+            "register": [],
+            "id": 3
+          },
+          "target_lemma": "game",
+          "target_form": "Games",
+          "unit_type": "word",
+          "sense_explanation": "The Games во множественном числе обозначает комплекс спортивных соревнований; opening ceremony исключает чтение как отдельной партии.",
+          "translation_explanation": "Opening ceremony — «церемония открытия», starts — «начинается», tonight — «сегодня вечером»; название конкретного реального мероприятия не утверждается.",
+          "contrast": "Это соревнования как мероприятие, а не коробочная игра и не отдельный гейм.",
+          "reason": "Показывает требуемое множественное число в узнаваемом контексте.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "game; страницы 337–338",
+              "result": "Найдено значение pl соревнования; игры, но в этом подзначении нет примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "The Games с ceremony — действующая современная модель названия спортивного мероприятия; предложение оригинальное и не описывает проверяемое расписание."
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "количество очков, необходимое для выигрыша; счёт (в игре)",
+        "examples_checked": 0,
+        "problem": "Текущая формулировка смешивает выигрыш гейма, установленную границу и счёт. Общий пример со score не будет примером game.",
+        "rejected_attempts": [
+          {
+            "en": "The game is six points.",
+            "ru": "Для выигрыша нужно шесть очков.",
+            "problem": "Без правил конкретной игры конструкция непонятна; русский перевод добавляет необходимость."
+          },
+          {
+            "en": "She won the game.",
+            "ru": "Она набрала нужное для победы количество очков.",
+            "problem": "Английское предложение обозначает победу в партии; русский перевод подменяет её способом подсчёта."
+          }
+        ],
+        "no_candidate_reason": "Нужно установить конкретную действующую спортивную конструкцию и границы значения; обе попытки либо непрозрачны, либо иллюстрируют соседнюю партию.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "игра (настольная и т. п.)",
+        "examples_checked": 0,
+        "problem": "Отдельное бытовое значение можно показать через материальный игровой набор.",
+        "generated_example": {
+          "en": "Put the game back in its box.",
+          "ru": "Убери игру обратно в коробку.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "game",
+          "target_form": "game",
+          "unit_type": "word",
+          "sense_explanation": "Game — предметный игровой набор, который можно убрать в его коробку; это исчисляемое существительное.",
+          "translation_explanation": "Put back передано «убери обратно», in its box — «в коробку» с естественным опущением принадлежности коробки игре.",
+          "contrast": "Законченная партия не убирается в коробку; контекст указывает на настольную игру как набор.",
+          "reason": "Короткая бытовая инструкция отделяет предмет от процесса игры.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "game; страницы 337–338",
+              "result": "Подзначение 5 содержит перевод без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Game с box — обычная современная речь о настольных играх."
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "развлечение, забава",
+        "examples_checked": 1,
+        "problem": "What a game! может быть оценкой самого матча, а не только «как забавно!». Без контекста исходная пара неоднозначна; сохранять как источник, но не считать однозначным учебным подтверждением этого значения.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "шутка; подшучивать",
+        "examples_checked": 2,
+        "problem": "Have a game with и make game of показывают целые выражения о подшучивании. Make game of имеет старомодный оттенок; нельзя делать по этим фрагментам вывод о нейтральном самостоятельном game = шутка. Принимается привязка глагольного перевода к выражению по 07.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "замысел, проект, дело",
+        "examples_checked": 0,
+        "problem": "Контексты what's your game и game plan не подтверждают одинаково все три русских эквивалента; особенно «проект» требует ограничения.",
+        "rejected_attempts": [
+          {
+            "en": "What is your game?",
+            "ru": "Каков твой проект?",
+            "problem": "Обычное чтение — подозрение о намерениях или уловке, а не нейтральный проект."
+          },
+          {
+            "en": "This game needs more funding.",
+            "ru": "Этому делу нужно больше финансирования.",
+            "problem": "Английский текст скорее о разработке или проведении игры; требуемый переносный смысл не закреплён."
+          }
+        ],
+        "no_candidate_reason": "Две попытки уходят в намерение-уловку либо буквальную игру; прежде нужен пересмотр слишком широкой переводной группы.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: уловки, увёртки, хитрости, «фокусы»",
+        "examples_checked": 1,
+        "problem": "None of your games — запрет хитростей или манипуляций; «без фокусов» точнее этого значения, чем нейтральное «оставьте эти шутки». Исправление региональной пометы по 07 принимается."
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adjective",
+        "translation": "смелый; боевой, задорный",
+        "examples_checked": 0,
+        "problem": "Нужно отличить стойкость от более обычной готовности согласиться на действие; нейтральную современную модель первого значения пока не установили.",
+        "rejected_attempts": [
+          {
+            "en": "She is game.",
+            "ru": "Она смелая.",
+            "problem": "Без контекста обычное прочтение — она согласна или готова участвовать; это значение 11."
+          },
+          {
+            "en": "He was a game fighter.",
+            "ru": "Он был смелым бойцом.",
+            "problem": "Возможное спортивное или старомодное описание требует подтверждения современного употребления и точного оттенка стойкости."
+          }
+        ],
+        "no_candidate_reason": "Попытки неоднозначны между готовностью и стойкостью либо требуют отдельного спортивного подтверждения.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "adjective",
+        "translation": "но готовый (сделать что-либо); ничего не бояться",
+        "examples_checked": 1,
+        "problem": "Be game for anything показывает охотную готовность участвовать. Исправление «но» на «охотно» и снятие охотничьей пометы по 07 принимаются. «Ничего не бояться» — возможная характеристика контекста, а не обязательное содержание game."
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "translation": "дичь",
+        "examples_checked": 2,
+        "problem": "Буквальные fair game и big game относятся к животным для охоты. «Объект травли» и «желанная добыча» — переносные значения целых сочетаний; их нельзя смешивать с буквальной дичью без отдельных пояснений."
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "translation": "дичь (мясо диких птиц или зверей)",
+        "examples_checked": 0,
+        "problem": "Пищевое значение можно показать через меню; спортивная помета снимается по 07.",
+        "generated_example": {
+          "en": "This restaurant serves game.",
+          "ru": "В этом ресторане подают дичь.",
+          "origin": "generated",
+          "before_examples": [],
+          "sense_after": {
+            "partOfSpeech": "noun",
+            "translation": "дичь (мясо диких птиц или зверей)",
+            "examples": [],
+            "register": [],
+            "id": 13,
+            "primary": true
+          },
+          "target_lemma": "game",
+          "target_form": "game",
+          "unit_type": "word",
+          "sense_explanation": "Неисчисляемое game является прямым дополнением serves в контексте ресторана и означает мясо диких животных.",
+          "translation_explanation": "Serves передано «подают», this restaurant — «в этом ресторане»; вид мяса, способ приготовления и качество не добавлены.",
+          "contrast": "В ресторане подают еду, а не живых охотничьих животных или спортивную игру.",
+          "reason": "Один глагол и ресторанный контекст однозначно выделяют пищевое значение.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "game; страница 338",
+              "result": "Пищевое значение найдено без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Serve game — обычное современное ресторанное употребление неисчисляемого названия мяса."
+        }
+      }
+    ],
+    "phrases_review": "Two can play at that game — целое высказывание; sentence из 07 принимается, смысл — ответить тем же приёмом. Game away — редкий азартный глагол; не путать с give the game away «выдать секрет», и не генерировать для него нейтральный пример без проверки.",
+    "doubts": [
+      "Дополнительные глагольные значения и game об искалеченной конечности остаются отдельным вопросом охвата.",
+      "Сохраняются все прежние доказательства и ограничения, включая отсутствие визуальной сверки."
+    ]
+  },
+  {
+    "word": "thing",
+    "decision": "изменить",
+    "reason": "Большинство примеров полезны, но отдельные переводы добавляют превосходную степень или слишком свободно передают предметность. Принимаются порядок и исправления 07–08; исторические фрагменты не получают автоматического статуса современной модели.",
+    "confidence": 0.97,
+    "before_ref": "#/entries/5",
+    "source_evidence_ref": "#/previous_outputs/06/5/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/5",
+    "priority_review_ref": "#/previous_outputs/08/5",
+    "after": {
+      "recommended_order": [
+        1,
+        2,
+        3,
+        7,
+        5,
+        4,
+        6
+      ],
+      "primary_meaning_indices": [
+        1,
+        2,
+        3
+      ],
+      "accept_stage07_meaning_proposals": [
+        3
+      ],
+      "translation_edits": [
+        {
+          "meaning_index": 1,
+          "example_index": 1,
+          "before": {
+            "en": "what are those black things in the field?",
+            "ru": "что это там чернеется в поле?"
+          },
+          "after": {
+            "en": "what are those black things in the field?",
+            "ru": "Что это за чёрные предметы в поле?"
+          }
+        },
+        {
+          "meaning_index": 7,
+          "example_index": 2,
+          "before": {
+            "en": "a good rest is just the thing for you",
+            "ru": "хороший отдых — вот что вам нужнее всего"
+          },
+          "after": {
+            "en": "a good rest is just the thing for you",
+            "ru": "Хороший отдых — как раз то, что вам нужно."
+          }
+        }
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "вещь, предмет",
+        "examples_checked": 2,
+        "problem": "Black things — неизвестные говорящему чёрные предметы; «чернеется» передаёт зрительное впечатление, но скрывает учебное существительное. Thing in itself — точный философский термин, полезный как специальный пример, а не как единственная бытовая модель."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "нечто, кое-что",
+        "examples_checked": 1,
+        "problem": "A few things to buy означает несколько нужных покупок; «мне надо кое-что купить» естественно передаёт неопределённость, но не точное количество. Для количественной прозрачности возможно «мне нужно купить несколько вещей»."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "обыкн. при мн. ч.: дело, факт, случай, обстоятельство",
+        "examples_checked": 6,
+        "problem": "Things look promising и how are things? обозначают состояние дел; other things being equal и all things considered — обстоятельства; a strange thing — странное событие или факт. As things go требует контекста для перевода «при сложившихся обстоятельствах», но остальные пять пар понятны. Британское ограничение ошибочно, исправление 07 принимается."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "качество, свойство, особенность",
+        "examples_checked": 1,
+        "problem": "Patience is a useful thing — обобщённое обозначение терпения как полезного качества. Русское «качество» контекстуально уместно, но thing само по себе не устанавливает отдельный строгий термин свойства."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "создание, существо",
+        "examples_checked": 3,
+        "problem": "Poor thing — действующее сочувственное обращение, mean thing — уничижительное обозначение человека. Dumb things в смысле животных — старое словоупотребление; без пояснения современный ученик может прочесть dumb как «глупый». Его следует сохранить в архивном слое и пересмотреть для учебной выдачи.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "образец; образчик",
+        "examples_checked": 2,
+        "problem": "The latest thing in hats означает последний модный образец или новинку в шляпах. Quite the thing не обязательно означает именно «модный» и имеет старомодное социально-оценочное употребление; требуется уточнение выражения, а не общий положительный вывод по обоим примерам.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "нечто самое нужное, важное, подходящее, настоящее",
+        "examples_checked": 5,
+        "problem": "Just the thing и (quite) the thing обозначают подходящее; the best thing и the next best thing — оценку и лучшую доступную альтернативу. В a good rest is just the thing for you нет «нужнее всего»; предложена правка без превосходной степени. The next best thing не всегда буквально «следующий по качеству»: часто это лучшая замена недоступному варианту."
+      }
+    ],
+    "phrases_review": [
+      {
+        "phrase_index": 1,
+        "problem": "Исправление скобок и POS sentence по 07 принимается."
+      },
+      {
+        "phrase_index": 2,
+        "problem": "Добавить пояснение «лучшая альтернатива», сохранив исходный перевод."
+      },
+      {
+        "phrase_index": 3,
+        "problem": "First thing — первым делом, сразу; весь исходный текст является предложением, как исправлено в 07."
+      },
+      {
+        "phrase_index": 4,
+        "problem": "Among other things точнее «среди прочего, помимо прочего». «Между прочим» может ошибочно восприниматься как вводное замечание, не часть перечисления."
+      },
+      {
+        "phrase_index": 5,
+        "problem": "No such thing — эллиптическое отрицание существования или утверждения; «ничего подобного» уместно, конкретный перевод зависит от контекста."
+      }
+    ],
+    "doubts": [
+      "Подтверждённые пропуски бытового things сохраняются как предложения по охвату из 08.",
+      "Все прежние доказательства и ограничения сохраняются; визуальная сверка не выполнена."
+    ]
+  },
+  {
+    "word": "give",
+    "decision": "review_required",
+    "reason": "Проверены все 22 значения и реальные тексты примеров. Значение тоста содержит семь нерелевантных примеров, а некоторые другие пары устарели или неточно переведены. Для пустых современных значений предложены оригинальные примеры; исходные примеры сохраняются в отчёте для согласованного переноса.",
+    "confidence": 0.98,
+    "before_ref": "#/entries/6",
+    "source_evidence_ref": "#/previous_outputs/06/6/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/6",
+    "priority_review_ref": "#/previous_outputs/08/6",
+    "after": {
+      "recommended_order": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        14,
+        9,
+        7,
+        5,
+        3,
+        13,
+        11,
+        17,
+        18,
+        10,
+        16,
+        12,
+        19,
+        20,
+        15,
+        21,
+        22
+      ],
+      "primary_meaning_indices": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        14,
+        9
+      ],
+      "accept_stage07_meaning_proposals": [
+        16,
+        18,
+        21
+      ],
+      "review_action": "Перераспределить нерелевантные примеры значения 20 в соответствующие phrases отдельным проверяемым изменением, сохранив исходные пары в отчёте."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "translation": "давать; отдавать",
+        "examples_checked": 3,
+        "problem": "Give lessons, give one's word и gives him a right — три действующие модели предоставления уроков, обещания и основания для действия. Все переводы понятны, но отсутствует буквальный пример передачи предмета, поэтому группу не следует считать полной бытовой иллюстрацией."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "translation": "дарить; жертвовать; одаривать; жаловать (награду); завещать",
+        "examples_checked": 3,
+        "problem": "Give a handsome present и give alms относятся к подарку и пожертвованию. Freely означает щедро, а не строго большой объём: перевод he gave freely to the hospital лучше «он щедро жертвовал больнице». Завещание и награда исходными примерами не показаны."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "translation": "платить; оплачивать",
+        "examples_checked": 1,
+        "problem": "Gave five pounds for the hat точно выражает цену покупки. Give здесь допускает оплату, но «оплачивать» не следует распространять на любые дополнения без for."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "translation": "вручать, передавать",
+        "examples_checked": 1,
+        "problem": "Give a note — передать записку; «вручить» допустимо, хотя без получателя и ситуации физическая передача показана кратко."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "translation": "передавать",
+        "examples_checked": 1,
+        "problem": "Gives you his regards понятно как передача привета, но современная нейтральная модель чаще send/give someone my regards. Русское «наилучшие пожелания» допустимо; не заменять give другим глаголом внутри примера для этой леммы."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "translation": "предоставлять; поручать",
+        "examples_checked": 1,
+        "problem": "Gave us this work to do содержит получателя и порученную работу. «Поручил нам эту работу» точно передаёт конструкцию; «предоставлять» отдельно не показано."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "translation": "отдавать, посвящать",
+        "examples_checked": 2,
+        "problem": "Give one's attention to — направить внимание; give one's mind to study — сосредоточиться на учёбе. «Полностью» усиливает вторую пару и не обязательно выражено в английском; лучше «сосредоточиться на учёбе»."
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "translation": "совершать действие (в сочетаниях: give a smile, give a look)",
+        "examples_checked": 5,
+        "problem": "Look, encouragement, permission, order и thought задают соответствующее действие. Все пять переводов передают сочетания, но to give a look без адресата или описания взгляда — неполная учебная модель; остальные четыре сочетания непосредственно понятны."
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "translation": "быть источником, производить",
+        "examples_checked": 2,
+        "problem": "The sun gives light соответствует источнику света. The hen gives two eggs a day — неудачная современная коллокация вместо lays eggs и содержит отвлекающее количественное утверждение. Его буквальная находка не делает пример хорошим для добавления или повторного утверждения.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "translation": "подаваться, оседать (о фундаменте); быть эластичным; сгибаться, гнуться (о дереве, металле)",
+        "examples_checked": 1,
+        "problem": "Give but not break показывает физическую податливость без разрушения; русский перевод соответствует. Оседание фундамента этим фрагментом не показано."
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "translation": "высказывать; показывать",
+        "examples_checked": 3,
+        "problem": "Give to the world и it was given in the newspapers — старые способы подачи публикации или сообщения, слабые для современной учебной записи. Gives no signs of life понятно, но обычная современная модель — shows no signs of life; заменять give синонимом внутри этой статьи нельзя. Требуется пересмотр конструкции и регистра.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "translation": "изображать; исполнять",
+        "examples_checked": 1,
+        "problem": "Give us Chopin — эллиптическая просьба исполнить Шопена; перевод «сыграйте» разумен для музыкального контекста, но контекст исполнения не выражен полностью. «Изображать» примером не подтверждено."
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "translation": "заражать",
+        "examples_checked": 1,
+        "problem": "You've given me your cold — передача простуды. «Насморк» сужает cold до одного симптома. Рекомендуемый перевод: «Я заразился от вас простудой» или «Вы заразили меня простудой»."
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "translation": "причинять",
+        "examples_checked": 2,
+        "problem": "Gave me much pain выражает причинение боли. Gives the teacher much trouble — доставляет много хлопот или неприятностей, а не обязательно волнений; рекомендуется «Этот ученик доставляет учителю много хлопот»."
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "translation": "придавать значение",
+        "examples_checked": 1,
+        "problem": "Gives nothing for their opinion отражает старое оценочное употребление give for. В современной нейтральной речи такой пример непрозрачен; нельзя подменить его don't care и считать примером give.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "translation": "уступать; соглашаться",
+        "examples_checked": 1,
+        "problem": "I give you that point — уступка по отдельному доводу; перевод согласован. Неподтверждённые техническая и устаревшая пометы снимаются по 07; это не значит, что вся группа фраз автоматически нейтральна."
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "translation": "налагать (наказание); выносить (приговор)",
+        "examples_checked": 1,
+        "problem": "Gave him six months imprisonment означает назначение срока. Для современной редакционной записи нужен апостроф: six months' imprisonment; это редакционная орфографическая правка, не установленное восстановление печатного знака. «Приговорил его к шести месяцам заключения» естественнее «присудил»."
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "translation": "устраивать (обед, вечеринку)",
+        "examples_checked": 0,
+        "problem": "Принимается снятие неподтверждённой устаревшей пометы по 07.",
+        "generated_example": {
+          "en": "They gave a party for their friends.",
+          "ru": "Они устроили вечеринку для своих друзей.",
+          "origin": "generated",
+          "before_examples": [],
+          "sense_after": {
+            "partOfSpeech": "verb",
+            "translation": "устраивать (обед, вечеринку)",
+            "examples": [],
+            "register": [],
+            "id": 18
+          },
+          "target_lemma": "give",
+          "target_form": "gave",
+          "unit_type": "word",
+          "sense_explanation": "Gave a party обозначает организацию вечеринки; gave — прошедшая форма give.",
+          "translation_explanation": "They, a party и for their friends переданы «они», «вечеринку» и «для своих друзей»; ни повод, ни дата не добавлены.",
+          "contrast": "Речь об устройстве мероприятия, а не передаче подарка или произнесении тоста.",
+          "reason": "Короткий контекст с party однозначно показывает нужное значение.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "give; страница 347",
+              "result": "Значение устраивать (обед, вечеринку) найдено без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Give a party — действующее современное сочетание для организации вечеринки, хотя have/throw a party также распространены."
+        }
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "translation": "выходить (об окне, двери: give into / onto); вести (о дороге)",
+        "examples_checked": 0,
+        "problem": "Значение требует сохранения пространственной конструкции give onto, а не замены глаголом face.",
+        "generated_example": {
+          "en": "The kitchen window gives onto the garden.",
+          "ru": "Окно кухни выходит в сад.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "give",
+          "target_form": "gives",
+          "unit_type": "word",
+          "sense_explanation": "Подлежащее window и дополнение onto the garden задают направление выхода или вида из окна.",
+          "translation_explanation": "Kitchen window — «окно кухни», gives onto — «выходит в»; этаж, доступность прохода и действие человека не добавлены.",
+          "contrast": "Это расположение окна, а не предоставление сада или причинение состояния.",
+          "reason": "Окно и onto делают пространственный смысл явным.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "give; страница 347",
+              "result": "Найдено значение выхода окна или коридора с into/(up)on/on to; пример отсутствует."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Give onto используется в современном описании помещений и видов; имеет более книжный оттенок, чем бытовые пространственные глаголы."
+        }
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "translation": "произносить, провозглашать (тост)",
+        "examples_checked": 7,
+        "problem": "Ни один из семи исходных примеров не обозначает тост: это give away, back, off, under, up и give oneself up. Последнее away дополнительно захватило «отплатить» от give back. Их нельзя признать релевантными или просто считать примерами основного give.",
+        "generated_example": {
+          "en": "He gave a toast to the bride.",
+          "ru": "Он произнёс тост за невесту.",
+          "origin": "generated",
+          "before_examples": [
+            {
+              "en": "to give away the bride",
+              "ru": "быть посажёным отцом"
+            },
+            {
+              "en": "give back",
+              "ru": "возвращать, отдавать"
+            },
+            {
+              "en": "give off",
+              "ru": "выделять, испускать"
+            },
+            {
+              "en": "give under",
+              "ru": "не выдержать"
+            },
+            {
+              "en": "he is given up by the doctors",
+              "ru": "он признан врачами безнадёжным"
+            },
+            {
+              "en": "to give oneself up to smth.",
+              "ru": "предаваться, отдаваться чему-либо"
+            },
+            {
+              "en": "give away",
+              "ru": "отдавать; дарить; раздавать (призы); выдавать, проговариваться; обнаруживать; подводить; предавать; отплатить (за обиду)"
+            }
+          ],
+          "target_lemma": "give",
+          "target_form": "gave",
+          "unit_type": "word",
+          "sense_explanation": "Gave a toast — произнёс тост; to the bride называет человека, в честь которого он произнесён.",
+          "translation_explanation": "He передано «он», toast — «тост», to the bride — обычным русским «за невесту»; свадьба или родство говорящего отдельно не добавлены.",
+          "contrast": "В отличие от give away the bride, здесь дополнение toast непосредственно обозначает речь, а bride — адресата тоста.",
+          "reason": "Устраняет смешение с фразовыми глаголами и показывает нужное речевое действие.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "give; страница 347",
+              "result": "Найдено произносить, провозглашать (тост); следующий блок начинается отдельным ~ away и не является примером тоста."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Give a toast to someone — современная конструкция описания торжественной короткой речи."
+        }
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "noun",
+        "translation": "эластичность, упругость",
+        "examples_checked": 0,
+        "problem": "Принимается снятие электротехнической пометы; можно показать податливость ткани.",
+        "generated_example": {
+          "en": "This fabric has some give.",
+          "ru": "Эта ткань немного тянется.",
+          "origin": "generated",
+          "before_examples": [],
+          "sense_after": {
+            "partOfSpeech": "noun",
+            "translation": "эластичность, упругость",
+            "examples": [],
+            "register": [],
+            "id": 21
+          },
+          "target_lemma": "give",
+          "target_form": "give",
+          "unit_type": "word",
+          "sense_explanation": "Неисчисляемое существительное give после some означает способность материала растягиваться или поддаваться.",
+          "translation_explanation": "Some give естественно передано глагольным «немного тянется»; способность ткани не превращена в уже произошедшее растяжение.",
+          "contrast": "Физическое свойство материала, а не готовность человека уступить.",
+          "reason": "Обычный материал делает существительное наглядным.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "give; страница 347",
+              "result": "Найдено n эластичность, упругость без примера и отраслевой пометы."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Fabric has some give — современное бытовое описание растяжимости ткани."
+        }
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "noun",
+        "translation": "податливость, уступчивость",
+        "examples_checked": 0,
+        "problem": "Переносное существительное можно показать в контексте взаимных уступок.",
+        "generated_example": {
+          "en": "There needs to be some give on both sides.",
+          "ru": "Обеим сторонам нужно проявить некоторую уступчивость.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "give",
+          "target_form": "give",
+          "unit_type": "word",
+          "sense_explanation": "Some give с on both sides обозначает готовность сторон уступать; give — неисчисляемое существительное.",
+          "translation_explanation": "Needs to be передано необходимостью, some — «некоторую», both sides — «обеим сторонам»; достигнутый компромисс не утверждается.",
+          "contrast": "Стороны обсуждения проявляют уступчивость; физическое растяжение материала исключено.",
+          "reason": "Показывает именно переносную податливость в обычном споре или переговорах.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "give; страница 347",
+              "result": "Найдено n податливость, уступчивость без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Some give on both sides — действующая современная модель речи о компромиссе."
+        }
+      }
+    ],
+    "phrases_review": [
+      {
+        "phrase_index": 1,
+        "problem": "Give away требует восстановления подтверждённых значений разглашения и предательства; «отплатить» сюда не переносить. Give away the bride — сопровождать невесту и передавать её жениху в церемонии; «быть посажёным отцом» культурно неточно."
+      },
+      {
+        "phrase_index": 2,
+        "problem": "Give back — возвращать; значение отплаты хранить отдельно и проверять по контексту."
+      },
+      {
+        "phrase_index": 3,
+        "problem": "Give forth в значении объявления или распространения слуха имеет книжную или старую окраску; современный пример без проверки не предлагать."
+      },
+      {
+        "phrase_index": 4,
+        "problem": "Современное основное give in — уступить, сдаться. Подачу документов и регистрацию не представлять столь же нейтральными без региональной и конструкционной проверки."
+      },
+      {
+        "phrase_index": 5,
+        "problem": "Give off — выделять тепло, запах, свет; перевод верен."
+      },
+      {
+        "phrase_index": 6,
+        "problem": "Самовыдача относится к give oneself out to be, а не к любому give out. Остальные значения распределения и исчерпания нуждаются в разных дополнениях."
+      },
+      {
+        "phrase_index": 7,
+        "problem": "Give over объединяет разные модели. Передачу и посвящение с over to необходимо отличать от отдельного британского Give over!; современные примеры пока не добавлены."
+      },
+      {
+        "phrase_index": 8,
+        "problem": "Give under — редкое выражение; не подменять современным give way без отдельного решения.",
+        "review_required": true
+      },
+      {
+        "phrase_index": 9,
+        "problem": "Give up недопредставлено; признание больного безнадёжным и give oneself up to требуют отдельных конструкций. Для общей учебной подачи важны прекращение занятия и отказ от попыток."
+      },
+      {
+        "phrase_index": 10,
+        "problem": "Give as good as one gets — отвечать тем же, давать сдачи; «не остаться в долгу» соответствует идиоме."
+      },
+      {
+        "phrase_index": 11,
+        "problem": "Give mouth — исторически ограниченное выражение; современность не установлена, буквальное «подавать голос» не доказывает её.",
+        "review_required": true
+      },
+      {
+        "phrase_index": 12,
+        "problem": "Give vent to one's feelings — дать выход чувствам; «отвести душу» может добавлять облегчение, которого конструкция не гарантирует."
+      },
+      {
+        "phrase_index": 13,
+        "problem": "Give way требует разделения уступки, обрушения и give way to эмоциям. Общая идиоматическая помета не заменяет управления и отдельных контекстов."
+      }
+    ],
+    "doubts": [
+      "Все исходные примеры учтены; генерация не меняет examples_checked.",
+      "Сохраняются прежние источники, сомнения о печатной пунктуации и отсутствие визуальной сверки.",
+      "Предложения переноса примеров не применялись к canonical dataset."
+    ]
+  },
+  {
+    "word": "end",
+    "decision": "изменить",
+    "reason": "Все восемь значений имеют релевантные примеры. Нужны более точные пояснения стороны процесса, смерти и частного переходного употребления, а также разделение разных выражений с end.",
+    "confidence": 0.96,
+    "before_ref": "#/entries/7",
+    "source_evidence_ref": "#/previous_outputs/06/7/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/7",
+    "priority_review_ref": "#/previous_outputs/08/7",
+    "after": {
+      "recommended_order": [
+        1,
+        2,
+        7,
+        8,
+        3,
+        6,
+        4,
+        5
+      ],
+      "primary_meaning_indices": [
+        1,
+        2,
+        7
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "конец, окончание, завершение",
+        "examples_checked": 2,
+        "problem": "At the end of the year — конец периода; in the end — результат «в итоге». Обе пары полезны, но in the end следует пояснить как устойчивое выражение, а не взаимозаменяемый вариант at the end."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "конец, край, кончик (предмета)",
+        "examples_checked": 2,
+        "problem": "End of the street и both ends of the rope непосредственно показывают пространственную границу и два конца предмета; переводы точны."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "цель, намерение",
+        "examples_checked": 2,
+        "problem": "Achieve one's ends — достичь целей, to this end — с этой целью. Обе конструкции показывают целевой смысл, а не завершение."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "смерть, гибель, кончина",
+        "examples_checked": 1,
+        "problem": "Meet one's end означает погибнуть или умереть, часто при определённых обстоятельствах. «Встретить свою смерть» понятно, но более литературно, чем нужное пояснение «погибнуть»."
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "остаток, обрезок, окурок",
+        "examples_checked": 1,
+        "problem": "Cigarette end — окурок, особенно в британской речи. Другие остатки этим примером не показаны, но соответствуют расширению предметного конца."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "сторона (в соглашении, деле)",
+        "examples_checked": 1,
+        "problem": "On our end означает на нашем участке работы или у нас со стороны процесса. Это не обязательно сторона соглашения как юридическое лицо; перевод «с нашей стороны» допустим, пояснение значения стоит сузить к участку участия."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "translation": "кончать(ся), заканчивать(ся), завершать(ся)",
+        "examples_checked": 2,
+        "problem": "End a meeting показывает переходную модель, the story ends happily — непереходную. Переводы правильно различают завершение чего-либо и самостоятельное окончание."
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "translation": "положить конец (war, life)",
+        "examples_checked": 1,
+        "problem": "End one's life может обозначать самоубийство в данной конструкции. «Покончить с собой» соответствует ей, но это частный случай переходного end, поэтому отдельный primary не нужен."
+      }
+    ],
+    "phrases_review": [
+      {
+        "phrase_index": 1,
+        "problem": "Make ends meet — справляться с необходимыми расходами; перевод точен."
+      },
+      {
+        "phrase_index": 2,
+        "problem": "The end justifies the means — целое предложение, POS noun неточно; рекомендуется sentence."
+      },
+      {
+        "phrase_index": 3,
+        "problem": "To no end может обозначать отсутствие полезного результата, но нужно отличать от no end и вариативного усилительного употребления. Сохранить до проверки современного контекста; не объявлять ошибкой по отсутствию в одном источнике.",
+        "review_required": true
+      },
+      {
+        "phrase_index": 4,
+        "problem": "For hours on end правильно показывает непрерывную длительность. «Дыбом» реализуется с stand on end и не подтверждается этим примером."
+      },
+      {
+        "phrase_index": 5,
+        "problem": "End up — оказаться в результате; полезно указать модели end up in/at, end up doing, end up as. Текущий перевод содержательно верен."
+      }
+    ],
+    "doubts": [
+      "Редакционные примеры не объявляются цитатами Мюллера.",
+      "Сохраняются все прежние доказательства и вопросы полноты расширенной статьи."
+    ]
+  },
+  {
+    "word": "house",
+    "decision": "review_required",
+    "reason": "Бытовой дом и часть институциональных значений можно проиллюстрировать современно. Несколько редких пустых значений нельзя заполнить без подмены смысла составным словом или историческим оборотом. В парламентских примерах обнаружены сокращение вместо примера и неточный перевод процедуры голосования.",
+    "confidence": 0.97,
+    "before_ref": "#/entries/8",
+    "source_evidence_ref": "#/previous_outputs/06/8/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/8",
+    "priority_review_ref": "#/previous_outputs/08/8",
+    "after": {
+      "recommended_order": [
+        1,
+        5,
+        8,
+        6,
+        9,
+        4,
+        3,
+        15,
+        10,
+        11,
+        2,
+        7,
+        12,
+        13,
+        14
+      ],
+      "primary_meaning_indices": [
+        1,
+        8
+      ],
+      "additional_review": "Пропущенный глагол /haʊz/ добавлять с отдельно согласованным произношением; существительное /haʊs/ не должно скрывать его."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "дом; жилище; здание",
+        "examples_checked": 0,
+        "problem": "Основному бытовому значению необходим простой пример.",
+        "generated_example": {
+          "en": "Their house has a small garden.",
+          "ru": "У их дома есть небольшой сад.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "house",
+          "target_form": "house",
+          "unit_type": "word",
+          "sense_explanation": "House — жилой дом, которому принадлежит сад; существительное не означает семью или парламент.",
+          "translation_explanation": "Their — «их», small garden — «небольшой сад»; has естественно передано конструкцией «есть».",
+          "contrast": "Названо конкретное жилище с садом, а не династия или фирма.",
+          "reason": "Показывает дом как наглядный предмет в короткой модели A1.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "house; страница 393",
+              "result": "Первое значение дано без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "House has a garden — обычная современная бытовая конструкция."
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "религиозное братство; монастырь",
+        "examples_checked": 0,
+        "problem": "Нужна действующая религиозная конструкция, отличающая общину от простого здания.",
+        "rejected_attempts": [
+          {
+            "en": "The monks live in a house.",
+            "ru": "Монахи живут в монастыре.",
+            "problem": "House без уточнения означает дом; перевод монастырь добавлен искусственно."
+          },
+          {
+            "en": "She entered the house.",
+            "ru": "Она вступила в религиозное братство.",
+            "problem": "Без институционального контекста предложение означает вход в здание; вступление в общину не выражено."
+          }
+        ],
+        "no_candidate_reason": "Два простых контекста не закрепляют религиозное значение; для действующей терминологической модели нужно современное подтверждение, а не подстановка перевода.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "колледж университета; пансион при школе",
+        "examples_checked": 0,
+        "problem": "Современная школьная house как группа учеников не совпадает автоматически с колледжем или пансионом.",
+        "rejected_attempts": [
+          {
+            "en": "Every pupil belongs to a house.",
+            "ru": "Каждый ученик живёт в пансионе.",
+            "problem": "Belongs to a house может обозначать школьную команду, не проживание в пансионе."
+          },
+          {
+            "en": "She studies at a house.",
+            "ru": "Она учится в колледже.",
+            "problem": "Без собственного названия и институционального контекста сочетание не является обычной современной моделью колледжа."
+          }
+        ],
+        "no_candidate_reason": "Обе попытки либо уходят в соседнюю школьную группу, либо создают неестественное общее название колледжа.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "семья, род; дом, династия",
+        "examples_checked": 0,
+        "problem": "Династическое употребление можно показать современным описанием исторической темы.",
+        "generated_example": {
+          "en": "She is writing about the House of Tudor.",
+          "ru": "Она пишет о династии Тюдоров.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "house",
+          "target_form": "House",
+          "unit_type": "word",
+          "sense_explanation": "House of Tudor — династический род; заглавная буква соответствует именованной династии.",
+          "translation_explanation": "Is writing about — «пишет о»; «династия Тюдоров» передаёт House of Tudor без добавления жанра или исторических событий.",
+          "contrast": "House с именем династии не является зданием, фирмой или парламентской палатой.",
+          "reason": "Пример показывает точный династический смысл и не использует устаревший синтаксис.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "house; страница 222",
+              "result": "Найдено the House of Stuart как модель династии; новый пример с Tudor сгенерирован, а не процитирован."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "House of с названием династии используется в современной исторической речи; исторический предмет не делает синтаксис устаревшим."
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "дом; семья; хозяйство",
+        "examples_checked": 2,
+        "problem": "Keep house — вести хозяйство, релевантно. Keep the house = сидеть дома — старое ограниченное выражение; современный ученик может понять его как «сохранить дом». Его следует отдельно маркировать и проверить.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "торговая фирма, компания, издательство",
+        "examples_checked": 0,
+        "problem": "Дополнительный источник подтверждает publishing house; можно дать современный рабочий контекст.",
+        "generated_example": {
+          "en": "She works for a publishing house.",
+          "ru": "Она работает в издательстве.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "house",
+          "target_form": "house",
+          "unit_type": "word",
+          "sense_explanation": "House — главное существительное в publishing house, обозначающее фирму-издательство; publishing уточняет вид компании.",
+          "translation_explanation": "Works for передано естественным «работает в» применительно к организации; местонахождение офиса и должность не добавлены.",
+          "contrast": "Речь об организации-работодателе, а не доме, где она живёт.",
+          "reason": "Показывает распространённую современную реализацию фирменного значения.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "house; страница 222",
+              "result": "Найдено publishing house — издательство."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Publishing house — действующее современное название издательской компании; house остаётся отдельным существительным, а не производной формой."
+        }
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "фондовая биржа (в Лондоне)",
+        "examples_checked": 0,
+        "problem": "The House как обозначение Лондонской биржи нельзя выводить из любого house в финансовой теме.",
+        "rejected_attempts": [
+          {
+            "en": "He works at the House.",
+            "ru": "Он работает на Лондонской фондовой бирже.",
+            "problem": "Без подтверждённого современного локального контекста вероятнее парламент; название биржи не выражено однозначно."
+          },
+          {
+            "en": "The House opened at nine.",
+            "ru": "Лондонская фондовая биржа открылась в девять.",
+            "problem": "Не устанавливает нужный референт и добавляет непроверенное расписание."
+          }
+        ],
+        "no_candidate_reason": "Обе формулировки зависят от непрозрачного старого прозвища и не дают самостоятельной современной учебной модели.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "палата (парламента)",
+        "examples_checked": 10,
+        "problem": "Первые шесть примеров показывают две палаты и их названия. Third house — ограниченный переносный парламентский жаргон, не равный обычной палате. Enter the House требует контекста членства. Divide the house — провести разделение голосующих/голосование, но не обязательно поимённое голосование. The H. — словарное сокращение, не пример английской речи; хранить отдельно.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "зрительный зал; публика, зрители",
+        "examples_checked": 3,
+        "problem": "Crowded house — полный зал, poor house — малочисленная публика; «полупустой» задаёт неоправданную точную долю, лучше «плохо заполненный зал». Bring down the house — вызвать бурные аплодисменты, то есть успех выступления, а не буквально разрушить зал."
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "translation": "спектакль, сеанс",
+        "examples_checked": 2,
+        "problem": "First house и five o'clock house соответствуют сеансу в театральном контексте источника, но без него современному ученику непрозрачны. Нужна проверка актуального регистра, а не автоматическое сохранение как нейтральной речи.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "translation": "гостиница, постоялый двор",
+        "examples_checked": 0,
+        "problem": "Название guest house само по себе не устанавливает самостоятельное house = гостиница в любой конструкции.",
+        "rejected_attempts": [
+          {
+            "en": "We stayed at a house.",
+            "ru": "Мы остановились в гостинице.",
+            "problem": "Английский текст говорит только о доме, тип размещения не указан."
+          },
+          {
+            "en": "We booked a guest house.",
+            "ru": "Мы забронировали гостиницу.",
+            "problem": "Гостевое размещение задаёт всё сочетание guest house; русский перевод гостиница также стирает его особенность."
+          }
+        ],
+        "no_candidate_reason": "Без названия учреждения или ограниченной конструкции простое house не выражает требуемый тип гостиницы однозначно.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "translation": "бордель",
+        "examples_checked": 0,
+        "problem": "Эвфемистическое значение нельзя показать произвольным бытовым house.",
+        "rejected_attempts": [
+          {
+            "en": "The police raided the house.",
+            "ru": "Полиция провела обыск в борделе.",
+            "problem": "House остаётся любым домом; бордель добавлен только в переводе."
+          },
+          {
+            "en": "She worked in a house.",
+            "ru": "Она работала в борделе.",
+            "problem": "Эвфемистическое чтение без специального контекста не закреплено; пример способен вводить в заблуждение."
+          }
+        ],
+        "no_candidate_reason": "Обе попытки допускают обычное жилище и искусственно навязывают нужный эвфемизм; требуется пересмотр современного регистра.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "translation": "работный дом",
+        "examples_checked": 0,
+        "problem": "Историческое учреждение допустимо обсуждать современно, но голое the house не является прозрачным современным названием workhouse.",
+        "rejected_attempts": [
+          {
+            "en": "He was sent to the house.",
+            "ru": "Его отправили в работный дом.",
+            "problem": "Без исторического локального контекста учреждение не определено; перевод добавляет его."
+          },
+          {
+            "en": "The workhouse is now a museum.",
+            "ru": "Работный дом теперь стал музеем.",
+            "problem": "Workhouse — отдельное производное/сложное слово, а не форма заголовочного house; фактическое утверждение о музее также не нужно."
+          }
+        ],
+        "no_candidate_reason": "Нельзя заполнить исторически ограниченное сокращённое наименование современным производным или неустановленным референтом.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "noun",
+        "translation": "рубка",
+        "examples_checked": 0,
+        "problem": "Морское значение требует современного подтверждения именно house, а не wheelhouse/deckhouse.",
+        "rejected_attempts": [
+          {
+            "en": "The captain entered the house.",
+            "ru": "Капитан вошёл в рубку.",
+            "problem": "Капитан может входить в обычный дом; нужная часть судна не задана."
+          },
+          {
+            "en": "The captain entered the wheelhouse.",
+            "ru": "Капитан вошёл в рулевую рубку.",
+            "problem": "Wheelhouse — отдельная лемма; не учит самостоятельному house."
+          }
+        ],
+        "no_candidate_reason": "Обе формулировки не дают подтверждённого современного морского существительного house с нужным смыслом.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения к другому слову (домашний, комнатный)",
+        "examples_checked": 0,
+        "problem": "Атрибутивное существительное можно показать в обычном сочетании house cat.",
+        "generated_example": {
+          "en": "Our house cat never goes outside.",
+          "ru": "Наша домашняя кошка никогда не выходит на улицу.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "house",
+          "target_form": "house",
+          "unit_type": "word",
+          "sense_explanation": "House перед cat — определительное употребление существительного со смыслом содержания дома.",
+          "translation_explanation": "Our, never и goes outside переданы «наша», «никогда» и «не выходит на улицу»; дополнительных свойств кошки нет.",
+          "contrast": "House не называет здание как отдельный предмет и не означает династию; оно определяет вид домашнего содержания животного.",
+          "reason": "Показывает требуемую атрибутивную функцию отдельного слова.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "house; страница 393",
+              "result": "Найдено attr. домашний, комнатный без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "House cat — обычное современное сочетание; отдельное написание сохраняет house как определительный компонент."
+        }
+      }
+    ],
+    "phrases_review": "House and home — устойчивое сочетание о доме и домашней жизни. On the house с a drink корректно означает бесплатно за счёт заведения. Put one's house in order — привести дела в порядок. Like a house on fire требует контекста: особенно быстрое и успешное развитие действия или отношений; все четыре выражения рассмотрены, новые примеры к ним не добавлялись.",
+    "doubts": [
+      "Сохраняются прежние доказательства и вопросы о театральных примерах.",
+      "Отсутствие кандидата для редких значений объяснено не одним отсутствием цитаты, а неоднозначностью или подменой леммы.",
+      "Файлы и dataset не изменялись."
+    ]
+  },
+  {
+    "word": "place",
+    "decision": "review_required",
+    "reason": "Главное значение размещения требует буквального примера; математическому уточнению 07 соответствует отдельный кандидат. В ряде коммерческих и спортивных значений нужны точные конструкции, а POS некоторых выражений и переводы заказанного звонка требуют исправления.",
+    "confidence": 0.97,
+    "before_ref": "#/entries/9",
+    "source_evidence_ref": "#/previous_outputs/06/9/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/9",
+    "priority_review_ref": "#/previous_outputs/08/9",
+    "after": {
+      "recommended_order": [
+        1,
+        13,
+        2,
+        3,
+        6,
+        5,
+        8,
+        7,
+        11,
+        10,
+        12,
+        9,
+        4,
+        18,
+        16,
+        14,
+        15,
+        19,
+        17,
+        20,
+        21,
+        22
+      ],
+      "primary_meaning_indices": [
+        1,
+        13
+      ],
+      "accept_stage07_meaning_proposals": [
+        12
+      ],
+      "meaning_review": "В значении 1 отделить «уместный» как перевод in place; в значениях 21–22 уточнить переходность и занять/присудить место."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "место; уместный",
+        "examples_checked": 3,
+        "problem": "Give place to и take the place of показывают уступку и замещение. In place — положение на месте; «уместный» относится к выражению целиком и не является переводом существительного place. Нужно сохранить его в отдельной конструкции."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "город, местечко, селение",
+        "examples_checked": 1,
+        "problem": "What place do you come from? спрашивает место происхождения. Перевод «откуда вы родом?» естественен, но не устанавливает обязательный размер или тип населённого пункта; «место, населённый пункт» полезнее слишком узкого понимания города."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "жилище; усадьба; загородный дом; резиденция",
+        "examples_checked": 1,
+        "problem": "Summer place — летний дом или место для летнего проживания; «летняя резиденция» допустимо, но может придавать излишнюю официальность."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "площадь (в названиях, напр., Gloucester P.)",
+        "examples_checked": 0,
+        "problem": "Place в топониме не гарантирует геометрическую или городскую площадь; оно может входить в название улицы.",
+        "rejected_attempts": [
+          {
+            "en": "We met in Gloucester Place.",
+            "ru": "Мы встретились на площади Глостер.",
+            "problem": "Без проверки конкретного топонима нельзя переводить Place как площадь."
+          },
+          {
+            "en": "The place is a large square.",
+            "ru": "Эта площадь большая.",
+            "problem": "Place здесь лишь общее место; переводом искусственно введён конкретный тип площади."
+          }
+        ],
+        "no_candidate_reason": "Нужно проверить конкретное собственное название и уточнить границы топонимического значения; обе попытки подменяют их общим местом или непроверенной площадью.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "положение, место",
+        "examples_checked": 2,
+        "problem": "Know one's place — знать своё социальное положение; keep someone in his place — не позволять выходить за отведённые рамки. «Не давать зазнаваться» передаёт возможный контекст, но не весь социальный оттенок."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "сиденье, место (в экипаже, за столом и т. п.)",
+        "examples_checked": 2,
+        "problem": "Six places were laid — шесть накрытых мест за столом, релевантно. Engage/secure places = заказать билеты — старое и контекстно зависимое; places само по себе не означает билеты.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "место в книге, страница, отрывок",
+        "examples_checked": 0,
+        "problem": "Обычную позицию чтения можно показать без подстановки page или passage.",
+        "generated_example": {
+          "en": "I lost my place in the book.",
+          "ru": "Я потерял место в книге, на котором остановился.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "place",
+          "target_form": "place",
+          "unit_type": "word",
+          "sense_explanation": "Lost my place in the book означает утрату позиции чтения в тексте.",
+          "translation_explanation": "Уточнение «на котором остановился» раскрывает устойчивый смысл lost my place, не добавляет отдельного события или причины.",
+          "contrast": "Это позиция чтения, а не потерянное рабочее место, сиденье или книга как предмет.",
+          "reason": "Короткая действующая конструкция непосредственно показывает текстовый смысл.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "place; страница 604",
+              "result": "Значение места в книге найдено без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Lose one's place in a book — обычная современная речь о чтении."
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "место, точка на поверхности",
+        "examples_checked": 1,
+        "problem": "A sore place on his arm — болезненный участок руки. Русский перевод точно передаёт участок, а не точку на карте или место проживания."
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "должность, служба",
+        "examples_checked": 1,
+        "problem": "Out of place = безработный подтверждено старым источником, но в современной общей речи out of place обычно означает неуместность или отсутствие на нужном месте. Нельзя оставлять этот пример без отдельной проверки регистра.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "translation": "(тк. sing) обязанность",
+        "examples_checked": 1,
+        "problem": "It is his place to hire staff выражает принадлежность задачи или компетенции. «Это его обязанность набирать штат» уместно, но в других контекстах place бывает правом вмешиваться, а не строгой обязанностью."
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "translation": "одно из первых мест (в состязании)",
+        "examples_checked": 1,
+        "problem": "Get a place — попасть в число призёров в спортивном контексте. Краткий фрагмент без названия состязания не гарантирует этот смысл вне словаря, но исходной спортивной помете соответствует."
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "translation": "с точностью до одной стотысячной",
+        "examples_checked": 0,
+        "problem": "Принимается уточнение 07 «десятичный разряд; знак после десятичной запятой». Предлагается оригинальный полный пример того же математического смысла.",
+        "generated_example": {
+          "en": "Round the number to two decimal places.",
+          "ru": "Округлите число до двух знаков после запятой.",
+          "origin": "generated",
+          "before_examples": [],
+          "sense_after": {
+            "partOfSpeech": "noun",
+            "translation": "десятичный разряд; знак после десятичной запятой",
+            "examples": [],
+            "register": [
+              "математика"
+            ],
+            "id": 12
+          },
+          "target_lemma": "place",
+          "target_form": "places",
+          "unit_type": "word",
+          "sense_explanation": "Decimal places — позиции цифр после десятичного разделителя; places является множественным числом существительного place.",
+          "translation_explanation": "Round — «округлите», two — «двух»; английская десятичная точка естественно соответствует русской десятичной запятой.",
+          "contrast": "Это разряд записи числа, а не точность любой величины в одну стотысячную и не спортивное место.",
+          "reason": "Понятная учебная инструкция не привязана к одному числу знаков, ошибочно попавшему в исходный перевод.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "place; страница 604",
+              "result": "Найдено calculated to five decimal ~s с точностью до одной стотысячной; подтверждён тот же математический смысл."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Round to two decimal places — обычная современная школьная математическая инструкция, не редкий исторический термин."
+        }
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "translation": "помещать, размещать; ставить, класть",
+        "examples_checked": 1,
+        "problem": "Place in the clearest light — переносное освещение вопроса; оно не иллюстрирует главное буквальное размещение. Предлагается дополнительный пример, исходный сохраняется в before_examples.",
+        "generated_example": {
+          "en": "Place the cup on the table.",
+          "ru": "Поставьте чашку на стол.",
+          "origin": "generated",
+          "before_examples": [
+            {
+              "en": "to place in the clearest light",
+              "ru": "полностью осветить (вопрос, положение и т. п.)"
+            }
+          ],
+          "target_lemma": "place",
+          "target_form": "Place",
+          "unit_type": "word",
+          "sense_explanation": "Повелительное Place обозначает помещение предмета cup на указанную поверхность.",
+          "translation_explanation": "Для чашки русский глагол «поставьте» точнее общего «поместите»; on the table — «на стол».",
+          "contrast": "Физическое перемещение чашки, а не определение даты, должности или спортивного результата.",
+          "reason": "Показывает главное значение непосредственно и на уровне A1.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "place; страница 604",
+              "result": "В глагольном значении 1 найден только переносный пример in the clearest light."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Place an object on a surface — обычная современная инструкция; более формальная, чем put, но естественная."
+        }
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "translation": "определять место, положение, дату; относить к определённым обстоятельствам",
+        "examples_checked": 0,
+        "problem": "Дополнительный источник даёт датирование рукописи, но полная группа включает также узнавание и определение происхождения. Для общей современности предложен конкретный контекст узнавания с явным пояснением.",
+        "generated_example": {
+          "en": "I recognize his voice, but I can't place him.",
+          "ru": "Я узнаю его голос, но не могу вспомнить, откуда я его знаю.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "place",
+          "target_form": "place",
+          "unit_type": "word",
+          "sense_explanation": "Can't place him означает невозможность соотнести узнаваемого человека с обстоятельствами знакомства; это определение его места в памяти, а не размещение.",
+          "translation_explanation": "Русское «откуда я его знаю» раскрывает обычный подразумеваемый смысл place him после recognize; новой встречи, времени или причины не добавлено.",
+          "contrast": "Человека не ставят в физическое место и не устраивают на работу; проблема состоит в установлении связи с прошлым контекстом.",
+          "reason": "Даёт естественную разговорную реализацию отнесения к обстоятельствам, а не искусственное датирование.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "place; страница 328",
+              "result": "Найден пример to place a manuscript — датировать рукопись; полного примера узнавания в просмотренной статье нет."
+            },
+            {
+              "file": "source_cache_3.json",
+              "query": "place; страница 604",
+              "result": "Определение места, положения, даты дано без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "I recognize ... but can't place him — современная обычная модель неполного узнавания человека.",
+          "review_required": true
+        }
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "translation": "определять на должность, устраивать",
+        "examples_checked": 0,
+        "problem": "Нужен контекст трудоустройства, а не физического размещения.",
+        "generated_example": {
+          "en": "The agency placed her in a new job.",
+          "ru": "Агентство устроило её на новую работу.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "place",
+          "target_form": "placed",
+          "unit_type": "word",
+          "sense_explanation": "Placed someone in a job — устроило человека на работу через агентство; placed — прошедшая форма place.",
+          "translation_explanation": "Agency, her и new job переданы «агентство», «её» и «новую работу»; успешность последующей работы не утверждается.",
+          "contrast": "Дополнение in a job задаёт трудоустройство, а не местонахождение или назначение места в соревновании.",
+          "reason": "Краткая современная профессиональная ситуация однозначно задаёт нужное значение.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "place; страница 604",
+              "result": "Определять на должность, устраивать дано без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Agencies place people in jobs — действующее современное употребление в сфере найма, понятное без узкой терминологии."
+        }
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "translation": "возлагать (надежды и т. п.)",
+        "examples_checked": 1,
+        "problem": "Place confidence in someone — доверять кому-либо. «Довериться» может обозначать отдельное решение, тогда как английский инфинитив называет общую модель доверия; смысловая привязка верна."
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "translation": "сбывать (товар)",
+        "examples_checked": 0,
+        "problem": "Глагол в коммерческом значении нельзя автоматически заменить обычной физической выкладкой товара.",
+        "rejected_attempts": [
+          {
+            "en": "They placed the goods in a shop.",
+            "ru": "Они сбыли товар магазину.",
+            "problem": "Английское предложение прежде всего о размещении товара, а не продаже."
+          },
+          {
+            "en": "They placed all their stock.",
+            "ru": "Они сбыли весь товар.",
+            "problem": "Stock может означать акции; без подтверждённой коммерческой конструкции нужный товарный смысл не однозначен."
+          }
+        ],
+        "no_candidate_reason": "Нужна действующая коммерческая конструкция для товара; две попытки переходят к размещению или ценным бумагам.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "translation": "делать заказ",
+        "examples_checked": 1,
+        "problem": "Place a call в современном употреблении обычно означает совершить или организовать звонок, а перевод «заказать разговор по телефону» отсылает к старой телефонной услуге. Для общего «делать заказ» нужен place an order; американскую помету нельзя распространять на всё значение.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "translation": "помещать деньги, капитал",
+        "examples_checked": 0,
+        "problem": "Можно показать помещение денег на счёт без обещания дохода.",
+        "generated_example": {
+          "en": "She placed the money in a savings account.",
+          "ru": "Она положила деньги на сберегательный счёт.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "place",
+          "target_form": "placed",
+          "unit_type": "word",
+          "sense_explanation": "Placed money in an account обозначает помещение средств на счёт; речь о финансовом назначении средств.",
+          "translation_explanation": "Money — «деньги», savings account — «сберегательный счёт»; процент, срок и выгода не добавлены.",
+          "contrast": "Деньги не кладут физически внутрь предмета; account задаёт финансовую операцию.",
+          "reason": "Показывает смысл без сложных финансовых фактов и без советов о вложениях.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "place; страница 328",
+              "result": "Найдено £500 was placed to his credit — помещение денег на счёт; новый пример не цитируется."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Place money in an account — современное нейтрально-официальное описание размещения средств."
+        }
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "translation": "определять занятые места в соревновании",
+        "examples_checked": 0,
+        "problem": "Для определения результата нужно указать оценивающих и соревнование.",
+        "generated_example": {
+          "en": "The judges placed her first in the competition.",
+          "ru": "Судьи присудили ей первое место в соревновании.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "place",
+          "target_form": "placed",
+          "unit_type": "word",
+          "sense_explanation": "Judges placed her first — судьи определили первое место участницы; placed является переходным глаголом с результативным дополнением first.",
+          "translation_explanation": "Judges, her, first и competition полностью переданы; способ оценки или объективная победа вне решения судей не добавлены.",
+          "contrast": "Это определение итогового места судьями, а не трудоустройство или физическое расположение участницы.",
+          "reason": "Явные judges и first снимают неоднозначность глагола.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "place; страница 604",
+              "result": "Спортивное определение занятых мест найдено без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Place a competitor first — современная конструкция сообщения о судейской оценке результата."
+        }
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "translation": "присудить второе или третье призовое место",
+        "examples_checked": 1,
+        "problem": "To be placed показывает попадание участника в призовые места, а не активное присуждение им места другому. Перевод «в числе первых трёх» не совпадает с ограничением только вторым или третьим в значении; нужно согласовать смысл и залог.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "translation": "присудить второе место (на скачках)",
+        "examples_checked": 0,
+        "problem": "В американском спортивном употреблении place о лошади часто непереходно означает прийти второй; текущая глосса активного присуждения требует пересмотра.",
+        "rejected_attempts": [
+          {
+            "en": "Our horse placed.",
+            "ru": "Нашей лошади присудили второе место.",
+            "problem": "Английское непереходное placed сообщает результат; русский перевод навязывает акт присуждения и не объясняет региональную модель."
+          },
+          {
+            "en": "They placed the horse second.",
+            "ru": "Лошади присудили второе место.",
+            "problem": "Переходная конструкция относится к общему определению результата, уже охваченному значением 20; она не выделяет специальное американское place."
+          }
+        ],
+        "no_candidate_reason": "Нужна независимая корректировка переходности и перевода; кандидат с обычным непереходным placed молча изменил бы текущее значение.",
+        "review_required": true
+      }
+    ],
+    "phrases_review": "Принимаются POS sentence для пословицы, preposition для in place of и adverb для in the first/second/next place. Another place о Палате лордов — условное парламентское обозначение, требующее контекста. Out of place — предложное выражение с функцией определения или обстоятельства, а не существительное; перевод «не на месте; неуместный» верен.",
+    "doubts": [
+      "Кандидат значения 14 дополнительно требует приёмки соответствия широкой исходной глоссе; соседнее узнавание не применяется молча.",
+      "Сохраняются все прежние источники и сомнения; все восемь файлов проверены поиском.",
+      "Новые примеры не являются словарными цитатами."
+    ]
+  },
+  {
+    "word": "school",
+    "decision": "review_required",
+    "reason": "Отсутствует основное «школа», а многие пустые значения исторически или конструкционно ограничены. Для обычных обучения, факультета, коллектива, направления и атрибутивного употребления предложены примеры. Рыбный омоним проверен отдельно и подтверждён современным научным материалом.",
+    "confidence": 0.98,
+    "before_ref": "#/entries/10",
+    "source_evidence_ref": "#/previous_outputs/06/10/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/10",
+    "priority_review_ref": "#/previous_outputs/08/10",
+    "after": {
+      "recommended_order": [
+        1,
+        2,
+        5,
+        8,
+        9,
+        11,
+        6,
+        4,
+        3,
+        7,
+        10,
+        12,
+        13,
+        14
+      ],
+      "primary_meaning_indices": [
+        1,
+        2
+      ],
+      "accept_stage07_meaning_proposals": [
+        7,
+        10,
+        14
+      ],
+      "additional_meaning_review": "Добавить отдельно noun «школа» первым основным значением; не подменять им обучение. Рыбный омоним отделить от образовательного.",
+      "additional_sources": [
+        {
+          "url": "https://www.collinsdictionary.com/dictionary/english/school",
+          "quote": "A school is a place where children are educated.",
+          "context": "Современная статья COBUILD, основное существительное."
+        }
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "учение, обучение",
+        "examples_checked": 0,
+        "problem": "Источник даёт конструкции формального школьного обучения; их нельзя переводить только как здание.",
+        "generated_example": {
+          "en": "She left school at sixteen.",
+          "ru": "Она закончила школьное обучение в шестнадцать лет.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "school",
+          "target_form": "school",
+          "unit_type": "word",
+          "sense_explanation": "Left school с возрастом обозначает прекращение или завершение посещения школы и этапа школьного обучения, а не выход из здания.",
+          "translation_explanation": "At sixteen передано возрастом; «закончила школьное обучение» не утверждает получение аттестата или завершение определённой программы.",
+          "contrast": "Возраст задаёт окончание жизненного этапа, а не ежедневное окончание уроков или физический выход из школы.",
+          "reason": "Показывает обучение как этап, отличный от учреждения.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "school; страница 708",
+              "result": "В значении учение, обучение найдено to leave ~ — бросать учение в школе."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Leave school at an age — современная обычная конструкция описания окончания школьного обучения."
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "занятия в школе, уроки",
+        "examples_checked": 1,
+        "problem": "There will be no school today означает отсутствие школьных занятий сегодня; перевод не меняет его в закрытие учреждения навсегда. Значение должно иметь primary."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "школьное задание",
+        "examples_checked": 0,
+        "problem": "Не подтверждена современная самостоятельная конструкция school = задание.",
+        "rejected_attempts": [
+          {
+            "en": "I finished my school.",
+            "ru": "Я выполнил школьное задание.",
+            "problem": "Современное чтение связано с окончанием обучения, а не отдельным заданием."
+          },
+          {
+            "en": "I did my schoolwork.",
+            "ru": "Я выполнил школьное задание.",
+            "problem": "Schoolwork — другая лемма; она не является формой school."
+          }
+        ],
+        "no_candidate_reason": "Две попытки дают другое значение или производное слово; требуется пересмотр современного статуса исходного значения.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "университетский курс, дисциплина",
+        "examples_checked": 0,
+        "problem": "School of history может обозначать факультет или научное направление, а не курс обучения.",
+        "rejected_attempts": [
+          {
+            "en": "She took a school in history.",
+            "ru": "Она прошла университетский курс истории.",
+            "problem": "Take a school — неестественная современная конструкция для отдельного курса."
+          },
+          {
+            "en": "She joined the school of history.",
+            "ru": "Она записалась на курс истории.",
+            "problem": "School of history скорее подразделение или научная школа; перевод курс не закреплён."
+          }
+        ],
+        "no_candidate_reason": "Не установлена действующая конструкция именно отдельной дисциплины; обе попытки меняют смысл или неестественны.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "факультет университета (дающий право на получение учёной степени)",
+        "examples_checked": 0,
+        "problem": "Подразделение университета можно показать через medical school; это не обычная средняя школа.",
+        "generated_example": {
+          "en": "She teaches at the university's medical school.",
+          "ru": "Она преподаёт на медицинском факультете университета.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "school",
+          "target_form": "school",
+          "unit_type": "word",
+          "sense_explanation": "University's medical school — специализированное университетское подразделение медицинского образования.",
+          "translation_explanation": "Teaches — «преподаёт», university's — «университета», medical school в этом заданном контексте — «медицинский факультет»; степень или должность не добавлены.",
+          "contrast": "Университетская принадлежность исключает общеобразовательную детскую школу и художественное направление.",
+          "reason": "Сохраняет институциональное значение факультета в коротком контексте.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "school; страница 708",
+              "result": "Найдено значение факультета без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Medical school при университете — современное обычное институциональное название; конкретный статус факультета зависит от системы образования."
+        }
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "класс, классная комната; аудитория",
+        "examples_checked": 0,
+        "problem": "Простое school в современном предложении обычно означает учреждение или здание целиком, а не комнату.",
+        "rejected_attempts": [
+          {
+            "en": "The teacher entered the school.",
+            "ru": "Учитель вошёл в класс.",
+            "problem": "Английский текст обозначает школу, а не отдельную классную комнату."
+          },
+          {
+            "en": "Thirty pupils sat in the school.",
+            "ru": "Тридцать учеников сидели в аудитории.",
+            "problem": "Помещение не локализовано до класса; русский перевод искусственно сужает смысл."
+          }
+        ],
+        "no_candidate_reason": "Обе формулировки иллюстрируют соседнее здание учреждения; нужен отдельный подтверждённый современный контекст комнатного значения.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: экзамены",
+        "examples_checked": 0,
+        "problem": "Принимается исправление пометы по 07, но современность самостоятельного schools = экзамены не установлена.",
+        "rejected_attempts": [
+          {
+            "en": "She passed her schools.",
+            "ru": "Она сдала экзамены.",
+            "problem": "Конструкция требует специфического университетского или исторического подтверждения; как общая современная речь непрозрачна."
+          },
+          {
+            "en": "The schools begin tomorrow.",
+            "ru": "Экзамены начинаются завтра.",
+            "problem": "Обычное чтение связано со школами или занятиями, не с экзаменами."
+          }
+        ],
+        "no_candidate_reason": "Два варианта не дают однозначной современной модели экзаменов без специального контекста.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "учащиеся (и преподаватели) одной школы",
+        "examples_checked": 0,
+        "problem": "Коллективное значение легко показать действием всех членов школы.",
+        "generated_example": {
+          "en": "The whole school cheered.",
+          "ru": "Вся школа приветственно закричала.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "school",
+          "target_form": "school",
+          "unit_type": "word",
+          "sense_explanation": "Whole school выступает подлежащим человеческого действия cheered и обозначает школьный коллектив.",
+          "translation_explanation": "Whole — «вся», cheered — «приветственно закричала»; причина радости, победа и аплодисменты отдельно не добавлены.",
+          "contrast": "Здание не может приветственно кричать; речь о людях, а не уроках.",
+          "reason": "Один глагол делает собирательную метонимию ясной.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "school; страница 708",
+              "result": "Собирательное значение найдено без примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "The whole school с человеческим действием — современная обычная коллективная модель."
+        }
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "направление (в науке, литературе, искусстве)",
+        "examples_checked": 0,
+        "problem": "Нужен контекст идейного направления, не учреждения.",
+        "generated_example": {
+          "en": "They belong to the same school of thought.",
+          "ru": "Они принадлежат к одному направлению мысли.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "school",
+          "target_form": "school",
+          "unit_type": "word",
+          "sense_explanation": "School of thought обозначает группу общих принципов или подходов; same указывает принадлежность одному направлению.",
+          "translation_explanation": "Belong to — «принадлежат к», same — «одному», thought — «мысли»; согласие по всем отдельным вопросам не утверждается.",
+          "contrast": "Это идейная школа, а не учебное заведение или школьный коллектив.",
+          "reason": "Современное устойчивое уточнение of thought делает переносный смысл однозначным.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "school; страница 708",
+              "result": "Найдено направление в науке, литературе, искусстве без самостоятельного примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "School of thought — действующее современное обозначение интеллектуального направления."
+        }
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: средневековые университеты",
+        "examples_checked": 0,
+        "problem": "Уточнение the schools из 07 сохраняется, но историческая форма не должна превращаться в якобы нейтральную современную модель.",
+        "rejected_attempts": [
+          {
+            "en": "He studied in the schools.",
+            "ru": "Он учился в средневековых университетах.",
+            "problem": "Средневековый период не выражен в предложении; перевод добавляет его."
+          },
+          {
+            "en": "The schools taught medieval philosophy.",
+            "ru": "Средневековые университеты преподавали философию.",
+            "problem": "Medieval определяет философию, а не возраст учреждений; требуемое историческое значение не закреплено."
+          }
+        ],
+        "no_candidate_reason": "Нужно современное историческое употребление именно the schools с этим референтом; обе попытки добавляют историческое значение только переводом.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения: школьный, учебный",
+        "examples_checked": 0,
+        "problem": "Атрибутивное существительное можно показать с bus, не используя schoolhouse как другую лемму.",
+        "generated_example": {
+          "en": "The school bus is late.",
+          "ru": "Школьный автобус опаздывает.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "school",
+          "target_form": "school",
+          "unit_type": "word",
+          "sense_explanation": "School перед bus определяет назначение автобуса; это атрибутивное употребление отдельного существительного.",
+          "translation_explanation": "School bus — «школьный автобус», is late — «опаздывает»; маршрут и причина опоздания не добавлены.",
+          "contrast": "School не выступает здесь отдельным учреждением-подлежащим и не обозначает направление мысли.",
+          "reason": "Короткий бытовой пример непосредственно показывает функцию определения.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "school; страница 708",
+              "result": "Найдено attr. школьный, учебный; исходный пример school house не даёт нейтрального автобусного контекста."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "School bus — обычное современное раздельно написанное сочетание."
+        }
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "translation": "дисциплинировать, обуздывать; приучать; школить",
+        "examples_checked": 0,
+        "problem": "Современный формальный глагол можно показать через самоконтроль; значение старого порицания не следует делать главным.",
+        "generated_example": {
+          "en": "She schooled herself to remain calm.",
+          "ru": "Она приучила себя сохранять спокойствие.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "school",
+          "target_form": "schooled",
+          "unit_type": "word",
+          "sense_explanation": "Schooled herself to обозначает сознательное приучение себя к определённой форме поведения и самоконтролю.",
+          "translation_explanation": "Herself — «себя», to remain calm — «сохранять спокойствие»; успешное спокойствие в конкретном происшествии не добавлено.",
+          "contrast": "Это тренировка поведения, а не отправка ребёнка в школу и не движение рыб.",
+          "reason": "Показывает конкретное современное формальное управление с возвратным дополнением.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "school; страница 388",
+              "result": "Найдено to school one's temper; исходное значение допускает дисциплинирование."
+            },
+            {
+              "file": "https://www.collinsdictionary.com/dictionary/english/school",
+              "query": "school verb discipline; schooled herself",
+              "result": "Современная статья подтверждает discipline or control и приводит schooled herself in composure."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Современный Collins сохраняет глагол самодисциплины; модель формальная, но не историческая."
+        }
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "translation": "посылать в школу",
+        "examples_checked": 0,
+        "problem": "Современное school a child обычно означает обучать ребёнка, а не просто отправлять его в школу. Нельзя менять эту глоссу молча.",
+        "rejected_attempts": [
+          {
+            "en": "They schooled their children at home.",
+            "ru": "Они отправили детей в школу.",
+            "problem": "Английский текст означает обучение дома, прямо противореча отправке."
+          },
+          {
+            "en": "They schooled their son locally.",
+            "ru": "Они послали сына в местную школу.",
+            "problem": "Конструкция сообщает образование в местной системе, но не отдельное действие отправки; требует уточнения глоссы."
+          }
+        ],
+        "no_candidate_reason": "Обе современные модели выражают обучение; пример для них изменил бы текущий перевод «посылать» без утверждённого смыслового предложения.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "translation": "собираться косяками",
+        "examples_checked": 0,
+        "problem": "Рыбный омоним отделяется от образования; ошибочные пометы снимаются по 07. Современное научное употребление schooling подтверждено исследованием 2024 года.",
+        "generated_example": {
+          "en": "The fish began to school.",
+          "ru": "Рыбы начали собираться в косяк.",
+          "origin": "generated",
+          "before_examples": [],
+          "sense_after": {
+            "partOfSpeech": "verb",
+            "translation": "собираться косяками",
+            "examples": [],
+            "register": [],
+            "id": 14,
+            "primary": true
+          },
+          "target_lemma": "school",
+          "target_form": "school",
+          "unit_type": "word",
+          "sense_explanation": "После began to глагол school обозначает формирование согласованной группы рыб.",
+          "translation_explanation": "Began — «начали», fish — «рыбы», school — «собираться в косяк»; место, причина и вид рыб не добавлены.",
+          "contrast": "Рыбы сами формируют косяк; речь не об обучении или стае как существительном.",
+          "reason": "Короткая глагольная конструкция отделяет действие от существительного school.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "school; страница 708",
+              "result": "Найдено school II, v собираться косяками."
+            },
+            {
+              "file": "https://academic.oup.com/icb/article/64/3/753/7676182",
+              "query": "fish schooling 2024",
+              "result": "Найдена современная исследовательская статья о fish schooling, опубликованная в 2024 году."
+            }
+          ],
+          "usage_status": "current_specialist",
+          "contemporary_explanation": "Schooling является действующим термином поведения рыб в современной биологии, а не историческим морским глаголом.",
+          "contemporary_sources": [
+            {
+              "url": "https://academic.oup.com/icb/article/64/3/753/7676182",
+              "quote": "Combining Computational Fluid Dynamics and Experimental Data to Understand Fish Schooling Behavior",
+              "context": "Исследовательская статья Integrative and Comparative Biology, том 64, выпуск 3, сентябрь 2024; современное изучение поведения рыб."
+            }
+          ]
+        }
+      }
+    ],
+    "phrases_review": "Of the old school — выражение со значением традиционного подхода; POS noun для целого оборота неточно. School house в данных означает жильё учителя или пансион, тогда как современное schoolhouse обычно здание школы; нельзя подменить одно другим без отдельного смыслового решения.",
+    "doubts": [
+      "Публичная статья Collins дополнительно подтверждает образовательное учреждение, коллектив, факультет, направление, глагол обучения и рыбный омоним.",
+      "Сохраняются все прежние доказательства и ограничения; historical-only значения не удалены автоматически.",
+      "Для каждого кандидата examples_checked остаётся исходным нулём."
+    ]
+  },
+  {
+    "word": "again",
+    "decision": "изменить",
+    "reason": "Основное повторение и вторичные дискурсивные значения нужно различать. Принимаются исправления 07–08; перевод then again и ограничение фразы be oneself again требуют уточнения.",
+    "confidence": 0.97,
+    "before_ref": "#/entries/11",
+    "source_evidence_ref": "#/previous_outputs/06/11/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/11",
+    "priority_review_ref": "#/previous_outputs/08/11",
+    "after": {
+      "recommended_order": [
+        1,
+        2,
+        3
+      ],
+      "primary_meaning_indices": [
+        1
+      ],
+      "accept_stage07_meaning_proposals": [
+        1
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "translation": "снова, опять; время от времени",
+        "examples_checked": 4,
+        "problem": "Again and again и time and again выражают повторение; now and again — отдельное «иногда», как исправлено в 07. Be oneself again означает снова прийти в обычное состояние, не обязательно оправиться после болезни; исходный русский перевод неоправданно ограничивает причину."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "translation": "с другой стороны; же",
+        "examples_checked": 1,
+        "problem": "These again are more expensive может сопоставлять другую группу: «эти же дороже». Перевод «с другой стороны» возможен при контексте сравнения, но фрагмент без контекста не показывает единственного чтения."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "translation": "кроме того, к тому же",
+        "examples_checked": 1,
+        "problem": "Then again you must know it неоднозначно: then again часто вводит оговорку «с другой стороны», а must know может означать обязанность или вывод «должно быть, знаете». «Кроме того, вам следует это знать» не подтверждает однозначно ни дискурсивный смысл, ни модальность.",
+        "review_required": true
+      }
+    ],
+    "phrases_review": "As much again — ещё столько же; классификация как наречного количественного выражения из 07 принимается. Now and again — иногда, время от времени; добавление выражения сохраняет информацию, ошибочно приписанную голому again.",
+    "doubts": [
+      "Пример значения 3 не признан хорошим только на основании наличия в источнике.",
+      "Сохраняются прежние доказательства, фонетические варианты и отсутствие визуальной сверки."
+    ]
+  },
+  {
+    "word": "next",
+    "decision": "изменить",
+    "reason": "Значение «следующий; будущий» следует поставить первым. Для двух пустых значений найдены точные короткие примеры. Исходные предложные и эллиптические примеры требуют ограничения; ранжирование не равно пространственному соседству.",
+    "confidence": 0.98,
+    "before_ref": "#/entries/12",
+    "source_evidence_ref": "#/previous_outputs/06/12/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/12",
+    "priority_review_ref": "#/previous_outputs/08/12",
+    "after": {
+      "recommended_order": [
+        6,
+        1,
+        2,
+        3,
+        5,
+        4
+      ],
+      "primary_meaning_indices": [
+        6,
+        1,
+        2,
+        3
+      ],
+      "accept_stage07_meaning_proposals": [
+        2,
+        5,
+        6
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "ближайший; соседний",
+        "examples_checked": 3,
+        "problem": "House next to ours и next door (to) относятся к конкретным сочетаниям next to/next door, а не к свободному прилагательному перед существительным. My next neighbour без door сегодня менее прозрачно; основное пространственное содержание верно, грамматическую подачу следует пояснить."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "translation": "потом, затем, после; что ещё может за этим последовать?",
+        "examples_checked": 2,
+        "problem": "He next proceeded to write a letter показывает порядок действий. What next? — отдельный вопрос; перенос его перевода в phrases по 07 принимается. Сам пример proceeded to write немного книжный, но смыслу соответствует."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "translation": "в следующий раз, снова",
+        "examples_checked": 0,
+        "problem": "В основной статье найден пример следующей встречи; он показывает next, а не заменяющее again.",
+        "candidate_example": {
+          "en": "when I see him next",
+          "ru": "когда я его опять увижу",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "next",
+          "target_form": "next",
+          "unit_type": "word",
+          "sense_explanation": "Next после see him указывает на следующую по времени встречу; это наречная функция.",
+          "translation_explanation": "«Опять увижу» передаёт следующую встречу; для пояснения значения можно дополнительно указать «когда я увижу его в следующий раз», сохранив цитатный перевод отдельно.",
+          "contrast": "Next не определяет существительное вроде year и не задаёт пространственное соседство.",
+          "reason": "Точная короткая исходная конструкция показывает положение наречия после дополнения.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "next; страница 535",
+              "result": "Найдено when I see him ~ когда я его опять увижу."
+            }
+          ],
+          "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+          "location": {
+            "page": 535
+          },
+          "quote": "when I see him ~ когда я его\nопять увижу",
+          "usage_status": "current",
+          "contemporary_explanation": "When I see him next — обычный современный порядок слов для следующей встречи; словарный знак ~ раскрыт как next."
+        }
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "preposition",
+        "translation": "рядом, около",
+        "examples_checked": 2,
+        "problem": "The chair next the fire показывает редкую модель без to. She loves him next her own child — ранжирование после собственного ребёнка, а не соседство. «Почти как своего ребёнка» сглаживает порядок предпочтения. Нужны отдельная смысловая подача ранжирования и проверка современного регистра обеих моделей.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "следующий или ближайший (человек или предмет)",
+        "examples_checked": 3,
+        "problem": "Next, please! — понятное современное эллиптическое обращение. In my next и in our next опускают letter/issue и без контекста старомодны или непрозрачны; не считать все три примера одинаково полезными. Снятие жаргонной пометы по 07 принимается."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "translation": "следующий",
+        "examples_checked": 0,
+        "problem": "Принимается уточнение 07 «следующий; будущий». Источник даёт однозначное next year.",
+        "candidate_example": {
+          "en": "next year",
+          "ru": "в будущем году",
+          "origin": "source",
+          "before_examples": [],
+          "sense_after": {
+            "id": 6,
+            "partOfSpeech": "adjective",
+            "translation": "следующий; будущий",
+            "examples": [],
+            "register": []
+          },
+          "target_lemma": "next",
+          "target_form": "next",
+          "unit_type": "word",
+          "sense_explanation": "Next перед year определяет ближайший следующий год относительно времени речи.",
+          "translation_explanation": "«В будущем году» здесь передаёт именно следующий год, а не неопределённое когда-нибудь в будущем.",
+          "contrast": "Определяется временная последовательность существительного year, а не наречный порядок действий или соседство домов.",
+          "reason": "Короткий базовый пример лучше повреждённого next charter в другом подзначении.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "next; страница 535",
+              "result": "Найдено ~ year в будущем году."
+            }
+          ],
+          "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+          "location": {
+            "page": 535
+          },
+          "quote": "~ year в\nбудущем году",
+          "usage_status": "current",
+          "contemporary_explanation": "Next year — обычное современное обозначение следующего календарного года; знак ~ раскрыт как next."
+        }
+      }
+    ],
+    "phrases_review": "He lives next door — корректное предложение. Not till next time само по себе означает «не раньше следующего раза»; перевод «больше не буду до следующего раза» добавляет обещание и шутливый сценарий, которых фрагмент без контекста не выражает. Sentence из 07 не устраняет эту смысловую проблему.",
+    "doubts": [
+      "Повреждённый charter не использован как подтверждённый современный пример главы.",
+      "Сохраняются все прежние доказательства и вопросы редкого предлога."
+    ]
+  },
+  {
+    "word": "case",
+    "decision": "review_required",
+    "reason": "Разделение ситуаций и футляров необходимо сохранить. У судебного дела пример относится к аргументам; у наборной кассы примеры относятся к современному регистру букв. Для части пустых обычных значений предложены примеры; редкую упаковку нельзя заполнять неподтверждённой конструкцией.",
+    "confidence": 0.98,
+    "before_ref": "#/entries/13",
+    "source_evidence_ref": "#/previous_outputs/06/13/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/13",
+    "priority_review_ref": "#/previous_outputs/08/13",
+    "after": {
+      "recommended_order": [
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        7,
+        10,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14
+      ],
+      "primary_meaning_indices": [
+        1,
+        4,
+        2,
+        10
+      ],
+      "accept_stage07_meaning_proposals": [
+        4
+      ],
+      "homonym_groups": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "случай; обстоятельство; положение; дело",
+        "examples_checked": 6,
+        "problem": "As the case stands, just in case, in any case, in that case и it is not the case передают положение дел, предосторожность и фактическое утверждение. In case = если относится к связующей конструкции перед предложением; нужно отличать её от in case of перед существительным. Все шесть пар рассмотрены, свободное существительное не смешивается с функцией выражений."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "заболевание, случай заболевания; история болезни",
+        "examples_checked": 0,
+        "problem": "Найден однозначный пример случая заболевания. «История болезни» требует отдельного различения case и case history.",
+        "candidate_example": {
+          "en": "there were five cases of influenza",
+          "ru": "было пять случаев гриппа",
+          "origin": "source",
+          "before_examples": [],
+          "target_lemma": "case",
+          "target_form": "cases",
+          "unit_type": "word",
+          "sense_explanation": "Cases of influenza считает отдельные случаи заболевания гриппом; cases — множественное число case.",
+          "translation_explanation": "There were и five cases переданы «было пять случаев»; срок, место, диагноз конкретного лица и медицинский совет не добавлены.",
+          "contrast": "Это число заболеваний, а не пациенты как люди, история болезни или судебные дела.",
+          "reason": "Источник даёт короткий прямой пример нужного исчисляемого смысла.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "case; страница 74",
+              "result": "Найдено there were five cases of influenza было пять случаев гриппа."
+            }
+          ],
+          "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+          "location": {
+            "page": 74
+          },
+          "quote": "there were five cases of influenza\nбыло пять случаев гриппа",
+          "usage_status": "current",
+          "contemporary_explanation": "Cases of с названием болезни — современная обычная модель сообщения о случаях заболевания; пример цитатный, без утверждения о текущей эпидемиологии."
+        }
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "translation": "больной, пациент",
+        "examples_checked": 0,
+        "problem": "Медицинская метонимия возможна, но без контекста case скорее заболевание или задача; простой пример легко обезличивает человека или меняет смысл.",
+        "rejected_attempts": [
+          {
+            "en": "The case entered the room.",
+            "ru": "Пациент вошёл в комнату.",
+            "problem": "Как нейтральное современное название пациента предложение неестественно; требуется профессиональное ограничение."
+          },
+          {
+            "en": "The doctor treated a difficult case.",
+            "ru": "Врач лечил трудного пациента.",
+            "problem": "Difficult case может означать сложное заболевание, а «трудный пациент» — поведение человека; смыслы расходятся."
+          }
+        ],
+        "no_candidate_reason": "Обе попытки не обеспечивают однозначного современного обозначения самого пациента без профессионального контекста и изменения оттенка.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "translation": "судебное дело; прецедент; при мн. ч.: судебная практика",
+        "examples_checked": 1,
+        "problem": "The case for the defendant — аргументы или факты в пользу подсудимого; это ближайшее значение 5, а не само судебное дело. Снятие британской пометы по 07 принимается. Нужен релевантный дополнительный пример.",
+        "generated_example": {
+          "en": "The court will hear the case tomorrow.",
+          "ru": "Суд рассмотрит дело завтра.",
+          "origin": "generated",
+          "before_examples": [
+            {
+              "en": "the case for the defendant",
+              "ru": "факты в пользу ответчика, подсудимого"
+            }
+          ],
+          "sense_after": {
+            "id": 4,
+            "partOfSpeech": "noun",
+            "translation": "судебное дело; прецедент; при мн. ч.: судебная практика",
+            "examples": [
+              {
+                "en": "the case for the defendant",
+                "ru": "факты в пользу ответчика, подсудимого"
+              }
+            ],
+            "register": [
+              "юридическое"
+            ]
+          },
+          "target_lemma": "case",
+          "target_form": "case",
+          "unit_type": "word",
+          "sense_explanation": "Court will hear the case означает рассмотрение судебного дела; case является объектом судебной процедуры.",
+          "translation_explanation": "Will hear передано будущим «рассмотрит», tomorrow — «завтра»; исход решения и стороны дела не добавлены.",
+          "contrast": "Суд рассматривает дело целиком, а не довод в пользу ответчика и не медицинский случай.",
+          "reason": "Контекст court и hear прямо выделяет судебный процесс.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "case; страница 74",
+              "result": "Найдено to hear/to try a case — заслушивать судебное дело."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Court hears a case — современная стандартная конструкция судебной речи, понятная вне узкой терминологии."
+        }
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "факты, доказательства, доводы",
+        "examples_checked": 2,
+        "problem": "State one's case — изложить позицию или доводы, make out one's case — обосновать свою позицию. «Доказать свою правоту» может звучать сильнее, чем представить убедительную аргументацию, но направление смысла верно."
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "translation": "падеж",
+        "examples_checked": 1,
+        "problem": "The accusative case точно соответствует винительному падежу; это действующий грамматический термин."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "translation": "чудак, странный тип",
+        "examples_checked": 0,
+        "problem": "Дополнительный словарь даёт a real case; предложена короткая оригинальная реплика с тем же ограниченным разговорным смыслом.",
+        "generated_example": {
+          "en": "Your uncle is a real case!",
+          "ru": "Твой дядя — настоящий чудак!",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "case",
+          "target_form": "case",
+          "unit_type": "word",
+          "sense_explanation": "A real case в оценочном восклицании о человеке означает необычного, забавного или странного человека.",
+          "translation_explanation": "Your uncle — «твой дядя», real — «настоящий»; чудачество передаёт разговорную оценку, медицинский диагноз не добавлен.",
+          "contrast": "Называется характер человека, а не судебное дело или наблюдаемый пациент.",
+          "reason": "Контекст родства и восклицательная оценка выделяют разговорное значение.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "case; страница 74",
+              "result": "Найдено a real case — большой чудак."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "A real case остаётся понятной разговорной оценкой человека, хотя менее нейтрально и менее универсально, чем основные значения; региональный статус желательно дополнительно проверить.",
+          "review_required": true
+        }
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "translation": "коробка, ящик; контейнер",
+        "examples_checked": 1,
+        "problem": "Cigarette case — портсигар, то есть защитный футляр, близкий значению 10. Он не является однозначным примером транспортного ящика или контейнера; исходную пару сохранить, но не считать точной иллюстрацией всей группы."
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "translation": "сумка, чемодан, дипломат",
+        "examples_checked": 0,
+        "problem": "Современный британский case может обозначать чемодан; «дипломат» следует ограничить attaché case, а не распространять на любой case.",
+        "generated_example": {
+          "en": "She packed her case before the trip.",
+          "ru": "Перед поездкой она собрала чемодан.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "case",
+          "target_form": "case",
+          "unit_type": "word",
+          "sense_explanation": "Pack one's case перед поездкой обозначает укладку вещей в чемодан.",
+          "translation_explanation": "Before the trip — «перед поездкой», packed her case — «собрала чемодан»; место поездки и транспорт не добавлены.",
+          "contrast": "Это дорожный багаж, а не судебное дело и не небольшой чехол для очков.",
+          "reason": "Pack и trip вместе однозначно задают багажный смысл.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "case; страница 74",
+              "result": "Найдено сумка; чемодан; дипломат, без отдельного полного примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Pack one's case — действующая современная, особенно британская, модель речи о чемодане."
+        }
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "translation": "футляр, чехол, корпус (часов)",
+        "examples_checked": 0,
+        "problem": "Простой пример с очками покажет защитный футляр без смешения с транспортной коробкой.",
+        "generated_example": {
+          "en": "Put your glasses in their case.",
+          "ru": "Положи очки в футляр.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "case",
+          "target_form": "case",
+          "unit_type": "word",
+          "sense_explanation": "Case — защитный футляр для glasses, названный через притяжательное their.",
+          "translation_explanation": "Put — «положи», glasses — «очки», in their case — «в футляр»; принадлежность футляра очкам естественно подразумевается.",
+          "contrast": "Небольшой футляр защищает очки; речь не о чемодане, судебном деле или заболевании.",
+          "reason": "Бытовая инструкция наглядно показывает основное предметное значение.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "case; страница 126",
+              "result": "Футляр, чехол и корпус найдены без соответствующего бытового примера."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Glasses in their case — современное обычное сочетание о хранении очков."
+        }
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "translation": "наборная касса",
+        "examples_checked": 2,
+        "problem": "Lower case и upper case в исходных переводах — регистры букв, а не физические отделения кассы. Оба современных примера полезны, но относятся к отдельному современному смыслу; историческую кассу сохранить, разделение оформить отдельным meaning_proposal.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "translation": "упаковывать в ящик или коробку",
+        "examples_checked": 0,
+        "problem": "Редкий упаковочный глагол требует подтверждения действующего управления, особенно различения case и case up.",
+        "rejected_attempts": [
+          {
+            "en": "Case the books for shipping.",
+            "ru": "Упакуйте книги в ящик для отправки.",
+            "problem": "Повелительная профессиональная инструкция возможна, но современная нейтральность именно case без up не подтверждена."
+          },
+          {
+            "en": "She cased her clothes.",
+            "ru": "Она упаковала одежду в ящик.",
+            "problem": "Для бытовой упаковки одежды конструкция неестественна; русский перевод искусственно вводит ящик."
+          }
+        ],
+        "no_candidate_reason": "Не установлена современная упаковочная модель для самостоятельного case; обе попытки либо требуют специального подтверждения, либо неестественны.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "translation": "вставлять в оправу, обшивать, покрывать",
+        "examples_checked": 1,
+        "problem": "Cased in armour показывает покрытие бронёй, но не вставку в оправу и не всякую обшивку. Русский перевод верен в заданном контексте; конструкция литературная или специальная, primary следует снять."
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "translation": "осматривать место будущего преступления, выслеживать",
+        "examples_checked": 1,
+        "problem": "Case a joint — разговорная разведка места перед ограблением; семантически пример подходит, хотя его буквальная цитатность в локальных источниках не подтверждена. «Выслеживать» без ограничения на объект слишком широко: человека обычно не case в значении преследования."
+      }
+    ],
+    "phrases_review": "In case of fire корректно показывает предложную конструкцию условия. To put the case that — старое выражение предположения; не предлагать его как нейтральную современную речь без дополнительного подтверждения.",
+    "doubts": [
+      "Современность a real case оставлена на дополнительную проверку; пример не объявлен цитатой.",
+      "Все прежние свидетельства, включая attaché case и неполную цитатную проверку case a joint, сохраняются.",
+      "Смысловые группы не объединены только из-за общего написания."
+    ]
+  },
+  {
+    "word": "next to",
+    "decision": "оставить",
+    "reason": "Оба исходных примера семантически подходят и ясно различают соседство и почти нулевую величину. Разделение значений полезно как будущая структурная правка, но текущие примеры не требуют замены.",
+    "confidence": 0.97,
+    "before_ref": "#/entries/14",
+    "source_evidence_ref": "#/previous_outputs/06/14/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/14",
+    "priority_review_ref": "#/previous_outputs/08/14",
+    "after": {
+      "primary_meaning_indices": [
+        1
+      ],
+      "change": "Сохранить текущие примеры; при отдельном разделении поставить пространственное значение первым."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "translation": "рядом с, около, возле; почти",
+        "examples_checked": 2,
+        "problem": "Sit next to me непосредственно задаёт место рядом с говорящим. Next to nothing — очень мало, почти ничего; это приближение к нулю, а не физическое соседство с предметом nothing. Русские переводы точны; POS приблизительного употребления можно уточнять отдельно без объявления существующей пары ошибочной."
+      }
+    ],
+    "phrases_review": "Отдельных phrases нет.",
+    "doubts": [
+      "Sit next to me остаётся редакционным примером, а не подтверждённой буквальной цитатой локального словаря.",
+      "Все прежние доказательства, результаты поиска и грамматические сомнения сохранены по ссылкам."
+    ]
+  },
+  {
+    "word": "each",
+    "decision": "изменить",
+    "reason": "Оба центральных распределительных употребления и основной пример студента верны. Перевод each and all следует уточнить: «без разбора» добавляет отсутствие выбора, тогда как английское выражение подчёркивает всех и каждого.",
+    "confidence": 0.98,
+    "before_ref": "#/entries/15",
+    "source_evidence_ref": "#/previous_outputs/06/15/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/15",
+    "priority_review_ref": "#/previous_outputs/08/15",
+    "after": {
+      "recommended_order": [
+        1,
+        2
+      ],
+      "primary_meaning_indices": [
+        1,
+        2
+      ],
+      "translation_edit": {
+        "meaning_index": 1,
+        "example_index": 2,
+        "before": {
+          "en": "each and all",
+          "ru": "все без разбора"
+        },
+        "after": {
+          "en": "each and all",
+          "ru": "все и каждый; все без исключения"
+        }
+      }
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "pronoun",
+        "translation": "каждый, всякий",
+        "examples_checked": 2,
+        "problem": "Each of us правильно показывает самостоятельное распределительное местоимение. Each and all подчёркивает охват каждого и всей группы; «все без разбора» может означать неразборчивый выбор и потому менее точно, чем «все без исключения»."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "translation": "каждый, всякий",
+        "examples_checked": 1,
+        "problem": "Each student has to learn it by heart правильно показывает согласование с единственным числом и обязанность каждого студента. Русское «должен выучить это наизусть» точно передаёт has to и by heart. Современная категория determiner возможна при общей унификации словаря."
+      }
+    ],
+    "phrases_review": "Отдельных phrases нет.",
+    "doubts": [
+      "Правка перевода each and all является редакционным уточнением, а не исправлением факта наличия исходной цитаты.",
+      "Сохраняются все прежние доказательства и вопрос общей классификации adjective/determiner."
+    ]
+  },
+  {
+    "word": "without",
+    "decision": "review_required",
+    "reason": "Основные «без» и конструкция с герундием понятны. Пространственные, именное и союзное значения требуют ограничения; устаревший союз нельзя заполнить современным предложением, которое фактически использует предлог.",
+    "confidence": 0.98,
+    "before_ref": "#/entries/16",
+    "source_evidence_ref": "#/previous_outputs/06/16/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/16",
+    "priority_review_ref": "#/previous_outputs/08/16",
+    "after": {
+      "recommended_order": [
+        1,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "primary_meaning_indices": [
+        1,
+        3
+      ],
+      "historical_review": "Сохранить редкие значения до решения о регистре и грамматическом анализе; не добавлять к ним якобы современные примеры автоматически."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "translation": "без",
+        "examples_checked": 2,
+        "problem": "Without friends выражает отсутствие друзей; do/go without something — обходиться без вещи. Оба перевода прямо соответствуют отсутствию или отказу от необходимого."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "preposition",
+        "translation": "вне, за",
+        "examples_checked": 1,
+        "problem": "Things without us — старое философское или литературное «вещи вне нас». «Внешний мир» допустимо как обобщение, но меняет множественные вещи в совокупность мира. Это не современная начальная пространственная модель; primary следует снять.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "preposition",
+        "translation": "(перед герундием и отглагольным сущ.) без того, чтобы",
+        "examples_checked": 1,
+        "problem": "Without taking leave означает не прощаясь; герундиальная конструкция задаёт отсутствие сопровождающего действия. Taking leave в этом значении формальнее бытового saying goodbye, но смысл и перевод согласованы."
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "translation": "вне, снаружи",
+        "examples_checked": 2,
+        "problem": "Wind without и footsteps without соответствуют устаревшему наречному «снаружи». Во втором переводе «за дверью послышались» добавлены дверь и начало восприятия; точнее «Я слышал снаружи шаги». Оба примера сохранять только в явно историческом/литературном слое, не как новые современные модели.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "translation": "наружная сторона",
+        "examples_checked": 1,
+        "problem": "From without выражает направление извне и может встречаться в современной формальной речи, но сам фрагмент не доказывает существительное «наружная сторона». Требуется отдельный грамматический пересмотр, не автоматическое признание POS noun.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "conjunction",
+        "translation": "если не; без того, чтобы",
+        "examples_checked": 0,
+        "problem": "Источник прямо ограничивает союз устаревшей разговорной речью; обычная современная конструкция с герундием не является примером этого союза.",
+        "rejected_attempts": [
+          {
+            "en": "I won't go without you come too.",
+            "ru": "Я не пойду, если ты тоже не пойдёшь.",
+            "problem": "Предложение использует исторически или диалектно ограниченный союз; непригодно как современный нейтральный пример."
+          },
+          {
+            "en": "He left without saying goodbye.",
+            "ru": "Он ушёл, не попрощавшись.",
+            "problem": "Это современный предлог перед герундием, значение 3, а не союз перед личной формой."
+          }
+        ],
+        "no_candidate_reason": "Заявленное союзное употребление исторически ограничено; две попытки либо сохраняют устаревшую модель, либо подменяют её современным предложным значением.",
+        "review_required": true
+      }
+    ],
+    "phrases_review": "Отдельных phrases нет.",
+    "doubts": [
+      "Сохранены положительные свидетельства старых словарей; исторические значения не объявлены OCR-ошибками.",
+      "Современность from without не устанавливает существительное автоматически.",
+      "Все прежние ограничения и отсутствие визуальной сверки сохраняются."
+    ]
+  },
+  {
+    "word": "well-being",
+    "decision": "изменить",
+    "reason": "Для обоих пустых значений предложены короткие оригинальные примеры с разными контекстами. Общее благополучие рекомендуется показывать первым; здоровье остаётся отдельным подтверждённым аспектом без превращения его в медицинский диагноз.",
+    "confidence": 0.97,
+    "before_ref": "#/entries/17",
+    "source_evidence_ref": "#/previous_outputs/06/17/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/17",
+    "priority_review_ref": "#/previous_outputs/08/17",
+    "after": {
+      "recommended_order": [
+        2,
+        1
+      ],
+      "primary_meaning_indices": [
+        1,
+        2
+      ]
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "translation": "здоровье",
+        "examples_checked": 0,
+        "problem": "В локальных статьях найдены переводы, но подходящего готового предложения нет. Контекст физического состояния позволяет избежать смешения с доходом или процветанием.",
+        "generated_example": {
+          "en": "The nurse asked about his physical well-being.",
+          "ru": "Медсестра спросила о состоянии его физического здоровья.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "well-being",
+          "target_form": "well-being",
+          "unit_type": "word",
+          "sense_explanation": "Physical well-being после вопроса медсестры обозначает физическое состояние здоровья; это существительное.",
+          "translation_explanation": "Nurse — «медсестра», asked about — «спросила о», physical — «физического»; диагноз, выздоровление и медицинская рекомендация не добавлены.",
+          "contrast": "Физическое уточнение выделяет здоровье, а не материальное благосостояние или общее процветание.",
+          "reason": "Узкий физический контекст делает перевод «здоровье» прозрачным.",
+          "source_searches": [
+            {
+              "file": "source_cache_3.json",
+              "query": "well-being; страница 900",
+              "result": "Найдены два перевода без примеров."
+            },
+            {
+              "file": "source_cache_6.json",
+              "query": "well[- ]?being",
+              "result": "Помимо прежних находок найдено wellbeing на странице 895 со значениями здоровья и благополучия; готового подходящего предложения в статье нет."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Physical well-being — современное обычное обозначение физического состояния; пример не использует устаревшее медицинское управление."
+        }
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "translation": "благополучие; процветание, благосостояние",
+        "examples_checked": 0,
+        "problem": "Общее благополучие нужно показать без утверждения, что well-being обязательно означает денежное богатство.",
+        "generated_example": {
+          "en": "The children's well-being comes first.",
+          "ru": "Благополучие детей стоит на первом месте.",
+          "origin": "generated",
+          "before_examples": [],
+          "target_lemma": "well-being",
+          "target_form": "well-being",
+          "unit_type": "word",
+          "sense_explanation": "Children's well-being обозначает общее благополучие детей; comes first выражает приоритет заботы о нём.",
+          "translation_explanation": "Children's — «детей», comes first — «стоит на первом месте»; безопасность, здоровье и деньги не перечисляются как дополнительные факты.",
+          "contrast": "Нет ограничения физическим здоровьем или материальным доходом; речь об общем состоянии жизни детей.",
+          "reason": "Короткая современная фраза показывает самое широкое значение существительного.",
+          "source_searches": [
+            {
+              "file": "source_cache_0.json",
+              "query": "well-being; страница 496",
+              "result": "Найдены здоровье, благосостояние, благополучие и процветание без полного примера."
+            },
+            {
+              "file": "source_cache_7.json",
+              "query": "well[- ]?being",
+              "result": "Найдено wellbeing — благополучие в списке на странице 524; предложения нет."
+            }
+          ],
+          "usage_status": "current",
+          "contemporary_explanation": "Children's well-being и comes first — современные обычные модели речи о приоритете благополучия."
+        }
+      }
+    ],
+    "doubts": [
+      "Расширенный поиск вариантов wellbeing уточняет прежние буквальные нулевые результаты, не отменяя их: это другие запросы.",
+      "Сохраняются вопросы транскрипции и неполного текстового слоя a4 PDF.",
+      "Оба примера оригинальные, не цитаты; examples_checked остаётся 0."
+    ]
+  },
+  {
+    "word": "long-time",
+    "decision": "оставить",
+    "reason": "Современный авторитетный словарь прямо подтверждает longtime и вариант long-time, а также точный пример a longtime friend. Это разрешает учебную неопределённость значения «давний», не устанавливая, что отсылка локального словаря была ошибкой OCR.",
+    "confidence": 0.99,
+    "before_ref": "#/entries/18",
+    "source_evidence_ref": "#/previous_outputs/06/18/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/18",
+    "priority_review_ref": "#/previous_outputs/08/18",
+    "after": {
+      "primary_meaning_indices": [
+        1
+      ],
+      "change": "Сохранить перевод и исходный пример; пояснить допустимость написаний longtime/long-time."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "translation": "давний, старый, многолетний",
+        "examples_checked": 1,
+        "problem": "A longtime friend — друг, знакомый много лет; «давний друг» точно передаёт длительность отношений и не означает пожилого человека. Longtime допустимо как вариант заголовочного long-time, а не подмена производным."
+      }
+    ],
+    "additional_sources": [
+      {
+        "url": "https://dictionary.cambridge.org/dictionary/english/longtime",
+        "quote": "(also long-time)",
+        "context": "Cambridge Academic Content Dictionary прямо связывает два варианта написания."
+      },
+      {
+        "url": "https://dictionary.cambridge.org/dictionary/english/longtime",
+        "quote": "having existed or lasted for many years:",
+        "context": "Современное значение прилагательного."
+      },
+      {
+        "url": "https://dictionary.cambridge.org/dictionary/english/longtime",
+        "quote": "a longtime friend",
+        "context": "Точное совпадение с исходным английским примером."
+      }
+    ],
+    "doubts": [
+      "Отсылка long-time = long-term в локальных производных форматах сохранена как отдельный факт; визуальная сверка страницы 478 не выполнена.",
+      "Прежние шесть отрицательных буквальных поисков сохраняются и не противоречат современному внешнему подтверждению.",
+      "Внешний источник подтверждает учебное употребление, а не буквальное содержание непроверенного изображения локальной книги."
+    ]
+  },
+  {
+    "word": "against",
+    "decision": "review_required",
+    "reason": "Противодействие, направление и опора имеют хорошие примеры. Редкие соседство и срок нельзя утверждать как нейтральное современное употребление только по старому словарю. В физических столкновениях и подготовке к зиме нужны более точные переводы и пояснения.",
+    "confidence": 0.98,
+    "before_ref": "#/entries/19",
+    "source_evidence_ref": "#/previous_outputs/06/19/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/19",
+    "priority_review_ref": "#/previous_outputs/08/19",
+    "after": {
+      "recommended_order": [
+        6,
+        1,
+        2,
+        4,
+        7,
+        3,
+        5
+      ],
+      "primary_meaning_indices": [
+        6,
+        1,
+        2
+      ],
+      "translation_review": "Отделить пояснения функций от переводных эквивалентов; against the grain оформить как выражение, а не универсальный перевод предлога."
+    },
+    "checks": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "translation": "противоположное направление или положение против; перен. против шерсти",
+        "examples_checked": 2,
+        "problem": "Sailed against the wind — движение против ветра, перевод точен. Against the grain может быть буквальным направлением против волокон или переносным «против убеждений/склонностей»; текущий русский пример показывает только буквальный смысл. «Против шерсти» не является общим переводом against."
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "preposition",
+        "translation": "опору, фон, препятствие о, об, по, на, к",
+        "examples_checked": 4,
+        "problem": "Dark background показывает фон; leaned against the fence и ladder against the wall — контакт и опору, все три перевода точны. Knock against a stone означает удариться или стукнуться о камень, не обязательно споткнуться; исходное «споткнуться» добавляет конкретный механизм потери шага."
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "preposition",
+        "translation": "непосредственное соседство рядом, у",
+        "examples_checked": 1,
+        "problem": "The house against the cinema буквально найдено в источнике, но не является прозрачной обычной современной моделью «рядом». Возможны иные пространственные прочтения; сохранять до проверки регистра, не рекомендовать как современный пример.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "preposition",
+        "translation": "столкновение или соприкосновение на, с",
+        "examples_checked": 2,
+        "problem": "Run against a rock может обозначать физическое столкновение. He ran against his brother без контекста легко означает соревнование или выдвижение против брата, а не столкновение телами; русский перевод выбирает один смысл без достаточного основания.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "preposition",
+        "translation": "определённый срок к, на",
+        "examples_checked": 1,
+        "problem": "Against the end of the month подтверждено старым словарём, но современная нейтральная модель срока обычно by. Заменить against на by и оставить пример в этой статье нельзя; требуется отдельное решение о регистре самого значения.",
+        "review_required": true
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "preposition",
+        "translation": "противодействие, несогласие с чем-либо против",
+        "examples_checked": 2,
+        "problem": "Against my will прямо выражает противоречие воле; struggle against difficulties — борьбу с препятствиями. Русские переводы правильно меняют предлог по управлению русского глагола. Значение следует поставить первым и отметить primary."
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "preposition",
+        "translation": "подготовку к чему-либо на, про",
+        "examples_checked": 3,
+        "problem": "Against a rainy day — на случай будущих трудностей, выражение, а не буквальная подготовка к дождю. Store up the food against winter использует книжное against для будущей нужды; нейтральную современность этого оборота отдельно не подтверждали. Insurance against old age формулирует страхование от последствий старости, а «чтобы обеспечить свою старость» объясняет цель и не является буквальным соответствием. Все три примера требуют разных пояснений, их нельзя объединять общим «на, про».",
+        "review_required": true
+      }
+    ],
+    "phrases_review": "Отдельных phrases нет; against the grain и against a rainy day целесообразно выделить как устойчивые выражения с сохранением исходных пар.",
+    "doubts": [
+      "Редкие значения соседства и срока не объявлены OCR-ошибками и не удалены; их современность остаётся открытой.",
+      "Сохраняются все прежние положительные результаты по восьми источникам и ограничения визуальной сверки.",
+      "В этой записи нет пустых examples; исторические конструкции не заменялись искусственными современными предложениями."
+    ]
+  }
+]

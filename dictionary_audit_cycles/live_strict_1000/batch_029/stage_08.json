@@ -1,0 +1,1226 @@
+[
+  {
+    "word": "brother",
+    "entry_index": 561,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "брат",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brother, значение 1 (noun, «брат») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "собрат; коллега",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brother, значение 2 (noun, «собрат; коллега») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "земляк",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brother, значение 3 (noun, «земляк») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для brother проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "brown",
+    "entry_index": 562,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "коричневый; бурый",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 1 (noun, «коричневый; бурый») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "adjective",
+        "translation": "смуглый; загорелый",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 2 (adjective, «смуглый; загорелый») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "adjective",
+        "translation": "карий (о глазах)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 3 (adjective, «карий (о глазах)») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "adjective",
+        "translation": "суровый, небелёный",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 4 (adjective, «суровый, небелёный») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "коричневый цвет; коричневая краска",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 5 (noun, «коричневый цвет; коричневая краска») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "делать(ся) тёмным, коричневым",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 6 (verb, «делать(ся) тёмным, коричневым») проверено отдельно: текущий порядок 6 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "загорать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 7 (verb, «загорать») проверено отдельно: текущий порядок 7 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "verb",
+        "translation": "поджаривать, подрумянивать",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 8 (verb, «поджаривать, подрумянивать») проверено отдельно: текущий порядок 8 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "verb",
+        "translation": "воронить (металл)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brown, значение 9 (verb, «воронить (металл)») проверено отдельно: текущий порядок 9 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для brown проверены все 9 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "browser",
+    "entry_index": 563,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "навигатор (программа просмотра веб-серверов)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова browser, значение 1 (noun, «навигатор (программа просмотра веб-серверов)») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для browser проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "brush",
+    "entry_index": 564,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "щётка",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 1 (noun, «щётка») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "кисть",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 2 (noun, «кисть») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "чистка щёткой",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 3 (noun, «чистка щёткой») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "стычка, столкновение",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 4 (noun, «стычка, столкновение») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "лёгкое прикосновение",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 5 (noun, «лёгкое прикосновение») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "хвост (особ. лисий)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 6 (noun, «хвост (особ. лисий)») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "noun",
+        "translation": "щётка",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 7 (noun, «щётка») проверено отдельно: текущий порядок 7 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "noun",
+        "translation": "низкий кустарник",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 8 (noun, «низкий кустарник») проверено отдельно: текущий порядок 8 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "verb",
+        "translation": "чистить щёткой",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 9 (verb, «чистить щёткой») проверено отдельно: текущий порядок 9 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 10,
+        "id": 10,
+        "partOfSpeech": "verb",
+        "translation": "причёсывать (волосы)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 10 (verb, «причёсывать (волосы)») проверено отдельно: текущий порядок 10 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 11,
+        "id": 11,
+        "partOfSpeech": "verb",
+        "translation": "легко касаться, задевать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 11 (verb, «легко касаться, задевать») проверено отдельно: текущий порядок 11 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 12,
+        "id": 12,
+        "partOfSpeech": "verb",
+        "translation": "обсаживать кустарником",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова brush, значение 12 (verb, «обсаживать кустарником») проверено отдельно: текущий порядок 12 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для brush проверены все 12 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "brutal",
+    "entry_index": 565,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "adjective",
+        "translation": "жестокий, зверский",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brutal, значение 1 (adjective, «жестокий, зверский») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "adjective",
+        "translation": "безжалостный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brutal, значение 2 (adjective, «безжалостный») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "adjective",
+        "translation": "отвратительный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова brutal, значение 3 (adjective, «отвратительный») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для brutal проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "bubble",
+    "entry_index": 566,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "пузырь; пузырёк",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bubble, значение 1 (noun, «пузырь; пузырёк») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для bubble проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "buck",
+    "entry_index": 567,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "самец (оленя, антилопы, зайца, кролика)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 1 (noun, «самец (оленя, антилопы, зайца, кролика)») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "денди, щёголь",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 2 (noun, «денди, щёголь») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "рядовой",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 3 (noun, «рядовой») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "доллар",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 4 (noun, «доллар») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "марка в покере, указывающая, чья сдача",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 5 (noun, «марка в покере, указывающая, чья сдача») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "брыкание",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 6 (noun, «брыкание») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "noun",
+        "translation": "южноамериканский индеец",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 7 (noun, «южноамериканский индеец») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "verb",
+        "translation": "становиться на дыбы; брыкаться",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 8 (verb, «становиться на дыбы; брыкаться») проверено отдельно: текущий порядок 8 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "verb",
+        "translation": "противиться, выступать против",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 9 (verb, «противиться, выступать против») проверено отдельно: текущий порядок 9 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 10,
+        "id": 10,
+        "partOfSpeech": "verb",
+        "translation": "выслуживаться",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 10 (verb, «выслуживаться») проверено отдельно: текущий порядок 10 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 11,
+        "id": 11,
+        "partOfSpeech": "verb",
+        "translation": "распиливать (деревья) на брёвна",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 11 (verb, «распиливать (деревья) на брёвна») проверено отдельно: текущий порядок 11 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 12,
+        "id": 12,
+        "partOfSpeech": "verb",
+        "translation": "дробить (руду)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова buck, значение 12 (verb, «дробить (руду)») проверено отдельно: текущий порядок 12 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для buck проверены все 12 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "buddy",
+    "entry_index": 568,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "дружище, приятель",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buddy, значение 1 (noun, «дружище, приятель») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для buddy проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "budget",
+    "entry_index": 569,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "бюджет; финансовая смета",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова budget, значение 1 (noun, «бюджет; финансовая смета») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "запас",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова budget, значение 2 (noun, «запас») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "сумка и её содержимое",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова budget, значение 3 (noun, «сумка и её содержимое») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "предусматривать в бюджете, ассигновать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова budget, значение 4 (verb, «предусматривать в бюджете, ассигновать») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "verb",
+        "translation": "составлять бюджет",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова budget, значение 5 (verb, «составлять бюджет») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "adjective",
+        "translation": "дешёвый",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова budget, значение 6 (adjective, «дешёвый») проверено отдельно: текущий порядок 6 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для budget проверены все 6 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "buffer",
+    "entry_index": 570,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "буфер; амортизатор, демпфер, глушитель",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buffer, значение 1 (noun, «буфер; амортизатор, демпфер, глушитель») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "буфер, буферное государство",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buffer, значение 2 (noun, «буфер, буферное государство») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "тормоз отката",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buffer, значение 3 (noun, «тормоз отката») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "помощник боцмана",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buffer, значение 4 (noun, «помощник боцмана») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "буферный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова buffer, значение 5 (noun, «буферный») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для buffer проверены все 5 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "bug",
+    "entry_index": 571,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "клоп",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bug, значение 1 (noun, «клоп») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "насекомое; жук",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bug, значение 2 (noun, «насекомое; жук») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "вирусное заболевание",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bug, значение 3 (noun, «вирусное заболевание») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "технический дефект",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bug, значение 4 (noun, «технический дефект») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "«жучок», подслушивающее устройство",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bug, значение 5 (noun, ««жучок», подслушивающее устройство») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "устанавливать аппаратуру для подслушивания, тайного наблюдения; подслушивать, вести тайное наблюдение (с помощью специальной аппаратуры)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bug, значение 6 (verb, «устанавливать аппаратуру для подслушивания, тайного наблюдения; подслушивать, вести тайное наблюдение (с помощью специальной аппаратуры)») проверено отдельно: текущий порядок 6 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для bug проверены все 6 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "build",
+    "entry_index": 572,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "телосложение",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова build, значение 1 (noun, «телосложение») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "конструкция; форма; стиль",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова build, значение 2 (noun, «конструкция; форма; стиль») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "образование (початка)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова build, значение 3 (noun, «образование (початка)») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "строить, сооружать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова build, значение 4 (verb, «строить, сооружать») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "verb",
+        "translation": "создавать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова build, значение 5 (verb, «создавать») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "свить (гнёзда)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова build, значение 6 (verb, «свить (гнёзда)») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "основываться, полагаться",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова build, значение 7 (verb, «основываться, полагаться») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для build проверены все 7 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "building",
+    "entry_index": 573,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "здание, постройка; строение, сооружение",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова building, значение 1 (noun, «здание, постройка; строение, сооружение») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: надворные постройки, службы",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова building, значение 2 (noun, «при мн. ч.: надворные постройки, службы») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "строительство",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова building, значение 3 (noun, «строительство») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения: строительный",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова building, значение 4 (noun, «в роли определения: строительный») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для building проверены все 4 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "bulk",
+    "entry_index": 574,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "объём; вместимость",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 1 (noun, «объём; вместимость») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "большие размеры; большое количество",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 2 (noun, «большие размеры; большое количество») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "(обыкн. the bulk) основная масса, большая часть (чего-либо)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 3 (noun, «(обыкн. the bulk) основная масса, большая часть (чего-либо)») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "грубая пища (для стимуляции кишечника)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 4 (noun, «грубая пища (для стимуляции кишечника)») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "корпус (здания и т. п.)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 5 (noun, «корпус (здания и т. п.)») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "noun",
+        "translation": "груз (судна)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 6 (noun, «груз (судна)») проверено отдельно: текущий порядок 6 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "noun",
+        "translation": "в роли определения к другому слову",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 7 (noun, «в роли определения к другому слову») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "verb",
+        "translation": "казаться большим, важным",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 8 (verb, «казаться большим, важным») проверено отдельно: текущий порядок 8 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "verb",
+        "translation": "устанавливать вес (груза)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 9 (verb, «устанавливать вес (груза)») проверено отдельно: текущий порядок 9 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 10,
+        "id": 10,
+        "partOfSpeech": "verb",
+        "translation": "ссыпать, сваливать в кучу; нагромождать",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bulk, значение 10 (verb, «ссыпать, сваливать в кучу; нагромождать») проверено отдельно: текущий порядок 10 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для bulk проверены все 10 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "bullet",
+    "entry_index": 575,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "пуля; ядро",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bullet, значение 1 (noun, «пуля; ядро») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "грузило",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bullet, значение 2 (noun, «грузило») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "при мн. ч.: горох",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bullet, значение 3 (noun, «при мн. ч.: горох») проверено отдельно: текущий порядок 3 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для bullet проверены все 3 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "bunch",
+    "entry_index": 576,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "связка, пучок, пачка (чего-либо однородного)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bunch, значение 1 (noun, «связка, пучок, пачка (чего-либо однородного)») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "группа, компания; банда",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bunch, значение 2 (noun, «группа, компания; банда») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "стадо",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bunch, значение 3 (noun, «стадо») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "сгусток (электронов)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bunch, значение 4 (noun, «сгусток (электронов)») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "verb",
+        "translation": "образовывать пучки, гроздья",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bunch, значение 5 (verb, «образовывать пучки, гроздья») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "сбивать(ся) в кучу",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bunch, значение 6 (verb, «сбивать(ся) в кучу») проверено отдельно: текущий порядок 6 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "собирать в сборки (платье)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова bunch, значение 7 (verb, «собирать в сборки (платье)») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для bunch проверены все 7 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "burden",
+    "entry_index": 577,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "ноша, тяжесть; груз",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 1 (noun, «ноша, тяжесть; груз») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "бремя",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 2 (noun, «бремя») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "тоннаж (судна)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 3 (noun, «тоннаж (судна)») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "накладные расходы",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 4 (noun, «накладные расходы») проверено отдельно: текущий порядок 4 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "пустая порода, покрывающая руду",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 5 (noun, «пустая порода, покрывающая руду») проверено отдельно: текущий порядок 5 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "нагружать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 6 (verb, «нагружать») проверено отдельно: текущий порядок 6 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "обременять, отягощать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 7 (verb, «обременять, отягощать») проверено отдельно: текущий порядок 7 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "noun",
+        "translation": "припев, рефрен",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 8 (noun, «припев, рефрен») проверено отдельно: текущий порядок 8 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "noun",
+        "translation": "тема; основная мысль, суть",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burden, значение 9 (noun, «тема; основная мысль, суть») проверено отдельно: текущий порядок 9 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для burden проверены все 9 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "bureaucracy",
+    "entry_index": 578,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "бюрократия",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bureaucracy, значение 1 (noun, «бюрократия») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "бюрократизм",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова bureaucracy, значение 2 (noun, «бюрократизм») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для bureaucracy проверены все 2 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "burial",
+    "entry_index": 579,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "похороны",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burial, значение 1 (noun, «похороны») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для burial проверены все 1 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "burn",
+    "entry_index": 580,
+    "meanings": [
+      {
+        "current_order": 1,
+        "id": 1,
+        "partOfSpeech": "noun",
+        "translation": "ожог",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 1 (noun, «ожог») проверено отдельно: текущий порядок 1 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 2,
+        "id": 2,
+        "partOfSpeech": "noun",
+        "translation": "клеймо",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 2 (noun, «клеймо») проверено отдельно: текущий порядок 2 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 3,
+        "id": 3,
+        "partOfSpeech": "noun",
+        "translation": "выжигание растительности на земле, предназначенной к обработке",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 3 (noun, «выжигание растительности на земле, предназначенной к обработке») проверено отдельно: текущий порядок 3 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 4,
+        "id": 4,
+        "partOfSpeech": "verb",
+        "translation": "жечь, палить, сжигать; прожигать; выжигать",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 4 (verb, «жечь, палить, сжигать; прожигать; выжигать») проверено отдельно: текущий порядок 4 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 5,
+        "id": 5,
+        "partOfSpeech": "verb",
+        "translation": "обжигать, получать ожог",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 5 (verb, «обжигать, получать ожог») проверено отдельно: текущий порядок 5 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 6,
+        "id": 6,
+        "partOfSpeech": "verb",
+        "translation": "вызывать загар (о солнце)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 6 (verb, «вызывать загар (о солнце)») проверено отдельно: текущий порядок 6 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 7,
+        "id": 7,
+        "partOfSpeech": "verb",
+        "translation": "загорать (о коже)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 7 (verb, «загорать (о коже)») проверено отдельно: текущий порядок 7 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 8,
+        "id": 8,
+        "partOfSpeech": "verb",
+        "translation": "подгорать (о пище)",
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 8 (verb, «подгорать (о пище)») проверено отдельно: текущий порядок 8 и primary=True не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 9,
+        "id": 9,
+        "partOfSpeech": "verb",
+        "translation": "обжигать (кирпичи)",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 9 (verb, «обжигать (кирпичи)») проверено отдельно: текущий порядок 9 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 10,
+        "id": 10,
+        "partOfSpeech": "verb",
+        "translation": "прижигать",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 10 (verb, «прижигать») проверено отдельно: текущий порядок 10 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 11,
+        "id": 11,
+        "partOfSpeech": "verb",
+        "translation": "сжигать в ядерном реакторе",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 11 (verb, «сжигать в ядерном реакторе») проверено отдельно: текущий порядок 11 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 12,
+        "id": 12,
+        "partOfSpeech": "verb",
+        "translation": "резать (металл) автогеном",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 12 (verb, «резать (металл) автогеном») проверено отдельно: текущий порядок 12 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 13,
+        "id": 13,
+        "partOfSpeech": "verb",
+        "translation": "сгорать, гореть, пылать (тж. перен.); пылать, как в огне",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 13 (verb, «сгорать, гореть, пылать (тж. перен.); пылать, как в огне») проверено отдельно: текущий порядок 13 и primary=False не требуют изменения по имеющимся evidence."
+      },
+      {
+        "current_order": 14,
+        "id": 14,
+        "partOfSpeech": "verb",
+        "translation": "разозлиться, прийти в бешенство",
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "У слова burn, значение 14 (verb, «разозлиться, прийти в бешенство») проверено отдельно: текущий порядок 14 и primary=False не требуют изменения по имеющимся evidence."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для burn проверены все 14 значений, их порядок и primary; подтверждённого основания для перестановки нет.",
+    "confidence": 0.88
+  }
+]

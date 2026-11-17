@@ -1,0 +1,44 @@
+{
+  "scope": "finish_remaining_2026-11-16",
+  "applied_count": 2,
+  "changes": [
+    {
+      "word": "league1",
+      "path": "entry",
+      "before": null,
+      "after": {
+        "word": "league1",
+        "frequency_rank": 614,
+        "cefr": "b2",
+        "phon_br": "/liːɡ/",
+        "phon_n_am": "/liːɡ/",
+        "lists": {
+          "oxford3000": true
+        },
+        "meanings": [
+          {
+            "id": 1,
+            "partOfSpeech": "noun",
+            "translation": "лье, лига (мера длины)",
+            "examples": [],
+            "register": [],
+            "primary": true
+          }
+        ]
+      },
+      "reason": "restore source-confirmed league I homonym; existing schema uses suffixed headwords for homonyms"
+    },
+    {
+      "word": "whatever",
+      "path": "meanings[2].examples[2].ru",
+      "before": "как бы это ни выглядело со стороны...",
+      "after": "я прав, что бы вы там ни думали",
+      "reason": "align example translation with source construction что бы ни"
+    }
+  ],
+  "deferred": [
+    "drive/eat broad construction mapping; stand/sign/cry/bed coverage; written/election policy; duplicate storage; source-boundary rock/speak/write/cold/except/eye/store"
+  ],
+  "before_sha256": "f3423d2ccb9efbe727ab8674188e310fb0225c8ae984a9914b8c7cabd406e566",
+  "after_sha256": "b89f46889ee97d51840a9e164cfcaf248d389e8b7195fb0576f1efab117112a3"
+}

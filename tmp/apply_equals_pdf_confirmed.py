@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-R=Path(__file__).resolve().parents[1]; A=R/'oxford_5000_2026-08-27.json'; B=R/'src/data/oxford_5000.json'; O=R/'tmp/equals_pdf_confirmed_repairs.json'
+R=Path(__file__).resolve().parents[1]; A=R/'src/data/oxford_5000.json'; B=R/'src/data/oxford_5000.json'; O=R/'tmp/equals_pdf_confirmed_repairs.json'
 FIX={('help',5):'порция',('preliminary',3):'вступительный экзамен',('royal',6):'бом-брам-стеньга',('spot',10):'прожектор для подсветки',('stop',6):'пробка; затычка',('framework',4):'точка зрения; критерий; компетенция, сфера деятельности',('practice',8):'применять, осуществлять; практиковать(ся), упражнять(ся); заниматься, практиковать'}
 def main():
  d=json.loads(A.read_text(encoding='utf8')); made=[]

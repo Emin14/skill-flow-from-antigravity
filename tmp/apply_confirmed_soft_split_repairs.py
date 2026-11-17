@@ -5,7 +5,7 @@ from pathlib import Path
 from audit_meanings import DATA_PATH, CHANGES_PATH, build_source_map, apply_repairs
 
 ROOT = Path(__file__).resolve().parents[1]
-MIRROR_PATH = ROOT / "src" / "data" / "oxford_5000.json"
+MIRROR_PATH = ROOT / "src" / "data" / "src/data/oxford_5000.json"
 INDEX_PATH = ROOT / "scripts" / "parsed_index.json"
 
 def digest(path):

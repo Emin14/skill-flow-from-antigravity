@@ -1,0 +1,20 @@
+{
+  "dataset": "src/data/oxford_5000.json",
+  "total_words": 4980,
+  "batch_size": 20,
+  "completed_batches": 249,
+  "roles": [
+    "06",
+    "07",
+    "08",
+    "09",
+    "10"
+  ],
+  "decisions": {
+    "изменить": 0,
+    "оставить": 4980,
+    "review_required": 0
+  },
+  "qa": "all batches passed: Total errors found: 0",
+  "generated_at": "2026-10-25T19:56:04.979287+00:00"
+}

@@ -1,5 +1,5 @@
 """
-ПОЛНЫЙ АУДИТ oxford_5000_2026-08-27.json ПО PDF МЮЛЛЕРА
+ПОЛНЫЙ АУДИТ src/data/oxford_5000.json ПО PDF МЮЛЛЕРА
 
 Стратегия:
 1. Загрузить полный текст PDF
@@ -20,7 +20,7 @@ import re
 import time
 from collections import defaultdict
 
-JSON_PATH  = "oxford_5000_2026-08-27.json"
+JSON_PATH  = "src/data/oxford_5000.json"
 PDF_TEXT   = "tmp/muller_full_text.txt"
 OUT_REPORT = "tmp/full_audit_report.txt"
 OUT_FIXES  = "tmp/confirmed_fixes.json"
@@ -331,7 +331,7 @@ def main():
     # ── Write report ──
     out = io.open(OUT_REPORT, 'w', encoding='utf-8')
     out.write("=" * 70 + "\n")
-    out.write("FULL AUDIT REPORT — oxford_5000_2026-08-27.json vs Мюллер 2021\n")
+    out.write("FULL AUDIT REPORT — src/data/oxford_5000.json vs Мюллер 2021\n")
     out.write("=" * 70 + "\n\n")
     out.write(f"Total entries:    {len(data)}\n")
     out.write(f"Found in PDF:     {found_count}\n")

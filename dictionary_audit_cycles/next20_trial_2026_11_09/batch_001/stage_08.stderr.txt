@@ -1,0 +1,8 @@
+2026-11-09T20:29:03.794729Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-09T20:29:03.794774Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-09T20:29:03.797831Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-09T20:29:04.137481Z  WARN codex_skills::interface: ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/
+2026-11-09T20:29:04.137498Z  WARN codex_skills::interface: ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/
+2026-11-09T20:29:11.804835Z  WARN codex_sandboxing::violation: recorded sandbox violation: resource=filesystem backend=seatbelt reason=operation_not_permitted path=unknown
+2026-11-09T20:40:39.288167Z  WARN codex_core::responses_retry: stream disconnected - retrying sampling request (1/5 in 183ms)... turn_id=01a1c200-0781-7032-829b-a7df5e48c59d retries=1 max_retries=5 sampling_error=stream disconnected before completion: idle timeout waiting for websocket
+2026-11-09T20:44:42.793949Z  WARN codex_core::responses_retry: stream disconnected - retrying sampling request (1/5 in 211ms)... turn_id=01a1c200-0781-7032-829b-a7df5e48c59d retries=1 max_retries=5 sampling_error=stream disconnected before completion: websocket closed by server before response.completed

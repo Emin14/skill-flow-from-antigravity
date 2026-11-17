@@ -1,6 +1,6 @@
 """
 Извлечение словарных статей из PDF Мюллера 2021 (a4, 924 стр.)
-для аудита oxford_5000_2026-08-27.json
+для аудита src/data/oxford_5000.json
 """
 import fitz  # PyMuPDF
 import json

@@ -1,6 +1,6 @@
 import io, json, re
 
-data = json.load(io.open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8'))
+data = json.load(io.open('src/data/oxford_5000.json', 'r', encoding='utf-8'))
 
 def clean_text(s):
     if not isinstance(s, str):
@@ -28,7 +28,7 @@ def clean_obj(obj):
 
 clean_obj(data)
 
-with io.open('oxford_5000_2026-08-27.json', 'w', encoding='utf-8') as f:
+with io.open('src/data/oxford_5000.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
 s = json.dumps(data, ensure_ascii=False)

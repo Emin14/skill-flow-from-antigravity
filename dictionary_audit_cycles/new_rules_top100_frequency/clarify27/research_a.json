@@ -1,0 +1,775 @@
+[
+  {
+    "word": "out",
+    "meaning_index": 6,
+    "index0": 6,
+    "before_pos": "adjective",
+    "before_translation": "выездной, гостевой (о матче)",
+    "before_register": [],
+    "proposed_pos": "adjective",
+    "proposed_translation": "выездной, гостевой (только в сочетании out match; спортивный термин)",
+    "proposed_register": [
+      "спортивный термин"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "выездной, гостевой (о матче)",
+      "examples": [],
+      "register": [],
+      "id": 7,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "выездной, гостевой (только в сочетании out match; спортивный термин)",
+      "examples": [],
+      "register": [
+        "спортивный термин"
+      ],
+      "id": 7,
+      "primary": true
+    },
+    "diagnosis": "ограниченная коллокация, не универсальное значение",
+    "reason": "В Мюллере после a 1) стоит двоеточие и единственная коллокация out match. Голое значение выездной нельзя переносить на произвольные существительные. POS adjective верен; нет основания объявлять его наречием или автоматически устаревшим.",
+    "sources": [
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 122299,
+        "quote": "3. a 1): ~ match выездной матч"
+      },
+      {
+        "url": "https://de.langenscheidt.com/englisch-deutsch/out",
+        "quote": "out match",
+        "context": "Издатель относит коллокацию к sports away, без утверждения о частотности в современной речи."
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.94,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Современный самостоятельный out match вне словарей не подтверждён; рекомендуемое общее современное выражение away match не подставляется вместо target."
+  },
+  {
+    "word": "out",
+    "meaning_index": 7,
+    "index0": 7,
+    "before_pos": "adjective",
+    "before_translation": "крайний, отдалённый",
+    "before_register": [],
+    "proposed_pos": "adjective",
+    "proposed_translation": "отдалённый, периферийный (геогр.; обычно об островах: out islands)",
+    "proposed_register": [
+      "география",
+      "редкое"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "крайний, отдалённый",
+      "examples": [],
+      "register": [],
+      "id": 8,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "отдалённый, периферийный (геогр.; обычно об островах: out islands)",
+      "examples": [],
+      "register": [
+        "география",
+        "редкое"
+      ],
+      "id": 8,
+      "primary": true
+    },
+    "diagnosis": "географически ограниченное прилагательное; топоним не равен свободному общему употреблению",
+    "reason": "Remote означает отдалённый/периферийный, а не любой крайний в смысле extreme. Out Islands на Багамах действительно современное название, но переводить его как доказательство произвольного out village нельзя. Существующий географический смысл сохранён и сужен до подтверждённого контекста.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/out",
+        "quote": "outlying; remote",
+        "context": ""
+      },
+      {
+        "url": "https://www.bahamas.com/islands",
+        "quote": "undisturbed Out Islands charm",
+        "context": "Действующее название группы островов. Не доказательство свободного прилагательного перед любым объектом."
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.94,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Для modern примера требуется либо строго географическая unit_type proper_name с отдельной приёмкой, либо независимый современный generic remote-контекст. Здесь не имитируется."
+  },
+  {
+    "word": "out",
+    "meaning_index": 8,
+    "index0": 8,
+    "before_pos": "adjective",
+    "before_translation": "внешний, наружный",
+    "before_register": [],
+    "proposed_pos": "prefix",
+    "proposed_translation": "out-: внешний, наружный; вне основного здания или центра (элемент сложных слов; отдельное прилагательное — редкое)",
+    "proposed_register": [
+      "словообразование"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "adjective",
+      "translation": "внешний, наружный",
+      "examples": [],
+      "register": [],
+      "id": 9
+    },
+    "after_meaning": {
+      "partOfSpeech": "prefix",
+      "translation": "out-: внешний, наружный; вне основного здания или центра (элемент сложных слов; отдельное прилагательное — редкое)",
+      "examples": [],
+      "register": [
+        "словообразование"
+      ],
+      "id": 9
+    },
+    "diagnosis": "словообразовательный элемент смешан с редким самостоятельным прилагательным",
+    "reason": "Современные outbuilding/outpost показывают именно prefix/combining form out-, не форму самостоятельного out. Префикс теперь назван честно; исходное редкое adjectival external не стирается, а сохраняется в оговорке. Это осознанное уточнение lexical unit и POS, не подмена словом outer.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/out",
+        "quote": "indicating an external location or situation away from the centre",
+        "context": ""
+      },
+      {
+        "url": "https://www.merriam-webster.com/dictionary/outbuilding",
+        "quote": "separate from but accessory to a main house",
+        "context": "MW также приводит actual2026 употребления outbuilding, включая NPR21Sep2026 иCBS14Sep2026."
+      }
+    ],
+    "modern_candidate": {
+      "en": "They keep the tools in an outbuilding.",
+      "ru": "Они хранят инструменты в хозяйственной постройке отдельно от основного здания.",
+      "origin": "generated",
+      "unit_type": "prefix",
+      "target_unit": "out-",
+      "target_form": "outbuilding",
+      "morphology_explanation": "Out- — современный префикс внешнего расположения; outbuilding целиком не выдаётся за словоизменительную форму out.",
+      "sense_explanation": "Постройка находится отдельно от главного здания: внешнее расположение, не out=наружу.",
+      "contemporary_support": "Текущая MW outbuilding и процитированные в ней журналистские примеры2026 подтверждают обычное современное употребление."
+    },
+    "confidence": 0.94,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change"
+  },
+  {
+    "word": "out",
+    "meaning_index": 13,
+    "index0": 13,
+    "before_pos": "noun",
+    "before_translation": "пропуск",
+    "before_register": [
+      "полиграфия"
+    ],
+    "proposed_pos": "noun",
+    "proposed_translation": "пропуск слова или нескольких слов в набранном тексте; также сами пропущенные слова",
+    "proposed_register": [
+      "полиграфия"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "пропуск",
+      "examples": [],
+      "register": [
+        "полиграфия"
+      ],
+      "id": 14
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "пропуск слова или нескольких слов в набранном тексте; также сами пропущенные слова",
+      "examples": [],
+      "register": [
+        "полиграфия"
+      ],
+      "id": 14
+    },
+    "diagnosis": "узкий термин наборной и корректурной практики",
+    "reason": "Printing omission — не любой недостаток или ошибка и не глагольное удалить. POS noun верен. Уточнение границ значения доказано; современность специального существительного an out пока не доказана одним фактом присутствия в переизданном словаре. Нет оснований молча заменять его на omission.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/out",
+        "quote": "the omission of words from a printed text",
+        "context": ""
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 122307,
+        "quote": "3) полигр. пропуск"
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.96,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Новый естественный пример допустим только после текущего профессионального подтверждения noun out; не строить его из одной дефиниции."
+  },
+  {
+    "word": "out",
+    "meaning_index": 14,
+    "index0": 14,
+    "before_pos": "noun",
+    "before_translation": "недостаток",
+    "before_register": [
+      "американский английский",
+      "разговорное"
+    ],
+    "proposed_pos": "noun",
+    "proposed_translation": "изъян, недостаток (амер. разг.; не out в значении «выход, лазейка»)",
+    "proposed_register": [
+      "американский английский",
+      "разговорное"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "недостаток",
+      "examples": [],
+      "register": [
+        "американский английский",
+        "разговорное"
+      ],
+      "id": 15,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "изъян, недостаток (амер. разг.; не out в значении «выход, лазейка»)",
+      "examples": [],
+      "register": [
+        "американский английский",
+        "разговорное"
+      ],
+      "id": 15,
+      "primary": true
+    },
+    "diagnosis": "подтверждённый словарно дефект; смешивался с современным escape",
+    "reason": "Langenscheidt даёт disadvantage/blemish, поэтому исходное значение не выдумка OCR. Но leave somebody an out — лазейка, а не изъян. Уточнение исключает прежнюю смысловую подмену; отсутствие современного корпуса не равно доказанной устарелости.",
+    "sources": [
+      {
+        "url": "https://de.langenscheidt.com/englisch-deutsch/out",
+        "quote": "out obstacle, disadvantage",
+        "context": ""
+      },
+      {
+        "url": "https://de.langenscheidt.com/englisch-deutsch/out",
+        "quote": "out blemish",
+        "context": ""
+      },
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 122307,
+        "quote": "4) амер. разг. не"
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.93,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Современное noun out именно как дефект, а не escape, требует отдельного реального контекста. The cottage has one out не выдаётся за готовый современный пример."
+  },
+  {
+    "word": "who",
+    "meaning_index": 4,
+    "index0": 4,
+    "before_pos": "pronoun",
+    "before_translation": "как можно было бы сказать",
+    "before_register": [],
+    "proposed_pos": "phrase",
+    "proposed_translation": "as who should say — как будто бы хотел сказать; как можно было бы сказать (устаревшее выражение)",
+    "proposed_register": [
+      "устаревшее",
+      "идиома"
+    ],
+    "before_meaning": {
+      "id": 5,
+      "partOfSpeech": "pronoun",
+      "translation": "как можно было бы сказать",
+      "examples": [],
+      "register": []
+    },
+    "after_meaning": {
+      "id": 5,
+      "partOfSpeech": "phrase",
+      "translation": "as who should say — как будто бы хотел сказать; как можно было бы сказать (устаревшее выражение)",
+      "examples": [],
+      "register": [
+        "устаревшее",
+        "идиома"
+      ]
+    },
+    "diagnosis": "хвост идиомы ошибочно выделен как самостоятельное местоименное значение",
+    "reason": "Мюллер печатает полную конструкцию as who should say в конце статьи. Перевод относится ко всей фразе, а не к who. MW прямо классифицирует unit как phrase и archaic. Сохраняется историческая информация, но не сочиняется современное предложение для устаревшей формулы.",
+    "sources": [
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 196885,
+        "quote": "as ~ should say как можно"
+      },
+      {
+        "url": "https://www.merriam-webster.com/dictionary/as%20who%20should%20say",
+        "quote": "archaic : so to speak",
+        "context": ""
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.99,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Современного примера не добавлять; допустимый modern equivalent as if to say — другое выражение и не заменяет who."
+  },
+  {
+    "word": "get",
+    "meaning_index": 17,
+    "index0": 17,
+    "before_pos": "verb",
+    "before_translation": "порождать, производить (о животных)",
+    "before_register": [
+      "устаревшее"
+    ],
+    "proposed_pos": "verb",
+    "proposed_translation": "порождать потомство, быть отцом потомства (о самце животного; устаревшее употребление)",
+    "proposed_register": [
+      "устаревшее"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "порождать, производить (о животных)",
+      "examples": [],
+      "register": [
+        "устаревшее"
+      ],
+      "id": 18
+    },
+    "after_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "порождать потомство, быть отцом потомства (о самце животного; устаревшее употребление)",
+      "examples": [],
+      "register": [
+        "устаревшее"
+      ],
+      "id": 18
+    },
+    "diagnosis": "корректный исторический смысл с неясным субъектом в переводе",
+    "reason": "Beget относится к порождению потомства; существительное get «приплод» не является подтверждением современного глагола. Помета устаревшее уже была и подтверждается исходным Мюллером и Collins archaic. Уточнение устраняет ложное впечатление, что самец рождает детёнышей.",
+    "sources": [
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 74702,
+        "quote": "18) уст. по"
+      },
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/get",
+        "quote": "archaic",
+        "context": ""
+      },
+      {
+        "url": "https://www.merriam-webster.com/dictionary/get",
+        "quote": "beget",
+        "context": ""
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.99,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Не добавлять got three lambs как современный стандартный глагольный пример. Современное sire — другое слово."
+  },
+  {
+    "word": "new",
+    "meaning_index": 10,
+    "index0": 10,
+    "before_pos": "adverb",
+    "before_translation": "заново",
+    "before_register": [],
+    "proposed_pos": "adverb",
+    "proposed_translation": "заново (самостоятельное наречное употребление устарело)",
+    "proposed_register": [
+      "устаревшее"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "adverb",
+      "translation": "заново",
+      "examples": [],
+      "register": [],
+      "id": 11
+    },
+    "after_meaning": {
+      "partOfSpeech": "adverb",
+      "translation": "заново (самостоятельное наречное употребление устарело)",
+      "examples": [],
+      "register": [
+        "устаревшее"
+      ],
+      "id": 11
+    },
+    "diagnosis": "потеря общей пометы при разбиении словарного блока",
+    "reason": "Мюллер прямо помечает весь блок new adv как устаревший и ограничивает современное употребление сложными словами. Пустой register у этого смысла является потерей исходной пометы. Langenscheidt также помечает anew как obsolete; new-laid иллюстрирует другое значение «недавно», а не заново.",
+    "sources": [
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 116032,
+        "quote": "2. adv уст. (в современном упот"
+      },
+      {
+        "url": "https://en.langenscheidt.com/english-german/new",
+        "quote": "new anew obsolete",
+        "context": ""
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.99,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Не добавлять старинное new pay или подменять словом anew. Современный пример для именно этого отдельного наречия не предлагается."
+  },
+  {
+    "word": "people",
+    "meaning_index": 7,
+    "index0": 7,
+    "before_pos": "verb",
+    "before_translation": "расти (о населении)",
+    "before_register": [],
+    "proposed_pos": "verb",
+    "proposed_translation": "населяться, становиться более населённым (редкое непереходное употребление)",
+    "proposed_register": [
+      "редкое"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "расти (о населении)",
+      "examples": [],
+      "register": [],
+      "id": 8,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "населяться, становиться более населённым (редкое непереходное употребление)",
+      "examples": [],
+      "register": [
+        "редкое"
+      ],
+      "id": 8,
+      "primary": true
+    },
+    "diagnosis": "реальный редкий непереходный смысл; прежний русский перевод скрывает тип субъекта",
+    "reason": "Это не OCR: Мюллер действительно печатает расти о населении. Непереходная дефиниция become populous/populated означает увеличение населённости места, а не обычный современный оборот the population grows. Modern MW даёт только переходные populate/inhabit; их пассив нельзя выдавать за доказательство этого отдельного intransitive смысла.",
+    "sources": [
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 128087,
+        "quote": "2. v 1) заселять, населять 2) расти (о"
+      },
+      {
+        "url": "https://en.wiktionary.org/wiki/people",
+        "quote": "To become populous or populated.",
+        "context": ""
+      },
+      {
+        "url": "https://www.merriam-webster.com/dictionary/people",
+        "quote": "transitive verb",
+        "context": ""
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.89,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Современное непереходное people требует подтверждения реального употребления. Форму is being peopled здесь не добавлять: она относится к соседнему переходному значению."
+  },
+  {
+    "word": "first",
+    "meaning_index": 8,
+    "index0": 8,
+    "before_pos": "noun",
+    "before_translation": "человек, получивший высшую оценку",
+    "before_register": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "выпускник британского университета, получивший диплом с высшей степенью отличия (first-class honours)",
+    "proposed_register": [
+      "британский английский",
+      "университетский термин"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "человек, получивший высшую оценку",
+      "examples": [],
+      "register": [],
+      "id": 9
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "выпускник британского университета, получивший диплом с высшей степенью отличия (first-class honours)",
+      "examples": [],
+      "register": [
+        "британский английский",
+        "университетский термин"
+      ],
+      "id": 9
+    },
+    "diagnosis": "слишком широкое исходное определение; не любой человек с высшей экзаменационной оценкой",
+    "reason": "Collins отдельно определяет person who has won first-class honours. Поэтому речь не о школьной пятёрке и не о первом месте в классе. Лицо и полученная им degree-classification должны различаться; современная Oxford статистика firsts сама по себе доказывает оценки, не употребление first как человека.",
+    "sources": [
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/first",
+        "quote": "a person who has won such honors",
+        "context": ""
+      },
+      {
+        "url": "https://www.new.ox.ac.uk/sites/default/files/2025-04/NC_Record_24_WEB.pdf",
+        "quote": "graduates at New College achieved 55 Firsts",
+        "context": "Современный primary проверен, но это honours-results, не самостоятельное обозначение человека."
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.97,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Possible British academic candidate: Both applicants are firsts in mathematics. Не считать approved: до независимой приёмки нужен modern person-reference, а не statistic degrees."
+  },
+  {
+    "word": "make",
+    "meaning_index": 17,
+    "index0": 17,
+    "before_pos": "verb",
+    "before_translation": "сожительствовать",
+    "before_register": [
+      "жаргон"
+    ],
+    "proposed_pos": "verb",
+    "proposed_translation": "в выражении make it with somebody: иметь половую связь с кем-либо (жарг.; не «жить вместе»)",
+    "proposed_register": [
+      "жаргон",
+      "американский английский"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "сожительствовать",
+      "examples": [],
+      "register": [
+        "жаргон"
+      ],
+      "id": 18
+    },
+    "after_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "в выражении make it with somebody: иметь половую связь с кем-либо (жарг.; не «жить вместе»)",
+      "examples": [],
+      "register": [
+        "жаргон",
+        "американский английский"
+      ],
+      "id": 18
+    },
+    "diagnosis": "ошибочно понятое русское сожительствовать; требуется полная конструкция",
+    "reason": "Мюллер повторяет это значение в make it. Oxford American explicates make it with somebody как have sex; это не cohabit в смысле совместно жить в квартире. Уточняется сексуальный, а не бытовой смысл и обязательная единица. Произвольное make together не имеет основания. Вопрос нынешнего регистра остаётся отдельным от правильности перевода.",
+    "sources": [
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 106008,
+        "quote": "сожительствовать; to ~ good а) сдер"
+      },
+      {
+        "url": "https://www.oxfordlearnersdictionaries.com/us/definition/american_english/make_1",
+        "quote": "to have sex with someone",
+        "context": ""
+      },
+      {
+        "url": "https://ahdictionary.com/word/search.html?q=make+it",
+        "quote": "To engage in sexual intercourse.",
+        "context": ""
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.97,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Возможный original slang candidate: He claimed that he had made it with her. / Он утверждал, что у него с ней была половая связь. Нужна приёмка современности; не применять без неё."
+  },
+  {
+    "word": "make",
+    "meaning_index": 18,
+    "index0": 18,
+    "before_pos": "verb",
+    "before_translation": "тасовать",
+    "before_register": [
+      "карточный термин",
+      "полиграфия",
+      "разговорное",
+      "устаревшее"
+    ],
+    "proposed_pos": "verb",
+    "proposed_translation": "тасовать колоду перед раздачей (бридж; в выражении make the board)",
+    "proposed_register": [
+      "карточный термин",
+      "бридж"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "тасовать",
+      "examples": [],
+      "register": [
+        "карточный термин",
+        "полиграфия",
+        "разговорное",
+        "устаревшее"
+      ],
+      "id": 19
+    },
+    "after_meaning": {
+      "partOfSpeech": "verb",
+      "translation": "тасовать колоду перед раздачей (бридж; в выражении make the board)",
+      "examples": [],
+      "register": [
+        "карточный термин",
+        "бридж"
+      ],
+      "id": 19
+    },
+    "diagnosis": "современный профессиональный термин; чужие пометы прилипли из следующих фраз",
+    "reason": "Первичная действующая ACBL объясняет make the board именно как shuffle the deck, не как более широкое shuffle AND deal. Значит прежний отказ из-за подмены preparation был лишним. Мюллер маркирует исходное значение только карт.; уст. относится к следующему make after, а полигр. — к make up, поэтому эти пометы у make19 ошибочно унаследованы.",
+    "sources": [
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 105965,
+        "quote": "вать 19) карт. тасовать"
+      },
+      {
+        "url": "https://www.acbl.org/learn/",
+        "quote": "to shuffle the deck, as in “make the board,”",
+        "context": "Действующий раздел TerminologyM ACBL, прочитан первичный полный текст."
+      }
+    ],
+    "modern_candidate": {
+      "en": "It is your turn to make the board.",
+      "ru": "(Бридж) Твоя очередь перетасовать колоду перед раздачей.",
+      "origin": "generated",
+      "unit_type": "construction",
+      "target_unit": "make the board",
+      "target_form": "make",
+      "sense_explanation": "ACBL напрямую связывает этот глагол в конструкции с тасованием колоды перед раздачей.",
+      "contemporary_support": "Живая терминология действующей ACBL: не архивная цитата и не дата переиздания старого словаря."
+    },
+    "confidence": 0.99,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change"
+  },
+  {
+    "word": "make",
+    "meaning_index": 20,
+    "index0": 20,
+    "before_pos": "noun",
+    "before_translation": "продукция, выработка",
+    "before_register": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "объём произведённой продукции за определённый период; выработка (производственный термин)",
+    "proposed_register": [
+      "производственный термин"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "продукция, выработка",
+      "examples": [],
+      "register": [],
+      "id": 21,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "объём произведённой продукции за определённый период; выработка (производственный термин)",
+      "examples": [],
+      "register": [
+        "производственный термин"
+      ],
+      "id": 21,
+      "primary": true
+    },
+    "diagnosis": "output, а не действие изготовления или марка продукта",
+    "reason": "MW отдельно определяет noun make как actual yield/amount produced over a specified period. Это доказывает более точную границу перевода. Современное dairy daily make найдено прежде как процесс, поэтому не следует без дополнительного свидетельства переносить его на объём выпуска. Уточнение значения полезно независимо от готовности современного примера.",
+    "sources": [
+      {
+        "url": "https://www.merriam-webster.com/dictionary/make",
+        "quote": "actual yield or amount produced over a specified period",
+        "context": ""
+      },
+      {
+        "url": "https://shelburnefarms.org/sites/default/files/2025-11/2025%20Year%20End%20Newsletter.pdf",
+        "quote": "during a daily make",
+        "context": "Действующая сыроварня2025; пример подтверждает процесс, не автоматически количественный выпуск."
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.97,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Современный подходящий output-контекст ещё нужен. Не считать The dairy’s daily make is fifty cheeses доказанным только по during a daily make."
+  },
+  {
+    "word": "make",
+    "meaning_index": 21,
+    "index0": 21,
+    "before_pos": "noun",
+    "before_translation": "процесс становления; развитие",
+    "before_register": [],
+    "proposed_pos": "noun",
+    "proposed_translation": "становление, развитие (редкое именное значение; не обычный смысл современного on the make)",
+    "proposed_register": [
+      "редкое"
+    ],
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "процесс становления; развитие",
+      "examples": [],
+      "register": [],
+      "id": 22
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "становление, развитие (редкое именное значение; не обычный смысл современного on the make)",
+      "examples": [],
+      "register": [
+        "редкое"
+      ],
+      "id": 22
+    },
+    "diagnosis": "самостоятельный редкий именной смысл не равен обычной современной идиоме",
+    "reason": "Мюллер действительно печатает процесс становления; это не случайный OCR. Но его собственный on the make пояснён стремлением к выгоде/карьере. Collins перечисляет advancing как дополнительный смысл, тогда как обычное современное прочтение — ищущий выгоды. Поэтому нельзя автоматически подставлять in the making или новую нацию on the make и объявлять значение development однозначным.",
+    "sources": [
+      {
+        "file": "tmp/muller_full_text.txt",
+        "line": 106025,
+        "quote": "2) продукция, выработка 3) процесс"
+      },
+      {
+        "url": "https://www.collinsdictionary.com/dictionary/english/on-the-make",
+        "quote": "increasing; advancing",
+        "context": ""
+      }
+    ],
+    "modern_candidate": null,
+    "confidence": 0.95,
+    "preserve_existing_meaning": true,
+    "delete_meaning": false,
+    "decision": "propose_change",
+    "modern_candidate_status": "Не смешивать с современным in the making (иная единица making). Для сохранённого редкого noun make требуется реальное современное development употребление."
+  }
+]

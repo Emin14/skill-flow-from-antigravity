@@ -1,0 +1,1923 @@
+[
+  {
+    "word": "out",
+    "decision": "review_required",
+    "reason": "out: independently reviewed 15 meanings and 37 existing EN/RU examples. Приняты уточнения 7, 8, 9, 14, 15. Отдельно одобрены кандидаты 9. Нерешённые вопросы по значениям 1, 6, 7, 8, 14, 15.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 15,
+      "existing_examples_reviewed": 37,
+      "meanings_approved": [
+        7,
+        8,
+        9,
+        14,
+        15
+      ],
+      "examples_approved": [
+        9
+      ],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Указание на спортивный матч сужает контекст правильно, не меняя гостевой на внешний.; Периферийный уточняет отдалённый; out islands допустим как ограниченная географическая иллюстрация.; Внешний/наружный и расположение вне главного здания передают external location.; Пропуск слова или слов точнее общего пропуск и не добавляет сами пропущенные слова как отдельный объект.; Недостаток раскрыт как дефект, а не нехватка ресурса или лазейка."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "out"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "out"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 7,
+        "proposal_sha256": "fce329143e8f7ba61d82b817abed3538da4eb6c1afc853d320cb04a75cde9485",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Мюллер прямо приводит out match; Langenscheidt также закрепляет спортивное away."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Указание на спортивный матч сужает контекст правильно, не меняя гостевой на внешний."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Перед match out определяет матч; adjective здесь обоснован."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба прежних эквивалента выездной и гостевой оставлены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Спортивная помета оправдана; утверждения о нынешней частотности нет, пример пока требует живого свидетельства."
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "proposal_sha256": "3b22c87db97725bc5d2627dfdb6c259de3d624dbd7696b87aa61dac8b3ca4bf4",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins outlying; remote подтверждает именно пространственную удалённость."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Периферийный уточняет отдалённый; out islands допустим как ограниченная географическая иллюстрация."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Remote является адъективным смыслом, не направительным наречием наружу."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Крайний и отдалённый сохранены без объявления всех сочетаний продуктивными."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Собственное имя Out Islands само по себе не доказывает свободный adjective; определение можно уточнить, современный пример отдельно отложен."
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "proposal_sha256": "83df0310f21b62f427c2ddd56d6f6130e3b89450c59832a2a887e88cc55352ae",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins определяет внешнее расположение у out-; MW раскрывает отдельную постройку outbuilding."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Внешний/наружный и расположение вне главного здания передают external location."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Prefix исправляет неверное впечатление самостоятельного adjective; производное не является формой out."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Прежний пространственный смысл сохранён и получает явную границу морфемы."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Словообразовательный регистр честен; сегодняшний outbuilding позволяет иллюстрировать эту морфему."
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "proposal_sha256": "440c2aa60e999089048aa1316b63c3dbe53b5c4dd5caf32d296ce18590a51b7d",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Omission of words from a printed text у Collins указывает объект пропуска; Мюллер даёт полиграфию."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Пропуск слова или слов точнее общего пропуск и не добавляет сами пропущенные слова как отдельный объект."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Это имя пропуска в наборе, поэтому noun остаётся."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Исходная полиграфическая область и пропуск не утрачены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Специальность сохранена; из дефиниции не выведена неподтверждённая современная корректурная фраза."
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "proposal_sha256": "6fc6cf5c884a1c44f06edbfe25269e60e11ba86f7508a247665073d5a44dfb1c",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Langenscheidt disadvantage и blemish поддерживают неблагоприятную сторону и изъян."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Недостаток раскрыт как дефект, а не нехватка ресурса или лазейка."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "И disadvantage, и blemish являются именными толкованиями noun out."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Американская разговорная помета и прежний недостаток сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Ни obsolete, ни обычная современность без данных не приписаны; учебный пример ещё не разрешён."
+          }
+        }
+      }
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "dc508ae94096764b7e7954dd2b8c7499102f0738811e2775bd15a97bda2f3fa0",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Out- явно выделен внутри outbuilding; целое слово не названо словоформой out."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Отдельная хозяйственная постройка демонстрирует внешнее расположение относительно главного дома."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Указанный after07 prefix соответствует морфеме, хотя производное само является noun."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Store our tools in an outbuilding — обычная конструкция хранения с in и исчисляемой постройкой."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Храним, наши инструменты и отдельная хозяйственная постройка переданы без лишнего действия."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткая бытовая ситуация показывает именно пространственный вклад морфемы."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "В outbuilding нет соревнования outdo или направительного out of: это внешнее здание."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Нынешние употребления outbuilding в исследовании MW 2026 поддерживают бытовую лексику; предложение оригинальное."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Независимая проверка текущей пары EN/RU: he is out допускает отсутствие дома, book/chicken раскрывают результат выхода; кино-помета ошибочно ограничивает весь ряд, а «(в, ресторане» содержит лишнюю запятую.",
+        "required_action": "Для out №1: Кинематографическая помета ограничивает общий ряд; лишняя запятая в русском примере evening out. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Независимая проверка текущей пары EN/RU: Town/bag/wood и five pupils показывают место, извлечение, материал и долю. Out of time здесь переведено «несвоевременно», хотя подпункт обещает «не в такт»: развести эти контексты; «забытый» относится к out of mind.",
+        "required_action": "Для out №6: Разграничить out of time = несвоевременно и музыкальное не в такт. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Спортивная помета оправдана; утверждения о нынешней частотности нет, пример пока требует живого свидетельства. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 7 и его примеры; отдельно найти современное употребление именно выездной, гостевой (о спортивном матче: out match) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Собственное имя Out Islands само по себе не доказывает свободный adjective; определение можно уточнить, современный пример отдельно отложен. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 8 и его примеры; отдельно найти современное употребление именно крайний, отдалённый; периферийный (outlying, remote; например, out islands) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Специальность сохранена; из дефиниции не выведена неподтверждённая современная корректурная фраза. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 14 и его примеры; отдельно найти современное употребление именно пропуск слова или слов в печатном тексте либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Ни obsolete, ни обычная современность без данных не приписаны; учебный пример ещё не разрешён. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 15 и его примеры; отдельно найти современное употребление именно изъян, недостаток; неблагоприятная сторона либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "up",
+    "decision": "review_required",
+    "reason": "up: independently reviewed 7 meanings and 9 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 5.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 7,
+      "existing_examples_reviewed": 9,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "up: independently reviewed 7 meanings and 9 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 5."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "up"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "up"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Независимая проверка текущей пары EN/RU: Up train является британским железнодорожным термином о движении к главному центру; без этой пометы «направленный вверх» может ввести в заблуждение.",
+        "required_action": "Для up №5: Уточнить железнодорожную британскую помету для up train. После изменения повторить независимую приёмку."
+      }
+    ]
+  },
+  {
+    "word": "who",
+    "decision": "review_required",
+    "reason": "who: independently reviewed 5 meanings and 8 existing EN/RU examples. Приняты уточнения 5. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 5.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 5,
+      "existing_examples_reviewed": 8,
+      "meanings_approved": [
+        5
+      ],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Так сказать естественно передаёт целую формулу; старое как можно было бы сказать также оставлено."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "who"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "who"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 5,
+        "proposal_sha256": "0191b414456f6d2a030725260a34218d2254a1d6ad1b675397078ef7fada2628",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Мюллер восстанавливает as who should say; MW прямо помечает выражение archaic и толкует so to speak."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Так сказать естественно передаёт целую формулу; старое как можно было бы сказать также оставлено."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Phrase обозначает реальную единицу лучше pronoun с переводом целого оборота."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Старый русский эквивалент не исчез, добавлено утраченное окружение who."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Устаревшая идиома честно обозначена; новый архаизирующий пример не требуется для принятия исправления."
+          }
+        }
+      }
+    ],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Устаревшая идиома честно обозначена; новый архаизирующий пример не требуется для принятия исправления. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 5 и его примеры; отдельно найти современное употребление именно as who should say — как можно было бы сказать; так сказать (устаревшее выражение) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "get",
+    "decision": "review_required",
+    "reason": "get: independently reviewed 25 meanings and 41 existing EN/RU examples. Приняты уточнения 18. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 7, 9, 17, 18, 20.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 25,
+      "existing_examples_reviewed": 41,
+      "meanings_approved": [
+        18
+      ],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Быть отцом потомства исключает ошибочное производство вещей или роды самца."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "get"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "get"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 18,
+        "proposal_sha256": "3d2ad54a5968404f5b634ea9709a564fe9e38c15236a70e76fbd7e78faa8d2ef",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "MW beget поддерживает порождение потомства, Collins и Мюллер — устаревшую ветвь."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Быть отцом потомства исключает ошибочное производство вещей или роды самца."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Beget — глагольное толкование; noun get из животноводства здесь не использован."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "О животных и порождать сохранены вместе с прежней устаревшей пометой."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Исторический verb остаётся историческим; современный приплод noun не выдаётся за его актуальность."
+          }
+        }
+      }
+    ],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 7,
+        "problem": "Независимая проверка текущей пары EN/RU: Get 9.5 on average — вычисленный результат; present get переведён прошедшим «получили», время нуждается в согласовании.",
+        "required_action": "Для get №7: Согласовать настоящее get и прошедшее получили. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Независимая проверка текущей пары EN/RU: Got him on the telephone и through to him различают варианты соединения; «дозвонился к нему» стоит проверить как русский узус, обычно «дозвонился ему».",
+        "required_action": "Для get №9: Проверить русский узус дозвонился к нему. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "Независимая проверка текущей пары EN/RU: Go and get your breakfast может означать пойти позавтракать; русский «сейчас же» усиливает приказ без отдельного now, отметить добавленную срочность.",
+        "required_action": "Для get №17: Убрать неподтверждённую добавку сейчас же. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Исторический verb остаётся историческим; современный приплод noun не выдаётся за его актуальность. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 18 и его примеры; отдельно найти современное употребление именно порождать, производить потомство; быть отцом потомства (о животном; устаревшее употребление) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 20,
+        "problem": "Независимая проверка текущей пары EN/RU: Coat made/hair cut показывают действие другого исполнителя, feet wet — результат; face scratched само по себе не означает, что она сознательно оцарапала себя: русский перевод требует уточнения.",
+        "required_action": "Для get №20: Не приписывать face scratched намеренное самостоятельное действие. После изменения повторить независимую приёмку."
+      }
+    ]
+  },
+  {
+    "word": "new",
+    "decision": "review_required",
+    "reason": "new: independently reviewed 11 meanings and 15 existing EN/RU examples. Приняты уточнения 11. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 3, 6, 9, 11.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 11,
+      "existing_examples_reviewed": 15,
+      "meanings_approved": [
+        11
+      ],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Заново сохранено без подмены на недавно в new-laid."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "new"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "new"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 11,
+        "proposal_sha256": "0730146ed1db4f3c3ac12d113706e13454f374ce574874d941aae6a9555b6ba7",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Langenscheidt new anew obsolete и Мюллер adv уст. прямо поддерживают восстановленную помету."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Заново сохранено без подмены на недавно в new-laid."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Ограничение самостоятельным adverb отличает этот смысл от результативного adjective."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Русское заново не удалено; добавлен потерянный регистр."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Obsolete относится к anew, а не ко всем new-; современный пример этого старого наречия не сочиняется."
+          }
+        }
+      }
+    ],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Независимая проверка текущей пары EN/RU: Report from last week задаёт недавность; «отчёт с прошлой недели» шероховато по-русски, естественнее «отчёт за прошлую неделю», но исходник сохранён для проверки.",
+        "required_action": "Для new №3: Исправить русский узус отчёт с прошлой недели. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Независимая проверка текущей пары EN/RU: New test без another не гарантирует дополнительность; test допускает испытание/опыт, но дополнительный смысл требует контекста.",
+        "required_action": "Для new №6: Добавить контекст дополнительного опыта; new test неоднозначно. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Независимая проверка текущей пары EN/RU: A new rich — редкая субстантивация «нувориш»; пример не подтверждает обычную attributive adjective и требует стилистической пометы.",
+        "required_action": "Для new №9: Проверить adjective/POS при субстантивированном a new rich. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Obsolete относится к anew, а не ко всем new-; современный пример этого старого наречия не сочиняется. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 11 и его примеры; отдельно найти современное употребление именно заново (устаревшее самостоятельное наречное употребление) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "people",
+    "decision": "review_required",
+    "reason": "people: independently reviewed 8 meanings and 9 existing EN/RU examples. Приняты уточнения 8. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 5, 8.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 8,
+      "existing_examples_reviewed": 9,
+      "meanings_approved": [
+        8
+      ],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Населяться и становиться населённее устраняют ложный субъект population grows."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "people"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "people"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 8,
+        "proposal_sha256": "668c99b1910c72706e1421d109e1f3706091489136bf9304b9560d02ff11c5f0",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Wiktionary become populous or populated показывает непереходное изменение населённости места."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Населяться и становиться населённее устраняют ложный субъект population grows."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Verb оставлен; непереходность отличает это от переходного заселять."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Рост населения сохранён как расти по населению, primary не изменён."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Нейтральная помета не доказывает частотность; для нового примера нужен живой непереходный контекст."
+          }
+        }
+      }
+    ],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Независимая проверка текущей пары EN/RU: After the service поддерживает прихожан, но people само по себе остаётся общим «люди»; необходим церковный обладатель/контекст, не считать различение однозначным.",
+        "required_action": "Для people №5: Контекст службы не исключает people = люди; уточнить прихожан. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Нейтральная помета не доказывает частотность; для нового примера нужен живой непереходный контекст. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 8 и его примеры; отдельно найти современное употребление именно населяться, становиться более населённым; расти по населению (непереходное употребление) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "after",
+    "decision": "review_required",
+    "reason": "after: independently reviewed 10 meanings and 19 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 6, 10.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 10,
+      "existing_examples_reviewed": 19,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "after: independently reviewed 10 meanings and 19 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 6, 10."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "after"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "after"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 6,
+        "problem": "Независимая проверка текущей пары EN/RU: After he arrived вводит придаточное; русский «по приезде» сворачивает его, но soon потеряно в переводе и требует отдельной правки.",
+        "required_action": "Для after №6: Soon потеряно в переводе. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Независимая проверка текущей пары EN/RU: In after years означает последующие годы; «в будущем» подходит лишь из прежней точки отсчёта, а в ретроспективном повествовании может быть неверно.",
+        "required_action": "Для after №10: Последующие годы не обязательно будущее относительно говорящего. После изменения повторить независимую приёмку."
+      }
+    ]
+  },
+  {
+    "word": "first",
+    "decision": "review_required",
+    "reason": "first: independently reviewed 15 meanings and 20 existing EN/RU examples. Приняты уточнения 9. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 2, 9.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 15,
+      "existing_examples_reviewed": 20,
+      "meanings_approved": [
+        9
+      ],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Диплом с высшей степенью отличия точно ограничивает британское академическое лицо."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "first"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "first"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 9,
+        "proposal_sha256": "469e6617c68c1889bfeb5c4cebbbdef9d4dc34be23558ff0b05d08c99783a6e6",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins person who has won such honors соотносится с first-class honours, а не с любой первой позицией."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Диплом с высшей степенью отличия точно ограничивает британское академическое лицо."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Noun обозначает человека, не порядковое adjective и не сам результат first."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Сохраняется человек с высшим академическим результатом; ошибочная школьная широта исправлена."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Британская помета оправдана; 55 Firsts из отчёта не служит доказательством обозначения людей."
+          }
+        }
+      }
+    ],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Независимая проверка текущей пары EN/RU: First thing in the morning не содержит завтра: добавленное «завтра» требует проверки; come first и in the first place также шире adjectival POS.",
+        "required_action": "Для first №2: Убрать необоснованное завтра; проверить смешение adjectival/adverbial конструкций. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Британская помета оправдана; 55 Firsts из отчёта не служит доказательством обозначения людей. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 9 и его примеры; отдельно найти современное употребление именно человек, получивший диплом с высшей степенью отличия в британском университете (first-class honours) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "make",
+    "decision": "review_required",
+    "reason": "make: independently reviewed 27 meanings and 34 existing EN/RU examples. Приняты уточнения 18, 19, 21, 22, 23, 24, 25, 26. Отдельно одобрены кандидаты 19. Нерешённые вопросы по значениям 14, 16, 18, 21, 22, 23, 24, 25, 26.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 27,
+      "existing_examples_reviewed": 34,
+      "meanings_approved": [
+        18,
+        19,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "examples_approved": [
+        19
+      ],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Половая связь точнее бытового сожительства, не утверждает совместное проживание.; Тасовать колоду перед раздачей точно соответствует shuffle the deck.; Объём произведённой продукции за период передаёт yield/amount, не процесс изготовления.; Продвижение соответствует advancing; толкование не сводится к корыстной карьере.; Натура, нрав конкретизируют психологический склад человека.; Физическая конституция исключает ошибочное государственное прочтение.; Тасование карт плюс очередь тасовать передают оба указанных именных компонента.; Назначение козыря является пояснением объявления, не успешным исполнением контракта."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "make"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "make"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 18,
+        "proposal_sha256": "6577ef6d1b3f689246cc2bda05dcbc55bedb50e546ca8396abe3f4609d579102",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Oxford и AHD прямо определяют сексуальное make it; сохранён with somebody из конструкции."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Половая связь точнее бытового сожительства, не утверждает совместное проживание."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Make остаётся глаголом внутри make it with somebody."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Жаргонный сексуальный смысл сохранён, устранена двусмысленность старого русского слова."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Жаргон не переименован в нейтральный; пример ждёт подтверждения текущей именно сексуальной формулы."
+          }
+        }
+      },
+      {
+        "meaning_index": 19,
+        "proposal_sha256": "e2654e8ca58aeef6e6e70c10e6cbcc5e7b11442b073c8e78ab196c1fa7bc4c96",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "ACBL непосредственно даёт to shuffle the deck, as in make the board; это не вывод из общего prepare."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Тасовать колоду перед раздачей точно соответствует shuffle the deck."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Make — действие в make the board, не карточное существительное."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Тасовать сохранено; удалены посторонняя полиграфия и не подтверждённая здесь устарелость."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Действующая терминология ACBL достаточна для современного специального карточного оборота."
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "proposal_sha256": "7cc99e8666a7fc076cbe7ddbe52897ffb7281c06bf75031ddc0cbc32a7d80274",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "MW actual yield or amount produced over a specified period прямо определяет количественный выпуск."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Объём произведённой продукции за период передаёт yield/amount, не процесс изготовления."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Noun называет продукцию и величину выработки."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба прежних компонента продукция и выработка остаются."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Не добавлена необоснованная obsolete; during a daily make не принимается за пример количества."
+          }
+        }
+      },
+      {
+        "meaning_index": 22,
+        "proposal_sha256": "2271b2d702949f766b842119e14b064d7b443084587b80ccdf71dec73479af65",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins on the make increasing; advancing поддерживает развитие, Мюллер содержит становление."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Продвижение соответствует advancing; толкование не сводится к корыстной карьере."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Именная составляющая оборота on the make соответствует сохранённому noun."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Становление и развитие оставлены, оборот добавлен как частный контекст."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Не объявлена редкость по отсутствию корпуса; пример прибыли не заменяет необходимый контекст развития."
+          }
+        }
+      },
+      {
+        "meaning_index": 23,
+        "proposal_sha256": "ab156ba28bbdb13f40329b7204a4c151459d8c90fd02feb1cbc7787b8e8399a1",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "MW mental or moral constitution поддерживает нрав, а не только физическую форму."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Натура, нрав конкретизируют психологический склад человека."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Constitution является именным толкованием noun make."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Прежний склад характера полностью сохранён."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Источник не доказывает obsolete: помета не добавлена, нынешний пример характера остаётся отдельным вопросом."
+          }
+        }
+      },
+      {
+        "meaning_index": 24,
+        "proposal_sha256": "b95288ad299eb1a450e292c17c1dacaab865df3c342c22dae4e051a942dbac93",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "MW physical constitution подтверждает телосложение; Мюллер отделяет его от склада характера."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Физическая конституция исключает ошибочное государственное прочтение."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Существительное обозначает сложение человека, не глагол создавать."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Конституция и сложение остались с уточнением телесной области."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Устарелость без источника не утверждается; отсутствие современного примера не мешает точному уточнению определения."
+          }
+        }
+      },
+      {
+        "meaning_index": 25,
+        "proposal_sha256": "5426c76adfc9d0615ce0ec4514f46bca8d190aba40cd4d034992a1f87ebed7a1",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "MW act of shuffling cards и turn to shuffle подтверждают действие и очередь."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Тасование карт плюс очередь тасовать передают оба указанных именных компонента."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Очередь или акт — noun, в отличие от make the board."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Старое тасование и карточная помета сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Глагольный ACBL не санкционирует именной пример; смысл остаётся без нового предложения до текущего noun-контекста."
+          }
+        }
+      },
+      {
+        "meaning_index": 26,
+        "proposal_sha256": "77cdbc99e1d3e9028d6e1515b9a8e7d19d7c446069acc3cf630681e12837831b",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins act of naming the trump совпадает с объявлением козыря, в отличие от ACBL successful contract."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Назначение козыря является пояснением объявления, не успешным исполнением контракта."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Act of naming — именное значение, поэтому noun верен."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Козырь и карточная область оставлены; соседний успешный контракт не подставлен."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Категорическая obsolete отсутствует из-за отсутствия прямой пометы; исторический пример не принимается как современный."
+          }
+        }
+      }
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 19,
+        "candidate_sha256": "6df38f82a5be3874144a41f2698c72f6daa90c014c20fd36a57265c5039d2e42",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Императив make присутствует в точной конструкции make the board из ACBL."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Словарь ACBL прямо связывает эту конструкцию с shuffle the deck, поэтому колода здесь именно тасуется."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Make после please — глагол просьбы, а не карточное noun."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Please make the board before we play грамматично и естественно в указанной карточной обстановке."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Перетасуй колоду перед игрой сохраняет просьбу и временной порядок, не добавляет сдачу карт."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткий императив пригоден для специальной карточной пометы after07."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Это действие тасования, не очередь тасовать noun25 и не именование козыря noun26."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Действующий первичный глоссарий ACBL подтверждает именно shuffle, поэтому современный specialist-кандидат допустим."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 14,
+        "problem": "Независимая проверка текущей пары EN/RU: Make start пропускает артикль a, в отличие от нормального make a start; остальные money-free сочетания fun/war/progress/mistake раскрывают действия существительных.",
+        "required_action": "Для make №14: В make start отсутствует a. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 16,
+        "problem": "Независимая проверка текущей пары EN/RU: Make a beast of oneself — вести себя по-скотски; текущая дефиниция «строить дурака» смешивает beast с fool и требует исправления определения.",
+        "required_action": "Для make №16: Beast = скотина, не fool; исправить определение. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Жаргон не переименован в нейтральный; пример ждёт подтверждения текущей именно сексуальной формулы. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 18 и его примеры; отдельно найти современное употребление именно в выражении make it with somebody: иметь половую связь с кем-либо либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 21,
+        "problem": "Не добавлена необоснованная obsolete; during a daily make не принимается за пример количества. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 21 и его примеры; отдельно найти современное употребление именно продукция; объём произведённой продукции за определённый период, выработка либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 22,
+        "problem": "Не объявлена редкость по отсутствию корпуса; пример прибыли не заменяет необходимый контекст развития. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 22 и его примеры; отдельно найти современное употребление именно процесс становления, развития; продвижение (в частности, в обороте on the make — increasing, advancing) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Источник не доказывает obsolete: помета не добавлена, нынешний пример характера остаётся отдельным вопросом. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 23 и его примеры; отдельно найти современное употребление именно склад характера человека; натура, нрав либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 24,
+        "problem": "Устарелость без источника не утверждается; отсутствие современного примера не мешает точному уточнению определения. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 24 и его примеры; отдельно найти современное употребление именно телосложение; физическая конституция, сложение человека либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 25,
+        "problem": "Глагольный ACBL не санкционирует именной пример; смысл остаётся без нового предложения до текущего noun-контекста. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 25 и его примеры; отдельно найти современное употребление именно тасование карт; очередь тасовать карты либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 26,
+        "problem": "Категорическая obsolete отсутствует из-за отсутствия прямой пометы; исторический пример не принимается как современный. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 26 и его примеры; отдельно найти современное употребление именно объявление, назначение козыря в карточной игре либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "over",
+    "decision": "review_required",
+    "reason": "over: independently reviewed 21 meanings and 38 existing EN/RU examples. Приняты уточнения 16, 17, 18, 19. Отдельно одобрены кандидаты 16, 17, 18, 19. Нерешённые вопросы по значениям 3, 7, 10, 21.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 21,
+      "existing_examples_reviewed": 38,
+      "meanings_approved": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "examples_approved": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Перелёт с разрывом за целью раскрывает beyond the target, не просто полёт над объектом.; Приём и ожидание ответа передают переход на приём, не отбой.; Верхний, расположенный сверху сохраняет над-, не добавляя чрезмерности.; Выше по рангу или власти раскрывает вышестоящий, не местонахождение сверху."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "over"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "over"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 16,
+        "proposal_sha256": "f3ba8a7715e87e30292c60bcc6411c12badd1ef4e8a79ae2761748a5d5c81a50",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins shot beyond target и USMC an OVER and a SHORT подтверждают отдельный результат пристрелки."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Перелёт с разрывом за целью раскрывает beyond the target, не просто полёт над объектом."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Артикль an в USMC доказывает исчисляемое noun, не радиореплику."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Перелёт снаряда и военная помета сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Официальная процедура пристрелки подтверждает нынешний специальный контекст без литературной архаизации."
+          }
+        }
+      },
+      {
+        "meaning_index": 17,
+        "proposal_sha256": "2a65e41a2b37a5c83f817667e939794bbada16ca0bea8064ab6a0c636e8e69d9",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins interjection и правило TfL finished my message and expecting a reply прямо описывают Over."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Приём и ожидание ответа передают переход на приём, не отбой."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Отдельная реплика interjection исправляет прежний noun."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Радиорегистр и содержание прежнего перехода на приём сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Операционная книга TfL 2024 подтверждает актуальную радиоформулу."
+          }
+        }
+      },
+      {
+        "meaning_index": 18,
+        "proposal_sha256": "55a7f795b969f7d577825d7f3c95c600b36b80afa162c544a1333cfaae5cbd51",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins over- location above и пример overhead устанавливают пространственную морфему."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Верхний, расположенный сверху сохраняет над-, не добавляя чрезмерности."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Prefix верно отделён от самостоятельного adjective over."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Исходный верхний и primary сохранены при уточнении морфологической единицы."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "COBUILD overhead light подтверждает современный бытовой носитель префикса."
+          }
+        }
+      },
+      {
+        "meaning_index": 19,
+        "proposal_sha256": "e639faf1527774ecfbca1c34810a499c45ad094ad3a3f4e9fbcaa1e0f2a0b749",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins over- superior rank с overlord прямо подтверждает иерархический элемент."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Выше по рангу или власти раскрывает вышестоящий, не местонахождение сверху."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Prefix объясняет состав overlord без выдачи его за форму adjective over."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Вышестоящий и прежний primary не утрачены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "MW переносная власть overlord допускает текущий шутливый контекст; обязательный средневековый регистр не навязан."
+          }
+        }
+      }
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 16,
+        "candidate_sha256": "170f310be0b7734816eaa102df0524526bdeead616e6650615aa02bcfce4da07",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Слово over стоит после an и является самостоятельным термином."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Артиллерийский наблюдатель сообщает один перелёт за целью, совпадающий с after07."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "An over оформляет исчисляемое noun; это не отдельная команда Over."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Observer reported an over — связная профессиональная фраза о результате наблюдения."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сообщил о перелёте снаряда передаёт reported an over; наблюдатель не становится командиром."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Военный субъект и неопределённый артикль делают специальный смысл понятным."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Наличие an отделяет результат пристрелки от междометной радиоформулы следующего значения."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "USMC obtaining an OVER and a SHORT подтверждает исчисляемый термин в действительной процедуре, а не литературную стилизацию."
+          }
+        }
+      },
+      {
+        "meaning_index": 17,
+        "candidate_sha256": "5535328f8f79b8e715f79989f827acd4321a4043daf6b1a8274e0a911de253f1",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Отдельная реплика Over точно воспроизводит целевую радиоформулу."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "После вопроса говорящий закончил передачу и ждёт ответ, как в after07."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Over здесь interjection, а не ошибочный исходный noun переход на приём."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Can you hear me? Over. естественно объединяет проверку слышимости и передачу очереди ответа."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Вы меня слышите? Приём сохраняет вопрос и ожидание ответа без неверного отбой."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткая реальная радиоситуация хорошо отличает формулу от общего наречия."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Нет ни перелёта снаряда, ни значения снова; пунктуация выделяет процедурную реплику."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Правило TfL 2024 определяет Over как завершение сообщения с ожидаемым ответом, подтверждая текущий specialist-узус."
+          }
+        }
+      },
+      {
+        "meaning_index": 18,
+        "candidate_sha256": "83e0dbba942399fd7583e0173c29c912e27e10643c9b9f6966842c4b720c1792",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Over- находится в overhead и объявлен морфемой; overhead не приравнен к словоформе over."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Свет над головой выражает верхнее расположение именно из after07."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Prefix относится к части overhead, хотя whole-word overhead определяет light как adjective."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Turn on the overhead light — обычная бытовая просьба о верхнем свете."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Включи верхний свет сохраняет please и действие включения, не заменяет его перемещением лампы."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Бытовая лампа наглядно показывает над-/верхний без сложного контекста."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Пространственный overhead не означает чрезмерный и не иерархический overlord."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Текущий COBUILD-пример overhead light подтверждает современную коллокацию, а не возрождённое свободное adjective over."
+          }
+        }
+      },
+      {
+        "meaning_index": 19,
+        "candidate_sha256": "066b6e7310524804602c591fbab3637b16adf3b36049d70135fc5ce38a53d8c0",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Over- выделен внутри overlord; целый noun честно указан носителем префикса."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Начальник назван верховным властителем в шутку: вклад over- связан с превосходством власти."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "After07 prefix описывает компонент, а не POS целого overlord."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Jokingly called their boss an overlord естественно оформляет шуточное прозвище начальника."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "В шутку называли своего начальника повелителем сохраняет jokingly, their и called, без телефонного смысла."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Явная шутка помогает не принять повелителя за буквальный служебный титул."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Власть начальника отделяет иерархический элемент от пространственного верхнего света."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "MW имеет текущую переносную власть corporate overlords; перенос на босса не требует старинной феодальной сцены."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Независимая проверка текущей пары EN/RU: He packed over two hours передаёт длительность занятия, но «собрался за два часа» добавляет достижение результата: требуется разграничить over и in.",
+        "required_action": "Для over №3: За два часа добавляет завершённость вместо длительности over. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Независимая проверка текущей пары EN/RU: Talk over the matter означает обсудить; текущий перевод «говорить относительно» шероховат, а POS требует отделить частицу talk over от предлога.",
+        "required_action": "Для over №7: Разграничить talk over и preposition; уточнить русский перевод. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Независимая проверка текущей пары EN/RU: Read over может значить перечитать/просмотреть, не обязательно до конца; think over — обдумать, завершённость здесь не единственная функция.",
+        "required_action": "Для over №10: Read over не гарантирует до конца. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 21,
+        "problem": "Независимая проверка текущей пары EN/RU: Over-rich — составное прилагательное с элементом over-, а не отдельное adjective over: пример подтверждает чрезмерность, но требует проверки границ лексемы.",
+        "required_action": "Для over №21: Проверить over- как элемент сложения, не самостоятельное adjective. После изменения повторить независимую приёмку."
+      }
+    ]
+  },
+  {
+    "word": "want",
+    "decision": "review_required",
+    "reason": "want: independently reviewed 9 meanings and 10 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 6, 9.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 9,
+      "existing_examples_reviewed": 10,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "want: independently reviewed 9 meanings and 10 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 6, 9."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "want"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "want"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 6,
+        "problem": "Независимая проверка текущей пары EN/RU: Want to see a doctor в рекомендательном употреблении допускает «следует», но без интонационного контекста возможно обычное желание: пример неоднозначен.",
+        "required_action": "Для want №6: Без контекста want to see допускает желание вместо необходимости. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Независимая проверка текущей пары EN/RU: Тот же wanted by the police повторяет №8 без разграничения: самостоятельность девятого «требовать» не доказана.",
+        "required_action": "Для want №9: Устранить дублирование №8 либо обосновать различие. После изменения повторить независимую приёмку."
+      }
+    ]
+  },
+  {
+    "word": "go",
+    "decision": "review_required",
+    "reason": "go: independently reviewed 39 meanings and 56 existing EN/RU examples. Приняты уточнения 37, 38. Отдельно одобрены кандидаты 37. Нерешённые вопросы по значениям 11, 23, 31, 34, 38.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 39,
+      "existing_examples_reviewed": 56,
+      "meanings_approved": [
+        37,
+        38
+      ],
+      "examples_approved": [
+        37
+      ],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Эпизод болезни шире обострения хронической болезни и точнее flu; обострение оставлено возможным частным случаем.; Порция еды и порция/глоток напитка сохраняют оба объекта без подмены попыткой попробовать."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "go"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "go"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 37,
+        "proposal_sha256": "1db5026cb10d5ef7ca7491c673b391669b84f0fad38df07888fd1ba7dcd1191f",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins bout or attack of illness совпадает с go of flu; авторская реплика 23.12.2025 подтверждает текущую конструкцию."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Эпизод болезни шире обострения хронической болезни и точнее flu; обострение оставлено возможным частным случаем."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "A go — исчисляемое noun эпизода, не глагол идти."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Приступ и обострение сохранены, добавлена выражающая их конструкция."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Британская разговорная область честна; декабрь 2025 предшествует текущему ноябрю 2026."
+          }
+        }
+      },
+      {
+        "meaning_index": 38,
+        "proposal_sha256": "20ea592d0d93eae9f04eedc6b9aaeb9e61a1743339362f57b7b95d453ad6f111",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Wiktionary dated A portion и старое Мюллеровское кушанье/вино поддерживают количественный смысл."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Порция еды и порция/глоток напитка сохраняют оба объекта без подмены попыткой попробовать."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Порция — noun, не глагольное пить и не японская единица gō."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Кушанье и глоток вина представлены более общими едой и напитком."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Устаревшая разговорная помета согласуется с dated; выдумывать сегодняшнюю меру gin не разрешено."
+          }
+        }
+      }
+    ],
+    "example_reviews": [
+      {
+        "meaning_index": 37,
+        "candidate_sha256": "43dd204a6e451f61ee9264a3ceeeca99510d1da85d8a6e4460056e7d1189a536",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Go присутствует в a bad go of flu, без замены на другое слово bout."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Грипп задаёт эпизод болезни, допустимый расширенным after07, а не обязательное хроническое обострение."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Артикль a и of flu оформляют именное go; had — отдельное сказуемое."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Had a bad go of flu — засвидетельствованная британская разговорная модель с естественным временем in January."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Она, январь и тяжёлый грипп сохранены; переболела передаёт прошлый эпизод без госпитализации."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Обычный рассказ о болезни коротко показывает специализированный разговорный смысл."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Flu исключает игровую очередь и попытку have a go at something."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Живая реплика JohnFenna от 23.12.2025 находится в прошлом относительно 03.11.2026 и подтверждает a go of Flu."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 11,
+        "problem": "Независимая проверка текущей пары EN/RU: She is gone может обозначать и уход, и смерть: «погибла» добавляет характер смерти; sight is going однозначнее показывает утрату зрения.",
+        "required_action": "Для go №11: Gone не доказывает гибель; снять избыточную конкретизацию. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Независимая проверка текущей пары EN/RU: Bank may go — возможный крах; «ожидается со дня на день» усиливает may до ожидания и требует смягчения перевода.",
+        "required_action": "Для go №23: May не равнозначно ожидается; сохранить возможность. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 31,
+        "problem": "Независимая проверка текущей пары EN/RU: Going to rain — предсказание, не намерение дождя; going to speak — намерение лица. Дефиниция только о намерении слишком узка.",
+        "required_action": "Для go №31: Дефиниция должна включать предсказание, не только намерение. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 34,
+        "problem": "Независимая проверка текущей пары EN/RU: Make a go of it — добиться успеха; no go — невозможность/неудача, перевод «бесполезный» требует контекста, не обычное именное соответствие.",
+        "required_action": "Для go №34: No go требует более точного именного/предикативного перевода. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 38,
+        "problem": "Устаревшая разговорная помета согласуется с dated; выдумывать сегодняшнюю меру gin не разрешено. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 38 и его примеры; отдельно найти современное употребление именно порция еды; порция или глоток напитка (устаревшее разговорное употребление) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "even",
+    "decision": "review_required",
+    "reason": "even: independently reviewed 13 meanings and 14 existing EN/RU examples. Приняты уточнения 11. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 2, 9, 11.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 13,
+      "existing_examples_reviewed": 14,
+      "meanings_approved": [
+        11
+      ],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Равномерно уточняет способ действия, не чётность числа."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "even"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "even"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 11,
+        "proposal_sha256": "3f931536bc67f69b11824f906fe5b9efa8a039b8973981296e08980750900351",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Collins obsolete in an even manner совпадает с Мюллеровским уст. ровно."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Равномерно уточняет способ действия, не чётность числа."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Сохранено именно adverb, не adjective ровный или отдельное evenly."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Ровно и прежняя устаревшая помета остаются."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Историчность признана явно; новая ровная дорога не делает старое наречие современным."
+          }
+        }
+      }
+    ],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Независимая проверка текущей пары EN/RU: Even date — та же дата; русский «тоже число» следует проверить: в данном значении требуется «то же число».",
+        "required_action": "Для even №2: Тоже число исправить на то же число. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Независимая проверка текущей пары EN/RU: Even as здесь переведено «как раз», то есть соседний №10, а even though не тождественно условному «даже если»: требуется разделение примеров и переводов.",
+        "required_action": "Для even №9: Even as относится к №10; even though не равно даже если. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Историчность признана явно; новая ровная дорога не делает старое наречие современным. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 11 и его примеры; отдельно найти современное употребление именно ровно, равномерно (устаревшее наречное употребление) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "May",
+    "decision": "review_required",
+    "reason": "May: independently reviewed 7 meanings and 5 existing EN/RU examples. Приняты уточнения 3, 4. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 2, 3, 4.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 7,
+      "existing_examples_reviewed": 5,
+      "meanings_approved": [
+        3,
+        4
+      ],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "Весна жизни и юность ограничивают расцвет ранним возрастом, а не пиком зрелой карьеры.; Mays как исторические майские межколледжские экзамены уточняет исходный Cambridge-смысл."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "May"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "May"
+    },
+    "meaning_reviews": [
+      {
+        "meaning_index": 3,
+        "proposal_sha256": "7a0563381e80a59b107623c9a72f58ab150b881c01361f800c6525874c757371",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "AHD springtime of life; youth указывает на метафору юности."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Весна жизни и юность ограничивают расцвет ранним возрастом, а не пиком зрелой карьеры."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Переносное имя периода жизни остаётся noun."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Расцвет жизни и поэтический регистр сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Поэтический образ честен, но современная продуктивность не доказана; новый архаизирующий стих не разрешён."
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "proposal_sha256": "8f24dc37b8afdfd59cc6107045d90875a5ab5080661ddab2ccd99668c9aa2840",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Gardner 1921 прямо именует межколледжские экзамены Mays; Мюллер подтверждает Cambridge и plural."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Mays как исторические майские межколледжские экзамены уточняет исходный Cambridge-смысл."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Множественное noun выражено явно, не смешано с модальным may."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Майские экзамены и Кембридж сохранены; добавлен исторический характер названия."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Историческая помета оправдана первичным рассказом; современные гонки Mays не выдаются за экзамены."
+          }
+        }
+      }
+    ],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Независимая проверка текущей пары EN/RU: May blooming in hedge обозначает боярышник/его цветение; текущий перевод значения «цветок» уже растения, необходима проверка границы flower/tree.",
+        "required_action": "Для May №2: Разграничить flower и растение в примере blooming. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Поэтический образ честен, но современная продуктивность не доказана; новый архаизирующий стих не разрешён. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 3 и его примеры; отдельно найти современное употребление именно расцвет, весна жизни; юность (поэтический образ) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Историческая помета оправдана первичным рассказом; современные гонки Mays не выдаются за экзамены. Отсутствует принятый современный пример этого точного значения.",
+        "required_action": "Сохранить значение 4 и его примеры; отдельно найти современное употребление именно Mays (мн. ч.): майские межколледжские экзамены в Кембридже (историческое название) либо принять редакционное решение о сохранении смысла без нового примера. Не переносить соседний смысл и не создавать архаизирующее предложение."
+      }
+    ]
+  },
+  {
+    "word": "the",
+    "decision": "оставить",
+    "reason": "the: independently reviewed 8 meanings and 18 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Текущие значения и примеры можно сохранить без изменения.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 8,
+      "existing_examples_reviewed": 18,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "the: independently reviewed 8 meanings and 18 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Текущие значения и примеры можно сохранить без изменения."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "the"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "the"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": []
+  },
+  {
+    "word": "to",
+    "decision": "review_required",
+    "reason": "to: independently reviewed 12 meanings and 25 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 8.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 12,
+      "existing_examples_reviewed": 25,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "to: independently reviewed 12 meanings and 25 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 8."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "to"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "to"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 8,
+        "problem": "Независимая проверка текущей пары EN/RU: Score 1 to 3 — отношение, ten to one не равно «девять из десяти»: числовой комментарий неверен и должен быть исправлен.",
+        "required_action": "Для to №8: Ten to one не означает девять из десяти. После изменения повторить независимую приёмку."
+      }
+    ]
+  },
+  {
+    "word": "and",
+    "decision": "оставить",
+    "reason": "and: independently reviewed 4 meanings and 9 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Текущие значения и примеры можно сохранить без изменения.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 4,
+      "existing_examples_reviewed": 9,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "and: independently reviewed 4 meanings and 9 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Текущие значения и примеры можно сохранить без изменения."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "and"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "and"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": []
+  },
+  {
+    "word": "in",
+    "decision": "оставить",
+    "reason": "in: independently reviewed 6 meanings and 12 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Текущие значения и примеры можно сохранить без изменения.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 6,
+      "existing_examples_reviewed": 12,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "in: independently reviewed 6 meanings and 12 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Текущие значения и примеры можно сохранить без изменения."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "in"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "in"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": []
+  },
+  {
+    "word": "of",
+    "decision": "review_required",
+    "reason": "of: independently reviewed 23 meanings and 50 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 3, 12, 17.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 23,
+      "existing_examples_reviewed": 50,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "of: independently reviewed 23 meanings and 50 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Нерешённые вопросы по значениям 3, 12, 17."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "of"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "of"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Независимая проверка текущей пары EN/RU: In search of dictionary пропускает a перед исчисляемым dictionary; lover of poetry — объект увлечения, creator of trend — результат создания.",
+        "required_action": "Для of №3: Перед dictionary требуется артикль. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Независимая проверка текущей пары EN/RU: South of Moscow — направление относительно точки; within 50 miles значит «в пределах 50 миль», а текущие «в 50 милях» ошибочно задают точное расстояние.",
+        "required_action": "Для of №12: Within 50 miles не равно в 50 милях. После изменения повторить независимую приёмку."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "Независимая проверка текущей пары EN/RU: Of an evening — обычное по вечерам, текущий «вечером» может потерять повторяемость; of late — в последнее время, «недавно» не всегда равно.",
+        "required_action": "Для of №17: Of an evening требует повторяемости. После изменения повторить независимую приёмку."
+      }
+    ]
+  },
+  {
+    "word": "a",
+    "decision": "оставить",
+    "reason": "a: independently reviewed 6 meanings and 13 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Текущие значения и примеры можно сохранить без изменения.",
+    "confidence": 0.95,
+    "analysis": {
+      "independent_review": true,
+      "meaning_count": 6,
+      "existing_examples_reviewed": 13,
+      "meanings_approved": [],
+      "examples_approved": [],
+      "before_after_compared": true,
+      "primary_and_order_preserved": true,
+      "semantic_conclusion": "a: independently reviewed 6 meanings and 13 existing EN/RU examples. Изменений определений для этого слова не предложено. Новых кандидатов для добавления нет. Текущие значения и примеры можно сохранить без изменения."
+    },
+    "evidence_ref": {
+      "stage": "06",
+      "word": "a"
+    },
+    "before_after_ref": {
+      "stage": "07",
+      "word": "a"
+    },
+    "meaning_reviews": [],
+    "example_reviews": [],
+    "issues": []
+  }
+]

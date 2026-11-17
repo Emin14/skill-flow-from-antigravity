@@ -1,7 +1,7 @@
 import json,re
 from collections import Counter
 from pathlib import Path
-R=Path(__file__).resolve().parents[1];A=R/'oxford_5000_2026-08-27.json';O=R/'tmp/embedded_english_translation_candidates.json'
+R=Path(__file__).resolve().parents[1];A=R/'src/data/oxford_5000.json';O=R/'tmp/embedded_english_translation_candidates.json'
 d=json.loads(A.read_text(encoding='utf8'));out=[];counts=Counter()
 for e in d:
  for m in e['meanings']:

@@ -1,0 +1,1362 @@
+[
+  {
+    "word": "lake",
+    "entry_index": 1,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "озеро",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова lake текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "красочный лак",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова lake текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для lake отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "lamp",
+    "entry_index": 2,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "лампа; фонарь; светильник",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова lamp текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "светоч",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова lamp текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "светило",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова lamp текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "светить",
+        "partOfSpeech": "verb",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова lamp текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "освещать",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова lamp текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "таращить глаза",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова lamp текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для lamp отдельно сопоставлены все 6 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "land",
+    "entry_index": 3,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "земля, суша",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "почва",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "страна; государство",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "земельная собственность; при мн. ч.: поместья",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "поле нареза",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "доходный дом",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "южно-афр. обрабатываемый пахотный участок",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "узкая фаска",
+        "partOfSpeech": "noun",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "в роли определения: сухопутный; наземный",
+        "partOfSpeech": "noun",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "в роли определения: земельный",
+        "partOfSpeech": "noun",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "высаживать(ся) (на берег); приставать к берегу, причаливать",
+        "partOfSpeech": "verb",
+        "current_order": 11,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 12,
+        "id": 12,
+        "translation": "приземляться, делать посадку",
+        "partOfSpeech": "verb",
+        "current_order": 12,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 12 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 13,
+        "id": 13,
+        "translation": "вытащить на берег (рыбу)",
+        "partOfSpeech": "verb",
+        "current_order": 13,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 13 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 14,
+        "id": 14,
+        "translation": "приводить (к чему-либо); ставить в то или иное положение",
+        "partOfSpeech": "verb",
+        "current_order": 14,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 14 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 15,
+        "id": 15,
+        "translation": "попасть, угодить",
+        "partOfSpeech": "verb",
+        "current_order": 15,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 15 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 16,
+        "id": 16,
+        "translation": "прибывать (куда-либо); достигать (какого-либо места)",
+        "partOfSpeech": "verb",
+        "current_order": 16,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 16 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 17,
+        "id": 17,
+        "translation": "добиться (чего-либо); выиграть",
+        "partOfSpeech": "verb",
+        "current_order": 17,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 17 слова land текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для land отдельно сопоставлены все 17 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "landing",
+    "entry_index": 4,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "высадка на берег",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова landing текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "место высадки",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова landing текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "высадка десанта",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова landing текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "посадка, приземление; место посадки",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова landing текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "лестничная площадка",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова landing текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "в роли определения: десантный",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова landing текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "в роли определения: посадочный",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова landing текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для landing отдельно сопоставлены все 7 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "landlord",
+    "entry_index": 5,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "помещик, землевладелец, лендлорд",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова landlord текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "владелец дома или квартиры, сдаваемых внаём",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова landlord текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "хозяин гостиницы, пансиона",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова landlord текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для landlord отдельно сопоставлены все 3 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "landmark",
+    "entry_index": 6,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "бросающийся в глаза объект местности, ориентир",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова landmark текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "межевой знак, веха",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова landmark текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "поворотный пункт, веха (в истории)",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова landmark текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "береговой знак",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова landmark текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для landmark отдельно сопоставлены все 4 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "landscape",
+    "entry_index": 7,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "ландшафт, пейзаж",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова landscape текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "в роли определения к другому слову",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова landscape текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для landscape отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "lane",
+    "entry_index": 8,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "узкая дорога, тропинка, особ. между (живыми) изгородями",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "узкая улочка, переулок",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "ряд (движения машин); полоса дороги (для соблюдения рядности)",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "беговая дорожка",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "дорожка для плавания или спортивной гребли",
+        "partOfSpeech": "noun",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "морской путь",
+        "partOfSpeech": "noun",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "трасса полёта",
+        "partOfSpeech": "noun",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "проход (между рядами)",
+        "partOfSpeech": "noun",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "дорога с односторонним движением",
+        "partOfSpeech": "noun",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "горло",
+        "partOfSpeech": "noun",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "разводы между льдинами",
+        "partOfSpeech": "noun",
+        "current_order": 11,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова lane текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для lane отдельно сопоставлены все 11 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "language",
+    "entry_index": 9,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "язык",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова language текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "речь",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова language текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "стиль; язык писателя",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова language текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для language отдельно сопоставлены все 3 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "lap",
+    "entry_index": 10,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "колени",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "пола, фалда; подол",
+        "partOfSpeech": "noun",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "ущелье",
+        "partOfSpeech": "noun",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "мочка (уха)",
+        "partOfSpeech": "noun",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "завёртывать, складывать, свёртывать; окутывать",
+        "partOfSpeech": "verb",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "охватывать, окружать",
+        "partOfSpeech": "verb",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "перекрывать внапуск, соединять внахлёстку",
+        "partOfSpeech": "verb",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "лакание",
+        "partOfSpeech": "noun",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "(жадный) глоток",
+        "partOfSpeech": "noun",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "плеск (волн)",
+        "partOfSpeech": "noun",
+        "current_order": 10,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "жидкая пища (для собак); слабый напиток; «помои»",
+        "partOfSpeech": "noun",
+        "current_order": 11,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 12,
+        "id": 12,
+        "translation": "лакать",
+        "partOfSpeech": "verb",
+        "current_order": 12,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 12 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 13,
+        "id": 13,
+        "translation": "жадно пить, глотать, поглощать (обыкн. lap up, lap down)",
+        "partOfSpeech": "verb",
+        "current_order": 13,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 13 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 14,
+        "id": 14,
+        "translation": "упиваться",
+        "partOfSpeech": "verb",
+        "current_order": 14,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 14 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 15,
+        "id": 15,
+        "translation": "плескаться о берег (о волнах)",
+        "partOfSpeech": "verb",
+        "current_order": 15,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 15 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 16,
+        "id": 16,
+        "translation": "полировальный или шлифовальный круг",
+        "partOfSpeech": "noun",
+        "current_order": 16,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 16 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 17,
+        "id": 17,
+        "translation": "притир",
+        "partOfSpeech": "noun",
+        "current_order": 17,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 17 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 18,
+        "id": 18,
+        "translation": "полировать, шлифовать",
+        "partOfSpeech": "verb",
+        "current_order": 18,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 18 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 19,
+        "id": 19,
+        "translation": "притирать; доводить",
+        "partOfSpeech": "verb",
+        "current_order": 19,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 19 слова lap текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для lap отдельно сопоставлены все 19 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "laptop",
+    "entry_index": 11,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "лаптоп, ноутбук, портативный компьютер",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова laptop текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для laptop отдельно сопоставлены все 1 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "large",
+    "entry_index": 12,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "большой",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "большой (больше обычного)",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "широкий (о взглядах, толковании, понимании)",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "крупный",
+        "partOfSpeech": "adjective",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "многочисленный (о населении и т. п.), значительный; обильный",
+        "partOfSpeech": "adjective",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "щедрый; великодушный",
+        "partOfSpeech": "adjective",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "попутный, благоприятный (о ветре)",
+        "partOfSpeech": "adjective",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "широко; пространно",
+        "partOfSpeech": "adverb",
+        "current_order": 8,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "крупно (писать, печатать)",
+        "partOfSpeech": "adverb",
+        "current_order": 9,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "хвастливо; напыщенно",
+        "partOfSpeech": "adverb",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "на свободе; в целом, подробно (в выражении at large)",
+        "partOfSpeech": "noun",
+        "current_order": 11,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 12,
+        "id": 12,
+        "translation": "в общем смысле, неконкретно",
+        "partOfSpeech": "noun",
+        "current_order": 12,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 12 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 13,
+        "id": 13,
+        "translation": "в большом масштабе",
+        "partOfSpeech": "noun",
+        "current_order": 13,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 13 слова large текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для large отдельно сопоставлены все 13 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "large-scale",
+    "entry_index": 13,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "крупномасштабный (о карте)",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова large-scale текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "широкий, массовый (о жилищном строительстве и т. п.)",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова large-scale текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для large-scale отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "largely",
+    "entry_index": 14,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "в значительной степени",
+        "partOfSpeech": "adverb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова largely текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "обильно, щедро",
+        "partOfSpeech": "adverb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова largely текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "в широком масштабе; на широкую ногу",
+        "partOfSpeech": "adverb",
+        "current_order": 3,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова largely текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для largely отдельно сопоставлены все 3 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "laser",
+    "entry_index": 15,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "лазер, оптический квантовый генератор",
+        "partOfSpeech": "noun",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова laser текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для laser отдельно сопоставлены все 1 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "last",
+    "entry_index": 16,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "превосх. ст. от late (прилагательное)",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "последний",
+        "partOfSpeech": "adverb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "самый современный",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "прошлый",
+        "partOfSpeech": "adjective",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "единственный, последний",
+        "partOfSpeech": "adjective",
+        "current_order": 5,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "самый неподходящий; нежелательный",
+        "partOfSpeech": "adjective",
+        "current_order": 6,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "окончательный",
+        "partOfSpeech": "adjective",
+        "current_order": 7,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 8,
+        "id": 8,
+        "translation": "крайний, чрезвычайный",
+        "partOfSpeech": "adjective",
+        "current_order": 8,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 8 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 9,
+        "id": 9,
+        "translation": "превосх. ст. от late (наречие)",
+        "partOfSpeech": "adverb",
+        "current_order": 9,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 9 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 10,
+        "id": 10,
+        "translation": "после всех",
+        "partOfSpeech": "adverb",
+        "current_order": 10,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 10 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 11,
+        "id": 11,
+        "translation": "в последний раз",
+        "partOfSpeech": "adverb",
+        "current_order": 11,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 11 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 12,
+        "id": 12,
+        "translation": "на последнем месте, в конце (при перечислении и т. п.)",
+        "partOfSpeech": "adverb",
+        "current_order": 12,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 12 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 13,
+        "id": 13,
+        "translation": "что-либо последнее по времени",
+        "partOfSpeech": "noun",
+        "current_order": 13,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 13 слова last текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для last отдельно сопоставлены все 13 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "late",
+    "entry_index": 17,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "поздний; запоздалый",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова late текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "созревающий или цветущий в конце сезона",
+        "partOfSpeech": "adjective",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова late текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 3,
+        "id": 3,
+        "translation": "умерший, покойный",
+        "partOfSpeech": "adjective",
+        "current_order": 3,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 3 слова late текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 4,
+        "id": 4,
+        "translation": "прежний, бывший",
+        "partOfSpeech": "adjective",
+        "current_order": 4,
+        "primary": false,
+        "decision": "сохранить",
+        "reason": "Для значения 4 слова late текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 5,
+        "id": 5,
+        "translation": "недавний, последний",
+        "partOfSpeech": "adjective",
+        "current_order": 5,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 5 слова late текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 6,
+        "id": 6,
+        "translation": "поздно; ложиться поздно",
+        "partOfSpeech": "adverb",
+        "current_order": 6,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 6 слова late текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 7,
+        "id": 7,
+        "translation": "недавно, за последнее время",
+        "partOfSpeech": "adverb",
+        "current_order": 7,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 7 слова late текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для late отдельно сопоставлены все 7 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "lately",
+    "entry_index": 18,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "недавно; за последнее время",
+        "partOfSpeech": "adverb",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова lately текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для lately отдельно сопоставлены все 1 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "later",
+    "entry_index": 19,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "(сравн. ст. от late) более поздний; впоследствии",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова later текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      },
+      {
+        "meaning_index": 2,
+        "id": 2,
+        "translation": "позже; как-нибудь потом",
+        "partOfSpeech": "adverb",
+        "current_order": 2,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 2 слова later текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для later отдельно сопоставлены все 2 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  },
+  {
+    "word": "latest",
+    "entry_index": 20,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "id": 1,
+        "translation": "(самый) последний",
+        "partOfSpeech": "adjective",
+        "current_order": 1,
+        "primary": true,
+        "decision": "сохранить",
+        "reason": "Для значения 1 слова latest текущий порядок и primary сохранены: stage06 не даёт доказательства перестановки."
+      }
+    ],
+    "decision": "оставить",
+    "reason": "Для latest отдельно сопоставлены все 1 значений с текущим порядком и primary; доказанной перестановки нет.",
+    "confidence": 0.88
+  }
+]

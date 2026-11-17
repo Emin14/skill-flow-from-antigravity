@@ -1,0 +1,13 @@
+{
+  "dataset": "src/data/oxford_5000.json",
+  "total_words": 1000,
+  "batch_size": 20,
+  "completed_batches": 50,
+  "decisions": {
+    "изменить": 0,
+    "оставить": 1000,
+    "review_required": 0
+  },
+  "qa": "all 50 batches passed structural and final_qa_validation checks",
+  "status": "complete"
+}

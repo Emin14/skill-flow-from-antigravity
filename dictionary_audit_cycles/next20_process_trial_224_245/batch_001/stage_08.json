@@ -1,0 +1,1679 @@
+[
+  {
+    "word": "close",
+    "decision": "изменить",
+    "confidence": 0.96,
+    "reason": "На A1 первыми показать закрывание и близость. Мюллер разделяет close I с глаголом и существительным «конец» и close II с прилагательным. В учебном порядке прилагательное и наречие с /s/ следует отличать от глагола и существительного «конец» с /z/.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/0/source_evidence",
+      "review_pointer": "/previous_outputs/07/0",
+      "page": 37,
+      "quote": "close I [kl@Uz] 1 v закрыва ть(ся) 2 n коне ц"
+    },
+    "uncertainties": [
+      "Частотность отдельных значений не измерена. Приоритет оценён по уровню записи, общности употребления и примерам.",
+      "У соборной ограды источники расходятся в произношении. Для фонетического значения требуется раздельная проверка звука и слога. Разметка предложена по исходным индексам, а уточнения роли 07 сохраняются как отдельные предложения."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поставить первым: close a book показывает базовое закрывание. «Запирать» требует контекста.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Близость в close friend основная. Close translation показывает отдельное «точный», которому при разделении дать вторичный приоритет.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поднять: close by и stand close дают обычное пространственное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поднять среди вторичных: завершение обсуждения или собрания продуктивно, но следует за буквальным закрыванием.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Close one's eyes показывает базовое «закрыть». Отдельное «смыкать, сжимать» оставить вторичным.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Close examination показывает тщательность, более узкую, чем общая близость.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "At the close of the year показывает полезное, но более формальное именное «конец».",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Близкий результат голосования и печатное «закрытый» требуют раздельных толкований. Оба вторичны.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Close ranks иллюстрирует тесноту или сомкнутость.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Туман окутывает в конструкции close around, близкой к close about. Пример требует отдельной привязки.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Душный» подтверждено основным источником и ограничено описанием воздуха или помещения.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Скрытность вторична. To keep close без контекста допускает и пространственное чтение.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Close with money подтверждает частное употребление о скупости.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Сохранить специальное употребление до проверки его границ.",
+        "confidence": 0.87
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Ограда и название тупика принадлежат отдельному именномy омографу и имеют узкую применимость.",
+        "confidence": 0.98
+      }
+    ]
+  },
+  {
+    "word": "start",
+    "decision": "изменить",
+    "confidence": 0.97,
+    "reason": "Поставить начинать и начинаться рядом, затем дать существительное «начало». Мюллер также выделяет отправление, спортивный старт, резкое движение и вздрагивание. Для A1 запуск машины полезнее специального спортивного или авиационного употребления.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/1/source_evidence",
+      "review_pointer": "/previous_outputs/07/1",
+      "page": 154,
+      "quote": "start [st¸t] 1 v 1) начина ть 2) отправля ться 3) вскочи ть 4) вздра гивать"
+    },
+    "uncertainties": [
+      "Порядок редких значений редакционный. Примеры при значении 23 относятся к start in, start out, start up и start with. Их положение не повышает приоритет значения о шве."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поставить первым: начать работу, разговор или ссору — продуктивное употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Самостоятельная базовая конструкция: the fire started in the kitchen означает «пожар начался на кухне».",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "«Начало» в from start to finish и make a start полезно на A1. «Отправиться» относится к сочетанию.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Запуск двигателя или машины — обычная практическая ситуация.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Сохранить основным как продуктивное start a business, после общего начала.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Отъезд поезда и отправление в поездку подтверждают более узкое употребление.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Спортивный старт оставить после общего именного «начало».",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Именное «запуск» поставить среди практических вторичных значений.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Фора в ярдах иллюстрирует частный вид преимущества.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Каузативное «помочь начать» зависит от конструкции.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Давать старт» ограничено спортивной ситуацией.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Спортивное «стартовать» сохранить отдельно от начала вообще.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Резкая реакция в start in one's seat вторична для A1.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Give a start и give somebody a start показывают вздрагивание и испуг.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Start back и start forward показывают резкое движение. Start up также разобрать в фразовом блоке.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Разговорное «неожиданность» оставить после значения реакции испуга.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Взлёт» ограничен авиационной пометой.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Start a hare подтверждает охотничье употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Коробление древесины относится к специальным физическим употреблениям.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Хлынуть» в описании слёз имеет узкую сочетаемость.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Взлетать» относится к авиационному употреблению.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Расшатать(ся)» сохранить в конце физической группы.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Расходиться» относится к шву. Все шесть приложенных примеров принадлежат фразовому блоку.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "system",
+    "decision": "изменить",
+    "confidence": 0.95,
+    "reason": "Мюллер даёт общее «система». Для A2 рядом с устройством полезно показать организованный метод, а отраслевые случаи подать после общих.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/2/source_evidence",
+      "review_pointer": "/previous_outputs/07/2"
+    },
+    "uncertainties": [
+      "Сеть дорог можно считать как отдельным значением, так и частным случаем системы связанных элементов. Раздельные индексы сохранены."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Political system показывает центральное «система, устройство, строй».",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поднять «метод, порядок действий». System of axes ближе к общей системе элементов, а вопрос what system do you go on? иллюстрирует метод.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Сохранить приоритет распространённой сети связанных элементов, после общего значения и метода.",
+        "confidence": 0.88
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Организм» требует физиологического контекста.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Информатическая система полезна, но специальная запись дублирует общий перевод.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Мир, вселенная» узко по сравнению с общим употреблением.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Геологическая система или формация относится к специальной терминологии.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "week",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Мюллер даёт «неделя». На A1 это ядро, а рабочий период и гиперболический перевод множественного числа следует показывать после него.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/3/source_evidence",
+      "review_pointer": "/previous_outputs/07/3"
+    },
+    "uncertainties": [
+      "Saturday week требует точки отсчёта. Шестидневная рабочая неделя отражает частный случай печатного толкования."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Название недели основное. «Через неделю» и «в недельный срок» относятся к in a week.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Рабочая неделя уточняет сферу употребления.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "For weeks буквально означает «неделями». «Сто лет» передаёт контекстную гиперболу.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "already",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Единственное наречное «уже» совпадает с Мюллером и соответствует учебному ядру A2. В записи примеров нет.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/4/source_evidence",
+      "review_pointer": "/previous_outputs/07/4"
+    },
+    "uncertainties": [
+      "Извлечение транскрипции повреждено. Дополнительные контекстные переводы других изданий не влияют на приоритет."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "«Уже» охватывает основное временное употребление.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "anything",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Оба основных употребления подтверждает Мюллер. Для A1 оставить сначала вопрос, условие и отрицание, затем свободный выбор.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/5/source_evidence",
+      "review_pointer": "/previous_outputs/07/5"
+    },
+    "uncertainties": [
+      "Is he anything like his father? иллюстрирует конструкцию сходства. Take anything you like может подразумевать выбор любого подходящего предмета."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "pronoun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Вопрос о потере и отрицание результата поиска показывают базовые «что-нибудь» и «ничего».",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "pronoun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "«Что угодно» — самостоятельное ядро. Anything but с примерами о трусости и ясности подать как оборот, исправив повтор в русском переводе.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "nothing",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Первым оставить исправленное отрицательное местоимение «ничто, ничего». Мюллер подтверждает этот разбор. Именные и наречные употребления остаются вторичными.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/6/source_evidence",
+      "review_pointer": "/previous_outputs/07/6"
+    },
+    "uncertainties": [
+      "Именные «ноль» в разных изданиях группируются по-разному. Наречное it differs nothing from засвидетельствовано, его современная частотность не установлена."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "pronoun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Основное отрицательное местоимение. Neg. — помета, nothing but, nothing else than и all to nothing — отдельные конструкции.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "A mere nothing и little nothings показывают именное «пустяк, мелочь».",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Образное «пустое место» и именной «ноль» полезнее абстрактного небытия.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Небытие» — абстрактное именное значение.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Технический математический «ноль» не задаёт учебное ядро A1.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Наречное «нисколько» вторично. Nothing less than отдельно передаёт усиление.",
+        "confidence": 0.98
+      }
+    ]
+  },
+  {
+    "word": "person",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "На A1 основное существительное — «человек». Мюллер также даёт «лицо, особа». Более подробное издание разделяет грамматическое и юридическое лицо.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/7/source_evidence",
+      "review_pointer": "/previous_outputs/07/7"
+    },
+    "uncertainties": [
+      "Зоологическое «особь» отсутствует среди текущих индексов и при добавлении должно быть вторичным. People — основное множественное число, формальное persons требует отдельной подачи."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Not a single person показывает основное «человек». In person полезно как отдельное сочетание.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поднять среди вторичных. Грамматическое лицо и юридическое лицо полезны в своих областях и требуют отдельных подзначений.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Действующее лицо, персонаж» зависит от контекста произведения.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "He has a fine person иллюстрирует старомодное употребление о внешности.",
+        "confidence": 0.98
+      }
+    ]
+  },
+  {
+    "word": "today",
+    "decision": "изменить",
+    "confidence": 0.96,
+    "reason": "Сначала дать календарный день в двух синтаксических функциях, затем «в наши дни». Мюллер выделяет наречное «сегодня», расширенные источники подтверждают именные употребления.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/8/source_evidence",
+      "review_pointer": "/previous_outputs/07/8"
+    },
+    "uncertainties": [
+      "В некоторых конструкциях разбор today как существительного или наречия зависит от позиции. The writers of today относится к значению 4 по смыслу, хотя напечатано при значении 3."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "«Сегодня» — базовый временной указатель A1.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поставить сразу после наречия: именная функция календарного дня полезна в простых высказываниях.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«В наши дни» расширяет временной охват до современности.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "The writers of today показывает именное «наше время».",
+        "confidence": 0.98
+      }
+    ]
+  },
+  {
+    "word": "so-called",
+    "decision": "оставить",
+    "confidence": 0.98,
+    "reason": "Для B2 «так называемый» охватывает нейтральное именование и скептический оттенок. Единственное исходное значение сохраняет приоритет.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/9/source_evidence",
+      "review_pointer": "/previous_outputs/07/9",
+      "query": "(?i)(?<!\\w)so[\\s\\u00ad\\u2010\\u2011-]*called(?!\\w)",
+      "found": false,
+      "result": "В извлечённом тексте издания «Полный курс (АСТ)» совпадений нет. Расширенный запрос находит слитный заголовок в a4 PDF на с. 751 и в словаре на 300000 на с. 762."
+    },
+    "uncertainties": [
+      "Два издания выделяют скептический оттенок отдельно. Исходная запись примеров не содержит."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Универсальное «так называемый» позволяет интерпретировать оценку по контексту.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "change",
+    "decision": "изменить",
+    "confidence": 0.97,
+    "reason": "Как у Мюллера, поставить первым «менять(ся)». Сразу после него показать «изменение» и денежную «сдачу, мелочь». Практические значения поднять над специальными.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/10/source_evidence",
+      "review_pointer": "/previous_outputs/07/10",
+      "page": 34,
+      "quote": "2 n 1) измене ние; переме на 2) сда ча, ме лочь 3) переса дка"
+    },
+    "uncertainties": [
+      "Мюллер включает пересадку в компактную статью. Её приоритет зависит от объёма туристической лексики на A1. Три автомобильных примера при 17–18 требуют переноса. Печатный именной change gear требует отдельной проверки."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поставить первым: времена, цвет, выражение лица и решение меняются. Смена владельца и стороны показана устойчивыми change hands и change sides.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Social change подтверждает нейтральное «изменение, перемена».",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Сдача и мелкие деньги нужны в повседневных расчётах.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поднять повседневное «переодеваться», в том числе в конструкции change into.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Обменивать(ся)» сохранить после общего «менять».",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Размен денег полезен после основного денежного существительного.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поднять практическое «пересаживаться». All change! иллюстрирует объявление на транспорте.",
+        "confidence": 0.9
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Именную пересадку поставить рядом с глагольной. No change for Oxford передаёт отсутствие пересадки.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Для разнообразия» прежде всего полезно как for a change.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Смена одежды или комплект одежды — более узкая именная конструкция.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Смена декорации — частный контекст замены.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Климакс» связан с оборотом change of life.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Колокольные changes — специальное употребление во множественном числе.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Лондонская биржа — историческое сокращение с прописной буквой.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Новая фаза Луны — узкое контекстное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Конструкционная помета и технический пример требуют отдельного оформления. Оба вторичны.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Лунное значение вторично. Change up/down обозначает переключение передач.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Порча и скисание вторичны. Автомобильные примеры относятся к фразам.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "enough",
+    "decision": "оставить",
+    "confidence": 0.98,
+    "reason": "Сохранить три основных употребления и порядок. В «Полном курсе» заголовок наречный, но примеры также показывают enough перед существительным и самостоятельное enough.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/11/source_evidence",
+      "review_pointer": "/previous_outputs/07/11",
+      "page": 64,
+      "quote": "have you ~ money? у вас хва тит де нег?"
+    },
+    "uncertainties": [
+      "В списке указаны исходные части речи. Уточнения determiner и pronoun предложены в роли 07 и не меняют приоритетов."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Enough time — базовый образец обозначения количества перед существительным.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Самостоятельное enough означает достаточное количество. And to spare добавляет избыток, I've had enough of him передаёт пресыщение.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "He did it well enough показывает достаточную степень. You know well enough и strangely enough дополнительно показывают усиление и оценку.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "everything",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Мюллер выделяет «всё». Затем полезно показать конструкцию решающей важности, после неё — контекстный разговорный перевод о количестве.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/12/source_evidence",
+      "review_pointer": "/previous_outputs/07/12"
+    },
+    "uncertainties": [
+      "Словарная разговорная помета у значения 2 относится к представленному контексту. Английское they gave me everything допускает нейтральное прочтение."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "pronoun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Охват всех вещей или обстоятельств — базовое употребление A1.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "pronoun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Speed is everything показывает переносное «важнее всего».",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "pronoun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Всего понадавали» передаёт контекстный оттенок примера. Базовый перевод фразы — «они дали мне всё».",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "full",
+    "decision": "изменить",
+    "confidence": 0.97,
+    "reason": "Основными для A1 оставить полноту и сытость. Мюллер даёт «полный (чего-либо)», поэтому поднять full of над более узкими прилагательными. Наречия и глаголы оставить вторичными.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/13/source_evidence",
+      "review_pointer": "/previous_outputs/07/13",
+      "page": 76,
+      "quote": "full [fUl] adj по лный (чего-л)"
+    },
+    "uncertainties": [
+      "Печатные пометы «разговорное» при сытости и «устаревшее» при высшей степени имеют неоднородный современный охват. Отдельный full «валять сукно» при добавлении должен быть вторичным. In full и to the full сохраняют отдельные фразовые карточки."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Зал, целый час, полная нагрузка и наполнение до краёв показывают полноту и целостность.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "To eat till one is full показывает повседневную сытость.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поднять продуктивное full of «полный чего-либо, изобилующий».",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "A full meal означает полноценный или сытный приём пищи. Это частный случай полноты.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Наполненность эмоциями следует за общим full of.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Full of his own affairs передаёт поглощённость делами, частное переносное употребление.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Full vigour и full tide показывают высшую степень или точку в конкретных сочетаниях.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Широкий, свободный» относится к покрою одежды.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Дородный» ограничен описанием телосложения.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Жаргонное «поддатый» имеет узкую применимость.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поставить первым среди вторичных наречий: full on the nose ясно показывает «прямо в нос».",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Интенсивность в full well привязана к устойчивому употреблению.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Наречное «вполне» уступает по учебному приоритету обычному прилагательному.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Глагол о крое и сборке специализирован. Текстильное «валять сукно» — отдельный омограф.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "live",
+    "decision": "изменить",
+    "confidence": 0.96,
+    "reason": "Мюллер даёт глагольное «жить». Поднять тип жизни рядом с основным глаголом и оставить live on ближайшим вторичным употреблением. Отдельный /laɪv/ нуждается в собственной группе.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/14/source_evidence",
+      "review_pointer": "/previous_outputs/07/14"
+    },
+    "uncertainties": [
+      "Прилагательное /laɪv/ «живой, передаваемый в прямом эфире» и наречие «в прямом эфире» подтверждены другими изданиями. При добавлении оценить их внутри отдельного омографа. Значение 4 в подробном издании отнесено к live out, современный самостоятельный live также может означать продолжение жизни."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Жить в городе, дожить до возраста или события — базовые употребления.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поднять продуктивное «вести образ жизни». Жизнь по средствам и сверх средств иллюстрирует эту модель.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Питание хлебом и водой и жизнь на чужие средства показывают конструкцию live on, полезную после ядра A1.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Временно сохранить текущую отметку до разграничения самостоятельного live «выжить» и узкого перевода при live out.",
+        "confidence": 0.72
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Полноценная жизнь и live every moment показывают более позднее переносное употребление.",
+        "confidence": 0.97
+      }
+    ]
+  },
+  {
+    "word": "making",
+    "decision": "изменить",
+    "confidence": 0.94,
+    "reason": "Для B2 оставить основными создание и изготовление. После них поднять makings «задатки» как полезное устойчивое употребление. Именное making следует отличать от формы make.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/15/source_evidence",
+      "review_pointer": "/previous_outputs/07/15",
+      "query": "(?i)(?<!\\w)mak[\\s\\u00ad-]*ing(?!\\w)",
+      "found": false,
+      "result": "В извлечённом тексте издания «Полный курс (АСТ)» совпадений нет. Именные значения сверены по подробным изданиям из доказательств роли 06."
+    },
+    "uncertainties": [
+      "Современный регистр «форма» и «заработок» не установлен. Школьная ссылка подтверждает форму making глагола make."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Создание и становление передают общий процесс. In the making показывает процесс в устойчивом обороте.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Производство и изготовление — продуктивное значение существительного.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поднять употребительное have the makings of, где «задатки» связаны с формой множественного числа.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Ремесло и работа имеют более узкую применимость.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Печатное «форма» сохранить как вторичное до уточнения сочетаемости.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Именное «заработок» во множественном числе вторично.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Материалы для самокрутки — специальное регионально маркированное употребление makings.",
+        "confidence": 0.98
+      }
+    ]
+  },
+  {
+    "word": "point",
+    "decision": "изменить",
+    "confidence": 0.97,
+    "reason": "Мюллер даёт точку, пункт или вопрос, очко, остриё и глагол указания. Для учащегося поднять суть, тему обсуждения, место и счёт. Мыс и отраслевые значения оставить вторичными.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/16/source_evidence",
+      "review_pointer": "/previous_outputs/07/16",
+      "page": 126,
+      "quote": "point [pOKnt] 1 n 1) то чка 2) пункт; вопро с; the ~ is де ло в том 3) очко 4) остриё"
+    },
+    "uncertainties": [
+      "Ранжирование основных значений учебное. Редкие существительные, выявленные ролью 06, отсутствуют среди текущих индексов и при добавлении должны оставаться вторичными. Привязки point out, point off и points verdict требуют отдельных исправлений."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "That is just the point и see my point показывают суть или смысл высказывания.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Fine point, point of honour и on this point показывают обсуждаемую деталь, вопрос или дело.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Поднять базовое указание пальцем. Point at/to и фразовое point out требуют раздельных примеров.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Место или пункт применимы в разных ситуациях, включая point of departure. «Станция» — локальный американский вариант.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Очки и баллы нужны для понимания счёта. Пример с форой иллюстрирует более узкую ситуацию.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Десятичная точка полезна. Full point и американское exclamation point поясняют пунктуацию.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "At this point — продуктивный образец временной точки. At the point of death показывает предельный момент.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Острый конец — основное конкретное значение. Показать после более общих ситуаций общения и ориентации.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Сохранить базовую модель point something at, иллюстрируемую наведением оружия.",
+        "confidence": 0.87
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Strong point — полезное сочетание со значением сильной стороны.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Особенность или свойство следует за общими значениями темы и сути.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Быть направленным — связанное пространственное употребление.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Свидетельствовать в point to — переносное указание.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Деление шкалы — частное измерительное употребление.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Мыс или коса относятся к географическому употреблению.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Стрелочный перевод относится к железнодорожной терминологии.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "A buck of eight points показывает отростки рогов.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Стати и экстерьер относятся к описанию животных. Pl маркирует форму.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Типографский пункт — специальная единица.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Стойка собаки — охотничье употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Заострить» сохранить в группе узких глагольных употреблений.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Точить карандаш — частное применение. «Чинить» передаёт старое русское употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Придавать остроту» — переносное специальное употребление.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 24,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Расстановка знаков препинания узка по применимости.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 25,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Стойка собаки сохраняется как отдельное глагольное охотничье значение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 26,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Расшивка швов — строительный термин. Point off и point out к нему не относятся.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "read",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "Мюллер даёт базовое «читать» с формами /red/. Для A1 сохранить его единственным основным. Далее расположить толкование, содержание текста и показания. Прилагательное /red/ отдельно от глагола и существительного /riːd/.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/17/source_evidence",
+      "review_pointer": "/previous_outputs/07/17",
+      "page": 134,
+      "quote": "read [rÖd] v (read [red]; read [red]) чита ть"
+    },
+    "uncertainties": [
+      "Парламентский пример требует редакционного уточнения. Частотность печатного разговорного read off не установлена. Формам past и participle нужно отдельное произношение."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Чтение вслух, про себя, до хрипоты или до засыпания показывает ядро. Ноты и чтение законопроекта требуют локальных помет.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Толкование молчания или слов, разгадка, чтение мыслей и гадание относятся к расширенному значению интерпретации.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Reads as follows показывает конструкцию передачи содержания текста.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "В примере термометр сам показывает значение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Со счётчика снимают показания, давление измеряют. В этих примерах действует наблюдатель.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поднять среди вторичных: have a quiet read показывает именное обозначение занятия.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Именная оценка материала для чтения вторична. Русское «чтиво» может звучать пренебрежительно.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Reading law и read for the Bar показывают специальное учебное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "«Считывать» — специальное употребление. Примеры read off, read up и read with должны быть привязаны к фразам.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Poorly read in history иллюстрирует употребление в сочетании. Прилагательное /red/ вторично для записи A1.",
+        "confidence": 0.99
+      }
+    ]
+  },
+  {
+    "word": "yet",
+    "decision": "изменить",
+    "confidence": 0.97,
+    "reason": "На A2 поставить рядом отрицательное «ещё не» и вопросительное «уже», затем союзное «однако». Мюллер подтверждает самостоятельные наречную и союзную функции.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/18/source_evidence",
+      "review_pointer": "/previous_outputs/07/18",
+      "page": 177,
+      "quote": "yet [jet] 1 adv ещё; вдоба вок 2 conj одна ко"
+    },
+    "uncertainties": [
+      "And yet допускает союзный анализ. Печатный пример расположен при наречном значении 6. Yet more из значения 1 семантически ближе к усилению или добавлению."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Has not come yet, not yet и never yet показывают основное временное употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "«Уже?» — базовая вопросительная пара к «ещё не». Need you go yet? передаёт её, хотя для A2 проще вопрос о завершённости.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "conjunction",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Союзное «однако, но» образует самостоятельное распространённое употребление.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Largest specimen yet found и as yet показывают предел к текущему моменту и «пока».",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "It is strange and yet true показывает уступку и полезно рядом с союзной группой.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Yet much to say выражает остающееся или дополнительное. Оборот вторичен для A2.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "More important yet и nor yet advice показывают усиление в частных конструкциях.",
+        "confidence": 0.96
+      }
+    ]
+  },
+  {
+    "word": "bad",
+    "decision": "изменить",
+    "confidence": 0.97,
+    "reason": "Сохранить первыми общее «плохой» и «вредный», добавить к основным обычное «испорченный», которое Мюллер выделяет отдельно. Убрать основной статус у юридического и именных употреблений.",
+    "source_evidence": {
+      "input_pointer": "/previous_outputs/06/19/source_evidence",
+      "review_pointer": "/previous_outputs/07/19",
+      "page": 19,
+      "quote": "2) испо рченный (о пище); go ~ испо ртиться"
+    },
+    "uncertainties": [
+      "Bad leg нейтральнее, чем to be taken bad. She feels bad допускает физическое и эмоциональное чтения. Разговорное наречие в других изданиях отсутствует среди текущих значений."
+    ],
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Базовая отрицательная оценка объединяет примеры о репутации, брани, невезении, самочувствии и сожалении. Bad coin требует контекста подлинности или качества.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Bad for you показывает продуктивную модель вреда.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Go bad иллюстрирует повседневное употребление о порче пищи.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поднять среди вторичных: сильная боль и грубая ошибка дают полезные усилительные сочетания.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Bad leg обозначает больную или повреждённую ногу. To be taken bad — более узкое разговорное употребление.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Нравственная оценка — частный случай общего bad.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Недействительный» ограничен юридическим контекстом.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Take the bad with the good показывает субстантивированное употребление в идиоме.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Гибель и разорение связаны с узким go to the bad.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Убыток показан в обороте to the bad.",
+        "confidence": 0.99
+      }
+    ]
+  }
+]

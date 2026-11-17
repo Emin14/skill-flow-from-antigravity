@@ -1,0 +1,1398 @@
+{
+  "role": "06",
+  "role_file": "agent-roles/06-сравнение-источников.md",
+  "instructions": "# Агент сравнения словарных источников\n\n## Зачем нужен\n\nОн сравнивает разные варианты словаря Мюллера и восстанавливает наиболее точный печатный текст для одного английского слова.\n\n## Источники\n\n- PDF: `Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf`;\n- распарсенный PDF: `Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf`;\n- DOCX: `Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx`.\n\n## Порядок работы\n\n1. Найти все фрагменты, относящиеся к нужному слову.\n2. Сопоставить написание, переносы, знаки, сокращения и значения.\n3. Отделить ошибку OCR от настоящего текста словаря.\n4. Собрать нормализованный печатный вариант.\n5. Указать спорные места и уровень уверенности.\n\n## Нельзя\n\n- считать распарсенный PDF автоматически правильным;\n- додумывать отсутствующий текст без пометки;\n- менять `src/data/oxford_5000.json` напрямую.\n\n## Результат\n\nАгент возвращает отчёт с исходными фрагментами, выбранным вариантом, причиной выбора, уровнем уверенности и списком сомнений.\n",
+  "dataset_path": "src/data/oxford_5000.json",
+  "entries": [
+    {
+      "word": "a",
+      "frequency_rank": 5,
+      "cefr": "a1",
+      "phon_br": "/eɪ, ə/",
+      "phon_n_am": "/eɪ, ə/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "article",
+          "translation": "неопределённый артикль",
+          "register": [],
+          "examples": [
+            {
+              "en": "a horse",
+              "ru": "лошадь (перед согласными a)"
+            },
+            {
+              "en": "an hour",
+              "ru": "час (перед гласными и немым h — an)"
+            },
+            {
+              "en": "a European, a union",
+              "ru": "европеец, союз (перед звуком [j] — a)"
+            },
+            {
+              "en": "an umbrella",
+              "ru": "зонт (перед гласными an)"
+            }
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "article",
+          "translation": "один (в значении числительного)",
+          "register": [],
+          "examples": [
+            {
+              "en": "it costs a pound",
+              "ru": "это стоит один фунт"
+            },
+            {
+              "en": "a hundred",
+              "ru": "сто, одна сотня"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "article",
+          "translation": "некоторый, какой-то, некий",
+          "register": [],
+          "examples": [
+            {
+              "en": "a Mr. Henry Green",
+              "ru": "некий мистер Генри Грин"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "article",
+          "translation": "каждый, в (при указании частоты или меры)",
+          "register": [],
+          "examples": [
+            {
+              "en": "twice a day",
+              "ru": "два раза в день"
+            },
+            {
+              "en": "60 miles an hour",
+              "ru": "60 миль в час"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "article",
+          "translation": "один и тот же, одинаковый (обыкн. после all of, many of)",
+          "register": [],
+          "examples": [
+            {
+              "en": "all of a size",
+              "ru": "все одного и того же размера"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "article",
+          "translation": "употребляется перед счётными словами (a few, a little, a good many)",
+          "register": [],
+          "examples": [
+            {
+              "en": "a few days",
+              "ru": "несколько дней"
+            },
+            {
+              "en": "a little water",
+              "ru": "немного воды"
+            },
+            {
+              "en": "a good many",
+              "ru": "очень много"
+            }
+          ]
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "from A to Z",
+          "partOfSpeech": "adverb",
+          "translation": "от «а» до «я»; от начала до конца, полностью",
+          "register": [
+            "идиома"
+          ],
+          "examples": []
+        },
+        {
+          "id": 2,
+          "phrase": "A1",
+          "partOfSpeech": "adjective",
+          "translation": "первоклассный, высшего качества, превосходный",
+          "register": [
+            "разговорное"
+          ],
+          "examples": []
+        },
+        {
+          "id": 3,
+          "phrase": "a posteriori",
+          "partOfSpeech": "adverb",
+          "translation": "апостериори, из опыта, на основании опыта",
+          "register": [
+            "книжное"
+          ],
+          "examples": []
+        },
+        {
+          "id": 4,
+          "phrase": "a priori",
+          "partOfSpeech": "adverb",
+          "translation": "априори, до опыта, изначально",
+          "register": [
+            "книжное"
+          ],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "word": "abandon",
+      "frequency_rank": 3740,
+      "cefr": "b2",
+      "phon_br": "/əˈbændən/",
+      "phon_n_am": "/əˈbændən/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "verb",
+          "translation": "покидать, оставлять",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "отказываться от чего-либо",
+          "examples": [
+            {
+              "en": "to abandon the project",
+              "ru": "отказаться от проекта"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "предаваться (страсти, отчаянию и т. п.; refl.)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "развязность, несдержанность",
+          "examples": [
+            {
+              "en": "with abandon",
+              "ru": "не сдерживаясь; самозабвенно"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "ability",
+      "frequency_rank": 895,
+      "cefr": "a2",
+      "phon_br": "/əˈbɪləti/",
+      "phon_n_am": "/əˈbɪləti/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "способность; умение",
+          "examples": [
+            {
+              "en": "to the best of one's abilities",
+              "ru": "по мере сил и способностей"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "дарование",
+          "examples": [
+            {
+              "en": "a man of great abilities",
+              "ru": "высокоодарённый человек"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "ловкость",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "ability to pay",
+              "ru": "платёжеспособность",
+              "register": [
+                "коммерческое"
+              ]
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "компетенция",
+          "examples": [],
+          "register": [
+            "юридическое",
+            "коммерческое"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "able",
+      "frequency_rank": 306,
+      "cefr": "a2",
+      "phon_br": "/ˈeɪbl/",
+      "phon_n_am": "/ˈeɪbl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "умелый, умеющий; знающий",
+          "examples": [
+            {
+              "en": "to be able to swim",
+              "ru": "уметь плавать"
+            },
+            {
+              "en": "able to pay",
+              "ru": "платёжеспособный"
+            },
+            {
+              "en": "to be able (с inf.)",
+              "ru": "уметь, мочь, быть в состоянии, в силах"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "способный, талантливый",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "abolish",
+      "frequency_rank": 4806,
+      "cefr": "c1",
+      "phon_br": "/əˈbɒlɪʃ/",
+      "phon_n_am": "/əˈbɑːlɪʃ/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "отменять, уничтожать, упразднять (обычаи, учреждения)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "abortion",
+      "frequency_rank": 2901,
+      "cefr": "c1",
+      "phon_br": "/əˈbɔːʃn/",
+      "phon_n_am": "/əˈbɔːrʃn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "преждевременное прекращение беременности, аборт, выкидыш (искусственный)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "уродец",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "недоразвитие органа",
+          "examples": [],
+          "register": [
+            "биологическое"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "about",
+      "frequency_rank": 41,
+      "cefr": "a1",
+      "phon_br": "/əˈbaʊt/",
+      "phon_n_am": "/əˈbaʊt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adverb",
+          "translation": "приблизительно, около, почти",
+          "examples": [
+            {
+              "en": "you are about right",
+              "ru": "вы почти правы"
+            },
+            {
+              "en": "it is about two o'clock",
+              "ru": "сейчас около двух часов"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "неподалёку, недалеко",
+          "examples": [
+            {
+              "en": "he is somewhere about",
+              "ru": "он где-то здесь"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "кругом, вокруг; везде, повсюду",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "в обратном направлении",
+          "examples": [
+            {
+              "en": "to face about",
+              "ru": "обернуться"
+            },
+            {
+              "en": "about face (or turn)!",
+              "ru": "кругом!"
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "о, об; насчёт",
+          "examples": [
+            {
+              "en": "I'll see about it",
+              "ru": "я позабочусь об этом"
+            },
+            {
+              "en": "he went about his business",
+              "ru": "он пошёл по своим делам"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "во временном значении указывает на приблизительность около",
+          "examples": [
+            {
+              "en": "about nightfall",
+              "ru": "к вечеру"
+            }
+          ],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "вокруг, кругом; около, близ; у; по (в пространственном значении)",
+          "examples": [
+            {
+              "en": "the forests about Tomsk",
+              "ru": "леса под Томском"
+            },
+            {
+              "en": "to walk about the room",
+              "ru": "ходить по комнате"
+            }
+          ],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "иметь что-либо при себе, с собой",
+          "examples": [
+            {
+              "en": "I had all the documents about me",
+              "ru": "все документы были у меня с собой (или при мне, под рукой)"
+            }
+          ],
+          "register": [
+            "морской термин"
+          ],
+          "id": 8
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "Mr. Jones is not about",
+          "partOfSpeech": "noun",
+          "translation": "господин Джоунз вышел",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "about right",
+          "partOfSpeech": "adverb",
+          "translation": "правильно; здорово, основательно",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "to be about to go (to speak, etc.)",
+          "partOfSpeech": "verb",
+          "translation": "собираться уходить (говорить и т. п.)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "what are you about?",
+          "partOfSpeech": "verb",
+          "translation": "что вам нужно?; редк. что вы делаете?",
+          "examples": [],
+          "register": [
+            "редкое"
+          ]
+        }
+      ]
+    },
+    {
+      "word": "above",
+      "frequency_rank": 512,
+      "cefr": "a1",
+      "phon_br": "/əˈbʌv/",
+      "phon_n_am": "/əˈbʌv/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adverb",
+          "translation": "наверху; выше",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "наверх",
+          "examples": [
+            {
+              "en": "a staircase leading above",
+              "ru": "лестница (ведущая) наверх"
+            },
+            {
+              "en": "from above",
+              "ru": "сверху"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "выше, раньше",
+          "examples": [
+            {
+              "en": "as stated above",
+              "ru": "как сказано выше"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "над",
+          "examples": [
+            {
+              "en": "above my head",
+              "ru": "над моей головой"
+            },
+            {
+              "en": "above board",
+              "ru": "= aboveboard 2"
+            },
+            {
+              "en": "above ground",
+              "ru": "= aboveground 2"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "свыше, больше",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "выше",
+          "examples": [
+            {
+              "en": "above suspicion",
+              "ru": "вне подозрений"
+            },
+            {
+              "en": "it is above me",
+              "ru": "это выше моего понимания"
+            },
+            {
+              "en": "above measure",
+              "ru": "сверх меры"
+            }
+          ],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "preposition",
+          "translation": "раньше, до (в книге, документе и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "упомянутый выше",
+          "examples": [
+            {
+              "en": "the above facts",
+              "ru": "вышеупомянутые факты"
+            }
+          ],
+          "register": [],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "вышеупомянутое",
+          "examples": [],
+          "register": [],
+          "id": 9,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "abroad",
+      "frequency_rank": 2390,
+      "cefr": "a2",
+      "phon_br": "/əˈbrɔːd/",
+      "phon_n_am": "/əˈbrɔːd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "за границей; за границу",
+          "examples": [
+            {
+              "en": "from abroad",
+              "ru": "из-за границы"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adverb",
+          "translation": "широко; повсюду",
+          "examples": [
+            {
+              "en": "there is a rumour abroad",
+              "ru": "ходит слух"
+            },
+            {
+              "en": "to get abroad",
+              "ru": "распространяться (о слухах)"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adverb",
+          "translation": "в заблуждении",
+          "examples": [
+            {
+              "en": "to be all abroad",
+              "ru": "заблуждаться растеряться; смешаться, смутиться"
+            }
+          ],
+          "register": [
+            "устаревшее"
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adverb",
+          "translation": "вне дома, вне своего жилища",
+          "examples": [
+            {
+              "en": "I never venture abroad without an umbrella",
+              "ru": "я никогда не рискую выходить без зонтика"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "absence",
+      "frequency_rank": 2557,
+      "cefr": "c1",
+      "phon_br": "/ˈæbsəns/",
+      "phon_n_am": "/ˈæbsəns/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "отсутствие, отлучка",
+          "examples": [
+            {
+              "en": "absence without leave",
+              "ru": "самовольная отлучка"
+            },
+            {
+              "en": "leave of absence",
+              "ru": "отпуск"
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "недостаток, отсутствие (of — чего-либо)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "отсутствие внимания",
+          "examples": [
+            {
+              "en": "absence of mind",
+              "ru": "рассеянность"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "absent",
+      "frequency_rank": 3883,
+      "cefr": "c1",
+      "phon_br": "/ˈæbsənt/",
+      "phon_n_am": "/ˈæbsənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "отсутствующий",
+          "examples": [
+            {
+              "en": "to be absent from the lesson",
+              "ru": "отсутствовать на уроке"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "рассеянный",
+          "examples": [
+            {
+              "en": "absent look",
+              "ru": "рассеянный взгляд"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "отлучаться; отсутствовать",
+          "examples": [
+            {
+              "en": "to absent oneself from work",
+              "ru": "не явиться на работу"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "absolute",
+      "frequency_rank": 1903,
+      "cefr": "b2",
+      "phon_br": "/ˈæbsəluːt/",
+      "phon_n_am": "/ˈæbsəluːt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "полный; безусловный, неограниченный (об освобождении подсудимого, заключённого)",
+          "examples": [
+            {
+              "en": "absolute discharge",
+              "ru": "полное освобождение (от должности)"
+            },
+            {
+              "en": "absolute majority",
+              "ru": "абсолютное большинство"
+            },
+            {
+              "en": "absolute zero",
+              "ru": "абсолютный ноль",
+              "register": [
+                "физика"
+              ]
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "самовластный; абсолютный",
+          "examples": [
+            {
+              "en": "absolute monarchy",
+              "ru": "абсолютная монархия"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "чистый, беспримесный",
+          "examples": [
+            {
+              "en": "absolute alcohol",
+              "ru": "чистый, неразбавленный спирт"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adjective",
+          "translation": "абсолютный",
+          "examples": [
+            {
+              "en": "absolute construction",
+              "ru": "абсолютная конструкция"
+            }
+          ],
+          "register": [
+            "грамматика"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "absolutely",
+      "frequency_rank": 867,
+      "cefr": "b1",
+      "phon_br": "/ˈæbsəluːtli/",
+      "phon_n_am": "/ˈæbsəluːtli/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "совершенно",
+          "examples": [
+            {
+              "en": "absolutely right",
+              "ru": "совершенно верно"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adverb",
+          "translation": "самостоятельно, независимо",
+          "examples": [
+            {
+              "en": "transitive verb used absolutely",
+              "ru": "переходный глагол без прямого дополнения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adverb",
+          "translation": "безусловно; безусловно",
+          "examples": [
+            {
+              "en": "absolutely!",
+              "ru": "конечно!"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adverb",
+          "translation": "да, конечно",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "absorb",
+      "frequency_rank": 4365,
+      "cefr": "b2",
+      "phon_br": "/əbˈzɔːb/",
+      "phon_n_am": "/əbˈzɔːrb/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "всасывать, впитывать; абсорбировать; поглощать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "поглощать (внимание); впитывать (знания)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "амортизировать (толчки)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "abstract",
+      "frequency_rank": 3286,
+      "cefr": "b2",
+      "phon_br": "/ˈæbstrækt/",
+      "phon_n_am": "/ˈæbstrækt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "конспект; резюме; извлечение (из книги и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "произведение абстрактного искусства",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "абстракция, отвлечённое понятие",
+          "examples": [
+            {
+              "en": "in the abstract",
+              "ru": "отвлечённо, абстрактно; теоретически"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adjective",
+          "translation": "абстрактный, отвлечённый",
+          "examples": [
+            {
+              "en": "abstract art",
+              "ru": "абстрактное искусство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adjective",
+          "translation": "трудный для понимания",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "verb",
+          "translation": "отнимать",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "резюмировать; суммировать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "absurd",
+      "frequency_rank": 3994,
+      "cefr": "c1",
+      "phon_br": "/əbˈsɜːd/",
+      "phon_n_am": "/əbˈsɜːrd/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "нелепый, абсурдный; смешной, глупый",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "abundance",
+      "frequency_rank": 4253,
+      "cefr": "c1",
+      "phon_br": "/əˈbʌndəns/",
+      "phon_n_am": "/əˈbʌndəns/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "изобилие, избыток ; богатство",
+          "examples": [
+            {
+              "en": "abundance of the heart",
+              "ru": "избыток чувств"
+            },
+            {
+              "en": "food and drink in abundance",
+              "ru": "еды и питья вдоволь"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "множество",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "распространённость",
+          "examples": [
+            {
+              "en": "isotope abundance",
+              "ru": "распространённость изотопа"
+            }
+          ],
+          "register": [
+            "физика"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "abuse",
+      "frequency_rank": 1548,
+      "cefr": "c1",
+      "phon_br": "/əˈbjuːs/, /əˈbjuːz/",
+      "phon_n_am": "/əˈbjuːs/, /əˈbjuːz/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "злоупотребление",
+          "examples": [
+            {
+              "en": "drug abuse",
+              "ru": "злоупотребление наркотиками"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "оскорбление; брань",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "плохое обращение",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "неправильное употребление",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "злоупотреблять",
+          "examples": [
+            {
+              "en": "to abuse human rights",
+              "ru": "нарушать права человека"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "verb",
+          "translation": "оскорблять; ругать; поносить; бесчестить",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "плохо обращаться (с кем-либо, чем-либо)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    {
+      "word": "academic",
+      "frequency_rank": 1785,
+      "cefr": "b1",
+      "phon_br": "/ˌækəˈdemɪk/",
+      "phon_n_am": "/ˌækəˈdemɪk/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "академический; учебный",
+          "examples": [
+            {
+              "en": "academic year",
+              "ru": "учебный год в университете"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "академичный, теоретический",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "учёный",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: чисто теоретические, академические аргументы и т. п",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "academy",
+      "frequency_rank": 1786,
+      "cefr": "c1",
+      "phon_br": "/əˈkædəmi/",
+      "phon_n_am": "/əˈkædəmi/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "специальное учебное заведение, школа",
+          "examples": [
+            {
+              "en": "Military A.",
+              "ru": "военное училище"
+            },
+            {
+              "en": "riding academy",
+              "ru": "школа верховой езды"
+            },
+            {
+              "en": "academy of music",
+              "ru": "музыкальная школа"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "академия",
+          "examples": [
+            {
+              "en": "Royal A.",
+              "ru": "Королевская академия искусств"
+            },
+            {
+              "en": "the A.",
+              "ru": "ежегодная выставка Королевской академии искусств"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "высшее учебное заведение",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "среднее (частное) учебное заведение",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "previous_outputs": {},
+  "output_contract": {
+    "records": 20,
+    "word_order": [
+      "a",
+      "abandon",
+      "ability",
+      "able",
+      "abolish",
+      "abortion",
+      "about",
+      "above",
+      "abroad",
+      "absence",
+      "absent",
+      "absolute",
+      "absolutely",
+      "absorb",
+      "abstract",
+      "absurd",
+      "abundance",
+      "abuse",
+      "academic",
+      "academy"
+    ],
+    "output_path": "stage_06.json",
+    "do_not_edit_dataset": true
+  }
+}

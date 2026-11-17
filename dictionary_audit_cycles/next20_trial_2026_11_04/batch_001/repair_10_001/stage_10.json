@@ -1,0 +1,2992 @@
+[
+  {
+    "word": "another",
+    "decision": "изменить",
+    "reason": "Пример замены чашки самостоятельно иллюстрирует местоименное another. Порядок 1,3,2 и снятие primary у уподобления обоснованы; исходный another one сохраняется как определительное употребление.",
+    "confidence": 0.97,
+    "evidence_ref": "#/previous_outputs/06/0/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/0",
+    "validation": {
+      "scope": "Общий технический статус всех 20 записей; содержательные одобрения ниже относятся к конкретным предложениям, а не к выпуску полного dataset.",
+      "files_edited": false,
+      "canonical_file_available": false,
+      "record_count_4980_verified": false,
+      "duplicates_verified": false,
+      "final_qa_validation_command": "python3 final_qa_validation.py",
+      "final_qa_validation_run": false,
+      "attempt_exit_code": 2,
+      "result": "Скрипт final_qa_validation.py отсутствует в рабочем каталоге; результат Total errors found: 0 не получен. Полная техническая приёмка не выполнена.",
+      "source_search_command_run": true
+    },
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "7a1da5543574cab09c47fc0c4614218fdc9ad2cd7058d7402d7962f33da4e030",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Another употреблено самостоятельно после give me и принадлежит заголовочной лемме."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Разбитая чашка объясняет просьбу о другой взамен прежней."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "После another нет определяемого существительного или one; показана местоименная модель."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "This cup is broken и Please give me another образуют естественную короткую просьбу."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены разбитая чашка, вежливая просьба и женский род подразумеваемой другой чашки."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Два простых предложения показывают восстановление существительного по контексту."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Неисправность чашки задаёт замену, а не дополнительную порцию или уподобление человеку."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Самостоятельное another в просьбе заменить предмет является обычной современной конструкцией."
+          }
+        }
+      }
+    ],
+    "issues": [],
+    "doubts": [
+      "Все положительные и отрицательные результаты и ограничения этапов 06–09 сохранены по ссылкам; визуальная сверка не выполнена.",
+      "Отличный в значении 3 требует пояснения «иной, отличающийся», чтобы не читаться как «превосходный».",
+      "Технический статус выпуска указан в validation и применяется ко всем записям."
+    ]
+  },
+  {
+    "word": "own",
+    "decision": "review_required",
+    "reason": "Отделение own up от значения 6 и исправление holding подтверждены. Полная приёмка невозможна из-за литературного ласкового own, неустановленного подчинительного own up и неточного перевода holding his own.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/1/source_evidence",
+    "before_after_ref": "#/previous_outputs/07/1",
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 6,
+        "proposal_sha256": "47726bec0ef621a73a9dbae4dd82aeb7ae0836a8ac109f06dcf7673253542ef5",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На странице 571 блок ~ up начинается после примера theft и отдельно получает разг. и два подзначения."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Признавать(ся) охватывает признание ребёнка своим, недостатков и проступка без подчинения."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Own one's faults и own to the theft являются глагольными конструкциями."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Четыре исходных примера сохранены; отделённые переводы и разговорная помета остаются у own up."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Одобрено исправление границы статьи; современность отдельных примеров и own up о подчинении этим не утверждается."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Шить для себя теряет явное clothes и самостоятельное изготовление; редакционная правка 09 не имеет candidate binding.",
+        "required_action": "Вернуть уточнение перевода роли 09 как отдельного связанного кандидата и получить новую приёмку."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "My own father само по себе не доказывает биологическое родство; «родной» может необоснованно противопоставляться приёмному.",
+        "required_action": "Пояснить усилительное «мой собственный отец», сохранив исходное свидетельство."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Farewell my own — литературное субстантивированное обращение, не нейтральное прилагательное перед существительным.",
+        "required_action": "Отдельно согласовать POS и историко-литературную маркировку; современный пример не утверждать."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Own a child и own to the theft требуют проверки современного регистра; разговорность нельзя вывести из соседнего own up.",
+        "required_action": "Проверить каждую конструкцию современным источником и отдельно оформить ограниченные употребления."
+      },
+      {
+        "meaning_index": null,
+        "problem": "Own up «безропотно подчиняться» не получило современного подтверждения; holding his own означает сохранение состояния, а не любую борьбу с болезнью.",
+        "required_action": "Проверить подчинительное значение отдельно; для фразы о больном подготовить перевод о стабильном состоянии. Исправление hold ing и категорий выражений сохранить."
+      },
+      {
+        "meaning_index": null,
+        "problem": "Come into one's own и nothing of my own переведены недостаточно точно; американская транскрипция остаётся неподтверждённой.",
+        "required_action": "Согласовать переводы о заслуженном признании/раскрытии возможностей и отсутствии чего-либо своего; отдельно проверить /oʊn/."
+      }
+    ],
+    "doubts": [
+      "Источники, исходные примеры и все ограничения этапов 06–09 сохранены по ссылкам.",
+      "Одобрение meaning_proposal 6 не разрешает добавление непроверенных современных примеров."
+    ]
+  },
+  {
+    "word": "under",
+    "decision": "review_required",
+    "reason": "Кандидат о затонувшем корабле подходит наречному движению вниз. Отделение артиллерийской пометы корректно, но самостоятельные значения 11–15 не получили современных примеров; среди существующих предложных пар остаются ошибки и непрозрачные конструкции.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/2/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/2",
+    "example_reviews": [
+      {
+        "meaning_index": 10,
+        "candidate_sha256": "0cd9285d69f3ded3591c8ccb5fec092a16231e76550082ac59d4ea468de733ab",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Under — отдельное слово после went, а не компонент under-."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Корабль уходит вниз под поверхность воды; затонул передаёт результат движения."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "У under отсутствует выраженное именное дополнение; употребление совместимо с принятой наречной категорией."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The ship went under — естественное законченное сообщение о затоплении судна."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Корабль затонул сохраняет субъект, прошедшее время и буквальное погружение."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткая конструкция показывает значение без производных слов и незаданного объекта."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Went обозначает изменение положения, отличающее пример от статического внизу и числового предела."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Буквальное go under о тонущем судне сохраняется в современной общей речи."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 15,
+        "proposal_sha256": "72cabaecbe0d0ce98596d4a313ca3da5997cc51e2524596963d95958c2944640",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 861 прямо содержит «4. n арт. недолёт»."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Недолёт сохранён полностью; арт. раскрыто как артиллерийское."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Существительное n из источника остаётся noun."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Перевод и отраслевая принадлежность сохранены в отдельных полях; примеров не удалено."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Одобрено только разнесение пометы и перевода; актуальность термина остаётся нерешённой и нового примера нет."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "An office under Government — старое институциональное сочетание с недостаточно установленным современным статусом.",
+        "required_action": "Проверить конструкцию и ограничить учебную выдачу при отсутствии современного подтверждения."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Under the necessity of smth. не равно общему давлению любых обстоятельств.",
+        "required_action": "Подготовить точную пару о необходимости чего-либо с новой приёмкой."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Under right in international law непрозрачно и грамматически сомнительно; operate under a principle требует проверки коллокации.",
+        "required_action": "Вернуть обе пары роли 09; подлинность старой цитаты не считать подтверждением современного английского."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "В паре о двух часах отсутствует in, в under certain age отсутствует a. Правки 09 не снабжены candidate_bindings.",
+        "required_action": "Подать обе редакционные правки как связанных кандидатов с новыми hash."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Для самостоятельного статического «внизу» нет однозначного современного кандидата.",
+        "required_action": "Уточнить границу значения и его POS; не использовать неопределённое stayed under."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Современное свободное прилагательное «нижний» не показано; underclothes является другой леммой.",
+        "required_action": "Подтвердить самостоятельное атрибутивное употребление либо отдельно пересмотреть статус значения."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Undersecretary не является словоформой under; under officer требует историко-терминологической проверки.",
+        "required_action": "Согласовать самостоятельное прилагательное, морфему или историческое значение отдельным предложением."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Ни самостоятельное under без предела, ни underdone не показывают заявленное прилагательное.",
+        "required_action": "Пересмотреть POS и современность; не добавлять отвергнутые попытки."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Современное артиллерийское существительное under и его управление не подтверждены.",
+        "required_action": "Найти фактическое современное профессиональное употребление либо оформить отдельное решение об историческом значении."
+      },
+      {
+        "meaning_index": null,
+        "problem": "To bring under корректно переклассифицируется в глагольное выражение, но современный контекст объекта не представлен.",
+        "required_action": "Сохранить исправление POS отдельно от последующей проверки современного примера."
+      }
+    ],
+    "doubts": [
+      "Все 15 значений и все существующие пары рассмотрены; замечаний по смыслу значений 1,2,4,7,9 не выявлено.",
+      "Порядок 08 допустим как учебная рекомендация, не как измеренная частотность.",
+      "Все исходные свидетельства, отрицательные поиски и ограничения визуальной сверки сохранены."
+    ]
+  },
+  {
+    "word": "during",
+    "decision": "изменить",
+    "reason": "Предложное временное значение корректно. Короткий источник during the coming summer точно иллюстрирует период без добавления длительности всего лета.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/3/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/3",
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "beb867f2599610776662bfb3ca6fa9f2362698c4ee16e8face65ddf04aaa626f",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "During дано в исходной форме перед the coming summer."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Предлог помещает событие в пределы будущего летнего периода."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "During управляет именной группой с артиклем и существительным summer."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "During the coming summer — естественное временное словосочетание."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Будущим летом сохраняет период и не добавляет «всё лето» или срок завершения."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Прозрачная именная группа демонстрирует управление временного предлога."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "В записи одно временное значение; пример не подменяет during предлогом длительности for."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "During с coming summer употребляется в современной речи о предстоящем сезоне."
+          }
+        }
+      }
+    ],
+    "issues": [],
+    "doubts": [
+      "Ошибочная adv в одном источнике не переносится в запись.",
+      "Сохраняются все доказательства и ограничения предыдущих этапов; полная техническая приёмка не выполнена."
+    ]
+  },
+  {
+    "word": "game",
+    "decision": "review_required",
+    "reason": "Три новых примера проходят независимую проверку, а шесть смысловых уточнений 07 сохраняют информацию. В старых примерах остаются неоднозначность развлечения и старомодное подшучивание; пустые значения счёта, замысла и смелости требуют отдельного решения.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/4/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/4",
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "510b00884e0ee8c9d59d13aa2bffae166614689558baea98eb4d0d839377dc71",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Games является множественным числом game; заглавная буква обозначает именованные Игры."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Церемония открытия задаёт комплекс спортивных соревнований."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The Games — именная группа в дополнении of, с требуемым множественным числом."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Opening ceremony of the Games starts tonight — естественная модель объявления."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены церемония открытия, настоящее время с будущим расписанием и сегодня вечером."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Ceremony отличает мероприятие от отдельной партии без сложных правил спорта."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Речь о спортивных Играх, не о настольном наборе, счёте или дичи."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "The Games и opening ceremony — действующие современные обозначения спортивных мероприятий."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "df789ebb0289e7869a386aeb64415bbbbdfe18c82bbacd289e75e696ba21802d",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Game дано отдельным существительным, без замены на board game."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Возвращение в собственную коробку указывает на материальный игровой набор."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The game — исчисляемое прямое дополнение put."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Put the game back in its box — обычная бытовая инструкция."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Убери игру обратно в коробку сохраняет действие, направление и возвратность back."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Наглядная ситуация хранения помогает понять предметное значение игры."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Материальный набор можно убрать в коробку; отдельная партия и соревнования так не убираются."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Раздельное game с box обычно в современной речи о настольных играх."
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "d79eab08e8dbabfa1dcdab496aef21ceb7973d4b4eb1fcf72686e52791cd874b",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Game употреблено в исходной форме после serves."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Ресторан подаёт дичь как пищевой продукт."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Game — неисчисляемое существительное, прямое дополнение глагола подачи еды."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "This restaurant serves game — естественное описание меню."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "В этом ресторане подают дичь сохраняет место, настоящее время и продукт без добавления вида мяса."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Ресторанный контекст однозначен и не требует знания охотничьей терминологии."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Подача еды отделяет мясо от живых животных для охоты и от спортивной игры."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Serve game является современным обычным ресторанным сочетанием."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "b626b69cbeb8a77f211aeaac84635b937885eb777ac8ab0892e05fd9509663c2",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 337 связывает поступать благородно именно с to play the game."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Уточнение явно относит глагольный русский перевод к выражению."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Game остаётся noun; пояснение не выдаёт поступать за часть речи заголовочного слова."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба примера и переносное толкование сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Исправлена область действия перевода без добавления нового значения."
+          }
+        }
+      },
+      {
+        "meaning_index": 3,
+        "proposal_sha256": "67965db085792aeae1e8ae60be5aac70bd31bd3c1fbabb5e8079c6ad14afd14c",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На страницах 337–338 pl относится к соревнованиям и играм."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Соревнования; игры восстанавливает содержание и грамматическое ограничение."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Сохраняется существительное во множественном числе."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Игры сохранены, соревнования добавлены из продолжения статьи; прежних примеров нет."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Убрана ошибочная британская помета; sense_after кандидата совпадает с after_meaning."
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "proposal_sha256": "4c6c2ae69ab8ae67e472b0fb80315e94e82621753399c78533070fdddfd825a4",
+        "verdict": "approved",
+        "confidence": 0.95,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 338 прямо связывает высмеивать; подшучивать с to make game of."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Подшучивать более не представлено свободным переводом существительного."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Noun сохранён для game, глагольная функция относится к целому выражению."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Шутка, оба исходных примера и глагольная информация сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Одобрена привязка перевода; современность make game of отдельно не утверждается."
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "proposal_sha256": "76b9f59eb910e24555b9da3a41bf36e3fa7d7dedd98b5c85c6d4f2c40e37ca4d",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 338 содержит pl перед уловки, увёртки, хитрости."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Все эквиваленты хитростей и фокусов сохранены."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Games остаётся множественным существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "None of your games и перевод не удалены; ограничение числом сохранено в тексте."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снято ошибочное региональное ограничение, возникшее при прочтении pl."
+          }
+        }
+      },
+      {
+        "meaning_index": 11,
+        "proposal_sha256": "1bbf2bfd8b878ae71bd2906d47bbbb87684f44a18fcf2e765a5481674fea9780",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 338 содержит охотно готовый и be game for anything без охотничьей пометы."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Восстановление охотно устраняет повреждённое но и выражает willingness."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "В be game for game функционирует как предикативное прилагательное."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Прежний пример сохранён; ничего не бояться перенесено в новую фразу, а не потеряно."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Одобрено уточнение готовности; отсутствие страха не утверждается обязательным смыслом прилагательного."
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "proposal_sha256": "e5ebd6b12e052aee907f9b68a447c1162c745de4b331e045712f8e52a6f46082",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 338 определяет мясо диких уток, куропаток и зайчатину без спортивной пометы."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Дичь как мясо сохранена без изменения объёма значения."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Пищевое game остаётся неисчисляемым существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Перевод полностью сохранён; исходных примеров нет."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Убрана чуждая отраслевая помета; sense_after ресторанного кандидата совпадает с предложением 07."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 4,
+        "problem": "Количество выигрышных очков и счёт объединены без действующей конкретной конструкции.",
+        "required_action": "Установить спортивную модель и подготовить новый кандидат; не использовать She won the game как доказательство значения счёта."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "What a game! может оценивать матч и не устанавливает отдельно «как забавно».",
+        "required_action": "Дать контекст развлечения либо пересмотреть перевод этой пары."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Have a game with и make game of имеют ограниченное или старомодное употребление.",
+        "required_action": "Проверить современность самих конструкций; одобренное уточнение определения не разрешает их повторное утверждение как нейтральных."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Замысел, проект, дело слишком широко; попытки 09 не выделяют нейтральный проект.",
+        "required_action": "Уточнить переводную группу отдельным meaning_proposal до подбора примера."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Нет однозначного современного примера стойкости, отличного от готовности значения 11.",
+        "required_action": "Найти современное подтверждение нужного оттенка и подготовить связанный кандидат."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Fair game и big game содержат буквальные и переносные переводы целых сочетаний.",
+        "required_action": "Разнести пояснения буквальной дичи и переносных выражений без потери старой информации."
+      },
+      {
+        "meaning_index": null,
+        "problem": "Современность game away не установлена; дополнительные омонимы пока не согласованы.",
+        "required_action": "Сохранить источники и решить охват и регистр отдельно."
+      }
+    ],
+    "doubts": [
+      "Все существующие EN/RU и значения проверены; a game of tennis допускает игру и отдельный гейм в зависимости от контекста.",
+      "Все предыдущие свидетельства и ограничения сохранены; независимость производных форматов не предполагается."
+    ]
+  },
+  {
+    "word": "thing",
+    "decision": "review_required",
+    "reason": "Снятие британской пометы у дел и обстоятельств подтверждено. Две предлагаемые правки переводов полезны, но не связаны hash; старое dumb things и неоднозначное quite the thing препятствуют полной содержательной приёмке.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/5/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/5",
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 3,
+        "proposal_sha256": "c9591432a892775b1c5a5cd325478979a38eb7d52cab5b22246dd91894b6bd68",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 821 даёт обыкн. pl перед дело, факт, случай, обстоятельство."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Перевод состояния дел и обстоятельств не меняется."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Things в how are things и things look promising остаётся существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Все шесть примеров и указание обычного множественного числа сохранены."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Устранено ошибочное прочтение грамматической пометы как британской."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Что это там чернеется скрывает black things; редакционная замена 09 не имеет binding.",
+        "required_action": "Подать уточнённую пару о чёрных предметах отдельным кандидатом для приёмки."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "A few things передано неопределённым кое-что без указания нескольких предметов.",
+        "required_action": "При редакционной правке сохранить количественный компонент и получить связанное одобрение."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "As things go без контекста не устанавливает перевод «при сложившихся обстоятельствах».",
+        "required_action": "Добавить различающий контекст либо ограничить толкование конструкции."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Dumb things в значении животных исторически ограничено; современный ученик может прочесть dumb как глупый.",
+        "required_action": "Пересмотреть регистр и учебную выдачу отдельно; не утверждать как современный пример."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Quite the thing не обязательно означает модный; современность социальной оценки не установлена.",
+        "required_action": "Проверить выражение отдельно от понятного latest thing in hats."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Нужнее всего добавляет превосходную степень к just the thing; next best thing часто означает лучшую доступную замену.",
+        "required_action": "Вернуть связанную правку перевода отдыха и уточнение альтернативы роли 09 с новыми binding."
+      },
+      {
+        "meaning_index": null,
+        "problem": "Among other things точнее передаёт среди прочего; между прочим допускает другой дискурсивный смысл.",
+        "required_action": "Подготовить точное уточнение перевода выражения, сохранив исходную цитату."
+      }
+    ],
+    "doubts": [
+      "Все семь значений, 20 исходных примеров и пять фраз рассмотрены; остальные основные пары приемлемы.",
+      "Нормализация скобок и категорий предложений обоснована, но не означает одобрения всех переводов 09.",
+      "Все свидетельства и ограничения предыдущих этапов сохранены."
+    ]
+  },
+  {
+    "word": "give",
+    "decision": "review_required",
+    "reason": "Все пять новых кандидатов соответствуют своим значениям; три исправления помет 07 обоснованы. Существующий раздел тоста по-прежнему загрязнён фразовыми глаголами, а ряд старых пар требует смысловой и современной редакции.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/6/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/6",
+    "example_reviews": [
+      {
+        "meaning_index": 18,
+        "candidate_sha256": "ebf6eb06e6a6a5ec6ff0a292488e43bf2223abd4929b00398a2df500f6b4ef3b",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Gave — правильная прошедшая форма give."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Gave a party означает организацию вечеринки."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Gave — сказуемое с дополнением a party."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "They gave a party for their friends — естественная модель устройства мероприятия."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Они устроили вечеринку для своих друзей сохраняет прошедшее время и получателей."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Party непосредственно раскрывает требуемое значение без специального контекста."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Устраивается событие, не передаётся подарок и не произносится тост."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Give a party остаётся современным сочетанием, несмотря на наличие более разговорного throw a party."
+          }
+        }
+      },
+      {
+        "meaning_index": 19,
+        "candidate_sha256": "72d2ad8ba11bf392afee59f57d8982f863d8c704cab9e1abb64683b6adadc8de",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Gives — личная форма give с окончанием третьего лица."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Окно кухни gives onto сад, то есть выходит в его сторону."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Gives выступает пространственным глаголом с onto и именным дополнением."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Window gives onto the garden естественно в описании помещений, с книжным оттенком."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Окно кухни выходит в сад сохраняет объект и направление без утверждения прохода через окно."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Window и garden ясно задают пространственную конструкцию; уместно пояснить её книжность."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Неживое окно и onto исключают передачу предмета или организацию мероприятия."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Give onto употребляется в современной описательной речи о зданиях; конструкция не историческая."
+          }
+        }
+      },
+      {
+        "meaning_index": 20,
+        "candidate_sha256": "4a3926613fa156a0050882b4ef2a4586b27c8ec24ec3c9fde0d3dbce2d4bfc70",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Gave принадлежит парадигме give, без частицы away."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Gave a toast непосредственно обозначает произнесение тоста."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Gave — переходный глагол с речевым дополнением a toast."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "He gave a toast to the bride — естественное сообщение о торжественной речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Он произнёс тост за невесту сохраняет говорящего, прошедшее время и адресата тоста."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Toast делает нужный смысл явным и не смешивает его с give away the bride."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Невеста названа в предложной группе, а передаваемым речевым действием является тост."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Give a toast to someone — современная конструкция описания короткого торжественного выступления."
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "candidate_sha256": "407872c86265494712f5d474d0371868838ff3d83eead470d93ddb9b67ed5804",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Give является отдельным существительным после some."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Some give у ткани обозначает способность растягиваться и поддаваться."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Give — неисчисляемое дополнение has, не инфинитив."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "This fabric has some give — обычное описание свойства материала."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Немного тянется передаёт растяжимость ткани без утверждения уже совершившегося растяжения."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Ткань даёт наглядный пример непривычного существительного give."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Физический материал отличает эластичность от уступчивости людей."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Fabric has some give используется в современной бытовой и товарной речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 22,
+        "candidate_sha256": "5d937bb936aee4c463a666028b40e64e550ef1598e4aa89266e19b35f95f6b88",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Give — самостоятельное существительное в some give."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "On both sides задаёт взаимную готовность уступать."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "После there needs to be стоит именная группа some give."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "There needs to be some give on both sides естественно в обсуждении компромисса."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены необходимость, некоторая степень уступчивости и обе стороны; достигнутый результат не добавлен."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Контекст обеих сторон делает переносное значение понятным без сложной ситуации переговоров."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Уступчивость сторон отличается от растяжимости ткани и глагольной передачи."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Some give on both sides — современная модель речи о взаимных уступках."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 16,
+        "proposal_sha256": "ccf6c9a817beeb3a38c733a3ec89d295fec8c0c4be12fe5408abc4012b702dbc",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На странице 347 уступать; соглашаться дано отдельно, а тех. относится к погнуться у give way."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Оба эквивалента уступки сохранены."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "I give you that point иллюстрирует глагольную уступку."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Исходная пара полностью сохранена; удалены только неподтверждённые пометы."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Исправлена область действия помет без подмены значения."
+          }
+        }
+      },
+      {
+        "meaning_index": 18,
+        "proposal_sha256": "357193ad7dffa606a7c1a7bd1ca738d6c807cb79ee01c1736dcbaa2ffcde90ca",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 347 даёт устраивать (обед, вечеринку) без устаревшей пометы."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Организация мероприятия передана тем же русским глаголом."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Give a party является глагольной конструкцией."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Перевод сохранён, исходных примеров нет."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снятие устаревшего статуса согласуется с современной конструкцией; sense_after кандидата совпадает с after_meaning."
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "proposal_sha256": "b25ddb3f206f24215941f8e1656c82192d174153d9bc3c9b9856e695b0b46a8d",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 347 даёт n эластичность, упругость без электротехнической пометы."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Общее свойство материала сохранено без отраслевого сужения."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Give остаётся существительным, что подтверждается some give."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба русских эквивалента сохранены; старых примеров нет."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Удалено необоснованное ограничение; sense_after нового примера совпадает с предложением 07."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Freely означает щедро, а «много жертвовал» заменяет способ или готовность объёмом.",
+        "required_action": "Подать точную связанную правку перевода о щедрых пожертвованиях."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Полностью в переводе give one's mind to study усиливает исходный текст.",
+        "required_action": "Подготовить перевод о сосредоточении на учёбе без неподтверждённой степени."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "To give a look без получателя или характеристики взгляда слабо показывает законченную конструкцию.",
+        "required_action": "Добавить полноценный контекст отдельным кандидатом."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "The hen gives two eggs a day — неудачная современная коллокация и отвлекающее количественное утверждение.",
+        "required_action": "Вернуть роли 09 для другого примера именно give; не подменять лемму на lay внутри этой статьи."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Give to the world, given in the newspapers и gives no signs of life не получили надёжной современной проверки самих конструкций.",
+        "required_action": "Проверить регистр и естественность каждой пары; не утверждать их автоматически по старому источнику."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Cold переведено насморком, что сужает простуду до симптома.",
+        "required_action": "Подать связанную правку русского перевода с простудой."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Trouble не обязательно означает волнения; в данном контексте естественнее хлопоты.",
+        "required_action": "Вернуть точное уточнение перевода роли 09."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Gives nothing for their opinion отражает исторически ограниченную оценочную конструкцию.",
+        "required_action": "Отдельно проверить актуальность значения и маркировку; не создавать пример через другой глагол."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "В six months imprisonment нужен апостроф; присудил менее точно, чем приговорил.",
+        "required_action": "Оформить редакционную правку обеих сторон пары с новым binding, не объявляя её восстановленной печатной цитатой."
+      },
+      {
+        "meaning_index": 20,
+        "problem": "Все семь исходных примеров относятся к фразовым конструкциям, а отплатить ошибочно попало в give away.",
+        "required_action": "Сохранить исходные свидетельства и перенести пары в соответствующие phrases отдельным проверяемым изменением; одобренный тост не разрешает молчаливое удаление старого блока."
+      },
+      {
+        "meaning_index": null,
+        "problem": "Give under, give mouth, give forth и документное give in требуют современного ограничения; give oneself out to be нельзя приписывать любому give out.",
+        "required_action": "Разнести конструкции и проверить их регистр. Для give vent сохранить смысл выхода чувств без обязательного облегчения; give way распределить по управлению."
+      }
+    ],
+    "doubts": [
+      "Рассмотрены все 22 значения, все исходные EN/RU и 13 фраз; остальные основные пары содержательно приемлемы.",
+      "Give away the bride не тождественно русской роли посажёного отца; культурный перевод требует отдельной правки.",
+      "Все свидетельства и неопределённости этапов 06–09 сохранены."
+    ]
+  },
+  {
+    "word": "end",
+    "decision": "review_required",
+    "reason": "Восемь значений и реальные примеры в основном приемлемы; порядок 1,2,7,8,3,6,4,5 допустим. Однако to no end остаётся неразрешённой фразой, а отдельные пояснения стороны процесса и целого предложения требуют точности.",
+    "confidence": 0.96,
+    "evidence_ref": "#/previous_outputs/06/7/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/7",
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 6,
+        "problem": "On our end обозначает наш участок участия или работы, а не обязательно юридическую сторону соглашения.",
+        "required_action": "Уточнить пояснение значения, сохранив текущий полезный перевод примера."
+      },
+      {
+        "meaning_index": null,
+        "problem": "To no end не получило достаточной проверки современного результата и отличается от no end; noun у the end justifies the means описывает лишь одно слово целого предложения.",
+        "required_action": "Подтвердить конструкцию to no end современным контекстом; категорию пословицы оформить как sentence отдельной правкой."
+      }
+    ],
+    "doubts": [
+      "At the end и in the end различают конец периода и итог; оба примера допустимы при пояснении конструкции.",
+      "Meet one's end литературно, cigarette end особенно британское; это не основание удалять примеры.",
+      "End one's life — релевантный частный переходный пример, без необходимости отдельного primary.",
+      "Все исходные примеры, фразы, свидетельства и вопросы полноты сохранены; буквальная реконструкция Мюллера не навязывается."
+    ]
+  },
+  {
+    "word": "house",
+    "decision": "review_required",
+    "reason": "Четыре новых кандидата релевантны и современны. Полная приёмка блокируется неоднозначными редкими значениями, сокращением the H. среди примеров и неточным переводом парламентского голосования.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/8/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/8",
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "8913377dfd33dcc19583a715065661e7451c60ae837db513877d92956c604988",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "House дано отдельной заголовочной формой после their."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Сад при доме задаёт конкретное жилище."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Their house — подлежащее с существительным."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Their house has a small garden — обычное бытовое описание."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "У их дома есть небольшой сад сохраняет принадлежность и размер сада."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткая модель с has наглядно показывает основное значение уровня A1."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Конкретный дом с садом не обозначает фирму, династию или парламент."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "House has a garden — нейтральная современная конструкция."
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "dbe6d799dcf46161fd8d48d96c22c317c23abb2f69249396e23a71fb23c0bb03",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "House — та же лемма с заглавной буквой в названии династии."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "House of Tudor однозначно обозначает династический род."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "House — главное существительное в именной группе после about."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Writing about the House of Tudor естественно для исторической темы."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Она пишет о династии Тюдоров сохраняет действие и предмет, без добавления жанра."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Известная модель House of отличает династию от жилого здания."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Tudor задаёт род, а не палату парламента или торговую компанию."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Современное обсуждение династий использует House of; исторический предмет не делает конструкцию устаревшей."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "1908c99de159e840a4c98b9923fc564f1a7c821d0dc1db5f472a5c2d7448d838",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "House — отдельное главное слово в publishing house, не производное."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Publishing house обозначает издательскую фирму-работодателя."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "A publishing house является именной группой после works for."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "She works for a publishing house — обычное описание места работы."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Работает в издательстве естественно передаёт работодателя, не добавляя должности."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Распространённое сочетание показывает конкретную реализацию значения фирмы."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Publishing задаёт организацию, а не дом проживания или издательское здание как объект."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Publishing house — действующее современное обозначение издательства."
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "fd3dc02582108c50e63eed3e4b10576e5c07792d224ac651868f56612a98c977",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "House написано отдельно перед cat и остаётся заголовочным словом."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "House cat реализует атрибутивное домашний; never goes outside дополнительно описывает эту кошку."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "House — атрибутивное существительное, что прямо разрешено формулировкой значения."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Our house cat never goes outside — естественное описание содержания животного."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены наша кошка, домашнее определение и отрицание никогда не выходит."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Пример ясно показывает функцию определения; он не требует считать house cat гарантией исключительно комнатного содержания вообще."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "House определяет cat, а не само называет здание, фирму или род."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "House cat — современное обычное раздельное сочетание."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Религиозная община не установлена простым house; подходящего современного кандидата нет.",
+        "required_action": "Найти действующую религиозную конструкцию с точным референтом или отдельно ограничить значение."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Школьная house как группа учеников не тождественна колледжу или пансиону.",
+        "required_action": "Разграничить институциональные смыслы до нового примера."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Keep the house = сидеть дома исторически ограничено и двусмысленно современному читателю.",
+        "required_action": "Проверить регистр отдельно от приемлемого keep house = вести хозяйство."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "The House как Лондонская фондовая биржа не получило современного локального подтверждения.",
+        "required_action": "Проверить прозвище и маркировку; не подставлять обычное парламентское House."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Divide the house не обязательно означает поимённое голосование; the H. — сокращение, third house — ограниченный переносный термин.",
+        "required_action": "Уточнить процедуру и перенести сокращение из речевых примеров в подходящее поле, сохранив свидетельство."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "A poor house говорит о малой публике, но не фиксирует половинную заполненность.",
+        "required_action": "Подготовить перевод о плохо заполненном зале без заданной доли."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "First house и five o'clock house без театрального контекста непрозрачны; современность не установлена.",
+        "required_action": "Проверить современный регистр каждой конструкции."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "House без guest или названия не устанавливает гостиницу.",
+        "required_action": "Найти современный пример именно заявленного значения, не подменяя его guest house."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "В простых бытовых предложениях house не выражает бордель однозначно.",
+        "required_action": "Подтвердить действующий эвфемистический контекст и его регистр."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Исторический работный дом не иллюстрируется современной леммой workhouse вместо house.",
+        "required_action": "Отдельно решить статус сокращённого исторического наименования без искусственного примера."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Wheelhouse и deckhouse не подтверждают современное самостоятельное house = рубка.",
+        "required_action": "Найти морское употребление самого house либо отдельно пересмотреть значение."
+      },
+      {
+        "meaning_index": null,
+        "problem": "Пропущен важный глагол house с /haʊz/; его нельзя добавить под единственной /haʊs/ без оформления.",
+        "required_action": "Согласовать структуру произношения и отдельные глагольные meaning_proposals."
+      }
+    ],
+    "doubts": [
+      "Все 15 значений, реальные EN/RU и четыре фразы проверены; on the house и основные бытовые идиомы приемлемы.",
+      "Все источники и ограничения предыдущих этапов сохранены."
+    ]
+  },
+  {
+    "word": "place",
+    "decision": "review_required",
+    "reason": "Математическое уточнение и пять новых кандидатов одобрены. Пример позиции чтения требует естественного русского перевода, узнавание человека выходит за явно подтверждённую глоссу, а несколько старых коммерческих и спортивных значений остаются нерешёнными.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/9/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/9",
+    "example_reviews": [
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "9d617f529415f011cf134e4b80660c577464a289dd2ee4df1e57d9b8d3ddee05",
+        "verdict": "rejected",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Place является самостоятельным существительным после my."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Lost my place in the book обозначает потерю позиции чтения."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "My place — прямое именное дополнение lost."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "I lost my place in the book — естественная современная английская конструкция."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "«Я потерял место в книге» калькирует английскую идиому и не передаёт её естественным русским способом; поясняющий хвост не устраняет кальку."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Пара закрепляет неестественный русский эквивалент идиомы; нужен перевод о том, что говорящий забыл, где остановился."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "In the book исключает должность, сиденье и спортивный результат."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Lose one's place при чтении — действующая современная конструкция."
+          }
+        }
+      },
+      {
+        "meaning_index": 12,
+        "candidate_sha256": "4fb132f71e06d4daeb6bb308d5cf9e256f450f1830d27c490cf455f217cefd0f",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Places — регулярное множественное число place."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Two decimal places обозначает две позиции после десятичного разделителя."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Places — счётное существительное после two decimal."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Round the number to two decimal places — стандартная математическая инструкция."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Округлите число до двух знаков после запятой сохраняет действие и количество; разделитель адаптирован к русской записи."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Инструкция понятна и исправляет ошибочную привязку определения к одной стотысячной."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Decimal исключает физическое, рабочее и спортивное место."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Decimal places — обычная современная школьная математическая конструкция."
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "4b0d98e558c62c84f39b2e4d35baac85b7ed9edb4fb36b5d86fe7945db9aa9e0",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Place — заголовочная форма в повелительном наклонении."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Чашка помещается на поверхность стола."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Place — переходный глагол с cup и обстоятельством on the table."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Place the cup on the table естественно в инструкции, с умеренно формальным оттенком."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Поставьте чашку на стол сохраняет предмет, направление и побуждение."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Наглядный буквальный пример непосредственно иллюстрирует главное размещение."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Физическая чашка исключает датирование, трудоустройство и оценку результата."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Place an object on a table — современное обычное инструктивное управление."
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "candidate_sha256": "34ac14f74f595cce6247983ff56dd2df5193514785ca41841ca3566e3f8a648d",
+        "verdict": "review_required",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Place после can't является инфинитивом того же глагола."
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "Can't place him обозначает узнавание и восстановление знакомства в памяти; исходная глосса явно подтверждает локализацию, датирование и обстоятельства, но отдельное узнавание ещё не согласовано."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Place — переходный глагол после модального can't."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Recognize his voice, but can't place him — естественная ситуация неполного узнавания."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Узнаю голос, но не могу вспомнить, откуда знаю человека, точно раскрывает английскую идиому."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Контраст узнаваемого голоса и невозможности установить знакомство понятен."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Контекст памяти отличает пример от размещения и трудоустройства."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Can't place someone — современная разговорная конструкция узнавания."
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "6aa0ce22b5085e6c7f2ccb0e8f9ee18de87d471b1f20056c09912e89847c58f5",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Placed — регулярная прошедшая форма place."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Агентство устраивает человека in a new job."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Placed — переходное сказуемое с her и профессиональным дополнением."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The agency placed her in a new job естественно описывает работу агентства по найму."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены агентство, женщина, новая работа и завершённое действие в прошлом."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Agency и job однозначно раскрывают трудоустройство."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Рабочая должность отличает значение от физической позиции и соревнования."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Place someone in a job — действующая современная конструкция сферы найма."
+          }
+        }
+      },
+      {
+        "meaning_index": 19,
+        "candidate_sha256": "d3ccfe91bca021cb061fe4589d049b93d9de5872e1b1f8250db47b4028be8ee5",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Placed принадлежит глаголу place."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Деньги помещаются на сберегательный счёт."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Placed — переходный глагол с money."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Placed the money in a savings account естественно в нейтрально-официальном описании операции."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Положила деньги на сберегательный счёт сохраняет действие и тип счёта без обещания дохода."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Конкретный счёт делает финансовое назначение средств ясным."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Account задаёт финансовую операцию, не буквальную укладку денег внутрь предмета."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Place money in an account употребляется в современном финансовом описании."
+          }
+        }
+      },
+      {
+        "meaning_index": 20,
+        "candidate_sha256": "49c538a9cb35b7c30e765fb6ec993d8054fedb92053f6c5eb4a7bb540df1ba6a",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Placed — прошедшее время place."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Судьи определяют участнице первое место в соревновании."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Переходное placed сочетается с her и результативным first."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The judges placed her first in the competition — естественная модель судейского ранжирования."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Судьи присудили ей первое место сохраняет субъект оценки, участницу, ранг и соревнование."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Judges и first ясно показывают значение определения места."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Явное судейское решение не подменяет специальное непереходное place о приходе лошади второй."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Place a competitor first — современная действующая спортивная конструкция."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 12,
+        "proposal_sha256": "a8a3524930bea7ac589494220d1b56c69eb8ae7f45f75838f260a85a9474813e",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 604 содержит calculated to five decimal places с переводом точности одной стотысячной."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Десятичный разряд; знак после запятой описывает значение places, а не перевод всего примера с five."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Place остаётся счётным математическим существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Специализированный смысл сохранён; исходная числовая иллюстрация остаётся в доказательствах, прежних examples не было."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Редакционный вывод прозрачен, и sense_after нового математического кандидата точно совпадает с after_meaning."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Уместный является переводом in place, а не существительного place.",
+        "required_action": "Сохранить эту информацию у отдельного выражения согласованной правкой."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Place в названии Gloucester Place не гарантирует площадь; кандидата нет.",
+        "required_action": "Проверить конкретный топоним и объём значения до добавления примера."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Engage/secure places = заказать билеты старомодно и требует конкретного контекста.",
+        "required_action": "Проверить регистр отдельно от корректного six places were laid."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Кандидат отклонён из-за калькированного русского перевода позиции чтения.",
+        "required_action": "Вернуть роли 09; подготовить естественный перевод и новый hash, не переписывая одобренный английский молча."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Out of place = безработный исторически ограничено и конфликтует с обычным современным чтением.",
+        "required_action": "Проверить статус значения должности и отдельно маркировать старый пример."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Кандидат узнавания не должен незаметно расширять глоссу.",
+        "required_action": "Подать подтверждённое meaning_proposal для узнавания или точное обоснование включения в существующую глоссу, затем повторить приёмку."
+      },
+      {
+        "meaning_index": 17,
+        "problem": "Современная товарная конструкция сбыта не установлена.",
+        "required_action": "Найти употребление именно продажи товара, не размещения и не ценных бумаг."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Place a call не является общим примером делать заказ; заказать телефонный разговор отражает старую услугу.",
+        "required_action": "Разделить заказ и звонок, уточнить пометы и подготовить подходящие связанные примеры."
+      },
+      {
+        "meaning_index": 21,
+        "problem": "Присудить второе/третье не согласуется с пассивным to be placed и переводом в первых трёх.",
+        "required_action": "Согласовать залог, границы призовых мест и перевод отдельным meaning_proposal."
+      },
+      {
+        "meaning_index": 22,
+        "problem": "Американское place на скачках часто непереходно означает прийти вторым; текущая глосса описывает присуждение.",
+        "required_action": "Проверить спортивное управление и оформить изменение определения до нового примера."
+      },
+      {
+        "meaning_index": null,
+        "problem": "Out of place не является существительным целиком; парламентское another place требует контекста.",
+        "required_action": "Уточнить категории и ограниченные выражения отдельными проверяемыми правками."
+      }
+    ],
+    "doubts": [
+      "Все 22 значения, исходные пары и шесть фраз рассмотрены; спортивное get a place требует своего контекста, но не отвергается как ложное.",
+      "Все свидетельства и ограничения этапов 06–09 сохранены."
+    ]
+  },
+  {
+    "word": "school",
+    "decision": "review_required",
+    "reason": "Пять обычных кандидатов и рыбный глагол одобрены. Пример окончания обучения отклонён из-за неоправданной завершённости русского перевода. Отсутствующее основное «школа», ограниченные образовательные значения и британский статус schools = экзамены требуют доработки.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/10/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/10",
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "32e28caefa12e8167931eb135faec5a0bbcf7aa83aa55f2f6b5d072a4acc655d",
+        "verdict": "rejected",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "School употреблено самостоятельно в left school."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Возраст шестнадцать задаёт прекращение школьного обучения, не выход из здания."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "School — существительное без артикля в институциональной конструкции."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "She left school at sixteen — естественное современное предложение."
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "Закончила школьное обучение обычно предполагает завершение обучения; left school допускает уход или прекращение без окончания программы."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Пара может научить неверному равенству leave school и успешно закончить школу; пояснение автора не устраняет значение русского текста."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Возраст отличает этап образования от сегодняшнего окончания уроков и отдельного здания."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Leave school at an age — современная обычная образовательная конструкция."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "44f1fb662f784c6700c6f9fc4e08c78afdc44a35830f47c645cac3b4017d0a0f",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "School — отдельное существительное в medical school."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "University's medical school задаёт университетское медицинское подразделение."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "School — главное существительное после medical в предложной группе."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Teaches at the university's medical school — естественная институциональная конструкция."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Преподаёт на медицинском факультете университета передаёт функцию подразделения; название факультет допустимо как функциональный эквивалент."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "University's отличает подразделение от обычной средней школы; различия систем образования следует учитывать в пояснении."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Преподавание в университетском подразделении отличается от идейной школы и школьного коллектива."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Современная [статья Collins](https://www.collinsdictionary.com/dictionary/english/school) подтверждает school как университетское подразделение."
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "5a761f47f3d631b0ea95a179b3655d3a69f839e6db4e7ce6bf477cc2304bfe57",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "School употреблено отдельно после whole."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Человеческое действие cheered задаёт коллектив учащихся и сотрудников."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The whole school — собирательное именное подлежащее."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The whole school cheered — естественное метонимическое описание."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Вся школа приветственно закричала сохраняет коллектив и одобрительные крики без добавления причины."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Одно действие людей наглядно отделяет коллектив от здания."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Уроки, дисциплина или помещение не могут приветственно кричать."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "[Collins](https://www.collinsdictionary.com/dictionary/english/school) отдельно подтверждает современное коллективное значение school."
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "a698a333d96c19599060fba5aa79803d7f9f2d0ee040fd25710b89471d135aca",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "School — отдельное слово перед of thought."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Same school of thought обозначает общее направление взглядов."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "School — счётное существительное, дополнение belong to."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Belong to the same school of thought — естественное устойчивое сочетание."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Принадлежат к одному направлению мысли сохраняет общность подхода без полного согласия по всем вопросам."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Of thought явно отличает переносную школу от учреждения."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Идейная общность не тождественна факультету, классу или школьному коллективу."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "School of thought — современная действующая конструкция; [Collins](https://www.collinsdictionary.com/dictionary/english/school) подтверждает значение группы мыслителей."
+          }
+        }
+      },
+      {
+        "meaning_index": 11,
+        "candidate_sha256": "5f601b93ff375bac160fc34bb93b811904ef17f6e455df7d11d9f1093ac3b831",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "School написано отдельно перед bus."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "School определяет школьное назначение автобуса."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Атрибутивное существительное соответствует явному описанию функции определения."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The school bus is late — обычное короткое предложение."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Школьный автобус опаздывает точно передаёт объект и состояние."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Простой транспортный контекст наглядно показывает перевод школьный."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "School здесь определяет bus и не является самостоятельным зданием или направлением."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "[Collins](https://www.collinsdictionary.com/dictionary/english/school) прямо приводит school bus как современное определительное употребление."
+          }
+        }
+      },
+      {
+        "meaning_index": 12,
+        "candidate_sha256": "4f58d09c9910d4bf9b0ab1a41b3000cb35c7e4178e516a7519ada5f23e95bf05",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Schooled — регулярная прошедшая форма school."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Schooled herself to remain calm обозначает приучение себя к самоконтролю."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Schooled — глагол с возвратным дополнением herself и инфинитивом."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "School oneself to remain calm естественно в формальной письменной речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Приучила себя сохранять спокойствие передаёт обучение поведению без добавления конкретного происшествия."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Контекст самоконтроля точен; для учащегося следует сохранить формальный регистр."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Себя приучают к поведению, а не отправляют в учебное заведение и не собирают рыб."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "[Collins](https://www.collinsdictionary.com/dictionary/english/school) подтверждает современное письменное school someone с обучением поведению и моделью to-infinitive."
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "candidate_sha256": "45cba7e1981733400751aa33682eb9881fadc8664b58eccc93c7efa4196b3723",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "School — инфинитив самостоятельного рыбного глагола после began to."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Рыбы начинают формировать косяк; перевод отражает групповое движение."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Began to school требует глагола, а не существительного school."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The fish began to school — естественное описание поведения рыб."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены рыбы, начало действия и образование косяка; место и причина не добавлены."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Fish делает отдельный омоним понятным; специальную область нужно сохранить в пояснении."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Рыбы сами группируются; образование и дисциплинирование не подразумеваются."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Современная [исследовательская статья Oxford Academic](https://academic.oup.com/icb/article/64/3/753/7676182) фактически обсуждает schooling behavior и schooling dynamics рыб; это действующая биологическая область."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 7,
+        "proposal_sha256": "eb66c7f44ad0054600bc12c8ae169553feb1bb4a9827db159344f9fc866a4f85",
+        "verdict": "review_required",
+        "confidence": 0.96,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Проверенный контекст страницы 708 действительно содержит «8) pl экзамены» без региональной пометы."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Экзамены сохраняет русскую глоссу источника."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Schools в данном толковании является существительным во множественном числе."
+          },
+          "information_preserved": {
+            "pass": false,
+            "reason": "Удаление британской пометы может утратить реальное регионально-университетское ограничение; отсутствие пометы у Мюллера само по себе его не опровергает."
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Современная или историческая область schools = экзамены не установлена; нельзя объявлять снятие ограничения доказанным только по pl."
+          }
+        }
+      },
+      {
+        "meaning_index": 10,
+        "proposal_sha256": "93568b9c207a8f29e4be518fce4474ca8603595ed9192bbda9df393c8f074854",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Контекст страницы 708 прямо содержит «11) (the ~s) pl средневековые университеты»."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Средневековые университеты сохранены, форма the schools уточнена."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Определённый артикль и множественное существительное соответствуют источнику."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Исторический референт явно остаётся в определении; примеров не было и ничего не удалено."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Одобрено точное описание исторического значения и формы; современный пример этим не разрешается."
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "proposal_sha256": "09fafa4257cf22384c548e58671a475de98f99f4f35b969f51451bba55447ad5",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Проверенная страница 708 отделяет school II от school board, где стоят амер., ист."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Собираться косяками точно сохраняет действие рыб."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "После noun стая в источнике отдельно стоит v собираться косяками."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Перевод сохранён, а чужие региональные и исторические ограничения убраны."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Современная биологическая область подтверждена; sense_after кандидата совпадает с after_meaning 07, изменение primary остаётся отдельным решением 08."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Left school допускает уход без завершения программы; русский кандидат сильнее английского.",
+        "required_action": "Вернуть роли 09 для перевода прекращения школьного обучения и нового hash."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Современное school = отдельное школьное задание не показано.",
+        "required_action": "Проверить статус значения, не использовать другую лемму schoolwork."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "School of history скорее подразделение или направление, не отдельный курс.",
+        "required_action": "Найти точное современное употребление дисциплины либо отдельно ограничить значение."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Современные общие предложения с school не выделяют отдельную классную комнату.",
+        "required_action": "Проверить исторический или специальный статус комнатного смысла."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Снятие британского ограничения не прошло независимую приёмку; современного примера экзаменов нет.",
+        "required_action": "Установить региональную и университетскую область употребления до новой редакции помет."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Современный пример исторического the schools не найден.",
+        "required_action": "Сохранить честное историческое определение без нового примера до отдельного решения."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Современное school a child означает обучать, что не тождественно посылать в школу.",
+        "required_action": "Подать отдельное подтверждённое meaning_proposal до подбора современного примера."
+      },
+      {
+        "meaning_index": null,
+        "problem": "В записи отсутствует главное существительное школа; дополнительное предложение 08 не имеет meaning_binding.",
+        "required_action": "Добавить отдельное полное meaning_proposal с источником и hash, не заменяя существующее обучение."
+      },
+      {
+        "meaning_index": null,
+        "problem": "School house о жилье учителя или пансионе нельзя автоматически заменить современным schoolhouse о здании школы; of the old school не noun целиком.",
+        "required_action": "Уточнить регистр, смысл и категории выражений отдельной согласованной правкой."
+      }
+    ],
+    "doubts": [
+      "Все 14 значений, исходный пример и обе фразы проверены; there will be no school today релевантно занятиям.",
+      "Источник Oxford Academic проверен через фактический поисковый результат после недоступного прямого открытия; современность относится к поведению рыб, не ко всем старым школьным значениям.",
+      "Все прежние свидетельства и ограничения сохранены."
+    ]
+  },
+  {
+    "word": "again",
+    "decision": "review_required",
+    "reason": "Отделение время от времени в now and again одобрено. Полная приёмка невозможна из-за добавленной болезни в be oneself again и неоднозначных дискурсивного смысла и модальности then again you must know it.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/11/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/11",
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "80092bec4d993d2b8c61949287f3f8314453e3ef66c0c6334505388a186ef795",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 28 связывает иногда; время от времени с now and again."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Снова, опять описывает голое again без ложного отдельного значения изредка."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Again остаётся наречием повторения."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Все четыре примера остаются; время от времени сохранено в добавленной фразе now and again."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Исправлена область действия перевода, не изменены соседние дискурсивные значения молча."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Be oneself again означает возвращение к обычному состоянию, не обязательно после болезни.",
+        "required_action": "Подать точную связанную правку русского перевода с сохранением исходной цитаты."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "These again are more expensive без контекста может значить «эти же дороже», а не строго с другой стороны.",
+        "required_action": "Добавить различающий контекст либо ограничить перевод фрагмента."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Then again часто вводит оговорку; must know неоднозначно между обязанностью и выводом. Русская пара выбирает оба прочтения без контекста.",
+        "required_action": "Вернуть роли 09 для однозначного примера добавочного довода и точной модальности с новым binding."
+      }
+    ],
+    "doubts": [
+      "Повторительные again and again и time and again приемлемы; количественное as much again не предлог.",
+      "Все исходные примеры, свидетельства и ограничения предыдущих этапов сохранены."
+    ]
+  },
+  {
+    "word": "next",
+    "decision": "review_required",
+    "reason": "Оба новых временных примера одобрены, как и три уточнения 07. Предложное ранжирование, эллиптические письма и перевод not till next time остаются проблемными; один лишь новый порядок их не устраняет.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/12/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/12",
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "5b0c249ad3b97a866bb819d91ffccc2a750dca0ec5a5124f0dc355382eab5d44",
+        "verdict": "approved",
+        "confidence": 0.96,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Next употреблено отдельно после see him."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Фрагмент указывает на следующую встречу с тем же человеком."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Next относится к see и не определяет существительное; показано наречие."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "When I see him next — естественная временная придаточная конструкция."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Когда я его опять увижу сохраняет будущую повторную встречу; опять менее явно, чем в следующий раз, но не меняет событие."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Положение next после дополнения наглядно иллюстрирует наречную функцию."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Нет соседства и определяемого year; задаётся время будущего действия."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "When I see him next — обычный современный порядок слов."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "1789ae3da33c64e92622e216471cd636fafef39278e2cfe087591928e81633e4",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Next — самостоятельное определение перед year."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Назван ближайший следующий год относительно момента речи."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Определительная функция next перед year согласуется с adjective в принятой системе."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Next year — базовое естественное временное словосочетание."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "В будущем году в данном сочетании обозначает следующий год, без добавленной неопределённой отдалённости."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткая модель прямо показывает центральное временное значение."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Year задаёт временную последовательность, а не соседство или самостоятельное next, please."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Next year — нейтральное современное обозначение следующего календарного года."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 2,
+        "proposal_sha256": "6c1bba6495d61d66a8d1d06af21c54889476cc32b9a14d9aac086ba21d94dbb1",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 535 отдельно даёт what next? с двумя вопросительными переводами."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Потом, затем, после описывает наречие порядка действий."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Next в he next proceeded остаётся наречием."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба старых примера сохранены, вопросительный перевод целиком перенесён в новую фразу."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Устранено смешение значения слова и перевода вопроса."
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "proposal_sha256": "31d7d79efd4c4ebeef5c2f5bcef6e8cce6470cf90445794bc01fffb6f9101dea",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 535 даёт n следующий или ближайший без жаргонной пометы."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Субстантивированный следующий человек или предмет сохранён."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Noun отражает принятую эллиптическую подачу next, please и my next."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Все три прежних примера остаются."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снятие общего жаргонного ограничения обосновано обычным next, please; старые эллипсисы отдельно проверяются."
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "proposal_sha256": "45ee4daafd5f8f5a3927ab155b714f0888d71ce7611c97047280dfc7fd2ea91a",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 535 прямо содержит следующий; будущий и next year."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Будущий добавляет подтверждённый временной эквивалент к следующему."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Next перед year является определением и совместимо с adjective."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Следующий сохранён; прежних примеров нет."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Уточнение не заменяет значение соседним; sense_after кандидата совпадает с after_meaning."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "House next to ours и next door относятся к конкретным сочетаниям; my next neighbour без door современно непрозрачно.",
+        "required_action": "Уточнить грамматическую подачу и современность самостоятельного определения."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "She loves him next her own child выражает предпочтение после ребёнка, а не пространственное рядом; русский перевод сглаживает ранжирование.",
+        "required_action": "Подать отдельное значение ранжирования с точным переводом и проверкой современного регистра; также проверить next без to у камина."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "In my next и in our next опускают letter/issue и без контекста непрозрачны.",
+        "required_action": "Проверить современность эллиптических конструкций отдельно от корректного next, please."
+      },
+      {
+        "meaning_index": null,
+        "problem": "Not till next time означает не раньше следующего раза; русский текст добавляет обещание «больше не буду».",
+        "required_action": "Вернуть перевод роли 09 для точного контекстного кандидата и нового binding; sentence само по себе проблему не решает."
+      }
+    ],
+    "doubts": [
+      "Все шесть значений, реальные исходные пары и обе фразы рассмотрены; proceeded to write книжно, но допустимо.",
+      "Повреждённый charter не используется как доказательство главы.",
+      "Все прежние доказательства и ограничения сохранены."
+    ]
+  },
+  {
+    "word": "case",
+    "decision": "review_required",
+    "reason": "Четыре новых кандидата одобрены; a real case требует современной региональной проверки. Исправление юридической пометы обосновано, но старый пример аргументов и современные регистры букв по-прежнему не соответствуют своим текущим значениям.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/13/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/13",
+    "example_reviews": [
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "11391044f4861a0f2089dd15e07712a571d28522c7f63817070c2513b2764e70",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Cases — регулярное множественное число case."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Five cases of influenza считает случаи заболевания гриппом."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Cases — счётное существительное после five."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "There were five cases of influenza — естественное сообщение о числе заболеваний."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Было пять случаев гриппа сохраняет прошедшее время, число и заболевание без добавления места или срока."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткая модель cases of ясно показывает медицинское значение."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Название болезни исключает судебные дела, футляры и пациентов как действующих лиц."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Cases of с названием заболевания — современная обычная счётная конструкция."
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "73ba0e04d27c3574fcced432a46d5cca50fbf0328bf7173f44a722cecc42e6c5",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Case — самостоятельное существительное после the."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Court will hear the case обозначает рассмотрение судебного дела."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "The case — именное прямое дополнение hear."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The court will hear the case tomorrow — стандартная естественная судебная конструкция."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Суд рассмотрит дело завтра сохраняет будущее время и предмет рассмотрения без добавления решения."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Court и hear однозначно задают судебный смысл без сложной юридической детали."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Суд рассматривает дело, а не только доводы в пользу конкретной стороны."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Hear a case — действующая современная конструкция судебной речи."
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "c1508d340562757fdf060ba0d98b971f22227f2a63622b15c606c82112ae1203",
+        "verdict": "review_required",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Case — отдельное существительное с a real."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Оценочное восклицание о дяде допускает значение чудака."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "A real case — именная часть сказуемого."
+          },
+          "natural_english": {
+            "pass": false,
+            "reason": "Оборот возможен, но его современная обычность в нужном разговорном значении не установлена; локальная старая глосса недостаточна."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Твой дядя — настоящий чудак сохраняет лицо, усиление и восклицательную оценку при этом чтении."
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "Без установленного регистра и региона учащийся может принять ограниченное выражение за нейтральное общеупотребительное."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Родственная характеристика в восклицании отделяет чудака от судебного дела или футляра."
+          },
+          "contemporary_usage": {
+            "pass": false,
+            "reason": "Современное употребление именно a real case о чудаке не подтверждено фактическим современным контекстом."
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "cb1fc0be8fa99840435e503b7ce9eb9cb37d8979df4cda114d6757a220b8646d",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Case употреблено отдельно после her."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Pack her case before the trip задаёт укладку дорожного чемодана."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Her case — счётное прямое дополнение packed."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Packed her case before the trip естественно, особенно в британской речи."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Перед поездкой она собрала чемодан сохраняет порядок событий и багажный смысл."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Trip и packed делают контекст ясным; британскую распространённость желательно пояснить."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Дорожная упаковка исключает судебное дело и небольшой футляр для очков."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Pack one's case — современная британская модель речи о чемодане."
+          }
+        }
+      },
+      {
+        "meaning_index": 10,
+        "candidate_sha256": "0588d4240bcda08db69ec633f5ffb26b37457d32370c948d293dc9592ddd5368",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Case — отдельное слово после their."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Футляр предназначен для хранения очков."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Case — существительное в предложной группе in their case."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Put your glasses in their case — обычная бытовая инструкция."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Положи очки в футляр сохраняет действие и предмет; естественно подразумевается футляр для этих очков."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Наглядный небольшой предмет показывает основной защитный футляр."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Glasses задаёт футляр, а не чемодан, транспортный ящик или обстоятельства дела."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Glasses in a case — обычное современное сочетание."
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 4,
+        "proposal_sha256": "ca33b56c7ce97456bf21a4fce53dcaff3e1670d2fc0c7b7130a7a78966977ad3",
+        "verdict": "approved",
+        "confidence": 0.98,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Страница 126 даёт юр. и pl судебная практика без британского ограничения."
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Судебное дело, прецедент и множественная судебная практика сохраняются."
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Case остаётся юридическим существительным."
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Все эквиваленты и прежний пример аргументов сохранены; проблема его привязки отмечена отдельно."
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Снято необоснованное региональное ограничение общего юридического значения; sense_after нового кандидата совпадает с after_meaning."
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "История болезни не подтверждена примером cases of influenza и может принадлежать case history.",
+        "required_action": "Проверить отдельный эквивалент история болезни до его общего утверждения."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Кандидата самого пациента без подмены сложным заболеванием нет.",
+        "required_action": "Найти современную медицинскую метонимию и обозначить профессиональный регистр."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "The case for the defendant относится к доводам, то есть значению 5.",
+        "required_action": "Перенести старую пару согласованной правкой с сохранением свидетельства; новый одобренный пример не разрешает молчаливый перенос."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "A real case не прошло проверки современной области употребления.",
+        "required_action": "Найти современное фактическое подтверждение и уточнить регион/регистр либо вернуть новый кандидат роли 09."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Cigarette case ближе к защитному футляру, чем к транспортному ящику.",
+        "required_action": "Уточнить привязку старого примера и отдельно проиллюстрировать ящик или контейнер."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Дипломат подтверждён как attaché case, не как универсальное значение любого case.",
+        "required_action": "Ограничить эквивалент соответствующим сочетанием отдельной смысловой правкой."
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Lower case и upper case переведены современными регистрами букв, тогда как определение — физическая наборная касса.",
+        "required_action": "Подать отдельное meaning_proposal с сохранением исторического предмета и современных регистров."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Современное упаковочное управление самостоятельного case не установлено.",
+        "required_action": "Найти действующий профессиональный контекст и отличить case от case up."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Выслеживать без ограничения объекта шире разведки места преступления.",
+        "required_action": "Уточнить глоссу и сохранить уместный разговорный case a joint как редакционный пример, не выдавая за локальную цитату."
+      },
+      {
+        "meaning_index": null,
+        "problem": "To put the case that имеет старый регистр, который не установлен для современной учебной выдачи.",
+        "required_action": "Проверить конструкцию отдельно; in case of fire оставить как корректную предложную модель."
+      }
+    ],
+    "doubts": [
+      "Все 14 значений, реальные EN/RU и обе фразы рассмотрены; грамматический accusative case и аргументативные state/make out one's case приемлемы.",
+      "Cased in armour допустимо как литературное или специальное покрытие бронёй; это не подтверждает все подзначения вставки в оправу.",
+      "Все прежние свидетельства и ограничения сохранены."
+    ]
+  },
+  {
+    "word": "next to",
+    "decision": "принято без изменения",
+    "reason": "Sit next to me точно передаёт соседство, next to nothing — почти нулевую величину. Объединённая структура менее подробна, но обе реальные пары корректны; обязательная смена POS приблизительного употребления не доказана.",
+    "confidence": 0.97,
+    "evidence_ref": "#/previous_outputs/06/14/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/14",
+    "example_reviews": [],
+    "issues": [],
+    "doubts": [
+      "Принято без изменения не разрешает перенос новых данных в dataset.",
+      "Sit next to me остаётся редакционным примером; его естественность не зависит от статуса буквальной цитаты.",
+      "Будущее разделение соседства и приближения требует отдельной структурной правки с сохранением обеих пар.",
+      "Все положительные и отрицательные поиски и ограничения предыдущих этапов сохранены."
+    ]
+  },
+  {
+    "word": "each",
+    "decision": "review_required",
+    "reason": "Распределительные each of us и each student корректны, включая обязанность has to. Перевод each and all как все без разбора добавляет неразборчивость; предложенное уточнение 09 содержательно лучше, но не имеет candidate binding для разрешения применения.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/15/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/15",
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Все без разбора допускает отсутствие выбора, тогда как each and all подчёркивает всех и каждого.",
+        "required_action": "Вернуть уточнённый русский перевод роли 09 как отдельного кандидата с hash и получить независимую приёмку."
+      }
+    ],
+    "doubts": [
+      "Оба значения и все три реальные пары проверены; порядок и primary менять не требуется.",
+      "Adjective перед student соответствует старой системе источника; переход на determiner следует решать общей грамматической политикой.",
+      "Все прежние свидетельства и ограничения сохранены."
+    ]
+  },
+  {
+    "word": "without",
+    "decision": "review_required",
+    "reason": "Основное без и герундиальная модель корректны. Пространственные и союзное употребления исторически ограничены, а from without не доказывает существительное; перевод footsteps добавляет дверь и меняет восприятие.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/16/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/16",
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Things without us — старое пространственно-философское употребление; внешний мир обобщает исходные вещи вне нас.",
+        "required_action": "Проверить современный статус, уточнить регистр и перевод отдельной правкой."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "I heard footsteps without переведено с добавленной дверью и началом восприятия; исходный субъект I теряется.",
+        "required_action": "Подготовить точную связанную правку русского текста; оба наречных примера не утверждать как современные из-за уже установленной устарелости."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "From without показывает направление извне, но не устанавливает именной POS наружная сторона.",
+        "required_action": "Провести отдельный грамматический пересмотр и оформить meaning_proposal, не меняя категорию молча."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Современного кандидата союзного without нет; перед герундием будет значение 3.",
+        "required_action": "Сохранить честную устаревшую маркировку и вынести само историческое значение на отдельное решение без старинного нового примера."
+      }
+    ],
+    "doubts": [
+      "Все шесть значений и шесть фактических EN/RU-пар рассмотрены, несмотря на ошибочный счёт пяти в некоторых предыдущих отчётах.",
+      "Without taking leave формально, но остаётся понятной современной моделью; без того чтобы не является союзным POS заголовочного слова в этом примере.",
+      "Все старые свидетельства и неопределённости сохранены; редкость не объявляется OCR-ошибкой."
+    ]
+  },
+  {
+    "word": "well-being",
+    "decision": "изменить",
+    "reason": "Оба новых примера точно разграничивают физическое здоровье и общее благополучие. Порядок 2,1 допустим как учебная рекомендация; он не выдаётся за измеренное частотное ранжирование.",
+    "confidence": 0.98,
+    "evidence_ref": "#/previous_outputs/06/17/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/17",
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "c5a5e0da039f9f595c6341cc62932035a2eb033ac93aa10dde9dceb3deca72f2",
+        "verdict": "approved",
+        "confidence": 0.97,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Well-being дано в точном дефисном написании заголовочного слова."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Physical и вопрос медсестры задают физическое состояние здоровья."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Well-being — существительное в именной группе после about."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Asked about his physical well-being естественно в профессиональной заботе о состоянии человека."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Сохранены медсестра, прошедший вопрос и физическое здоровье; диагноз и выздоровление не добавлены."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Физическое уточнение делает подтверждённый перевод здоровье ясным, хотя русский текст несколько тяжеловесен."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Physical ограничивает аспект здоровья и не означает материальное процветание."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Physical well-being — современное обычное обозначение физического благополучия."
+          }
+        }
+      },
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "0d97fecb71c13fc6466cf9c21124542994d7b557c1e9acdf14a6a6fe0ba3d040",
+        "verdict": "approved",
+        "confidence": 0.99,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Well-being сохраняет заголовочное написание после children's."
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "Благополучие детей названо общим приоритетом без ограничения одним аспектом."
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "Children's well-being — именное подлежащее."
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "The children's well-being comes first — естественное утверждение приоритета."
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Благополучие детей стоит на первом месте точно передаёт притяжательность и идиому comes first."
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "Короткая фраза иллюстрирует широкое значение без сложных социальных терминов."
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "Нет physical или медицинского ограничения; речь об общем благополучии."
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "Children's well-being и comes first — современные нейтральные сочетания."
+          }
+        }
+      }
+    ],
+    "issues": [],
+    "doubts": [
+      "Два аспекта пересекаются, но предоставленные контексты позволяют сохранить текущую учебную раздельность.",
+      "Поиски wellbeing не отменяют прежних нулевых результатов точного well-being; все свидетельства сохранены.",
+      "Ударение и транскрипция не исправлены по повреждённым извлечениям; техническая приёмка выпуска не завершена."
+    ]
+  },
+  {
+    "word": "long-time",
+    "decision": "принято без изменения",
+    "reason": "Современный Cambridge подтверждает longtime, вариант long-time и точный пример a longtime friend. Давний друг передаёт длительность знакомства, а не возраст человека; заменять это значение долгосрочным по локальной отсылке нельзя.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/18/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/18",
+    "example_reviews": [],
+    "additional_evidence": [
+      {
+        "url": "https://dictionary.cambridge.org/dictionary/english/longtime",
+        "query": "site.dictionary.cambridge.org/dictionary/english/longtime \"a longtime friend\"",
+        "result": "Фактический поисковый результат подтверждает вариант написания, определение и исходный пример; прямое открытие страницы вернуло 403.",
+        "quote": "(also long-time)"
+      },
+      {
+        "url": "https://dictionary.cambridge.org/dictionary/english/longtime",
+        "quote": "a longtime friend"
+      }
+    ],
+    "issues": [],
+    "doubts": [
+      "Современное значение и исходный пример проверены по [Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/longtime).",
+      "Отсылка long-time = long-term в локальных производных форматах сохранена как факт, не объявлена ошибкой OCR без изображения.",
+      "Все шесть отрицательных буквальных поисков и ограничения визуальной сверки сохранены.",
+      "Принято без изменения не разрешает перенос новых данных в dataset."
+    ]
+  },
+  {
+    "word": "against",
+    "decision": "review_required",
+    "reason": "Основные противодействие, направление и опора семантически подтверждаются. Редкие соседство и срок не прошли современную приёмку; несколько физических и подготовительных примеров имеют более узкие или неоднозначные переводы.",
+    "confidence": 0.99,
+    "evidence_ref": "#/previous_outputs/06/19/source_evidence",
+    "before_after_ref": "#/previous_outputs/09/19",
+    "example_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Переносное против шерсти относится к against the grain, а не к любому against; текущий пример переводит только буквальные волокна.",
+        "required_action": "Разнести общее направление и устойчивое выражение отдельной смысловой правкой, сохранив старый перевод."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Knock against a stone означает удариться или стукнуться; споткнуться добавляет конкретный механизм.",
+        "required_action": "Подать точную связанную правку перевода роли 09."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "The house against the cinema не подтверждено как обычная современная модель рядом.",
+        "required_action": "Проверить современный регистр и реальное пространственное значение; при отсутствии подтверждения отдельно решить исторический статус."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "He ran against his brother без контекста допускает соревнование или политическое соперничество, не только столкновение.",
+        "required_action": "Подготовить однозначный контекст физического контакта с новым binding."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Against the end of the month подтверждено старым словарём, но современное нейтральное обозначение срока не установлено.",
+        "required_action": "Отдельно проверить само употребление against; пример с by не может заменить его как пример этой леммы."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Against a rainy day — устойчивый переносный оборот; against winter книжно, insurance against old age выражает защиту от последствий старости, не просто общее на/про.",
+        "required_action": "Разграничить подготовку, устойчивую идиому и страховую защиту; проверить современность каждой конструкции и точность переводов."
+      }
+    ],
+    "doubts": [
+      "Все семь значений и все 15 фактических EN/RU-пар рассмотрены; against my will, struggle against difficulties, sailed against the wind, фон и опора приемлемы.",
+      "Порядок 6,1,2,4,7,3,5 и primary 6,1,2 допустимы как учебное решение, не как корпусная частотность.",
+      "Все положительные результаты по восьми источникам, исходные редкие значения и ограничения предыдущих этапов сохранены; удаление или модернизация молча не разрешены."
+    ]
+  }
+]

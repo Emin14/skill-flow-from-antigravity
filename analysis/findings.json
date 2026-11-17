@@ -1,0 +1,71 @@
+{
+  "findings": [
+    {
+      "word": "game",
+      "frequency_rank": 160,
+      "meanings_count": 13,
+      "phrases_count": 3,
+      "contamination": [
+        "meaning id=11: phrase \"to be game for anything\" in example \"to be game for anything\""
+      ],
+      "duplicates": [
+        "to be game for anything"
+      ],
+      "game_away_source_supported": true
+    },
+    {
+      "word": "give",
+      "frequency_rank": 162,
+      "meanings_count": 22,
+      "phrases_count": 13,
+      "contamination": [
+        "meaning id=19: phrase \"give in\" in translation",
+        "meaning id=20: phrase \"give away\" in example \"to give away the bride\"",
+        "meaning id=20: phrase \"give away\" in example \"give away\"",
+        "meaning id=20: phrase \"give back\" in example \"give back\"",
+        "meaning id=20: phrase \"give off\" in example \"give off\"",
+        "meaning id=20: phrase \"give under\" in example \"give under\""
+      ],
+      "duplicates": [
+        "give away",
+        "give back",
+        "give in",
+        "give off",
+        "give under"
+      ],
+      "game_away_source_supported": false
+    },
+    {
+      "word": "look",
+      "frequency_rank": 133,
+      "meanings_count": 9,
+      "phrases_count": 15,
+      "contamination": [
+        "meaning id=4: phrase \"look through\" in example \"look through\"",
+        "meaning id=6: phrase \"look on\" in example \"to look one's age\"",
+        "meaning id=6: phrase \"look on\" in example \"to look oneself again\"",
+        "meaning id=7: phrase \"look to\" in example \"We look to our neighbours for help when the power goes out.\""
+      ],
+      "duplicates": [
+        "look on",
+        "look through",
+        "look to"
+      ],
+      "game_away_source_supported": false
+    }
+  ],
+  "summary": {
+    "total_words_analyzed": 3,
+    "words_with_contamination": 3,
+    "words_with_duplicates": 3,
+    "game_away_is_source_supported": true
+  },
+  "unresolved": [
+    "game: phrasal-verb contamination in numbered meanings",
+    "game: duplicate phrase storage in both meanings and phrases",
+    "give: phrasal-verb contamination in numbered meanings",
+    "give: duplicate phrase storage in both meanings and phrases",
+    "look: phrasal-verb contamination in numbered meanings",
+    "look: duplicate phrase storage in both meanings and phrases"
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "applied_count": 11,
+  "changes": [
+    {
+      "word": "month",
+      "path": "meanings[1:3]",
+      "before": [
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "долгий срок, целая вечность",
+          "examples": [],
+          "register": [
+            "шутливое"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "после дождичка в четверг",
+          "examples": [],
+          "register": [
+            "шутливое"
+          ],
+          "primary": true
+        }
+      ],
+      "after": null,
+      "reason": "move phrase-derived translations into the source-supported month meaning"
+    },
+    {
+      "word": "training",
+      "path": "phrases[new]",
+      "before": null,
+      "after": {
+        "id": 2,
+        "phrase": "training school",
+        "partOfSpeech": "noun",
+        "translation": "специальное училище (медицинское и т. п.); исправительно-трудовая колония",
+        "examples": [],
+        "register": []
+      },
+      "reason": "move source-confirmed training school compounds out of adjective meanings"
+    },
+    {
+      "word": "training",
+      "path": "meanings[4:6]",
+      "before": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "специальное училище (медицинское и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "исправительно-трудовая колония",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 6
+        }
+      ],
+      "after": null,
+      "reason": "remove phrase contamination after destination creation"
+    },
+    {
+      "word": "rest",
+      "path": "phrases[new]",
+      "before": null,
+      "after": {
+        "id": 3,
+        "phrase": "rest home",
+        "partOfSpeech": "noun",
+        "translation": "дом призрения для престарелых и инвалидов; санаторий для выздоравливающих",
+        "examples": [],
+        "register": []
+      },
+      "reason": "move source-confirmed rest home compound"
+    },
+    {
+      "word": "rest",
+      "path": "meanings[22:24]",
+      "before": [
+        {
+          "partOfSpeech": "verb",
+          "translation": "дом призрения для престарелых и инвалидов",
+          "examples": [],
+          "register": [],
+          "id": 23
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "санаторий для выздоравливающих",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 24
+        }
+      ],
+      "after": null,
+      "reason": "remove contaminated rest-home meanings after destination creation"
+    },
+    {
+      "word": "meeting",
+      "path": "meanings[6].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "source marks attributive meeting use"
+    },
+    {
+      "word": "movie",
+      "path": "meanings[0].register",
+      "before": [
+        "кинематография"
+      ],
+      "after": [
+        "американский английский"
+      ],
+      "reason": "replace unsupported domain label with source register"
+    },
+    {
+      "word": "movie",
+      "path": "meanings[1].register",
+      "before": [
+        "британское"
+      ],
+      "after": [
+        "американский английский"
+      ],
+      "reason": "remove unsupported British label"
+    },
+    {
+      "word": "mother",
+      "path": "meanings[0].examples[0].en",
+      "before": "M. Superior",
+      "after": "Mother Superior",
+      "reason": "restore complete source phrase"
+    },
+    {
+      "word": "media",
+      "path": "meanings[0].register",
+      "before": [
+        "фонетика"
+      ],
+      "after": [],
+      "reason": "remove phonetics register from mass-media sense"
+    },
+    {
+      "word": "worth",
+      "path": "meanings[4].examples[4].en",
+      "before": "take the story for what is worth",
+      "after": "take the story for what it is worth",
+      "reason": "repair malformed idiom"
+    }
+  ],
+  "deferred": [
+    "remaining structural cases from recheck reports"
+  ],
+  "before_sha256": "3dce5f5e1d453b3ce6d9db84b55337db482f9dd757b4e0be0ca99bf88f410572",
+  "after_sha256": "2b754d0c6c832a5f5ebbe79c6b03d58c8693396067e5a0b027252608abd5d5b8"
+}

@@ -1,0 +1,218 @@
+{
+  "scope": "next100_test_2026-11-11",
+  "decision": "applied_selected_high_confidence",
+  "changes": [
+    {
+      "path": "not.meanings[0].register",
+      "before": [
+        "разговорное"
+      ],
+      "after": [],
+      "reason": "Общее отрицательное употребление не является разговорным само по себе."
+    },
+    {
+      "path": "by.meanings[7].examples[1].ru",
+      "before": "по закону",
+      "after": "согласно закону; по закону",
+      "reason": "Уточнение смысла by the law как соответствия закону."
+    },
+    {
+      "path": "from.meanings[0].examples[0].en",
+      "before": "from St. Petersbourg",
+      "after": "from St. Petersburg",
+      "reason": "Исправление явной ошибки написания названия города."
+    },
+    {
+      "path": "from.meanings[3].examples[4].ru",
+      "before": "команда не была допущена к соревнованиям",
+      "after": "они отозвали команду с матча",
+      "reason": "Перевод withdrawn должен сохранять субъект и значение отзыва команды."
+    },
+    {
+      "path": "my.phrases[2].register",
+      "before": [
+        "дорожное дело"
+      ],
+      "after": [],
+      "reason": "Удаление явно ошибочной предметной пометы у обращения my dear fellow."
+    },
+    {
+      "path": "so.meanings[5].examples[1].ru",
+      "before": "ему лет сорок или что-то в этом роде so as to",
+      "after": "ему лет сорок или около того",
+      "reason": "Удаление загрязнения соседней фразой so as to и исправление перевода or so."
+    },
+    {
+      "path": "can2.meanings[2].examples[0].en",
+      "before": "canned peaches",
+      "after": "to can peaches",
+      "reason": "Пример должен показывать глагольное значение консервировать, а не причастие."
+    },
+    {
+      "path": "can2.meanings[2].examples[0].ru",
+      "before": "консервированные персики",
+      "after": "консервировать персики",
+      "reason": "Русский перевод согласован с глагольным примером."
+    },
+    {
+      "path": "out.meanings[0].register",
+      "before": [
+        "кинематография"
+      ],
+      "after": [],
+      "reason": "Удаление неподходящей кинематографической пометы у общего значения out."
+    },
+    {
+      "path": "out.meanings[5].examples[10].ru",
+      "before": "несвоевременно",
+      "after": "время вышло; уже поздно",
+      "reason": "out of time означает отсутствие оставшегося времени."
+    },
+    {
+      "path": "out.meanings[5].examples[13].ru",
+      "before": "из памяти вон",
+      "after": "не в своём уме; сумасшедший",
+      "reason": "Исправление буквального и неясного перевода out of mind."
+    },
+    {
+      "path": "out.phrases[0].register",
+      "before": [
+        "коммерция"
+      ],
+      "after": [],
+      "reason": "Удаление неподходящей коммерческой пометы у be out for compliments."
+    },
+    {
+      "path": "what.meanings[1].examples[4].en",
+      "before": "do you know him what came yesterday?",
+      "after": "do you know the man who came yesterday?",
+      "reason": "Исправление явно повреждённой английской конструкции."
+    },
+    {
+      "path": "more.meanings[5].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "Стандартная сравнительная конструкция more powerful не является жаргоном."
+    },
+    {
+      "path": "more.phrases[0].register",
+      "before": [
+        "живопись"
+      ],
+      "after": [],
+      "reason": "Удаление неподходящей пометы у he is no more."
+    },
+    {
+      "path": "up.meanings[2].register",
+      "before": [
+        "историческое"
+      ],
+      "after": [],
+      "reason": "Time is up — современное общеупотребительное выражение."
+    },
+    {
+      "path": "how.meanings[2].translation",
+      "before": "что",
+      "after": "как",
+      "reason": "Оба приведённых примера выражают вопрос о способе действия."
+    },
+    {
+      "path": "other.meanings[0].examples[4]",
+      "before": {
+        "en": "other times, other manners",
+        "ru": "иные времена — иные нравы"
+      },
+      "after": "<removed duplicate>",
+      "reason": "Удаление полного дубликата примера."
+    },
+    {
+      "path": "make.meanings[18].translation",
+      "before": "тасовать карты перед раздачей (в бридже: make the board)",
+      "after": "подготовить расклад (в бридже: make the board)",
+      "reason": "Смысл make the board в бридже не равен перетасовке колоды."
+    },
+    {
+      "path": "think.meanings[5].translation",
+      "before": "подозревать, ожидать (каких-либо результатов)",
+      "after": "считать; не видеть ничего плохого",
+      "reason": "Пример I think no harm in it выражает оценку безвредности, а не подозрение."
+    },
+    {
+      "path": "because.meanings[1].partOfSpeech",
+      "before": "conjunction",
+      "after": "preposition",
+      "reason": "Because of introduces a noun phrase and is a prepositional construction."
+    },
+    {
+      "path": "go.meanings[30].examples[0].ru",
+      "before": "собирается дождь",
+      "after": "сейчас пойдёт дождь / будет дождь",
+      "reason": "Исправление неестественного перевода be going to rain."
+    },
+    {
+      "path": "go.phrases[it goes without saying].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "Фраза функционирует как глагольное предложение."
+    },
+    {
+      "path": "should.meanings[0].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "Should в форме should be — вспомогательный/модальный глагол, не существительное."
+    },
+    {
+      "path": "should.meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "Should в этих примерах — модальный вспомогательный глагол."
+    },
+    {
+      "path": "need.meanings[8].examples[0].ru",
+      "before": "вам нечего (самому) беспокоиться",
+      "after": "вам не нужно (самому) беспокоиться",
+      "reason": "Исправление русского перевода модального need not."
+    },
+    {
+      "path": "right.meanings[5].register",
+      "before": [
+        "разговорное"
+      ],
+      "after": [],
+      "reason": "Приведённые примеры относятся к стандартному употреблению right."
+    },
+    {
+      "path": "work.meanings[13].examples[2].en",
+      "before": "to work like a horse (or a navvy, a nigger, a slave)",
+      "after": "to work like a horse",
+      "reason": "Удаление оскорбительной и ненужной лексики из учебного примера."
+    },
+    {
+      "path": "work.meanings[15].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "Work for peace не относится к строительной сфере."
+    },
+    {
+      "path": "work.phrases[work for].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "Удаление ошибочной строительной пометы у work for."
+    },
+    {
+      "path": "make-up.meanings[5].translation",
+      "before": "верстальщик",
+      "after": "гримёр",
+      "reason": "Make-up man в приведённом примере означает гримёра; полиграфическое значение уже выделено отдельно."
+    }
+  ],
+  "count": 31,
+  "before_sha256": "fb749e3559c7508dedc94773eae7605b70b6790e7a14aa17aae9e22ffe833f70",
+  "after_sha256": "9686489b90d13abf1b6ce3bc9e6f6f85b9c575a4b9ad6f7d3fd86caeb6271343"
+}

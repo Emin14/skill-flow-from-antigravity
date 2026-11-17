@@ -1,10 +1,10 @@
 """
 Скрипт точечных подтверждённых исправлений для первых 500 словарных статей
-oxford_5000_2026-08-27.json на основе словаря Мюллера (2021).
+src/data/oxford_5000.json на основе словаря Мюллера (2021).
 """
 import io, json
 
-JSON_PATH = "oxford_5000_2026-08-27.json"
+JSON_PATH = "src/data/oxford_5000.json"
 
 data = json.load(io.open(JSON_PATH, 'r', encoding='utf-8'))
 word_index = {e['word']: i for i, e in enumerate(data)}

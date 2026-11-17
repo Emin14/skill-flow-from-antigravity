@@ -1,0 +1,90 @@
+{
+  "scope": "chatgpt_recheck_down_love_2026-11-14",
+  "applied_count": 2,
+  "changes": [
+    {
+      "word": "down",
+      "path": "meanings[*].id",
+      "before": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        27,
+        28
+      ],
+      "after": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "reason": "restore sequential IDs; current IDs jumped 25,27,28",
+      "source": "current canonical structural invariant"
+    },
+    {
+      "word": "love",
+      "path": "meanings[1].examples[3]",
+      "before": {
+        "en": "cottage love",
+        "ru": "= рай в шалаше; to make love to; иметь физическую близость с (кем-либо); ухаживать за"
+      },
+      "after": {
+        "en": "cottage love",
+        "ru": "рай в шалаше"
+      },
+      "reason": "separate cottage love from contaminated to make love to construction",
+      "origin": "love article example; to make love to is a separate omitted construction"
+    }
+  ],
+  "unresolved": [
+    "down omitted source tail not expanded",
+    "love meaning-level archaic register remains broad because schema lacks construction-level register"
+  ],
+  "before_sha256": "9003a6d3c5c4e14047ac0034b1dcf1601dc213fd6db688b1f9307486c6cdd0a0",
+  "after_sha256": "432052f4a58960ed95913689382a7726e6e0ac871c99d2b3f635c414f3d51d06"
+}

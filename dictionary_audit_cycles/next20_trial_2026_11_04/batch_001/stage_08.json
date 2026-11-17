@@ -1,0 +1,1767 @@
+[
+  {
+    "word": "another",
+    "decision": "изменить",
+    "reason": "Добавочное и альтернативное значения важнее для начального обучения, чем уподобление another Shakespeare. Рекомендуемый порядок: 1, 3, 2. Все значения и примеры сохраняются.",
+    "confidence": 0.96,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "determiner",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "«Ещё один» — основное добавочное значение.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "pronoun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "«Другой» следует показать вторым как основную альтернативу; грамматический спор по примеру не разрешается этой перестановкой.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "determiner",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Уподобление известному человеку — вторичное употребление, не равное по учебному приоритету «ещё один» и «другой».",
+        "confidence": 0.97
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/0/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/0",
+    "doubts": [
+      "Сохраняются все доказательства и ограничения предыдущих отчётов по ссылкам. Пример another one не иллюстрирует самостоятельное местоименное употребление; примеры здесь не меняются.",
+      "Количественная частотность отдельных значений не измерялась; порядок является учебной оценкой."
+    ]
+  },
+  {
+    "word": "own",
+    "decision": "изменить",
+    "reason": "Собственность и владение должны предшествовать редкому обращению «любимый» и признанию. Рекомендуемый порядок: 1, 5, 2, 3, 6, 4. Решение 07 об отделении own up сохраняется.",
+    "confidence": 0.96,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "«Свой собственный» — центральное определительное употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Владение — главное глагольное значение; его полезно показать сразу после основного определения.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Самостоятельное авторство идеи полезно ученику; primary сохраняется, позиция меняется после основных значений собственности.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Усиление родства сохраняется как вторичное после основных определительных значений.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Признавать(ся)» не следует приравнивать по учебному приоритету к владению; содержание own up рассматривается отдельно.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Ласковое обращение farewell my own существенно менее полезно для начального обучения.",
+        "confidence": 0.98
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/1/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/1",
+    "doubts": [
+      "Все прежние доказательства и сомнения сохраняются по ссылкам, включая произношение, оформление выражений и необычное значение own up.",
+      "Пример farewell my own требует отдельного грамматического анализа; здесь меняется только приоритет.",
+      "Частотность значений не измерялась."
+    ]
+  },
+  {
+    "word": "under",
+    "decision": "изменить",
+    "reason": "Пространство, количественный предел, состояние и подчинение полезнее редких самостоятельных прилагательных и артиллерийского существительного. Рекомендуемый порядок: 1, 8, 4, 3, 5, 2, 6, 7, 9, 10, 11, 12, 13, 14, 15.",
+    "confidence": 0.95,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Пространственное «под» остаётся первым.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Возрастные, ценовые и количественные пределы — основное учебное употребление; поднять на второе место.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Состояние и процесс в under repair, under arrest, under consideration имеют высокий практический приоритет.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Руководство и контроль образуют важное переносное значение.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Обстоятельства и условия показать после основных пространственных и переносных моделей; широкая группа примеров остаётся вторичной.",
+        "confidence": 0.86
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Бремя и тяжесть — более узкое переносное развитие; снять primary.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Соответствие закону или соглашению сохранить после более общих моделей.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Отнесение к рубрике полезно как вторичное классификационное употребление.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Использование земли под культуру остаётся специализированным.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Самостоятельное «ниже, вниз» без примеров не обосновано как главное учебное значение.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Внизу» сохранить вторичным; дублировать пространственное ядро несколькими primary не требуется.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Атрибутивное «нижний» уступает основным предложным употреблениям.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Нижестоящий, подчинённый» не является основным начальным значением самостоятельного under.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Ограниченное прилагательное остаётся вторичным.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Артиллерийский недолёт — специальное значение.",
+        "confidence": 0.99
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/2/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/2",
+    "doubts": [
+      "Все прежние свидетельства и сомнения сохраняются по ссылкам, включая необычные примеры и границы помет.",
+      "Краткий источник роли подтверждает пространство, условия и количественный предел; он не устанавливает частотность всех расширенных значений.",
+      "Для значения 5 границы с состоянием и давлением неоднородны; его содержание не сокращается."
+    ]
+  },
+  {
+    "word": "during",
+    "decision": "оставить",
+    "reason": "Единственное временное предложное значение уже основное; менять порядок или primary не требуется.",
+    "confidence": 0.99,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Перевод охватывает время события и протяжённость периода; внутри записи нет конкурирующего вторичного значения.",
+        "confidence": 0.99
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/3/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/3",
+    "doubts": [
+      "Все доказательства и ограничения предыдущих отчётов сохраняются по ссылкам. Ошибочная или нетипичная помета adv в кратком источнике не принимается.",
+      "Примеров в записи нет; это не препятствует решению о primary."
+    ]
+  },
+  {
+    "word": "game",
+    "decision": "изменить",
+    "reason": "Основными следует считать игру, отдельную партию и настольную игру. Прилагательные и дичь сохраняются вторичными. Рекомендуемый порядок: 1, 2, 5, 3, 6, 4, 9, 8, 7, 11, 10, 12, 13; омоним о дичи остаётся отдельной группой.",
+    "confidence": 0.96,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Общее «игра» — первое учебное значение; переносный перевод относится к выражению.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Партия или матч — основное исчисляемое употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Настольная игра — бытовое значение, которое нужно поднять и отметить primary.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Соревнования и игры во множественном числе следуют за основными игровыми значениями.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Развлечение и забава сохраняются близко к игровому ядру.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Количество очков и счёт — более узкая спортивная детализация.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Уловки показать среди переносных употреблений, без повышения до primary.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Замысел и дело — вторичное переносное значение.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Шутка преимущественно иллюстрируется выражениями; основной статус не требуется.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Готовность сделать что-либо полезнее смелости, но вторична относительно существительного «игра».",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Смелый, боевой» снять с основного учебного уровня.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Дичь — отдельная омонимическая группа; её наличие в кратком словаре не делает её главным значением A1.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Мясо дичи — второе значение той же отдельной группы, вторичное для общего обучения.",
+        "confidence": 0.97
+      }
+    ],
+    "additional_meaning_proposals": [
+      {
+        "partOfSpeech": "verb",
+        "translation": "играть в азартные игры",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Источник подтверждает глагол; при включении расположить после прилагательных game I, перед отдельной группой дичи.",
+        "confidence": 0.96
+      },
+      {
+        "partOfSpeech": "adjective",
+        "translation": "искалеченный, парализованный (о руке, ноге)",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Подтверждён отдельный game III; при расширении охвата сохранять отдельным омонимом после группы дичи.",
+        "confidence": 0.95
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/4/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/4",
+    "doubts": [
+      "Все свидетельства, исправления переводов и помет и ограничения предыдущих отчётов сохраняются по ссылкам.",
+      "Добавления требуют отдельного решения об охвате; существующие значения и примеры не удаляются.",
+      "Современное компьютерное употребление не выделено в предоставленной записи; его объём не устанавливается по текущим цитатам."
+    ]
+  },
+  {
+    "word": "thing",
+    "decision": "изменить",
+    "reason": "Дела и обстоятельства должны входить в учебное ядро вместе с предметом и неопределённым «нечто». Рекомендуемый порядок существующих значений: 1, 2, 3, 7, 5, 4, 6. Отдельно отмечается подтверждённый пробел бытового множественного things.",
+    "confidence": 0.97,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Предмет — первое конкретное значение; философский пример не определяет приоритет всей группы.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Неопределённое обозначение предметов и содержания — основное употребление.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Дела, события и обстоятельства, включая how are things?, необходимы в общем учебном ядре.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Подходящее или нужное сохраняется сразу после ядра; многие примеры являются устойчивыми конструкциями.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Обозначение существа, особенно poor thing, полезно, но вторично.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Качество и свойство — абстрактная детализация общего значения.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Модный образец в the latest thing менее важен для начального освоения.",
+        "confidence": 0.96
+      }
+    ],
+    "additional_meaning_proposals": [
+      {
+        "partOfSpeech": "noun",
+        "translation": "во множественном числе: вещи (дорожные); багаж",
+        "primary": true,
+        "decision": "review_required",
+        "reason": "Подтверждённое бытовое значение; при добавлении расположить после существующего значения 3.",
+        "confidence": 0.97
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "во множественном числе: одежда; личные вещи",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Сохранить отдельно от багажа при расширении записи; учебная граница с общим «вещи» требует редакционного решения.",
+        "confidence": 0.9
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "во множественном числе: утварь, принадлежности",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Подтверждённое частное употребление; расположить рядом с личными вещами.",
+        "confidence": 0.94
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "литературное, художественное или музыкальное произведение; рассказ, анекдот",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "При включении оставить в конце вторичных значений.",
+        "confidence": 0.95
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/5/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/5",
+    "doubts": [
+      "Все прежние свидетельства и ограничения сохраняются по ссылкам; ошибочная британская помета не используется при оценке.",
+      "Близость значений 1 и 2 не является основанием объединять их или удалять примеры.",
+      "Добавления являются предложениями по охвату, а не применёнными изменениями."
+    ]
+  },
+  {
+    "word": "give",
+    "decision": "изменить",
+    "reason": "Передача, предоставление и продуктивные сочетания с существительным действия должны быть видны рядом с общим «давать». Рекомендуемый порядок: 1, 2, 4, 6, 8, 14, 9, 7, 5, 3, 13, 11, 17, 18, 10, 16, 12, 19, 20, 15, 21, 22. Фразовые глаголы не используются как доказательство приоритета значения о тосте.",
+    "confidence": 0.94,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Общее «давать, отдавать» остаётся первым.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Дарение — основное бытовое употребление; редкие эквиваленты внутри группы не меняют его статуса.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Вручение и непосредственная передача предмета должны входить в ядро.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Предоставление и поручение имеют высокий практический учебный приоритет.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Сочетания give a look, give permission, give an order представляют важную продуктивную модель.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Причинение состояния или трудностей сохраняет primary и поднимается ближе к ядру.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Производить или быть источником сохраняется основным, после передачи и причинения.",
+        "confidence": 0.9
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Посвящение внимания и сил сохраняется вторичным абстрактным употреблением.",
+        "confidence": 0.9
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Передача приветствий — полезная, но более узкая модель.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Платёж не должен опережать основные способы передачи и предоставления.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Передача заболевания сохраняется как частное употребление.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Высказывание и показывание охватывают неоднородные конструкции; primary не добавляется.",
+        "confidence": 0.88
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Назначение наказания — тематически ограниченное значение.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Устройство обеда или вечеринки полезно вторично; неподтверждённая устарелость не служит основанием порядка.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Физическая податливость отличается от ядра передачи и сохраняется вторичной.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Уступка в споре остаётся вторичной без ошибочных отраслевых помет.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Исполнение произведения — ограниченное употребление.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Выход окна или прохода требует специальной конструкции и остаётся в конце глагольного раздела.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Провозглашение тоста вторично; приложенные фразовые глаголы не относятся к этому значению.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Оценочное употребление из приведённого примера менее приоритетно и перемещается в конец глагольных значений.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Существительное об упругости остаётся после глагольного раздела.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Переносная уступчивость следует за физической податливостью.",
+        "confidence": 0.97
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/6/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/6",
+    "doubts": [
+      "Все свидетельства, пропуски фразовых значений и ограничения предыдущих отчётов сохраняются по ссылкам.",
+      "Загрязнение examples значения 20 остаётся нерешённым; исходные примеры не удаляются и не используются для повышения его primary.",
+      "Порядок близких значений 7, 9 и 11 является учебной оценкой; корпусная частотность не установлена."
+    ]
+  },
+  {
+    "word": "end",
+    "decision": "изменить",
+    "reason": "Завершение как существительное и глагол и пространственный конец образуют ядро. Частное «положить конец» сохраняется без отдельного primary. Рекомендуемый порядок: 1, 2, 7, 8, 3, 6, 4, 5.",
+    "confidence": 0.96,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Временной или событийный конец остаётся первым.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Край и кончик — основное пространственное значение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Заканчивать и заканчиваться следует поднять непосредственно к основным существительным.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Положить конец» — частное переходное употребление, уже близкое значению 7; сохранить отдельно как вторичное.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Цель полезна после основного ядра, но не равна ему по начальному учебному приоритету.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Сторона в деле сохраняется вторичной; источник именно текущего примера подтверждён неполно.",
+        "confidence": 0.85
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Смерть — переносное значение с ограниченными конструкциями.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Обрезок и окурок сохраняются в конце вторичных существительных.",
+        "confidence": 0.95
+      }
+    ],
+    "additional_meaning_proposals": [
+      {
+        "partOfSpeech": "noun",
+        "translation": "результат, следствие",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Подтверждённый пропуск расширенной статьи; при включении расположить рядом с целью, не заменяя текущие значения.",
+        "confidence": 0.94
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/7/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/7",
+    "doubts": [
+      "Все свидетельства и ограничения предыдущих отчётов сохраняются по ссылкам, включая to no end, on our end и результативное end up.",
+      "Текущие примеры семантически рассмотрены как редакционные; они не объявляются цитатами Мюллера.",
+      "Полная реконструкция расширенной статьи не выполняется; её дополнительные частные значения требуют отдельного решения об охвате."
+    ]
+  },
+  {
+    "word": "house",
+    "decision": "изменить",
+    "reason": "Дом — бесспорное ядро; религиозное братство не должно быть primary. Палата сохраняет основной статус как важное общественное употребление. Рекомендуемый порядок существующих значений: 1, 5, 8, 6, 9, 4, 3, 15, 10, 11, 2, 7, 12, 13, 14.",
+    "confidence": 0.95,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Дом и жилище — первое учебное значение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Семья и хозяйство тематически близки дому; поднять без автоматического повышения primary по устойчивым выражениям.",
+        "confidence": 0.9
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Парламентская палата сохраняет primary и поднимается выше редких институциональных употреблений.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Фирма и издательство полезны вторично после дома и парламентского значения.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Зал и публика сохраняются вторичными, ближе к практическим значениям.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Род и династия — отдельное вторичное значение.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Колледж или школьный пансион — культурно ограниченное употребление.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Атрибутивное употребление расположить рядом с общеупотребительными значениями; без примеров primary не добавлять.",
+        "confidence": 0.86
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Представление или сеанс — более узкое театральное употребление.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Гостиница и постоялый двор остаются вторичными.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Религиозное братство и монастырь тематически ограничены; снять primary и переместить ниже.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Обозначение Лондонской фондовой биржи — узкое разговорное употребление; сохранить вторичным после более общих институциональных значений.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Бордель — ограниченное значение, не учебное ядро.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Исторический работный дом сохраняется в конце.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Морская рубка — специальное значение.",
+        "confidence": 0.99
+      }
+    ],
+    "additional_meaning_proposals": [
+      {
+        "partOfSpeech": "verb",
+        "translation": "предоставлять жильё; поселить, приютить",
+        "primary": true,
+        "decision": "review_required",
+        "reason": "Оба словаря подтверждают важный пропущенный глагол; при включении показать после основного существительного с отдельным /haʊz/.",
+        "confidence": 0.94
+      },
+      {
+        "partOfSpeech": "verb",
+        "translation": "расквартировывать; жить в доме; помещать, убирать; убирать урожай, загонять скот; вмещать(ся)",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Подтверждённые расширенным источником вторичные глагольные значения требуют отдельных записей после общего обеспечения жильём.",
+        "confidence": 0.9
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/8/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/8",
+    "doubts": [
+      "Все свидетельства и ограничения предыдущих отчётов сохраняются по ссылкам, включая театральные примеры, the H. и to divide the house.",
+      "Добавление глагольных значений остаётся предложением до решения структуры произношения по частям речи.",
+      "Primary глагола относится к общему обеспечению жильём, а не ко всем его специальным подзначениям."
+    ]
+  },
+  {
+    "word": "place",
+    "decision": "изменить",
+    "reason": "Место и размещение составляют ядро. Определение положения или даты следует сохранить вторичным. Полный рекомендуемый порядок указан в recommended_order; ограниченное значение площади располагается после остальных существительных, перед вторичными глаголами.",
+    "confidence": 0.94,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Общее место — первое значение; «уместный» относится к выражению in place.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Ставить, класть и размещать — основное глагольное употребление; поднять сразу после существительного.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Населённый пункт показать среди ближайших конкретизаций места; primary без уточнения границ не добавлять.",
+        "confidence": 0.88
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Жилище и резиденция полезны вторично; приведённый пример не доказывает приоритет всей группы.",
+        "confidence": 0.9
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Место за столом или для сидения полезнее редких значений должности и топонимической площади.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Социальное положение сохраняется вторичным.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Точка на поверхности — конкретизация общего места.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Место в тексте сохраняется как вторичное.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Место в состязании полезно перед более ограниченными существительными.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Обязанность в it is his place — конструкционно ограниченное употребление.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Математический разряд остаётся специальным значением; уточнение 07 сохраняется.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Должность и пример out of place «безработный» имеют меньший начальный учебный приоритет.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Оформление заказа полезно среди вторичных глагольных моделей; перенос американской пометы остаётся отдельным вопросом.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Возлагать надежды или доверие — полезное вторичное сочетание.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Определение положения, времени или обстоятельств не равнозначно базовому размещению; снять primary.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Устройство на должность — вторичное профессиональное употребление.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Помещение капитала — тематически ограниченное значение.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Сбыт товара сохраняется ближе к концу коммерческих употреблений.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Определение спортивных мест — специальное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Призовое место в соревновании сохраняется вторичным.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Американское значение на скачках остаётся последним в спортивной группе.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Площадь в собственных названиях — ограниченное употребление; расположить после остальных существительных, перед вторичными глаголами.",
+        "confidence": 0.98
+      }
+    ],
+    "recommended_order": [
+      1,
+      13,
+      2,
+      3,
+      6,
+      5,
+      8,
+      7,
+      11,
+      10,
+      12,
+      9,
+      4,
+      18,
+      16,
+      14,
+      15,
+      19,
+      17,
+      20,
+      21,
+      22
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/9/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/9",
+    "doubts": [
+      "Все свидетельства и ограничения предыдущих отчётов сохраняются по ссылкам, включая математическое обобщение, out of place и распределение помет.",
+      "Пример значения 13 переносный; он не отменяет основного статуса буквального размещения, но не иллюстрирует его непосредственно.",
+      "Количественная частотность соседних вторичных значений не установлена."
+    ]
+  },
+  {
+    "word": "school",
+    "decision": "изменить",
+    "reason": "Отсутствующее «школа» необходимо предложить первым основным значением. Обучение и школьные занятия образуют оставшееся ядро; глаголы и рыбный омоним не должны автоматически становиться primary. Порядок существующих значений: 1, 2, 5, 8, 9, 11, 6, 4, 3, 7, 10, 12, 13, 14.",
+    "confidence": 0.98,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Обучение важно для повседневных школьных конструкций, но не заменяет отсутствующий перевод «школа».",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Школьные занятия, показанные no school today, входят в основное учебное ядро.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Факультет или подразделение университета полезно вторично после школьного ядра.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Школьный коллектив близок основному учреждению, но остаётся отдельной метонимией.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Научное или художественное направление — значимое вторичное употребление.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Атрибутивное «школьный» разместить рядом с образовательными значениями; отдельный primary без примеров не требуется.",
+        "confidence": 0.89
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Комната или аудитория — более узкое значение.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Университетская дисциплина остаётся вторичной.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Школьное задание не должно опережать основные значения учреждения и занятий.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Экзамены во множественном числе — ограниченное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Средневековые университеты — историческое содержание, вторичное независимо от исправления пометы.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Дисциплинирование и приучение уступают образовательному существительному по начальному приоритету.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Посылать в школу» не является главным учебным значением слова; снять primary.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Рыбный глагол принадлежит отдельному омониму и не входит в образовательное ядро.",
+        "confidence": 0.99
+      }
+    ],
+    "additional_meaning_proposals": [
+      {
+        "partOfSpeech": "noun",
+        "translation": "школа",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Прямо подтверждённое и отсутствующее основное значение; добавить перед существующим значением 1, не заменяя его.",
+        "confidence": 0.99
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "стая, косяк (рыб)",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "При расширении охвата добавить отдельным school II перед существующим рыбным глаголом; не объединять с образовательной школой.",
+        "confidence": 0.98
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/10/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/10",
+    "doubts": [
+      "Все прежние свидетельства и ограничения сохраняются по ссылкам; исправления помет 07 остаются действительными предложениями.",
+      "У нового основного значения нет meaning_index: индекс нельзя присваивать как будто оно уже присутствует в исходном массиве.",
+      "Визуальная сверка не выполнена; основное «школа» независимо подтверждено обоими используемыми словарными фрагментами."
+    ]
+  },
+  {
+    "word": "again",
+    "decision": "изменить",
+    "reason": "Повторение и возвращение к прежнему состоянию — основное значение. Дискурсивные «с другой стороны» и «кроме того» сохраняются вторичными в текущем порядке.",
+    "confidence": 0.98,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "«Снова, опять» охватывает ядро; «время от времени» принадлежит now and again согласно предложению 07.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Дискурсивное противопоставление не равно по начальному приоритету повторению.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Добавочный довод — вторичное дискурсивное употребление, часто зависящее от конструкции then again.",
+        "confidence": 0.96
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/11/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/11",
+    "doubts": [
+      "Все доказательства и ограничения предыдущих отчётов сохраняются по ссылкам, включая произношение и классификацию as much again.",
+      "Примеры дискурсивных значений сохраняются; их конкретный современный перевод здесь не пересматривается."
+    ]
+  },
+  {
+    "word": "next",
+    "decision": "изменить",
+    "reason": "Следующий по порядку или времени должен стоять первым и иметь primary. Предлог без to и субстантивированные употребления сохраняются вторичными. Рекомендуемый порядок: 6, 1, 2, 3, 5, 4.",
+    "confidence": 0.98,
+    "meanings": [
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "«Следующий; будущий» — центральное учебное значение; перенести с последней позиции на первую.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Ближайшее и соседнее сохраняют основной статус после последовательности и времени; часть примеров относится к next to и next door.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "«Затем, после» — основное наречное употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Временное «в следующий раз» полезно и уже отмечено primary; без примеров оснований менять текущую отметку недостаточно.",
+        "confidence": 0.83
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Эллиптический следующий человек или предмет вторичен; next, please не делает все примеры этой группы основными.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Предлог next без to и ранжирование в примере не должны иметь равный приоритет с основным следующий.",
+        "confidence": 0.97
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/12/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/12",
+    "doubts": [
+      "Все прежние свидетельства и ограничения сохраняются по ссылкам, включая перевод she loves him next her own child и повреждённый пример следующей главы.",
+      "Для значения 3 сохраняется текущая отметка при недостаточной детализации; решение менее уверенное.",
+      "Перенос вопросительного перевода и исправление категорий выражений из 07 не отменяются."
+    ]
+  },
+  {
+    "word": "case",
+    "decision": "изменить",
+    "reason": "Ситуация, судебное дело и защитный футляр важнее редких глаголов упаковки и обшивки. Омонимические группы сохраняются раздельными. Рекомендуемый порядок: 1, 4, 5, 2, 3, 6, 7, 10, 8, 9, 11, 12, 13, 14.",
+    "confidence": 0.96,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Случай, ситуация и положение дел — первое учебное значение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Судебное дело — важное самостоятельное значение; поднять и отметить primary.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Доводы и доказательства показать рядом с судебным делом, сохранив отдельность.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Случай заболевания сохраняет primary как широко полезное значение, после ситуации и судебного дела.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Пациент — более узкая профессиональная метонимия.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Грамматический падеж полезен изучающему, но тематически ограничен; сохранить вторичным.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Странный человек — ограниченное разговорное значение.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Футляр, чехол и корпус должны открывать отдельную предметную омонимическую группу и иметь основной статус.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Ящик и контейнер сохранить рядом с футляром; данный пример cigarette case ближе к значению 10 и не доказывает отдельный primary.",
+        "confidence": 0.9
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Чемодан сохраняется вторичным внутри предметной группы; универсальность перевода «дипломат» не доказана.",
+        "confidence": 0.88
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Историческая наборная касса не становится основной из-за примеров современного регистра букв.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Упаковка в ящик — вторичное производное значение; снять primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Обшивка и вставка в оправу тематически ограничены; снять primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Разведка места преступления сохраняется как жаргонное вторичное употребление.",
+        "confidence": 0.97
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/13/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/13",
+    "doubts": [
+      "Все свидетельства и ограничения предыдущих отчётов сохраняются по ссылкам, включая to case a joint, attaché case и несоответствие примера судебному значению.",
+      "Нумерация case I/II различается между изданиями; структурное разделение проводится по смысловым группам, без выдуманной единой нумерации.",
+      "Современный регистр букв требует отдельной редакционной записи, прежде чем обсуждать его собственный primary."
+    ]
+  },
+  {
+    "word": "next to",
+    "decision": "оставить",
+    "reason": "Пространственное соседство остаётся главным. Существующий массив объединяет его с «почти»; при неразделённой структуре primary сохраняется, а порядок примеров уже ставит пространство первым.",
+    "confidence": 0.92,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Главный статус обоснован «рядом с»; вторичное «почти» в next to nothing не делает пространственное ядро менее основным.",
+        "confidence": 0.96
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/14/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/14",
+    "doubts": [
+      "Все прежние свидетельства и ограничения сохраняются по ссылкам; sit next to me остаётся редакционным примером.",
+      "Если позднее значения разделят, рекомендовать пространство первым с primary:true, приближение вторым с primary:false; сейчас новые индексы не создаются.",
+      "Классификация приблизительного next to как предлога или наречного выражения остаётся открытой."
+    ]
+  },
+  {
+    "word": "each",
+    "decision": "оставить",
+    "reason": "Определительное и самостоятельное местоименное употребления передают один центральный распределительный смысл. Оба primary оправданы; доказательств преимущества перестановки нет.",
+    "confidence": 0.97,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "pronoun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Each of us демонстрирует основное самостоятельное употребление «каждый».",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Each student показывает столь же важное употребление перед существительным; текущая грамматическая категория сохраняется.",
+        "confidence": 0.99
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/15/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/15",
+    "doubts": [
+      "Все доказательства и ограничения предыдущих отчётов сохраняются по ссылкам.",
+      "Переход adjective → determiner является общей грамматической политикой, не решением о primary.",
+      "Устойчивое each and all не определяет приоритет местоименной группы целиком."
+    ]
+  },
+  {
+    "word": "without",
+    "decision": "изменить",
+    "reason": "«Без» и продуктивная конструкция с герундием составляют основное учебное содержание. Пространственное «вне, за» сохраняется вторичным без добавления неподтверждённой стилистической пометы. Рекомендуемый порядок: 1, 3, 2, 4, 5, 6.",
+    "confidence": 0.98,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Отсутствие чего-либо — центральное значение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Without taking leave представляет продуктивную и практически важную модель; поднять и отметить primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Пространственное «вне, за» и пример things without us не относятся к современному начальному ядру.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Уже отмеченное устаревшим наречие остаётся вторичным.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Наружная сторона в from without — ограниченное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "conjunction",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Устаревшее разговорное союзное употребление не повышается.",
+        "confidence": 0.99
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/16/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/16",
+    "doubts": [
+      "Все свидетельства и ограничения предыдущих отчётов сохраняются по ссылкам, включая грамматический анализ from without.",
+      "Снятие primary у пространственного предлога не означает удаления значения или автоматического присвоения пометы «устаревшее»."
+    ]
+  },
+  {
+    "word": "well-being",
+    "decision": "изменить",
+    "reason": "Общее благополучие следует показывать раньше здоровья как частного аспекта. Рекомендуемый порядок: 2, 1. Оба существующих primary сохраняются: представленные источники не дают достаточного основания понижать здоровье.",
+    "confidence": 0.86,
+    "meanings": [
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Благополучие охватывает наиболее общее учебное понимание слова; поставить первым.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Здоровье подтверждено словарём и остаётся важным аспектом; перенести на вторую позицию без снятия primary при неопределённости.",
+        "confidence": 0.85
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/17/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/17",
+    "doubts": [
+      "Все прежние положительные и отрицательные результаты поиска и ограничения сохраняются по ссылкам.",
+      "В указанном кратком источнике роли буквального совпадения нет; используются подтверждения расширенной статьи и SamPoln.",
+      "Примеров и корпусного распределения нет; перестановка является учебной оценкой, а не установленным частотным ранжированием.",
+      "Физическое, психологическое и материальное благополучие не следует автоматически превращать в новые отдельные значения."
+    ]
+  },
+  {
+    "word": "long-time",
+    "decision": "review_required",
+    "reason": "В существующей записи одно содержательно согласованное значение; primary и порядок сохраняются. Отсылка источника к long-term не позволяет заменить «давний» на «долгосрочный» без разрешения ранее установленного расхождения.",
+    "confidence": 0.9,
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Давний или многолетний в a longtime friend соответствует заявленному учебному смыслу; конкурирующее подтверждённое значение внутри записи отсутствует.",
+        "confidence": 0.94
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/18/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/18",
+    "doubts": [
+      "Все доказательства, шесть отрицательных буквальных поисков и ограничения предыдущих отчётов сохраняются по ссылкам.",
+      "Остаётся неразрешённой отсылка long-time = long-term в производных форматах.",
+      "Пример a longtime friend не подтверждён найденной статьёй; сохранение его учебной оценки не означает подтверждения печатной цитаты.",
+      "Визуальная сверка страницы 478 и проверка вариантов написания не выполнены."
+    ]
+  },
+  {
+    "word": "against",
+    "decision": "изменить",
+    "reason": "Несогласие и противодействие должны открывать запись вместе с направлением «против» и физическим упором. Рекомендуемый порядок: 6, 1, 2, 4, 7, 3, 5. Редкие соседство и срок сохраняются вторичными.",
+    "confidence": 0.97,
+    "meanings": [
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Противодействие и несогласие — центральное современное учебное употребление; поставить первым и отметить primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Движение против ветра остаётся основным, после общего противодействия; перевод против шерсти относится к выражению.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "preposition",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Опора и соприкосновение у стены или забора сохраняют основной статус; группа фона остаётся внутри текущего значения.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Столкновение — более узкое физическое употребление рядом с опорой.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Подготовка или защита от будущего события полезны вторично; разнородные примеры не обосновывают primary всей группы.",
+        "confidence": 0.9
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Соседство из the house against the cinema не должно опережать общеупотребительное противодействие.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "preposition",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Обозначение срока сохранить последним как ограниченное учебное употребление.",
+        "confidence": 0.98
+      }
+    ],
+    "source_evidence_ref": "#/previous_outputs/06/19/source_evidence",
+    "previous_review_ref": "#/previous_outputs/07/19",
+    "doubts": [
+      "Все свидетельства и ограничения предыдущих отчётов сохраняются по ссылкам, включая современный статус примеров соседства и срока.",
+      "Новые пометы устарелости не присваиваются по одному низкому учебному приоритету.",
+      "Against the grain остаётся устойчивым выражением; его переносный перевод не используется как самостоятельное значение предлога.",
+      "Количественная частотность значений 6 и 1 не измерялась; их взаимный порядок является учебной рекомендацией."
+    ]
+  }
+]

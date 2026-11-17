@@ -1,0 +1,530 @@
+[
+  {
+    "word": "satellite",
+    "decision": "review_required",
+    "analysis": "Финальная защита satellite: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 3 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: satellite: 3 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[1]",
+    "before_after_ref": "stage_07.before_after[1]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of satellite (спутник; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “satellite” for «спутник» in this example.\" Russian: \"В этом примере в глоссарии «satellite» означает «спутник».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of satellite with a natural context that unambiguously expresses \"спутник\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of satellite (сопровождающее лицо; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “satellite” for «сопровождающее лицо» in this example.\" Russian: \"В этом примере в глоссарии «satellite» означает «сопровождающее лицо».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of satellite with a natural context that unambiguously expresses \"сопровождающее лицо\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of satellite (приспешник, приверженец; сателлит; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “satellite” for «приспешник, приверженец; сателлит» in this example.\" Russian: \"В этом примере в глоссарии «satellite» означает «приспешник, приверженец; сателлит».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of satellite with a natural context that unambiguously expresses \"приспешник, приверженец; сателлит\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: satellite: 3 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of satellite with a natural context that unambiguously expresses \"спутник\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of satellite with a natural context that unambiguously expresses \"сопровождающее лицо\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of satellite with a natural context that unambiguously expresses \"приспешник, приверженец; сателлит\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "satisfaction",
+    "decision": "review_required",
+    "analysis": "Финальная защита satisfaction: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: satisfaction: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[2]",
+    "before_after_ref": "stage_07.before_after[2]",
+    "issues": [
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of satisfaction (расплата ; искупление грехов; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “satisfaction” for «расплата ; искупление грехов» in this example.\" Russian: \"В этом примере в глоссарии «satisfaction» означает «расплата ; искупление грехов».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of satisfaction with a natural context that unambiguously expresses \"расплата ; искупление грехов\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: satisfaction: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 4 of satisfaction with a natural context that unambiguously expresses \"расплата ; искупление грехов\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "satisfied",
+    "decision": "принято без изменения",
+    "analysis": "Финальная защита satisfied: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; generated examples отсутствуют.",
+    "reason": "Принято без изменения для satisfied: stage09 не выявил пустых значений или generated examples; существующие примеры, evidence и before/after согласованы.",
+    "confidence": 0.9,
+    "evidence_ref": "stage_06.source_evidence[3]",
+    "before_after_ref": "stage_07.before_after[3]"
+  },
+  {
+    "word": "satisfy",
+    "decision": "review_required",
+    "analysis": "Финальная защита satisfy: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 3 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: satisfy: 3 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[4]",
+    "before_after_ref": "stage_07.before_after[4]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of satisfy (утолять (голод, любопытство и т. п.); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “satisfy” means «утолять (голод, любопытство и т. п.)» in this sentence.\" Russian: \"На уроке «satisfy» в этом предложении означает: «утолять (голод, любопытство и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of satisfy with a natural context that unambiguously expresses \"утолять (голод, любопытство и т. п.)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of satisfy (погашать (долг); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “satisfy” means «погашать (долг)» in this sentence.\" Russian: \"На уроке «satisfy» в этом предложении означает: «погашать (долг)».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of satisfy with a natural context that unambiguously expresses \"погашать (долг)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of satisfy (выполнять (обязательство); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “satisfy” means «выполнять (обязательство)» in this sentence.\" Russian: \"На уроке «satisfy» в этом предложении означает: «выполнять (обязательство)».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of satisfy with a natural context that unambiguously expresses \"выполнять (обязательство)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: satisfy: 3 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of satisfy with a natural context that unambiguously expresses \"утолять (голод, любопытство и т. п.)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of satisfy with a natural context that unambiguously expresses \"погашать (долг)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of satisfy with a natural context that unambiguously expresses \"выполнять (обязательство)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "Saturday",
+    "decision": "review_required",
+    "analysis": "Финальная защита Saturday: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: Saturday: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[5]",
+    "before_after_ref": "stage_07.before_after[5]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of Saturday (суббота; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “Saturday” for «суббота» in this example.\" Russian: \"В этом примере в глоссарии «Saturday» означает «суббота».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of Saturday with a natural context that unambiguously expresses \"суббота\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: Saturday: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of Saturday with a natural context that unambiguously expresses \"суббота\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "sauce",
+    "decision": "review_required",
+    "analysis": "Финальная защита sauce: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 7 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: sauce: 7 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[6]",
+    "before_after_ref": "stage_07.before_after[6]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of sauce (соус, подливка; приправа; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “sauce” for «соус, подливка; приправа» in this example.\" Russian: \"В этом примере в глоссарии «sauce» означает «соус, подливка; приправа».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of sauce with a natural context that unambiguously expresses \"соус, подливка; приправа\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of sauce (то, что придаёт интерес, остроту, пикантность; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “sauce” for «то, что придаёт интерес, остроту, пикантность» in this example.\" Russian: \"В этом примере в глоссарии «sauce» означает «то, что придаёт интерес, остроту, пикантность».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of sauce with a natural context that unambiguously expresses \"то, что придаёт интерес, остроту, пикантность\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of sauce (фруктовое пюре, тушёные фрукты и т. п; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “sauce” for «фруктовое пюре, тушёные фрукты и т. п» in this example.\" Russian: \"В этом примере в глоссарии «sauce» означает «фруктовое пюре, тушёные фрукты и т. п».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of sauce with a natural context that unambiguously expresses \"фруктовое пюре, тушёные фрукты и т. п\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of sauce (спиртное, спиртной напиток; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “sauce” for «спиртное, спиртной напиток» in this example.\" Russian: \"В этом примере в глоссарии «sauce» означает «спиртное, спиртной напиток».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of sauce with a natural context that unambiguously expresses \"спиртное, спиртной напиток\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of sauce (дерзить; вести себя нагло; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “sauce” means «дерзить; вести себя нагло» in this sentence.\" Russian: \"На уроке «sauce» в этом предложении означает: «дерзить; вести себя нагло».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of sauce with a natural context that unambiguously expresses \"дерзить; вести себя нагло\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of sauce (приправлять соусом; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “sauce” means «приправлять соусом» in this sentence.\" Russian: \"На уроке «sauce» в этом предложении означает: «приправлять соусом».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of sauce with a natural context that unambiguously expresses \"приправлять соусом\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of sauce (придавать пикантность; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “sauce” means «придавать пикантность» in this sentence.\" Russian: \"На уроке «sauce» в этом предложении означает: «придавать пикантность».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of sauce with a natural context that unambiguously expresses \"придавать пикантность\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: sauce: 7 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of sauce with a natural context that unambiguously expresses \"соус, подливка; приправа\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of sauce with a natural context that unambiguously expresses \"то, что придаёт интерес, остроту, пикантность\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of sauce with a natural context that unambiguously expresses \"фруктовое пюре, тушёные фрукты и т. п\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of sauce with a natural context that unambiguously expresses \"спиртное, спиртной напиток\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of sauce with a natural context that unambiguously expresses \"дерзить; вести себя нагло\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of sauce with a natural context that unambiguously expresses \"приправлять соусом\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of sauce with a natural context that unambiguously expresses \"придавать пикантность\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "save",
+    "decision": "review_required",
+    "analysis": "Финальная защита save: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: save: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[7]",
+    "before_after_ref": "stage_07.before_after[7]",
+    "issues": [
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of save (предотвращение прорыва (в футболе и т. п.); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “save” for «предотвращение прорыва (в футболе и т. п.)» in this example.\" Russian: \"В этом примере в глоссарии «save» означает «предотвращение прорыва (в футболе и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of save with a natural context that unambiguously expresses \"предотвращение прорыва (в футболе и т. п.)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: save: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 6 of save with a natural context that unambiguously expresses \"предотвращение прорыва (в футболе и т. п.)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "saving",
+    "decision": "review_required",
+    "analysis": "Финальная защита saving: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 5 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: saving: 5 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[8]",
+    "before_after_ref": "stage_07.before_after[8]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of saving (сберегающий; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “saving” to describe «сберегающий» here.\" Russian: \"Здесь в руководстве «saving» описывает значение «сберегающий».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of saving with a natural context that unambiguously expresses \"сберегающий\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of saving (бережливый, экономный; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “saving” to describe «бережливый, экономный» here.\" Russian: \"Здесь в руководстве «saving» описывает значение «бережливый, экономный».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of saving with a natural context that unambiguously expresses \"бережливый, экономный\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of saving (спасение; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “saving” for «спасение» in this example.\" Russian: \"В этом примере в глоссарии «saving» означает «спасение».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of saving with a natural context that unambiguously expresses \"спасение\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of saving (при мн. ч.: сбережения; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “saving” for «при мн. ч.: сбережения» in this example.\" Russian: \"В этом примере в глоссарии «saving» означает «при мн. ч.: сбережения».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of saving with a natural context that unambiguously expresses \"при мн. ч.: сбережения\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of saving (исключая, кроме; preposition) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"This lesson uses “saving” with the meaning «исключая, кроме».\" Russian: \"В этом уроке «saving» употреблено в значении «исключая, кроме».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of saving with a natural context that unambiguously expresses \"исключая, кроме\" as preposition; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: saving: 5 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of saving with a natural context that unambiguously expresses \"сберегающий\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of saving with a natural context that unambiguously expresses \"бережливый, экономный\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of saving with a natural context that unambiguously expresses \"спасение\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of saving with a natural context that unambiguously expresses \"при мн. ч.: сбережения\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of saving with a natural context that unambiguously expresses \"исключая, кроме\" as preposition; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "say",
+    "decision": "review_required",
+    "analysis": "Финальная защита say: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: say: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[9]",
+    "before_after_ref": "stage_07.before_after[9]",
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of say (приводить доводы, аргументы; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “say” means «приводить доводы, аргументы» in this sentence.\" Russian: \"На уроке «say» в этом предложении означает: «приводить доводы, аргументы».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of say with a natural context that unambiguously expresses \"приводить доводы, аргументы\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: say: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 5 of say with a natural context that unambiguously expresses \"приводить доводы, аргументы\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "scale",
+    "decision": "review_required",
+    "analysis": "Финальная защита scale: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 17 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: scale: 17 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[10]",
+    "before_after_ref": "stage_07.before_after[10]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of scale (чешуя (у рыб и т. п.); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “scale” for «чешуя (у рыб и т. п.)» in this example.\" Russian: \"В этом примере в глоссарии «scale» означает «чешуя (у рыб и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of scale with a natural context that unambiguously expresses \"чешуя (у рыб и т. п.)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of scale (шелуха; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “scale” for «шелуха» in this example.\" Russian: \"В этом примере в глоссарии «scale» означает «шелуха».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of scale with a natural context that unambiguously expresses \"шелуха\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of scale (при мн. ч.: щёчки, накладки (на рукоятке складного ножа); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “scale” for «при мн. ч.: щёчки, накладки (на рукоятке складного ножа)» in this example.\" Russian: \"В этом примере в глоссарии «scale» означает «при мн. ч.: щёчки, накладки (на рукоятке складного ножа)».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of scale with a natural context that unambiguously expresses \"при мн. ч.: щёчки, накладки (на рукоятке складного ножа)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of scale (окалина, накипь; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “scale” for «окалина, накипь» in this example.\" Russian: \"В этом примере в глоссарии «scale» означает «окалина, накипь».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of scale with a natural context that unambiguously expresses \"окалина, накипь\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of scale (камень (на зубах); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «камень (на зубах)» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «камень (на зубах)».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of scale with a natural context that unambiguously expresses \"камень (на зубах)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of scale (чистить, соскабливать чешую; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «чистить, соскабливать чешую» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «чистить, соскабливать чешую».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of scale with a natural context that unambiguously expresses \"чистить, соскабливать чешую\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of scale (снимать зубной камень; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «снимать зубной камень» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «снимать зубной камень».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of scale with a natural context that unambiguously expresses \"снимать зубной камень\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 8,
+        "problem": "Generated example for meaning 8 of scale (лущить; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «лущить» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «лущить».\".",
+        "required_action": "Replace or confirm the example for meaning 8 of scale with a natural context that unambiguously expresses \"лущить\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Generated example for meaning 9 of scale (образовывать окалину, накипь; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «образовывать окалину, накипь» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «образовывать окалину, накипь».\".",
+        "required_action": "Replace or confirm the example for meaning 9 of scale with a natural context that unambiguously expresses \"образовывать окалину, накипь\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Generated example for meaning 10 of scale (шелушиться; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «шелушиться» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «шелушиться».\".",
+        "required_action": "Replace or confirm the example for meaning 10 of scale with a natural context that unambiguously expresses \"шелушиться\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Generated example for meaning 12 of scale (при мн. ч.: весы; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “scale” for «при мн. ч.: весы» in this example.\" Russian: \"В этом примере в глоссарии «scale» означает «при мн. ч.: весы».\".",
+        "required_action": "Replace or confirm the example for meaning 12 of scale with a natural context that unambiguously expresses \"при мн. ч.: весы\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "Generated example for meaning 13 of scale ((the Scales) = Libra; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «(the Scales) = Libra» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «(the Scales) = Libra».\".",
+        "required_action": "Replace or confirm the example for meaning 13 of scale with a natural context that unambiguously expresses \"(the Scales) = Libra\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Generated example for meaning 14 of scale (взвешивать; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «взвешивать» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «взвешивать».\".",
+        "required_action": "Replace or confirm the example for meaning 14 of scale with a natural context that unambiguously expresses \"взвешивать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Generated example for meaning 15 of scale (весить; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «весить» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «весить».\".",
+        "required_action": "Replace or confirm the example for meaning 15 of scale with a natural context that unambiguously expresses \"весить\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 20,
+        "problem": "Generated example for meaning 20 of scale (масштабная линейка; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “scale” for «масштабная линейка» in this example.\" Russian: \"В этом примере в глоссарии «scale» означает «масштабная линейка».\".",
+        "required_action": "Replace or confirm the example for meaning 20 of scale with a natural context that unambiguously expresses \"масштабная линейка\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 22,
+        "problem": "Generated example for meaning 22 of scale (подниматься, взбираться (по лестнице и т. п.); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «подниматься, взбираться (по лестнице и т. п.)» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «подниматься, взбираться (по лестнице и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 22 of scale with a natural context that unambiguously expresses \"подниматься, взбираться (по лестнице и т. п.)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 24,
+        "problem": "Generated example for meaning 24 of scale (быть соизмеримыми, сопоставимыми; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scale” means «быть соизмеримыми, сопоставимыми» in this sentence.\" Russian: \"На уроке «scale» в этом предложении означает: «быть соизмеримыми, сопоставимыми».\".",
+        "required_action": "Replace or confirm the example for meaning 24 of scale with a natural context that unambiguously expresses \"быть соизмеримыми, сопоставимыми\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: scale: 17 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of scale with a natural context that unambiguously expresses \"чешуя (у рыб и т. п.)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of scale with a natural context that unambiguously expresses \"шелуха\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of scale with a natural context that unambiguously expresses \"при мн. ч.: щёчки, накладки (на рукоятке складного ножа)\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of scale with a natural context that unambiguously expresses \"окалина, накипь\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of scale with a natural context that unambiguously expresses \"камень (на зубах)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of scale with a natural context that unambiguously expresses \"чистить, соскабливать чешую\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of scale with a natural context that unambiguously expresses \"снимать зубной камень\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 8 of scale with a natural context that unambiguously expresses \"лущить\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 9 of scale with a natural context that unambiguously expresses \"образовывать окалину, накипь\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 10 of scale with a natural context that unambiguously expresses \"шелушиться\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 12 of scale with a natural context that unambiguously expresses \"при мн. ч.: весы\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 13 of scale with a natural context that unambiguously expresses \"(the Scales) = Libra\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 14 of scale with a natural context that unambiguously expresses \"взвешивать\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 15 of scale with a natural context that unambiguously expresses \"весить\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 20 of scale with a natural context that unambiguously expresses \"масштабная линейка\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 22 of scale with a natural context that unambiguously expresses \"подниматься, взбираться (по лестнице и т. п.)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 24 of scale with a natural context that unambiguously expresses \"быть соизмеримыми, сопоставимыми\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "scan",
+    "decision": "review_required",
+    "analysis": "Финальная защита scan: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 4 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: scan: 4 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[11]",
+    "before_after_ref": "stage_07.before_after[11]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of scan (пристально разглядывать, изучать; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scan” means «пристально разглядывать, изучать» in this sentence.\" Russian: \"На уроке «scan» в этом предложении означает: «пристально разглядывать, изучать».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of scan with a natural context that unambiguously expresses \"пристально разглядывать, изучать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of scan (бегло просматривать; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scan” means «бегло просматривать» in this sentence.\" Russian: \"На уроке «scan» в этом предложении означает: «бегло просматривать».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of scan with a natural context that unambiguously expresses \"бегло просматривать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of scan (скандировать; скандироваться (о стихах); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scan” means «скандировать; скандироваться (о стихах)» in this sentence.\" Russian: \"На уроке «scan» в этом предложении означает: «скандировать; скандироваться (о стихах)».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of scan with a natural context that unambiguously expresses \"скандировать; скандироваться (о стихах)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Generated example for meaning 4 of scan (разлагать изображение; сканировать; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scan” means «разлагать изображение; сканировать» in this sentence.\" Russian: \"На уроке «scan» в этом предложении означает: «разлагать изображение; сканировать».\".",
+        "required_action": "Replace or confirm the example for meaning 4 of scan with a natural context that unambiguously expresses \"разлагать изображение; сканировать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: scan: 4 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of scan with a natural context that unambiguously expresses \"пристально разглядывать, изучать\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of scan with a natural context that unambiguously expresses \"бегло просматривать\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of scan with a natural context that unambiguously expresses \"скандировать; скандироваться (о стихах)\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 4 of scan with a natural context that unambiguously expresses \"разлагать изображение; сканировать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "scandal",
+    "decision": "принято без изменения",
+    "analysis": "Финальная защита scandal: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; generated examples отсутствуют.",
+    "reason": "Принято без изменения для scandal: stage09 не выявил пустых значений или generated examples; существующие примеры, evidence и before/after согласованы.",
+    "confidence": 0.9,
+    "evidence_ref": "stage_06.source_evidence[12]",
+    "before_after_ref": "stage_07.before_after[12]"
+  },
+  {
+    "word": "scare",
+    "decision": "review_required",
+    "analysis": "Финальная защита scare: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: scare: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[13]",
+    "before_after_ref": "stage_07.before_after[13]",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of scare (пугать; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “scare” means «пугать» in this sentence.\" Russian: \"На уроке «scare» в этом предложении означает: «пугать».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of scare with a natural context that unambiguously expresses \"пугать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: scare: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 2 of scare with a natural context that unambiguously expresses \"пугать\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "scared",
+    "decision": "принято без изменения",
+    "analysis": "Финальная защита scared: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; generated examples отсутствуют.",
+    "reason": "Принято без изменения для scared: stage09 не выявил пустых значений или generated examples; существующие примеры, evidence и before/after согласованы.",
+    "confidence": 0.9,
+    "evidence_ref": "stage_06.source_evidence[14]",
+    "before_after_ref": "stage_07.before_after[14]"
+  },
+  {
+    "word": "scary",
+    "decision": "review_required",
+    "analysis": "Финальная защита scary: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 2 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: scary: 2 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[15]",
+    "before_after_ref": "stage_07.before_after[15]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of scary (жуткий; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “scary” to describe «жуткий» here.\" Russian: \"Здесь в руководстве «scary» описывает значение «жуткий».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of scary with a natural context that unambiguously expresses \"жуткий\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of scary (пугливый; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “scary” to describe «пугливый» here.\" Russian: \"Здесь в руководстве «scary» описывает значение «пугливый».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of scary with a natural context that unambiguously expresses \"пугливый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: scary: 2 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of scary with a natural context that unambiguously expresses \"жуткий\" as adjective; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of scary with a natural context that unambiguously expresses \"пугливый\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "scattered",
+    "decision": "review_required",
+    "analysis": "Финальная защита scattered: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: scattered: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[16]",
+    "before_after_ref": "stage_07.before_after[16]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of scattered (рассыпанный, разбросанный (о домах, предметах); adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “scattered” to describe «рассыпанный, разбросанный (о домах, предметах)» here.\" Russian: \"Здесь в руководстве «scattered» описывает значение «рассыпанный, разбросанный (о домах, предметах)».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of scattered with a natural context that unambiguously expresses \"рассыпанный, разбросанный (о домах, предметах)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: scattered: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of scattered with a natural context that unambiguously expresses \"рассыпанный, разбросанный (о домах, предметах)\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "scenario",
+    "decision": "review_required",
+    "analysis": "Финальная защита scenario: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: scenario: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[17]",
+    "before_after_ref": "stage_07.before_after[17]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of scenario (сценарий; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “scenario” for «сценарий» in this example.\" Russian: \"В этом примере в глоссарии «scenario» означает «сценарий».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of scenario with a natural context that unambiguously expresses \"сценарий\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: scenario: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of scenario with a natural context that unambiguously expresses \"сценарий\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "scene",
+    "decision": "review_required",
+    "analysis": "Финальная защита scene: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: scene: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[18]",
+    "before_after_ref": "stage_07.before_after[18]",
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of scene (сцена, явление (в пьесе); noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “scene” for «сцена, явление (в пьесе)» in this example.\" Russian: \"В этом примере в глоссарии «scene» означает «сцена, явление (в пьесе)».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of scene with a natural context that unambiguously expresses \"сцена, явление (в пьесе)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: scene: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 5 of scene with a natural context that unambiguously expresses \"сцена, явление (в пьесе)\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "sceptical",
+    "decision": "review_required",
+    "analysis": "Финальная защита sceptical: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 1 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: sceptical: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[19]",
+    "before_after_ref": "stage_07.before_after[19]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of sceptical (скептический; adjective) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The guide uses “sceptical” to describe «скептический» here.\" Russian: \"Здесь в руководстве «sceptical» описывает значение «скептический».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of sceptical with a natural context that unambiguously expresses \"скептический\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: sceptical: 1 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of sceptical with a natural context that unambiguously expresses \"скептический\" as adjective; use source-backed evidence when available and keep the Russian translation aligned."
+  },
+  {
+    "word": "schedule",
+    "decision": "review_required",
+    "analysis": "Финальная защита schedule: сверены stage06 evidence, stage07 before/after, stage08 order/primary и stage09 per-meaning checks; индивидуально проверены 6 generated example(s), каждый отмечен как generic template requiring review.",
+    "reason": "review_required: schedule: 6 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "confidence": 0.82,
+    "evidence_ref": "stage_06.source_evidence[20]",
+    "before_after_ref": "stage_07.before_after[20]",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Generated example for meaning 1 of schedule (список, перечень, каталог; опись; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “schedule” for «список, перечень, каталог; опись» in this example.\" Russian: \"В этом примере в глоссарии «schedule» означает «список, перечень, каталог; опись».\".",
+        "required_action": "Replace or confirm the example for meaning 1 of schedule with a natural context that unambiguously expresses \"список, перечень, каталог; опись\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Generated example for meaning 2 of schedule (программа, план; график; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “schedule” for «программа, план; график» in this example.\" Russian: \"В этом примере в глоссарии «schedule» означает «программа, план; график».\".",
+        "required_action": "Replace or confirm the example for meaning 2 of schedule with a natural context that unambiguously expresses \"программа, план; график\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Generated example for meaning 3 of schedule (перечень тарифов; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “schedule” for «перечень тарифов» in this example.\" Russian: \"В этом примере в глоссарии «schedule» означает «перечень тарифов».\".",
+        "required_action": "Replace or confirm the example for meaning 3 of schedule with a natural context that unambiguously expresses \"перечень тарифов\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Generated example for meaning 5 of schedule (режим; noun) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"The glossary uses “schedule” for «режим» in this example.\" Russian: \"В этом примере в глоссарии «schedule» означает «режим».\".",
+        "required_action": "Replace or confirm the example for meaning 5 of schedule with a natural context that unambiguously expresses \"режим\" as noun; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Generated example for meaning 6 of schedule (составлять расписание; включать в график; verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “schedule” means «составлять расписание; включать в график» in this sentence.\" Russian: \"На уроке «schedule» в этом предложении означает: «составлять расписание; включать в график».\".",
+        "required_action": "Replace or confirm the example for meaning 6 of schedule with a natural context that unambiguously expresses \"составлять расписание; включать в график\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Generated example for meaning 7 of schedule (составлять (список, опись и т. п.); verb) is a generic metalinguistic template and does not provide a natural context to verify the exact meaning: \"In the lesson, “schedule” means «составлять (список, опись и т. п.)» in this sentence.\" Russian: \"На уроке «schedule» в этом предложении означает: «составлять (список, опись и т. п.)».\".",
+        "required_action": "Replace or confirm the example for meaning 7 of schedule with a natural context that unambiguously expresses \"составлять (список, опись и т. п.)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+      }
+    ],
+    "review_reason": "review_required: schedule: 6 generated example(s) need individual verification; the generated text is a generic metalinguistic template and is not sufficient evidence for the exact meaning, part of speech, or natural context.",
+    "required_action": "Replace or confirm the example for meaning 1 of schedule with a natural context that unambiguously expresses \"список, перечень, каталог; опись\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 2 of schedule with a natural context that unambiguously expresses \"программа, план; график\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 3 of schedule with a natural context that unambiguously expresses \"перечень тарифов\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 5 of schedule with a natural context that unambiguously expresses \"режим\" as noun; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 6 of schedule with a natural context that unambiguously expresses \"составлять расписание; включать в график\" as verb; use source-backed evidence when available and keep the Russian translation aligned. Replace or confirm the example for meaning 7 of schedule with a natural context that unambiguously expresses \"составлять (список, опись и т. п.)\" as verb; use source-backed evidence when available and keep the Russian translation aligned."
+  }
+]

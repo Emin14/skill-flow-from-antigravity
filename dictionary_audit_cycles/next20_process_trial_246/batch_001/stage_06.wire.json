@@ -1,0 +1,2501 @@
+[
+  {
+    "word": "live",
+    "decision": "изменить",
+    "confidence": 0.97,
+    "reason": "Восстановленная статья live II содержит девять значений. В обоих PDF издания 2021 года совпадают порядок и формулировки спорных значений. DOCX подтверждает чтение «горящий, непогасший», хотя соседние колонки в извлечённом тексте перемешаны. Live fish и live wire в техническом значении подтверждаются другими словарями. Live animals, live broadcast, a live man и live cartridge семантически допустимы как редакционные примеры. Для a live program нейтральный перевод «передача в прямом эфире» шире печатного «репортаж с места событий». Источники 3 и 8 подтверждают глагольный омограф.",
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Печатное чтение «горящий, непогасший» расширено характеристикой пара.",
+        "required_action": "Восстановить печатное чтение. Происхождение значения о паре проверить отдельно."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Объединены боевое и электротехническое значения.",
+        "required_action": "Развести «действующий, невзорвавшийся, боевой (о патроне и т. п.)» и «под напряжением»."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Переменный, меняющийся (о нагрузке) и яркий, нетусклый (о цвете)."
+        },
+        "problem": "Отсутствуют два печатных значения.",
+        "required_action": "Восстановить их как самостоятельные значения."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "live2 I",
+          "found": true,
+          "locations": [
+            {
+              "page": 265,
+              "quote": "live2 I [laɪv] adj 1 живой; live fish живая рыба"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "live2 I",
+          "found": true,
+          "locations": [
+            {
+              "page": 265,
+              "quote": "live2 I [laiv] adj 1 живой; live fi sh живая рыба"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "live",
+          "found": true,
+          "locations": [
+            {
+              "page": 104,
+              "quote": "live [lKv] v жить"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "live II",
+          "found": true,
+          "locations": [
+            {
+              "page": 474,
+              "quote": "~ coals горящие угли 6) действующий; невзорвавшийся, боевой (о патроне и т. п.) 7) эл. под напряжением 8) переменный, меняющийся (о нагрузке) 9) яркий, нетусклый (о цвете)"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "live II; ~ coals",
+          "found": true,
+          "locations": [
+            {
+              "line": 55667,
+              "quote": "live II [laiv] a 1) живо'й 2) радио, тлв."
+            },
+            {
+              "line": 55687,
+              "quote": "непога'сший; ~ coals горя'щие у'гли"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "live II",
+          "found": true,
+          "locations": [
+            {
+              "page": 474,
+              "quote": "невзорвавшийся, боевой (о патроне и т. п.) 7) эл. под напряжением"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "live2",
+          "found": true,
+          "locations": [
+            {
+              "page": 506,
+              "quote": "live2 [liv] adj 1. жи вой"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "live",
+          "found": true,
+          "locations": [
+            {
+              "page": 138,
+              "quote": "live [liv] жить"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "four",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "Шесть значений соответствуют печатной статье: четыре, четвёрка, четвёртый номер, лодка или команда, строй по четыре и четырёхпроцентные бумаги. Form fours! и «ряды вздвой!» подтверждены двумя PDF и DOCX. «Стройся по четыре!» передаёт команду без предположения о предшествующем построении. Печатное pl обозначает множественное число.",
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Помета «британское» отсутствует в печатной статье.",
+        "required_action": "Убрать географическую помету, сохранив ограничение по числу."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Помета «британское» добавлена к сочетанию pl воен.",
+        "required_action": "Сохранить военную помету и указание на множественное число."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "four",
+          "found": true,
+          "locations": [
+            {
+              "page": 185,
+              "quote": "four I [fɔ:] n 1 четвёрка (цифра)"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "four",
+          "found": true,
+          "locations": [
+            {
+              "page": 185,
+              "quote": "four I [f] n 1 четвёрка (цифра)"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "four",
+          "found": true,
+          "locations": [
+            {
+              "page": 75,
+              "quote": "four [fO:] num четы ре"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "four; form ~s",
+          "found": true,
+          "locations": [
+            {
+              "page": 327,
+              "quote": "4) pl воен. строй по четыре; form ~s! ряды вздвой!"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "four; ряды",
+          "found": true,
+          "locations": [
+            {
+              "line": 37298,
+              "quote": "four [fc:] 1. num. card. четы'ре"
+            },
+            {
+              "line": 37300,
+              "quote": "~s! ряды' вздвой! 5) фин."
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "four; form ~s",
+          "found": true,
+          "locations": [
+            {
+              "page": 327,
+              "quote": "form ~s! ряды вздвой!"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "four",
+          "found": true,
+          "locations": [
+            {
+              "page": 359,
+              "quote": "four [f] n че ты ре (чис ло, но мер)"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "four",
+          "found": true,
+          "locations": [
+            {
+              "page": 102,
+              "quote": "four [fɔ:] четыре"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "hard",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "Печатная структура включает 18 значений прилагательного, шесть наречных и два именных. Оба PDF подтверждают спорный перевод the hard way, поэтому это семантическая неточность печатного примера. Переводы hard collar, hard lines, hard drinker, hard prices и hard currency подтверждаются статьёй. В политическом примере the hard right обозначает ультраправых как группу или крыло. Hard labour и hard of hearing переданы правильно. Hard food и hard case в печати имеют оба приведённых толкования.",
+    "issues": [
+      {
+        "target": {
+          "kind": "field",
+          "path": "/meanings/1/examples/0/ru"
+        },
+        "problem": "«Вкладывать все силы в учёбу» совпадает с источником, но упускает обучение на собственном горьком опыте.",
+        "required_action": "Зафиксировать печатную формулировку и отдельно предложить семантически точный перевод."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "У значения «строгий, суровый, безжалостный» ошибочная строительная помета.",
+        "required_action": "Убрать помету."
+      },
+      {
+        "meaning_index": 16,
+        "problem": "Печатный текст не помечает значения с hard prices и hard currency как устаревшие.",
+        "required_action": "Убрать общую помету об устарелости."
+      },
+      {
+        "meaning_index": 19,
+        "problem": "«Очень стараться» относится к to try hard.",
+        "required_action": "Перенести формулировку из наречного толкования в перевод примера."
+      },
+      {
+        "meaning_index": 25,
+        "problem": "Коммерческая помета отсутствует. В источнике указано «на топком болоте».",
+        "required_action": "Восстановить уточнение и убрать коммерческую помету."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 1
+        },
+        "problem": "Hard by ошибочно отмечено как глагол и объединено с другим сочетанием.",
+        "required_action": "Передать наречное «близко, рядом» и отдельно оставить to follow hard after в наречном значении."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 2
+        },
+        "problem": "Целое предложение помечено как существительное.",
+        "required_action": "Отметить его как устойчивую конструкцию."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 3
+        },
+        "problem": "Hard labour помечено как прилагательное.",
+        "required_action": "Указать именное сочетание."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "hard",
+          "found": true,
+          "locations": [
+            {
+              "page": 210,
+              "quote": "hard I [hɑd] adj 1 твёрдый; жёсткий"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "hard",
+          "found": true,
+          "locations": [
+            {
+              "page": 210,
+              "quote": "hard I [hd] adj 1 твёрдый; жёсткий"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "hard",
+          "found": true,
+          "locations": [
+            {
+              "page": 85,
+              "quote": "hard [hA:d] 1 adj 1) твёрдый; жёсткий"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "hard; the ~ way",
+          "found": true,
+          "locations": [
+            {
+              "page": 371,
+              "quote": "to learn smth. the ~ way напряжённо учиться, вкладывать все силы в учёбу"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "hard",
+          "found": true,
+          "locations": [
+            {
+              "line": 42567,
+              "quote": "hard [ha:d] 1. a 1) твёрдый, жёсткий;"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "hard; the ~ way",
+          "found": true,
+          "locations": [
+            {
+              "page": 371,
+              "quote": "the ~ way напряжённо учить ся, вкладывать все силы в учёбу"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "hard",
+          "found": true,
+          "locations": [
+            {
+              "page": 401,
+              "quote": "hard [hd] I adj 1. твер дый"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "hard",
+          "found": true,
+          "locations": [
+            {
+              "page": 113,
+              "quote": "hard [hɑ:d] 1. а 1) твёрдый; жёсткий"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "mean1",
+    "decision": "изменить",
+    "confidence": 0.97,
+    "reason": "Глагол mean соответствует mean III в издании 2021 года, mean1 в SamPolnAnglRysSlovar и mean3 в источнике 7. Значения «значить», «подразумевать», «намереваться» и «предназначать» подтверждены. Все четыре примера подходят по смыслу и являются редакционными формулировками. Mean well передано верно. Для mean business источник подтверждает серьёзность намерений или слов и разговорную помету.",
+    "issues": [
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Означать как признак или предвестие, предвещать."
+        },
+        "problem": "Отсутствует самостоятельное печатное значение с this means trouble.",
+        "required_action": "Восстановить значение и связать его с печатным примером."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 2
+        },
+        "problem": "В печати отдельно указано «говорить всерьёз» и стоит разг. Помета «идиома» описывает тип выражения.",
+        "required_action": "Сохранить обе смысловые ветви и добавить разговорную помету."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "mean1",
+          "found": true,
+          "locations": [
+            {
+              "page": 276,
+              "quote": "mean1 [min] v (meant) 1 подразумевать; думать"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "mean1",
+          "found": true,
+          "locations": [
+            {
+              "page": 276,
+              "quote": "mean1 [mn] v (meant) 1 подразумевать; думать"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "mean I",
+          "found": true,
+          "locations": [
+            {
+              "page": 108,
+              "quote": "mean I [mi:n] v (meant; meant) 1) намерева ться; хоте ть"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "mean III",
+          "found": true,
+          "locations": [
+            {
+              "page": 498,
+              "quote": "this ~s trouble это предвещает беду"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "mean III",
+          "found": true,
+          "locations": [
+            {
+              "line": 58376,
+              "quote": "mean III [mi:n] v (meant)"
+            },
+            {
+              "line": 58376,
+              "quote": "to ~ business разг."
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "mean III",
+          "found": true,
+          "locations": [
+            {
+              "page": 498,
+              "quote": "mean III [mi:n] v (meant) 1) намере ваться; иметь в виду"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "mean3",
+          "found": true,
+          "locations": [
+            {
+              "page": 529,
+              "quote": "mean3 [mn] v 1. на ме ре вать ся"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "mean I",
+          "found": true,
+          "locations": [
+            {
+              "page": 144,
+              "quote": "mean I [mi:n] (meant; meant) 1) намереваться; хотеть"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "mean2",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "В издании 2021 года качественное mean I и количественное mean II относятся к разным омографам. Mean temperature правильно переведено, но относится к количественному прилагательному. Don't be so mean to her подтверждает недоброжелательность, а he is mean with money иллюстрирует скупость. «Бедный, убогий, жалкий» подтверждено печатной статьёй.",
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Количественное «средний» объединено с качественным омографом.",
+        "required_action": "Привязать значение с mean temperature к количественному омографу, сохранив часть речи adjective."
+      },
+      {
+        "meaning_index": 1,
+        "problem": "Смешаны «низкий, подлый, нечестный» и разговорное «придирчивый, недоброжелательный».",
+        "required_action": "Развести значения и оставить пример с обращением к собеседнику при недоброжелательности."
+      },
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "Посредственный, плохой, слабый; низкого происхождения; амер. трудный, неподдающийся; разг. скромный, смущающийся."
+        },
+        "problem": "Печатные значения отсутствуют.",
+        "required_action": "Восстановить их по mean I с соответствующими пометами."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "mean2; mean3 II",
+          "found": true,
+          "locations": [
+            {
+              "page": 276,
+              "quote": "mean2 [min] adj 1 скупой, жадный, скаредный"
+            },
+            {
+              "page": 276,
+              "quote": "mean3 II [min] adj средний"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "mean2; mean3 II",
+          "found": true,
+          "locations": [
+            {
+              "page": 276,
+              "quote": "mean2 [mn] adj 1 скупой, жадный, скаредный"
+            },
+            {
+              "page": 276,
+              "quote": "mean3 II [mn] adj средний"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "mean II; mean III",
+          "found": true,
+          "locations": [
+            {
+              "page": 108,
+              "quote": "mean II [mi:n] adj 1) по длый 2) скупо й mean III [mi:n] 1 adj сре дний"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "mean I; mean II",
+          "found": true,
+          "locations": [
+            {
+              "page": 498,
+              "quote": "mean I [mi:n] a 1) скупой, скаредный 2) низкий, подлый, нечестный 3) посредственный; плохой; слабый"
+            },
+            {
+              "page": 498,
+              "quote": "2. a средний; ~ line мат. биссектриса"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "mean I; mean II",
+          "found": true,
+          "locations": [
+            {
+              "line": 58333,
+              "quote": "mean I [mi:n] a 1) скупой' , скар' едный"
+            },
+            {
+              "line": 58364,
+              "quote": "mean II [mi:n] 1. n 1) середи'на"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "mean I; mean II",
+          "found": true,
+          "locations": [
+            {
+              "page": 498,
+              "quote": "mean I [mi:n] a 1) скупой, скаредный 2) низкий, подлый, нечестный"
+            },
+            {
+              "page": 498,
+              "quote": "2. a средний; ~ line мат. биссектриса"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "mean1; mean2",
+          "found": true,
+          "locations": [
+            {
+              "page": 528,
+              "quote": "mean1 [mn] adj 1. за ху да лый"
+            },
+            {
+              "page": 529,
+              "quote": "mean2 [mn] I adj сред ний"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "mean II; mean III",
+          "found": true,
+          "locations": [
+            {
+              "page": 144,
+              "quote": "mean II [mi:n] 1) подлый 2) скупой mean III [mi:n] 1. а средний"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "mean3",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "Печатное mean II разделяет «середина» с the golden (или happy) mean и математическое «среднее число». Оба примера семантически верны. Предложение с числами три и девять является редакционной иллюстрацией математического значения.",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "«Середина» объединена с математическим средним, а переносное сочетание вынесено в отдельное значение.",
+        "required_action": "Разделить общее и математическое значения, отнести the golden mean к первому и дать второму математическую помету."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "mean3 I",
+          "found": true,
+          "locations": [
+            {
+              "page": 276,
+              "quote": "mean3 I [min] n середина; the golden mean золотая середина"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "mean3 I",
+          "found": true,
+          "locations": [
+            {
+              "page": 276,
+              "quote": "mean3 I [mn] n середина; the golden mean золотая середина"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "mean III",
+          "found": true,
+          "locations": [
+            {
+              "page": 108,
+              "quote": "mean III [mi:n] 1 adj сре дний 2 n середи на"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "mean II",
+          "found": true,
+          "locations": [
+            {
+              "page": 498,
+              "quote": "the golden (или happy) ~ золотая середина 2) мат. среднее число"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "mean II",
+          "found": true,
+          "locations": [
+            {
+              "line": 58364,
+              "quote": "2) мат. сред' нее число'"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "mean II",
+          "found": true,
+          "locations": [
+            {
+              "page": 498,
+              "quote": "2) мат. среднее число"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "mean2; II n",
+          "found": true,
+          "locations": [
+            {
+              "page": 529,
+              "quote": "II n 1. се ре ди -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "mean III",
+          "found": true,
+          "locations": [
+            {
+              "page": 144,
+              "quote": "mean III [mi:n] 1. а средний 2. n середина"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "once",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Нормализованное чтение «once in a while (или way) — иногда, изредка» подтверждается PDF и DOCX. После once (upon a time) в оригинальном извлечении стоит знак соответствия, ошибочно прочитанный распарсенным PDF как s. Печатное «несколько раз» для once or twice передаёт приблизительность, а «разок-другой» точнее сохраняет числовой оттенок. Остальные примеры с частотностью, прошлым, усилением, for (this) once и my once master согласуются со статьёй.",
+    "issues": [
+      {
+        "target": {
+          "kind": "field",
+          "path": "/meanings/0/examples/5/en"
+        },
+        "problem": "Английское сочетание ошибочно разорвано между полями.",
+        "required_action": "Восстановить once in a while (или way) — «иногда, изредка»."
+      },
+      {
+        "target": {
+          "kind": "field",
+          "path": "/meanings/1/examples/0/en"
+        },
+        "problem": "Знак соответствия попал в пример как s. В русском переводе потерян дефис.",
+        "required_action": "Восстановить once (upon a time) — «жил-был (начало сказок)»."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Печатная функция усиления ошибочно помечена как жаргон.",
+        "required_action": "Убрать помету."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 2
+        },
+        "problem": "Пропущено значение «в то же время, вместе с тем».",
+        "required_action": "Восстановить второе значение at once."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 3
+        },
+        "problem": "Once and again помечено как существительное.",
+        "required_action": "Указать наречное сочетание."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "once II",
+          "found": true,
+          "locations": [
+            {
+              "page": 304,
+              "quote": "once or twice раза два"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "once I",
+          "found": true,
+          "locations": [
+            {
+              "page": 304,
+              "quote": "once I [wns] n один раз"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "once",
+          "found": true,
+          "locations": [
+            {
+              "page": 118,
+              "quote": "once [wöns] adv (оди н) раз"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "once; upon a time; at ~",
+          "found": true,
+          "locations": [
+            {
+              "page": 556,
+              "quote": "~ (upon a time) s жил- был (начало сказок)"
+            },
+            {
+              "page": 556,
+              "quote": "б) в то же время, вместе с тем"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "once; in a while",
+          "found": true,
+          "locations": [
+            {
+              "line": 65125,
+              "quote": "~ in a while (или way) иногда', и'зредка"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "once; upon a time",
+          "found": true,
+          "locations": [
+            {
+              "page": 556,
+              "quote": "~ (upon a time) ≅ жил был (начало сказок)"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "once",
+          "found": true,
+          "locations": [
+            {
+              "page": 582,
+              "quote": "once [wns] I adv 1. (один) раз"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "once",
+          "found": true,
+          "locations": [
+            {
+              "page": 158,
+              "quote": "once [w ns] (один) раз"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "support",
+    "decision": "оставить",
+    "confidence": 0.96,
+    "reason": "Все шесть именных и шесть глагольных значений подтверждаются изданием 2021 года, включая кормильца, техническую опору, военное прикрытие и театральное значение. In support of допускает также «в поддержку». To support an institution в общем контексте значит «поддерживать учреждение» или «финансировать учреждение». «Жертвовать на учреждение» передаёт частный случай и воспроизводит печатное чтение. В to speak in support of.. есть редакционная опечатка в многоточии.",
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "support I; support II",
+          "found": true,
+          "locations": [
+            {
+              "page": 448,
+              "quote": "поддержка, помощь; to give/to lend support оказывать поддержку"
+            },
+            {
+              "page": 448,
+              "quote": "v 1 поддерживать, подпирать"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "support I",
+          "found": true,
+          "locations": [
+            {
+              "page": 448,
+              "quote": "support I [səpt] n 1 поддержка, помощь"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "support",
+          "found": true,
+          "locations": [
+            {
+              "page": 158,
+              "quote": "1 v 1) подде рживать 2) содержа ть 2 n подде ржка"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "support; institution",
+          "found": true,
+          "locations": [
+            {
+              "page": 796,
+              "quote": "to ~ an institution жертвовать на учреждение"
+            },
+            {
+              "page": 796,
+              "quote": "6) воен. прикрытие артиллерии"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "support",
+          "found": true,
+          "locations": [
+            {
+              "line": 92971,
+              "quote": "support [s ´pc:t] 1. n 1) подде'ржка"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "support; прикрытие",
+          "found": true,
+          "locations": [
+            {
+              "page": 796,
+              "quote": "6) воен. прикрытие артиллерии"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "support",
+          "found": true,
+          "locations": [
+            {
+              "page": 803,
+              "quote": "support [səpt] I v 1. под дер жи -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "support",
+          "found": true,
+          "locations": [
+            {
+              "page": 220,
+              "quote": "support [səpt] 1. v 1) поддер живать 2) содержать 2. n поддержка"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "tell",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Двенадцать глагольных значений и формы told подтверждаются. Для tell the time печатный перевод относится к часам, а с человеком в роли подлежащего обычное чтение — «определять время по часам». Остальные примеры соответствуют своим значениям, кроме смешения при подсчёте. Написание good-bye в источнике и goodbye в записи представляет орфографический вариант.",
+    "issues": [
+      {
+        "meaning_index": 12,
+        "problem": "«Включая всех или всё» взято из all told и ошибочно приклеено к to count (or to tell) noses.",
+        "required_action": "Развести выражения. Восстановить «считать, подсчитывать, пересчитывать» и печатный пример с чётками."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 1
+        },
+        "problem": "Помета разг. относится к выговору. Пропущен военный строевой расчёт.",
+        "required_action": "Развести разговорное «отчитать», отбор для задания и военное «производить строевой расчёт»."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "tell",
+          "found": true,
+          "locations": [
+            {
+              "page": 457,
+              "quote": "tell [tel] v (told) 1 рассказывать; говорить"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "tell",
+          "found": true,
+          "locations": [
+            {
+              "page": 457,
+              "quote": "tell [tel] v (told) 1 рассказывать; говорить"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "tell",
+          "found": true,
+          "locations": [
+            {
+              "page": 161,
+              "quote": "tell [tel] v (told; told) 1) сказа ть; говори ть"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "tell; all told",
+          "found": true,
+          "locations": [
+            {
+              "page": 814,
+              "quote": "all told в общей сложности, в общем; включая всех или всё"
+            },
+            {
+              "page": 814,
+              "quote": "воен. производить строевой расчёт"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "tell; all told",
+          "found": true,
+          "locations": [
+            {
+              "line": 95165,
+              "quote": "all told в об' щей слож' ности, в о'бщем; включая' всех или всё"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "tell; all told",
+          "found": true,
+          "locations": [
+            {
+              "page": 814,
+              "quote": "all told в общей сложности, в общем; включая всех или всё"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "tell",
+          "found": true,
+          "locations": [
+            {
+              "page": 818,
+              "quote": "tell [tel] v (told) 1. рас ска зы вать"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "tell",
+          "found": true,
+          "locations": [
+            {
+              "page": 224,
+              "quote": "tell [tel] (told; told) 1) сказать; говорить"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "set-up",
+    "decision": "оставить",
+    "confidence": 0.98,
+    "reason": "Печатное чтение сохраняет четыре значения: «организация, устройство; система, структура», «разг. положение, ситуация», «разг. соревнование с ясным исходом», «осанка; конституция». Строка DOCX подтверждает спорное спортивное толкование. Графика set-up подтверждена распарсенным PDF и DOCX. Слитное setup в извлечении оригинального PDF оставляет сомнение в восстановлении дефиса по этому слою. Источники 1 и 2 дают также установку программного обеспечения. Это различие изданий.",
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "set-up",
+          "found": true,
+          "locations": [
+            {
+              "page": 399,
+              "quote": "set-up ['setʌp] n 1 система, структура, организация"
+            },
+            {
+              "page": 399,
+              "quote": "вчт установка программного обеспечения"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "set-up",
+          "found": true,
+          "locations": [
+            {
+              "page": 399,
+              "quote": "set-up [setp] n 1 система, структура, организация"
+            },
+            {
+              "page": 399,
+              "quote": "вчт установка программного обеспечения"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "set-up / setup / set up",
+          "found": false,
+          "result": "Поиск трёх вариантов в извлечённом тексте совпадений не дал."
+        },
+        {
+          "source_id": 4,
+          "query": "set-up",
+          "found": true,
+          "locations": [
+            {
+              "page": 725,
+              "quote": "3) разг. соревнование с ясным исходом 4) осанка; конституция"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "set-up; соревнован",
+          "found": true,
+          "locations": [
+            {
+              "line": 83896,
+              "quote": "set-up [´setnp] n 1)"
+            },
+            {
+              "line": 83913,
+              "quote": "соревнован' ие с я'сным исход' ом"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "setup",
+          "found": true,
+          "locations": [
+            {
+              "page": 725,
+              "quote": "разг. соревнование с ясным исходом 4) осанка; конституция"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "setup",
+          "found": true,
+          "locations": [
+            {
+              "page": 740,
+              "quote": "setup [setp] n 1. вы прав ка"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "set-up / setup / set up",
+          "found": false,
+          "result": "Поиск трёх вариантов в извлечённом тексте совпадений не дал."
+        }
+      ]
+    }
+  },
+  {
+    "word": "including",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Предлог «включая, в том числе» дословно подтверждён в трёх представлениях издания 2021 года. Там же отдельно отмечено причастие настоящего времени от include. Источник 3 использует помету adv, а источники 1 и 2 — prep. Запись предлога соответствует выбранному печатному чтению.",
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "including",
+          "found": true,
+          "locations": [
+            {
+              "page": 232,
+              "quote": "prep включая, в том числе, вместе с"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "including",
+          "found": true,
+          "locations": [
+            {
+              "page": 232,
+              "quote": "including [inkldiŋ] prep включая, в том числе, вместе с"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "including",
+          "found": true,
+          "locations": [
+            {
+              "page": 92,
+              "quote": "adv включа я, в том числе"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "including",
+          "found": true,
+          "locations": [
+            {
+              "page": 409,
+              "quote": "1. pres. p. от include 2. prep включая, в том числе"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "including; prep",
+          "found": true,
+          "locations": [
+            {
+              "line": 47790,
+              "quote": "2. prep включа'я, в том числе'"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "including",
+          "found": true,
+          "locations": [
+            {
+              "page": 409,
+              "quote": "2. prep включая, в том числе"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "including",
+          "found": true,
+          "locations": [
+            {
+              "page": 441,
+              "quote": "including [inkldiŋ] I pres. p. от"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "including",
+          "found": true,
+          "locations": [
+            {
+              "page": 123,
+              "quote": "including [in klu:diŋ] вклю чая, в том числе"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "music",
+    "decision": "изменить",
+    "confidence": 0.98,
+    "reason": "Все четыре значения и оба примера совпадают с печатным текстом. «Оркестр, хор» сопровождается пометой уст. в обоих PDF и DOCX. Music в значении произведения обычно неисчисляемо, но русский перевод может быть в единственном или множественном числе.",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "«Музыка» получила предметную помету, которой в печатном тексте нет.",
+        "required_action": "Убрать помету «музыка»."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "У значения «музыкальное произведение» такая же добавленная помета.",
+        "required_action": "Убрать помету «музыка»."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "music",
+          "found": true,
+          "locations": [
+            {
+              "page": 289,
+              "quote": "n 1 музыка 2 музыкальное произведение 3 ноты"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "music",
+          "found": true,
+          "locations": [
+            {
+              "page": 289,
+              "quote": "music [mjzik] n 1 музыка 2 музыкальное произведение 3 ноты"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "music",
+          "found": true,
+          "locations": [
+            {
+              "page": 113,
+              "quote": "n 1) му зыка 2) но ты"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "music; оркестр",
+          "found": true,
+          "locations": [
+            {
+              "page": 523,
+              "quote": "he plays without ~ он играет без нот 4) уст. оркестр, хор"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "music; орке'стр",
+          "found": true,
+          "locations": [
+            {
+              "line": 61525,
+              "quote": "без нот 4) уст. орке'стр, хор"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "music; оркестр",
+          "found": true,
+          "locations": [
+            {
+              "page": 523,
+              "quote": "4) уст. оркестр, хор"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "music",
+          "found": true,
+          "locations": [
+            {
+              "page": 554,
+              "quote": "music [mjzik] n 1. му зы ка"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "music",
+          "found": true,
+          "locations": [
+            {
+              "page": 151,
+              "quote": "music [ mju:zik] 1) музыка 2) ноты"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "power",
+    "decision": "оставить",
+    "confidence": 0.96,
+    "reason": "Десять именных и два глагольных значения, включая атрибутивное употребление, подтверждаются печатной статьёй. Все примеры восстанавливаются по ней. Speech power — печатное сочетание, хотя для нейтрального примера естественнее the power of speech. The power of attorney может обозначать полномочие или документ. Without power означает отсутствие питания в электрическом контексте. «С выключенным двигателем» подтверждено печатным текстом как контекстный вариант. The mechanical powers и формула степени переданы верно.",
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "power I; power II",
+          "found": true,
+          "locations": [
+            {
+              "page": 337,
+              "quote": "I will do all in my power я сделаю всё, что в моих силах"
+            },
+            {
+              "page": 337,
+              "quote": "v 1 питать (электро)энергией 2 приводить в действие"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "power I",
+          "found": true,
+          "locations": [
+            {
+              "page": 337,
+              "quote": "power I [paυə] n 1 возможность; способность"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "power",
+          "found": true,
+          "locations": [
+            {
+              "page": 128,
+              "quote": "n 1) си ла; мо щность 2) власть 3) держа ва"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "power; speech ~",
+          "found": true,
+          "locations": [
+            {
+              "page": 618,
+              "quote": "speech ~ дар речи"
+            },
+            {
+              "page": 618,
+              "quote": "the mechanical ~s простые машины"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "power; speech ~",
+          "found": true,
+          "locations": [
+            {
+              "line": 71932,
+              "quote": "speech ~ дар ре'чи"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "power; speech ~",
+          "found": true,
+          "locations": [
+            {
+              "page": 618,
+              "quote": "speech ~ дар речи"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "power",
+          "found": true,
+          "locations": [
+            {
+              "page": 645,
+              "quote": "power [paə] I n 1. спо соб ность"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "power",
+          "found": true,
+          "locations": [
+            {
+              "page": 172,
+              "quote": "1) сила; мощ ность 2) власть 3) держава"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "stop",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "В издании 2021 года подтверждаются 12 именных и 13 глагольных пунктов. Печатное именное значение 6 отсылает к stopper «пробка; затычка». Пункт 10 отсылает к stop-order 1, инструкции банку о прекращении платежей. Биржевое поручение находится во втором значении stop-order. Примеры request stop, full stop, to stop dead, to stop short, остановки поезда, прекращения, пребывания, заделки, удержания денег, платежа и преграждения дороги соответствуют печатному тексту. Для supplies suddenly stopped в контексте поставок естественно «поставки внезапно прекратились». Фразовые глаголы начинаются после основного значения на следующей странице.",
+    "issues": [
+      {
+        "meaning_index": 6,
+        "problem": "Фонетическое значение дублирует пункт 9 и подменяет ссылку на stopper.",
+        "required_action": "Восстановить «пробка; затычка» с отсылкой к stopper."
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Биржевое значение подменяет отсылку к банковскому значению.",
+        "required_action": "Восстановить «инструкция банку о прекращении платежей»."
+      },
+      {
+        "target": {
+          "kind": "field",
+          "path": "/meanings/12/examples/5/ru"
+        },
+        "problem": "Переводы двух самостоятельных команд объединены в одном примере.",
+        "required_action": "Развести stop the thief! и stop a moment! с их переводами."
+      },
+      {
+        "meaning_index": 25,
+        "problem": "К stop somebody from doing something приклеены фразовые глаголы и их пометы.",
+        "required_action": "Отделить глагольную модель от stop down, stop over, stop in и stop off. Для stop down уточнить «уменьшать отверстие диафрагмы»."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 1
+        },
+        "problem": "Музыкальная помета при stop by отсутствует в источнике.",
+        "required_action": "Убрать помету."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 3
+        },
+        "problem": "Морская помета при stop out отсутствует в источнике.",
+        "required_action": "Убрать помету и сохранить уточнение о травлении металла."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 5
+        },
+        "problem": "Разговорная помета в печати относится только к «не ложиться спать».",
+        "required_action": "Ограничить область действия пометы."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "stop II",
+          "found": true,
+          "locations": [
+            {
+              "page": 438,
+              "quote": "stop II [stop] v 1 прекращать(ся), кончать(ся)"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "stop I; stop II",
+          "found": true,
+          "locations": [
+            {
+              "page": 438,
+              "quote": "stop I [stɒp] n 1 прекращение, конец"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "stop",
+          "found": true,
+          "locations": [
+            {
+              "page": 156,
+              "quote": "stop [stÁp] 1 v 1) остана вливать(ся); прекраща ть(ся)"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "stop; stopper; stop-order",
+          "found": true,
+          "locations": [
+            {
+              "page": 780,
+              "quote": "6) = stopper 1, 1);"
+            },
+            {
+              "page": 780,
+              "quote": "10) = stop-order 1);"
+            },
+            {
+              "page": 781,
+              "quote": "инструкция банку о прекращении платежей"
+            },
+            {
+              "page": 781,
+              "quote": "n 1) пробка; затычка"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "stop; stopper",
+          "found": true,
+          "locations": [
+            {
+              "line": 90933,
+              "quote": "6) = stopper"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "stop; stopper; ~ by",
+          "found": true,
+          "locations": [
+            {
+              "page": 780,
+              "quote": "6) = stopper 1, 1);"
+            },
+            {
+              "page": 781,
+              "quote": "~ by заглянуть, зайти; ~ down фото затемнять линзу диафрагмой"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "stop",
+          "found": true,
+          "locations": [
+            {
+              "page": 788,
+              "quote": "stop [stɒp] I v 1. за ты кать"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "stop",
+          "found": true,
+          "locations": [
+            {
+              "page": 215,
+              "quote": "stop [stɔp] 1. v 1) останавли вать(ся); прекращать(ся)"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "water",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Печатная статья содержит девять именных и девять глагольных значений. Water bewitched вложено в первое именное значение как шутливое выражение. By water, on the water, make/pass water, drink the waters и оба примера с first water согласуются с печатью. «Сглаживать расхождения» подходит как редакционный перевод to water down the differences. Печатное чтение — «затушёвывать разногласия».",
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Значения water bewitched ошибочно перенесены на отдельное water.",
+        "required_action": "Связать оба толкования только с выражением water bewitched."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Частое множественное число принято за географическую помету.",
+        "required_action": "Сохранить указание на множественное число и убрать «британское»."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Та же ошибочная географическая помета у минеральных вод.",
+        "required_action": "Сохранить указание на множественное число и убрать «британское»."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "«Замечательный» относится к обороту of the first water.",
+        "required_action": "Закрепить переносное значение за оборотом."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "При глаголе и примере с mouth water отсутствует жаргонная помета.",
+        "required_action": "Убрать помету «жаргон»."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 2
+        },
+        "problem": "Морская помета отсутствует. Печатный перевод «пролить море крови».",
+        "required_action": "Убрать морскую помету и зафиксировать печатный вариант."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 3
+        },
+        "problem": "Инфинитивное выражение размечено как существительное.",
+        "required_action": "Указать глагольное выражение."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 7
+        },
+        "problem": "Печатная помета шутл. заменена разговорной.",
+        "required_action": "Восстановить шутливую помету."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "water I",
+          "found": true,
+          "locations": [
+            {
+              "page": 494,
+              "quote": "water I ['wɔ:tə] n 1 вода; fresh/sweet water пресная вода"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "water I",
+          "found": true,
+          "locations": [
+            {
+              "page": 494,
+              "quote": "water I [wɔ:tə] n 1 вода; fresh/sweet water пресная вода"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "water",
+          "found": true,
+          "locations": [
+            {
+              "page": 173,
+              "quote": "water ['wþt@] 1 n вода 2 v полива ть"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "water; ~ bewitched",
+          "found": true,
+          "locations": [
+            {
+              "page": 895,
+              "quote": "~ bewitched шутл. = а) водичка (слабый чай и т. п.); б) вода (о пустословии)"
+            },
+            {
+              "page": 895,
+              "quote": "to ~ down the differences затушёвывать разногласия"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "water; bewitched",
+          "found": true,
+          "locations": [
+            {
+              "line": 104175,
+              "quote": "water [´w :t ] 1. n 1) вода'"
+            },
+            {
+              "line": 104198,
+              "quote": "води'чка (слабый чай и т. п.); б) вода' (о пустословии)"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "water; ~ bewitched",
+          "found": true,
+          "locations": [
+            {
+              "page": 895,
+              "quote": "~ bewitched шутл. ≅ а) водичка (слабый чай и т. п.); б) вода (о пустословии)"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "water",
+          "found": true,
+          "locations": [
+            {
+              "page": 891,
+              "quote": "water [wɒtə] I n 1. во да"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "water",
+          "found": true,
+          "locations": [
+            {
+              "page": 242,
+              "quote": "water [wtə] 1. n вода; mineral ~ минеральная вода"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "based",
+    "decision": "оставить",
+    "confidence": 0.99,
+    "reason": "Самостоятельная статья издания 2021 года подтверждает «базирующийся, располагающийся (где-л.)». В источниках 1, 2 и 7 based найдено внутри русско-английских статей. Конструкция be based on «основываться на» подтверждена источниками 1 и 2 и отличается от представленного локативного употребления. Для источников 3 и 8 отсутствие совпадений относится к извлечённому тексту.",
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "based",
+          "found": true,
+          "locations": [
+            {
+              "page": 524,
+              "quote": "be based (on, upon)"
+            },
+            {
+              "page": 524,
+              "quote": "(размещаться) be based"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "based",
+          "found": true,
+          "locations": [
+            {
+              "page": 524,
+              "quote": "be based on facts"
+            },
+            {
+              "page": 524,
+              "quote": "(размещаться) be based"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "\\bbased\\b",
+          "found": false,
+          "result": "Совпадений в извлечённом тексте не найдено."
+        },
+        {
+          "source_id": 4,
+          "query": "based",
+          "found": true,
+          "locations": [
+            {
+              "page": 70,
+              "quote": "based [beist] a базирующийся, располагающийся (где-л.)"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "based",
+          "found": true,
+          "locations": [
+            {
+              "line": 6569,
+              "quote": "based [beist] a бази'рующийся, распо- лагаю' щийся (где-л.)"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "based",
+          "found": true,
+          "locations": [
+            {
+              "page": 70,
+              "quote": "a базирующийся, распо лагающийся (гдел.)"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "based",
+          "found": true,
+          "locations": [
+            {
+              "page": 925,
+              "quote": "be based ∼ на фак тах"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "\\bbased\\b",
+          "found": false,
+          "result": "Совпадений в извлечённом тексте не найдено."
+        }
+      ]
+    }
+  },
+  {
+    "word": "believe",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Пять печатных значений — «верить», «доверять», «придавать большое значение», «думать, полагать» и «веровать, верить». Все примеры подтверждены. I believe you означает доверие словам, I believe in you — веру в человека и его способности. I believe in early rising передаёт убеждённость в пользе раннего подъёма.",
+    "issues": [
+      {
+        "meaning_index": 4,
+        "problem": "Ответные переводы I believe so и I believe not попали в общее толкование. «Едва ли» без отрицательной конструкции меняет полярность.",
+        "required_action": "Оставить «думать, полагать» и привязать ответные варианты к соответствующим примерам."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "believe",
+          "found": true,
+          "locations": [
+            {
+              "page": 47,
+              "quote": "believe [bɪ'liv] v 1 верить"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "believe",
+          "found": true,
+          "locations": [
+            {
+              "page": 47,
+              "quote": "believe [bilv] v 1 верить"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "believe",
+          "found": true,
+          "locations": [
+            {
+              "page": 22,
+              "quote": "v 1) ве рить 2) ду мать, полага ть"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "believe; I ~ not",
+          "found": true,
+          "locations": [
+            {
+              "page": 77,
+              "quote": "I ~ not думаю, что нет; едва ли"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "believe",
+          "found": true,
+          "locations": [
+            {
+              "line": 7309,
+              "quote": "believe [bi´li:v] v 1) ве'рить"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "believe; думать, полагать",
+          "found": true,
+          "locations": [
+            {
+              "page": 77,
+              "quote": "думать, полагать"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "believe",
+          "found": true,
+          "locations": [
+            {
+              "page": 96,
+              "quote": "believe [bilv] v 1. ве рить"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "believe",
+          "found": true,
+          "locations": [
+            {
+              "page": 34,
+              "quote": "believe [bilv] 1) верить 2) ду мать, полагать"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "head",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Подтверждаются 34 именных и шесть глагольных пунктов. Печатные примеры с ростом, способностями, кочаном и цветком, руководителем, классом, процессией, вершиной, подсчётом, скотом, напором, судном, рубриками, определительными сочетаниями и списком относятся к указанным значениям. «Голова процессии» и «высота напора воды» воспроизводят печатные варианты. Печатное «черенок (ножа)» выглядит предметно неоднозначным и требует отдельной терминологической проверки. В технических значениях и у редких фраз следует сохранять область действия специальных помет.",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Спортивная помета распространена на «голова» и общие примеры.",
+        "required_action": "Привязать спортивную помету к to win by a head."
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Помета неизменяемого множественного числа сопровождается лишней географической пометой.",
+        "required_action": "Убрать «британское», сохранив грамматическое ограничение."
+      },
+      {
+        "meaning_index": 25,
+        "problem": "Для гальюна печать указывает морскую помету и обычное множественное число.",
+        "required_action": "Убрать «британское»."
+      },
+      {
+        "meaning_index": 31,
+        "problem": "Для руды и концентрата печать указывает pl и горн.",
+        "required_action": "Убрать «британское»."
+      },
+      {
+        "meaning_index": 40,
+        "problem": "К значению о кроне и колосе присоединены head back и head off, причём их толкования склеены.",
+        "required_action": "Оставить здесь формирование кроны или колоса и завивание капусты. Сохранить head back и head off отдельно."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 1
+        },
+        "problem": "Head over heels ошибочно размечено как глагол.",
+        "required_action": "Указать наречное выражение."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 10
+        },
+        "problem": "Пропущено «справляться с трудностями».",
+        "required_action": "Восстановить переносное значение и указать глагольное выражение."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 15
+        },
+        "problem": "Пропущено «доводить до конца».",
+        "required_action": "Восстановить вторую ветвь печатного толкования."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 16
+        },
+        "problem": "Склейка «нанос» скрывает морское «на нос».",
+        "required_action": "Разделить слова и ограничить морскую помету первой ветвью."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 17
+        },
+        "problem": "Печатное переносное толкование — «с большим трудом добиться победы», а текущий вариант акцентирует минимальный отрыв.",
+        "required_action": "В отчёте о печатном чтении привести исходный вариант. При современной редактуре отдельно отметить различие оттенков."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "head I; head II; head III",
+          "found": true,
+          "locations": [
+            {
+              "page": 212,
+              "quote": "head I [hed] n 1 голова 2 ум; способности"
+            },
+            {
+              "page": 212,
+              "quote": "head III [hed] v 1 возглавлять"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "head I; head II",
+          "found": true,
+          "locations": [
+            {
+              "page": 212,
+              "quote": "head I [hed] n 1 голова 2 ум; способности"
+            },
+            {
+              "page": 212,
+              "quote": "head II [hed] adj 1 верхний; передний; головной"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "head",
+          "found": true,
+          "locations": [
+            {
+              "page": 86,
+              "quote": "head [hed] 1 n 1) голова 2) глава ; руководи тель"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "head; by the ~; ~ back; ~ off",
+          "found": true,
+          "locations": [
+            {
+              "page": 375,
+              "quote": "by the ~ а) мор. на нос; б) подвыпивший"
+            },
+            {
+              "page": 375,
+              "quote": "~ back а) преграждать (путь); б) вернуться назад; ~ off препятствовать"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "head; by the ~",
+          "found": true,
+          "locations": [
+            {
+              "line": 43046,
+              "quote": "by the ~ а) мор. на нос;"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "head; by the ~",
+          "found": true,
+          "locations": [
+            {
+              "page": 375,
+              "quote": "by the ~ а) мор. на нос; б) подвыпивший"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "head",
+          "found": true,
+          "locations": [
+            {
+              "page": 405,
+              "quote": "head [hed] I n 1. го ло ва"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "head",
+          "found": true,
+          "locations": [
+            {
+              "page": 114,
+              "quote": "head [hed] 1. n 1) голова 2) глава; руководитель"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "word": "national",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Два прилагательных значения — «национальный, народный» и «государственный». Подданный или гражданин и соотечественник подтверждены как именные значения. Все примеры принадлежат печатной статье. N. Service разворачивается как National Service. В источниках 1 и 2 national park имеет самостоятельную статью с переводом «национальный парк». Единственное буквальное совпадение в школьном словаре относится к названию праздника.",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Помета амер. распространена с national convention на общее прилагательное.",
+        "required_action": "Привязать помету к national convention."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "«Национальный парк» попал в определение. Американская и спортивная пометы относятся к отдельным примерам.",
+        "required_action": "Оставить толкование «государственный». В примере national park восстановить «национальный парк» и сохранить печатное «заповедник» как вариант. Помету амер. привязать к national park и national government, спортивную — к national team."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "national; national park",
+          "found": true,
+          "locations": [
+            {
+              "page": 290,
+              "quote": "adj 1 национальный, государственный"
+            },
+            {
+              "page": 290,
+              "quote": "national park [,næʃnəl'pɑ:k] n национальный парк"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "national; national park",
+          "found": true,
+          "locations": [
+            {
+              "page": 290,
+              "quote": "national park [nʃnəlpk] n национальный парк"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "national",
+          "found": true,
+          "locations": [
+            {
+              "page": 114,
+              "quote": "adj национа льный, наро дный"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "national; ~ convention; ~ park; ~ team",
+          "found": true,
+          "locations": [
+            {
+              "page": 528,
+              "quote": "~ convention амер. национальный партийный съезд"
+            },
+            {
+              "page": 528,
+              "quote": "~ park амер. заповедник; национальный парк"
+            },
+            {
+              "page": 528,
+              "quote": "~ team спорт. сборная страны, национальная сборная"
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "national; ~ convention",
+          "found": true,
+          "locations": [
+            {
+              "line": 61993,
+              "quote": "~ convention амер. национа'льный парти'йный съезд"
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "national; ~ convention",
+          "found": true,
+          "locations": [
+            {
+              "page": 528,
+              "quote": "~ convention амер. национальный партийный съезд 2) государственный"
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "national",
+          "found": true,
+          "locations": [
+            {
+              "page": 558,
+              "quote": "national [nʃ(ə)nəl] I adj на ци о -"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "\\bnational\\b",
+          "found": true,
+          "locations": [
+            {
+              "page": 581,
+              "quote": "National Unity Day (04.11)"
+            }
+          ],
+          "result": "Единственное буквальное совпадение находится в названии праздника. Самостоятельная статья не найдена."
+        }
+      ]
+    }
+  },
+  {
+    "word": "small",
+    "decision": "изменить",
+    "confidence": 0.99,
+    "reason": "Подтверждены 11 значений прилагательного, три именных значения и the still small voice. Все примеры восстанавливаются по печатной статье. «Более чем скромных размеров» для on the small side — печатное чтение, хотя в нейтральном контексте точнее «маловат». He drank a small whiskey означает, что он выпил небольшую порцию виски. «Глоток» сужает смысл и подтверждается как печатный перевод. Наречное small есть в источниках 1 и 2 как отдельная статья.",
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Полиграфическая помета относится к small capitals.",
+        "required_action": "Снять её с общего значения «маленький, небольшой» и привязать к примеру."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "«Чувствовать себя неловко» в печати относится к to feel small.",
+        "required_action": "Сохранить «пристыжённый, униженный» в толковании, а глагольный перевод — при примере."
+      },
+      {
+        "meaning_index": 12,
+        "problem": "«Поясница» в печати ограничено оборотом small of the back.",
+        "required_action": "Восстановить ограничение по сочетаемости."
+      },
+      {
+        "meaning_index": 13,
+        "problem": "В печатном пункте стоят pl и разг., без географической пометы.",
+        "required_action": "Убрать «британское»."
+      },
+      {
+        "meaning_index": 14,
+        "problem": "В печати стоят pl и ист., а Оксфорд указан в толковании.",
+        "required_action": "Сохранить историческую помету и убрать «британское»."
+      },
+      {
+        "target": {
+          "kind": "phrase",
+          "index": 1
+        },
+        "problem": "The still small voice — именное сочетание, в записи оно отмечено как прилагательное.",
+        "required_action": "Исправить часть речи сочетания."
+      }
+    ],
+    "source_evidence": {
+      "search_results": [
+        {
+          "source_id": 1,
+          "query": "small I; small II; small III",
+          "found": true,
+          "locations": [
+            {
+              "page": 415,
+              "quote": "the small of the back поясница"
+            },
+            {
+              "page": 415,
+              "quote": "small III [smɔ:l] adv 1 мелко, на мелкие кусочки"
+            }
+          ]
+        },
+        {
+          "source_id": 2,
+          "query": "small I; small II; small III",
+          "found": true,
+          "locations": [
+            {
+              "page": 415,
+              "quote": "the small of the back поясница"
+            },
+            {
+              "page": 415,
+              "quote": "small III [sml] adv 1 мелко, на мелкие кусочки"
+            }
+          ]
+        },
+        {
+          "source_id": 3,
+          "query": "small",
+          "found": true,
+          "locations": [
+            {
+              "page": 149,
+              "quote": "small [smþl] adj ма ленький"
+            }
+          ]
+        },
+        {
+          "source_id": 4,
+          "query": "small; ~ capitals; ~ of the back",
+          "found": true,
+          "locations": [
+            {
+              "page": 746,
+              "quote": "~ capitals полигр."
+            },
+            {
+              "page": 746,
+              "quote": "~ of the back поясница 2) pl разг. обыкн. нижнее бельё 3) pl ист."
+            }
+          ]
+        },
+        {
+          "source_id": 5,
+          "query": "small; ~ capitals",
+          "found": true,
+          "locations": [
+            {
+              "line": 86608,
+              "quote": "~ capitals полигр."
+            }
+          ]
+        },
+        {
+          "source_id": 6,
+          "query": "small; ~ capitals",
+          "found": true,
+          "locations": [
+            {
+              "page": 746,
+              "quote": "~ capitals полигр."
+            }
+          ]
+        },
+        {
+          "source_id": 7,
+          "query": "small",
+          "found": true,
+          "locations": [
+            {
+              "page": 758,
+              "quote": "small [sml] I adj ма лень кий"
+            }
+          ]
+        },
+        {
+          "source_id": 8,
+          "query": "small",
+          "found": true,
+          "locations": [
+            {
+              "page": 206,
+              "quote": "small [sml] маленький"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

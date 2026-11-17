@@ -1,0 +1,3320 @@
+[
+  {
+    "word": "clinical",
+    "entry_index": 761,
+    "before": {
+      "word": "clinical",
+      "frequency_rank": 1998,
+      "cefr": "c1",
+      "phon_br": "/ˈklɪnɪkl/",
+      "phon_n_am": "/ˈklɪnɪkl/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "клинический",
+          "examples": [
+            {
+              "en": "clinical record",
+              "ru": "история болезни"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "clinical",
+      "frequency_rank": 1998,
+      "cefr": "c1",
+      "phon_br": "/ˈklɪnɪkl/",
+      "phon_n_am": "/ˈklɪnɪkl/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "клинический",
+          "examples": [
+            {
+              "en": "clinical record",
+              "ru": "история болезни"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова clinical найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "clip",
+    "entry_index": 762,
+    "before": {
+      "word": "clip",
+      "frequency_rank": 2846,
+      "cefr": "b2",
+      "phon_br": "/klɪp/",
+      "phon_n_am": "/klɪp/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "зажимные клещи; зажимная скоба",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "клипс (брошь, серьга)",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "скрепка; зажим; хомутик",
+          "examples": [
+            {
+              "en": "clip of cartridges",
+              "ru": "патронная обойма"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "зажимать, сжимать, крепко обхватывать",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "скреплять (бумаги)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "стрижка",
+          "examples": [],
+          "register": [
+            "строительное"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "сильный удар",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "настриг шерсти",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "быстрая походка",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 9,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "клип",
+          "examples": [],
+          "register": [
+            "кинематография",
+            "телевидение"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: ножницы (для стрижки овец)",
+          "examples": [],
+          "register": [
+            "британское",
+            "шотландский английский"
+          ],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "стричь (особ. овец)",
+          "examples": [],
+          "register": [
+            "строительное"
+          ],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обрезать; отрезать; отсекать; обрывать",
+          "examples": [
+            {
+              "en": "to clip the coin",
+              "ru": "обрезать край монеты"
+            }
+          ],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ударить кулаком (кого-либо)",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "глотать, сокращать (слова)",
+          "examples": [],
+          "register": [],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "пробивать (билет в трамвае и т. п.); компостировать",
+          "examples": [],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делать вырезки (из газет и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обманывать, надувать",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 18
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быстро идти, бежать",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 19
+        }
+      ]
+    },
+    "after": {
+      "word": "clip",
+      "frequency_rank": 2846,
+      "cefr": "b2",
+      "phon_br": "/klɪp/",
+      "phon_n_am": "/klɪp/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "зажимные клещи; зажимная скоба",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "клипс (брошь, серьга)",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "скрепка; зажим; хомутик",
+          "examples": [
+            {
+              "en": "clip of cartridges",
+              "ru": "патронная обойма"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "зажимать, сжимать, крепко обхватывать",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "скреплять (бумаги)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "стрижка",
+          "examples": [],
+          "register": [
+            "строительное"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "сильный удар",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "настриг шерсти",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "быстрая походка",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 9,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "клип",
+          "examples": [],
+          "register": [
+            "кинематография",
+            "телевидение"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: ножницы (для стрижки овец)",
+          "examples": [],
+          "register": [
+            "британское",
+            "шотландский английский"
+          ],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "стричь (особ. овец)",
+          "examples": [],
+          "register": [
+            "строительное"
+          ],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обрезать; отрезать; отсекать; обрывать",
+          "examples": [
+            {
+              "en": "to clip the coin",
+              "ru": "обрезать край монеты"
+            }
+          ],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ударить кулаком (кого-либо)",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "глотать, сокращать (слова)",
+          "examples": [],
+          "register": [],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "пробивать (билет в трамвае и т. п.); компостировать",
+          "examples": [],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делать вырезки (из газет и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обманывать, надувать",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 18
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быстро идти, бежать",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 19
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова clip найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "clock",
+    "entry_index": 763,
+    "before": {
+      "word": "clock",
+      "frequency_rank": 2261,
+      "cefr": "a1",
+      "phon_br": "/klɒk/",
+      "phon_n_am": "/klɑːk/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "часы (стенные, настольные, башенные)",
+          "examples": [
+            {
+              "en": "like a clock",
+              "ru": "пунктуально"
+            },
+            {
+              "en": "he worked the clock round",
+              "ru": "он проработал круглые сутки"
+            },
+            {
+              "en": "what o'clock is it?",
+              "ru": "который час?"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "спидометр, счётчик такси",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "циферблат, физия, рожа",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "отмечать время прихода на работу (in, on) или ухода с работы (out, off) (на специальных часах)",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "показать время",
+          "examples": [
+            {
+              "en": "he clocked 11.6 seconds for the 80 metres hurdles",
+              "ru": "он показал время 11,6 секунды в барьерном беге на 80 метров"
+            }
+          ],
+          "register": [
+            "спортивное"
+          ],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "хронометрировать",
+          "examples": [],
+          "register": [],
+          "id": 7
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "the clock strikes for him",
+          "partOfSpeech": "noun",
+          "translation": "настал его час",
+          "examples": [],
+          "register": [],
+          "id": 1
+        }
+      ]
+    },
+    "after": {
+      "word": "clock",
+      "frequency_rank": 2261,
+      "cefr": "a1",
+      "phon_br": "/klɒk/",
+      "phon_n_am": "/klɑːk/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "часы (стенные, настольные, башенные)",
+          "examples": [
+            {
+              "en": "like a clock",
+              "ru": "пунктуально"
+            },
+            {
+              "en": "he worked the clock round",
+              "ru": "он проработал круглые сутки"
+            },
+            {
+              "en": "what o'clock is it?",
+              "ru": "который час?"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "спидометр, счётчик такси",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "циферблат, физия, рожа",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "отмечать время прихода на работу (in, on) или ухода с работы (out, off) (на специальных часах)",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "показать время",
+          "examples": [
+            {
+              "en": "he clocked 11.6 seconds for the 80 metres hurdles",
+              "ru": "он показал время 11,6 секунды в барьерном беге на 80 метров"
+            }
+          ],
+          "register": [
+            "спортивное"
+          ],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "хронометрировать",
+          "examples": [],
+          "register": [],
+          "id": 7
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "the clock strikes for him",
+          "partOfSpeech": "noun",
+          "translation": "настал его час",
+          "examples": [],
+          "register": [],
+          "id": 1
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова clock найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "close",
+    "entry_index": 764,
+    "before": {
+      "word": "close",
+      "frequency_rank": 218,
+      "cefr": "a1",
+      "phon_br": "/kləʊz/",
+      "phon_n_am": "/kloʊz/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "близкий",
+          "examples": [
+            {
+              "en": "close friend",
+              "ru": "близкий друг"
+            },
+            {
+              "en": "close translation",
+              "ru": "точный перевод"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "пристальный, тщательный",
+          "examples": [
+            {
+              "en": "close examination",
+              "ru": "тщательный осмотр"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "тесный, плотный",
+          "examples": [
+            {
+              "en": "close ranks",
+              "ru": "сомкнутые ряды"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adjective",
+          "translation": "душный, спёртый (о воздухе)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adjective",
+          "translation": "скрытный, сдержанный",
+          "examples": [
+            {
+              "en": "to keep close",
+              "ru": "молчать"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "adjective",
+          "translation": "скупой",
+          "examples": [
+            {
+              "en": "close with money",
+              "ru": "прижимистый"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "adjective",
+          "translation": "закрытый (о голосовании)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "adjective",
+          "translation": "закрытый (о звуке, слоге)",
+          "examples": [],
+          "register": [
+            "фонетика"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "adverb",
+          "translation": "близко, рядом, вплотную",
+          "examples": [
+            {
+              "en": "close by",
+              "ru": "рядом, поблизости"
+            },
+            {
+              "en": "to stand close",
+              "ru": "стоять вплотную"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "verb",
+          "translation": "закрывать(ся); запирать(ся)",
+          "examples": [
+            {
+              "en": "to close a book",
+              "ru": "закрыть книгу"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 11,
+          "partOfSpeech": "verb",
+          "translation": "смыкать(ся), сжимать(ся)",
+          "examples": [
+            {
+              "en": "to close one's eyes",
+              "ru": "закрыть глаза"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 12,
+          "partOfSpeech": "verb",
+          "translation": "оканчивать(ся), завершать(ся)",
+          "examples": [
+            {
+              "en": "to close a discussion",
+              "ru": "прекратить обсуждение"
+            },
+            {
+              "en": "the meeting closed",
+              "ru": "собрание закрылось"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 13,
+          "partOfSpeech": "verb",
+          "translation": "сближать(ся)",
+          "examples": [
+            {
+              "en": "the fog closed around us",
+              "ru": "туман окутал нас"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 14,
+          "partOfSpeech": "noun",
+          "translation": "конец, заключение",
+          "examples": [
+            {
+              "en": "at the close of the year",
+              "ru": "в конце года"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 15,
+          "partOfSpeech": "noun",
+          "translation": "огороженное место (особ. при соборе); переулок (тупик)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "close thing",
+          "partOfSpeech": "noun",
+          "translation": "опасное положение",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "close at hand",
+          "partOfSpeech": "adverb",
+          "translation": "под рукой, близко",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "to keep a close eye on",
+          "partOfSpeech": "verb",
+          "translation": "следить за",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "close down",
+          "partOfSpeech": "verb",
+          "translation": "закрыть (предприятие); прекратить работу",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "close in",
+          "partOfSpeech": "verb",
+          "translation": "окружать; смыкаться; наступать (о сумерках, зиме)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "phrase": "close out",
+          "partOfSpeech": "verb",
+          "translation": "ликвидировать (дело)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 7,
+          "phrase": "close up",
+          "partOfSpeech": "verb",
+          "translation": "закрывать (наглухо); смыкать (ряды); сближаться; срастаться (о ране)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "close",
+      "frequency_rank": 218,
+      "cefr": "a1",
+      "phon_br": "/kləʊz/",
+      "phon_n_am": "/kloʊz/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "близкий",
+          "examples": [
+            {
+              "en": "close friend",
+              "ru": "близкий друг"
+            },
+            {
+              "en": "close translation",
+              "ru": "точный перевод"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "пристальный, тщательный",
+          "examples": [
+            {
+              "en": "close examination",
+              "ru": "тщательный осмотр"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "тесный, плотный",
+          "examples": [
+            {
+              "en": "close ranks",
+              "ru": "сомкнутые ряды"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adjective",
+          "translation": "душный, спёртый (о воздухе)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adjective",
+          "translation": "скрытный, сдержанный",
+          "examples": [
+            {
+              "en": "to keep close",
+              "ru": "молчать"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "adjective",
+          "translation": "скупой",
+          "examples": [
+            {
+              "en": "close with money",
+              "ru": "прижимистый"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "adjective",
+          "translation": "закрытый (о голосовании)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "adjective",
+          "translation": "закрытый (о звуке, слоге)",
+          "examples": [],
+          "register": [
+            "фонетика"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "adverb",
+          "translation": "близко, рядом, вплотную",
+          "examples": [
+            {
+              "en": "close by",
+              "ru": "рядом, поблизости"
+            },
+            {
+              "en": "to stand close",
+              "ru": "стоять вплотную"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "verb",
+          "translation": "закрывать(ся); запирать(ся)",
+          "examples": [
+            {
+              "en": "to close a book",
+              "ru": "закрыть книгу"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 11,
+          "partOfSpeech": "verb",
+          "translation": "смыкать(ся), сжимать(ся)",
+          "examples": [
+            {
+              "en": "to close one's eyes",
+              "ru": "закрыть глаза"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 12,
+          "partOfSpeech": "verb",
+          "translation": "оканчивать(ся), завершать(ся)",
+          "examples": [
+            {
+              "en": "to close a discussion",
+              "ru": "прекратить обсуждение"
+            },
+            {
+              "en": "the meeting closed",
+              "ru": "собрание закрылось"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 13,
+          "partOfSpeech": "verb",
+          "translation": "сближать(ся)",
+          "examples": [
+            {
+              "en": "the fog closed around us",
+              "ru": "туман окутал нас"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 14,
+          "partOfSpeech": "noun",
+          "translation": "конец, заключение",
+          "examples": [
+            {
+              "en": "at the close of the year",
+              "ru": "в конце года"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 15,
+          "partOfSpeech": "noun",
+          "translation": "огороженное место (особ. при соборе); переулок (тупик)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "close thing",
+          "partOfSpeech": "noun",
+          "translation": "опасное положение",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "close at hand",
+          "partOfSpeech": "adverb",
+          "translation": "под рукой, близко",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "to keep a close eye on",
+          "partOfSpeech": "verb",
+          "translation": "следить за",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "close down",
+          "partOfSpeech": "verb",
+          "translation": "закрыть (предприятие); прекратить работу",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "close in",
+          "partOfSpeech": "verb",
+          "translation": "окружать; смыкаться; наступать (о сумерках, зиме)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "phrase": "close out",
+          "partOfSpeech": "verb",
+          "translation": "ликвидировать (дело)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 7,
+          "phrase": "close up",
+          "partOfSpeech": "verb",
+          "translation": "закрывать (наглухо); смыкать (ряды); сближаться; срастаться (о ране)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова close найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "closed",
+    "entry_index": 765,
+    "before": {
+      "word": "closed",
+      "frequency_rank": 1011,
+      "cefr": "a2",
+      "phon_br": "/kləʊzd/",
+      "phon_n_am": "/kləʊzd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "запертый, закрытый",
+          "examples": [
+            {
+              "en": "closed sea",
+              "ru": "внутреннее море (все берега которого принадлежат одному государству)"
+            },
+            {
+              "en": "closed work",
+              "ru": "подземные работы"
+            },
+            {
+              "en": "closed shop",
+              "ru": "предприятие, принимающее на работу только членов профсоюза (на основании договора с профсоюзом)"
+            },
+            {
+              "en": "closed economy",
+              "ru": "автаркическая экономия, автаркия"
+            },
+            {
+              "en": "closed season",
+              "ru": "время, когда запрещена охота"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "горное дело"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "законченный",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "фон. закрытый",
+          "examples": [
+            {
+              "en": "closed syllable",
+              "ru": "закрытый слог"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "под током",
+          "examples": [],
+          "register": [
+            "электротехника"
+          ],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "closed",
+      "frequency_rank": 1011,
+      "cefr": "a2",
+      "phon_br": "/kləʊzd/",
+      "phon_n_am": "/kləʊzd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "запертый, закрытый",
+          "examples": [
+            {
+              "en": "closed sea",
+              "ru": "внутреннее море (все берега которого принадлежат одному государству)"
+            },
+            {
+              "en": "closed work",
+              "ru": "подземные работы"
+            },
+            {
+              "en": "closed shop",
+              "ru": "предприятие, принимающее на работу только членов профсоюза (на основании договора с профсоюзом)"
+            },
+            {
+              "en": "closed economy",
+              "ru": "автаркическая экономия, автаркия"
+            },
+            {
+              "en": "closed season",
+              "ru": "время, когда запрещена охота"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "горное дело"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "законченный",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "фон. закрытый",
+          "examples": [
+            {
+              "en": "closed syllable",
+              "ru": "закрытый слог"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "под током",
+          "examples": [],
+          "register": [
+            "электротехника"
+          ],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова closed найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "closely",
+    "entry_index": 766,
+    "before": {
+      "word": "closely",
+      "frequency_rank": 1936,
+      "cefr": "b2",
+      "phon_br": "/ˈkləʊsli/",
+      "phon_n_am": "/ˈkləʊsli/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "близко, тесно",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adverb",
+          "translation": "внимательно",
+          "examples": [
+            {
+              "en": "to look closely at smth.",
+              "ru": "пристально смотреть на что-либо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "closely",
+      "frequency_rank": 1936,
+      "cefr": "b2",
+      "phon_br": "/ˈkləʊsli/",
+      "phon_n_am": "/ˈkləʊsli/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "близко, тесно",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adverb",
+          "translation": "внимательно",
+          "examples": [
+            {
+              "en": "to look closely at smth.",
+              "ru": "пристально смотреть на что-либо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова closely найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "closure",
+    "entry_index": 767,
+    "before": {
+      "word": "closure",
+      "frequency_rank": 3411,
+      "cefr": "c1",
+      "phon_br": "/ˈkləʊʒə(r)/",
+      "phon_n_am": "/ˈkləʊʒər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "закрытие; фон. смыкание",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "прекращение прений",
+          "examples": [],
+          "register": [
+            "парламентское"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "закрывать прения",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "closure",
+      "frequency_rank": 3411,
+      "cefr": "c1",
+      "phon_br": "/ˈkləʊʒə(r)/",
+      "phon_n_am": "/ˈkləʊʒər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "закрытие; фон. смыкание",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "прекращение прений",
+          "examples": [],
+          "register": [
+            "парламентское"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "закрывать прения",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова closure найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "cloth",
+    "entry_index": 768,
+    "before": {
+      "word": "cloth",
+      "frequency_rank": 3706,
+      "cefr": "b1",
+      "phon_br": "/klɒθ/",
+      "phon_n_am": "/klɔːθ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "ткань; сукно; полотно; холст; бумажная материя",
+          "examples": [
+            {
+              "en": "bound in cloth",
+              "ru": "в переплёте из материи"
+            },
+            {
+              "en": "cloth of gold (silver)",
+              "ru": "золотая (серебряная) парча"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: куски материи; сорта сукон, материй",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "скатерть",
+          "examples": [
+            {
+              "en": "to lay the cloth",
+              "ru": "накрывать на стол"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "пыльная тряпка",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "духовный сан",
+          "examples": [
+            {
+              "en": "gentlemen of the cloth",
+              "ru": "духовенство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "cloth",
+      "frequency_rank": 3706,
+      "cefr": "b1",
+      "phon_br": "/klɒθ/",
+      "phon_n_am": "/klɔːθ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "ткань; сукно; полотно; холст; бумажная материя",
+          "examples": [
+            {
+              "en": "bound in cloth",
+              "ru": "в переплёте из материи"
+            },
+            {
+              "en": "cloth of gold (silver)",
+              "ru": "золотая (серебряная) парча"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: куски материи; сорта сукон, материй",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "скатерть",
+          "examples": [
+            {
+              "en": "to lay the cloth",
+              "ru": "накрывать на стол"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "пыльная тряпка",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "духовный сан",
+          "examples": [
+            {
+              "en": "gentlemen of the cloth",
+              "ru": "духовенство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова cloth найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "clothes",
+    "entry_index": 769,
+    "before": {
+      "word": "clothes",
+      "frequency_rank": 1405,
+      "cefr": "a1",
+      "phon_br": "/kləʊðz/",
+      "phon_n_am": "/kləʊðz/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "платье, одежда",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "(постельное) бельё",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "clothes",
+      "frequency_rank": 1405,
+      "cefr": "a1",
+      "phon_br": "/kləʊðz/",
+      "phon_n_am": "/kləʊðz/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "платье, одежда",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "(постельное) бельё",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова clothes найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "clothing",
+    "entry_index": 770,
+    "before": {
+      "word": "clothing",
+      "frequency_rank": 2119,
+      "cefr": "a2",
+      "phon_br": "/ˈkləʊðɪŋ/",
+      "phon_n_am": "/ˈkləʊðɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "одежда, платье",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "обмундирование",
+          "examples": [],
+          "register": [
+            "военное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "обшивка",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "паруса",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "clothing",
+      "frequency_rank": 2119,
+      "cefr": "a2",
+      "phon_br": "/ˈkləʊðɪŋ/",
+      "phon_n_am": "/ˈkləʊðɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "одежда, платье",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "обмундирование",
+          "examples": [],
+          "register": [
+            "военное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "обшивка",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "паруса",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова clothing найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "cloud",
+    "entry_index": 771,
+    "before": {
+      "word": "cloud",
+      "frequency_rank": 2159,
+      "cefr": "a2",
+      "phon_br": "/klaʊd/",
+      "phon_n_am": "/klaʊd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "Облако; туча",
+          "examples": [
+            {
+              "en": "mushroom cloud",
+              "ru": "грибовидное облако (при атомном взрыве)"
+            },
+            {
+              "en": "clouds of smoke",
+              "ru": "клубы дыма"
+            },
+            {
+              "en": "clouds of dust",
+              "ru": "клубы пыли"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "множество, тьма, туча (птиц, стрел и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "что-либо омрачающее, бросающее тень",
+          "examples": [
+            {
+              "en": "a cloud on one's happiness",
+              "ru": "облачко, омрачающее чьё-л. счастье"
+            },
+            {
+              "en": "a cloud on one's reputation",
+              "ru": "пятно на чьей-либо репутации"
+            },
+            {
+              "en": "to be under a cloud of suspicion",
+              "ru": "быть под подозрением"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "покров",
+          "examples": [
+            {
+              "en": "under cloud of night",
+              "ru": "под покровом ночи"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шерстяная шаль",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать(ся) облаками, тучами",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "омрачать(ся); затемнять; мутить",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "очернить; запятнать (репутацию)",
+          "examples": [
+            {
+              "en": "cloud up",
+              "ru": "заволакиваться"
+            }
+          ],
+          "register": [],
+          "id": 8
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "under a cloud",
+          "partOfSpeech": "noun",
+          "translation": "в тяжёлом положении",
+          "examples": [],
+          "register": [],
+          "id": 1
+        }
+      ]
+    },
+    "after": {
+      "word": "cloud",
+      "frequency_rank": 2159,
+      "cefr": "a2",
+      "phon_br": "/klaʊd/",
+      "phon_n_am": "/klaʊd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "Облако; туча",
+          "examples": [
+            {
+              "en": "mushroom cloud",
+              "ru": "грибовидное облако (при атомном взрыве)"
+            },
+            {
+              "en": "clouds of smoke",
+              "ru": "клубы дыма"
+            },
+            {
+              "en": "clouds of dust",
+              "ru": "клубы пыли"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "множество, тьма, туча (птиц, стрел и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "что-либо омрачающее, бросающее тень",
+          "examples": [
+            {
+              "en": "a cloud on one's happiness",
+              "ru": "облачко, омрачающее чьё-л. счастье"
+            },
+            {
+              "en": "a cloud on one's reputation",
+              "ru": "пятно на чьей-либо репутации"
+            },
+            {
+              "en": "to be under a cloud of suspicion",
+              "ru": "быть под подозрением"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "покров",
+          "examples": [
+            {
+              "en": "under cloud of night",
+              "ru": "под покровом ночи"
+            }
+          ],
+          "register": [],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "шерстяная шаль",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать(ся) облаками, тучами",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "омрачать(ся); затемнять; мутить",
+          "examples": [],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "очернить; запятнать (репутацию)",
+          "examples": [
+            {
+              "en": "cloud up",
+              "ru": "заволакиваться"
+            }
+          ],
+          "register": [],
+          "id": 8
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "under a cloud",
+          "partOfSpeech": "noun",
+          "translation": "в тяжёлом положении",
+          "examples": [],
+          "register": [],
+          "id": 1
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова cloud найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "club",
+    "entry_index": 772,
+    "before": {
+      "word": "club",
+      "frequency_rank": 513,
+      "cefr": "a1",
+      "phon_br": "/klʌb/",
+      "phon_n_am": "/klʌb/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "дубинка",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "клюшка; бита; булава",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "приклад (ружья)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "бить (дубиной, прикладом)",
+          "examples": [],
+          "register": [
+            "карточный термин"
+          ],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "собираться вместе",
+          "examples": [],
+          "register": [
+            "собирательное"
+          ],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "устраивать складчину",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 6
+        }
+      ]
+    },
+    "after": {
+      "word": "club",
+      "frequency_rank": 513,
+      "cefr": "a1",
+      "phon_br": "/klʌb/",
+      "phon_n_am": "/klʌb/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "дубинка",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "клюшка; бита; булава",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "приклад (ружья)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "бить (дубиной, прикладом)",
+          "examples": [],
+          "register": [
+            "карточный термин"
+          ],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "собираться вместе",
+          "examples": [],
+          "register": [
+            "собирательное"
+          ],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "устраивать складчину",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 6
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова club найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "clue",
+    "entry_index": 773,
+    "before": {
+      "word": "clue",
+      "frequency_rank": 3145,
+      "cefr": "b1",
+      "phon_br": "/kluː/",
+      "phon_n_am": "/kluː/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "ключ (к разгадке чего-либо); улика",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "нить (рассказа и т. п.); ход мыслей",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "clue",
+      "frequency_rank": 3145,
+      "cefr": "b1",
+      "phon_br": "/kluː/",
+      "phon_n_am": "/kluː/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "ключ (к разгадке чего-либо); улика",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "нить (рассказа и т. п.); ход мыслей",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова clue найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "cluster",
+    "entry_index": 774,
+    "before": {
+      "word": "cluster",
+      "frequency_rank": 3852,
+      "cefr": "c1",
+      "phon_br": "/ˈklʌstə(r)/",
+      "phon_n_am": "/ˈklʌstər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "кисть, пучок, гроздь; куст",
+          "examples": [
+            {
+              "en": "cluster of grapes",
+              "ru": "гроздь винограда"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "группа",
+          "examples": [
+            {
+              "en": "cluster of spectators",
+              "ru": "кучка зрителей"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "рой (пчёл)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "скопление, концентрация",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "cluster sampling",
+              "ru": "выборочное обследование"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "cluster switch",
+              "ru": "групповой выключатель"
+            }
+          ],
+          "register": [
+            "электротехника"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "расти пучками, гроздьями",
+          "examples": [
+            {
+              "en": "roses clustered round the house",
+              "ru": "вокруг дома росли кусты роз"
+            }
+          ],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "собираться группами, толпиться, тесниться",
+          "examples": [],
+          "register": [
+            "собирательное"
+          ],
+          "id": 8,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "cluster",
+      "frequency_rank": 3852,
+      "cefr": "c1",
+      "phon_br": "/ˈklʌstə(r)/",
+      "phon_n_am": "/ˈklʌstər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "кисть, пучок, гроздь; куст",
+          "examples": [
+            {
+              "en": "cluster of grapes",
+              "ru": "гроздь винограда"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "группа",
+          "examples": [
+            {
+              "en": "cluster of spectators",
+              "ru": "кучка зрителей"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "рой (пчёл)",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "скопление, концентрация",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "cluster sampling",
+              "ru": "выборочное обследование"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "cluster switch",
+              "ru": "групповой выключатель"
+            }
+          ],
+          "register": [
+            "электротехника"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "расти пучками, гроздьями",
+          "examples": [
+            {
+              "en": "roses clustered round the house",
+              "ru": "вокруг дома росли кусты роз"
+            }
+          ],
+          "register": [],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "собираться группами, толпиться, тесниться",
+          "examples": [],
+          "register": [
+            "собирательное"
+          ],
+          "id": 8,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова cluster найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "coach",
+    "entry_index": 775,
+    "before": {
+      "word": "coach",
+      "frequency_rank": 896,
+      "cefr": "a2",
+      "phon_br": "/kəʊtʃ/",
+      "phon_n_am": "/kəʊtʃ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "автобус (междугородного сообщения)",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пассажирский вагон",
+          "examples": [],
+          "register": [
+            "железнодорожное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "карета, экипаж",
+          "examples": [
+            {
+              "en": "coach and four (six)",
+              "ru": "карета, запряжённая четвёркой (шестёркой)"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "почтовая карета",
+          "examples": [],
+          "register": [
+            "историческое"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ехать в карете",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "перевозить в карете",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "репетитор (подготавливающий к экзаменам)",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "тренер; инструктор",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подготавливать или натаскивать к экзамену",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "заниматься с репетитором",
+          "examples": [],
+          "register": [],
+          "id": 10,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "тренировать, подготавливать к состязаниям",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "инструктировать пилота во время ночных полётов",
+          "examples": [],
+          "register": [
+            "радио",
+            "авиация"
+          ],
+          "id": 12
+        }
+      ]
+    },
+    "after": {
+      "word": "coach",
+      "frequency_rank": 896,
+      "cefr": "a2",
+      "phon_br": "/kəʊtʃ/",
+      "phon_n_am": "/kəʊtʃ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "автобус (междугородного сообщения)",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пассажирский вагон",
+          "examples": [],
+          "register": [
+            "железнодорожное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "карета, экипаж",
+          "examples": [
+            {
+              "en": "coach and four (six)",
+              "ru": "карета, запряжённая четвёркой (шестёркой)"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "почтовая карета",
+          "examples": [],
+          "register": [
+            "историческое"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ехать в карете",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "перевозить в карете",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "репетитор (подготавливающий к экзаменам)",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "тренер; инструктор",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "подготавливать или натаскивать к экзамену",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "заниматься с репетитором",
+          "examples": [],
+          "register": [],
+          "id": 10,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "тренировать, подготавливать к состязаниям",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "инструктировать пилота во время ночных полётов",
+          "examples": [],
+          "register": [
+            "радио",
+            "авиация"
+          ],
+          "id": 12
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова coach найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "coal",
+    "entry_index": 776,
+    "before": {
+      "word": "coal",
+      "frequency_rank": 2058,
+      "cefr": "b1",
+      "phon_br": "/kəʊl/",
+      "phon_n_am": "/kəʊl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "(каменный) уголь",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "уголёк",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "грузить(ся) углем",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обугливаться",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "to carry coals to Newcastle",
+          "partOfSpeech": "verb",
+          "translation": "ехать в Тулу со своим самоваром",
+          "examples": [],
+          "register": [],
+          "id": 1
+        }
+      ]
+    },
+    "after": {
+      "word": "coal",
+      "frequency_rank": 2058,
+      "cefr": "b1",
+      "phon_br": "/kəʊl/",
+      "phon_n_am": "/kəʊl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "(каменный) уголь",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "уголёк",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "грузить(ся) углем",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обугливаться",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "to carry coals to Newcastle",
+          "partOfSpeech": "verb",
+          "translation": "ехать в Тулу со своим самоваром",
+          "examples": [],
+          "register": [],
+          "id": 1
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова coal найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "coalition",
+    "entry_index": 777,
+    "before": {
+      "word": "coalition",
+      "frequency_rank": 2948,
+      "cefr": "c1",
+      "phon_br": "/ˌkəʊəˈlɪʃn/",
+      "phon_n_am": "/ˌkəʊəˈlɪʃn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "коалиция; союз (временный)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "коалиционный",
+          "examples": [
+            {
+              "en": "a coalition government",
+              "ru": "коалиционное правительство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "coalition",
+      "frequency_rank": 2948,
+      "cefr": "c1",
+      "phon_br": "/ˌkəʊəˈlɪʃn/",
+      "phon_n_am": "/ˌkəʊəˈlɪʃn/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "коалиция; союз (временный)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "коалиционный",
+          "examples": [
+            {
+              "en": "a coalition government",
+              "ru": "коалиционное правительство"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова coalition найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "coast",
+    "entry_index": 778,
+    "before": {
+      "word": "coast",
+      "frequency_rank": 1070,
+      "cefr": "a2",
+      "phon_br": "/kəʊst/",
+      "phon_n_am": "/kəʊst/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "морской берег, побережье",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "спуск под уклон с выключенным мотором или без педалей",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "спуск с горы на санках",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "снежная горка",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "спускаться под уклон с выключенным мотором или без педалей",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делать успехи без особого усилия",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "кататься с горы",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "плавать вдоль побережья",
+          "examples": [],
+          "register": [],
+          "id": 8,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "coast",
+      "frequency_rank": 1070,
+      "cefr": "a2",
+      "phon_br": "/kəʊst/",
+      "phon_n_am": "/kəʊst/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "морской берег, побережье",
+          "examples": [],
+          "register": [
+            "морской термин"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "спуск под уклон с выключенным мотором или без педалей",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "спуск с горы на санках",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "снежная горка",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "спускаться под уклон с выключенным мотором или без педалей",
+          "examples": [],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делать успехи без особого усилия",
+          "examples": [],
+          "register": [],
+          "id": 6,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "кататься с горы",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "плавать вдоль побережья",
+          "examples": [],
+          "register": [],
+          "id": 8,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова coast найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "coastal",
+    "entry_index": 779,
+    "before": {
+      "word": "coastal",
+      "frequency_rank": 3098,
+      "cefr": "c1",
+      "phon_br": "/ˈkəʊstl/",
+      "phon_n_am": "/ˈkəʊstl/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "береговой",
+          "examples": [
+            {
+              "en": "coastal traffic",
+              "ru": "каботажное плавание"
+            },
+            {
+              "en": "coastal command",
+              "ru": "береговая охрана"
+            },
+            {
+              "en": "coastal submarine",
+              "ru": "подводная лодка прибрежного действия"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "судно береговой охраны",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "coastal",
+      "frequency_rank": 3098,
+      "cefr": "c1",
+      "phon_br": "/ˈkəʊstl/",
+      "phon_n_am": "/ˈkəʊstl/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "береговой",
+          "examples": [
+            {
+              "en": "coastal traffic",
+              "ru": "каботажное плавание"
+            },
+            {
+              "en": "coastal command",
+              "ru": "береговая охрана"
+            },
+            {
+              "en": "coastal submarine",
+              "ru": "подводная лодка прибрежного действия"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "судно береговой охраны",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова coastal найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  },
+  {
+    "word": "coat",
+    "entry_index": 780,
+    "before": {
+      "word": "coat",
+      "frequency_rank": 2498,
+      "cefr": "a1",
+      "phon_br": "/kəʊt/",
+      "phon_n_am": "/kəʊt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "пиджак; мундир; френч; китель",
+          "examples": [
+            {
+              "en": "Eton coat",
+              "ru": "короткая чёрная куртка"
+            },
+            {
+              "en": "morning coat",
+              "ru": "визитка"
+            },
+            {
+              "en": "coat and skirt",
+              "ru": "женский костюм"
+            },
+            {
+              "en": "tail (or claw hammer) coat",
+              "ru": "фрак"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "верхнее платье, пальто",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать (краской и т. п.)",
+          "examples": [
+            {
+              "en": "his tongue is coated",
+              "ru": "у него язык обложен"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "облицовывать",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "to take off one's coat",
+          "partOfSpeech": "verb",
+          "translation": "приготовиться к драке",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "coat of snow",
+          "partOfSpeech": "noun",
+          "translation": "снеговой покров",
+          "examples": [],
+          "register": [],
+          "id": 2
+        },
+        {
+          "phrase": "coat of mail",
+          "partOfSpeech": "noun",
+          "translation": "кольчуга",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "to turn one's coat",
+          "partOfSpeech": "noun",
+          "translation": "менять свои убеждения, взгляды",
+          "examples": [],
+          "register": [],
+          "id": 4
+        }
+      ]
+    },
+    "after": {
+      "word": "coat",
+      "frequency_rank": 2498,
+      "cefr": "a1",
+      "phon_br": "/kəʊt/",
+      "phon_n_am": "/kəʊt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "пиджак; мундир; френч; китель",
+          "examples": [
+            {
+              "en": "Eton coat",
+              "ru": "короткая чёрная куртка"
+            },
+            {
+              "en": "morning coat",
+              "ru": "визитка"
+            },
+            {
+              "en": "coat and skirt",
+              "ru": "женский костюм"
+            },
+            {
+              "en": "tail (or claw hammer) coat",
+              "ru": "фрак"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "верхнее платье, пальто",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "покрывать (краской и т. п.)",
+          "examples": [
+            {
+              "en": "his tongue is coated",
+              "ru": "у него язык обложен"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "облицовывать",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "to take off one's coat",
+          "partOfSpeech": "verb",
+          "translation": "приготовиться к драке",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "coat of snow",
+          "partOfSpeech": "noun",
+          "translation": "снеговой покров",
+          "examples": [],
+          "register": [],
+          "id": 2
+        },
+        {
+          "phrase": "coat of mail",
+          "partOfSpeech": "noun",
+          "translation": "кольчуга",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "to turn one's coat",
+          "partOfSpeech": "noun",
+          "translation": "менять свои убеждения, взгляды",
+          "examples": [],
+          "register": [],
+          "id": 4
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source_ref": "batch_039/stage_06.json",
+    "reason": "Для слова coat найденные материалы сопоставлены с текущей записью; подтверждённого преимущества замены нет, поэтому before сохранён без изменений.",
+    "confidence": 0.91
+  }
+]

@@ -1,0 +1,357 @@
+{
+  "scope": "next100_restart_2026-11-12",
+  "frequency_range": "101-200",
+  "records_audited": 106,
+  "applied_count": 31,
+  "changes": [
+    {
+      "word": "day",
+      "path": "phrases[0]",
+      "before": {
+        "id": 1,
+        "phrase": "day off",
+        "partOfSpeech": "verb",
+        "translation": "день; сутки; текущий день; как-нибудь на днях; изо дня в день; со дня на день",
+        "examples": [
+          {
+            "en": "on that day",
+            "ru": "в тот день"
+          },
+          {
+            "en": "all (the) day",
+            "ru": "весь день"
+          },
+          {
+            "en": "all day long",
+            "ru": "день-деньской"
+          },
+          {
+            "en": "solar (or astronomical, nautical) day",
+            "ru": "астрономические сутки (исчисляются от 12 ч. дня)"
+          },
+          {
+            "en": "civil day",
+            "ru": "гражданские сутки (исчисляются от 12 ч. ночи)"
+          },
+          {
+            "en": "every other day, day about",
+            "ru": "через день"
+          },
+          {
+            "en": "the present day",
+            "ru": "сегодня"
+          },
+          {
+            "en": "the day after tomorrow",
+            "ru": "послезавтра"
+          },
+          {
+            "en": "the day before",
+            "ru": "накануне"
+          },
+          {
+            "en": "the day before yesterday",
+            "ru": "третьего дня, позавчера"
+          },
+          {
+            "en": "one day",
+            "ru": "однажды"
+          },
+          {
+            "en": "the other day",
+            "ru": "на днях"
+          },
+          {
+            "en": "some day",
+            "ru": "когда-нибудь"
+          },
+          {
+            "en": "one of these days",
+            "ru": "в один из ближайших дней"
+          },
+          {
+            "en": "day in, day out",
+            "ru": "изо дня в день"
+          },
+          {
+            "en": "day by (or after) day, from day to day",
+            "ru": "день за днём"
+          },
+          {
+            "en": "first day (of the week)",
+            "ru": "воскресенье"
+          }
+        ],
+        "register": []
+      },
+      "after": {
+        "id": 1,
+        "phrase": "day off",
+        "partOfSpeech": "noun",
+        "translation": "выходной день",
+        "examples": [],
+        "register": []
+      },
+      "reason": "restore phrase-specific record",
+      "origin": "origin: copied from day.meanings[0]"
+    },
+    {
+      "word": "too",
+      "path": "meanings[0].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "general too is unmarked"
+    },
+    {
+      "word": "too",
+      "path": "meanings[0].examples[2].en",
+      "before": "it is too much (of a good thing) s",
+      "after": "it is too much (of a good thing)",
+      "reason": "remove OCR tail"
+    },
+    {
+      "word": "many",
+      "path": "phrases[0]",
+      "before": {
+        "id": 1,
+        "phrase": "one too many",
+        "partOfSpeech": "adverb",
+        "translation": "слишком сложный, не по силам; лишний (о бокале алкоголя)",
+        "register": [
+          "идиома"
+        ],
+        "examples": []
+      },
+      "after": {
+        "id": 1,
+        "phrase": "one too many",
+        "partOfSpeech": "adjective",
+        "translation": "лишний; (о бокале алкоголя) лишний бокал",
+        "register": [
+          "идиома"
+        ],
+        "examples": []
+      },
+      "reason": "restore phrase POS and translation"
+    },
+    {
+      "word": "right",
+      "path": "meanings[0].examples[1].ru",
+      "before": "отдать кому-либо должное, справедливость",
+      "after": "поступить с кем-либо справедливо; воздать кому-либо должное",
+      "reason": "repair malformed translation"
+    },
+    {
+      "word": "say",
+      "path": "meanings[6].examples[1].ru",
+      "before": "прочесть молитву (перед трапезой) —",
+      "after": "прочесть молитву (перед трапезой)",
+      "reason": "remove OCR dash"
+    },
+    {
+      "word": "world",
+      "path": "meanings[8].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive world adjective"
+    },
+    {
+      "word": "down",
+      "path": "meanings[5].translation",
+      "before": "снижать цену",
+      "after": "снижаться; уменьшаться; ухудшаться",
+      "reason": "align broad examples with source sense"
+    },
+    {
+      "word": "through",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "interjection",
+      "reason": "telephone utterance"
+    },
+    {
+      "word": "best",
+      "path": "meanings[5].examples[2].ru",
+      "before": "о нём лучше не вспоминать",
+      "after": "о нём лучше забыть",
+      "reason": "more exact best forgotten"
+    },
+    {
+      "word": "man",
+      "path": "meanings[16].translation",
+      "before": "приручать",
+      "after": "приучать к человеку; приручать",
+      "reason": "man a hawk construction"
+    },
+    {
+      "word": "used",
+      "path": "meanings[0].translation",
+      "before": "подержанный, старый",
+      "after": "подержанный; бывший в употреблении",
+      "reason": "used adjective"
+    },
+    {
+      "word": "part",
+      "path": "meanings[4].examples[1].ru",
+      "before": "smth. участвовать в чём-либо; to do one's part (с)делать своё дело",
+      "after": "участвовать в чём-либо; to do one's part — (с)делать своё дело",
+      "reason": "remove untranslated editorial fragment"
+    },
+    {
+      "word": "better",
+      "path": "meanings[1].translation",
+      "before": "predic. чувствующий себя лучше",
+      "after": "в сказуемом положении: чувствующий себя лучше",
+      "reason": "remove editorial abbreviation"
+    },
+    {
+      "word": "little",
+      "path": "meanings[5].examples[0].ru",
+      "before": "или",
+      "after": "он и не думал, что...",
+      "reason": "repair OCR/truncation"
+    },
+    {
+      "word": "little",
+      "path": "phrases[0].examples",
+      "before": [
+        {
+          "en": "little or nothing",
+          "ru": "почти ничего"
+        },
+        {
+          "en": "not a little",
+          "ru": "немало"
+        },
+        {
+          "en": "knows a little of everything",
+          "ru": "знает понемногу обо всём"
+        }
+      ],
+      "after": [],
+      "reason": "remove neighboring noun examples",
+      "origin": "origin: little.meanings[6].examples"
+    },
+    {
+      "word": "find",
+      "path": "phrases[2]",
+      "before": {
+        "phrase": "all found",
+        "partOfSpeech": "verb",
+        "translation": "на всём готовом",
+        "examples": [],
+        "register": [],
+        "id": 3
+      },
+      "after": null,
+      "reason": "remove duplicate all found phrase"
+    },
+    {
+      "word": "find",
+      "path": "meanings[9].register",
+      "before": [
+        "военное"
+      ],
+      "after": [],
+      "reason": "find out is not military"
+    },
+    {
+      "word": "old",
+      "path": "phrases[0].phrase",
+      "before": "O. Harry, O. Gentleman, O. Nick",
+      "after": "Old Harry, Old Gentleman, Old Nick",
+      "reason": "expand abbreviation in learner phrase"
+    },
+    {
+      "word": "under",
+      "path": "meanings[5].examples[2].en",
+      "before": "under right in international law",
+      "after": "under international law",
+      "reason": "repair legal collocation"
+    },
+    {
+      "word": "under",
+      "path": "meanings[7].examples[2].en",
+      "before": "I cannot reach the village under two hours",
+      "after": "I cannot reach the village in under two hours",
+      "reason": "repair duration construction"
+    },
+    {
+      "word": "next",
+      "path": "meanings[4].examples[0].en",
+      "before": "I will tell you in my next",
+      "after": "I will tell you in my next letter",
+      "reason": "complete learner example"
+    },
+    {
+      "word": "against",
+      "path": "meanings[1].translation",
+      "before": "опору, фон, препятствие о, об, по, на, к",
+      "after": "опора, фон или препятствие; о, об, по, на, к",
+      "reason": "repair malformed Russian gloss"
+    },
+    {
+      "word": "against",
+      "path": "meanings[2].translation",
+      "before": "непосредственное соседство рядом, у",
+      "after": "непосредственное соседство; рядом с, у",
+      "reason": "repair malformed Russian gloss"
+    },
+    {
+      "word": "against",
+      "path": "meanings[4].translation",
+      "before": "определённый срок к, на",
+      "after": "столкновение или соприкосновение; на, с",
+      "reason": "repair malformed Russian gloss"
+    },
+    {
+      "word": "against",
+      "path": "meanings[6].translation",
+      "before": "подготовку к чему-либо на, про",
+      "after": "противодействие, несогласие с чем-либо; против",
+      "reason": "repair malformed Russian gloss"
+    },
+    {
+      "word": "against",
+      "path": "meanings[6].examples[0].ru",
+      "before": "про чёрный день",
+      "after": "на чёрный день",
+      "reason": "against a rainy day preparation sense"
+    },
+    {
+      "word": "family",
+      "path": "meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "source marks attributive family"
+    },
+    {
+      "word": "might",
+      "path": "meanings[0].translation",
+      "before": "past от may",
+      "after": "прошедшая форма may; в косвенной речи — «мочь, возможно»",
+      "reason": "remove untranslated editorial fragment"
+    },
+    {
+      "word": "lot",
+      "path": "meanings[2].examples[2].ru",
+      "before": "smb. связать, разделить (свою) судьбу с кем-либо; the lot fell upon (или came to) me жребий пал на меня",
+      "after": "связать, разделить (свою) судьбу с кем-либо; жребий пал на меня",
+      "reason": "remove untranslated fragments"
+    },
+    {
+      "word": "ever",
+      "path": "meanings[3].examples[0].ru",
+      "before": "как только",
+      "after": "как обычно; как всегда",
+      "reason": "as ever means as usual"
+    }
+  ],
+  "deferred_review": [
+    "work phrasal contamination; right malformed sense; say phrase organization; say over; down missing ID 26 and suspicious sense; while duplicate storage; love contamination; home wording; long meanings 17-18; look contamination; give phrasal contamination; game away; long-time style; show duplicate storage; found homonym/form_of; must/might modal POS; team register; name contaminated translations; found adjective homonym; part-time style"
+  ],
+  "before_sha256": "705ed41d0b1e50112bf487f2c328e819a6d7115d52bb05e1adf2ed7042aa49f2",
+  "after_sha256": "742566a1ffdbe8a2ed4f4b7a8a309f998e8b61a3a0399ef391ac1eb78e7c5c9a"
+}

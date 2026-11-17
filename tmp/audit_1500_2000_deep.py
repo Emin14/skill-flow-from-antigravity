@@ -1,7 +1,7 @@
 import io, json, re
 from collections import Counter
 
-data = json.load(io.open('oxford_5000_2026-08-27.json', 'r', encoding='utf-8'))
+data = json.load(io.open('src/data/oxford_5000.json', 'r', encoding='utf-8'))
 pdf_text = io.open('tmp/muller_full_text.txt', 'r', encoding='utf-8').read()
 
 entries_1500_2000 = data[1500:2000]

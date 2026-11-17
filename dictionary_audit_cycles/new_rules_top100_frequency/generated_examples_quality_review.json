@@ -1,0 +1,412 @@
+[
+  {
+    "word": "after",
+    "meaning_index": 7,
+    "current_en": "The children ran after the dog, and he stayed after them.",
+    "current_ru": "Дети побежали за собакой, а он остался позади них.",
+    "problem": "English collocation is unnatural and the Russian sentence adds an unclear referent for «he stayed after them».",
+    "proposed_en": "The children ran after the dog, and their father stayed behind.",
+    "proposed_ru": "Дети побежали за собакой, а их отец остался позади.",
+    "confidence": 0.9
+  },
+  {
+    "word": "back",
+    "meaning_index": 13,
+    "current_en": "Please back the cheque before depositing it.",
+    "current_ru": "Пожалуйста, сделайте передаточную надпись на чеке перед внесением.",
+    "problem": "Russian wording «перед внесением» is incomplete for depositing a cheque.",
+    "proposed_en": null,
+    "proposed_ru": "Пожалуйста, подпишите передаточную надпись на чеке перед внесением его на счёт.",
+    "confidence": 0.9
+  },
+  {
+    "word": "even",
+    "meaning_index": 6,
+    "current_en": "The judge made an even decision.",
+    "current_ru": "Судья вынес беспристрастное решение.",
+    "problem": "«made an even decision» is not a natural collocation for a fair decision.",
+    "proposed_en": "The judge made a fair decision.",
+    "proposed_ru": "Судья вынес справедливое решение.",
+    "confidence": 0.9
+  },
+  {
+    "word": "even",
+    "meaning_index": 8,
+    "current_en": "The whole number is even.",
+    "current_ru": "Число целое.",
+    "problem": "Russian translates even as «целое», but the English means «чётное».",
+    "proposed_en": null,
+    "proposed_ru": "Четыре — чётное число.",
+    "confidence": 0.9
+  },
+  {
+    "word": "even",
+    "meaning_index": 13,
+    "current_en": "Do not even the two teams unfairly.",
+    "current_ru": "Не ставь две команды на одну доску несправедливо.",
+    "problem": "The verb phrase is awkward; «even the two teams» needs a natural context.",
+    "proposed_en": "The coach tried to even the two teams.",
+    "proposed_ru": "Тренер попытался уравнять две команды.",
+    "confidence": 0.9
+  },
+  {
+    "word": "first",
+    "meaning_index": 15,
+    "current_en": "I would first stay home rather than travel.",
+    "current_ru": "Я бы предпочёл остаться дома, а не ехать.",
+    "problem": "The adverb first does not naturally express «rather/preferably» in this sentence.",
+    "proposed_en": null,
+    "proposed_ru": "Нужно перепроверить значение и заменить пример после подтверждения словарного значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "get",
+    "meaning_index": 18,
+    "current_en": "The old ram got three lambs.",
+    "current_ru": "Старый баран произвёл на свет трёх ягнят.",
+    "problem": "A ram does not produce lambs alone; the wording should express siring offspring.",
+    "proposed_en": "The old ram sired three lambs.",
+    "proposed_ru": "Старый баран стал отцом трёх ягнят.",
+    "confidence": 0.9
+  },
+  {
+    "word": "go",
+    "meaning_index": 18,
+    "current_en": "The plan went well with the committee.",
+    "current_ru": "План был принят комитетом.",
+    "problem": "«went well with the committee» means succeeded, not was accepted by the committee.",
+    "proposed_en": "The proposal went through the committee.",
+    "proposed_ru": "Предложение прошло через комитет.",
+    "confidence": 0.9
+  },
+  {
+    "word": "go",
+    "meaning_index": 37,
+    "current_en": "The patient suffered a go of asthma last night.",
+    "current_ru": "Вчера ночью у пациента случился приступ астмы.",
+    "problem": "«a go of asthma» is not idiomatic English.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения этого редкого значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "go",
+    "meaning_index": 38,
+    "current_en": "She had a go of soup before dinner.",
+    "current_ru": "Перед ужином она взяла порцию супа.",
+    "problem": "«a go of soup» is not idiomatic and does not mean a portion of soup.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения этого редкого значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "good",
+    "meaning_index": 9,
+    "current_en": "The bank considers him a good customer.",
+    "current_ru": "Банк считает его надёжным клиентом.",
+    "problem": "A «good customer» is not necessarily creditworthy; the example overstates the meaning.",
+    "proposed_en": "The bank considers him a good credit risk.",
+    "proposed_ru": "Банк считает его надёжным заёмщиком.",
+    "confidence": 0.9
+  },
+  {
+    "word": "know",
+    "meaning_index": 5,
+    "current_en": "She knows what it is like to lose a job.",
+    "current_ru": "Она испытала, каково это — потерять работу.",
+    "problem": "Russian «испытала» adds personal experience; knows what it is like means «знает, каково это».",
+    "proposed_en": null,
+    "proposed_ru": "Она знает, каково это — потерять работу.",
+    "confidence": 0.9
+  },
+  {
+    "word": "make",
+    "meaning_index": 18,
+    "current_en": "They make together in a small flat.",
+    "current_ru": "Они сожительствуют в небольшой квартире.",
+    "problem": "«make together» is ungrammatical and does not naturally express cohabitation.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый естественный пример после подтверждения редкого значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "make",
+    "meaning_index": 21,
+    "current_en": "The factory increased its make this year.",
+    "current_ru": "В этом году фабрика увеличила выпуск продукции.",
+    "problem": "«increased its make» is awkward without the product being named.",
+    "proposed_en": "The factory increased its make of bicycles this year.",
+    "proposed_ru": "В этом году фабрика увеличила выпуск велосипедов.",
+    "confidence": 0.9
+  },
+  {
+    "word": "make",
+    "meaning_index": 22,
+    "current_en": "The make of the bridge required skilled workers.",
+    "current_ru": "Для строительства моста потребовались квалифицированные рабочие.",
+    "problem": "«The make of the bridge required...» is not natural English for a construction process.",
+    "proposed_en": "The bridge is in the making.",
+    "proposed_ru": "Мост находится в процессе строительства.",
+    "confidence": 0.9
+  },
+  {
+    "word": "make",
+    "meaning_index": 23,
+    "current_en": "His make is resilient and practical.",
+    "current_ru": "У него стойкий и практичный склад характера.",
+    "problem": "«His make is resilient and practical» is unnatural for physical constitution.",
+    "proposed_en": "He has a strong make.",
+    "proposed_ru": "У него крепкое сложение.",
+    "confidence": 0.9
+  },
+  {
+    "word": "make",
+    "meaning_index": 25,
+    "current_en": "The dealer gave the cards a quick make before dealing.",
+    "current_ru": "Дилер быстро перетасовал карты перед раздачей.",
+    "problem": "«gave the cards a quick make» is not natural English for shuffling.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения карточного значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "make",
+    "meaning_index": 26,
+    "current_en": "The player called make after the deal.",
+    "current_ru": "Игрок объявил козырь после раздачи.",
+    "problem": "«called make» is not a natural phrase for declaring a trump suit.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения карточного значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "May",
+    "meaning_index": 3,
+    "current_en": "She is in the may of her youth.",
+    "current_ru": "Она в расцвете молодости.",
+    "problem": "The phrase is grammatical but highly archaic and needs confirmation that this rare noun sense is intended.",
+    "proposed_en": null,
+    "proposed_ru": "Требуется подтвердить значение перед заменой примера.",
+    "confidence": 0.9
+  },
+  {
+    "word": "May",
+    "meaning_index": 6,
+    "current_en": "May flowers appear in May gardens.",
+    "current_ru": "Майские цветы появляются в садах в мае.",
+    "problem": "«May flowers» is ambiguous with the noun may (hawthorn); the adjective sense is not clearly demonstrated.",
+    "proposed_en": null,
+    "proposed_ru": "Требуется новый однозначный пример после подтверждения значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "new",
+    "meaning_index": 10,
+    "current_en": "They have new arrived at the station.",
+    "current_ru": "Они только что прибыли на станцию.",
+    "problem": "«have new arrived» is ungrammatical; the adverb is newly, not new.",
+    "proposed_en": "They have newly arrived at the station.",
+    "proposed_ru": "Они только что прибыли на станцию.",
+    "confidence": 0.9
+  },
+  {
+    "word": "new",
+    "meaning_index": 11,
+    "current_en": "She painted the room new.",
+    "current_ru": "Она заново покрасила комнату.",
+    "problem": "Word order is wrong for the adverbial sense; «painted ... new» is not natural here.",
+    "proposed_en": "She painted the room anew.",
+    "proposed_ru": "Она заново покрасила комнату.",
+    "confidence": 0.9
+  },
+  {
+    "word": "out",
+    "meaning_index": 8,
+    "current_en": "They live in an out village near the border.",
+    "current_ru": "Они живут в отдалённой деревне у границы.",
+    "problem": "«out village» is archaic and unnatural for a learner example.",
+    "proposed_en": "They live in an outlying village near the border.",
+    "proposed_ru": "Они живут в отдалённой деревне у границы.",
+    "confidence": 0.9
+  },
+  {
+    "word": "out",
+    "meaning_index": 9,
+    "current_en": "The out door leads to the garden.",
+    "current_ru": "Наружная дверь ведёт в сад.",
+    "problem": "«out door» is incorrect; the adjective is outer.",
+    "proposed_en": "The outer door leads to the garden.",
+    "proposed_ru": "Наружная дверь ведёт в сад.",
+    "confidence": 0.9
+  },
+  {
+    "word": "out",
+    "meaning_index": 11,
+    "current_en": "Please switch the printer out when you leave.",
+    "current_ru": "Пожалуйста, выключите принтер, когда будете уходить.",
+    "problem": "«switch the printer out» normally means replace it, not turn it off.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример для значения «выключенный».",
+    "confidence": 0.9
+  },
+  {
+    "word": "out",
+    "meaning_index": 13,
+    "current_en": "The out opposed the bill in Parliament.",
+    "current_ru": "Оппозиция выступила против законопроекта в парламенте.",
+    "problem": "«The out» is ungrammatical; the plural noun is outs, and the political sense needs confirmation.",
+    "proposed_en": "The outs opposed the bill in Parliament.",
+    "proposed_ru": "Люди, находящиеся в оппозиции, выступили против законопроекта.",
+    "confidence": 0.9
+  },
+  {
+    "word": "out",
+    "meaning_index": 14,
+    "current_en": "There is an out in the printed paragraph.",
+    "current_ru": "В напечатанном абзаце есть пропуск.",
+    "problem": "«an out in the printed paragraph» is unnatural for a typographical omission.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения редкого значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "out",
+    "meaning_index": 15,
+    "current_en": "The plan has one out: it costs too much.",
+    "current_ru": "У этого плана есть один недостаток: он слишком дорогой.",
+    "problem": "«one out» is not a natural learner phrase for a drawback.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения редкого значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "over",
+    "meaning_index": 15,
+    "current_en": "There was an over on the bill for delivery.",
+    "current_ru": "В счёте была приплата за доставку.",
+    "problem": "«an over on the bill» is unnatural for an extra charge.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый example after confirming this rare noun sense.",
+    "confidence": 0.9
+  },
+  {
+    "word": "over",
+    "meaning_index": 16,
+    "current_en": "The shot was an over and landed beyond the target.",
+    "current_ru": "Снаряд перелетел цель и упал за ней.",
+    "problem": "«The shot was an over» is not idiomatic for a projectile overshooting a target.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "over",
+    "meaning_index": 17,
+    "current_en": "The radio announced an over to another channel.",
+    "current_ru": "Радио объявило переход на другой канал.",
+    "problem": "«an over to another channel» is awkward; a radio handover is needed.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "over",
+    "meaning_index": 18,
+    "current_en": "The over shelf is hard to reach.",
+    "current_ru": "До верхней полки трудно дотянуться.",
+    "problem": "«over shelf» is incorrect; upper shelf is natural English.",
+    "proposed_en": "The upper shelf is hard to reach.",
+    "proposed_ru": "До верхней полки трудно дотянуться.",
+    "confidence": 0.9
+  },
+  {
+    "word": "over",
+    "meaning_index": 19,
+    "current_en": "Ask the over manager for approval.",
+    "current_ru": "Попроси одобрения у вышестоящего руководителя.",
+    "problem": "«over manager» is not natural English for a superior manager.",
+    "proposed_en": "Ask the senior manager for approval.",
+    "proposed_ru": "Попроси одобрения у старшего менеджера.",
+    "confidence": 0.9
+  },
+  {
+    "word": "over",
+    "meaning_index": 20,
+    "current_en": "The over on the invoice was refunded.",
+    "current_ru": "Излишек в счёте вернули.",
+    "problem": "«the over on the invoice» is not idiomatic for an excess charge.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен новый пример после подтверждения значения.",
+    "confidence": 0.9
+  },
+  {
+    "word": "people",
+    "meaning_index": 8,
+    "current_en": "The town peoples quickly as new jobs appear.",
+    "current_ru": "Население города быстро растёт с появлением новых рабочих мест.",
+    "problem": "«The town peoples quickly» is ungrammatical; people as a verb needs a passive or different construction.",
+    "proposed_en": "The town is being peopled quickly as new jobs appear.",
+    "proposed_ru": "Город быстро заселяется по мере появления новых рабочих мест.",
+    "confidence": 0.9
+  },
+  {
+    "word": "time",
+    "meaning_index": 9,
+    "current_en": "The pub closes at time.",
+    "current_ru": "Паб закрывается в установленное время закрытия.",
+    "problem": "«closes at time» is unnatural; the collocation is closing time.",
+    "proposed_en": "The pub closes at closing time.",
+    "proposed_ru": "Паб закрывается в установленное время.",
+    "confidence": 0.9
+  },
+  {
+    "word": "time",
+    "meaning_index": 11,
+    "current_en": "The time signal starts at noon.",
+    "current_ru": "Сигнал, относящийся к определённому времени, начинается в полдень.",
+    "problem": "Russian is an awkward literal explanation and does not identify a natural «time» attributive phrase.",
+    "proposed_en": "The time signal starts at noon.",
+    "proposed_ru": "Сигнал точного времени начинается в полдень.",
+    "confidence": 0.9
+  },
+  {
+    "word": "time",
+    "meaning_index": 15,
+    "current_en": "The runner timed ten seconds.",
+    "current_ru": "Бегун показал время десять секунд.",
+    "problem": "«timed ten seconds» means measured at ten seconds, not showed time.",
+    "proposed_en": "The runner was timed at ten seconds.",
+    "proposed_ru": "Бегуну засекли время — десять секунд.",
+    "confidence": 0.9
+  },
+  {
+    "word": "two",
+    "meaning_index": 2,
+    "current_en": "She received two in the exam.",
+    "current_ru": "Она получила двойку на экзамене.",
+    "problem": "«received two» is less natural than the normal grading collocation got a two.",
+    "proposed_en": "She got a two in the exam.",
+    "proposed_ru": "Она получила двойку на экзамене.",
+    "confidence": 0.9
+  },
+  {
+    "word": "up",
+    "meaning_index": 7,
+    "current_en": "The recent tax up was unpopular.",
+    "current_ru": "Недавнее повышение налога было непопулярным.",
+    "problem": "«tax up» is not a natural noun phrase; tax rise/increase is required.",
+    "proposed_en": "The recent tax rise was unpopular.",
+    "proposed_ru": "Недавнее повышение налога вызвало недовольство.",
+    "confidence": 0.9
+  },
+  {
+    "word": "who",
+    "meaning_index": 5,
+    "current_en": "Who, as one might say, could predict that?",
+    "current_ru": "Кто, как можно было бы сказать, мог это предвидеть?",
+    "problem": "The sentence is grammatically possible but unnatural and too meta for a learner example.",
+    "proposed_en": null,
+    "proposed_ru": "Нужен более простой пример после подтверждения этого редкого meaning.",
+    "confidence": 0.9
+  }
+]

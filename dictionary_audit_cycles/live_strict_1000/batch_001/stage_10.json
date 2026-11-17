@@ -1,0 +1,190 @@
+[
+  {
+    "word": "a",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 0 generated examples and 0 exceptional no-candidate decisions for a; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "abandon",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 2 generated examples and 0 exceptional no-candidate decisions for abandon; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "ability",
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 3 «ловкость»: создан generated example, но его соответствие этому переводу ещё не подтверждено. Значение 5 «компетенция»: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+    "confidence": 0.72,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 3 «ловкость»: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+        "required_action": "Проверить английский пример и перевод для значения 3; исключить смешение с другими значениями."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Значение 5 «компетенция»: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+        "required_action": "Проверить английский пример и перевод для значения 5; исключить смешение с другими значениями."
+      }
+    ],
+    "review_reason": "Значение 3 «ловкость»: создан generated example, но его соответствие этому переводу ещё не подтверждено. Значение 5 «компетенция»: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+    "required_action": "Проверить английский пример и перевод для значения 3; исключить смешение с другими значениями. Проверить английский пример и перевод для значения 5; исключить смешение с другими значениями."
+  },
+  {
+    "word": "able",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 1 generated examples and 0 exceptional no-candidate decisions for able; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "abolish",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 1 generated examples and 0 exceptional no-candidate decisions for abolish; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "abortion",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 3 generated examples and 0 exceptional no-candidate decisions for abortion; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "about",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 1 generated examples and 0 exceptional no-candidate decisions for about; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "above",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 4 generated examples and 0 exceptional no-candidate decisions for above; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "abroad",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 0 generated examples and 0 exceptional no-candidate decisions for abroad; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "absence",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 1 generated examples and 0 exceptional no-candidate decisions for absence; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "absent",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 0 generated examples and 0 exceptional no-candidate decisions for absent; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "absolute",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 0 generated examples and 0 exceptional no-candidate decisions for absolute; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "absolutely",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 1 generated examples and 0 exceptional no-candidate decisions for absolutely; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "absorb",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 3 generated examples and 0 exceptional no-candidate decisions for absorb; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "abstract",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 5 generated examples and 0 exceptional no-candidate decisions for abstract; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "absurd",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 1 generated examples and 0 exceptional no-candidate decisions for absurd; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "abundance",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 1 generated examples and 0 exceptional no-candidate decisions for abundance; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "abuse",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 5 generated examples and 0 exceptional no-candidate decisions for abuse; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "academic",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 3 generated examples and 0 exceptional no-candidate decisions for academic; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "academy",
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 3 «высшее учебное заведение»: создан generated example, но его соответствие этому переводу ещё не подтверждено. Значение 4 «среднее (частное) учебное заведение»: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+    "confidence": 0.68,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 3 «высшее учебное заведение»: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+        "required_action": "Проверить английский пример и перевод для значения 3; исключить смешение с другими значениями."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Значение 4 «среднее (частное) учебное заведение»: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+        "required_action": "Проверить английский пример и перевод для значения 4; исключить смешение с другими значениями."
+      }
+    ],
+    "review_reason": "Значение 3 «высшее учебное заведение»: создан generated example, но его соответствие этому переводу ещё не подтверждено. Значение 4 «среднее (частное) учебное заведение»: создан generated example, но его соответствие этому переводу ещё не подтверждено.",
+    "required_action": "Проверить английский пример и перевод для значения 3; исключить смешение с другими значениями. Проверить английский пример и перевод для значения 4; исключить смешение с другими значениями."
+  }
+]

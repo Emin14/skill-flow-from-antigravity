@@ -1,0 +1,583 @@
+{
+  "scope": "final_deferred_apply_2026-11-11",
+  "decision": "applied_remaining_exact_matches",
+  "count": 61,
+  "changes": [
+    {
+      "word": "buy",
+      "path": "buy.phrases[8].translation",
+      "before": "оттянуть время",
+      "after": "выиграть время; потянуть время",
+      "reason": "buy time"
+    },
+    {
+      "word": "catch",
+      "path": "catch.meanings[12].examples[0].ru",
+      "before": "поймать чей-либо взгляд попасться на глаза",
+      "after": "привлечь чьё-либо внимание; попасться на глаза",
+      "reason": "catch attention"
+    },
+    {
+      "word": "catch",
+      "path": "catch.meanings[14].examples[0].ru",
+      "before": "река стала",
+      "after": "река замёрзла; река покрылась льдом",
+      "reason": "freeze over"
+    },
+    {
+      "word": "catch",
+      "path": "catch.phrases[0].translation",
+      "before": "затаить дыхание; перевести дух",
+      "after": "перевести дух; отдышаться",
+      "reason": "catch breath"
+    },
+    {
+      "word": "catch",
+      "path": "catch.phrases[1].translation",
+      "before": "получить нагоняй, влететь (кому-либо)",
+      "after": "получить нагоняй; попасть в беду",
+      "reason": "catch it"
+    },
+    {
+      "word": "reason",
+      "path": "reason.meanings[6].translation",
+      "before": "обсуждать",
+      "after": "обдумывать; логически выводить",
+      "reason": "reason out"
+    },
+    {
+      "word": "red",
+      "path": "red.meanings[4].register",
+      "before": [
+        "разговорное",
+        "коммерческое"
+      ],
+      "after": [
+        "разговорное"
+      ],
+      "reason": "red political"
+    },
+    {
+      "word": "charge",
+      "path": "charge.meanings[0].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "charge fee"
+    },
+    {
+      "word": "charge",
+      "path": "charge.meanings[4].examples[0].en",
+      "before": "children in charge of a nurse",
+      "after": "children in the charge of a nurse",
+      "reason": "in charge of"
+    },
+    {
+      "word": "report",
+      "path": "report.meanings[14].examples[0].en",
+      "before": "to report (badly) well",
+      "after": "to report well (or badly)",
+      "reason": "report"
+    },
+    {
+      "word": "soon",
+      "path": "soon.meanings[0].examples[0].ru",
+      "before": "как только, не позже",
+      "after": "как только",
+      "reason": "as soon as"
+    },
+    {
+      "word": "turn",
+      "path": "turn.meanings[16].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "turn ankle"
+    },
+    {
+      "word": "turn",
+      "path": "turn.meanings[25].examples[0].ru",
+      "before": "фортуна изменила",
+      "after": "удача переменилась; удача отвернулась",
+      "reason": "luck turned"
+    },
+    {
+      "word": "turn",
+      "path": "turn.phrases[12].translation",
+      "before": "усиливать",
+      "after": "увеличивать громкость; усиливать",
+      "reason": "turn up"
+    },
+    {
+      "word": "among",
+      "path": "among.meanings[2].examples[0].en",
+      "before": "among the ancient Greek",
+      "after": "among the ancient Greeks",
+      "reason": "plural"
+    },
+    {
+      "word": "development",
+      "path": "development.meanings[2].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "developments"
+    },
+    {
+      "word": "heart",
+      "path": "heart.meanings[4].examples[2].ru",
+      "before": "в основе отважный человек; удалец",
+      "after": "в основе чего-либо; в самой сути чего-либо",
+      "reason": "heart of"
+    },
+    {
+      "word": "heart",
+      "path": "heart.meanings[6].examples[1].ru",
+      "before": "глубинные районы глушь",
+      "after": "глубинные районы страны; глушь",
+      "reason": "heart country"
+    },
+    {
+      "word": "child",
+      "path": "child.meanings[0].examples[1].ru",
+      "before": "невинный младенец",
+      "after": "нерождённый ребёнок",
+      "reason": "child unborn"
+    },
+    {
+      "word": "child",
+      "path": "child.meanings[4].examples[0].ru",
+      "before": "охрана младенчества (или детства)",
+      "after": "охрана детства; защита прав ребёнка",
+      "reason": "child welfare"
+    },
+    {
+      "word": "living",
+      "path": "living.meanings[4].translation",
+      "before": "в роли определения к другому слову",
+      "after": "в роли определения: живой, существующий",
+      "reason": "living attributive"
+    },
+    {
+      "word": "media",
+      "path": "media.meanings[0].translation",
+      "before": "звонкий согласный",
+      "after": "средства массовой информации; средства коммуникации",
+      "reason": "media"
+    },
+    {
+      "word": "phone",
+      "path": "phone.meanings[0].translation",
+      "before": "фона",
+      "after": "фонема; звук речи",
+      "reason": "phone"
+    },
+    {
+      "word": "behind",
+      "path": "behind.meanings[1].translation",
+      "before": "за, сзади, позади; после; устарелый",
+      "after": "за, сзади, позади; после",
+      "reason": "behind"
+    },
+    {
+      "word": "market",
+      "path": "market.meanings[7].examples[1].ru",
+      "before": "обобщение данных о конъюнктуре рынка",
+      "after": "исследование рынка",
+      "reason": "market research"
+    },
+    {
+      "word": "plan",
+      "path": "plan.meanings[5].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "plan"
+    },
+    {
+      "word": "west",
+      "path": "west.phrases[1].translation",
+      "before": "западная часть страны; графства, расположенные к юго",
+      "after": "западная часть страны; графства, расположенные к юго-западу Англии",
+      "reason": "west country"
+    },
+    {
+      "word": "front",
+      "path": "front.phrases[0].register",
+      "before": [
+        "минералогия",
+        "парламентское"
+      ],
+      "after": [
+        "парламентское"
+      ],
+      "reason": "front bench"
+    },
+    {
+      "word": "son",
+      "path": "son.meanings[2].examples[2].ru",
+      "before": "человеческий род земледелец; труженик",
+      "after": "человеческий род",
+      "reason": "sons of men"
+    },
+    {
+      "word": "bring",
+      "path": "bring.meanings[3].examples[7].en",
+      "before": "to bring in guilty",
+      "after": "to bring in a guilty verdict",
+      "reason": "bring verdict"
+    },
+    {
+      "word": "bring",
+      "path": "bring.meanings[3].examples[8].ru",
+      "before": "вводить в действие",
+      "after": "приводить в существование; создавать",
+      "reason": "bring into being"
+    },
+    {
+      "word": "bring",
+      "path": "bring.phrases[4].translation",
+      "before": "выдвигать (предложение); делать перенос (счёта) наследующую страницу",
+      "after": "выдвигать (предложение); переносить остаток счёта на следующую страницу",
+      "reason": "bring forward"
+    },
+    {
+      "word": "bring",
+      "path": "bring.phrases[0].register",
+      "before": [
+        "военное"
+      ],
+      "after": [],
+      "reason": "bring about"
+    },
+    {
+      "word": "bring",
+      "path": "bring.phrases[8].register",
+      "before": [
+        "военное дело"
+      ],
+      "after": [],
+      "reason": "bring out"
+    },
+    {
+      "word": "current",
+      "path": "current.meanings[0].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "current"
+    },
+    {
+      "word": "example",
+      "path": "example.meanings[1].translation",
+      "before": "пример; беспрецедентный; беспримерный",
+      "after": "пример; аналогичный случай, прецедент",
+      "reason": "example"
+    },
+    {
+      "word": "type",
+      "path": "type.meanings[0].register",
+      "before": [
+        "типографское"
+      ],
+      "after": [],
+      "reason": "type"
+    },
+    {
+      "word": "meet",
+      "path": "meet.meanings[12].register",
+      "before": [
+        "американский английский",
+        "спортивное"
+      ],
+      "after": [],
+      "reason": "meet with"
+    },
+    {
+      "word": "word",
+      "path": "word.meanings[4].register",
+      "before": [
+        "текстильное",
+        "британское"
+      ],
+      "after": [
+        "театр"
+      ],
+      "reason": "word"
+    },
+    {
+      "word": "across",
+      "path": "across.phrases[0].translation",
+      "before": "наказывать кого-либо",
+      "after": "объяснить кому-либо; донести до кого-либо",
+      "reason": "put across"
+    },
+    {
+      "word": "field",
+      "path": "field.meanings[10].examples[8].ru",
+      "before": "полевая служба санитарная машина кинопередвижка походное снаряжение",
+      "after": "полевая служба; санитарная машина; кинопередвижка; походное снаряжение",
+      "reason": "field"
+    },
+    {
+      "word": "field",
+      "path": "field.meanings[4].examples[7].ru",
+      "before": "отступить поле битвы; перен. тж. взять верх в споре; перен. тж. вступать в соревнование, вступать в спор; потерпеть поражение",
+      "after": "отступить с поля битвы; перен. также взять верх в споре; перен. также вступить в соревнование или спор; потерпеть поражение",
+      "reason": "field"
+    },
+    {
+      "word": "moment",
+      "path": "moment.meanings[0].examples[4].ru",
+      "before": "точно в указанный срок только что",
+      "after": "точно в указанный срок; до последнего момента",
+      "reason": "moment"
+    },
+    {
+      "word": "mother",
+      "path": "mother.meanings[0].register",
+      "before": [
+        "математика"
+      ],
+      "after": [
+        "религиозное"
+      ],
+      "reason": "Mother Superior"
+    },
+    {
+      "word": "road",
+      "path": "road.meanings[3].register",
+      "before": [
+        "горное дело",
+        "американский английский",
+        "морской термин",
+        "британское"
+      ],
+      "after": [
+        "морской термин"
+      ],
+      "reason": "roadstead"
+    },
+    {
+      "word": "road",
+      "path": "road.phrases[0].register",
+      "before": [
+        "американизм",
+        "дорожное дело",
+        "морской термин"
+      ],
+      "after": [],
+      "reason": "royal road"
+    },
+    {
+      "word": "thinking",
+      "path": "thinking.meanings[0].translation",
+      "before": "размышление; поразмыслить",
+      "after": "размышление; обдумывание",
+      "reason": "thinking"
+    },
+    {
+      "word": "town",
+      "path": "town.meanings[0].register",
+      "before": [
+        "американский английский"
+      ],
+      "after": [],
+      "reason": "town"
+    },
+    {
+      "word": "fine",
+      "path": "fine.meanings[6].examples[1].en",
+      "before": "to talk fine",
+      "after": "fine talk",
+      "reason": "fine"
+    },
+    {
+      "word": "hear",
+      "path": "hear.meanings[2].register",
+      "before": [
+        "юридическое"
+      ],
+      "after": [],
+      "reason": "hear of"
+    },
+    {
+      "word": "issue",
+      "path": "issue.meanings[2].translation",
+      "before": "(обыкн. при мн. ч.:) доходы, прибыли",
+      "after": "(обычно во множественном числе) потомство, дети; наследники",
+      "reason": "issue"
+    },
+    {
+      "word": "rest",
+      "path": "rest.meanings[20].examples[0].en",
+      "before": "this rests a mystery",
+      "after": "this remains a mystery",
+      "reason": "rest"
+    },
+    {
+      "word": "space",
+      "path": "space.meanings[1].register",
+      "before": [
+        "просодия"
+      ],
+      "after": [],
+      "reason": "space"
+    },
+    {
+      "word": "space",
+      "path": "space.meanings[9].translation",
+      "before": "разбивать на шпации; набирать в разрядку (часто space out)",
+      "after": "раздвигать, распределять с интервалами; space out также: рассеянно смотреть/вести себя; быть под воздействием наркотика (разговорное, амер.)",
+      "reason": "space"
+    },
+    {
+      "word": "summer",
+      "path": "summer.meanings[5].translation",
+      "before": "пасти (скот) летом",
+      "after": "балка, перекладина",
+      "reason": "summer"
+    },
+    {
+      "word": "term",
+      "path": "term.meanings[4].translation",
+      "before": "при мн. ч.: условия оплаты; гонорар",
+      "after": "(обычно во множественном числе) условия; условия сделки/торговли",
+      "reason": "term"
+    },
+    {
+      "word": "land",
+      "path": "land.meanings[2].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "land"
+    },
+    {
+      "word": "land",
+      "path": "land.meanings[0].register",
+      "before": [
+        "морской термин"
+      ],
+      "after": [],
+      "reason": "land"
+    },
+    {
+      "word": "site",
+      "path": "site.meanings[0].translation",
+      "before": "участок (для строительства), место (запуска ракеты) и т. п",
+      "after": "участок (для строительства), место (запуска ракеты) и т. п.",
+      "reason": "site"
+    },
+    {
+      "word": "strong",
+      "path": "strong.meanings[2].register",
+      "before": [
+        "устаревшее"
+      ],
+      "after": [],
+      "reason": "strong"
+    },
+    {
+      "word": "strong",
+      "path": "strong.meanings[3].examples[0].ru",
+      "before": "крутые меры",
+      "after": "решительные меры",
+      "reason": "strong"
+    }
+  ],
+  "deferred": [
+    {
+      "word": "buy",
+      "before": [
+        "разговорное"
+      ],
+      "matches": 2,
+      "reason": "basic buy"
+    },
+    {
+      "word": "become",
+      "before": "употр. как глаголсвязка делаться, становиться",
+      "matches": 0,
+      "reason": "OCR"
+    },
+    {
+      "word": "chance",
+      "before": [
+        "жаргон"
+      ],
+      "matches": 3,
+      "reason": "chance"
+    },
+    {
+      "word": "meet",
+      "before": "опровергать (доводы и т. п.)",
+      "matches": 2,
+      "reason": "meet together"
+    },
+    {
+      "word": "meet",
+      "before": "опровергать (доводы и т. п.)",
+      "matches": 2,
+      "reason": "meet with"
+    },
+    {
+      "word": "figure",
+      "before": "цифра; число; при мн. ч.: цифровые данные",
+      "matches": 0,
+      "reason": "figure"
+    },
+    {
+      "word": "pretty",
+      "before": "мне это очень надоело",
+      "matches": 0,
+      "reason": "pretty sick"
+    },
+    {
+      "word": "friend",
+      "before": "помириться",
+      "matches": 0,
+      "reason": "make friends"
+    },
+    {
+      "word": "hit",
+      "before": "ограбить или убить",
+      "matches": 0,
+      "reason": "hit out"
+    },
+    {
+      "word": "hit",
+      "before": "шляться",
+      "matches": 0,
+      "reason": "hit road"
+    },
+    {
+      "word": "fine",
+      "before": "делать(ся) прозрачным, очищать(ся)",
+      "matches": 2,
+      "reason": "fine"
+    },
+    {
+      "word": "hear",
+      "before": [
+        "жаргон"
+      ],
+      "matches": 2,
+      "reason": "hear"
+    },
+    {
+      "word": "shot",
+      "before": "выпал (шпура)",
+      "matches": 0,
+      "reason": "shot"
+    }
+  ],
+  "before_sha256": "046f92ac11c3b5bf81abf0aa5cd1fe6c54e94f13d749524816c8e629c0ae43e0",
+  "after_sha256": "67005f729e90467b3b9ea53dcaa431e341b6b5001d90ad3157b8c319bca03731"
+}

@@ -10,7 +10,7 @@ apply_all_fixes.py — применяет ВСЕ исправления из в�
 import io, json, re, glob, time
 from collections import defaultdict
 
-JSON_PATH = "oxford_5000_2026-08-27.json"
+JSON_PATH = "src/data/oxford_5000.json"
 
 # Глобальные OCR regex-паттерны (надёжные — без ложных срабатываний)
 OCR_REGEX = [

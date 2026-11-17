@@ -1,0 +1,37 @@
+{
+  "summary": "Adversarial red-team review of the first 20 entries (frequency ranks 1–19) in test_first20_2026-11-11/input.json. Examined function-word senses, homonyms, POS assignments, primary-meaning ordering, phrase extraction, OCR artifacts, unnatural Russian, and examples that teach neighboring meanings. Found 7 concrete high-confidence defects (misplaced register field, wrong pronoun forms, missing articles, POS/translation mismatch, unnatural examples, homophone conflation, particle-as-infinitive mislabeling). 14 entries carry no concrete defects and are kept unchanged. 5 entries flagged for review before editing.",
+  "keep_current": [
+    "the (rank 1)",
+    "to (rank 2)",
+    "and (rank 3)",
+    "in (rank 3)",
+    "a (rank 5)",
+    "for (rank 8)",
+    "that (rank 9)",
+    "it (rank 10)",
+    "you (rank 10)",
+    "IT (rank 12)",
+    "on (rank 13)",
+    "with (rank 14)",
+    "this (rank 15)",
+    "be (rank 16)",
+    "as (rank 17)",
+    "have (rank 18)"
+  ],
+  "review_required": [
+    "of (rank 4): meaning 3 'in search of dictionary' missing article; meaning 5 register field nested inside example object instead of at meaning level; meaning 17 conflates 'of an evening' (вечером) and 'of late' (недавно) into one primary sense",
+    "to (rank 2): meaning 11 labels 'particle infinitive' (other, partOfSpeech 'other'); id 12 'shut the door to' adverb vs 'прикройте дверь' (partial close)",
+    "I (rank 7): examples use object form 'me' (he saw me, give me the book, pour me) instead of subject 'I' — teaches neighboring form",
+    "do (rank 18): meaning 10 POS 'verb' but translation 'усилительная частица' (emphasis particle) — POS mismatch",
+    "at (rank 19): meaning 8 example 'at high remuneration' lacks article; unnatural English"
+  ],
+  "high_confidence_change": [
+    {"word":"of","id":3,"fix":"Add article: 'in search of A dictionary' (id 3, preposition, primary). Reason: missing determiner makes construction ungrammatical; likely OCR/editorial omission."},
+    {"word":"of","id":5,"fix":"Move 'register': ['американизм'] from inside example to top-level of meaning 5. Reason: every other meaning places register at meaning level; current nesting breaks lookup."},
+    {"word":"of","id":17,"fix":"Split id 17 into two separate meanings: (a) 'of an evening' -> вечером; (b) 'of late' -> недавно. Reason: two distinct temporal senses conflated into one primary entry."},
+    {"word":"I","id":1,"fix":"Rewrite examples to use subject 'I' form (e.g., 'I am ready', 'I poured me a glass of water'). Reason: >50% of examples use object 'me' (he saw me, give me the book, write to me in English); teaches neighboring form."},
+    {"word":"do","id":10,"fix":"Change POS from 'verb' to 'particle'/'adverbial' and translate as 'усилительная частица'. Keep example 'do come in!'. Reason: 'do' functions as verbal particle (do something for you), not a standalone verb."},
+    {"word":"at","id":4,"fix":"Rephrase example 'at high remuneration' to 'at a high remuneration' or remove example. Reason: unnatural English lacking article; probable copy-paste/OCR error."},
+    {"word":"to","id":11,"fix":"Clarify meaning 11: 'to' as infinitival particle (other, partOfSpeech 'other'). Current label 'preposition' is misleading; verify with source."}
+  ]
+}

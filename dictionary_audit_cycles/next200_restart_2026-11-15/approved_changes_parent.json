@@ -1,0 +1,389 @@
+{
+  "scope": "frequency_rank_401_600",
+  "applied_count": 46,
+  "changes": [
+    {
+      "word": "art",
+      "path": "meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive"
+    },
+    {
+      "word": "list",
+      "path": "meanings[7].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "list II noun"
+    },
+    {
+      "word": "street",
+      "path": "meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive"
+    },
+    {
+      "word": "April",
+      "path": "meanings[1].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive"
+    },
+    {
+      "word": "security",
+      "path": "meanings[8].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive"
+    },
+    {
+      "word": "summer",
+      "path": "meanings[5].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "summer II noun"
+    },
+    {
+      "word": "east",
+      "path": "meanings[0].partOfSpeech",
+      "before": "adjective",
+      "after": "noun",
+      "reason": "east noun"
+    },
+    {
+      "word": "east",
+      "path": "meanings[1].partOfSpeech",
+      "before": "adjective",
+      "after": "noun",
+      "reason": "the East noun"
+    },
+    {
+      "word": "September",
+      "path": "meanings[1].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive"
+    },
+    {
+      "word": "sound1",
+      "path": "meanings[1].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive"
+    },
+    {
+      "word": "society",
+      "path": "meanings[4].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive"
+    },
+    {
+      "word": "list",
+      "path": "meanings[7].translation",
+      "before": "крениться, иметь крен (о судне)",
+      "after": "крен, наклон (о судне)",
+      "reason": "noun gloss"
+    },
+    {
+      "word": "near",
+      "path": "phrases[0].partOfSpeech",
+      "before": "verb",
+      "after": "adverb",
+      "reason": "near by"
+    },
+    {
+      "word": "near",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "far and near"
+    },
+    {
+      "word": "front",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "bold front"
+    },
+    {
+      "word": "common",
+      "path": "phrases[0].partOfSpeech",
+      "before": "adjective",
+      "after": "noun",
+      "reason": "common sense"
+    },
+    {
+      "word": "lead",
+      "path": "phrases[0].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "blind lead"
+    },
+    {
+      "word": "lead",
+      "path": "phrases[3].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "hail of lead"
+    },
+    {
+      "word": "lead",
+      "path": "phrases[4].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "get the lead"
+    },
+    {
+      "word": "military",
+      "path": "phrases[0].partOfSpeech",
+      "before": "adjective",
+      "after": "noun",
+      "reason": "military pit"
+    },
+    {
+      "word": "dead",
+      "path": "phrases[2].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "dead against"
+    },
+    {
+      "word": "ground",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "give ground"
+    },
+    {
+      "word": "ground",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "go to ground"
+    },
+    {
+      "word": "round",
+      "path": "phrases[4].partOfSpeech",
+      "before": "verb",
+      "after": "adverb",
+      "reason": "round about"
+    },
+    {
+      "word": "chance",
+      "path": "meanings[0].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "chance",
+      "path": "meanings[4].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "chance",
+      "path": "meanings[5].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "hear",
+      "path": "meanings[0].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "hear",
+      "path": "meanings[1].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "follow",
+      "path": "meanings[0].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "learn",
+      "path": "meanings[1].register",
+      "before": [
+        "научное"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "issue",
+      "path": "meanings[2].translation",
+      "before": "(обычно во множественном числе) потомство, дети; наследники",
+      "after": "доходы, прибыли",
+      "reason": "restore issue sense"
+    },
+    {
+      "word": "issue",
+      "path": "meanings[2].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "remove contaminated register"
+    },
+    {
+      "word": "industry",
+      "path": "meanings[1].examples",
+      "before": [
+        {
+          "en": "home industry",
+          "ru": "отечественная промышленность"
+        },
+        {
+          "en": "large-scale industry",
+          "ru": "крупная промышленность кустарный промысел"
+        }
+      ],
+      "after": [
+        {
+          "en": "home industry",
+          "ru": "отечественная промышленность; кустарный промысел"
+        },
+        {
+          "en": "large-scale industry",
+          "ru": "крупная промышленность"
+        }
+      ],
+      "reason": "restore source translations"
+    },
+    {
+      "word": "inside",
+      "path": "meanings[10].examples[0].ru",
+      "before": "внутренняя беговая дорожка",
+      "after": "внутренняя беговая дорожка; внутренний путь; прямой или кратчайший путь к успеху",
+      "reason": "restore inside track senses"
+    },
+    {
+      "word": "church",
+      "path": "meanings[0].examples[2].ru",
+      "before": "принимать духовный сан жениться; выходить замуж",
+      "after": "принимать духовный сан",
+      "reason": "remove contamination"
+    },
+    {
+      "word": "church",
+      "path": "meanings[0].examples[3]",
+      "before": {
+        "en": "to go to church",
+        "ru": "ходить в церковь"
+      },
+      "after": null,
+      "reason": "remove duplicate"
+    },
+    {
+      "word": "park",
+      "path": "meanings[7].translation",
+      "before": "ставить пар (артиллерию)",
+      "after": "ставить парком (артиллерию)",
+      "reason": "restore wording"
+    },
+    {
+      "word": "cool",
+      "path": "meanings[1].examples",
+      "before": [
+        {
+          "en": "to keep cool head",
+          "ru": "сохранять спокойствие, хладнокровие"
+        }
+      ],
+      "after": [
+        {
+          "en": "to keep a cool head",
+          "ru": "сохранять спокойствие, хладнокровие"
+        }
+      ],
+      "reason": "repair English article"
+    },
+    {
+      "word": "answer",
+      "path": "meanings[0].translation",
+      "before": "ответ; быстро реагировать",
+      "after": "ответ",
+      "reason": "remove verb contamination"
+    },
+    {
+      "word": "boy",
+      "path": "meanings[5].translation",
+      "before": "героин",
+      "after": "шампанское; героин",
+      "reason": "restore source gloss"
+    },
+    {
+      "word": "bill",
+      "path": "meanings[7].examples[1].ru",
+      "before": "счёт адвоката (или поверенного) клиенту заведение дела",
+      "after": "счёт адвоката (или поверенного) клиенту за ведение дела",
+      "reason": "repair malformed Russian"
+    },
+    {
+      "word": "press",
+      "path": "meanings[23].examples[0].ru",
+      "before": "бюро вырезок",
+      "after": "газетное агентство; агентство печати",
+      "reason": "restore translation"
+    },
+    {
+      "word": "policy",
+      "path": "meanings[0].register",
+      "before": [
+        "политика"
+      ],
+      "after": [],
+      "reason": "remove translation register"
+    },
+    {
+      "word": "policy",
+      "path": "meanings[1].register",
+      "before": [
+        "политика"
+      ],
+      "after": [],
+      "reason": "remove translation register"
+    },
+    {
+      "word": "save",
+      "path": "meanings[4].examples",
+      "before": [
+        {
+          "en": "save up",
+          "ru": "делать сбережения; копить"
+        }
+      ],
+      "after": [],
+      "reason": "remove misplaced example"
+    }
+  ],
+  "deferred": [
+    "review_required and structural findings from all ten batches"
+  ],
+  "before_sha256": "1b33d79b51b046481ea36036bb96b0a82159debadfa7e2c9a3e259fb17988659",
+  "after_sha256": "3dce5f5e1d453b3ce6d9db84b55337db482f9dd757b4e0be0ca99bf88f410572"
+}

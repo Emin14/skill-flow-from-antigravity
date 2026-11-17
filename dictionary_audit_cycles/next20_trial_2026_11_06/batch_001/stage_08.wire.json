@@ -1,0 +1,2025 @@
+[
+  {
+    "word": "found",
+    "decision": "изменить",
+    "reason": "Основным учебным значением самостоятельного глагола считать «основывать». Физическую закладку, обоснование и обеспеченность не приравнивать к нему по учебному приоритету. Омонимию и связь с find сохранить раздельно.",
+    "confidence": 0.93,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/0/source_evidence",
+        "/previous_outputs/07/0/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 75
+          },
+          "quote": "found II [faUnd] v осно вывать"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Общее значение создания организации — первый учебный смысл самостоятельного found.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Физическая закладка уже общего «основывать»; сохранить вторым, снять primary.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Обоснованность полезна, но пример well founded представляет более специальную конструкцию.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Found on/upon — отдельное управление; показывать после общего и переносного переходного значений.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Обеспеченность всем необходимым не является центральным учебным значением; сохранить отдельным омонимическим блоком.",
+        "confidence": 0.9
+      }
+    ],
+    "uncertainties": [
+      "Все замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/0 и /previous_outputs/07/0.",
+      "Частотность отдельных значений количественно не измерялась; приоритет является учебной редакционной оценкой.",
+      "Глобальное form_of не должно подменять самостоятельный found; способ разграничения в схеме остаётся нерешённым."
+    ]
+  },
+  {
+    "word": "must",
+    "decision": "оставить",
+    "reason": "Текущий порядок необходимости, уверенного вывода и существительного соответствует учебному приоритету. Первые два употребления основные, a must — вторичное.",
+    "confidence": 0.98,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/1/source_evidence",
+        "/previous_outputs/07/1/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 113
+          },
+          "quote": "must [möst] v быть обя занным; I ~ go я\nдо лжен идти"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Обязанность и необходимость — исходное учебное употребление A1; must not требует объяснения запрета.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Уверенный логический вывод — самостоятельное важное модальное употребление; пример соответствует ему.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "A must полезно как разговорное существительное, но уступает модальному глаголу.",
+        "confidence": 0.98
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/1 и /previous_outputs/07/1.",
+      "Дополнительные омонимы и эмоциональное употребление не включаются автоматически; решение об их полноте отдельно от primary."
+    ]
+  },
+  {
+    "word": "show",
+    "decision": "изменить",
+    "reason": "Первым показывать переходное «показывать», затем основные способы демонстрации и доказательства. Существительное о представлении поднять выше выставки и формального показа; все вторичные значения сохранить.",
+    "confidence": 0.94,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/2/source_evidence",
+        "/previous_outputs/07/2/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 147
+          },
+          "quote": "show [S@U] 1 v (showed; shown)\nпока зывать(ся); ~ in ввести (в дом, в ком-\nнату); ~ off хва статься 2 n 1) вы ставка\n2) спекта кль"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Общее «показывать» поставить первым; «надоумить» относится к show the way, что сохраняется как замечание этапов 06–07.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Проявлять чувства или качества — продуктивное общее употребление; повысить в порядке и primary.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Показывать истинность, доказывать и подтверждать — важное самостоятельное употребление.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Видимость и появление сохранить основными, но после переходного значения.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Показ фильма или спектакля полезен после общих глагольных смыслов, отдельного primary не требует.",
+        "confidence": 0.91
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Проявляться оставить рядом с видимостью как более узкое непереходное употребление.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Сопровождение обычно изучается через управление и фразовые конструкции; поставить после общих глагольных смыслов.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Представление или спектакль — основное существительное; поднять в начале именного блока.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Общее обозначение показа сохранить основным, разместив после представления.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Выставка — полезное основное именное употребление; сохранить primary в именном блоке.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Видимость и показное проявление изучаются после буквальных употреблений.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Парадность — узкий оттенок показности.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Дело или организация связано прежде всего с run/boss the show; primary не нужно.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Удобный случай — вторичное разговорное употребление.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Военный жаргон показывать последним.",
+        "confidence": 0.99
+      }
+    ],
+    "issues": [
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "show noun — телевизионная или радиопередача, шоу."
+        },
+        "problem": "Современное полезное именное употребление не выражено явно переводом «зрелище; спектакль»; дополнительный источник этапа 06 разделяет эти смыслы.",
+        "required_action": "Рассмотреть отдельное значение рядом с представлением; до решения не расширять автоматически значение 3."
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/2 и /previous_outputs/07/2.",
+      "Порядок оценивает учебную пользу; корпусная частотность отдельных смыслов не установлена.",
+      "Смешение show down с примерами сопровождения и область помет требуют отдельного структурного исправления."
+    ]
+  },
+  {
+    "word": "big",
+    "decision": "изменить",
+    "reason": "Основными считать размер и значительность. «Хвастливый» не должно конкурировать с ними; высокий и широкий — уточнения размера.",
+    "confidence": 0.98,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/3/source_evidence",
+        "/previous_outputs/07/3/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 23
+          },
+          "quote": "big [bKg] adj большо й"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Большой размер — основное значение A1; необычный пример big repair не меняет приоритет.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Важность и значительность продуктивны в разных контекстах; поднять вторым и включить primary.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Высокий и широкий — контекстные измерения большого размера, а не отдельный равный приоритет.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Взрослый полезно учить после размера; сохранить вторичным.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Громкость — более узкое применение; пометы исправляются отдельно по этапам 06–07.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Хвастливость привязана к характерным сочетаниям; снять primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Великодушие, часто ироническое, оставить вторичным.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Беременность в big with child — ограниченное сочетание.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Наречное хвастливое поведение оставить после прилагательного.",
+        "confidence": 0.98
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/3 и /previous_outputs/07/3.",
+      "Современность big repair и исторического перевода big money не установлена; это не основание удалять их."
+    ]
+  },
+  {
+    "word": "sure",
+    "decision": "изменить",
+    "reason": "Начинать с уверенности человека, затем несомненности результата. Надёжность метода вторична. Ответное sure полезно, но пересекающиеся категории adverb и interjection требуют решения до изменения их primary.",
+    "confidence": 0.95,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/4/source_evidence",
+        "/previous_outputs/07/4/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 159
+          },
+          "quote": "sure [Sþ] 1 adj уве ренный; несомне нный; be\n~ быть уве ренным; a ~ way надёжный\nспо соб 2 adv несомне нно, наверняка"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Уверенность говорящего — первое учебное употребление; поднять с третьего места.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Be sure to и несомненность результата — основные полезные конструкции.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Надёжность и безошибочность метода уже уверенности; сохранить третьим без primary.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Ответное «конечно» поднять перед прочими наречными употреблениями; primary пока сохранить неустановленным из-за пересечения со значением 7.",
+        "confidence": 0.87
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "interjection",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Разместить рядом с ответным sure; не объявлять вторым независимым основным смыслом до разграничения.",
+        "confidence": 0.88
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Sure enough и сравнительная конструкция вторичны по отношению к ответной формуле.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Усилительное употребление изучается после самостоятельных значений.",
+        "confidence": 0.95
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/4 и /previous_outputs/07/4.",
+      "Значения 6 и 7 семантически пересекаются; при сомнении их текущий статус без primary сохраняется.",
+      "Make sure — важная конструкция, но ошибочную фразу-предложение нельзя использовать как самостоятельное значение sure."
+    ]
+  },
+  {
+    "word": "team",
+    "decision": "оставить",
+    "reason": "Спортивная команда и рабочая группа должны предшествовать экипажу, военной команде и упряжке. Печатное первое место упряжки не определяет современный учебный приоритет.",
+    "confidence": 0.97,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/5/source_evidence",
+        "/previous_outputs/07/5/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 161
+          },
+          "quote": "team [tÖm] n 1) упря жка 2) спорт кома нда\n3) брига да рабо чих 4) экипа ж су дна"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Спортивная команда — основной конкретный учебный смысл.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Совместно работающая группа — основной полезный смысл; узость перевода «артель» требует отдельного рассмотрения.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Экипаж судна — специальное применение.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Военную команду сохранить вторичной; не смешивать с общей рабочей группой.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Упряжка исторически основна для источника, но не должна опережать команду в учебной записи A1.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Объединяться полезно, особенно в team up, но это отдельный глагольный блок после существительного.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Запрягать — специальный вторичный смысл.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Быть возницей — узкое занятие, оставить последним.",
+        "confidence": 0.99
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/5 и /previous_outputs/07/5.",
+      "Современная частотность отдельных значений не измерялась; американские пометы и ошибочное n перед глагольным разделом остаются отдельными вопросами."
+    ]
+  },
+  {
+    "word": "part-time",
+    "decision": "оставить",
+    "reason": "Единственное поставленное значение неполной занятости правильно является основным. Ошибка переноса worker в перевод требует семантической правки, но не изменения primary или порядка.",
+    "confidence": 0.99,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/6/source_evidence",
+        "/previous_outputs/07/6/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 122
+          },
+          "quote": "part-time [\"pA:t'taKm] adj занима ющий не\nвсё вре мя; a ~ student уча щийся без\nотры ва от рабо ты"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Неполное рабочее или учебное время — центральный смысл; приоритет относится к прилагательному, а не к существительному worker.",
+        "confidence": 0.99
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/6 и /previous_outputs/07/6.",
+      "Наречное употребление требует отдельного решения о полноте; нулевые результаты поиска не доказывают отсутствия на изображениях."
+    ]
+  },
+  {
+    "word": "ever",
+    "decision": "изменить",
+    "reason": "«Когда-либо» должно стоять первым. «Всегда» сохранить вторичным с конструкциями. Усиление не равно основному смыслу. Спорную четвёртую запись не переразмечать уверенно до проверки её содержания.",
+    "confidence": 0.95,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/7/source_evidence",
+        "/previous_outputs/07/7/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 65
+          },
+          "quote": "ever ['ev@] adv когда -либо; for ~ навсегда"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "«Когда-либо» — самостоятельное центральное значение; поставить первым. «Почти никогда» принадлежит hardly ever.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Постоянство в ever yours и устойчивых сочетаниях сохранить после «когда-либо» без primary.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Усиление вопроса — вторичная разговорная функция, снять primary.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "review_required",
+        "reason": "Формулировка и as ever «как только» спорны; по правилу сомнения текущий primary временно сохранить, не считая смысл подтверждённым основным.",
+        "confidence": 0.58
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/7 и /previous_outputs/07/7.",
+      "Значение 4 требует независимой проверки as ever и as soon as ever; сохранение primary здесь временное.",
+      "Слитые переводы for ever и ошибочная часть речи предложения благодарности не исправляются ранжированием."
+    ]
+  },
+  {
+    "word": "family",
+    "decision": "изменить",
+    "reason": "Семья — основной смысл. Атрибутивное употребление полезно показать следующим, сохранив noun. «Содружество» вторично и не должно иметь primary.",
+    "confidence": 0.98,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/8/source_evidence",
+        "/previous_outputs/07/8/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 68
+          },
+          "quote": "family ['f{mKlK] n 1) семья 2) род"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Семья, семейство и род образуют основное учебное содержание.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Продуктивное атрибутивное употребление поднять вторым; primary сохранить, часть речи не менять автоматически.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Содружество — переносное применение; перенести после семейного употребления и снять primary.",
+        "confidence": 0.98
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/8 и /previous_outputs/07/8.",
+      "Ошибочные границы переводов a family of languages, family circle и family name остаются обязательными замечаниями; primary их не исправляет."
+    ]
+  },
+  {
+    "word": "keep",
+    "decision": "изменить",
+    "reason": "Учебное ядро составляют удержание, хранение, продолжение действия и сохранение состояния. Соблюдение также основно. Разговорное «жить» и все существительные сохранить без primary; специальные значения не удалять.",
+    "confidence": 0.96,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/9/source_evidence",
+        "/previous_outputs/07/9/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 99
+          },
+          "quote": "keep [ki:p] v (kept; kept) 1) храни ть\n2) держа ть 3) соблюда ть"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Держать и не отдавать — общее конкретное ядро.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Хранить и сохранять — основное продуктивное употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Keep doing — важная грамматическая модель; поднять и включить primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Оставаться в состоянии — основная модель, которую текущая разметка недооценивает.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поддержание чужого действия или состояния полезно рядом с продолжением; сохранить вторичным из-за неоднородных примеров.",
+        "confidence": 0.92
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Соблюдать правило и держать обещание — основные полезные сочетания; повысить primary.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Сокрытие важно, но часто связано с keep a secret и keep from; снять равный приоритет с общими моделями.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Ведение дневника или счетов поднять среди обычных вторичных сочетаний.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Содержать магазин или сад — отдельное предметное употребление.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Материально обеспечивать сохранить после обычного содержания.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Задерживать — вторичный результат удержания.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Вести хозяйство связано с keep house; сохранить после общих моделей.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Сохраняться свежим и допускать отсрочку — вторичные непереходные употребления.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Сдерживание чувств показывать среди ограниченных сочетаний.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Охрана города и ворот — специальные применения.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Иметь товар в продаже — узкое торговое употребление.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "«Жить» с where do you keep? не должно быть основным; how are you keeping? само по себе не делает весь блок центральным.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Работу учреждения и смешанные конструкции keep at оставить в конце глагольного блока до разграничения.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Иметь прислугу — ограниченное социальным контекстом употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Справлять праздник не относится к начальному учебному ядру.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Содержание любовницы — узкое употребление, сохранить без primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Содержание и прокорм полезны в earn one's keep, но уступают глаголу; снять primary.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 24,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Башню замка поставить перед более узким кормовым значением; снять primary.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Запас корма — специальное сельскохозяйственное значение; снять primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 25,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Техническую контрбуксу оставить последней.",
+        "confidence": 0.99
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/9 и /previous_outputs/07/9.",
+      "Этап 07 уточняет цитату for keeps: «совершенно»; этап 06 приписывал «не на шутку». Противоречие сохраняется, автоматическое расширение не предлагается.",
+      "Неоднородность значений 10, 12, 14 и 21 требует структурного прохода; новый порядок не объявляет их исправленными.",
+      "Порядок вторичных значений — учебная оценка, не установленная корпусная частотность."
+    ]
+  },
+  {
+    "word": "might",
+    "decision": "изменить",
+    "reason": "Начинать с возможности и предположения, затем объяснять согласование времён и условную возможность. Вежливый запрос разрешения и упрёк сохранить вторичными.",
+    "confidence": 0.97,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/10/source_evidence",
+        "/previous_outputs/07/10/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 109
+          },
+          "quote": "might I [maKt] past от may\nmight II [maKt] n могу щество; си ла"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Предположение о возможности — самостоятельное центральное употребление; поставить первым.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Форму may в косвенной речи сохранить основной грамматической информацией, но после значения возможности.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Условная возможность «мог бы» полезна и основна; поднять перед просьбой и упрёком.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Вежливый запрос разрешения — более ограниченная модель; снять primary.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Упрёк и желательность — вторичное прагматическое употребление; снять primary.",
+        "confidence": 0.97
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/10 и /previous_outputs/07/10.",
+      "Существительное «могущество; сила» — отдельный омоним; при возможном добавлении не объединять с модальным глаголом и не делать primary автоматически.",
+      "Уровень A2 относится к слову в записи и не устанавливает одинаковый уровень всех модальных функций."
+    ]
+  },
+  {
+    "word": "please",
+    "decision": "review_required",
+    "reason": "Главное начальное употребление «пожалуйста» отсутствует как самостоятельное значение. Среди имеющихся глагольных значений первым должно быть «радовать, угождать». Разметка всех четырёх как основных скрывает это различие.",
+    "confidence": 0.97,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/11/source_evidence",
+        "/previous_outputs/07/11/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 126
+          },
+          "quote": "please [pli:z] v доставля ть удово льствие; be\n~d быть дово льным; ~ пожа луйста"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Угождать и радовать — центральный самостоятельный глагол; поставить первым среди имеющихся значений.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "review_required",
+        "reason": "«Нравиться» пересекается с центральным глаголом, но пример относится к «хотеть»; до разграничения primary сохранить.",
+        "confidence": 0.75
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Хотеть в as you please — ограниченное конструкцией употребление; формула please! не делает его основным.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Пример be pleased to описывает удовлетворение или готовность; снять primary отдельного толкования «получать удовольствие».",
+        "confidence": 0.94
+      }
+    ],
+    "issues": [
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "please — пожалуйста, будьте добры, формула вежливой просьбы."
+        },
+        "problem": "Самое полезное употребление A1 спрятано среди примеров значения 4.",
+        "required_action": "Выделить отдельное употребление и рекомендовать его первым с primary=true; грамматическую категорию определить по принятой схеме, сохранив существующие данные."
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/11 и /previous_outputs/07/11.",
+      "Adv у вежливого please в дополнительном словаре и включение в глагольную статью основного источника не дают единой категории; новую категорию не выдумывать.",
+      "Do as you please и формула please your honour требуют сохранного переноса; порядок сам по себе не исправляет их привязку."
+    ]
+  },
+  {
+    "word": "put",
+    "decision": "изменить",
+    "reason": "Помещение предмета остаётся первым. Приведение в состояние и выражение словами имеют более высокий учебный приоритет, чем текущая разметка. Фразовые глаголы внутри значения 12 не считать его самостоятельными оттенками.",
+    "confidence": 0.97,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/12/source_evidence",
+        "/previous_outputs/07/12/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 132
+          },
+          "quote": "put [pUt] v (put; put) класть; ста вить; ~\ndown запи сывать; ~ in вставля ть; ~ off\nоткла дывать; ~ on надева ть; ~ out туши ть"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Класть и ставить — конкретное ядро A1.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Помещать человека или предмет — общее продуктивное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Приводить в состояние — важная общая модель; повысить primary, не приравнивая все её идиоматические примеры.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "«Как выразить словами» — полезное самостоятельное значение; поднять перед оценкой и включить primary.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Задавать вопрос и ставить на обсуждение показать среди обычных вторичных употреблений.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Оценивать величину с at — отдельная менее общая модель.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Направление усилий и побуждение представлены сочетаниями; сохранить вторичными.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Поднесение предмета — узкий пространственный оттенок.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Приделывание детали — ограниченное предметным контекстом употребление.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Подвергать воздействию полезнее спортивного метания, но не получает primary за счёт ошибочно вложенного блока фразовых глаголов.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Спортивное толкание — специальный смысл; поставить ближе к концу.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Всаживать нож или пулю — узкое употребление, оставить в конце.",
+        "confidence": 0.98
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/12 и /previous_outputs/07/12.",
+      "Значение 12 структурно повреждено; его фразовые глаголы и примеры должны сохраняться при разграничении.",
+      "Повреждённые переводы и области помет не исправляются изменением primary; необычные печатные примеры не объявляются современными нормативными.",
+      "Попадание PDF 300000 на странице 13 не подтверждает самостоятельную статью put."
+    ]
+  },
+  {
+    "word": "money",
+    "decision": "изменить",
+    "reason": "Основным оставить только общее «деньги». Выигрыш на скачках не равен ему по учебному приоритету; юридические и валютные значения сохранить вторичными.",
+    "confidence": 0.99,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/13/source_evidence",
+        "/previous_outputs/07/13/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 111
+          },
+          "quote": "money ['mönK] n де ньги; ~ order де нежный\nперево д"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Общее неисчисляемое обозначение денег — учебное ядро.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Юридические денежные суммы с moneys/monies — специальное употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Монетные системы и валюты во множественном числе вторичны.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Выигрыш на скачках — узкий контекст; снять primary, сохранить последним.",
+        "confidence": 0.99
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/13 и /previous_outputs/07/13.",
+      "Печатная корректность примера о скачках не доказывает основность этого значения."
+    ]
+  },
+  {
+    "word": "free",
+    "decision": "изменить",
+    "reason": "Бесплатность должна входить в первые основные значения наряду со свободой и незанятостью. Политическую независимость и доступность сохранить, но без равного primary. Освобождать оставить основным глаголом.",
+    "confidence": 0.97,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/14/source_evidence",
+        "/previous_outputs/07/14/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 75
+          },
+          "quote": "free [fri:] 1 adj 1) свобо дный 2) беспла тный\n3) откры тый (о конкурсе и т п) 2 v\nосвобожда ть"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Свобода в общем смысле — центральное значение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Бесплатность — отдельный основной бытовой смысл; поднять вторым и включить primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Свободное время или незанятое место — основное повседневное употребление; поднять третьим.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Отсутствие чего-либо с of/from полезно после общих смыслов, но оставить вторичным.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Нахождение на свободе расположить рядом с общей свободой; перевод make free use of к определению не относится.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Возможность выбирать без принуждения — продуктивное уточнение свободы.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Открытый доступ — контекстное применение свободы; снять отдельный primary.",
+        "confidence": 0.93
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Политическая независимость важна, но уже общего значения; снять primary.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Свобода от обязательств в free love — ограниченное сочетание.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Непринуждённость жеста — вторичный оттенок.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Щедрость с with — специальное управление и контекст.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Откровенность — вторичное личностное применение.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Свобода литературного стиля — предметно ограниченный смысл.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Вольный перевод полезен как устойчивое сочетание, не как основное значение A1.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Распущенное поведение — узкое оценочное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Неприличная речь — более специальное оценочное применение.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Физическое или химическое несвязанное состояние оставить специальным.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Наречную бесплатность поставить перед «свободно»; отдельный primary не нужен при основном прилагательном 8.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Run free иллюстрирует вторичное наречное употребление; сохранить после бесплатности.",
+        "confidence": 0.94
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Освобождать — самостоятельный основной глагол; сохранить отдельным блоком.",
+        "confidence": 0.97
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/14 и /previous_outputs/07/14.",
+      "Порядок внутри широкого поля свободы редакционный; значения 1–6 не объединяются автоматически.",
+      "Подтверждённое старым источником free of «за пределами» сохраняется с прежней неопределённостью современного статуса."
+    ]
+  },
+  {
+    "word": "second",
+    "decision": "review_required",
+    "reason": "Главное имеющееся значение — порядковое «второй». Существительные о помощнике и призёре и специальные глаголы не должны быть основными. Обязателен отдельный разбор отсутствующей секунды времени и ошибочно включённого second floor.",
+    "confidence": 0.98,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/15/source_evidence",
+        "/previous_outputs/07/15/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 144
+          },
+          "quote": "second I ['sek@nd] 1 adj второ й 2 v\nподде рживать (предложение)\nsecond II ['sek@nd] n секу нда"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Порядковое «второй» — основное учебное содержание; adjective сохраняется согласно текущей схеме.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Ещё один или дополнительный предмет полезно поставить сразу после порядкового значения.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Second thoughts — отдельная конструкция пересмотра; снять равный primary с порядкового значения.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Повторность — вторичный оттенок порядка; религиозная помета относится к примеру.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Уступающее качество или положение — вторичный смысл.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Музыкальная роль — специальное применение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "adjective",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Перевод относится к second lieutenant, а пример к second officer; не повышать primary и не считать самостоятельный смысл установленным.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Ещё один человек — субстантивация порядкового значения; поставить первой в имеющемся именном блоке, снять primary.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Помощник или заместитель — более узкое употребление; снять primary.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Второе место на соревновании — специальный контекст; снять primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Второе число — календарная субстантивация, не отдельное учебное ядро.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Пищевое употребление во множественном числе оставить вторичным; точный объём толкования требует проверки.",
+        "confidence": 0.87
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Университетская оценка — специальное образовательное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Класс проезда вторичен; пример go second требует грамматического разграничения.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Второсортные товары и муку сохранить специальными.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Музыкальная секунда — специальный интервал, не секунда времени; primary не повышать.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Секундант — ограниченное ролью употребление.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Поддержать предложение — первый глагольный смысл, но вторичный относительно порядкового значения и секунды времени.",
+        "confidence": 0.95
+      },
+      {
+        "meaning_index": 19,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Подкреплять слова делами — ограниченное сочетание; снять primary.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 20,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Быть секундантом — специальное действие; снять primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 21,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Откомандирование — отдельное специальное употребление с отличающимся произношением.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 22,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Текущая категория ошибочна: перевод относится к second floor; сохранить данные до структурного переноса, primary не назначать.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 23,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "review_required",
+        "reason": "Американский этаж относится к second floor, а не к глаголу second; требуется перенос с сохранением пометы.",
+        "confidence": 0.99
+      }
+    ],
+    "issues": [
+      {
+        "target": {
+          "kind": "missing_meaning",
+          "description": "second noun — секунда времени; момент, мгновение."
+        },
+        "problem": "Основной общеупотребительный омоним отсутствует; музыкальное значение 10 его не заменяет.",
+        "required_action": "Добавить отдельным омонимическим блоком с primary=true рядом с порядковым значением; не переименовывать музыкальную секунду."
+      },
+      {
+        "target": {
+          "kind": "meaning",
+          "index": 13
+        },
+        "problem": "Толкование seconds как «второе блюдо» может смешивать блюдо и дополнительную порцию; уверенный учебный приоритет по такой формулировке невозможен.",
+        "required_action": "Сохранить текущую запись вторичной и отдельно проверить семантику пищевого употребления."
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/15 и /previous_outputs/07/15.",
+      "Категории 7, 22 и 23 приведены как текущие, а не как одобренные; простая смена части речи не устранит ложную привязку к одиночному second.",
+      "Порядок разных омонимов не означает их объединения. Происхождение британских помет и произношение second «откомандировывать» остаются нерешёнными."
+    ]
+  },
+  {
+    "word": "someone",
+    "decision": "оставить",
+    "reason": "Единственное значение соответствует основному употреблению неопределённого местоимения; порядок и primary менять не требуется.",
+    "confidence": 0.99,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/16/source_evidence",
+        "/previous_outputs/07/16/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 151
+          },
+          "quote": "someone ['sömwön] см somebody"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "pronoun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Кто-то или кто-нибудь — основное значение; отсутствие примера не препятствует primary.",
+        "confidence": 0.99
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/16 и /previous_outputs/07/16.",
+      "Нулевой поиск в школьном PDF не доказывает отсутствия слова; раздельные строки DOCX не объединяются в непрерывную цитату."
+    ]
+  },
+  {
+    "word": "away",
+    "decision": "изменить",
+    "reason": "Удаление прочь и отсутствие на месте составляют основные значения. Исчезновение, продолжение и передача — функции в конструкциях; сохранить их вторичными, а не помечать все пять как основные.",
+    "confidence": 0.98,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/17/source_evidence",
+        "/previous_outputs/07/17/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 19
+          },
+          "quote": "away [@'weK] adv 1) прочь 2): he is ~ его нет"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Движение прочь — наиболее прямое исходное значение; поставить первым.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Удалённость и отсутствие дома — основные самостоятельные употребления; оставить рядом с движением.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Исчезновение и разрушение раскрываются через отдельные фразовые глаголы; снять общий primary.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Непрерывное действие в worked away — вторичная аспектуальная функция.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "adverb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Передача в give away — конструкционное употребление; «давным-давно» относится к away back и не повышает приоритет.",
+        "confidence": 0.99
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/17 и /previous_outputs/07/17.",
+      "Относительный порядок двух основных пространственных функций не основан на количественном подсчёте.",
+      "Сокращённые переводы pass away и make away with и посторонний пример away off требуют отдельного сохранного исправления."
+    ]
+  },
+  {
+    "word": "left",
+    "decision": "изменить",
+    "reason": "Пространственные прилагательное, наречие и существительное остаются основными. Политические «левые» — вторичный самостоятельный смысл. Форму leave следует отделить от пространственного омонима.",
+    "confidence": 0.99,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/18/source_evidence",
+        "/previous_outputs/07/18/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 102
+          },
+          "quote": "left I [left] past и p p от leave I\nleft II [left] 1 adj ле вый 2 adv нале во; сле ва"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "adjective",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Левый — основное пространственное значение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "adverb",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Налево или слева — основное направление; военные примеры не ограничивают общий смысл.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Левая сторона — основное существительное; военный фланг лишь его подзначение.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Политические левые — тематическое вторичное значение; снять primary и сохранить последним.",
+        "confidence": 0.99
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/18 и /previous_outputs/07/18.",
+      "Область form_of и региональных помет остаётся нерешённой; предлагаемая разметка относится только к четырём поставленным значениям.",
+      "Попадание left luggage office не подтверждает самостоятельную статью left в PDF 300000."
+    ]
+  },
+  {
+    "word": "book",
+    "decision": "изменить",
+    "reason": "Первым остаётся существительное «книга». В глагольном блоке бронирование и заказ билета должны предшествовать занесению в журнал. Библия и регистрационные значения сохраняются без primary.",
+    "confidence": 0.98,
+    "source_evidence": {
+      "inherited_from": [
+        "/previous_outputs/06/19/source_evidence",
+        "/previous_outputs/07/19/source_evidence"
+      ],
+      "preserve_all": true,
+      "checked_context": [
+        {
+          "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+          "location": {
+            "page": 25
+          },
+          "quote": "book [bUk] 1 n кни га 2 v зака зывать биле т,\nсто лик и т п"
+        }
+      ]
+    },
+    "meanings": [
+      {
+        "meaning_index": 1,
+        "partOfSpeech": "noun",
+        "primary": true,
+        "decision": "оставить",
+        "reason": "Книга и литературное произведение — основное значение A1.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 3,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Том или часть произведения поставить после общего значения книги.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 6,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Блокнот или тетрадь полезны среди предметных употреблений; источник расширения пока не установлен.",
+        "confidence": 0.86
+      },
+      {
+        "meaning_index": 4,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Учётная книга — специальное именное применение.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 5,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Книжечка билетов или марок — ограниченный предметный смысл.",
+        "confidence": 0.97
+      },
+      {
+        "meaning_index": 12,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Атрибутивное «книжный» разместить рядом с обычными именными применениями; noun сохранить.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 2,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "The Book — специальное название Библии, а не второе главное значение слова для начинающего; снять primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 9,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Либретто — специальное театральное употребление.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 10,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Сценарий и текст постановки оставить рядом с либретто; сомнительный пример не использовать для повышения приоритета.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 7,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Программа скачек — специальный спортивный смысл; происхождение записи ещё требует проверки.",
+        "confidence": 0.9
+      },
+      {
+        "meaning_index": 8,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Запись пари — специальное букмекерское применение.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 11,
+        "partOfSpeech": "noun",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Карточное значение оставить последним в именном блоке; его чрезмерно общий перевод требует уточнения по этапу 07.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 16,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Бронировать номер или место — центральное современное учебное действие; поставить первым в глагольном блоке и включить primary.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 15,
+        "partOfSpeech": "verb",
+        "primary": true,
+        "decision": "изменить",
+        "reason": "Заказать билет — основное практическое употребление; включить primary рядом с бронированием.",
+        "confidence": 0.99
+      },
+      {
+        "meaning_index": 17,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Заказать выступление артиста — более узкое применение; примеры занятости требуют разграничения.",
+        "confidence": 0.96
+      },
+      {
+        "meaning_index": 13,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Заносить в книгу — вторичное регистрационное действие; снять primary.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 14,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "изменить",
+        "reason": "Регистрация в журнале не должна опережать бронирование; снять primary.",
+        "confidence": 0.98
+      },
+      {
+        "meaning_index": 18,
+        "partOfSpeech": "verb",
+        "primary": false,
+        "decision": "оставить",
+        "reason": "Жаргонное «бежать» сохранить последним без повышения до выяснения источника.",
+        "confidence": 0.95
+      }
+    ],
+    "uncertainties": [
+      "Все свидетельства, замечания и неопределённости этапов 06 и 07 сохраняются по ссылкам /previous_outputs/06/19 и /previous_outputs/07/19.",
+      "Неподтверждённое происхождение части расширений, to book seats reserved и to take smb. on the book остаётся нерешённым; значения и примеры не удаляются.",
+      "Book up «забронировать» и печатное пассивное «быть занятым» требуют разграничения; ранжирование глагола не разрешает это расхождение.",
+      "Бронирование и заказ билета сохраняются раздельно согласно текущей записи; их объединение не предлагается.",
+      "Соседний текст о снятии мяса с костей в PDF 300000 относится к bone и не используется как свидетельство book."
+    ]
+  }
+]

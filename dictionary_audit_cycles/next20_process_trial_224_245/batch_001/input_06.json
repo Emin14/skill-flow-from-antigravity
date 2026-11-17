@@ -1,0 +1,3084 @@
+{
+  "role": "06",
+  "role_file": "agent-roles/06-сравнение-источников.md",
+  "instructions": "# Агент сравнения словарных источников\n\n## Зачем нужен\n\nОн сравнивает разные варианты словаря Мюллера и восстанавливает наиболее точный печатный текст для одного английского слова.\n\n## Источники\n\n- PDF: `Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf`;\n- распарсенный PDF: `Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf`;\n- DOCX: `Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx`.\n\n## Порядок работы\n\n1. Найти все фрагменты, относящиеся к нужному слову.\n2. Сопоставить написание, переносы, знаки, сокращения и значения.\n3. Отделить ошибку OCR от настоящего текста словаря.\n4. Собрать нормализованный печатный вариант.\n5. Указать спорные места и уровень уверенности.\n\n## Нельзя\n\n- считать распарсенный PDF автоматически правильным;\n- додумывать отсутствующий текст без пометки;\n- менять `src/data/oxford_5000.json` напрямую.\n\n## Результат\n\nАгент возвращает отчёт с исходными фрагментами, выбранным вариантом, причиной выбора, уровнем уверенности и списком сомнений.\n",
+  "dataset_path": "src/data/oxford_5000.json",
+  "entries": [
+    {
+      "word": "close",
+      "frequency_rank": 218,
+      "cefr": "a1",
+      "phon_br": "/kləʊz/",
+      "phon_n_am": "/kloʊz/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "близкий",
+          "examples": [
+            {
+              "en": "close friend",
+              "ru": "близкий друг"
+            },
+            {
+              "en": "close translation",
+              "ru": "точный перевод"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "пристальный, тщательный",
+          "examples": [
+            {
+              "en": "close examination",
+              "ru": "тщательный осмотр"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adjective",
+          "translation": "тесный, плотный",
+          "examples": [
+            {
+              "en": "close ranks",
+              "ru": "сомкнутые ряды"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adjective",
+          "translation": "душный, спёртый (о воздухе)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adjective",
+          "translation": "скрытный, сдержанный",
+          "examples": [
+            {
+              "en": "to keep close",
+              "ru": "молчать"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "adjective",
+          "translation": "скупой",
+          "examples": [
+            {
+              "en": "close with money",
+              "ru": "прижимистый"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "adjective",
+          "translation": "закрытый (о голосовании)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "adjective",
+          "translation": "закрытый (о звуке, слоге)",
+          "examples": [],
+          "register": [
+            "фонетика"
+          ]
+        },
+        {
+          "id": 9,
+          "partOfSpeech": "adverb",
+          "translation": "близко, рядом, вплотную",
+          "examples": [
+            {
+              "en": "close by",
+              "ru": "рядом, поблизости"
+            },
+            {
+              "en": "to stand close",
+              "ru": "стоять вплотную"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 10,
+          "partOfSpeech": "verb",
+          "translation": "закрывать(ся); запирать(ся)",
+          "examples": [
+            {
+              "en": "to close a book",
+              "ru": "закрыть книгу"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 11,
+          "partOfSpeech": "verb",
+          "translation": "смыкать(ся), сжимать(ся)",
+          "examples": [
+            {
+              "en": "to close one's eyes",
+              "ru": "закрыть глаза"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 12,
+          "partOfSpeech": "verb",
+          "translation": "оканчивать(ся), завершать(ся)",
+          "examples": [
+            {
+              "en": "to close a discussion",
+              "ru": "прекратить обсуждение"
+            },
+            {
+              "en": "the meeting closed",
+              "ru": "собрание закрылось"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 13,
+          "partOfSpeech": "verb",
+          "translation": "сближать(ся)",
+          "examples": [
+            {
+              "en": "the fog closed around us",
+              "ru": "туман окутал нас"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 14,
+          "partOfSpeech": "noun",
+          "translation": "конец, заключение",
+          "examples": [
+            {
+              "en": "at the close of the year",
+              "ru": "в конце года"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 15,
+          "partOfSpeech": "noun",
+          "translation": "огороженное место (особ. при соборе); переулок (тупик)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "close thing",
+          "partOfSpeech": "noun",
+          "translation": "опасное положение",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "close at hand",
+          "partOfSpeech": "adverb",
+          "translation": "под рукой, близко",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "to keep a close eye on",
+          "partOfSpeech": "verb",
+          "translation": "следить за",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "close down",
+          "partOfSpeech": "verb",
+          "translation": "закрыть (предприятие); прекратить работу",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "close in",
+          "partOfSpeech": "verb",
+          "translation": "окружать; смыкаться; наступать (о сумерках, зиме)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "phrase": "close out",
+          "partOfSpeech": "verb",
+          "translation": "ликвидировать (дело)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 7,
+          "phrase": "close up",
+          "partOfSpeech": "verb",
+          "translation": "закрывать (наглухо); смыкать (ряды); сближаться; срастаться (о ране)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    {
+      "word": "start",
+      "frequency_rank": 218,
+      "cefr": "a1",
+      "phon_br": "/stɑːt/",
+      "phon_n_am": "/stɑːrt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "отправление; начало; отправиться",
+          "examples": [
+            {
+              "en": "to make a start",
+              "ru": "начать"
+            },
+            {
+              "en": "from start to finish",
+              "ru": "с начала до конца"
+            },
+            {
+              "en": "a start in life",
+              "ru": "начало карьеры"
+            },
+            {
+              "en": "to give smb. a start in life",
+              "ru": "помочь кому-либо встать на ноги"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "старт",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "преимущество",
+          "examples": [
+            {
+              "en": "to get the start of smb.",
+              "ru": "опередить кого-л., получить преимущество перед кем-либо"
+            },
+            {
+              "en": "he gave me a start of 10 yards",
+              "ru": "он дал мне фору 10 ярдов"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "вздрагивание; толчок",
+          "examples": [
+            {
+              "en": "to give smb. a start",
+              "ru": "испугать кого-либо"
+            },
+            {
+              "en": "to give a start",
+              "ru": "вздрогнуть"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "неожиданность",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пуск в ход; запуск",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "взлёт",
+          "examples": [],
+          "register": [
+            "авиация"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "начинать; браться (за что-либо)",
+          "examples": [
+            {
+              "en": "to start a quarrel",
+              "ru": "затеять ссору"
+            },
+            {
+              "en": "to start a subject",
+              "ru": "начать разговор о чём-либо"
+            },
+            {
+              "en": "to start working",
+              "ru": "взяться за работу"
+            }
+          ],
+          "register": [],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "учреждать, открывать (предприятия и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 9,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "начинаться",
+          "examples": [
+            {
+              "en": "the fire started in the kitchen",
+              "ru": "сначала загорелось в кухне"
+            }
+          ],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "отправляться, пускаться в путь; трогаться (о трамвае, поезде и т. п.)",
+          "examples": [
+            {
+              "en": "the train has just started",
+              "ru": "поезд только что ушёл"
+            },
+            {
+              "en": "to start on a journey",
+              "ru": "отправиться путешествовать"
+            },
+            {
+              "en": "to start for London",
+              "ru": "отправиться в Лондон"
+            }
+          ],
+          "register": [],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "пускать (машину; тж. start up)",
+          "examples": [],
+          "register": [],
+          "id": 12
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "помогать (кому-либо) начать (какое-л. дело и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "давать старт",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "стартовать",
+          "examples": [],
+          "register": [
+            "спортивное"
+          ],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вздрагивать, содрогаться",
+          "examples": [
+            {
+              "en": "to start in one's seat",
+              "ru": "привскочить на стуле"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вскочить, броситься",
+          "examples": [
+            {
+              "en": "to start back",
+              "ru": "отпрянуть, отскочить назад"
+            },
+            {
+              "en": "to start forward",
+              "ru": "броситься вперёд"
+            },
+            {
+              "en": "start up",
+              "ru": "вскочить, броситься"
+            }
+          ],
+          "register": [],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "вспугивать",
+          "examples": [
+            {
+              "en": "to start a hare",
+              "ru": "поднять зайца"
+            }
+          ],
+          "register": [
+            "охотничий термин"
+          ],
+          "id": 18
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "коробиться (о древесине)",
+          "examples": [],
+          "register": [],
+          "id": 19
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "литься, хлынуть (о слезах и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "взлетать",
+          "examples": [],
+          "register": [
+            "авиация"
+          ],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "расшатать(ся)",
+          "examples": [],
+          "register": [],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "расходиться (о шве)",
+          "examples": [
+            {
+              "en": "just start in and clean the room",
+              "ru": "примитесь-каза уборку комнаты"
+            },
+            {
+              "en": "he started out to write a book",
+              "ru": "он собирался написать книгу"
+            },
+            {
+              "en": "a new idea has started up",
+              "ru": "возникла новая идея"
+            },
+            {
+              "en": "to start up an engine",
+              "ru": "запустить мотор"
+            },
+            {
+              "en": "we had six members to start with",
+              "ru": "у нас сперва было шесть членов"
+            },
+            {
+              "en": "start in",
+              "ru": "начинать, приниматься"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 23
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "start in",
+          "partOfSpeech": "verb",
+          "translation": "начинать, приниматься",
+          "examples": [],
+          "register": [
+            "разговорное",
+            "охота"
+          ]
+        },
+        {
+          "id": 2,
+          "phrase": "start out",
+          "partOfSpeech": "verb",
+          "translation": "отправляться в путь; собираться сделать (что-либо)",
+          "examples": [],
+          "register": [
+            "разговорное",
+            "авиация"
+          ]
+        },
+        {
+          "id": 3,
+          "phrase": "start up",
+          "partOfSpeech": "verb",
+          "translation": "вскакивать; появляться",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "for a start",
+          "partOfSpeech": "noun",
+          "translation": "для начала, начнём с того, что",
+          "examples": [],
+          "register": [],
+          "id": 4
+        }
+      ]
+    },
+    {
+      "word": "system",
+      "frequency_rank": 219,
+      "cefr": "a2",
+      "phon_br": "/ˈsɪstəm/",
+      "phon_n_am": "/ˈsɪstəm/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "система, устройство",
+          "examples": [
+            {
+              "en": "political system",
+              "ru": "государственный строй"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "сеть (дороги т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "организм",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "система; метод",
+          "examples": [
+            {
+              "en": "system of axes",
+              "ru": "система координат"
+            },
+            {
+              "en": "what system do you go on?",
+              "ru": "какому методу вы следуете?"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "мир, вселенная",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "система, формация",
+          "examples": [],
+          "register": [
+            "геология"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "система",
+          "examples": [],
+          "register": [
+            "информатика"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "week",
+      "frequency_rank": 220,
+      "cefr": "a1",
+      "phon_br": "/wiːk/",
+      "phon_n_am": "/wiːk/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "неделя; в недельный срок",
+          "examples": [
+            {
+              "en": "in a week",
+              "ru": "через неделю"
+            },
+            {
+              "en": "he came back Saturday week",
+              "ru": "в субботу была или будет неделя, как он вернулся"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "шесть рабочих дней недели",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: целая вечность",
+          "examples": [
+            {
+              "en": "I have not seen you for weeks",
+              "ru": "я сто лет вас не видел"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "already",
+      "frequency_rank": 221,
+      "cefr": "a2",
+      "phon_br": "/ɔːlˈredi/",
+      "phon_n_am": "/ɔːlˈredi/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "уже",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "anything",
+      "frequency_rank": 222,
+      "cefr": "a1",
+      "phon_br": "/ˈeniθɪŋ/",
+      "phon_n_am": "/ˈeniθɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "pronoun",
+          "translation": "что-нибудь (в вопр. предл.); ничто (в отриц. предл.)",
+          "examples": [
+            {
+              "en": "have you lost anything?",
+              "ru": "вы что-нибудь потеряли?"
+            },
+            {
+              "en": "he hasn't found anything",
+              "ru": "он ничего не нашёл"
+            },
+            {
+              "en": "is he anything like his father?",
+              "ru": "есть у него что-нибудь общее с отцом?, он хоть чем-нибудь похож на отца?"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "pronoun",
+          "translation": "что угодно, всё (в утв. предл.)",
+          "examples": [
+            {
+              "en": "take anything you like",
+              "ru": "возьмите всё, что вам нравится"
+            },
+            {
+              "en": "anything but",
+              "ru": "всё что угодно, только не"
+            },
+            {
+              "en": "he is anything but a coward",
+              "ru": "он всё что угодно, только не трус"
+            },
+            {
+              "en": "it is anything but clear",
+              "ru": "это далеко не ясно далеко не"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "nothing",
+      "frequency_rank": 224,
+      "cefr": "a1",
+      "phon_br": "/ˈnʌθɪŋ/",
+      "phon_n_am": "/ˈnʌθɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "ничего кроме",
+          "examples": [
+            {
+              "en": "neg.",
+              "ru": "ничто, ничего"
+            },
+            {
+              "en": "nothing but",
+              "ru": "только"
+            },
+            {
+              "en": "nothing but the truth",
+              "ru": "ничего, кроме правды"
+            },
+            {
+              "en": "nothing else than",
+              "ru": "не что иное, как"
+            },
+            {
+              "en": "all to nothing",
+              "ru": "всё ни к чему"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пустяки, мелочи",
+          "examples": [
+            {
+              "en": "a mere nothing",
+              "ru": "пустяк"
+            },
+            {
+              "en": "the little nothings of life",
+              "ru": "мелочи жизни"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "небытие, нереальность",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ноль; пустое место",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ноль",
+          "examples": [],
+          "register": [
+            "математика"
+          ],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "нисколько, совсем нет; просто-напросто",
+          "examples": [
+            {
+              "en": "it differs nothing from",
+              "ru": "это нисколько не отличается от"
+            },
+            {
+              "en": "nothing less than",
+              "ru": "прямо-таки"
+            }
+          ],
+          "register": [],
+          "id": 6,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "there is nothing like",
+          "partOfSpeech": "noun",
+          "translation": "нет ничего лучше",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "to say nothing of",
+          "partOfSpeech": "noun",
+          "translation": "не говоря уже о",
+          "examples": [],
+          "register": [],
+          "id": 2
+        },
+        {
+          "phrase": "nothing very much",
+          "partOfSpeech": "noun",
+          "translation": "ничего особенного",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "to be for nothing in",
+          "partOfSpeech": "noun",
+          "translation": "не играть никакой роли в",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "phrase": "there was nothing for it but to tell the truth",
+          "partOfSpeech": "noun",
+          "translation": "пришлось сказать правду",
+          "examples": [],
+          "register": [],
+          "id": 5
+        }
+      ]
+    },
+    {
+      "word": "person",
+      "frequency_rank": 225,
+      "cefr": "a1",
+      "phon_br": "/ˈpɜːsn/",
+      "phon_n_am": "/ˈpɜːrsn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "человек; личность, особа; субъект",
+          "examples": [
+            {
+              "en": "in (one's own) person",
+              "ru": "лично, собственной персоной"
+            },
+            {
+              "en": "not a single person",
+              "ru": "ни единой живой души, никого"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "внешность, облик",
+          "examples": [
+            {
+              "en": "he has a fine person",
+              "ru": "он красив"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "действующее лицо; персонаж",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "лицо",
+          "examples": [],
+          "register": [
+            "юридическое",
+            "грамматика"
+          ],
+          "primary": true
+        }
+      ],
+      "forms": {
+        "plural": "people"
+      }
+    },
+    {
+      "word": "today",
+      "frequency_rank": 226,
+      "cefr": "a1",
+      "phon_br": "/təˈdeɪ/",
+      "phon_n_am": "/təˈdeɪ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adverb",
+          "translation": "сегодня",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "в наши дни, в настоящее время",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "сегодняшний день",
+          "examples": [
+            {
+              "en": "the writers of today",
+              "ru": "современные писатели"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "наши дни, настоящее время",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "so-called",
+      "frequency_rank": 227,
+      "cefr": "b2",
+      "phon_br": "/ˌsəʊ ˈkɔːld/",
+      "phon_n_am": "/ˌsəʊ ˈkɔːld/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "так называемый",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "change",
+      "frequency_rank": 228,
+      "cefr": "a1",
+      "phon_br": "/tʃeɪndʒ/",
+      "phon_n_am": "/tʃeɪndʒ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "перемена; изменение; сдвиг",
+          "examples": [
+            {
+              "en": "social change",
+              "ru": "общественные (или социальные) сдвиги"
+            }
+          ],
+          "register": [
+            "техническое"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "сдача; мелкие деньги, мелочь",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "разнообразие",
+          "examples": [
+            {
+              "en": "for a change",
+              "ru": "для разнообразия"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "замена (декорации)",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "смена (белья, платья)",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "климакс",
+          "examples": [
+            {
+              "en": "change of life",
+              "ru": "климакс"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "(обыкн. при мн. ч.:) трезвон, перезвон колоколов",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "Change (сокр. от Exchange) лондонская биржа",
+          "examples": [],
+          "register": [
+            "историческое"
+          ],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "новая фаза Луны, новолуние",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пересадка (на железной дороге, трамвае)",
+          "examples": [
+            {
+              "en": "no change for Oxford",
+              "ru": "в Оксфорд без пересадки"
+            }
+          ],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения к другому слову",
+          "examples": [
+            {
+              "en": "change gear",
+              "ru": "механизм перемены направления движения"
+            }
+          ],
+          "register": [
+            "техническое"
+          ],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "обменивать(ся)",
+          "examples": [],
+          "register": [],
+          "id": 12,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "менять(ся), изменять(ся); сменять, заменять; переходить к другому владельцу",
+          "examples": [
+            {
+              "en": "times change",
+              "ru": "времена меняются"
+            },
+            {
+              "en": "to change colour",
+              "ru": "покраснеть или побледнеть"
+            },
+            {
+              "en": "to change countenance",
+              "ru": "измениться в лице"
+            },
+            {
+              "en": "to change one's mind",
+              "ru": "передумать, изменить решение"
+            },
+            {
+              "en": "to change hands",
+              "ru": "переходить из рук в руки"
+            },
+            {
+              "en": "to change sides",
+              "ru": "перейти на другую сторону (в политике, споре и т. п.)"
+            }
+          ],
+          "register": [],
+          "id": 13,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "разменять (деньги)",
+          "examples": [],
+          "register": [],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "переодеваться",
+          "examples": [],
+          "register": [],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делать пересадку, пересаживаться (к / на)",
+          "examples": [
+            {
+              "en": "all change!",
+              "ru": "пересадка!"
+            }
+          ],
+          "register": [],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "переходить в новую фазу (о Луне)",
+          "examples": [
+            {
+              "en": "to change up (down)",
+              "ru": "авто переходить на большую (меньшую) скорость"
+            }
+          ],
+          "register": [],
+          "id": 17
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "скисать, прокисать; портиться",
+          "examples": [
+            {
+              "en": "change up",
+              "ru": "авто переходить на более высокую скорость"
+            },
+            {
+              "en": "change down",
+              "ru": "авто сбавлять скорость"
+            }
+          ],
+          "register": [],
+          "id": 18
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "change down",
+          "partOfSpeech": "verb",
+          "translation": "сбавлять скорость",
+          "examples": [],
+          "register": [
+            "автомобильное"
+          ]
+        },
+        {
+          "id": 2,
+          "phrase": "change into",
+          "partOfSpeech": "verb",
+          "translation": "превращаться в кого, во что; переодеваться во что",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "change over",
+          "partOfSpeech": "verb",
+          "translation": "меняться местами; переходить (to — на что-либо)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "change up",
+          "partOfSpeech": "verb",
+          "translation": "переходить на более высокую скорость",
+          "examples": [],
+          "register": [
+            "автомобильное"
+          ]
+        },
+        {
+          "id": 5,
+          "phrase": "to get no change out of smb.",
+          "partOfSpeech": "verb",
+          "translation": "ничего не добиться от кого-либо",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ]
+        },
+        {
+          "phrase": "to take the change out of a person",
+          "partOfSpeech": "noun",
+          "translation": "отомстить кому-либо",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 6
+        },
+        {
+          "id": 7,
+          "phrase": "change of air",
+          "partOfSpeech": "noun",
+          "translation": "перемена обстановки; обмен воздуха",
+          "register": [],
+          "examples": []
+        },
+        {
+          "id": 8,
+          "phrase": "small change",
+          "partOfSpeech": "noun",
+          "translation": "мелкие деньги, мелочь; что",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "word": "enough",
+      "frequency_rank": 229,
+      "cefr": "a1",
+      "phon_br": "/ɪˈnʌf/",
+      "phon_n_am": "/ɪˈnʌf/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "достаточный",
+          "examples": [
+            {
+              "en": "to have enough time",
+              "ru": "располагать достаточным запасом времени"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "достаточное количество",
+          "examples": [
+            {
+              "en": "he has enough and to spare",
+              "ru": "он имеет больше, чем нужно"
+            },
+            {
+              "en": "I've had enough of him",
+              "ru": "он мне надоел"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "достаточно; довольно",
+          "examples": [
+            {
+              "en": "strangely enough",
+              "ru": "как это ни странно"
+            },
+            {
+              "en": "you know well enough",
+              "ru": "вы отлично знаете"
+            },
+            {
+              "en": "he did it well enough",
+              "ru": "он сделал это довольно хорошо"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "everything",
+      "frequency_rank": 230,
+      "cefr": "a1",
+      "phon_br": "/ˈevriθɪŋ/",
+      "phon_n_am": "/ˈevriθɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "pronoun",
+          "translation": "всё",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "pronoun",
+          "translation": "масса, куча",
+          "examples": [
+            {
+              "en": "they gave me everything",
+              "ru": "они мне всего понадавали"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "pronoun",
+          "translation": "всё самое важное",
+          "examples": [
+            {
+              "en": "speed is everything",
+              "ru": "самое главное — это скорость"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    {
+      "word": "full",
+      "frequency_rank": 231,
+      "cefr": "a1",
+      "phon_br": "/fʊl/",
+      "phon_n_am": "/fʊl/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "полный; целый",
+          "examples": [
+            {
+              "en": "a full audience",
+              "ru": "полная аудитория, полный зрительный зал"
+            },
+            {
+              "en": "a full hour",
+              "ru": "целый час"
+            },
+            {
+              "en": "full load",
+              "ru": "полная нагрузка"
+            },
+            {
+              "en": "full to overflowing (or to the brim)",
+              "ru": "полный до краёв"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "сытый",
+          "examples": [
+            {
+              "en": "to eat till one is full",
+              "ru": "есть до отвала, до полного насыщения"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "обильный",
+          "examples": [
+            {
+              "en": "a full meal",
+              "ru": "сытная еда"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "изобилующий, богатый (чем-либо)",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "поглощённый",
+          "examples": [
+            {
+              "en": "he is full of his own affairs",
+              "ru": "он всецело занят своими делами"
+            }
+          ],
+          "register": [],
+          "id": 5,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "полный, дородный",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "широкий, свободный (о платье)",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "переполненный (эмоциями и т. п.)",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "поддатый",
+          "examples": [],
+          "register": [
+            "жаргон"
+          ],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "достигший высшей степени, высшей точки",
+          "examples": [
+            {
+              "en": "in full vigour",
+              "ru": "в расцвете сил"
+            },
+            {
+              "en": "full tide",
+              "ru": "высокая вода"
+            }
+          ],
+          "register": [
+            "устаревшее"
+          ],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "очень",
+          "examples": [
+            {
+              "en": "full well",
+              "ru": "(очень) хорошо"
+            }
+          ],
+          "register": [],
+          "id": 12,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "вполне",
+          "examples": [],
+          "register": [],
+          "id": 13,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "как раз",
+          "examples": [
+            {
+              "en": "the ball hit him full on the nose",
+              "ru": "мяч попал ему прямо в нос"
+            }
+          ],
+          "register": [],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "кроить широко (платье); шить в сборку, в складку",
+          "examples": [],
+          "register": [
+            "текстильное"
+          ],
+          "id": 15,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "full up",
+          "partOfSpeech": "adjective",
+          "translation": "переполненный; битком набитый",
+          "examples": [],
+          "register": [
+            "разговорное",
+            "предикативное употребление"
+          ]
+        },
+        {
+          "phrase": "full brother",
+          "partOfSpeech": "adjective",
+          "translation": "родной брат",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "full powers",
+          "partOfSpeech": "adjective",
+          "translation": "полномочия",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "phrase": "full moon",
+          "partOfSpeech": "adjective",
+          "translation": "полнолуние",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "phrase": "to come to a full",
+          "partOfSpeech": "verb",
+          "translation": "дойти до точки, зайти в тупик",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "adverb",
+          "translation": "полностью",
+          "examples": [
+            {
+              "en": "to the full",
+              "ru": "в полной мере"
+            }
+          ],
+          "register": [],
+          "id": 7,
+          "primary": true,
+          "phrase": "in full"
+        }
+      ]
+    },
+    {
+      "word": "live",
+      "frequency_rank": 234,
+      "cefr": "a1",
+      "phon_br": "/lɪv/",
+      "phon_n_am": "/lɪv/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "жить; существовать; обитать",
+          "examples": [
+            {
+              "en": "to live in a city",
+              "ru": "жить в городе"
+            },
+            {
+              "en": "to live to be eighty",
+              "ru": "дожить до восьмидесяти лет"
+            },
+            {
+              "en": "to live to see smth.",
+              "ru": "дожить до чего-либо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "питаться (чем-либо: on)",
+          "examples": [
+            {
+              "en": "to live on bread and water",
+              "ru": "питаться хлебом и водой"
+            },
+            {
+              "en": "to live on others",
+              "ru": "жить на чужие средства"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "вести какой-либо образ жизни",
+          "examples": [
+            {
+              "en": "to live within one's income",
+              "ru": "жить по средствам"
+            },
+            {
+              "en": "to live beyond one's means",
+              "ru": "жить не по средствам"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "прожить, протянуть (о больном)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "быть полным жизни, наслаждаться жизнью",
+          "examples": [
+            {
+              "en": "to live every moment",
+              "ru": "наслаждаться каждым моментом"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "live down",
+          "partOfSpeech": "verb",
+          "translation": "загладить, искупить (поведением, жизнью)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "live in",
+          "partOfSpeech": "verb",
+          "translation": "жить по месту работы",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "live off",
+          "partOfSpeech": "verb",
+          "translation": "жить за счёт (кого-либо / чего-либо)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "live out",
+          "partOfSpeech": "verb",
+          "translation": "жить вне места работы; доживать (свой век)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "live through",
+          "partOfSpeech": "verb",
+          "translation": "пережить, выдержать (испытание)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "phrase": "to live on air",
+          "partOfSpeech": "verb",
+          "translation": "питаться святым духом",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    {
+      "word": "making",
+      "frequency_rank": 235,
+      "cefr": "b2",
+      "phon_br": "/ˈmeɪkɪŋ/",
+      "phon_n_am": "/ˈmeɪkɪŋ/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "создание, становление",
+          "examples": [
+            {
+              "en": "in the making",
+              "ru": "в процессе создания, развития"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "производство, изготовление",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "работа, ремесло",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "форма",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: заработок",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.: задатки",
+          "examples": [
+            {
+              "en": "to have the makings of (an actor, etc.)",
+              "ru": "у него задатки (актёра и т. п.)"
+            }
+          ],
+          "register": [
+            "британское"
+          ],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "при мн. ч.:., бумага и табак для свёртывания сигарет",
+          "examples": [],
+          "register": [
+            "американский английский",
+            "разговорное",
+            "британское",
+            "австралийский английский"
+          ],
+          "id": 7
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "to be the making",
+          "partOfSpeech": "noun",
+          "translation": "содействовать успеху",
+          "examples": [],
+          "register": [],
+          "id": 1
+        }
+      ]
+    },
+    {
+      "word": "point",
+      "frequency_rank": 236,
+      "cefr": "a1",
+      "phon_br": "/pɔɪnt/",
+      "phon_n_am": "/pɔɪnt/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "остриё, острый конец; кончик; наконечник",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "точка",
+          "examples": [
+            {
+              "en": "full point",
+              "ru": "точка (знак препинания)"
+            },
+            {
+              "en": "exclamation point",
+              "ru": "восклицательный знак"
+            },
+            {
+              "en": "four point six (4.6)",
+              "ru": "четыре целых и шесть десятых (4.6)"
+            }
+          ],
+          "register": [
+            "американский английский"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "особенность",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "момент (времени)",
+          "examples": [
+            {
+              "en": "at this point he went out",
+              "ru": "в этот момент он вышел"
+            },
+            {
+              "en": "at the point of death",
+              "ru": "при смерти"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "точка, место, пункт; станция",
+          "examples": [
+            {
+              "en": "a point of departure",
+              "ru": "пункт отправления"
+            }
+          ],
+          "register": [
+            "американский английский"
+          ],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "очко, балл (в игре, спорте)",
+          "examples": [
+            {
+              "en": "to give points to",
+              "ru": "давать несколько очков вперёд"
+            }
+          ],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пункт, момент, вопрос; дело",
+          "examples": [
+            {
+              "en": "fine point",
+              "ru": "деталь, мелочь, тонкость"
+            },
+            {
+              "en": "point of honour",
+              "ru": "дело чести"
+            },
+            {
+              "en": "on this point",
+              "ru": "на этот счёт"
+            }
+          ],
+          "register": [],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "преимущество, достоинство",
+          "examples": [
+            {
+              "en": "he has got points",
+              "ru": "у него есть достоинства"
+            },
+            {
+              "en": "singing was not his strong point",
+              "ru": "он не был силён в пении"
+            }
+          ],
+          "register": [],
+          "id": 8
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "главное, суть; смысл, «соль» (рассказа, шутки)",
+          "examples": [
+            {
+              "en": "that is just the point",
+              "ru": "в этом-то и дело"
+            },
+            {
+              "en": "he does not see my point",
+              "ru": "он не понимает меня"
+            }
+          ],
+          "register": [],
+          "id": 9
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "деление шкалы",
+          "examples": [],
+          "register": [],
+          "id": 10
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "перо или остряк (стрелочного перевода); стрелочный перевод",
+          "examples": [],
+          "register": [
+            "железнодорожное"
+          ],
+          "id": 11
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "мыс, выступающая морская коса; стрелка",
+          "examples": [],
+          "register": [],
+          "id": 12,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "ответвление оленьего рога",
+          "examples": [
+            {
+              "en": "a buck of eight points",
+              "ru": "олень с рогами, имеющими восемь ответвлений"
+            }
+          ],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "стать(я) (животного); при мн. ч.: экстерьер (животного)",
+          "examples": [],
+          "register": [
+            "британское"
+          ],
+          "id": 14
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "пункт",
+          "examples": [],
+          "register": [
+            "полиграфия"
+          ],
+          "id": 15
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "стойка (собаки)",
+          "examples": [],
+          "register": [
+            "охотничий термин"
+          ],
+          "id": 16
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "показывать пальцем; указывать",
+          "examples": [
+            {
+              "en": "point out",
+              "ru": "[point at / to] показывать пальцем; указывать"
+            }
+          ],
+          "register": [],
+          "id": 17,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "направлять (оружие); наводить, целиться, прицеливаться",
+          "examples": [],
+          "register": [],
+          "id": 18,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "быть направленным",
+          "examples": [],
+          "register": [],
+          "id": 19
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "свидетельствовать, указывать (на что-либо: point to)",
+          "examples": [],
+          "register": [],
+          "id": 20
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "(за)точить, (за)острить; наточить",
+          "examples": [],
+          "register": [],
+          "id": 21
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "чинить (карандаш)",
+          "examples": [],
+          "register": [],
+          "id": 22
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "оживлять; придавать остроту",
+          "examples": [],
+          "register": [],
+          "id": 23
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "ставить знаки препинания",
+          "examples": [],
+          "register": [],
+          "id": 24
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "делать стойку (о собаке)",
+          "examples": [],
+          "register": [],
+          "id": 25
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "расшивать швы",
+          "examples": [
+            {
+              "en": "point out",
+              "ru": "указывать"
+            },
+            {
+              "en": "point off",
+              "ru": "отделять точкой; показывать; обращать (чьё-л.) внимание"
+            }
+          ],
+          "register": [
+            "строительное"
+          ],
+          "id": 26
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "point off",
+          "partOfSpeech": "verb",
+          "translation": "отделять точкой",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "point out",
+          "partOfSpeech": "verb",
+          "translation": "указывать; показывать; обращать (чьё-л.) внимание",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "free from points",
+          "partOfSpeech": "noun",
+          "translation": "бесталонный, отпускаемый без талонов (о товарах)",
+          "examples": [
+            {
+              "en": "s verdict.",
+              "ru": "присуждение победы по очкам (в боксе и т. д.)"
+            }
+          ],
+          "register": [
+            "история",
+            "морской термин",
+            "спорт"
+          ]
+        },
+        {
+          "id": 4,
+          "phrase": "at point",
+          "partOfSpeech": "preposition",
+          "translation": "готовый (к чему-либо)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "in point",
+          "partOfSpeech": "preposition",
+          "translation": "подходящий",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "phrase": "in point of",
+          "partOfSpeech": "preposition",
+          "translation": "в отношении",
+          "examples": [],
+          "register": []
+        },
+        {
+          "phrase": "point of view",
+          "partOfSpeech": "noun",
+          "translation": "точка зрения",
+          "examples": [],
+          "register": [],
+          "id": 7
+        },
+        {
+          "phrase": "at the point of the sword",
+          "partOfSpeech": "noun",
+          "translation": "силой оружия",
+          "examples": [],
+          "register": [],
+          "id": 8
+        },
+        {
+          "phrase": "at all points",
+          "partOfSpeech": "noun",
+          "translation": "во всех отношениях",
+          "examples": [],
+          "register": [],
+          "id": 9
+        },
+        {
+          "phrase": "armed at all points",
+          "partOfSpeech": "noun",
+          "translation": "во всеоружии",
+          "examples": [],
+          "register": [],
+          "id": 10
+        },
+        {
+          "phrase": "to be on the point of doing smth.",
+          "partOfSpeech": "noun",
+          "translation": "собираться сделать что-либо",
+          "examples": [],
+          "register": [],
+          "id": 11
+        },
+        {
+          "phrase": "to carry one's point",
+          "partOfSpeech": "noun",
+          "translation": "отстоять свои позиции",
+          "examples": [],
+          "register": [],
+          "id": 12
+        },
+        {
+          "phrase": "off the point",
+          "partOfSpeech": "noun",
+          "translation": "некстати",
+          "examples": [],
+          "register": [],
+          "id": 13
+        },
+        {
+          "phrase": "to the point",
+          "partOfSpeech": "noun",
+          "translation": "кстати, уместно, по существу",
+          "examples": [],
+          "register": [],
+          "id": 14
+        },
+        {
+          "id": 15,
+          "phrase": "point at",
+          "partOfSpeech": "verb",
+          "translation": "показывать пальцем; указывать",
+          "register": [],
+          "examples": []
+        }
+      ]
+    },
+    {
+      "word": "read",
+      "frequency_rank": 237,
+      "cefr": "a1",
+      "phon_br": "/riːd/",
+      "phon_n_am": "/riːd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "verb",
+          "translation": "читать",
+          "examples": [
+            {
+              "en": "to read aloud, to read out (loud)",
+              "ru": "читать вслух"
+            },
+            {
+              "en": "to read smb. to sleep",
+              "ru": "усыплять кого-либо чтением"
+            },
+            {
+              "en": "to read oneself hoarse (stupid)",
+              "ru": "дочитаться до хрипоты (одурения)"
+            },
+            {
+              "en": "to read to oneself",
+              "ru": "читать про себя"
+            },
+            {
+              "en": "to read a piece of music",
+              "ru": "разобрать пьесу"
+            },
+            {
+              "en": "the bill was read",
+              "ru": "законопроект был предоставлен на обсуждение"
+            }
+          ],
+          "register": [
+            "музыка",
+            "парламентское"
+          ],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "толковать; объяснять",
+          "examples": [
+            {
+              "en": "my silence is not to be read as consent",
+              "ru": "моё молчание не следует принимать за согласие"
+            },
+            {
+              "en": "it is intended to be read..",
+              "ru": "это надо понимать в том смысле, что..."
+            },
+            {
+              "en": "to read one's thoughts into a poet's words",
+              "ru": "вкладывать собственный смысл в слова поэта"
+            },
+            {
+              "en": "to read a riddle",
+              "ru": "разгадать загадку"
+            },
+            {
+              "en": "to read the cards",
+              "ru": "гадать на картах"
+            },
+            {
+              "en": "to read smb.'s mind (or thoughts)",
+              "ru": "читать чужие мысли"
+            },
+            {
+              "en": "to read smb.'s hand (or palm)",
+              "ru": "гадать по руке"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "гласить",
+          "examples": [
+            {
+              "en": "the passage quoted reads as follows",
+              "ru": "цитата гласит следующее"
+            }
+          ],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "показывать (о приборе и т. п.)",
+          "examples": [
+            {
+              "en": "the thermometer reads three degrees above freezing point",
+              "ru": "термометр показывает три градуса выше нуля"
+            }
+          ],
+          "register": [],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "снимать показания (прибора и т. п.)",
+          "examples": [
+            {
+              "en": "to read the electric meter",
+              "ru": "снимать показания электрического счётчика"
+            },
+            {
+              "en": "to read smb.'s blood pressure",
+              "ru": "измерять кровяное давление"
+            }
+          ],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "изучать",
+          "examples": [
+            {
+              "en": "he is reading law",
+              "ru": "он изучает право"
+            },
+            {
+              "en": "to read for the Bar",
+              "ru": "готовиться к адвокатуре"
+            }
+          ],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "информ. считывать",
+          "examples": [
+            {
+              "en": "his face doesn't read off",
+              "ru": "его лицо ничего не выражает"
+            },
+            {
+              "en": "read up",
+              "ru": "специально изучать"
+            },
+            {
+              "en": "to read up for examinations",
+              "ru": "готовиться к экзаменам"
+            },
+            {
+              "en": "read with",
+              "ru": "заниматься с кем-либо"
+            },
+            {
+              "en": "read off",
+              "ru": "объяснять, выражать"
+            }
+          ],
+          "register": [
+            "американский английский",
+            "искусство",
+            "разговорное"
+          ],
+          "id": 7
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "чтение; время, проведённое в чтении",
+          "examples": [
+            {
+              "en": "to have a quiet read",
+              "ru": "почитать в тишине"
+            }
+          ],
+          "register": [],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "чтиво",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 9,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "(в сочетаниях) начитанный, сведущий, знающий, образованный",
+          "examples": [
+            {
+              "en": "he is poorly read in history",
+              "ru": "он слабо знает историю"
+            }
+          ],
+          "register": [],
+          "id": 10,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "read off",
+          "partOfSpeech": "verb",
+          "translation": "объяснять, выражать",
+          "examples": [],
+          "register": [
+            "разговорное",
+            "информатика"
+          ]
+        },
+        {
+          "id": 2,
+          "phrase": "read out",
+          "partOfSpeech": "verb",
+          "translation": "читать вслух; исключать из организации",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ]
+        },
+        {
+          "id": 3,
+          "phrase": "read up",
+          "partOfSpeech": "verb",
+          "translation": "специально изучать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "to read between the lines",
+          "partOfSpeech": "verb",
+          "translation": "читать между ок",
+          "examples": [],
+          "register": [
+            "строительное дело"
+          ]
+        }
+      ],
+      "forms": {
+        "past_simple": "read",
+        "past_participle": "read"
+      }
+    },
+    {
+      "word": "yet",
+      "frequency_rank": 238,
+      "cefr": "a2",
+      "phon_br": "/jet/",
+      "phon_n_am": "/jet/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adverb",
+          "translation": "ещё, всё ещё",
+          "examples": [
+            {
+              "en": "he has not come yet",
+              "ru": "он ещё не пришёл"
+            },
+            {
+              "en": "not yet",
+              "ru": "ещё не(т)"
+            },
+            {
+              "en": "never yet",
+              "ru": "никогда ещё не"
+            },
+            {
+              "en": "yet more",
+              "ru": "ещё больше"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adverb",
+          "translation": "ещё, кроме того",
+          "examples": [
+            {
+              "en": "he has yet much to say",
+              "ru": "ему ещё многое надо сказать"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "adverb",
+          "translation": "уже (в вопр. предложениях)",
+          "examples": [
+            {
+              "en": "need you go yet?",
+              "ru": "вам уже надо идти?"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "adverb",
+          "translation": "даже; более",
+          "examples": [
+            {
+              "en": "this question is more important yet",
+              "ru": "этот вопрос даже важнее"
+            },
+            {
+              "en": "he will not accept help nor yet advice",
+              "ru": "он не примет ни помощи, ни даже совета"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "adverb",
+          "translation": "до сих пор, когда-либо",
+          "examples": [
+            {
+              "en": "it is the largest specimen yet found",
+              "ru": "это самый крупный экземпляр из найденных до сих пор"
+            },
+            {
+              "en": "as yet",
+              "ru": "всё ещё, пока, до сих пор"
+            },
+            {
+              "en": "the scheme has worked well as yet",
+              "ru": "пока эта схема вполне себя оправдывает"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "adverb",
+          "translation": "тем не менее, всё же, всё-таки",
+          "examples": [
+            {
+              "en": "it is strange and yet true",
+              "ru": "это странно, но (тем не менее) верно"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "conjunction",
+          "translation": "однако, всё же, несмотря на это; но",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    {
+      "word": "bad",
+      "frequency_rank": 239,
+      "cefr": "a1",
+      "phon_br": "/bæd/",
+      "phon_n_am": "/bæd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "плохой, дурной, скверный",
+          "examples": [
+            {
+              "en": "she feels bad",
+              "ru": "она плохо себя чувствует"
+            },
+            {
+              "en": "bad name (for)",
+              "ru": "дурная репутация"
+            },
+            {
+              "en": "bad coin",
+              "ru": "фальшивая или неполноценная монета"
+            },
+            {
+              "en": "bad language",
+              "ru": "сквернословие"
+            },
+            {
+              "en": "bad luck",
+              "ru": "невезение"
+            },
+            {
+              "en": "it is too bad!",
+              "ru": "вот беда!"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "вредный",
+          "examples": [
+            {
+              "en": "beer is bad for you",
+              "ru": "пиво вам вредно"
+            }
+          ],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "испорченный; недоброкачественный",
+          "examples": [
+            {
+              "en": "to go bad",
+              "ru": "испортиться, сгнить"
+            }
+          ],
+          "register": [],
+          "id": 3
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "больной",
+          "examples": [
+            {
+              "en": "bad leg",
+              "ru": "больная нога"
+            },
+            {
+              "en": "to be taken bad",
+              "ru": "заболеть"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ],
+          "id": 4,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "развращённый, безнравственный",
+          "examples": [],
+          "register": [],
+          "id": 5
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "сильный (о боли, холоде и т. п.); грубый (об ошибке)",
+          "examples": [],
+          "register": [],
+          "id": 6
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "недействительный",
+          "examples": [],
+          "register": [
+            "юридическое"
+          ],
+          "id": 7,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "неудача, несчастье",
+          "examples": [
+            {
+              "en": "to take the bad with the good",
+              "ru": "стойко переносить превратности судьбы"
+            }
+          ],
+          "register": [],
+          "id": 8,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "гибель; разорение",
+          "examples": [],
+          "register": [],
+          "id": 9,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "убыток",
+          "examples": [
+            {
+              "en": "to the bad",
+              "ru": "в убытке, в убыток"
+            }
+          ],
+          "register": [],
+          "id": 10
+        }
+      ],
+      "phrases": [
+        {
+          "phrase": "bad blood",
+          "partOfSpeech": "adjective",
+          "translation": "ссора",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "phrase": "bad egg (or hat, lot)",
+          "partOfSpeech": "noun",
+          "translation": "мошенник, ненадёжный человек",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 2
+        },
+        {
+          "phrase": "bad fairy",
+          "partOfSpeech": "adjective",
+          "translation": "злой гений",
+          "examples": [],
+          "register": [],
+          "id": 3
+        },
+        {
+          "phrase": "bad form",
+          "partOfSpeech": "adjective",
+          "translation": "дурные манеры",
+          "examples": [],
+          "register": [],
+          "id": 4
+        },
+        {
+          "phrase": "with a bad grace",
+          "partOfSpeech": "adjective",
+          "translation": "неохотно",
+          "examples": [],
+          "register": [],
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "source_search_sha256": "fc939a4d91c69f1dccb78ebd17d7ae2181890837eb7f1c6893e8af82352a0d6f",
+  "prepared_source_search": {
+    "file": "source_search.json",
+    "helper": "source_search.py",
+    "instruction": "First run python3 source_search.py --packet source_search.json --limit 1. Avoid dumping the entire packet. For additional prepared hits use --packet source_search.json --word WORD --limit 3. All sources must still be checked; fetch full context whenever the first hit does not establish the sense. Cache files contain full page/paragraph text. Use python3 source_search.py --cache-file FILE --location N for context or --word WORD --limit N for lexical search. Every hit still needs semantic review. Do not repeat PDF extraction or environment discovery."
+  },
+  "source_inventory": [
+    {
+      "file": "SamPolnAnglRysSlovar - распарсенное.pdf",
+      "locations": 801,
+      "source_id": 1
+    },
+    {
+      "file": "SamPolnAnglRysSlovar.pdf",
+      "locations": 801,
+      "source_id": 2
+    },
+    {
+      "file": "Мюллер В. К. - Полный англо-русский русско-английский словарь - (Полный курс (АСТ)) - 2021.pdf",
+      "locations": 321,
+      "source_id": 3
+    },
+    {
+      "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021 - спарсенное.pdf",
+      "locations": 960,
+      "source_id": 4
+    },
+    {
+      "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.docx",
+      "locations": 110871,
+      "source_id": 5
+    },
+    {
+      "file": "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf",
+      "locations": 960,
+      "source_id": 6
+    },
+    {
+      "file": "Мюллер_В_К_Полный_англо_русский_русско_английский_словарь_300000.pdf",
+      "locations": 1329,
+      "source_id": 7
+    },
+    {
+      "file": "Новый_англо_русский_и_русско_английский_словарь_для_школьников_Свыше.pdf",
+      "locations": 639,
+      "source_id": 8
+    }
+  ],
+  "source_contract": "Search every file in source_inventory, including those omitted from the role markdown. PDF coordinates: page (one-based). DOCX coordinates: line (one-based XML paragraph index), not paragraph. Return short exact excerpts, not whole pages.",
+  "entries_are_compact_for_green": false,
+  "previous_outputs": {},
+  "wire_contract_version": 2,
+  "compact_stage07": "Omit before/after snapshots; scripts assemble them. For a meaning_proposal omit before_meaning and use edits [{op:'replace',path:'/translation',before:old,after:new}] instead of after_meaning, retaining meaning_index/reason/sources. For linked meaning+phrase changes use entry_proposals: exactly one group {reason,confidence,edits:[{op,path,before,after,reason,sources}]}, no meaning_proposals. Paths are zero-based RFC6901 /meanings/N/translation|partOfSpeech|register or /phrases/N/phrase|translation|partOfSpeech|register. New phrase: add /phrases/- with full phrase object, unique id and empty examples. No deletes, ID changes or example replacement. All related edits belong to one indivisible group.",
+  "issue_target_contract": "Issues require problem, required_action and either 1-based meaning_index or target. target is {kind:'meaning'|'phrase',index:1-based}, {kind:'field',path:existing RFC6901 path}, or {kind:'missing_meaning',description:specific missing sense}. Never use null meaning_index alone.",
+  "reference_contract": "All entries and previous outputs are complete. Copy before exactly from entries. Stage report meaning_index is one-based. Never invent references or hashes.",
+  "model_scope": {
+    "full_reasoning_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "pass_through_indices": [],
+    "instruction": "Проверь каждую запись содержательно. Механическая классификация не разрешает пропускать проверку смысла."
+  },
+  "output_contract": {
+    "records": 20,
+    "meaning_index_base": 1,
+    "allowed_decisions": [
+      "изменить",
+      "оставить",
+      "review_required",
+      "принято без изменения"
+    ],
+    "required_record_fields": [
+      "word",
+      "decision",
+      "reason",
+      "confidence"
+    ],
+    "field_types": {
+      "confidence": "JSON number in [0,1], e.g. 0.95; never a string or boolean",
+      "reason": "individual nonempty string"
+    },
+    "citation_contract": "PDF location requires page; DOCX location requires line (XML paragraph index). quote must contain at least 8 characters and match that location exactly apart from whitespace normalization. Never rewrite or combine disjoint source fragments into one quotation.",
+    "stage_specific_fields": "source_evidence.search_results[{source_id,query,found,locations|result}]. Use the source_id from source_inventory instead of retyping the filename. The dispatcher expands it to the exact filename before validating every citation.",
+    "word_order": [
+      "close",
+      "start",
+      "system",
+      "week",
+      "already",
+      "anything",
+      "nothing",
+      "person",
+      "today",
+      "so-called",
+      "change",
+      "enough",
+      "everything",
+      "full",
+      "live",
+      "making",
+      "point",
+      "read",
+      "yet",
+      "bad"
+    ],
+    "output_path": "stage_06.json",
+    "do_not_edit_dataset": true
+  }
+}

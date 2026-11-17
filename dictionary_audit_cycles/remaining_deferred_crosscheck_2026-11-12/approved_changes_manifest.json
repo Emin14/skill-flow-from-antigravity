@@ -1,0 +1,88 @@
+{
+  "scope": "remaining_deferred_crosscheck_2026-11-12",
+  "applied_count": 7,
+  "changes": [
+    {
+      "word": "out",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "source classifies out as adverbial in this construction",
+      "source": "Muller 2021 out article"
+    },
+    {
+      "word": "after",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "preposition",
+      "reason": "source classifies after in this construction as prepositional",
+      "source": "Muller 2021 after article"
+    },
+    {
+      "word": "first",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive phrase under adjective section",
+      "source": "Muller 2021 first article"
+    },
+    {
+      "word": "first",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive phrase under adjective section",
+      "source": "Muller 2021 first article"
+    },
+    {
+      "word": "more",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "source places this idiom under adverbial uses",
+      "source": "Muller 2021 more article"
+    },
+    {
+      "word": "how",
+      "path": "meanings[4].register",
+      "before": [],
+      "after": [
+        "разговорное"
+      ],
+      "reason": "source marks noun how as colloquial",
+      "source": "Muller 2021 how article: 2. n разг."
+    },
+    {
+      "word": "cure",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "phrase",
+      "reason": "source marks it as a proverb; canonical allow-list has no proverb type",
+      "source": "Muller 2021 cure article: посл."
+    }
+  ],
+  "kept_current": [
+    "of",
+    "I",
+    "have to",
+    "can1 after form repair",
+    "about",
+    "May",
+    "may",
+    "here",
+    "even",
+    "cure II slang homonym",
+    "time source-supported senses"
+  ],
+  "still_unresolved": [
+    "out other phrase POS and wording",
+    "after broad article review",
+    "first generated/source boundaries",
+    "more omitted phrases",
+    "time omitted examples and generated wording",
+    "some missing source-confirmed subuses",
+    "how meaning 1 register scope and how-do-you-do ownership"
+  ],
+  "before_sha256": "782f78195efe11696f518919b3ed4cb2b879d3a821059c24e6fba6d29d3aaa46",
+  "after_sha256": "799c68ba19915a4d9d03c3d7fed2a53afba5ff3f589346d5d59975e2f4542a33"
+}

@@ -1,0 +1,1127 @@
+{
+  "scope": "next200_restart_2026-11-14",
+  "records_audited": 217,
+  "batches": 11,
+  "applied_count": 109,
+  "changes": [
+    {
+      "word": "play",
+      "path": "meanings[12].examples[1]",
+      "before": {
+        "en": "the engine was played off",
+        "ru": "запустили мотор"
+      },
+      "after": null,
+      "reason": "remove malformed contamination"
+    },
+    {
+      "word": "play",
+      "path": "meanings[29].register",
+      "before": [
+        "разговорное"
+      ],
+      "after": [],
+      "reason": "remove overbroad register"
+    },
+    {
+      "word": "few",
+      "path": "meanings[2].translation",
+      "before": "незначительное число; почти ничего",
+      "after": "небольшое число; мало кто/почти никто",
+      "reason": "clarify few noun"
+    },
+    {
+      "word": "let",
+      "path": "meanings[4].examples[6]",
+      "before": {
+        "en": "(on)",
+        "ru": "дать доступ (к информации и т. п.)"
+      },
+      "after": null,
+      "reason": "remove orphaned fragment"
+    },
+    {
+      "word": "let",
+      "path": "meanings[4].examples[6]",
+      "before": {
+        "en": "let down",
+        "ru": "опускать; разочаровать; подвести; покинуть в беде; унизить; уронить; повредить репутации; to let smb. down easily (или gently) пощадить чьё-л. самолюбие, отнестись мягко; удлинить (платье и т. п.); спустить (шину)"
+      },
+      "after": null,
+      "reason": "remove duplicated phrasal contamination"
+    },
+    {
+      "word": "let",
+      "path": "meanings[4].examples[6]",
+      "before": {
+        "en": "let out",
+        "ru": "at.; драться; ругаться"
+      },
+      "after": null,
+      "reason": "remove duplicated phrasal contamination"
+    },
+    {
+      "word": "let",
+      "path": "meanings[4].examples[6]",
+      "before": {
+        "en": "let up",
+        "ru": ".; обращаться (с кем-либо) более мягко, стать мягче; работать менее усердно, не надрываться"
+      },
+      "after": null,
+      "reason": "remove malformed phrasal contamination"
+    },
+    {
+      "word": "let",
+      "path": "meanings[4].register",
+      "before": [
+        "американский английский",
+        "разговорное",
+        "шутливое"
+      ],
+      "after": [],
+      "reason": "remove overbroad mixed register"
+    },
+    {
+      "word": "however",
+      "path": "meanings[1].partOfSpeech",
+      "before": "conjunction",
+      "after": "adverb",
+      "reason": "however is discourse adverb"
+    },
+    {
+      "word": "god",
+      "path": "meanings[4].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "god meaning is to deify"
+    },
+    {
+      "word": "top",
+      "path": "meanings[4].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "top in maths is adjectival"
+    },
+    {
+      "word": "nothing",
+      "path": "meanings[0].translation",
+      "before": "ничего кроме",
+      "after": "ничто, ничего",
+      "reason": "repair core negative pronoun gloss"
+    },
+    {
+      "word": "full",
+      "path": "meanings[*].id",
+      "before": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "after": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "reason": "restore sequential IDs"
+    },
+    {
+      "word": "once",
+      "path": "meanings[0].examples[once in].en",
+      "before": "once in",
+      "after": "once in a while (or once in a way)",
+      "reason": "restore truncated construction"
+    },
+    {
+      "word": "once",
+      "path": "meanings[1].examples[once (upon a time) s].en",
+      "before": "once (upon a time) s",
+      "after": "once (upon a time)",
+      "reason": "remove OCR tail"
+    },
+    {
+      "word": "once",
+      "path": "meanings[2].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported slang"
+    },
+    {
+      "word": "support",
+      "path": "meanings[7].examples[to support an institution].ru",
+      "before": "жертвовать на учреждение",
+      "after": "поддерживать учреждение; оказывать учреждению материальную помощь",
+      "reason": "broaden support translation"
+    },
+    {
+      "word": "tell",
+      "path": "meanings[1].examples[1]",
+      "before": {
+        "en": "to say goodbye",
+        "ru": "прощаться",
+        "register": [
+          "американизм"
+        ]
+      },
+      "after": null,
+      "reason": "remove wrong-headword contamination"
+    },
+    {
+      "word": "set-up",
+      "path": "meanings[3]",
+      "before": {
+        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "осанка; конституция",
+        "examples": [],
+        "register": [],
+        "primary": true
+      },
+      "after": null,
+      "reason": "remove source-unsupported contamination"
+    },
+    {
+      "word": "music",
+      "path": "meanings[3].register",
+      "before": [
+        "устаревшее"
+      ],
+      "after": [],
+      "reason": "remove unsupported obsolete label"
+    },
+    {
+      "word": "stop",
+      "path": "meanings[24].register",
+      "before": [
+        "разговорное",
+        "фотография"
+      ],
+      "after": [
+        "разговорное"
+      ],
+      "reason": "scope stop register"
+    },
+    {
+      "word": "stop",
+      "path": "phrases[0].register",
+      "before": [
+        "музыка"
+      ],
+      "after": [],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "stop",
+      "path": "phrases[2].register",
+      "before": [
+        "морской термин"
+      ],
+      "after": [],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "water",
+      "path": "phrases[1].register",
+      "before": [
+        "морской термин"
+      ],
+      "after": [],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "water",
+      "path": "phrases[2].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "verb idiom"
+    },
+    {
+      "word": "water",
+      "path": "meanings[13].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported slang"
+    },
+    {
+      "word": "head",
+      "path": "meanings[0].register",
+      "before": [
+        "спортивное"
+      ],
+      "after": [],
+      "reason": "scope sports label"
+    },
+    {
+      "word": "head",
+      "path": "phrases[16].register",
+      "before": [
+        "идиома"
+      ],
+      "after": [],
+      "reason": "remove unsupported idiom label"
+    },
+    {
+      "word": "head",
+      "path": "phrases[17].register",
+      "before": [
+        "идиома"
+      ],
+      "after": [],
+      "reason": "remove unsupported idiom label"
+    },
+    {
+      "word": "far",
+      "path": "phrases[2].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "adverbial phrase"
+    },
+    {
+      "word": "side",
+      "path": "phrases[0].partOfSpeech",
+      "before": "verb",
+      "after": "adverb",
+      "reason": "adverbial phrase"
+    },
+    {
+      "word": "side",
+      "path": "phrases[0].translation",
+      "before": "рядом",
+      "after": "рядом; бок о бок",
+      "reason": "restore full translation"
+    },
+    {
+      "word": "side",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "verb phrase"
+    },
+    {
+      "word": "later",
+      "path": "phrases[0].partOfSpeech",
+      "before": "verb",
+      "after": "adverb",
+      "reason": "adverbial phrase"
+    },
+    {
+      "word": "everyone",
+      "path": "meanings[0].translation",
+      "before": "каждый, всякий, все; вар. от everybody",
+      "after": "каждый; все; каждый человек; вариант everybody",
+      "reason": "clarify everyone"
+    },
+    {
+      "word": "general",
+      "path": "meanings[0].translation",
+      "before": "общий, общего характера, всеобщий; генеральный",
+      "after": "общий, всеобщий; общего характера",
+      "reason": "clarify general"
+    },
+    {
+      "word": "black",
+      "path": "phrases[5].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "adjectival phrase"
+    },
+    {
+      "word": "course",
+      "path": "meanings[11].register",
+      "before": [
+        "геология",
+        "просодия"
+      ],
+      "after": [
+        "геология"
+      ],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "course",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "adverbial phrase"
+    },
+    {
+      "word": "course",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "adverbial phrase"
+    },
+    {
+      "word": "air",
+      "path": "meanings[2].register",
+      "before": [
+        "ветеринария"
+      ],
+      "after": [],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "air",
+      "path": "meanings[4].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "remove unsupported British"
+    },
+    {
+      "word": "air",
+      "path": "meanings[6].register",
+      "before": [
+        "авиация"
+      ],
+      "after": [],
+      "reason": "scope attributive air"
+    },
+    {
+      "word": "news",
+      "path": "meanings[0].register",
+      "before": [
+        "радио"
+      ],
+      "after": [],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "line-up",
+      "path": "meanings[0].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [
+        "военное"
+      ],
+      "reason": "correct formation register"
+    },
+    {
+      "word": "early",
+      "path": "meanings[1].register",
+      "before": [
+        "шутливое"
+      ],
+      "after": [],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "early",
+      "path": "meanings[2].register",
+      "before": [
+        "военное"
+      ],
+      "after": [],
+      "reason": "remove broad military register"
+    },
+    {
+      "word": "local",
+      "path": "meanings[0].register",
+      "before": [
+        "американский английский",
+        "военное",
+        "грамматика"
+      ],
+      "after": [],
+      "reason": "remove overbroad registers"
+    },
+    {
+      "word": "local",
+      "path": "meanings[1].register",
+      "before": [
+        "военное"
+      ],
+      "after": [],
+      "reason": "remove overbroad register"
+    },
+    {
+      "word": "check",
+      "path": "meanings[8].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive check"
+    },
+    {
+      "word": "check",
+      "path": "meanings[9].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive check"
+    },
+    {
+      "word": "post",
+      "path": "meanings[12].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "post noun/rank sense"
+    },
+    {
+      "word": "post",
+      "path": "meanings[14].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "post noun/rank sense"
+    },
+    {
+      "word": "post",
+      "path": "meanings[31].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "post noun/rank sense"
+    },
+    {
+      "word": "post",
+      "path": "meanings[32].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "post noun/rank sense"
+    },
+    {
+      "word": "post",
+      "path": "meanings[33].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "post noun/rank sense"
+    },
+    {
+      "word": "post",
+      "path": "phrases[0].partOfSpeech",
+      "before": "preposition",
+      "after": "adjective",
+      "reason": "adjective phrase"
+    },
+    {
+      "word": "fall",
+      "path": "meanings[5].register",
+      "before": [
+        "морской термин"
+      ],
+      "after": [
+        "религиозное"
+      ],
+      "reason": "correct Fall of man register"
+    },
+    {
+      "word": "fall",
+      "path": "meanings[9].register",
+      "before": [
+        "британское"
+      ],
+      "after": [
+        "американский английский"
+      ],
+      "reason": "correct fall/autumn register"
+    },
+    {
+      "word": "fall",
+      "path": "phrases[26].translation",
+      "before": "отпускай!",
+      "after": "пусти!, отпускай!",
+      "reason": "complete imperative gloss"
+    },
+    {
+      "word": "young",
+      "path": "meanings[0].register",
+      "before": [
+        "разговорное"
+      ],
+      "after": [],
+      "reason": "remove broad colloquial register"
+    },
+    {
+      "word": "pay",
+      "path": "meanings[12].register",
+      "before": [
+        "морской термин"
+      ],
+      "after": [],
+      "reason": "remove broad nautical register"
+    },
+    {
+      "word": "pay",
+      "path": "meanings[12].examples[pay down].ru",
+      "before": "платить наличными",
+      "after": "выплачивать постепенно; погашать (долг, сумму)",
+      "reason": "correct pay down"
+    },
+    {
+      "word": "pay",
+      "path": "phrases[0].translation",
+      "before": "платить наличными",
+      "after": "выплачивать постепенно; погашать (долг, сумму)",
+      "reason": "correct pay down"
+    },
+    {
+      "word": "deal",
+      "path": "meanings[4].translation",
+      "before": "сосновая или еловая доска, дильс; хвойная древесина",
+      "after": "сосновая или еловая доска; дильс",
+      "reason": "narrow deal gloss"
+    },
+    {
+      "word": "south",
+      "path": "meanings[0].register",
+      "before": [
+        "морской термин"
+      ],
+      "after": [],
+      "reason": "remove broad nautical register"
+    },
+    {
+      "word": "south",
+      "path": "meanings[2].translation",
+      "before": "зюйд; южный ветер",
+      "after": "южный ветер",
+      "reason": "remove duplicate gloss"
+    },
+    {
+      "word": "cover",
+      "path": "meanings[6].register",
+      "before": [
+        "финансы",
+        "строительное"
+      ],
+      "after": [
+        "финансы"
+      ],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "fire",
+      "path": "meanings[2].register",
+      "before": [
+        "военное",
+        "строительное"
+      ],
+      "after": [
+        "военное"
+      ],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "fire",
+      "path": "meanings[4].register",
+      "before": [
+        "военное",
+        "строительное"
+      ],
+      "after": [
+        "военное"
+      ],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "care",
+      "path": "meanings[2].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "remove unsupported British"
+    },
+    {
+      "word": "large",
+      "path": "meanings[10].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "at large adverb"
+    },
+    {
+      "word": "large",
+      "path": "meanings[12].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "large adverbial use"
+    },
+    {
+      "word": "university",
+      "path": "meanings[3].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "attributive university"
+    },
+    {
+      "word": "wrong",
+      "path": "meanings[0].translation",
+      "before": "неправда; неправильность, ошибочность, заблуждение; грешить",
+      "after": "неправда; неправильность, ошибочность, заблуждение",
+      "reason": "remove verb contamination"
+    },
+    {
+      "word": "along",
+      "path": "meanings[2].examples[0]",
+      "before": {
+        "en": "along with",
+        "ru": "вместе"
+      },
+      "after": null,
+      "reason": "remove misplaced prepositional phrase"
+    },
+    {
+      "word": "along",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "adverbial phrase"
+    },
+    {
+      "word": "figure",
+      "path": "meanings[0].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "remove unsupported British"
+    },
+    {
+      "word": "pretty",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "verb phrase"
+    },
+    {
+      "word": "understand",
+      "path": "meanings[1].register",
+      "before": [
+        "историческое"
+      ],
+      "after": [],
+      "reason": "remove unsupported historical"
+    },
+    {
+      "word": "due",
+      "path": "meanings[1].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "remove unsupported British"
+    },
+    {
+      "word": "due",
+      "path": "meanings[2].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "remove unsupported British"
+    },
+    {
+      "word": "move",
+      "path": "meanings[6].examples[to move a piece].ru",
+      "before": "делать ход",
+      "after": "двигать фигуру; делать ход",
+      "reason": "clarify chess move"
+    },
+    {
+      "word": "move",
+      "path": "meanings[6].register",
+      "before": [
+        "шахматное"
+      ],
+      "after": [],
+      "reason": "remove broad chess register"
+    },
+    {
+      "word": "move",
+      "path": "phrases[11].translation",
+      "before": "отправляться; вставать из",
+      "after": "сделать ход; предпринять действие",
+      "reason": "correct phrase translation"
+    },
+    {
+      "word": "data",
+      "path": "meanings[0].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "remove plural-as-British label"
+    },
+    {
+      "word": "act",
+      "path": "meanings[0].examples[act of God].ru",
+      "before": "стихийное бедствие, форс-мажор",
+      "after": "стихийное бедствие; форс-мажор",
+      "reason": "separate legal equivalents"
+    },
+    {
+      "word": "either",
+      "path": "meanings[0].partOfSpeech",
+      "before": "adjective",
+      "after": "pronoun",
+      "reason": "source pronoun"
+    },
+    {
+      "word": "either",
+      "path": "meanings[1].partOfSpeech",
+      "before": "adjective",
+      "after": "pronoun",
+      "reason": "source pronoun"
+    },
+    {
+      "word": "either",
+      "path": "meanings[4].examples[new]",
+      "before": null,
+      "after": {
+        "en": "if you do not go I shall not either",
+        "ru": "если вы не пойдёте, то и я не пойду"
+      },
+      "reason": "add source-backed negative-agreement example"
+    },
+    {
+      "word": "light",
+      "path": "meanings[0].partOfSpeech",
+      "before": "adjective",
+      "after": "noun",
+      "reason": "source noun light sense"
+    },
+    {
+      "word": "light",
+      "path": "meanings[9].partOfSpeech",
+      "before": "adjective",
+      "after": "noun",
+      "reason": "source noun light sense"
+    },
+    {
+      "word": "light",
+      "path": "meanings[13].partOfSpeech",
+      "before": "adjective",
+      "after": "noun",
+      "reason": "source noun light sense"
+    },
+    {
+      "word": "light",
+      "path": "phrases[0].register",
+      "before": [
+        "фонетика"
+      ],
+      "after": [],
+      "reason": "remove wrong register"
+    },
+    {
+      "word": "box",
+      "path": "meanings[6].examples[in a tight box].en",
+      "before": "in a tight box",
+      "after": "to be in a (tight) box",
+      "reason": "complete box idiom"
+    },
+    {
+      "word": "box",
+      "path": "meanings[10].translation",
+      "before": "укладывать в ящик или коробку (часто box up)",
+      "after": "запирать; класть в ящик или коробку",
+      "reason": "restore lock-in sense"
+    },
+    {
+      "word": "low",
+      "path": "meanings[4].register",
+      "before": [
+        "историческое"
+      ],
+      "after": [],
+      "reason": "remove unsupported historical"
+    },
+    {
+      "word": "morning",
+      "path": "meanings[3].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "morning attributive"
+    },
+    {
+      "word": "police",
+      "path": "meanings[4].register",
+      "before": [
+        "американский английский"
+      ],
+      "after": [],
+      "reason": "remove unsupported American"
+    },
+    {
+      "word": "short",
+      "path": "meanings[1].partOfSpeech",
+      "before": "adverb",
+      "after": "adjective",
+      "reason": "short adjective sense"
+    },
+    {
+      "word": "short",
+      "path": "meanings[2].partOfSpeech",
+      "before": "adverb",
+      "after": "adjective",
+      "reason": "short adjective sense"
+    },
+    {
+      "word": "short",
+      "path": "meanings[3].partOfSpeech",
+      "before": "adverb",
+      "after": "adjective",
+      "reason": "short adjective sense"
+    },
+    {
+      "word": "short",
+      "path": "meanings[4].partOfSpeech",
+      "before": "adverb",
+      "after": "adjective",
+      "reason": "short adjective sense"
+    },
+    {
+      "word": "short",
+      "path": "meanings[5].partOfSpeech",
+      "before": "adverb",
+      "after": "adjective",
+      "reason": "short adjective sense"
+    },
+    {
+      "word": "short",
+      "path": "meanings[6].partOfSpeech",
+      "before": "adverb",
+      "after": "adjective",
+      "reason": "short adjective sense"
+    },
+    {
+      "word": "short",
+      "path": "meanings[7].partOfSpeech",
+      "before": "adverb",
+      "after": "adjective",
+      "reason": "short adjective sense"
+    },
+    {
+      "word": "red",
+      "path": "meanings[11].translation",
+      "before": "при мн. ч.: индейцы",
+      "after": "при мн. ч.: (американское, исторически/устаревающее обозначение) индейцы",
+      "reason": "preserve source register"
+    },
+    {
+      "word": "red",
+      "path": "meanings[12].translation",
+      "before": "золото",
+      "after": "золото; сл. золото",
+      "reason": "preserve slang marker"
+    },
+    {
+      "word": "mind",
+      "path": "meanings[*].id",
+      "before": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12,
+        13,
+        14,
+        15
+      ],
+      "after": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "reason": "restore sequential IDs"
+    }
+  ],
+  "skipped_or_deferred": [
+    [
+      "real",
+      6,
+      "error",
+      "list index out of range"
+    ],
+    [
+      "thought",
+      7,
+      "error",
+      "list index out of range"
+    ],
+    [
+      "thought",
+      7,
+      "error",
+      "list index out of range"
+    ],
+    [
+      "thought",
+      "meanings[7].examples[a thought more polite]",
+      "error",
+      "list index out of range"
+    ],
+    [
+      "side",
+      "meanings[12].register",
+      "mismatch",
+      [
+        "жаргон"
+      ]
+    ],
+    [
+      "try",
+      "meanings[1].examples[to have (or to make) a try at (or for) smth.]",
+      "error",
+      ""
+    ],
+    [
+      "try",
+      "meanings[2].examples[to give smth. a try]",
+      "error",
+      ""
+    ],
+    [
+      "try",
+      "meanings[4].register",
+      "mismatch",
+      []
+    ],
+    [
+      "cut",
+      "meanings[5].register",
+      "mismatch",
+      [
+        "полиграфия"
+      ]
+    ],
+    [
+      "cut",
+      "meanings[11].register",
+      "mismatch",
+      []
+    ],
+    [
+      "account",
+      "meanings[3].examples[to settle (or to square) accounts with smb.]",
+      "error",
+      ""
+    ],
+    [
+      "line",
+      "meanings[1].register",
+      "mismatch",
+      []
+    ],
+    [
+      "line",
+      "meanings[19].register",
+      "mismatch",
+      [
+        "коммерческое"
+      ]
+    ],
+    [
+      "die",
+      "meanings[1].register",
+      "mismatch",
+      [
+        "техническое"
+      ]
+    ],
+    [
+      "order",
+      "meanings[7].register",
+      "mismatch",
+      [
+        "ботаника",
+        "зоология"
+      ]
+    ],
+    [
+      "order",
+      "meanings[15].register",
+      "mismatch",
+      []
+    ],
+    [
+      "thank",
+      "meanings[2].partOfSpeech",
+      "mismatch",
+      "verb"
+    ],
+    [
+      "research",
+      "meanings[3].examples[research work -]",
+      "error",
+      ""
+    ],
+    [
+      "true",
+      "come true",
+      "error",
+      ""
+    ],
+    [
+      "community",
+      "meanings[5].examples[(the community)]",
+      "error",
+      ""
+    ],
+    [
+      "light",
+      "meanings[4].partOfSpeech",
+      "mismatch",
+      "noun"
+    ],
+    [
+      "low",
+      "meanings[17].register",
+      "mismatch",
+      []
+    ]
+  ],
+  "deferred_structural": [
+    "court missing noun senses",
+    "job missing homonym",
+    "body missing noun sense",
+    "board homonym boundary",
+    "bit homonym boundary",
+    "service contaminated noun phrases",
+    "give/show/move/line/black duplicate phrase storage",
+    "data duplicate sense",
+    "matter duplicate sense",
+    "either conjunction sense",
+    "box phrasal additions",
+    "woman/white/age/arm/catch/numbered source-sensitive cases"
+  ],
+  "before_sha256": "432052f4a58960ed95913689382a7726e6e0ac871c99d2b3f635c414f3d51d06",
+  "after_sha256": "ac11fdf66c95726d6bede791a44e54b0f70993307943f8f85e27272130747e98"
+}

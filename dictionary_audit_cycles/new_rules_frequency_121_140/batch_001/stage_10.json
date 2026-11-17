@@ -1,0 +1,3467 @@
+[
+  {
+    "word": "any more",
+    "entry_index": 1,
+    "decision": "принято без изменения",
+    "reason": "Единственный смысл подтверждён отрицательной репликой not any more; порядок и основной смысл совпадают.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/0/source_evidence",
+    "before_after_ref": "stage_07.json#/0",
+    "meanings_reviewed": 1,
+    "existing_examples_reviewed": 1,
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": []
+  },
+  {
+    "word": "life",
+    "entry_index": 2,
+    "decision": "review_required",
+    "reason": "Срок батареи, биография и приговор разводят три значения; неточности старых сочетаний об укладе и натуральной величине выделены для проверки.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/1/source_evidence",
+    "before_after_ref": "stage_07.json#/1",
+    "meanings_reviewed": 10,
+    "existing_examples_reviewed": 17,
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "a1290fc91dfc2915e0ee91fc5a5bdd40d66b08991adc69ca83bb7f2a038e45fa",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "life в has a life"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "пять лет до исчерпания ресурса батареи"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "артикль вводит исчисляемое существительное"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "has a life of нормально с периодом службы"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "about отражено словом около"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "батарея устраняет буквальное прочтение"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не возраст организма и не приговор"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современное описание ресурса изделия"
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "ee47ba8028e8003426b7702fc6c7da34d39a3e07a4a5b9763a92fadc137b2894",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "life после borrowed a"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "из библиотеки берут биографию конкретного человека"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "исчисляемое название книги"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "a life of + имя нормально в книжном контексте"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "биография и место выдачи сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "borrowed делает предметность понятной"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не жизненный путь как событие, а книга о нём"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живой издательский термин a life of"
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "7432b71d79dcfc88241f111d99b0f198d7e69452275d66f218488623452b5609",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "life без артикля после sentenced to"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "осуждение за убийство задаёт пожизненный срок"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "life объект предлога to"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "sentenced to life устойчиво в судебных сообщениях"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "за убийство и пожизненность сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "контекст приговора однозначен"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не атрибутивное life sentence из #10"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "обычная современная формула сообщения о приговоре"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 4,
+        "problem": "Life of movement переведено с добавлением колёс, stirring life выглядит исторически окрашенным",
+        "required_action": "Проверить контекст источника и разметить регистр, сохранив lead a quiet life как прозрачный пример уклада"
+      },
+      {
+        "meaning_index": 7,
+        "problem": "To the life относится к сходству, life size — к масштабу",
+        "required_action": "Развести точность воспроизведения и натуральную величину внутри рубрики"
+      }
+    ]
+  },
+  {
+    "word": "say",
+    "entry_index": 3,
+    "decision": "review_required",
+    "reason": "Сценарий в поддержку предложения сам вводит аргументацию, а право голоса в have no say нельзя сводить к участию в разговоре.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/2/source_evidence",
+    "before_after_ref": "stage_07.json#/2",
+    "meanings_reviewed": 9,
+    "existing_examples_reviewed": 17,
+    "example_reviews": [
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "df8cd9779cfc50cb37dbb387e157ccd3490c256d51a48d7cd5203db3e7f6056d",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "say в can we say"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "доводы выводятся из in support, глагол выражает обычное высказывание"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "инфинитив после can"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественный вопрос на обсуждении"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "доводы добавлены переводом как объект речи"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "учит выводить довод из контекста вместо значения глагола"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "не отделяется от обычного say #1"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современный вопрос о поддержке предложения"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Say somebody nay старомодно, say no more вне контекста означает также «больше не говорить»",
+        "required_action": "Отдельно разметить формулу отказа и уточнить перевод say no more"
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Say in support не выделяет лексического значения «приводить доводы»",
+        "required_action": "Проверить словарную границу с #1, добавить пример только при доказанном самостоятельном смысле"
+      },
+      {
+        "meaning_index": 7,
+        "problem": "В русском переводе say grace лишнее конечное тире",
+        "required_action": "Исправить пунктуацию при отдельной проверке существующего примера"
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Have no say не исключает участие в обсуждении, а исключает право повлиять на решение",
+        "required_action": "Проверить соответствия для отсутствия голоса и решающего голоса"
+      }
+    ]
+  },
+  {
+    "word": "world",
+    "entry_index": 4,
+    "decision": "review_required",
+    "reason": "Добавление «земной шар» уточняет основное именное значение; атрибутивная рубрика и обороты усиления требуют отдельной сверки.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/3/source_evidence",
+    "before_after_ref": "stage_07.json#/3",
+    "meanings_reviewed": 9,
+    "existing_examples_reviewed": 23,
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "49b614a1200cbab764674b3b9fe24d795868bda684a22aad4a03eb29ee2ac87b",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На p. 504 в первой именной рубрике явно стоит земной шар"
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Добавлено обычное значение планеты, например при обходе света"
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Именное употребление the world over совместимо с noun"
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Мир, свет, вселенная и все фразы сохранены"
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Можно принять как уточнение без перестановки смыслов"
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 3,
+        "problem": "Именная рубрика обещает атрибутивное употребление, но примеры о жизни в мире",
+        "required_action": "Сопоставить историческую статью и развести именную жизнь в миру с атрибутивным #9"
+      },
+      {
+        "meaning_index": 8,
+        "problem": "A world too обрезано, а «наконец» добавляет нетерпение в вопрос",
+        "required_action": "Восстановить исходный контекст и проверить отдельно вопросительный усилитель"
+      }
+    ]
+  },
+  {
+    "word": "down",
+    "entry_index": 5,
+    "decision": "review_required",
+    "reason": "Вертикальное направление хорошо различимо по позиции частицы и предлога; специальные идиомы и омоним мелового рельефа требуют отдельных проверок.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/4/source_evidence",
+    "before_after_ref": "stage_07.json#/4",
+    "meanings_reviewed": 27,
+    "existing_examples_reviewed": 21,
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "3575f8bbb3579be0131aaa674357272b7b51b6fdc5cf3f312eb42c320133b211",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "down в goose down"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "наполнитель из гусиного пуха"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "вещественное существительное после with"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "filled with goose down типично для одежды"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "материал и изделие названы точно"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "куртка снимает омонимию"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не рельеф и не направление"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "действующая лексика маркировки утеплителя"
+          }
+        }
+      },
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "9f6f60a738626d8a732e8d493843d0093ae9e318c195813e1991a787ad1dc391",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": false,
+            "reason": "Downs здесь часть имени South Downs"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "имя местности не демонстрирует значение нарицательного down"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "географическое имя употреблено как существительное"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "walking in the South Downs естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "Саут-Даунс и прогулка на выходных переданы"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "учащийся не узнает как употребить нарицательное downs"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "от пуха и направления отличается географией"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "сайт национального парка подтверждает современное имя меловой гряды"
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "42bc9f1c6fe9b990b2badf7cfba186891a087e8ea6d233917a90d0903df323f5",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "down в went down from…to"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "контекст задаёт поездку из Лондона в Брайтон"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "частица направления при went"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественный британский способ описать поездку к югу"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "русский сохраняет маршрут и цель поездки на выходные"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "два города делают направление прозрачным"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "движение не физический спуск по наклону"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "обычная разговорная географическая перспектива"
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "a04ecb14965e9e11e24d11b81e12af93447e5504908811ec2afe252c188b9f8a",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "down после fell"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "поскользнулась и оказалась на земле"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "наречная частица при глаголе падения"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "slipped and fell down нормально в рассказе о падении"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "лёд, причина и событие совпадают"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "причина исключает намеренное движение вниз"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "падение отличается от устойчивого положения #4"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современное описание бытового падения"
+          }
+        }
+      },
+      {
+        "meaning_index": 10,
+        "candidate_sha256": "d9f7f90c78468df0b45f5d51f83b9ad50ed07dfe63b713138104f9e04cf69c52",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": false,
+            "reason": "down and out целиком несёт значение"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "банкротство дано отдельно, идиома шире разорения"
+          },
+          "part_of_speech": {
+            "pass": false,
+            "reason": "в сказуемом вся идиома предикативна, не отдельное наречие"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "down and out after bankruptcy естественно"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "разорённый сужает общее бедственное положение"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "учит переносить значение всей идиомы на один компонент"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "та же идиома использована для предполагаемых #9 и #12"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "идиома современна в широком смысле"
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "43c1b760f8c3f9061b94ab6351a2e2590423296d39aa72c012ad93a677c870e8",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "down в зафиксированном down in the mouth"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "унылый вид после интервью"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "down входит в предикативный оборот при looked"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "looked down in the mouth естественно в разговоре"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "унылый вид сохраняет внешнее проявление"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "полный идиоматический оборот дан в контексте"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "нет финансовой беды или падения"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "разговорная идиома по-прежнему употребима"
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "b0b234b84ba2a4d6a252985ccf9d4246b47b1dc09c318d196f16e5d9432a3004",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "down в cash down"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "формула о немедленной наличной оплате"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "частица относится к cash в формуле оплаты"
+          },
+          "natural_english": {
+            "pass": false,
+            "reason": "wanted £800 cash down без контраста с рассрочкой звучит устаревающе"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "наличность и немедленность отражены"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "предпочтительна подтверждённая современная формула с заданным видом платежа"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не свободное наречие немедленности #14"
+          },
+          "contemporary_usage": {
+            "pass": false,
+            "reason": "современная продуктивность cash down в таком контексте не подтверждена"
+          }
+        }
+      },
+      {
+        "meaning_index": 16,
+        "candidate_sha256": "8e69e8f8fc91a1dc2fb15940e279a20502137c4edb9c0b1ed8234e123fcab620",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Down в Down with…"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "скандирование об отмене запрета"
+          },
+          "part_of_speech": {
+            "pass": false,
+            "reason": "Down with здесь формула лозунга, Cambridge выделяет оборот как цельную идиому https://dictionary.cambridge.org/us/dictionary/english/down-with"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "допустимый короткий протестный лозунг"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Долой запрет» точно передаёт требование"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "полная конструкция легко повторима"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не указание места или движения"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "продуктивная современная формула лозунга"
+          }
+        }
+      },
+      {
+        "meaning_index": 17,
+        "candidate_sha256": "7e947c65471e856780ee701530065a4d81a93270bed19c637160787fea846bce",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "down в down with a fever"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "временная болезнь с температурой"
+          },
+          "part_of_speech": {
+            "pass": false,
+            "reason": "предикативное down после was с дополнением with; Cambridge разбирает сопоставимое down with a nasty cold как adjective https://dictionary.cambridge.org/us/thesaurus/down"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "down with a fever естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "пролежал с температурой передаёт обычную прагматику оборота"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "болезнь и срок заданы явно"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не хроническое слабое здоровье #18"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современное разговорное обозначение острого недомогания"
+          }
+        }
+      },
+      {
+        "meaning_index": 19,
+        "candidate_sha256": "102c560a9acf05314eddc625beb651046a8fa7017579c1edca8a8d3b2c8521b9",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "down в come down on"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "реакция тренера на проступок"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "частица фразового глагола с on"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "came down on us hard естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "сильный выговор и причина переданы"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "hard и for skipping раскрывают санкцию"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не направленное физическое движение"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современный разговорный оборот критики"
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "candidate_sha256": "e63cb433ebaae79646b2b110f02093380abf54c48ecd31da79629d916eb50a48",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "down перед the wall"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "поток движется от верхней точки стены вниз"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "предлог с именной группой"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "water ran down the wall естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "стекала вниз передаёт вертикальный путь"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "видна разница с отдельно стоящей частицей"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "вертикаль задаётся стеной, в отличие от вдоль дороги"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "обычная современная конструкция описания протечки"
+          }
+        }
+      },
+      {
+        "meaning_index": 27,
+        "candidate_sha256": "38976f852fc93640dd5d25cc9e24343e0bde05e3324d154ea0bd132971bee9bc",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "downed прошедшее от down"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "жидкость выпита быстро перед возвращением к работе"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "переходный глагол с прямым объектом"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "downed a glass of water естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "залпом сохраняет быстроту"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "объект различает питьё и сбивание"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не наречная частица и не существительное"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "обычный современный повествовательный оборот"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "South Downs называет конкретную меловую гряду, не демонстрируя нарицательную единицу",
+        "required_action": "Найти современное нарицательное употребление downs в описании меловых холмов или оформить имя как иллюстрацию после пересмотра дефиниции"
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Примеры температуры и качества показывают общее снижение, тогда как перевод ограничен ценой и даёт глагол",
+        "required_action": "Развести наречную частицу снижения и русские переводы целых глагольных сочетаний"
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Заявленная беспомощность не отделяется от бедственного положения down and out",
+        "required_action": "Решить, принадлежит ли значение целой идиоме и как оно соотносится с #10 и #12"
+      },
+      {
+        "meaning_index": 10,
+        "problem": "Смысл финансового бедствия принадлежит down and out целиком, а разорение введено контекстом банкротства",
+        "required_action": "Установить границы фразы и дать отдельную дефиницию её широкого значения до примера"
+      },
+      {
+        "meaning_index": 11,
+        "problem": "Бедняк требует именного down-and-out, в статье стоит adverb",
+        "required_action": "Оформить и проверить отдельную единицу с дефисами и существительной частью речи"
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Down and out само по себе не влечёт отсутствия жилья",
+        "required_action": "Проверить, есть ли устойчивое значение именно бездомности, и развести его с общим бедственным положением"
+      },
+      {
+        "meaning_index": 14,
+        "problem": "Немедленность восходит к формуле оплаты и не показана у свободного down",
+        "required_action": "Проверить исторический оборот down on the nail и возможное дублирование #15"
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Cash down в предложенном британском сценарии не подкреплено актуальным образцом такого употребления",
+        "required_action": "Подтвердить современную формулу немедленной наличной оплаты и разграничить с первоначальным взносом"
+      },
+      {
+        "meaning_index": 16,
+        "problem": "Down with в лозунге демонстрирует цельную восклицательную формулу, статус adverb неясен",
+        "required_action": "Определить часть речи и границы формулы до приёмки иллюстрации"
+      },
+      {
+        "meaning_index": 17,
+        "problem": "После was форма down в down with a fever предикативна, наречная рубрика сомнительна",
+        "required_action": "Разобрать конструкцию как состояние болезни и сопоставить с #18"
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Down with обозначает конкретную болезнь, не слабое здоровье вообще",
+        "required_action": "Проверить историческую помету у down in health и связь с #17"
+      },
+      {
+        "meaning_index": 20,
+        "problem": "Face down — противостоять, а stare down — одолеть взглядом",
+        "required_action": "Установить нужный фразовый глагол и уточнить перевод с границами единицы"
+      },
+      {
+        "meaning_index": 23,
+        "problem": "Have a down on означает неприязнь, не нападки",
+        "required_action": "Проверить британскую идиому и заменить буквальный заголовок после отдельного согласования"
+      }
+    ]
+  },
+  {
+    "word": "great",
+    "entry_index": 6,
+    "decision": "review_required",
+    "reason": "Навык с at, обращение с with и именные greats различимы; у great thoughts остаётся конкуренция нескольких оценочных прочтений.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/5/source_evidence",
+    "before_after_ref": "stage_07.json#/5",
+    "meanings_reviewed": 15,
+    "existing_examples_reviewed": 16,
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "4096c83b20f178e7b227533d67ee57fb28229bd9b68b43354ee755f90bc38924",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "great перед importance"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "важность решения для всего города"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "прилагательное при существительном importance"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "of great importance обычная формальная коллокация"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "большое значение и охват сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "абстрактная шкала понятна без гиперболы"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не физический размер #1 и не ранг #4"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "коллокация жива в официальной речи"
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "18b4ed0934675f757d90a25c5db64e6d8f17361bd9638ef9b08697e9b0b4e6f5",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "great в great at fixing"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "умение ремонтировать велосипеды"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "предикативное прилагательное с at + герундий"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "great at fixing bikes разговорно естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "отлично умеет сохраняет уровень навыка"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "модель at + действие прозрачна"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "действие fixing отличает от with numbers #9"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "распространённая модель оценки практического умения"
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "532b485422bbb441bc60c0a25106cd82e126136b92925fc3c4fca78b1f2cc156",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "great в great with numbers"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "способность работать с цифрами подкреплена поиском ошибок"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "предикативное прилагательное с with + область"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "great with numbers обычная коллокация"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "разбирается в цифрах и быстро замечает ошибки передано"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "вторая часть конкретизирует умение"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "with + область отличается по конструкции от at + действие"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "естественная современная характеристика числовой грамотности"
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "candidate_sha256": "abb3f7ace9a070ac3d247c9793e5e5cc4ec1a1b6899556dc779811af8cb8865e",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "great в the great and the good"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "выделяется круг влиятельных людей на гала-вечере"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "субстантивированное прилагательное в именной группе"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "attracted the great and the good естественно для описания мероприятия"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«съехались влиятельные люди» передаёт результат и группу"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "полный устойчивый оборот показан"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не выдающиеся деятели одной отрасли из #15"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живая британская публицистическая формула"
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "cdc3753c43d59c81e78da5573dc342308028e7e2868f6443605f49939ccb256e",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "greats — множественное число именного great"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "выдающиеся авторы русской литературы"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "именное множественное после the"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "the greats of Russian literature естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "классики и учебный контекст сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "область однозначно устанавливает референт"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не богачи или властные круги"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современное обозначение признанных мастеров в обзорах"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Great thoughts допускает «глубокие», «прекрасные» и «возвышенные»",
+        "required_action": "Проверить самостоятельность возвышенного оттенка в развёрнутом контексте"
+      }
+    ]
+  },
+  {
+    "word": "through",
+    "entry_index": 7,
+    "decision": "review_required",
+    "reason": "Перемещение через преграду, включительная дата и причина подтверждены собственными конструкциями; свободный проход требует проверки перевода.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/6/source_evidence",
+    "before_after_ref": "stage_07.json#/6",
+    "meanings_reviewed": 9,
+    "existing_examples_reviewed": 18,
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 9,
+        "problem": "Through passage описывает проход насквозь, а «беспрепятственный» добавляет отсутствие помех",
+        "required_action": "Сопоставить современный контекст сквозного прохода с исходным русским толкованием"
+      }
+    ]
+  },
+  {
+    "word": "last",
+    "entry_index": 8,
+    "decision": "review_required",
+    "reason": "Прилагательное и наречие порядка в двух кандидатах смешаны с превосходной степенью late; окончательность, нежелательность, место в списке и последнее известие ясны.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/7/source_evidence",
+    "before_after_ref": "stage_07.json#/7",
+    "meanings_reviewed": 13,
+    "existing_examples_reviewed": 8,
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "f4b9aa1e4ef416b3ef82cad7e3395a8bd374c49e9a0dfdf17ba06808b63a3875",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "last перед train"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "последний поезд в расписании, поздний час лишь обстоятельство"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "прилагательное при train"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественное сообщение о последнем поезде"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "самый поздний подменяет порядковый признак"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "создаёт ложную эквивалентность latest и last"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "пересечение с заключительным элементом расписания, #5/#10"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живой транспортный оборот в порядковом значении"
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "5ac30451c5da693a26fb2ddfbdb101fa1d7db07dd41988dbd2eec9f5194cbe24",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "last в the last person"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "выбор того, кому доверять тайну, исключён"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "атрибутивное прилагательное перед person"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "устойчивый оборот с относительной конструкцией"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "отказ доверить тайну сохранён"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "условное I'd раскрывает нежелательность"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "никто не сравнивается по времени или месту в очереди"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живая современная гипербола выбора"
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "f0222bb2a94d8c59b5ed7a3d51905ee414a0d7a893d00704f8c1dddbb0dea16a",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "last в my last word"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "заключительная позиция говорящего по вопросу"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "прилагательное при word"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественная формула завершения спора"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«моё последнее слово» передаёт окончательность"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "on the matter снимает трактовку «самое современное»"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не новейшее достижение #3 и не прежний период #4"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "употребимая современная формула окончательного решения"
+          }
+        }
+      },
+      {
+        "meaning_index": 9,
+        "candidate_sha256": "e1171a1ca112f9ceeee1e8c5630cb0d1a95b9e6587f73a5c27d74f8202c24f7d",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "last после closes"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "закрывается последним среди магазинов, это позиция в ряду"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "наречный модификатор closes"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественное сравнение времени закрытия"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "позже всех передаёт следствие данного порядка"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "для заявленной грамматической степени требуется latest"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "тот же механизм порядка, что came last #10"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современное ранжирование по закрытию, не степень late"
+          }
+        }
+      },
+      {
+        "meaning_index": 12,
+        "candidate_sha256": "5d9896059f1df368c90ef5ac36cfedab442bb2154893fbf7fda0e8aec821319d",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "last после объекта salt"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "соль ставят в конце письменного списка"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "наречное указание позиции при put"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "put the salt last ясно в контексте списка"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "укажите в самом конце передаёт указание порядка"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "list исключает трактовку о последовательности приготовления"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не время события или встреча #11"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная редакционная инструкция"
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "440c69bae5f7030d1e0a35a4a5e421e5b5f64db203dd1dbb723521c14e52a3ed",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "the last без выраженного имени"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "последнее известие от неё"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "самостоятельная именная группа the last"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "That was the last I heard from her естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«весточка» идиоматично при личной связи"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "hear from указывает, что прекращается связь"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "именной объект, а не «видел в последний раз» #11"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная формула рассказа об утрате связи"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Last train — заключительный поезд в расписании, не форма latest",
+        "required_action": "Сверить порядковую дефиницию и русский перевод до подбора нового примера"
+      },
+      {
+        "meaning_index": 9,
+        "problem": "Closes last выражает последнюю позицию по закрытию и дублирует механизм #10",
+        "required_action": "Проверить историческую грамматическую рубрику и её отличие от latest и came last"
+      }
+    ]
+  },
+  {
+    "word": "while",
+    "entry_index": 9,
+    "decision": "review_required",
+    "reason": "Именная длительность и союзное время различимы, но предложенные изменения оставляют поэтический оборот без локальной пометы и слишком широкое «бездельничать».",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/8/source_evidence",
+    "before_after_ref": "stage_07.json#/8",
+    "meanings_reviewed": 4,
+    "existing_examples_reviewed": 10,
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "d69679db12a4e160003583e94ac863fb387496282e9859a3b39fd36c7be4db16",
+        "verdict": "review_required",
+        "confidence": 0.91,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Мюллер p. 904 цитирует именной промежуток времени рядом с a long while и a short while"
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Время и промежуток времени покрывают for a while и in a while"
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Артикль, прилагательное и предложные группы доказывают именную функцию, временной союз отдельно в #3"
+          },
+          "information_preserved": {
+            "pass": false,
+            "reason": "Удаляется единственная помета, а сохранённый the while → покуда останется без локального поэтического ограничения и внутри именного ряда"
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Отделить the while и зафиксировать его локальную маркировку перед заменой рубрики"
+          }
+        }
+      },
+      {
+        "meaning_index": 2,
+        "proposal_sha256": "77529ab2a27f39c8e3fa9dae16f4f45e99447fc36153969acb22d25fcafc1e32",
+        "verdict": "review_required",
+        "confidence": 0.91,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На p. 498 словарь прямо указывает типичное away и перевод коротать"
+          },
+          "translation_accuracy": {
+            "pass": false,
+            "reason": "Сохранённое как равноправный перевод «бездельничать» обещает отсутствие деятельности, хотя коротают время и занимаясь чем-либо"
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "While является глаголом с частицей away в конструкции while away the time"
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Оба имеющихся примера сохранены и добавлена информация об объекте-времени"
+          },
+          "disposition": {
+            "pass": false,
+            "reason": "Уточнить статус глоссы «бездельничать» и согласовать с ней первую строку примера"
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "The while остаётся с союзным переводом «покуда» без локальной поэтической маркировки после переноса рубрики в noun",
+        "required_action": "Развести поэтический оборот и именные длительности, сохранив маркировку оборота"
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Глосса «бездельничать» сохранена как равноправное значение, хотя while away не требует безделья",
+        "required_action": "Проверить перевод первой строки while away и ограничить соответствие контекстом"
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Русское «упрямо продолжал читать» утверждает ход действия и добавляет упорство к would read",
+        "required_action": "Уточнить контекст модальности и перевести намерение или привычность по источнику"
+      }
+    ]
+  },
+  {
+    "word": "all right",
+    "entry_index": 10,
+    "decision": "изменить",
+    "reason": "Работа принтера, подтверждение ошибки и согласие пойти вместе дают три разные функции оборота.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/9/source_evidence",
+    "before_after_ref": "stage_07.json#/9",
+    "meanings_reviewed": 5,
+    "existing_examples_reviewed": 3,
+    "example_reviews": [
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "e06651031d0e15024d4a0a4d8ffa6289c02045b5b0d9df8e60353e61b50f19c8",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "all right после works"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "работает удовлетворительно после исправления"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "обстоятельство качества работы"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "works all right now разговорно естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«работает нормально» сохраняет умеренность оценки"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "принтер делает функцию оборота ясной"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не предикативная характеристика лица #1"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная бытовая оценка работы техники"
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "22449b7a6cac2b68c53513ba3c82ee372f17afbcb34a5f816872fa1ad48b3fad",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "all right в конце It was a mistake"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "подтверждает, что ошибкой это действительно было"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "сентенциальный усилитель после именной части"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "финальная позиция естественна в разговоре"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«безусловно» передаёт утверждение, хотя регистр чуть выше"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "не может прочитаться как удовлетворительное качество ошибки"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не согласие с приглашением #5"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живая разговорная эмфаза"
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "30e15db32812007d2a427fbc7b12c63ab1437be4f31ab103752a9f8dc75e6027",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "All right открывает реплику"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "говорящий соглашается пойти вместе"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "самостоятельный дискурсивный маркер"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "типичная реплика согласия перед обещанием"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«ладно» и совместное действие сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "прямая речь показывает коммуникативную функцию"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не оценка исправности или уверенность"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "обычная современная устная реплика"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": []
+  },
+  {
+    "word": "best",
+    "entry_index": 11,
+    "decision": "изменить",
+    "reason": "Качество фотографии, удобство дня и победа в шахматах показывают разные функции best, включая глагольную.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/10/source_evidence",
+    "before_after_ref": "stage_07.json#/10",
+    "meanings_reviewed": 7,
+    "existing_examples_reviewed": 8,
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "294119ca3321492c235d84ee921dfe982e3c1e93209dfe9d9edbd9792c3b49af",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "best в the best photo"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "снимок оценён выше остальных в альбоме"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "атрибутивная превосходная степень"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "best photo in the album естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "лучшая фотография и область сравнения точны"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "альбом задаёт ограниченное множество"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не «удобнее всего» для конкретного времени"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "повседневное обсуждение фотографий"
+          }
+        }
+      },
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "a52911dc171d74beaf43848d2a33a899a13d90924a9ba4cd229f72cf07e76315",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "best в the best day for me"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "оптимальный день для конкретного участника встречи"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "прилагательное при day"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Friday would be the best day for me естественно при согласовании"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«мне удобнее всего» передаёт личный критерий"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "for me to meet отличает удобство от оценки качества"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "функциональная пригодность отличается от лучшего снимка #1"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная формула планирования встреч"
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "b326ae1ab14fdbd470c09ea9403c6cf8d5f4b438e73224693768cca82b276278",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "bested — прошедшее best"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "победа над братом в шахматы"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "переходный глагол с объектом older brother"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "bested … at chess допустимо в повествовательном регистре"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "одолела и впервые переданы точно"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "вид состязания делает значение ясным"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не превосходная степень и не наречие"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живое повествовательное употребление в контексте соревнования"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": []
+  },
+  {
+    "word": "such",
+    "entry_index": 12,
+    "decision": "review_required",
+    "reason": "Дефис в «такой-то» можно исправить независимо от испорченного перевода примера с such that.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/11/source_evidence",
+    "before_after_ref": "stage_07.json#/11",
+    "meanings_reviewed": 2,
+    "existing_examples_reviewed": 11,
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 2,
+        "proposal_sha256": "f2e4c8d0959e4abf8c0dd98dc9bbf3590f3b7cccbca1644bd5400d21e02af3b0",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Мюллер p. 445 подтверждает adjectival such, а два such an amount в имеющемся примере подтверждают неопределённое количество"
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "«Такой-то» исправляет дефис в том же русском эквиваленте без семантического сдвига"
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Существительное amount имеет при себе such, прилагательная рубрика остаётся"
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Определённый, но неназванный референт и весь русский пример сохранены"
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Редакторское исправление допустимо без изменения смысла"
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "В русской строке с such that к переводу присоединены служебные словарные глоссы",
+        "required_action": "Отделить глоссы и сверить исходное предложение и русское следствие"
+      }
+    ]
+  },
+  {
+    "word": "love",
+    "entry_index": 13,
+    "decision": "review_required",
+    "reason": "Обращение и признание пригодны, но значение любовной интриги и мифологический омоним требуют источников; исходные строки местами смешаны.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/12/source_evidence",
+    "before_after_ref": "stage_07.json#/12",
+    "meanings_reviewed": 9,
+    "existing_examples_reviewed": 10,
+    "example_reviews": [
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "38d083274b8d542716ae06aa3cd5913fdc2a50d372e442d80c62df400f909001",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "love в my love"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "ласковое обращение к близкому человеку"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "существительное в обособленном обращении"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "my love естественно в близкой речи"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«любимая» выбирает допустимого адресата, английский пол не задаёт"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "запятая наглядно выделяет обращение"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не само чувство из #1 или #2"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современное ласковое обращение"
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "d5506c154269d14a1679ff8a0ac48da430414f7924e1774b2d570415abe94776",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "love после I"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "прямое выражение чувства к адресату"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "переходный глагол с объектом you"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "I love you and I miss you естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "лицо, настоящее время и второе чувство сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "два коротких параллельных предложения"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не желание сделать что-либо в would love to #9"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "повседневное признание в любви"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "В переводе cottage love склеены английское make love to и несколько русских глосс",
+        "required_action": "Сверить разметку исходной статьи и восстановить пары EN/RU раздельно"
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Love без уточнения обозначает чувство или его объект и не гарантирует интригу",
+        "required_action": "Найти доказательство самостоятельного смысла в современной прозе или уточнить исторический статус"
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Мифологическое a love о купидоне не подтверждено в современном искусствоведческом употреблении",
+        "required_action": "Проверить профессиональные каталоги и отличие от персонифицированного Love"
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Goals to love звучит старомодно вне тенниса, «сухая» у love game не указывает гейм",
+        "required_action": "Проверить спортивный регистр обеих строк и дописать название единицы счёта"
+      }
+    ]
+  },
+  {
+    "word": "man",
+    "entry_index": 14,
+    "decision": "review_required",
+    "reason": "Шашка и соколиный термин подтверждены профессиональными источниками; man of his word и нейтрально поданное родовое Man требуют другой трактовки.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/13/source_evidence",
+    "before_after_ref": "stage_07.json#/13",
+    "meanings_reviewed": 17,
+    "existing_examples_reviewed": 21,
+    "example_reviews": [
+      {
+        "meaning_index": 1,
+        "candidate_sha256": "462aeb657d5506d11e9ec6657babd5c963659a40a8f0cbf855533ec96da4a63b",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "man в a man"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "взрослый мужчина открывает дверь"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "исчисляемое существительное с неопределённым артиклем"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественная бытовая сцена"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "куртка, цвет и действие сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "простой контекст без идиомы"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не человечество и не должность"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "нейтральное повседневное употребление"
+          }
+        }
+      },
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "ccf4d4b4f669b52b880194b5230f8483785b98ecfb3d86eae001a956f092fe86",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "man в a man of his word"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "характеристика человека, держащего обещания, принадлежит целому обороту"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "существительное с определением of his word"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "устойчивая естественная фраза"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«человек слова» точно передаёт оборот"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "научит идиоме, но не покажет независимое значение «человек»"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "пример относится к классу a man of … в #12"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная характеристика надёжного человека"
+          }
+        }
+      },
+      {
+        "meaning_index": 3,
+        "candidate_sha256": "7e722b6fc245b1f548874d501462b04f14271b4ab0b63372b5c2530752e8ef1a",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Man в начале предложения без артикля"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "письменность отнесена ко всему виду"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "родовое существительное в позиции подлежащего"
+          },
+          "natural_english": {
+            "pass": false,
+            "reason": "обобщающее Man стилистически маркировано для современной нейтральной речи"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«человек» также обозначает вид"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "без пометы даёт устаревающую норму нейтрального употребления"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не отдельный мужчина и не лицо определённого склада"
+          },
+          "contemporary_usage": {
+            "pass": false,
+            "reason": "Cambridge Grammar отмечает традиционность родового Man и указывает на гендерную маркированность такого нейтрального обобщения https://dictionary.cambridge.org/us/dictionary/english/man?q=man_1"
+          }
+        }
+      },
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "deaa722c95f95cc6659782b7cd9578cb44d1f19171fee908153fb6c7204e33b8",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "a man в Be a man"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "призыв проявить мужество, признав ошибку"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "предикативная именная группа после be"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "разговорная формула естественна, но отражает гендерный стереотип"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«будь мужчиной» сохраняет формулу и оценочность"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "полная реплика показывает прагматику и привязывает её к признанию ошибки"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "императив не описывает биологический пол адресата"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная, стилистически оценочная формула"
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "e7be1fc390fd49d71db521db14126a776abf5697d99b0e044ba1d25710b5fb93",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "men — множественное от man"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "рабочие бригадира отправлены на ремонт"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "именная группа his men после two of"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественно в речи о рабочей бригаде"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "рабочие, крыша и поручение сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "foreman и repair однозначно задают профессию"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не войска #8, контекст трудовой"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современное употребление при описании мужской рабочей бригады"
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "5791642f52288687d8a06b962a24e672615c110e15a53f6d47448695302d939f",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "men в his men"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "подчинённые капитана держат военную позицию"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "существительное множественного числа"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "ordered his men to hold their position естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«солдатам» отражает наиболее вероятный военный контекст"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "приказ удерживать позицию разрешает неоднозначность captain"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не ремонтные рабочие #5"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живой язык военного повествования"
+          }
+        }
+      },
+      {
+        "meaning_index": 10,
+        "candidate_sha256": "5796397a7c98858f5a20cf548fb2571b92dd349b7a4f71448a7cc817d7c0ddcb",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "man в her new man"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "новый романтический партнёр"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "исчисляемое существительное после притяжательного определения"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "her new man естественно в неформальной речи"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "новый парень передаёт романтическое прочтение без лишней сексуализации"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "new и her помогают прочитать отношения"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не муж #9 и не нейтральное обозначение мужчины #1"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная разговорная формула о партнёре"
+          }
+        }
+      },
+      {
+        "meaning_index": 11,
+        "candidate_sha256": "199cbde53eb288ce6dab3d20dacc2973723fc7fa9314981d6bafa3adb7881e8a",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "man в this man"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "простая шашка превращается в дамку на крайнем ряду"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "исчисляемое существительное как объект move"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественная инструкция игроку в шашки"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "шашка, последний ряд и дамка переданы терминами игры"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "king сразу задаёт нужную настольную игру"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не шахматная пешка и не человек"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "FMJD употребляет man для простой шашки в правиле о превращении в дамку"
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "candidate_sha256": "85ba41c3c48550e96cc3c41b5ac50b312dd142224c902ae76c340aaba0cc1b9e",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "manned — прошедшее от man"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "два волонтёра обеспечивали работу стойки"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "переходный глагол с объектом information desk"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "manned the information desk естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "дежурили передаёт выполнение функции, не меняет число людей"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "стойка раскрывает обслуживание, а не боевое действие"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не команда занять позиции #15"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "действующая рабочая лексика, возможна нейтральная перифраза staff"
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "5233d77ee7aefb3bfc252ace38e89b8f267fe2aa9e6ded013e80f888838e96e4",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "Man — повелительная форма"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "команда занять назначенные места по тревоге"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "переходный императив с прямым объектом stations"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "обычная команда в контексте тревоги"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«По местам!» точный функциональный эквивалент"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "тревога и офицер снимают двусмысленность"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не сообщение о том, кто уже обслуживает пост"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная военная команда"
+          }
+        }
+      },
+      {
+        "meaning_index": 17,
+        "candidate_sha256": "e1263fd3032d071b36d2d498156bbd84721c40cf2c794847bf2e1455d2b6c92b",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "manning — причастная форма глагола man"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "привыкание молодой ловчей птицы к людям"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "переходный глагол с объектом a young hawk"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественно в профессиональной речи сокольника"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "приручает и цель привыкания переданы точно"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "целевое придаточное разъясняет специальное слово"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не укомплектование личным составом #14"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "руководство NYS DEC фиксирует manning как акклиматизацию ловчих птиц"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Man of his word относится к характеристике человека и совпадает с моделью #12",
+        "required_action": "Искать самостоятельное родовое употребление или уточнить литературно-историческую помету"
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Обобщающее Man в предложении о книгах подано без контекста, оправдывающего маркированный родовой термин",
+        "required_action": "Уточнить регистр с учётом Cambridge Grammar и найти естественный современный контекст для рода"
+      },
+      {
+        "meaning_index": 6,
+        "problem": "I’m your man выражает пригодность к задаче, а не положение слуги",
+        "required_action": "Разнести устойчивую формулу и историческое обозначение слуги"
+      },
+      {
+        "meaning_index": 7,
+        "problem": "My man без феодальной рамки не позволяет понять «вассал»",
+        "required_action": "Проверить употребление в современной медиевистике или пометить историческую единицу отдельно"
+      },
+      {
+        "meaning_index": 13,
+        "problem": "The Man может обозначать институт власти вообще, полиция не выводится автоматически",
+        "required_action": "Проверить сленговые источники и точную формулировку значения"
+      },
+      {
+        "meaning_index": 16,
+        "problem": "To man oneself возвратно и переводится «мужаться», тогда как подбодрять обещает внешний объект",
+        "required_action": "Сверить конструкцию и регистр с историческими источниками"
+      }
+    ]
+  },
+  {
+    "word": "home",
+    "entry_index": 15,
+    "decision": "review_required",
+    "reason": "Спортивное, техническое и бытовое значения разведены по контекстам; колониальная перспектива и переходное отправление домой требуют подтверждения.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/14/source_evidence",
+    "before_after_ref": "stage_07.json#/14",
+    "meanings_reviewed": 21,
+    "existing_examples_reviewed": 10,
+    "example_reviews": [
+      {
+        "meaning_index": 2,
+        "candidate_sha256": "3964ec4637eccf85871a956280b3c7ed6b61c9d0058f37067b8d545450324e5b",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home после a loving"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "семейная среда воспитания"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "исчисляемое существительное после from"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "came from a loving home естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«выросла» естественно раскрывает подразумеваемое воспитание"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "loving относит оценку к семье, а не к строению"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не жилище как помещение и не страна"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "повседневное описание семейного происхождения"
+          }
+        }
+      },
+      {
+        "meaning_index": 6,
+        "candidate_sha256": "e6b79f0767c1586f7ea1b76218a10fd951ced22d02c6d6fb68dc420d604a8345",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home в are home to"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "болота дают среду гнездования птицам"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "именная часть в конструкции be home to"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "home to hundreds of nesting birds естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "место обитания и число переданы"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "биологический объект ясно задаёт смысл"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "место обитания отличается от места возникновения #7"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "обычная современная природоохранная формула"
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "eab0adea7311bee0b7e97dd4ed70dff7a5e16d19e73026838dbde9bdc7b88c9e",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home в the home of jazz"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "место возникновения жанра указано явно"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "существительное в именной группе the home of jazz"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "обычная формулировка для музейного рассказа"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«колыбель» и пояснение о зарождении точны"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "because разграничивает происхождение и распространение"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не текущий ареал #6"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живой способ описать место рождения культурного явления"
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "69b23f6bbe20bc93754325a011e7a0fc82489918cbf4c24abc9ab5817f2ce2fd",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home в steal home"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "бегун с третьей пытается занять домашнюю базу кражей"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "именной объект steal без артикля в термине игры"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "steal home подтверждает игровая запись MLB"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«украсть дом» засвидетельствовано русскими правилами именно для бегуна с третьей при двух аутах https://base.garant.ru/72140180/"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "бегун, третья база и ауты ясно задают спортивную рамку"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не собственный стадион #13 и не направление домой #16"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "MLB употребляет steals home в описании игрового эпизода 2026 года"
+          }
+        }
+      },
+      {
+        "meaning_index": 10,
+        "candidate_sha256": "13f6868e43c883d10ba69f1e17e2b83f36133fea2d5080902145cd4e95a365d8",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home в home life"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "семейная обстановка влияет на внимание в школе"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "атрибутивное home при life"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "stable home life естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«стабильная семейная жизнь» сохраняет смысл, связь со школой передана"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "дети задают семейный контекст"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не название занятия вроде home economics"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная коллокация о семейной среде"
+          }
+        }
+      },
+      {
+        "meaning_index": 13,
+        "candidate_sha256": "c0d08b686c6aeecad7cb1d6f3cdd862ec7741a5abe17ebffeff907bc6ba5c560",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home перед game"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "матч проводится на своём поле"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "атрибутивное прилагательное при game"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "first home game of the season естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "своё поле, победа и первый матч сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "слово season делает спорт очевидным"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не жильё и не бейсбольная домашняя база"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современный общеупотребительный спортивный термин"
+          }
+        }
+      },
+      {
+        "meaning_index": 14,
+        "candidate_sha256": "e47b008392c430cc74179b1cd01fc603c51d91bcef92cdb56817ada5cca7e421",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home перед position"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "манипулятор нужно вернуть в опорную позицию"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "атрибутивный модификатор position"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "return … to its home position естественно для инструкции"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "исходное положение и последовательность действий точны"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "робот снимает бытовое прочтение home"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не полный ход до упора #18"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "статья BEATRIX описывает home position как опорное положение при перемещении"
+          }
+        }
+      },
+      {
+        "meaning_index": 15,
+        "candidate_sha256": "37e0884c8f5dd4343683bf58adacce1479965ff08f86725cf0b31844c6b98315",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home после is"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "вопрос о текущем присутствии отца дома"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "локативное предикативное наречие"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "Is Dad home yet? естественный вопрос"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«Папа уже дома?» точно сохраняет yet"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "форма be даёт местонахождение"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не ходьба домой #16"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная бытовая вопросительная формула"
+          }
+        }
+      },
+      {
+        "meaning_index": 16,
+        "candidate_sha256": "fccd6fc58a66522953de77487d5fbf25bad79f7d93e3a0933d8b6334f9063017",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home после walk"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "пешее перемещение домой после работы"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "направительное наречие без to"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "walk home after work естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "способ перемещения и время точны"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "walk позволяет легко прочитать направленность"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не присутствие дома #15"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "обычный разговорный глагол движения с home"
+          }
+        }
+      },
+      {
+        "meaning_index": 17,
+        "candidate_sha256": "d60878e622d0fa456fe393eef91edb5efd8f034f03d6a834a0b75d37edf528ba",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home в hit home"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "критика задела и оказалась точной"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "наречный компонент идиомы при hit"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "criticism hit home естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "«попала в точку» сохраняет точность, эмоциональное действие поддержано контекстом"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "because he knew she was right раскрывает идиому"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не физическое достижение упора #18"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "устойчивая современная метафора воздействия"
+          }
+        }
+      },
+      {
+        "meaning_index": 18,
+        "candidate_sha256": "b4279dbb0ecc9086bd42e44a94c36f318a6bea3b4369d9c19b4b5bf60ab9ade3",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home после push the pin"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "штифт полностью вводится до фиксации"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "результативное наречие при push"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "push the pin home звучит как техническая инструкция"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "до упора и защёлкивание точны"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "clicks даёт проверяемый конечный результат"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не исходное положение механизма #14"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "инструкция Mechline употребляет fully home для детали, вставленной до конца"
+          }
+        }
+      },
+      {
+        "meaning_index": 19,
+        "candidate_sha256": "39d26b263e4a30e56ab3f481b4097dc130fb333b18ef8e626d957a672711153b",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "homed — прошедшее от home"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "голуби завершили возвращение в голубятню"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "непереходный глагол без прямого объекта"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "краткая формула типична для отчётов о голубиных гонках"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "голубятня логично раскрывает место возврата"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "птицы и время задают спортивный контекст"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не предоставление жилья #21"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "в отчёте Pigeon Racing Federation of WA за октябрь 2024 года homed from относится к возврату голубя с гонки https://www.prfwa.org.au/wp-content/uploads/2024/10/2-October-2024-Board-Minutes-of-meeting.pdf"
+          }
+        }
+      },
+      {
+        "meaning_index": 21,
+        "candidate_sha256": "381a90315fcc6d68db80301bd74160f87cd13d04f5c5c14ee92e82bb73ac6547",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "home в can home both dogs"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "приют ищет желающих предоставить обеим собакам дом"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "переходный инфинитив с объектом both dogs"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "to home dogs естественно в британской лексике приютов"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "взять к себе обеих собак сохраняет постоянное устройство"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "приют и две собаки ясно показывают усыновление животных"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не возвращение животного в прежнее место #19"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "действующая британская формула устройства животных"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 4,
+        "problem": "Политическое «метрополия» не выводится из обычного home «родина»",
+        "required_action": "Найти подтверждённый современный или исторический политический контекст и уточнить перспективу"
+      },
+      {
+        "meaning_index": 12,
+        "problem": "Home market выражает внутренний рынок, не специальную колониальную категорию",
+        "required_action": "Проверить самостоятельность колониального значения и его историческую рамку"
+      },
+      {
+        "meaning_index": 20,
+        "problem": "Современное переходное home с объектом обычно означает предоставить жильё",
+        "required_action": "Проверить исходный пример отправления домой и отделить от #19 и #21"
+      }
+    ]
+  },
+  {
+    "word": "long",
+    "entry_index": 16,
+    "decision": "review_required",
+    "reason": "Длительность аренды, вытянутая форма и длительность всей жизни ясны; фонетика, метр и значения длинных писем требуют отдельной проверки.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/15/source_evidence",
+    "before_after_ref": "stage_07.json#/15",
+    "meanings_reviewed": 19,
+    "existing_examples_reviewed": 24,
+    "example_reviews": [
+      {
+        "meaning_index": 4,
+        "candidate_sha256": "34f6128402bda8f8215fe74f4b2c89ec3950bee0923d434c8a5d0bb6d3c5ff44",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "long в so long"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "длина писем может возникать и без многословия или скуки"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "предикативное прилагательное после are"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественная жалоба на объём писем"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "многословные вводит лишнюю характеристику стиля"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "привязывает эмоциональный вывод к слову вместо контекста"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "не отделяет «многословный» от общего признака длины"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная жалоба на длинный текст"
+          }
+        }
+      },
+      {
+        "meaning_index": 5,
+        "candidate_sha256": "c857436a8282f4682d33828615dfd62eb0a6c8c495366f30c8614129e27d0b1d",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "long в long, narrow face"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "узкая морда воспринимается как вытянутая"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "атрибутивное прилагательное в паре признаков формы"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "long, narrow face естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "вытянутая узкая морда точно передаёт геометрию"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "narrow уточняет отношение длины к ширине"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "сочетание подчёркивает форму, а не величину без пропорции"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живое описание формы"
+          }
+        }
+      },
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "d1841b2072b4853d6c2516caed0f0a4fa825aeb9bd4e49bd235d112c7513581d",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "long в pronounce the vowel … long"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "длительность произношения гласного предполагается"
+          },
+          "part_of_speech": {
+            "pass": false,
+            "reason": "в данном примере long можно читать как вторичный предикатив о гласном"
+          },
+          "natural_english": {
+            "pass": false,
+            "reason": "без технического подтверждения естественнее pronounce it as a long vowel или hold it longer"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "«произносится долго» не передаёт фонологического противопоставления долгого и краткого гласного"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "предложение учит спорной конструкции вместо надёжного фонетического обозначения"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "объект явно гласный, поэтому нет временного смысла про действие целиком"
+          },
+          "contemporary_usage": {
+            "pass": false,
+            "reason": "источник сравнивает длительность obāsan и obasan, не подтверждает конструкцию pronounce … long"
+          }
+        }
+      },
+      {
+        "meaning_index": 8,
+        "candidate_sha256": "f58ddd0861483582ba64750db5a3920a5eaca35a75c287c3891b29330f2b44f9",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "long перед lease"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "договор обеспечивает длительную аренду"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "атрибутивное прилагательное при lease"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "take out a long lease естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "долгосрочный договор и цель точны"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "мотив избежать переезда показывает срок обязательства"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не физическая длина и не давность отношения #6"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная договорная и бытовая лексика"
+          }
+        }
+      },
+      {
+        "meaning_index": 12,
+        "candidate_sha256": "7adabe863eb149884d2d42e2be1ffd1bace3cde1404d073b7797cda446335a9d",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "long после his whole life"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "обещание выполнялось на протяжении всей жизни"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "постпозитивное наречие при обозначении периода"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "his whole life long допустимо в повествовании с эмфазой"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "оставался верен точно передаёт kept that promise"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "whole явно обозначает непрерывный охват периода"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не сравнительное long before/after #11"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "живая усилительная модель, с литературным оттенком"
+          }
+        }
+      },
+      {
+        "meaning_index": 16,
+        "candidate_sha256": "010b79d5f985c9c293d36bc5105bca9b700086b67fe9734fee3c03b7981ace44",
+        "verdict": "rejected",
+        "confidence": 0.91,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "long после each"
+          },
+          "sense_match": {
+            "pass": false,
+            "reason": "без указания на стих или количественный метр неизвестно, обозначает ли long слог, позицию или иной знак"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "each вводит отдельную именную единицу"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "естественно только после установления терминологии упражнения"
+          },
+          "translation_fidelity": {
+            "pass": false,
+            "reason": "русский добавляет слог, которого английская формулировка не идентифицирует"
+          },
+          "learner_suitability": {
+            "pass": false,
+            "reason": "учащийся не узнает область и референт из примера"
+          },
+          "distinct_from_other_meanings": {
+            "pass": false,
+            "reason": "не разделены фонетическое значение #15 и метрическая позиция"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современный текст A. P. David употребляет longs and shorts в анализе метра, но этот контекст пропущен"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "7a8136523c850d070588e49a306b5c9abcf5ec41524fc0a1df287fb619f72771",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Мюллер p. 266 даёт длинный как общее первое значение, long range в карточке не требует радиоконтекста"
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Длинный описывает протяжённость вне радиотехники"
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Long при measures, mile и waves имеет атрибутивную функцию"
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Все радиопримеры и общий перевод сохраняются при снятии глобальной пометы"
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Предметную область можно показывать примером long waves, не распространяя её на статью"
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "Long look и long vacation — атрибутивное прилагательное, «летние» требует конкретного календаря",
+        "required_action": "Перепроверить часть речи и перевод vacation по источнику"
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Длина писем не доказывает многословия, которое русский текст вводит сам",
+        "required_action": "Проверить, есть ли лексический оттенок скуки/избыточности отдельно от обычного long"
+      },
+      {
+        "meaning_index": 7,
+        "problem": "Ссылка подтверждает японское противопоставление длительности, а не pronounce the vowel long или его наречный разбор",
+        "required_action": "Подобрать авторитетную современную фонетическую инструкцию и сверить грамматическую рубрику"
+      },
+      {
+        "meaning_index": 9,
+        "problem": "How long he is не устанавливает, в чём медлительность",
+        "required_action": "Найти точный исходный контекст и проверить современность самостоятельного оттенка"
+      },
+      {
+        "meaning_index": 14,
+        "problem": "For long и take long не доказывают обычную именную парадигму",
+        "required_action": "Проверить классификацию каждого сочетания и отдельно описать before long"
+      },
+      {
+        "meaning_index": 15,
+        "problem": "Long vowel не доказывает самостоятельное именное long для гласного",
+        "required_action": "Найти предметно однозначный современный пример или уточнить рубрику с учётом #16"
+      },
+      {
+        "meaning_index": 16,
+        "problem": "Из инструкции mark each long непонятно, что именно отмечают и в каком метре",
+        "required_action": "Указать количественный стих или явно установить единицу упражнения, затем перепроверить перевод и границу с #15"
+      },
+      {
+        "meaning_index": 17,
+        "problem": "Предприятие обозначает вся единица long shot",
+        "required_action": "Проверить фразовую рубрику, не приписывать существительное одиночному прилагательному"
+      },
+      {
+        "meaning_index": 18,
+        "problem": "Риск пари выражает весь long shot либо long odds",
+        "required_action": "Развести название ставки и прилагательный признак вероятности"
+      },
+      {
+        "meaning_index": 19,
+        "problem": "Профессиональное сокращение a long не подтверждено",
+        "required_action": "Проверить современную кинопрактику и при отсутствии подтверждения оставить long shot отдельной фразой"
+      }
+    ]
+  },
+  {
+    "word": "look",
+    "entry_index": 17,
+    "decision": "review_required",
+    "reason": "У существительного сохранён взгляд, ожидание помощи показано моделью look to … for …; старый пример со стеклами разорван.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/16/source_evidence",
+    "before_after_ref": "stage_07.json#/16",
+    "meanings_reviewed": 9,
+    "existing_examples_reviewed": 20,
+    "example_reviews": [
+      {
+        "meaning_index": 7,
+        "candidate_sha256": "44cf78228f69120988e6e19fd0da1cab678480d7b7dab67cf6d54cd506a8b0dd",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "target_usage": {
+            "pass": true,
+            "reason": "look в look to our neighbours"
+          },
+          "sense_match": {
+            "pass": true,
+            "reason": "к соседям обращаются как к ожидаемому источнику помощи"
+          },
+          "part_of_speech": {
+            "pass": true,
+            "reason": "глагол в устойчивой модели look to … for …"
+          },
+          "natural_english": {
+            "pass": true,
+            "reason": "look to our neighbours for help естественно"
+          },
+          "translation_fidelity": {
+            "pass": true,
+            "reason": "рассчитываем на помощь и условие отключения сохранены"
+          },
+          "learner_suitability": {
+            "pass": true,
+            "reason": "for help ясно указывает ожидаемую поддержку"
+          },
+          "distinct_from_other_meanings": {
+            "pass": true,
+            "reason": "не направление взгляда и не внешний вид"
+          },
+          "contemporary_usage": {
+            "pass": true,
+            "reason": "современная конструкция ожидания помощи"
+          }
+        }
+      }
+    ],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "7b4500c4c634f6a43f42b36c0d84fc9440d5e5b35017da904e5fdf04e7970a0a",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Мюллер p. 266 подтверждает именное взгляд и даёт глагольную перифразу только в переводе сочетания"
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Взгляд является переводом единицы, ознакомиться с — лишь один возможный перевод фразы take a look at"
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Cast/steal/take a look имеют существительное после артикля"
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Глагольные переводы сохранены в примерах, семантика быстрого ознакомления остаётся доступной из take a look at"
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Допустимо снять ложное глагольное соответствие в именной рубрике"
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 4,
+        "problem": "Английское through … glasses разорвано между EN и RU и плохо иллюстрирует буквальный глагол",
+        "required_action": "Восстановить двуязычную пару из источника и проверить место метафоры в статье"
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Look one’s age значит выглядеть на свои годы, а не только не выглядеть старше",
+        "required_action": "Исправить русский перевод существующего примера после сверки"
+      }
+    ]
+  },
+  {
+    "word": "something",
+    "entry_index": 18,
+    "decision": "review_required",
+    "reason": "Основное местоимение не ограничено разговорной речью; восклицательная формула с like требует проверки как цельный оборот.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/17/source_evidence",
+    "before_after_ref": "stage_07.json#/17",
+    "meanings_reviewed": 5,
+    "existing_examples_reviewed": 13,
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "271ed06a8eab37b8400bd6c7c50ae2b45a855c980eae3ab455d2fe02dd97c121",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "Словарь 2021 p. 151 даёт основные неопределённые соответствия без ограничительной пометы"
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "Что-то, кое-что, что-нибудь передают неопределённость предмета"
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Pronoun подтверждается заместительной функцией в there is something"
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Коллоквиальные употребления и все примеры остаются доступны"
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Разговорность отдельных выражений не следует переносить на всё местоимение"
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "That’s something like a hit не показывает самостоятельное наречие «великолепно»",
+        "required_action": "Перепроверить статус оценочной формулы и границы с приблизительным something like"
+      }
+    ]
+  },
+  {
+    "word": "use",
+    "entry_index": 19,
+    "decision": "review_required",
+    "reason": "Именная глосса отделима от предложной группы in use, а значение «обычай» требует независимого подтверждения актуальности.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/18/source_evidence",
+    "before_after_ref": "stage_07.json#/18",
+    "meanings_reviewed": 5,
+    "existing_examples_reviewed": 8,
+    "example_reviews": [],
+    "meaning_reviews": [
+      {
+        "meaning_index": 1,
+        "proposal_sha256": "6404984dd0e257574874cd4bebb5657ba5594efc3f81ea45b124a73df1cb48fd",
+        "verdict": "approved",
+        "confidence": 0.94,
+        "judgments": {
+          "source_support": {
+            "pass": true,
+            "reason": "На p. 873 употребление и применение даны до фразового in use"
+          },
+          "translation_accuracy": {
+            "pass": true,
+            "reason": "В обиходе относится к предложной группе, её не следует приравнивать к изолированному use"
+          },
+          "part_of_speech_accuracy": {
+            "pass": true,
+            "reason": "Use в for external use и make use — существительное"
+          },
+          "information_preserved": {
+            "pass": true,
+            "reason": "Применение, употребление и in common use со значением распространённости сохранены"
+          },
+          "disposition": {
+            "pass": true,
+            "reason": "Разграничение именного перевода и перевода сочетания допустимо"
+          }
+        }
+      }
+    ],
+    "issues": [
+      {
+        "meaning_index": 5,
+        "problem": "Современная именная дефиниция «обычай» не подтверждена за пределами старого формального оборота",
+        "required_action": "Искать современные употребления именно в смысле custom или установить историческую помету"
+      }
+    ]
+  },
+  {
+    "word": "same",
+    "entry_index": 20,
+    "decision": "review_required",
+    "reason": "Основное значение совпадения подтверждают противопоставленные причины и следствия; в this same man пропущено указание на тождество.",
+    "confidence": 0.93,
+    "evidence_ref": "stage_06.json#/19/source_evidence",
+    "before_after_ref": "stage_07.json#/19",
+    "meanings_reviewed": 4,
+    "existing_examples_reviewed": 14,
+    "example_reviews": [],
+    "meaning_reviews": [],
+    "issues": [
+      {
+        "meaning_index": 2,
+        "problem": "«Этот человек» передаёт отсылку, но теряет эмфазу this same",
+        "required_action": "Сверить перевод «тот самый человек» с контекстом упоминания"
+      }
+    ]
+  }
+]

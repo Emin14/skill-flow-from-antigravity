@@ -1,0 +1,62 @@
+{
+  "scope": "as_reconstruction_2026-11-12",
+  "word": "as",
+  "changes": [
+    {
+      "word": "as",
+      "path": "meanings[3].translation",
+      "before": "в качестве, в роли, как",
+      "after": "в качестве, в роли",
+      "reason": "remove redundant generic gloss; preserve precise role meaning"
+    },
+    {
+      "word": "as",
+      "path": "meanings[4].examples[1]",
+      "before": {
+        "en": "as soon as possible",
+        "ru": "как можно скорее"
+      },
+      "after": "removed",
+      "reason": "as soon as possible is not an as...as comparative example",
+      "origin": "as article: moved to phrase inventory"
+    },
+    {
+      "word": "as",
+      "path": "phrases[new]",
+      "before": null,
+      "after": {
+        "id": 6,
+        "phrase": "as soon as possible",
+        "partOfSpeech": "adverb",
+        "translation": "как можно скорее",
+        "examples": [],
+        "register": []
+      },
+      "reason": "rehouse existing phrase as an adverbial expression",
+      "origin": "moved from as.meanings[4].examples"
+    },
+    {
+      "word": "as",
+      "path": "meanings[new]",
+      "before": null,
+      "after": {
+        "id": 7,
+        "partOfSpeech": "pronoun",
+        "translation": "какой, который; что",
+        "examples": [
+          {
+            "en": "this is the same book as I lost",
+            "ru": "это такая же книга, как та, что я потерял"
+          }
+        ],
+        "register": []
+      },
+      "reason": "source-confirmed relative-pronoun use of as"
+    }
+  ],
+  "unresolved": [
+    "as soon as / as soon as possible may later be normalized as separate phrase variants if the project expands phrase granularity"
+  ],
+  "before_sha256": "4a9561900c6cda62917d285d6fa652445adda9e6ec4091a190446386893bcb89",
+  "after_sha256": "823c25a8b101325fbe51a8a6e3d24c537d78dbd3ddc8345972c8f845f5c1c7fe"
+}

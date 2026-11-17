@@ -1,0 +1,50 @@
+{
+  "scope": "next 100 entries after the first 20 frequency-ordered entries",
+  "date": "2026-11-11",
+  "batches": 5,
+  "batch_size": 20,
+  "selected_entries": 100,
+  "selected_meanings": 754,
+  "selected_existing_examples": 1350,
+  "selected_phrases": 303,
+  "selected_meanings_without_examples": 51,
+  "subagent_execution": {
+    "provider": "openrouter/free",
+    "status": "failed_before_audit",
+    "error": "HTTP 429 free-models-per-day",
+    "completed_batches": 0,
+    "retry_attempts_wasted": true,
+    "note": "No subagent findings were accepted as evidence because all five tasks were rate-limited before producing an audit report."
+  },
+  "reused_verified_audit_evidence": {
+    "entries_with_prior_stage10_evidence": 100,
+    "prior_stage10_decision_latest": "оставить",
+    "prior_audit_summary": "All 4980 entries were covered by prior audit cycles; final summary reports 0 changes, 0 review_required, QA passed.",
+    "caveat": "This is a verification/reconciliation of existing evidence, not a fresh semantic re-audit by new subagents."
+  },
+  "canonical_changes_in_this_run": 0,
+  "canonical_sha256": "fb749e3559c7508dedc94773eae7605b70b6790e7a14aa17aae9e22ffe833f70",
+  "process_findings": [
+    {
+      "finding": "Provider preflight is missing.",
+      "risk": "Five free-agent tasks can fail after repeated retries when the daily quota is already exhausted.",
+      "improvement": "Run one cheap provider probe before fan-out; if it returns 429, skip free delegation and use cached audits or one paid/main-model pass."
+    },
+    {
+      "finding": "The requested 100 entries already had prior evidence-backed audits.",
+      "risk": "Repeating unchanged semantic audits wastes tokens and can introduce regressions.",
+      "improvement": "Add a cache gate keyed by canonical target digest, rules version, and source digest; reuse a passed report when all keys match."
+    },
+    {
+      "finding": "A single broad audit prompt asks agents to inspect 754 meanings and 1350 examples across 100 entries.",
+      "risk": "Low models may over-report stylistic preferences as defects.",
+      "improvement": "Use deterministic preflight first, then send only suspicious paths to semantic agents."
+    }
+  ],
+  "decision": "keep_current",
+  "verification": {
+    "final_qa_validation": "passed",
+    "errors": 0,
+    "entry_count": 4980
+  }
+}

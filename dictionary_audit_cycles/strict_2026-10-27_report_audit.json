@@ -1,0 +1,28 @@
+{
+  "dataset_entries": 4980,
+  "report_batches": 498,
+  "report_word_records": 9960,
+  "legacy_2026_10_25": {
+    "batches": 249,
+    "words": 4980,
+    "generic_evidence_records": 4980,
+    "missing_search_results": 4980,
+    "missing_before_after": 4980,
+    "missing_final_refs": 4980
+  },
+  "new_2026_10_26": {
+    "batches": 249,
+    "words": 4980,
+    "actual_search_records": 18597,
+    "invalid_file_references": 0,
+    "final_qa_failures": 0,
+    "duplicate_evidence_batches": 32,
+    "page_line_range_errors": 0
+  },
+  "overall_verdict": "FAIL",
+  "reasons": [
+    "legacy reports use generic non-citation evidence and omit before/after",
+    "new reports contain 32 batches with repeated evidence snippets across word records",
+    "final_qa_validation validates only dataset structure, not report evidence or report uniqueness"
+  ]
+}

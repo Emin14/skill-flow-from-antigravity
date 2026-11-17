@@ -1,0 +1,81 @@
+{
+  "applied_count": 6,
+  "changes": [
+    {
+      "word": "hold",
+      "path": "meanings[23]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "мор. трюм",
+        "examples": [],
+        "register": [
+          "морское"
+        ],
+        "id": 23
+      },
+      "reason": "add source-confirmed hold II homonym"
+    },
+    {
+      "word": "press",
+      "path": "meanings[25]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "вербовка силой",
+        "examples": [],
+        "register": [
+          "историческое"
+        ],
+        "id": 25
+      },
+      "reason": "add source-confirmed press III noun"
+    },
+    {
+      "word": "record",
+      "path": "meanings[6].translation",
+      "before": "держаться сути дела",
+      "after": "придерживаться сути дела",
+      "reason": "restore keep to the record gloss"
+    },
+    {
+      "word": "record",
+      "path": "meanings[6].examples[1]",
+      "before": {
+        "en": "to travel out of the record",
+        "ru": "вводить что-либо, не относящееся к делу"
+      },
+      "after": {
+        "en": "to keep to the record",
+        "ru": "придерживаться сути дела"
+      },
+      "reason": "restore correct source construction"
+    },
+    {
+      "word": "record",
+      "path": "meanings[7].register",
+      "before": [
+        "грамматика"
+      ],
+      "after": [],
+      "reason": "remove unsupported grammar register from record sense"
+    },
+    {
+      "word": "finish",
+      "path": "meanings[2].register",
+      "before": [
+        "спортивное",
+        "финансы"
+      ],
+      "after": [
+        "спортивное"
+      ],
+      "reason": "remove unsupported finance register"
+    }
+  ],
+  "deferred": [
+    "full reconstruction hold/press/record/lead/finish/ground; duplicate-storage policy cases"
+  ],
+  "before_sha256": "c3c2d55042a2356670b936601477f91e047adba9e720845b838d93a5452a799b",
+  "after_sha256": "220bd50a3bb585c6dbf03b313f2d1149436e14c886d6664844ccc15f9eada026"
+}

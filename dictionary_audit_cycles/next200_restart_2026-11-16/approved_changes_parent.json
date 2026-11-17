@@ -1,0 +1,189 @@
+{
+  "scope": "frequency_rank_601_800",
+  "applied_count": 21,
+  "changes": [
+    {
+      "word": "stuff",
+      "path": "meanings[0].register",
+      "before": [
+        "математика"
+      ],
+      "after": [],
+      "reason": "remove unsupported mathematics register"
+    },
+    {
+      "word": "stuff",
+      "path": "meanings[1].register",
+      "before": [
+        "математика"
+      ],
+      "after": [],
+      "reason": "remove unsupported mathematics register"
+    },
+    {
+      "word": "hospital",
+      "path": "meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "restore adjectival hospital sense"
+    },
+    {
+      "word": "paper",
+      "path": "meanings[8].translation",
+      "before": "бумажный пакет",
+      "after": "пакетик; связка",
+      "reason": "correct paper of needles gloss"
+    },
+    {
+      "word": "paper",
+      "path": "meanings[12].translation",
+      "before": "бумажный; проверка документации, письменных работ и т.п",
+      "after": "бумажный; связанный с документами или письменной работой",
+      "reason": "correct paper adjective gloss"
+    },
+    {
+      "word": "version",
+      "path": "meanings[2].register",
+      "before": [
+        "текстильное"
+      ],
+      "after": [],
+      "reason": "remove unsupported textile register"
+    },
+    {
+      "word": "version",
+      "path": "meanings[2].translation",
+      "before": "(перевода или оригинала)",
+      "after": "текст (перевод или оригинал)",
+      "reason": "restore complete version gloss"
+    },
+    {
+      "word": "army",
+      "path": "meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "restore attributive army sense"
+    },
+    {
+      "word": "writing",
+      "path": "phrases[0].translation",
+      "before": "писание",
+      "after": "записывание; запись",
+      "reason": "correct writing down translation"
+    },
+    {
+      "word": "writing",
+      "path": "phrases[1].examples",
+      "before": [
+        {
+          "en": "at the present writing",
+          "ru": "в то время, когда пишутся эти строки"
+        },
+        {
+          "en": "in writing",
+          "ru": "в письменной форме"
+        }
+      ],
+      "after": [],
+      "reason": "remove examples belonging to the dictionary meaning, not writing down"
+    },
+    {
+      "word": "simply",
+      "path": "meanings[0].translation",
+      "before": "то, легко",
+      "after": "просто; легко",
+      "reason": "repair malformed translation"
+    },
+    {
+      "word": "union",
+      "path": "meanings[8].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "restore attributive union sense"
+    },
+    {
+      "word": "send",
+      "path": "meanings[3].examples[4].ru",
+      "before": "усыпить рассеять; разбросать; обратить в бегство отшвырнуть",
+      "after": "усыпить",
+      "reason": "remove concatenated contamination from send to sleep"
+    },
+    {
+      "word": "dog",
+      "path": "meanings[4].examples[3].ru",
+      "before": "дрянь, «свинья», «свинья»",
+      "after": "дрянь, «свинья»",
+      "reason": "remove duplicated Russian gloss"
+    },
+    {
+      "word": "pass",
+      "path": "meanings[16].examples[2].en",
+      "before": "whether or not this comes to pass passing",
+      "after": "whether or not this comes to pass",
+      "reason": "remove OCR tail passing"
+    },
+    {
+      "word": "professional",
+      "path": "meanings[3].translation",
+      "before": "спортсменпрофессионал",
+      "after": "спортсмен-профессионал",
+      "reason": "repair missing space"
+    },
+    {
+      "word": "piece",
+      "path": "phrases[6].phrase",
+      "before": "a piece of in formation",
+      "after": "a piece of information",
+      "reason": "repair OCR spacing"
+    },
+    {
+      "word": "wall",
+      "path": "meanings[6].examples[1].ru",
+      "before": "настенный (почтовый) Ящик",
+      "after": "настенный (почтовый) ящик",
+      "reason": "normalize contaminated capitalization"
+    },
+    {
+      "word": "network",
+      "path": "meanings[7].translation",
+      "before": "передавать по - или телевизионной сети",
+      "after": "передавать по радио- или телевизионной сети",
+      "reason": "repair malformed network verb translation"
+    },
+    {
+      "word": "peace",
+      "path": "meanings[1].examples[5].ru",
+      "before": "молчать соблюдать спокойствие, порядок",
+      "after": "молчать; соблюдать спокойствие, порядок",
+      "reason": "separate concatenated hold one’s peace translations"
+    },
+    {
+      "word": "hell",
+      "path": "meanings[1]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "ад",
+        "examples": [],
+        "register": [],
+        "id": 1
+      },
+      "reason": "restore omitted primary noun sense"
+    }
+  ],
+  "deferred": [
+    "whatever translation/example structure",
+    "drive/eat contamination",
+    "tax/blue/size/match homonym boundaries",
+    "stand/fast/green/league/management/model/picture",
+    "fear/loss/paper/listen registers",
+    "written/election POS policy",
+    "release coverage",
+    "pick/race/sign/simple/cry/bed",
+    "deep/mark/sleep/build",
+    "straight/wall remaining source review",
+    "rock/speak/write/cold/effect/eight/except/eye/funny/peace omitted senses"
+  ],
+  "before_sha256": "7e45730a6b96101ddf851d49daf443f8a41c515d5fe57ce943766a7dae1eeb76",
+  "after_sha256": "7bfabdc49c065eb8cc88628dc8a7be6e6296a1a751999e01cf597fe317e27f17"
+}

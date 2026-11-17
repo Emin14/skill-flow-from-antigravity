@@ -1,0 +1,890 @@
+[
+  {
+    "word": "another",
+    "base_sha256": "96896bc9f1303bf8c590163137b2d8a1c3d94e60b86433de7fbd0c8736ea8b69",
+    "edits": []
+  },
+  {
+    "word": "own",
+    "base_sha256": "1f0864db396ff2029afff71a66af37bd3067154f74c779d282f3587aa8e36650",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/4/target",
+        "after": {
+          "kind": "field",
+          "path": "/phrases"
+        }
+      },
+      {
+        "op": "add",
+        "path": "/issues/5/target",
+        "after": {
+          "kind": "field",
+          "path": "/phon_n_am"
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/meaning_reviews",
+        "before": [
+          {
+            "meaning_index": 6,
+            "proposal_sha256": "47726bec0ef621a73a9dbae4dd82aeb7ae0836a8ac109f06dcf7673253542ef5",
+            "verdict": "approved",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "На странице 571 блок ~ up начинается после примера theft и отдельно получает разг. и два подзначения."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Признавать(ся) охватывает признание ребёнка своим, недостатков и проступка без подчинения."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Own one's faults и own to the theft являются глагольными конструкциями."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Четыре исходных примера сохранены; отделённые переводы и разговорная помета остаются у own up."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Одобрено исправление границы статьи; современность отдельных примеров и own up о подчинении этим не утверждается."
+              }
+            }
+          }
+        ],
+        "after": []
+      },
+      {
+        "op": "add",
+        "path": "/entry_reviews",
+        "after": [
+          {
+            "proposal_sha256": "e7d00360a7f7cf0025226df6ed79fb9f80dd50e159d86b67eb188a94d2ad5714",
+            "verdict": "approved",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 571 отдельно начинает own up с разговорной пометой и подтверждает слитное holding; сохранённые предложения позволяют проверить их синтаксические категории."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "У own остаётся признавать(ся), а откровенное признание и подчинение сохраняются у own up; остальные переводы группа не изменяет."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Come into one's own является глагольным выражением; I have nothing of my own и the patient is holding his own содержат подлежащее и сказуемое."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все значения, четыре примера признания и все фразы сохранены; разговорная помета перенесена к own up, а разрыв holding устранён."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Вся связанная группа исправляет границы, написание и категории без утраты информации; нерешённые переводы и современность редких конструкций остаются в issues."
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "under",
+    "base_sha256": "7f1870ca48a102b08c7a9dce8af17aa6add7bd5911bc715a9daa52d57ec12e84",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/9/target",
+        "after": {
+          "kind": "phrase",
+          "index": 1
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/meaning_reviews",
+        "before": [
+          {
+            "meaning_index": 15,
+            "proposal_sha256": "72cabaecbe0d0ce98596d4a313ca3da5997cc51e2524596963d95958c2944640",
+            "verdict": "approved",
+            "confidence": 0.96,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 861 прямо содержит «4. n арт. недолёт»."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Недолёт сохранён полностью; арт. раскрыто как артиллерийское."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Существительное n из источника остаётся noun."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Перевод и отраслевая принадлежность сохранены в отдельных полях; примеров не удалено."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Одобрено только разнесение пометы и перевода; актуальность термина остаётся нерешённой и нового примера нет."
+              }
+            }
+          }
+        ],
+        "after": []
+      },
+      {
+        "op": "add",
+        "path": "/entry_reviews",
+        "after": [
+          {
+            "proposal_sha256": "2bd483d251e14a9d6ed467e3f943af71f8f5e8231e8d2c3bbd54eb9b193ed410",
+            "verdict": "approved",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 861 содержит отдельно n арт. недолёт и bring under подчинять, подтверждая обе части группы."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Недолёт и подчинять остаются прежними; сокращение арт. раскрывается в отдельной отраслевой помете."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Недолёт сохраняет noun, а выражение с инфинитивом bring получает глагольную категорию вместо adverb."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Отраслевая информация перенесена в register; ни одно значение, выражение или исходный пример не удалено."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Группа целиком исправляет размещение пометы и категорию выражения; современный статус артиллерийского существительного этим не утверждается."
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "during",
+    "base_sha256": "e2ee2e35329152664c804e3e7f02558f1c48c433eabb1db306bf947ea4583d0a",
+    "edits": []
+  },
+  {
+    "word": "game",
+    "base_sha256": "6ad9af068a693c367aeca28d83be2065a35d244ad87da4cffd1d39ff365137d2",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/6/target",
+        "after": {
+          "kind": "phrase",
+          "index": 1
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/meaning_reviews",
+        "before": [
+          {
+            "meaning_index": 1,
+            "proposal_sha256": "b626b69cbeb8a77f211aeaac84635b937885eb777ac8ab0892e05fd9509663c2",
+            "verdict": "approved",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 337 связывает поступать благородно именно с to play the game."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Уточнение явно относит глагольный русский перевод к выражению."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Game остаётся noun; пояснение не выдаёт поступать за часть речи заголовочного слова."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Оба примера и переносное толкование сохранены."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Исправлена область действия перевода без добавления нового значения."
+              }
+            }
+          },
+          {
+            "meaning_index": 3,
+            "proposal_sha256": "67965db085792aeae1e8ae60be5aac70bd31bd3c1fbabb5e8079c6ad14afd14c",
+            "verdict": "approved",
+            "confidence": 0.98,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "На страницах 337–338 pl относится к соревнованиям и играм."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Соревнования; игры восстанавливает содержание и грамматическое ограничение."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Сохраняется существительное во множественном числе."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Игры сохранены, соревнования добавлены из продолжения статьи; прежних примеров нет."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Убрана ошибочная британская помета; sense_after кандидата совпадает с after_meaning."
+              }
+            }
+          },
+          {
+            "meaning_index": 7,
+            "proposal_sha256": "4c6c2ae69ab8ae67e472b0fb80315e94e82621753399c78533070fdddfd825a4",
+            "verdict": "approved",
+            "confidence": 0.95,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 338 прямо связывает высмеивать; подшучивать с to make game of."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Подшучивать более не представлено свободным переводом существительного."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Noun сохранён для game, глагольная функция относится к целому выражению."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Шутка, оба исходных примера и глагольная информация сохранены."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Одобрена привязка перевода; современность make game of отдельно не утверждается."
+              }
+            }
+          },
+          {
+            "meaning_index": 9,
+            "proposal_sha256": "76b9f59eb910e24555b9da3a41bf36e3fa7d7dedd98b5c85c6d4f2c40e37ca4d",
+            "verdict": "approved",
+            "confidence": 0.98,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 338 содержит pl перед уловки, увёртки, хитрости."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Все эквиваленты хитростей и фокусов сохранены."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Games остаётся множественным существительным."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "None of your games и перевод не удалены; ограничение числом сохранено в тексте."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Снято ошибочное региональное ограничение, возникшее при прочтении pl."
+              }
+            }
+          },
+          {
+            "meaning_index": 11,
+            "proposal_sha256": "1bbf2bfd8b878ae71bd2906d47bbbb87684f44a18fcf2e765a5481674fea9780",
+            "verdict": "approved",
+            "confidence": 0.98,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 338 содержит охотно готовый и be game for anything без охотничьей пометы."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Восстановление охотно устраняет повреждённое но и выражает willingness."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "В be game for game функционирует как предикативное прилагательное."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Прежний пример сохранён; ничего не бояться перенесено в новую фразу, а не потеряно."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Одобрено уточнение готовности; отсутствие страха не утверждается обязательным смыслом прилагательного."
+              }
+            }
+          },
+          {
+            "meaning_index": 13,
+            "proposal_sha256": "e5ebd6b12e052aee907f9b68a447c1162c745de4b331e045712f8e52a6f46082",
+            "verdict": "approved",
+            "confidence": 0.99,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 338 определяет мясо диких уток, куропаток и зайчатину без спортивной пометы."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Дичь как мясо сохранена без изменения объёма значения."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Пищевое game остаётся неисчисляемым существительным."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Перевод полностью сохранён; исходных примеров нет."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Убрана чуждая отраслевая помета; sense_after ресторанного кандидата совпадает с предложением 07."
+              }
+            }
+          }
+        ],
+        "after": []
+      },
+      {
+        "op": "add",
+        "path": "/entry_reviews",
+        "after": [
+          {
+            "proposal_sha256": "89c7a706d28d9be563a817e5dd419a488d8f5ed71db00c3bca22f6d9958ccbf2",
+            "verdict": "approved",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страницы 337–338 подтверждают переводы выражений play the game и make game of, множественные соревнования и уловки, охотную готовность и пищевую дичь без спорных отраслевых помет."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Глагольные эквиваленты явно привязаны к выражениям; охотно заменяет повреждённое но, а ничего не бояться сохраняется в отдельной подтверждённой фразе."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Существительные и прилагательные сохраняют категории; two can play at that game получает категорию целого предложения, а to be game for anything — глагольного выражения."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все исходные примеры и эквиваленты сохранены; добавлены подтверждённые соревнования и отдельная фраза, а грамматическое множественное число не потеряно при снятии региональных помет."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Вся группа согласованно исправляет области переводов, повреждение текста и пометы; она не утверждает современность старых шутливых конструкций, отмеченных в issues."
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "thing",
+    "base_sha256": "f99dabfdeffd6c7cbb7d74b42396c74eafc61fc9b9479607ac6ce7540c2fc3c7",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/6/target",
+        "after": {
+          "kind": "phrase",
+          "index": 4
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/meaning_reviews",
+        "before": [
+          {
+            "meaning_index": 3,
+            "proposal_sha256": "c9591432a892775b1c5a5cd325478979a38eb7d52cab5b22246dd91894b6bd68",
+            "verdict": "approved",
+            "confidence": 0.99,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 821 даёт обыкн. pl перед дело, факт, случай, обстоятельство."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Перевод состояния дел и обстоятельств не меняется."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Things в how are things и things look promising остаётся существительным."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все шесть примеров и указание обычного множественного числа сохранены."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Устранено ошибочное прочтение грамматической пометы как британской."
+              }
+            }
+          }
+        ],
+        "after": []
+      },
+      {
+        "op": "add",
+        "path": "/entry_reviews",
+        "after": [
+          {
+            "proposal_sha256": "6cb8ccec5492c6e8b13b1cb19cbd5c55046e1815e94bbd68f2395afe87bca4a5",
+            "verdict": "approved",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 821 даёт обыкн. pl у обстоятельств, it is just the thing с соответствующим переводом и among other things; категории целых предложений проверяются по их сохранённому синтаксису."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Единственная правка перевода устраняет лишние скобки в это как раз то, что надо, не меняя смысл; остальные переводы группа сохраняет."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "It is just the thing и we must do that first thing являются предложениями; among other things в данном употреблении выполняет наречную функцию."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все семь значений, все примеры и пять фраз сохраняются; указание обычного множественного числа остаётся в переводе после удаления британской пометы."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Группа целиком исправляет помету, оформление и категории; отдельные смысловые замечания к among other things и старым примерам остаются нерешёнными и не применяются этой группой."
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "give",
+    "base_sha256": "7de0ca724cdfccc0785d705894d5bf12cc707b5f9aabc026cbfa8c15c5df4054",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/10/target",
+        "after": {
+          "kind": "field",
+          "path": "/phrases"
+        }
+      }
+    ]
+  },
+  {
+    "word": "end",
+    "base_sha256": "0534f7a8bcd46c609d8b183d51e1d8be3d27a9230504a0717e20a7950544584f",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/1/target",
+        "after": {
+          "kind": "field",
+          "path": "/phrases"
+        }
+      }
+    ]
+  },
+  {
+    "word": "house",
+    "base_sha256": "9b6c96bf0298cf13630fcce911ebc8acb13ff612b3f7e65ca2c888baa4a8ac26",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/11/target",
+        "after": {
+          "kind": "missing_meaning",
+          "description": "Глагол house /haʊz/: предоставлять жильё; поселить, приютить, с отдельно оформленным произношением."
+        }
+      }
+    ]
+  },
+  {
+    "word": "place",
+    "base_sha256": "3d50478e39f6847b41d0e8d7b8badfae860c0157ea3e30a05fcd21d2d4397a49",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/10/target",
+        "after": {
+          "kind": "field",
+          "path": "/phrases"
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/meaning_reviews",
+        "before": [
+          {
+            "meaning_index": 12,
+            "proposal_sha256": "a8a3524930bea7ac589494220d1b56c69eb8ae7f45f75838f260a85a9474813e",
+            "verdict": "approved",
+            "confidence": 0.99,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 604 содержит calculated to five decimal places с переводом точности одной стотысячной."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Десятичный разряд; знак после запятой описывает значение places, а не перевод всего примера с five."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Place остаётся счётным математическим существительным."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Специализированный смысл сохранён; исходная числовая иллюстрация остаётся в доказательствах, прежних examples не было."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Редакционный вывод прозрачен, и sense_after нового математического кандидата точно совпадает с after_meaning."
+              }
+            }
+          }
+        ],
+        "after": []
+      },
+      {
+        "op": "add",
+        "path": "/entry_reviews",
+        "after": [
+          {
+            "proposal_sha256": "9224a6e4688cdd76bae4ff7eea481b780baea7939ca98a0a1c18273d50431b9c",
+            "verdict": "approved",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 604 подтверждает five decimal places и выражения in place of, in the first/second place, in the next place; пословица содержит очевидное предложение there is."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Десятичный разряд; знак после десятичной запятой объясняет математическое places вместо ошибочного перевода целого примера; остальные переводы не меняются."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Математическое place остаётся noun; пословица получает sentence, in place of — предложную категорию, а выражения порядка — наречную."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все существующие значения, примеры и фразы сохранены; числовая иллюстрация одной стотысячной остаётся в источниках как свидетельство математического смысла."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Связанная группа целиком согласована и не расширяет значение 14 до узнавания; математический sense_after кандидата точно совпадает с предложенным определением."
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "school",
+    "base_sha256": "87fcd96beebcf7745825f7fe1eb8ad7a23ea98f4e343e925b91a6b66de175e1f",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/7/target",
+        "after": {
+          "kind": "missing_meaning",
+          "description": "Основное существительное school: школа как образовательное учреждение; добавить отдельно от существующего значения учение, обучение."
+        }
+      },
+      {
+        "op": "add",
+        "path": "/issues/8/target",
+        "after": {
+          "kind": "field",
+          "path": "/phrases"
+        }
+      }
+    ]
+  },
+  {
+    "word": "again",
+    "base_sha256": "26ce03a6cd17494f9f8abd3ea3569ba5b82a0efa0ca4a65097a137c63bb27de6",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meaning_reviews",
+        "before": [
+          {
+            "meaning_index": 1,
+            "proposal_sha256": "80092bec4d993d2b8c61949287f3f8314453e3ef66c0c6334505388a186ef795",
+            "verdict": "approved",
+            "confidence": 0.99,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 28 связывает иногда; время от времени с now and again."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Снова, опять описывает голое again без ложного отдельного значения изредка."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Again остаётся наречием повторения."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все четыре примера остаются; время от времени сохранено в добавленной фразе now and again."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Исправлена область действия перевода, не изменены соседние дискурсивные значения молча."
+              }
+            }
+          }
+        ],
+        "after": []
+      },
+      {
+        "op": "add",
+        "path": "/entry_reviews",
+        "after": [
+          {
+            "proposal_sha256": "9c1cd9a829379d3cc53538004e472a41b9cf330dd154495e7c86cf5a17ac8769",
+            "verdict": "approved",
+            "confidence": 0.98,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 28 связывает иногда; время от времени с now and again и отдельно подтверждает as much again со значением ещё столько же."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Самостоятельное again получает снова, опять; исключённое время от времени полностью сохраняется у now and again."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Again остаётся наречием; количественное as much again не управляет дополнением как предлог и допускает принятую наречную классификацию выражения целиком."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все исходные примеры сохраняются, новая фраза содержит оба перевода иногда; время от времени, прежний количественный перевод не изменён."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Все три связанных изменения согласованы и сохраняют переносимую информацию; неоднозначность старых дискурсивных примеров остаётся в issues."
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "next",
+    "base_sha256": "ca462db88a9bbc26db04cacf75c1950be15bf1618bae274a2f52ba6917c78114",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/3/target",
+        "after": {
+          "kind": "phrase",
+          "index": 2
+        }
+      },
+      {
+        "op": "replace",
+        "path": "/meaning_reviews",
+        "before": [
+          {
+            "meaning_index": 2,
+            "proposal_sha256": "6c1bba6495d61d66a8d1d06af21c54889476cc32b9a14d9aac086ba21d94dbb1",
+            "verdict": "approved",
+            "confidence": 0.99,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 535 отдельно даёт what next? с двумя вопросительными переводами."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Потом, затем, после описывает наречие порядка действий."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Next в he next proceeded остаётся наречием."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Оба старых примера сохранены, вопросительный перевод целиком перенесён в новую фразу."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Устранено смешение значения слова и перевода вопроса."
+              }
+            }
+          },
+          {
+            "meaning_index": 5,
+            "proposal_sha256": "31d7d79efd4c4ebeef5c2f5bcef6e8cce6470cf90445794bc01fffb6f9101dea",
+            "verdict": "approved",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 535 даёт n следующий или ближайший без жаргонной пометы."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Субстантивированный следующий человек или предмет сохранён."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Noun отражает принятую эллиптическую подачу next, please и my next."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все три прежних примера остаются."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Снятие общего жаргонного ограничения обосновано обычным next, please; старые эллипсисы отдельно проверяются."
+              }
+            }
+          },
+          {
+            "meaning_index": 6,
+            "proposal_sha256": "45ee4daafd5f8f5a3927ab155b714f0888d71ce7611c97047280dfc7fd2ea91a",
+            "verdict": "approved",
+            "confidence": 0.99,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 535 прямо содержит следующий; будущий и next year."
+              },
+              "translation_accuracy": {
+                "pass": true,
+                "reason": "Будущий добавляет подтверждённый временной эквивалент к следующему."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Next перед year является определением и совместимо с adjective."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Следующий сохранён; прежних примеров нет."
+              },
+              "disposition": {
+                "pass": true,
+                "reason": "Уточнение не заменяет значение соседним; sense_after кандидата совпадает с after_meaning."
+              }
+            }
+          }
+        ],
+        "after": []
+      },
+      {
+        "op": "add",
+        "path": "/entry_reviews",
+        "after": [
+          {
+            "proposal_sha256": "08adca61588246493f5d4b99122e8789f6060f1609a5aba921df005222b303bb",
+            "verdict": "review_required",
+            "confidence": 0.97,
+            "judgments": {
+              "source_support": {
+                "pass": true,
+                "reason": "Страница 535 подтверждает what next?, следующий; будущий, существительное без жаргонной пометы и исходный шутливый фрагмент not till next time."
+              },
+              "translation_accuracy": {
+                "pass": false,
+                "reason": "Группа сохраняет у not till next time перевод больше не буду до следующего раза, который добавляет обещание к значению не раньше следующего раза; источник подтверждает наличие старой пары, но не устраняет её смысловую проблему."
+              },
+              "part_of_speech_accuracy": {
+                "pass": true,
+                "reason": "Наречие порядка, определительное next и субстантивированное next остаются различены; what next? и not till next time могут подаваться как эллиптические высказывания в принятой категории sentence."
+              },
+              "information_preserved": {
+                "pass": true,
+                "reason": "Все старые примеры и фразы сохранены, вопросительный перевод перенесён в новую фразу, будущий добавлен без удаления следующего."
+              },
+              "disposition": {
+                "pass": false,
+                "reason": "Неделимую группу нельзя принять частично: прежде нужно согласовать перевод связанного not till next time и представить всю исправленную группу с новым hash. Отдельные одобрения примеров сохраняются."
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "case",
+    "base_sha256": "0134a3f1eb9148ee5dfd238fc1a02be79e109ae2311d757955ff4f2cc567c461",
+    "edits": [
+      {
+        "op": "add",
+        "path": "/issues/9/target",
+        "after": {
+          "kind": "phrase",
+          "index": 2
+        }
+      }
+    ]
+  },
+  {
+    "word": "next to",
+    "base_sha256": "e84fb7d91b75f6ccd5a9cdb1cf765ce52fa42d00115c2b56205aa5cb18fbef84",
+    "edits": []
+  },
+  {
+    "word": "each",
+    "base_sha256": "75cc4bda063de341c6d3ba738b477b637f46b9f0376380f5d96d7882eab186ad",
+    "edits": []
+  },
+  {
+    "word": "without",
+    "base_sha256": "cfb39447c7dd31b3734083e84cd5cff25e19d133c33b85786905c867b32463a1",
+    "edits": []
+  },
+  {
+    "word": "well-being",
+    "base_sha256": "6f58b801469e1ae7604d4d0ac412b87d07c425b7917bf7c21dfe96e8ad7a5328",
+    "edits": []
+  },
+  {
+    "word": "long-time",
+    "base_sha256": "f3bd1f837b3dd04cbb97a25aea7451c9dcb801bc0d76ec156c32570bc9363fc1",
+    "edits": []
+  },
+  {
+    "word": "against",
+    "base_sha256": "5e1fbcf5c5eb58a037e17a529b91f2efa66e23607b9977d4a7916717c3fd16be",
+    "edits": []
+  }
+]

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 282, in <module>
+    raise SystemExit(main())
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 245, in main
+    run_worker(worker, stage, prompt, output)
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/dispatch_roles.py", line 58, in run_worker
+    expanded = expand_records(payload, json.loads(prompt.read_text()))
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/report_delta.py", line 80, in expand_records
+    after=proposed_after(entry,record)
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/entry_contract.py", line 65, in proposed_after
+    return group_after(entry,groups[0])
+  File "/Users/emin/skill-flow-from-antigravity/scripts/audit_pipeline/entry_contract.py", line 23, in group_after
+    raise ValueError('Each edit needs its own reason and source quotations')
+ValueError: Each edit needs its own reason and source quotations

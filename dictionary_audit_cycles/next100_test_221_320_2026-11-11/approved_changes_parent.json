@@ -1,0 +1,301 @@
+{
+  "scope": "next100_test_221_320_2026-11-11",
+  "decision": "applied_safe_exact_matches",
+  "count": 35,
+  "changes": [
+    {
+      "word": "public",
+      "path": "public.meanings[1].examples[1].ru",
+      "before": "большая дорога",
+      "after": "общественная дорога; дорога общего пользования",
+      "reason": "public road"
+    },
+    {
+      "word": "public",
+      "path": "public.meanings[3].examples[0].ru",
+      "before": "коммунальные услуги",
+      "after": "общественная служба; государственная служба",
+      "reason": "public service"
+    },
+    {
+      "word": "business",
+      "path": "business.meanings[0].examples[3].ru",
+      "before": "повестка дня агент, поверенный",
+      "after": "повестка дня",
+      "reason": "OCR"
+    },
+    {
+      "word": "top",
+      "path": "top.meanings[22].translation",
+      "before": "покрывать",
+      "after": "завершать; украшать сверху; добавлять последний компонент",
+      "reason": "top off"
+    },
+    {
+      "word": "top",
+      "path": "top.phrases[2].translation",
+      "before": "не в своём уме",
+      "after": "снять немного сверху; взять небольшую часть сверху",
+      "reason": "off the top"
+    },
+    {
+      "word": "start",
+      "path": "start.meanings[0].translation",
+      "before": "отправление; начало; отправиться",
+      "after": "начало; отправление",
+      "reason": "noun contamination"
+    },
+    {
+      "word": "start",
+      "path": "start.meanings[9].examples[0].ru",
+      "before": "сначала загорелось в кухне",
+      "after": "пожар начался на кухне",
+      "reason": "translation"
+    },
+    {
+      "word": "start",
+      "path": "start.meanings[22].examples[0].ru",
+      "before": "примитесь-каза уборку комнаты",
+      "after": "приступите к уборке комнаты",
+      "reason": "OCR"
+    },
+    {
+      "word": "start",
+      "path": "start.meanings[22].translation",
+      "before": "расходиться (о шве)",
+      "after": "начинать; приниматься; отправляться",
+      "reason": "mixed phrasal senses"
+    },
+    {
+      "word": "anything",
+      "path": "anything.meanings[1].examples[3].ru",
+      "before": "это далеко не ясно далеко не",
+      "after": "это отнюдь не ясно",
+      "reason": "OCR"
+    },
+    {
+      "word": "today",
+      "path": "today.meanings[2].translation",
+      "before": "сегодняшний день",
+      "after": "современность; наше время",
+      "reason": "writers of today"
+    },
+    {
+      "word": "change",
+      "path": "change.meanings[16].translation",
+      "before": "переходить в новую фазу (о Луне)",
+      "after": "переключать передачу вверх/вниз",
+      "reason": "change up/down"
+    },
+    {
+      "word": "change",
+      "path": "change.meanings[17].translation",
+      "before": "скисать, прокисать; портиться",
+      "after": "переключать на повышенную передачу; переключать на пониженную передачу",
+      "reason": "change up/down"
+    },
+    {
+      "word": "making",
+      "path": "making.phrases[0].phrase",
+      "before": "to be the making",
+      "after": "to be the making of somebody/something",
+      "reason": "complete phrase"
+    },
+    {
+      "word": "making",
+      "path": "making.phrases[0].translation",
+      "before": "содействовать успеху",
+      "after": "составлять основу успеха; обеспечить успех кого-либо/чего-либо",
+      "reason": "complete phrase"
+    },
+    {
+      "word": "read",
+      "path": "read.phrases[3].translation",
+      "before": "читать между ок",
+      "after": "читать между строк",
+      "reason": "OCR"
+    },
+    {
+      "word": "once",
+      "path": "once.meanings[1].examples[0].ru",
+      "before": "жилбыл (начало сказок)",
+      "after": "жил-был; однажды, давным-давно",
+      "reason": "OCR"
+    },
+    {
+      "word": "tell",
+      "path": "tell.meanings[1].examples[1].en",
+      "before": "to tell goodbye",
+      "after": "to say goodbye",
+      "reason": "collocation"
+    },
+    {
+      "word": "support",
+      "path": "support.meanings[0].examples[0].ru",
+      "before": "в подтверждение",
+      "after": "в поддержку; в пользу; для поддержки",
+      "reason": "translation"
+    },
+    {
+      "word": "line",
+      "path": "line.meanings[0].examples[0].ru",
+      "before": "контур и тона рисунка",
+      "after": "контур и цвет рисунка",
+      "reason": "line and colour"
+    },
+    {
+      "word": "line",
+      "path": "line.meanings[18].examples[0].ru",
+      "before": "актёрское амплуа",
+      "after": "род деятельности; сфера деятельности",
+      "reason": "line of business"
+    },
+    {
+      "word": "though",
+      "path": "though.meanings[2].examples[0].ru",
+      "before": "он сказал, что придёт, не пришёл однако",
+      "after": "он сказал, что придёт, но всё-таки не пришёл",
+      "reason": "sentence-final though"
+    },
+    {
+      "word": "account",
+      "path": "account.meanings[2].examples[4].ru",
+      "before": "рассчитывать на что-либо принимать что-либо в расчёт",
+      "after": "рассчитывать на что-либо; принимать что-либо в расчёт",
+      "reason": "punctuation"
+    },
+    {
+      "word": "per",
+      "path": "per.meanings[2].examples[2].en",
+      "before": "60 miles per hour 60",
+      "after": "60 miles per hour",
+      "reason": "OCR tail"
+    },
+    {
+      "word": "per",
+      "path": "per.meanings[3].examples[1].en",
+      "before": "per contra [pa'knntra]",
+      "after": "per contra",
+      "reason": "remove OCR pronunciation"
+    },
+    {
+      "word": "hope",
+      "path": "hope.meanings[1].translation",
+      "before": "надеяться (в пользу / за)",
+      "after": "надеяться; надеяться на",
+      "reason": "hope"
+    },
+    {
+      "word": "least",
+      "path": "least.meanings[1].examples[1].ru",
+      "before": "наиболее обездоленные слои общества",
+      "after": "наименее привилегированные слои населения",
+      "reason": "least privileged"
+    },
+    {
+      "word": "means",
+      "path": "means.meanings[0].examples[8].ru",
+      "before": "это отнюдь не дёшево любой ценой конечно, пожалуйста; ни в коем случае нисколько, отнюдь не",
+      "after": "это отнюдь не дёшево",
+      "reason": "OCR concatenation"
+    },
+    {
+      "word": "early",
+      "path": "early.meanings[1].examples[0].ru",
+      "before": "ранняя пташка",
+      "after": "кто рано встаёт; ранняя пташка",
+      "reason": "early bird"
+    },
+    {
+      "word": "local",
+      "path": "local.meanings[8].translation",
+      "before": "при мн. ч.: =",
+      "after": "местные новости; местная хроника",
+      "reason": "local news"
+    },
+    {
+      "word": "head",
+      "path": "head.meanings[39].examples",
+      "before": [
+        {
+          "en": "head off",
+          "ru": "препятствовать"
+        },
+        {
+          "en": "head back",
+          "ru": "преграждать (путь); вернуться назад; мешать; преграждать (путь); отражать (нападение)"
+        }
+      ],
+      "after": [],
+      "reason": "misplaced phrasal examples"
+    },
+    {
+      "word": "try",
+      "path": "try.meanings[11].examples",
+      "before": [
+        {
+          "en": "it's no use trying it on with me",
+          "ru": "со мной этот номер не пройдёт"
+        },
+        {
+          "en": "try back",
+          "ru": "заметив ошибку, начать сначала"
+        }
+      ],
+      "after": [],
+      "reason": "misplaced phrasal examples"
+    },
+    {
+      "word": "full",
+      "path": "full.phrases[0].register",
+      "before": [
+        "разговорное",
+        "предикативное употребление"
+      ],
+      "after": [
+        "разговорное"
+      ],
+      "reason": "remove grammatical metadata"
+    },
+    {
+      "word": "story",
+      "path": "story.meanings[1].register",
+      "before": [
+        "историческое"
+      ],
+      "after": [],
+      "reason": "ordinary story sense"
+    },
+    {
+      "word": "within",
+      "path": "within.meanings[0].register",
+      "before": [
+        "коммерческое"
+      ],
+      "after": [],
+      "reason": "ordinary within"
+    }
+  ],
+  "deferred": [
+    {
+      "word": "live",
+      "before": "репортаж с места событий",
+      "reason": "live program",
+      "matches": 0
+    },
+    {
+      "word": "away",
+      "before": {
+        "en": "away off",
+        "ru": "далеко",
+        "register": [
+          "американизм"
+        ]
+      },
+      "reason": "duplicate phrase example",
+      "matches": 0
+    }
+  ],
+  "before_sha256": "e289e602de3e543242eda67ee6721622084bcd229d47a2662b14aecf90292fef",
+  "after_sha256": "05f075ae6658c6392863dc052d2690d0a4be7bcd630bcda555dcf670adac7259"
+}

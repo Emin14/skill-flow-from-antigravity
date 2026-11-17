@@ -1,0 +1,146 @@
+{
+  "scope": "frequency_rank_601_800_focused_recheck",
+  "applied_count": 15,
+  "changes": [
+    {
+      "word": "eat",
+      "path": "meanings[0].examples[0].ru",
+      "before": "иметь хороший аппетит иметь приятный вкус",
+      "after": "иметь хороший аппетит; иметь приятный вкус",
+      "reason": "separate coordinated source translations"
+    },
+    {
+      "word": "green",
+      "path": "meanings[0].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "source green I begins as adjective"
+    },
+    {
+      "word": "picture",
+      "path": "meanings[0].register",
+      "before": [
+        "карточный термин"
+      ],
+      "after": [],
+      "reason": "remove neighboring picture card register contamination"
+    },
+    {
+      "word": "fear",
+      "path": "meanings[0].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "fear",
+      "path": "meanings[1].register",
+      "before": [
+        "разговорное"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "listen",
+      "path": "meanings[0].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "listen",
+      "path": "meanings[2].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "simple",
+      "path": "meanings[0].register",
+      "before": [
+        "просодия"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "simple",
+      "path": "meanings[4].register",
+      "before": [
+        "просодия"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "simple",
+      "path": "meanings[6].register",
+      "before": [
+        "просодия"
+      ],
+      "after": [],
+      "reason": "remove unsupported register"
+    },
+    {
+      "word": "listen",
+      "path": "phrases[0].register",
+      "before": [
+        "военное дело"
+      ],
+      "after": [
+        "военное"
+      ],
+      "reason": "normalize source military register"
+    },
+    {
+      "word": "loss",
+      "path": "meanings[2].register",
+      "before": [
+        "военное",
+        "британское"
+      ],
+      "after": [
+        "военное"
+      ],
+      "reason": "remove unsupported British register"
+    },
+    {
+      "word": "effect",
+      "path": "meanings[3].examples[1].ru",
+      "before": "вступающий в",
+      "after": "вступающий в силу с сегодняшнего дня",
+      "reason": "restore truncated source translation"
+    },
+    {
+      "word": "funny",
+      "path": "meanings[1].register",
+      "before": [
+        "разговорное",
+        "строительное"
+      ],
+      "after": [
+        "разговорное"
+      ],
+      "reason": "remove unsupported construction register"
+    },
+    {
+      "word": "peace",
+      "path": "meanings[3].examples[4].ru",
+      "before": "мириться с кем-либо мирить(ся)",
+      "after": "мириться с кем-либо; мирить(ся)",
+      "reason": "separate coordinated source translations"
+    }
+  ],
+  "deferred": [
+    "whatever/drive/eat structural remainder; tax register scope; size/match/league homonyms; fast/stand; written/election/pick/race/sign/cry/bed; duplicate storage; deep/mark/sleep/build; rock/speak/write/cold/effect remaining omitted senses; eight/except/eye/store"
+  ],
+  "before_sha256": "7bfabdc49c065eb8cc88628dc8a7be6e6296a1a751999e01cf597fe317e27f17",
+  "after_sha256": "ba204b263e7200167562fab1d41370c05844e78ffd962cb0cad5287a96e04a81"
+}

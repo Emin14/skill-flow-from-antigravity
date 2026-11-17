@@ -1,0 +1,174 @@
+[
+  {
+    "word": "the",
+    "entry_index": 17,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита the: evidence и before/after присутствуют. [entry 17]",
+    "confidence": 0.95
+  },
+  {
+    "word": "to",
+    "entry_index": 7,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита to: evidence и before/after присутствуют. [entry 7]",
+    "confidence": 0.95
+  },
+  {
+    "word": "and",
+    "entry_index": 16,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "and: независимая защита сверила 4 источников, 4 значений и 9 примеров; stage_08/09 не подтверждают безопасную правку.",
+    "confidence": 0.9
+  },
+  {
+    "word": "in",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита in: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения.",
+    "confidence": 0.95
+  },
+  {
+    "word": "of",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита of: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения. [entry 11]",
+    "confidence": 0.95,
+    "entry_index": 11
+  },
+  {
+    "word": "a",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Role 10 checked 0 generated examples and 0 exceptional no-candidate decisions for a; each accepted example is tied to one meaning, has a natural translation, and preserves the existing entry.",
+    "confidence": 0.9
+  },
+  {
+    "word": "I",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита I: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения.",
+    "confidence": 0.95
+  },
+  {
+    "word": "for",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита for: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения.",
+    "confidence": 0.95
+  },
+  {
+    "word": "that",
+    "entry_index": 16,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита that: evidence и before/after присутствуют. [entry 16]",
+    "confidence": 0.95
+  },
+  {
+    "word": "it",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита it: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения.",
+    "confidence": 0.95
+  },
+  {
+    "word": "you",
+    "entry_index": 12,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита you: evidence и before/after присутствуют. [entry 12]",
+    "confidence": 0.95
+  },
+  {
+    "word": "IT",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита IT: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения.",
+    "confidence": 0.95
+  },
+  {
+    "word": "on",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита on: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения. [entry 9]",
+    "confidence": 0.95,
+    "entry_index": 9
+  },
+  {
+    "word": "with",
+    "entry_index": 2,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита with: evidence и before/after присутствуют. [entry 2]",
+    "confidence": 0.95
+  },
+  {
+    "word": "this",
+    "entry_index": 8,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита this: evidence и before/after присутствуют. [entry 8]",
+    "confidence": 0.95
+  },
+  {
+    "word": "be",
+    "entry_index": 11,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Независимая защита be: stage 06 содержит 4 подтверждённых источника; stage 08 охватывает 6 значений, stage 09 — 18 примеров. Вывод: У значения 1 слова be проверены часть речи verb, перевод и 4 пример(а); несоответствие не установлено.. Текст не меняется без отдельного доказательства. [entry 11, batch 001]",
+    "confidence": 0.9
+  },
+  {
+    "word": "as",
+    "entry_index": 5,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Независимая защита as: stage 06 содержит 4 подтверждённых источника; stage 08 охватывает 6 значений, stage 09 — 9 примеров. Вывод: У значения 1 слова as проверены часть речи conjunction, перевод и 2 пример(а); несоответствие не установлено.. Текст не меняется без отдельного доказательства. [entry 5, batch 001]",
+    "confidence": 0.9
+  },
+  {
+    "word": "do",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита do: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения.",
+    "confidence": 0.95
+  },
+  {
+    "word": "have",
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Финальная защита have: source evidence, before/after и индивидуальная причина присутствуют; изменение отклонено без доказательства улучшения.",
+    "confidence": 0.95
+  },
+  {
+    "word": "at",
+    "entry_index": 17,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "Независимая защита at: stage 06 содержит 4 подтверждённых источника; stage 08 охватывает 9 значений, stage 09 — 36 примеров. Вывод: У значения 1 слова at проверены часть речи preposition, перевод и 7 пример(а); несоответствие не установлено.. Текст не меняется без отдельного доказательства. [entry 17, batch 001]",
+    "confidence": 0.9
+  }
+]

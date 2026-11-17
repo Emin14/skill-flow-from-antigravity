@@ -1,0 +1,98 @@
+{
+  "scope": "frequency_rank_601_800_final_focused_recheck",
+  "applied_count": 11,
+  "changes": [
+    {
+      "word": "whatever",
+      "path": "meanings[1].translation",
+      "before": "чтобы ни; чтобы там ни говорили..",
+      "after": "что бы ни; что бы там ни говорили...",
+      "reason": "repair source-confirmed translation and punctuation"
+    },
+    {
+      "word": "tax",
+      "path": "meanings[0].register",
+      "before": [
+        "американский английский"
+      ],
+      "after": [],
+      "reason": "remove register from broad noun meaning; source scopes American label to nuisance tax example"
+    },
+    {
+      "word": "tax",
+      "path": "meanings[3].register",
+      "before": [
+        "коммерческое"
+      ],
+      "after": [],
+      "reason": "remove unsupported commercial register"
+    },
+    {
+      "word": "stand",
+      "path": "meanings[17].examples[6].ru",
+      "before": "в этом году цены на кукурузу высокие",
+      "after": "в этом году кукуруза стоит высоко",
+      "reason": "restore source construction translation"
+    },
+    {
+      "word": "complete",
+      "path": "meanings[2].translation",
+      "before": "полный, заполненный",
+      "after": "см. completely",
+      "reason": "restore source cross-reference"
+    },
+    {
+      "word": "pick",
+      "path": "meanings[11].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "restore pick II verb sense"
+    },
+    {
+      "word": "pick",
+      "path": "meanings[11].register",
+      "before": [
+        "искусство"
+      ],
+      "after": [],
+      "reason": "remove unsupported art register"
+    },
+    {
+      "word": "pick",
+      "path": "meanings[14].translation",
+      "before": "клевать (о птицах)",
+      "after": "клевать (зёрна)",
+      "reason": "restore source wording"
+    },
+    {
+      "word": "pick",
+      "path": "meanings[14].register",
+      "before": [
+        "радио"
+      ],
+      "after": [],
+      "reason": "remove unsupported radio register"
+    },
+    {
+      "word": "race",
+      "path": "meanings[4].register",
+      "before": [
+        "искусство"
+      ],
+      "after": [],
+      "reason": "remove unsupported art register"
+    },
+    {
+      "word": "race",
+      "path": "phrases[2].partOfSpeech",
+      "before": "verb",
+      "after": "noun",
+      "reason": "the Mongoloid race is a noun phrase"
+    }
+  ],
+  "deferred": [
+    "whatever grammatical-label example; drive/eat structure; size/match/fast/league/stand remainder; written/election; sign/cry/bed optional or structural coverage; deep/mark/sleep/build; rock/speak/write/cold/eight/except/eye/store; duplicate storage policy"
+  ],
+  "before_sha256": "ba204b263e7200167562fab1d41370c05844e78ffd962cb0cad5287a96e04a81",
+  "after_sha256": "5dbc8f3c34273efc95d71f0c37dadab1624369dbfb96edbb477377fef1104a7f"
+}

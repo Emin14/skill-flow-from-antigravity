@@ -1,0 +1,601 @@
+[
+  {
+    "word": "here",
+    "meaning_index": 0,
+    "before_meaning": {
+      "id": 1,
+      "partOfSpeech": "adverb",
+      "translation": "здесь, тут; разбросанно",
+      "examples": [
+        {
+          "en": "here and there",
+          "ru": "там и сям"
+        },
+        {
+          "en": "here, there and everywhere",
+          "ru": "повсюду"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "after_meaning": {
+      "id": 1,
+      "partOfSpeech": "adverb",
+      "translation": "здесь, тут; в сочетании here and there — там и сям, разбросанно",
+      "examples": [
+        {
+          "en": "here and there",
+          "ru": "там и сям"
+        },
+        {
+          "en": "here, there and everywhere",
+          "ru": "повсюду"
+        }
+      ],
+      "register": [],
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "21fc4e3528367d7c9b72ee187d2a80577adb17a65025ed35325b5756b8f4c386",
+    "candidate_sha256": null
+  },
+  {
+    "word": "being",
+    "meaning_index": 0,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "бытие, существование, жизнь; существующий",
+      "examples": [
+        {
+          "en": "social being determines consciousness",
+          "ru": "филос. бытие определяет сознание"
+        },
+        {
+          "en": "in being",
+          "ru": "живущий"
+        },
+        {
+          "en": "to call into being",
+          "ru": "взывать к жизни, создать"
+        },
+        {
+          "en": "to come into being",
+          "ru": "возникнуть, появиться"
+        }
+      ],
+      "register": [],
+      "id": 1,
+      "primary": true
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "бытие, существование, жизнь; в сочетании in being — живущий, существующий",
+      "examples": [
+        {
+          "en": "social being determines consciousness",
+          "ru": "филос. бытие определяет сознание"
+        },
+        {
+          "en": "in being",
+          "ru": "живущий"
+        },
+        {
+          "en": "to call into being",
+          "ru": "взывать к жизни, создать"
+        },
+        {
+          "en": "to come into being",
+          "ru": "возникнуть, появиться"
+        }
+      ],
+      "register": [],
+      "id": 1,
+      "primary": true
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "8bfe000526fa5d7904f701c6dca44a192866e6bc559e0614533735b3893b3fe6",
+    "candidate_sha256": null
+  },
+  {
+    "word": "still",
+    "meaning_index": 5,
+    "before_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "рекламный кадр",
+      "examples": [],
+      "register": [],
+      "id": 6
+    },
+    "after_meaning": {
+      "partOfSpeech": "noun",
+      "translation": "рекламный кадр (фотоснимок для рекламы фильма)",
+      "examples": [
+        {
+          "en": "The studio released a publicity still before the film opened.",
+          "ru": "Студия опубликовала рекламный кадр до выхода фильма."
+        }
+      ],
+      "register": [
+        "кинематография"
+      ],
+      "id": 6
+    },
+    "decision": "изменить",
+    "meaning_review_sha256": "f4a9966cd0d95410c11451dbe0e58b12b6a960f4cd226c3447d600e51896c992",
+    "candidate_sha256": "4d349ba3da90a6def58c08adbb811d076698c5accfef3c0c4c9faf99ae14ab3c"
+  },
+  {
+    "word": "really",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "The room really is warmer with the door closed.",
+      "ru": "С закрытой дверью в комнате действительно теплее."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "8758ddfb649d769d9c395818432950041748a15a56cdc0f408afdc158e106caf"
+  },
+  {
+    "word": "right",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "I'll bring you a clean towel right away.",
+      "ru": "Я сразу же принесу вам чистое полотенце."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "5f0b3a3a5a88924343d7a711067ff789b7e63e53faf1ca980611d3165fa2c0d9"
+  },
+  {
+    "word": "right",
+    "meaning_index": 19,
+    "before_examples": [],
+    "after_example": {
+      "en": "The right gained seats in the local elections.",
+      "ru": "Правые получили дополнительные места на местных выборах."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "19976c8b484b1aca09f0170d2327ed40e4c9e406b9a8ae810fcd8e1279275f9a"
+  },
+  {
+    "word": "right",
+    "meaning_index": 20,
+    "before_examples": [],
+    "after_example": {
+      "en": "My right knee hurts when I climb stairs.",
+      "ru": "У меня болит правое колено, когда я поднимаюсь по лестнице."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "9e843360b88a61c4097fca696c27c09d075ff212fe87a34db431471ba957ec8f"
+  },
+  {
+    "word": "right",
+    "meaning_index": 21,
+    "before_examples": [],
+    "after_example": {
+      "en": "Pin the two pieces with the right sides together.",
+      "ru": "Сколите две детали булавками, сложив их лицевыми сторонами друг к другу."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "b37f6e5f9903691cfac4424603a9baeeea74d794b43a0033cd4ccacdf180d604"
+  },
+  {
+    "word": "right",
+    "meaning_index": 22,
+    "before_examples": [],
+    "after_example": {
+      "en": "Her views on taxes are right of center.",
+      "ru": "Её взгляды на налоги правее центра."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "57bb7280b153e0567d3279147ee1ca5234652ce02c6d4c95a9cddf520febf2be"
+  },
+  {
+    "word": "work",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "The road is closed while the drainage works are under way.",
+      "ru": "Дорога закрыта, пока идут работы по устройству водоотвода."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "c6e68ce1a631d2209cbe8c56d634f257dd330af3b1ec88763f78d3a737e110a6"
+  },
+  {
+    "word": "work",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "The fort's outer defensive works included a ditch and an earthen bank.",
+      "ru": "Внешние укрепления форта включали ров и земляной вал."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "3459944d06a09cc5ad77d7fb0e4dd7b73b5d4179fcd310ef71d201fa7183e26f"
+  },
+  {
+    "word": "work",
+    "meaning_index": 14,
+    "before_examples": [],
+    "after_example": {
+      "en": "I work in public health.",
+      "ru": "Я работаю в сфере общественного здравоохранения."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "0af92a4fbf4809a0c217c64326a6a5ea031f92d557bd34a875e4c885a561a950"
+  },
+  {
+    "word": "work",
+    "meaning_index": 20,
+    "before_examples": [],
+    "after_example": {
+      "en": "Work the dough with your hands until it feels smooth.",
+      "ru": "Месите тесто руками, пока оно не станет гладким на ощупь."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "5a3d5ff0539f7bc3e412d92ed465301f549df7e97b0bf32d09cc02830dd649bb"
+  },
+  {
+    "word": "work",
+    "meaning_index": 24,
+    "before_examples": [],
+    "after_example": {
+      "en": "Let's work the first problem together before you try the rest.",
+      "ru": "Давайте вместе решим первую задачу, а потом вы попробуете решить остальные."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "1f5c2e5a85e30c922bfa055b7e6f08c0ce8b3cbefc13e50f8e784cf2aff98d85"
+  },
+  {
+    "word": "work",
+    "meaning_index": 26,
+    "before_examples": [],
+    "after_example": {
+      "en": "She works in cross-stitch, making small pictures on linen.",
+      "ru": "Она вышивает крестиком небольшие картинки на льне."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "5271c7b71d14b421591429099a2c3142252a2197d445c16d350ea5f15eebc4d8"
+  },
+  {
+    "word": "before",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "Check that the window is closed before you leave.",
+      "ru": "Проверьте, закрыто ли окно, прежде чем уйти."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "67425174e4bc712839c407636c42acc3dec9c338402aa837c18578f13356800a"
+  },
+  {
+    "word": "off",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "They found the missing key, so you're off the hook.",
+      "ru": "Они нашли пропавший ключ, так что тебе больше не придётся за это отвечать."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "965e3bacf2ce93961f680a0c1b167c58aa987b2470a16cb16f54f4785d99275c"
+  },
+  {
+    "word": "off",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "Take your muddy boots off at the door.",
+      "ru": "Снимите грязные сапоги у двери."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "b8d2af7b3161c9eead3ee47281529d73018f7e1c50293ea5a5620ac6e35549a5"
+  },
+  {
+    "word": "off",
+    "meaning_index": 19,
+    "before_examples": [],
+    "after_example": {
+      "en": "We usually grow plenty of apples, but this was an off year.",
+      "ru": "Обычно у нас много яблок, но этот год был неурожайным."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "da1ba7b6b7226462fbf0c0374b991586fc6c043f7bf31950510230f6cd5d4b1d"
+  },
+  {
+    "word": "still",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "I'd like a still white wine, please.",
+      "ru": "Мне, пожалуйста, белое неигристое вино."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "ee1ab262df07b6eb64048ffe10e47103858194cdb7536c000c31915c9f285532"
+  },
+  {
+    "word": "still",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "The article included a still from the final scene.",
+      "ru": "В статье был кадр из финальной сцены."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "07bca3c12070547fdb47d2dfaff589d9d52f619461274cf853fb7358a4165b8a"
+  },
+  {
+    "word": "still",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "Is the café still open?",
+      "ru": "Кафе ещё открыто?"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "dd8c91697143aa7b85ace7b381eb99620d70e843571ab22f4b665f22d475166f"
+  },
+  {
+    "word": "still",
+    "meaning_index": 11,
+    "before_examples": [],
+    "after_example": {
+      "en": "It was raining. Still, we decided to walk.",
+      "ru": "Шёл дождь. И всё же мы решили пойти пешком."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "558c35e5147242092c2787b05aa646fdac7afb5674a0967826b85c9d0dca6026"
+  },
+  {
+    "word": "still",
+    "meaning_index": 13,
+    "before_examples": [],
+    "after_example": {
+      "en": "The guide showed us the copper still used to make the gin.",
+      "ru": "Экскурсовод показал нам медный перегонный аппарат, в котором делают джин."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "18d59764d862cfb571efad096e9a03a8cfa1bcf9b38525993615b5a1581799d2"
+  },
+  {
+    "word": "take",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "She took my hand as we crossed the street.",
+      "ru": "Она взяла меня за руку, когда мы переходили улицу."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "9d012cfe22eca31064aafc04c960ab45a1b6b43410a4190e171f7ea17693b61b"
+  },
+  {
+    "word": "take",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "We took a flat for the summer and paid the rent in advance.",
+      "ru": "Мы сняли квартиру на лето и заплатили за неё заранее."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "43148c33b5802bb00c5918591332cee81f6b59c750435f401dc493a00c216085"
+  },
+  {
+    "word": "take",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "Do you still take the Sunday paper?",
+      "ru": "Вы всё ещё выписываете воскресную газету?"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "b0777b1e90c44d9ce9d685e2190ef0e529fa39ba263a06a4148c8fe7c8e0be24"
+  },
+  {
+    "word": "take",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "The bus ride takes forty minutes.",
+      "ru": "Поездка на автобусе занимает сорок минут."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "fe19c553c1b41e1de3f993c8c02cfbc8927d99ff027591e34b099ebc1e48e0be"
+  },
+  {
+    "word": "take",
+    "meaning_index": 15,
+    "before_examples": [],
+    "after_example": {
+      "en": "If you take three from ten, you get seven.",
+      "ru": "Если из десяти вычесть три, получится семь."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "014ecfbbc195f4bedc7d02fca10507b32e34ee68d4737b90421adc15fb52c96f"
+  },
+  {
+    "word": "take",
+    "meaning_index": 17,
+    "before_examples": [],
+    "after_example": {
+      "en": "Could you take a picture of us by the lake?",
+      "ru": "Вы не могли бы нас сфотографировать у озера?"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "32be85e8602e623cac74008b76201fdffcb36aa6f665cd4a356c8337be784fb0"
+  },
+  {
+    "word": "take",
+    "meaning_index": 20,
+    "before_examples": [],
+    "after_example": {
+      "en": "We were quite taken with the little cottage by the sea.",
+      "ru": "Нас очень очаровал маленький домик у моря."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "d472f9b4f3f554d9c47d5a889b39eac875cdb5b4a7d670396a0f4d40965887f4"
+  },
+  {
+    "word": "take",
+    "meaning_index": 21,
+    "before_examples": [],
+    "after_example": {
+      "en": "Owls sometimes take small birds as well as mice.",
+      "ru": "Совы иногда ловят мелких птиц, а не только мышей."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "2b6063f270efc35c524eaf19662389883563c357d4384cffaa8152f466e7ab67"
+  },
+  {
+    "word": "take",
+    "meaning_index": 25,
+    "before_examples": [],
+    "after_example": {
+      "en": "This cotton takes dye evenly.",
+      "ru": "Эта хлопчатобумажная ткань окрашивается равномерно."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "726f2a0a7eec89430e7354dac036171702a734a82c3973c9ededcd8094fdf57e"
+  },
+  {
+    "word": "take",
+    "meaning_index": 30,
+    "before_examples": [],
+    "after_example": {
+      "en": "The director kept the second take of the scene.",
+      "ru": "Режиссёр оставил второй дубль этой сцены."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "a6fdf028faa6de604e11404a8a07ea137173feb320253abf8e399412826ff978"
+  },
+  {
+    "word": "take",
+    "meaning_index": 31,
+    "before_examples": [],
+    "after_example": {
+      "en": "The theatre's box office take doubled after the new musical opened.",
+      "ru": "Кассовые сборы театра удвоились после премьеры нового мюзикла."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "249188d6520c6875c7f99238b4a30286f25654dea57980a3215faeca9e9388c8"
+  },
+  {
+    "word": "take",
+    "meaning_index": 32,
+    "before_examples": [],
+    "after_example": {
+      "en": "After the market closed, the stallholders counted the day's take.",
+      "ru": "После закрытия рынка продавцы пересчитали дневную выручку."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "bf7d246735ac436c621cf5ef64d8ad6ab367e040319fdbf445efb09c5fc7232e"
+  },
+  {
+    "word": "call",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "I heard a call from the kitchen: “Dinner's ready!”",
+      "ru": "Я услышал оклик из кухни: «Ужин готов!»"
+    },
+    "decision": "изменить",
+    "candidate_sha256": "12a4e0a2f6da12caa46ec2bdb89d3d961edeedbfc15f1d8a6aa26f8be75d1582"
+  },
+  {
+    "word": "call",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "We heard the call of an owl in the woods.",
+      "ru": "В лесу мы услышали крик совы."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "a7ba3e2c9208d8e98603205190452d2d3722f2b851e6d9858b58c39cde49f4f1"
+  },
+  {
+    "word": "call",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "The hunter blew into a duck call to lure the birds closer.",
+      "ru": "Охотник подул в утиный манок, чтобы подозвать птиц поближе."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "180aacc7aa8fc0f675a7f99cf0649a6ca1b06734e6328395ca9fb22122b8cd58"
+  },
+  {
+    "word": "call",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "A bugle call signalled the start of the ceremony.",
+      "ru": "Сигнал горна возвестил о начале церемонии."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "c2d80d54ae01cdeb61e8e61e7148e6dc8c44b8e871b6ce1b0f6ba5b76b1768d3"
+  },
+  {
+    "word": "call",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "I missed your call because my phone was on silent.",
+      "ru": "Я пропустил твой звонок, потому что телефон был в беззвучном режиме."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "af8f371d6005c1a99b518acb693c1488a1eb979d52b5a4a08130ebe94edb682a"
+  },
+  {
+    "word": "call",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "The doctor was out on a call to see a patient at home.",
+      "ru": "Врач уехал по вызову к пациенту на дом."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "a131cab2027f52d7ae551b90e96ec5eaa1bc12594efafb5e952459f071e4f486"
+  },
+  {
+    "word": "call",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "The mayor issued a call for volunteers to clear the park.",
+      "ru": "Мэр призвал добровольцев помочь расчистить парк."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "a2992d6b2a02abfcfc95eb552351f9600a117516e4a3738802394df74c92eddb"
+  },
+  {
+    "word": "call",
+    "meaning_index": 11,
+    "before_examples": [],
+    "after_example": {
+      "en": "She bought a call that lets her buy the shares at a fixed price.",
+      "ru": "Она купила колл-опцион, который даёт ей право купить акции по фиксированной цене."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "2bb9857dacaa79bdc9bd8a119f4515e56d879a93d4d18b2d2f4ef0f0ec7e6118"
+  },
+  {
+    "word": "make-up",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "Patience has always been part of her make-up.",
+      "ru": "Терпение всегда было частью её характера."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "11ebdf18e1911105e8d3f74ab15bb0e58e12789ebce503855cedd398fe57f1bf"
+  },
+  {
+    "word": "make-up",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "The make-up of the team changed when two designers joined.",
+      "ru": "Состав команды изменился, когда к ней присоединились два дизайнера."
+    },
+    "decision": "изменить",
+    "candidate_sha256": "ec6a0467c940693e177552326c839cfaf20ae952989ffecfcc0a721b17bd9269"
+  }
+]

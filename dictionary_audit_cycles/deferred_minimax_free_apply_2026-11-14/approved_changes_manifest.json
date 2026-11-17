@@ -1,0 +1,166 @@
+{
+  "scope": "deferred_minimax_free_apply_2026-11-14",
+  "applied_count": 13,
+  "changes": [
+    {
+      "word": "give",
+      "path": "meanings[19].examples",
+      "before": {
+        "en": "to give away the bride",
+        "ru": "быть посажёным отцом"
+      },
+      "after": null,
+      "reason": "remove phrasal-verb contamination from toast meaning",
+      "origin": "destination: give.phrases or new give phrase"
+    },
+    {
+      "word": "give",
+      "path": "meanings[19].examples",
+      "before": {
+        "en": "give back",
+        "ru": "возвращать, отдавать"
+      },
+      "after": null,
+      "reason": "remove phrasal-verb contamination from toast meaning",
+      "origin": "destination: give.phrases or new give phrase"
+    },
+    {
+      "word": "give",
+      "path": "meanings[19].examples",
+      "before": {
+        "en": "give off",
+        "ru": "выделять, испускать"
+      },
+      "after": null,
+      "reason": "remove phrasal-verb contamination from toast meaning",
+      "origin": "destination: give.phrases or new give phrase"
+    },
+    {
+      "word": "give",
+      "path": "meanings[19].examples",
+      "before": {
+        "en": "give under",
+        "ru": "не выдержать"
+      },
+      "after": null,
+      "reason": "remove phrasal-verb contamination from toast meaning",
+      "origin": "destination: give.phrases or new give phrase"
+    },
+    {
+      "word": "give",
+      "path": "meanings[19].examples",
+      "before": {
+        "en": "he is given up by the doctors",
+        "ru": "он признан врачами безнадёжным"
+      },
+      "after": null,
+      "reason": "remove phrasal-verb contamination from toast meaning",
+      "origin": "destination: give.phrases or new give phrase"
+    },
+    {
+      "word": "give",
+      "path": "meanings[19].examples",
+      "before": {
+        "en": "to give oneself up to smth.",
+        "ru": "предаваться, отдаваться чему-либо"
+      },
+      "after": null,
+      "reason": "remove phrasal-verb contamination from toast meaning",
+      "origin": "destination: give.phrases or new give phrase"
+    },
+    {
+      "word": "give",
+      "path": "meanings[19].examples",
+      "before": {
+        "en": "give away",
+        "ru": "отдавать; дарить; раздавать (призы); выдавать, проговариваться; обнаруживать; подводить; предавать; отплатить (за обиду)"
+      },
+      "after": null,
+      "reason": "remove phrasal-verb contamination from toast meaning",
+      "origin": "destination: give.phrases or new give phrase"
+    },
+    {
+      "word": "give",
+      "path": "phrases[new]",
+      "before": null,
+      "after": {
+        "id": 14,
+        "phrase": "to give oneself up to smth.",
+        "partOfSpeech": "verb",
+        "translation": "предаваться, отдаваться чему-либо",
+        "examples": [],
+        "register": []
+      },
+      "reason": "preserve contaminated construction in phrase inventory",
+      "origin": "origin: give.meanings[19].examples"
+    },
+    {
+      "word": "look",
+      "path": "meanings[3].examples[0]",
+      "before": {
+        "en": "look through",
+        "ru": "blue-coloured (rose-coloured) glasses видеть всё в непривлекательном (привлекательном) свете"
+      },
+      "after": {
+        "en": "to look through blue-coloured (rose-coloured) glasses",
+        "ru": "смотреть сквозь голубые (розовые) очки; видеть всё в непривлекательном (привлекательном) свете"
+      },
+      "reason": "repair contaminated source tail and restore complete construction",
+      "origin": "source: Muller look article"
+    },
+    {
+      "word": "show",
+      "path": "meanings[14].examples",
+      "before": {
+        "en": "show in",
+        "ru": "ввести, провести (в комнату)"
+      },
+      "after": null,
+      "reason": "move duplicate phrasal example to its phrase record",
+      "origin": "destination: show.phrases matching phrase"
+    },
+    {
+      "word": "show",
+      "path": "meanings[14].examples",
+      "before": {
+        "en": "show out",
+        "ru": "проводить, вывести (из комнаты)"
+      },
+      "after": null,
+      "reason": "move duplicate phrasal example to its phrase record",
+      "origin": "destination: show.phrases matching phrase"
+    },
+    {
+      "word": "show",
+      "path": "meanings[14].examples",
+      "before": {
+        "en": "show round",
+        "ru": "показывать (кому-либо город, музей)"
+      },
+      "after": null,
+      "reason": "move duplicate phrasal example to its phrase record",
+      "origin": "destination: show.phrases matching phrase"
+    },
+    {
+      "word": "show",
+      "path": "meanings[14].examples",
+      "before": {
+        "en": "show down",
+        "ru": "открыть карты"
+      },
+      "after": null,
+      "reason": "move duplicate phrasal example to its phrase record",
+      "origin": "destination: show.phrases matching phrase"
+    }
+  ],
+  "deferred_unverified": [
+    "down",
+    "love",
+    "home",
+    "long: MiniMax free model hit daily rate limit before producing findings",
+    "work/right/say/while: MiniMax OAuth failed; free-model recheck produced keep_current but not full exact-path evidence",
+    "found/must/team/name/part-time/long-time: no high-confidence repair established; structural/schema items remain review-only"
+  ],
+  "before_sha256": "b5b616574ce860577557e173f298cbf9d7a037425ec87f2fdc574acf5938a6b4",
+  "after_sha256": "9003a6d3c5c4e14047ac0034b1dcf1601dc213fd6db688b1f9307486c6cdd0a0"
+}

@@ -1,0 +1,1454 @@
+[
+  {
+    "word": "so",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "She whispered so that the baby would not wake.",
+      "ru": "Она прошептала, чтобы ребёнок не проснулся.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Связка so that явно выражает цель, соответствующую значению «чтобы»."
+  },
+  {
+    "word": "about",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "The children ran about in the garden.",
+      "ru": "Дети бегали по саду.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "About употреблено как наречие со значением движения вокруг/повсюду."
+  },
+  {
+    "word": "out",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "Our team played an out game in Bristol.",
+      "ru": "Наша команда играла выездной матч в Бристоле.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Out относится к матчу, который проходит на поле соперника."
+  },
+  {
+    "word": "out",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "They live in an out village near the border.",
+      "ru": "Они живут в отдалённой деревне у границы.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Out описывает удалённое от центра место."
+  },
+  {
+    "word": "out",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "The out door leads to the garden.",
+      "ru": "Наружная дверь ведёт в сад.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Out используется в сочетании out door в значении «внешний»."
+  },
+  {
+    "word": "out",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "Please switch the printer out when you leave.",
+      "ru": "Пожалуйста, выключите принтер, когда будете уходить.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Out передаёт техническое состояние «выключенный»."
+  },
+  {
+    "word": "out",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "The out opposed the bill in Parliament.",
+      "ru": "Оппозиция выступила против законопроекта в парламенте.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Out употреблено как существительное в парламентском значении оппозиции."
+  },
+  {
+    "word": "out",
+    "meaning_index": 13,
+    "before_examples": [],
+    "after_example": {
+      "en": "There is an out in the printed paragraph.",
+      "ru": "В напечатанном абзаце есть пропуск.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Out обозначает пропуск в печатном тексте."
+  },
+  {
+    "word": "out",
+    "meaning_index": 14,
+    "before_examples": [],
+    "after_example": {
+      "en": "The plan has one out: it costs too much.",
+      "ru": "У этого плана есть один недостаток: он слишком дорогой.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Out употреблено разговорно как существительное «недостаток»."
+  },
+  {
+    "word": "more",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "We need more chairs for the guests.",
+      "ru": "Нам нужно больше стульев для гостей.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "More определяет исчисляемое существительное и означает большее количество."
+  },
+  {
+    "word": "more",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "She smiled more after the good news.",
+      "ru": "После хороших новостей она стала больше улыбаться.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "More относится к действию и означает «в большей степени»."
+  },
+  {
+    "word": "more",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "Would you like some more?",
+      "ru": "Хотите ещё?",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "More употреблено самостоятельно как существительное, обозначая дополнительное количество."
+  },
+  {
+    "word": "up",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "The recent tax up was unpopular.",
+      "ru": "Недавнее повышение налога было непопулярным.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Up используется как существительное в значении повышения."
+  },
+  {
+    "word": "who",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "Who, as one might say, could predict that?",
+      "ru": "Кто, как можно было бы сказать, мог это предвидеть?",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Оборот as one might say передаёт указанную вводную формулу."
+  },
+  {
+    "word": "time",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "The pub closes at time.",
+      "ru": "Паб закрывается в установленное время закрытия.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Time обозначает время закрытия паба в контексте объявления."
+  },
+  {
+    "word": "time",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "The time signal starts at noon.",
+      "ru": "Сигнал, относящийся к определённому времени, начинается в полдень.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Time выступает определением со значением отношения ко времени."
+  },
+  {
+    "word": "time",
+    "meaning_index": 11,
+    "before_examples": [],
+    "after_example": {
+      "en": "The workers receive time pay.",
+      "ru": "Рабочие получают повременную оплату.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Time в составе time pay обозначает повременный способ оплаты."
+  },
+  {
+    "word": "time",
+    "meaning_index": 14,
+    "before_examples": [],
+    "after_example": {
+      "en": "The runner timed ten seconds.",
+      "ru": "Бегун показал время десять секунд.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Timed употреблено в спортивном значении «показать время»."
+  },
+  {
+    "word": "time",
+    "meaning_index": 15,
+    "before_examples": [],
+    "after_example": {
+      "en": "They timed their steps to the music.",
+      "ru": "Они двигались в такт музыке.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Timed здесь означает делать движение в такт."
+  },
+  {
+    "word": "get",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "We must get the next train.",
+      "ru": "Нам нужно сесть на следующий поезд.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Get относится к посадке на поезд."
+  },
+  {
+    "word": "get",
+    "meaning_index": 14,
+    "before_examples": [],
+    "after_example": {
+      "en": "That constant noise really gets me.",
+      "ru": "Этот постоянный шум действительно меня раздражает.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Get употреблено разговорно в значении «надоедать, раздражать»."
+  },
+  {
+    "word": "get",
+    "meaning_index": 17,
+    "before_examples": [],
+    "after_example": {
+      "en": "The old ram got three lambs.",
+      "ru": "Старый баран произвёл на свет трёх ягнят.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Get описывает рождение потомства у животного."
+  },
+  {
+    "word": "get",
+    "meaning_index": 20,
+    "before_examples": [],
+    "after_example": {
+      "en": "Let us get to work.",
+      "ru": "Давайте начнём работать.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Get to обозначает начало действия."
+  },
+  {
+    "word": "get",
+    "meaning_index": 23,
+    "before_examples": [],
+    "after_example": {
+      "en": "The farmer sold the young get.",
+      "ru": "Фермер продал молодое потомство.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Get употреблено как существительное о приплоде животных."
+  },
+  {
+    "word": "get",
+    "meaning_index": 24,
+    "before_examples": [],
+    "after_example": {
+      "en": "Only a get would ignore that warning.",
+      "ru": "Только дурак проигнорировал бы это предупреждение.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Get употреблено как жаргонное существительное «дурак»."
+  },
+  {
+    "word": "new",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "I read a new report from last week.",
+      "ru": "Я прочитал недавний отчёт с прошлой недели.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "New обозначает недавнее происхождение отчёта."
+  },
+  {
+    "word": "new",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "They have new arrived at the station.",
+      "ru": "Они только что прибыли на станцию.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "New употреблено наречием со значением «недавно, только что»."
+  },
+  {
+    "word": "new",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "She painted the room new.",
+      "ru": "Она заново покрасила комнату.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "New обозначает выполнение действия заново."
+  },
+  {
+    "word": "people",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "The people elected a new leader.",
+      "ru": "Народ избрал нового лидера.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "People обозначает народ как политическое сообщество."
+  },
+  {
+    "word": "people",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "The actor arrived with his people.",
+      "ru": "Актёр приехал со своей свитой.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "People обозначает свиту или сопровождающих."
+  },
+  {
+    "word": "people",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "She is visiting her people this weekend.",
+      "ru": "В эти выходные она навещает родных.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Her people обозначает родных или родственников."
+  },
+  {
+    "word": "people",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "The people gathered after the service.",
+      "ru": "Прихожане собрались после службы.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "People обозначает прихожан в религиозном контексте."
+  },
+  {
+    "word": "people",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "The People v. Smith was heard in court.",
+      "ru": "Дело «Государство против Смита» слушалось в суде.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "People употреблено в юридическом названии обвиняющей стороны."
+  },
+  {
+    "word": "people",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "The workers people the remote station.",
+      "ru": "Рабочие заселяют удалённую станцию.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "People употреблено как глагол «заселять, населять»."
+  },
+  {
+    "word": "people",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "The town peoples quickly as new jobs appear.",
+      "ru": "Население города быстро растёт с появлением новых рабочих мест.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "People употреблено как глагол о росте населения."
+  },
+  {
+    "word": "also",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "She also speaks Spanish.",
+      "ru": "Она также говорит по-испански.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: тоже, также, к тому же."
+  },
+  {
+    "word": "now",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "I live in Moscow now.",
+      "ru": "Сейчас я живу в Москве.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: теперь, сейчас."
+  },
+  {
+    "word": "now",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "Come here now!",
+      "ru": "Иди сюда сейчас же!",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 2: тотчас же, сию же минуту."
+  },
+  {
+    "word": "now",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "The doctor is seeing her now.",
+      "ru": "Врач принимает её прямо сейчас.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 3: прямо сейчас, в настоящий момент, только что."
+  },
+  {
+    "word": "good",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "The good child always tells the truth.",
+      "ru": "Послушный ребёнок всегда говорит правду.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 5: послушный (о ребёнке)."
+  },
+  {
+    "word": "good",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "The bank considers him a good customer.",
+      "ru": "Банк считает его надёжным клиентом.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 9: надёжный, кредитоспособный."
+  },
+  {
+    "word": "good",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "These fields have good soil.",
+      "ru": "На этих полях плодородная почва.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 11: плодородный."
+  },
+  {
+    "word": "only",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "Only Maria knew the answer.",
+      "ru": "Только Мария знала ответ.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 2: только, исключительно; единственно."
+  },
+  {
+    "word": "after",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "The children ran after the dog, and he stayed after them.",
+      "ru": "Дети побежали за собакой, а он остался позади них.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 7: сзади, позади."
+  },
+  {
+    "word": "first",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "She was the first to arrive.",
+      "ru": "Она первой пришла.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 5: человек или предмет, упоминаемый или появляющийся первым."
+  },
+  {
+    "word": "first",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "The first of May is a holiday.",
+      "ru": "Первое мая — праздник.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 7: первое число."
+  },
+  {
+    "word": "first",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "He got a first in mathematics.",
+      "ru": "Он получил высшую оценку по математике.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 8: высшая оценка (на экзамене)."
+  },
+  {
+    "word": "first",
+    "meaning_index": 8,
+    "before_examples": [],
+    "after_example": {
+      "en": "She was the first in her class.",
+      "ru": "Она получила высшую оценку в классе.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 9: человек, получивший высшую оценку."
+  },
+  {
+    "word": "first",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "The shop sells firsts at a higher price.",
+      "ru": "Магазин продаёт товары высшего качества дороже.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 10: при мн. ч.: товары высшего качества."
+  },
+  {
+    "word": "first",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "The first sings the highest part in the choir.",
+      "ru": "Первый голос исполняет самую высокую партию в хоре.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 11: самая высокая партия в музыкальной пьесе или самый высокий голос в ансамбле."
+  },
+  {
+    "word": "first",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "First, check the address.",
+      "ru": "В первую очередь проверь адрес.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 13: в первую очередь."
+  },
+  {
+    "word": "first",
+    "meaning_index": 14,
+    "before_examples": [],
+    "after_example": {
+      "en": "I would first stay home rather than travel.",
+      "ru": "Я бы предпочёл остаться дома, а не ехать.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 15: скорее, предпочтительно."
+  },
+  {
+    "word": "know",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "She knows what it is like to lose a job.",
+      "ru": "Она испытала, каково это — потерять работу.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 5: испытать, пережить."
+  },
+  {
+    "word": "see",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "We saw a film last night.",
+      "ru": "Вчера вечером мы смотрели фильм.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 4: смотреть (фильм и т. п.), быть зрителем."
+  },
+  {
+    "word": "see",
+    "meaning_index": 14,
+    "before_examples": [],
+    "after_example": {
+      "en": "I cannot see him as a manager.",
+      "ru": "Я не могу считать его подходящим менеджером.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 15: считать допустимым, приемлемым."
+  },
+  {
+    "word": "back",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "The chair has a wooden back.",
+      "ru": "У стула деревянная спинка.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 5: спинка (стула)."
+  },
+  {
+    "word": "back",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "The team needs a fast back.",
+      "ru": "Команде нужен быстрый защитник.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 6: защитник, бек."
+  },
+  {
+    "word": "back",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "Please back the cheque before depositing it.",
+      "ru": "Пожалуйста, сделайте передаточную надпись на чеке перед внесением.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 13: индоссировать, делать передаточную надпись (на векселе, чеке)."
+  },
+  {
+    "word": "two",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "She received two in the exam.",
+      "ru": "Она получила двойку на экзамене.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 2: указанное в словаре значение."
+  },
+  {
+    "word": "two",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "I wear a size two in these shoes.",
+      "ru": "Я ношу второй размер этой обуви.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 3: указанное в словаре значение."
+  },
+  {
+    "word": "make",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "I make breakfast every morning.",
+      "ru": "Я готовлю завтрак каждое утро.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: делать; совершать; сделать."
+  },
+  {
+    "word": "make",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "Do not make a noise.",
+      "ru": "Не шуми.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 3: производить (шум и т. п.)."
+  },
+  {
+    "word": "make",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "They made her captain.",
+      "ru": "Они назначили её капитаном.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 4: назначать (на должность)."
+  },
+  {
+    "word": "make",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "The studio made a new film.",
+      "ru": "Студия создала новый фильм.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 5: создавать (фильм и т. п.)."
+  },
+  {
+    "word": "make",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "He made a new will.",
+      "ru": "Он составил новое завещание.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 6: составлять (завещание, документ)."
+  },
+  {
+    "word": "make",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "We made for the station before dawn.",
+      "ru": "Мы направились к станции до рассвета.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 10: направиться."
+  },
+  {
+    "word": "make",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "Run, or we will not make the train.",
+      "ru": "Беги, иначе мы не успеем на поезд.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 11: успеть, поспеть (на поезд и т. п.)."
+  },
+  {
+    "word": "make",
+    "meaning_index": 11,
+    "before_examples": [],
+    "after_example": {
+      "en": "The army made him a major.",
+      "ru": "Армия произвела его в майоры.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 12: производить (в чин)."
+  },
+  {
+    "word": "make",
+    "meaning_index": 17,
+    "before_examples": [],
+    "after_example": {
+      "en": "They make together in a small flat.",
+      "ru": "Они сожительствуют в небольшой квартире.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 18: сожительствовать."
+  },
+  {
+    "word": "make",
+    "meaning_index": 18,
+    "before_examples": [],
+    "after_example": {
+      "en": "Make the cards before the game.",
+      "ru": "Перетасуй карты перед игрой.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 19: тасовать."
+  },
+  {
+    "word": "make",
+    "meaning_index": 20,
+    "before_examples": [],
+    "after_example": {
+      "en": "The factory increased its make this year.",
+      "ru": "В этом году фабрика увеличила выпуск продукции.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 21: продукция, выработка."
+  },
+  {
+    "word": "make",
+    "meaning_index": 21,
+    "before_examples": [],
+    "after_example": {
+      "en": "The make of the bridge required skilled workers.",
+      "ru": "Для строительства моста потребовались квалифицированные рабочие.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 22: процесс становления; развитие."
+  },
+  {
+    "word": "make",
+    "meaning_index": 22,
+    "before_examples": [],
+    "after_example": {
+      "en": "His make is resilient and practical.",
+      "ru": "У него стойкий и практичный склад характера.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 23: склад характера."
+  },
+  {
+    "word": "make",
+    "meaning_index": 23,
+    "before_examples": [],
+    "after_example": {
+      "en": "His strong make helps him in sport.",
+      "ru": "Его крепкое сложение помогает ему в спорте.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 24: конституция, сложение."
+  },
+  {
+    "word": "make",
+    "meaning_index": 24,
+    "before_examples": [],
+    "after_example": {
+      "en": "The dealer gave the cards a quick make before dealing.",
+      "ru": "Дилер быстро перетасовал карты перед раздачей.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 25: тасование."
+  },
+  {
+    "word": "make",
+    "meaning_index": 25,
+    "before_examples": [],
+    "after_example": {
+      "en": "The player called make after the deal.",
+      "ru": "Игрок объявил козырь после раздачи.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 26: объявление козыря."
+  },
+  {
+    "word": "over",
+    "meaning_index": 14,
+    "before_examples": [],
+    "after_example": {
+      "en": "There was an over on the bill for delivery.",
+      "ru": "В счёте была приплата за доставку.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 15: излишек, приплата."
+  },
+  {
+    "word": "over",
+    "meaning_index": 15,
+    "before_examples": [],
+    "after_example": {
+      "en": "The shot was an over and landed beyond the target.",
+      "ru": "Снаряд перелетел цель и упал за ней.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 16: перелёт (снаряда)."
+  },
+  {
+    "word": "over",
+    "meaning_index": 16,
+    "before_examples": [],
+    "after_example": {
+      "en": "The radio announced an over to another channel.",
+      "ru": "Радио объявило переход на другой канал.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 17: переход на приём."
+  },
+  {
+    "word": "over",
+    "meaning_index": 17,
+    "before_examples": [],
+    "after_example": {
+      "en": "The over shelf is hard to reach.",
+      "ru": "До верхней полки трудно дотянуться.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 18: верхний."
+  },
+  {
+    "word": "over",
+    "meaning_index": 18,
+    "before_examples": [],
+    "after_example": {
+      "en": "Ask the over manager for approval.",
+      "ru": "Попроси одобрения у вышестоящего руководителя.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 19: вышестоящий."
+  },
+  {
+    "word": "over",
+    "meaning_index": 19,
+    "before_examples": [],
+    "after_example": {
+      "en": "The over on the invoice was refunded.",
+      "ru": "Излишек в счёте вернули.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 20: излишний, избыточный."
+  },
+  {
+    "word": "over",
+    "meaning_index": 20,
+    "before_examples": [],
+    "after_example": {
+      "en": "The over-rich sauce was difficult to eat.",
+      "ru": "Слишком густой соус было трудно есть.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 21: чрезмерный."
+  },
+  {
+    "word": "think",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "I think about the problem every day.",
+      "ru": "Я каждый день думаю об этой проблеме.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: указанное в словаре значение."
+  },
+  {
+    "word": "think",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "He thinks about moving abroad all the time.",
+      "ru": "Он постоянно мечтает о переезде за границу.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 8: указанное в словаре значение."
+  },
+  {
+    "word": "want",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "There is a want of clean water.",
+      "ru": "Не хватает чистой воды.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: указанное в словаре значение."
+  },
+  {
+    "word": "want",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "There is want of evidence.",
+      "ru": "Необходимы доказательства.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 4: указанное в словаре значение."
+  },
+  {
+    "word": "want",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "I want a cup of tea.",
+      "ru": "Я хочу чашку чая.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 5: указанное в словаре значение."
+  },
+  {
+    "word": "because",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "We stayed home because it rained.",
+      "ru": "Мы остались дома, потому что шёл дождь.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: потому что; так как."
+  },
+  {
+    "word": "because",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "The match was cancelled because of rain.",
+      "ru": "Матч отменили из-за дождя.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 2: из-за, вследствие (because of)."
+  },
+  {
+    "word": "go",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "The bell went at noon.",
+      "ru": "Колокол пробил в полдень.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 10: звучать, звонить (о колоколе, звонке и т. п.); бить, отбивать (о часах)."
+  },
+  {
+    "word": "go",
+    "meaning_index": 17,
+    "before_examples": [],
+    "after_example": {
+      "en": "The plan went well with the committee.",
+      "ru": "План был принят комитетом.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 18: пройти, быть принятым, получить признание (о плане, проекте)."
+  },
+  {
+    "word": "go",
+    "meaning_index": 24,
+    "before_examples": [],
+    "after_example": {
+      "en": "The children go to school by bus.",
+      "ru": "Дети регулярно ездят в школу на автобусе.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 25: регулярно ходить, посещать (школу и т. п.)."
+  },
+  {
+    "word": "go",
+    "meaning_index": 26,
+    "before_examples": [],
+    "after_example": {
+      "en": "The prize went to the youngest player.",
+      "ru": "Приз присудили самому младшему игроку.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 27: быть отданным, присуждённым (кому-либо; о призе и т. п.)."
+  },
+  {
+    "word": "go",
+    "meaning_index": 27,
+    "before_examples": [],
+    "after_example": {
+      "en": "She went from student to teacher.",
+      "ru": "Она стала учителем.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 28: стать (кем-либо)."
+  },
+  {
+    "word": "go",
+    "meaning_index": 36,
+    "before_examples": [],
+    "after_example": {
+      "en": "The patient suffered a go of asthma last night.",
+      "ru": "Вчера ночью у пациента случился приступ астмы.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 37: приступ, обострение (болезни)."
+  },
+  {
+    "word": "go",
+    "meaning_index": 37,
+    "before_examples": [],
+    "after_example": {
+      "en": "She had a go of soup before dinner.",
+      "ru": "Перед ужином она взяла порцию супа.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Переформулирован естественный учебный пример именно для значения 38: порция (кушанья); глоток (вина)."
+  },
+  {
+    "word": "way",
+    "meaning_index": 11,
+    "before_examples": [],
+    "after_example": {
+      "en": "The boat rests on the shipyard ways.",
+      "ru": "Лодка стоит на стапеле.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 12: указанное в словаре значение."
+  },
+  {
+    "word": "way",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "The tool moves along the machine way.",
+      "ru": "Инструмент движется по направляющей станка.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 13: указанное в словаре значение."
+  },
+  {
+    "word": "most",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "Most people prefer tea.",
+      "ru": "Большинство людей предпочитает чай.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: превосх. ст. от much 1 и."
+  },
+  {
+    "word": "most",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "She worked most carefully.",
+      "ru": "Она работала тщательнее всего.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 3: превосх. ст. от."
+  },
+  {
+    "word": "most",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "Most of the work is finished.",
+      "ru": "Большая часть работы закончена.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 7: наибольшее количество, большая часть."
+  },
+  {
+    "word": "where",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "Where are you going?",
+      "ru": "Куда ты идёшь?",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: указанное в словаре значение."
+  },
+  {
+    "word": "where",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "Stay where you are.",
+      "ru": "Оставайся там, где ты есть.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 3: указанное в словаре значение."
+  },
+  {
+    "word": "where",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "Where did you find the key?",
+      "ru": "Где ты нашёл ключ?",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 6: указанное в словаре значение."
+  },
+  {
+    "word": "even",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "The table has an even surface.",
+      "ru": "У стола ровная поверхность.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: ровный, гладкий."
+  },
+  {
+    "word": "even",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "The judge made an even decision.",
+      "ru": "Судья вынес беспристрастное решение.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 6: справедливый, беспристрастный."
+  },
+  {
+    "word": "even",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "Four is an even number.",
+      "ru": "Четыре — чётное число.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 7: чётный."
+  },
+  {
+    "word": "even",
+    "meaning_index": 7,
+    "before_examples": [],
+    "after_example": {
+      "en": "The whole number is even.",
+      "ru": "Число целое.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 8: целый (о числе)."
+  },
+  {
+    "word": "even",
+    "meaning_index": 9,
+    "before_examples": [],
+    "after_example": {
+      "en": "Even John understood the joke.",
+      "ru": "Даже Джон понял шутку.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 10: как раз; точно."
+  },
+  {
+    "word": "even",
+    "meaning_index": 10,
+    "before_examples": [],
+    "after_example": {
+      "en": "The floor is even.",
+      "ru": "Пол ровный.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 11: ровно."
+  },
+  {
+    "word": "even",
+    "meaning_index": 11,
+    "before_examples": [],
+    "after_example": {
+      "en": "Even the rough board with sandpaper.",
+      "ru": "Выровняй шероховатую доску наждачной бумагой.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 12: выравнивать (поверхность); сглаживать."
+  },
+  {
+    "word": "even",
+    "meaning_index": 12,
+    "before_examples": [],
+    "after_example": {
+      "en": "Do not even the two teams unfairly.",
+      "ru": "Не ставь две команды на одну доску несправедливо.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 13: равнять, ставить на одну доску."
+  },
+  {
+    "word": "should",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "He said I should call tomorrow.",
+      "ru": "Он сказал, что мне следует позвонить завтра.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: указанное в словаре значение."
+  },
+  {
+    "word": "May",
+    "meaning_index": 0,
+    "before_examples": [],
+    "after_example": {
+      "en": "May is my favourite month.",
+      "ru": "Май — мой любимый месяц.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 1: май."
+  },
+  {
+    "word": "May",
+    "meaning_index": 1,
+    "before_examples": [],
+    "after_example": {
+      "en": "The may is blooming in the hedge.",
+      "ru": "В живой изгороди цветёт боярышник.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 2: цветок боярышника."
+  },
+  {
+    "word": "May",
+    "meaning_index": 2,
+    "before_examples": [],
+    "after_example": {
+      "en": "She is in the may of her youth.",
+      "ru": "Она в расцвете молодости.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 3: расцвет жизни."
+  },
+  {
+    "word": "May",
+    "meaning_index": 3,
+    "before_examples": [],
+    "after_example": {
+      "en": "The Cambridge Mays begin in June.",
+      "ru": "Кембриджские майские экзамены начинаются в июне.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 4: при мн. ч.: майские экзамены (в Кембридже)."
+  },
+  {
+    "word": "May",
+    "meaning_index": 4,
+    "before_examples": [],
+    "after_example": {
+      "en": "The Cambridge Mays attract many spectators.",
+      "ru": "Кембриджские гребные гонки привлекают много зрителей.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 5: при мн. ч.: гребные гонки (в Кембридже — после майских экзаменов)."
+  },
+  {
+    "word": "May",
+    "meaning_index": 5,
+    "before_examples": [],
+    "after_example": {
+      "en": "May flowers appear in May gardens.",
+      "ru": "Майские цветы появляются в садах в мае.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 6: в роли определения к другому слову (майский)."
+  },
+  {
+    "word": "May",
+    "meaning_index": 6,
+    "before_examples": [],
+    "after_example": {
+      "en": "May Day celebrations filled the square.",
+      "ru": "Первомайские празднования заполнили площадь.",
+      "origin": "generated"
+    },
+    "decision": "изменить",
+    "reason": "Создан простой пример именно для значения 7: в роли определения к другому слову (первомайский)."
+  }
+]

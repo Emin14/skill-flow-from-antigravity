@@ -1,0 +1,5 @@
+Command: python3 scripts/audit_pipeline/validate_reports.py dictionary_audit_cycles/new_rules_top100_frequency/recovery --selected-list dictionary_audit_cycles/new_rules_top100_frequency/recovery/selected_words.json --run-final-qa
+Verified before application:
+Batches: 1
+Words: 20
+Total errors found: 0

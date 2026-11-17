@@ -1,0 +1,184 @@
+{
+  "scope": "Recorded CLI worker calls only; excludes managing chat. Bytes are not tokens.",
+  "all_attempts_have_usage": true,
+  "attempts": [
+    {
+      "file": "batch_001/stage_06.metrics.json",
+      "role": "06",
+      "elapsed_seconds": 472.954,
+      "usage_available": true,
+      "input_tokens": 687157,
+      "cached_input_tokens": 622848,
+      "output_tokens": 17228,
+      "uncached_input_tokens": 64309
+    },
+    {
+      "file": "batch_001/stage_07.metrics.json",
+      "role": "07",
+      "elapsed_seconds": 196.973,
+      "usage_available": true,
+      "input_tokens": 50663,
+      "cached_input_tokens": 0,
+      "output_tokens": 7648,
+      "uncached_input_tokens": 50663
+    },
+    {
+      "file": "batch_001/stage_08.metrics.json",
+      "role": "08",
+      "elapsed_seconds": 374.839,
+      "usage_available": true,
+      "input_tokens": 556504,
+      "cached_input_tokens": 464640,
+      "output_tokens": 14479,
+      "uncached_input_tokens": 91864
+    },
+    {
+      "file": "batch_001/stage_09.metrics.json",
+      "role": "09",
+      "elapsed_seconds": 900.372,
+      "usage_available": true,
+      "input_tokens": 1101658,
+      "cached_input_tokens": 975744,
+      "output_tokens": 35055,
+      "uncached_input_tokens": 125914
+    },
+    {
+      "file": "batch_001/stage_10.metrics.json",
+      "role": "10",
+      "elapsed_seconds": 741.711,
+      "usage_available": true,
+      "input_tokens": 416205,
+      "cached_input_tokens": 287360,
+      "output_tokens": 29113,
+      "uncached_input_tokens": 128845
+    }
+  ],
+  "totals": {
+    "input_tokens": 2812187,
+    "cached_input_tokens": 2350592,
+    "uncached_input_tokens": 461595,
+    "output_tokens": 103523,
+    "elapsed_seconds": 2686.849
+  },
+  "requests": [
+    {
+      "file": "batch_001/input_06.json",
+      "component_bytes": {
+        "role": 4,
+        "role_file": 59,
+        "instructions": 1989,
+        "dataset_path": 27,
+        "entries": 53492,
+        "source_search_sha256": 66,
+        "prepared_source_search": 628,
+        "source_inventory": 1339,
+        "source_contract": 240,
+        "entries_are_compact_for_green": 5,
+        "previous_outputs": 2,
+        "wire_contract_version": 1,
+        "compact_stage07": 707,
+        "issue_target_contract": 279,
+        "reference_contract": 158,
+        "model_scope": 318,
+        "output_contract": 1128
+      },
+      "exact_canonical_snapshot_duplicate_bytes": 0
+    },
+    {
+      "file": "batch_001/input_07.json",
+      "component_bytes": {
+        "role": 4,
+        "role_file": 66,
+        "instructions": 3009,
+        "dataset_path": 27,
+        "entries": 53492,
+        "source_search_sha256": 66,
+        "prepared_source_search": 628,
+        "source_inventory": 1227,
+        "source_contract": 240,
+        "entries_are_compact_for_green": 5,
+        "previous_outputs": 80757,
+        "wire_contract_version": 1,
+        "compact_stage07": 707,
+        "issue_target_contract": 279,
+        "reference_contract": 158,
+        "model_scope": 318,
+        "output_contract": 948
+      },
+      "exact_canonical_snapshot_duplicate_bytes": 0
+    },
+    {
+      "file": "batch_001/input_08.json",
+      "component_bytes": {
+        "role": 4,
+        "role_file": 50,
+        "instructions": 1894,
+        "dataset_path": 27,
+        "entries": 53492,
+        "source_search_sha256": 66,
+        "prepared_source_search": 628,
+        "source_inventory": 1227,
+        "source_contract": 240,
+        "entries_are_compact_for_green": 5,
+        "previous_outputs": 230109,
+        "wire_contract_version": 1,
+        "compact_stage07": 707,
+        "issue_target_contract": 279,
+        "reference_contract": 158,
+        "model_scope": 318,
+        "output_contract": 961
+      },
+      "exact_canonical_snapshot_duplicate_bytes": 89597
+    },
+    {
+      "file": "batch_001/input_09.json",
+      "component_bytes": {
+        "role": 4,
+        "role_file": 64,
+        "instructions": 10335,
+        "dataset_path": 27,
+        "entries": 53492,
+        "source_search_sha256": 66,
+        "prepared_source_search": 628,
+        "source_inventory": 1227,
+        "source_contract": 240,
+        "entries_are_compact_for_green": 5,
+        "previous_outputs": 300455,
+        "wire_contract_version": 1,
+        "compact_stage07": 707,
+        "issue_target_contract": 279,
+        "reference_contract": 158,
+        "model_scope": 318,
+        "output_contract": 1269
+      },
+      "exact_canonical_snapshot_duplicate_bytes": 89597
+    },
+    {
+      "file": "batch_001/input_10.json",
+      "component_bytes": {
+        "role": 4,
+        "role_file": 66,
+        "instructions": 7902,
+        "dataset_path": 27,
+        "entries": 53492,
+        "source_search_sha256": 66,
+        "prepared_source_search": 628,
+        "source_inventory": 1227,
+        "source_contract": 240,
+        "entries_are_compact_for_green": 5,
+        "previous_outputs": 487949,
+        "wire_contract_version": 1,
+        "compact_stage07": 707,
+        "issue_target_contract": 279,
+        "reference_contract": 158,
+        "model_scope": 318,
+        "output_contract": 1079,
+        "meaning_bindings": 967,
+        "entry_bindings": 408,
+        "entry_review_contract": 317,
+        "candidate_bindings": 5945
+      },
+      "exact_canonical_snapshot_duplicate_bytes": 89597
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "dataset": "src/data/oxford_5000.json",
+  "range": "1001-2000",
+  "total_words": 1000,
+  "batch_size": 20,
+  "completed_batches": 50,
+  "roles": [
+    "06",
+    "07",
+    "08",
+    "09",
+    "10"
+  ],
+  "decisions": {
+    "принято без изменения": 1000
+  },
+  "qa": "all 50 batches passed validate_reports.py and final_qa_validation.py",
+  "dataset_changed": false,
+  "status": "complete"
+}

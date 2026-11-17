@@ -1,0 +1,29 @@
+{
+  "scope": "what_repair_2026-11-12",
+  "word": "what",
+  "changes": [
+    {
+      "word": "what",
+      "path": "meanings[1].partOfSpeech",
+      "before": "pronoun",
+      "after": "conjunction",
+      "reason": "source-confirmed subordinate-clause use of what"
+    },
+    {
+      "word": "what",
+      "path": "meanings[1].examples[4]",
+      "before": {
+        "en": "do you know the man who came yesterday?",
+        "ru": "вы знаете человека, который приходил вчера?"
+      },
+      "after": null,
+      "reason": "example belongs to who, not what; source explicitly marks the what construction as incorrect",
+      "origin": "contamination from incorrect Muller example do you know him what came yesterday?"
+    }
+  ],
+  "unresolved": [
+    "phrase POS labels for I know what / what on earth may be reviewed separately; not changed in this repair"
+  ],
+  "before_sha256": "4796db50fc0a83f2e68b519d15ce668cb3f2a37ab05f0dc633b139022e546ff1",
+  "after_sha256": "6d1b67de88fcf3e9820d4dd7c8fafb599a7c8188d5593fbb54489a05f2583689"
+}

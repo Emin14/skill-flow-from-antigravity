@@ -1,0 +1,193 @@
+{
+  "scope": "structural_repairs_2026-11-11",
+  "changes": [
+    {
+      "word": "buy",
+      "path": "meanings[0].register",
+      "before": [
+        "разговорное"
+      ],
+      "after": [],
+      "reason": "basic verb is unmarked"
+    },
+    {
+      "word": "buy",
+      "path": "meanings[1].examples",
+      "before": [
+        {
+          "en": "buy into",
+          "ru": "покупать часть (компании, фирмы)"
+        },
+        {
+          "en": "buy off",
+          "ru": "откупаться"
+        },
+        {
+          "en": "buy out",
+          "ru": "выкупать"
+        },
+        {
+          "en": "buy over",
+          "ru": "подкупать, переманивать на свою сторону"
+        },
+        {
+          "en": "buy up",
+          "ru": "скупать"
+        },
+        {
+          "en": "buy back",
+          "ru": "выкупать (проданное)"
+        }
+      ],
+      "after": [
+        {
+          "en": "buy over",
+          "ru": "подкупать, переманивать на свою сторону"
+        },
+        {
+          "en": "buy up",
+          "ru": "скупать"
+        },
+        {
+          "en": "buy back",
+          "ru": "выкупать (проданное)"
+        }
+      ],
+      "reason": "duplicate phrasal examples are represented in phrases"
+    },
+    {
+      "word": "meet",
+      "path": "meanings[12]",
+      "before": {
+        "partOfSpeech": "verb",
+        "translation": "опровергать (доводы и т. п.)",
+        "examples": [
+          {
+            "en": "meet together",
+            "ru": "собираться, сходиться"
+          },
+          {
+            "en": "meet with",
+            "ru": "испытать, подвергнуться; встретиться с; наткнуться на; найти"
+          }
+        ],
+        "register": [],
+        "id": 13,
+        "primary": true
+      },
+      "after": null,
+      "reason": "duplicate entry; meet with belongs to phrase inventory"
+    },
+    {
+      "word": "meet",
+      "path": "phrases[new].phrase",
+      "before": null,
+      "after": "meet with",
+      "reason": "separate phrasal verb"
+    },
+    {
+      "word": "former",
+      "path": "meanings[6]",
+      "before": null,
+      "after": {
+        "id": 7,
+        "partOfSpeech": "adjective",
+        "translation": "бывший; прежний",
+        "examples": [],
+        "register": []
+      },
+      "reason": "missing adjective homonym"
+    },
+    {
+      "word": "shot",
+      "path": "meanings[11].examples",
+      "before": "впрыскивание наркотика",
+      "after": "стимул; поддержка; глоток свежих сил",
+      "reason": "idiom means encouragement, not injection"
+    },
+    {
+      "word": "road",
+      "path": "phrases[2]",
+      "before": {
+        "phrase": "on the road",
+        "translation": "разъезжать (о коммивояжёре)",
+        "partOfSpeech": "phrase",
+        "examples": [],
+        "id": 3
+      },
+      "after": null,
+      "reason": "duplicate on the road phrase merged"
+    },
+    {
+      "word": "run",
+      "path": "meanings[40].examples",
+      "before": [
+        {
+          "en": "run against",
+          "ru": "сталкиваться"
+        },
+        {
+          "en": "to run one's head against a wall",
+          "ru": "стукнуться головой об стену"
+        },
+        {
+          "en": "run along",
+          "ru": "убежать"
+        },
+        {
+          "en": "run at",
+          "ru": "набрасываться, накидываться на кого-либо"
+        },
+        {
+          "en": "his temper ran away with him",
+          "ru": "он не сумел сдержаться"
+        },
+        {
+          "en": "to run into debt",
+          "ru": "влезать в долги"
+        },
+        {
+          "en": "the book ran into five editions",
+          "ru": "книга выдержала пять изданий"
+        },
+        {
+          "en": "run out of",
+          "ru": "истощить свой запас"
+        },
+        {
+          "en": "to run an eye over smth.",
+          "ru": "окинуть взглядом, бегло просмотреть что-либо"
+        },
+        {
+          "en": "the money won't run to a car",
+          "ru": "этих денег не хватит на машину"
+        },
+        {
+          "en": "to run to fat",
+          "ru": "превращаться в жир"
+        },
+        {
+          "en": "to run to seed",
+          "ru": "пойти в семена"
+        }
+      ],
+      "after": [],
+      "reason": "phrasal-verb examples polluted sewing sense"
+    },
+    {
+      "word": "question",
+      "path": "meanings[2].translation",
+      "before": "сомнение; возражать; требовать доказательств; вполне допускать",
+      "after": "сомнение; вопрос о чём-либо",
+      "reason": "noun meaning contaminated by verb glosses"
+    }
+  ],
+  "unresolved": [
+    "date adjective phrase migration",
+    "outside remaining semantic review",
+    "past malformed examples",
+    "general semantic split"
+  ],
+  "before_sha256": "67005f729e90467b3b9ea53dcaa431e341b6b5001d90ad3157b8c319bca03731",
+  "after_sha256": "f6349497d5f95fd1fcdba2d3e83fc3202a83b6639e353cdfa0f6f4578a61d802"
+}

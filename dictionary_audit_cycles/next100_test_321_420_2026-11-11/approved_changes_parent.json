@@ -1,0 +1,401 @@
+{
+  "scope": "next100_test_321_420_2026-11-11",
+  "decision": "applied_safe_exact_matches",
+  "count": 47,
+  "changes": [
+    {
+      "word": "thanks",
+      "path": "thanks.meanings[0].examples[3].ru",
+      "before": "прочитать молитву (до или после еды)",
+      "after": "выразить благодарность; поблагодарить",
+      "reason": "return thanks"
+    },
+    {
+      "word": "talk",
+      "path": "talk.meanings[11].translation",
+      "before": "связываться",
+      "after": "говорить; разговаривать (в сочетаниях с частицами и предлогами)",
+      "reason": "mixed phrasal senses"
+    },
+    {
+      "word": "fact",
+      "path": "fact.meanings[3].register",
+      "before": [
+        "историческое"
+      ],
+      "after": [],
+      "reason": "ordinary fact"
+    },
+    {
+      "word": "hand",
+      "path": "hand.meanings[4].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "clock hand"
+    },
+    {
+      "word": "hand",
+      "path": "hand.meanings[24].translation",
+      "before": "слишком легко уступить",
+      "after": "передавать; подавать; передавать дальше; раздавать; подавать снизу/сверху",
+      "reason": "hand phrasal senses"
+    },
+    {
+      "word": "level",
+      "path": "level.meanings[15].translation",
+      "before": "быть искренним, откровенным",
+      "after": "выравнивать; делать ровным; выравнивать самолёт перед посадкой",
+      "reason": "level off"
+    },
+    {
+      "word": "mind",
+      "path": "mind.meanings[5].examples[0].ru",
+      "before": "обратить внимание на что-либо",
+      "after": "заняться чем-либо; сосредоточиться на чём-либо",
+      "reason": "put one’s mind to"
+    },
+    {
+      "word": "become",
+      "path": "become.meanings[0].translation",
+      "before": "употр. как глаголсвязка делаться, становиться",
+      "after": "употр. как глагол-связка: становиться, делаться",
+      "reason": "OCR"
+    },
+    {
+      "word": "body",
+      "path": "body.meanings[3].examples[1].ru",
+      "before": "приказа",
+      "after": "основная часть приказа",
+      "reason": "body of order"
+    },
+    {
+      "word": "control",
+      "path": "control.meanings[0].examples[6].ru",
+      "before": "выйти из подчинения",
+      "after": "выйти из-под контроля",
+      "reason": "out of control"
+    },
+    {
+      "word": "food",
+      "path": "food.meanings[3].translation",
+      "before": "питательный",
+      "after": "питательность; пищевая ценность",
+      "reason": "food value"
+    },
+    {
+      "word": "cover",
+      "path": "cover.meanings[0].examples[0].ru",
+      "before": "в конверте под покровом в укрытии",
+      "after": "под прикрытием; в укрытии",
+      "reason": "OCR"
+    },
+    {
+      "word": "office",
+      "path": "office.meanings[2].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [],
+      "reason": "ordinary office sense"
+    },
+    {
+      "word": "problem",
+      "path": "problem.phrases[0].examples[0]",
+      "before": {
+        "en": "problem child",
+        "ru": "трудный ребёнок"
+      },
+      "after": null,
+      "reason": "remove duplicate phrase example"
+    },
+    {
+      "word": "room",
+      "path": "room.meanings[1].register",
+      "before": [
+        "коммерческое"
+      ],
+      "after": [],
+      "reason": "ordinary room"
+    },
+    {
+      "word": "room",
+      "path": "room.meanings[2].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "general room plural"
+    },
+    {
+      "word": "win",
+      "path": "win.meanings[1].register",
+      "before": [
+        "устаревшее"
+      ],
+      "after": [],
+      "reason": "ordinary win"
+    },
+    {
+      "word": "along",
+      "path": "along.phrases[1].phrase",
+      "before": "aii along",
+      "after": "all along",
+      "reason": "OCR"
+    },
+    {
+      "word": "draw",
+      "path": "draw.meanings[0].translation",
+      "before": "тяга, натяжение; вытягивание, таскание",
+      "after": "тяга, натяжение; вытягивание, волочение",
+      "reason": "translation"
+    },
+    {
+      "word": "girl",
+      "path": "girl.meanings[4].register",
+      "before": [
+        "жаргон"
+      ],
+      "after": [
+        "устаревшее"
+      ],
+      "reason": "obsolete servant sense"
+    },
+    {
+      "word": "matter",
+      "path": "matter.meanings[2].register",
+      "before": [
+        "математика"
+      ],
+      "after": [],
+      "reason": "general matter"
+    },
+    {
+      "word": "figure",
+      "path": "figure.meanings[0].translation",
+      "before": "цифра; число; при мн. ч.: цифровые данные",
+      "after": "цифра; число; при мн. ч.: цифровые данные, показатели",
+      "reason": "figures"
+    },
+    {
+      "word": "pretty",
+      "path": "pretty.meanings[6].examples[1].ru",
+      "before": "мне это очень надоело",
+      "after": "мне от этого довольно плохо",
+      "reason": "pretty sick"
+    },
+    {
+      "word": "friend",
+      "path": "friend.meanings[0].examples[0].ru",
+      "before": "помириться",
+      "after": "заводить друзей",
+      "reason": "make friends"
+    },
+    {
+      "word": "hit",
+      "path": "hit.meanings[12].translation",
+      "before": "ограбить или убить",
+      "after": "наносить удар; резко нападать или критиковать",
+      "reason": "hit out/back"
+    },
+    {
+      "word": "hit",
+      "path": "hit.phrases[6].translation",
+      "before": "шляться",
+      "after": "отправиться в путь; тронуться в дорогу",
+      "reason": "hit the road"
+    },
+    {
+      "word": "clear",
+      "path": "clear.meanings[7].examples[1].ru",
+      "before": "путь свободен противник не обнаружен (военное) отбой после тревоги",
+      "after": "путь свободен; противник не обнаружен (военное); отбой после тревоги",
+      "reason": "punctuation"
+    },
+    {
+      "word": "due",
+      "path": "due.meanings[8].translation",
+      "before": "due to (употр. как prep) благодаря",
+      "after": "due to (употр. как prep) из-за, вследствие",
+      "reason": "causal translation"
+    },
+    {
+      "word": "due",
+      "path": "due.meanings[9].register",
+      "before": [
+        "коммерческое"
+      ],
+      "after": [],
+      "reason": "due south"
+    },
+    {
+      "word": "woman",
+      "path": "woman.meanings[0].examples[2].ru",
+      "before": "незамужняя женщина светская женщина",
+      "after": "незамужняя женщина; светская женщина",
+      "reason": "OCR"
+    },
+    {
+      "word": "wait",
+      "path": "wait.phrases[0].register",
+      "before": [
+        "спорт",
+        "спортивное"
+      ],
+      "after": [
+        "спортивное"
+      ],
+      "reason": "dedupe register"
+    },
+    {
+      "word": "act",
+      "path": "act.meanings[6].examples[0].ru",
+      "before": "лекарство подействовало на температуру",
+      "after": "лекарство подействовало на жар",
+      "reason": "act on fever"
+    },
+    {
+      "word": "late",
+      "path": "late.meanings[4].examples[0].en",
+      "before": "of late years",
+      "after": "in late years",
+      "reason": "OCR"
+    },
+    {
+      "word": "leave",
+      "path": "leave.meanings[4].examples[1].ru",
+      "before": "поездка в Отпуск или из Отпуска",
+      "after": "поездка во время отпуска или из отпуска",
+      "reason": "leave travel"
+    },
+    {
+      "word": "leave",
+      "path": "leave.phrases[4].translation",
+      "before": "уйти не прощаясь, незаметно, «по-английски»",
+      "after": "уйти не прощаясь, незаметно, «по-французски»",
+      "reason": "French leave"
+    },
+    {
+      "word": "cost",
+      "path": "cost.meanings[3].translation",
+      "before": "в роли определения: стоимостный",
+      "after": "в роли определения: себестоимость; затраты",
+      "reason": "cost compounds"
+    },
+    {
+      "word": "special",
+      "path": "special.meanings[1].examples[0].ru",
+      "before": "мой любимый стул",
+      "after": "мой особый стул",
+      "reason": "special chair"
+    },
+    {
+      "word": "watch",
+      "path": "watch.meanings[0].examples[0].ru",
+      "before": "часы-брошь",
+      "after": "часы для ношения с вечерним платьем; часы-брошь",
+      "reason": "dress watch"
+    },
+    {
+      "word": "drop",
+      "path": "drop.meanings[8].examples[1].en",
+      "before": "to drop asleep",
+      "after": "to drop off to sleep",
+      "reason": "correct English"
+    },
+    {
+      "word": "drop",
+      "path": "drop.phrases[1].translation",
+      "before": "намекнуть, сделать тонкий намёк",
+      "after": "намекнуть",
+      "reason": "drop a hint"
+    },
+    {
+      "word": "low",
+      "path": "low.phrases[1].translation",
+      "before": "лежать мёртвым",
+      "after": "залечь, не показываться",
+      "reason": "lie low"
+    },
+    {
+      "word": "stay",
+      "path": "stay.meanings[4].examples[0].ru",
+      "before": "он его опора в старости (о -л.)",
+      "after": "он — опора его старости",
+      "reason": "OCR"
+    },
+    {
+      "word": "stay",
+      "path": "stay.meanings[15].examples[0].en",
+      "before": "to stay away from smb., smth.",
+      "after": "stay away from somebody, something",
+      "reason": "remove editorial abbreviations"
+    },
+    {
+      "word": "age",
+      "path": "age.meanings[0].examples[4].ru",
+      "before": "брачный возраст",
+      "after": "возраст согласия; брачный возраст",
+      "reason": "age of consent"
+    },
+    {
+      "word": "age",
+      "path": "age.meanings[2].examples[1].en",
+      "before": "Ice A.",
+      "after": "Ice Age",
+      "reason": "OCR"
+    },
+    {
+      "word": "arm",
+      "path": "arm.phrases[3].phrase",
+      "before": "arm and leg",
+      "after": "an arm and a leg",
+      "reason": "idiom"
+    },
+    {
+      "word": "arm",
+      "path": "arm.meanings[8].examples[1].en",
+      "before": "to arm against danger",
+      "after": "to arm oneself against danger",
+      "reason": "reflexive construction"
+    }
+  ],
+  "deferred": [
+    {
+      "word": "fire",
+      "before": "строительное",
+      "matches": 2,
+      "reason": "remove incompatible register"
+    },
+    {
+      "word": "story",
+      "before": [
+        "историческое"
+      ],
+      "matches": 0,
+      "reason": "ordinary story"
+    },
+    {
+      "word": "leave",
+      "before": "отпуск",
+      "matches": 2,
+      "reason": "leave of absence"
+    },
+    {
+      "word": "special",
+      "before": "экстренный выпуск",
+      "matches": 2,
+      "reason": "special edition"
+    },
+    {
+      "word": "watch",
+      "before": "watch over",
+      "matches": 4,
+      "reason": "watch phrase alignment"
+    }
+  ],
+  "before_sha256": "05f075ae6658c6392863dc052d2690d0a4be7bcd630bcda555dcf670adac7259",
+  "after_sha256": "046f92ac11c3b5bf81abf0aa5cd1fe6c54e94f13d749524816c8e629c0ae43e0",
+  "post_apply_fix": "Removed null placeholder left by duplicate-example deletion; canonical examples array is now valid."
+}

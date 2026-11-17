@@ -1,0 +1,91 @@
+{
+  "applied_count": 5,
+  "changes": [
+    {
+      "word": "road",
+      "path": "meanings[5].examples[1]",
+      "before": {
+        "en": "road sign",
+        "ru": "дорожный знак"
+      },
+      "after": null,
+      "reason": "remove exact duplicate road sign example while preserving attributive meaning"
+    },
+    {
+      "word": "charge",
+      "path": "meanings[2:3]",
+      "before": null,
+      "after": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "занесение на счёт",
+          "examples": [],
+          "register": [],
+          "id": 2
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "налог",
+          "examples": [],
+          "register": [],
+          "id": 3
+        }
+      ],
+      "reason": "restore source-confirmed noun senses"
+    },
+    {
+      "word": "charge",
+      "path": "meanings[13:15]",
+      "before": null,
+      "after": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "предписание, поручение, требование",
+          "examples": [],
+          "register": [],
+          "id": 13
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "церковное послание епископа к пастве; паства",
+          "examples": [],
+          "register": [
+            "церковное"
+          ],
+          "id": 14
+        }
+      ],
+      "reason": "restore source-confirmed noun senses"
+    },
+    {
+      "word": "charge",
+      "path": "meanings[new]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "verb",
+        "translation": "предписывать; требовать (особенно о судье или епископе)",
+        "examples": [
+          {
+            "en": "I charge you to obey",
+            "ru": "я требую, чтобы вы повиновались"
+          }
+        ],
+        "register": [],
+        "id": 23
+      },
+      "reason": "restore source-confirmed verb sense"
+    },
+    {
+      "word": "charge",
+      "path": "phrases[3].translation",
+      "before": "записывать на чей-либо счёт; брать на себя ответственность",
+      "after": "записывать на чей-либо счёт; брать на себя счёт; брать на себя ответственность за кого-либо или что-либо",
+      "reason": "restore source construction senses"
+    }
+  ],
+  "deferred": [
+    "hold/press/record/lead/finish/ground/phone/living homonym reconstructions; duplicate storage policy cases"
+  ],
+  "before_sha256": "a98428d34d9e083b6f641ccf4532c3336ef5f042fed3be9c0927234c67e25ae6",
+  "after_sha256": "c3c2d55042a2356670b936601477f91e047adba9e720845b838d93a5452a799b"
+}

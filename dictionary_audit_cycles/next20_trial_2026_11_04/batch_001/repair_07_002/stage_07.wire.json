@@ -1,0 +1,439 @@
+[
+  {
+    "word": "another",
+    "base_sha256": "b4b9d81f8e9e3e7c0efe5384b5af91f7c618a2cc8ef3639ab083147c7c071479",
+    "edits": []
+  },
+  {
+    "word": "own",
+    "base_sha256": "8cf7534d3b31f38fcae61e908fd17c3d8c35d2976611b55eaad85e75adbc165e",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/5/translation",
+        "before": "признавать(ся); откровенно признаваться; безропотно подчиняться",
+        "after": "признавать(ся)"
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/5/register",
+        "before": [
+          "разговорное"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/0/register",
+        "before": [],
+        "after": [
+          "разговорное"
+        ]
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/1/partOfSpeech",
+        "before": "noun",
+        "after": "sentence"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/2/partOfSpeech",
+        "before": "adjective",
+        "after": "verb"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/3/partOfSpeech",
+        "before": "adjective",
+        "after": "sentence"
+      }
+    ]
+  },
+  {
+    "word": "under",
+    "base_sha256": "031134c8c3517bc2e962be566cdcf4bd1ee6bb993ab84bcb9f89e088b94ff854",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/14/translation",
+        "before": "арт. недолёт",
+        "after": "недолёт"
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/14/register",
+        "before": [],
+        "after": [
+          "артиллерийское"
+        ]
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/0/partOfSpeech",
+        "before": "adverb",
+        "after": "verb"
+      }
+    ]
+  },
+  {
+    "word": "during",
+    "base_sha256": "65bb33a1985d8936af00e215f29ba0a0d3c42a9d6f43e444fde6e2675b4c3f45",
+    "edits": []
+  },
+  {
+    "word": "game",
+    "base_sha256": "7625e019e48c5a300b25733c26ce205ba46e15da63f0d2558c5a89ab24d4fe36",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/0/translation",
+        "before": "игра; перен. поступать благородно",
+        "after": "игра; в выражении to play the game также перен. поступать благородно"
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/2/translation",
+        "before": "при мн. ч.; игры",
+        "after": "во множественном числе: соревнования; игры"
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/2/register",
+        "before": [
+          "британское"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/6/translation",
+        "before": "шутка; подшучивать",
+        "after": "шутка; в выражении to make game of — подшучивать"
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/8/register",
+        "before": [
+          "британское"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/10/translation",
+        "before": "но готовый (сделать что-либо); ничего не бояться",
+        "after": "охотно готовый (сделать что-либо)"
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/10/register",
+        "before": [
+          "охотничий термин"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/12/register",
+        "before": [
+          "спортивное"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/1/partOfSpeech",
+        "before": "noun",
+        "after": "sentence"
+      },
+      {
+        "op": "add",
+        "path": "/phrases/-",
+        "after": {
+          "id": 3,
+          "phrase": "to be game for anything",
+          "partOfSpeech": "verb",
+          "translation": "быть готовым на всё; ничего не бояться",
+          "examples": [],
+          "register": []
+        }
+      }
+    ]
+  },
+  {
+    "word": "thing",
+    "base_sha256": "7d58d5d5f9e6408d47d5fc342338495a9437e6b1eaeccfaf905837d2e9b960e1",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/2/register",
+        "before": [
+          "британское"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/0/translation",
+        "before": "это как раз то (, что надо)",
+        "after": "это как раз то, что надо"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/0/partOfSpeech",
+        "before": "noun",
+        "after": "sentence"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/2/partOfSpeech",
+        "before": "noun",
+        "after": "sentence"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/3/partOfSpeech",
+        "before": "noun",
+        "after": "adverb"
+      }
+    ]
+  },
+  {
+    "word": "give",
+    "base_sha256": "6ad843cae424900970f854368d9e1d2814c62bdcbd3f6981cd1494253c938702",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/15/register",
+        "before": [
+          "техническое",
+          "устаревшее"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/17/register",
+        "before": [
+          "устаревшее"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/20/register",
+        "before": [
+          "электротехника"
+        ],
+        "after": []
+      }
+    ]
+  },
+  {
+    "word": "end",
+    "base_sha256": "bb1383576fae1c70d368de64446497d5a1948454097839ed26b11641643cddc8",
+    "edits": []
+  },
+  {
+    "word": "house",
+    "base_sha256": "8ad56189f73474b65f99f370e19ea5c99d298e300b6b28a00894785056851d0a",
+    "edits": []
+  },
+  {
+    "word": "place",
+    "base_sha256": "308ea4dd6092f4d86968f8e3482e75269d5221c983631284eaa64ce83630dc05",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/11/translation",
+        "before": "с точностью до одной стотысячной",
+        "after": "десятичный разряд; знак после десятичной запятой"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/0/partOfSpeech",
+        "before": "noun",
+        "after": "sentence"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/1/partOfSpeech",
+        "before": "noun",
+        "after": "preposition"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/2/partOfSpeech",
+        "before": "noun",
+        "after": "adverb"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/3/partOfSpeech",
+        "before": "noun",
+        "after": "adverb"
+      }
+    ]
+  },
+  {
+    "word": "school",
+    "base_sha256": "102fd7d0af298bd845f3acc302eda482a95554062a36640e6f5cf07089a14817",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/6/register",
+        "before": [
+          "британское"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/9/translation",
+        "before": "при мн. ч.: средневековые университеты",
+        "after": "во множественном числе с определённым артиклем (the schools): средневековые университеты"
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/9/register",
+        "before": [
+          "британское"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/13/register",
+        "before": [
+          "американский английский",
+          "историческое",
+          "морской термин",
+          "собирательное"
+        ],
+        "after": []
+      }
+    ]
+  },
+  {
+    "word": "again",
+    "base_sha256": "a51bc400159f9f21cda275081aa48ea98f1ae3e8e8537ad242091f45e74671b1",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/0/translation",
+        "before": "снова, опять; время от времени",
+        "after": "снова, опять"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/0/partOfSpeech",
+        "before": "preposition",
+        "after": "adverb"
+      },
+      {
+        "op": "add",
+        "path": "/phrases/-",
+        "after": {
+          "id": 2,
+          "phrase": "now and again",
+          "partOfSpeech": "adverb",
+          "translation": "иногда; время от времени",
+          "examples": [],
+          "register": []
+        }
+      }
+    ]
+  },
+  {
+    "word": "next",
+    "base_sha256": "8db4292c1ec2be3ab9bd404851aa069bcba6a99fe7df16f0c73c9ac398d96c73",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/1/translation",
+        "before": "потом, затем, после; что ещё может за этим последовать?",
+        "after": "потом, затем, после"
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/4/register",
+        "before": [
+          "жаргон"
+        ],
+        "after": []
+      },
+      {
+        "op": "replace",
+        "path": "/meanings/5/translation",
+        "before": "следующий",
+        "after": "следующий; будущий"
+      },
+      {
+        "op": "replace",
+        "path": "/phrases/1/partOfSpeech",
+        "before": "noun",
+        "after": "sentence"
+      },
+      {
+        "op": "add",
+        "path": "/phrases/-",
+        "after": {
+          "id": 3,
+          "phrase": "what next?",
+          "partOfSpeech": "sentence",
+          "translation": "а что дальше?; что ещё может за этим последовать?",
+          "examples": [],
+          "register": []
+        }
+      }
+    ]
+  },
+  {
+    "word": "case",
+    "base_sha256": "997fbb6b43923e0bbfd99b608f82f11fb31ccd49442910b07c1a4101214cd6a5",
+    "edits": [
+      {
+        "op": "replace",
+        "path": "/meanings/3/register",
+        "before": [
+          "юридическое",
+          "британское"
+        ],
+        "after": [
+          "юридическое"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "next to",
+    "base_sha256": "782c496f02ff8102558be487756ffe388962399dfa8ef7ba9a9021f6e70e5688",
+    "edits": []
+  },
+  {
+    "word": "each",
+    "base_sha256": "59e631e35408b59b1bbd0229045e5bdc268efccc09adf78ab598790a8732ebf4",
+    "edits": []
+  },
+  {
+    "word": "without",
+    "base_sha256": "1acb1828b007bbe3d370a367186f992d0a5609a2123da54f5b051f5f53b73ed6",
+    "edits": []
+  },
+  {
+    "word": "well-being",
+    "base_sha256": "0860374823e839daf87dc1319441a0d9edfd7da57e1117a5ae89a85e9dd7c1b3",
+    "edits": []
+  },
+  {
+    "word": "long-time",
+    "base_sha256": "6a15b184905bf468fecbeb2cfc00cad2040126d776fc005ea361b5cec85286a9",
+    "edits": []
+  },
+  {
+    "word": "against",
+    "base_sha256": "e1d172fbeeb54c920c1caa6db28bc93c5b3647e229a92637ebf75c55b57d4c5a",
+    "edits": []
+  }
+]

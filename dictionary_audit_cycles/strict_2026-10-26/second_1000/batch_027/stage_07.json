@@ -1,0 +1,2288 @@
+[
+  {
+    "word": "encouragement",
+    "before": {
+      "word": "encouragement",
+      "frequency_rank": 4405,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈkʌrɪdʒmənt/",
+      "phon_n_am": "/ɪnˈkɜːrɪdʒmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "ободрение и пр",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "encouragement",
+      "frequency_rank": 4405,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈkʌrɪdʒmənt/",
+      "phon_n_am": "/ɪnˈkɜːrɪdʒmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "ободрение и пр",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для encouragement before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "encouraging",
+    "before": {
+      "word": "encouraging",
+      "frequency_rank": 3297,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈkʌrɪdʒɪŋ/",
+      "phon_n_am": "/ɪnˈkɜːrɪdʒɪŋ/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "ободряющий; обнадёживающий",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ],
+      "form_of": {
+        "lemma": "encourage",
+        "types": [
+          "present_participle"
+        ]
+      }
+    },
+    "after": {
+      "word": "encouraging",
+      "frequency_rank": 3297,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈkʌrɪdʒɪŋ/",
+      "phon_n_am": "/ɪnˈkɜːrɪdʒɪŋ/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "ободряющий; обнадёживающий",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ],
+      "form_of": {
+        "lemma": "encourage",
+        "types": [
+          "present_participle"
+        ]
+      }
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для encouraging before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "end",
+    "before": {
+      "word": "end",
+      "frequency_rank": 164,
+      "cefr": "a1",
+      "phon_br": "/end/",
+      "phon_n_am": "/end/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "конец, окончание, завершение",
+          "examples": [
+            {
+              "en": "at the end of the year",
+              "ru": "в конце года"
+            },
+            {
+              "en": "in the end",
+              "ru": "в конце концов, в итоге"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "конец, край, кончик (предмета)",
+          "examples": [
+            {
+              "en": "at the end of the street",
+              "ru": "в конце улицы"
+            },
+            {
+              "en": "both ends of the rope",
+              "ru": "оба конца верёвки"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "цель, намерение",
+          "examples": [
+            {
+              "en": "to achieve one's ends",
+              "ru": "добиться своих целей"
+            },
+            {
+              "en": "to this end",
+              "ru": "с этой целью"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "смерть, гибель, кончина",
+          "examples": [
+            {
+              "en": "to meet one's end",
+              "ru": "встретить свою смерть"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "остаток, обрезок, окурок",
+          "examples": [
+            {
+              "en": "cigarette end",
+              "ru": "окурок"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "сторона (в соглашении, деле)",
+          "examples": [
+            {
+              "en": "on our end",
+              "ru": "с нашей стороны"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "кончать(ся), заканчивать(ся), завершать(ся)",
+          "examples": [
+            {
+              "en": "to end a meeting",
+              "ru": "завершить собрание"
+            },
+            {
+              "en": "the story ends happily",
+              "ru": "история заканчивается счастливо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "положить конец (war, life)",
+          "examples": [
+            {
+              "en": "to end one's life",
+              "ru": "покончить с собой"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "to make ends meet",
+          "partOfSpeech": "verb",
+          "translation": "сводить концы с концами",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "the end justifies the means",
+          "partOfSpeech": "noun",
+          "translation": "цель оправдывает средства",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "to no end",
+          "partOfSpeech": "adverb",
+          "translation": "безрезультатно, напрасно",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "on end",
+          "partOfSpeech": "adverb",
+          "translation": "непрерывно, подряд; дыбом (о волосах)",
+          "examples": [
+            {
+              "en": "for hours on end",
+              "ru": "часами напролёт"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "end up",
+          "partOfSpeech": "verb",
+          "translation": "оказаться в итоге, закончить (кем-либо, где-либо)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "end",
+      "frequency_rank": 164,
+      "cefr": "a1",
+      "phon_br": "/end/",
+      "phon_n_am": "/end/",
+      "lists": {
+        "oxford3000": true,
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "конец, окончание, завершение",
+          "examples": [
+            {
+              "en": "at the end of the year",
+              "ru": "в конце года"
+            },
+            {
+              "en": "in the end",
+              "ru": "в конце концов, в итоге"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "конец, край, кончик (предмета)",
+          "examples": [
+            {
+              "en": "at the end of the street",
+              "ru": "в конце улицы"
+            },
+            {
+              "en": "both ends of the rope",
+              "ru": "оба конца верёвки"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "цель, намерение",
+          "examples": [
+            {
+              "en": "to achieve one's ends",
+              "ru": "добиться своих целей"
+            },
+            {
+              "en": "to this end",
+              "ru": "с этой целью"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "смерть, гибель, кончина",
+          "examples": [
+            {
+              "en": "to meet one's end",
+              "ru": "встретить свою смерть"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "остаток, обрезок, окурок",
+          "examples": [
+            {
+              "en": "cigarette end",
+              "ru": "окурок"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "сторона (в соглашении, деле)",
+          "examples": [
+            {
+              "en": "on our end",
+              "ru": "с нашей стороны"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "кончать(ся), заканчивать(ся), завершать(ся)",
+          "examples": [
+            {
+              "en": "to end a meeting",
+              "ru": "завершить собрание"
+            },
+            {
+              "en": "the story ends happily",
+              "ru": "история заканчивается счастливо"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "положить конец (war, life)",
+          "examples": [
+            {
+              "en": "to end one's life",
+              "ru": "покончить с собой"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "to make ends meet",
+          "partOfSpeech": "verb",
+          "translation": "сводить концы с концами",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "the end justifies the means",
+          "partOfSpeech": "noun",
+          "translation": "цель оправдывает средства",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 3,
+          "phrase": "to no end",
+          "partOfSpeech": "adverb",
+          "translation": "безрезультатно, напрасно",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "phrase": "on end",
+          "partOfSpeech": "adverb",
+          "translation": "непрерывно, подряд; дыбом (о волосах)",
+          "examples": [
+            {
+              "en": "for hours on end",
+              "ru": "часами напролёт"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "phrase": "end up",
+          "partOfSpeech": "verb",
+          "translation": "оказаться в итоге, закончить (кем-либо, где-либо)",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для end before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "endeavour",
+    "before": {
+      "word": "endeavour",
+      "frequency_rank": 4830,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈdevə(r)/",
+      "phon_n_am": "/ɪnˈdevər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "попытка, старание; стремление",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "пытаться, прилагать усилия, стараться",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "endeavour",
+      "frequency_rank": 4830,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈdevə(r)/",
+      "phon_n_am": "/ɪnˈdevər/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "попытка, старание; стремление",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "verb",
+          "translation": "пытаться, прилагать усилия, стараться",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для endeavour before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "ending",
+    "before": {
+      "word": "ending",
+      "frequency_rank": 1511,
+      "cefr": "a2",
+      "phon_br": "/ˈendɪŋ/",
+      "phon_n_am": "/ˈendɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "окончание",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "окончание, флексия",
+          "examples": [],
+          "register": [
+            "грамматика"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "конечный, заключительный",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "ending",
+      "frequency_rank": 1511,
+      "cefr": "a2",
+      "phon_br": "/ˈendɪŋ/",
+      "phon_n_am": "/ˈendɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "окончание",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "окончание, флексия",
+          "examples": [],
+          "register": [
+            "грамматика"
+          ],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "конечный, заключительный",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для ending before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "endless",
+    "before": {
+      "word": "endless",
+      "frequency_rank": 3151,
+      "cefr": "c1",
+      "phon_br": "/ˈendləs/",
+      "phon_n_am": "/ˈendləs/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "бесконечный; нескончаемый",
+          "examples": [
+            {
+              "en": "endless chain",
+              "ru": "цепь привода или передачи",
+              "register": [
+                "техническое"
+              ]
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "бесчисленный",
+          "examples": [
+            {
+              "en": "endless attempts",
+              "ru": "бесчисленные попытки"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "endless",
+      "frequency_rank": 3151,
+      "cefr": "c1",
+      "phon_br": "/ˈendləs/",
+      "phon_n_am": "/ˈendləs/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "adjective",
+          "translation": "бесконечный; нескончаемый",
+          "examples": [
+            {
+              "en": "endless chain",
+              "ru": "цепь привода или передачи",
+              "register": [
+                "техническое"
+              ]
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "adjective",
+          "translation": "бесчисленный",
+          "examples": [
+            {
+              "en": "endless attempts",
+              "ru": "бесчисленные попытки"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для endless before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "endorse",
+    "before": {
+      "word": "endorse",
+      "frequency_rank": 4670,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈdɔːs/",
+      "phon_n_am": "/ɪnˈdɔːrs/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "подтверждать, одобрять; поддерживать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "расписываться на обороте документа",
+          "examples": [
+            {
+              "en": "to endorse by signature",
+              "ru": "скреплять подписью"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "индоссировать, делать передаточную надпись",
+          "examples": [],
+          "register": [
+            "финансы"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "endorse",
+      "frequency_rank": 4670,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈdɔːs/",
+      "phon_n_am": "/ɪnˈdɔːrs/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "подтверждать, одобрять; поддерживать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "расписываться на обороте документа",
+          "examples": [
+            {
+              "en": "to endorse by signature",
+              "ru": "скреплять подписью"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "индоссировать, делать передаточную надпись",
+          "examples": [],
+          "register": [
+            "финансы"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для endorse before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "endorsement",
+    "before": {
+      "word": "endorsement",
+      "frequency_rank": 4492,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈdɔːsmənt/",
+      "phon_n_am": "/ɪnˈdɔːrsmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "подтверждение; поддержка",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "индоссамент, передаточная надпись (на векселе, чеке)",
+          "examples": [],
+          "register": [
+            "финансы"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "endorsement",
+      "frequency_rank": 4492,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈdɔːsmənt/",
+      "phon_n_am": "/ɪnˈdɔːrsmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "подтверждение; поддержка",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "индоссамент, передаточная надпись (на векселе, чеке)",
+          "examples": [],
+          "register": [
+            "финансы"
+          ],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для endorsement before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "endure",
+    "before": {
+      "word": "endure",
+      "frequency_rank": 4351,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈdjʊə(r)/",
+      "phon_n_am": "/ɪnˈdʊr/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "стойко переносить; выдерживать испытание временем",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "выносить; терпеть",
+          "examples": [
+            {
+              "en": "I cannot endure the thought",
+              "ru": "я не могу примириться с мыслью"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "длиться; продолжаться",
+          "examples": [
+            {
+              "en": "as long as life endures",
+              "ru": "в течение всей жизни"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "endure",
+      "frequency_rank": 4351,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈdjʊə(r)/",
+      "phon_n_am": "/ɪnˈdʊr/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "стойко переносить; выдерживать испытание временем",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "выносить; терпеть",
+          "examples": [
+            {
+              "en": "I cannot endure the thought",
+              "ru": "я не могу примириться с мыслью"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "длиться; продолжаться",
+          "examples": [
+            {
+              "en": "as long as life endures",
+              "ru": "в течение всей жизни"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для endure before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "enemy",
+    "before": {
+      "word": "enemy",
+      "frequency_rank": 1472,
+      "cefr": "b1",
+      "phon_br": "/ˈenəmi/",
+      "phon_n_am": "/ˈenəmi/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "враг; неприятель, противник; оппонент",
+          "examples": [
+            {
+              "en": "to be one's own enemy",
+              "ru": "действовать во вред самому себе"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "враждебный; вражеский, неприятельский",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "the (old) E.",
+          "partOfSpeech": "noun",
+          "translation": "дьявол",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "enemy",
+      "frequency_rank": 1472,
+      "cefr": "b1",
+      "phon_br": "/ˈenəmi/",
+      "phon_n_am": "/ˈenəmi/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "noun",
+          "translation": "враг; неприятель, противник; оппонент",
+          "examples": [
+            {
+              "en": "to be one's own enemy",
+              "ru": "действовать во вред самому себе"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "враждебный; вражеский, неприятельский",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        }
+      ],
+      "phrases": [
+        {
+          "id": 1,
+          "phrase": "the (old) E.",
+          "partOfSpeech": "noun",
+          "translation": "дьявол",
+          "examples": [],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для enemy before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "energy",
+    "before": {
+      "word": "energy",
+      "frequency_rank": 481,
+      "cefr": "a2",
+      "phon_br": "/ˈenədʒi/",
+      "phon_n_am": "/ˈenərdʒi/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "энергия; сила; мощность",
+          "examples": [
+            {
+              "en": "potential (latent) energy",
+              "ru": "потенциальная (скрытая) энергия"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "силы, энергия (в борьбе и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "energy",
+      "frequency_rank": 481,
+      "cefr": "a2",
+      "phon_br": "/ˈenədʒi/",
+      "phon_n_am": "/ˈenərdʒi/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "энергия; сила; мощность",
+          "examples": [
+            {
+              "en": "potential (latent) energy",
+              "ru": "потенциальная (скрытая) энергия"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "силы, энергия (в борьбе и т. п.)",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для energy before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "enforce",
+    "before": {
+      "word": "enforce",
+      "frequency_rank": 3966,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈfɔːs/",
+      "phon_n_am": "/ɪnˈfɔːrs/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "проводить в жизнь; придавать силу; насаждать законность",
+          "examples": [
+            {
+              "en": "to enforce the laws",
+              "ru": "проводить законы в жизнь"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "оказывать давление, принуждать, заставлять; навязывать",
+          "examples": [
+            {
+              "en": "to enforce obedience",
+              "ru": "добиться повиновения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "усиливать, подкреплять",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "enforce",
+      "frequency_rank": 3966,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈfɔːs/",
+      "phon_n_am": "/ɪnˈfɔːrs/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "проводить в жизнь; придавать силу; насаждать законность",
+          "examples": [
+            {
+              "en": "to enforce the laws",
+              "ru": "проводить законы в жизнь"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "оказывать давление, принуждать, заставлять; навязывать",
+          "examples": [
+            {
+              "en": "to enforce obedience",
+              "ru": "добиться повиновения"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "усиливать, подкреплять",
+          "examples": [],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для enforce before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "enforcement",
+    "before": {
+      "word": "enforcement",
+      "frequency_rank": 2203,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈfɔːsmənt/",
+      "phon_n_am": "/ɪnˈfɔːrsmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "давление, принуждение",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "принудительный",
+          "examples": [
+            {
+              "en": "enforcement measures",
+              "ru": "принудительные меры"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "enforcement",
+      "frequency_rank": 2203,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈfɔːsmənt/",
+      "phon_n_am": "/ɪnˈfɔːrsmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "давление, принуждение",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "принудительный",
+          "examples": [
+            {
+              "en": "enforcement measures",
+              "ru": "принудительные меры"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для enforcement before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "engage",
+    "before": {
+      "word": "engage",
+      "frequency_rank": 2503,
+      "cefr": "b2",
+      "phon_br": "/ɪnˈɡeɪdʒ/",
+      "phon_n_am": "/ɪnˈɡeɪdʒ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "нанимать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "занимать, привлекать; вовлекать",
+          "examples": [
+            {
+              "en": "to engage smb.'s attention",
+              "ru": "завладеть чьим-либо вниманием"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "обязывать(ся)",
+          "examples": [
+            {
+              "en": "to engage by new commitments",
+              "ru": "связывать новыми обязательствами"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "обручиться",
+          "examples": [
+            {
+              "en": "to be engaged",
+              "ru": "быть помолвленным"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "заказывать заранее (комнату, место)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "verb",
+          "translation": "зацеплять(ся); включать",
+          "examples": [],
+          "register": [
+            "техническое"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "вступать в бой; открывать огонь",
+          "examples": [
+            {
+              "en": "to be engaged in hostilities",
+              "ru": "быть вовлечённым в военные действия"
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "заниматься (чем-либо); ручаться (за кого-либо)",
+          "examples": [
+            {
+              "en": "say I am engaged",
+              "ru": "скажите, что я занят"
+            },
+            {
+              "en": "to engage in a discussion",
+              "ru": "принять участие в дискуссии"
+            },
+            {
+              "en": "to be engaged in smth.",
+              "ru": "заниматься чем-либо"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "engage",
+      "frequency_rank": 2503,
+      "cefr": "b2",
+      "phon_br": "/ɪnˈɡeɪdʒ/",
+      "phon_n_am": "/ɪnˈɡeɪdʒ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "verb",
+          "translation": "нанимать",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "verb",
+          "translation": "занимать, привлекать; вовлекать",
+          "examples": [
+            {
+              "en": "to engage smb.'s attention",
+              "ru": "завладеть чьим-либо вниманием"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "verb",
+          "translation": "обязывать(ся)",
+          "examples": [
+            {
+              "en": "to engage by new commitments",
+              "ru": "связывать новыми обязательствами"
+            }
+          ],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "обручиться",
+          "examples": [
+            {
+              "en": "to be engaged",
+              "ru": "быть помолвленным"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "заказывать заранее (комнату, место)",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "verb",
+          "translation": "зацеплять(ся); включать",
+          "examples": [],
+          "register": [
+            "техническое"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "вступать в бой; открывать огонь",
+          "examples": [
+            {
+              "en": "to be engaged in hostilities",
+              "ru": "быть вовлечённым в военные действия"
+            }
+          ],
+          "register": [
+            "военное"
+          ],
+          "primary": true
+        },
+        {
+          "id": 8,
+          "partOfSpeech": "verb",
+          "translation": "заниматься (чем-либо); ручаться (за кого-либо)",
+          "examples": [
+            {
+              "en": "say I am engaged",
+              "ru": "скажите, что я занят"
+            },
+            {
+              "en": "to engage in a discussion",
+              "ru": "принять участие в дискуссии"
+            },
+            {
+              "en": "to be engaged in smth.",
+              "ru": "заниматься чем-либо"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для engage before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "engaged",
+    "before": {
+      "word": "engaged",
+      "frequency_rank": 1971,
+      "cefr": "b1",
+      "phon_br": "/ɪnˈɡeɪdʒd/",
+      "phon_n_am": "/ɪnˈɡeɪdʒd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "помолвленный",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "занятый",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "заказанный заранее",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "заинтересованный; поглощённый (чем-либо)",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "engaged",
+      "frequency_rank": 1971,
+      "cefr": "b1",
+      "phon_br": "/ɪnˈɡeɪdʒd/",
+      "phon_n_am": "/ɪnˈɡeɪdʒd/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "помолвленный",
+          "examples": [],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "занятый",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "заказанный заранее",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "заинтересованный; поглощённый (чем-либо)",
+          "examples": [],
+          "register": [],
+          "id": 4,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для engaged before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "engagement",
+    "before": {
+      "word": "engagement",
+      "frequency_rank": 2673,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈɡeɪdʒmənt/",
+      "phon_n_am": "/ɪnˈɡeɪdʒmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "дело, занятие",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "свидание, встреча; приглашение",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "помолвка",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "обязательство",
+          "examples": [
+            {
+              "en": "to meet one's engagements",
+              "ru": "выполнять свои обязательства; платить долги"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "бой, стычка",
+          "examples": [],
+          "register": [
+            "военное"
+          ]
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "зацепление",
+          "examples": [],
+          "register": [
+            "техническое"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "обручальный",
+          "examples": [
+            {
+              "en": "engagement ring",
+              "ru": "обручальное кольцо с камнем"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "after": {
+      "word": "engagement",
+      "frequency_rank": 2673,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈɡeɪdʒmənt/",
+      "phon_n_am": "/ɪnˈɡeɪdʒmənt/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "дело, занятие",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "свидание, встреча; приглашение",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "помолвка",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "обязательство",
+          "examples": [
+            {
+              "en": "to meet one's engagements",
+              "ru": "выполнять свои обязательства; платить долги"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "бой, стычка",
+          "examples": [],
+          "register": [
+            "военное"
+          ]
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "noun",
+          "translation": "зацепление",
+          "examples": [],
+          "register": [
+            "техническое"
+          ]
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "noun",
+          "translation": "обручальный",
+          "examples": [
+            {
+              "en": "engagement ring",
+              "ru": "обручальное кольцо с камнем"
+            }
+          ],
+          "register": []
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для engagement before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "engaging",
+    "before": {
+      "word": "engaging",
+      "frequency_rank": 3351,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈɡeɪdʒɪŋ/",
+      "phon_n_am": "/ɪnˈɡeɪdʒɪŋ/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "очаровательный, обаятельный",
+          "examples": [
+            {
+              "en": "engaging smile",
+              "ru": "очаровательная улыбка"
+            },
+            {
+              "en": "engaging frankness",
+              "ru": "подкупающая откровенность"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "зацепляющийся",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "engaging",
+      "frequency_rank": 3351,
+      "cefr": "c1",
+      "phon_br": "/ɪnˈɡeɪdʒɪŋ/",
+      "phon_n_am": "/ɪnˈɡeɪdʒɪŋ/",
+      "lists": {
+        "oxford5000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "очаровательный, обаятельный",
+          "examples": [
+            {
+              "en": "engaging smile",
+              "ru": "очаровательная улыбка"
+            },
+            {
+              "en": "engaging frankness",
+              "ru": "подкупающая откровенность"
+            }
+          ],
+          "register": [],
+          "id": 1,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "adjective",
+          "translation": "зацепляющийся",
+          "examples": [],
+          "register": [
+            "техническое"
+          ],
+          "id": 2,
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для engaging before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "engine",
+    "before": {
+      "word": "engine",
+      "frequency_rank": 1139,
+      "cefr": "a2",
+      "phon_br": "/ˈendʒɪn/",
+      "phon_n_am": "/ˈendʒɪn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "машина, двигатель; мотор",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "локомотив, паровоз",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "орудие, инструмент, средство",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "паровозный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "машинный; моторный",
+          "examples": [
+            {
+              "en": "engine oil",
+              "ru": "машинное масло"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "after": {
+      "word": "engine",
+      "frequency_rank": 1139,
+      "cefr": "a2",
+      "phon_br": "/ˈendʒɪn/",
+      "phon_n_am": "/ˈendʒɪn/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "машина, двигатель; мотор",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "локомотив, паровоз",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "орудие, инструмент, средство",
+          "examples": [],
+          "register": [
+            "устаревшее"
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "noun",
+          "translation": "паровозный",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "noun",
+          "translation": "машинный; моторный",
+          "examples": [
+            {
+              "en": "engine oil",
+              "ru": "машинное масло"
+            }
+          ],
+          "register": [],
+          "primary": true
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для engine before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "engineer",
+    "before": {
+      "word": "engineer",
+      "frequency_rank": 2032,
+      "cefr": "a2",
+      "phon_br": "/ˌendʒɪˈnɪə(r)/",
+      "phon_n_am": "/ˌendʒɪˈnɪr/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "инженер",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "механик",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "сапёр",
+          "examples": [
+            {
+              "en": "Royal Engineers",
+              "ru": "Corps of Engineers инженерные войска"
+            }
+          ],
+          "register": [
+            "американский английский"
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "сооружать; проектировать",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "работать в качестве инженера",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "verb",
+          "translation": "придумывать, изобретать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "подстраивать; провоцировать",
+          "examples": [
+            {
+              "en": "to engineer acts of sabotage",
+              "ru": "организовать диверсии"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ]
+        }
+      ]
+    },
+    "after": {
+      "word": "engineer",
+      "frequency_rank": 2032,
+      "cefr": "a2",
+      "phon_br": "/ˌendʒɪˈnɪə(r)/",
+      "phon_n_am": "/ˌendʒɪˈnɪr/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "id": 1,
+          "partOfSpeech": "noun",
+          "translation": "инженер",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 2,
+          "partOfSpeech": "noun",
+          "translation": "механик",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 3,
+          "partOfSpeech": "noun",
+          "translation": "сапёр",
+          "examples": [
+            {
+              "en": "Royal Engineers",
+              "ru": "Corps of Engineers инженерные войска"
+            }
+          ],
+          "register": [
+            "американский английский"
+          ],
+          "primary": true
+        },
+        {
+          "id": 4,
+          "partOfSpeech": "verb",
+          "translation": "сооружать; проектировать",
+          "examples": [],
+          "register": [
+            "американский английский"
+          ],
+          "primary": true
+        },
+        {
+          "id": 5,
+          "partOfSpeech": "verb",
+          "translation": "работать в качестве инженера",
+          "examples": [],
+          "register": [],
+          "primary": true
+        },
+        {
+          "id": 6,
+          "partOfSpeech": "verb",
+          "translation": "придумывать, изобретать",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 7,
+          "partOfSpeech": "verb",
+          "translation": "подстраивать; провоцировать",
+          "examples": [
+            {
+              "en": "to engineer acts of sabotage",
+              "ru": "организовать диверсии"
+            }
+          ],
+          "register": [
+            "разговорное"
+          ]
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для engineer before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  },
+  {
+    "word": "engineering",
+    "before": {
+      "word": "engineering",
+      "frequency_rank": 1228,
+      "cefr": "b1",
+      "phon_br": "/ˌendʒɪˈnɪərɪŋ/",
+      "phon_n_am": "/ˌendʒɪˈnɪrɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "прикладной (о науке)",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "инженерное искусство; техника",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "машиностроение",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "махинации, происки",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения: машиностроительный",
+          "examples": [
+            {
+              "en": "engineering plant",
+              "ru": "машиностроительный завод"
+            },
+            {
+              "en": "engineering worker",
+              "ru": "рабочий-машиностроитель"
+            }
+          ],
+          "register": [],
+          "id": 5
+        }
+      ]
+    },
+    "after": {
+      "word": "engineering",
+      "frequency_rank": 1228,
+      "cefr": "b1",
+      "phon_br": "/ˌendʒɪˈnɪərɪŋ/",
+      "phon_n_am": "/ˌendʒɪˈnɪrɪŋ/",
+      "lists": {
+        "oxford3000": true
+      },
+      "meanings": [
+        {
+          "partOfSpeech": "adjective",
+          "translation": "прикладной (о науке)",
+          "examples": [],
+          "register": [],
+          "id": 1
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "инженерное искусство; техника",
+          "examples": [],
+          "register": [],
+          "id": 2,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "машиностроение",
+          "examples": [],
+          "register": [],
+          "id": 3,
+          "primary": true
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "махинации, происки",
+          "examples": [],
+          "register": [
+            "разговорное"
+          ],
+          "id": 4
+        },
+        {
+          "partOfSpeech": "noun",
+          "translation": "в роли определения: машиностроительный",
+          "examples": [
+            {
+              "en": "engineering plant",
+              "ru": "машиностроительный завод"
+            },
+            {
+              "en": "engineering worker",
+              "ru": "рабочий-машиностроитель"
+            }
+          ],
+          "register": [],
+          "id": 5
+        }
+      ]
+    },
+    "decision": "оставить",
+    "source": "stage_06.json",
+    "reason": "Для engineering before и after совпадают: найденные фрагменты подтверждают наличие статьи, но не доказывают улучшение текущего текста; замена не выполняется.",
+    "confidence": 0.92
+  }
+]

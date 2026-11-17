@@ -1,5 +1,5 @@
 """
-Полный аудит oxford_5000_2026-08-27.json по PDF Мюллера.
+Полный аудит src/data/oxford_5000.json по PDF Мюллера.
 Извлекает статьи из PDF, сравнивает с JSON, находит расхождения.
 """
 import pymupdf  # PyMuPDF
@@ -10,7 +10,7 @@ import sys
 from collections import defaultdict
 
 PDF_PATH = "Мюллер В.К.,Александрова Т.Е.,Дворкина А.Я.,Романова С.П.-Новый англо-русский словарь...-2021.a4.pdf"
-JSON_PATH = "oxford_5000_2026-08-27.json"
+JSON_PATH = "src/data/oxford_5000.json"
 
 PAGE_START = 14   # 0-indexed, page 15 of PDF
 PAGE_END   = 959  # 0-indexed, last page

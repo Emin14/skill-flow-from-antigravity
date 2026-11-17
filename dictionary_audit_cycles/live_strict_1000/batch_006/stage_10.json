@@ -1,0 +1,358 @@
+[
+  {
+    "word": "advertise",
+    "entry_index": 1,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 2 «афишировать, (широко) извещать»: примера нет. Значение 3 «давать объявление в газету»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 2 «афишировать, (широко) извещать»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 2."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Значение 3 «давать объявление в газету»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 3."
+      }
+    ],
+    "review_reason": "Значение 2 «афишировать, (широко) извещать»: примера нет. Значение 3 «давать объявление в газету»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 2. Найти или создать пример именно для значения 3."
+  },
+  {
+    "word": "advertisement",
+    "entry_index": 2,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 1 «объявление; реклама; анонс»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 1 «объявление; реклама; анонс»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 1."
+      }
+    ],
+    "review_reason": "Значение 1 «объявление; реклама; анонс»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 1."
+  },
+  {
+    "word": "advertising",
+    "entry_index": 3,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 1 «рекламирование, реклама»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 1 «рекламирование, реклама»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 1."
+      }
+    ],
+    "review_reason": "Значение 1 «рекламирование, реклама»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 1."
+  },
+  {
+    "word": "advice",
+    "entry_index": 4,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 2 «консультация (юриста, врача)»: примера нет. Значение 3 «обыкн. при мн. ч.: сообщение»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 2 «консультация (юриста, врача)»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 2."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Значение 3 «обыкн. при мн. ч.: сообщение»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 3."
+      }
+    ],
+    "review_reason": "Значение 2 «консультация (юриста, врача)»: примера нет. Значение 3 «обыкн. при мн. ч.: сообщение»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 2. Найти или создать пример именно для значения 3."
+  },
+  {
+    "word": "advise",
+    "entry_index": 5,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 2 «консультировать»: примера нет. Значение 3 «извещать, сообщать»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 2 «консультировать»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 2."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Значение 3 «извещать, сообщать»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 3."
+      }
+    ],
+    "review_reason": "Значение 2 «консультировать»: примера нет. Значение 3 «извещать, сообщать»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 2. Найти или создать пример именно для значения 3."
+  },
+  {
+    "word": "advocate",
+    "entry_index": 6,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 1 «защитник; сторонник (мнения)»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 1 «защитник; сторонник (мнения)»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 1."
+      }
+    ],
+    "review_reason": "Значение 1 «защитник; сторонник (мнения)»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 1."
+  },
+  {
+    "word": "aesthetic",
+    "entry_index": 7,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 1 «эстетический»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 1 «эстетический»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 1."
+      }
+    ],
+    "review_reason": "Значение 1 «эстетический»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 1."
+  },
+  {
+    "word": "affair",
+    "entry_index": 8,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 2 «дело чести»: примера нет. Значение 3 «дуэль»: примера нет. Значение 5 «грандиозное событие»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 2 «дело чести»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 2."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Значение 3 «дуэль»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 3."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Значение 5 «грандиозное событие»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 5."
+      }
+    ],
+    "review_reason": "Значение 2 «дело чести»: примера нет. Значение 3 «дуэль»: примера нет. Значение 5 «грандиозное событие»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 2. Найти или создать пример именно для значения 3. Найти или создать пример именно для значения 5."
+  },
+  {
+    "word": "affect",
+    "entry_index": 9,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 2 «любить, предпочитать (что-либо)»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 2 «любить, предпочитать (что-либо)»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 2."
+      }
+    ],
+    "review_reason": "Значение 2 «любить, предпочитать (что-либо)»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 2."
+  },
+  {
+    "word": "affection",
+    "entry_index": 10,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "affection: независимая защита сверила 4 источников, 1 значений и 1 примеров; stage_08/09 не подтверждают безопасную правку.",
+    "confidence": 0.9
+  },
+  {
+    "word": "afford",
+    "entry_index": 11,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "afford: независимая защита сверила 4 источников, 3 значений и 8 примеров; stage_08/09 не подтверждают безопасную правку.",
+    "confidence": 0.9
+  },
+  {
+    "word": "affordable",
+    "entry_index": 12,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 1 «доступный по цене»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 1 «доступный по цене»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 1."
+      }
+    ],
+    "review_reason": "Значение 1 «доступный по цене»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 1."
+  },
+  {
+    "word": "afraid",
+    "entry_index": 13,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "afraid: независимая защита сверила 4 источников, 1 значений и 5 примеров; stage_08/09 не подтверждают безопасную правку.",
+    "confidence": 0.9
+  },
+  {
+    "word": "after",
+    "entry_index": 14,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 7 «сзади, позади»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 7 «сзади, позади»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 7."
+      }
+    ],
+    "review_reason": "Значение 7 «сзади, позади»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 7."
+  },
+  {
+    "word": "aftermath",
+    "entry_index": 15,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 2 «отава (трава второго укоса)»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 2 «отава (трава второго укоса)»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 2."
+      }
+    ],
+    "review_reason": "Значение 2 «отава (трава второго укоса)»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 2."
+  },
+  {
+    "word": "afternoon",
+    "entry_index": 16,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "afternoon: независимая защита сверила 4 источников, 1 значений и 4 примеров; stage_08/09 не подтверждают безопасную правку.",
+    "confidence": 0.9
+  },
+  {
+    "word": "afterwards",
+    "entry_index": 17,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 1 «впоследствии, потом, позже»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 1 «впоследствии, потом, позже»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 1."
+      }
+    ],
+    "review_reason": "Значение 1 «впоследствии, потом, позже»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 1."
+  },
+  {
+    "word": "again",
+    "entry_index": 18,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "again: независимая защита сверила 4 источников, 3 значений и 6 примеров; stage_08/09 не подтверждают безопасную правку.",
+    "confidence": 0.9
+  },
+  {
+    "word": "against",
+    "entry_index": 19,
+    "decision": "принято без изменения",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "against: независимая защита сверила 4 источников, 7 значений и 15 примеров; stage_08/09 не подтверждают безопасную правку.",
+    "confidence": 0.9
+  },
+  {
+    "word": "age",
+    "entry_index": 20,
+    "decision": "review_required",
+    "evidence_ref": "stage_06.json",
+    "before_after_ref": "stage_07.json",
+    "reason": "review_required: Значение 4 «поколение»: примера нет. Значение 7 «стареть»: примера нет. Значение 8 «старить»: примера нет. Значение 9 «подвергать старению»: примера нет. Значение 11 «старый; пожилой; состарившийся»: примера нет. Значение 12 «старческий»: примера нет.",
+    "confidence": 0.86,
+    "issues": [
+      {
+        "meaning_index": 1,
+        "problem": "Значение 4 «поколение»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 4."
+      },
+      {
+        "meaning_index": 2,
+        "problem": "Значение 7 «стареть»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 7."
+      },
+      {
+        "meaning_index": 3,
+        "problem": "Значение 8 «старить»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 8."
+      },
+      {
+        "meaning_index": 4,
+        "problem": "Значение 9 «подвергать старению»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 9."
+      },
+      {
+        "meaning_index": 5,
+        "problem": "Значение 11 «старый; пожилой; состарившийся»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 11."
+      },
+      {
+        "meaning_index": 6,
+        "problem": "Значение 12 «старческий»: примера нет.",
+        "required_action": "Найти или создать пример именно для значения 12."
+      }
+    ],
+    "review_reason": "Значение 4 «поколение»: примера нет. Значение 7 «стареть»: примера нет. Значение 8 «старить»: примера нет. Значение 9 «подвергать старению»: примера нет. Значение 11 «старый; пожилой; состарившийся»: примера нет. Значение 12 «старческий»: примера нет.",
+    "required_action": "Найти или создать пример именно для значения 4. Найти или создать пример именно для значения 7. Найти или создать пример именно для значения 8. Найти или создать пример именно для значения 9. Найти или создать пример именно для значения 11. Найти или создать пример именно для значения 12."
+  }
+]
