@@ -2,6 +2,16 @@ export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
 
 export type WordStatus = 'NEW' | 'LEARNING' | 'REVIEW' | 'MASTERED';
 
+export type DictionarySort =
+  | 'relevance'
+  | 'frequency-asc'
+  | 'frequency-desc'
+  | 'alphabetical-asc'
+  | 'alphabetical-desc'
+  | 'level-asc'
+  | 'level-desc'
+  | 'status';
+
 export type ReviewRating = 'again' | 'hard' | 'good' | 'easy' | 'already_know';
 
 export interface TranslationMeaning {

@@ -10,6 +10,18 @@ export async function GET(req: Request) {
     const q = (searchParams.get('q') || '').trim().toLowerCase();
     const level = (searchParams.get('level') || 'ALL').toUpperCase();
     const status = (searchParams.get('status') || 'ALL').toUpperCase();
+    const requestedSort = searchParams.get('sort') || 'relevance';
+    const validSorts = new Set([
+      'relevance',
+      'frequency-asc',
+      'frequency-desc',
+      'alphabetical-asc',
+      'alphabetical-desc',
+      'level-asc',
+      'level-desc',
+      'status',
+    ]);
+    const sort = validSorts.has(requestedSort) ? requestedSort : 'relevance';
     const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10));
     const limit = Math.max(1, Math.min(100, parseInt(searchParams.get('limit') || '30', 10)));
 
@@ -64,6 +76,31 @@ export async function GET(req: Request) {
       filtered = filtered.filter((w) => {
         const userStatus = progressMap.get(w.id)?.status || 'NEW';
         return userStatus === status;
+      });
+    }
+
+    const levelOrder = ['A1', 'A2', 'B1', 'B2', 'C1'];
+    const statusOrder = ['NEW', 'LEARNING', 'REVIEW', 'MASTERED'];
+    if (sort === 'frequency-asc' || sort === 'frequency-desc') {
+      filtered.sort((a, b) => {
+        const result = a.frequencyRank - b.frequencyRank;
+        return sort === 'frequency-asc' ? result : -result;
+      });
+    } else if (sort === 'alphabetical-asc' || sort === 'alphabetical-desc') {
+      filtered.sort((a, b) => {
+        const result = a.word.localeCompare(b.word);
+        return sort === 'alphabetical-asc' ? result : -result;
+      });
+    } else if (sort === 'level-asc' || sort === 'level-desc') {
+      filtered.sort((a, b) => {
+        const result = levelOrder.indexOf(a.cefrLevel) - levelOrder.indexOf(b.cefrLevel);
+        return sort === 'level-asc' ? result : -result;
+      });
+    } else if (sort === 'status') {
+      filtered.sort((a, b) => {
+        const aStatus = progressMap.get(a.id)?.status || 'NEW';
+        const bStatus = progressMap.get(b.id)?.status || 'NEW';
+        return statusOrder.indexOf(aStatus) - statusOrder.indexOf(bStatus) || a.word.localeCompare(b.word);
       });
     }
 

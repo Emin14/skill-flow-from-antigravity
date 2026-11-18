@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useEnglishStore, speakEnglishWord, CEFRLevel, OxfordWord } from '@/entities/english';
+import { useEnglishStore, speakEnglishWord, CEFRLevel, OxfordWord, DictionarySort } from '@/entities/english';
 import { EnglishTrainerModal, WordDetailModal } from '@/features/english-trainer';
 import { Check } from 'lucide-react';
 import styles from './EnglishPage.module.css';
@@ -38,6 +38,7 @@ export const EnglishPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedLevel, setSelectedLevel] = useState<string>('ALL');
   const [selectedStatus, setSelectedStatus] = useState<string>('ALL');
+  const [selectedSort, setSelectedSort] = useState<DictionarySort>('relevance');
 
   useEffect(() => {
     fetchSession();
@@ -47,16 +48,17 @@ export const EnglishPage: React.FC = () => {
   // Debounced search on query, level, or status change
   useEffect(() => {
     const timer = setTimeout(() => {
-      searchDictionary(searchQuery, selectedLevel, selectedStatus, 1);
+      searchDictionary(searchQuery, selectedLevel, selectedStatus, 1, selectedSort);
     }, 180);
     return () => clearTimeout(timer);
-  }, [searchQuery, selectedLevel, selectedStatus, searchDictionary]);
+  }, [searchQuery, selectedLevel, selectedStatus, selectedSort, searchDictionary]);
 
-  const hasActiveFilters = searchQuery !== '' || selectedLevel !== 'ALL' || selectedStatus !== 'ALL';
+  const hasActiveFilters = searchQuery !== '' || selectedLevel !== 'ALL' || selectedStatus !== 'ALL' || selectedSort !== 'relevance';
   const handleClearFilters = () => {
     setSearchQuery('');
     setSelectedLevel('ALL');
     setSelectedStatus('ALL');
+    setSelectedSort('relevance');
   };
 
   const handleToggleLevel = (lvl: CEFRLevel) => {
@@ -292,6 +294,22 @@ export const EnglishPage: React.FC = () => {
               <option value="REVIEW">На повторении</option>
               <option value="MASTERED">Выучено</option>
             </select>
+
+            <select
+              className={styles.selectInput}
+              value={selectedSort}
+              onChange={(e) => setSelectedSort(e.target.value as DictionarySort)}
+              aria-label="Сортировка каталога"
+            >
+              <option value="relevance">Сначала релевантные</option>
+              <option value="frequency-asc">По частотности: сначала частые</option>
+              <option value="frequency-desc">По частотности: сначала редкие</option>
+              <option value="alphabetical-asc">По алфавиту: А–Я</option>
+              <option value="alphabetical-desc">По алфавиту: Я–А</option>
+              <option value="level-asc">По уровню: A1 → C1</option>
+              <option value="level-desc">По уровню: C1 → A1</option>
+              <option value="status">По статусу изучения</option>
+            </select>
           </div>
 
           <div className={styles.filterSummaryRow}>
@@ -370,7 +388,7 @@ export const EnglishPage: React.FC = () => {
                 <div className={styles.loadMoreRow}>
                   <button
                     className={styles.loadMoreBtn}
-                    onClick={() => loadMoreDictionary(searchQuery, selectedLevel, selectedStatus)}
+                    onClick={() => loadMoreDictionary(searchQuery, selectedLevel, selectedStatus, selectedSort)}
                     disabled={isLoadingMoreDictionary}
                   >
                     {isLoadingMoreDictionary

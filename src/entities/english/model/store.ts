@@ -3,6 +3,7 @@ import { getTodayStr } from '@/shared/lib/dateUtils';
 import {
   EnglishSessionResponse,
   EnglishSettingsConfig,
+  DictionarySort,
   OxfordWord,
   ReviewRating,
   SessionWordCard,
@@ -29,8 +30,8 @@ interface EnglishState {
   resetTodayProgress: () => Promise<void>;
   fetchSettings: () => Promise<void>;
   updateSettings: (newSettings: Partial<EnglishSettingsConfig>) => Promise<void>;
-  searchDictionary: (query?: string, level?: string, status?: string, page?: number) => Promise<void>;
-  loadMoreDictionary: (query?: string, level?: string, status?: string) => Promise<void>;
+  searchDictionary: (query?: string, level?: string, status?: string, page?: number, sort?: DictionarySort) => Promise<void>;
+  loadMoreDictionary: (query?: string, level?: string, status?: string, sort?: DictionarySort) => Promise<void>;
   fetchRandomWords: (count?: number) => Promise<SessionWordCard[]>;
 }
 
@@ -153,13 +154,14 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
     }
   },
 
-  searchDictionary: async (query = '', level = 'ALL', status = 'ALL', page = 1) => {
+  searchDictionary: async (query = '', level = 'ALL', status = 'ALL', page = 1, sort: DictionarySort = 'relevance') => {
     set({ isLoadingDictionary: true });
     try {
       const params = new URLSearchParams({
         q: query,
         level,
         status,
+        sort,
         page: page.toString(),
         limit: '30',
       });
@@ -179,7 +181,7 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
     }
   },
 
-  loadMoreDictionary: async (query = '', level = 'ALL', status = 'ALL') => {
+  loadMoreDictionary: async (query = '', level = 'ALL', status = 'ALL', sort: DictionarySort = 'relevance') => {
     const { dictionaryPage, hasMoreDictionary, isLoadingMoreDictionary, dictionaryWords } = get();
     if (!hasMoreDictionary || isLoadingMoreDictionary) return;
 
@@ -190,6 +192,7 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
         q: query,
         level,
         status,
+        sort,
         page: nextPage.toString(),
         limit: '30',
       });
