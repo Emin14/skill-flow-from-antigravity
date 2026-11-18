@@ -1,0 +1,60 @@
+{
+  "scope": "frequency_rank_801_1002_deferred_recheck",
+  "applied_count": 5,
+  "changes": [
+    {
+      "word": "photo",
+      "path": "meanings[0].translation",
+      "before": "сокр. от",
+      "after": "сокр. от photograph",
+      "reason": "Restore truncated abbreviation source: photo is short for photograph.",
+      "source_evidence": "Muller 2021 p.31: photo n (pl -os) сокр. от photograph.",
+      "confidence": "high"
+    },
+    {
+      "word": "Friday",
+      "path": "meanings[0].examples[1].en",
+      "before": "Good friday",
+      "after": "Good Friday",
+      "reason": "Normalize the proper name capitalization.",
+      "source_evidence": "Muller 2021 p.330: Good Friday — Страстная пятница.",
+      "confidence": "high"
+    },
+    {
+      "word": "choose",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "The phrase is a verbal construction.",
+      "source_evidence": "Muller 2021 p.142: I cannot choose but go — мне необходимо пойти.",
+      "confidence": "high"
+    },
+    {
+      "word": "cook",
+      "path": "meanings[2].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "Remove unsupported construction register from ordinary cooking verb sense.",
+      "source_evidence": "Muller 2021 p.180: cook v 1) стряпать, приготовлять пищу; жарить(ся); варить(ся).",
+      "confidence": "high"
+    },
+    {
+      "word": "focus",
+      "path": "meanings[3].register",
+      "before": [
+        "собирательное"
+      ],
+      "after": [],
+      "reason": "Remove unsupported collective register from ordinary focus verb senses.",
+      "source_evidence": "Muller 2021 p.320: focus v 1) собирать(ся), помещать в фокусе; сфокусировать 2) сосредоточивать.",
+      "confidence": "high"
+    }
+  ],
+  "deferred": [
+    "brown, capital, cross, double, track, weight, subject, reach, ship, direct, literally, anyway, ice, individual, interesting, join, nearly, particular, region, sort, speed, travel, contact, kid, husband and remaining structural/source-boundary cases."
+  ],
+  "before_sha256": "24decdc20f12590e8efc78db80cc6cff0310dcc1efe133f22efa2293116a6101",
+  "after_sha256": "edb75f95ca253d689769e5a47f5751364783e260384c2db4aa15b8d17be90c9a"
+}

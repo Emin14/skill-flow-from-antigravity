@@ -44047,6 +44047,15 @@
           "юридическое"
         ],
         "id": 9
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "капитель",
+        "examples": [],
+        "register": [
+          "архитектура"
+        ],
+        "id": 10
       }
     ]
   },
@@ -75241,7 +75250,7 @@
         "examples": [
           {
             "en": "to cross smb.'s path",
-            "ru": "встретиться с кем-либо стать кому-либо поперёк дороги"
+            "ru": "встретиться с кем-либо; стать кому-либо поперёк дороги"
           }
         ],
         "register": []
@@ -75256,6 +75265,29 @@
           "сельскохозяйственное"
         ],
         "primary": true
+      },
+      {
+        "partOfSpeech": "adjective",
+        "translation": "противный (о ветре); противоположный; неблагоприятный",
+        "examples": [],
+        "register": [],
+        "id": 15
+      },
+      {
+        "partOfSpeech": "verb",
+        "translation": "разминуться, разойтись (о людях, письмах)",
+        "examples": [],
+        "register": [],
+        "id": 16
+      },
+      {
+        "partOfSpeech": "verb",
+        "translation": "форсировать",
+        "examples": [],
+        "register": [
+          "военное"
+        ],
+        "id": 17
       }
     ],
     "phrases": [
@@ -95151,7 +95183,10 @@
           },
           {
             "en": "double brush",
-            "ru": "перен. язвительное замечание"
+            "ru": "перен. язвительное замечание",
+            "register": [
+              "разговорное"
+            ]
           },
           {
             "en": "double speed",
@@ -95159,14 +95194,14 @@
           },
           {
             "en": "double feature.",
-            "ru": "представление по расширенной программе"
+            "ru": "представление по расширенной программе",
+            "register": [
+              "американский английский",
+              "театр"
+            ]
           }
         ],
-        "register": [
-          "американский английский",
-          "разговорное",
-          "театр"
-        ],
+        "register": [],
         "id": 14,
         "primary": true
       },
@@ -167439,14 +167474,6 @@
         "examples": [],
         "register": [],
         "id": 1,
-        "primary": true
-      },
-      {
-        "partOfSpeech": "adjective",
-        "translation": "интересный",
-        "examples": [],
-        "register": [],
-        "id": 2,
         "primary": true
       }
     ]
@@ -263023,6 +263050,17 @@
       {
         "partOfSpeech": "verb",
         "translation": "составлять (сумму)",
+        "examples": [],
+        "register": [],
+        "id": 20
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "reach out",
+        "partOfSpeech": "verb",
+        "translation": "протягивать руку; тянуться за чем-либо; доставать что-либо",
         "examples": [
           {
             "en": "reach out (for)",
@@ -263031,14 +263069,22 @@
           {
             "en": "he reached out for the dictionary",
             "ru": "он потянулся за словарём"
-          },
+          }
+        ],
+        "register": []
+      },
+      {
+        "id": 2,
+        "phrase": "reach after",
+        "partOfSpeech": "verb",
+        "translation": "тянуться за чем-либо; перен. стремиться к чему-либо",
+        "examples": [
           {
             "en": "reach after",
             "ru": "тянуться за чем-либо; перен. стремиться к чему-либо"
           }
         ],
-        "register": [],
-        "id": 20
+        "register": []
       }
     ]
   },
@@ -326724,10 +326770,6 @@
           {
             "en": "to traverse a subject",
             "ru": "обсудить вопрос"
-          },
-          {
-            "en": "subject to",
-            "ru": "(употр. как adv) при условии, допуская, если"
           }
         ],
         "register": [],
@@ -326760,14 +326802,39 @@
         "primary": true
       },
       {
-        "id": 4,
+        "partOfSpeech": "noun",
+        "translation": "подлежащее",
+        "examples": [],
+        "register": [],
+        "id": 4
+      },
+      {
+        "id": 5,
         "partOfSpeech": "noun",
         "translation": "подданный",
         "examples": [],
         "register": []
       },
       {
-        "id": 5,
+        "partOfSpeech": "noun",
+        "translation": "субъект",
+        "examples": [],
+        "register": [
+          "философия"
+        ],
+        "id": 6
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "главная тема",
+        "examples": [],
+        "register": [
+          "музыка"
+        ],
+        "id": 7
+      },
+      {
+        "id": 8,
         "partOfSpeech": "noun",
         "translation": "субъект, человек",
         "examples": [
@@ -326779,7 +326846,7 @@
         "register": []
       },
       {
-        "id": 6,
+        "id": 9,
         "partOfSpeech": "noun",
         "translation": "объект, предмет",
         "examples": [],
@@ -326787,28 +326854,14 @@
         "primary": true
       },
       {
-        "id": 7,
+        "id": 10,
         "partOfSpeech": "noun",
         "translation": "труп (для вскрытия)",
         "examples": [],
         "register": []
       },
       {
-        "id": 8,
-        "partOfSpeech": "noun",
-        "translation": "касаясь чего-либо",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 9,
-        "partOfSpeech": "noun",
-        "translation": "раз уж мы заговорили о деньгах, могу я узнать",
-        "examples": [],
-        "register": []
-      },
-      {
-        "id": 10,
+        "id": 11,
         "partOfSpeech": "adjective",
         "translation": "подчинённый, подвластный",
         "examples": [
@@ -326821,7 +326874,7 @@
         "primary": true
       },
       {
-        "id": 11,
+        "id": 12,
         "partOfSpeech": "adjective",
         "translation": "подверженный",
         "examples": [],
@@ -326829,14 +326882,19 @@
         "primary": true
       },
       {
-        "id": 12,
+        "id": 13,
         "partOfSpeech": "adjective",
         "translation": "подлежащий",
-        "examples": [],
+        "examples": [
+          {
+            "en": "subject to",
+            "ru": "(употр. как adv) при условии, допуская, если"
+          }
+        ],
         "register": []
       },
       {
-        "id": 13,
+        "id": 14,
         "partOfSpeech": "verb",
         "translation": "подвергать (воздействию, влиянию и т. п.)",
         "examples": [],
@@ -326844,7 +326902,7 @@
         "primary": true
       },
       {
-        "id": 14,
+        "id": 15,
         "partOfSpeech": "verb",
         "translation": "подчинять, покорять",
         "examples": [],
@@ -326852,7 +326910,7 @@
         "primary": true
       },
       {
-        "id": 15,
+        "id": 16,
         "partOfSpeech": "verb",
         "translation": "представлять",
         "examples": [
@@ -326861,6 +326919,24 @@
             "ru": "представить план на рассмотрение"
           }
         ],
+        "register": []
+      }
+    ],
+    "phrases": [
+      {
+        "id": 1,
+        "phrase": "on the subject of",
+        "partOfSpeech": "other",
+        "translation": "касаясь чего-либо",
+        "examples": [],
+        "register": []
+      },
+      {
+        "id": 2,
+        "phrase": "while we are on the subject of money, may I ask you...",
+        "partOfSpeech": "other",
+        "translation": "раз уж мы заговорили о деньгах, могу я узнать",
+        "examples": [],
         "register": []
       }
     ]
@@ -348967,6 +349043,57 @@
         "translation": "прокладывать курс, следовать по пути",
         "register": [],
         "examples": []
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "курс, путь",
+        "examples": [
+          {
+            "en": "the track of a comet",
+            "ru": "путь кометы"
+          }
+        ],
+        "register": [],
+        "id": 7
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "авиационный путь, трасса, маршрут полёта",
+        "examples": [],
+        "register": [
+          "авиация"
+        ],
+        "id": 8
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "жизненный путь",
+        "examples": [],
+        "register": [],
+        "id": 9
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "гусеница (трактора, танка)",
+        "examples": [],
+        "register": [],
+        "id": 10
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "ряд, вереница (событий, мыслей)",
+        "examples": [],
+        "register": [],
+        "id": 11
+      },
+      {
+        "partOfSpeech": "noun",
+        "translation": "лёгкая атлетика",
+        "examples": [],
+        "register": [
+          "спортивное"
+        ],
+        "id": 12
       }
     ],
     "phrases": [
@@ -351233,7 +351360,7 @@
         "examples": [
           {
             "en": "light travels faster than sound",
-            "ru": "свет распространяется быстрее звука"
+            "ru": "скорость света превышает скорость звука"
           }
         ],
         "register": [],
@@ -368712,7 +368839,16 @@
       {
         "partOfSpeech": "noun",
         "translation": "вес; масса",
-        "examples": [],
+        "examples": [
+          {
+            "en": "to put on weight",
+            "ru": "толстеть, поправляться"
+          },
+          {
+            "en": "to lose weight",
+            "ru": "худеть"
+          }
+        ],
         "register": [],
         "id": 1,
         "primary": true
@@ -368721,9 +368857,7 @@
         "partOfSpeech": "noun",
         "translation": "гиря; при мн. ч.: разновес",
         "examples": [],
-        "register": [
-          "британское"
-        ],
+        "register": [],
         "id": 2,
         "primary": true
       },

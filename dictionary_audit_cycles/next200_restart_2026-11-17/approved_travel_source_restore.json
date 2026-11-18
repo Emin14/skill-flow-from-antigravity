@@ -1,0 +1,16 @@
+{
+  "scope": "travel_source_restore",
+  "applied_count": 1,
+  "changes": [
+    {
+      "word": "travel",
+      "path": "meanings[9].examples[0].ru",
+      "before": "свет распространяется быстрее звука",
+      "after": "скорость света превышает скорость звука",
+      "reason": "Restore exact Muller 2021 source wording; previous paraphrase was not source-faithful."
+    }
+  ],
+  "source_evidence": "Muller 2021 p.842: light travels faster than sound — скорость света превышает скорость звука.",
+  "before_sha256": "356ec40ae4fecf31413c68ae1bdb7786e0c40a6ddbe9374e0a3d55a4e8048778",
+  "after_sha256": "c5986a71317464f8ca16a1ca60e0098802bc8cd89c14b5ec77963e7ee2de939e"
+}

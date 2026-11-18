@@ -1,0 +1,22 @@
+{
+  "scope": "deep_remaining_recheck_2026-11-17",
+  "reviewed_words": ["double", "weight", "subject", "reach", "ship", "literally", "anyway", "ice", "speed", "travel", "contact", "cross"],
+  "additional_safe_changes": 0,
+  "status": "no_further_point_edits",
+  "findings": {
+    "double": "Current record already contains the major noun/adjective/verb/adverb inventory; remaining issues concern duplicate construction storage and source-to-phrase ownership.",
+    "weight": "Source and canonical senses require article-level mapping; no isolated text/POS/register correction is safe.",
+    "subject": "Current phrase-like material is embedded among noun meanings; extracting it requires structural remapping.",
+    "reach": "Current noun and verb inventory is broad and source-aligned; remaining reach out/for/after ownership is structural.",
+    "ship": "Current core article is source-aligned; remaining constructions require phrase ownership review.",
+    "literally": "No reliable standalone source article was recovered; no safe edit.",
+    "anyway": "Source is an explicit cross-reference to anyhow; representation is schema-sensitive.",
+    "ice": "Current core senses match the source; remaining phrase/construction placement is structural.",
+    "speed": "Current senses and examples match the source article; no safe additional point edit.",
+    "travel": "Current senses match the source article; remaining coverage/phrase ownership is structural.",
+    "contact": "Current noun, attributive, technical, and verb blocks are mapped; remaining issues are schema-sensitive.",
+    "cross": "Source-confirmed omitted adjective/verb senses were added in the preceding reconstruction; remaining differences are article-boundary/coverage decisions."
+  },
+  "canonical_sha256": "5a91feadf01b7e188a76288c45e4e1f4bd83d384a6a8771fbe3326dd7838c4ba",
+  "qa": "passed"
+}

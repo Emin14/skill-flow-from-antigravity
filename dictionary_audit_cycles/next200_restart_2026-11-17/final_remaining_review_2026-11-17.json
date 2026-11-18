@@ -1,0 +1,41 @@
+{
+  "scope": "final_remaining_structural_recheck",
+  "reviewed_words": [
+    "capital",
+    "cross",
+    "double",
+    "track",
+    "weight",
+    "subject",
+    "reach",
+    "ship",
+    "literally",
+    "anyway",
+    "ice",
+    "interesting",
+    "speed",
+    "travel",
+    "contact"
+  ],
+  "additional_safe_changes": 0,
+  "status": "structural_review_required",
+  "findings": {
+    "capital": "Source has capital I, capital II, and capital III; canonical record merges article boundaries and omits the separate architectural article.",
+    "cross": "Source has additional adverb and preposition blocks; canonical record requires structural expansion and boundary mapping.",
+    "double": "Source noun/adjective/verb/adverb blocks and phrase ownership need reconstruction; point edits would risk duplicate or misplaced material.",
+    "track": "Source article contains more noun and verb senses than canonical record; expansion is structural.",
+    "weight": "Source contains multiple weight/measure and construction senses; complete mapping is structural.",
+    "subject": "Subject-to and on-the-subject-of constructions are embedded among noun meanings; extraction requires structural remapping.",
+    "reach": "Reach out/for/after constructions overlap with the final canonical meaning and require phrase ownership decisions.",
+    "ship": "Canonical record is close to the source but phrase/construction ownership and remaining article boundaries require reconstruction.",
+    "literally": "No reliable standalone source article was recovered from the local extraction; no safe edit.",
+    "anyway": "Source is an explicit cross-reference to anyhow; rewriting depends on the project's cross-reference policy.",
+    "ice": "Source mixes core senses and phrase constructions; current record needs structural mapping rather than a point edit.",
+    "interesting": "Source distinguishes present participle and adjective blocks; current duplicate-looking meanings need structural POS/sense adjudication.",
+    "speed": "Source includes several verb constructions and archaic examples; current mapping needs article-level review.",
+    "travel": "Source has additional verb senses and construction examples; full repair is structural.",
+    "contact": "Source has noun, attributive, technical, and verb blocks; remaining mapping is schema-sensitive."
+  },
+  "canonical_sha256": "c814bff78d1e937ffe3680d5b2612ec924d92db8f9f2069433ed63bb2f4dcf92",
+  "qa": "passed"
+}

@@ -1,0 +1,112 @@
+{
+  "scope": "frequency_rank_801_1002",
+  "applied_count": 11,
+  "changes": [
+    {
+      "word": "allow",
+      "path": "phrases[0].partOfSpeech",
+      "before": "noun",
+      "after": "verb",
+      "reason": "The phrase is a verbal construction: we have allowed for twenty people.",
+      "source_evidence": "Muller 2021, article allow, phrase block: allowed for twenty people.",
+      "confidence": "high"
+    },
+    {
+      "word": "normal",
+      "path": "meanings[5].translation",
+      "before": "нормальный, образец, размер",
+      "after": "нормальный тип, образец, размер",
+      "reason": "Restore omitted noun gloss тип.",
+      "source_evidence": "Muller 2021, article normal, noun sense 2: нормальный тип, образец, размер.",
+      "confidence": "high"
+    },
+    {
+      "word": "station",
+      "path": "meanings[3].translation",
+      "before": "но-морская база; авиабаза",
+      "after": "военно-морская база; авиабаза",
+      "reason": "Repair truncated naval translation.",
+      "source_evidence": "Muller 2021, article station, sense 4: военно-морская база.",
+      "confidence": "high"
+    },
+    {
+      "word": "station",
+      "path": "meanings[3].examples[0].ru",
+      "before": "но-морская база; авиабаза",
+      "after": "военно-морская база; авиабаза",
+      "reason": "Repair the same truncated translation in naval station example.",
+      "source_evidence": "Muller 2021, article station: naval station — военно-морская база.",
+      "confidence": "high"
+    },
+    {
+      "word": "female",
+      "path": "meanings[3].examples[1].ru",
+      "before": "насекомоесамка",
+      "after": "насекомое-самка",
+      "reason": "Repair missing word boundary/hyphenation.",
+      "source_evidence": "Muller 2021, article female: female insect — насекомое самка.",
+      "confidence": "high"
+    },
+    {
+      "word": "content",
+      "path": "meanings[7].translation",
+      "before": "predic. довольный",
+      "after": "сказуемое: довольный",
+      "reason": "Translate the editorial grammatical abbreviation while preserving the restriction.",
+      "source_evidence": "Muller 2021, article content II: predic. довольный.",
+      "confidence": "high"
+    },
+    {
+      "word": "nature",
+      "path": "meanings[1].examples[0].en",
+      "before": "N.'s engineering",
+      "after": "nature's engineering",
+      "reason": "Restore corrupted headword in the example.",
+      "source_evidence": "Muller 2021, article nature: nature's engineering.",
+      "confidence": "high"
+    },
+    {
+      "word": "absolutely",
+      "path": "meanings[2].translation",
+      "before": "безусловно; безусловно",
+      "after": "безусловно",
+      "reason": "Remove exact duplicate translation within one meaning.",
+      "source_evidence": "Muller 2021, article absolutely: безусловно.",
+      "confidence": "high"
+    },
+    {
+      "word": "computer",
+      "path": "meanings[0].register",
+      "before": [
+        "коммерческое"
+      ],
+      "after": [],
+      "reason": "Remove unsupported commercial register from the general computer noun sense.",
+      "source_evidence": "Muller 2021, article computer: computer n компьютер; no commercial register.",
+      "confidence": "high"
+    },
+    {
+      "word": "construction",
+      "path": "meanings[6].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "The translation and examples are attributive: строительный, construction engineering/plant/timber.",
+      "source_evidence": "Muller 2021, article construction: 7. attr. строительный.",
+      "confidence": "high"
+    },
+    {
+      "word": "throughout",
+      "path": "meanings[2].examples[0].ru",
+      "before": "через весь XIX век",
+      "after": "на протяжении всего XIX века",
+      "reason": "Correct the temporal construction translation.",
+      "source_evidence": "Muller 2021, article throughout: throughout the 19th century — на протяжении всего XIX века.",
+      "confidence": "high"
+    }
+  ],
+  "deferred": [
+    "brown, capital, cross, double, track, weight and remaining structural/source-boundary cases; low-confidence register/POS candidates remain unresolved."
+  ],
+  "before_sha256": "3fea87743818579c5db7fd299d3f49fb6cce693b6cafe49ff0a9b5c8271a5df7",
+  "after_sha256": "24decdc20f12590e8efc78db80cc6cff0310dcc1efe133f22efa2293116a6101"
+}

@@ -1,0 +1,113 @@
+{
+  "scope": "frequency_rank_801_1002_final_remaining_recheck",
+  "applied_count": 10,
+  "changes": [
+    {
+      "word": "subject",
+      "path": "meanings[3].register",
+      "before": [
+        "грамматика"
+      ],
+      "after": [],
+      "reason": "Remove unsupported grammar register from subject = подданный.",
+      "source_evidence": "Muller 2021 subject: подданный; no grammar register.",
+      "confidence": "high"
+    },
+    {
+      "word": "subject",
+      "path": "meanings[6].register",
+      "before": [
+        "музыка"
+      ],
+      "after": [],
+      "reason": "Remove misplaced music register from subject = труп для вскрытия.",
+      "source_evidence": "Muller 2021 subject: труп (для вскрытия; тж. subject for dissection).",
+      "confidence": "high"
+    },
+    {
+      "word": "ice",
+      "path": "meanings[1].register",
+      "before": [
+        "морской термин"
+      ],
+      "after": [],
+      "reason": "Remove unsupported nautical register from ice = мороженое.",
+      "source_evidence": "Muller 2021 ice: 2) мороженое; no nautical register.",
+      "confidence": "high"
+    },
+    {
+      "word": "double",
+      "path": "phrases[0].register",
+      "before": [
+        "театр"
+      ],
+      "after": [],
+      "reason": "Remove register contamination from double back phrase.",
+      "source_evidence": "Muller 2021 double back is a general phrasal construction; no theatre register.",
+      "confidence": "high"
+    },
+    {
+      "word": "double",
+      "path": "phrases[1].register",
+      "before": [
+        "кино"
+      ],
+      "after": [],
+      "reason": "Remove register contamination from double in phrase.",
+      "source_evidence": "Muller 2021 double in is a general phrasal construction; no cinema register.",
+      "confidence": "high"
+    },
+    {
+      "word": "sort",
+      "path": "phrases[1].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "sort of functions as an adverbial hedge meaning отчасти.",
+      "source_evidence": "Muller 2021 sort of: отчасти.",
+      "confidence": "high"
+    },
+    {
+      "word": "sort",
+      "path": "phrases[2].partOfSpeech",
+      "before": "noun",
+      "after": "adverb",
+      "reason": "sort of in he sort of hinted functions adverbially.",
+      "source_evidence": "Muller 2021 he sort of hinted: он вроде бы намекнул.",
+      "confidence": "high"
+    },
+    {
+      "word": "contact",
+      "path": "meanings[10].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "Source marks this block attr.: contact lenses/man/print.",
+      "source_evidence": "Muller 2021 contact: 11) attr. контактный, связывающий.",
+      "confidence": "high"
+    },
+    {
+      "word": "contact",
+      "path": "meanings[11].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "Source marks this block attr. before contact flight.",
+      "source_evidence": "Muller 2021 contact: 12) attr.: contact flight.",
+      "confidence": "high"
+    },
+    {
+      "word": "husband",
+      "path": "meanings[1].register",
+      "before": [
+        "экономика"
+      ],
+      "after": [],
+      "reason": "Remove unsupported economics register from ordinary husband verb sense.",
+      "source_evidence": "Muller 2021 husband v: экономно вести хозяйство, экономить, беречь.",
+      "confidence": "high"
+    }
+  ],
+  "deferred": [
+    "capital/cross/double article reconstruction; track omitted senses; weight mapping; subject phrase extraction; reach phrase ownership; ship structural mapping; literally unresolved source article; anyway cross-reference policy; ice remaining construction mapping; interesting duplicate reconstruction; speed example mapping; travel/contact remaining schema and phrase cases."
+  ],
+  "before_sha256": "93d0e023982eac171d5d6987caf67b2c423fa391f8b765d24ed9130e55023e7e",
+  "after_sha256": "c814bff78d1e937ffe3680d5b2612ec924d92db8f9f2069433ed63bb2f4dcf92"
+}

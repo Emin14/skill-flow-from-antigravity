@@ -1,0 +1,34 @@
+{
+  "scope": "double_register_scope_fix",
+  "applied_count": 3,
+  "word": "double",
+  "changes": [
+    {
+      "path": "meanings[13].register",
+      "before": [
+        "американский английский",
+        "разговорное",
+        "театр"
+      ],
+      "after": []
+    },
+    {
+      "path": "meanings[13].examples[1].register",
+      "before": null,
+      "after": [
+        "разговорное"
+      ]
+    },
+    {
+      "path": "meanings[13].examples[3].register",
+      "before": null,
+      "after": [
+        "американский английский",
+        "театр"
+      ]
+    }
+  ],
+  "source_evidence": "Muller 2021 p.248 marks double brush as colloquial and double feature as American theatre; the broad adjective meaning must not inherit these construction-level registers.",
+  "before_sha256": "7548873a9a435162366feb7f308774c218ffd0e0105ecf10619caed4ebcfbb19",
+  "after_sha256": "356ec40ae4fecf31413c68ae1bdb7786e0c40a6ddbe9374e0a3d55a4e8048778"
+}

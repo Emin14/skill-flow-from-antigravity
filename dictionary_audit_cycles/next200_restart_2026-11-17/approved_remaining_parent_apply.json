@@ -1,0 +1,116 @@
+{
+  "scope": "frequency_rank_801_1002_remaining_parent_recheck",
+  "applied_count": 11,
+  "changes": [
+    {
+      "word": "brown",
+      "path": "meanings[0].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "Source brown I begins as adjective; current block contains adjective examples.",
+      "source_evidence": "Muller 2021 brown: 1. a коричневый; бурый; 2. n коричневый цвет; 3. v.",
+      "confidence": "high"
+    },
+    {
+      "word": "capital",
+      "path": "meanings[2].partOfSpeech",
+      "before": "noun",
+      "after": "adjective",
+      "reason": "Explicitly attributive capital goods/flow/gains/issue sense.",
+      "source_evidence": "Muller 2021 capital I: 3. attr.",
+      "confidence": "high"
+    },
+    {
+      "word": "cross",
+      "path": "meanings[3].register",
+      "before": [
+        "строительное"
+      ],
+      "after": [],
+      "reason": "Remove unsupported construction register from idiomatic cross meaning.",
+      "source_evidence": "Muller 2021 cross: to bear one's cross.",
+      "confidence": "high"
+    },
+    {
+      "word": "individual",
+      "path": "meanings[0].register",
+      "before": [
+        "военное"
+      ],
+      "after": [],
+      "reason": "Scope register away from broad adjective meaning.",
+      "source_evidence": "Muller 2021 individual fire is the military construction; individual case is ordinary.",
+      "confidence": "high"
+    },
+    {
+      "word": "individual",
+      "path": "meanings[0].examples[1].register",
+      "before": null,
+      "after": [
+        "военное"
+      ],
+      "reason": "Scope military register to individual fire construction.",
+      "source_evidence": "Muller 2021 individual fire — одиночный огонь.",
+      "confidence": "high"
+    },
+    {
+      "word": "join",
+      "path": "meanings[5].examples[0].ru",
+      "before": "эти два имения граничат друг с другом join up",
+      "after": "эти два имения граничат друг с другом",
+      "reason": "Remove appended join up contamination.",
+      "source_evidence": "Muller 2021 separates join example and join up construction.",
+      "confidence": "high"
+    },
+    {
+      "word": "particular",
+      "path": "meanings[5].examples[0].ru",
+      "before": "what (или particular as to what)",
+      "after": "разборчивый относительно чего-либо; привередливый в отношении чего-либо",
+      "reason": "Replace untranslated construction contamination.",
+      "source_evidence": "Muller 2021 particular about/as to.",
+      "confidence": "high"
+    },
+    {
+      "word": "region",
+      "path": "meanings[0].examples[0].ru",
+      "before": "поблизости, в районе (чего-либо) в сфере, в области приблизительно, около",
+      "after": "поблизости; в районе чего-либо; в сфере, в области; приблизительно, около",
+      "reason": "Separate concatenated translations.",
+      "source_evidence": "Muller 2021 in the region of.",
+      "confidence": "high"
+    },
+    {
+      "word": "travel",
+      "path": "meanings[9].examples[0].ru",
+      "before": "скорость света превышает скорость звука",
+      "after": "свет распространяется быстрее звука",
+      "reason": "Restore verb construction translation.",
+      "source_evidence": "Muller 2021 light travels faster than sound.",
+      "confidence": "high"
+    },
+    {
+      "word": "kid",
+      "path": "phrases[1].translation",
+      "before": "= и младенцу Ясно",
+      "after": "= и младенцу ясно",
+      "reason": "Normalize capitalization contamination.",
+      "source_evidence": "Muller 2021 kids' stuff.",
+      "confidence": "high"
+    },
+    {
+      "word": "nearly",
+      "path": "meanings[1].examples[0].ru",
+      "before": "в близком родстве имеющий непосредственное отношение",
+      "after": "близкородственный; имеющий непосредственное отношение",
+      "reason": "Separate coordinated glosses.",
+      "source_evidence": "Muller 2021 nearly related.",
+      "confidence": "high"
+    }
+  ],
+  "deferred": [
+    "capital multi-article reconciliation; cross missing adv/prep blocks; double source/phrase/register mapping; track omitted source senses; weight source mapping; subject phrase extraction; reach phrase ownership; ship structural mapping; literally source article unresolved; anyway cross-reference policy; ice structural mapping; interesting duplicate/reconstruction; sort phrase POS/ownership; speed example mapping; contact adjective schema; husband register review."
+  ],
+  "before_sha256": "bf6fbeba7bbf718ab626f160a340702feea234eb563f30c18be3fd172c533559",
+  "after_sha256": "93d0e023982eac171d5d6987caf67b2c423fa391f8b765d24ed9130e55023e7e"
+}

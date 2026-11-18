@@ -1,0 +1,24 @@
+{
+  "scope": "capital_structural_reconstruction",
+  "applied_count": 1,
+  "word": "capital",
+  "changes": [
+    {
+      "path": "meanings[9]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "капитель",
+        "examples": [],
+        "register": [
+          "архитектура"
+        ],
+        "id": 10
+      },
+      "reason": "Restore omitted capital III architectural noun sense."
+    }
+  ],
+  "source_evidence": "Muller 2021 p.122: capital III n архит. капитель.",
+  "before_sha256": "993d72447734bbe8db521d65e4188ab31182624f3484c5fee862091274310d49",
+  "after_sha256": "d5d5844ee68fe5d4b1c72dec90e09deac0a7b07916807bc11f8dc0847646a778"
+}

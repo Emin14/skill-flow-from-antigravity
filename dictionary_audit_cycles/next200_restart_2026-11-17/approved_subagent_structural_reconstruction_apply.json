@@ -1,0 +1,98 @@
+{
+  "scope": "subagent_structural_reconstruction_apply",
+  "applied_count": 4,
+  "changes": [
+    {
+      "word": "weight",
+      "path": "meanings[id=1].examples",
+      "before": [],
+      "after": [
+        {
+          "en": "to put on weight",
+          "ru": "толстеть, поправляться"
+        },
+        {
+          "en": "to lose weight",
+          "ru": "худеть"
+        }
+      ],
+      "reason": "Restore source-confirmed put on/lose weight constructions.",
+      "source": "Muller 2021 p.886."
+    },
+    {
+      "word": "weight",
+      "path": "meanings[id=2].register",
+      "before": [
+        "британское"
+      ],
+      "after": [],
+      "reason": "Remove unsupported British register from weight/weights sense.",
+      "source": "Muller 2021 p.886."
+    },
+    {
+      "word": "reach",
+      "path": "meanings[id=20].examples",
+      "before": [
+        {
+          "en": "reach out (for)",
+          "ru": "протягивать руку за чем-либо, доставать что-либо (с полки, со шкафа)"
+        },
+        {
+          "en": "he reached out for the dictionary",
+          "ru": "он потянулся за словарём"
+        },
+        {
+          "en": "reach after",
+          "ru": "тянуться за чем-либо; перен. стремиться к чему-либо"
+        }
+      ],
+      "after": [],
+      "reason": "Remove reach out/after contamination from unrelated reach = составлять сумму meaning.",
+      "source": "Muller 2021 pp.643–644."
+    },
+    {
+      "word": "reach",
+      "path": "phrases",
+      "before": null,
+      "after": [
+        {
+          "id": 1,
+          "phrase": "reach out",
+          "partOfSpeech": "verb",
+          "translation": "протягивать руку; тянуться за чем-либо; доставать что-либо",
+          "examples": [
+            {
+              "en": "reach out (for)",
+              "ru": "протягивать руку за чем-либо, доставать что-либо (с полки, со шкафа)"
+            },
+            {
+              "en": "he reached out for the dictionary",
+              "ru": "он потянулся за словарём"
+            }
+          ],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "reach after",
+          "partOfSpeech": "verb",
+          "translation": "тянуться за чем-либо; перен. стремиться к чему-либо",
+          "examples": [
+            {
+              "en": "reach after",
+              "ru": "тянуться за чем-либо; перен. стремиться к чему-либо"
+            }
+          ],
+          "register": []
+        }
+      ],
+      "reason": "Move source-confirmed phrasal constructions into phrase inventory.",
+      "source": "Muller 2021 p.644."
+    }
+  ],
+  "deferred": [
+    "ship optional phrase coverage; ice/speed duplicate-storage policy; contact/cross text-level issues; literally unresolved; anyway intentional cross-reference; weight down duplicate representation policy."
+  ],
+  "before_sha256": "c5986a71317464f8ca16a1ca60e0098802bc8cd89c14b5ec77963e7ee2de939e",
+  "after_sha256": "64c703712be1c0f3c5c0b069d17b53e69a01bb491bda67d5e8d23655e23ec06c"
+}

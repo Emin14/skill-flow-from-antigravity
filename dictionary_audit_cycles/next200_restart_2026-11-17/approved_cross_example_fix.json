@@ -1,0 +1,16 @@
+{
+  "scope": "cross_source_example_fix",
+  "applied_count": 1,
+  "changes": [
+    {
+      "word": "cross",
+      "path": "meanings[12].examples[0].ru",
+      "before": "встретиться с кем-либо стать кому-либо поперёк дороги",
+      "after": "встретиться с кем-либо; стать кому-либо поперёк дороги",
+      "reason": "Restore source alternative separation."
+    }
+  ],
+  "source_evidence": "Muller 2021 p.193: to cross smb.'s path — а) встретиться с кем-либо; б) стать кому-либо поперёк дороги.",
+  "before_sha256": "64c703712be1c0f3c5c0b069d17b53e69a01bb491bda67d5e8d23655e23ec06c",
+  "after_sha256": "1664c4f89f73ac148eb97d983a6e2ee58c02adf1410ceeaa1f59182d973314ec"
+}

@@ -1,0 +1,23 @@
+{
+  "scope": "interesting_structural_reconstruction",
+  "applied_count": 1,
+  "word": "interesting",
+  "changes": [
+    {
+      "path": "meanings[1]",
+      "before": {
+        "partOfSpeech": "adjective",
+        "translation": "интересный",
+        "examples": [],
+        "register": [],
+        "id": 2,
+        "primary": true
+      },
+      "after": null,
+      "reason": "Remove duplicate adjective meaning; Muller 2021 has a single adjective block after the present-participle block."
+    }
+  ],
+  "source_evidence": "Muller 2021 p.424: interesting 1. pres. p. от interest 2; 2. a интересный. The canonical record had two adjective meanings, one broad and one duplicate short form; the distinct useful adjective meaning is preserved.",
+  "before_sha256": "c2bbf434393f80e367cfaef45fca648f7fba32f7f2b30c518b6e11a378ad8281",
+  "after_sha256": "993d72447734bbe8db521d65e4188ab31182624f3484c5fee862091274310d49"
+}

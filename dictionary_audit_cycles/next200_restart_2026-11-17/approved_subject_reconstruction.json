@@ -1,0 +1,39 @@
+{
+  "scope": "subject_structural_reconstruction",
+  "applied_count": 5,
+  "word": "subject",
+  "changes": [
+    {
+      "path": "meanings",
+      "before_count": 15,
+      "after_count": 16,
+      "reason": "Reconstruct source noun/adjective/verb blocks and remove two phrase-contamination records."
+    },
+    {
+      "path": "phrases",
+      "before": null,
+      "after": [
+        {
+          "id": 1,
+          "phrase": "on the subject of",
+          "partOfSpeech": "other",
+          "translation": "касаясь чего-либо",
+          "examples": [],
+          "register": []
+        },
+        {
+          "id": 2,
+          "phrase": "while we are on the subject of money, may I ask you...",
+          "partOfSpeech": "other",
+          "translation": "раз уж мы заговорили о деньгах, могу я узнать",
+          "examples": [],
+          "register": []
+        }
+      ],
+      "reason": "Move source-confirmed on the subject of constructions into phrase inventory."
+    }
+  ],
+  "source_evidence": "Muller 2021 p.789: subject noun senses 1–10 (including grammar подлежащее, философский субъект, музыкальная главная тема), adjective senses 1–4 including subject to, and verb senses 1–3. The two phrase-like canonical meanings correspond to on the subject of and while we are on the subject of money, may I ask you... .",
+  "before_sha256": "5a91feadf01b7e188a76288c45e4e1f4bd83d384a6a8771fbe3326dd7838c4ba",
+  "after_sha256": "7548873a9a435162366feb7f308774c218ffd0e0105ecf10619caed4ebcfbb19"
+}

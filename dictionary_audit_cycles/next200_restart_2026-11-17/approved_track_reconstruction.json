@@ -1,0 +1,91 @@
+{
+  "scope": "track_structural_reconstruction",
+  "applied_count": 6,
+  "word": "track",
+  "changes": [
+    {
+      "path": "meanings[6]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "курс, путь",
+        "examples": [
+          {
+            "en": "the track of a comet",
+            "ru": "путь кометы"
+          }
+        ],
+        "register": [],
+        "id": 7
+      },
+      "reason": "Restore source-confirmed Muller 2021 track senses 5–12 omitted from canonical record."
+    },
+    {
+      "path": "meanings[7]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "авиационный путь, трасса, маршрут полёта",
+        "examples": [],
+        "register": [
+          "авиация"
+        ],
+        "id": 8
+      },
+      "reason": "Restore source-confirmed Muller 2021 track senses 5–12 omitted from canonical record."
+    },
+    {
+      "path": "meanings[8]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "жизненный путь",
+        "examples": [],
+        "register": [],
+        "id": 9
+      },
+      "reason": "Restore source-confirmed Muller 2021 track senses 5–12 omitted from canonical record."
+    },
+    {
+      "path": "meanings[9]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "гусеница (трактора, танка)",
+        "examples": [],
+        "register": [],
+        "id": 10
+      },
+      "reason": "Restore source-confirmed Muller 2021 track senses 5–12 omitted from canonical record."
+    },
+    {
+      "path": "meanings[10]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "ряд, вереница (событий, мыслей)",
+        "examples": [],
+        "register": [],
+        "id": 11
+      },
+      "reason": "Restore source-confirmed Muller 2021 track senses 5–12 omitted from canonical record."
+    },
+    {
+      "path": "meanings[11]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "noun",
+        "translation": "лёгкая атлетика",
+        "examples": [],
+        "register": [
+          "спортивное"
+        ],
+        "id": 12
+      },
+      "reason": "Restore source-confirmed Muller 2021 track senses 5–12 omitted from canonical record."
+    }
+  ],
+  "source_evidence": "Muller 2021 p.838: track senses 5) курс, путь; 6) ав. путь, трасса, маршрут полёта; 7) жизненный путь; 8) гусеница; 9) дорожка/бороздка грампластинки; 10) звуковая дорожка; 11) ряд, вереница; 12) спорт. лёгкая атлетика. Existing canonical meaning 4 covers source 9/10 as track/song, so only omitted senses 5–8 and 11–12 were added.",
+  "before_sha256": "c814bff78d1e937ffe3680d5b2612ec924d92db8f9f2069433ed63bb2f4dcf92",
+  "after_sha256": "c2bbf434393f80e367cfaef45fca648f7fba32f7f2b30c518b6e11a378ad8281"
+}

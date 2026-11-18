@@ -1,0 +1,20 @@
+{
+  "scope": "frequency_rank_801_1002_remaining_recheck",
+  "applied_count": 1,
+  "changes": [
+    {
+      "word": "direct",
+      "path": "meanings[2].examples[5].en",
+      "before": "direct pointing.",
+      "after": "direct pointing",
+      "reason": "Remove stray terminal period from the source-confirmed lexical phrase.",
+      "source_evidence": "Muller 2021 p.218: direct pointing — прямая наводка.",
+      "confidence": "high"
+    }
+  ],
+  "deferred": [
+    "brown, capital, cross, double, track, weight, subject, reach, ship, literally, anyway, ice, individual, interesting, join, nearly, particular, region, sort, speed, travel, contact, kid, husband — structural reconstruction/manual column review required."
+  ],
+  "before_sha256": "edb75f95ca253d689769e5a47f5751364783e260384c2db4aa15b8d17be90c9a",
+  "after_sha256": "bf6fbeba7bbf718ab626f160a340702feea234eb563f30c18be3fd172c533559"
+}

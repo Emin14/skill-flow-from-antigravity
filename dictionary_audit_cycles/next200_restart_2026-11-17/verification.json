@@ -1,0 +1,79 @@
+{
+  "scope_record_count": 200,
+  "scope_distinct_word_labels": 199,
+  "duplicate_labels_preserved": [
+    "minute"
+  ],
+  "applied_count": 11,
+  "readback_passed": true,
+  "qa": "passed",
+  "canonical_sha256": "24decdc20f12590e8efc78db80cc6cff0310dcc1efe133f22efa2293116a6101",
+  "changed_targets": [
+    {
+      "word": "allow",
+      "path": "phrases[0].partOfSpeech",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "normal",
+      "path": "meanings[5].translation",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "station",
+      "path": "meanings[3].translation",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "station",
+      "path": "meanings[3].examples[0].ru",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "female",
+      "path": "meanings[3].examples[1].ru",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "content",
+      "path": "meanings[7].translation",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "nature",
+      "path": "meanings[1].examples[0].en",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "absolutely",
+      "path": "meanings[2].translation",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "computer",
+      "path": "meanings[0].register",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "construction",
+      "path": "meanings[6].partOfSpeech",
+      "before_match": true,
+      "after_match": true
+    },
+    {
+      "word": "throughout",
+      "path": "meanings[2].examples[0].ru",
+      "before_match": true,
+      "after_match": true
+    }
+  ]
+}

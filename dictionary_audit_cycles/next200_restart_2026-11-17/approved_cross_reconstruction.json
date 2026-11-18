@@ -1,0 +1,48 @@
+{
+  "scope": "cross_structural_reconstruction",
+  "applied_count": 3,
+  "word": "cross",
+  "changes": [
+    {
+      "path": "meanings[14]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "adjective",
+        "translation": "противный (о ветре); противоположный; неблагоприятный",
+        "examples": [],
+        "register": [],
+        "id": 15
+      },
+      "reason": "Restore source-confirmed omitted adjective/verb senses from cross article."
+    },
+    {
+      "path": "meanings[15]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "verb",
+        "translation": "разминуться, разойтись (о людях, письмах)",
+        "examples": [],
+        "register": [],
+        "id": 16
+      },
+      "reason": "Restore source-confirmed omitted adjective/verb senses from cross article."
+    },
+    {
+      "path": "meanings[16]",
+      "before": null,
+      "after": {
+        "partOfSpeech": "verb",
+        "translation": "форсировать",
+        "examples": [],
+        "register": [
+          "военное"
+        ],
+        "id": 17
+      },
+      "reason": "Restore source-confirmed omitted adjective/verb senses from cross article."
+    }
+  ],
+  "source_evidence": "Muller 2021 pp.193–194: cross 2.a.3 противный (о ветре), противоположный, неблагоприятный; 3.v.6 разминуться/разойтись; 3.v.9 воен. форсировать.",
+  "before_sha256": "d5d5844ee68fe5d4b1c72dec90e09deac0a7b07916807bc11f8dc0847646a778",
+  "after_sha256": "5a91feadf01b7e188a76288c45e4e1f4bd83d384a6a8771fbe3326dd7838c4ba"
+}
