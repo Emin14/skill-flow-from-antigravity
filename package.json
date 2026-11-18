@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "import:json": "npx ts-node prisma/import-json.ts",
-    "import:data": "node prisma/seed.js"
+    "import:data": "node prisma/seed.js",
+    "migrate:english-word-ids": "ts-node prisma/migrate-english-word-ids.ts"
   },
   "prisma": {
     "seed": "node prisma/seed.js"

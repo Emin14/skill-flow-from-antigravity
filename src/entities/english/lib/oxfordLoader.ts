@@ -1,4 +1,5 @@
 import rawOxford5000 from '@/data/oxford_5000.json';
+import rawOxfordWordIds from '@/data/oxford_word_ids.json';
 import {
   OxfordWord,
   CEFRLevel,
@@ -58,7 +59,23 @@ function buildOxford5000(): OxfordWord[] {
 
   const rawEntries = Object.values(rawOxford5000) as unknown as RawEntry[];
 
+  const stableIdByKey = new Map(
+    rawOxfordWordIds.entries.map((item) => [
+      `${item.word}|${item.frequencyRank ?? ''}|${item.cefr}|${item.ordinal}`,
+      item.stableId,
+    ])
+  );
+  const duplicateOrdinals = new Map<string, number>();
+
   cachedDictionary = rawEntries.map((entry, idx) => {
+    const stableKeyBase = `${entry.word}|${entry.frequency_rank ?? ''}|${(entry.cefr || '').toLowerCase()}`;
+    const ordinal = duplicateOrdinals.get(stableKeyBase) || 0;
+    duplicateOrdinals.set(stableKeyBase, ordinal + 1);
+    const stableKey = `${stableKeyBase}|${ordinal}`;
+    const stableId =
+      stableIdByKey.get(stableKey) ||
+      `oxford:${encodeURIComponent(entry.word)}:${entry.frequency_rank ?? ''}:${(entry.cefr || '').toLowerCase()}:${ordinal}`;
+
     const posMap = new Map<string, string[]>();
     const examples: SentenceExample[] = [];
 
@@ -202,7 +219,7 @@ function buildOxford5000(): OxfordWord[] {
       : [];
 
     return {
-      id: `oxford-${String(idx + 1).padStart(4, '0')}`,
+      id: stableId,
       word: entry.word,
       transcription: entry.phon_n_am || entry.phon_br || '',
       phonBr: entry.phon_br || '',
