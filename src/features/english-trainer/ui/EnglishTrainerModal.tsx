@@ -730,6 +730,31 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                           </button>
                           <button
                             type="button"
+                            onClick={() => handleReviewRating('again')}
+                            style={{
+                              height: '46px',
+                              padding: '0 12px',
+                              background: 'rgba(239, 68, 68, 0.12)',
+                              border: '1px solid rgba(239, 68, 68, 0.45)',
+                              color: '#ef4444',
+                              borderRadius: '12px',
+                              fontSize: '13px',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '5px',
+                              transition: 'all var(--transition-fast) ease',
+                              whiteSpace: 'nowrap',
+                              boxSizing: 'border-box',
+                            }}
+                            title="Сбросить прогресс слова и повторить позже"
+                          >
+                            <span>Не помню</span>
+                          </button>
+                          <button
+                            type="button"
                             onClick={handleRevealAnswer}
                             style={{
                               height: '46px',
@@ -756,11 +781,38 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                           </button>
                         </>
                       ) : (
-                        <button
-                          type="button"
-                          onClick={handleRevealAnswer}
-                          style={{
-                            width: '100%',
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => handleReviewRating('again')}
+                            style={{
+                              flex: '0 0 38%',
+                              height: '46px',
+                              padding: '0 12px',
+                              background: 'rgba(239, 68, 68, 0.12)',
+                              border: '1px solid rgba(239, 68, 68, 0.45)',
+                              color: '#ef4444',
+                              borderRadius: '12px',
+                              fontSize: '13px',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '5px',
+                              transition: 'all var(--transition-fast) ease',
+                              whiteSpace: 'nowrap',
+                              boxSizing: 'border-box',
+                            }}
+                            title="Сбросить прогресс слова и повторить позже"
+                          >
+                            <span>Не помню</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleRevealAnswer}
+                            style={{
+                            flex: 1,
                             height: '46px',
                             padding: '0 16px',
                             background: 'var(--color-accent)',
@@ -778,10 +830,11 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                             transition: 'all var(--transition-fast) ease',
                             boxSizing: 'border-box',
                           }}
-                        >
-                          <Eye size={16} />
-                          <span>Показать ответ (Enter)</span>
-                        </button>
+                            >
+                              <Eye size={16} />
+                              <span>Показать ответ (Enter)</span>
+                            </button>
+                        </>
                       )}
                     </div>
                   ) : isMatch === true ? (
