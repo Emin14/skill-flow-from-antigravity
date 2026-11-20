@@ -10,6 +10,24 @@
   gap: 8px;
   box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.08));
   transition: background-color var(--transition-normal, 0.2s), border-color var(--transition-normal, 0.2s);
+  cursor: pointer;
+}
+
+.widgetCard:hover {
+  border-color: var(--color-border-hover);
+}
+
+.widgetCard:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.widgetCardDone {
+  border-color: var(--color-success-border);
+}
+
+.widgetCardDone:hover {
+  background: var(--color-success-light);
 }
 
 .leftInfo {

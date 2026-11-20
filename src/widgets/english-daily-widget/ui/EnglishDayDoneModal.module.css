@@ -1,0 +1,284 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* The modal is a three-row shell: header, scrolling word list, fixed actions.
+   Only the middle row scrolls, so the buttons never leave the screen no matter
+   how many words were studied. `dvh` (not `vh`) keeps the height honest when
+   mobile browser chrome collapses. */
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 440px;
+  max-height: min(92vh, 760px);
+  max-height: min(92dvh, 760px);
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* A short list sizes the panel; a long one is capped and scrolls internally. */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-size: 11.5px;
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.wordList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0 4px 0 0;
+  list-style: none;
+  /* Content-sized until the modal hits its max-height, then this is the only
+     region that scrolls — header and buttons stay put for any day length. */
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fade the cut edge only when the list actually overflows, so a short list
+   does not look like its last row is half-hidden. */
+.wordListOverflowing {
+  padding-bottom: 6px;
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 14px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 14px), transparent 100%);
+}
+
+.wordRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 9px;
+  background: var(--color-surface-hover);
+}
+
+.speakBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--color-accent-text);
+  cursor: pointer;
+}
+
+.speakBtn:hover {
+  background: var(--color-accent-light);
+}
+
+.wordText {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.word {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+.transcription {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-family: var(--font-family-mono, ui-monospace, Menlo, monospace);
+  flex-shrink: 0;
+}
+
+/* Long dictionary translations wrap to two lines instead of being cut with
+   an ellipsis — they are the reason the user opens this list. */
+.translation {
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--color-text-secondary);
+  flex-basis: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow-wrap: anywhere;
+}
+
+.level {
+  flex-shrink: 0;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--color-surface-active);
+  color: var(--color-text-muted);
+}
+
+.empty {
+  margin: 0;
+  padding: 12px 0;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  /* Kept outside the scroll area on purpose: with 40 words in the list the
+     buttons must stay reachable without scrolling. */
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
+
+.secondaryBtn,
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 42px;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.secondaryBtn {
+  flex: 0 0 auto;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+.secondaryBtn:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.primaryBtn {
+  flex: 1;
+  padding: 0 12px;
+  border: none;
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+.secondaryBtn:disabled,
+.primaryBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    /* Centred like on desktop: a short list sits in the middle of the screen
+       instead of hanging from the top edge with empty space below. A long list
+       still fills the height because of the modal's max-height. */
+    align-items: center;
+    padding: max(8px, env(safe-area-inset-top)) 8px max(8px, env(safe-area-inset-bottom));
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: calc(100dvh - max(16px, env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+    padding: 14px;
+    gap: 8px;
+  }
+
+  /* Stacked buttons: the primary action goes on top because it is the one
+     used most, and the pair stays inside the safe area. */
+  .actions {
+    flex-direction: column-reverse;
+    gap: 6px;
+  }
+
+  .secondaryBtn,
+  .primaryBtn {
+    width: 100%;
+    flex: 0 0 auto;
+    height: 44px;
+  }
+
+  .wordRow {
+    padding: 6px 7px;
+  }
+
+  .translation {
+    font-size: 11.5px;
+  }
+}

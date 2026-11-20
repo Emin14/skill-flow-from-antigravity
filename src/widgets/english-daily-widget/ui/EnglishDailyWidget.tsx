@@ -1,14 +1,17 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useEnglishStore } from '@/entities/english';
+import { SessionWordCard, useEnglishStore } from '@/entities/english';
 import { EnglishTrainerModal } from '@/features/english-trainer';
-import { RotateCcw, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { EnglishDayDoneModal } from './EnglishDayDoneModal';
 import styles from './EnglishDailyWidget.module.css';
 
 export const EnglishDailyWidget: React.FC = () => {
-  const { session, isLoadingSession, fetchSession, resetTodayProgress } = useEnglishStore();
+  const { session, fetchSession } = useEnglishStore();
   const [isTrainerOpen, setIsTrainerOpen] = useState(false);
+  const [isDayDoneOpen, setIsDayDoneOpen] = useState(false);
+  const [trainerCards, setTrainerCards] = useState<SessionWordCard[] | null>(null);
 
   useEffect(() => {
     fetchSession();
@@ -20,15 +23,38 @@ export const EnglishDailyWidget: React.FC = () => {
   const dailyLearned = session?.dailyLearnedCount ?? 0;
   const dailyTarget = session?.dailyTargetCount ?? 5;
   const isDone = session?.isCompletedToday || (totalRemaining === 0 && dailyLearned > 0);
+  const learnedToday = session?.learnedTodayWords ?? [];
 
-  const handleResetToday = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    await resetTodayProgress();
+  const openTrainer = (cards: SessionWordCard[] | null = null) => {
+    setTrainerCards(cards);
+    setIsDayDoneOpen(false);
+    setIsTrainerOpen(true);
+  };
+
+  // Learned everything for today: the widget itself opens the summary panel.
+  const handleWidgetClick = () => {
+    if (isDone) {
+      setIsDayDoneOpen(true);
+      return;
+    }
+    openTrainer();
   };
 
   return (
     <>
-      <div className={styles.widgetCard}>
+      <div
+        className={`${styles.widgetCard} ${isDone ? styles.widgetCardDone : ''}`}
+        onClick={handleWidgetClick}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            handleWidgetClick();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label={isDone ? 'Открыть список слов, выученных сегодня' : 'Начать учить слова'}
+      >
         <div className={styles.leftInfo}>
           <span className={styles.flagIcon}>🇬🇧</span>
           <div className={styles.textGroup}>
@@ -45,7 +71,7 @@ export const EnglishDailyWidget: React.FC = () => {
             </div>
             <p className={styles.statsSubtitle}>
               {isDone
-                ? 'Отличная работа! • Следующие слова завтра'
+                ? 'Отличная работа! • Нажми, чтобы увидеть слова'
                 : `Осталось: ${totalRemaining} слов • ~${Math.max(2, Math.ceil(totalRemaining * 0.5))} мин`}
             </p>
           </div>
@@ -53,21 +79,15 @@ export const EnglishDailyWidget: React.FC = () => {
 
         <div className={styles.actionsRight}>
           {isDone ? (
-            <div className={styles.completedGroup}>
-              <span className={styles.completedPill}>✓ Готово</span>
-              <button
-                className={styles.resetBtn}
-                onClick={handleResetToday}
-                title="Сбросить прогресс за сегодня и пройти 5 слов заново"
-              >
-                <RotateCcw size={12} />
-                <span>Заново</span>
-              </button>
-            </div>
+            <span className={styles.completedPill}>✓ Готово</span>
           ) : (
             <button
+              type="button"
               className={styles.startBtn}
-              onClick={() => setIsTrainerOpen(true)}
+              onClick={(event) => {
+                event.stopPropagation();
+                openTrainer();
+              }}
             >
               <span>Учить</span>
               <ArrowRight size={14} />
@@ -76,10 +96,24 @@ export const EnglishDailyWidget: React.FC = () => {
         </div>
       </div>
 
+      <EnglishDayDoneModal
+        isOpen={isDayDoneOpen}
+        onClose={() => {
+          setIsDayDoneOpen(false);
+          fetchSession();
+        }}
+        words={learnedToday}
+        dailyTarget={dailyTarget}
+        onRepeatToday={() => openTrainer(learnedToday)}
+        onLearnMore={(batch) => openTrainer(batch)}
+      />
+
       <EnglishTrainerModal
         isOpen={isTrainerOpen}
+        startWithWords={trainerCards}
         onClose={() => {
           setIsTrainerOpen(false);
+          setTrainerCards(null);
           fetchSession();
         }}
       />

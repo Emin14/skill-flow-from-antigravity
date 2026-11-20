@@ -89,11 +89,23 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
         const reviewWords = filterOut(current.reviewWords || []);
         const isCompleted = newWords.length === 0 && reviewWords.length === 0;
 
+        // Keep the "learned today" list in sync so the done panel shows the word
+        // without waiting for a refetch.
+        const alreadyListed = (current.learnedTodayWords || []).some((c) => c.id === wordId);
+        const sourceCard = [...(current.newWords || []), ...(current.reviewWords || [])]
+          .find((c) => c.id === wordId);
+        const learnedTodayWords = alreadyListed
+          ? current.learnedTodayWords
+          : sourceCard
+            ? [...(current.learnedTodayWords || []), sourceCard]
+            : current.learnedTodayWords;
+
         set({
           session: {
             ...current,
             newWords,
             reviewWords,
+            learnedTodayWords,
             dailyLearnedCount: Math.min(current.dailyTargetCount, (current.dailyLearnedCount || 0) + 1),
             totalLearned: current.totalLearned + 1,
             isCompletedToday: isCompleted,

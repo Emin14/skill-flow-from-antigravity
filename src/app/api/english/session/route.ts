@@ -117,6 +117,29 @@ export async function GET(req: Request) {
     });
     const dailyLearnedCount = todayReviewedWords.length;
 
+    // Words that were studied today — used by the "done" panel to list what
+    // was actually learned instead of only showing a counter.
+    const learnedTodayWords: SessionWordCard[] = todayReviewedWords
+      .map((p) => {
+        const base = dictionaryMap.get(p.wordId);
+        if (!base) return null;
+        return {
+          ...base,
+          progress: {
+            wordId: p.wordId,
+            status: p.status,
+            nextReviewDate: p.nextReviewDate,
+            intervalDays: p.intervalDays,
+            easeFactor: p.easeFactor,
+            repetitions: p.repetitions,
+            errorCount: p.errorCount,
+            lastReviewedAt: p.lastReviewedAt ? new Date(p.lastReviewedAt).toISOString() : null,
+          },
+          isNew: false,
+        };
+      })
+      .filter(Boolean) as SessionWordCard[];
+
     // 2. Due reviews for today that have NOT yet been reviewed today
     const dueReviewsRaw = progressList.filter((p) => {
       if (p.status === 'NEW') return false;
@@ -276,6 +299,7 @@ export async function GET(req: Request) {
       todayStr,
       newWords: remainingNewWords,
       reviewWords,
+      learnedTodayWords,
       dailyLearnedCount,
       dailyTargetCount,
       totalLearned,
@@ -292,6 +316,7 @@ export async function GET(req: Request) {
       todayStr: getTodayStr(),
       newWords: [],
       reviewWords: [],
+      learnedTodayWords: [],
       dailyLearnedCount: 0,
       dailyTargetCount: 5,
       totalLearned: 0,

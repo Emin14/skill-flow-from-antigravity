@@ -25,6 +25,11 @@ import styles from './EnglishTrainerModal.module.css';
 interface EnglishTrainerModalProps {
   isOpen: boolean;
   onClose: () => void;
+  /**
+   * Cards to practise instead of the current session. Used by the "today is
+   * done" panel: repeat the words learned today, or study extra words.
+   */
+  startWithWords?: SessionWordCard[] | null;
 }
 
 function shuffleList<T>(array: T[]): T[] {
@@ -59,6 +64,7 @@ const renderHighlightedSentence = (text: string, target: string) => {
 export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   isOpen,
   onClose,
+  startWithWords = null,
 }) => {
   const { session, settings, submitReview, fetchSession } = useEnglishStore();
 
@@ -75,7 +81,8 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     setIsLoadingRandom(true);
     clearAutoTimer();
     try {
-      const words = await useEnglishStore.getState().fetchRandomWords(5);
+      const extraCount = session?.dailyTargetCount || settings.dailyNewWords || 5;
+      const words = await useEnglishStore.getState().fetchRandomWords(extraCount);
       if (words && words.length > 0) {
         setQueue(words);
         setCurrentIndex(0);
@@ -117,11 +124,15 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     };
   }, [isOpen]);
 
-  // When modal is opened, capture active cards and start clean session run
+  // When modal is opened, capture active cards and start clean session run.
+  // `startWithWords` takes priority: the "today is done" panel passes either
+  // the words learned today (repeat) or a batch of extra words.
   useEffect(() => {
     if (isOpen) {
       clearAutoTimer();
-      const allCards = [...(session?.reviewWords || []), ...(session?.newWords || [])];
+      const allCards = startWithWords && startWithWords.length > 0
+        ? startWithWords
+        : [...(session?.reviewWords || []), ...(session?.newWords || [])];
       if (allCards.length > 0) {
         setQueue(shuffleList(allCards));
         setCurrentIndex(0);
@@ -135,7 +146,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, startWithWords]);
 
   const currentCard: SessionWordCard | undefined = queue[currentIndex];
   const isReviewWord = currentCard ? !currentCard.isNew : false;
@@ -449,7 +460,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
               }}
             >
               <Plus size={15} />
-              <span>{isLoadingRandom ? 'Загрузка...' : 'Учить еще 5 слов'}</span>
+              <span>{isLoadingRandom ? 'Загрузка...' : `Учить ещё ${session?.dailyTargetCount || settings.dailyNewWords || 5} слов`}</span>
             </button>
             <button
               className={styles.finishBtn}

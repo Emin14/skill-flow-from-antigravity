@@ -137,6 +137,8 @@ export interface EnglishSessionResponse {
   todayStr: string;
   newWords: SessionWordCard[];
   reviewWords: SessionWordCard[];
+  /** Words whose last review happened today, in study order. */
+  learnedTodayWords?: SessionWordCard[];
   dailyLearnedCount: number; // How many of today's target words have been learned today (e.g. 2)
   dailyTargetCount: number;  // Today's target quota (e.g. 5)
   totalLearned: number;
