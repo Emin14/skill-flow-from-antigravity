@@ -8,6 +8,7 @@ import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { X, Trash2, ArrowRight, Check, Wand2, ChevronDown } from 'lucide-react';
 import styles from './IdeaDetailModal.module.css';
 import { clearNoteDraft, readNoteDraft, writeNoteDraft, type NoteDraft } from './noteDraft';
+import { AutoGrowTextarea } from './AutoGrowTextarea';
 
 interface IdeaDetailModalProps {
   isOpen: boolean;
@@ -240,9 +241,9 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!title.trim()) return;
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!title.trim() || isSaving) return;
 
     const finalTopic = topic.trim() || 'Общее';
     const parsedTags = tagsInput
@@ -296,17 +297,20 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
         </div>
 
         {/* Form */}
-                <form onSubmit={handleSubmit} className={styles.form}>
-          {/* Title - FIRST FIELD */}
+        <form onSubmit={handleSubmit} className={styles.form}>
+          {/* Title — Material underline, grows with its content (1–6 lines) */}
           <div className={styles.formGroup}>
             <label className={styles.label}>Заголовок *</label>
-            <input
-              type="text"
-              className={styles.input}
-              placeholder="Заголовок заметки..."
+            <AutoGrowTextarea
+              className={styles.titleArea}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              required
+              minRows={1}
+              maxRows={6}
+              submitOnEnter
+              onRequestSubmit={() => { if (!isSaving) void handleSubmit(); }}
+              placeholder="Заголовок заметки..."
+              aria-label="Заголовок заметки"
               autoFocus
             />
           </div>
@@ -314,12 +318,14 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
           {/* Description */}
           <div className={styles.formGroup}>
             <label className={styles.label}>Описание</label>
-            <textarea
+            <AutoGrowTextarea
               className={styles.textarea}
-              style={{ minHeight: '120px' }}
-              placeholder="Детали, заметки, критерии готовности..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              minRows={4}
+              maxRows={16}
+              placeholder="Детали, заметки, критерии готовности..."
+              aria-label="Описание заметки"
             />
             <LinksPreview text={description} />
           </div>
