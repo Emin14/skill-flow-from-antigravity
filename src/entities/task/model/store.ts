@@ -3,7 +3,7 @@ import { Task, TaskPriority, TaskStatus, TaskState as TaskDomainState, TaskOccur
 import { TaskCategory } from '@/shared/config/categories';
 import { RepetitionMode, ScheduleFrequency, SmartRating, SPACED_INTERVAL_STEPS } from '@/shared/config/repetitionRules';
 import { taskApi } from '../api/taskApi';
-import { useToastStore } from '@/shared/ui';
+import { useToastStore, requestConfirm } from '@/shared/ui';
 import { useActivityStore } from '@/entities/activity';
 import { getTodayStr, getTomorrowStr, formatDateDisplay, getNextSpecificDayDate, getLatestScheduledDateForTask } from '@/shared/lib/dateUtils';
 import { playTaskCompletionSound } from '@/shared/lib/soundUtils';
@@ -1407,26 +1407,20 @@ export const useTaskStore = create<TaskState>((set, get) => ({
 
     const descendantTasks = getAllDescendantTasks(id, get().tasks);
 
-    // Если у задачи есть подзадачи и подтверждение не получено — запрашиваем выбор у пользователя
+    // With subtasks in play the outcome is a real choice, not a yes/no, so it is
+    // asked once with three explicit paths instead of two chained confirm()s
+    // where "Отмена" in the second dialog silently abandoned everything.
     if (descendantTasks.length > 0 && confirmed !== true) {
-      if (typeof window !== 'undefined') {
-        const promptMsg = 'Задача "' + deletedTask.title + '" содержит ' + descendantTasks.length + ' подзадач(и).\n\nУдалить родительскую задачу ВМЕСТЕ со всеми подзадачами?';
-        const shouldDeleteSubtasks = window.confirm(promptMsg);
-
-        if (shouldDeleteSubtasks) {
-          return get().deleteTask(id, true, true);
-        } else {
-          const shouldKeepSubtasks = window.confirm(
-            'Сохранить подзадачи как основные задачи в общем списке?'
-          );
-          if (shouldKeepSubtasks) {
-            return get().deleteTask(id, true, false);
-          } else {
-            return; // Пользователь отменил действие
-          }
-        }
-      }
-      return;
+      const choice = await requestConfirm({
+        title: `Удалить задачу «${deletedTask.title}»?`,
+        description: `В задаче ${descendantTasks.length === 1 ? 'есть вложенная подзадача' : `есть вложенные подзадачи: ${descendantTasks.length}`}. Их можно удалить вместе с ней или сохранить как самостоятельные.`,
+        confirmLabel: 'Удалить всё',
+        cancelLabel: 'Отмена',
+        alternativeAction: { label: 'Оставить подзадачи' },
+      });
+      if (choice === 'confirm') return get().deleteTask(id, true, true);
+      if (choice === 'alternative') return get().deleteTask(id, true, false);
+      return; // cancelled
     }
 
     // ВАРИАНТ А: Пользователь решил сохранить подзадачи — отвязываем их от родителя

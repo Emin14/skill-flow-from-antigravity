@@ -67,11 +67,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => {
-                if (confirm(`Вы действительно хотите удалить цель "${goal.title}"?`)) {
-                  onDeleteGoal(goal.id);
-                }
-              }}
+              onClick={() => onDeleteGoal(goal.id)}
               title="Удалить цель"
               style={{ color: 'var(--color-text-muted)' }}
             >

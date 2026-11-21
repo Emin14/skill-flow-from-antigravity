@@ -4,7 +4,7 @@ import React from 'react';
 import { Sidebar } from '@/widgets/sidebar/ui/Sidebar';
 import { TopBar } from '@/widgets/topbar/ui/TopBar';
 import { BottomNav } from '@/widgets/bottom-nav/ui/BottomNav';
-import { ToastContainer } from '@/shared/ui';
+import { ToastContainer, ConfirmDialogHost } from '@/shared/ui';
 import { QuickCreateModal } from '@/features/quick-create';
 import styles from './MainLayout.module.css';
 
@@ -32,6 +32,9 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
       {/* Global Toast & Undo Notification System */}
       <ToastContainer />
+
+      {/* Renders dialogs requested imperatively from stores */}
+      <ConfirmDialogHost />
     </div>
   );
 };

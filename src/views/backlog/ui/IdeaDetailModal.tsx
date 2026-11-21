@@ -415,11 +415,9 @@ export const IdeaDetailModal: React.FC<IdeaDetailModalProps> = ({
                 type="button"
                 className={`${styles.btn} ${styles.btnDanger}`}
                 onClick={async () => {
-                  if (confirm('Удалить эту заметку из бэклога?')) {
-                    await onDelete(item.id);
-                    clearCurrentDraft();
-                    onClose();
-                  }
+                  await onDelete(item.id);
+                  clearCurrentDraft();
+                  onClose();
                 }}
               >
                 <Trash2 size={14} />

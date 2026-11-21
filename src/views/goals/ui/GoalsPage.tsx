@@ -173,11 +173,7 @@ export const GoalsPage: React.FC = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => {
-                        if (confirm(`Вы действительно хотите навсегда удалить цель "${goal.title}" из архива?`)) {
-                          deleteGoal(goal.id);
-                        }
-                      }}
+                      onClick={() => deleteGoal(goal.id)}
                       style={{ color: 'var(--color-text-muted)' }}
                     >
                       🗑

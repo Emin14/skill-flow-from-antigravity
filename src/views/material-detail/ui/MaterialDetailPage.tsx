@@ -73,13 +73,11 @@ export const MaterialDetailPage: React.FC<MaterialDetailPageProps> = ({ material
   };
 
   const handleDelete = async () => {
-    if (confirm('Вы уверены, что хотите удалить этот материал?')) {
-      await deleteMaterial(material.id);
-      if (parentTopic) {
-        router.push(`/topics/${parentTopic.id}`);
-      } else {
-        router.push('/goals');
-      }
+    await deleteMaterial(material.id);
+    if (parentTopic) {
+      router.push(`/topics/${parentTopic.id}`);
+    } else {
+      router.push('/goals');
     }
   };
 

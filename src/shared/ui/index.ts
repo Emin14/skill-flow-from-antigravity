@@ -12,4 +12,7 @@ export * from './skeleton/Skeleton';
 export * from './empty-state/EmptyState';
 export * from './custom-category-select/CustomCategorySelect';
 export * from './auto-grow-textarea/AutoGrowTextarea';
+export * from './confirm-dialog/ConfirmDialog';
+export * from './confirm-dialog/ConfirmDialogHost';
+export * from './confirm-dialog/confirmRequestStore';
 export * from './LinksPreview';

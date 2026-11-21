@@ -318,7 +318,14 @@ export const BacklogPage: React.FC = () => {
       />
       {topicModal && <TopicDetailModal
         topic={topicModal.topic}
+        topicItemCount={topicModal.topic ? items.filter(item => item.topicId === topicModal.topic!.id).length : 0}
         onClose={() => setTopicModal(null)}
+        onArchive={async () => {
+          const target = topicModal.topic;
+          if (!target) return;
+          await saveTopic({ name: target.name, description: target.description, sortOrder: target.sortOrder, archived: true }, target.id);
+          setTopicModal(null);
+        }}
         onSave={async (data, id) => {
           const saved = await saveTopic(data, id);
           if (saved.archivedAt && !showArchivedTopics && selectedTopic === saved.id) setSelectedTopic('all');

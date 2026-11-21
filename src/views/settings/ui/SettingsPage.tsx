@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Card, Typography, Button, useToastStore } from '@/shared/ui';
+import { Card, Typography, Button, useToastStore, ConfirmDialog } from '@/shared/ui';
 import styles from './SettingsPage.module.css';
 import { useThemeStore } from '@/shared/model/useThemeStore';
 import { STORAGE_KEYS } from '@/shared/config/storageKeys';
@@ -36,6 +36,7 @@ export const SettingsPage: React.FC = () => {
 
   const [cardFontId, setCardFontId] = useState('system_ios');
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [isResetOpen, setIsResetOpen] = useState(false);
 
   useEffect(() => {
     const savedColor = localStorage.getItem(STORAGE_KEYS.ACCENT_COLOR) || '#6366f1';
@@ -134,13 +135,16 @@ export const SettingsPage: React.FC = () => {
   };
 
   const handleResetData = () => {
-    if (confirm('Вы действительно хотите сбросить ВСЕ локальные данные? Это действие необратимо.')) {
-      localStorage.clear();
-      showToast('Все данные сброшены. Перезагрузка...', 'warning');
-      setTimeout(() => {
-        window.location.reload();
-      }, 1500);
-    }
+    setIsResetOpen(true);
+  };
+
+  const confirmResetData = () => {
+    localStorage.clear();
+    showToast('Все данные сброшены. Перезагрузка...', 'warning');
+    setIsResetOpen(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
   };
 
   return (
@@ -510,6 +514,16 @@ export const SettingsPage: React.FC = () => {
           </Button>
         </div>
       </Card>
+
+      <ConfirmDialog
+        isOpen={isResetOpen}
+        title="Сбросить все данные приложения?"
+        description="Будут удалены задачи, заметки, темы, цели, категории, материалы, победы и настройки в этом браузере. Записи в базе останутся, но локальное состояние, черновики и темы оформления пропадут безвозвратно. Резервную копию можно сделать выше."
+        confirmLabel="Сбросить всё"
+        requireTypedConfirmation="удалить"
+        onCancel={() => setIsResetOpen(false)}
+        onConfirm={confirmResetData}
+      />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { Plus, Edit2, Trash2, ChevronDown, Check } from 'lucide-react';
 import { useCategoryStore, CategoryItem } from '@/entities/category/model/useCategoryStore';
 import { useTaskStore } from '@/entities/task';
 import { CategoryModal } from './CategoryModal';
-import { useToastStore } from '@/shared/ui';
+import { useToastStore, ConfirmDialog } from '@/shared/ui';
 
 export const CategoriesSettingsTab: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -17,6 +17,8 @@ export const CategoriesSettingsTab: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<CategoryItem | null>(null);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isDeletingCategory, setIsDeletingCategory] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -54,6 +56,14 @@ export const CategoriesSettingsTab: React.FC = () => {
     return categories.find((c) => c.id === selectedCatId) || categories[0];
   }, [categories, selectedCatId]);
 
+  // Deleting a category re-files its tasks under "Без категории"; the count is
+  // what makes the consequence concrete before the user commits.
+  const affectedTaskCount = useMemo(() => {
+    const name = currentSelectedCat?.name?.trim().toLowerCase();
+    if (!name) return 0;
+    return tasks.filter(t => (t.category || '').trim().toLowerCase() === name).length;
+  }, [tasks, currentSelectedCat]);
+
   const handleOpenAddModal = () => {
     setEditingCategory(null);
     setIsModalOpen(true);
@@ -67,12 +77,21 @@ export const CategoriesSettingsTab: React.FC = () => {
 
   const handleDeleteCategory = () => {
     if (!currentSelectedCat || currentSelectedCat.isSystem) return;
-    if (!confirm(`Вы действительно хотите удалить категорию "${currentSelectedCat.name}"?`)) {
-      return;
+    setIsDeleteOpen(true);
+  };
+
+  const confirmDeleteCategory = async () => {
+    if (!currentSelectedCat || currentSelectedCat.isSystem) return;
+    const target = currentSelectedCat;
+    setIsDeletingCategory(true);
+    try {
+      await deleteCategory(target.id);
+      showToast(`Категория "${target.name}" удалена`, 'info');
+      setSelectedCatId('');
+      setIsDeleteOpen(false);
+    } finally {
+      setIsDeletingCategory(false);
     }
-    deleteCategory(currentSelectedCat.id);
-    showToast(`Категория "${currentSelectedCat.name}" удалена`, 'info');
-    setSelectedCatId('');
   };
 
   const handleSaveCategory = (name: string, color: string, excludeFromStats: boolean) => {
@@ -319,6 +338,19 @@ export const CategoriesSettingsTab: React.FC = () => {
         onClose={() => setIsModalOpen(false)}
         onSave={handleSaveCategory}
         categoryToEdit={editingCategory}
+      />
+
+      <ConfirmDialog
+        isOpen={isDeleteOpen}
+        title={`Удалить категорию «${currentSelectedCat?.name ?? ''}»?`}
+        description={affectedTaskCount > 0
+          ? `${affectedTaskCount} ${affectedTaskCount === 1 ? 'задача' : affectedTaskCount < 5 ? 'задачи' : 'задач'} в этой категории останется, но переедет в «Без категории». Восстановить разбивку по категориям потом не получится.`
+          : 'В этой категории нет задач, удаление ничего не затронет.'}
+        confirmLabel="Удалить категорию"
+        pendingLabel="Удаление…"
+        isPending={isDeletingCategory}
+        onCancel={() => setIsDeleteOpen(false)}
+        onConfirm={() => void confirmDeleteCategory()}
       />
     </div>
   );

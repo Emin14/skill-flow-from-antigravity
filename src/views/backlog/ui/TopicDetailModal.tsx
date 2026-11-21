@@ -3,14 +3,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { X, Trash2 } from 'lucide-react';
 import type { BacklogTopic, SaveBacklogTopicDto } from '@/entities/backlog';
+import { ConfirmDialog } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import styles from './IdeaDetailModal.module.css';
 
-export function TopicDetailModal({ topic, onClose, onSave, onDelete }: {
+export function TopicDetailModal({ topic, onClose, onSave, onDelete, topicItemCount = 0, onArchive }: {
   topic: BacklogTopic | null;
   onClose: () => void;
   onSave: (data: SaveBacklogTopicDto, id?: string) => Promise<BacklogTopic>;
   onDelete?: (id: string) => Promise<void>;
+  /** Notes currently in the topic — the API refuses to delete a topic that has any. */
+  topicItemCount?: number;
+  /** "Archive instead" escape hatch in the delete dialog. */
+  onArchive?: () => void;
 }) {
   const [name, setName] = useState(topic?.name ?? '');
   const [description, setDescription] = useState(topic?.description ?? '');
@@ -19,8 +24,10 @@ export function TopicDetailModal({ topic, onClose, onSave, onDelete }: {
   const [isSaving, setIsSaving] = useState(false);
   const savingRef = useRef(false);
   const [error, setError] = useState('');
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const backdropRef = useRef(false);
   const close = () => { if (!savingRef.current) onClose(); };
+  const isDeleteBlocked = topicItemCount > 0;
 
   useEffect(() => {
     lockBodyScroll();
@@ -55,13 +62,7 @@ export function TopicDetailModal({ topic, onClose, onSave, onDelete }: {
           {topic && <label><input type="checkbox" checked={archived} onChange={event => setArchived(event.target.checked)} /> В архиве</label>}
           {error && <p role="alert">{error}</p>}
           <div className={styles.footer}>
-            {topic && onDelete && <button type="button" className={`${styles.btn} ${styles.btnDanger}`} disabled={isSaving} onClick={async () => {
-              if (!confirm('Удалить эту тему? Тема удалится только если в ней нет заметок.')) return;
-              setIsSaving(true); setError('');
-              try { await onDelete(topic.id); onClose(); }
-              catch (error) { setError(error instanceof Error ? error.message : 'Не удалось удалить тему'); }
-              finally { setIsSaving(false); }
-            }}><Trash2 size={14} /><span>Удалить тему</span></button>}
+            {topic && onDelete && <button type="button" className={`${styles.btn} ${styles.btnDanger}`} disabled={isSaving} onClick={() => setIsDeleteOpen(true)}><Trash2 size={14} /><span>Удалить тему</span></button>}
             <div className={styles.footerRight}>
             <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={close} disabled={isSaving}>Отмена</button>
             <button type="submit" className={`${styles.btn} ${styles.btnPrimary}`} disabled={isSaving || !name.trim()}>{isSaving ? 'Сохранение...' : topic ? 'Сохранить' : 'Создать тему'}</button>
@@ -69,6 +70,37 @@ export function TopicDetailModal({ topic, onClose, onSave, onDelete }: {
           </div>
         </form>
       </div>
+
+      <ConfirmDialog
+        isOpen={isDeleteOpen}
+        title={`Удалить тему «${topic?.name ?? ''}»?`}
+        description={isDeleteBlocked
+          ? `В теме ${topicItemCount} ${topicItemCount === 1 ? 'заметка' : topicItemCount < 5 ? 'заметки' : 'заметок'}. Сначала перенесите ${topicItemCount === 1 ? 'её' : 'их'} в другую тему или отправьте тему в архив — так ничего не потеряется.`
+          : 'Тема пуста, удаление не затронет заметки. Отменить это действие нельзя.'}
+        confirmLabel="Удалить тему"
+        pendingLabel="Удаление…"
+        isPending={isSaving}
+        confirmDisabled={isDeleteBlocked}
+        alternativeAction={isDeleteBlocked && onArchive ? { label: 'В архив', onClick: onArchive } : undefined}
+        onCancel={() => setIsDeleteOpen(false)}
+        onConfirm={async () => {
+          if (!topic) return;
+          savingRef.current = true;
+          setIsSaving(true);
+          setError('');
+          try {
+            await onDelete?.(topic.id);
+            setIsDeleteOpen(false);
+            onClose();
+          } catch (error) {
+            setIsDeleteOpen(false);
+            setError(error instanceof Error ? error.message : 'Не удалось удалить тему');
+          } finally {
+            savingRef.current = false;
+            setIsSaving(false);
+          }
+        }}
+      />
     </div>
   );
 }

@@ -158,20 +158,37 @@ export const useAchievementStore = create<AchievementState>((set, get) => ({
 
   deleteAchievement: async (id: string) => {
     const ach = get().achievements.find((a) => a.id === id);
-    const updatedList = get().achievements.filter((a) => a.id !== id);
+    if (!ach) return;
+    const previous = get().achievements;
+    const updatedList = previous.filter((a) => a.id !== id);
 
     set({ achievements: updatedList });
     saveLocalAchievements(updatedList);
 
     try {
       await achievementApi.delete(id);
-      if (ach) {
-        useToastStore.getState().showToast(`"${ach.title}" удалено`, 'info');
-      }
-    } catch (e) {
-      if (ach) {
-        useToastStore.getState().showToast(`"${ach.title}" удалено локально`, 'info');
-      }
+    } catch {
+      // Keep going: the local list is the source of truth and the undo below
+      // re-creates the record, so a failed remote delete must not block it.
     }
+
+    // A win is emotionally expensive to lose by a misclick, so restore it whole —
+    // including its original id and createdAt, so it lands back in the same place.
+    useToastStore.getState().showToast(
+      `"${ach.title}" удалено`,
+      'undo',
+      async () => {
+        const restoredList = [ach, ...get().achievements]
+          .sort((a, b) => b.date.localeCompare(a.date));
+        set({ achievements: restoredList });
+        saveLocalAchievements(restoredList);
+        try {
+          await achievementApi.create({ ...ach, id: ach.id });
+        } catch {
+          // Local restore already happened; the next fetch reconciles.
+        }
+        useToastStore.getState().showToast('Победа восстановлена', 'success');
+      }
+    );
   },
 }));

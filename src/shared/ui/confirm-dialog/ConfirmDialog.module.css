@@ -1,0 +1,209 @@
+/* Confirmation dialog — replaces window.confirm().
+   Sits above the modal that opened it, so it uses the modal z-index plus a step. */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-index-modal, 100000) + 10);
+  display: grid;
+  place-items: center;
+  padding: var(--space-5);
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(4px);
+  animation: fadeIn var(--transition-fast) ease-out;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 400px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl, 0 20px 50px rgba(0, 0, 0, 0.55));
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  animation: popIn var(--transition-normal) cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.iconSlot {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+  overflow-wrap: anywhere;
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  overflow-wrap: anywhere;
+}
+
+.typedRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.typedLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
+.typedLabel strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.02em;
+}
+
+.typedInput {
+  width: 100%;
+  height: 36px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.typedInput:focus,
+.typedInput:focus-visible {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px var(--color-danger-light);
+  outline: none;
+}
+
+.typedInput::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.btnSecondary,
+.btnDanger,
+.btnPrimary {
+  height: 36px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btnSecondary {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.btnSecondary:hover:not(:disabled) {
+  background: var(--color-surface-active);
+  color: var(--color-text-primary);
+}
+
+.btnDanger {
+  background: var(--color-danger);
+  color: #ffffff;
+}
+
+.btnDanger:hover:not(:disabled) {
+  background: var(--color-danger-hover);
+}
+
+.btnPrimary {
+  background: var(--color-accent);
+  color: var(--color-accent-on-accent);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.btnSecondary:disabled,
+.btnDanger:disabled,
+.btnPrimary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* The alternative action ("archive instead") sits furthest from the confirm
+   button, so it reads as a way out rather than a third destructive choice. */
+.btnAlt {
+  margin-right: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: var(--space-4);
+    align-items: end;
+  }
+
+  .dialog {
+    max-width: 100%;
+    border-radius: var(--radius-lg);
+  }
+
+  /* Explicit order: destructive action on top, the way out last, so the
+     button nearest the thumb is never the irreversible one. */
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions > * {
+    width: 100%;
+  }
+
+  .btnConfirm { order: 1; }
+  .btnCancel { order: 2; }
+  .btnAlt { order: 3; margin-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .dialog {
+    animation: none;
+  }
+}

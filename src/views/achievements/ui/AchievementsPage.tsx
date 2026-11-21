@@ -221,11 +221,7 @@ export const AchievementsPage: React.FC = () => {
 
                         <button
                           type="button"
-                          onClick={() => {
-                            if (window.confirm(`Удалить победу "${ach.title}"?`)) {
-                              deleteAchievement(ach.id);
-                            }
-                          }}
+                          onClick={() => deleteAchievement(ach.id)}
                           title="Удалить"
                           style={{
                             width: '32px',
