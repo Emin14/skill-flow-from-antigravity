@@ -11,4 +11,5 @@ export * from './toast/ToastContainer';
 export * from './skeleton/Skeleton';
 export * from './empty-state/EmptyState';
 export * from './custom-category-select/CustomCategorySelect';
+export * from './auto-grow-textarea/AutoGrowTextarea';
 export * from './LinksPreview';

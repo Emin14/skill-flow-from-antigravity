@@ -3,12 +3,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BacklogItem, BacklogTopic, BacklogStatus, BacklogPriority } from '@/entities/backlog/model/types';
 import { extractLinkTitle } from '@/shared/lib/urlUtils';
-import { useToastStore, LinksPreview } from '@/shared/ui';
+import { useToastStore, LinksPreview, AutoGrowTextarea } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { X, Trash2, ArrowRight, Check, Wand2, ChevronDown } from 'lucide-react';
 import styles from './IdeaDetailModal.module.css';
 import { clearNoteDraft, readNoteDraft, writeNoteDraft, type NoteDraft } from './noteDraft';
-import { AutoGrowTextarea } from './AutoGrowTextarea';
 
 interface IdeaDetailModalProps {
   isOpen: boolean;
