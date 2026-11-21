@@ -51,49 +51,27 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Deploy to VPS via SSH
+      - name: Deliver deploy script
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: scripts/deploy.sh
+          target: /opt/skillflow
+          overwrite: true
+
+      # script_stop НЕ включаем. Он разбивает скрипт построчно и вставляет
+      # проверку `$?` после КАЖДОЙ строки, поэтому любая строка, штатно
+      # возвращающая не 0 (`[ cond ] && break` в цикле ожидания, `grep` без
+      # совпадений), обрывает деплой. Проверено: сборка прошла, `up -d app`
+      # выполнился, а джоба упала на строке `[ "$code" = "200" ] && break`.
+      # Защиту от ошибок даёт `set -euo pipefail` внутри самого скрипта.
+      - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-          # Без этого шаги не останавливаются на первой ошибке: провал миграции
-          # раньше всё равно вёл к `up -d app`, и джоба оставалась зелёной.
-          script_stop: true
           command_timeout: 15m
-          script: |
-            set -euo pipefail
-
-            cd /opt/skillflow
-
-            # --- 1. Бэкап ДО любых изменений схемы ---
-            # Провал бэкапа останавливает деплой: без точки отката миграции не применяем.
-            /opt/skillflow/scripts/backup-db.sh
-
-            # --- 2. Образы ---
-            docker compose pull app
-            docker compose pull migrate
-
-            # --- 3. База и миграции ---
-            docker compose up -d postgres
-            docker compose run --rm migrate
-
-            # --- 4. Приложение ---
-            docker compose up -d --no-deps app
-
-            # --- 5. Проверка живости ---
-            for i in $(seq 1 30); do
-              code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3000/ || true)
-              [ "$code" = "200" ] && break
-              sleep 2
-            done
-            if [ "$code" != "200" ]; then
-              echo "::error::app did not become healthy (last HTTP $code)"
-              docker compose logs --tail=50 app
-              exit 1
-            fi
-            echo "app is healthy"
-
-            # --- 6. Уборка старых образов ---
-            # Каждый деплой иначе оставляет ~2.7 GB dangling (latest + migrate предыдущей сборки).
-            docker image prune -f
+          script: bash /opt/skillflow/scripts/deploy.sh
