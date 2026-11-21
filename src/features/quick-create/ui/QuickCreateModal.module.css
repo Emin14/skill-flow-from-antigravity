@@ -194,6 +194,118 @@
   box-shadow: none !important;
 }
 
+/* ── Header: mirrors the note modal (title + close) ──────────────── */
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modalCloseBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.modalCloseBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+/* ── Field scaffolding shared with the note modal ────────────────── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+/* Title — Material underline that thickens on focus, grows 1–4 lines.
+   Border-box math keeps the height stable: 1.5px + 7px ↔ 2px + 7px. */
+.noteTitle {
+  width: 100%;
+  padding: 7px 2px 8px;
+  border: 0;
+  border-bottom: 1.5px solid var(--color-border-hover, rgba(255, 255, 255, 0.2));
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-size: 15.5px;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1.4;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: border-color var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.noteTitle::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.noteTitle:focus,
+.noteTitle:focus-visible {
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 7px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Description — body text, so it keeps a plate like the note modal:
+   a tall field with only a line reads as a divider, not a target. */
+.noteDescription {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 13.5px;
+  line-height: 1.45;
+  font-family: inherit;
+  outline: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.noteDescription:focus,
+.noteDescription:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+  outline: none !important;
+}
+
 .formRow {
   display: grid;
   grid-template-columns: 1fr 1fr;

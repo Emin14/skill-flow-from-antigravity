@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Input, CustomCategorySelect, useToastStore, LinksPreview } from '@/shared/ui';
+import { Input, CustomCategorySelect, useToastStore, LinksPreview, AutoGrowTextarea } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
@@ -13,7 +13,7 @@ import { STORAGE_KEYS } from '@/shared/config/storageKeys';
 import { getCategoryEmojiDot } from '@/shared/config/categoryColors';
 import { useQuickCreateModalStore } from '../model/quickCreateStore';
 import { extractLinkTitle } from '@/shared/lib/urlUtils';
-import { Wand2 } from 'lucide-react';
+import { Wand2, X } from 'lucide-react';
 import styles from './QuickCreateModal.module.css';
 
 // ─── Shared glassmorphic styles ───────────────────────────────────────────────
@@ -414,15 +414,32 @@ export const QuickCreateModal: React.FC = () => {
           style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', width: 0, height: 0, colorScheme: 'dark' }}
         />
 
+        {/* Header — outside the scroll area, so it stays put while the form scrolls */}
+        <div className={styles.modalHeader}>
+          <h3 className={styles.modalTitle}>💡 Новая задача</h3>
+          <button type="button" className={styles.modalCloseBtn} onClick={closeModal} aria-label="Закрыть">
+            <X size={18} />
+          </button>
+        </div>
+
         <form onSubmit={handleCreate} style={{ display: 'flex', flexDirection: 'column' }}>
           <div className={styles.modalBody}>
 
             {/* 1. Title Input */}
-            <div>
-              <Input
-                type="text" name="task_title_field" className={styles.titleInput}
-                value={title} onChange={(e) => setTitle(e.target.value)}
-                placeholder="Название задачи..." required autoFocus
+            <div className={styles.fieldGroup}>
+              <label className={styles.fieldLabel} htmlFor="task-title">Заголовок *</label>
+              <AutoGrowTextarea
+                id="task-title"
+                className={styles.noteTitle}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                minRows={1}
+                maxRows={4}
+                submitOnEnter
+                onRequestSubmit={() => { if (!submittingRef.current) void handleCreate(); }}
+                placeholder="Название задачи..."
+                aria-label="Название задачи"
+                autoFocus
               />
             </div>
 
@@ -647,13 +664,18 @@ export const QuickCreateModal: React.FC = () => {
               </label>
             </div>
 
-            {/* 5. Next Line: Description / Notes */}
-            <div>
-              <textarea
-                className={styles.compactTextarea}
+            {/* 5. Next Line: Description / Notes — plate, like the note modal */}
+            <div className={styles.fieldGroup}>
+              <label className={styles.fieldLabel} htmlFor="task-description">Описание</label>
+              <AutoGrowTextarea
+                id="task-description"
+                className={styles.noteDescription}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Описание задачи..."
+                minRows={3}
+                maxRows={14}
+                placeholder="Детали, шаги, критерии готовности..."
+                aria-label="Описание задачи"
               />
               <LinksPreview text={description} />
             </div>

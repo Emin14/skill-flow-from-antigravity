@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Input, CustomCategorySelect, useToastStore, LinksPreview } from '@/shared/ui';
+import { Input, CustomCategorySelect, useToastStore, LinksPreview, AutoGrowTextarea } from '@/shared/ui';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import { useTaskStore } from '@/entities/task';
 import { useCategoryStore } from '@/entities/category/model/useCategoryStore';
@@ -430,10 +430,19 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
           <div className={styles.dragHandleBar} />
         </div>
 
-        {isProject && (
+        {isProject ? (
           <div className={styles.projectHeader}>
             <h3 className={styles.projectTitle}>📁 {task.id.startsWith('draft-') ? 'Новый проект' : 'Редактирование проекта'}</h3>
             <button type="button" className={styles.projectCloseBtn} onClick={onClose} aria-label="Закрыть">
+              <X size={18} />
+            </button>
+          </div>
+        ) : (
+          <div className={styles.modalHeader}>
+            <h3 className={styles.modalTitle}>
+              <span>{task.id.startsWith('draft-') ? '✏️ Новая задача' : '✏️ Редактирование задачи'}</span>
+            </h3>
+            <button type="button" className={styles.modalCloseBtn} onClick={onClose} aria-label="Закрыть">
               <X size={18} />
             </button>
           </div>
@@ -454,13 +463,29 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               </div>
             )}
 
-            {/* 1. Title Input */}
-            <div>
-              <Input
-                type="text" name="task_title_field" className={styles.titleInput}
-                value={title} onChange={(e) => setTitle(e.target.value)}
-                placeholder={isProject ? 'Название проекта...' : 'Название задачи...'} required autoFocus
-              />
+            {/* 1. Title — note-style underline for tasks, the original boxed
+                field for projects, which read as a form rather than a heading. */}
+            <div className={styles.fieldGroup}>
+              <label className={styles.fieldLabel} htmlFor="task-title-edit">{isProject ? 'Название *' : 'Заголовок *'}</label>
+              {isProject ? (
+                <Input
+                  type="text" name="task_title_field" className={styles.titleInput}
+                  value={title} onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Название проекта..." required autoFocus
+                />
+              ) : (
+                <AutoGrowTextarea
+                  id="task-title-edit"
+                  className={styles.noteTitle}
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  minRows={1}
+                  maxRows={4}
+                  placeholder="Название задачи..."
+                  aria-label="Название задачи"
+                  autoFocus
+                />
+              )}
             </div>
 
             {/* 2. Date Field with - / + Stepper & RenderNoDateButton */}
@@ -721,16 +746,35 @@ export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, isOpen, onCl
               </label>
             </div>}
 
-            {/* 5. Next Line: Description / Notes */}
-            <div>
-              <span className={isProject ? styles.projectFieldLabel : undefined} style={isProject ? undefined : { ...hint, marginBottom: '3px' }}>{isProject ? 'Описание проекта' : 'Описание задачи'}</span>
-              <textarea
-                className={styles.compactTextarea}
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder={isProject ? 'Описание проекта...' : 'Описание задачи...'}
-              />
-              <LinksPreview text={description} />
+            {/* 5. Description — plate for tasks; projects keep their own boxed
+                field so the two forms stay visually distinct. */}
+            <div className={styles.fieldGroup}>
+              <label className={styles.fieldLabel} htmlFor="task-description-edit">{isProject ? 'Описание проекта' : 'Описание'}</label>
+              {isProject ? (
+                <>
+                  <textarea
+                    className={styles.compactTextarea}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Описание проекта..."
+                  />
+                  <LinksPreview text={description} />
+                </>
+              ) : (
+                <>
+                  <AutoGrowTextarea
+                    id="task-description-edit"
+                    className={styles.noteDescription}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    minRows={3}
+                    maxRows={14}
+                    placeholder="Детали, шаги, критерии готовности..."
+                    aria-label="Описание задачи"
+                  />
+                  <LinksPreview text={description} />
+                </>
+              )}
             </div>
 
             {/* 6. Next Line: Link */}
