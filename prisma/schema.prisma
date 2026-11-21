@@ -164,6 +164,15 @@ model EnglishSettings {
   updatedAt        DateTime @default(now()) @updatedAt
 }
 
+/// Today's word goal when the user asks for extra words on top of their
+/// daily setting. Kept per date so the extra batch survives closing the
+/// trainer: the session keeps returning those words until they are studied.
+model EnglishDayGoal {
+  date      String   @id // "YYYY-MM-DD"
+  goalCount Int      @default(0)
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
 model EnglishWordReviewLog {
   id           String   @id @default(uuid())
   wordId       String

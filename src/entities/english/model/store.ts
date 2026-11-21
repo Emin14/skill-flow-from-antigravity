@@ -28,6 +28,7 @@ interface EnglishState {
   fetchSession: () => Promise<void>;
   submitReview: (wordId: string, rating: ReviewRating) => Promise<void>;
   resetTodayProgress: () => Promise<void>;
+  raiseDayGoal: (count: number) => Promise<void>;
   fetchSettings: () => Promise<void>;
   updateSettings: (newSettings: Partial<EnglishSettingsConfig>) => Promise<void>;
   searchDictionary: (query?: string, level?: string, status?: string, page?: number, sort?: DictionarySort) => Promise<void>;
@@ -134,6 +135,31 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
       }
     } catch (err) {
       console.error('Error resetting today English progress:', err);
+      set({ isLoadingSession: false });
+    }
+  },
+
+  // Extra words must outlive the trainer modal, so the goal is raised on the
+  // server for today and the session is refetched to pick up the new batch.
+  // The current learned count is sent along: the server needs it to know how
+  // many words should REMAIN, not how many to add to the base setting.
+  raiseDayGoal: async (count: number) => {
+    try {
+      set({ isLoadingSession: true });
+      const clientDate = typeof window !== 'undefined' ? getTodayStr() : '';
+      const learnedToday = get().session?.dailyLearnedCount ?? 0;
+      const res = await fetch('/api/english/extra-words', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clientDate, count, learnedToday }),
+      });
+      if (res.ok) {
+        await get().fetchSession();
+      } else {
+        set({ isLoadingSession: false });
+      }
+    } catch (err) {
+      console.error('Error raising the English day goal:', err);
       set({ isLoadingSession: false });
     }
   },

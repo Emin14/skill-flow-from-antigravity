@@ -10,7 +10,11 @@ interface EnglishDayDoneModalProps {
   isOpen: boolean;
   onClose: () => void;
   onRepeatToday: () => void;
-  onLearnMore: (words: SessionWordCard[]) => void;
+  /**
+   * Raise today's goal by one batch, then start studying. The extra batch is
+   * persisted server-side, so it survives closing the trainer.
+   */
+  onLearnMore: () => Promise<void>;
   /** Words studied today, as returned by the session endpoint. */
   words: SessionWordCard[];
   dailyTarget: number;
@@ -36,7 +40,6 @@ export const EnglishDayDoneModal: React.FC<EnglishDayDoneModalProps> = ({
   const [isListOverflowing, setIsListOverflowing] = useState(false);
   const listRef = React.useRef<HTMLUListElement | null>(null);
   const settings = useEnglishStore((state) => state.settings);
-  const fetchRandomWords = useEnglishStore((state) => state.fetchRandomWords);
 
   // One entry per word id in case a word was rated twice today.
   const uniqueWords = useMemo(() => {
@@ -88,10 +91,10 @@ export const EnglishDayDoneModal: React.FC<EnglishDayDoneModalProps> = ({
     if (isLoadingMore) return;
     setIsLoadingMore(true);
     try {
-      // Fetch the batch here and hand it over, so the trainer never reopens
-      // with the stale queue from the previous run.
-      const batch = await fetchRandomWords(extraCount);
-      if (batch.length > 0) onLearnMore(batch);
+      // Raise today's goal on the server and let the caller start the trainer.
+      // The new batch is part of the session, so it is still there after the
+      // trainer is closed — which keeps "Учить" on the widget.
+      await onLearnMore();
     } finally {
       setIsLoadingMore(false);
     }

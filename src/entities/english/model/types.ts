@@ -140,7 +140,13 @@ export interface EnglishSessionResponse {
   /** Words whose last review happened today, in study order. */
   learnedTodayWords?: SessionWordCard[];
   dailyLearnedCount: number; // How many of today's target words have been learned today (e.g. 2)
-  dailyTargetCount: number;  // Today's target quota (e.g. 5)
+  dailyTargetCount: number;  // Today's base quota from settings (e.g. 5)
+  /** Extra goal added today by "learn more", on top of `dailyTargetCount`. */
+  extraGoalCount?: number;
+  /** `dailyTargetCount + extraGoalCount` — the bar the day is measured against. */
+  effectiveGoalCount?: number;
+  /** Words still needed to reach `effectiveGoalCount`. */
+  remainingTodayCount?: number;
   totalLearned: number;
   totalMastered: number;
   totalWords: number;

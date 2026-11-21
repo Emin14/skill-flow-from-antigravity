@@ -80,8 +80,23 @@ export async function GET(req: Request) {
     const activeLevels: CEFRLevel[] = settings
       ? JSON.parse(settings.activeLevels || '["A1","A2","B1","B2","C1"]')
       : ['A1', 'A2', 'B1', 'B2', 'C1'];
-    const dailyTargetCount = settings?.dailyNewWords ?? 5;
+    const dailyNewWordsSetting = settings?.dailyNewWords ?? 5;
     const maxReviewsLimit = settings?.maxReviewsPerDay ?? 30;
+
+    // The user may ask for extra words ("learn more") after finishing the day.
+    // EnglishDayGoal stores an absolute goal for the date, so it is compared
+    // against the setting instead of being added to it.
+    let storedGoalToday = 0;
+    try {
+      const dayGoal = await prisma.englishDayGoal.findUnique({ where: { date: todayStr } });
+      storedGoalToday = dayGoal?.goalCount ?? 0;
+    } catch (e) {
+      console.warn('Prisma EnglishDayGoal fallback to none:', e);
+    }
+
+    const dailyTargetCount = dailyNewWordsSetting;
+    const effectiveGoalCount = Math.max(dailyNewWordsSetting, storedGoalToday);
+    const extraGoalToday = Math.max(0, effectiveGoalCount - dailyNewWordsSetting);
 
     let progressList: any[] = [];
     try {
@@ -222,7 +237,7 @@ export async function GET(req: Request) {
     }
 
     // 4. New words selection (Pick in CEFR order A1 -> A2 -> B1 -> B2 -> C1, sorted by frequencyRank)
-    const neededNewCount = Math.max(0, dailyTargetCount - dailyLearnedCount);
+    const neededNewCount = Math.max(0, effectiveGoalCount - dailyLearnedCount);
     let remainingNewWords: SessionWordCard[] = [];
 
     if (neededNewCount > 0) {
@@ -265,13 +280,15 @@ export async function GET(req: Request) {
     }
 
     let streakDays = 0;
-    const isTodayGoalMet = dailyLearnedCount >= dailyTargetCount;
+    const isTodayGoalMet = dailyLearnedCount >= effectiveGoalCount;
     let checkDate = new Date();
 
     if (isTodayGoalMet) {
       while (true) {
         const dateStr = formatLocalDateStr(checkDate);
         const count = reviewsByDate.get(dateStr) || 0;
+        // Today counts as met once the effective goal (base + extra) is
+        // reached; past days keep the plain daily setting as the bar.
         if (count >= dailyTargetCount || (dateStr === todayStr && isTodayGoalMet)) {
           streakDays++;
           checkDate = subDays(checkDate, 1);
@@ -294,6 +311,11 @@ export async function GET(req: Request) {
     }
 
     const isCompletedToday = isTodayGoalMet && reviewWords.length === 0;
+    // The panel's "learn more" button keeps offering another batch as long as
+    // words remain; the widget shows the study action while `newWords` is not
+    // empty, which is what makes the button reappear after the panel is closed.
+    const learnedTodayCount = dailyLearnedCount;
+    const remainingTodayCount = Math.max(0, effectiveGoalCount - learnedTodayCount);
 
     return NextResponse.json({
       todayStr,
@@ -302,6 +324,9 @@ export async function GET(req: Request) {
       learnedTodayWords,
       dailyLearnedCount,
       dailyTargetCount,
+      extraGoalCount: extraGoalToday,
+      effectiveGoalCount,
+      remainingTodayCount,
       totalLearned,
       totalMastered,
       totalWords: dictionary.length,
@@ -319,6 +344,9 @@ export async function GET(req: Request) {
       learnedTodayWords: [],
       dailyLearnedCount: 0,
       dailyTargetCount: 5,
+      extraGoalCount: 0,
+      effectiveGoalCount: 5,
+      remainingTodayCount: 5,
       totalLearned: 0,
       totalMastered: 0,
       totalWords: dictionary.length,
