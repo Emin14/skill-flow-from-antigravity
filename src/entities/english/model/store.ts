@@ -107,7 +107,13 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
             newWords,
             reviewWords,
             learnedTodayWords,
-            dailyLearnedCount: Math.min(current.dailyTargetCount, (current.dailyLearnedCount || 0) + 1),
+            // Cap against today's effective goal, not the daily setting: after
+            // "learn more" the goal is higher, and capping at the setting froze
+            // the counter (5/26) while the queues were already empty.
+            dailyLearnedCount: Math.min(
+              current.effectiveGoalCount ?? current.dailyTargetCount,
+              (current.dailyLearnedCount || 0) + 1
+            ),
             totalLearned: current.totalLearned + 1,
             isCompletedToday: isCompleted,
           },

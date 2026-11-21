@@ -31,7 +31,15 @@ export const EnglishDailyWidget: React.FC = () => {
   // (instead of a stored flag) is what keeps "Учить" on the widget after extra
   // words are requested and the trainer is closed again.
   const isDone = totalRemaining === 0 && dailyLearned >= effectiveGoal;
+  // Empty queue but the counter is behind: the local session is stale (the
+  // server knows the final count). Refetch instead of offering an empty
+  // trainer with "0 words left".
+  const isSessionStale = totalRemaining === 0 && dailyLearned < effectiveGoal;
   const learnedToday = session?.learnedTodayWords ?? [];
+
+  useEffect(() => {
+    if (isSessionStale) fetchSession();
+  }, [isSessionStale, fetchSession]);
 
   const openTrainer = (cards: SessionWordCard[] | null = null) => {
     setTrainerCards(cards);

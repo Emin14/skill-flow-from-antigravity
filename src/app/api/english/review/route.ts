@@ -8,8 +8,10 @@ export const dynamic = 'force-dynamic';
 
 interface ReviewBody {
   wordId: string;
-  rating: ReviewRating; // 'again' | 'hard' | 'good' | 'easy'
+  rating: ReviewRating; // 'again' | 'hard' | 'good' | 'easy' | 'already_know'
 }
+
+const VALID_RATINGS: ReviewRating[] = ['again', 'hard', 'good', 'easy', 'already_know'];
 
 export async function POST(req: Request) {
   try {
@@ -18,6 +20,15 @@ export async function POST(req: Request) {
 
     if (!wordId || !rating) {
       return NextResponse.json({ error: 'wordId and rating are required' }, { status: 400 });
+    }
+
+    // An unknown rating would fall through the SM-2 branches below and be
+    // stored as 'REVIEW' with a bogus log entry, so reject it explicitly.
+    if (!VALID_RATINGS.includes(rating)) {
+      return NextResponse.json(
+        { error: `rating must be one of: ${VALID_RATINGS.join(', ')}` },
+        { status: 400 }
+      );
     }
 
     const today = new Date();
