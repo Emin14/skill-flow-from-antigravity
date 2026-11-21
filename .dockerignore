@@ -1,9 +1,105 @@
+# Контекст сборки Next.js. Нужно ровно то, что требует `npm ci` и `next build`:
+# package*.json, src/, prisma/, public/, конфиги.
+#
+# ВАЖНО: не использовать общие маски вроде /*.json — они отсекают package.json
+# и ломают npm ci. Исключаем только конкретные файлы.
+#
+# До чистки: 6952 файла / 1141 MB. Мусор: аудит словаря (756 MB), PDF (212 MB),
+# tmp (73 MB), копии oxford JSON (39 MB), DOCX (19 MB).
+
+# --- git / CI ---
 .git
 .github
+.husky
+
+# --- зависимости и артефакты ---
 node_modules
 .next
+out
+build
+coverage
+
+# --- секреты ---
 .env
 .env.local
 .env.production
-README.md
+.env.development
+.env.test
+
+# --- данные аудита словаря ---
+dictionary_audit_cycles
+tmp
+analysis
+docs
+agent-roles
+scripts
+__pycache__
+*.pyc
+
+# --- исходники словарей и документы ---
+*.pdf
+*.docx
+*.epub
+*.djvu
+*.fb2
+
+# --- копии и отчёты в корне (только перечисленные, НЕ маска) ---
+# ВНИМАНИЕ: /oxford_5000.json и /oxford_5000*.json НЕ исключать —
+# в корне лежит копия, а нужный файл живёт в src/data/ и должен попасть в сборку.
+/oxford_5000_2026-08-27.json
+oxford_5000_2026-08-27.backup.json
+oxford_5000_2026-08-27.pre_primary_backup.json
+cld_english_russian.json
+/oxford_5000.json
+audit_report.json
+audit_report_raw.json
+changes.json
+STRUCTURAL_ISSUES.json
+comparison_100_words.json
+comparison_analysis.json
+comparison_100_words.csv
+dictionary_evaluation_500.json
+dictionary_evaluation_500.csv
+muller_100_words_comparison.json
+muller_100_words_comparison.csv
+verification_progress.json
+verification__updated_progress.json
+verification_report.json
+analysis_out.txt
+comparison_full_output.txt
+report.md
+skills-lock.json
+
+# --- python-скрипты аудита и отчёты в корне ---
+analyze.py
+analyze_comparison.py
+audit.py
+compare_meanings.py
+export_comparison.py
+final_qa_validation.py
+generate_report.py
+inspect_15.py
+inspect_json_structure.py
+inspect_primary_samples.py
+inspect_samples_utf8.py
+run_evaluation.py
+run_full_evaluation.py
+run_updated_eval.py
+run_updated_eval_v2.py
+test.py
+test_capture.py
+test_coincidence.py
+test_engine.py
+test_safe_regex.py
+test_syllable_adv.py
+test_syllable_fix.py
+test_syllable_fix2.py
+test_syllable_loop.py
+test_verbatim.py
+update_primary_evaluation_1000.py
+view_summary.py
+
+# --- прочее ---
+.DS_Store
 *.log
+npm-debug.log*
