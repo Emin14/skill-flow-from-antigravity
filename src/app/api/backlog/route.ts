@@ -25,6 +25,17 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   try {
     const body = await request.json();
+
+    // Reordering is a separate action so a drag can never be mistaken for a field edit.
+    if (body.action === 'reorder') {
+      const { topicId, orderedIds } = body;
+      if (!topicId || !Array.isArray(orderedIds)) {
+        return NextResponse.json({ error: 'Missing topicId or orderedIds' }, { status: 400 });
+      }
+      await prismaBacklogRepository.reorder(topicId, orderedIds);
+      return NextResponse.json({ success: true });
+    }
+
     const { id, ...updates } = body;
     if (!id) return NextResponse.json({ error: 'Missing backlog item id' }, { status: 400 });
 

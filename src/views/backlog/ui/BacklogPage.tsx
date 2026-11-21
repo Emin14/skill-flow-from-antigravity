@@ -9,7 +9,7 @@ import { getTodayStr } from '@/shared/lib/dateUtils';
 import { Search, X, Plus } from 'lucide-react';
 import styles from './BacklogPage.module.css';
 import { TopicsClassicView } from './layouts/BacklogLayouts';
-import { toggleNotePinOrder, type BacklogSortMode } from './backlogSorting';
+import { toggleNotePinOrder, sortBacklogItems, type BacklogSortMode } from './backlogSorting';
 import { TopicDetailModal } from './TopicDetailModal';
 
 export const BacklogPage: React.FC = () => {
@@ -25,6 +25,7 @@ export const BacklogPage: React.FC = () => {
     convertToTask,
     saveTopic,
     deleteTopic,
+    reorderItems,
   } = useBacklogStore();
 
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
@@ -32,7 +33,7 @@ export const BacklogPage: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState<'all' | BacklogStatus>('all');
   const [priorityFilter, setPriorityFilter] = useState<'all' | BacklogPriority>('all');
   const [hideDone, setHideDone] = useState(false);
-  const [sortMode, setSortMode] = useState<BacklogSortMode>('updated-desc');
+  const [sortMode, setSortMode] = useState<BacklogSortMode>('manual');
   const [showArchivedTopics, setShowArchivedTopics] = useState(false);
   const [topicModal, setTopicModal] = useState<{ topic: BacklogTopic | null } | null>(null);
 
@@ -125,6 +126,34 @@ export const BacklogPage: React.FC = () => {
     } catch {
       // The store restores the previous value and reports the error.
     }
+  };
+
+  /**
+   * Applies a drag: re-stacks the destination topic's visible order, then writes
+   * it. Dropping into another topic also re-files the note, so `topic` stays in
+   * sync with `topicId` (the API resolves the topic by id anyway).
+   */
+  const handleMoveItem = async (id: string, fromTopicId: string, toTopicId: string, index: number | null) => {
+    const moved = items.find(item => item.id === id);
+    if (!moved) return;
+
+    const targetTopic = allTopics.find(topic => topic.id === toTopicId);
+    if (!targetTopic || targetTopic.archivedAt) return;
+
+    if (fromTopicId !== toTopicId) {
+      // Moving between topics: the note is re-filed first, then the destination
+      // order is rebuilt so the new position is actually persisted.
+      await updateItem(id, { topicId: toTopicId, topic: targetTopic.name });
+    }
+
+    const destinationOrder = sortBacklogItems(
+      items.filter(item => item.topicId === toTopicId && item.id !== id),
+      sortMode
+    ).map(item => item.id);
+    const insertAt = index === null ? destinationOrder.length : Math.max(0, Math.min(index, destinationOrder.length));
+    destinationOrder.splice(insertAt, 0, id);
+
+    await reorderItems(toTopicId, destinationOrder);
   };
 
   const handleSaveModal = async (data: {
@@ -239,6 +268,7 @@ export const BacklogPage: React.FC = () => {
             value={sortMode}
             onChange={e => setSortMode(e.target.value as BacklogSortMode)}
           >
+            <option value="manual">Вручную (перетаскиванием)</option>
             <option value="updated-desc">Сначала недавно изменённые</option>
             <option value="updated-asc">Сначала давно изменённые</option>
             <option value="created-desc">Сначала новые</option>
@@ -300,6 +330,8 @@ export const BacklogPage: React.FC = () => {
           onPriority={handlePriority}
           onOpenCreate={handleOpenCreate}
           onEditTopic={topic => setTopicModal({ topic })}
+          onMoveItem={handleMoveItem}
+          canReorder={sortMode === 'manual'}
         />
       )}
 

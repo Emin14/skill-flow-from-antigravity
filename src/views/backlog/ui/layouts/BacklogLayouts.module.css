@@ -67,6 +67,33 @@
 
 /* Rename Btn — legacy hover styles, superseded by .headerActions */
 
+/* Drag handle for reordering notes. Sits before the status emoji so the row
+   keeps its reading order: grip → status → title. */
+.noteGrip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 18px;
+  height: 26px;
+  margin-left: -4px;
+  color: var(--color-text-muted);
+  opacity: 0.35;
+  cursor: grab;
+  touch-action: none;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.folderRow:hover .noteGrip { opacity: 0.9; }
+
+.noteGrip:hover { color: var(--color-accent-text); opacity: 1; }
+
+.noteGrip:active { cursor: grabbing; }
+
+@media (hover: none) {
+  .noteGrip { opacity: 0.6; width: 24px; height: 32px; }
+}
+
 /* Header actions: [＋][✎] as one pair, right-aligned before the counter.
    The group keeps its box while invisible, so revealing it never reflows the title. */
 .folderName { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

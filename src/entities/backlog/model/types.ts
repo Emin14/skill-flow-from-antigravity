@@ -29,6 +29,8 @@ export interface BacklogItem {
   tags?: string[] | null;
   link?: string | null;
   sortOrder?: number | null;
+  /** Hand-picked position inside the topic; null means "still date-sorted". */
+  manualOrder?: number | null;
   createdAt: string;
   updatedAt?: string;
 }
@@ -46,4 +48,6 @@ export interface CreateBacklogItemDto {
 
 export interface UpdateBacklogItemDto extends Partial<CreateBacklogItemDto> {
   sortOrder?: number | null;
+  /** Hand-picked position; null clears it and returns the note to date order. */
+  manualOrder?: number | null;
 }

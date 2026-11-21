@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import type { BacklogItem, BacklogTopic, BacklogPriority, BacklogStatus } from '@/entities/backlog/model/types';
 import {
   ArrowRight,
@@ -14,9 +14,11 @@ import {
   Pin,
   PinOff,
   ExternalLink,
+  GripVertical,
 } from 'lucide-react';
 import styles from './BacklogLayouts.module.css';
 import { isNotePinned, sortBacklogItems, type BacklogSortMode } from '../backlogSorting';
+import { useNoteDrag } from '../noteDrag';
 
 export interface LayoutProps {
   items: BacklogItem[];
@@ -35,6 +37,10 @@ export interface LayoutProps {
   onPriority: (id: string, priority: BacklogPriority) => void;
   onOpenCreate?: (topic: string) => void;
   onRenameTopic?: (oldTopic: string, newTopic: string) => Promise<void>;
+  /** Commits a drag: move `id` into `topicId` at `index` (null = to the end). */
+  onMoveItem?: (id: string, fromTopicId: string, toTopicId: string, index: number | null) => void;
+  /** Notes can only be dragged in manual order; the other modes sort themselves. */
+  canReorder?: boolean;
 }
 
 const STATUS_ORDER: BacklogStatus[] = ['idea', 'planned', 'done'];
@@ -148,7 +154,12 @@ function useOpenSections(keys: string[], defaultOpen: number) {
 /* ───────── Темы · Классика ───────── */
 
 
-function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps }) {
+function BacklogItemRow({ item, props, onDragStart, isDragging }: {
+  item: BacklogItem;
+  props: LayoutProps;
+  onDragStart?: (event: React.PointerEvent, id: string, topicId: string, title: string) => void;
+  isDragging?: boolean;
+}) {
   const [isPinning, setIsPinning] = useState(false);
   const suppressClickRef = useRef(false);
   const pinPendingRef = useRef(false);
@@ -232,7 +243,8 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
   const prioEmoji = item.priority === 'high' ? '🔥' : item.priority === 'medium' ? '⚡' : '☕';
 
   return (
-    <div className={styles.swipeContainer}>
+    <div className={styles.swipeContainer} data-note-id={item.id} data-note-topic={item.topicId}
+      style={isDragging ? { opacity: 0.4 } : undefined}>
       {swipeOffset > 0 && (
         <div className={styles.swipeRightAction}>
           <ArrowRight size={16} />
@@ -267,6 +279,19 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
       >
         <div className={styles.rowContent}>
           <div className={styles.rowTop}>
+            {onDragStart && (
+              <span
+                className={styles.noteGrip}
+                role="button"
+                tabIndex={-1}
+                aria-label={`Переместить заметку ${item.title}`}
+                title="Перетащите, чтобы изменить порядок или перенести в другую тему"
+                onPointerDown={event => onDragStart(event, item.id, item.topicId ?? '', item.title)}
+                onClick={event => event.stopPropagation()}
+              >
+                <GripVertical size={14} />
+              </span>
+            )}
             <span className={styles.rowEmoji}>{statusEmoji}</span>
             <span className={styles.folderTitle}>{item.title}</span>
             {formattedLink && (
@@ -323,7 +348,13 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
   );
 }
 
-function TopicFolder({ g, props, open, toggle }: { g: TopicGroup, props: LayoutProps, open: string[], toggle: (k: string) => void }) {
+function TopicFolder({ g, props, open, toggle, drag }: {
+  g: TopicGroup;
+  props: LayoutProps;
+  open: string[];
+  toggle: (k: string) => void;
+  drag: ReturnType<typeof useNoteDrag>;
+}) {
   const isOpen = open.includes(g.topic.id);
   return (
     <section className={styles.folder}>
@@ -349,10 +380,18 @@ function TopicFolder({ g, props, open, toggle }: { g: TopicGroup, props: LayoutP
         <span className={styles.folderTotalCount}>{g.list.length}</span>
         <span className={styles.folderCaret}>{isOpen ? '▾' : '▸'}</span>
       </div>
-      {isOpen && <div className={styles.folderBody}>
+      {isOpen && <div className={styles.folderBody} data-topic-drop={g.topic.id}>
         {g.topic.description && <p className={styles.topicDescription}>{g.topic.description}</p>}
         {g.topic.archivedAt && <span className={styles.more}>Тема в архиве</span>}
-        {g.list.map(item => <BacklogItemRow key={item.id} item={item} props={props} />)}
+        {g.list.map(item => (
+          <BacklogItemRow
+            key={item.id}
+            item={item}
+            props={props}
+            isDragging={drag.draggingId === item.id}
+            onDragStart={props.onMoveItem && props.canReorder && !g.topic.archivedAt ? drag.start : undefined}
+          />
+        ))}
         {g.list.length === 0 && <span className={styles.more}>Нет заметок в теме</span>}
       </div>}
     </section>
@@ -363,6 +402,11 @@ export function TopicsClassicView(props: LayoutProps) {
   const { items, topics } = props;
   const groups = topicGroups(items, topics, props.sortMode ?? 'updated-desc').filter(group => !props.hideEmptyGroups || group.list.length > 0);
   const { open, toggle } = useOpenSections(topics.map(topic => topic.id), 3);
+
+  const handleDrop = useCallback((id: string, fromTopicId: string, target: { topicId: string; index: number | null }) => {
+    props.onMoveItem?.(id, fromTopicId, target.topicId, target.index);
+  }, [props]);
+  const drag = useNoteDrag(handleDrop);
   const [searchSections, setSearchSections] = useState<{ query: string; closed: string[] }>({ query: '', closed: [] });
   const query = props.searchQuery ?? '';
   // A new query reveals every matching group without changing normal browsing's open state.
@@ -388,7 +432,7 @@ export function TopicsClassicView(props: LayoutProps) {
   return (
     <div className={styles.folders}>
       {groups.map((g) => (
-        <TopicFolder key={g.topic.id} g={g} props={props} open={visibleOpen} toggle={toggleSection} />
+        <TopicFolder key={g.topic.id} g={g} props={props} open={visibleOpen} toggle={toggleSection} drag={drag} />
       ))}
     </div>
   );

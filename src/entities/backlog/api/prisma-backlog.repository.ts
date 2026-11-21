@@ -45,10 +45,28 @@ export const prismaBacklogRepository = {
       if (updates.tags !== undefined) data.tags = updates.tags ? JSON.stringify(updates.tags) : null;
       if (updates.link !== undefined) data.link = updates.link;
       if (updates.sortOrder !== undefined) data.sortOrder = updates.sortOrder;
+      if (updates.manualOrder !== undefined) data.manualOrder = updates.manualOrder;
       return BacklogMapper.toDto(await tx.backlogItem.update({ where: { id }, data, include: { topicRecord: { select: { name: true } } } }));
     });
   },
   async delete(id: string): Promise<boolean> {
     await prisma.backlogItem.delete({ where: { id } }); return true;
+  },
+
+  /**
+   * Persists a hand-picked order for the notes of one topic.
+   * Only `manualOrder` is touched: `sortOrder` carries the pin flag and moving a
+   * note must not silently unpin it.
+   */
+  async reorder(topicId: string, orderedIds: string[]): Promise<void> {
+    if (!orderedIds.length) return;
+    await prisma.$transaction(
+      orderedIds.map((id, index) =>
+        prisma.backlogItem.updateMany({
+          where: { id, topicId },
+          data: { manualOrder: index },
+        })
+      )
+    );
   },
 };

@@ -24,6 +24,8 @@ interface BacklogState {
   renameTopic: (oldTopic: string, newTopic: string) => Promise<void>;
   saveTopic: (dto: SaveBacklogTopicDto, id?: string) => Promise<BacklogTopic>;
   deleteTopic: (id: string) => Promise<void>;
+  /** Persists a hand-picked order for one topic and applies it optimistically. */
+  reorderItems: (topicId: string, orderedIds: string[]) => Promise<void>;
 }
 
 export const useBacklogStore = create<BacklogState>((set, get) => ({
@@ -97,7 +99,12 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
             tags: deletedItem.tags,
             link: deletedItem.link,
           });
-          set((state) => ({ items: [restored, ...state.items] }));
+          // create() always writes sortOrder 0, so a pinned note would come back
+          // unpinned — restore the original order the note had before deletion.
+          const restoredItem = deletedItem.sortOrder
+            ? await backlogApi.update(restored.id, { sortOrder: deletedItem.sortOrder })
+            : restored;
+          set((state) => ({ items: [restoredItem, ...state.items] }));
           useToastStore.getState().showToast('Заметка восстановлена', 'success');
         }
       );
@@ -163,5 +170,27 @@ export const useBacklogStore = create<BacklogState>((set, get) => ({
   renameTopic: async (oldTopic, newTopic) => {
     const topic = get().topics.find(topic => topic.name === oldTopic);
     if (topic) await get().saveTopic({ name: newTopic }, topic.id);
+  },
+
+  reorderItems: async (topicId, orderedIds) => {
+    if (!orderedIds.length) return;
+    const previous = get().items;
+    // Optimistic: the list is already rendered in the new order, so a slow round
+    // trip must not make the note jump back under the cursor.
+    set(state => ({
+      items: state.items.map(item => {
+        const index = orderedIds.indexOf(item.id);
+        return index === -1 ? item : { ...item, manualOrder: index };
+      }),
+    }));
+    try {
+      await backlogApi.reorder(topicId, orderedIds);
+    } catch (error) {
+      set({ items: previous });
+      useToastStore.getState().showToast(
+        error instanceof Error ? error.message : 'Не удалось сохранить порядок заметок',
+        'error'
+      );
+    }
   },
 }));

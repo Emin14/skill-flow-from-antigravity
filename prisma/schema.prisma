@@ -206,7 +206,10 @@ model BacklogItem {
   priority    String?  @default("medium") // 'high' | 'medium' | 'low'
   tags        String?  // JSON массив тегов, например '["UI", "MVP"]'
   link        String?  // Ссылка на макет/документ/референс
-  sortOrder   Int?     @default(0)
+  sortOrder   Int?     @default(0) // negative encodes "pinned"; this is the pin flag
+  // Position inside the topic when the user drags notes by hand. Null means the
+  // note was never moved and keeps falling back to the date-based sort.
+  manualOrder Int?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
 

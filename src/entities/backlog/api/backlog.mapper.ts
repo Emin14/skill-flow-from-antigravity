@@ -23,6 +23,7 @@ export class BacklogMapper {
       tags,
       link: raw.link,
       sortOrder: raw.sortOrder,
+      manualOrder: raw.manualOrder,
       createdAt: raw.createdAt.toISOString(),
       updatedAt: raw.updatedAt.toISOString(),
     };

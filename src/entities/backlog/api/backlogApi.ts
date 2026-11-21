@@ -48,6 +48,19 @@ export const backlogApi = {
     return data.success;
   },
 
+  async reorder(topicId: string, orderedIds: string[]): Promise<boolean> {
+    const res = await fetch('/api/backlog', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'reorder', topicId, orderedIds }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.error || `Failed to reorder notes: ${res.statusText}`);
+    }
+    return (await res.json()).success;
+  },
+
   async getTopics(): Promise<BacklogTopic[]> {
     const res = await fetch('/api/backlog/topics');
     if (!res.ok) throw new Error('Не удалось загрузить темы');
