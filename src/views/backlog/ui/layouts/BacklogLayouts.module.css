@@ -39,9 +39,6 @@
 .folderIcon { font-size: 15px; }
 
 /* Inline Add */
-.inlineAddTrigger { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px; padding: 8px 10px; background: transparent; border: none; border-radius: 8px; color: var(--color-text-muted); font-size: 13px; font-weight: 500; cursor: pointer; width: 100%; text-align: center; transition: all 0.2s; }
-.inlineAddTrigger:hover { background: var(--color-surface-hover); color: var(--color-accent); }
-.inlineAddTrigger svg { opacity: 0.8; }
 .inlineAddForm { display: flex; align-items: center; gap: 8px; margin-top: 4px; padding: 4px 6px; background: var(--color-surface-hover); border-radius: 8px; border: 1px solid var(--color-accent-border); }
 .inlineInput { flex: 1; background: transparent; border: none; outline: none; font-size: 13px; color: var(--color-text-primary); padding: 4px; }
 .inlineActions { display: flex; gap: 4px; }
@@ -68,10 +65,22 @@
 .renameCancelBtn { background: transparent; border: none; cursor: pointer; color: var(--color-text-muted); display: flex; align-items: center; padding: 2px; border-radius: 4px; }
 .renameCancelBtn:hover { background: rgba(0,0,0,0.05); color: var(--color-text-primary); }
 
-/* Rename Btn */
-.folderHead:hover .renameBtn { opacity: 1; }
-.renameBtn { opacity: 0; margin-left: 4px; background: transparent; border: none; cursor: pointer; padding: 2px 4px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s; }
-.renameBtn:hover { transform: scale(1.2) rotate(5deg); background: transparent; }
+/* Rename Btn — legacy hover styles, superseded by .headerActions */
+
+/* Header actions: [＋][✎] as one pair, right-aligned before the counter.
+   The group keeps its box while invisible, so revealing it never reflows the title. */
+.folderName { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.headerActions { display: flex; align-items: center; gap: 3px; flex: none; opacity: 0; transition: opacity 0.15s ease; }
+.folderHead:hover .headerActions,
+.folderHead:focus-within .headerActions { opacity: 1; }
+.headerAction { width: 26px; height: 26px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: none; border-radius: 7px; background: transparent; color: var(--color-text-muted); cursor: pointer; transition: background 0.15s ease, color 0.15s ease; }
+.headerAction:hover { background: var(--color-accent-light); color: var(--color-accent-text); }
+.headerAction:active { background: var(--color-accent-light); }
+/* Touch has no hover: keep the pair faint but always reachable. */
+@media (hover: none) {
+  .headerActions { opacity: 0.55; }
+  .headerAction { width: 32px; height: 32px; }
+}
 
 /* Swipe & Row */
 .swipeContainer { position: relative; overflow: hidden; border-radius: 8px; margin-bottom: 2px; }
@@ -112,8 +121,6 @@
   .folderRow { padding: 12px 10px; }
   .folderTitle { font-size: 15px; }
   .rowBottom { font-size: 13px; margin-left: 20px; margin-right: 20px; }
-  .inlineAddTrigger { padding: 12px 10px; font-size: 14px; }
-  .renameBtn { opacity: 1; padding: 6px; } /* always visible on mobile */
 }
 
 .swipeContainer:last-of-type .folderRow { border-bottom: none; }

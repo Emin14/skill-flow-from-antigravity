@@ -244,7 +244,7 @@ function BacklogItemRow({ item, props }: { item: BacklogItem, props: LayoutProps
           <button type="button" onClick={event => { event.stopPropagation(); void handlePin(); }} disabled={isPinning}
             title={pinned ? 'Открепить заметку' : 'Закрепить заметку'} aria-label={pinned ? 'Открепить заметку' : 'Закрепить заметку'}
             className={styles.swipePinBtn}>{pinned ? <PinOff size={16} /> : <Pin size={16} />}</button>
-          <button type="button" title="Удалить заметку" aria-label="Удалить заметку" onClick={(e) => { e.stopPropagation(); if(confirm('Удалить заметку?')) { props.onDelete(item.id); closeActions(); } }} className={styles.swipeDeleteBtn}><Trash2 size={16} /></button>
+          <button type="button" title="Удалить заметку" aria-label="Удалить заметку" onClick={(e) => { e.stopPropagation(); void props.onDelete(item.id); closeActions(); }} className={styles.swipeDeleteBtn}><Trash2 size={16} /></button>
         </div>
       )}
       
@@ -329,12 +329,23 @@ function TopicFolder({ g, props, open, toggle }: { g: TopicGroup, props: LayoutP
     <section className={styles.folder}>
       <div className={styles.folderHead} onClick={() => toggle(g.topic.id)}>
         <span className={styles.folderIcon}>{g.topic.archivedAt ? '🗃️' : '📁'}</span>
-        <strong>{g.topic.name}</strong>
-        {props.onEditTopic && <button type="button" className={styles.renameBtn}
-          onClick={event => { event.stopPropagation(); props.onEditTopic?.(g.topic); }}
-          title="Редактировать тему" aria-label={`Редактировать тему ${g.topic.name}`}>
-          <Edit2 size={14} />
-        </button>}
+        <strong className={styles.folderName}>{g.topic.name}</strong>
+        <span className={styles.headerActions} onClick={Stop}>
+          {!g.topic.archivedAt && props.onOpenCreate && (
+            <button type="button" className={styles.headerAction}
+              onClick={() => props.onOpenCreate?.(g.topic.id)}
+              title={`Новая заметка в тему «${g.topic.name}»`} aria-label={`Новая заметка в тему «${g.topic.name}»`}>
+              <Plus size={15} />
+            </button>
+          )}
+          {props.onEditTopic && (
+            <button type="button" className={styles.headerAction}
+              onClick={() => props.onEditTopic?.(g.topic)}
+              title="Редактировать тему" aria-label={`Редактировать тему ${g.topic.name}`}>
+              <Edit2 size={14} />
+            </button>
+          )}
+        </span>
         <span className={styles.folderTotalCount}>{g.list.length}</span>
         <span className={styles.folderCaret}>{isOpen ? '▾' : '▸'}</span>
       </div>
@@ -343,9 +354,6 @@ function TopicFolder({ g, props, open, toggle }: { g: TopicGroup, props: LayoutP
         {g.topic.archivedAt && <span className={styles.more}>Тема в архиве</span>}
         {g.list.map(item => <BacklogItemRow key={item.id} item={item} props={props} />)}
         {g.list.length === 0 && <span className={styles.more}>Нет заметок в теме</span>}
-        {!g.topic.archivedAt && props.onOpenCreate && <button type="button" className={styles.inlineAddTrigger} onClick={() => props.onOpenCreate?.(g.topic.id)}>
-          <Plus size={14} /><span>Новая заметка в эту тему...</span>
-        </button>}
       </div>}
     </section>
   );
