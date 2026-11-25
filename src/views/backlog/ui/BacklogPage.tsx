@@ -132,28 +132,40 @@ export const BacklogPage: React.FC = () => {
    * Applies a drag: re-stacks the destination topic's visible order, then writes
    * it. Dropping into another topic also re-files the note, so `topic` stays in
    * sync with `topicId` (the API resolves the topic by id anyway).
+   *
+   * The drop arrives as an anchor (the row under the cursor) rather than a raw
+   * index: the index is computed here against the list *without* the dragged
+   * note, so a downward move cannot land one slot too far because the source row
+   * was still counted in the rendered order.
    */
-  const handleMoveItem = async (id: string, fromTopicId: string, toTopicId: string, index: number | null) => {
+  const handleMoveItem = async (
+    id: string,
+    fromTopicId: string,
+    target: { topicId: string; anchorId: string | null; place: 'before' | 'after' }
+  ) => {
     const moved = items.find(item => item.id === id);
     if (!moved) return;
 
-    const targetTopic = allTopics.find(topic => topic.id === toTopicId);
+    const targetTopic = allTopics.find(topic => topic.id === target.topicId);
     if (!targetTopic || targetTopic.archivedAt) return;
 
-    if (fromTopicId !== toTopicId) {
+    if (fromTopicId !== target.topicId) {
       // Moving between topics: the note is re-filed first, then the destination
       // order is rebuilt so the new position is actually persisted.
-      await updateItem(id, { topicId: toTopicId, topic: targetTopic.name });
+      await updateItem(id, { topicId: target.topicId, topic: targetTopic.name });
     }
 
     const destinationOrder = sortBacklogItems(
-      items.filter(item => item.topicId === toTopicId && item.id !== id),
+      items.filter(item => item.topicId === target.topicId && item.id !== id),
       sortMode
     ).map(item => item.id);
-    const insertAt = index === null ? destinationOrder.length : Math.max(0, Math.min(index, destinationOrder.length));
+    const anchorAt = target.anchorId ? destinationOrder.indexOf(target.anchorId) : -1;
+    const insertAt = anchorAt === -1
+      ? destinationOrder.length
+      : anchorAt + (target.place === 'after' ? 1 : 0);
     destinationOrder.splice(insertAt, 0, id);
 
-    await reorderItems(toTopicId, destinationOrder);
+    await reorderItems(target.topicId, destinationOrder);
   };
 
   const handleSaveModal = async (data: {

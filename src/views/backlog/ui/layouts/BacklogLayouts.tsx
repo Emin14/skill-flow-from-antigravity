@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import styles from './BacklogLayouts.module.css';
 import { isNotePinned, sortBacklogItems, type BacklogSortMode } from '../backlogSorting';
-import { useNoteDrag } from '../noteDrag';
+import { useNoteDrag, type NoteDropTarget } from '../noteDrag';
 
 export interface LayoutProps {
   items: BacklogItem[];
@@ -37,8 +37,8 @@ export interface LayoutProps {
   onPriority: (id: string, priority: BacklogPriority) => void;
   onOpenCreate?: (topic: string) => void;
   onRenameTopic?: (oldTopic: string, newTopic: string) => Promise<void>;
-  /** Commits a drag: move `id` into `topicId` at `index` (null = to the end). */
-  onMoveItem?: (id: string, fromTopicId: string, toTopicId: string, index: number | null) => void;
+  /** Commits a drag: move `id` into `topicId`, anchored above/below the note `anchorId`. */
+  onMoveItem?: (id: string, fromTopicId: string, target: { topicId: string; anchorId: string | null; place: 'before' | 'after' }) => void;
   /** Notes can only be dragged in manual order; the other modes sort themselves. */
   canReorder?: boolean;
 }
@@ -154,11 +154,12 @@ function useOpenSections(keys: string[], defaultOpen: number) {
 /* ───────── Темы · Классика ───────── */
 
 
-function BacklogItemRow({ item, props, onDragStart, isDragging }: {
+function BacklogItemRow({ item, props, onDragStart, isDragging, wasJustDragged }: {
   item: BacklogItem;
   props: LayoutProps;
   onDragStart?: (event: React.PointerEvent, id: string, topicId: string, title: string) => void;
   isDragging?: boolean;
+  wasJustDragged?: () => boolean;
 }) {
   const [isPinning, setIsPinning] = useState(false);
   const suppressClickRef = useRef(false);
@@ -261,9 +262,11 @@ function BacklogItemRow({ item, props, onDragStart, isDragging }: {
       )}
       
       <div 
-        className={`${styles.folderRow} ${item.status === 'done' ? styles.folderRowDone : ''}`} 
+        className={`${styles.folderRow} ${item.status === 'done' ? styles.folderRowDone : ''} ${onDragStart ? styles.dragRow : ''}`} 
+        onPointerDown={onDragStart ? (event => onDragStart(event, item.id, item.topicId ?? '', item.title)) : undefined}
         onClick={() => {
           if (suppressClickRef.current) return;
+          if (wasJustDragged?.()) return;
           if (swipeOffset !== 0 || isSwipedLeft) {
              setSwipeOffset(0);
              setIsSwipedLeft(false);
@@ -284,9 +287,16 @@ function BacklogItemRow({ item, props, onDragStart, isDragging }: {
                 className={styles.noteGrip}
                 role="button"
                 tabIndex={-1}
+                data-note-grip=""
                 aria-label={`Переместить заметку ${item.title}`}
                 title="Перетащите, чтобы изменить порядок или перенести в другую тему"
-                onPointerDown={event => onDragStart(event, item.id, item.topicId ?? '', item.title)}
+                onPointerDown={event => {
+                  // The row is a mouse drag source too; the grip's own press must not
+                  // reach it, or the same gesture would start two sessions.
+                  event.stopPropagation();
+                  onDragStart(event, item.id, item.topicId ?? '', item.title);
+                }}
+                onTouchStart={event => event.stopPropagation()}
                 onClick={event => event.stopPropagation()}
               >
                 <GripVertical size={14} />
@@ -348,17 +358,18 @@ function BacklogItemRow({ item, props, onDragStart, isDragging }: {
   );
 }
 
-function TopicFolder({ g, props, open, toggle, drag }: {
+function TopicFolder({ g, props, open, toggle, drag, canDrag }: {
   g: TopicGroup;
   props: LayoutProps;
   open: string[];
   toggle: (k: string) => void;
   drag: ReturnType<typeof useNoteDrag>;
+  canDrag: boolean;
 }) {
   const isOpen = open.includes(g.topic.id);
   return (
     <section className={styles.folder}>
-      <div className={styles.folderHead} onClick={() => toggle(g.topic.id)}>
+      <div className={styles.folderHead} data-topic-drop={g.topic.id} onClick={() => toggle(g.topic.id)}>
         <span className={styles.folderIcon}>{g.topic.archivedAt ? '🗃️' : '📁'}</span>
         <strong className={styles.folderName}>{g.topic.name}</strong>
         <span className={styles.headerActions} onClick={Stop}>
@@ -389,7 +400,8 @@ function TopicFolder({ g, props, open, toggle, drag }: {
             item={item}
             props={props}
             isDragging={drag.draggingId === item.id}
-            onDragStart={props.onMoveItem && props.canReorder && !g.topic.archivedAt ? drag.start : undefined}
+            wasJustDragged={drag.wasJustDragged}
+            onDragStart={props.onMoveItem && canDrag && !g.topic.archivedAt ? drag.start : undefined}
           />
         ))}
         {g.list.length === 0 && <span className={styles.more}>Нет заметок в теме</span>}
@@ -403,10 +415,11 @@ export function TopicsClassicView(props: LayoutProps) {
   const groups = topicGroups(items, topics, props.sortMode ?? 'updated-desc').filter(group => !props.hideEmptyGroups || group.list.length > 0);
   const { open, toggle } = useOpenSections(topics.map(topic => topic.id), 3);
 
-  const handleDrop = useCallback((id: string, fromTopicId: string, target: { topicId: string; index: number | null }) => {
-    props.onMoveItem?.(id, fromTopicId, target.topicId, target.index);
+  const handleDrop = useCallback((id: string, fromTopicId: string, target: NoteDropTarget) => {
+    props.onMoveItem?.(id, fromTopicId, target);
   }, [props]);
   const drag = useNoteDrag(handleDrop);
+  const canDrag = Boolean(props.onMoveItem && props.canReorder);
   const [searchSections, setSearchSections] = useState<{ query: string; closed: string[] }>({ query: '', closed: [] });
   const query = props.searchQuery ?? '';
   // A new query reveals every matching group without changing normal browsing's open state.
@@ -432,7 +445,7 @@ export function TopicsClassicView(props: LayoutProps) {
   return (
     <div className={styles.folders}>
       {groups.map((g) => (
-        <TopicFolder key={g.topic.id} g={g} props={props} open={visibleOpen} toggle={toggleSection} drag={drag} />
+        <TopicFolder key={g.topic.id} g={g} props={props} open={visibleOpen} toggle={toggleSection} drag={drag} canDrag={canDrag} />
       ))}
     </div>
   );
