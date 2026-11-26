@@ -17,7 +17,10 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Сборка двух образов (~2.5 мин) + pre-pull (лимит 15 мин) + деплой
+    # (лимит 12 мин). Прежние 30 мин оставляли почти нулевой запас на худший
+    # канал: 25.11.2026 джоба потратила 18 минут и всё равно упала.
+    timeout-minutes: 40
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -67,11 +70,30 @@ jobs:
       # совпадений), обрывает деплой. Проверено: сборка прошла, `up -d app`
       # выполнился, а джоба упала на строке `[ "$code" = "200" ] && break`.
       # Защиту от ошибок даёт `set -euo pipefail` внутри самого скрипта.
-      - name: Deploy to VPS
+
+      # Скачивание образов вынесено в отдельный шаг со своим таймаутом.
+      # Раньше `compose pull` жил внутри деплоя и делил с ним один лимит
+      # `command_timeout`: 25.11.2026 образ migrate (576 МБ, слой 494 МБ)
+      # качался 13 минут, а на 15-й минуте ssh-action убил сессию посреди
+      # `compose pull migrate` — деплой падал, хотя на сервере не было ни
+      # одной ошибки. Плюс его образ к тому же вычищал cron (`image prune -a`
+      # --filter until=72h), поэтому качать приходилось с нуля.
+      - name: Pre-pull images on VPS
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           command_timeout: 15m
+          script: |
+            cd /opt/skillflow
+            docker compose pull
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          command_timeout: 12m
           script: bash /opt/skillflow/scripts/deploy.sh

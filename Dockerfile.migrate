@@ -1,16 +1,37 @@
-FROM node:22-alpine
+FROM node:22-alpine AS deps
+
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /build
+
+# Только lock-файл: точные версии prisma и dotenv берутся из него, чтобы образ
+# миграций не разошёлся со схемой при обновлении Prisma.
+COPY package-lock.json ./
+
+# Полный `npm ci` ставил весь devDependencies-граф приложения: слой 494 МБ,
+# образ 576 МБ. VPS не успевал скачать его за command_timeout (15m) и деплой
+# падал на `compose pull` — при том что сборка и пуш в GHCR проходили.
+#
+# Ставим в отдельный префикс: `npm install` внутри каталога с package.json
+# доустанавливает ВСЁ дерево зависимостей приложения (next, react, eslint —
+# 713 МБ), поэтому ./package.json в образ не копируется вообще.
+# Итог: образ 97 МБ сжатых, самый большой слой 54 МБ.
+RUN set -eu; \
+    PRISMA_VER="$(node -p "require('./package-lock.json').packages['node_modules/prisma'].version")"; \
+    DOTENV_VER="$(node -p "require('./package-lock.json').packages['node_modules/dotenv'].version")"; \
+    echo "installing prisma@${PRISMA_VER} dotenv@${DOTENV_VER}"; \
+    npm install --prefix /opt/prisma --no-save --omit=dev --no-audit --no-fund \
+      "prisma@${PRISMA_VER}" "dotenv@${DOTENV_VER}"; \
+    npm cache clean --force
+
+FROM node:22-alpine AS runner
 
 RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-
-RUN npm ci
-
+COPY --from=deps /opt/prisma/node_modules ./node_modules
 COPY prisma ./prisma
 COPY prisma.config.ts ./
-
-RUN npx prisma generate
 
 CMD ["npx", "prisma", "migrate", "deploy"]
