@@ -86,8 +86,9 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           command_timeout: 15m
           script: |
+            set -euo pipefail
             cd /opt/skillflow
-            docker compose pull
+            docker compose pull app migrate
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.0
