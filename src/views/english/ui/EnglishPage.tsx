@@ -108,7 +108,6 @@ export const EnglishPage: React.FC = () => {
   const newCount = session?.newWords?.length || 0;
   const reviewCount = session?.reviewWords?.length || 0;
   const totalToday = newCount + reviewCount;
-  const isDoneToday = session?.isCompletedToday || (totalToday === 0 && (session?.dailyLearnedCount || 0) > 0);
 
   return (
     <div className={styles.container}>
@@ -169,6 +168,10 @@ export const EnglishPage: React.FC = () => {
             <div className={styles.statCard}>
               <span className={styles.statLabel}>Выучено прочно (Mastered)</span>
               <span className={styles.statNumber}>{session?.totalMastered || 0}</span>
+            </div>
+            <div className={styles.statCard}>
+              <span className={styles.statLabel}>Забыто, учить заново</span>
+              <span className={styles.statNumber}>{session?.totalReset || 0}</span>
             </div>
             <div className={styles.statCard}>
               <span className={styles.statLabel}>Всего слов в базе</span>

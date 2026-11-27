@@ -9,6 +9,7 @@ import {
   speakEnglishWord,
   triggerHapticFeedback,
 } from '@/entities/english';
+import { submitReviewBeforeAdvance } from '@/entities/english/lib/reviewFlow';
 import { lockBodyScroll, unlockBodyScroll } from '@/shared/lib/scrollLock';
 import {
   Check,
@@ -108,6 +109,33 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     if (autoAdvanceTimerRef.current) {
       clearTimeout(autoAdvanceTimerRef.current);
       autoAdvanceTimerRef.current = null;
+    }
+  };
+
+  // After a run ends short of the daily goal (some words were rated «Не помню»
+  // and rolled back), pull a fresh session and start the remaining batch so the
+  // norm is still reachable in the same sitting.
+  const handleContinueDay = async () => {
+    setIsLoadingRandom(true);
+    clearAutoTimer();
+    try {
+      await fetchSession();
+      const fresh = useEnglishStore.getState().session;
+      const cards = [...(fresh?.reviewWords || []), ...(fresh?.newWords || [])];
+      if (cards.length > 0) {
+        setQueue(shuffleList(cards));
+        setCurrentIndex(0);
+        setMeaningIndex(0);
+        setIsAnswerRevealed(false);
+        setUserInput('');
+        setIsMatch(null);
+        setIsFinished(false);
+        triggerHapticFeedback('medium');
+      }
+    } catch (e) {
+      console.error('Error continuing the English day:', e);
+    } finally {
+      setIsLoadingRandom(false);
     }
   };
 
@@ -311,25 +339,23 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
     triggerHapticFeedback('light');
   };
 
-  const handleMarkAsLearned = () => {
+  const handleMarkAsLearned = async () => {
     const cardToRate = queue[currentIndex];
     if (!cardToRate) return;
 
     triggerHapticFeedback('success');
-    submitReview(cardToRate.id, 'easy');
-    advanceToNext();
+    await submitReviewBeforeAdvance(submitReview, cardToRate.id, 'easy', advanceToNext);
   };
 
-  const handleAlreadyKnowWord = () => {
+  const handleAlreadyKnowWord = async () => {
     const cardToRate = queue[currentIndex];
     if (!cardToRate) return;
 
     triggerHapticFeedback('success');
-    submitReview(cardToRate.id, 'already_know');
-    advanceToNext();
+    await submitReviewBeforeAdvance(submitReview, cardToRate.id, 'already_know', advanceToNext);
   };
 
-  const handleReviewRating = (rating: ReviewRating) => {
+  const handleReviewRating = async (rating: ReviewRating) => {
     const cardToRate = queue[currentIndex];
     if (!cardToRate) return;
 
@@ -341,8 +367,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
       triggerHapticFeedback('medium');
     }
 
-    submitReview(cardToRate.id, rating);
-    advanceToNext();
+    await submitReviewBeforeAdvance(submitReview, cardToRate.id, rating, advanceToNext);
   };
 
   const handleCheckAnswer = () => {
@@ -425,6 +450,12 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
   );
   const currentMeaning = meaningsList[safeMeaningIndex];
 
+  // A run can end while the daily goal is still short — that happens exactly
+  // when a forgotten word was dropped from the queue instead of being counted.
+  const dailyLearnedNow = session?.dailyLearnedCount ?? 0;
+  const goalNow = session?.effectiveGoalCount ?? session?.dailyTargetCount ?? 5;
+  const isGoalMet = dailyLearnedNow >= goalNow;
+
   // Accent-aware transcription
   const displayTranscription = currentCard
     ? settings.accent === 'uk'
@@ -437,17 +468,19 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
       <div className={styles.cardContainer} onClick={(e) => e.stopPropagation()}>
         {isFinished || (queue.length === 0 && !currentCard) ? (
           <div className={styles.completedCard}>
-            <div className={styles.celebrateEmoji}>🎉</div>
+            <div className={styles.celebrateEmoji}>{isGoalMet ? '🎉' : '📌'}</div>
             <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-text-primary)', margin: 0 }}>
-              Дневная норма выполнена!
+              {isGoalMet ? 'Дневная норма выполнена!' : 'Заход завершён'}
             </h2>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>
-              Вы успешно прошли запланированные слова на сегодня. Возвращайтесь завтра для закрепления интервального повторения!
+              {isGoalMet
+                ? 'Вы успешно прошли запланированные слова на сегодня. Возвращайтесь завтра для закрепления интервального повторения!'
+                : `Выучено ${session?.dailyLearnedCount ?? 0} из ${session?.effectiveGoalCount ?? session?.dailyTargetCount ?? 5}. Слова, отмеченные «Не помню», сброшены и вернутся завтра с нулевым прогрессом.`}
             </p>
             <button
               type="button"
               className={styles.finishBtn}
-              onClick={handleLoadRandomWords}
+              onClick={isGoalMet ? handleLoadRandomWords : handleContinueDay}
               disabled={isLoadingRandom}
               style={{
                 background: 'var(--color-accent)',
@@ -460,7 +493,13 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
               }}
             >
               <Plus size={15} />
-              <span>{isLoadingRandom ? 'Загрузка...' : `Учить ещё ${session?.dailyTargetCount || settings.dailyNewWords || 5} слов`}</span>
+              <span>
+                {isLoadingRandom
+                  ? 'Загрузка...'
+                  : isGoalMet
+                    ? `Учить ещё ${session?.dailyTargetCount || settings.dailyNewWords || 5} слов`
+                    : `Добрать ${Math.max(0, goalNow - dailyLearnedNow)} из нормы`}
+              </span>
             </button>
             <button
               className={styles.finishBtn}
@@ -760,7 +799,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                               whiteSpace: 'nowrap',
                               boxSizing: 'border-box',
                             }}
-                            title="Сбросить прогресс слова и повторить позже"
+                            title="Сбросить прогресс слова полностью — вернётся завтра с нулевым прогрессом"
                           >
                             <span>Не помню</span>
                           </button>
@@ -815,7 +854,7 @@ export const EnglishTrainerModal: React.FC<EnglishTrainerModalProps> = ({
                               whiteSpace: 'nowrap',
                               boxSizing: 'border-box',
                             }}
-                            title="Сбросить прогресс слова и повторить позже"
+                            title="Сбросить прогресс слова полностью — вернётся завтра с нулевым прогрессом"
                           >
                             <span>Не помню</span>
                           </button>

@@ -2,3 +2,4 @@ export * from './model/types';
 export * from './model/store';
 export * from './lib/speechUtils';
 export * from './lib/oxfordLoader';
+export * from './lib/reviewLogAggregation';

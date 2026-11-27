@@ -81,25 +81,43 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
         body: JSON.stringify({ wordId, rating }),
       });
       if (!res.ok) throw new Error('Failed to submit review');
-      
+
+      // «Не помню» is a rollback, not progress: the server clears the interval
+      // and schedules the word for tomorrow, so it must not land in the learned
+      // list or bump today's counter.
+      const isForgotten = rating === 'again';
+
       const current = get().session;
       if (current) {
         // Exclude learned word from remaining newWords / reviewWords
         const filterOut = (list: SessionWordCard[]) => list.filter((c) => c.id !== wordId);
         const newWords = filterOut(current.newWords || []);
         const reviewWords = filterOut(current.reviewWords || []);
-        const isCompleted = newWords.length === 0 && reviewWords.length === 0;
+        const isCompleted = newWords.length === 0 && reviewWords.length === 0 && !isForgotten;
 
         // Keep the "learned today" list in sync so the done panel shows the word
         // without waiting for a refetch.
         const alreadyListed = (current.learnedTodayWords || []).some((c) => c.id === wordId);
         const sourceCard = [...(current.newWords || []), ...(current.reviewWords || [])]
           .find((c) => c.id === wordId);
-        const learnedTodayWords = alreadyListed
-          ? current.learnedTodayWords
-          : sourceCard
-            ? [...(current.learnedTodayWords || []), sourceCard]
-            : current.learnedTodayWords;
+        const learnedTodayWords = isForgotten
+          ? (current.learnedTodayWords || []).filter((c) => c.id !== wordId)
+          : alreadyListed
+            ? current.learnedTodayWords
+            : sourceCard
+              ? [...(current.learnedTodayWords || []), sourceCard]
+              : current.learnedTodayWords;
+
+        // A forgotten word leaves the "in progress" / mastered pools. Only
+        // REVIEW and MASTERED are counted as learned (LEARNING already means
+        // "forgotten and reset"), so the decrement depends on the old status.
+        const previousStatus = sourceCard?.progress?.status;
+        const wasCountedLearned = previousStatus === 'REVIEW' || previousStatus === 'MASTERED';
+        // Any word that is not already in the reset bucket enters it, including
+        // a brand-new word that was forgotten on first sight.
+        const becomesReset = isForgotten && previousStatus !== 'LEARNING';
+        // Answering a reset word correctly moves it back into real progress.
+        const recoversFromReset = !isForgotten && previousStatus === 'LEARNING';
 
         set({
           session: {
@@ -110,11 +128,23 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
             // Cap against today's effective goal, not the daily setting: after
             // "learn more" the goal is higher, and capping at the setting froze
             // the counter (5/26) while the queues were already empty.
-            dailyLearnedCount: Math.min(
-              current.effectiveGoalCount ?? current.dailyTargetCount,
-              (current.dailyLearnedCount || 0) + 1
-            ),
-            totalLearned: current.totalLearned + 1,
+            dailyLearnedCount: isForgotten
+              ? Math.max(0, (current.dailyLearnedCount || 0) - (alreadyListed ? 1 : 0))
+              : Math.min(
+                  current.effectiveGoalCount ?? current.dailyTargetCount,
+                  (current.dailyLearnedCount || 0) + 1
+                ),
+            totalLearned: isForgotten
+              ? (wasCountedLearned ? Math.max(0, current.totalLearned - 1) : current.totalLearned)
+              : current.totalLearned + 1,
+            // LEARNING words are not counted as learned; a forgotten word moves
+            // into this bucket while a recovered one leaves it, so the
+            // "forgotten, relearn" stat follows the real status.
+            totalReset: becomesReset
+              ? (current.totalReset || 0) + 1
+              : recoversFromReset
+                ? Math.max(0, (current.totalReset || 0) - 1)
+                : current.totalReset,
             isCompletedToday: isCompleted,
           },
         });
@@ -258,7 +288,14 @@ export const useEnglishStore = create<EnglishState>((set, get) => ({
 
   fetchRandomWords: async (count = 5): Promise<SessionWordCard[]> => {
     try {
-      const res = await fetch(`/api/english/random?count=${count}`);
+      const clientDate = typeof window !== 'undefined' ? getTodayStr() : '';
+      const tzOffset = typeof window !== 'undefined' ? new Date().getTimezoneOffset() : 0;
+      const params = new URLSearchParams({
+        count: String(count),
+        clientDate,
+        tzOffset: String(tzOffset),
+      });
+      const res = await fetch(`/api/english/random?${params.toString()}`);
       if (res.ok) {
         const data = await res.json();
         return data.words || [];

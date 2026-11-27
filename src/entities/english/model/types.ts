@@ -149,6 +149,8 @@ export interface EnglishSessionResponse {
   remainingTodayCount?: number;
   totalLearned: number;
   totalMastered: number;
+  /** Words answered «Не помню» and reset: due again as reviews, no progress. */
+  totalReset?: number;
   totalWords: number;
   streakDays: number;
   isCompletedToday: boolean;

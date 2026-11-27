@@ -7,6 +7,8 @@ import {
   CEFRLevel,
   getOxfordDictionary,
   getOxfordDictionaryMap,
+  buildDayWordInfo,
+  summarizeDay,
 } from '@/entities/english';
 import { subDays } from 'date-fns';
 
@@ -124,38 +126,66 @@ export async function GET(req: Request) {
       }
     };
 
-    // 1. Calculate actual daily learned count for today
-    const todayReviewedWords = progressList.filter((p) => {
-      if (!p.lastReviewedAt) return false;
-      const lastReviewDateStr = getLocalReviewDate(p.lastReviewedAt);
-      return lastReviewDateStr === todayStr;
-    });
-    const dailyLearnedCount = todayReviewedWords.length;
+    // 1. Words actually learned today.
+    // `lastReviewedAt` is NOT a reliable marker: a word rated «Не помню» also
+    // touches its row, yet it was not learned and its progress is rolled back.
+    // The review log is the source of truth — a word counts as learned today
+    // only when its latest rating of the day is not `again`.
+    const today = new Date();
+    // A wide window is loaded on purpose: the same day-word aggregation feeds
+    // both today's counter and the streak, which walks back through previous
+    // days. Only three small columns are selected.
+    let reviewLogs: { wordId: string; rating: string; createdAt: Date }[] = [];
+    try {
+      reviewLogs = await prisma.englishWordReviewLog.findMany({
+        where: { createdAt: { gte: subDays(today, 180) } },
+        orderBy: { createdAt: 'desc' },
+        select: { wordId: true, rating: true, createdAt: true },
+      });
+    } catch (e) {
+      console.warn('Prisma EnglishWordReviewLog fallback to empty:', e);
+    }
+
+    const dayWordInfo = buildDayWordInfo(reviewLogs, getLocalReviewDate);
+    const todaySummary = summarizeDay(dayWordInfo.get(todayStr));
+    const learnedWordIdsToday = todaySummary.learnedWordIds;
+    const dailyLearnedCount = todaySummary.learnedCount;
+
+    // Words answered with «Не помню» today: their interval was cleared and
+    // they are due tomorrow, so without this set they could be handed out
+    // again in the same session as fresh words.
+    const resetTodayIds = new Set(todaySummary.resetWordIds);
 
     // Words that were studied today — used by the "done" panel to list what
     // was actually learned instead of only showing a counter.
-    const learnedTodayWords: SessionWordCard[] = todayReviewedWords
-      .map((p) => {
-        const base = dictionaryMap.get(p.wordId);
+    const learnedTodayWords: SessionWordCard[] = learnedWordIdsToday
+      .map((wordId) => {
+        const base = dictionaryMap.get(wordId);
         if (!base) return null;
+        const p = progressMap.get(wordId);
         return {
           ...base,
-          progress: {
-            wordId: p.wordId,
-            status: p.status,
-            nextReviewDate: p.nextReviewDate,
-            intervalDays: p.intervalDays,
-            easeFactor: p.easeFactor,
-            repetitions: p.repetitions,
-            errorCount: p.errorCount,
-            lastReviewedAt: p.lastReviewedAt ? new Date(p.lastReviewedAt).toISOString() : null,
-          },
+          progress: p
+            ? {
+                wordId: p.wordId,
+                status: p.status as 'NEW' | 'LEARNING' | 'REVIEW' | 'MASTERED',
+                nextReviewDate: p.nextReviewDate,
+                intervalDays: p.intervalDays,
+                easeFactor: p.easeFactor,
+                repetitions: p.repetitions,
+                errorCount: p.errorCount,
+                lastReviewedAt: p.lastReviewedAt ? new Date(p.lastReviewedAt).toISOString() : null,
+              }
+            : undefined,
           isNew: false,
         };
       })
       .filter(Boolean) as SessionWordCard[];
 
-    // 2. Due reviews for today that have NOT yet been reviewed today
+    // 2. Due reviews for today that have NOT yet been reviewed today.
+    // A word rated «Не помню» is reset to LEARNING with a 1-day interval, so it
+    // is out of today's queue in both directions: it is not NEW (so it is not
+    // refilled from the new-words pool) and its nextReviewDate is tomorrow.
     const dueReviewsRaw = progressList.filter((p) => {
       if (p.status === 'NEW') return false;
       const lastReviewDateStr = getLocalReviewDate(p.lastReviewedAt);
@@ -200,7 +230,10 @@ export async function GET(req: Request) {
       let mastered = 0;
       for (const w of lvlWords) {
         const p = progressMap.get(w.id);
-        if (p && p.status !== 'NEW') {
+        // Only real progress counts as learned. LEARNING is the "was forgotten
+        // and reset" state, so counting `status !== 'NEW'` would credit the
+        // word for a memory failure.
+        if (p && (p.status === 'REVIEW' || p.status === 'MASTERED')) {
           learned++;
           if (p.status === 'MASTERED') {
             mastered++;
@@ -249,6 +282,7 @@ export async function GET(req: Request) {
           .filter((w) => w.cefrLevel === lvl)
           .filter((w) => {
             const prog = progressMap.get(w.id);
+            if (resetTodayIds.has(w.id)) return false;
             return !prog || prog.status === 'NEW';
           })
           .sort((a, b) => (a.frequencyRank || 9999) - (b.frequencyRank || 9999));
@@ -265,19 +299,23 @@ export async function GET(req: Request) {
     }
 
     // 5. Total Learned & Mastered counts
+    // LEARNING is excluded on purpose: it only ever means «was forgotten and
+    // reset», so the word has no progress to show yet. It surfaces under the
+    // separate `totalReset` field below instead of inflating the learned stats.
     const totalLearned = progressList.filter(
-      (p) => p.status === 'LEARNING' || p.status === 'REVIEW' || p.status === 'MASTERED'
+      (p) => p.status === 'REVIEW' || p.status === 'MASTERED'
     ).length;
     const totalMastered = progressList.filter((p) => p.status === 'MASTERED').length;
+    const totalReset = progressList.filter((p) => p.status === 'LEARNING').length;
 
-    // 6. Streak calculation (requires daily quota completion)
+    // 6. Streak calculation (requires daily quota completion).
+    // Counted from successful day-word pairs, so a word answered only with
+    // «Не помню» does not keep a streak alive on its own.
     const reviewsByDate = new Map<string, number>();
-    for (const p of progressList) {
-      const d = getLocalReviewDate(p.lastReviewedAt);
-      if (d) {
-        reviewsByDate.set(d, (reviewsByDate.get(d) || 0) + 1);
-      }
-    }
+    dayWordInfo.forEach((perWord, dateStr) => {
+      const learned = summarizeDay(perWord).learnedCount;
+      if (learned > 0) reviewsByDate.set(dateStr, learned);
+    });
 
     let streakDays = 0;
     const isTodayGoalMet = dailyLearnedCount >= effectiveGoalCount;
@@ -329,6 +367,7 @@ export async function GET(req: Request) {
       remainingTodayCount,
       totalLearned,
       totalMastered,
+      totalReset,
       totalWords: dictionary.length,
       streakDays,
       isCompletedToday,

@@ -51,15 +51,24 @@ export async function POST(req: Request) {
 
     // SuperMemo-2 (SM-2) adapted algorithm
     if (rating === 'already_know') {
-      repetitions = 10;
+      // Mark the word at the same five-repetition threshold used by the
+      // regular progression. This is an immediate completion, not ten
+      // simulated reviews.
+      repetitions = 5;
       intervalDays = 365;
       easeFactor = 2.5;
       status = 'MASTERED';
     } else if (rating === 'again') {
+      // «Не помню» wipes the study progress: repetitions and the interval go
+      // back to the very start and the ease is restored, so the word is asked
+      // again tomorrow from scratch. It is NOT reset to NEW — a NEW word is one
+      // that was never seen, and it would compete with real new vocabulary for
+      // the daily quota. LEARNING marks it as "reset, due again as a review".
+      // errorCount keeps growing: it is a memory-failure statistic, not progress.
       repetitions = 0;
       intervalDays = 1;
+      easeFactor = 2.5;
       errorCount += 1;
-      easeFactor = Math.max(1.3, easeFactor - 0.2);
       status = 'LEARNING';
     } else {
       if (rating === 'hard') {

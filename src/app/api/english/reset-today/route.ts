@@ -65,8 +65,32 @@ export async function POST(req: Request) {
           lastReviewedAt: null,
           repetitions: 0,
           intervalDays: 1,
+          easeFactor: 2.5,
         },
       });
+
+      // Today's counters are derived from the review log, so the resets must
+      // remove that day's entries as well — otherwise the word is back in the
+      // queue while still being listed as learned today.
+      try {
+        const todayLogs = await prisma.englishWordReviewLog.findMany({
+          where: {
+            wordId: { in: todayReviewedIds },
+            createdAt: { gte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
+          },
+          select: { id: true, createdAt: true },
+        });
+        const idsToDelete = todayLogs
+          .filter((log) => getLocalReviewDate(log.createdAt) === todayStr)
+          .map((log) => log.id);
+        if (idsToDelete.length > 0) {
+          await prisma.englishWordReviewLog.deleteMany({
+            where: { id: { in: idsToDelete } },
+          });
+        }
+      } catch (logErr) {
+        console.warn('Failed to clear today review log entries:', logErr);
+      }
     }
 
     return NextResponse.json({ success: true, resetCount: todayReviewedIds.length });
